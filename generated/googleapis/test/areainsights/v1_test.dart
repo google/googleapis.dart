@@ -43,33 +43,18 @@ void checkCircle(api.Circle o) {
   buildCounterCircle++;
   if (buildCounterCircle < 3) {
     checkLatLng(o.latLng!);
-    unittest.expect(
-      o.place!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.radius!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.place!, unittest.equals('foo'));
+    unittest.expect(o.radius!, unittest.equals(42));
   }
   buildCounterCircle--;
 }
 
-core.List<core.String> buildUnnamed0() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed0() => ['foo', 'foo'];
 
 void checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterComputeInsightsRequest = 0;
@@ -94,9 +79,9 @@ void checkComputeInsightsRequest(api.ComputeInsightsRequest o) {
 }
 
 core.List<api.PlaceInsight> buildUnnamed1() => [
-      buildPlaceInsight(),
-      buildPlaceInsight(),
-    ];
+  buildPlaceInsight(),
+  buildPlaceInsight(),
+];
 
 void checkUnnamed1(core.List<api.PlaceInsight> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -119,10 +104,7 @@ api.ComputeInsightsResponse buildComputeInsightsResponse() {
 void checkComputeInsightsResponse(api.ComputeInsightsResponse o) {
   buildCounterComputeInsightsResponse++;
   if (buildCounterComputeInsightsResponse < 3) {
-    unittest.expect(
-      o.count!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.count!, unittest.equals('foo'));
     checkUnnamed1(o.placeInsights!);
   }
   buildCounterComputeInsightsResponse--;
@@ -147,38 +129,20 @@ void checkCustomArea(api.CustomArea o) {
   buildCounterCustomArea--;
 }
 
-core.List<core.String> buildUnnamed2() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
 
 void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed3() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed3() => ['foo', 'foo'];
 
 void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterFilter = 0;
@@ -223,14 +187,8 @@ api.LatLng buildLatLng() {
 void checkLatLng(api.LatLng o) {
   buildCounterLatLng++;
   if (buildCounterLatLng < 3) {
-    unittest.expect(
-      o.latitude!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.longitude!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.latitude!, unittest.equals(42.0));
+    unittest.expect(o.longitude!, unittest.equals(42.0));
   }
   buildCounterLatLng--;
 }
@@ -272,18 +230,12 @@ api.PlaceInsight buildPlaceInsight() {
 void checkPlaceInsight(api.PlaceInsight o) {
   buildCounterPlaceInsight++;
   if (buildCounterPlaceInsight < 3) {
-    unittest.expect(
-      o.place!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.place!, unittest.equals('foo'));
   }
   buildCounterPlaceInsight--;
 }
 
-core.List<api.LatLng> buildUnnamed4() => [
-      buildLatLng(),
-      buildLatLng(),
-    ];
+core.List<api.LatLng> buildUnnamed4() => [buildLatLng(), buildLatLng()];
 
 void checkUnnamed4(core.List<api.LatLng> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -325,14 +277,8 @@ api.RatingFilter buildRatingFilter() {
 void checkRatingFilter(api.RatingFilter o) {
   buildCounterRatingFilter++;
   if (buildCounterRatingFilter < 3) {
-    unittest.expect(
-      o.maxRating!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.minRating!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.maxRating!, unittest.equals(42.0));
+    unittest.expect(o.minRating!, unittest.equals(42.0));
   }
   buildCounterRatingFilter--;
 }
@@ -351,80 +297,41 @@ api.Region buildRegion() {
 void checkRegion(api.Region o) {
   buildCounterRegion++;
   if (buildCounterRegion < 3) {
-    unittest.expect(
-      o.place!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.place!, unittest.equals('foo'));
   }
   buildCounterRegion--;
 }
 
-core.List<core.String> buildUnnamed5() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed5() => ['foo', 'foo'];
 
 void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed6() => ['foo', 'foo'];
 
 void checkUnnamed6(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed7() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
 
 void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed8() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed8() => ['foo', 'foo'];
 
 void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterTypeFilter = 0;
@@ -457,8 +364,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildCircle();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Circle.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Circle.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCircle(od);
     });
   });
@@ -468,7 +376,8 @@ void main() {
       final o = buildComputeInsightsRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ComputeInsightsRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkComputeInsightsRequest(od);
     });
   });
@@ -478,7 +387,8 @@ void main() {
       final o = buildComputeInsightsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.ComputeInsightsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkComputeInsightsResponse(od);
     });
   });
@@ -487,8 +397,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildCustomArea();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.CustomArea.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.CustomArea.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkCustomArea(od);
     });
   });
@@ -497,8 +408,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Filter.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Filter.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkFilter(od);
     });
   });
@@ -507,8 +419,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildLatLng();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.LatLng.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.LatLng.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLatLng(od);
     });
   });
@@ -518,7 +431,8 @@ void main() {
       final o = buildLocationFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LocationFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLocationFilter(od);
     });
   });
@@ -528,7 +442,8 @@ void main() {
       final o = buildPlaceInsight();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PlaceInsight.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPlaceInsight(od);
     });
   });
@@ -537,8 +452,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildPolygon();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Polygon.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Polygon.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPolygon(od);
     });
   });
@@ -548,7 +464,8 @@ void main() {
       final o = buildRatingFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.RatingFilter.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRatingFilter(od);
     });
   });
@@ -557,8 +474,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildRegion();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Region.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Region.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkRegion(od);
     });
   });
@@ -567,8 +485,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildTypeFilter();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.TypeFilter.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.TypeFilter.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkTypeFilter(od);
     });
   });
@@ -579,54 +498,58 @@ void main() {
       final res = api.AreaInsightsApi(mock).v1;
       final arg_request = buildComputeInsightsRequest();
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.ComputeInsightsRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkComputeInsightsRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ComputeInsightsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkComputeInsightsRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 18),
-          unittest.equals('v1:computeInsights'),
-        );
-        pathOffset += 18;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 18),
+            unittest.equals('v1:computeInsights'),
+          );
+          pathOffset += 18;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildComputeInsightsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.computeInsights(arg_request, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildComputeInsightsResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.computeInsights(
+        arg_request,
+        $fields: arg_$fields,
+      );
       checkComputeInsightsResponse(response as api.ComputeInsightsResponse);
     });
   });

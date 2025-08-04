@@ -42,11 +42,16 @@ class CustomSearchApi {
 
   CseResource get cse => CseResource(_requester);
 
-  CustomSearchApi(http.Client client,
-      {core.String rootUrl = 'https://customsearch.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CustomSearchApi(
+    http.Client client, {
+    core.String rootUrl = 'https://customsearch.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class CseResource {
@@ -698,27 +703,22 @@ class PromotionBodyLines {
   /// The URL of the block object's link, if it has one.
   core.String? url;
 
-  PromotionBodyLines({
-    this.htmlTitle,
-    this.link,
-    this.title,
-    this.url,
-  });
+  PromotionBodyLines({this.htmlTitle, this.link, this.title, this.url});
 
   PromotionBodyLines.fromJson(core.Map json_)
-      : this(
-          htmlTitle: json_['htmlTitle'] as core.String?,
-          link: json_['link'] as core.String?,
-          title: json_['title'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        htmlTitle: json_['htmlTitle'] as core.String?,
+        link: json_['link'] as core.String?,
+        title: json_['title'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (htmlTitle != null) 'htmlTitle': htmlTitle!,
-        if (link != null) 'link': link!,
-        if (title != null) 'title': title!,
-        if (url != null) 'url': url!,
-      };
+    if (htmlTitle != null) 'htmlTitle': htmlTitle!,
+    if (link != null) 'link': link!,
+    if (title != null) 'title': title!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Image belonging to a promotion.
@@ -732,24 +732,20 @@ class PromotionImage {
   /// Image width in pixels.
   core.int? width;
 
-  PromotionImage({
-    this.height,
-    this.source,
-    this.width,
-  });
+  PromotionImage({this.height, this.source, this.width});
 
   PromotionImage.fromJson(core.Map json_)
-      : this(
-          height: json_['height'] as core.int?,
-          source: json_['source'] as core.String?,
-          width: json_['width'] as core.int?,
-        );
+    : this(
+        height: json_['height'] as core.int?,
+        source: json_['source'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!,
-        if (source != null) 'source': source!,
-        if (width != null) 'width': width!,
-      };
+    if (height != null) 'height': height!,
+    if (source != null) 'source': source!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// Promotion result.
@@ -782,29 +778,35 @@ class Promotion {
   });
 
   Promotion.fromJson(core.Map json_)
-      : this(
-          bodyLines: (json_['bodyLines'] as core.List?)
-              ?.map((value) => PromotionBodyLines.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          displayLink: json_['displayLink'] as core.String?,
-          htmlTitle: json_['htmlTitle'] as core.String?,
-          image: json_.containsKey('image')
-              ? PromotionImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
-              : null,
-          link: json_['link'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        bodyLines:
+            (json_['bodyLines'] as core.List?)
+                ?.map(
+                  (value) => PromotionBodyLines.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        displayLink: json_['displayLink'] as core.String?,
+        htmlTitle: json_['htmlTitle'] as core.String?,
+        image:
+            json_.containsKey('image')
+                ? PromotionImage.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        link: json_['link'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bodyLines != null) 'bodyLines': bodyLines!,
-        if (displayLink != null) 'displayLink': displayLink!,
-        if (htmlTitle != null) 'htmlTitle': htmlTitle!,
-        if (image != null) 'image': image!,
-        if (link != null) 'link': link!,
-        if (title != null) 'title': title!,
-      };
+    if (bodyLines != null) 'bodyLines': bodyLines!,
+    if (displayLink != null) 'displayLink': displayLink!,
+    if (htmlTitle != null) 'htmlTitle': htmlTitle!,
+    if (image != null) 'image': image!,
+    if (link != null) 'link': link!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Image belonging to a custom search result.
@@ -841,25 +843,25 @@ class ResultImage {
   });
 
   ResultImage.fromJson(core.Map json_)
-      : this(
-          byteSize: json_['byteSize'] as core.int?,
-          contextLink: json_['contextLink'] as core.String?,
-          height: json_['height'] as core.int?,
-          thumbnailHeight: json_['thumbnailHeight'] as core.int?,
-          thumbnailLink: json_['thumbnailLink'] as core.String?,
-          thumbnailWidth: json_['thumbnailWidth'] as core.int?,
-          width: json_['width'] as core.int?,
-        );
+    : this(
+        byteSize: json_['byteSize'] as core.int?,
+        contextLink: json_['contextLink'] as core.String?,
+        height: json_['height'] as core.int?,
+        thumbnailHeight: json_['thumbnailHeight'] as core.int?,
+        thumbnailLink: json_['thumbnailLink'] as core.String?,
+        thumbnailWidth: json_['thumbnailWidth'] as core.int?,
+        width: json_['width'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (byteSize != null) 'byteSize': byteSize!,
-        if (contextLink != null) 'contextLink': contextLink!,
-        if (height != null) 'height': height!,
-        if (thumbnailHeight != null) 'thumbnailHeight': thumbnailHeight!,
-        if (thumbnailLink != null) 'thumbnailLink': thumbnailLink!,
-        if (thumbnailWidth != null) 'thumbnailWidth': thumbnailWidth!,
-        if (width != null) 'width': width!,
-      };
+    if (byteSize != null) 'byteSize': byteSize!,
+    if (contextLink != null) 'contextLink': contextLink!,
+    if (height != null) 'height': height!,
+    if (thumbnailHeight != null) 'thumbnailHeight': thumbnailHeight!,
+    if (thumbnailLink != null) 'thumbnailLink': thumbnailLink!,
+    if (thumbnailWidth != null) 'thumbnailWidth': thumbnailWidth!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// Refinement label associated with a custom search result.
@@ -877,24 +879,20 @@ class ResultLabels {
   /// Don't display this in your user interface; instead, use displayName.
   core.String? name;
 
-  ResultLabels({
-    this.displayName,
-    this.labelWithOp,
-    this.name,
-  });
+  ResultLabels({this.displayName, this.labelWithOp, this.name});
 
   ResultLabels.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          labelWithOp: json_['label_with_op'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        labelWithOp: json_['label_with_op'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (labelWithOp != null) 'label_with_op': labelWithOp!,
-        if (name != null) 'name': name!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (labelWithOp != null) 'label_with_op': labelWithOp!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// A custom search result.
@@ -971,49 +969,56 @@ class Result {
   });
 
   Result.fromJson(core.Map json_)
-      : this(
-          cacheId: json_['cacheId'] as core.String?,
-          displayLink: json_['displayLink'] as core.String?,
-          fileFormat: json_['fileFormat'] as core.String?,
-          formattedUrl: json_['formattedUrl'] as core.String?,
-          htmlFormattedUrl: json_['htmlFormattedUrl'] as core.String?,
-          htmlSnippet: json_['htmlSnippet'] as core.String?,
-          htmlTitle: json_['htmlTitle'] as core.String?,
-          image: json_.containsKey('image')
-              ? ResultImage.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
-              : null,
-          kind: json_['kind'] as core.String?,
-          labels: (json_['labels'] as core.List?)
-              ?.map((value) => ResultLabels.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          link: json_['link'] as core.String?,
-          mime: json_['mime'] as core.String?,
-          pagemap: json_.containsKey('pagemap')
-              ? json_['pagemap'] as core.Map<core.String, core.dynamic>
-              : null,
-          snippet: json_['snippet'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        cacheId: json_['cacheId'] as core.String?,
+        displayLink: json_['displayLink'] as core.String?,
+        fileFormat: json_['fileFormat'] as core.String?,
+        formattedUrl: json_['formattedUrl'] as core.String?,
+        htmlFormattedUrl: json_['htmlFormattedUrl'] as core.String?,
+        htmlSnippet: json_['htmlSnippet'] as core.String?,
+        htmlTitle: json_['htmlTitle'] as core.String?,
+        image:
+            json_.containsKey('image')
+                ? ResultImage.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kind: json_['kind'] as core.String?,
+        labels:
+            (json_['labels'] as core.List?)
+                ?.map(
+                  (value) => ResultLabels.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        link: json_['link'] as core.String?,
+        mime: json_['mime'] as core.String?,
+        pagemap:
+            json_.containsKey('pagemap')
+                ? json_['pagemap'] as core.Map<core.String, core.dynamic>
+                : null,
+        snippet: json_['snippet'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cacheId != null) 'cacheId': cacheId!,
-        if (displayLink != null) 'displayLink': displayLink!,
-        if (fileFormat != null) 'fileFormat': fileFormat!,
-        if (formattedUrl != null) 'formattedUrl': formattedUrl!,
-        if (htmlFormattedUrl != null) 'htmlFormattedUrl': htmlFormattedUrl!,
-        if (htmlSnippet != null) 'htmlSnippet': htmlSnippet!,
-        if (htmlTitle != null) 'htmlTitle': htmlTitle!,
-        if (image != null) 'image': image!,
-        if (kind != null) 'kind': kind!,
-        if (labels != null) 'labels': labels!,
-        if (link != null) 'link': link!,
-        if (mime != null) 'mime': mime!,
-        if (pagemap != null) 'pagemap': pagemap!,
-        if (snippet != null) 'snippet': snippet!,
-        if (title != null) 'title': title!,
-      };
+    if (cacheId != null) 'cacheId': cacheId!,
+    if (displayLink != null) 'displayLink': displayLink!,
+    if (fileFormat != null) 'fileFormat': fileFormat!,
+    if (formattedUrl != null) 'formattedUrl': formattedUrl!,
+    if (htmlFormattedUrl != null) 'htmlFormattedUrl': htmlFormattedUrl!,
+    if (htmlSnippet != null) 'htmlSnippet': htmlSnippet!,
+    if (htmlTitle != null) 'htmlTitle': htmlTitle!,
+    if (image != null) 'image': image!,
+    if (kind != null) 'kind': kind!,
+    if (labels != null) 'labels': labels!,
+    if (link != null) 'link': link!,
+    if (mime != null) 'mime': mime!,
+    if (pagemap != null) 'pagemap': pagemap!,
+    if (snippet != null) 'snippet': snippet!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Custom search request metadata.
@@ -1274,85 +1279,84 @@ class SearchQueriesNextPage {
   });
 
   SearchQueriesNextPage.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.int?,
-          cr: json_['cr'] as core.String?,
-          cx: json_['cx'] as core.String?,
-          dateRestrict: json_['dateRestrict'] as core.String?,
-          disableCnTwTranslation:
-              json_['disableCnTwTranslation'] as core.String?,
-          exactTerms: json_['exactTerms'] as core.String?,
-          excludeTerms: json_['excludeTerms'] as core.String?,
-          fileType: json_['fileType'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          gl: json_['gl'] as core.String?,
-          googleHost: json_['googleHost'] as core.String?,
-          highRange: json_['highRange'] as core.String?,
-          hl: json_['hl'] as core.String?,
-          hq: json_['hq'] as core.String?,
-          imgColorType: json_['imgColorType'] as core.String?,
-          imgDominantColor: json_['imgDominantColor'] as core.String?,
-          imgSize: json_['imgSize'] as core.String?,
-          imgType: json_['imgType'] as core.String?,
-          inputEncoding: json_['inputEncoding'] as core.String?,
-          language: json_['language'] as core.String?,
-          linkSite: json_['linkSite'] as core.String?,
-          lowRange: json_['lowRange'] as core.String?,
-          orTerms: json_['orTerms'] as core.String?,
-          outputEncoding: json_['outputEncoding'] as core.String?,
-          relatedSite: json_['relatedSite'] as core.String?,
-          rights: json_['rights'] as core.String?,
-          safe: json_['safe'] as core.String?,
-          searchTerms: json_['searchTerms'] as core.String?,
-          searchType: json_['searchType'] as core.String?,
-          siteSearch: json_['siteSearch'] as core.String?,
-          siteSearchFilter: json_['siteSearchFilter'] as core.String?,
-          sort: json_['sort'] as core.String?,
-          startIndex: json_['startIndex'] as core.int?,
-          startPage: json_['startPage'] as core.int?,
-          title: json_['title'] as core.String?,
-          totalResults: json_['totalResults'] as core.String?,
-        );
+    : this(
+        count: json_['count'] as core.int?,
+        cr: json_['cr'] as core.String?,
+        cx: json_['cx'] as core.String?,
+        dateRestrict: json_['dateRestrict'] as core.String?,
+        disableCnTwTranslation: json_['disableCnTwTranslation'] as core.String?,
+        exactTerms: json_['exactTerms'] as core.String?,
+        excludeTerms: json_['excludeTerms'] as core.String?,
+        fileType: json_['fileType'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        gl: json_['gl'] as core.String?,
+        googleHost: json_['googleHost'] as core.String?,
+        highRange: json_['highRange'] as core.String?,
+        hl: json_['hl'] as core.String?,
+        hq: json_['hq'] as core.String?,
+        imgColorType: json_['imgColorType'] as core.String?,
+        imgDominantColor: json_['imgDominantColor'] as core.String?,
+        imgSize: json_['imgSize'] as core.String?,
+        imgType: json_['imgType'] as core.String?,
+        inputEncoding: json_['inputEncoding'] as core.String?,
+        language: json_['language'] as core.String?,
+        linkSite: json_['linkSite'] as core.String?,
+        lowRange: json_['lowRange'] as core.String?,
+        orTerms: json_['orTerms'] as core.String?,
+        outputEncoding: json_['outputEncoding'] as core.String?,
+        relatedSite: json_['relatedSite'] as core.String?,
+        rights: json_['rights'] as core.String?,
+        safe: json_['safe'] as core.String?,
+        searchTerms: json_['searchTerms'] as core.String?,
+        searchType: json_['searchType'] as core.String?,
+        siteSearch: json_['siteSearch'] as core.String?,
+        siteSearchFilter: json_['siteSearchFilter'] as core.String?,
+        sort: json_['sort'] as core.String?,
+        startIndex: json_['startIndex'] as core.int?,
+        startPage: json_['startPage'] as core.int?,
+        title: json_['title'] as core.String?,
+        totalResults: json_['totalResults'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (cr != null) 'cr': cr!,
-        if (cx != null) 'cx': cx!,
-        if (dateRestrict != null) 'dateRestrict': dateRestrict!,
-        if (disableCnTwTranslation != null)
-          'disableCnTwTranslation': disableCnTwTranslation!,
-        if (exactTerms != null) 'exactTerms': exactTerms!,
-        if (excludeTerms != null) 'excludeTerms': excludeTerms!,
-        if (fileType != null) 'fileType': fileType!,
-        if (filter != null) 'filter': filter!,
-        if (gl != null) 'gl': gl!,
-        if (googleHost != null) 'googleHost': googleHost!,
-        if (highRange != null) 'highRange': highRange!,
-        if (hl != null) 'hl': hl!,
-        if (hq != null) 'hq': hq!,
-        if (imgColorType != null) 'imgColorType': imgColorType!,
-        if (imgDominantColor != null) 'imgDominantColor': imgDominantColor!,
-        if (imgSize != null) 'imgSize': imgSize!,
-        if (imgType != null) 'imgType': imgType!,
-        if (inputEncoding != null) 'inputEncoding': inputEncoding!,
-        if (language != null) 'language': language!,
-        if (linkSite != null) 'linkSite': linkSite!,
-        if (lowRange != null) 'lowRange': lowRange!,
-        if (orTerms != null) 'orTerms': orTerms!,
-        if (outputEncoding != null) 'outputEncoding': outputEncoding!,
-        if (relatedSite != null) 'relatedSite': relatedSite!,
-        if (rights != null) 'rights': rights!,
-        if (safe != null) 'safe': safe!,
-        if (searchTerms != null) 'searchTerms': searchTerms!,
-        if (searchType != null) 'searchType': searchType!,
-        if (siteSearch != null) 'siteSearch': siteSearch!,
-        if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter!,
-        if (sort != null) 'sort': sort!,
-        if (startIndex != null) 'startIndex': startIndex!,
-        if (startPage != null) 'startPage': startPage!,
-        if (title != null) 'title': title!,
-        if (totalResults != null) 'totalResults': totalResults!,
-      };
+    if (count != null) 'count': count!,
+    if (cr != null) 'cr': cr!,
+    if (cx != null) 'cx': cx!,
+    if (dateRestrict != null) 'dateRestrict': dateRestrict!,
+    if (disableCnTwTranslation != null)
+      'disableCnTwTranslation': disableCnTwTranslation!,
+    if (exactTerms != null) 'exactTerms': exactTerms!,
+    if (excludeTerms != null) 'excludeTerms': excludeTerms!,
+    if (fileType != null) 'fileType': fileType!,
+    if (filter != null) 'filter': filter!,
+    if (gl != null) 'gl': gl!,
+    if (googleHost != null) 'googleHost': googleHost!,
+    if (highRange != null) 'highRange': highRange!,
+    if (hl != null) 'hl': hl!,
+    if (hq != null) 'hq': hq!,
+    if (imgColorType != null) 'imgColorType': imgColorType!,
+    if (imgDominantColor != null) 'imgDominantColor': imgDominantColor!,
+    if (imgSize != null) 'imgSize': imgSize!,
+    if (imgType != null) 'imgType': imgType!,
+    if (inputEncoding != null) 'inputEncoding': inputEncoding!,
+    if (language != null) 'language': language!,
+    if (linkSite != null) 'linkSite': linkSite!,
+    if (lowRange != null) 'lowRange': lowRange!,
+    if (orTerms != null) 'orTerms': orTerms!,
+    if (outputEncoding != null) 'outputEncoding': outputEncoding!,
+    if (relatedSite != null) 'relatedSite': relatedSite!,
+    if (rights != null) 'rights': rights!,
+    if (safe != null) 'safe': safe!,
+    if (searchTerms != null) 'searchTerms': searchTerms!,
+    if (searchType != null) 'searchType': searchType!,
+    if (siteSearch != null) 'siteSearch': siteSearch!,
+    if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter!,
+    if (sort != null) 'sort': sort!,
+    if (startIndex != null) 'startIndex': startIndex!,
+    if (startPage != null) 'startPage': startPage!,
+    if (title != null) 'title': title!,
+    if (totalResults != null) 'totalResults': totalResults!,
+  };
 }
 
 /// Custom search request metadata.
@@ -1613,85 +1617,84 @@ class SearchQueriesPreviousPage {
   });
 
   SearchQueriesPreviousPage.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.int?,
-          cr: json_['cr'] as core.String?,
-          cx: json_['cx'] as core.String?,
-          dateRestrict: json_['dateRestrict'] as core.String?,
-          disableCnTwTranslation:
-              json_['disableCnTwTranslation'] as core.String?,
-          exactTerms: json_['exactTerms'] as core.String?,
-          excludeTerms: json_['excludeTerms'] as core.String?,
-          fileType: json_['fileType'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          gl: json_['gl'] as core.String?,
-          googleHost: json_['googleHost'] as core.String?,
-          highRange: json_['highRange'] as core.String?,
-          hl: json_['hl'] as core.String?,
-          hq: json_['hq'] as core.String?,
-          imgColorType: json_['imgColorType'] as core.String?,
-          imgDominantColor: json_['imgDominantColor'] as core.String?,
-          imgSize: json_['imgSize'] as core.String?,
-          imgType: json_['imgType'] as core.String?,
-          inputEncoding: json_['inputEncoding'] as core.String?,
-          language: json_['language'] as core.String?,
-          linkSite: json_['linkSite'] as core.String?,
-          lowRange: json_['lowRange'] as core.String?,
-          orTerms: json_['orTerms'] as core.String?,
-          outputEncoding: json_['outputEncoding'] as core.String?,
-          relatedSite: json_['relatedSite'] as core.String?,
-          rights: json_['rights'] as core.String?,
-          safe: json_['safe'] as core.String?,
-          searchTerms: json_['searchTerms'] as core.String?,
-          searchType: json_['searchType'] as core.String?,
-          siteSearch: json_['siteSearch'] as core.String?,
-          siteSearchFilter: json_['siteSearchFilter'] as core.String?,
-          sort: json_['sort'] as core.String?,
-          startIndex: json_['startIndex'] as core.int?,
-          startPage: json_['startPage'] as core.int?,
-          title: json_['title'] as core.String?,
-          totalResults: json_['totalResults'] as core.String?,
-        );
+    : this(
+        count: json_['count'] as core.int?,
+        cr: json_['cr'] as core.String?,
+        cx: json_['cx'] as core.String?,
+        dateRestrict: json_['dateRestrict'] as core.String?,
+        disableCnTwTranslation: json_['disableCnTwTranslation'] as core.String?,
+        exactTerms: json_['exactTerms'] as core.String?,
+        excludeTerms: json_['excludeTerms'] as core.String?,
+        fileType: json_['fileType'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        gl: json_['gl'] as core.String?,
+        googleHost: json_['googleHost'] as core.String?,
+        highRange: json_['highRange'] as core.String?,
+        hl: json_['hl'] as core.String?,
+        hq: json_['hq'] as core.String?,
+        imgColorType: json_['imgColorType'] as core.String?,
+        imgDominantColor: json_['imgDominantColor'] as core.String?,
+        imgSize: json_['imgSize'] as core.String?,
+        imgType: json_['imgType'] as core.String?,
+        inputEncoding: json_['inputEncoding'] as core.String?,
+        language: json_['language'] as core.String?,
+        linkSite: json_['linkSite'] as core.String?,
+        lowRange: json_['lowRange'] as core.String?,
+        orTerms: json_['orTerms'] as core.String?,
+        outputEncoding: json_['outputEncoding'] as core.String?,
+        relatedSite: json_['relatedSite'] as core.String?,
+        rights: json_['rights'] as core.String?,
+        safe: json_['safe'] as core.String?,
+        searchTerms: json_['searchTerms'] as core.String?,
+        searchType: json_['searchType'] as core.String?,
+        siteSearch: json_['siteSearch'] as core.String?,
+        siteSearchFilter: json_['siteSearchFilter'] as core.String?,
+        sort: json_['sort'] as core.String?,
+        startIndex: json_['startIndex'] as core.int?,
+        startPage: json_['startPage'] as core.int?,
+        title: json_['title'] as core.String?,
+        totalResults: json_['totalResults'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (cr != null) 'cr': cr!,
-        if (cx != null) 'cx': cx!,
-        if (dateRestrict != null) 'dateRestrict': dateRestrict!,
-        if (disableCnTwTranslation != null)
-          'disableCnTwTranslation': disableCnTwTranslation!,
-        if (exactTerms != null) 'exactTerms': exactTerms!,
-        if (excludeTerms != null) 'excludeTerms': excludeTerms!,
-        if (fileType != null) 'fileType': fileType!,
-        if (filter != null) 'filter': filter!,
-        if (gl != null) 'gl': gl!,
-        if (googleHost != null) 'googleHost': googleHost!,
-        if (highRange != null) 'highRange': highRange!,
-        if (hl != null) 'hl': hl!,
-        if (hq != null) 'hq': hq!,
-        if (imgColorType != null) 'imgColorType': imgColorType!,
-        if (imgDominantColor != null) 'imgDominantColor': imgDominantColor!,
-        if (imgSize != null) 'imgSize': imgSize!,
-        if (imgType != null) 'imgType': imgType!,
-        if (inputEncoding != null) 'inputEncoding': inputEncoding!,
-        if (language != null) 'language': language!,
-        if (linkSite != null) 'linkSite': linkSite!,
-        if (lowRange != null) 'lowRange': lowRange!,
-        if (orTerms != null) 'orTerms': orTerms!,
-        if (outputEncoding != null) 'outputEncoding': outputEncoding!,
-        if (relatedSite != null) 'relatedSite': relatedSite!,
-        if (rights != null) 'rights': rights!,
-        if (safe != null) 'safe': safe!,
-        if (searchTerms != null) 'searchTerms': searchTerms!,
-        if (searchType != null) 'searchType': searchType!,
-        if (siteSearch != null) 'siteSearch': siteSearch!,
-        if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter!,
-        if (sort != null) 'sort': sort!,
-        if (startIndex != null) 'startIndex': startIndex!,
-        if (startPage != null) 'startPage': startPage!,
-        if (title != null) 'title': title!,
-        if (totalResults != null) 'totalResults': totalResults!,
-      };
+    if (count != null) 'count': count!,
+    if (cr != null) 'cr': cr!,
+    if (cx != null) 'cx': cx!,
+    if (dateRestrict != null) 'dateRestrict': dateRestrict!,
+    if (disableCnTwTranslation != null)
+      'disableCnTwTranslation': disableCnTwTranslation!,
+    if (exactTerms != null) 'exactTerms': exactTerms!,
+    if (excludeTerms != null) 'excludeTerms': excludeTerms!,
+    if (fileType != null) 'fileType': fileType!,
+    if (filter != null) 'filter': filter!,
+    if (gl != null) 'gl': gl!,
+    if (googleHost != null) 'googleHost': googleHost!,
+    if (highRange != null) 'highRange': highRange!,
+    if (hl != null) 'hl': hl!,
+    if (hq != null) 'hq': hq!,
+    if (imgColorType != null) 'imgColorType': imgColorType!,
+    if (imgDominantColor != null) 'imgDominantColor': imgDominantColor!,
+    if (imgSize != null) 'imgSize': imgSize!,
+    if (imgType != null) 'imgType': imgType!,
+    if (inputEncoding != null) 'inputEncoding': inputEncoding!,
+    if (language != null) 'language': language!,
+    if (linkSite != null) 'linkSite': linkSite!,
+    if (lowRange != null) 'lowRange': lowRange!,
+    if (orTerms != null) 'orTerms': orTerms!,
+    if (outputEncoding != null) 'outputEncoding': outputEncoding!,
+    if (relatedSite != null) 'relatedSite': relatedSite!,
+    if (rights != null) 'rights': rights!,
+    if (safe != null) 'safe': safe!,
+    if (searchTerms != null) 'searchTerms': searchTerms!,
+    if (searchType != null) 'searchType': searchType!,
+    if (siteSearch != null) 'siteSearch': siteSearch!,
+    if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter!,
+    if (sort != null) 'sort': sort!,
+    if (startIndex != null) 'startIndex': startIndex!,
+    if (startPage != null) 'startPage': startPage!,
+    if (title != null) 'title': title!,
+    if (totalResults != null) 'totalResults': totalResults!,
+  };
 }
 
 /// Custom search request metadata.
@@ -1952,85 +1955,84 @@ class SearchQueriesRequest {
   });
 
   SearchQueriesRequest.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.int?,
-          cr: json_['cr'] as core.String?,
-          cx: json_['cx'] as core.String?,
-          dateRestrict: json_['dateRestrict'] as core.String?,
-          disableCnTwTranslation:
-              json_['disableCnTwTranslation'] as core.String?,
-          exactTerms: json_['exactTerms'] as core.String?,
-          excludeTerms: json_['excludeTerms'] as core.String?,
-          fileType: json_['fileType'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          gl: json_['gl'] as core.String?,
-          googleHost: json_['googleHost'] as core.String?,
-          highRange: json_['highRange'] as core.String?,
-          hl: json_['hl'] as core.String?,
-          hq: json_['hq'] as core.String?,
-          imgColorType: json_['imgColorType'] as core.String?,
-          imgDominantColor: json_['imgDominantColor'] as core.String?,
-          imgSize: json_['imgSize'] as core.String?,
-          imgType: json_['imgType'] as core.String?,
-          inputEncoding: json_['inputEncoding'] as core.String?,
-          language: json_['language'] as core.String?,
-          linkSite: json_['linkSite'] as core.String?,
-          lowRange: json_['lowRange'] as core.String?,
-          orTerms: json_['orTerms'] as core.String?,
-          outputEncoding: json_['outputEncoding'] as core.String?,
-          relatedSite: json_['relatedSite'] as core.String?,
-          rights: json_['rights'] as core.String?,
-          safe: json_['safe'] as core.String?,
-          searchTerms: json_['searchTerms'] as core.String?,
-          searchType: json_['searchType'] as core.String?,
-          siteSearch: json_['siteSearch'] as core.String?,
-          siteSearchFilter: json_['siteSearchFilter'] as core.String?,
-          sort: json_['sort'] as core.String?,
-          startIndex: json_['startIndex'] as core.int?,
-          startPage: json_['startPage'] as core.int?,
-          title: json_['title'] as core.String?,
-          totalResults: json_['totalResults'] as core.String?,
-        );
+    : this(
+        count: json_['count'] as core.int?,
+        cr: json_['cr'] as core.String?,
+        cx: json_['cx'] as core.String?,
+        dateRestrict: json_['dateRestrict'] as core.String?,
+        disableCnTwTranslation: json_['disableCnTwTranslation'] as core.String?,
+        exactTerms: json_['exactTerms'] as core.String?,
+        excludeTerms: json_['excludeTerms'] as core.String?,
+        fileType: json_['fileType'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        gl: json_['gl'] as core.String?,
+        googleHost: json_['googleHost'] as core.String?,
+        highRange: json_['highRange'] as core.String?,
+        hl: json_['hl'] as core.String?,
+        hq: json_['hq'] as core.String?,
+        imgColorType: json_['imgColorType'] as core.String?,
+        imgDominantColor: json_['imgDominantColor'] as core.String?,
+        imgSize: json_['imgSize'] as core.String?,
+        imgType: json_['imgType'] as core.String?,
+        inputEncoding: json_['inputEncoding'] as core.String?,
+        language: json_['language'] as core.String?,
+        linkSite: json_['linkSite'] as core.String?,
+        lowRange: json_['lowRange'] as core.String?,
+        orTerms: json_['orTerms'] as core.String?,
+        outputEncoding: json_['outputEncoding'] as core.String?,
+        relatedSite: json_['relatedSite'] as core.String?,
+        rights: json_['rights'] as core.String?,
+        safe: json_['safe'] as core.String?,
+        searchTerms: json_['searchTerms'] as core.String?,
+        searchType: json_['searchType'] as core.String?,
+        siteSearch: json_['siteSearch'] as core.String?,
+        siteSearchFilter: json_['siteSearchFilter'] as core.String?,
+        sort: json_['sort'] as core.String?,
+        startIndex: json_['startIndex'] as core.int?,
+        startPage: json_['startPage'] as core.int?,
+        title: json_['title'] as core.String?,
+        totalResults: json_['totalResults'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (cr != null) 'cr': cr!,
-        if (cx != null) 'cx': cx!,
-        if (dateRestrict != null) 'dateRestrict': dateRestrict!,
-        if (disableCnTwTranslation != null)
-          'disableCnTwTranslation': disableCnTwTranslation!,
-        if (exactTerms != null) 'exactTerms': exactTerms!,
-        if (excludeTerms != null) 'excludeTerms': excludeTerms!,
-        if (fileType != null) 'fileType': fileType!,
-        if (filter != null) 'filter': filter!,
-        if (gl != null) 'gl': gl!,
-        if (googleHost != null) 'googleHost': googleHost!,
-        if (highRange != null) 'highRange': highRange!,
-        if (hl != null) 'hl': hl!,
-        if (hq != null) 'hq': hq!,
-        if (imgColorType != null) 'imgColorType': imgColorType!,
-        if (imgDominantColor != null) 'imgDominantColor': imgDominantColor!,
-        if (imgSize != null) 'imgSize': imgSize!,
-        if (imgType != null) 'imgType': imgType!,
-        if (inputEncoding != null) 'inputEncoding': inputEncoding!,
-        if (language != null) 'language': language!,
-        if (linkSite != null) 'linkSite': linkSite!,
-        if (lowRange != null) 'lowRange': lowRange!,
-        if (orTerms != null) 'orTerms': orTerms!,
-        if (outputEncoding != null) 'outputEncoding': outputEncoding!,
-        if (relatedSite != null) 'relatedSite': relatedSite!,
-        if (rights != null) 'rights': rights!,
-        if (safe != null) 'safe': safe!,
-        if (searchTerms != null) 'searchTerms': searchTerms!,
-        if (searchType != null) 'searchType': searchType!,
-        if (siteSearch != null) 'siteSearch': siteSearch!,
-        if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter!,
-        if (sort != null) 'sort': sort!,
-        if (startIndex != null) 'startIndex': startIndex!,
-        if (startPage != null) 'startPage': startPage!,
-        if (title != null) 'title': title!,
-        if (totalResults != null) 'totalResults': totalResults!,
-      };
+    if (count != null) 'count': count!,
+    if (cr != null) 'cr': cr!,
+    if (cx != null) 'cx': cx!,
+    if (dateRestrict != null) 'dateRestrict': dateRestrict!,
+    if (disableCnTwTranslation != null)
+      'disableCnTwTranslation': disableCnTwTranslation!,
+    if (exactTerms != null) 'exactTerms': exactTerms!,
+    if (excludeTerms != null) 'excludeTerms': excludeTerms!,
+    if (fileType != null) 'fileType': fileType!,
+    if (filter != null) 'filter': filter!,
+    if (gl != null) 'gl': gl!,
+    if (googleHost != null) 'googleHost': googleHost!,
+    if (highRange != null) 'highRange': highRange!,
+    if (hl != null) 'hl': hl!,
+    if (hq != null) 'hq': hq!,
+    if (imgColorType != null) 'imgColorType': imgColorType!,
+    if (imgDominantColor != null) 'imgDominantColor': imgDominantColor!,
+    if (imgSize != null) 'imgSize': imgSize!,
+    if (imgType != null) 'imgType': imgType!,
+    if (inputEncoding != null) 'inputEncoding': inputEncoding!,
+    if (language != null) 'language': language!,
+    if (linkSite != null) 'linkSite': linkSite!,
+    if (lowRange != null) 'lowRange': lowRange!,
+    if (orTerms != null) 'orTerms': orTerms!,
+    if (outputEncoding != null) 'outputEncoding': outputEncoding!,
+    if (relatedSite != null) 'relatedSite': relatedSite!,
+    if (rights != null) 'rights': rights!,
+    if (safe != null) 'safe': safe!,
+    if (searchTerms != null) 'searchTerms': searchTerms!,
+    if (searchType != null) 'searchType': searchType!,
+    if (siteSearch != null) 'siteSearch': siteSearch!,
+    if (siteSearchFilter != null) 'siteSearchFilter': siteSearchFilter!,
+    if (sort != null) 'sort': sort!,
+    if (startIndex != null) 'startIndex': startIndex!,
+    if (startPage != null) 'startPage': startPage!,
+    if (title != null) 'title': title!,
+    if (totalResults != null) 'totalResults': totalResults!,
+  };
 }
 
 /// Query metadata for the previous, current, and next pages of results.
@@ -2044,33 +2046,41 @@ class SearchQueries {
   /// Metadata representing the current request.
   core.List<SearchQueriesRequest>? request;
 
-  SearchQueries({
-    this.nextPage,
-    this.previousPage,
-    this.request,
-  });
+  SearchQueries({this.nextPage, this.previousPage, this.request});
 
   SearchQueries.fromJson(core.Map json_)
-      : this(
-          nextPage: (json_['nextPage'] as core.List?)
-              ?.map((value) => SearchQueriesNextPage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          previousPage: (json_['previousPage'] as core.List?)
-              ?.map((value) => SearchQueriesPreviousPage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          request: (json_['request'] as core.List?)
-              ?.map((value) => SearchQueriesRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPage:
+            (json_['nextPage'] as core.List?)
+                ?.map(
+                  (value) => SearchQueriesNextPage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        previousPage:
+            (json_['previousPage'] as core.List?)
+                ?.map(
+                  (value) => SearchQueriesPreviousPage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        request:
+            (json_['request'] as core.List?)
+                ?.map(
+                  (value) => SearchQueriesRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPage != null) 'nextPage': nextPage!,
-        if (previousPage != null) 'previousPage': previousPage!,
-        if (request != null) 'request': request!,
-      };
+    if (nextPage != null) 'nextPage': nextPage!,
+    if (previousPage != null) 'previousPage': previousPage!,
+    if (request != null) 'request': request!,
+  };
 }
 
 /// Metadata about a search operation.
@@ -2096,21 +2106,21 @@ class SearchSearchInformation {
   });
 
   SearchSearchInformation.fromJson(core.Map json_)
-      : this(
-          formattedSearchTime: json_['formattedSearchTime'] as core.String?,
-          formattedTotalResults: json_['formattedTotalResults'] as core.String?,
-          searchTime: (json_['searchTime'] as core.num?)?.toDouble(),
-          totalResults: json_['totalResults'] as core.String?,
-        );
+    : this(
+        formattedSearchTime: json_['formattedSearchTime'] as core.String?,
+        formattedTotalResults: json_['formattedTotalResults'] as core.String?,
+        searchTime: (json_['searchTime'] as core.num?)?.toDouble(),
+        totalResults: json_['totalResults'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (formattedSearchTime != null)
-          'formattedSearchTime': formattedSearchTime!,
-        if (formattedTotalResults != null)
-          'formattedTotalResults': formattedTotalResults!,
-        if (searchTime != null) 'searchTime': searchTime!,
-        if (totalResults != null) 'totalResults': totalResults!,
-      };
+    if (formattedSearchTime != null)
+      'formattedSearchTime': formattedSearchTime!,
+    if (formattedTotalResults != null)
+      'formattedTotalResults': formattedTotalResults!,
+    if (searchTime != null) 'searchTime': searchTime!,
+    if (totalResults != null) 'totalResults': totalResults!,
+  };
 }
 
 /// Spell correction information for a query.
@@ -2121,22 +2131,18 @@ class SearchSpelling {
   /// The corrected query, formatted in HTML.
   core.String? htmlCorrectedQuery;
 
-  SearchSpelling({
-    this.correctedQuery,
-    this.htmlCorrectedQuery,
-  });
+  SearchSpelling({this.correctedQuery, this.htmlCorrectedQuery});
 
   SearchSpelling.fromJson(core.Map json_)
-      : this(
-          correctedQuery: json_['correctedQuery'] as core.String?,
-          htmlCorrectedQuery: json_['htmlCorrectedQuery'] as core.String?,
-        );
+    : this(
+        correctedQuery: json_['correctedQuery'] as core.String?,
+        htmlCorrectedQuery: json_['htmlCorrectedQuery'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (correctedQuery != null) 'correctedQuery': correctedQuery!,
-        if (htmlCorrectedQuery != null)
-          'htmlCorrectedQuery': htmlCorrectedQuery!,
-      };
+    if (correctedQuery != null) 'correctedQuery': correctedQuery!,
+    if (htmlCorrectedQuery != null) 'htmlCorrectedQuery': htmlCorrectedQuery!,
+  };
 }
 
 /// OpenSearch template and URL.
@@ -2150,21 +2156,18 @@ class SearchUrl {
   /// API.
   core.String? type;
 
-  SearchUrl({
-    this.template,
-    this.type,
-  });
+  SearchUrl({this.template, this.type});
 
   SearchUrl.fromJson(core.Map json_)
-      : this(
-          template: json_['template'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        template: json_['template'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (template != null) 'template': template!,
-        if (type != null) 'type': type!,
-      };
+    if (template != null) 'template': template!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Response to a custom search request.
@@ -2219,45 +2222,63 @@ class Search {
   });
 
   Search.fromJson(core.Map json_)
-      : this(
-          context: json_.containsKey('context')
-              ? json_['context'] as core.Map<core.String, core.dynamic>
-              : null,
-          items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Result.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          promotions: (json_['promotions'] as core.List?)
-              ?.map((value) => Promotion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          queries: json_.containsKey('queries')
-              ? SearchQueries.fromJson(
-                  json_['queries'] as core.Map<core.String, core.dynamic>)
-              : null,
-          searchInformation: json_.containsKey('searchInformation')
-              ? SearchSearchInformation.fromJson(json_['searchInformation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          spelling: json_.containsKey('spelling')
-              ? SearchSpelling.fromJson(
-                  json_['spelling'] as core.Map<core.String, core.dynamic>)
-              : null,
-          url: json_.containsKey('url')
-              ? SearchUrl.fromJson(
-                  json_['url'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        context:
+            json_.containsKey('context')
+                ? json_['context'] as core.Map<core.String, core.dynamic>
+                : null,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Result.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        promotions:
+            (json_['promotions'] as core.List?)
+                ?.map(
+                  (value) => Promotion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        queries:
+            json_.containsKey('queries')
+                ? SearchQueries.fromJson(
+                  json_['queries'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        searchInformation:
+            json_.containsKey('searchInformation')
+                ? SearchSearchInformation.fromJson(
+                  json_['searchInformation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spelling:
+            json_.containsKey('spelling')
+                ? SearchSpelling.fromJson(
+                  json_['spelling'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        url:
+            json_.containsKey('url')
+                ? SearchUrl.fromJson(
+                  json_['url'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (context != null) 'context': context!,
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (promotions != null) 'promotions': promotions!,
-        if (queries != null) 'queries': queries!,
-        if (searchInformation != null) 'searchInformation': searchInformation!,
-        if (spelling != null) 'spelling': spelling!,
-        if (url != null) 'url': url!,
-      };
+    if (context != null) 'context': context!,
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (promotions != null) 'promotions': promotions!,
+    if (queries != null) 'queries': queries!,
+    if (searchInformation != null) 'searchInformation': searchInformation!,
+    if (spelling != null) 'spelling': spelling!,
+    if (url != null) 'url': url!,
+  };
 }

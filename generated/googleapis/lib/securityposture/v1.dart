@@ -64,11 +64,16 @@ class SecurityPostureApi {
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  SecurityPostureApi(http.Client client,
-      {core.String rootUrl = 'https://securityposture.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  SecurityPostureApi(
+    http.Client client, {
+    core.String rootUrl = 'https://securityposture.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class OrganizationsResource {
@@ -95,14 +100,14 @@ class OrganizationsLocationsResource {
       OrganizationsLocationsReportsResource(_requester);
 
   OrganizationsLocationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class OrganizationsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -176,10 +181,7 @@ class OrganizationsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -189,6 +191,7 @@ class OrganizationsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -215,10 +218,7 @@ class OrganizationsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -280,7 +280,8 @@ class OrganizationsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -288,7 +289,7 @@ class OrganizationsLocationsPostureDeploymentsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsPostureDeploymentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new PostureDeployment in a given project and location.
   ///
@@ -377,6 +378,7 @@ class OrganizationsLocationsPostureDeploymentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -417,7 +419,8 @@ class OrganizationsLocationsPostureDeploymentsResource {
       queryParams: queryParams_,
     );
     return PostureDeployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists every PostureDeployment in a project and location.
@@ -471,7 +474,8 @@ class OrganizationsLocationsPostureDeploymentsResource {
       queryParams: queryParams_,
     );
     return ListPostureDeploymentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing PostureDeployment.
@@ -538,7 +542,7 @@ class OrganizationsLocationsPostureTemplatesResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsPostureTemplatesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets a single revision of a PostureTemplate.
   ///
@@ -580,7 +584,8 @@ class OrganizationsLocationsPostureTemplatesResource {
       queryParams: queryParams_,
     );
     return PostureTemplate.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists every PostureTemplate in a given organization and location.
@@ -634,7 +639,8 @@ class OrganizationsLocationsPostureTemplatesResource {
       queryParams: queryParams_,
     );
     return ListPostureTemplatesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -642,7 +648,7 @@ class OrganizationsLocationsPosturesResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsPosturesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new Posture.
   ///
@@ -731,6 +737,7 @@ class OrganizationsLocationsPosturesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -874,7 +881,8 @@ class OrganizationsLocationsPosturesResource {
       queryParams: queryParams_,
     );
     return ListPosturesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all revisions of a single Posture.
@@ -924,7 +932,8 @@ class OrganizationsLocationsPosturesResource {
       queryParams: queryParams_,
     );
     return ListPostureRevisionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a revision of an existing Posture.
@@ -996,7 +1005,7 @@ class OrganizationsLocationsReportsResource {
   final commons.ApiRequester _requester;
 
   OrganizationsLocationsReportsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Validates a specified infrastructure-as-code (IaC) configuration, and
   /// creates a Report with the validation results.
@@ -1032,7 +1041,8 @@ class OrganizationsLocationsReportsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/reports:createIaCValidationReport';
 
@@ -1064,10 +1074,7 @@ class OrganizationsLocationsReportsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Report> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Report> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1133,7 +1140,8 @@ class OrganizationsLocationsReportsResource {
       queryParams: queryParams_,
     );
     return ListReportsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1168,10 +1176,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1241,7 +1246,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1259,21 +1265,18 @@ class AssetDetails {
   /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
   core.String? assetType;
 
-  AssetDetails({
-    this.asset,
-    this.assetType,
-  });
+  AssetDetails({this.asset, this.assetType});
 
   AssetDetails.fromJson(core.Map json_)
-      : this(
-          asset: json_['asset'] as core.String?,
-          assetType: json_['assetType'] as core.String?,
-        );
+    : this(
+        asset: json_['asset'] as core.String?,
+        assetType: json_['assetType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (asset != null) 'asset': asset!,
-        if (assetType != null) 'assetType': assetType!,
-      };
+    if (asset != null) 'asset': asset!,
+    if (assetType != null) 'assetType': assetType!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -1295,21 +1298,18 @@ class ComplianceStandard {
   /// Optional.
   core.String? standard;
 
-  ComplianceStandard({
-    this.control,
-    this.standard,
-  });
+  ComplianceStandard({this.control, this.standard});
 
   ComplianceStandard.fromJson(core.Map json_)
-      : this(
-          control: json_['control'] as core.String?,
-          standard: json_['standard'] as core.String?,
-        );
+    : this(
+        control: json_['control'] as core.String?,
+        standard: json_['standard'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (control != null) 'control': control!,
-        if (standard != null) 'standard': standard!,
-      };
+    if (control != null) 'control': control!,
+    if (standard != null) 'standard': standard!,
+  };
 }
 
 /// Metadata for a constraint in a Policy.
@@ -1342,42 +1342,48 @@ class Constraint {
   });
 
   Constraint.fromJson(core.Map json_)
-      : this(
-          orgPolicyConstraint: json_.containsKey('orgPolicyConstraint')
-              ? OrgPolicyConstraint.fromJson(json_['orgPolicyConstraint']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          orgPolicyConstraintCustom:
-              json_.containsKey('orgPolicyConstraintCustom')
-                  ? OrgPolicyConstraintCustom.fromJson(
-                      json_['orgPolicyConstraintCustom']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          securityHealthAnalyticsCustomModule:
-              json_.containsKey('securityHealthAnalyticsCustomModule')
-                  ? SecurityHealthAnalyticsCustomModule.fromJson(
-                      json_['securityHealthAnalyticsCustomModule']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          securityHealthAnalyticsModule:
-              json_.containsKey('securityHealthAnalyticsModule')
-                  ? SecurityHealthAnalyticsModule.fromJson(
-                      json_['securityHealthAnalyticsModule']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        orgPolicyConstraint:
+            json_.containsKey('orgPolicyConstraint')
+                ? OrgPolicyConstraint.fromJson(
+                  json_['orgPolicyConstraint']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        orgPolicyConstraintCustom:
+            json_.containsKey('orgPolicyConstraintCustom')
+                ? OrgPolicyConstraintCustom.fromJson(
+                  json_['orgPolicyConstraintCustom']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        securityHealthAnalyticsCustomModule:
+            json_.containsKey('securityHealthAnalyticsCustomModule')
+                ? SecurityHealthAnalyticsCustomModule.fromJson(
+                  json_['securityHealthAnalyticsCustomModule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        securityHealthAnalyticsModule:
+            json_.containsKey('securityHealthAnalyticsModule')
+                ? SecurityHealthAnalyticsModule.fromJson(
+                  json_['securityHealthAnalyticsModule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (orgPolicyConstraint != null)
-          'orgPolicyConstraint': orgPolicyConstraint!,
-        if (orgPolicyConstraintCustom != null)
-          'orgPolicyConstraintCustom': orgPolicyConstraintCustom!,
-        if (securityHealthAnalyticsCustomModule != null)
-          'securityHealthAnalyticsCustomModule':
-              securityHealthAnalyticsCustomModule!,
-        if (securityHealthAnalyticsModule != null)
-          'securityHealthAnalyticsModule': securityHealthAnalyticsModule!,
-      };
+    if (orgPolicyConstraint != null)
+      'orgPolicyConstraint': orgPolicyConstraint!,
+    if (orgPolicyConstraintCustom != null)
+      'orgPolicyConstraintCustom': orgPolicyConstraintCustom!,
+    if (securityHealthAnalyticsCustomModule != null)
+      'securityHealthAnalyticsCustomModule':
+          securityHealthAnalyticsCustomModule!,
+    if (securityHealthAnalyticsModule != null)
+      'securityHealthAnalyticsModule': securityHealthAnalyticsModule!,
+  };
 }
 
 /// Request message for CreateIaCValidationReport.
@@ -1387,21 +1393,21 @@ class CreateIaCValidationReportRequest {
   /// Required.
   IaC? iac;
 
-  CreateIaCValidationReportRequest({
-    this.iac,
-  });
+  CreateIaCValidationReportRequest({this.iac});
 
   CreateIaCValidationReportRequest.fromJson(core.Map json_)
-      : this(
-          iac: json_.containsKey('iac')
-              ? IaC.fromJson(
-                  json_['iac'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        iac:
+            json_.containsKey('iac')
+                ? IaC.fromJson(
+                  json_['iac'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iac != null) 'iac': iac!,
-      };
+    if (iac != null) 'iac': iac!,
+  };
 }
 
 /// A custom module configuration for Security Health Analytics.
@@ -1466,32 +1472,39 @@ class CustomConfig {
   });
 
   CustomConfig.fromJson(core.Map json_)
-      : this(
-          customOutput: json_.containsKey('customOutput')
-              ? CustomOutputSpec.fromJson(
-                  json_['customOutput'] as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          predicate: json_.containsKey('predicate')
-              ? Expr.fromJson(
-                  json_['predicate'] as core.Map<core.String, core.dynamic>)
-              : null,
-          recommendation: json_['recommendation'] as core.String?,
-          resourceSelector: json_.containsKey('resourceSelector')
-              ? ResourceSelector.fromJson(json_['resourceSelector']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          severity: json_['severity'] as core.String?,
-        );
+    : this(
+        customOutput:
+            json_.containsKey('customOutput')
+                ? CustomOutputSpec.fromJson(
+                  json_['customOutput'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        predicate:
+            json_.containsKey('predicate')
+                ? Expr.fromJson(
+                  json_['predicate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        recommendation: json_['recommendation'] as core.String?,
+        resourceSelector:
+            json_.containsKey('resourceSelector')
+                ? ResourceSelector.fromJson(
+                  json_['resourceSelector']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        severity: json_['severity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customOutput != null) 'customOutput': customOutput!,
-        if (description != null) 'description': description!,
-        if (predicate != null) 'predicate': predicate!,
-        if (recommendation != null) 'recommendation': recommendation!,
-        if (resourceSelector != null) 'resourceSelector': resourceSelector!,
-        if (severity != null) 'severity': severity!,
-      };
+    if (customOutput != null) 'customOutput': customOutput!,
+    if (description != null) 'description': description!,
+    if (predicate != null) 'predicate': predicate!,
+    if (recommendation != null) 'recommendation': recommendation!,
+    if (resourceSelector != null) 'resourceSelector': resourceSelector!,
+    if (severity != null) 'severity': severity!,
+  };
 }
 
 /// Definitions of custom source properties that can appear in findings.
@@ -1501,21 +1514,23 @@ class CustomOutputSpec {
   /// Optional.
   core.List<Property>? properties;
 
-  CustomOutputSpec({
-    this.properties,
-  });
+  CustomOutputSpec({this.properties});
 
   CustomOutputSpec.fromJson(core.Map json_)
-      : this(
-          properties: (json_['properties'] as core.List?)
-              ?.map((value) => Property.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        properties:
+            (json_['properties'] as core.List?)
+                ?.map(
+                  (value) => Property.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (properties != null) 'properties': properties!,
-      };
+    if (properties != null) 'properties': properties!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1562,21 +1577,18 @@ class ExtractPostureRequest {
   /// Required.
   core.String? workload;
 
-  ExtractPostureRequest({
-    this.postureId,
-    this.workload,
-  });
+  ExtractPostureRequest({this.postureId, this.workload});
 
   ExtractPostureRequest.fromJson(core.Map json_)
-      : this(
-          postureId: json_['postureId'] as core.String?,
-          workload: json_['workload'] as core.String?,
-        );
+    : this(
+        postureId: json_['postureId'] as core.String?,
+        workload: json_['workload'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (postureId != null) 'postureId': postureId!,
-        if (workload != null) 'workload': workload!,
-      };
+    if (postureId != null) 'postureId': postureId!,
+    if (workload != null) 'workload': workload!,
+  };
 }
 
 /// A custom, user-defined constraint.
@@ -1655,31 +1667,33 @@ class GoogleCloudSecuritypostureV1CustomConstraint {
   });
 
   GoogleCloudSecuritypostureV1CustomConstraint.fromJson(core.Map json_)
-      : this(
-          actionType: json_['actionType'] as core.String?,
-          condition: json_['condition'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          methodTypes: (json_['methodTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          resourceTypes: (json_['resourceTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        actionType: json_['actionType'] as core.String?,
+        condition: json_['condition'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        methodTypes:
+            (json_['methodTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        resourceTypes:
+            (json_['resourceTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionType != null) 'actionType': actionType!,
-        if (condition != null) 'condition': condition!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (methodTypes != null) 'methodTypes': methodTypes!,
-        if (name != null) 'name': name!,
-        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (actionType != null) 'actionType': actionType!,
+    if (condition != null) 'condition': condition!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (methodTypes != null) 'methodTypes': methodTypes!,
+    if (name != null) 'name': name!,
+    if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A rule that defines the allowed and denied values for an organization policy
@@ -1755,36 +1769,43 @@ class GoogleCloudSecuritypostureV1PolicyRule {
   });
 
   GoogleCloudSecuritypostureV1PolicyRule.fromJson(core.Map json_)
-      : this(
-          allowAll: json_['allowAll'] as core.bool?,
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          denyAll: json_['denyAll'] as core.bool?,
-          enforce: json_['enforce'] as core.bool?,
-          parameters: json_.containsKey('parameters')
-              ? json_['parameters'] as core.Map<core.String, core.dynamic>
-              : null,
-          resourceTypes: json_.containsKey('resourceTypes')
-              ? ResourceTypes.fromJson(
-                  json_['resourceTypes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          values: json_.containsKey('values')
-              ? GoogleCloudSecuritypostureV1PolicyRuleStringValues.fromJson(
-                  json_['values'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        allowAll: json_['allowAll'] as core.bool?,
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        denyAll: json_['denyAll'] as core.bool?,
+        enforce: json_['enforce'] as core.bool?,
+        parameters:
+            json_.containsKey('parameters')
+                ? json_['parameters'] as core.Map<core.String, core.dynamic>
+                : null,
+        resourceTypes:
+            json_.containsKey('resourceTypes')
+                ? ResourceTypes.fromJson(
+                  json_['resourceTypes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        values:
+            json_.containsKey('values')
+                ? GoogleCloudSecuritypostureV1PolicyRuleStringValues.fromJson(
+                  json_['values'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowAll != null) 'allowAll': allowAll!,
-        if (condition != null) 'condition': condition!,
-        if (denyAll != null) 'denyAll': denyAll!,
-        if (enforce != null) 'enforce': enforce!,
-        if (parameters != null) 'parameters': parameters!,
-        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
-        if (values != null) 'values': values!,
-      };
+    if (allowAll != null) 'allowAll': allowAll!,
+    if (condition != null) 'condition': condition!,
+    if (denyAll != null) 'denyAll': denyAll!,
+    if (enforce != null) 'enforce': enforce!,
+    if (parameters != null) 'parameters': parameters!,
+    if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// The allowed and denied values for a list constraint.
@@ -1816,19 +1837,21 @@ class GoogleCloudSecuritypostureV1PolicyRuleStringValues {
   });
 
   GoogleCloudSecuritypostureV1PolicyRuleStringValues.fromJson(core.Map json_)
-      : this(
-          allowedValues: (json_['allowedValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          deniedValues: (json_['deniedValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        allowedValues:
+            (json_['allowedValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        deniedValues:
+            (json_['deniedValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedValues != null) 'allowedValues': allowedValues!,
-        if (deniedValues != null) 'deniedValues': deniedValues!,
-      };
+    if (allowedValues != null) 'allowedValues': allowedValues!,
+    if (deniedValues != null) 'deniedValues': deniedValues!,
+  };
 }
 
 /// Details of an infrastructure-as-code (IaC) configuration.
@@ -1844,22 +1867,19 @@ class IaC {
   core.List<core.int> get tfPlanAsBytes => convert.base64.decode(tfPlan!);
 
   set tfPlanAsBytes(core.List<core.int> bytes_) {
-    tfPlan =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    tfPlan = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  IaC({
-    this.tfPlan,
-  });
+  IaC({this.tfPlan});
 
-  IaC.fromJson(core.Map json_)
-      : this(
-          tfPlan: json_['tfPlan'] as core.String?,
-        );
+  IaC.fromJson(core.Map json_) : this(tfPlan: json_['tfPlan'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tfPlan != null) 'tfPlan': tfPlan!,
-      };
+    if (tfPlan != null) 'tfPlan': tfPlan!,
+  };
 }
 
 /// Details of an infrastructure-as-code (IaC) validation report.
@@ -1870,24 +1890,25 @@ class IaCValidationReport {
   /// A list of every Violation found in the IaC configuration.
   core.List<Violation>? violations;
 
-  IaCValidationReport({
-    this.note,
-    this.violations,
-  });
+  IaCValidationReport({this.note, this.violations});
 
   IaCValidationReport.fromJson(core.Map json_)
-      : this(
-          note: json_['note'] as core.String?,
-          violations: (json_['violations'] as core.List?)
-              ?.map((value) => Violation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        note: json_['note'] as core.String?,
+        violations:
+            (json_['violations'] as core.List?)
+                ?.map(
+                  (value) => Violation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (note != null) 'note': note!,
-        if (violations != null) 'violations': violations!,
-      };
+    if (note != null) 'note': note!,
+    if (violations != null) 'violations': violations!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -1898,24 +1919,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1926,24 +1948,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// Response message for ListPostureDeployments.
@@ -1967,23 +1990,27 @@ class ListPostureDeploymentsResponse {
   });
 
   ListPostureDeploymentsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          postureDeployments: (json_['postureDeployments'] as core.List?)
-              ?.map((value) => PostureDeployment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        postureDeployments:
+            (json_['postureDeployments'] as core.List?)
+                ?.map(
+                  (value) => PostureDeployment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (postureDeployments != null)
-          'postureDeployments': postureDeployments!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (postureDeployments != null) 'postureDeployments': postureDeployments!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response message for ListPostureRevisions.
@@ -1997,24 +2024,25 @@ class ListPostureRevisionsResponse {
   /// The list of revisions for the Posture.
   core.List<Posture>? revisions;
 
-  ListPostureRevisionsResponse({
-    this.nextPageToken,
-    this.revisions,
-  });
+  ListPostureRevisionsResponse({this.nextPageToken, this.revisions});
 
   ListPostureRevisionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          revisions: (json_['revisions'] as core.List?)
-              ?.map((value) => Posture.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        revisions:
+            (json_['revisions'] as core.List?)
+                ?.map(
+                  (value) => Posture.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (revisions != null) 'revisions': revisions!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (revisions != null) 'revisions': revisions!,
+  };
 }
 
 /// Response message for ListPostureTemplates.
@@ -2028,24 +2056,25 @@ class ListPostureTemplatesResponse {
   /// The list of PostureTemplate resources.
   core.List<PostureTemplate>? postureTemplates;
 
-  ListPostureTemplatesResponse({
-    this.nextPageToken,
-    this.postureTemplates,
-  });
+  ListPostureTemplatesResponse({this.nextPageToken, this.postureTemplates});
 
   ListPostureTemplatesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          postureTemplates: (json_['postureTemplates'] as core.List?)
-              ?.map((value) => PostureTemplate.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        postureTemplates:
+            (json_['postureTemplates'] as core.List?)
+                ?.map(
+                  (value) => PostureTemplate.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (postureTemplates != null) 'postureTemplates': postureTemplates!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (postureTemplates != null) 'postureTemplates': postureTemplates!,
+  };
 }
 
 /// Response message for ListPostures.
@@ -2062,29 +2091,30 @@ class ListPosturesResponse {
   /// Locations that were temporarily unavailable and could not be reached.
   core.List<core.String>? unreachable;
 
-  ListPosturesResponse({
-    this.nextPageToken,
-    this.postures,
-    this.unreachable,
-  });
+  ListPosturesResponse({this.nextPageToken, this.postures, this.unreachable});
 
   ListPosturesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          postures: (json_['postures'] as core.List?)
-              ?.map((value) => Posture.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        postures:
+            (json_['postures'] as core.List?)
+                ?.map(
+                  (value) => Posture.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (postures != null) 'postures': postures!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (postures != null) 'postures': postures!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response message for ListReports.
@@ -2101,29 +2131,30 @@ class ListReportsResponse {
   /// Locations that were temporarily unavailable and could not be reached.
   core.List<core.String>? unreachable;
 
-  ListReportsResponse({
-    this.nextPageToken,
-    this.reports,
-    this.unreachable,
-  });
+  ListReportsResponse({this.nextPageToken, this.reports, this.unreachable});
 
   ListReportsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          reports: (json_['reports'] as core.List?)
-              ?.map((value) =>
-                  Report.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        reports:
+            (json_['reports'] as core.List?)
+                ?.map(
+                  (value) => Report.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (reports != null) 'reports': reports!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (reports != null) 'reports': reports!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -2172,37 +2203,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// A predefined organization policy constraint.
@@ -2217,25 +2246,25 @@ class OrgPolicyConstraint {
   /// Required.
   core.List<GoogleCloudSecuritypostureV1PolicyRule>? policyRules;
 
-  OrgPolicyConstraint({
-    this.cannedConstraintId,
-    this.policyRules,
-  });
+  OrgPolicyConstraint({this.cannedConstraintId, this.policyRules});
 
   OrgPolicyConstraint.fromJson(core.Map json_)
-      : this(
-          cannedConstraintId: json_['cannedConstraintId'] as core.String?,
-          policyRules: (json_['policyRules'] as core.List?)
-              ?.map((value) => GoogleCloudSecuritypostureV1PolicyRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        cannedConstraintId: json_['cannedConstraintId'] as core.String?,
+        policyRules:
+            (json_['policyRules'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudSecuritypostureV1PolicyRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cannedConstraintId != null)
-          'cannedConstraintId': cannedConstraintId!,
-        if (policyRules != null) 'policyRules': policyRules!,
-      };
+    if (cannedConstraintId != null) 'cannedConstraintId': cannedConstraintId!,
+    if (policyRules != null) 'policyRules': policyRules!,
+  };
 }
 
 /// A custom organization policy constraint.
@@ -2250,28 +2279,31 @@ class OrgPolicyConstraintCustom {
   /// Required.
   core.List<GoogleCloudSecuritypostureV1PolicyRule>? policyRules;
 
-  OrgPolicyConstraintCustom({
-    this.customConstraint,
-    this.policyRules,
-  });
+  OrgPolicyConstraintCustom({this.customConstraint, this.policyRules});
 
   OrgPolicyConstraintCustom.fromJson(core.Map json_)
-      : this(
-          customConstraint: json_.containsKey('customConstraint')
-              ? GoogleCloudSecuritypostureV1CustomConstraint.fromJson(
+    : this(
+        customConstraint:
+            json_.containsKey('customConstraint')
+                ? GoogleCloudSecuritypostureV1CustomConstraint.fromJson(
                   json_['customConstraint']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          policyRules: (json_['policyRules'] as core.List?)
-              ?.map((value) => GoogleCloudSecuritypostureV1PolicyRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        policyRules:
+            (json_['policyRules'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudSecuritypostureV1PolicyRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customConstraint != null) 'customConstraint': customConstraint!,
-        if (policyRules != null) 'policyRules': policyRules!,
-      };
+    if (customConstraint != null) 'customConstraint': customConstraint!,
+    if (policyRules != null) 'policyRules': policyRules!,
+  };
 }
 
 /// The details of a policy, including the constraints that it includes.
@@ -2306,26 +2338,32 @@ class Policy {
   });
 
   Policy.fromJson(core.Map json_)
-      : this(
-          complianceStandards: (json_['complianceStandards'] as core.List?)
-              ?.map((value) => ComplianceStandard.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          constraint: json_.containsKey('constraint')
-              ? Constraint.fromJson(
-                  json_['constraint'] as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          policyId: json_['policyId'] as core.String?,
-        );
+    : this(
+        complianceStandards:
+            (json_['complianceStandards'] as core.List?)
+                ?.map(
+                  (value) => ComplianceStandard.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        constraint:
+            json_.containsKey('constraint')
+                ? Constraint.fromJson(
+                  json_['constraint'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        policyId: json_['policyId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (complianceStandards != null)
-          'complianceStandards': complianceStandards!,
-        if (constraint != null) 'constraint': constraint!,
-        if (description != null) 'description': description!,
-        if (policyId != null) 'policyId': policyId!,
-      };
+    if (complianceStandards != null)
+      'complianceStandards': complianceStandards!,
+    if (constraint != null) 'constraint': constraint!,
+    if (description != null) 'description': description!,
+    if (policyId != null) 'policyId': policyId!,
+  };
 }
 
 /// Details of a policy that was violated.
@@ -2364,22 +2402,23 @@ class PolicyDetails {
   });
 
   PolicyDetails.fromJson(core.Map json_)
-      : this(
-          complianceStandards: (json_['complianceStandards'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          constraint: json_['constraint'] as core.String?,
-          constraintType: json_['constraintType'] as core.String?,
-          description: json_['description'] as core.String?,
-        );
+    : this(
+        complianceStandards:
+            (json_['complianceStandards'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        constraint: json_['constraint'] as core.String?,
+        constraintType: json_['constraintType'] as core.String?,
+        description: json_['description'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (complianceStandards != null)
-          'complianceStandards': complianceStandards!,
-        if (constraint != null) 'constraint': constraint!,
-        if (constraintType != null) 'constraintType': constraintType!,
-        if (description != null) 'description': description!,
-      };
+    if (complianceStandards != null)
+      'complianceStandards': complianceStandards!,
+    if (constraint != null) 'constraint': constraint!,
+    if (constraintType != null) 'constraintType': constraintType!,
+    if (description != null) 'description': description!,
+  };
 }
 
 /// A group of one or more Policy resources.
@@ -2401,27 +2440,27 @@ class PolicySet {
   /// Required.
   core.String? policySetId;
 
-  PolicySet({
-    this.description,
-    this.policies,
-    this.policySetId,
-  });
+  PolicySet({this.description, this.policies, this.policySetId});
 
   PolicySet.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          policies: (json_['policies'] as core.List?)
-              ?.map((value) =>
-                  Policy.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          policySetId: json_['policySetId'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        policies:
+            (json_['policies'] as core.List?)
+                ?.map(
+                  (value) => Policy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        policySetId: json_['policySetId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (policies != null) 'policies': policies!,
-        if (policySetId != null) 'policySetId': policySetId!,
-      };
+    if (description != null) 'description': description!,
+    if (policies != null) 'policies': policies!,
+    if (policySetId != null) 'policySetId': policySetId!,
+  };
 }
 
 /// The details of a posture.
@@ -2518,45 +2557,45 @@ class Posture {
   });
 
   Posture.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          categories: (json_['categories'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          policySets: (json_['policySets'] as core.List?)
-              ?.map((value) => PolicySet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          reconciling: json_['reconciling'] as core.bool?,
-          revisionId: json_['revisionId'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        categories:
+            (json_['categories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        policySets:
+            (json_['policySets'] as core.List?)
+                ?.map(
+                  (value) => PolicySet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        reconciling: json_['reconciling'] as core.bool?,
+        revisionId: json_['revisionId'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (categories != null) 'categories': categories!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (policySets != null) 'policySets': policySets!,
-        if (reconciling != null) 'reconciling': reconciling!,
-        if (revisionId != null) 'revisionId': revisionId!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (categories != null) 'categories': categories!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (policySets != null) 'policySets': policySets!,
+    if (reconciling != null) 'reconciling': reconciling!,
+    if (revisionId != null) 'revisionId': revisionId!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Details for a Posture deployment on an organization, folder, or project.
@@ -2690,52 +2729,48 @@ class PostureDeployment {
   });
 
   PostureDeployment.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          categories: (json_['categories'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          desiredPostureId: json_['desiredPostureId'] as core.String?,
-          desiredPostureRevisionId:
-              json_['desiredPostureRevisionId'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          failureMessage: json_['failureMessage'] as core.String?,
-          name: json_['name'] as core.String?,
-          postureId: json_['postureId'] as core.String?,
-          postureRevisionId: json_['postureRevisionId'] as core.String?,
-          reconciling: json_['reconciling'] as core.bool?,
-          state: json_['state'] as core.String?,
-          targetResource: json_['targetResource'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        categories:
+            (json_['categories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        desiredPostureId: json_['desiredPostureId'] as core.String?,
+        desiredPostureRevisionId:
+            json_['desiredPostureRevisionId'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        failureMessage: json_['failureMessage'] as core.String?,
+        name: json_['name'] as core.String?,
+        postureId: json_['postureId'] as core.String?,
+        postureRevisionId: json_['postureRevisionId'] as core.String?,
+        reconciling: json_['reconciling'] as core.bool?,
+        state: json_['state'] as core.String?,
+        targetResource: json_['targetResource'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (categories != null) 'categories': categories!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (desiredPostureId != null) 'desiredPostureId': desiredPostureId!,
-        if (desiredPostureRevisionId != null)
-          'desiredPostureRevisionId': desiredPostureRevisionId!,
-        if (etag != null) 'etag': etag!,
-        if (failureMessage != null) 'failureMessage': failureMessage!,
-        if (name != null) 'name': name!,
-        if (postureId != null) 'postureId': postureId!,
-        if (postureRevisionId != null) 'postureRevisionId': postureRevisionId!,
-        if (reconciling != null) 'reconciling': reconciling!,
-        if (state != null) 'state': state!,
-        if (targetResource != null) 'targetResource': targetResource!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (categories != null) 'categories': categories!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (desiredPostureId != null) 'desiredPostureId': desiredPostureId!,
+    if (desiredPostureRevisionId != null)
+      'desiredPostureRevisionId': desiredPostureRevisionId!,
+    if (etag != null) 'etag': etag!,
+    if (failureMessage != null) 'failureMessage': failureMessage!,
+    if (name != null) 'name': name!,
+    if (postureId != null) 'postureId': postureId!,
+    if (postureRevisionId != null) 'postureRevisionId': postureRevisionId!,
+    if (reconciling != null) 'reconciling': reconciling!,
+    if (state != null) 'state': state!,
+    if (targetResource != null) 'targetResource': targetResource!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Details of a posture deployment.
@@ -2769,23 +2804,23 @@ class PostureDetails {
   });
 
   PostureDetails.fromJson(core.Map json_)
-      : this(
-          policySet: json_['policySet'] as core.String?,
-          posture: json_['posture'] as core.String?,
-          postureDeployment: json_['postureDeployment'] as core.String?,
-          postureDeploymentTargetResource:
-              json_['postureDeploymentTargetResource'] as core.String?,
-          postureRevisionId: json_['postureRevisionId'] as core.String?,
-        );
+    : this(
+        policySet: json_['policySet'] as core.String?,
+        posture: json_['posture'] as core.String?,
+        postureDeployment: json_['postureDeployment'] as core.String?,
+        postureDeploymentTargetResource:
+            json_['postureDeploymentTargetResource'] as core.String?,
+        postureRevisionId: json_['postureRevisionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policySet != null) 'policySet': policySet!,
-        if (posture != null) 'posture': posture!,
-        if (postureDeployment != null) 'postureDeployment': postureDeployment!,
-        if (postureDeploymentTargetResource != null)
-          'postureDeploymentTargetResource': postureDeploymentTargetResource!,
-        if (postureRevisionId != null) 'postureRevisionId': postureRevisionId!,
-      };
+    if (policySet != null) 'policySet': policySet!,
+    if (posture != null) 'posture': posture!,
+    if (postureDeployment != null) 'postureDeployment': postureDeployment!,
+    if (postureDeploymentTargetResource != null)
+      'postureDeploymentTargetResource': postureDeploymentTargetResource!,
+    if (postureRevisionId != null) 'postureRevisionId': postureRevisionId!,
+  };
 }
 
 /// The details of a posture template.
@@ -2841,28 +2876,33 @@ class PostureTemplate {
   });
 
   PostureTemplate.fromJson(core.Map json_)
-      : this(
-          categories: (json_['categories'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          description: json_['description'] as core.String?,
-          name: json_['name'] as core.String?,
-          policySets: (json_['policySets'] as core.List?)
-              ?.map((value) => PolicySet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          revisionId: json_['revisionId'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        categories:
+            (json_['categories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        description: json_['description'] as core.String?,
+        name: json_['name'] as core.String?,
+        policySets:
+            (json_['policySets'] as core.List?)
+                ?.map(
+                  (value) => PolicySet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        revisionId: json_['revisionId'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categories != null) 'categories': categories!,
-        if (description != null) 'description': description!,
-        if (name != null) 'name': name!,
-        if (policySets != null) 'policySets': policySets!,
-        if (revisionId != null) 'revisionId': revisionId!,
-        if (state != null) 'state': state!,
-      };
+    if (categories != null) 'categories': categories!,
+    if (description != null) 'description': description!,
+    if (name != null) 'name': name!,
+    if (policySets != null) 'policySets': policySets!,
+    if (revisionId != null) 'revisionId': revisionId!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// A name-value pair used as a custom source property.
@@ -2880,24 +2920,24 @@ class Property {
   /// Optional.
   Expr? valueExpression;
 
-  Property({
-    this.name,
-    this.valueExpression,
-  });
+  Property({this.name, this.valueExpression});
 
   Property.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          valueExpression: json_.containsKey('valueExpression')
-              ? Expr.fromJson(json_['valueExpression']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        valueExpression:
+            json_.containsKey('valueExpression')
+                ? Expr.fromJson(
+                  json_['valueExpression']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (valueExpression != null) 'valueExpression': valueExpression!,
-      };
+    if (name != null) 'name': name!,
+    if (valueExpression != null) 'valueExpression': valueExpression!,
+  };
 }
 
 /// Details of a report.
@@ -2931,23 +2971,26 @@ class Report {
   });
 
   Report.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          iacValidationReport: json_.containsKey('iacValidationReport')
-              ? IaCValidationReport.fromJson(json_['iacValidationReport']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        iacValidationReport:
+            json_.containsKey('iacValidationReport')
+                ? IaCValidationReport.fromJson(
+                  json_['iacValidationReport']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (iacValidationReport != null)
-          'iacValidationReport': iacValidationReport!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (iacValidationReport != null)
+      'iacValidationReport': iacValidationReport!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A selector for the resource types to run the detector on.
@@ -2959,20 +3002,19 @@ class ResourceSelector {
   /// Required.
   core.List<core.String>? resourceTypes;
 
-  ResourceSelector({
-    this.resourceTypes,
-  });
+  ResourceSelector({this.resourceTypes});
 
   ResourceSelector.fromJson(core.Map json_)
-      : this(
-          resourceTypes: (json_['resourceTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        resourceTypes:
+            (json_['resourceTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
-      };
+    if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+  };
 }
 
 /// Set multiple resource types for one policy, for example: resourceTypes:
@@ -2990,20 +3032,19 @@ class ResourceTypes {
   /// Optional.
   core.List<core.String>? included;
 
-  ResourceTypes({
-    this.included,
-  });
+  ResourceTypes({this.included});
 
   ResourceTypes.fromJson(core.Map json_)
-      : this(
-          included: (json_['included'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        included:
+            (json_['included'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (included != null) 'included': included!,
-      };
+    if (included != null) 'included': included!,
+  };
 }
 
 /// A custom module for Security Health Analytics.
@@ -3046,23 +3087,25 @@ class SecurityHealthAnalyticsCustomModule {
   });
 
   SecurityHealthAnalyticsCustomModule.fromJson(core.Map json_)
-      : this(
-          config: json_.containsKey('config')
-              ? CustomConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
-              : null,
-          displayName: json_['displayName'] as core.String?,
-          id: json_['id'] as core.String?,
-          moduleEnablementState: json_['moduleEnablementState'] as core.String?,
-        );
+    : this(
+        config:
+            json_.containsKey('config')
+                ? CustomConfig.fromJson(
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+        moduleEnablementState: json_['moduleEnablementState'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!,
-        if (displayName != null) 'displayName': displayName!,
-        if (id != null) 'id': id!,
-        if (moduleEnablementState != null)
-          'moduleEnablementState': moduleEnablementState!,
-      };
+    if (config != null) 'config': config!,
+    if (displayName != null) 'displayName': displayName!,
+    if (id != null) 'id': id!,
+    if (moduleEnablementState != null)
+      'moduleEnablementState': moduleEnablementState!,
+  };
 }
 
 /// A built-in detector for Security Health Analytics.
@@ -3084,22 +3127,19 @@ class SecurityHealthAnalyticsModule {
   /// Required.
   core.String? moduleName;
 
-  SecurityHealthAnalyticsModule({
-    this.moduleEnablementState,
-    this.moduleName,
-  });
+  SecurityHealthAnalyticsModule({this.moduleEnablementState, this.moduleName});
 
   SecurityHealthAnalyticsModule.fromJson(core.Map json_)
-      : this(
-          moduleEnablementState: json_['moduleEnablementState'] as core.String?,
-          moduleName: json_['moduleName'] as core.String?,
-        );
+    : this(
+        moduleEnablementState: json_['moduleEnablementState'] as core.String?,
+        moduleName: json_['moduleName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (moduleEnablementState != null)
-          'moduleEnablementState': moduleEnablementState!,
-        if (moduleName != null) 'moduleName': moduleName!,
-      };
+    if (moduleEnablementState != null)
+      'moduleEnablementState': moduleEnablementState!,
+    if (moduleName != null) 'moduleName': moduleName!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3158,32 +3198,40 @@ class Violation {
   });
 
   Violation.fromJson(core.Map json_)
-      : this(
-          assetId: json_['assetId'] as core.String?,
-          nextSteps: json_['nextSteps'] as core.String?,
-          policyId: json_['policyId'] as core.String?,
-          severity: json_['severity'] as core.String?,
-          violatedAsset: json_.containsKey('violatedAsset')
-              ? AssetDetails.fromJson(
-                  json_['violatedAsset'] as core.Map<core.String, core.dynamic>)
-              : null,
-          violatedPolicy: json_.containsKey('violatedPolicy')
-              ? PolicyDetails.fromJson(json_['violatedPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          violatedPosture: json_.containsKey('violatedPosture')
-              ? PostureDetails.fromJson(json_['violatedPosture']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        assetId: json_['assetId'] as core.String?,
+        nextSteps: json_['nextSteps'] as core.String?,
+        policyId: json_['policyId'] as core.String?,
+        severity: json_['severity'] as core.String?,
+        violatedAsset:
+            json_.containsKey('violatedAsset')
+                ? AssetDetails.fromJson(
+                  json_['violatedAsset'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        violatedPolicy:
+            json_.containsKey('violatedPolicy')
+                ? PolicyDetails.fromJson(
+                  json_['violatedPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        violatedPosture:
+            json_.containsKey('violatedPosture')
+                ? PostureDetails.fromJson(
+                  json_['violatedPosture']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assetId != null) 'assetId': assetId!,
-        if (nextSteps != null) 'nextSteps': nextSteps!,
-        if (policyId != null) 'policyId': policyId!,
-        if (severity != null) 'severity': severity!,
-        if (violatedAsset != null) 'violatedAsset': violatedAsset!,
-        if (violatedPolicy != null) 'violatedPolicy': violatedPolicy!,
-        if (violatedPosture != null) 'violatedPosture': violatedPosture!,
-      };
+    if (assetId != null) 'assetId': assetId!,
+    if (nextSteps != null) 'nextSteps': nextSteps!,
+    if (policyId != null) 'policyId': policyId!,
+    if (severity != null) 'severity': severity!,
+    if (violatedAsset != null) 'violatedAsset': violatedAsset!,
+    if (violatedPolicy != null) 'violatedPolicy': violatedPolicy!,
+    if (violatedPosture != null) 'violatedPosture': violatedPosture!,
+  };
 }

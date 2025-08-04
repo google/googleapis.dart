@@ -70,8 +70,9 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
   File credFile;
   if (Platform.isWindows) {
     credFile = File.fromUri(
-      Uri.directory(Platform.environment['APPDATA']!)
-          .resolve('gcloud/application_default_credentials.json'),
+      Uri.directory(
+        Platform.environment['APPDATA']!,
+      ).resolve('gcloud/application_default_credentials.json'),
     );
   } else {
     final homeVar = Platform.environment['HOME'];
@@ -79,8 +80,9 @@ Future<AutoRefreshingAuthClient> clientViaApplicationDefaultCredentials({
       throw StateError('The expected environment variable HOME must be set.');
     }
     credFile = File.fromUri(
-      Uri.directory(homeVar)
-          .resolve('.config/gcloud/application_default_credentials.json'),
+      Uri.directory(
+        homeVar,
+      ).resolve('.config/gcloud/application_default_credentials.json'),
     );
   }
   // Only try to load from credFile if it exists.

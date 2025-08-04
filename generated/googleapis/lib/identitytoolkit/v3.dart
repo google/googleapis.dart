@@ -49,11 +49,16 @@ class IdentityToolkitApi {
 
   RelyingpartyResource get relyingparty => RelyingpartyResource(_requester);
 
-  IdentityToolkitApi(http.Client client,
-      {core.String rootUrl = 'https://www.googleapis.com/',
-      core.String servicePath = 'identitytoolkit/v3/relyingparty/'})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  IdentityToolkitApi(
+    http.Client client, {
+    core.String rootUrl = 'https://www.googleapis.com/',
+    core.String servicePath = 'identitytoolkit/v3/relyingparty/',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class RelyingpartyResource {
@@ -95,7 +100,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return CreateAuthUriResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete user account.
@@ -132,7 +138,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return DeleteAccountResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Batch download user accounts.
@@ -169,7 +176,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return DownloadAccountResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Reset password for a user.
@@ -206,7 +214,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return EmailLinkSigninResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the account info.
@@ -243,7 +252,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return GetAccountInfoResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get a code for user action confirmation.
@@ -280,7 +290,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return GetOobConfirmationCodeResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get project configuration.
@@ -302,7 +313,7 @@ class RelyingpartyResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartyGetProjectConfigResponse>
-      getProjectConfig({
+  getProjectConfig({
     core.String? delegatedProjectNumber,
     core.String? projectNumber,
     core.String? $fields,
@@ -322,7 +333,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get token signing public key.
@@ -354,10 +366,7 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return (response_ as core.Map<core.String, core.dynamic>).map(
-      (key, value) => core.MapEntry(
-        key,
-        value as core.String,
-      ),
+      (key, value) => core.MapEntry(key, value as core.String),
     );
   }
 
@@ -390,7 +399,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return GetRecaptchaParamResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Reset password for a user.
@@ -427,7 +437,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return ResetPasswordResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Send SMS verification code.
@@ -448,7 +459,7 @@ class RelyingpartyResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartySendVerificationCodeResponse>
-      sendVerificationCode(
+  sendVerificationCode(
     IdentitytoolkitRelyingpartySendVerificationCodeRequest request, {
     core.String? $fields,
   }) async {
@@ -466,7 +477,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Set account info for a user.
@@ -503,7 +515,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return SetAccountInfoResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Set project configuration.
@@ -523,7 +536,7 @@ class RelyingpartyResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartySetProjectConfigResponse>
-      setProjectConfig(
+  setProjectConfig(
     IdentitytoolkitRelyingpartySetProjectConfigRequest request, {
     core.String? $fields,
   }) async {
@@ -541,7 +554,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sign out user.
@@ -578,7 +592,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Signup new user.
@@ -615,7 +630,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return SignupNewUserResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Batch upload existing user accounts.
@@ -652,7 +668,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return UploadAccountResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Verifies the assertion returned by the IdP.
@@ -689,7 +706,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return VerifyAssertionResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Verifies the developer asserted ID token.
@@ -726,7 +744,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return VerifyCustomTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Verifies the user entered password.
@@ -763,7 +782,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return VerifyPasswordResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Verifies ownership of a phone number and creates/updates the user account
@@ -784,7 +804,7 @@ class RelyingpartyResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse>
-      verifyPhoneNumber(
+  verifyPhoneNumber(
     IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest request, {
     core.String? $fields,
   }) async {
@@ -802,7 +822,8 @@ class RelyingpartyResource {
       queryParams: queryParams_,
     );
     return IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -849,34 +870,36 @@ class CreateAuthUriResponse {
   });
 
   CreateAuthUriResponse.fromJson(core.Map json_)
-      : this(
-          allProviders: (json_['allProviders'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          authUri: json_['authUri'] as core.String?,
-          captchaRequired: json_['captchaRequired'] as core.bool?,
-          forExistingProvider: json_['forExistingProvider'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          providerId: json_['providerId'] as core.String?,
-          registered: json_['registered'] as core.bool?,
-          sessionId: json_['sessionId'] as core.String?,
-          signinMethods: (json_['signinMethods'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        allProviders:
+            (json_['allProviders'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        authUri: json_['authUri'] as core.String?,
+        captchaRequired: json_['captchaRequired'] as core.bool?,
+        forExistingProvider: json_['forExistingProvider'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        providerId: json_['providerId'] as core.String?,
+        registered: json_['registered'] as core.bool?,
+        sessionId: json_['sessionId'] as core.String?,
+        signinMethods:
+            (json_['signinMethods'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allProviders != null) 'allProviders': allProviders!,
-        if (authUri != null) 'authUri': authUri!,
-        if (captchaRequired != null) 'captchaRequired': captchaRequired!,
-        if (forExistingProvider != null)
-          'forExistingProvider': forExistingProvider!,
-        if (kind != null) 'kind': kind!,
-        if (providerId != null) 'providerId': providerId!,
-        if (registered != null) 'registered': registered!,
-        if (sessionId != null) 'sessionId': sessionId!,
-        if (signinMethods != null) 'signinMethods': signinMethods!,
-      };
+    if (allProviders != null) 'allProviders': allProviders!,
+    if (authUri != null) 'authUri': authUri!,
+    if (captchaRequired != null) 'captchaRequired': captchaRequired!,
+    if (forExistingProvider != null)
+      'forExistingProvider': forExistingProvider!,
+    if (kind != null) 'kind': kind!,
+    if (providerId != null) 'providerId': providerId!,
+    if (registered != null) 'registered': registered!,
+    if (sessionId != null) 'sessionId': sessionId!,
+    if (signinMethods != null) 'signinMethods': signinMethods!,
+  };
 }
 
 /// Respone of deleting account.
@@ -884,18 +907,14 @@ class DeleteAccountResponse {
   /// The fixed string "identitytoolkit#DeleteAccountResponse".
   core.String? kind;
 
-  DeleteAccountResponse({
-    this.kind,
-  });
+  DeleteAccountResponse({this.kind});
 
   DeleteAccountResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-        );
+    : this(kind: json_['kind'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-      };
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 /// Response of downloading accounts in batch.
@@ -911,27 +930,27 @@ class DownloadAccountResponse {
   /// The user accounts data.
   core.List<UserInfo>? users;
 
-  DownloadAccountResponse({
-    this.kind,
-    this.nextPageToken,
-    this.users,
-  });
+  DownloadAccountResponse({this.kind, this.nextPageToken, this.users});
 
   DownloadAccountResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          users: (json_['users'] as core.List?)
-              ?.map((value) => UserInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        users:
+            (json_['users'] as core.List?)
+                ?.map(
+                  (value) => UserInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (users != null) 'users': users!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (users != null) 'users': users!,
+  };
 }
 
 /// Response of email signIn.
@@ -968,25 +987,25 @@ class EmailLinkSigninResponse {
   });
 
   EmailLinkSigninResponse.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-          expiresIn: json_['expiresIn'] as core.String?,
-          idToken: json_['idToken'] as core.String?,
-          isNewUser: json_['isNewUser'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          localId: json_['localId'] as core.String?,
-          refreshToken: json_['refreshToken'] as core.String?,
-        );
+    : this(
+        email: json_['email'] as core.String?,
+        expiresIn: json_['expiresIn'] as core.String?,
+        idToken: json_['idToken'] as core.String?,
+        isNewUser: json_['isNewUser'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        localId: json_['localId'] as core.String?,
+        refreshToken: json_['refreshToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (expiresIn != null) 'expiresIn': expiresIn!,
-        if (idToken != null) 'idToken': idToken!,
-        if (isNewUser != null) 'isNewUser': isNewUser!,
-        if (kind != null) 'kind': kind!,
-        if (localId != null) 'localId': localId!,
-        if (refreshToken != null) 'refreshToken': refreshToken!,
-      };
+    if (email != null) 'email': email!,
+    if (expiresIn != null) 'expiresIn': expiresIn!,
+    if (idToken != null) 'idToken': idToken!,
+    if (isNewUser != null) 'isNewUser': isNewUser!,
+    if (kind != null) 'kind': kind!,
+    if (localId != null) 'localId': localId!,
+    if (refreshToken != null) 'refreshToken': refreshToken!,
+  };
 }
 
 /// Template for an email template.
@@ -1019,23 +1038,23 @@ class EmailTemplate {
   });
 
   EmailTemplate.fromJson(core.Map json_)
-      : this(
-          body: json_['body'] as core.String?,
-          format: json_['format'] as core.String?,
-          from: json_['from'] as core.String?,
-          fromDisplayName: json_['fromDisplayName'] as core.String?,
-          replyTo: json_['replyTo'] as core.String?,
-          subject: json_['subject'] as core.String?,
-        );
+    : this(
+        body: json_['body'] as core.String?,
+        format: json_['format'] as core.String?,
+        from: json_['from'] as core.String?,
+        fromDisplayName: json_['fromDisplayName'] as core.String?,
+        replyTo: json_['replyTo'] as core.String?,
+        subject: json_['subject'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-        if (format != null) 'format': format!,
-        if (from != null) 'from': from!,
-        if (fromDisplayName != null) 'fromDisplayName': fromDisplayName!,
-        if (replyTo != null) 'replyTo': replyTo!,
-        if (subject != null) 'subject': subject!,
-      };
+    if (body != null) 'body': body!,
+    if (format != null) 'format': format!,
+    if (from != null) 'from': from!,
+    if (fromDisplayName != null) 'fromDisplayName': fromDisplayName!,
+    if (replyTo != null) 'replyTo': replyTo!,
+    if (subject != null) 'subject': subject!,
+  };
 }
 
 /// Response of getting account information.
@@ -1046,24 +1065,25 @@ class GetAccountInfoResponse {
   /// The info of the users.
   core.List<UserInfo>? users;
 
-  GetAccountInfoResponse({
-    this.kind,
-    this.users,
-  });
+  GetAccountInfoResponse({this.kind, this.users});
 
   GetAccountInfoResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          users: (json_['users'] as core.List?)
-              ?.map((value) => UserInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        users:
+            (json_['users'] as core.List?)
+                ?.map(
+                  (value) => UserInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (users != null) 'users': users!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (users != null) 'users': users!,
+  };
 }
 
 /// Response of getting a code for user confirmation (reset password, change
@@ -1078,24 +1098,20 @@ class GetOobConfirmationCodeResponse {
   /// The code to be send to the user.
   core.String? oobCode;
 
-  GetOobConfirmationCodeResponse({
-    this.email,
-    this.kind,
-    this.oobCode,
-  });
+  GetOobConfirmationCodeResponse({this.email, this.kind, this.oobCode});
 
   GetOobConfirmationCodeResponse.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          oobCode: json_['oobCode'] as core.String?,
-        );
+    : this(
+        email: json_['email'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        oobCode: json_['oobCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (kind != null) 'kind': kind!,
-        if (oobCode != null) 'oobCode': oobCode!,
-      };
+    if (email != null) 'email': email!,
+    if (kind != null) 'kind': kind!,
+    if (oobCode != null) 'oobCode': oobCode!,
+  };
 }
 
 /// Response of getting recaptcha param.
@@ -1117,17 +1133,17 @@ class GetRecaptchaParamResponse {
   });
 
   GetRecaptchaParamResponse.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          recaptchaSiteKey: json_['recaptchaSiteKey'] as core.String?,
-          recaptchaStoken: json_['recaptchaStoken'] as core.String?,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        recaptchaSiteKey: json_['recaptchaSiteKey'] as core.String?,
+        recaptchaStoken: json_['recaptchaStoken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (recaptchaSiteKey != null) 'recaptchaSiteKey': recaptchaSiteKey!,
-        if (recaptchaStoken != null) 'recaptchaStoken': recaptchaStoken!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (recaptchaSiteKey != null) 'recaptchaSiteKey': recaptchaSiteKey!,
+    if (recaptchaStoken != null) 'recaptchaStoken': recaptchaStoken!,
+  };
 }
 
 /// Request to get the IDP authentication URL.
@@ -1220,51 +1236,46 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
   });
 
   IdentitytoolkitRelyingpartyCreateAuthUriRequest.fromJson(core.Map json_)
-      : this(
-          appId: json_['appId'] as core.String?,
-          authFlowType: json_['authFlowType'] as core.String?,
-          clientId: json_['clientId'] as core.String?,
-          context: json_['context'] as core.String?,
-          continueUri: json_['continueUri'] as core.String?,
-          customParameter:
-              (json_['customParameter'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          hostedDomain: json_['hostedDomain'] as core.String?,
-          identifier: json_['identifier'] as core.String?,
-          oauthConsumerKey: json_['oauthConsumerKey'] as core.String?,
-          oauthScope: json_['oauthScope'] as core.String?,
-          openidRealm: json_['openidRealm'] as core.String?,
-          otaApp: json_['otaApp'] as core.String?,
-          providerId: json_['providerId'] as core.String?,
-          sessionId: json_['sessionId'] as core.String?,
-          tenantId: json_['tenantId'] as core.String?,
-          tenantProjectNumber: json_['tenantProjectNumber'] as core.String?,
-        );
+    : this(
+        appId: json_['appId'] as core.String?,
+        authFlowType: json_['authFlowType'] as core.String?,
+        clientId: json_['clientId'] as core.String?,
+        context: json_['context'] as core.String?,
+        continueUri: json_['continueUri'] as core.String?,
+        customParameter: (json_['customParameter']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        hostedDomain: json_['hostedDomain'] as core.String?,
+        identifier: json_['identifier'] as core.String?,
+        oauthConsumerKey: json_['oauthConsumerKey'] as core.String?,
+        oauthScope: json_['oauthScope'] as core.String?,
+        openidRealm: json_['openidRealm'] as core.String?,
+        otaApp: json_['otaApp'] as core.String?,
+        providerId: json_['providerId'] as core.String?,
+        sessionId: json_['sessionId'] as core.String?,
+        tenantId: json_['tenantId'] as core.String?,
+        tenantProjectNumber: json_['tenantProjectNumber'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appId != null) 'appId': appId!,
-        if (authFlowType != null) 'authFlowType': authFlowType!,
-        if (clientId != null) 'clientId': clientId!,
-        if (context != null) 'context': context!,
-        if (continueUri != null) 'continueUri': continueUri!,
-        if (customParameter != null) 'customParameter': customParameter!,
-        if (hostedDomain != null) 'hostedDomain': hostedDomain!,
-        if (identifier != null) 'identifier': identifier!,
-        if (oauthConsumerKey != null) 'oauthConsumerKey': oauthConsumerKey!,
-        if (oauthScope != null) 'oauthScope': oauthScope!,
-        if (openidRealm != null) 'openidRealm': openidRealm!,
-        if (otaApp != null) 'otaApp': otaApp!,
-        if (providerId != null) 'providerId': providerId!,
-        if (sessionId != null) 'sessionId': sessionId!,
-        if (tenantId != null) 'tenantId': tenantId!,
-        if (tenantProjectNumber != null)
-          'tenantProjectNumber': tenantProjectNumber!,
-      };
+    if (appId != null) 'appId': appId!,
+    if (authFlowType != null) 'authFlowType': authFlowType!,
+    if (clientId != null) 'clientId': clientId!,
+    if (context != null) 'context': context!,
+    if (continueUri != null) 'continueUri': continueUri!,
+    if (customParameter != null) 'customParameter': customParameter!,
+    if (hostedDomain != null) 'hostedDomain': hostedDomain!,
+    if (identifier != null) 'identifier': identifier!,
+    if (oauthConsumerKey != null) 'oauthConsumerKey': oauthConsumerKey!,
+    if (oauthScope != null) 'oauthScope': oauthScope!,
+    if (openidRealm != null) 'openidRealm': openidRealm!,
+    if (otaApp != null) 'otaApp': otaApp!,
+    if (providerId != null) 'providerId': providerId!,
+    if (sessionId != null) 'sessionId': sessionId!,
+    if (tenantId != null) 'tenantId': tenantId!,
+    if (tenantProjectNumber != null)
+      'tenantProjectNumber': tenantProjectNumber!,
+  };
 }
 
 /// Request to delete account.
@@ -1287,19 +1298,18 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
   });
 
   IdentitytoolkitRelyingpartyDeleteAccountRequest.fromJson(core.Map json_)
-      : this(
-          delegatedProjectNumber:
-              json_['delegatedProjectNumber'] as core.String?,
-          idToken: json_['idToken'] as core.String?,
-          localId: json_['localId'] as core.String?,
-        );
+    : this(
+        delegatedProjectNumber: json_['delegatedProjectNumber'] as core.String?,
+        idToken: json_['idToken'] as core.String?,
+        localId: json_['localId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (delegatedProjectNumber != null)
-          'delegatedProjectNumber': delegatedProjectNumber!,
-        if (idToken != null) 'idToken': idToken!,
-        if (localId != null) 'localId': localId!,
-      };
+    if (delegatedProjectNumber != null)
+      'delegatedProjectNumber': delegatedProjectNumber!,
+    if (idToken != null) 'idToken': idToken!,
+    if (localId != null) 'localId': localId!,
+  };
 }
 
 /// Request to download user account in batch.
@@ -1330,21 +1340,20 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
   });
 
   IdentitytoolkitRelyingpartyDownloadAccountRequest.fromJson(core.Map json_)
-      : this(
-          delegatedProjectNumber:
-              json_['delegatedProjectNumber'] as core.String?,
-          maxResults: json_['maxResults'] as core.int?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          targetProjectId: json_['targetProjectId'] as core.String?,
-        );
+    : this(
+        delegatedProjectNumber: json_['delegatedProjectNumber'] as core.String?,
+        maxResults: json_['maxResults'] as core.int?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        targetProjectId: json_['targetProjectId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (delegatedProjectNumber != null)
-          'delegatedProjectNumber': delegatedProjectNumber!,
-        if (maxResults != null) 'maxResults': maxResults!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (targetProjectId != null) 'targetProjectId': targetProjectId!,
-      };
+    if (delegatedProjectNumber != null)
+      'delegatedProjectNumber': delegatedProjectNumber!,
+    if (maxResults != null) 'maxResults': maxResults!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (targetProjectId != null) 'targetProjectId': targetProjectId!,
+  };
 }
 
 /// Request to sign in with email.
@@ -1365,17 +1374,17 @@ class IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
   });
 
   IdentitytoolkitRelyingpartyEmailLinkSigninRequest.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-          idToken: json_['idToken'] as core.String?,
-          oobCode: json_['oobCode'] as core.String?,
-        );
+    : this(
+        email: json_['email'] as core.String?,
+        idToken: json_['idToken'] as core.String?,
+        oobCode: json_['oobCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (idToken != null) 'idToken': idToken!,
-        if (oobCode != null) 'oobCode': oobCode!,
-      };
+    if (email != null) 'email': email!,
+    if (idToken != null) 'idToken': idToken!,
+    if (oobCode != null) 'oobCode': oobCode!,
+  };
 }
 
 /// Request to get the account information.
@@ -1406,29 +1415,31 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
   });
 
   IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(core.Map json_)
-      : this(
-          delegatedProjectNumber:
-              json_['delegatedProjectNumber'] as core.String?,
-          email: (json_['email'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          idToken: json_['idToken'] as core.String?,
-          localId: (json_['localId'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          phoneNumber: (json_['phoneNumber'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        delegatedProjectNumber: json_['delegatedProjectNumber'] as core.String?,
+        email:
+            (json_['email'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        idToken: json_['idToken'] as core.String?,
+        localId:
+            (json_['localId'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        phoneNumber:
+            (json_['phoneNumber'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (delegatedProjectNumber != null)
-          'delegatedProjectNumber': delegatedProjectNumber!,
-        if (email != null) 'email': email!,
-        if (idToken != null) 'idToken': idToken!,
-        if (localId != null) 'localId': localId!,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-      };
+    if (delegatedProjectNumber != null)
+      'delegatedProjectNumber': delegatedProjectNumber!,
+    if (email != null) 'email': email!,
+    if (idToken != null) 'idToken': idToken!,
+    if (localId != null) 'localId': localId!,
+    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+  };
 }
 
 /// Response of getting the project configuration.
@@ -1483,64 +1494,79 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
   });
 
   IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(core.Map json_)
-      : this(
-          allowPasswordUser: json_['allowPasswordUser'] as core.bool?,
-          apiKey: json_['apiKey'] as core.String?,
-          authorizedDomains: (json_['authorizedDomains'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          changeEmailTemplate: json_.containsKey('changeEmailTemplate')
-              ? EmailTemplate.fromJson(json_['changeEmailTemplate']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dynamicLinksDomain: json_['dynamicLinksDomain'] as core.String?,
-          enableAnonymousUser: json_['enableAnonymousUser'] as core.bool?,
-          idpConfig: (json_['idpConfig'] as core.List?)
-              ?.map((value) => IdpConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          legacyResetPasswordTemplate:
-              json_.containsKey('legacyResetPasswordTemplate')
-                  ? EmailTemplate.fromJson(json_['legacyResetPasswordTemplate']
-                      as core.Map<core.String, core.dynamic>)
-                  : null,
-          projectId: json_['projectId'] as core.String?,
-          resetPasswordTemplate: json_.containsKey('resetPasswordTemplate')
-              ? EmailTemplate.fromJson(json_['resetPasswordTemplate']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          useEmailSending: json_['useEmailSending'] as core.bool?,
-          verifyEmailTemplate: json_.containsKey('verifyEmailTemplate')
-              ? EmailTemplate.fromJson(json_['verifyEmailTemplate']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        allowPasswordUser: json_['allowPasswordUser'] as core.bool?,
+        apiKey: json_['apiKey'] as core.String?,
+        authorizedDomains:
+            (json_['authorizedDomains'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        changeEmailTemplate:
+            json_.containsKey('changeEmailTemplate')
+                ? EmailTemplate.fromJson(
+                  json_['changeEmailTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dynamicLinksDomain: json_['dynamicLinksDomain'] as core.String?,
+        enableAnonymousUser: json_['enableAnonymousUser'] as core.bool?,
+        idpConfig:
+            (json_['idpConfig'] as core.List?)
+                ?.map(
+                  (value) => IdpConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        legacyResetPasswordTemplate:
+            json_.containsKey('legacyResetPasswordTemplate')
+                ? EmailTemplate.fromJson(
+                  json_['legacyResetPasswordTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        projectId: json_['projectId'] as core.String?,
+        resetPasswordTemplate:
+            json_.containsKey('resetPasswordTemplate')
+                ? EmailTemplate.fromJson(
+                  json_['resetPasswordTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        useEmailSending: json_['useEmailSending'] as core.bool?,
+        verifyEmailTemplate:
+            json_.containsKey('verifyEmailTemplate')
+                ? EmailTemplate.fromJson(
+                  json_['verifyEmailTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowPasswordUser != null) 'allowPasswordUser': allowPasswordUser!,
-        if (apiKey != null) 'apiKey': apiKey!,
-        if (authorizedDomains != null) 'authorizedDomains': authorizedDomains!,
-        if (changeEmailTemplate != null)
-          'changeEmailTemplate': changeEmailTemplate!,
-        if (dynamicLinksDomain != null)
-          'dynamicLinksDomain': dynamicLinksDomain!,
-        if (enableAnonymousUser != null)
-          'enableAnonymousUser': enableAnonymousUser!,
-        if (idpConfig != null) 'idpConfig': idpConfig!,
-        if (legacyResetPasswordTemplate != null)
-          'legacyResetPasswordTemplate': legacyResetPasswordTemplate!,
-        if (projectId != null) 'projectId': projectId!,
-        if (resetPasswordTemplate != null)
-          'resetPasswordTemplate': resetPasswordTemplate!,
-        if (useEmailSending != null) 'useEmailSending': useEmailSending!,
-        if (verifyEmailTemplate != null)
-          'verifyEmailTemplate': verifyEmailTemplate!,
-      };
+    if (allowPasswordUser != null) 'allowPasswordUser': allowPasswordUser!,
+    if (apiKey != null) 'apiKey': apiKey!,
+    if (authorizedDomains != null) 'authorizedDomains': authorizedDomains!,
+    if (changeEmailTemplate != null)
+      'changeEmailTemplate': changeEmailTemplate!,
+    if (dynamicLinksDomain != null) 'dynamicLinksDomain': dynamicLinksDomain!,
+    if (enableAnonymousUser != null)
+      'enableAnonymousUser': enableAnonymousUser!,
+    if (idpConfig != null) 'idpConfig': idpConfig!,
+    if (legacyResetPasswordTemplate != null)
+      'legacyResetPasswordTemplate': legacyResetPasswordTemplate!,
+    if (projectId != null) 'projectId': projectId!,
+    if (resetPasswordTemplate != null)
+      'resetPasswordTemplate': resetPasswordTemplate!,
+    if (useEmailSending != null) 'useEmailSending': useEmailSending!,
+    if (verifyEmailTemplate != null)
+      'verifyEmailTemplate': verifyEmailTemplate!,
+  };
 }
 
 /// Respone of getting public keys.
-typedef IdentitytoolkitRelyingpartyGetPublicKeysResponse
-    = core.Map<core.String, core.String>;
+typedef IdentitytoolkitRelyingpartyGetPublicKeysResponse =
+    core.Map<core.String, core.String>;
 
 /// Request to reset the password.
 class IdentitytoolkitRelyingpartyResetPasswordRequest {
@@ -1564,19 +1590,19 @@ class IdentitytoolkitRelyingpartyResetPasswordRequest {
   });
 
   IdentitytoolkitRelyingpartyResetPasswordRequest.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-          newPassword: json_['newPassword'] as core.String?,
-          oldPassword: json_['oldPassword'] as core.String?,
-          oobCode: json_['oobCode'] as core.String?,
-        );
+    : this(
+        email: json_['email'] as core.String?,
+        newPassword: json_['newPassword'] as core.String?,
+        oldPassword: json_['oldPassword'] as core.String?,
+        oobCode: json_['oobCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (newPassword != null) 'newPassword': newPassword!,
-        if (oldPassword != null) 'oldPassword': oldPassword!,
-        if (oobCode != null) 'oobCode': oobCode!,
-      };
+    if (email != null) 'email': email!,
+    if (newPassword != null) 'newPassword': newPassword!,
+    if (oldPassword != null) 'oldPassword': oldPassword!,
+    if (oobCode != null) 'oobCode': oobCode!,
+  };
 }
 
 /// Request for Identitytoolkit-SendVerificationCode
@@ -1601,20 +1627,20 @@ class IdentitytoolkitRelyingpartySendVerificationCodeRequest {
   });
 
   IdentitytoolkitRelyingpartySendVerificationCodeRequest.fromJson(
-      core.Map json_)
-      : this(
-          iosReceipt: json_['iosReceipt'] as core.String?,
-          iosSecret: json_['iosSecret'] as core.String?,
-          phoneNumber: json_['phoneNumber'] as core.String?,
-          recaptchaToken: json_['recaptchaToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        iosReceipt: json_['iosReceipt'] as core.String?,
+        iosSecret: json_['iosSecret'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        recaptchaToken: json_['recaptchaToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iosReceipt != null) 'iosReceipt': iosReceipt!,
-        if (iosSecret != null) 'iosSecret': iosSecret!,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-        if (recaptchaToken != null) 'recaptchaToken': recaptchaToken!,
-      };
+    if (iosReceipt != null) 'iosReceipt': iosReceipt!,
+    if (iosSecret != null) 'iosSecret': iosSecret!,
+    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+    if (recaptchaToken != null) 'recaptchaToken': recaptchaToken!,
+  };
 }
 
 /// Response for Identitytoolkit-SendVerificationCode
@@ -1622,19 +1648,15 @@ class IdentitytoolkitRelyingpartySendVerificationCodeResponse {
   /// Encrypted session information
   core.String? sessionInfo;
 
-  IdentitytoolkitRelyingpartySendVerificationCodeResponse({
-    this.sessionInfo,
-  });
+  IdentitytoolkitRelyingpartySendVerificationCodeResponse({this.sessionInfo});
 
   IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
-      core.Map json_)
-      : this(
-          sessionInfo: json_['sessionInfo'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(sessionInfo: json_['sessionInfo'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sessionInfo != null) 'sessionInfo': sessionInfo!,
-      };
+    if (sessionInfo != null) 'sessionInfo': sessionInfo!,
+  };
 }
 
 /// Request to set the account information.
@@ -1737,67 +1759,68 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
   });
 
   IdentitytoolkitRelyingpartySetAccountInfoRequest.fromJson(core.Map json_)
-      : this(
-          captchaChallenge: json_['captchaChallenge'] as core.String?,
-          captchaResponse: json_['captchaResponse'] as core.String?,
-          createdAt: json_['createdAt'] as core.String?,
-          customAttributes: json_['customAttributes'] as core.String?,
-          delegatedProjectNumber:
-              json_['delegatedProjectNumber'] as core.String?,
-          deleteAttribute: (json_['deleteAttribute'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          deleteProvider: (json_['deleteProvider'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          disableUser: json_['disableUser'] as core.bool?,
-          displayName: json_['displayName'] as core.String?,
-          email: json_['email'] as core.String?,
-          emailVerified: json_['emailVerified'] as core.bool?,
-          idToken: json_['idToken'] as core.String?,
-          instanceId: json_['instanceId'] as core.String?,
-          lastLoginAt: json_['lastLoginAt'] as core.String?,
-          localId: json_['localId'] as core.String?,
-          oobCode: json_['oobCode'] as core.String?,
-          password: json_['password'] as core.String?,
-          phoneNumber: json_['phoneNumber'] as core.String?,
-          photoUrl: json_['photoUrl'] as core.String?,
-          provider: (json_['provider'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          returnSecureToken: json_['returnSecureToken'] as core.bool?,
-          upgradeToFederatedLogin:
-              json_['upgradeToFederatedLogin'] as core.bool?,
-          validSince: json_['validSince'] as core.String?,
-        );
+    : this(
+        captchaChallenge: json_['captchaChallenge'] as core.String?,
+        captchaResponse: json_['captchaResponse'] as core.String?,
+        createdAt: json_['createdAt'] as core.String?,
+        customAttributes: json_['customAttributes'] as core.String?,
+        delegatedProjectNumber: json_['delegatedProjectNumber'] as core.String?,
+        deleteAttribute:
+            (json_['deleteAttribute'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        deleteProvider:
+            (json_['deleteProvider'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        disableUser: json_['disableUser'] as core.bool?,
+        displayName: json_['displayName'] as core.String?,
+        email: json_['email'] as core.String?,
+        emailVerified: json_['emailVerified'] as core.bool?,
+        idToken: json_['idToken'] as core.String?,
+        instanceId: json_['instanceId'] as core.String?,
+        lastLoginAt: json_['lastLoginAt'] as core.String?,
+        localId: json_['localId'] as core.String?,
+        oobCode: json_['oobCode'] as core.String?,
+        password: json_['password'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        photoUrl: json_['photoUrl'] as core.String?,
+        provider:
+            (json_['provider'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        returnSecureToken: json_['returnSecureToken'] as core.bool?,
+        upgradeToFederatedLogin: json_['upgradeToFederatedLogin'] as core.bool?,
+        validSince: json_['validSince'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
-        if (captchaResponse != null) 'captchaResponse': captchaResponse!,
-        if (createdAt != null) 'createdAt': createdAt!,
-        if (customAttributes != null) 'customAttributes': customAttributes!,
-        if (delegatedProjectNumber != null)
-          'delegatedProjectNumber': delegatedProjectNumber!,
-        if (deleteAttribute != null) 'deleteAttribute': deleteAttribute!,
-        if (deleteProvider != null) 'deleteProvider': deleteProvider!,
-        if (disableUser != null) 'disableUser': disableUser!,
-        if (displayName != null) 'displayName': displayName!,
-        if (email != null) 'email': email!,
-        if (emailVerified != null) 'emailVerified': emailVerified!,
-        if (idToken != null) 'idToken': idToken!,
-        if (instanceId != null) 'instanceId': instanceId!,
-        if (lastLoginAt != null) 'lastLoginAt': lastLoginAt!,
-        if (localId != null) 'localId': localId!,
-        if (oobCode != null) 'oobCode': oobCode!,
-        if (password != null) 'password': password!,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-        if (photoUrl != null) 'photoUrl': photoUrl!,
-        if (provider != null) 'provider': provider!,
-        if (returnSecureToken != null) 'returnSecureToken': returnSecureToken!,
-        if (upgradeToFederatedLogin != null)
-          'upgradeToFederatedLogin': upgradeToFederatedLogin!,
-        if (validSince != null) 'validSince': validSince!,
-      };
+    if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
+    if (captchaResponse != null) 'captchaResponse': captchaResponse!,
+    if (createdAt != null) 'createdAt': createdAt!,
+    if (customAttributes != null) 'customAttributes': customAttributes!,
+    if (delegatedProjectNumber != null)
+      'delegatedProjectNumber': delegatedProjectNumber!,
+    if (deleteAttribute != null) 'deleteAttribute': deleteAttribute!,
+    if (deleteProvider != null) 'deleteProvider': deleteProvider!,
+    if (disableUser != null) 'disableUser': disableUser!,
+    if (displayName != null) 'displayName': displayName!,
+    if (email != null) 'email': email!,
+    if (emailVerified != null) 'emailVerified': emailVerified!,
+    if (idToken != null) 'idToken': idToken!,
+    if (instanceId != null) 'instanceId': instanceId!,
+    if (lastLoginAt != null) 'lastLoginAt': lastLoginAt!,
+    if (localId != null) 'localId': localId!,
+    if (oobCode != null) 'oobCode': oobCode!,
+    if (password != null) 'password': password!,
+    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+    if (photoUrl != null) 'photoUrl': photoUrl!,
+    if (provider != null) 'provider': provider!,
+    if (returnSecureToken != null) 'returnSecureToken': returnSecureToken!,
+    if (upgradeToFederatedLogin != null)
+      'upgradeToFederatedLogin': upgradeToFederatedLogin!,
+    if (validSince != null) 'validSince': validSince!,
+  };
 }
 
 /// Request to set the project configuration.
@@ -1852,58 +1875,73 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
   });
 
   IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(core.Map json_)
-      : this(
-          allowPasswordUser: json_['allowPasswordUser'] as core.bool?,
-          apiKey: json_['apiKey'] as core.String?,
-          authorizedDomains: (json_['authorizedDomains'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          changeEmailTemplate: json_.containsKey('changeEmailTemplate')
-              ? EmailTemplate.fromJson(json_['changeEmailTemplate']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          delegatedProjectNumber:
-              json_['delegatedProjectNumber'] as core.String?,
-          enableAnonymousUser: json_['enableAnonymousUser'] as core.bool?,
-          idpConfig: (json_['idpConfig'] as core.List?)
-              ?.map((value) => IdpConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          legacyResetPasswordTemplate:
-              json_.containsKey('legacyResetPasswordTemplate')
-                  ? EmailTemplate.fromJson(json_['legacyResetPasswordTemplate']
-                      as core.Map<core.String, core.dynamic>)
-                  : null,
-          resetPasswordTemplate: json_.containsKey('resetPasswordTemplate')
-              ? EmailTemplate.fromJson(json_['resetPasswordTemplate']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          useEmailSending: json_['useEmailSending'] as core.bool?,
-          verifyEmailTemplate: json_.containsKey('verifyEmailTemplate')
-              ? EmailTemplate.fromJson(json_['verifyEmailTemplate']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        allowPasswordUser: json_['allowPasswordUser'] as core.bool?,
+        apiKey: json_['apiKey'] as core.String?,
+        authorizedDomains:
+            (json_['authorizedDomains'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        changeEmailTemplate:
+            json_.containsKey('changeEmailTemplate')
+                ? EmailTemplate.fromJson(
+                  json_['changeEmailTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        delegatedProjectNumber: json_['delegatedProjectNumber'] as core.String?,
+        enableAnonymousUser: json_['enableAnonymousUser'] as core.bool?,
+        idpConfig:
+            (json_['idpConfig'] as core.List?)
+                ?.map(
+                  (value) => IdpConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        legacyResetPasswordTemplate:
+            json_.containsKey('legacyResetPasswordTemplate')
+                ? EmailTemplate.fromJson(
+                  json_['legacyResetPasswordTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resetPasswordTemplate:
+            json_.containsKey('resetPasswordTemplate')
+                ? EmailTemplate.fromJson(
+                  json_['resetPasswordTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        useEmailSending: json_['useEmailSending'] as core.bool?,
+        verifyEmailTemplate:
+            json_.containsKey('verifyEmailTemplate')
+                ? EmailTemplate.fromJson(
+                  json_['verifyEmailTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowPasswordUser != null) 'allowPasswordUser': allowPasswordUser!,
-        if (apiKey != null) 'apiKey': apiKey!,
-        if (authorizedDomains != null) 'authorizedDomains': authorizedDomains!,
-        if (changeEmailTemplate != null)
-          'changeEmailTemplate': changeEmailTemplate!,
-        if (delegatedProjectNumber != null)
-          'delegatedProjectNumber': delegatedProjectNumber!,
-        if (enableAnonymousUser != null)
-          'enableAnonymousUser': enableAnonymousUser!,
-        if (idpConfig != null) 'idpConfig': idpConfig!,
-        if (legacyResetPasswordTemplate != null)
-          'legacyResetPasswordTemplate': legacyResetPasswordTemplate!,
-        if (resetPasswordTemplate != null)
-          'resetPasswordTemplate': resetPasswordTemplate!,
-        if (useEmailSending != null) 'useEmailSending': useEmailSending!,
-        if (verifyEmailTemplate != null)
-          'verifyEmailTemplate': verifyEmailTemplate!,
-      };
+    if (allowPasswordUser != null) 'allowPasswordUser': allowPasswordUser!,
+    if (apiKey != null) 'apiKey': apiKey!,
+    if (authorizedDomains != null) 'authorizedDomains': authorizedDomains!,
+    if (changeEmailTemplate != null)
+      'changeEmailTemplate': changeEmailTemplate!,
+    if (delegatedProjectNumber != null)
+      'delegatedProjectNumber': delegatedProjectNumber!,
+    if (enableAnonymousUser != null)
+      'enableAnonymousUser': enableAnonymousUser!,
+    if (idpConfig != null) 'idpConfig': idpConfig!,
+    if (legacyResetPasswordTemplate != null)
+      'legacyResetPasswordTemplate': legacyResetPasswordTemplate!,
+    if (resetPasswordTemplate != null)
+      'resetPasswordTemplate': resetPasswordTemplate!,
+    if (useEmailSending != null) 'useEmailSending': useEmailSending!,
+    if (verifyEmailTemplate != null)
+      'verifyEmailTemplate': verifyEmailTemplate!,
+  };
 }
 
 /// Response of setting the project configuration.
@@ -1911,18 +1949,14 @@ class IdentitytoolkitRelyingpartySetProjectConfigResponse {
   /// Project ID of the relying party.
   core.String? projectId;
 
-  IdentitytoolkitRelyingpartySetProjectConfigResponse({
-    this.projectId,
-  });
+  IdentitytoolkitRelyingpartySetProjectConfigResponse({this.projectId});
 
   IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(core.Map json_)
-      : this(
-          projectId: json_['projectId'] as core.String?,
-        );
+    : this(projectId: json_['projectId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (projectId != null) 'projectId': projectId!,
-      };
+    if (projectId != null) 'projectId': projectId!,
+  };
 }
 
 /// Request to sign out user.
@@ -1939,15 +1973,15 @@ class IdentitytoolkitRelyingpartySignOutUserRequest {
   });
 
   IdentitytoolkitRelyingpartySignOutUserRequest.fromJson(core.Map json_)
-      : this(
-          instanceId: json_['instanceId'] as core.String?,
-          localId: json_['localId'] as core.String?,
-        );
+    : this(
+        instanceId: json_['instanceId'] as core.String?,
+        localId: json_['localId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instanceId != null) 'instanceId': instanceId!,
-        if (localId != null) 'localId': localId!,
-      };
+    if (instanceId != null) 'instanceId': instanceId!,
+    if (localId != null) 'localId': localId!,
+  };
 }
 
 /// Response of signing out user.
@@ -1955,18 +1989,14 @@ class IdentitytoolkitRelyingpartySignOutUserResponse {
   /// The local ID of the user.
   core.String? localId;
 
-  IdentitytoolkitRelyingpartySignOutUserResponse({
-    this.localId,
-  });
+  IdentitytoolkitRelyingpartySignOutUserResponse({this.localId});
 
   IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(core.Map json_)
-      : this(
-          localId: json_['localId'] as core.String?,
-        );
+    : this(localId: json_['localId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (localId != null) 'localId': localId!,
-      };
+    if (localId != null) 'localId': localId!,
+  };
 }
 
 /// Request to signup new user, create anonymous user or anonymous user reauth.
@@ -2037,40 +2067,40 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
   });
 
   IdentitytoolkitRelyingpartySignupNewUserRequest.fromJson(core.Map json_)
-      : this(
-          captchaChallenge: json_['captchaChallenge'] as core.String?,
-          captchaResponse: json_['captchaResponse'] as core.String?,
-          disabled: json_['disabled'] as core.bool?,
-          displayName: json_['displayName'] as core.String?,
-          email: json_['email'] as core.String?,
-          emailVerified: json_['emailVerified'] as core.bool?,
-          idToken: json_['idToken'] as core.String?,
-          instanceId: json_['instanceId'] as core.String?,
-          localId: json_['localId'] as core.String?,
-          password: json_['password'] as core.String?,
-          phoneNumber: json_['phoneNumber'] as core.String?,
-          photoUrl: json_['photoUrl'] as core.String?,
-          tenantId: json_['tenantId'] as core.String?,
-          tenantProjectNumber: json_['tenantProjectNumber'] as core.String?,
-        );
+    : this(
+        captchaChallenge: json_['captchaChallenge'] as core.String?,
+        captchaResponse: json_['captchaResponse'] as core.String?,
+        disabled: json_['disabled'] as core.bool?,
+        displayName: json_['displayName'] as core.String?,
+        email: json_['email'] as core.String?,
+        emailVerified: json_['emailVerified'] as core.bool?,
+        idToken: json_['idToken'] as core.String?,
+        instanceId: json_['instanceId'] as core.String?,
+        localId: json_['localId'] as core.String?,
+        password: json_['password'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        photoUrl: json_['photoUrl'] as core.String?,
+        tenantId: json_['tenantId'] as core.String?,
+        tenantProjectNumber: json_['tenantProjectNumber'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
-        if (captchaResponse != null) 'captchaResponse': captchaResponse!,
-        if (disabled != null) 'disabled': disabled!,
-        if (displayName != null) 'displayName': displayName!,
-        if (email != null) 'email': email!,
-        if (emailVerified != null) 'emailVerified': emailVerified!,
-        if (idToken != null) 'idToken': idToken!,
-        if (instanceId != null) 'instanceId': instanceId!,
-        if (localId != null) 'localId': localId!,
-        if (password != null) 'password': password!,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-        if (photoUrl != null) 'photoUrl': photoUrl!,
-        if (tenantId != null) 'tenantId': tenantId!,
-        if (tenantProjectNumber != null)
-          'tenantProjectNumber': tenantProjectNumber!,
-      };
+    if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
+    if (captchaResponse != null) 'captchaResponse': captchaResponse!,
+    if (disabled != null) 'disabled': disabled!,
+    if (displayName != null) 'displayName': displayName!,
+    if (email != null) 'email': email!,
+    if (emailVerified != null) 'emailVerified': emailVerified!,
+    if (idToken != null) 'idToken': idToken!,
+    if (instanceId != null) 'instanceId': instanceId!,
+    if (localId != null) 'localId': localId!,
+    if (password != null) 'password': password!,
+    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+    if (photoUrl != null) 'photoUrl': photoUrl!,
+    if (tenantId != null) 'tenantId': tenantId!,
+    if (tenantProjectNumber != null)
+      'tenantProjectNumber': tenantProjectNumber!,
+  };
 }
 
 /// Request to upload user account in batch.
@@ -2108,8 +2138,10 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
       convert.base64.decode(saltSeparator!);
 
   set saltSeparatorAsBytes(core.List<core.int> bytes_) {
-    saltSeparator =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    saltSeparator = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// If true, backend will do sanity check(including duplicate email and
@@ -2121,8 +2153,10 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   core.List<core.int> get signerKeyAsBytes => convert.base64.decode(signerKey!);
 
   set signerKeyAsBytes(core.List<core.int> bytes_) {
-    signerKey =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    signerKey = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specify which project (field value is actually project id) to operate.
@@ -2151,44 +2185,47 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
   });
 
   IdentitytoolkitRelyingpartyUploadAccountRequest.fromJson(core.Map json_)
-      : this(
-          allowOverwrite: json_['allowOverwrite'] as core.bool?,
-          blockSize: json_['blockSize'] as core.int?,
-          cpuMemCost: json_['cpuMemCost'] as core.int?,
-          delegatedProjectNumber:
-              json_['delegatedProjectNumber'] as core.String?,
-          dkLen: json_['dkLen'] as core.int?,
-          hashAlgorithm: json_['hashAlgorithm'] as core.String?,
-          memoryCost: json_['memoryCost'] as core.int?,
-          parallelization: json_['parallelization'] as core.int?,
-          rounds: json_['rounds'] as core.int?,
-          saltSeparator: json_['saltSeparator'] as core.String?,
-          sanityCheck: json_['sanityCheck'] as core.bool?,
-          signerKey: json_['signerKey'] as core.String?,
-          targetProjectId: json_['targetProjectId'] as core.String?,
-          users: (json_['users'] as core.List?)
-              ?.map((value) => UserInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        allowOverwrite: json_['allowOverwrite'] as core.bool?,
+        blockSize: json_['blockSize'] as core.int?,
+        cpuMemCost: json_['cpuMemCost'] as core.int?,
+        delegatedProjectNumber: json_['delegatedProjectNumber'] as core.String?,
+        dkLen: json_['dkLen'] as core.int?,
+        hashAlgorithm: json_['hashAlgorithm'] as core.String?,
+        memoryCost: json_['memoryCost'] as core.int?,
+        parallelization: json_['parallelization'] as core.int?,
+        rounds: json_['rounds'] as core.int?,
+        saltSeparator: json_['saltSeparator'] as core.String?,
+        sanityCheck: json_['sanityCheck'] as core.bool?,
+        signerKey: json_['signerKey'] as core.String?,
+        targetProjectId: json_['targetProjectId'] as core.String?,
+        users:
+            (json_['users'] as core.List?)
+                ?.map(
+                  (value) => UserInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowOverwrite != null) 'allowOverwrite': allowOverwrite!,
-        if (blockSize != null) 'blockSize': blockSize!,
-        if (cpuMemCost != null) 'cpuMemCost': cpuMemCost!,
-        if (delegatedProjectNumber != null)
-          'delegatedProjectNumber': delegatedProjectNumber!,
-        if (dkLen != null) 'dkLen': dkLen!,
-        if (hashAlgorithm != null) 'hashAlgorithm': hashAlgorithm!,
-        if (memoryCost != null) 'memoryCost': memoryCost!,
-        if (parallelization != null) 'parallelization': parallelization!,
-        if (rounds != null) 'rounds': rounds!,
-        if (saltSeparator != null) 'saltSeparator': saltSeparator!,
-        if (sanityCheck != null) 'sanityCheck': sanityCheck!,
-        if (signerKey != null) 'signerKey': signerKey!,
-        if (targetProjectId != null) 'targetProjectId': targetProjectId!,
-        if (users != null) 'users': users!,
-      };
+    if (allowOverwrite != null) 'allowOverwrite': allowOverwrite!,
+    if (blockSize != null) 'blockSize': blockSize!,
+    if (cpuMemCost != null) 'cpuMemCost': cpuMemCost!,
+    if (delegatedProjectNumber != null)
+      'delegatedProjectNumber': delegatedProjectNumber!,
+    if (dkLen != null) 'dkLen': dkLen!,
+    if (hashAlgorithm != null) 'hashAlgorithm': hashAlgorithm!,
+    if (memoryCost != null) 'memoryCost': memoryCost!,
+    if (parallelization != null) 'parallelization': parallelization!,
+    if (rounds != null) 'rounds': rounds!,
+    if (saltSeparator != null) 'saltSeparator': saltSeparator!,
+    if (sanityCheck != null) 'sanityCheck': sanityCheck!,
+    if (signerKey != null) 'signerKey': signerKey!,
+    if (targetProjectId != null) 'targetProjectId': targetProjectId!,
+    if (users != null) 'users': users!,
+  };
 }
 
 /// Request to verify the IDP assertion.
@@ -2261,42 +2298,40 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
   });
 
   IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(core.Map json_)
-      : this(
-          autoCreate: json_['autoCreate'] as core.bool?,
-          delegatedProjectNumber:
-              json_['delegatedProjectNumber'] as core.String?,
-          idToken: json_['idToken'] as core.String?,
-          instanceId: json_['instanceId'] as core.String?,
-          pendingIdToken: json_['pendingIdToken'] as core.String?,
-          postBody: json_['postBody'] as core.String?,
-          requestUri: json_['requestUri'] as core.String?,
-          returnIdpCredential: json_['returnIdpCredential'] as core.bool?,
-          returnRefreshToken: json_['returnRefreshToken'] as core.bool?,
-          returnSecureToken: json_['returnSecureToken'] as core.bool?,
-          sessionId: json_['sessionId'] as core.String?,
-          tenantId: json_['tenantId'] as core.String?,
-          tenantProjectNumber: json_['tenantProjectNumber'] as core.String?,
-        );
+    : this(
+        autoCreate: json_['autoCreate'] as core.bool?,
+        delegatedProjectNumber: json_['delegatedProjectNumber'] as core.String?,
+        idToken: json_['idToken'] as core.String?,
+        instanceId: json_['instanceId'] as core.String?,
+        pendingIdToken: json_['pendingIdToken'] as core.String?,
+        postBody: json_['postBody'] as core.String?,
+        requestUri: json_['requestUri'] as core.String?,
+        returnIdpCredential: json_['returnIdpCredential'] as core.bool?,
+        returnRefreshToken: json_['returnRefreshToken'] as core.bool?,
+        returnSecureToken: json_['returnSecureToken'] as core.bool?,
+        sessionId: json_['sessionId'] as core.String?,
+        tenantId: json_['tenantId'] as core.String?,
+        tenantProjectNumber: json_['tenantProjectNumber'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoCreate != null) 'autoCreate': autoCreate!,
-        if (delegatedProjectNumber != null)
-          'delegatedProjectNumber': delegatedProjectNumber!,
-        if (idToken != null) 'idToken': idToken!,
-        if (instanceId != null) 'instanceId': instanceId!,
-        if (pendingIdToken != null) 'pendingIdToken': pendingIdToken!,
-        if (postBody != null) 'postBody': postBody!,
-        if (requestUri != null) 'requestUri': requestUri!,
-        if (returnIdpCredential != null)
-          'returnIdpCredential': returnIdpCredential!,
-        if (returnRefreshToken != null)
-          'returnRefreshToken': returnRefreshToken!,
-        if (returnSecureToken != null) 'returnSecureToken': returnSecureToken!,
-        if (sessionId != null) 'sessionId': sessionId!,
-        if (tenantId != null) 'tenantId': tenantId!,
-        if (tenantProjectNumber != null)
-          'tenantProjectNumber': tenantProjectNumber!,
-      };
+    if (autoCreate != null) 'autoCreate': autoCreate!,
+    if (delegatedProjectNumber != null)
+      'delegatedProjectNumber': delegatedProjectNumber!,
+    if (idToken != null) 'idToken': idToken!,
+    if (instanceId != null) 'instanceId': instanceId!,
+    if (pendingIdToken != null) 'pendingIdToken': pendingIdToken!,
+    if (postBody != null) 'postBody': postBody!,
+    if (requestUri != null) 'requestUri': requestUri!,
+    if (returnIdpCredential != null)
+      'returnIdpCredential': returnIdpCredential!,
+    if (returnRefreshToken != null) 'returnRefreshToken': returnRefreshToken!,
+    if (returnSecureToken != null) 'returnSecureToken': returnSecureToken!,
+    if (sessionId != null) 'sessionId': sessionId!,
+    if (tenantId != null) 'tenantId': tenantId!,
+    if (tenantProjectNumber != null)
+      'tenantProjectNumber': tenantProjectNumber!,
+  };
 }
 
 /// Request to verify a custom token
@@ -2323,21 +2358,20 @@ class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
   });
 
   IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(core.Map json_)
-      : this(
-          delegatedProjectNumber:
-              json_['delegatedProjectNumber'] as core.String?,
-          instanceId: json_['instanceId'] as core.String?,
-          returnSecureToken: json_['returnSecureToken'] as core.bool?,
-          token: json_['token'] as core.String?,
-        );
+    : this(
+        delegatedProjectNumber: json_['delegatedProjectNumber'] as core.String?,
+        instanceId: json_['instanceId'] as core.String?,
+        returnSecureToken: json_['returnSecureToken'] as core.bool?,
+        token: json_['token'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (delegatedProjectNumber != null)
-          'delegatedProjectNumber': delegatedProjectNumber!,
-        if (instanceId != null) 'instanceId': instanceId!,
-        if (returnSecureToken != null) 'returnSecureToken': returnSecureToken!,
-        if (token != null) 'token': token!,
-      };
+    if (delegatedProjectNumber != null)
+      'delegatedProjectNumber': delegatedProjectNumber!,
+    if (instanceId != null) 'instanceId': instanceId!,
+    if (returnSecureToken != null) 'returnSecureToken': returnSecureToken!,
+    if (token != null) 'token': token!,
+  };
 }
 
 /// Request to verify the password.
@@ -2395,36 +2429,35 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
   });
 
   IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(core.Map json_)
-      : this(
-          captchaChallenge: json_['captchaChallenge'] as core.String?,
-          captchaResponse: json_['captchaResponse'] as core.String?,
-          delegatedProjectNumber:
-              json_['delegatedProjectNumber'] as core.String?,
-          email: json_['email'] as core.String?,
-          idToken: json_['idToken'] as core.String?,
-          instanceId: json_['instanceId'] as core.String?,
-          password: json_['password'] as core.String?,
-          pendingIdToken: json_['pendingIdToken'] as core.String?,
-          returnSecureToken: json_['returnSecureToken'] as core.bool?,
-          tenantId: json_['tenantId'] as core.String?,
-          tenantProjectNumber: json_['tenantProjectNumber'] as core.String?,
-        );
+    : this(
+        captchaChallenge: json_['captchaChallenge'] as core.String?,
+        captchaResponse: json_['captchaResponse'] as core.String?,
+        delegatedProjectNumber: json_['delegatedProjectNumber'] as core.String?,
+        email: json_['email'] as core.String?,
+        idToken: json_['idToken'] as core.String?,
+        instanceId: json_['instanceId'] as core.String?,
+        password: json_['password'] as core.String?,
+        pendingIdToken: json_['pendingIdToken'] as core.String?,
+        returnSecureToken: json_['returnSecureToken'] as core.bool?,
+        tenantId: json_['tenantId'] as core.String?,
+        tenantProjectNumber: json_['tenantProjectNumber'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
-        if (captchaResponse != null) 'captchaResponse': captchaResponse!,
-        if (delegatedProjectNumber != null)
-          'delegatedProjectNumber': delegatedProjectNumber!,
-        if (email != null) 'email': email!,
-        if (idToken != null) 'idToken': idToken!,
-        if (instanceId != null) 'instanceId': instanceId!,
-        if (password != null) 'password': password!,
-        if (pendingIdToken != null) 'pendingIdToken': pendingIdToken!,
-        if (returnSecureToken != null) 'returnSecureToken': returnSecureToken!,
-        if (tenantId != null) 'tenantId': tenantId!,
-        if (tenantProjectNumber != null)
-          'tenantProjectNumber': tenantProjectNumber!,
-      };
+    if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
+    if (captchaResponse != null) 'captchaResponse': captchaResponse!,
+    if (delegatedProjectNumber != null)
+      'delegatedProjectNumber': delegatedProjectNumber!,
+    if (email != null) 'email': email!,
+    if (idToken != null) 'idToken': idToken!,
+    if (instanceId != null) 'instanceId': instanceId!,
+    if (password != null) 'password': password!,
+    if (pendingIdToken != null) 'pendingIdToken': pendingIdToken!,
+    if (returnSecureToken != null) 'returnSecureToken': returnSecureToken!,
+    if (tenantId != null) 'tenantId': tenantId!,
+    if (tenantProjectNumber != null)
+      'tenantProjectNumber': tenantProjectNumber!,
+  };
 }
 
 /// Request for Identitytoolkit-VerifyPhoneNumber
@@ -2451,25 +2484,25 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
   });
 
   IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          idToken: json_['idToken'] as core.String?,
-          operation: json_['operation'] as core.String?,
-          phoneNumber: json_['phoneNumber'] as core.String?,
-          sessionInfo: json_['sessionInfo'] as core.String?,
-          temporaryProof: json_['temporaryProof'] as core.String?,
-          verificationProof: json_['verificationProof'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        idToken: json_['idToken'] as core.String?,
+        operation: json_['operation'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        sessionInfo: json_['sessionInfo'] as core.String?,
+        temporaryProof: json_['temporaryProof'] as core.String?,
+        verificationProof: json_['verificationProof'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (idToken != null) 'idToken': idToken!,
-        if (operation != null) 'operation': operation!,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-        if (sessionInfo != null) 'sessionInfo': sessionInfo!,
-        if (temporaryProof != null) 'temporaryProof': temporaryProof!,
-        if (verificationProof != null) 'verificationProof': verificationProof!,
-      };
+    if (code != null) 'code': code!,
+    if (idToken != null) 'idToken': idToken!,
+    if (operation != null) 'operation': operation!,
+    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+    if (sessionInfo != null) 'sessionInfo': sessionInfo!,
+    if (temporaryProof != null) 'temporaryProof': temporaryProof!,
+    if (verificationProof != null) 'verificationProof': verificationProof!,
+  };
 }
 
 /// Response for Identitytoolkit-VerifyPhoneNumber
@@ -2499,35 +2532,35 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
   });
 
   IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(core.Map json_)
-      : this(
-          expiresIn: json_['expiresIn'] as core.String?,
-          idToken: json_['idToken'] as core.String?,
-          isNewUser: json_['isNewUser'] as core.bool?,
-          localId: json_['localId'] as core.String?,
-          phoneNumber: json_['phoneNumber'] as core.String?,
-          refreshToken: json_['refreshToken'] as core.String?,
-          temporaryProof: json_['temporaryProof'] as core.String?,
-          temporaryProofExpiresIn:
-              json_['temporaryProofExpiresIn'] as core.String?,
-          verificationProof: json_['verificationProof'] as core.String?,
-          verificationProofExpiresIn:
-              json_['verificationProofExpiresIn'] as core.String?,
-        );
+    : this(
+        expiresIn: json_['expiresIn'] as core.String?,
+        idToken: json_['idToken'] as core.String?,
+        isNewUser: json_['isNewUser'] as core.bool?,
+        localId: json_['localId'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        refreshToken: json_['refreshToken'] as core.String?,
+        temporaryProof: json_['temporaryProof'] as core.String?,
+        temporaryProofExpiresIn:
+            json_['temporaryProofExpiresIn'] as core.String?,
+        verificationProof: json_['verificationProof'] as core.String?,
+        verificationProofExpiresIn:
+            json_['verificationProofExpiresIn'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expiresIn != null) 'expiresIn': expiresIn!,
-        if (idToken != null) 'idToken': idToken!,
-        if (isNewUser != null) 'isNewUser': isNewUser!,
-        if (localId != null) 'localId': localId!,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-        if (refreshToken != null) 'refreshToken': refreshToken!,
-        if (temporaryProof != null) 'temporaryProof': temporaryProof!,
-        if (temporaryProofExpiresIn != null)
-          'temporaryProofExpiresIn': temporaryProofExpiresIn!,
-        if (verificationProof != null) 'verificationProof': verificationProof!,
-        if (verificationProofExpiresIn != null)
-          'verificationProofExpiresIn': verificationProofExpiresIn!,
-      };
+    if (expiresIn != null) 'expiresIn': expiresIn!,
+    if (idToken != null) 'idToken': idToken!,
+    if (isNewUser != null) 'isNewUser': isNewUser!,
+    if (localId != null) 'localId': localId!,
+    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+    if (refreshToken != null) 'refreshToken': refreshToken!,
+    if (temporaryProof != null) 'temporaryProof': temporaryProof!,
+    if (temporaryProofExpiresIn != null)
+      'temporaryProofExpiresIn': temporaryProofExpiresIn!,
+    if (verificationProof != null) 'verificationProof': verificationProof!,
+    if (verificationProofExpiresIn != null)
+      'verificationProofExpiresIn': verificationProofExpiresIn!,
+  };
 }
 
 /// Template for a single idp configuration.
@@ -2561,26 +2594,27 @@ class IdpConfig {
   });
 
   IdpConfig.fromJson(core.Map json_)
-      : this(
-          clientId: json_['clientId'] as core.String?,
-          enabled: json_['enabled'] as core.bool?,
-          experimentPercent: json_['experimentPercent'] as core.int?,
-          provider: json_['provider'] as core.String?,
-          secret: json_['secret'] as core.String?,
-          whitelistedAudiences: (json_['whitelistedAudiences'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        clientId: json_['clientId'] as core.String?,
+        enabled: json_['enabled'] as core.bool?,
+        experimentPercent: json_['experimentPercent'] as core.int?,
+        provider: json_['provider'] as core.String?,
+        secret: json_['secret'] as core.String?,
+        whitelistedAudiences:
+            (json_['whitelistedAudiences'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientId != null) 'clientId': clientId!,
-        if (enabled != null) 'enabled': enabled!,
-        if (experimentPercent != null) 'experimentPercent': experimentPercent!,
-        if (provider != null) 'provider': provider!,
-        if (secret != null) 'secret': secret!,
-        if (whitelistedAudiences != null)
-          'whitelistedAudiences': whitelistedAudiences!,
-      };
+    if (clientId != null) 'clientId': clientId!,
+    if (enabled != null) 'enabled': enabled!,
+    if (experimentPercent != null) 'experimentPercent': experimentPercent!,
+    if (provider != null) 'provider': provider!,
+    if (secret != null) 'secret': secret!,
+    if (whitelistedAudiences != null)
+      'whitelistedAudiences': whitelistedAudiences!,
+  };
 }
 
 /// Request of getting a code for user confirmation (reset password, change
@@ -2654,44 +2688,42 @@ class Relyingparty {
   });
 
   Relyingparty.fromJson(core.Map json_)
-      : this(
-          androidInstallApp: json_['androidInstallApp'] as core.bool?,
-          androidMinimumVersion: json_['androidMinimumVersion'] as core.String?,
-          androidPackageName: json_['androidPackageName'] as core.String?,
-          canHandleCodeInApp: json_['canHandleCodeInApp'] as core.bool?,
-          captchaResp: json_['captchaResp'] as core.String?,
-          challenge: json_['challenge'] as core.String?,
-          continueUrl: json_['continueUrl'] as core.String?,
-          email: json_['email'] as core.String?,
-          iOSAppStoreId: json_['iOSAppStoreId'] as core.String?,
-          iOSBundleId: json_['iOSBundleId'] as core.String?,
-          idToken: json_['idToken'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          newEmail: json_['newEmail'] as core.String?,
-          requestType: json_['requestType'] as core.String?,
-          userIp: json_['userIp'] as core.String?,
-        );
+    : this(
+        androidInstallApp: json_['androidInstallApp'] as core.bool?,
+        androidMinimumVersion: json_['androidMinimumVersion'] as core.String?,
+        androidPackageName: json_['androidPackageName'] as core.String?,
+        canHandleCodeInApp: json_['canHandleCodeInApp'] as core.bool?,
+        captchaResp: json_['captchaResp'] as core.String?,
+        challenge: json_['challenge'] as core.String?,
+        continueUrl: json_['continueUrl'] as core.String?,
+        email: json_['email'] as core.String?,
+        iOSAppStoreId: json_['iOSAppStoreId'] as core.String?,
+        iOSBundleId: json_['iOSBundleId'] as core.String?,
+        idToken: json_['idToken'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        newEmail: json_['newEmail'] as core.String?,
+        requestType: json_['requestType'] as core.String?,
+        userIp: json_['userIp'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (androidInstallApp != null) 'androidInstallApp': androidInstallApp!,
-        if (androidMinimumVersion != null)
-          'androidMinimumVersion': androidMinimumVersion!,
-        if (androidPackageName != null)
-          'androidPackageName': androidPackageName!,
-        if (canHandleCodeInApp != null)
-          'canHandleCodeInApp': canHandleCodeInApp!,
-        if (captchaResp != null) 'captchaResp': captchaResp!,
-        if (challenge != null) 'challenge': challenge!,
-        if (continueUrl != null) 'continueUrl': continueUrl!,
-        if (email != null) 'email': email!,
-        if (iOSAppStoreId != null) 'iOSAppStoreId': iOSAppStoreId!,
-        if (iOSBundleId != null) 'iOSBundleId': iOSBundleId!,
-        if (idToken != null) 'idToken': idToken!,
-        if (kind != null) 'kind': kind!,
-        if (newEmail != null) 'newEmail': newEmail!,
-        if (requestType != null) 'requestType': requestType!,
-        if (userIp != null) 'userIp': userIp!,
-      };
+    if (androidInstallApp != null) 'androidInstallApp': androidInstallApp!,
+    if (androidMinimumVersion != null)
+      'androidMinimumVersion': androidMinimumVersion!,
+    if (androidPackageName != null) 'androidPackageName': androidPackageName!,
+    if (canHandleCodeInApp != null) 'canHandleCodeInApp': canHandleCodeInApp!,
+    if (captchaResp != null) 'captchaResp': captchaResp!,
+    if (challenge != null) 'challenge': challenge!,
+    if (continueUrl != null) 'continueUrl': continueUrl!,
+    if (email != null) 'email': email!,
+    if (iOSAppStoreId != null) 'iOSAppStoreId': iOSAppStoreId!,
+    if (iOSBundleId != null) 'iOSBundleId': iOSBundleId!,
+    if (idToken != null) 'idToken': idToken!,
+    if (kind != null) 'kind': kind!,
+    if (newEmail != null) 'newEmail': newEmail!,
+    if (requestType != null) 'requestType': requestType!,
+    if (userIp != null) 'userIp': userIp!,
+  };
 }
 
 /// Response of resetting the password.
@@ -2718,19 +2750,19 @@ class ResetPasswordResponse {
   });
 
   ResetPasswordResponse.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          newEmail: json_['newEmail'] as core.String?,
-          requestType: json_['requestType'] as core.String?,
-        );
+    : this(
+        email: json_['email'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        newEmail: json_['newEmail'] as core.String?,
+        requestType: json_['requestType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (kind != null) 'kind': kind!,
-        if (newEmail != null) 'newEmail': newEmail!,
-        if (requestType != null) 'requestType': requestType!,
-      };
+    if (email != null) 'email': email!,
+    if (kind != null) 'kind': kind!,
+    if (newEmail != null) 'newEmail': newEmail!,
+    if (requestType != null) 'requestType': requestType!,
+  };
 }
 
 class SetAccountInfoResponseProviderUserInfo {
@@ -2757,19 +2789,19 @@ class SetAccountInfoResponseProviderUserInfo {
   });
 
   SetAccountInfoResponseProviderUserInfo.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          federatedId: json_['federatedId'] as core.String?,
-          photoUrl: json_['photoUrl'] as core.String?,
-          providerId: json_['providerId'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        federatedId: json_['federatedId'] as core.String?,
+        photoUrl: json_['photoUrl'] as core.String?,
+        providerId: json_['providerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (federatedId != null) 'federatedId': federatedId!,
-        if (photoUrl != null) 'photoUrl': photoUrl!,
-        if (providerId != null) 'providerId': providerId!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (federatedId != null) 'federatedId': federatedId!,
+    if (photoUrl != null) 'photoUrl': photoUrl!,
+    if (providerId != null) 'providerId': providerId!,
+  };
 }
 
 /// Respone of setting the account information.
@@ -2805,8 +2837,10 @@ class SetAccountInfoResponse {
       convert.base64.decode(passwordHash!);
 
   set passwordHashAsBytes(core.List<core.int> bytes_) {
-    passwordHash =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    passwordHash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The photo url of the user.
@@ -2834,38 +2868,42 @@ class SetAccountInfoResponse {
   });
 
   SetAccountInfoResponse.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          email: json_['email'] as core.String?,
-          emailVerified: json_['emailVerified'] as core.bool?,
-          expiresIn: json_['expiresIn'] as core.String?,
-          idToken: json_['idToken'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          localId: json_['localId'] as core.String?,
-          newEmail: json_['newEmail'] as core.String?,
-          passwordHash: json_['passwordHash'] as core.String?,
-          photoUrl: json_['photoUrl'] as core.String?,
-          providerUserInfo: (json_['providerUserInfo'] as core.List?)
-              ?.map((value) => SetAccountInfoResponseProviderUserInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          refreshToken: json_['refreshToken'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        email: json_['email'] as core.String?,
+        emailVerified: json_['emailVerified'] as core.bool?,
+        expiresIn: json_['expiresIn'] as core.String?,
+        idToken: json_['idToken'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        localId: json_['localId'] as core.String?,
+        newEmail: json_['newEmail'] as core.String?,
+        passwordHash: json_['passwordHash'] as core.String?,
+        photoUrl: json_['photoUrl'] as core.String?,
+        providerUserInfo:
+            (json_['providerUserInfo'] as core.List?)
+                ?.map(
+                  (value) => SetAccountInfoResponseProviderUserInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        refreshToken: json_['refreshToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (email != null) 'email': email!,
-        if (emailVerified != null) 'emailVerified': emailVerified!,
-        if (expiresIn != null) 'expiresIn': expiresIn!,
-        if (idToken != null) 'idToken': idToken!,
-        if (kind != null) 'kind': kind!,
-        if (localId != null) 'localId': localId!,
-        if (newEmail != null) 'newEmail': newEmail!,
-        if (passwordHash != null) 'passwordHash': passwordHash!,
-        if (photoUrl != null) 'photoUrl': photoUrl!,
-        if (providerUserInfo != null) 'providerUserInfo': providerUserInfo!,
-        if (refreshToken != null) 'refreshToken': refreshToken!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (email != null) 'email': email!,
+    if (emailVerified != null) 'emailVerified': emailVerified!,
+    if (expiresIn != null) 'expiresIn': expiresIn!,
+    if (idToken != null) 'idToken': idToken!,
+    if (kind != null) 'kind': kind!,
+    if (localId != null) 'localId': localId!,
+    if (newEmail != null) 'newEmail': newEmail!,
+    if (passwordHash != null) 'passwordHash': passwordHash!,
+    if (photoUrl != null) 'photoUrl': photoUrl!,
+    if (providerUserInfo != null) 'providerUserInfo': providerUserInfo!,
+    if (refreshToken != null) 'refreshToken': refreshToken!,
+  };
 }
 
 /// Response of signing up new user, creating anonymous user or anonymous user
@@ -2904,25 +2942,25 @@ class SignupNewUserResponse {
   });
 
   SignupNewUserResponse.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          email: json_['email'] as core.String?,
-          expiresIn: json_['expiresIn'] as core.String?,
-          idToken: json_['idToken'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          localId: json_['localId'] as core.String?,
-          refreshToken: json_['refreshToken'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        email: json_['email'] as core.String?,
+        expiresIn: json_['expiresIn'] as core.String?,
+        idToken: json_['idToken'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        localId: json_['localId'] as core.String?,
+        refreshToken: json_['refreshToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (email != null) 'email': email!,
-        if (expiresIn != null) 'expiresIn': expiresIn!,
-        if (idToken != null) 'idToken': idToken!,
-        if (kind != null) 'kind': kind!,
-        if (localId != null) 'localId': localId!,
-        if (refreshToken != null) 'refreshToken': refreshToken!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (email != null) 'email': email!,
+    if (expiresIn != null) 'expiresIn': expiresIn!,
+    if (idToken != null) 'idToken': idToken!,
+    if (kind != null) 'kind': kind!,
+    if (localId != null) 'localId': localId!,
+    if (refreshToken != null) 'refreshToken': refreshToken!,
+  };
 }
 
 class UploadAccountResponseError {
@@ -2932,21 +2970,18 @@ class UploadAccountResponseError {
   /// Detailed error message for the account info.
   core.String? message;
 
-  UploadAccountResponseError({
-    this.index,
-    this.message,
-  });
+  UploadAccountResponseError({this.index, this.message});
 
   UploadAccountResponseError.fromJson(core.Map json_)
-      : this(
-          index: json_['index'] as core.int?,
-          message: json_['message'] as core.String?,
-        );
+    : this(
+        index: json_['index'] as core.int?,
+        message: json_['message'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (index != null) 'index': index!,
-        if (message != null) 'message': message!,
-      };
+    if (index != null) 'index': index!,
+    if (message != null) 'message': message!,
+  };
 }
 
 /// Respone of uploading accounts in batch.
@@ -2957,24 +2992,25 @@ class UploadAccountResponse {
   /// The fixed string "identitytoolkit#UploadAccountResponse".
   core.String? kind;
 
-  UploadAccountResponse({
-    this.error,
-    this.kind,
-  });
+  UploadAccountResponse({this.error, this.kind});
 
   UploadAccountResponse.fromJson(core.Map json_)
-      : this(
-          error: (json_['error'] as core.List?)
-              ?.map((value) => UploadAccountResponseError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        error:
+            (json_['error'] as core.List?)
+                ?.map(
+                  (value) => UploadAccountResponseError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (error != null) 'error': error!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 class UserInfoProviderUserInfo {
@@ -3017,27 +3053,27 @@ class UserInfoProviderUserInfo {
   });
 
   UserInfoProviderUserInfo.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          email: json_['email'] as core.String?,
-          federatedId: json_['federatedId'] as core.String?,
-          phoneNumber: json_['phoneNumber'] as core.String?,
-          photoUrl: json_['photoUrl'] as core.String?,
-          providerId: json_['providerId'] as core.String?,
-          rawId: json_['rawId'] as core.String?,
-          screenName: json_['screenName'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        email: json_['email'] as core.String?,
+        federatedId: json_['federatedId'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        photoUrl: json_['photoUrl'] as core.String?,
+        providerId: json_['providerId'] as core.String?,
+        rawId: json_['rawId'] as core.String?,
+        screenName: json_['screenName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (email != null) 'email': email!,
-        if (federatedId != null) 'federatedId': federatedId!,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-        if (photoUrl != null) 'photoUrl': photoUrl!,
-        if (providerId != null) 'providerId': providerId!,
-        if (rawId != null) 'rawId': rawId!,
-        if (screenName != null) 'screenName': screenName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (email != null) 'email': email!,
+    if (federatedId != null) 'federatedId': federatedId!,
+    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+    if (photoUrl != null) 'photoUrl': photoUrl!,
+    if (providerId != null) 'providerId': providerId!,
+    if (rawId != null) 'rawId': rawId!,
+    if (screenName != null) 'screenName': screenName!,
+  };
 }
 
 /// Template for an individual account info.
@@ -3075,8 +3111,10 @@ class UserInfo {
       convert.base64.decode(passwordHash!);
 
   set passwordHashAsBytes(core.List<core.int> bytes_) {
-    passwordHash =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    passwordHash = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The timestamp when the password was last updated.
@@ -3099,8 +3137,10 @@ class UserInfo {
   core.List<core.int> get saltAsBytes => convert.base64.decode(salt!);
 
   set saltAsBytes(core.List<core.int> bytes_) {
-    salt =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    salt = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// User's screen name at Twitter or login name at Github.
@@ -3135,53 +3175,57 @@ class UserInfo {
   });
 
   UserInfo.fromJson(core.Map json_)
-      : this(
-          createdAt: json_['createdAt'] as core.String?,
-          customAttributes: json_['customAttributes'] as core.String?,
-          customAuth: json_['customAuth'] as core.bool?,
-          disabled: json_['disabled'] as core.bool?,
-          displayName: json_['displayName'] as core.String?,
-          email: json_['email'] as core.String?,
-          emailVerified: json_['emailVerified'] as core.bool?,
-          lastLoginAt: json_['lastLoginAt'] as core.String?,
-          localId: json_['localId'] as core.String?,
-          passwordHash: json_['passwordHash'] as core.String?,
-          passwordUpdatedAt:
-              (json_['passwordUpdatedAt'] as core.num?)?.toDouble(),
-          phoneNumber: json_['phoneNumber'] as core.String?,
-          photoUrl: json_['photoUrl'] as core.String?,
-          providerUserInfo: (json_['providerUserInfo'] as core.List?)
-              ?.map((value) => UserInfoProviderUserInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          rawPassword: json_['rawPassword'] as core.String?,
-          salt: json_['salt'] as core.String?,
-          screenName: json_['screenName'] as core.String?,
-          validSince: json_['validSince'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        createdAt: json_['createdAt'] as core.String?,
+        customAttributes: json_['customAttributes'] as core.String?,
+        customAuth: json_['customAuth'] as core.bool?,
+        disabled: json_['disabled'] as core.bool?,
+        displayName: json_['displayName'] as core.String?,
+        email: json_['email'] as core.String?,
+        emailVerified: json_['emailVerified'] as core.bool?,
+        lastLoginAt: json_['lastLoginAt'] as core.String?,
+        localId: json_['localId'] as core.String?,
+        passwordHash: json_['passwordHash'] as core.String?,
+        passwordUpdatedAt:
+            (json_['passwordUpdatedAt'] as core.num?)?.toDouble(),
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        photoUrl: json_['photoUrl'] as core.String?,
+        providerUserInfo:
+            (json_['providerUserInfo'] as core.List?)
+                ?.map(
+                  (value) => UserInfoProviderUserInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        rawPassword: json_['rawPassword'] as core.String?,
+        salt: json_['salt'] as core.String?,
+        screenName: json_['screenName'] as core.String?,
+        validSince: json_['validSince'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createdAt != null) 'createdAt': createdAt!,
-        if (customAttributes != null) 'customAttributes': customAttributes!,
-        if (customAuth != null) 'customAuth': customAuth!,
-        if (disabled != null) 'disabled': disabled!,
-        if (displayName != null) 'displayName': displayName!,
-        if (email != null) 'email': email!,
-        if (emailVerified != null) 'emailVerified': emailVerified!,
-        if (lastLoginAt != null) 'lastLoginAt': lastLoginAt!,
-        if (localId != null) 'localId': localId!,
-        if (passwordHash != null) 'passwordHash': passwordHash!,
-        if (passwordUpdatedAt != null) 'passwordUpdatedAt': passwordUpdatedAt!,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-        if (photoUrl != null) 'photoUrl': photoUrl!,
-        if (providerUserInfo != null) 'providerUserInfo': providerUserInfo!,
-        if (rawPassword != null) 'rawPassword': rawPassword!,
-        if (salt != null) 'salt': salt!,
-        if (screenName != null) 'screenName': screenName!,
-        if (validSince != null) 'validSince': validSince!,
-        if (version != null) 'version': version!,
-      };
+    if (createdAt != null) 'createdAt': createdAt!,
+    if (customAttributes != null) 'customAttributes': customAttributes!,
+    if (customAuth != null) 'customAuth': customAuth!,
+    if (disabled != null) 'disabled': disabled!,
+    if (displayName != null) 'displayName': displayName!,
+    if (email != null) 'email': email!,
+    if (emailVerified != null) 'emailVerified': emailVerified!,
+    if (lastLoginAt != null) 'lastLoginAt': lastLoginAt!,
+    if (localId != null) 'localId': localId!,
+    if (passwordHash != null) 'passwordHash': passwordHash!,
+    if (passwordUpdatedAt != null) 'passwordUpdatedAt': passwordUpdatedAt!,
+    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+    if (photoUrl != null) 'photoUrl': photoUrl!,
+    if (providerUserInfo != null) 'providerUserInfo': providerUserInfo!,
+    if (rawPassword != null) 'rawPassword': rawPassword!,
+    if (salt != null) 'salt': salt!,
+    if (screenName != null) 'screenName': screenName!,
+    if (validSince != null) 'validSince': validSince!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Response of verifying the IDP assertion.
@@ -3367,94 +3411,93 @@ class VerifyAssertionResponse {
   });
 
   VerifyAssertionResponse.fromJson(core.Map json_)
-      : this(
-          action: json_['action'] as core.String?,
-          appInstallationUrl: json_['appInstallationUrl'] as core.String?,
-          appScheme: json_['appScheme'] as core.String?,
-          context: json_['context'] as core.String?,
-          dateOfBirth: json_['dateOfBirth'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          email: json_['email'] as core.String?,
-          emailRecycled: json_['emailRecycled'] as core.bool?,
-          emailVerified: json_['emailVerified'] as core.bool?,
-          errorMessage: json_['errorMessage'] as core.String?,
-          expiresIn: json_['expiresIn'] as core.String?,
-          federatedId: json_['federatedId'] as core.String?,
-          firstName: json_['firstName'] as core.String?,
-          fullName: json_['fullName'] as core.String?,
-          idToken: json_['idToken'] as core.String?,
-          inputEmail: json_['inputEmail'] as core.String?,
-          isNewUser: json_['isNewUser'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          language: json_['language'] as core.String?,
-          lastName: json_['lastName'] as core.String?,
-          localId: json_['localId'] as core.String?,
-          needConfirmation: json_['needConfirmation'] as core.bool?,
-          needEmail: json_['needEmail'] as core.bool?,
-          nickName: json_['nickName'] as core.String?,
-          oauthAccessToken: json_['oauthAccessToken'] as core.String?,
-          oauthAuthorizationCode:
-              json_['oauthAuthorizationCode'] as core.String?,
-          oauthExpireIn: json_['oauthExpireIn'] as core.int?,
-          oauthIdToken: json_['oauthIdToken'] as core.String?,
-          oauthRequestToken: json_['oauthRequestToken'] as core.String?,
-          oauthScope: json_['oauthScope'] as core.String?,
-          oauthTokenSecret: json_['oauthTokenSecret'] as core.String?,
-          originalEmail: json_['originalEmail'] as core.String?,
-          photoUrl: json_['photoUrl'] as core.String?,
-          providerId: json_['providerId'] as core.String?,
-          rawUserInfo: json_['rawUserInfo'] as core.String?,
-          refreshToken: json_['refreshToken'] as core.String?,
-          screenName: json_['screenName'] as core.String?,
-          timeZone: json_['timeZone'] as core.String?,
-          verifiedProvider: (json_['verifiedProvider'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        action: json_['action'] as core.String?,
+        appInstallationUrl: json_['appInstallationUrl'] as core.String?,
+        appScheme: json_['appScheme'] as core.String?,
+        context: json_['context'] as core.String?,
+        dateOfBirth: json_['dateOfBirth'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        email: json_['email'] as core.String?,
+        emailRecycled: json_['emailRecycled'] as core.bool?,
+        emailVerified: json_['emailVerified'] as core.bool?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        expiresIn: json_['expiresIn'] as core.String?,
+        federatedId: json_['federatedId'] as core.String?,
+        firstName: json_['firstName'] as core.String?,
+        fullName: json_['fullName'] as core.String?,
+        idToken: json_['idToken'] as core.String?,
+        inputEmail: json_['inputEmail'] as core.String?,
+        isNewUser: json_['isNewUser'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        language: json_['language'] as core.String?,
+        lastName: json_['lastName'] as core.String?,
+        localId: json_['localId'] as core.String?,
+        needConfirmation: json_['needConfirmation'] as core.bool?,
+        needEmail: json_['needEmail'] as core.bool?,
+        nickName: json_['nickName'] as core.String?,
+        oauthAccessToken: json_['oauthAccessToken'] as core.String?,
+        oauthAuthorizationCode: json_['oauthAuthorizationCode'] as core.String?,
+        oauthExpireIn: json_['oauthExpireIn'] as core.int?,
+        oauthIdToken: json_['oauthIdToken'] as core.String?,
+        oauthRequestToken: json_['oauthRequestToken'] as core.String?,
+        oauthScope: json_['oauthScope'] as core.String?,
+        oauthTokenSecret: json_['oauthTokenSecret'] as core.String?,
+        originalEmail: json_['originalEmail'] as core.String?,
+        photoUrl: json_['photoUrl'] as core.String?,
+        providerId: json_['providerId'] as core.String?,
+        rawUserInfo: json_['rawUserInfo'] as core.String?,
+        refreshToken: json_['refreshToken'] as core.String?,
+        screenName: json_['screenName'] as core.String?,
+        timeZone: json_['timeZone'] as core.String?,
+        verifiedProvider:
+            (json_['verifiedProvider'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (appInstallationUrl != null)
-          'appInstallationUrl': appInstallationUrl!,
-        if (appScheme != null) 'appScheme': appScheme!,
-        if (context != null) 'context': context!,
-        if (dateOfBirth != null) 'dateOfBirth': dateOfBirth!,
-        if (displayName != null) 'displayName': displayName!,
-        if (email != null) 'email': email!,
-        if (emailRecycled != null) 'emailRecycled': emailRecycled!,
-        if (emailVerified != null) 'emailVerified': emailVerified!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (expiresIn != null) 'expiresIn': expiresIn!,
-        if (federatedId != null) 'federatedId': federatedId!,
-        if (firstName != null) 'firstName': firstName!,
-        if (fullName != null) 'fullName': fullName!,
-        if (idToken != null) 'idToken': idToken!,
-        if (inputEmail != null) 'inputEmail': inputEmail!,
-        if (isNewUser != null) 'isNewUser': isNewUser!,
-        if (kind != null) 'kind': kind!,
-        if (language != null) 'language': language!,
-        if (lastName != null) 'lastName': lastName!,
-        if (localId != null) 'localId': localId!,
-        if (needConfirmation != null) 'needConfirmation': needConfirmation!,
-        if (needEmail != null) 'needEmail': needEmail!,
-        if (nickName != null) 'nickName': nickName!,
-        if (oauthAccessToken != null) 'oauthAccessToken': oauthAccessToken!,
-        if (oauthAuthorizationCode != null)
-          'oauthAuthorizationCode': oauthAuthorizationCode!,
-        if (oauthExpireIn != null) 'oauthExpireIn': oauthExpireIn!,
-        if (oauthIdToken != null) 'oauthIdToken': oauthIdToken!,
-        if (oauthRequestToken != null) 'oauthRequestToken': oauthRequestToken!,
-        if (oauthScope != null) 'oauthScope': oauthScope!,
-        if (oauthTokenSecret != null) 'oauthTokenSecret': oauthTokenSecret!,
-        if (originalEmail != null) 'originalEmail': originalEmail!,
-        if (photoUrl != null) 'photoUrl': photoUrl!,
-        if (providerId != null) 'providerId': providerId!,
-        if (rawUserInfo != null) 'rawUserInfo': rawUserInfo!,
-        if (refreshToken != null) 'refreshToken': refreshToken!,
-        if (screenName != null) 'screenName': screenName!,
-        if (timeZone != null) 'timeZone': timeZone!,
-        if (verifiedProvider != null) 'verifiedProvider': verifiedProvider!,
-      };
+    if (action != null) 'action': action!,
+    if (appInstallationUrl != null) 'appInstallationUrl': appInstallationUrl!,
+    if (appScheme != null) 'appScheme': appScheme!,
+    if (context != null) 'context': context!,
+    if (dateOfBirth != null) 'dateOfBirth': dateOfBirth!,
+    if (displayName != null) 'displayName': displayName!,
+    if (email != null) 'email': email!,
+    if (emailRecycled != null) 'emailRecycled': emailRecycled!,
+    if (emailVerified != null) 'emailVerified': emailVerified!,
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+    if (expiresIn != null) 'expiresIn': expiresIn!,
+    if (federatedId != null) 'federatedId': federatedId!,
+    if (firstName != null) 'firstName': firstName!,
+    if (fullName != null) 'fullName': fullName!,
+    if (idToken != null) 'idToken': idToken!,
+    if (inputEmail != null) 'inputEmail': inputEmail!,
+    if (isNewUser != null) 'isNewUser': isNewUser!,
+    if (kind != null) 'kind': kind!,
+    if (language != null) 'language': language!,
+    if (lastName != null) 'lastName': lastName!,
+    if (localId != null) 'localId': localId!,
+    if (needConfirmation != null) 'needConfirmation': needConfirmation!,
+    if (needEmail != null) 'needEmail': needEmail!,
+    if (nickName != null) 'nickName': nickName!,
+    if (oauthAccessToken != null) 'oauthAccessToken': oauthAccessToken!,
+    if (oauthAuthorizationCode != null)
+      'oauthAuthorizationCode': oauthAuthorizationCode!,
+    if (oauthExpireIn != null) 'oauthExpireIn': oauthExpireIn!,
+    if (oauthIdToken != null) 'oauthIdToken': oauthIdToken!,
+    if (oauthRequestToken != null) 'oauthRequestToken': oauthRequestToken!,
+    if (oauthScope != null) 'oauthScope': oauthScope!,
+    if (oauthTokenSecret != null) 'oauthTokenSecret': oauthTokenSecret!,
+    if (originalEmail != null) 'originalEmail': originalEmail!,
+    if (photoUrl != null) 'photoUrl': photoUrl!,
+    if (providerId != null) 'providerId': providerId!,
+    if (rawUserInfo != null) 'rawUserInfo': rawUserInfo!,
+    if (refreshToken != null) 'refreshToken': refreshToken!,
+    if (screenName != null) 'screenName': screenName!,
+    if (timeZone != null) 'timeZone': timeZone!,
+    if (verifiedProvider != null) 'verifiedProvider': verifiedProvider!,
+  };
 }
 
 /// Response from verifying a custom token
@@ -3484,21 +3527,21 @@ class VerifyCustomTokenResponse {
   });
 
   VerifyCustomTokenResponse.fromJson(core.Map json_)
-      : this(
-          expiresIn: json_['expiresIn'] as core.String?,
-          idToken: json_['idToken'] as core.String?,
-          isNewUser: json_['isNewUser'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          refreshToken: json_['refreshToken'] as core.String?,
-        );
+    : this(
+        expiresIn: json_['expiresIn'] as core.String?,
+        idToken: json_['idToken'] as core.String?,
+        isNewUser: json_['isNewUser'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        refreshToken: json_['refreshToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expiresIn != null) 'expiresIn': expiresIn!,
-        if (idToken != null) 'idToken': idToken!,
-        if (isNewUser != null) 'isNewUser': isNewUser!,
-        if (kind != null) 'kind': kind!,
-        if (refreshToken != null) 'refreshToken': refreshToken!,
-      };
+    if (expiresIn != null) 'expiresIn': expiresIn!,
+    if (idToken != null) 'idToken': idToken!,
+    if (isNewUser != null) 'isNewUser': isNewUser!,
+    if (kind != null) 'kind': kind!,
+    if (refreshToken != null) 'refreshToken': refreshToken!,
+  };
 }
 
 /// Request of verifying the password.
@@ -3559,35 +3602,34 @@ class VerifyPasswordResponse {
   });
 
   VerifyPasswordResponse.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          email: json_['email'] as core.String?,
-          expiresIn: json_['expiresIn'] as core.String?,
-          idToken: json_['idToken'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          localId: json_['localId'] as core.String?,
-          oauthAccessToken: json_['oauthAccessToken'] as core.String?,
-          oauthAuthorizationCode:
-              json_['oauthAuthorizationCode'] as core.String?,
-          oauthExpireIn: json_['oauthExpireIn'] as core.int?,
-          photoUrl: json_['photoUrl'] as core.String?,
-          refreshToken: json_['refreshToken'] as core.String?,
-          registered: json_['registered'] as core.bool?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        email: json_['email'] as core.String?,
+        expiresIn: json_['expiresIn'] as core.String?,
+        idToken: json_['idToken'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        localId: json_['localId'] as core.String?,
+        oauthAccessToken: json_['oauthAccessToken'] as core.String?,
+        oauthAuthorizationCode: json_['oauthAuthorizationCode'] as core.String?,
+        oauthExpireIn: json_['oauthExpireIn'] as core.int?,
+        photoUrl: json_['photoUrl'] as core.String?,
+        refreshToken: json_['refreshToken'] as core.String?,
+        registered: json_['registered'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (email != null) 'email': email!,
-        if (expiresIn != null) 'expiresIn': expiresIn!,
-        if (idToken != null) 'idToken': idToken!,
-        if (kind != null) 'kind': kind!,
-        if (localId != null) 'localId': localId!,
-        if (oauthAccessToken != null) 'oauthAccessToken': oauthAccessToken!,
-        if (oauthAuthorizationCode != null)
-          'oauthAuthorizationCode': oauthAuthorizationCode!,
-        if (oauthExpireIn != null) 'oauthExpireIn': oauthExpireIn!,
-        if (photoUrl != null) 'photoUrl': photoUrl!,
-        if (refreshToken != null) 'refreshToken': refreshToken!,
-        if (registered != null) 'registered': registered!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (email != null) 'email': email!,
+    if (expiresIn != null) 'expiresIn': expiresIn!,
+    if (idToken != null) 'idToken': idToken!,
+    if (kind != null) 'kind': kind!,
+    if (localId != null) 'localId': localId!,
+    if (oauthAccessToken != null) 'oauthAccessToken': oauthAccessToken!,
+    if (oauthAuthorizationCode != null)
+      'oauthAuthorizationCode': oauthAuthorizationCode!,
+    if (oauthExpireIn != null) 'oauthExpireIn': oauthExpireIn!,
+    if (photoUrl != null) 'photoUrl': photoUrl!,
+    if (refreshToken != null) 'refreshToken': refreshToken!,
+    if (registered != null) 'registered': registered!,
+  };
 }

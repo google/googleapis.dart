@@ -45,11 +45,16 @@ class VersionHistoryApi {
 
   PlatformsResource get platforms => PlatformsResource(_requester);
 
-  VersionHistoryApi(http.Client client,
-      {core.String rootUrl = 'https://versionhistory.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  VersionHistoryApi(
+    http.Client client, {
+    core.String rootUrl = 'https://versionhistory.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class PlatformsResource {
@@ -107,7 +112,8 @@ class PlatformsResource {
       queryParams: queryParams_,
     );
     return ListPlatformsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -164,7 +170,8 @@ class PlatformsChannelsResource {
       queryParams: queryParams_,
     );
     return ListChannelsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -175,7 +182,7 @@ class PlatformsChannelsVersionsResource {
       PlatformsChannelsVersionsReleasesResource(_requester);
 
   PlatformsChannelsVersionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Returns list of version for the given platform/channel.
   ///
@@ -249,7 +256,8 @@ class PlatformsChannelsVersionsResource {
       queryParams: queryParams_,
     );
     return ListVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -257,7 +265,7 @@ class PlatformsChannelsVersionsReleasesResource {
   final commons.ApiRequester _requester;
 
   PlatformsChannelsVersionsReleasesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Returns list of releases of the given version.
   ///
@@ -338,7 +346,8 @@ class PlatformsChannelsVersionsReleasesResource {
       queryParams: queryParams_,
     );
     return ListReleasesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -366,21 +375,18 @@ class Channel {
   /// Format is "{product}/platforms/{platform}/channels/{channel}"
   core.String? name;
 
-  Channel({
-    this.channelType,
-    this.name,
-  });
+  Channel({this.channelType, this.name});
 
   Channel.fromJson(core.Map json_)
-      : this(
-          channelType: json_['channelType'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        channelType: json_['channelType'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (channelType != null) 'channelType': channelType!,
-        if (name != null) 'name': name!,
-      };
+    if (channelType != null) 'channelType': channelType!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Represents a time interval, encoded as a Timestamp start (inclusive) and a
@@ -401,24 +407,25 @@ class ListChannelsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListChannelsResponse({
-    this.channels,
-    this.nextPageToken,
-  });
+  ListChannelsResponse({this.channels, this.nextPageToken});
 
   ListChannelsResponse.fromJson(core.Map json_)
-      : this(
-          channels: (json_['channels'] as core.List?)
-              ?.map((value) => Channel.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        channels:
+            (json_['channels'] as core.List?)
+                ?.map(
+                  (value) => Channel.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (channels != null) 'channels': channels!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (channels != null) 'channels': channels!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListPlatforms.
@@ -431,24 +438,25 @@ class ListPlatformsResponse {
   /// The list of platforms.
   core.List<Platform>? platforms;
 
-  ListPlatformsResponse({
-    this.nextPageToken,
-    this.platforms,
-  });
+  ListPlatformsResponse({this.nextPageToken, this.platforms});
 
   ListPlatformsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          platforms: (json_['platforms'] as core.List?)
-              ?.map((value) => Platform.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        platforms:
+            (json_['platforms'] as core.List?)
+                ?.map(
+                  (value) => Platform.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (platforms != null) 'platforms': platforms!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (platforms != null) 'platforms': platforms!,
+  };
 }
 
 /// Response message for ListReleases.
@@ -461,24 +469,25 @@ class ListReleasesResponse {
   /// The list of releases.
   core.List<Release>? releases;
 
-  ListReleasesResponse({
-    this.nextPageToken,
-    this.releases,
-  });
+  ListReleasesResponse({this.nextPageToken, this.releases});
 
   ListReleasesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          releases: (json_['releases'] as core.List?)
-              ?.map((value) => Release.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        releases:
+            (json_['releases'] as core.List?)
+                ?.map(
+                  (value) => Release.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (releases != null) 'releases': releases!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (releases != null) 'releases': releases!,
+  };
 }
 
 /// Response message for ListVersions.
@@ -491,24 +500,25 @@ class ListVersionsResponse {
   /// The list of versions.
   core.List<Version>? versions;
 
-  ListVersionsResponse({
-    this.nextPageToken,
-    this.versions,
-  });
+  ListVersionsResponse({this.nextPageToken, this.versions});
 
   ListVersionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          versions: (json_['versions'] as core.List?)
-              ?.map((value) => Version.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        versions:
+            (json_['versions'] as core.List?)
+                ?.map(
+                  (value) => Version.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (versions != null) 'versions': versions!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (versions != null) 'versions': versions!,
+  };
 }
 
 /// Each Platform is owned by a Product and owns a collection of channels.
@@ -541,21 +551,18 @@ class Platform {
   /// - "WIN_ARM64" : Chrome Desktop for Windows (ARM64).
   core.String? platformType;
 
-  Platform({
-    this.name,
-    this.platformType,
-  });
+  Platform({this.name, this.platformType});
 
   Platform.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          platformType: json_['platformType'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        platformType: json_['platformType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (platformType != null) 'platformType': platformType!,
-      };
+    if (name != null) 'name': name!,
+    if (platformType != null) 'platformType': platformType!,
+  };
 }
 
 /// A Release is owned by a Version.
@@ -607,26 +614,28 @@ class Release {
   });
 
   Release.fromJson(core.Map json_)
-      : this(
-          fraction: (json_['fraction'] as core.num?)?.toDouble(),
-          fractionGroup: json_['fractionGroup'] as core.String?,
-          name: json_['name'] as core.String?,
-          pinnable: json_['pinnable'] as core.bool?,
-          serving: json_.containsKey('serving')
-              ? Interval.fromJson(
-                  json_['serving'] as core.Map<core.String, core.dynamic>)
-              : null,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        fraction: (json_['fraction'] as core.num?)?.toDouble(),
+        fractionGroup: json_['fractionGroup'] as core.String?,
+        name: json_['name'] as core.String?,
+        pinnable: json_['pinnable'] as core.bool?,
+        serving:
+            json_.containsKey('serving')
+                ? Interval.fromJson(
+                  json_['serving'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fraction != null) 'fraction': fraction!,
-        if (fractionGroup != null) 'fractionGroup': fractionGroup!,
-        if (name != null) 'name': name!,
-        if (pinnable != null) 'pinnable': pinnable!,
-        if (serving != null) 'serving': serving!,
-        if (version != null) 'version': version!,
-      };
+    if (fraction != null) 'fraction': fraction!,
+    if (fractionGroup != null) 'fractionGroup': fractionGroup!,
+    if (name != null) 'name': name!,
+    if (pinnable != null) 'pinnable': pinnable!,
+    if (serving != null) 'serving': serving!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Each Version is owned by a Channel.
@@ -646,19 +655,16 @@ class Version {
   /// e.g. "84.0.4147.38"
   core.String? version;
 
-  Version({
-    this.name,
-    this.version,
-  });
+  Version({this.name, this.version});
 
   Version.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (version != null) 'version': version!,
-      };
+    if (name != null) 'name': name!,
+    if (version != null) 'version': version!,
+  };
 }

@@ -47,11 +47,16 @@ class ParallelstoreApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ParallelstoreApi(http.Client client,
-      {core.String rootUrl = 'https://parallelstore.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ParallelstoreApi(
+    http.Client client, {
+    core.String rootUrl = 'https://parallelstore.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -90,10 +95,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -163,7 +165,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -171,7 +174,7 @@ class ProjectsLocationsInstancesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsInstancesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a Parallelstore instance in a given project and location.
   ///
@@ -281,6 +284,7 @@ class ProjectsLocationsInstancesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -346,10 +350,7 @@ class ProjectsLocationsInstancesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Instance> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Instance> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -460,7 +461,8 @@ class ProjectsLocationsInstancesResource {
       queryParams: queryParams_,
     );
     return ListInstancesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single instance.
@@ -532,7 +534,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -582,7 +584,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a long-running operation.
@@ -620,10 +623,12 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the latest state of a long-running operation.
@@ -647,10 +652,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -712,7 +714,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -775,32 +778,41 @@ class ExportDataRequest {
   });
 
   ExportDataRequest.fromJson(core.Map json_)
-      : this(
-          destinationGcsBucket: json_.containsKey('destinationGcsBucket')
-              ? DestinationGcsBucket.fromJson(json_['destinationGcsBucket']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          metadataOptions: json_.containsKey('metadataOptions')
-              ? TransferMetadataOptions.fromJson(json_['metadataOptions']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          requestId: json_['requestId'] as core.String?,
-          serviceAccount: json_['serviceAccount'] as core.String?,
-          sourceParallelstore: json_.containsKey('sourceParallelstore')
-              ? SourceParallelstore.fromJson(json_['sourceParallelstore']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        destinationGcsBucket:
+            json_.containsKey('destinationGcsBucket')
+                ? DestinationGcsBucket.fromJson(
+                  json_['destinationGcsBucket']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadataOptions:
+            json_.containsKey('metadataOptions')
+                ? TransferMetadataOptions.fromJson(
+                  json_['metadataOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requestId: json_['requestId'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        sourceParallelstore:
+            json_.containsKey('sourceParallelstore')
+                ? SourceParallelstore.fromJson(
+                  json_['sourceParallelstore']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationGcsBucket != null)
-          'destinationGcsBucket': destinationGcsBucket!,
-        if (metadataOptions != null) 'metadataOptions': metadataOptions!,
-        if (requestId != null) 'requestId': requestId!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (sourceParallelstore != null)
-          'sourceParallelstore': sourceParallelstore!,
-      };
+    if (destinationGcsBucket != null)
+      'destinationGcsBucket': destinationGcsBucket!,
+    if (metadataOptions != null) 'metadataOptions': metadataOptions!,
+    if (requestId != null) 'requestId': requestId!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (sourceParallelstore != null)
+      'sourceParallelstore': sourceParallelstore!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -861,33 +873,40 @@ class ImportDataRequest {
   });
 
   ImportDataRequest.fromJson(core.Map json_)
-      : this(
-          destinationParallelstore:
-              json_.containsKey('destinationParallelstore')
-                  ? DestinationParallelstore.fromJson(
-                      json_['destinationParallelstore']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          metadataOptions: json_.containsKey('metadataOptions')
-              ? TransferMetadataOptions.fromJson(json_['metadataOptions']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          requestId: json_['requestId'] as core.String?,
-          serviceAccount: json_['serviceAccount'] as core.String?,
-          sourceGcsBucket: json_.containsKey('sourceGcsBucket')
-              ? SourceGcsBucket.fromJson(json_['sourceGcsBucket']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        destinationParallelstore:
+            json_.containsKey('destinationParallelstore')
+                ? DestinationParallelstore.fromJson(
+                  json_['destinationParallelstore']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadataOptions:
+            json_.containsKey('metadataOptions')
+                ? TransferMetadataOptions.fromJson(
+                  json_['metadataOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requestId: json_['requestId'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        sourceGcsBucket:
+            json_.containsKey('sourceGcsBucket')
+                ? SourceGcsBucket.fromJson(
+                  json_['sourceGcsBucket']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationParallelstore != null)
-          'destinationParallelstore': destinationParallelstore!,
-        if (metadataOptions != null) 'metadataOptions': metadataOptions!,
-        if (requestId != null) 'requestId': requestId!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (sourceGcsBucket != null) 'sourceGcsBucket': sourceGcsBucket!,
-      };
+    if (destinationParallelstore != null)
+      'destinationParallelstore': destinationParallelstore!,
+    if (metadataOptions != null) 'metadataOptions': metadataOptions!,
+    if (requestId != null) 'requestId': requestId!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (sourceGcsBucket != null) 'sourceGcsBucket': sourceGcsBucket!,
+  };
 }
 
 /// A Parallelstore instance.
@@ -1050,52 +1069,49 @@ class Instance {
   });
 
   Instance.fromJson(core.Map json_)
-      : this(
-          accessPoints: (json_['accessPoints'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          capacityGib: json_['capacityGib'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          daosVersion: json_['daosVersion'] as core.String?,
-          deploymentType: json_['deploymentType'] as core.String?,
-          description: json_['description'] as core.String?,
-          directoryStripeLevel: json_['directoryStripeLevel'] as core.String?,
-          effectiveReservedIpRange:
-              json_['effectiveReservedIpRange'] as core.String?,
-          fileStripeLevel: json_['fileStripeLevel'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          network: json_['network'] as core.String?,
-          reservedIpRange: json_['reservedIpRange'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        accessPoints:
+            (json_['accessPoints'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        capacityGib: json_['capacityGib'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        daosVersion: json_['daosVersion'] as core.String?,
+        deploymentType: json_['deploymentType'] as core.String?,
+        description: json_['description'] as core.String?,
+        directoryStripeLevel: json_['directoryStripeLevel'] as core.String?,
+        effectiveReservedIpRange:
+            json_['effectiveReservedIpRange'] as core.String?,
+        fileStripeLevel: json_['fileStripeLevel'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        reservedIpRange: json_['reservedIpRange'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessPoints != null) 'accessPoints': accessPoints!,
-        if (capacityGib != null) 'capacityGib': capacityGib!,
-        if (createTime != null) 'createTime': createTime!,
-        if (daosVersion != null) 'daosVersion': daosVersion!,
-        if (deploymentType != null) 'deploymentType': deploymentType!,
-        if (description != null) 'description': description!,
-        if (directoryStripeLevel != null)
-          'directoryStripeLevel': directoryStripeLevel!,
-        if (effectiveReservedIpRange != null)
-          'effectiveReservedIpRange': effectiveReservedIpRange!,
-        if (fileStripeLevel != null) 'fileStripeLevel': fileStripeLevel!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (network != null) 'network': network!,
-        if (reservedIpRange != null) 'reservedIpRange': reservedIpRange!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (accessPoints != null) 'accessPoints': accessPoints!,
+    if (capacityGib != null) 'capacityGib': capacityGib!,
+    if (createTime != null) 'createTime': createTime!,
+    if (daosVersion != null) 'daosVersion': daosVersion!,
+    if (deploymentType != null) 'deploymentType': deploymentType!,
+    if (description != null) 'description': description!,
+    if (directoryStripeLevel != null)
+      'directoryStripeLevel': directoryStripeLevel!,
+    if (effectiveReservedIpRange != null)
+      'effectiveReservedIpRange': effectiveReservedIpRange!,
+    if (fileStripeLevel != null) 'fileStripeLevel': fileStripeLevel!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (reservedIpRange != null) 'reservedIpRange': reservedIpRange!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Response from ListInstances.
@@ -1109,29 +1125,30 @@ class ListInstancesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListInstancesResponse({
-    this.instances,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListInstancesResponse({this.instances, this.nextPageToken, this.unreachable});
 
   ListInstancesResponse.fromJson(core.Map json_)
-      : this(
-          instances: (json_['instances'] as core.List?)
-              ?.map((value) => Instance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        instances:
+            (json_['instances'] as core.List?)
+                ?.map(
+                  (value) => Instance.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (instances != null) 'instances': instances!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (instances != null) 'instances': instances!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -1142,24 +1159,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1170,24 +1188,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -1236,37 +1255,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Cloud Storage as the source of a data transfer.
@@ -1315,22 +1332,18 @@ class TransferMetadataOptions {
   /// transfer job.
   core.String? uid;
 
-  TransferMetadataOptions({
-    this.gid,
-    this.mode,
-    this.uid,
-  });
+  TransferMetadataOptions({this.gid, this.mode, this.uid});
 
   TransferMetadataOptions.fromJson(core.Map json_)
-      : this(
-          gid: json_['gid'] as core.String?,
-          mode: json_['mode'] as core.String?,
-          uid: json_['uid'] as core.String?,
-        );
+    : this(
+        gid: json_['gid'] as core.String?,
+        mode: json_['mode'] as core.String?,
+        uid: json_['uid'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gid != null) 'gid': gid!,
-        if (mode != null) 'mode': mode!,
-        if (uid != null) 'uid': uid!,
-      };
+    if (gid != null) 'gid': gid!,
+    if (mode != null) 'mode': mode!,
+    if (uid != null) 'uid': uid!,
+  };
 }

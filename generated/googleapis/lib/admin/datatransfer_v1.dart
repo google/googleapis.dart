@@ -56,11 +56,16 @@ class DataTransferApi {
   ApplicationsResource get applications => ApplicationsResource(_requester);
   TransfersResource get transfers => TransfersResource(_requester);
 
-  DataTransferApi(http.Client client,
-      {core.String rootUrl = 'https://admin.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DataTransferApi(
+    http.Client client, {
+    core.String rootUrl = 'https://admin.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ApplicationsResource {
@@ -92,7 +97,8 @@ class ApplicationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/datatransfer/v1/applications/' +
+    final url_ =
+        'admin/datatransfer/v1/applications/' +
         commons.escapeVariable('$applicationId');
 
     final response_ = await _requester.request(
@@ -101,7 +107,8 @@ class ApplicationsResource {
       queryParams: queryParams_,
     );
     return Application.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the applications available for data transfer for a customer.
@@ -146,7 +153,8 @@ class ApplicationsResource {
       queryParams: queryParams_,
     );
     return ApplicationsListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -180,7 +188,8 @@ class TransfersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/datatransfer/v1/transfers/' +
+    final url_ =
+        'admin/datatransfer/v1/transfers/' +
         commons.escapeVariable('$dataTransferId');
 
     final response_ = await _requester.request(
@@ -189,7 +198,8 @@ class TransfersResource {
       queryParams: queryParams_,
     );
     return DataTransfer.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Inserts a data transfer request.
@@ -230,7 +240,8 @@ class TransfersResource {
       queryParams: queryParams_,
     );
     return DataTransfer.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the transfers for a customer by source user, destination user, or
@@ -288,7 +299,8 @@ class TransfersResource {
       queryParams: queryParams_,
     );
     return DataTransfersListResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -316,33 +328,31 @@ class Application {
   /// These parameters select which categories of the user's data to transfer.
   core.List<ApplicationTransferParam>? transferParams;
 
-  Application({
-    this.etag,
-    this.id,
-    this.kind,
-    this.name,
-    this.transferParams,
-  });
+  Application({this.etag, this.id, this.kind, this.name, this.transferParams});
 
   Application.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          name: json_['name'] as core.String?,
-          transferParams: (json_['transferParams'] as core.List?)
-              ?.map((value) => ApplicationTransferParam.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        transferParams:
+            (json_['transferParams'] as core.List?)
+                ?.map(
+                  (value) => ApplicationTransferParam.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (transferParams != null) 'transferParams': transferParams!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (transferParams != null) 'transferParams': transferParams!,
+  };
 }
 
 /// Template to map fields of ApplicationDataTransfer resource.
@@ -371,24 +381,27 @@ class ApplicationDataTransfer {
   });
 
   ApplicationDataTransfer.fromJson(core.Map json_)
-      : this(
-          applicationId: json_['applicationId'] as core.String?,
-          applicationTransferParams:
-              (json_['applicationTransferParams'] as core.List?)
-                  ?.map((value) => ApplicationTransferParam.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          applicationTransferStatus:
-              json_['applicationTransferStatus'] as core.String?,
-        );
+    : this(
+        applicationId: json_['applicationId'] as core.String?,
+        applicationTransferParams:
+            (json_['applicationTransferParams'] as core.List?)
+                ?.map(
+                  (value) => ApplicationTransferParam.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        applicationTransferStatus:
+            json_['applicationTransferStatus'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applicationId != null) 'applicationId': applicationId!,
-        if (applicationTransferParams != null)
-          'applicationTransferParams': applicationTransferParams!,
-        if (applicationTransferStatus != null)
-          'applicationTransferStatus': applicationTransferStatus!,
-      };
+    if (applicationId != null) 'applicationId': applicationId!,
+    if (applicationTransferParams != null)
+      'applicationTransferParams': applicationTransferParams!,
+    if (applicationTransferStatus != null)
+      'applicationTransferStatus': applicationTransferStatus!,
+  };
 }
 
 /// Template for application transfer parameters.
@@ -399,23 +412,21 @@ class ApplicationTransferParam {
   /// The value of the transfer parameter, such as `PRIVATE` or `SHARED`.
   core.List<core.String>? value;
 
-  ApplicationTransferParam({
-    this.key,
-    this.value,
-  });
+  ApplicationTransferParam({this.key, this.value});
 
   ApplicationTransferParam.fromJson(core.Map json_)
-      : this(
-          key: json_['key'] as core.String?,
-          value: (json_['value'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        key: json_['key'] as core.String?,
+        value:
+            (json_['value'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (value != null) 'value': value!,
-      };
+    if (key != null) 'key': key!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Template for a collection of Applications.
@@ -441,22 +452,26 @@ class ApplicationsListResponse {
   });
 
   ApplicationsListResponse.fromJson(core.Map json_)
-      : this(
-          applications: (json_['applications'] as core.List?)
-              ?.map((value) => Application.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        applications:
+            (json_['applications'] as core.List?)
+                ?.map(
+                  (value) => Application.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applications != null) 'applications': applications!,
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (applications != null) 'applications': applications!,
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// A Transfer resource represents the transfer of the ownership of user data
@@ -508,37 +523,41 @@ class DataTransfer {
   });
 
   DataTransfer.fromJson(core.Map json_)
-      : this(
-          applicationDataTransfers:
-              (json_['applicationDataTransfers'] as core.List?)
-                  ?.map((value) => ApplicationDataTransfer.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          etag: json_['etag'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          newOwnerUserId: json_['newOwnerUserId'] as core.String?,
-          oldOwnerUserId: json_['oldOwnerUserId'] as core.String?,
-          overallTransferStatusCode:
-              json_['overallTransferStatusCode'] as core.String?,
-          requestTime: json_.containsKey('requestTime')
-              ? core.DateTime.parse(json_['requestTime'] as core.String)
-              : null,
-        );
+    : this(
+        applicationDataTransfers:
+            (json_['applicationDataTransfers'] as core.List?)
+                ?.map(
+                  (value) => ApplicationDataTransfer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        newOwnerUserId: json_['newOwnerUserId'] as core.String?,
+        oldOwnerUserId: json_['oldOwnerUserId'] as core.String?,
+        overallTransferStatusCode:
+            json_['overallTransferStatusCode'] as core.String?,
+        requestTime:
+            json_.containsKey('requestTime')
+                ? core.DateTime.parse(json_['requestTime'] as core.String)
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applicationDataTransfers != null)
-          'applicationDataTransfers': applicationDataTransfers!,
-        if (etag != null) 'etag': etag!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (newOwnerUserId != null) 'newOwnerUserId': newOwnerUserId!,
-        if (oldOwnerUserId != null) 'oldOwnerUserId': oldOwnerUserId!,
-        if (overallTransferStatusCode != null)
-          'overallTransferStatusCode': overallTransferStatusCode!,
-        if (requestTime != null)
-          'requestTime': requestTime!.toUtc().toIso8601String(),
-      };
+    if (applicationDataTransfers != null)
+      'applicationDataTransfers': applicationDataTransfers!,
+    if (etag != null) 'etag': etag!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (newOwnerUserId != null) 'newOwnerUserId': newOwnerUserId!,
+    if (oldOwnerUserId != null) 'oldOwnerUserId': oldOwnerUserId!,
+    if (overallTransferStatusCode != null)
+      'overallTransferStatusCode': overallTransferStatusCode!,
+    if (requestTime != null)
+      'requestTime': requestTime!.toUtc().toIso8601String(),
+  };
 }
 
 /// Template for a collection of DataTransfer resources.
@@ -563,20 +582,24 @@ class DataTransfersListResponse {
   });
 
   DataTransfersListResponse.fromJson(core.Map json_)
-      : this(
-          dataTransfers: (json_['dataTransfers'] as core.List?)
-              ?.map((value) => DataTransfer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        dataTransfers:
+            (json_['dataTransfers'] as core.List?)
+                ?.map(
+                  (value) => DataTransfer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataTransfers != null) 'dataTransfers': dataTransfers!,
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (dataTransfers != null) 'dataTransfers': dataTransfers!,
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }

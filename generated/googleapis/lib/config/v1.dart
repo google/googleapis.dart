@@ -57,11 +57,16 @@ class ConfigApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ConfigApi(http.Client client,
-      {core.String rootUrl = 'https://config.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ConfigApi(
+    http.Client client, {
+    core.String rootUrl = 'https://config.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -104,10 +109,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -177,7 +179,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -188,7 +191,7 @@ class ProjectsLocationsDeploymentsResource {
       ProjectsLocationsDeploymentsRevisionsResource(_requester);
 
   ProjectsLocationsDeploymentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a Deployment.
   ///
@@ -314,6 +317,7 @@ class ProjectsLocationsDeploymentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -460,10 +464,7 @@ class ProjectsLocationsDeploymentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Deployment> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Deployment> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -476,7 +477,8 @@ class ProjectsLocationsDeploymentsResource {
       queryParams: queryParams_,
     );
     return Deployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -647,7 +649,8 @@ class ProjectsLocationsDeploymentsResource {
       queryParams: queryParams_,
     );
     return ListDeploymentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Locks a deployment.
@@ -851,7 +854,8 @@ class ProjectsLocationsDeploymentsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Unlocks a locked deployment.
@@ -904,7 +908,7 @@ class ProjectsLocationsDeploymentsRevisionsResource {
       ProjectsLocationsDeploymentsRevisionsResourcesResource(_requester);
 
   ProjectsLocationsDeploymentsRevisionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Exports Terraform state file from a given revision.
   ///
@@ -968,10 +972,7 @@ class ProjectsLocationsDeploymentsRevisionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Revision> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Revision> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1052,7 +1053,8 @@ class ProjectsLocationsDeploymentsRevisionsResource {
       queryParams: queryParams_,
     );
     return ListRevisionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1060,8 +1062,8 @@ class ProjectsLocationsDeploymentsRevisionsResourcesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDeploymentsRevisionsResourcesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets details about a Resource deployed by Infra Manager.
   ///
@@ -1082,10 +1084,7 @@ class ProjectsLocationsDeploymentsRevisionsResourcesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Resource> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Resource> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1163,7 +1162,8 @@ class ProjectsLocationsDeploymentsRevisionsResourcesResource {
       queryParams: queryParams_,
     );
     return ListResourcesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1171,7 +1171,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -1245,10 +1245,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1258,6 +1255,7 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1284,10 +1282,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1349,7 +1344,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1362,7 +1358,7 @@ class ProjectsLocationsPreviewsResource {
       ProjectsLocationsPreviewsResourceDriftsResource(_requester);
 
   ProjectsLocationsPreviewsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a Preview.
   ///
@@ -1470,6 +1466,7 @@ class ProjectsLocationsPreviewsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1516,7 +1513,8 @@ class ProjectsLocationsPreviewsResource {
       queryParams: queryParams_,
     );
     return ExportPreviewResultResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details about a Preview.
@@ -1538,10 +1536,7 @@ class ProjectsLocationsPreviewsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Preview> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Preview> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1621,7 +1616,8 @@ class ProjectsLocationsPreviewsResource {
       queryParams: queryParams_,
     );
     return ListPreviewsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1629,7 +1625,7 @@ class ProjectsLocationsPreviewsResourceChangesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPreviewsResourceChangesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Get a ResourceChange for a given preview.
   ///
@@ -1666,7 +1662,8 @@ class ProjectsLocationsPreviewsResourceChangesResource {
       queryParams: queryParams_,
     );
     return ResourceChange.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists ResourceChanges for a given preview.
@@ -1733,7 +1730,8 @@ class ProjectsLocationsPreviewsResourceChangesResource {
       queryParams: queryParams_,
     );
     return ListResourceChangesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1741,7 +1739,7 @@ class ProjectsLocationsPreviewsResourceDriftsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPreviewsResourceDriftsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Get a ResourceDrift for a given preview.
   ///
@@ -1778,7 +1776,8 @@ class ProjectsLocationsPreviewsResourceDriftsResource {
       queryParams: queryParams_,
     );
     return ResourceDrift.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List ResourceDrifts for a given preview.
@@ -1845,7 +1844,8 @@ class ProjectsLocationsPreviewsResourceDriftsResource {
       queryParams: queryParams_,
     );
     return ListResourceDriftsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1853,7 +1853,7 @@ class ProjectsLocationsTerraformVersionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsTerraformVersionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets details about a TerraformVersion.
   ///
@@ -1890,7 +1890,8 @@ class ProjectsLocationsTerraformVersionsResource {
       queryParams: queryParams_,
     );
     return TerraformVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists TerraformVersions in a given project and location.
@@ -1954,7 +1955,8 @@ class ProjectsLocationsTerraformVersionsResource {
       queryParams: queryParams_,
     );
     return ListTerraformVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1973,31 +1975,28 @@ class ApplyResults {
   /// Map of output name to output info.
   core.Map<core.String, TerraformOutput>? outputs;
 
-  ApplyResults({
-    this.artifacts,
-    this.content,
-    this.outputs,
-  });
+  ApplyResults({this.artifacts, this.content, this.outputs});
 
   ApplyResults.fromJson(core.Map json_)
-      : this(
-          artifacts: json_['artifacts'] as core.String?,
-          content: json_['content'] as core.String?,
-          outputs:
-              (json_['outputs'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              TerraformOutput.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        artifacts: json_['artifacts'] as core.String?,
+        content: json_['content'] as core.String?,
+        outputs: (json_['outputs'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                TerraformOutput.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-        );
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (artifacts != null) 'artifacts': artifacts!,
-        if (content != null) 'content': content!,
-        if (outputs != null) 'outputs': outputs!,
-      };
+    if (artifacts != null) 'artifacts': artifacts!,
+    if (content != null) 'content': content!,
+    if (outputs != null) 'outputs': outputs!,
+  };
 }
 
 /// Specifies the audit configuration for a service.
@@ -2027,24 +2026,25 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
-      : this(
-          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          service: json_['service'] as core.String?,
-        );
+    : this(
+        auditLogConfigs:
+            (json_['auditLogConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditLogConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        service: json_['service'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-        if (service != null) 'service': service!,
-      };
+    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+    if (service != null) 'service': service!,
+  };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -2135,29 +2135,28 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2171,18 +2170,14 @@ class DeleteStatefileRequest {
   /// Required.
   core.String? lockId;
 
-  DeleteStatefileRequest({
-    this.lockId,
-  });
+  DeleteStatefileRequest({this.lockId});
 
   DeleteStatefileRequest.fromJson(core.Map json_)
-      : this(
-          lockId: json_['lockId'] as core.String?,
-        );
+    : this(lockId: json_['lockId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lockId != null) 'lockId': lockId!,
-      };
+    if (lockId != null) 'lockId': lockId!,
+  };
 }
 
 /// A Deployment is a group of resources and configs managed and provisioned by
@@ -2415,84 +2410,81 @@ class Deployment {
   });
 
   Deployment.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          artifactsGcsBucket: json_['artifactsGcsBucket'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          deleteBuild: json_['deleteBuild'] as core.String?,
-          deleteLogs: json_['deleteLogs'] as core.String?,
-          deleteResults: json_.containsKey('deleteResults')
-              ? ApplyResults.fromJson(
-                  json_['deleteResults'] as core.Map<core.String, core.dynamic>)
-              : null,
-          errorCode: json_['errorCode'] as core.String?,
-          errorLogs: json_['errorLogs'] as core.String?,
-          importExistingResources:
-              json_['importExistingResources'] as core.bool?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          latestRevision: json_['latestRevision'] as core.String?,
-          lockState: json_['lockState'] as core.String?,
-          name: json_['name'] as core.String?,
-          quotaValidation: json_['quotaValidation'] as core.String?,
-          serviceAccount: json_['serviceAccount'] as core.String?,
-          state: json_['state'] as core.String?,
-          stateDetail: json_['stateDetail'] as core.String?,
-          terraformBlueprint: json_.containsKey('terraformBlueprint')
-              ? TerraformBlueprint.fromJson(json_['terraformBlueprint']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          tfErrors: (json_['tfErrors'] as core.List?)
-              ?.map((value) => TerraformError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          tfVersion: json_['tfVersion'] as core.String?,
-          tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          workerPool: json_['workerPool'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        artifactsGcsBucket: json_['artifactsGcsBucket'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        deleteBuild: json_['deleteBuild'] as core.String?,
+        deleteLogs: json_['deleteLogs'] as core.String?,
+        deleteResults:
+            json_.containsKey('deleteResults')
+                ? ApplyResults.fromJson(
+                  json_['deleteResults'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        errorCode: json_['errorCode'] as core.String?,
+        errorLogs: json_['errorLogs'] as core.String?,
+        importExistingResources: json_['importExistingResources'] as core.bool?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        latestRevision: json_['latestRevision'] as core.String?,
+        lockState: json_['lockState'] as core.String?,
+        name: json_['name'] as core.String?,
+        quotaValidation: json_['quotaValidation'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateDetail: json_['stateDetail'] as core.String?,
+        terraformBlueprint:
+            json_.containsKey('terraformBlueprint')
+                ? TerraformBlueprint.fromJson(
+                  json_['terraformBlueprint']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tfErrors:
+            (json_['tfErrors'] as core.List?)
+                ?.map(
+                  (value) => TerraformError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        tfVersion: json_['tfVersion'] as core.String?,
+        tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        workerPool: json_['workerPool'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (artifactsGcsBucket != null)
-          'artifactsGcsBucket': artifactsGcsBucket!,
-        if (createTime != null) 'createTime': createTime!,
-        if (deleteBuild != null) 'deleteBuild': deleteBuild!,
-        if (deleteLogs != null) 'deleteLogs': deleteLogs!,
-        if (deleteResults != null) 'deleteResults': deleteResults!,
-        if (errorCode != null) 'errorCode': errorCode!,
-        if (errorLogs != null) 'errorLogs': errorLogs!,
-        if (importExistingResources != null)
-          'importExistingResources': importExistingResources!,
-        if (labels != null) 'labels': labels!,
-        if (latestRevision != null) 'latestRevision': latestRevision!,
-        if (lockState != null) 'lockState': lockState!,
-        if (name != null) 'name': name!,
-        if (quotaValidation != null) 'quotaValidation': quotaValidation!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (state != null) 'state': state!,
-        if (stateDetail != null) 'stateDetail': stateDetail!,
-        if (terraformBlueprint != null)
-          'terraformBlueprint': terraformBlueprint!,
-        if (tfErrors != null) 'tfErrors': tfErrors!,
-        if (tfVersion != null) 'tfVersion': tfVersion!,
-        if (tfVersionConstraint != null)
-          'tfVersionConstraint': tfVersionConstraint!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (workerPool != null) 'workerPool': workerPool!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (artifactsGcsBucket != null) 'artifactsGcsBucket': artifactsGcsBucket!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteBuild != null) 'deleteBuild': deleteBuild!,
+    if (deleteLogs != null) 'deleteLogs': deleteLogs!,
+    if (deleteResults != null) 'deleteResults': deleteResults!,
+    if (errorCode != null) 'errorCode': errorCode!,
+    if (errorLogs != null) 'errorLogs': errorLogs!,
+    if (importExistingResources != null)
+      'importExistingResources': importExistingResources!,
+    if (labels != null) 'labels': labels!,
+    if (latestRevision != null) 'latestRevision': latestRevision!,
+    if (lockState != null) 'lockState': lockState!,
+    if (name != null) 'name': name!,
+    if (quotaValidation != null) 'quotaValidation': quotaValidation!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (state != null) 'state': state!,
+    if (stateDetail != null) 'stateDetail': stateDetail!,
+    if (terraformBlueprint != null) 'terraformBlueprint': terraformBlueprint!,
+    if (tfErrors != null) 'tfErrors': tfErrors!,
+    if (tfVersion != null) 'tfVersion': tfVersion!,
+    if (tfVersionConstraint != null)
+      'tfVersionConstraint': tfVersionConstraint!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (workerPool != null) 'workerPool': workerPool!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2515,18 +2507,14 @@ class ExportDeploymentStatefileRequest {
   /// Optional.
   core.bool? draft;
 
-  ExportDeploymentStatefileRequest({
-    this.draft,
-  });
+  ExportDeploymentStatefileRequest({this.draft});
 
   ExportDeploymentStatefileRequest.fromJson(core.Map json_)
-      : this(
-          draft: json_['draft'] as core.bool?,
-        );
+    : this(draft: json_['draft'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (draft != null) 'draft': draft!,
-      };
+    if (draft != null) 'draft': draft!,
+  };
 }
 
 /// A request to export preview results.
@@ -2541,21 +2529,21 @@ class ExportPreviewResultResponse {
   /// Output only.
   PreviewResult? result;
 
-  ExportPreviewResultResponse({
-    this.result,
-  });
+  ExportPreviewResultResponse({this.result});
 
   ExportPreviewResultResponse.fromJson(core.Map json_)
-      : this(
-          result: json_.containsKey('result')
-              ? PreviewResult.fromJson(
-                  json_['result'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        result:
+            json_.containsKey('result')
+                ? PreviewResult.fromJson(
+                  json_['result'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (result != null) 'result': result!,
-      };
+    if (result != null) 'result': result!,
+  };
 }
 
 /// A request to export a state file passed to a 'ExportRevisionStatefile' call.
@@ -2602,24 +2590,20 @@ class GitSource {
   /// Optional.
   core.String? repo;
 
-  GitSource({
-    this.directory,
-    this.ref,
-    this.repo,
-  });
+  GitSource({this.directory, this.ref, this.repo});
 
   GitSource.fromJson(core.Map json_)
-      : this(
-          directory: json_['directory'] as core.String?,
-          ref: json_['ref'] as core.String?,
-          repo: json_['repo'] as core.String?,
-        );
+    : this(
+        directory: json_['directory'] as core.String?,
+        ref: json_['ref'] as core.String?,
+        repo: json_['repo'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (directory != null) 'directory': directory!,
-        if (ref != null) 'ref': ref!,
-        if (repo != null) 'repo': repo!,
-      };
+    if (directory != null) 'directory': directory!,
+    if (ref != null) 'ref': ref!,
+    if (repo != null) 'repo': repo!,
+  };
 }
 
 /// A request to import a state file passed to a 'ImportStatefile' call.
@@ -2630,18 +2614,14 @@ class ImportStatefileRequest {
   /// Required.
   core.String? lockId;
 
-  ImportStatefileRequest({
-    this.lockId,
-  });
+  ImportStatefileRequest({this.lockId});
 
   ImportStatefileRequest.fromJson(core.Map json_)
-      : this(
-          lockId: json_['lockId'] as core.String?,
-        );
+    : this(lockId: json_['lockId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lockId != null) 'lockId': lockId!,
-      };
+    if (lockId != null) 'lockId': lockId!,
+  };
 }
 
 class ListDeploymentsResponse {
@@ -2662,22 +2642,27 @@ class ListDeploymentsResponse {
   });
 
   ListDeploymentsResponse.fromJson(core.Map json_)
-      : this(
-          deployments: (json_['deployments'] as core.List?)
-              ?.map((value) => Deployment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        deployments:
+            (json_['deployments'] as core.List?)
+                ?.map(
+                  (value) => Deployment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deployments != null) 'deployments': deployments!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (deployments != null) 'deployments': deployments!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -2688,24 +2673,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -2716,24 +2702,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// A response to a `ListPreviews` call.
@@ -2750,29 +2737,30 @@ class ListPreviewsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListPreviewsResponse({
-    this.nextPageToken,
-    this.previews,
-    this.unreachable,
-  });
+  ListPreviewsResponse({this.nextPageToken, this.previews, this.unreachable});
 
   ListPreviewsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          previews: (json_['previews'] as core.List?)
-              ?.map((value) => Preview.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        previews:
+            (json_['previews'] as core.List?)
+                ?.map(
+                  (value) => Preview.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (previews != null) 'previews': previews!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (previews != null) 'previews': previews!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// A response to a 'ListResourceChanges' call.
@@ -2799,22 +2787,27 @@ class ListResourceChangesResponse {
   });
 
   ListResourceChangesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          resourceChanges: (json_['resourceChanges'] as core.List?)
-              ?.map((value) => ResourceChange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        resourceChanges:
+            (json_['resourceChanges'] as core.List?)
+                ?.map(
+                  (value) => ResourceChange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resourceChanges != null) 'resourceChanges': resourceChanges!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (resourceChanges != null) 'resourceChanges': resourceChanges!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// A response to a 'ListResourceDrifts' call.
@@ -2841,22 +2834,27 @@ class ListResourceDriftsResponse {
   });
 
   ListResourceDriftsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          resourceDrifts: (json_['resourceDrifts'] as core.List?)
-              ?.map((value) => ResourceDrift.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        resourceDrifts:
+            (json_['resourceDrifts'] as core.List?)
+                ?.map(
+                  (value) => ResourceDrift.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resourceDrifts != null) 'resourceDrifts': resourceDrifts!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (resourceDrifts != null) 'resourceDrifts': resourceDrifts!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// A response to a 'ListResources' call.
@@ -2876,29 +2874,30 @@ class ListResourcesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListResourcesResponse({
-    this.nextPageToken,
-    this.resources,
-    this.unreachable,
-  });
+  ListResourcesResponse({this.nextPageToken, this.resources, this.unreachable});
 
   ListResourcesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          resources: (json_['resources'] as core.List?)
-              ?.map((value) => Resource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        resources:
+            (json_['resources'] as core.List?)
+                ?.map(
+                  (value) => Resource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resources != null) 'resources': resources!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (resources != null) 'resources': resources!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// A response to a 'ListRevisions' call.
@@ -2918,29 +2917,30 @@ class ListRevisionsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListRevisionsResponse({
-    this.nextPageToken,
-    this.revisions,
-    this.unreachable,
-  });
+  ListRevisionsResponse({this.nextPageToken, this.revisions, this.unreachable});
 
   ListRevisionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          revisions: (json_['revisions'] as core.List?)
-              ?.map((value) => Revision.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        revisions:
+            (json_['revisions'] as core.List?)
+                ?.map(
+                  (value) => Revision.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (revisions != null) 'revisions': revisions!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (revisions != null) 'revisions': revisions!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response message for the `ListTerraformVersions` method.
@@ -2962,22 +2962,27 @@ class ListTerraformVersionsResponse {
   });
 
   ListTerraformVersionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          terraformVersions: (json_['terraformVersions'] as core.List?)
-              ?.map((value) => TerraformVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        terraformVersions:
+            (json_['terraformVersions'] as core.List?)
+                ?.map(
+                  (value) => TerraformVersion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (terraformVersions != null) 'terraformVersions': terraformVersions!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (terraformVersions != null) 'terraformVersions': terraformVersions!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -3016,23 +3021,23 @@ class LockInfo {
   });
 
   LockInfo.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          info: json_['info'] as core.String?,
-          lockId: json_['lockId'] as core.String?,
-          operation: json_['operation'] as core.String?,
-          version: json_['version'] as core.String?,
-          who: json_['who'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        info: json_['info'] as core.String?,
+        lockId: json_['lockId'] as core.String?,
+        operation: json_['operation'] as core.String?,
+        version: json_['version'] as core.String?,
+        who: json_['who'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (info != null) 'info': info!,
-        if (lockId != null) 'lockId': lockId!,
-        if (operation != null) 'operation': operation!,
-        if (version != null) 'version': version!,
-        if (who != null) 'who': who!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (info != null) 'info': info!,
+    if (lockId != null) 'lockId': lockId!,
+    if (operation != null) 'operation': operation!,
+    if (version != null) 'version': version!,
+    if (who != null) 'who': who!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -3078,37 +3083,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -3174,8 +3177,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -3197,33 +3202,36 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        auditConfigs:
+            (json_['auditConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// A preview represents a set of actions Infra Manager would perform to move
@@ -3420,79 +3428,80 @@ class Preview {
   });
 
   Preview.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          artifactsGcsBucket: json_['artifactsGcsBucket'] as core.String?,
-          build: json_['build'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          deployment: json_['deployment'] as core.String?,
-          errorCode: json_['errorCode'] as core.String?,
-          errorLogs: json_['errorLogs'] as core.String?,
-          errorStatus: json_.containsKey('errorStatus')
-              ? Status.fromJson(
-                  json_['errorStatus'] as core.Map<core.String, core.dynamic>)
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          logs: json_['logs'] as core.String?,
-          name: json_['name'] as core.String?,
-          previewArtifacts: json_.containsKey('previewArtifacts')
-              ? PreviewArtifacts.fromJson(json_['previewArtifacts']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          previewMode: json_['previewMode'] as core.String?,
-          serviceAccount: json_['serviceAccount'] as core.String?,
-          state: json_['state'] as core.String?,
-          terraformBlueprint: json_.containsKey('terraformBlueprint')
-              ? TerraformBlueprint.fromJson(json_['terraformBlueprint']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          tfErrors: (json_['tfErrors'] as core.List?)
-              ?.map((value) => TerraformError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          tfVersion: json_['tfVersion'] as core.String?,
-          tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
-          workerPool: json_['workerPool'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        artifactsGcsBucket: json_['artifactsGcsBucket'] as core.String?,
+        build: json_['build'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        deployment: json_['deployment'] as core.String?,
+        errorCode: json_['errorCode'] as core.String?,
+        errorLogs: json_['errorLogs'] as core.String?,
+        errorStatus:
+            json_.containsKey('errorStatus')
+                ? Status.fromJson(
+                  json_['errorStatus'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        logs: json_['logs'] as core.String?,
+        name: json_['name'] as core.String?,
+        previewArtifacts:
+            json_.containsKey('previewArtifacts')
+                ? PreviewArtifacts.fromJson(
+                  json_['previewArtifacts']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        previewMode: json_['previewMode'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        state: json_['state'] as core.String?,
+        terraformBlueprint:
+            json_.containsKey('terraformBlueprint')
+                ? TerraformBlueprint.fromJson(
+                  json_['terraformBlueprint']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tfErrors:
+            (json_['tfErrors'] as core.List?)
+                ?.map(
+                  (value) => TerraformError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        tfVersion: json_['tfVersion'] as core.String?,
+        tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
+        workerPool: json_['workerPool'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (artifactsGcsBucket != null)
-          'artifactsGcsBucket': artifactsGcsBucket!,
-        if (build != null) 'build': build!,
-        if (createTime != null) 'createTime': createTime!,
-        if (deployment != null) 'deployment': deployment!,
-        if (errorCode != null) 'errorCode': errorCode!,
-        if (errorLogs != null) 'errorLogs': errorLogs!,
-        if (errorStatus != null) 'errorStatus': errorStatus!,
-        if (labels != null) 'labels': labels!,
-        if (logs != null) 'logs': logs!,
-        if (name != null) 'name': name!,
-        if (previewArtifacts != null) 'previewArtifacts': previewArtifacts!,
-        if (previewMode != null) 'previewMode': previewMode!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (state != null) 'state': state!,
-        if (terraformBlueprint != null)
-          'terraformBlueprint': terraformBlueprint!,
-        if (tfErrors != null) 'tfErrors': tfErrors!,
-        if (tfVersion != null) 'tfVersion': tfVersion!,
-        if (tfVersionConstraint != null)
-          'tfVersionConstraint': tfVersionConstraint!,
-        if (workerPool != null) 'workerPool': workerPool!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (artifactsGcsBucket != null) 'artifactsGcsBucket': artifactsGcsBucket!,
+    if (build != null) 'build': build!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deployment != null) 'deployment': deployment!,
+    if (errorCode != null) 'errorCode': errorCode!,
+    if (errorLogs != null) 'errorLogs': errorLogs!,
+    if (errorStatus != null) 'errorStatus': errorStatus!,
+    if (labels != null) 'labels': labels!,
+    if (logs != null) 'logs': logs!,
+    if (name != null) 'name': name!,
+    if (previewArtifacts != null) 'previewArtifacts': previewArtifacts!,
+    if (previewMode != null) 'previewMode': previewMode!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (state != null) 'state': state!,
+    if (terraformBlueprint != null) 'terraformBlueprint': terraformBlueprint!,
+    if (tfErrors != null) 'tfErrors': tfErrors!,
+    if (tfVersion != null) 'tfVersion': tfVersion!,
+    if (tfVersionConstraint != null)
+      'tfVersionConstraint': tfVersionConstraint!,
+    if (workerPool != null) 'workerPool': workerPool!,
+  };
 }
 
 /// Artifacts created by preview.
@@ -3511,21 +3520,18 @@ class PreviewArtifacts {
   /// Output only.
   core.String? content;
 
-  PreviewArtifacts({
-    this.artifacts,
-    this.content,
-  });
+  PreviewArtifacts({this.artifacts, this.content});
 
   PreviewArtifacts.fromJson(core.Map json_)
-      : this(
-          artifacts: json_['artifacts'] as core.String?,
-          content: json_['content'] as core.String?,
-        );
+    : this(
+        artifacts: json_['artifacts'] as core.String?,
+        content: json_['content'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (artifacts != null) 'artifacts': artifacts!,
-        if (content != null) 'content': content!,
-      };
+    if (artifacts != null) 'artifacts': artifacts!,
+    if (content != null) 'content': content!,
+  };
 }
 
 /// Contains a signed Cloud Storage URLs.
@@ -3540,21 +3546,18 @@ class PreviewResult {
   /// Output only.
   core.String? jsonSignedUri;
 
-  PreviewResult({
-    this.binarySignedUri,
-    this.jsonSignedUri,
-  });
+  PreviewResult({this.binarySignedUri, this.jsonSignedUri});
 
   PreviewResult.fromJson(core.Map json_)
-      : this(
-          binarySignedUri: json_['binarySignedUri'] as core.String?,
-          jsonSignedUri: json_['jsonSignedUri'] as core.String?,
-        );
+    : this(
+        binarySignedUri: json_['binarySignedUri'] as core.String?,
+        jsonSignedUri: json_['jsonSignedUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (binarySignedUri != null) 'binarySignedUri': binarySignedUri!,
-        if (jsonSignedUri != null) 'jsonSignedUri': jsonSignedUri!,
-      };
+    if (binarySignedUri != null) 'binarySignedUri': binarySignedUri!,
+    if (jsonSignedUri != null) 'jsonSignedUri': jsonSignedUri!,
+  };
 }
 
 /// A property change represents a change to a property in the state file.
@@ -3603,27 +3606,29 @@ class PropertyChange {
   });
 
   PropertyChange.fromJson(core.Map json_)
-      : this(
-          after: json_['after'],
-          afterSensitivePaths: (json_['afterSensitivePaths'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          before: json_['before'],
-          beforeSensitivePaths: (json_['beforeSensitivePaths'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          path: json_['path'] as core.String?,
-        );
+    : this(
+        after: json_['after'],
+        afterSensitivePaths:
+            (json_['afterSensitivePaths'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        before: json_['before'],
+        beforeSensitivePaths:
+            (json_['beforeSensitivePaths'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        path: json_['path'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (after != null) 'after': after!,
-        if (afterSensitivePaths != null)
-          'afterSensitivePaths': afterSensitivePaths!,
-        if (before != null) 'before': before!,
-        if (beforeSensitivePaths != null)
-          'beforeSensitivePaths': beforeSensitivePaths!,
-        if (path != null) 'path': path!,
-      };
+    if (after != null) 'after': after!,
+    if (afterSensitivePaths != null)
+      'afterSensitivePaths': afterSensitivePaths!,
+    if (before != null) 'before': before!,
+    if (beforeSensitivePaths != null)
+      'beforeSensitivePaths': beforeSensitivePaths!,
+    if (path != null) 'path': path!,
+  };
 }
 
 /// A property drift represents a drift to a property in the state file.
@@ -3672,27 +3677,29 @@ class PropertyDrift {
   });
 
   PropertyDrift.fromJson(core.Map json_)
-      : this(
-          after: json_['after'],
-          afterSensitivePaths: (json_['afterSensitivePaths'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          before: json_['before'],
-          beforeSensitivePaths: (json_['beforeSensitivePaths'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          path: json_['path'] as core.String?,
-        );
+    : this(
+        after: json_['after'],
+        afterSensitivePaths:
+            (json_['afterSensitivePaths'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        before: json_['before'],
+        beforeSensitivePaths:
+            (json_['beforeSensitivePaths'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        path: json_['path'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (after != null) 'after': after!,
-        if (afterSensitivePaths != null)
-          'afterSensitivePaths': afterSensitivePaths!,
-        if (before != null) 'before': before!,
-        if (beforeSensitivePaths != null)
-          'beforeSensitivePaths': beforeSensitivePaths!,
-        if (path != null) 'path': path!,
-      };
+    if (after != null) 'after': after!,
+    if (afterSensitivePaths != null)
+      'afterSensitivePaths': afterSensitivePaths!,
+    if (before != null) 'before': before!,
+    if (beforeSensitivePaths != null)
+      'beforeSensitivePaths': beforeSensitivePaths!,
+    if (path != null) 'path': path!,
+  };
 }
 
 /// Resource represents a Google Cloud Platform resource actuated by IM.
@@ -3755,31 +3762,34 @@ class Resource {
   });
 
   Resource.fromJson(core.Map json_)
-      : this(
-          caiAssets:
-              (json_['caiAssets'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              ResourceCAIInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        caiAssets: (json_['caiAssets'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                ResourceCAIInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          intent: json_['intent'] as core.String?,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          terraformInfo: json_.containsKey('terraformInfo')
-              ? ResourceTerraformInfo.fromJson(
-                  json_['terraformInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        intent: json_['intent'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        terraformInfo:
+            json_.containsKey('terraformInfo')
+                ? ResourceTerraformInfo.fromJson(
+                  json_['terraformInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caiAssets != null) 'caiAssets': caiAssets!,
-        if (intent != null) 'intent': intent!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (terraformInfo != null) 'terraformInfo': terraformInfo!,
-      };
+    if (caiAssets != null) 'caiAssets': caiAssets!,
+    if (intent != null) 'intent': intent!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (terraformInfo != null) 'terraformInfo': terraformInfo!,
+  };
 }
 
 /// CAI info of a Resource.
@@ -3788,18 +3798,14 @@ class ResourceCAIInfo {
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String? fullResourceName;
 
-  ResourceCAIInfo({
-    this.fullResourceName,
-  });
+  ResourceCAIInfo({this.fullResourceName});
 
   ResourceCAIInfo.fromJson(core.Map json_)
-      : this(
-          fullResourceName: json_['fullResourceName'] as core.String?,
-        );
+    : this(fullResourceName: json_['fullResourceName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-      };
+    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+  };
 }
 
 /// A resource change represents a change to a resource in the state file.
@@ -3840,25 +3846,31 @@ class ResourceChange {
   });
 
   ResourceChange.fromJson(core.Map json_)
-      : this(
-          intent: json_['intent'] as core.String?,
-          name: json_['name'] as core.String?,
-          propertyChanges: (json_['propertyChanges'] as core.List?)
-              ?.map((value) => PropertyChange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          terraformInfo: json_.containsKey('terraformInfo')
-              ? ResourceChangeTerraformInfo.fromJson(
-                  json_['terraformInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        intent: json_['intent'] as core.String?,
+        name: json_['name'] as core.String?,
+        propertyChanges:
+            (json_['propertyChanges'] as core.List?)
+                ?.map(
+                  (value) => PropertyChange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        terraformInfo:
+            json_.containsKey('terraformInfo')
+                ? ResourceChangeTerraformInfo.fromJson(
+                  json_['terraformInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (intent != null) 'intent': intent!,
-        if (name != null) 'name': name!,
-        if (propertyChanges != null) 'propertyChanges': propertyChanges!,
-        if (terraformInfo != null) 'terraformInfo': terraformInfo!,
-      };
+    if (intent != null) 'intent': intent!,
+    if (name != null) 'name': name!,
+    if (propertyChanges != null) 'propertyChanges': propertyChanges!,
+    if (terraformInfo != null) 'terraformInfo': terraformInfo!,
+  };
 }
 
 /// Terraform info of a ResourceChange.
@@ -3897,23 +3909,24 @@ class ResourceChangeTerraformInfo {
   });
 
   ResourceChangeTerraformInfo.fromJson(core.Map json_)
-      : this(
-          actions: (json_['actions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          address: json_['address'] as core.String?,
-          provider: json_['provider'] as core.String?,
-          resourceName: json_['resourceName'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        actions:
+            (json_['actions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        address: json_['address'] as core.String?,
+        provider: json_['provider'] as core.String?,
+        resourceName: json_['resourceName'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actions != null) 'actions': actions!,
-        if (address != null) 'address': address!,
-        if (provider != null) 'provider': provider!,
-        if (resourceName != null) 'resourceName': resourceName!,
-        if (type != null) 'type': type!,
-      };
+    if (actions != null) 'actions': actions!,
+    if (address != null) 'address': address!,
+    if (provider != null) 'provider': provider!,
+    if (resourceName != null) 'resourceName': resourceName!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A resource drift represents a drift to a resource in the state file.
@@ -3934,30 +3947,32 @@ class ResourceDrift {
   /// Output only.
   ResourceDriftTerraformInfo? terraformInfo;
 
-  ResourceDrift({
-    this.name,
-    this.propertyDrifts,
-    this.terraformInfo,
-  });
+  ResourceDrift({this.name, this.propertyDrifts, this.terraformInfo});
 
   ResourceDrift.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          propertyDrifts: (json_['propertyDrifts'] as core.List?)
-              ?.map((value) => PropertyDrift.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          terraformInfo: json_.containsKey('terraformInfo')
-              ? ResourceDriftTerraformInfo.fromJson(
-                  json_['terraformInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        propertyDrifts:
+            (json_['propertyDrifts'] as core.List?)
+                ?.map(
+                  (value) => PropertyDrift.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        terraformInfo:
+            json_.containsKey('terraformInfo')
+                ? ResourceDriftTerraformInfo.fromJson(
+                  json_['terraformInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (propertyDrifts != null) 'propertyDrifts': propertyDrifts!,
-        if (terraformInfo != null) 'terraformInfo': terraformInfo!,
-      };
+    if (name != null) 'name': name!,
+    if (propertyDrifts != null) 'propertyDrifts': propertyDrifts!,
+    if (terraformInfo != null) 'terraformInfo': terraformInfo!,
+  };
 }
 
 /// Terraform info of a ResourceChange.
@@ -3990,19 +4005,19 @@ class ResourceDriftTerraformInfo {
   });
 
   ResourceDriftTerraformInfo.fromJson(core.Map json_)
-      : this(
-          address: json_['address'] as core.String?,
-          provider: json_['provider'] as core.String?,
-          resourceName: json_['resourceName'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        address: json_['address'] as core.String?,
+        provider: json_['provider'] as core.String?,
+        resourceName: json_['resourceName'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (provider != null) 'provider': provider!,
-        if (resourceName != null) 'resourceName': resourceName!,
-        if (type != null) 'type': type!,
-      };
+    if (address != null) 'address': address!,
+    if (provider != null) 'provider': provider!,
+    if (resourceName != null) 'resourceName': resourceName!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Terraform info of a Resource.
@@ -4017,24 +4032,20 @@ class ResourceTerraformInfo {
   /// TF resource type
   core.String? type;
 
-  ResourceTerraformInfo({
-    this.address,
-    this.id,
-    this.type,
-  });
+  ResourceTerraformInfo({this.address, this.id, this.type});
 
   ResourceTerraformInfo.fromJson(core.Map json_)
-      : this(
-          address: json_['address'] as core.String?,
-          id: json_['id'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        address: json_['address'] as core.String?,
+        id: json_['id'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (id != null) 'id': id!,
-        if (type != null) 'type': type!,
-      };
+    if (address != null) 'address': address!,
+    if (id != null) 'id': id!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A child resource of a Deployment generated by a 'CreateDeployment' or
@@ -4230,66 +4241,72 @@ class Revision {
   });
 
   Revision.fromJson(core.Map json_)
-      : this(
-          action: json_['action'] as core.String?,
-          applyResults: json_.containsKey('applyResults')
-              ? ApplyResults.fromJson(
-                  json_['applyResults'] as core.Map<core.String, core.dynamic>)
-              : null,
-          build: json_['build'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          errorCode: json_['errorCode'] as core.String?,
-          errorLogs: json_['errorLogs'] as core.String?,
-          importExistingResources:
-              json_['importExistingResources'] as core.bool?,
-          logs: json_['logs'] as core.String?,
-          name: json_['name'] as core.String?,
-          quotaValidation: json_['quotaValidation'] as core.String?,
-          quotaValidationResults:
-              json_['quotaValidationResults'] as core.String?,
-          serviceAccount: json_['serviceAccount'] as core.String?,
-          state: json_['state'] as core.String?,
-          stateDetail: json_['stateDetail'] as core.String?,
-          terraformBlueprint: json_.containsKey('terraformBlueprint')
-              ? TerraformBlueprint.fromJson(json_['terraformBlueprint']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          tfErrors: (json_['tfErrors'] as core.List?)
-              ?.map((value) => TerraformError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          tfVersion: json_['tfVersion'] as core.String?,
-          tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          workerPool: json_['workerPool'] as core.String?,
-        );
+    : this(
+        action: json_['action'] as core.String?,
+        applyResults:
+            json_.containsKey('applyResults')
+                ? ApplyResults.fromJson(
+                  json_['applyResults'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        build: json_['build'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        errorCode: json_['errorCode'] as core.String?,
+        errorLogs: json_['errorLogs'] as core.String?,
+        importExistingResources: json_['importExistingResources'] as core.bool?,
+        logs: json_['logs'] as core.String?,
+        name: json_['name'] as core.String?,
+        quotaValidation: json_['quotaValidation'] as core.String?,
+        quotaValidationResults: json_['quotaValidationResults'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateDetail: json_['stateDetail'] as core.String?,
+        terraformBlueprint:
+            json_.containsKey('terraformBlueprint')
+                ? TerraformBlueprint.fromJson(
+                  json_['terraformBlueprint']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tfErrors:
+            (json_['tfErrors'] as core.List?)
+                ?.map(
+                  (value) => TerraformError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        tfVersion: json_['tfVersion'] as core.String?,
+        tfVersionConstraint: json_['tfVersionConstraint'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        workerPool: json_['workerPool'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (applyResults != null) 'applyResults': applyResults!,
-        if (build != null) 'build': build!,
-        if (createTime != null) 'createTime': createTime!,
-        if (errorCode != null) 'errorCode': errorCode!,
-        if (errorLogs != null) 'errorLogs': errorLogs!,
-        if (importExistingResources != null)
-          'importExistingResources': importExistingResources!,
-        if (logs != null) 'logs': logs!,
-        if (name != null) 'name': name!,
-        if (quotaValidation != null) 'quotaValidation': quotaValidation!,
-        if (quotaValidationResults != null)
-          'quotaValidationResults': quotaValidationResults!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (state != null) 'state': state!,
-        if (stateDetail != null) 'stateDetail': stateDetail!,
-        if (terraformBlueprint != null)
-          'terraformBlueprint': terraformBlueprint!,
-        if (tfErrors != null) 'tfErrors': tfErrors!,
-        if (tfVersion != null) 'tfVersion': tfVersion!,
-        if (tfVersionConstraint != null)
-          'tfVersionConstraint': tfVersionConstraint!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (workerPool != null) 'workerPool': workerPool!,
-      };
+    if (action != null) 'action': action!,
+    if (applyResults != null) 'applyResults': applyResults!,
+    if (build != null) 'build': build!,
+    if (createTime != null) 'createTime': createTime!,
+    if (errorCode != null) 'errorCode': errorCode!,
+    if (errorLogs != null) 'errorLogs': errorLogs!,
+    if (importExistingResources != null)
+      'importExistingResources': importExistingResources!,
+    if (logs != null) 'logs': logs!,
+    if (name != null) 'name': name!,
+    if (quotaValidation != null) 'quotaValidation': quotaValidation!,
+    if (quotaValidationResults != null)
+      'quotaValidationResults': quotaValidationResults!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (state != null) 'state': state!,
+    if (stateDetail != null) 'stateDetail': stateDetail!,
+    if (terraformBlueprint != null) 'terraformBlueprint': terraformBlueprint!,
+    if (tfErrors != null) 'tfErrors': tfErrors!,
+    if (tfVersion != null) 'tfVersion': tfVersion!,
+    if (tfVersionConstraint != null)
+      'tfVersionConstraint': tfVersionConstraint!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (workerPool != null) 'workerPool': workerPool!,
+  };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -4307,24 +4324,23 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (policy != null) 'policy': policy!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Contains info about a Terraform state file
@@ -4334,18 +4350,14 @@ class Statefile {
   /// Output only.
   core.String? signedUri;
 
-  Statefile({
-    this.signedUri,
-  });
+  Statefile({this.signedUri});
 
   Statefile.fromJson(core.Map json_)
-      : this(
-          signedUri: json_['signedUri'] as core.String?,
-        );
+    : this(signedUri: json_['signedUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (signedUri != null) 'signedUri': signedUri!,
-      };
+    if (signedUri != null) 'signedUri': signedUri!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4374,35 +4386,33 @@ class TerraformBlueprint {
   /// Optional.
   core.Map<core.String, TerraformVariable>? inputValues;
 
-  TerraformBlueprint({
-    this.gcsSource,
-    this.gitSource,
-    this.inputValues,
-  });
+  TerraformBlueprint({this.gcsSource, this.gitSource, this.inputValues});
 
   TerraformBlueprint.fromJson(core.Map json_)
-      : this(
-          gcsSource: json_['gcsSource'] as core.String?,
-          gitSource: json_.containsKey('gitSource')
-              ? GitSource.fromJson(
-                  json_['gitSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          inputValues:
-              (json_['inputValues'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              TerraformVariable.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        gcsSource: json_['gcsSource'] as core.String?,
+        gitSource:
+            json_.containsKey('gitSource')
+                ? GitSource.fromJson(
+                  json_['gitSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        inputValues:
+            (json_['inputValues'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                TerraformVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-        );
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-        if (gitSource != null) 'gitSource': gitSource!,
-        if (inputValues != null) 'inputValues': inputValues!,
-      };
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+    if (gitSource != null) 'gitSource': gitSource!,
+    if (inputValues != null) 'inputValues': inputValues!,
+  };
 }
 
 /// Errors encountered during actuation using Terraform
@@ -4433,22 +4443,24 @@ class TerraformError {
   });
 
   TerraformError.fromJson(core.Map json_)
-      : this(
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          errorDescription: json_['errorDescription'] as core.String?,
-          httpResponseCode: json_['httpResponseCode'] as core.int?,
-          resourceAddress: json_['resourceAddress'] as core.String?,
-        );
+    : this(
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        errorDescription: json_['errorDescription'] as core.String?,
+        httpResponseCode: json_['httpResponseCode'] as core.int?,
+        resourceAddress: json_['resourceAddress'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!,
-        if (errorDescription != null) 'errorDescription': errorDescription!,
-        if (httpResponseCode != null) 'httpResponseCode': httpResponseCode!,
-        if (resourceAddress != null) 'resourceAddress': resourceAddress!,
-      };
+    if (error != null) 'error': error!,
+    if (errorDescription != null) 'errorDescription': errorDescription!,
+    if (httpResponseCode != null) 'httpResponseCode': httpResponseCode!,
+    if (resourceAddress != null) 'resourceAddress': resourceAddress!,
+  };
 }
 
 /// Describes a Terraform output.
@@ -4463,21 +4475,15 @@ class TerraformOutput {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? value;
 
-  TerraformOutput({
-    this.sensitive,
-    this.value,
-  });
+  TerraformOutput({this.sensitive, this.value});
 
   TerraformOutput.fromJson(core.Map json_)
-      : this(
-          sensitive: json_['sensitive'] as core.bool?,
-          value: json_['value'],
-        );
+    : this(sensitive: json_['sensitive'] as core.bool?, value: json_['value']);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sensitive != null) 'sensitive': sensitive!,
-        if (value != null) 'value': value!,
-      };
+    if (sensitive != null) 'sensitive': sensitive!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// A Terraform input variable.
@@ -4490,18 +4496,14 @@ class TerraformVariable {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? inputValue;
 
-  TerraformVariable({
-    this.inputValue,
-  });
+  TerraformVariable({this.inputValue});
 
   TerraformVariable.fromJson(core.Map json_)
-      : this(
-          inputValue: json_['inputValue'],
-        );
+    : this(inputValue: json_['inputValue']);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inputValue != null) 'inputValue': inputValue!,
-      };
+    if (inputValue != null) 'inputValue': inputValue!,
+  };
 }
 
 /// A TerraformVersion represents the support state the corresponding Terraform
@@ -4548,21 +4550,21 @@ class TerraformVersion {
   });
 
   TerraformVersion.fromJson(core.Map json_)
-      : this(
-          deprecateTime: json_['deprecateTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          obsoleteTime: json_['obsoleteTime'] as core.String?,
-          state: json_['state'] as core.String?,
-          supportTime: json_['supportTime'] as core.String?,
-        );
+    : this(
+        deprecateTime: json_['deprecateTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        obsoleteTime: json_['obsoleteTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        supportTime: json_['supportTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deprecateTime != null) 'deprecateTime': deprecateTime!,
-        if (name != null) 'name': name!,
-        if (obsoleteTime != null) 'obsoleteTime': obsoleteTime!,
-        if (state != null) 'state': state!,
-        if (supportTime != null) 'supportTime': supportTime!,
-      };
+    if (deprecateTime != null) 'deprecateTime': deprecateTime!,
+    if (name != null) 'name': name!,
+    if (obsoleteTime != null) 'obsoleteTime': obsoleteTime!,
+    if (state != null) 'state': state!,
+    if (supportTime != null) 'supportTime': supportTime!,
+  };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -4578,16 +4580,12 @@ class UnlockDeploymentRequest {
   /// Required.
   core.String? lockId;
 
-  UnlockDeploymentRequest({
-    this.lockId,
-  });
+  UnlockDeploymentRequest({this.lockId});
 
   UnlockDeploymentRequest.fromJson(core.Map json_)
-      : this(
-          lockId: json_['lockId'] as core.String?,
-        );
+    : this(lockId: json_['lockId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lockId != null) 'lockId': lockId!,
-      };
+    if (lockId != null) 'lockId': lockId!,
+  };
 }

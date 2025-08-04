@@ -71,18 +71,23 @@ class CloudBuildApi {
   ProjectsResource get projects => ProjectsResource(_requester);
   V1Resource get v1 => V1Resource(_requester);
 
-  CloudBuildApi(http_1.Client client,
-      {core.String rootUrl = 'https://cloudbuild.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudBuildApi(
+    http_1.Client client, {
+    core.String rootUrl = 'https://cloudbuild.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class GithubDotComWebhookResource {
   final commons.ApiRequester _requester;
 
   GithubDotComWebhookResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// ReceiveGitHubDotComWebhook is called when the API receives a github.com
   /// webhook.
@@ -255,10 +260,7 @@ class OperationsResource {
   ///
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -367,7 +369,8 @@ class ProjectsBuildsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/projects/' +
+    final url_ =
+        'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/builds/' +
         commons.escapeVariable('$id') +
@@ -466,7 +469,8 @@ class ProjectsBuildsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/projects/' +
+    final url_ =
+        'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/builds/' +
         commons.escapeVariable('$id');
@@ -536,7 +540,8 @@ class ProjectsBuildsResource {
       queryParams: queryParams_,
     );
     return ListBuildsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new build based on the specified build.
@@ -587,7 +592,8 @@ class ProjectsBuildsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/projects/' +
+    final url_ =
+        'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/builds/' +
         commons.escapeVariable('$id') +
@@ -607,7 +613,7 @@ class ProjectsGithubEnterpriseConfigsResource {
   final commons.ApiRequester _requester;
 
   ProjectsGithubEnterpriseConfigsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create an association between a GCP project and a GitHub Enterprise
   /// server.
@@ -706,6 +712,7 @@ class ProjectsGithubEnterpriseConfigsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -755,7 +762,8 @@ class ProjectsGithubEnterpriseConfigsResource {
       queryParams: queryParams_,
     );
     return GitHubEnterpriseConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List all GitHubEnterpriseConfigs for a given project.
@@ -797,7 +805,8 @@ class ProjectsGithubEnterpriseConfigsResource {
       queryParams: queryParams_,
     );
     return ListGithubEnterpriseConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update an association between a GCP project and a GitHub Enterprise
@@ -861,8 +870,8 @@ class ProjectsLocationsResource {
   ProjectsLocationsGitLabConfigsResource get gitLabConfigs =>
       ProjectsLocationsGitLabConfigsResource(_requester);
   ProjectsLocationsGithubEnterpriseConfigsResource
-      get githubEnterpriseConfigs =>
-          ProjectsLocationsGithubEnterpriseConfigsResource(_requester);
+  get githubEnterpriseConfigs =>
+      ProjectsLocationsGithubEnterpriseConfigsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsTriggersResource get triggers =>
@@ -907,7 +916,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return DefaultServiceAccount.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -915,14 +925,15 @@ class ProjectsLocationsBitbucketServerConfigsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource
-      get connectedRepositories =>
-          ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource(
-              _requester);
+  get connectedRepositories =>
+      ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource(
+        _requester,
+      );
   ProjectsLocationsBitbucketServerConfigsReposResource get repos =>
       ProjectsLocationsBitbucketServerConfigsReposResource(_requester);
 
   ProjectsLocationsBitbucketServerConfigsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new `BitbucketServerConfig`.
   ///
@@ -1010,6 +1021,7 @@ class ProjectsLocationsBitbucketServerConfigsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1051,7 +1063,8 @@ class ProjectsLocationsBitbucketServerConfigsResource {
       queryParams: queryParams_,
     );
     return BitbucketServerConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List all `BitbucketServerConfigs` for a given project.
@@ -1105,7 +1118,8 @@ class ProjectsLocationsBitbucketServerConfigsResource {
       queryParams: queryParams_,
     );
     return ListBitbucketServerConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing `BitbucketServerConfig`.
@@ -1192,7 +1206,8 @@ class ProjectsLocationsBitbucketServerConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$config') +
         ':removeBitbucketServerConnectedRepository';
 
@@ -1210,8 +1225,8 @@ class ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Batch connecting Bitbucket Server repositories to Cloud Build.
   ///
@@ -1245,7 +1260,8 @@ class ProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/connectedRepositories:batchCreate';
 
@@ -1263,8 +1279,8 @@ class ProjectsLocationsBitbucketServerConfigsReposResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsBitbucketServerConfigsReposResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// List all repositories for a given `BitbucketServerConfig`.
   ///
@@ -1316,7 +1332,8 @@ class ProjectsLocationsBitbucketServerConfigsReposResource {
       queryParams: queryParams_,
     );
     return ListBitbucketServerRepositoriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1324,7 +1341,7 @@ class ProjectsLocationsBuildsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsBuildsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Approves or rejects a pending build.
   ///
@@ -1567,7 +1584,8 @@ class ProjectsLocationsBuildsResource {
       queryParams: queryParams_,
     );
     return ListBuildsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new build based on the specified build.
@@ -1634,14 +1652,13 @@ class ProjectsLocationsGitLabConfigsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGitLabConfigsConnectedRepositoriesResource
-      get connectedRepositories =>
-          ProjectsLocationsGitLabConfigsConnectedRepositoriesResource(
-              _requester);
+  get connectedRepositories =>
+      ProjectsLocationsGitLabConfigsConnectedRepositoriesResource(_requester);
   ProjectsLocationsGitLabConfigsReposResource get repos =>
       ProjectsLocationsGitLabConfigsReposResource(_requester);
 
   ProjectsLocationsGitLabConfigsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new `GitLabConfig`.
   ///
@@ -1726,6 +1743,7 @@ class ProjectsLocationsGitLabConfigsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1767,7 +1785,8 @@ class ProjectsLocationsGitLabConfigsResource {
       queryParams: queryParams_,
     );
     return GitLabConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List all `GitLabConfigs` for a given project.
@@ -1820,7 +1839,8 @@ class ProjectsLocationsGitLabConfigsResource {
       queryParams: queryParams_,
     );
     return ListGitLabConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing `GitLabConfig`.
@@ -1907,7 +1927,8 @@ class ProjectsLocationsGitLabConfigsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$config') +
         ':removeGitLabConnectedRepository';
 
@@ -1925,8 +1946,8 @@ class ProjectsLocationsGitLabConfigsConnectedRepositoriesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGitLabConfigsConnectedRepositoriesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Batch connecting GitLab repositories to Cloud Build.
   ///
@@ -1962,7 +1983,8 @@ class ProjectsLocationsGitLabConfigsConnectedRepositoriesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/connectedRepositories:batchCreate';
 
@@ -1980,7 +2002,7 @@ class ProjectsLocationsGitLabConfigsReposResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGitLabConfigsReposResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// List all repositories for a given `GitLabConfig`.
   ///
@@ -2031,7 +2053,8 @@ class ProjectsLocationsGitLabConfigsReposResource {
       queryParams: queryParams_,
     );
     return ListGitLabRepositoriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2039,7 +2062,7 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGithubEnterpriseConfigsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create an association between a GCP project and a GitHub Enterprise
   /// server.
@@ -2138,6 +2161,7 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2187,7 +2211,8 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
       queryParams: queryParams_,
     );
     return GitHubEnterpriseConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List all GitHubEnterpriseConfigs for a given project.
@@ -2229,7 +2254,8 @@ class ProjectsLocationsGithubEnterpriseConfigsResource {
       queryParams: queryParams_,
     );
     return ListGithubEnterpriseConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update an association between a GCP project and a GitHub Enterprise
@@ -2287,7 +2313,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -2360,10 +2386,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2383,7 +2406,7 @@ class ProjectsLocationsTriggersResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsTriggersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new `BuildTrigger`.
   ///
@@ -2429,7 +2452,8 @@ class ProjectsLocationsTriggersResource {
       queryParams: queryParams_,
     );
     return BuildTrigger.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a `BuildTrigger` by its project ID and trigger ID.
@@ -2472,6 +2496,7 @@ class ProjectsLocationsTriggersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2521,7 +2546,8 @@ class ProjectsLocationsTriggersResource {
       queryParams: queryParams_,
     );
     return BuildTrigger.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists existing `BuildTrigger`s.
@@ -2570,7 +2596,8 @@ class ProjectsLocationsTriggersResource {
       queryParams: queryParams_,
     );
     return ListBuildTriggersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a `BuildTrigger` by its project ID and trigger ID.
@@ -2628,7 +2655,8 @@ class ProjectsLocationsTriggersResource {
       queryParams: queryParams_,
     );
     return BuildTrigger.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Runs a `BuildTrigger` at a particular source revision.
@@ -2733,7 +2761,8 @@ class ProjectsLocationsTriggersResource {
       queryParams: queryParams_,
     );
     return ReceiveTriggerWebhookResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2741,7 +2770,7 @@ class ProjectsLocationsWorkerPoolsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsWorkerPoolsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a `WorkerPool`.
   ///
@@ -2842,6 +2871,7 @@ class ProjectsLocationsWorkerPoolsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2866,10 +2896,7 @@ class ProjectsLocationsWorkerPoolsResource {
   ///
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
-  async.Future<WorkerPool> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<WorkerPool> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2882,7 +2909,8 @@ class ProjectsLocationsWorkerPoolsResource {
       queryParams: queryParams_,
     );
     return WorkerPool.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists `WorkerPool`s.
@@ -2930,7 +2958,8 @@ class ProjectsLocationsWorkerPoolsResource {
       queryParams: queryParams_,
     );
     return ListWorkerPoolsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a `WorkerPool`.
@@ -3038,7 +3067,8 @@ class ProjectsTriggersResource {
       queryParams: queryParams_,
     );
     return BuildTrigger.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a `BuildTrigger` by its project ID and trigger ID.
@@ -3073,7 +3103,8 @@ class ProjectsTriggersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/projects/' +
+    final url_ =
+        'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/triggers/' +
         commons.escapeVariable('$triggerId');
@@ -3081,6 +3112,7 @@ class ProjectsTriggersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3119,7 +3151,8 @@ class ProjectsTriggersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/projects/' +
+    final url_ =
+        'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/triggers/' +
         commons.escapeVariable('$triggerId');
@@ -3130,7 +3163,8 @@ class ProjectsTriggersResource {
       queryParams: queryParams_,
     );
     return BuildTrigger.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists existing `BuildTrigger`s.
@@ -3179,7 +3213,8 @@ class ProjectsTriggersResource {
       queryParams: queryParams_,
     );
     return ListBuildTriggersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a `BuildTrigger` by its project ID and trigger ID.
@@ -3219,7 +3254,8 @@ class ProjectsTriggersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/projects/' +
+    final url_ =
+        'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/triggers/' +
         commons.escapeVariable('$triggerId');
@@ -3231,7 +3267,8 @@ class ProjectsTriggersResource {
       queryParams: queryParams_,
     );
     return BuildTrigger.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Runs a `BuildTrigger` at a particular source revision.
@@ -3276,7 +3313,8 @@ class ProjectsTriggersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/projects/' +
+    final url_ =
+        'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/triggers/' +
         commons.escapeVariable('$triggerId') +
@@ -3333,7 +3371,8 @@ class ProjectsTriggersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/projects/' +
+    final url_ =
+        'v1/projects/' +
         commons.escapeVariable('$projectId') +
         '/triggers/' +
         commons.escapeVariable('$trigger') +
@@ -3346,7 +3385,8 @@ class ProjectsTriggersResource {
       queryParams: queryParams_,
     );
     return ReceiveTriggerWebhookResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3406,18 +3446,14 @@ class ApprovalConfig {
   /// need to be explicitly approved to start.
   core.bool? approvalRequired;
 
-  ApprovalConfig({
-    this.approvalRequired,
-  });
+  ApprovalConfig({this.approvalRequired});
 
   ApprovalConfig.fromJson(core.Map json_)
-      : this(
-          approvalRequired: json_['approvalRequired'] as core.bool?,
-        );
+    : this(approvalRequired: json_['approvalRequired'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approvalRequired != null) 'approvalRequired': approvalRequired!,
-      };
+    if (approvalRequired != null) 'approvalRequired': approvalRequired!,
+  };
 }
 
 /// ApprovalResult describes the decision and associated metadata of a manual
@@ -3466,21 +3502,21 @@ class ApprovalResult {
   });
 
   ApprovalResult.fromJson(core.Map json_)
-      : this(
-          approvalTime: json_['approvalTime'] as core.String?,
-          approverAccount: json_['approverAccount'] as core.String?,
-          comment: json_['comment'] as core.String?,
-          decision: json_['decision'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        approvalTime: json_['approvalTime'] as core.String?,
+        approverAccount: json_['approverAccount'] as core.String?,
+        comment: json_['comment'] as core.String?,
+        decision: json_['decision'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approvalTime != null) 'approvalTime': approvalTime!,
-        if (approverAccount != null) 'approverAccount': approverAccount!,
-        if (comment != null) 'comment': comment!,
-        if (decision != null) 'decision': decision!,
-        if (url != null) 'url': url!,
-      };
+    if (approvalTime != null) 'approvalTime': approvalTime!,
+    if (approverAccount != null) 'approverAccount': approverAccount!,
+    if (comment != null) 'comment': comment!,
+    if (decision != null) 'decision': decision!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Request to approve or reject a pending build.
@@ -3488,21 +3524,22 @@ class ApproveBuildRequest {
   /// Approval decision and metadata.
   ApprovalResult? approvalResult;
 
-  ApproveBuildRequest({
-    this.approvalResult,
-  });
+  ApproveBuildRequest({this.approvalResult});
 
   ApproveBuildRequest.fromJson(core.Map json_)
-      : this(
-          approvalResult: json_.containsKey('approvalResult')
-              ? ApprovalResult.fromJson(json_['approvalResult']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        approvalResult:
+            json_.containsKey('approvalResult')
+                ? ApprovalResult.fromJson(
+                  json_['approvalResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approvalResult != null) 'approvalResult': approvalResult!,
-      };
+    if (approvalResult != null) 'approvalResult': approvalResult!,
+  };
 }
 
 /// Files in the workspace to upload to Cloud Storage upon successful completion
@@ -3525,29 +3562,28 @@ class ArtifactObjects {
   /// Output only.
   TimeSpan? timing;
 
-  ArtifactObjects({
-    this.location,
-    this.paths,
-    this.timing,
-  });
+  ArtifactObjects({this.location, this.paths, this.timing});
 
   ArtifactObjects.fromJson(core.Map json_)
-      : this(
-          location: json_['location'] as core.String?,
-          paths: (json_['paths'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          timing: json_.containsKey('timing')
-              ? TimeSpan.fromJson(
-                  json_['timing'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        location: json_['location'] as core.String?,
+        paths:
+            (json_['paths'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        timing:
+            json_.containsKey('timing')
+                ? TimeSpan.fromJson(
+                  json_['timing'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (location != null) 'location': location!,
-        if (paths != null) 'paths': paths!,
-        if (timing != null) 'timing': timing!,
-      };
+    if (location != null) 'location': location!,
+    if (paths != null) 'paths': paths!,
+    if (timing != null) 'timing': timing!,
+  };
 }
 
 /// Artifacts produced by a build that should be uploaded upon successful
@@ -3615,40 +3651,59 @@ class Artifacts {
   });
 
   Artifacts.fromJson(core.Map json_)
-      : this(
-          goModules: (json_['goModules'] as core.List?)
-              ?.map((value) => GoModule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          images: (json_['images'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          mavenArtifacts: (json_['mavenArtifacts'] as core.List?)
-              ?.map((value) => MavenArtifact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          npmPackages: (json_['npmPackages'] as core.List?)
-              ?.map((value) => NpmPackage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          objects: json_.containsKey('objects')
-              ? ArtifactObjects.fromJson(
-                  json_['objects'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pythonPackages: (json_['pythonPackages'] as core.List?)
-              ?.map((value) => PythonPackage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        goModules:
+            (json_['goModules'] as core.List?)
+                ?.map(
+                  (value) => GoModule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        images:
+            (json_['images'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        mavenArtifacts:
+            (json_['mavenArtifacts'] as core.List?)
+                ?.map(
+                  (value) => MavenArtifact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        npmPackages:
+            (json_['npmPackages'] as core.List?)
+                ?.map(
+                  (value) => NpmPackage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        objects:
+            json_.containsKey('objects')
+                ? ArtifactObjects.fromJson(
+                  json_['objects'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pythonPackages:
+            (json_['pythonPackages'] as core.List?)
+                ?.map(
+                  (value) => PythonPackage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (goModules != null) 'goModules': goModules!,
-        if (images != null) 'images': images!,
-        if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
-        if (npmPackages != null) 'npmPackages': npmPackages!,
-        if (objects != null) 'objects': objects!,
-        if (pythonPackages != null) 'pythonPackages': pythonPackages!,
-      };
+    if (goModules != null) 'goModules': goModules!,
+    if (images != null) 'images': images!,
+    if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
+    if (npmPackages != null) 'npmPackages': npmPackages!,
+    if (objects != null) 'objects': objects!,
+    if (pythonPackages != null) 'pythonPackages': pythonPackages!,
+  };
 }
 
 /// RPC request object accepted by
@@ -3659,23 +3714,25 @@ class BatchCreateBitbucketServerConnectedRepositoriesRequest {
   /// Required.
   core.List<CreateBitbucketServerConnectedRepositoryRequest>? requests;
 
-  BatchCreateBitbucketServerConnectedRepositoriesRequest({
-    this.requests,
-  });
+  BatchCreateBitbucketServerConnectedRepositoriesRequest({this.requests});
 
   BatchCreateBitbucketServerConnectedRepositoriesRequest.fromJson(
-      core.Map json_)
-      : this(
-          requests: (json_['requests'] as core.List?)
-              ?.map((value) =>
-                  CreateBitbucketServerConnectedRepositoryRequest.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        requests:
+            (json_['requests'] as core.List?)
+                ?.map(
+                  (value) =>
+                      CreateBitbucketServerConnectedRepositoryRequest.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null) 'requests': requests!,
-      };
+    if (requests != null) 'requests': requests!,
+  };
 }
 
 /// RPC request object accepted by BatchCreateGitLabConnectedRepositories RPC
@@ -3686,21 +3743,23 @@ class BatchCreateGitLabConnectedRepositoriesRequest {
   /// Required.
   core.List<CreateGitLabConnectedRepositoryRequest>? requests;
 
-  BatchCreateGitLabConnectedRepositoriesRequest({
-    this.requests,
-  });
+  BatchCreateGitLabConnectedRepositoriesRequest({this.requests});
 
   BatchCreateGitLabConnectedRepositoriesRequest.fromJson(core.Map json_)
-      : this(
-          requests: (json_['requests'] as core.List?)
-              ?.map((value) => CreateGitLabConnectedRepositoryRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        requests:
+            (json_['requests'] as core.List?)
+                ?.map(
+                  (value) => CreateGitLabConnectedRepositoryRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null) 'requests': requests!,
-      };
+    if (requests != null) 'requests': requests!,
+  };
 }
 
 /// BitbucketServerConfig represents the configuration for a Bitbucket Server.
@@ -3797,41 +3856,47 @@ class BitbucketServerConfig {
   });
 
   BitbucketServerConfig.fromJson(core.Map json_)
-      : this(
-          apiKey: json_['apiKey'] as core.String?,
-          connectedRepositories: (json_['connectedRepositories'] as core.List?)
-              ?.map((value) => BitbucketServerRepositoryId.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          createTime: json_['createTime'] as core.String?,
-          hostUri: json_['hostUri'] as core.String?,
-          name: json_['name'] as core.String?,
-          peeredNetwork: json_['peeredNetwork'] as core.String?,
-          peeredNetworkIpRange: json_['peeredNetworkIpRange'] as core.String?,
-          secrets: json_.containsKey('secrets')
-              ? BitbucketServerSecrets.fromJson(
-                  json_['secrets'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sslCa: json_['sslCa'] as core.String?,
-          username: json_['username'] as core.String?,
-          webhookKey: json_['webhookKey'] as core.String?,
-        );
+    : this(
+        apiKey: json_['apiKey'] as core.String?,
+        connectedRepositories:
+            (json_['connectedRepositories'] as core.List?)
+                ?.map(
+                  (value) => BitbucketServerRepositoryId.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        hostUri: json_['hostUri'] as core.String?,
+        name: json_['name'] as core.String?,
+        peeredNetwork: json_['peeredNetwork'] as core.String?,
+        peeredNetworkIpRange: json_['peeredNetworkIpRange'] as core.String?,
+        secrets:
+            json_.containsKey('secrets')
+                ? BitbucketServerSecrets.fromJson(
+                  json_['secrets'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sslCa: json_['sslCa'] as core.String?,
+        username: json_['username'] as core.String?,
+        webhookKey: json_['webhookKey'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiKey != null) 'apiKey': apiKey!,
-        if (connectedRepositories != null)
-          'connectedRepositories': connectedRepositories!,
-        if (createTime != null) 'createTime': createTime!,
-        if (hostUri != null) 'hostUri': hostUri!,
-        if (name != null) 'name': name!,
-        if (peeredNetwork != null) 'peeredNetwork': peeredNetwork!,
-        if (peeredNetworkIpRange != null)
-          'peeredNetworkIpRange': peeredNetworkIpRange!,
-        if (secrets != null) 'secrets': secrets!,
-        if (sslCa != null) 'sslCa': sslCa!,
-        if (username != null) 'username': username!,
-        if (webhookKey != null) 'webhookKey': webhookKey!,
-      };
+    if (apiKey != null) 'apiKey': apiKey!,
+    if (connectedRepositories != null)
+      'connectedRepositories': connectedRepositories!,
+    if (createTime != null) 'createTime': createTime!,
+    if (hostUri != null) 'hostUri': hostUri!,
+    if (name != null) 'name': name!,
+    if (peeredNetwork != null) 'peeredNetwork': peeredNetwork!,
+    if (peeredNetworkIpRange != null)
+      'peeredNetworkIpRange': peeredNetworkIpRange!,
+    if (secrets != null) 'secrets': secrets!,
+    if (sslCa != null) 'sslCa': sslCa!,
+    if (username != null) 'username': username!,
+    if (webhookKey != null) 'webhookKey': webhookKey!,
+  };
 }
 
 /// / BitbucketServerConnectedRepository represents a connected Bitbucket Server
@@ -3851,30 +3916,30 @@ class BitbucketServerConnectedRepository {
   /// Output only.
   Status? status;
 
-  BitbucketServerConnectedRepository({
-    this.parent,
-    this.repo,
-    this.status,
-  });
+  BitbucketServerConnectedRepository({this.parent, this.repo, this.status});
 
   BitbucketServerConnectedRepository.fromJson(core.Map json_)
-      : this(
-          parent: json_['parent'] as core.String?,
-          repo: json_.containsKey('repo')
-              ? BitbucketServerRepositoryId.fromJson(
-                  json_['repo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          status: json_.containsKey('status')
-              ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        parent: json_['parent'] as core.String?,
+        repo:
+            json_.containsKey('repo')
+                ? BitbucketServerRepositoryId.fromJson(
+                  json_['repo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        status:
+            json_.containsKey('status')
+                ? Status.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parent != null) 'parent': parent!,
-        if (repo != null) 'repo': repo!,
-        if (status != null) 'status': status!,
-      };
+    if (parent != null) 'parent': parent!,
+    if (repo != null) 'repo': repo!,
+    if (status != null) 'status': status!,
+  };
 }
 
 /// BitbucketServerRepository represents a repository hosted on a Bitbucket
@@ -3904,24 +3969,26 @@ class BitbucketServerRepository {
   });
 
   BitbucketServerRepository.fromJson(core.Map json_)
-      : this(
-          browseUri: json_['browseUri'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          repoId: json_.containsKey('repoId')
-              ? BitbucketServerRepositoryId.fromJson(
-                  json_['repoId'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        browseUri: json_['browseUri'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        repoId:
+            json_.containsKey('repoId')
+                ? BitbucketServerRepositoryId.fromJson(
+                  json_['repoId'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (browseUri != null) 'browseUri': browseUri!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (repoId != null) 'repoId': repoId!,
-      };
+    if (browseUri != null) 'browseUri': browseUri!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (repoId != null) 'repoId': repoId!,
+  };
 }
 
 /// BitbucketServerRepositoryId identifies a specific repository hosted on a
@@ -3945,24 +4012,20 @@ class BitbucketServerRepositoryId {
   /// Output only.
   core.int? webhookId;
 
-  BitbucketServerRepositoryId({
-    this.projectKey,
-    this.repoSlug,
-    this.webhookId,
-  });
+  BitbucketServerRepositoryId({this.projectKey, this.repoSlug, this.webhookId});
 
   BitbucketServerRepositoryId.fromJson(core.Map json_)
-      : this(
-          projectKey: json_['projectKey'] as core.String?,
-          repoSlug: json_['repoSlug'] as core.String?,
-          webhookId: json_['webhookId'] as core.int?,
-        );
+    : this(
+        projectKey: json_['projectKey'] as core.String?,
+        repoSlug: json_['repoSlug'] as core.String?,
+        webhookId: json_['webhookId'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (projectKey != null) 'projectKey': projectKey!,
-        if (repoSlug != null) 'repoSlug': repoSlug!,
-        if (webhookId != null) 'webhookId': webhookId!,
-      };
+    if (projectKey != null) 'projectKey': projectKey!,
+    if (repoSlug != null) 'repoSlug': repoSlug!,
+    if (webhookId != null) 'webhookId': webhookId!,
+  };
 }
 
 /// BitbucketServerSecrets represents the secrets in Secret Manager for a
@@ -3993,23 +4056,23 @@ class BitbucketServerSecrets {
   });
 
   BitbucketServerSecrets.fromJson(core.Map json_)
-      : this(
-          adminAccessTokenVersionName:
-              json_['adminAccessTokenVersionName'] as core.String?,
-          readAccessTokenVersionName:
-              json_['readAccessTokenVersionName'] as core.String?,
-          webhookSecretVersionName:
-              json_['webhookSecretVersionName'] as core.String?,
-        );
+    : this(
+        adminAccessTokenVersionName:
+            json_['adminAccessTokenVersionName'] as core.String?,
+        readAccessTokenVersionName:
+            json_['readAccessTokenVersionName'] as core.String?,
+        webhookSecretVersionName:
+            json_['webhookSecretVersionName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adminAccessTokenVersionName != null)
-          'adminAccessTokenVersionName': adminAccessTokenVersionName!,
-        if (readAccessTokenVersionName != null)
-          'readAccessTokenVersionName': readAccessTokenVersionName!,
-        if (webhookSecretVersionName != null)
-          'webhookSecretVersionName': webhookSecretVersionName!,
-      };
+    if (adminAccessTokenVersionName != null)
+      'adminAccessTokenVersionName': adminAccessTokenVersionName!,
+    if (readAccessTokenVersionName != null)
+      'readAccessTokenVersionName': readAccessTokenVersionName!,
+    if (webhookSecretVersionName != null)
+      'webhookSecretVersionName': webhookSecretVersionName!,
+  };
 }
 
 /// BitbucketServerTriggerConfig describes the configuration of a trigger that
@@ -4060,35 +4123,42 @@ class BitbucketServerTriggerConfig {
   });
 
   BitbucketServerTriggerConfig.fromJson(core.Map json_)
-      : this(
-          bitbucketServerConfig: json_.containsKey('bitbucketServerConfig')
-              ? BitbucketServerConfig.fromJson(json_['bitbucketServerConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          bitbucketServerConfigResource:
-              json_['bitbucketServerConfigResource'] as core.String?,
-          projectKey: json_['projectKey'] as core.String?,
-          pullRequest: json_.containsKey('pullRequest')
-              ? PullRequestFilter.fromJson(
-                  json_['pullRequest'] as core.Map<core.String, core.dynamic>)
-              : null,
-          push: json_.containsKey('push')
-              ? PushFilter.fromJson(
-                  json_['push'] as core.Map<core.String, core.dynamic>)
-              : null,
-          repoSlug: json_['repoSlug'] as core.String?,
-        );
+    : this(
+        bitbucketServerConfig:
+            json_.containsKey('bitbucketServerConfig')
+                ? BitbucketServerConfig.fromJson(
+                  json_['bitbucketServerConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bitbucketServerConfigResource:
+            json_['bitbucketServerConfigResource'] as core.String?,
+        projectKey: json_['projectKey'] as core.String?,
+        pullRequest:
+            json_.containsKey('pullRequest')
+                ? PullRequestFilter.fromJson(
+                  json_['pullRequest'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        push:
+            json_.containsKey('push')
+                ? PushFilter.fromJson(
+                  json_['push'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        repoSlug: json_['repoSlug'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bitbucketServerConfig != null)
-          'bitbucketServerConfig': bitbucketServerConfig!,
-        if (bitbucketServerConfigResource != null)
-          'bitbucketServerConfigResource': bitbucketServerConfigResource!,
-        if (projectKey != null) 'projectKey': projectKey!,
-        if (pullRequest != null) 'pullRequest': pullRequest!,
-        if (push != null) 'push': push!,
-        if (repoSlug != null) 'repoSlug': repoSlug!,
-      };
+    if (bitbucketServerConfig != null)
+      'bitbucketServerConfig': bitbucketServerConfig!,
+    if (bitbucketServerConfigResource != null)
+      'bitbucketServerConfigResource': bitbucketServerConfigResource!,
+    if (projectKey != null) 'projectKey': projectKey!,
+    if (pullRequest != null) 'pullRequest': pullRequest!,
+    if (push != null) 'push': push!,
+    if (repoSlug != null) 'repoSlug': repoSlug!,
+  };
 }
 
 /// A build resource in the Cloud Build API.
@@ -4328,129 +4398,161 @@ class Build {
   });
 
   Build.fromJson(core.Map json_)
-      : this(
-          approval: json_.containsKey('approval')
-              ? BuildApproval.fromJson(
-                  json_['approval'] as core.Map<core.String, core.dynamic>)
-              : null,
-          artifacts: json_.containsKey('artifacts')
-              ? Artifacts.fromJson(
-                  json_['artifacts'] as core.Map<core.String, core.dynamic>)
-              : null,
-          availableSecrets: json_.containsKey('availableSecrets')
-              ? Secrets.fromJson(json_['availableSecrets']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          buildTriggerId: json_['buildTriggerId'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          dependencies: (json_['dependencies'] as core.List?)
-              ?.map((value) => Dependency.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          failureInfo: json_.containsKey('failureInfo')
-              ? FailureInfo.fromJson(
-                  json_['failureInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          finishTime: json_['finishTime'] as core.String?,
-          gitConfig: json_.containsKey('gitConfig')
-              ? GitConfig.fromJson(
-                  json_['gitConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          id: json_['id'] as core.String?,
-          images: (json_['images'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          logUrl: json_['logUrl'] as core.String?,
-          logsBucket: json_['logsBucket'] as core.String?,
-          name: json_['name'] as core.String?,
-          options: json_.containsKey('options')
-              ? BuildOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>)
-              : null,
-          projectId: json_['projectId'] as core.String?,
-          queueTtl: json_['queueTtl'] as core.String?,
-          results: json_.containsKey('results')
-              ? Results.fromJson(
-                  json_['results'] as core.Map<core.String, core.dynamic>)
-              : null,
-          secrets: (json_['secrets'] as core.List?)
-              ?.map((value) =>
-                  Secret.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          serviceAccount: json_['serviceAccount'] as core.String?,
-          source: json_.containsKey('source')
-              ? Source.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceProvenance: json_.containsKey('sourceProvenance')
-              ? SourceProvenance.fromJson(json_['sourceProvenance']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          startTime: json_['startTime'] as core.String?,
-          status: json_['status'] as core.String?,
-          statusDetail: json_['statusDetail'] as core.String?,
-          steps: (json_['steps'] as core.List?)
-              ?.map((value) => BuildStep.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          substitutions:
-              (json_['substitutions'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
+    : this(
+        approval:
+            json_.containsKey('approval')
+                ? BuildApproval.fromJson(
+                  json_['approval'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        artifacts:
+            json_.containsKey('artifacts')
+                ? Artifacts.fromJson(
+                  json_['artifacts'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        availableSecrets:
+            json_.containsKey('availableSecrets')
+                ? Secrets.fromJson(
+                  json_['availableSecrets']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        buildTriggerId: json_['buildTriggerId'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        dependencies:
+            (json_['dependencies'] as core.List?)
+                ?.map(
+                  (value) => Dependency.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        failureInfo:
+            json_.containsKey('failureInfo')
+                ? FailureInfo.fromJson(
+                  json_['failureInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        finishTime: json_['finishTime'] as core.String?,
+        gitConfig:
+            json_.containsKey('gitConfig')
+                ? GitConfig.fromJson(
+                  json_['gitConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        id: json_['id'] as core.String?,
+        images:
+            (json_['images'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        logUrl: json_['logUrl'] as core.String?,
+        logsBucket: json_['logsBucket'] as core.String?,
+        name: json_['name'] as core.String?,
+        options:
+            json_.containsKey('options')
+                ? BuildOptions.fromJson(
+                  json_['options'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        projectId: json_['projectId'] as core.String?,
+        queueTtl: json_['queueTtl'] as core.String?,
+        results:
+            json_.containsKey('results')
+                ? Results.fromJson(
+                  json_['results'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        secrets:
+            (json_['secrets'] as core.List?)
+                ?.map(
+                  (value) => Secret.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        source:
+            json_.containsKey('source')
+                ? Source.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceProvenance:
+            json_.containsKey('sourceProvenance')
+                ? SourceProvenance.fromJson(
+                  json_['sourceProvenance']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startTime: json_['startTime'] as core.String?,
+        status: json_['status'] as core.String?,
+        statusDetail: json_['statusDetail'] as core.String?,
+        steps:
+            (json_['steps'] as core.List?)
+                ?.map(
+                  (value) => BuildStep.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        substitutions: (json_['substitutions']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        tags:
+            (json_['tags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        timeout: json_['timeout'] as core.String?,
+        timing: (json_['timing'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            TimeSpan.fromJson(value as core.Map<core.String, core.dynamic>),
           ),
-          tags: (json_['tags'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          timeout: json_['timeout'] as core.String?,
-          timing:
-              (json_['timing'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              TimeSpan.fromJson(value as core.Map<core.String, core.dynamic>),
-            ),
-          ),
-          warnings: (json_['warnings'] as core.List?)
-              ?.map((value) => Warning.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+        ),
+        warnings:
+            (json_['warnings'] as core.List?)
+                ?.map(
+                  (value) => Warning.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approval != null) 'approval': approval!,
-        if (artifacts != null) 'artifacts': artifacts!,
-        if (availableSecrets != null) 'availableSecrets': availableSecrets!,
-        if (buildTriggerId != null) 'buildTriggerId': buildTriggerId!,
-        if (createTime != null) 'createTime': createTime!,
-        if (dependencies != null) 'dependencies': dependencies!,
-        if (failureInfo != null) 'failureInfo': failureInfo!,
-        if (finishTime != null) 'finishTime': finishTime!,
-        if (gitConfig != null) 'gitConfig': gitConfig!,
-        if (id != null) 'id': id!,
-        if (images != null) 'images': images!,
-        if (logUrl != null) 'logUrl': logUrl!,
-        if (logsBucket != null) 'logsBucket': logsBucket!,
-        if (name != null) 'name': name!,
-        if (options != null) 'options': options!,
-        if (projectId != null) 'projectId': projectId!,
-        if (queueTtl != null) 'queueTtl': queueTtl!,
-        if (results != null) 'results': results!,
-        if (secrets != null) 'secrets': secrets!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (source != null) 'source': source!,
-        if (sourceProvenance != null) 'sourceProvenance': sourceProvenance!,
-        if (startTime != null) 'startTime': startTime!,
-        if (status != null) 'status': status!,
-        if (statusDetail != null) 'statusDetail': statusDetail!,
-        if (steps != null) 'steps': steps!,
-        if (substitutions != null) 'substitutions': substitutions!,
-        if (tags != null) 'tags': tags!,
-        if (timeout != null) 'timeout': timeout!,
-        if (timing != null) 'timing': timing!,
-        if (warnings != null) 'warnings': warnings!,
-      };
+    if (approval != null) 'approval': approval!,
+    if (artifacts != null) 'artifacts': artifacts!,
+    if (availableSecrets != null) 'availableSecrets': availableSecrets!,
+    if (buildTriggerId != null) 'buildTriggerId': buildTriggerId!,
+    if (createTime != null) 'createTime': createTime!,
+    if (dependencies != null) 'dependencies': dependencies!,
+    if (failureInfo != null) 'failureInfo': failureInfo!,
+    if (finishTime != null) 'finishTime': finishTime!,
+    if (gitConfig != null) 'gitConfig': gitConfig!,
+    if (id != null) 'id': id!,
+    if (images != null) 'images': images!,
+    if (logUrl != null) 'logUrl': logUrl!,
+    if (logsBucket != null) 'logsBucket': logsBucket!,
+    if (name != null) 'name': name!,
+    if (options != null) 'options': options!,
+    if (projectId != null) 'projectId': projectId!,
+    if (queueTtl != null) 'queueTtl': queueTtl!,
+    if (results != null) 'results': results!,
+    if (secrets != null) 'secrets': secrets!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (source != null) 'source': source!,
+    if (sourceProvenance != null) 'sourceProvenance': sourceProvenance!,
+    if (startTime != null) 'startTime': startTime!,
+    if (status != null) 'status': status!,
+    if (statusDetail != null) 'statusDetail': statusDetail!,
+    if (steps != null) 'steps': steps!,
+    if (substitutions != null) 'substitutions': substitutions!,
+    if (tags != null) 'tags': tags!,
+    if (timeout != null) 'timeout': timeout!,
+    if (timing != null) 'timing': timing!,
+    if (warnings != null) 'warnings': warnings!,
+  };
 }
 
 /// BuildApproval describes a build's approval configuration, state, and result.
@@ -4476,30 +4578,30 @@ class BuildApproval {
   /// - "CANCELLED" : Build was cancelled while it was still pending approval.
   core.String? state;
 
-  BuildApproval({
-    this.config,
-    this.result,
-    this.state,
-  });
+  BuildApproval({this.config, this.result, this.state});
 
   BuildApproval.fromJson(core.Map json_)
-      : this(
-          config: json_.containsKey('config')
-              ? ApprovalConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
-              : null,
-          result: json_.containsKey('result')
-              ? ApprovalResult.fromJson(
-                  json_['result'] as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        config:
+            json_.containsKey('config')
+                ? ApprovalConfig.fromJson(
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        result:
+            json_.containsKey('result')
+                ? ApprovalResult.fromJson(
+                  json_['result'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!,
-        if (result != null) 'result': result!,
-        if (state != null) 'state': state!,
-      };
+    if (config != null) 'config': config!,
+    if (result != null) 'result': result!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Optional arguments to enable specific features of builds.
@@ -4664,67 +4766,73 @@ class BuildOptions {
   });
 
   BuildOptions.fromJson(core.Map json_)
-      : this(
-          automapSubstitutions: json_['automapSubstitutions'] as core.bool?,
-          defaultLogsBucketBehavior:
-              json_['defaultLogsBucketBehavior'] as core.String?,
-          diskSizeGb: json_['diskSizeGb'] as core.String?,
-          dynamicSubstitutions: json_['dynamicSubstitutions'] as core.bool?,
-          enableStructuredLogging:
-              json_['enableStructuredLogging'] as core.bool?,
-          env: (json_['env'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          logStreamingOption: json_['logStreamingOption'] as core.String?,
-          logging: json_['logging'] as core.String?,
-          machineType: json_['machineType'] as core.String?,
-          pool: json_.containsKey('pool')
-              ? PoolOption.fromJson(
-                  json_['pool'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pubsubTopic: json_['pubsubTopic'] as core.String?,
-          requestedVerifyOption: json_['requestedVerifyOption'] as core.String?,
-          secretEnv: (json_['secretEnv'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          sourceProvenanceHash: (json_['sourceProvenanceHash'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          substitutionOption: json_['substitutionOption'] as core.String?,
-          volumes: (json_['volumes'] as core.List?)
-              ?.map((value) =>
-                  Volume.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          workerPool: json_['workerPool'] as core.String?,
-        );
+    : this(
+        automapSubstitutions: json_['automapSubstitutions'] as core.bool?,
+        defaultLogsBucketBehavior:
+            json_['defaultLogsBucketBehavior'] as core.String?,
+        diskSizeGb: json_['diskSizeGb'] as core.String?,
+        dynamicSubstitutions: json_['dynamicSubstitutions'] as core.bool?,
+        enableStructuredLogging: json_['enableStructuredLogging'] as core.bool?,
+        env:
+            (json_['env'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        logStreamingOption: json_['logStreamingOption'] as core.String?,
+        logging: json_['logging'] as core.String?,
+        machineType: json_['machineType'] as core.String?,
+        pool:
+            json_.containsKey('pool')
+                ? PoolOption.fromJson(
+                  json_['pool'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pubsubTopic: json_['pubsubTopic'] as core.String?,
+        requestedVerifyOption: json_['requestedVerifyOption'] as core.String?,
+        secretEnv:
+            (json_['secretEnv'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        sourceProvenanceHash:
+            (json_['sourceProvenanceHash'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        substitutionOption: json_['substitutionOption'] as core.String?,
+        volumes:
+            (json_['volumes'] as core.List?)
+                ?.map(
+                  (value) => Volume.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        workerPool: json_['workerPool'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (automapSubstitutions != null)
-          'automapSubstitutions': automapSubstitutions!,
-        if (defaultLogsBucketBehavior != null)
-          'defaultLogsBucketBehavior': defaultLogsBucketBehavior!,
-        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
-        if (dynamicSubstitutions != null)
-          'dynamicSubstitutions': dynamicSubstitutions!,
-        if (enableStructuredLogging != null)
-          'enableStructuredLogging': enableStructuredLogging!,
-        if (env != null) 'env': env!,
-        if (logStreamingOption != null)
-          'logStreamingOption': logStreamingOption!,
-        if (logging != null) 'logging': logging!,
-        if (machineType != null) 'machineType': machineType!,
-        if (pool != null) 'pool': pool!,
-        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
-        if (requestedVerifyOption != null)
-          'requestedVerifyOption': requestedVerifyOption!,
-        if (secretEnv != null) 'secretEnv': secretEnv!,
-        if (sourceProvenanceHash != null)
-          'sourceProvenanceHash': sourceProvenanceHash!,
-        if (substitutionOption != null)
-          'substitutionOption': substitutionOption!,
-        if (volumes != null) 'volumes': volumes!,
-        if (workerPool != null) 'workerPool': workerPool!,
-      };
+    if (automapSubstitutions != null)
+      'automapSubstitutions': automapSubstitutions!,
+    if (defaultLogsBucketBehavior != null)
+      'defaultLogsBucketBehavior': defaultLogsBucketBehavior!,
+    if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
+    if (dynamicSubstitutions != null)
+      'dynamicSubstitutions': dynamicSubstitutions!,
+    if (enableStructuredLogging != null)
+      'enableStructuredLogging': enableStructuredLogging!,
+    if (env != null) 'env': env!,
+    if (logStreamingOption != null) 'logStreamingOption': logStreamingOption!,
+    if (logging != null) 'logging': logging!,
+    if (machineType != null) 'machineType': machineType!,
+    if (pool != null) 'pool': pool!,
+    if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
+    if (requestedVerifyOption != null)
+      'requestedVerifyOption': requestedVerifyOption!,
+    if (secretEnv != null) 'secretEnv': secretEnv!,
+    if (sourceProvenanceHash != null)
+      'sourceProvenanceHash': sourceProvenanceHash!,
+    if (substitutionOption != null) 'substitutionOption': substitutionOption!,
+    if (volumes != null) 'volumes': volumes!,
+    if (workerPool != null) 'workerPool': workerPool!,
+  };
 }
 
 /// A step in the build pipeline.
@@ -4891,67 +4999,80 @@ class BuildStep {
   });
 
   BuildStep.fromJson(core.Map json_)
-      : this(
-          allowExitCodes: (json_['allowExitCodes'] as core.List?)
-              ?.map((value) => value as core.int)
-              .toList(),
-          allowFailure: json_['allowFailure'] as core.bool?,
-          args: (json_['args'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          automapSubstitutions: json_['automapSubstitutions'] as core.bool?,
-          dir: json_['dir'] as core.String?,
-          entrypoint: json_['entrypoint'] as core.String?,
-          env: (json_['env'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          exitCode: json_['exitCode'] as core.int?,
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-          pullTiming: json_.containsKey('pullTiming')
-              ? TimeSpan.fromJson(
-                  json_['pullTiming'] as core.Map<core.String, core.dynamic>)
-              : null,
-          script: json_['script'] as core.String?,
-          secretEnv: (json_['secretEnv'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          status: json_['status'] as core.String?,
-          timeout: json_['timeout'] as core.String?,
-          timing: json_.containsKey('timing')
-              ? TimeSpan.fromJson(
-                  json_['timing'] as core.Map<core.String, core.dynamic>)
-              : null,
-          volumes: (json_['volumes'] as core.List?)
-              ?.map((value) =>
-                  Volume.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          waitFor: (json_['waitFor'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        allowExitCodes:
+            (json_['allowExitCodes'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        allowFailure: json_['allowFailure'] as core.bool?,
+        args:
+            (json_['args'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        automapSubstitutions: json_['automapSubstitutions'] as core.bool?,
+        dir: json_['dir'] as core.String?,
+        entrypoint: json_['entrypoint'] as core.String?,
+        env:
+            (json_['env'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        exitCode: json_['exitCode'] as core.int?,
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        pullTiming:
+            json_.containsKey('pullTiming')
+                ? TimeSpan.fromJson(
+                  json_['pullTiming'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        script: json_['script'] as core.String?,
+        secretEnv:
+            (json_['secretEnv'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        status: json_['status'] as core.String?,
+        timeout: json_['timeout'] as core.String?,
+        timing:
+            json_.containsKey('timing')
+                ? TimeSpan.fromJson(
+                  json_['timing'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        volumes:
+            (json_['volumes'] as core.List?)
+                ?.map(
+                  (value) => Volume.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        waitFor:
+            (json_['waitFor'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowExitCodes != null) 'allowExitCodes': allowExitCodes!,
-        if (allowFailure != null) 'allowFailure': allowFailure!,
-        if (args != null) 'args': args!,
-        if (automapSubstitutions != null)
-          'automapSubstitutions': automapSubstitutions!,
-        if (dir != null) 'dir': dir!,
-        if (entrypoint != null) 'entrypoint': entrypoint!,
-        if (env != null) 'env': env!,
-        if (exitCode != null) 'exitCode': exitCode!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (pullTiming != null) 'pullTiming': pullTiming!,
-        if (script != null) 'script': script!,
-        if (secretEnv != null) 'secretEnv': secretEnv!,
-        if (status != null) 'status': status!,
-        if (timeout != null) 'timeout': timeout!,
-        if (timing != null) 'timing': timing!,
-        if (volumes != null) 'volumes': volumes!,
-        if (waitFor != null) 'waitFor': waitFor!,
-      };
+    if (allowExitCodes != null) 'allowExitCodes': allowExitCodes!,
+    if (allowFailure != null) 'allowFailure': allowFailure!,
+    if (args != null) 'args': args!,
+    if (automapSubstitutions != null)
+      'automapSubstitutions': automapSubstitutions!,
+    if (dir != null) 'dir': dir!,
+    if (entrypoint != null) 'entrypoint': entrypoint!,
+    if (env != null) 'env': env!,
+    if (exitCode != null) 'exitCode': exitCode!,
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (pullTiming != null) 'pullTiming': pullTiming!,
+    if (script != null) 'script': script!,
+    if (secretEnv != null) 'secretEnv': secretEnv!,
+    if (status != null) 'status': status!,
+    if (timeout != null) 'timeout': timeout!,
+    if (timing != null) 'timing': timing!,
+    if (volumes != null) 'volumes': volumes!,
+    if (waitFor != null) 'waitFor': waitFor!,
+  };
 }
 
 /// Configuration for an automated build in response to source repository
@@ -5152,126 +5273,148 @@ class BuildTrigger {
   });
 
   BuildTrigger.fromJson(core.Map json_)
-      : this(
-          approvalConfig: json_.containsKey('approvalConfig')
-              ? ApprovalConfig.fromJson(json_['approvalConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          autodetect: json_['autodetect'] as core.bool?,
-          bitbucketServerTriggerConfig:
-              json_.containsKey('bitbucketServerTriggerConfig')
-                  ? BitbucketServerTriggerConfig.fromJson(
-                      json_['bitbucketServerTriggerConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          build: json_.containsKey('build')
-              ? Build.fromJson(
-                  json_['build'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          developerConnectEventConfig:
-              json_.containsKey('developerConnectEventConfig')
-                  ? DeveloperConnectEventConfig.fromJson(
-                      json_['developerConnectEventConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          disabled: json_['disabled'] as core.bool?,
-          eventType: json_['eventType'] as core.String?,
-          filename: json_['filename'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          gitFileSource: json_.containsKey('gitFileSource')
-              ? GitFileSource.fromJson(
-                  json_['gitFileSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          github: json_.containsKey('github')
-              ? GitHubEventsConfig.fromJson(
-                  json_['github'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gitlabEnterpriseEventsConfig:
-              json_.containsKey('gitlabEnterpriseEventsConfig')
-                  ? GitLabEventsConfig.fromJson(
-                      json_['gitlabEnterpriseEventsConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          id: json_['id'] as core.String?,
-          ignoredFiles: (json_['ignoredFiles'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          includeBuildLogs: json_['includeBuildLogs'] as core.String?,
-          includedFiles: (json_['includedFiles'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          pubsubConfig: json_.containsKey('pubsubConfig')
-              ? PubsubConfig.fromJson(
-                  json_['pubsubConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          repositoryEventConfig: json_.containsKey('repositoryEventConfig')
-              ? RepositoryEventConfig.fromJson(json_['repositoryEventConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          resourceName: json_['resourceName'] as core.String?,
-          serviceAccount: json_['serviceAccount'] as core.String?,
-          sourceToBuild: json_.containsKey('sourceToBuild')
-              ? GitRepoSource.fromJson(
-                  json_['sourceToBuild'] as core.Map<core.String, core.dynamic>)
-              : null,
-          substitutions:
-              (json_['substitutions'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          tags: (json_['tags'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          triggerTemplate: json_.containsKey('triggerTemplate')
-              ? RepoSource.fromJson(json_['triggerTemplate']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          webhookConfig: json_.containsKey('webhookConfig')
-              ? WebhookConfig.fromJson(
-                  json_['webhookConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        approvalConfig:
+            json_.containsKey('approvalConfig')
+                ? ApprovalConfig.fromJson(
+                  json_['approvalConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        autodetect: json_['autodetect'] as core.bool?,
+        bitbucketServerTriggerConfig:
+            json_.containsKey('bitbucketServerTriggerConfig')
+                ? BitbucketServerTriggerConfig.fromJson(
+                  json_['bitbucketServerTriggerConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        build:
+            json_.containsKey('build')
+                ? Build.fromJson(
+                  json_['build'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        developerConnectEventConfig:
+            json_.containsKey('developerConnectEventConfig')
+                ? DeveloperConnectEventConfig.fromJson(
+                  json_['developerConnectEventConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        disabled: json_['disabled'] as core.bool?,
+        eventType: json_['eventType'] as core.String?,
+        filename: json_['filename'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        gitFileSource:
+            json_.containsKey('gitFileSource')
+                ? GitFileSource.fromJson(
+                  json_['gitFileSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        github:
+            json_.containsKey('github')
+                ? GitHubEventsConfig.fromJson(
+                  json_['github'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gitlabEnterpriseEventsConfig:
+            json_.containsKey('gitlabEnterpriseEventsConfig')
+                ? GitLabEventsConfig.fromJson(
+                  json_['gitlabEnterpriseEventsConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        id: json_['id'] as core.String?,
+        ignoredFiles:
+            (json_['ignoredFiles'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includeBuildLogs: json_['includeBuildLogs'] as core.String?,
+        includedFiles:
+            (json_['includedFiles'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        pubsubConfig:
+            json_.containsKey('pubsubConfig')
+                ? PubsubConfig.fromJson(
+                  json_['pubsubConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        repositoryEventConfig:
+            json_.containsKey('repositoryEventConfig')
+                ? RepositoryEventConfig.fromJson(
+                  json_['repositoryEventConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resourceName: json_['resourceName'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        sourceToBuild:
+            json_.containsKey('sourceToBuild')
+                ? GitRepoSource.fromJson(
+                  json_['sourceToBuild'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        substitutions: (json_['substitutions']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        tags:
+            (json_['tags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        triggerTemplate:
+            json_.containsKey('triggerTemplate')
+                ? RepoSource.fromJson(
+                  json_['triggerTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        webhookConfig:
+            json_.containsKey('webhookConfig')
+                ? WebhookConfig.fromJson(
+                  json_['webhookConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approvalConfig != null) 'approvalConfig': approvalConfig!,
-        if (autodetect != null) 'autodetect': autodetect!,
-        if (bitbucketServerTriggerConfig != null)
-          'bitbucketServerTriggerConfig': bitbucketServerTriggerConfig!,
-        if (build != null) 'build': build!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (developerConnectEventConfig != null)
-          'developerConnectEventConfig': developerConnectEventConfig!,
-        if (disabled != null) 'disabled': disabled!,
-        if (eventType != null) 'eventType': eventType!,
-        if (filename != null) 'filename': filename!,
-        if (filter != null) 'filter': filter!,
-        if (gitFileSource != null) 'gitFileSource': gitFileSource!,
-        if (github != null) 'github': github!,
-        if (gitlabEnterpriseEventsConfig != null)
-          'gitlabEnterpriseEventsConfig': gitlabEnterpriseEventsConfig!,
-        if (id != null) 'id': id!,
-        if (ignoredFiles != null) 'ignoredFiles': ignoredFiles!,
-        if (includeBuildLogs != null) 'includeBuildLogs': includeBuildLogs!,
-        if (includedFiles != null) 'includedFiles': includedFiles!,
-        if (name != null) 'name': name!,
-        if (pubsubConfig != null) 'pubsubConfig': pubsubConfig!,
-        if (repositoryEventConfig != null)
-          'repositoryEventConfig': repositoryEventConfig!,
-        if (resourceName != null) 'resourceName': resourceName!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (sourceToBuild != null) 'sourceToBuild': sourceToBuild!,
-        if (substitutions != null) 'substitutions': substitutions!,
-        if (tags != null) 'tags': tags!,
-        if (triggerTemplate != null) 'triggerTemplate': triggerTemplate!,
-        if (webhookConfig != null) 'webhookConfig': webhookConfig!,
-      };
+    if (approvalConfig != null) 'approvalConfig': approvalConfig!,
+    if (autodetect != null) 'autodetect': autodetect!,
+    if (bitbucketServerTriggerConfig != null)
+      'bitbucketServerTriggerConfig': bitbucketServerTriggerConfig!,
+    if (build != null) 'build': build!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (developerConnectEventConfig != null)
+      'developerConnectEventConfig': developerConnectEventConfig!,
+    if (disabled != null) 'disabled': disabled!,
+    if (eventType != null) 'eventType': eventType!,
+    if (filename != null) 'filename': filename!,
+    if (filter != null) 'filter': filter!,
+    if (gitFileSource != null) 'gitFileSource': gitFileSource!,
+    if (github != null) 'github': github!,
+    if (gitlabEnterpriseEventsConfig != null)
+      'gitlabEnterpriseEventsConfig': gitlabEnterpriseEventsConfig!,
+    if (id != null) 'id': id!,
+    if (ignoredFiles != null) 'ignoredFiles': ignoredFiles!,
+    if (includeBuildLogs != null) 'includeBuildLogs': includeBuildLogs!,
+    if (includedFiles != null) 'includedFiles': includedFiles!,
+    if (name != null) 'name': name!,
+    if (pubsubConfig != null) 'pubsubConfig': pubsubConfig!,
+    if (repositoryEventConfig != null)
+      'repositoryEventConfig': repositoryEventConfig!,
+    if (resourceName != null) 'resourceName': resourceName!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (sourceToBuild != null) 'sourceToBuild': sourceToBuild!,
+    if (substitutions != null) 'substitutions': substitutions!,
+    if (tags != null) 'tags': tags!,
+    if (triggerTemplate != null) 'triggerTemplate': triggerTemplate!,
+    if (webhookConfig != null) 'webhookConfig': webhookConfig!,
+  };
 }
 
 /// An image built by the pipeline.
@@ -5288,27 +5431,25 @@ class BuiltImage {
   /// Output only.
   TimeSpan? pushTiming;
 
-  BuiltImage({
-    this.digest,
-    this.name,
-    this.pushTiming,
-  });
+  BuiltImage({this.digest, this.name, this.pushTiming});
 
   BuiltImage.fromJson(core.Map json_)
-      : this(
-          digest: json_['digest'] as core.String?,
-          name: json_['name'] as core.String?,
-          pushTiming: json_.containsKey('pushTiming')
-              ? TimeSpan.fromJson(
-                  json_['pushTiming'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        digest: json_['digest'] as core.String?,
+        name: json_['name'] as core.String?,
+        pushTiming:
+            json_.containsKey('pushTiming')
+                ? TimeSpan.fromJson(
+                  json_['pushTiming'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (digest != null) 'digest': digest!,
-        if (name != null) 'name': name!,
-        if (pushTiming != null) 'pushTiming': pushTiming!,
-      };
+    if (digest != null) 'digest': digest!,
+    if (name != null) 'name': name!,
+    if (pushTiming != null) 'pushTiming': pushTiming!,
+  };
 }
 
 /// Request to cancel an ongoing build.
@@ -5328,24 +5469,20 @@ class CancelBuildRequest {
   /// Required.
   core.String? projectId;
 
-  CancelBuildRequest({
-    this.id,
-    this.name,
-    this.projectId,
-  });
+  CancelBuildRequest({this.id, this.name, this.projectId});
 
   CancelBuildRequest.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-          projectId: json_['projectId'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (projectId != null) 'projectId': projectId!,
-      };
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (projectId != null) 'projectId': projectId!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -5370,24 +5507,20 @@ class ConnectedRepository {
   /// Required.
   core.String? revision;
 
-  ConnectedRepository({
-    this.dir,
-    this.repository,
-    this.revision,
-  });
+  ConnectedRepository({this.dir, this.repository, this.revision});
 
   ConnectedRepository.fromJson(core.Map json_)
-      : this(
-          dir: json_['dir'] as core.String?,
-          repository: json_['repository'] as core.String?,
-          revision: json_['revision'] as core.String?,
-        );
+    : this(
+        dir: json_['dir'] as core.String?,
+        repository: json_['repository'] as core.String?,
+        revision: json_['revision'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dir != null) 'dir': dir!,
-        if (repository != null) 'repository': repository!,
-        if (revision != null) 'revision': revision!,
-      };
+    if (dir != null) 'dir': dir!,
+    if (repository != null) 'repository': repository!,
+    if (revision != null) 'revision': revision!,
+  };
 }
 
 /// Request to connect a repository from a connected Bitbucket Server host.
@@ -5411,22 +5544,22 @@ class CreateBitbucketServerConnectedRepositoryRequest {
   });
 
   CreateBitbucketServerConnectedRepositoryRequest.fromJson(core.Map json_)
-      : this(
-          bitbucketServerConnectedRepository:
-              json_.containsKey('bitbucketServerConnectedRepository')
-                  ? BitbucketServerConnectedRepository.fromJson(
-                      json_['bitbucketServerConnectedRepository']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          parent: json_['parent'] as core.String?,
-        );
+    : this(
+        bitbucketServerConnectedRepository:
+            json_.containsKey('bitbucketServerConnectedRepository')
+                ? BitbucketServerConnectedRepository.fromJson(
+                  json_['bitbucketServerConnectedRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        parent: json_['parent'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bitbucketServerConnectedRepository != null)
-          'bitbucketServerConnectedRepository':
-              bitbucketServerConnectedRepository!,
-        if (parent != null) 'parent': parent!,
-      };
+    if (bitbucketServerConnectedRepository != null)
+      'bitbucketServerConnectedRepository': bitbucketServerConnectedRepository!,
+    if (parent != null) 'parent': parent!,
+  };
 }
 
 /// Request to connect a repository from a connected GitLab host.
@@ -5449,21 +5582,22 @@ class CreateGitLabConnectedRepositoryRequest {
   });
 
   CreateGitLabConnectedRepositoryRequest.fromJson(core.Map json_)
-      : this(
-          gitlabConnectedRepository:
-              json_.containsKey('gitlabConnectedRepository')
-                  ? GitLabConnectedRepository.fromJson(
-                      json_['gitlabConnectedRepository']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          parent: json_['parent'] as core.String?,
-        );
+    : this(
+        gitlabConnectedRepository:
+            json_.containsKey('gitlabConnectedRepository')
+                ? GitLabConnectedRepository.fromJson(
+                  json_['gitlabConnectedRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        parent: json_['parent'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gitlabConnectedRepository != null)
-          'gitlabConnectedRepository': gitlabConnectedRepository!,
-        if (parent != null) 'parent': parent!,
-      };
+    if (gitlabConnectedRepository != null)
+      'gitlabConnectedRepository': gitlabConnectedRepository!,
+    if (parent != null) 'parent': parent!,
+  };
 }
 
 /// The default service account used for `Builds`.
@@ -5486,22 +5620,19 @@ class DefaultServiceAccount {
   /// Output only.
   core.String? serviceAccountEmail;
 
-  DefaultServiceAccount({
-    this.name,
-    this.serviceAccountEmail,
-  });
+  DefaultServiceAccount({this.name, this.serviceAccountEmail});
 
   DefaultServiceAccount.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail!,
-      };
+    if (name != null) 'name': name!,
+    if (serviceAccountEmail != null)
+      'serviceAccountEmail': serviceAccountEmail!,
+  };
 }
 
 /// A dependency that the Cloud Build worker will fetch before executing user
@@ -5514,24 +5645,23 @@ class Dependency {
   /// Represents a git repository as a build dependency.
   GitSourceDependency? gitSource;
 
-  Dependency({
-    this.empty,
-    this.gitSource,
-  });
+  Dependency({this.empty, this.gitSource});
 
   Dependency.fromJson(core.Map json_)
-      : this(
-          empty: json_['empty'] as core.bool?,
-          gitSource: json_.containsKey('gitSource')
-              ? GitSourceDependency.fromJson(
-                  json_['gitSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        empty: json_['empty'] as core.bool?,
+        gitSource:
+            json_.containsKey('gitSource')
+                ? GitSourceDependency.fromJson(
+                  json_['gitSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (empty != null) 'empty': empty!,
-        if (gitSource != null) 'gitSource': gitSource!,
-      };
+    if (empty != null) 'empty': empty!,
+    if (gitSource != null) 'gitSource': gitSource!,
+  };
 }
 
 /// This config defines the location of a source through Developer Connect.
@@ -5553,24 +5683,20 @@ class DeveloperConnectConfig {
   /// Required.
   core.String? revision;
 
-  DeveloperConnectConfig({
-    this.dir,
-    this.gitRepositoryLink,
-    this.revision,
-  });
+  DeveloperConnectConfig({this.dir, this.gitRepositoryLink, this.revision});
 
   DeveloperConnectConfig.fromJson(core.Map json_)
-      : this(
-          dir: json_['dir'] as core.String?,
-          gitRepositoryLink: json_['gitRepositoryLink'] as core.String?,
-          revision: json_['revision'] as core.String?,
-        );
+    : this(
+        dir: json_['dir'] as core.String?,
+        gitRepositoryLink: json_['gitRepositoryLink'] as core.String?,
+        revision: json_['revision'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dir != null) 'dir': dir!,
-        if (gitRepositoryLink != null) 'gitRepositoryLink': gitRepositoryLink!,
-        if (revision != null) 'revision': revision!,
-      };
+    if (dir != null) 'dir': dir!,
+    if (gitRepositoryLink != null) 'gitRepositoryLink': gitRepositoryLink!,
+    if (revision != null) 'revision': revision!,
+  };
 }
 
 /// The configuration of a trigger that creates a build whenever an event from
@@ -5610,26 +5736,30 @@ class DeveloperConnectEventConfig {
   });
 
   DeveloperConnectEventConfig.fromJson(core.Map json_)
-      : this(
-          gitRepositoryLink: json_['gitRepositoryLink'] as core.String?,
-          gitRepositoryLinkType: json_['gitRepositoryLinkType'] as core.String?,
-          pullRequest: json_.containsKey('pullRequest')
-              ? PullRequestFilter.fromJson(
-                  json_['pullRequest'] as core.Map<core.String, core.dynamic>)
-              : null,
-          push: json_.containsKey('push')
-              ? PushFilter.fromJson(
-                  json_['push'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        gitRepositoryLink: json_['gitRepositoryLink'] as core.String?,
+        gitRepositoryLinkType: json_['gitRepositoryLinkType'] as core.String?,
+        pullRequest:
+            json_.containsKey('pullRequest')
+                ? PullRequestFilter.fromJson(
+                  json_['pullRequest'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        push:
+            json_.containsKey('push')
+                ? PushFilter.fromJson(
+                  json_['push'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gitRepositoryLink != null) 'gitRepositoryLink': gitRepositoryLink!,
-        if (gitRepositoryLinkType != null)
-          'gitRepositoryLinkType': gitRepositoryLinkType!,
-        if (pullRequest != null) 'pullRequest': pullRequest!,
-        if (push != null) 'push': push!,
-      };
+    if (gitRepositoryLink != null) 'gitRepositoryLink': gitRepositoryLink!,
+    if (gitRepositoryLinkType != null)
+      'gitRepositoryLinkType': gitRepositoryLinkType!,
+    if (pullRequest != null) 'pullRequest': pullRequest!,
+    if (push != null) 'push': push!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -5656,21 +5786,18 @@ class FailureInfo {
   /// - "FETCH_SOURCE_FAILED" : The source fetching has failed.
   core.String? type;
 
-  FailureInfo({
-    this.detail,
-    this.type,
-  });
+  FailureInfo({this.detail, this.type});
 
   FailureInfo.fromJson(core.Map json_)
-      : this(
-          detail: json_['detail'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        detail: json_['detail'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detail != null) 'detail': detail!,
-        if (type != null) 'type': type!,
-      };
+    if (detail != null) 'detail': detail!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Container message for hashes of byte content of files, used in
@@ -5679,21 +5806,23 @@ class FileHashes {
   /// Collection of file hashes.
   core.List<Hash>? fileHash;
 
-  FileHashes({
-    this.fileHash,
-  });
+  FileHashes({this.fileHash});
 
   FileHashes.fromJson(core.Map json_)
-      : this(
-          fileHash: (json_['fileHash'] as core.List?)
-              ?.map((value) =>
-                  Hash.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        fileHash:
+            (json_['fileHash'] as core.List?)
+                ?.map(
+                  (value) => Hash.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileHash != null) 'fileHash': fileHash!,
-      };
+    if (fileHash != null) 'fileHash': fileHash!,
+  };
 }
 
 /// GitConfig is a configuration for git operations.
@@ -5701,21 +5830,21 @@ class GitConfig {
   /// Configuration for HTTP related git operations.
   HttpConfig? http;
 
-  GitConfig({
-    this.http,
-  });
+  GitConfig({this.http});
 
   GitConfig.fromJson(core.Map json_)
-      : this(
-          http: json_.containsKey('http')
-              ? HttpConfig.fromJson(
-                  json_['http'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        http:
+            json_.containsKey('http')
+                ? HttpConfig.fromJson(
+                  json_['http'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (http != null) 'http': http!,
-      };
+    if (http != null) 'http': http!,
+  };
 }
 
 /// GitFileSource describes a file within a (possibly remote) code repository.
@@ -5783,28 +5912,27 @@ class GitFileSource {
   });
 
   GitFileSource.fromJson(core.Map json_)
-      : this(
-          bitbucketServerConfig: json_['bitbucketServerConfig'] as core.String?,
-          githubEnterpriseConfig:
-              json_['githubEnterpriseConfig'] as core.String?,
-          path: json_['path'] as core.String?,
-          repoType: json_['repoType'] as core.String?,
-          repository: json_['repository'] as core.String?,
-          revision: json_['revision'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        bitbucketServerConfig: json_['bitbucketServerConfig'] as core.String?,
+        githubEnterpriseConfig: json_['githubEnterpriseConfig'] as core.String?,
+        path: json_['path'] as core.String?,
+        repoType: json_['repoType'] as core.String?,
+        repository: json_['repository'] as core.String?,
+        revision: json_['revision'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bitbucketServerConfig != null)
-          'bitbucketServerConfig': bitbucketServerConfig!,
-        if (githubEnterpriseConfig != null)
-          'githubEnterpriseConfig': githubEnterpriseConfig!,
-        if (path != null) 'path': path!,
-        if (repoType != null) 'repoType': repoType!,
-        if (repository != null) 'repository': repository!,
-        if (revision != null) 'revision': revision!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (bitbucketServerConfig != null)
+      'bitbucketServerConfig': bitbucketServerConfig!,
+    if (githubEnterpriseConfig != null)
+      'githubEnterpriseConfig': githubEnterpriseConfig!,
+    if (path != null) 'path': path!,
+    if (repoType != null) 'repoType': repoType!,
+    if (repository != null) 'repository': repository!,
+    if (revision != null) 'revision': revision!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// GitHubEnterpriseConfig represents a configuration for a GitHub Enterprise
@@ -5873,32 +6001,34 @@ class GitHubEnterpriseConfig {
   });
 
   GitHubEnterpriseConfig.fromJson(core.Map json_)
-      : this(
-          appId: json_['appId'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          hostUrl: json_['hostUrl'] as core.String?,
-          name: json_['name'] as core.String?,
-          peeredNetwork: json_['peeredNetwork'] as core.String?,
-          secrets: json_.containsKey('secrets')
-              ? GitHubEnterpriseSecrets.fromJson(
-                  json_['secrets'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sslCa: json_['sslCa'] as core.String?,
-          webhookKey: json_['webhookKey'] as core.String?,
-        );
+    : this(
+        appId: json_['appId'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        hostUrl: json_['hostUrl'] as core.String?,
+        name: json_['name'] as core.String?,
+        peeredNetwork: json_['peeredNetwork'] as core.String?,
+        secrets:
+            json_.containsKey('secrets')
+                ? GitHubEnterpriseSecrets.fromJson(
+                  json_['secrets'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sslCa: json_['sslCa'] as core.String?,
+        webhookKey: json_['webhookKey'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appId != null) 'appId': appId!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (hostUrl != null) 'hostUrl': hostUrl!,
-        if (name != null) 'name': name!,
-        if (peeredNetwork != null) 'peeredNetwork': peeredNetwork!,
-        if (secrets != null) 'secrets': secrets!,
-        if (sslCa != null) 'sslCa': sslCa!,
-        if (webhookKey != null) 'webhookKey': webhookKey!,
-      };
+    if (appId != null) 'appId': appId!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (hostUrl != null) 'hostUrl': hostUrl!,
+    if (name != null) 'name': name!,
+    if (peeredNetwork != null) 'peeredNetwork': peeredNetwork!,
+    if (secrets != null) 'secrets': secrets!,
+    if (sslCa != null) 'sslCa': sslCa!,
+    if (webhookKey != null) 'webhookKey': webhookKey!,
+  };
 }
 
 /// GitHubEnterpriseSecrets represents the names of all necessary secrets in
@@ -5955,34 +6085,33 @@ class GitHubEnterpriseSecrets {
   });
 
   GitHubEnterpriseSecrets.fromJson(core.Map json_)
-      : this(
-          oauthClientIdName: json_['oauthClientIdName'] as core.String?,
-          oauthClientIdVersionName:
-              json_['oauthClientIdVersionName'] as core.String?,
-          oauthSecretName: json_['oauthSecretName'] as core.String?,
-          oauthSecretVersionName:
-              json_['oauthSecretVersionName'] as core.String?,
-          privateKeyName: json_['privateKeyName'] as core.String?,
-          privateKeyVersionName: json_['privateKeyVersionName'] as core.String?,
-          webhookSecretName: json_['webhookSecretName'] as core.String?,
-          webhookSecretVersionName:
-              json_['webhookSecretVersionName'] as core.String?,
-        );
+    : this(
+        oauthClientIdName: json_['oauthClientIdName'] as core.String?,
+        oauthClientIdVersionName:
+            json_['oauthClientIdVersionName'] as core.String?,
+        oauthSecretName: json_['oauthSecretName'] as core.String?,
+        oauthSecretVersionName: json_['oauthSecretVersionName'] as core.String?,
+        privateKeyName: json_['privateKeyName'] as core.String?,
+        privateKeyVersionName: json_['privateKeyVersionName'] as core.String?,
+        webhookSecretName: json_['webhookSecretName'] as core.String?,
+        webhookSecretVersionName:
+            json_['webhookSecretVersionName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (oauthClientIdName != null) 'oauthClientIdName': oauthClientIdName!,
-        if (oauthClientIdVersionName != null)
-          'oauthClientIdVersionName': oauthClientIdVersionName!,
-        if (oauthSecretName != null) 'oauthSecretName': oauthSecretName!,
-        if (oauthSecretVersionName != null)
-          'oauthSecretVersionName': oauthSecretVersionName!,
-        if (privateKeyName != null) 'privateKeyName': privateKeyName!,
-        if (privateKeyVersionName != null)
-          'privateKeyVersionName': privateKeyVersionName!,
-        if (webhookSecretName != null) 'webhookSecretName': webhookSecretName!,
-        if (webhookSecretVersionName != null)
-          'webhookSecretVersionName': webhookSecretVersionName!,
-      };
+    if (oauthClientIdName != null) 'oauthClientIdName': oauthClientIdName!,
+    if (oauthClientIdVersionName != null)
+      'oauthClientIdVersionName': oauthClientIdVersionName!,
+    if (oauthSecretName != null) 'oauthSecretName': oauthSecretName!,
+    if (oauthSecretVersionName != null)
+      'oauthSecretVersionName': oauthSecretVersionName!,
+    if (privateKeyName != null) 'privateKeyName': privateKeyName!,
+    if (privateKeyVersionName != null)
+      'privateKeyVersionName': privateKeyVersionName!,
+    if (webhookSecretName != null) 'webhookSecretName': webhookSecretName!,
+    if (webhookSecretVersionName != null)
+      'webhookSecretVersionName': webhookSecretVersionName!,
+  };
 }
 
 /// GitHubEventsConfig describes the configuration of a trigger that creates a
@@ -6030,31 +6159,35 @@ class GitHubEventsConfig {
   });
 
   GitHubEventsConfig.fromJson(core.Map json_)
-      : this(
-          enterpriseConfigResourceName:
-              json_['enterpriseConfigResourceName'] as core.String?,
-          installationId: json_['installationId'] as core.String?,
-          name: json_['name'] as core.String?,
-          owner: json_['owner'] as core.String?,
-          pullRequest: json_.containsKey('pullRequest')
-              ? PullRequestFilter.fromJson(
-                  json_['pullRequest'] as core.Map<core.String, core.dynamic>)
-              : null,
-          push: json_.containsKey('push')
-              ? PushFilter.fromJson(
-                  json_['push'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        enterpriseConfigResourceName:
+            json_['enterpriseConfigResourceName'] as core.String?,
+        installationId: json_['installationId'] as core.String?,
+        name: json_['name'] as core.String?,
+        owner: json_['owner'] as core.String?,
+        pullRequest:
+            json_.containsKey('pullRequest')
+                ? PullRequestFilter.fromJson(
+                  json_['pullRequest'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        push:
+            json_.containsKey('push')
+                ? PushFilter.fromJson(
+                  json_['push'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enterpriseConfigResourceName != null)
-          'enterpriseConfigResourceName': enterpriseConfigResourceName!,
-        if (installationId != null) 'installationId': installationId!,
-        if (name != null) 'name': name!,
-        if (owner != null) 'owner': owner!,
-        if (pullRequest != null) 'pullRequest': pullRequest!,
-        if (push != null) 'push': push!,
-      };
+    if (enterpriseConfigResourceName != null)
+      'enterpriseConfigResourceName': enterpriseConfigResourceName!,
+    if (installationId != null) 'installationId': installationId!,
+    if (name != null) 'name': name!,
+    if (owner != null) 'owner': owner!,
+    if (pullRequest != null) 'pullRequest': pullRequest!,
+    if (push != null) 'push': push!,
+  };
 }
 
 /// GitLabConfig represents the configuration for a GitLab integration.
@@ -6102,35 +6235,44 @@ class GitLabConfig {
   });
 
   GitLabConfig.fromJson(core.Map json_)
-      : this(
-          connectedRepositories: (json_['connectedRepositories'] as core.List?)
-              ?.map((value) => GitLabRepositoryId.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          createTime: json_['createTime'] as core.String?,
-          enterpriseConfig: json_.containsKey('enterpriseConfig')
-              ? GitLabEnterpriseConfig.fromJson(json_['enterpriseConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          secrets: json_.containsKey('secrets')
-              ? GitLabSecrets.fromJson(
-                  json_['secrets'] as core.Map<core.String, core.dynamic>)
-              : null,
-          username: json_['username'] as core.String?,
-          webhookKey: json_['webhookKey'] as core.String?,
-        );
+    : this(
+        connectedRepositories:
+            (json_['connectedRepositories'] as core.List?)
+                ?.map(
+                  (value) => GitLabRepositoryId.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        enterpriseConfig:
+            json_.containsKey('enterpriseConfig')
+                ? GitLabEnterpriseConfig.fromJson(
+                  json_['enterpriseConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        secrets:
+            json_.containsKey('secrets')
+                ? GitLabSecrets.fromJson(
+                  json_['secrets'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        username: json_['username'] as core.String?,
+        webhookKey: json_['webhookKey'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectedRepositories != null)
-          'connectedRepositories': connectedRepositories!,
-        if (createTime != null) 'createTime': createTime!,
-        if (enterpriseConfig != null) 'enterpriseConfig': enterpriseConfig!,
-        if (name != null) 'name': name!,
-        if (secrets != null) 'secrets': secrets!,
-        if (username != null) 'username': username!,
-        if (webhookKey != null) 'webhookKey': webhookKey!,
-      };
+    if (connectedRepositories != null)
+      'connectedRepositories': connectedRepositories!,
+    if (createTime != null) 'createTime': createTime!,
+    if (enterpriseConfig != null) 'enterpriseConfig': enterpriseConfig!,
+    if (name != null) 'name': name!,
+    if (secrets != null) 'secrets': secrets!,
+    if (username != null) 'username': username!,
+    if (webhookKey != null) 'webhookKey': webhookKey!,
+  };
 }
 
 /// GitLabConnectedRepository represents a GitLab connected repository request
@@ -6149,30 +6291,30 @@ class GitLabConnectedRepository {
   /// Output only.
   Status? status;
 
-  GitLabConnectedRepository({
-    this.parent,
-    this.repo,
-    this.status,
-  });
+  GitLabConnectedRepository({this.parent, this.repo, this.status});
 
   GitLabConnectedRepository.fromJson(core.Map json_)
-      : this(
-          parent: json_['parent'] as core.String?,
-          repo: json_.containsKey('repo')
-              ? GitLabRepositoryId.fromJson(
-                  json_['repo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          status: json_.containsKey('status')
-              ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        parent: json_['parent'] as core.String?,
+        repo:
+            json_.containsKey('repo')
+                ? GitLabRepositoryId.fromJson(
+                  json_['repo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        status:
+            json_.containsKey('status')
+                ? Status.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parent != null) 'parent': parent!,
-        if (repo != null) 'repo': repo!,
-        if (status != null) 'status': status!,
-      };
+    if (parent != null) 'parent': parent!,
+    if (repo != null) 'repo': repo!,
+    if (status != null) 'status': status!,
+  };
 }
 
 /// GitLabEnterpriseConfig represents the configuration for a GitLabEnterprise
@@ -6197,21 +6339,24 @@ class GitLabEnterpriseConfig {
   });
 
   GitLabEnterpriseConfig.fromJson(core.Map json_)
-      : this(
-          hostUri: json_['hostUri'] as core.String?,
-          serviceDirectoryConfig: json_.containsKey('serviceDirectoryConfig')
-              ? ServiceDirectoryConfig.fromJson(json_['serviceDirectoryConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sslCa: json_['sslCa'] as core.String?,
-        );
+    : this(
+        hostUri: json_['hostUri'] as core.String?,
+        serviceDirectoryConfig:
+            json_.containsKey('serviceDirectoryConfig')
+                ? ServiceDirectoryConfig.fromJson(
+                  json_['serviceDirectoryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sslCa: json_['sslCa'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hostUri != null) 'hostUri': hostUri!,
-        if (serviceDirectoryConfig != null)
-          'serviceDirectoryConfig': serviceDirectoryConfig!,
-        if (sslCa != null) 'sslCa': sslCa!,
-      };
+    if (hostUri != null) 'hostUri': hostUri!,
+    if (serviceDirectoryConfig != null)
+      'serviceDirectoryConfig': serviceDirectoryConfig!,
+    if (sslCa != null) 'sslCa': sslCa!,
+  };
 }
 
 /// GitLabEventsConfig describes the configuration of a trigger that creates a
@@ -6243,31 +6388,37 @@ class GitLabEventsConfig {
   });
 
   GitLabEventsConfig.fromJson(core.Map json_)
-      : this(
-          gitlabConfig: json_.containsKey('gitlabConfig')
-              ? GitLabConfig.fromJson(
-                  json_['gitlabConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gitlabConfigResource: json_['gitlabConfigResource'] as core.String?,
-          projectNamespace: json_['projectNamespace'] as core.String?,
-          pullRequest: json_.containsKey('pullRequest')
-              ? PullRequestFilter.fromJson(
-                  json_['pullRequest'] as core.Map<core.String, core.dynamic>)
-              : null,
-          push: json_.containsKey('push')
-              ? PushFilter.fromJson(
-                  json_['push'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        gitlabConfig:
+            json_.containsKey('gitlabConfig')
+                ? GitLabConfig.fromJson(
+                  json_['gitlabConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gitlabConfigResource: json_['gitlabConfigResource'] as core.String?,
+        projectNamespace: json_['projectNamespace'] as core.String?,
+        pullRequest:
+            json_.containsKey('pullRequest')
+                ? PullRequestFilter.fromJson(
+                  json_['pullRequest'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        push:
+            json_.containsKey('push')
+                ? PushFilter.fromJson(
+                  json_['push'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gitlabConfig != null) 'gitlabConfig': gitlabConfig!,
-        if (gitlabConfigResource != null)
-          'gitlabConfigResource': gitlabConfigResource!,
-        if (projectNamespace != null) 'projectNamespace': projectNamespace!,
-        if (pullRequest != null) 'pullRequest': pullRequest!,
-        if (push != null) 'push': push!,
-      };
+    if (gitlabConfig != null) 'gitlabConfig': gitlabConfig!,
+    if (gitlabConfigResource != null)
+      'gitlabConfigResource': gitlabConfigResource!,
+    if (projectNamespace != null) 'projectNamespace': projectNamespace!,
+    if (pullRequest != null) 'pullRequest': pullRequest!,
+    if (push != null) 'push': push!,
+  };
 }
 
 /// Proto Representing a GitLabRepository
@@ -6296,24 +6447,26 @@ class GitLabRepository {
   });
 
   GitLabRepository.fromJson(core.Map json_)
-      : this(
-          browseUri: json_['browseUri'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          repositoryId: json_.containsKey('repositoryId')
-              ? GitLabRepositoryId.fromJson(
-                  json_['repositoryId'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        browseUri: json_['browseUri'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        repositoryId:
+            json_.containsKey('repositoryId')
+                ? GitLabRepositoryId.fromJson(
+                  json_['repositoryId'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (browseUri != null) 'browseUri': browseUri!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (repositoryId != null) 'repositoryId': repositoryId!,
-      };
+    if (browseUri != null) 'browseUri': browseUri!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (repositoryId != null) 'repositoryId': repositoryId!,
+  };
 }
 
 /// GitLabRepositoryId identifies a specific repository hosted on GitLab.com or
@@ -6335,21 +6488,18 @@ class GitLabRepositoryId {
   /// Output only.
   core.int? webhookId;
 
-  GitLabRepositoryId({
-    this.id,
-    this.webhookId,
-  });
+  GitLabRepositoryId({this.id, this.webhookId});
 
   GitLabRepositoryId.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          webhookId: json_['webhookId'] as core.int?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        webhookId: json_['webhookId'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (webhookId != null) 'webhookId': webhookId!,
-      };
+    if (id != null) 'id': id!,
+    if (webhookId != null) 'webhookId': webhookId!,
+  };
 }
 
 /// GitLabSecrets represents the secrets in Secret Manager for a GitLab
@@ -6387,23 +6537,22 @@ class GitLabSecrets {
   });
 
   GitLabSecrets.fromJson(core.Map json_)
-      : this(
-          apiAccessTokenVersion: json_['apiAccessTokenVersion'] as core.String?,
-          apiKeyVersion: json_['apiKeyVersion'] as core.String?,
-          readAccessTokenVersion:
-              json_['readAccessTokenVersion'] as core.String?,
-          webhookSecretVersion: json_['webhookSecretVersion'] as core.String?,
-        );
+    : this(
+        apiAccessTokenVersion: json_['apiAccessTokenVersion'] as core.String?,
+        apiKeyVersion: json_['apiKeyVersion'] as core.String?,
+        readAccessTokenVersion: json_['readAccessTokenVersion'] as core.String?,
+        webhookSecretVersion: json_['webhookSecretVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiAccessTokenVersion != null)
-          'apiAccessTokenVersion': apiAccessTokenVersion!,
-        if (apiKeyVersion != null) 'apiKeyVersion': apiKeyVersion!,
-        if (readAccessTokenVersion != null)
-          'readAccessTokenVersion': readAccessTokenVersion!,
-        if (webhookSecretVersion != null)
-          'webhookSecretVersion': webhookSecretVersion!,
-      };
+    if (apiAccessTokenVersion != null)
+      'apiAccessTokenVersion': apiAccessTokenVersion!,
+    if (apiKeyVersion != null) 'apiKeyVersion': apiKeyVersion!,
+    if (readAccessTokenVersion != null)
+      'readAccessTokenVersion': readAccessTokenVersion!,
+    if (webhookSecretVersion != null)
+      'webhookSecretVersion': webhookSecretVersion!,
+  };
 }
 
 /// GitRepoSource describes a repo and ref of a code repository.
@@ -6460,26 +6609,25 @@ class GitRepoSource {
   });
 
   GitRepoSource.fromJson(core.Map json_)
-      : this(
-          bitbucketServerConfig: json_['bitbucketServerConfig'] as core.String?,
-          githubEnterpriseConfig:
-              json_['githubEnterpriseConfig'] as core.String?,
-          ref: json_['ref'] as core.String?,
-          repoType: json_['repoType'] as core.String?,
-          repository: json_['repository'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        bitbucketServerConfig: json_['bitbucketServerConfig'] as core.String?,
+        githubEnterpriseConfig: json_['githubEnterpriseConfig'] as core.String?,
+        ref: json_['ref'] as core.String?,
+        repoType: json_['repoType'] as core.String?,
+        repository: json_['repository'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bitbucketServerConfig != null)
-          'bitbucketServerConfig': bitbucketServerConfig!,
-        if (githubEnterpriseConfig != null)
-          'githubEnterpriseConfig': githubEnterpriseConfig!,
-        if (ref != null) 'ref': ref!,
-        if (repoType != null) 'repoType': repoType!,
-        if (repository != null) 'repository': repository!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (bitbucketServerConfig != null)
+      'bitbucketServerConfig': bitbucketServerConfig!,
+    if (githubEnterpriseConfig != null)
+      'githubEnterpriseConfig': githubEnterpriseConfig!,
+    if (ref != null) 'ref': ref!,
+    if (repoType != null) 'repoType': repoType!,
+    if (repository != null) 'repository': repository!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Location of the source in any accessible Git repository.
@@ -6513,24 +6661,20 @@ class GitSource {
   /// Required.
   core.String? url;
 
-  GitSource({
-    this.dir,
-    this.revision,
-    this.url,
-  });
+  GitSource({this.dir, this.revision, this.url});
 
   GitSource.fromJson(core.Map json_)
-      : this(
-          dir: json_['dir'] as core.String?,
-          revision: json_['revision'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        dir: json_['dir'] as core.String?,
+        revision: json_['revision'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dir != null) 'dir': dir!,
-        if (revision != null) 'revision': revision!,
-        if (url != null) 'url': url!,
-      };
+    if (dir != null) 'dir': dir!,
+    if (revision != null) 'revision': revision!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Represents a git repository as a build dependency.
@@ -6570,24 +6714,26 @@ class GitSourceDependency {
   });
 
   GitSourceDependency.fromJson(core.Map json_)
-      : this(
-          depth: json_['depth'] as core.String?,
-          destPath: json_['destPath'] as core.String?,
-          recurseSubmodules: json_['recurseSubmodules'] as core.bool?,
-          repository: json_.containsKey('repository')
-              ? GitSourceRepository.fromJson(
-                  json_['repository'] as core.Map<core.String, core.dynamic>)
-              : null,
-          revision: json_['revision'] as core.String?,
-        );
+    : this(
+        depth: json_['depth'] as core.String?,
+        destPath: json_['destPath'] as core.String?,
+        recurseSubmodules: json_['recurseSubmodules'] as core.bool?,
+        repository:
+            json_.containsKey('repository')
+                ? GitSourceRepository.fromJson(
+                  json_['repository'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        revision: json_['revision'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (depth != null) 'depth': depth!,
-        if (destPath != null) 'destPath': destPath!,
-        if (recurseSubmodules != null) 'recurseSubmodules': recurseSubmodules!,
-        if (repository != null) 'repository': repository!,
-        if (revision != null) 'revision': revision!,
-      };
+    if (depth != null) 'depth': depth!,
+    if (destPath != null) 'destPath': destPath!,
+    if (recurseSubmodules != null) 'recurseSubmodules': recurseSubmodules!,
+    if (repository != null) 'repository': repository!,
+    if (revision != null) 'revision': revision!,
+  };
 }
 
 /// A repository for a git source.
@@ -6599,21 +6745,18 @@ class GitSourceRepository {
   /// Location of the Git repository.
   core.String? url;
 
-  GitSourceRepository({
-    this.developerConnect,
-    this.url,
-  });
+  GitSourceRepository({this.developerConnect, this.url});
 
   GitSourceRepository.fromJson(core.Map json_)
-      : this(
-          developerConnect: json_['developerConnect'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        developerConnect: json_['developerConnect'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (developerConnect != null) 'developerConnect': developerConnect!,
-        if (url != null) 'url': url!,
-      };
+    if (developerConnect != null) 'developerConnect': developerConnect!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Go module to upload to Artifact Registry upon successful completion of all
@@ -6677,25 +6820,24 @@ class GoModule {
   });
 
   GoModule.fromJson(core.Map json_)
-      : this(
-          modulePath: json_['modulePath'] as core.String?,
-          moduleVersion: json_['moduleVersion'] as core.String?,
-          repositoryLocation: json_['repositoryLocation'] as core.String?,
-          repositoryName: json_['repositoryName'] as core.String?,
-          repositoryProjectId: json_['repositoryProjectId'] as core.String?,
-          sourcePath: json_['sourcePath'] as core.String?,
-        );
+    : this(
+        modulePath: json_['modulePath'] as core.String?,
+        moduleVersion: json_['moduleVersion'] as core.String?,
+        repositoryLocation: json_['repositoryLocation'] as core.String?,
+        repositoryName: json_['repositoryName'] as core.String?,
+        repositoryProjectId: json_['repositoryProjectId'] as core.String?,
+        sourcePath: json_['sourcePath'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (modulePath != null) 'modulePath': modulePath!,
-        if (moduleVersion != null) 'moduleVersion': moduleVersion!,
-        if (repositoryLocation != null)
-          'repositoryLocation': repositoryLocation!,
-        if (repositoryName != null) 'repositoryName': repositoryName!,
-        if (repositoryProjectId != null)
-          'repositoryProjectId': repositoryProjectId!,
-        if (sourcePath != null) 'sourcePath': sourcePath!,
-      };
+    if (modulePath != null) 'modulePath': modulePath!,
+    if (moduleVersion != null) 'moduleVersion': moduleVersion!,
+    if (repositoryLocation != null) 'repositoryLocation': repositoryLocation!,
+    if (repositoryName != null) 'repositoryName': repositoryName!,
+    if (repositoryProjectId != null)
+      'repositoryProjectId': repositoryProjectId!,
+    if (sourcePath != null) 'sourcePath': sourcePath!,
+  };
 }
 
 /// Container message for hash values.
@@ -6715,25 +6857,24 @@ class Hash {
   core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
 
   set valueAsBytes(core.List<core.int> bytes_) {
-    value =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    value = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  Hash({
-    this.type,
-    this.value,
-  });
+  Hash({this.type, this.value});
 
   Hash.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        type: json_['type'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-        if (value != null) 'value': value!,
-      };
+    if (type != null) 'type': type!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Message that represents an arbitrary HTTP body.
@@ -6766,20 +6907,17 @@ class HttpConfig {
   /// should be in format `protocol://@]proxyhost[:port]`.
   core.String? proxySecretVersionName;
 
-  HttpConfig({
-    this.proxySecretVersionName,
-  });
+  HttpConfig({this.proxySecretVersionName});
 
   HttpConfig.fromJson(core.Map json_)
-      : this(
-          proxySecretVersionName:
-              json_['proxySecretVersionName'] as core.String?,
-        );
+    : this(
+        proxySecretVersionName: json_['proxySecretVersionName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (proxySecretVersionName != null)
-          'proxySecretVersionName': proxySecretVersionName!,
-      };
+    if (proxySecretVersionName != null)
+      'proxySecretVersionName': proxySecretVersionName!,
+  };
 }
 
 /// Pairs a set of secret environment variables mapped to encrypted values with
@@ -6798,27 +6936,20 @@ class InlineSecret {
   /// In format: projects / * /locations / * /keyRings / * /cryptoKeys / *
   core.String? kmsKeyName;
 
-  InlineSecret({
-    this.envMap,
-    this.kmsKeyName,
-  });
+  InlineSecret({this.envMap, this.kmsKeyName});
 
   InlineSecret.fromJson(core.Map json_)
-      : this(
-          envMap:
-              (json_['envMap'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-        );
+    : this(
+        envMap: (json_['envMap'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (envMap != null) 'envMap': envMap!,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-      };
+    if (envMap != null) 'envMap': envMap!,
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+  };
 }
 
 /// RPC response object returned by ListBitbucketServerConfigs RPC method.
@@ -6837,20 +6968,23 @@ class ListBitbucketServerConfigsResponse {
   });
 
   ListBitbucketServerConfigsResponse.fromJson(core.Map json_)
-      : this(
-          bitbucketServerConfigs:
-              (json_['bitbucketServerConfigs'] as core.List?)
-                  ?.map((value) => BitbucketServerConfig.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        bitbucketServerConfigs:
+            (json_['bitbucketServerConfigs'] as core.List?)
+                ?.map(
+                  (value) => BitbucketServerConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bitbucketServerConfigs != null)
-          'bitbucketServerConfigs': bitbucketServerConfigs!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (bitbucketServerConfigs != null)
+      'bitbucketServerConfigs': bitbucketServerConfigs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// RPC response object returned by the ListBitbucketServerRepositories RPC
@@ -6870,20 +7004,23 @@ class ListBitbucketServerRepositoriesResponse {
   });
 
   ListBitbucketServerRepositoriesResponse.fromJson(core.Map json_)
-      : this(
-          bitbucketServerRepositories:
-              (json_['bitbucketServerRepositories'] as core.List?)
-                  ?.map((value) => BitbucketServerRepository.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        bitbucketServerRepositories:
+            (json_['bitbucketServerRepositories'] as core.List?)
+                ?.map(
+                  (value) => BitbucketServerRepository.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bitbucketServerRepositories != null)
-          'bitbucketServerRepositories': bitbucketServerRepositories!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (bitbucketServerRepositories != null)
+      'bitbucketServerRepositories': bitbucketServerRepositories!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response containing existing `BuildTriggers`.
@@ -6894,24 +7031,25 @@ class ListBuildTriggersResponse {
   /// `BuildTriggers` for the project, sorted by `create_time` descending.
   core.List<BuildTrigger>? triggers;
 
-  ListBuildTriggersResponse({
-    this.nextPageToken,
-    this.triggers,
-  });
+  ListBuildTriggersResponse({this.nextPageToken, this.triggers});
 
   ListBuildTriggersResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          triggers: (json_['triggers'] as core.List?)
-              ?.map((value) => BuildTrigger.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        triggers:
+            (json_['triggers'] as core.List?)
+                ?.map(
+                  (value) => BuildTrigger.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (triggers != null) 'triggers': triggers!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (triggers != null) 'triggers': triggers!,
+  };
 }
 
 /// Response including listed builds.
@@ -6924,24 +7062,25 @@ class ListBuildsResponse {
   /// This will be absent if the end of the response list has been reached.
   core.String? nextPageToken;
 
-  ListBuildsResponse({
-    this.builds,
-    this.nextPageToken,
-  });
+  ListBuildsResponse({this.builds, this.nextPageToken});
 
   ListBuildsResponse.fromJson(core.Map json_)
-      : this(
-          builds: (json_['builds'] as core.List?)
-              ?.map((value) =>
-                  Build.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        builds:
+            (json_['builds'] as core.List?)
+                ?.map(
+                  (value) => Build.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (builds != null) 'builds': builds!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (builds != null) 'builds': builds!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// RPC response object returned by ListGitLabConfigs RPC method.
@@ -6953,24 +7092,25 @@ class ListGitLabConfigsResponse {
   /// field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListGitLabConfigsResponse({
-    this.gitlabConfigs,
-    this.nextPageToken,
-  });
+  ListGitLabConfigsResponse({this.gitlabConfigs, this.nextPageToken});
 
   ListGitLabConfigsResponse.fromJson(core.Map json_)
-      : this(
-          gitlabConfigs: (json_['gitlabConfigs'] as core.List?)
-              ?.map((value) => GitLabConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        gitlabConfigs:
+            (json_['gitlabConfigs'] as core.List?)
+                ?.map(
+                  (value) => GitLabConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gitlabConfigs != null) 'gitlabConfigs': gitlabConfigs!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (gitlabConfigs != null) 'gitlabConfigs': gitlabConfigs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// RPC response object returned by the ListGitLabRepositories RPC method.
@@ -6983,25 +7123,25 @@ class ListGitLabRepositoriesResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListGitLabRepositoriesResponse({
-    this.gitlabRepositories,
-    this.nextPageToken,
-  });
+  ListGitLabRepositoriesResponse({this.gitlabRepositories, this.nextPageToken});
 
   ListGitLabRepositoriesResponse.fromJson(core.Map json_)
-      : this(
-          gitlabRepositories: (json_['gitlabRepositories'] as core.List?)
-              ?.map((value) => GitLabRepository.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        gitlabRepositories:
+            (json_['gitlabRepositories'] as core.List?)
+                ?.map(
+                  (value) => GitLabRepository.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gitlabRepositories != null)
-          'gitlabRepositories': gitlabRepositories!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (gitlabRepositories != null) 'gitlabRepositories': gitlabRepositories!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// RPC response object returned by ListGithubEnterpriseConfigs RPC method.
@@ -7009,21 +7149,23 @@ class ListGithubEnterpriseConfigsResponse {
   /// A list of GitHubEnterpriseConfigs
   core.List<GitHubEnterpriseConfig>? configs;
 
-  ListGithubEnterpriseConfigsResponse({
-    this.configs,
-  });
+  ListGithubEnterpriseConfigsResponse({this.configs});
 
   ListGithubEnterpriseConfigsResponse.fromJson(core.Map json_)
-      : this(
-          configs: (json_['configs'] as core.List?)
-              ?.map((value) => GitHubEnterpriseConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        configs:
+            (json_['configs'] as core.List?)
+                ?.map(
+                  (value) => GitHubEnterpriseConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configs != null) 'configs': configs!,
-      };
+    if (configs != null) 'configs': configs!,
+  };
 }
 
 /// Response containing existing `WorkerPools`.
@@ -7037,24 +7179,25 @@ class ListWorkerPoolsResponse {
   /// `WorkerPools` for the specified project.
   core.List<WorkerPool>? workerPools;
 
-  ListWorkerPoolsResponse({
-    this.nextPageToken,
-    this.workerPools,
-  });
+  ListWorkerPoolsResponse({this.nextPageToken, this.workerPools});
 
   ListWorkerPoolsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          workerPools: (json_['workerPools'] as core.List?)
-              ?.map((value) => WorkerPool.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        workerPools:
+            (json_['workerPools'] as core.List?)
+                ?.map(
+                  (value) => WorkerPool.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (workerPools != null) 'workerPools': workerPools!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (workerPools != null) 'workerPools': workerPools!,
+  };
 }
 
 /// A Maven artifact to upload to Artifact Registry upon successful completion
@@ -7097,21 +7240,21 @@ class MavenArtifact {
   });
 
   MavenArtifact.fromJson(core.Map json_)
-      : this(
-          artifactId: json_['artifactId'] as core.String?,
-          groupId: json_['groupId'] as core.String?,
-          path: json_['path'] as core.String?,
-          repository: json_['repository'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        artifactId: json_['artifactId'] as core.String?,
+        groupId: json_['groupId'] as core.String?,
+        path: json_['path'] as core.String?,
+        repository: json_['repository'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (artifactId != null) 'artifactId': artifactId!,
-        if (groupId != null) 'groupId': groupId!,
-        if (path != null) 'path': path!,
-        if (repository != null) 'repository': repository!,
-        if (version != null) 'version': version!,
-      };
+    if (artifactId != null) 'artifactId': artifactId!,
+    if (groupId != null) 'groupId': groupId!,
+    if (path != null) 'path': path!,
+    if (repository != null) 'repository': repository!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Defines the network configuration for the pool.
@@ -7157,18 +7300,18 @@ class NetworkConfig {
   });
 
   NetworkConfig.fromJson(core.Map json_)
-      : this(
-          egressOption: json_['egressOption'] as core.String?,
-          peeredNetwork: json_['peeredNetwork'] as core.String?,
-          peeredNetworkIpRange: json_['peeredNetworkIpRange'] as core.String?,
-        );
+    : this(
+        egressOption: json_['egressOption'] as core.String?,
+        peeredNetwork: json_['peeredNetwork'] as core.String?,
+        peeredNetworkIpRange: json_['peeredNetworkIpRange'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (egressOption != null) 'egressOption': egressOption!,
-        if (peeredNetwork != null) 'peeredNetwork': peeredNetwork!,
-        if (peeredNetworkIpRange != null)
-          'peeredNetworkIpRange': peeredNetworkIpRange!,
-      };
+    if (egressOption != null) 'egressOption': egressOption!,
+    if (peeredNetwork != null) 'peeredNetwork': peeredNetwork!,
+    if (peeredNetworkIpRange != null)
+      'peeredNetworkIpRange': peeredNetworkIpRange!,
+  };
 }
 
 /// Npm package to upload to Artifact Registry upon successful completion of all
@@ -7185,21 +7328,18 @@ class NpmPackage {
   /// Registry with this location as a prefix.
   core.String? repository;
 
-  NpmPackage({
-    this.packagePath,
-    this.repository,
-  });
+  NpmPackage({this.packagePath, this.repository});
 
   NpmPackage.fromJson(core.Map json_)
-      : this(
-          packagePath: json_['packagePath'] as core.String?,
-          repository: json_['repository'] as core.String?,
-        );
+    : this(
+        packagePath: json_['packagePath'] as core.String?,
+        repository: json_['repository'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (packagePath != null) 'packagePath': packagePath!,
-        if (repository != null) 'repository': repository!,
-      };
+    if (packagePath != null) 'packagePath': packagePath!,
+    if (repository != null) 'repository': repository!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -7245,37 +7385,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Details about how a build should be executed on a `WorkerPool`.
@@ -7291,18 +7429,14 @@ class PoolOption {
   /// projects/{project}/locations/{location}/workerPools/{workerPoolId}
   core.String? name;
 
-  PoolOption({
-    this.name,
-  });
+  PoolOption({this.name});
 
   PoolOption.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+    : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Configuration for a V1 `PrivatePool`.
@@ -7325,27 +7459,34 @@ class PrivatePoolV1Config {
   });
 
   PrivatePoolV1Config.fromJson(core.Map json_)
-      : this(
-          networkConfig: json_.containsKey('networkConfig')
-              ? NetworkConfig.fromJson(
-                  json_['networkConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          privateServiceConnect: json_.containsKey('privateServiceConnect')
-              ? PrivateServiceConnect.fromJson(json_['privateServiceConnect']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          workerConfig: json_.containsKey('workerConfig')
-              ? WorkerConfig.fromJson(
-                  json_['workerConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        networkConfig:
+            json_.containsKey('networkConfig')
+                ? NetworkConfig.fromJson(
+                  json_['networkConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        privateServiceConnect:
+            json_.containsKey('privateServiceConnect')
+                ? PrivateServiceConnect.fromJson(
+                  json_['privateServiceConnect']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        workerConfig:
+            json_.containsKey('workerConfig')
+                ? WorkerConfig.fromJson(
+                  json_['workerConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (networkConfig != null) 'networkConfig': networkConfig!,
-        if (privateServiceConnect != null)
-          'privateServiceConnect': privateServiceConnect!,
-        if (workerConfig != null) 'workerConfig': workerConfig!,
-      };
+    if (networkConfig != null) 'networkConfig': networkConfig!,
+    if (privateServiceConnect != null)
+      'privateServiceConnect': privateServiceConnect!,
+    if (workerConfig != null) 'workerConfig': workerConfig!,
+  };
 }
 
 /// Defines the Private Service Connect network configuration for the pool.
@@ -7391,19 +7532,18 @@ class PrivateServiceConnect {
   });
 
   PrivateServiceConnect.fromJson(core.Map json_)
-      : this(
-          networkAttachment: json_['networkAttachment'] as core.String?,
-          publicIpAddressDisabled:
-              json_['publicIpAddressDisabled'] as core.bool?,
-          routeAllTraffic: json_['routeAllTraffic'] as core.bool?,
-        );
+    : this(
+        networkAttachment: json_['networkAttachment'] as core.String?,
+        publicIpAddressDisabled: json_['publicIpAddressDisabled'] as core.bool?,
+        routeAllTraffic: json_['routeAllTraffic'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (networkAttachment != null) 'networkAttachment': networkAttachment!,
-        if (publicIpAddressDisabled != null)
-          'publicIpAddressDisabled': publicIpAddressDisabled!,
-        if (routeAllTraffic != null) 'routeAllTraffic': routeAllTraffic!,
-      };
+    if (networkAttachment != null) 'networkAttachment': networkAttachment!,
+    if (publicIpAddressDisabled != null)
+      'publicIpAddressDisabled': publicIpAddressDisabled!,
+    if (routeAllTraffic != null) 'routeAllTraffic': routeAllTraffic!,
+  };
 }
 
 /// PubsubConfig describes the configuration of a trigger that creates a build
@@ -7447,20 +7587,20 @@ class PubsubConfig {
   });
 
   PubsubConfig.fromJson(core.Map json_)
-      : this(
-          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-          state: json_['state'] as core.String?,
-          subscription: json_['subscription'] as core.String?,
-          topic: json_['topic'] as core.String?,
-        );
+    : this(
+        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+        state: json_['state'] as core.String?,
+        subscription: json_['subscription'] as core.String?,
+        topic: json_['topic'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail!,
-        if (state != null) 'state': state!,
-        if (subscription != null) 'subscription': subscription!,
-        if (topic != null) 'topic': topic!,
-      };
+    if (serviceAccountEmail != null)
+      'serviceAccountEmail': serviceAccountEmail!,
+    if (state != null) 'state': state!,
+    if (subscription != null) 'subscription': subscription!,
+    if (topic != null) 'topic': topic!,
+  };
 }
 
 /// PullRequestFilter contains filter properties for matching GitHub Pull
@@ -7500,24 +7640,20 @@ class PullRequestFilter {
   /// If true, branches that do NOT match the git_ref will trigger a build.
   core.bool? invertRegex;
 
-  PullRequestFilter({
-    this.branch,
-    this.commentControl,
-    this.invertRegex,
-  });
+  PullRequestFilter({this.branch, this.commentControl, this.invertRegex});
 
   PullRequestFilter.fromJson(core.Map json_)
-      : this(
-          branch: json_['branch'] as core.String?,
-          commentControl: json_['commentControl'] as core.String?,
-          invertRegex: json_['invertRegex'] as core.bool?,
-        );
+    : this(
+        branch: json_['branch'] as core.String?,
+        commentControl: json_['commentControl'] as core.String?,
+        invertRegex: json_['invertRegex'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (branch != null) 'branch': branch!,
-        if (commentControl != null) 'commentControl': commentControl!,
-        if (invertRegex != null) 'invertRegex': invertRegex!,
-      };
+    if (branch != null) 'branch': branch!,
+    if (commentControl != null) 'commentControl': commentControl!,
+    if (invertRegex != null) 'invertRegex': invertRegex!,
+  };
 }
 
 /// Push contains filter properties for matching GitHub git pushes.
@@ -7538,24 +7674,20 @@ class PushFilter {
   /// RE2 and described at https://github.com/google/re2/wiki/Syntax
   core.String? tag;
 
-  PushFilter({
-    this.branch,
-    this.invertRegex,
-    this.tag,
-  });
+  PushFilter({this.branch, this.invertRegex, this.tag});
 
   PushFilter.fromJson(core.Map json_)
-      : this(
-          branch: json_['branch'] as core.String?,
-          invertRegex: json_['invertRegex'] as core.bool?,
-          tag: json_['tag'] as core.String?,
-        );
+    : this(
+        branch: json_['branch'] as core.String?,
+        invertRegex: json_['invertRegex'] as core.bool?,
+        tag: json_['tag'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (branch != null) 'branch': branch!,
-        if (invertRegex != null) 'invertRegex': invertRegex!,
-        if (tag != null) 'tag': tag!,
-      };
+    if (branch != null) 'branch': branch!,
+    if (invertRegex != null) 'invertRegex': invertRegex!,
+    if (tag != null) 'tag': tag!,
+  };
 }
 
 /// Python package to upload to Artifact Registry upon successful completion of
@@ -7576,23 +7708,21 @@ class PythonPackage {
   /// with this location as a prefix.
   core.String? repository;
 
-  PythonPackage({
-    this.paths,
-    this.repository,
-  });
+  PythonPackage({this.paths, this.repository});
 
   PythonPackage.fromJson(core.Map json_)
-      : this(
-          paths: (json_['paths'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          repository: json_['repository'] as core.String?,
-        );
+    : this(
+        paths:
+            (json_['paths'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        repository: json_['repository'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (paths != null) 'paths': paths!,
-        if (repository != null) 'repository': repository!,
-      };
+    if (paths != null) 'paths': paths!,
+    if (repository != null) 'repository': repository!,
+  };
 }
 
 /// ReceiveTriggerWebhookResponse \[Experimental\] is the response object for
@@ -7605,23 +7735,23 @@ class RemoveBitbucketServerConnectedRepositoryRequest {
   /// The connected repository to remove.
   BitbucketServerRepositoryId? connectedRepository;
 
-  RemoveBitbucketServerConnectedRepositoryRequest({
-    this.connectedRepository,
-  });
+  RemoveBitbucketServerConnectedRepositoryRequest({this.connectedRepository});
 
   RemoveBitbucketServerConnectedRepositoryRequest.fromJson(core.Map json_)
-      : this(
-          connectedRepository: json_.containsKey('connectedRepository')
-              ? BitbucketServerRepositoryId.fromJson(
+    : this(
+        connectedRepository:
+            json_.containsKey('connectedRepository')
+                ? BitbucketServerRepositoryId.fromJson(
                   json_['connectedRepository']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectedRepository != null)
-          'connectedRepository': connectedRepository!,
-      };
+    if (connectedRepository != null)
+      'connectedRepository': connectedRepository!,
+  };
 }
 
 /// RPC request object accepted by RemoveGitLabConnectedRepository RPC method.
@@ -7629,22 +7759,23 @@ class RemoveGitLabConnectedRepositoryRequest {
   /// The connected repository to remove.
   GitLabRepositoryId? connectedRepository;
 
-  RemoveGitLabConnectedRepositoryRequest({
-    this.connectedRepository,
-  });
+  RemoveGitLabConnectedRepositoryRequest({this.connectedRepository});
 
   RemoveGitLabConnectedRepositoryRequest.fromJson(core.Map json_)
-      : this(
-          connectedRepository: json_.containsKey('connectedRepository')
-              ? GitLabRepositoryId.fromJson(json_['connectedRepository']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        connectedRepository:
+            json_.containsKey('connectedRepository')
+                ? GitLabRepositoryId.fromJson(
+                  json_['connectedRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectedRepository != null)
-          'connectedRepository': connectedRepository!,
-      };
+    if (connectedRepository != null)
+      'connectedRepository': connectedRepository!,
+  };
 }
 
 /// Location of the source in a Google Cloud Source Repository.
@@ -7709,34 +7840,29 @@ class RepoSource {
   });
 
   RepoSource.fromJson(core.Map json_)
-      : this(
-          branchName: json_['branchName'] as core.String?,
-          commitSha: json_['commitSha'] as core.String?,
-          dir: json_['dir'] as core.String?,
-          invertRegex: json_['invertRegex'] as core.bool?,
-          projectId: json_['projectId'] as core.String?,
-          repoName: json_['repoName'] as core.String?,
-          substitutions:
-              (json_['substitutions'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          tagName: json_['tagName'] as core.String?,
-        );
+    : this(
+        branchName: json_['branchName'] as core.String?,
+        commitSha: json_['commitSha'] as core.String?,
+        dir: json_['dir'] as core.String?,
+        invertRegex: json_['invertRegex'] as core.bool?,
+        projectId: json_['projectId'] as core.String?,
+        repoName: json_['repoName'] as core.String?,
+        substitutions: (json_['substitutions']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        tagName: json_['tagName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (branchName != null) 'branchName': branchName!,
-        if (commitSha != null) 'commitSha': commitSha!,
-        if (dir != null) 'dir': dir!,
-        if (invertRegex != null) 'invertRegex': invertRegex!,
-        if (projectId != null) 'projectId': projectId!,
-        if (repoName != null) 'repoName': repoName!,
-        if (substitutions != null) 'substitutions': substitutions!,
-        if (tagName != null) 'tagName': tagName!,
-      };
+    if (branchName != null) 'branchName': branchName!,
+    if (commitSha != null) 'commitSha': commitSha!,
+    if (dir != null) 'dir': dir!,
+    if (invertRegex != null) 'invertRegex': invertRegex!,
+    if (projectId != null) 'projectId': projectId!,
+    if (repoName != null) 'repoName': repoName!,
+    if (substitutions != null) 'substitutions': substitutions!,
+    if (tagName != null) 'tagName': tagName!,
+  };
 }
 
 /// The configuration of a trigger that creates a build whenever an event from
@@ -7772,25 +7898,29 @@ class RepositoryEventConfig {
   });
 
   RepositoryEventConfig.fromJson(core.Map json_)
-      : this(
-          pullRequest: json_.containsKey('pullRequest')
-              ? PullRequestFilter.fromJson(
-                  json_['pullRequest'] as core.Map<core.String, core.dynamic>)
-              : null,
-          push: json_.containsKey('push')
-              ? PushFilter.fromJson(
-                  json_['push'] as core.Map<core.String, core.dynamic>)
-              : null,
-          repository: json_['repository'] as core.String?,
-          repositoryType: json_['repositoryType'] as core.String?,
-        );
+    : this(
+        pullRequest:
+            json_.containsKey('pullRequest')
+                ? PullRequestFilter.fromJson(
+                  json_['pullRequest'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        push:
+            json_.containsKey('push')
+                ? PushFilter.fromJson(
+                  json_['push'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        repository: json_['repository'] as core.String?,
+        repositoryType: json_['repositoryType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pullRequest != null) 'pullRequest': pullRequest!,
-        if (push != null) 'push': push!,
-        if (repository != null) 'repository': repository!,
-        if (repositoryType != null) 'repositoryType': repositoryType!,
-      };
+    if (pullRequest != null) 'pullRequest': pullRequest!,
+    if (push != null) 'push': push!,
+    if (repository != null) 'repository': repository!,
+    if (repositoryType != null) 'repositoryType': repositoryType!,
+  };
 }
 
 /// Artifacts created by the build pipeline.
@@ -7853,53 +7983,78 @@ class Results {
   });
 
   Results.fromJson(core.Map json_)
-      : this(
-          artifactManifest: json_['artifactManifest'] as core.String?,
-          artifactTiming: json_.containsKey('artifactTiming')
-              ? TimeSpan.fromJson(json_['artifactTiming']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          buildStepImages: (json_['buildStepImages'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          buildStepOutputs: (json_['buildStepOutputs'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          goModules: (json_['goModules'] as core.List?)
-              ?.map((value) => UploadedGoModule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          images: (json_['images'] as core.List?)
-              ?.map((value) => BuiltImage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          mavenArtifacts: (json_['mavenArtifacts'] as core.List?)
-              ?.map((value) => UploadedMavenArtifact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          npmPackages: (json_['npmPackages'] as core.List?)
-              ?.map((value) => UploadedNpmPackage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          numArtifacts: json_['numArtifacts'] as core.String?,
-          pythonPackages: (json_['pythonPackages'] as core.List?)
-              ?.map((value) => UploadedPythonPackage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        artifactManifest: json_['artifactManifest'] as core.String?,
+        artifactTiming:
+            json_.containsKey('artifactTiming')
+                ? TimeSpan.fromJson(
+                  json_['artifactTiming']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        buildStepImages:
+            (json_['buildStepImages'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        buildStepOutputs:
+            (json_['buildStepOutputs'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        goModules:
+            (json_['goModules'] as core.List?)
+                ?.map(
+                  (value) => UploadedGoModule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        images:
+            (json_['images'] as core.List?)
+                ?.map(
+                  (value) => BuiltImage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        mavenArtifacts:
+            (json_['mavenArtifacts'] as core.List?)
+                ?.map(
+                  (value) => UploadedMavenArtifact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        npmPackages:
+            (json_['npmPackages'] as core.List?)
+                ?.map(
+                  (value) => UploadedNpmPackage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        numArtifacts: json_['numArtifacts'] as core.String?,
+        pythonPackages:
+            (json_['pythonPackages'] as core.List?)
+                ?.map(
+                  (value) => UploadedPythonPackage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (artifactManifest != null) 'artifactManifest': artifactManifest!,
-        if (artifactTiming != null) 'artifactTiming': artifactTiming!,
-        if (buildStepImages != null) 'buildStepImages': buildStepImages!,
-        if (buildStepOutputs != null) 'buildStepOutputs': buildStepOutputs!,
-        if (goModules != null) 'goModules': goModules!,
-        if (images != null) 'images': images!,
-        if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
-        if (npmPackages != null) 'npmPackages': npmPackages!,
-        if (numArtifacts != null) 'numArtifacts': numArtifacts!,
-        if (pythonPackages != null) 'pythonPackages': pythonPackages!,
-      };
+    if (artifactManifest != null) 'artifactManifest': artifactManifest!,
+    if (artifactTiming != null) 'artifactTiming': artifactTiming!,
+    if (buildStepImages != null) 'buildStepImages': buildStepImages!,
+    if (buildStepOutputs != null) 'buildStepOutputs': buildStepOutputs!,
+    if (goModules != null) 'goModules': goModules!,
+    if (images != null) 'images': images!,
+    if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
+    if (npmPackages != null) 'npmPackages': npmPackages!,
+    if (numArtifacts != null) 'numArtifacts': numArtifacts!,
+    if (pythonPackages != null) 'pythonPackages': pythonPackages!,
+  };
 }
 
 /// Specifies a build to retry.
@@ -7919,24 +8074,20 @@ class RetryBuildRequest {
   /// Required.
   core.String? projectId;
 
-  RetryBuildRequest({
-    this.id,
-    this.name,
-    this.projectId,
-  });
+  RetryBuildRequest({this.id, this.name, this.projectId});
 
   RetryBuildRequest.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-          projectId: json_['projectId'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (projectId != null) 'projectId': projectId!,
-      };
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (projectId != null) 'projectId': projectId!,
+  };
 }
 
 /// Specifies a build trigger to run and the source to use.
@@ -7956,27 +8107,25 @@ class RunBuildTriggerRequest {
   /// Required.
   core.String? triggerId;
 
-  RunBuildTriggerRequest({
-    this.projectId,
-    this.source,
-    this.triggerId,
-  });
+  RunBuildTriggerRequest({this.projectId, this.source, this.triggerId});
 
   RunBuildTriggerRequest.fromJson(core.Map json_)
-      : this(
-          projectId: json_['projectId'] as core.String?,
-          source: json_.containsKey('source')
-              ? RepoSource.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          triggerId: json_['triggerId'] as core.String?,
-        );
+    : this(
+        projectId: json_['projectId'] as core.String?,
+        source:
+            json_.containsKey('source')
+                ? RepoSource.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        triggerId: json_['triggerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (projectId != null) 'projectId': projectId!,
-        if (source != null) 'source': source!,
-        if (triggerId != null) 'triggerId': triggerId!,
-      };
+    if (projectId != null) 'projectId': projectId!,
+    if (source != null) 'source': source!,
+    if (triggerId != null) 'triggerId': triggerId!,
+  };
 }
 
 /// Pairs a set of secret environment variables containing encrypted values with
@@ -7997,27 +8146,19 @@ class Secret {
   /// build's secrets.
   core.Map<core.String, core.String>? secretEnv;
 
-  Secret({
-    this.kmsKeyName,
-    this.secretEnv,
-  });
+  Secret({this.kmsKeyName, this.secretEnv});
 
   Secret.fromJson(core.Map json_)
-      : this(
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-          secretEnv:
-              (json_['secretEnv'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+        secretEnv: (json_['secretEnv'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-        if (secretEnv != null) 'secretEnv': secretEnv!,
-      };
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+    if (secretEnv != null) 'secretEnv': secretEnv!,
+  };
 }
 
 /// Pairs a secret environment variable with a SecretVersion in Secret Manager.
@@ -8033,21 +8174,18 @@ class SecretManagerSecret {
   /// In format: projects / * /secrets / * /versions / *
   core.String? versionName;
 
-  SecretManagerSecret({
-    this.env,
-    this.versionName,
-  });
+  SecretManagerSecret({this.env, this.versionName});
 
   SecretManagerSecret.fromJson(core.Map json_)
-      : this(
-          env: json_['env'] as core.String?,
-          versionName: json_['versionName'] as core.String?,
-        );
+    : this(
+        env: json_['env'] as core.String?,
+        versionName: json_['versionName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (env != null) 'env': env!,
-        if (versionName != null) 'versionName': versionName!,
-      };
+    if (env != null) 'env': env!,
+    if (versionName != null) 'versionName': versionName!,
+  };
 }
 
 /// Secrets and secret environment variables.
@@ -8059,27 +8197,32 @@ class Secrets {
   /// Secrets in Secret Manager and associated secret environment variable.
   core.List<SecretManagerSecret>? secretManager;
 
-  Secrets({
-    this.inline,
-    this.secretManager,
-  });
+  Secrets({this.inline, this.secretManager});
 
   Secrets.fromJson(core.Map json_)
-      : this(
-          inline: (json_['inline'] as core.List?)
-              ?.map((value) => InlineSecret.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          secretManager: (json_['secretManager'] as core.List?)
-              ?.map((value) => SecretManagerSecret.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        inline:
+            (json_['inline'] as core.List?)
+                ?.map(
+                  (value) => InlineSecret.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        secretManager:
+            (json_['secretManager'] as core.List?)
+                ?.map(
+                  (value) => SecretManagerSecret.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inline != null) 'inline': inline!,
-        if (secretManager != null) 'secretManager': secretManager!,
-      };
+    if (inline != null) 'inline': inline!,
+    if (secretManager != null) 'secretManager': secretManager!,
+  };
 }
 
 /// ServiceDirectoryConfig represents Service Directory configuration for a SCM
@@ -8091,18 +8234,14 @@ class ServiceDirectoryConfig {
   /// projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
   core.String? service;
 
-  ServiceDirectoryConfig({
-    this.service,
-  });
+  ServiceDirectoryConfig({this.service});
 
   ServiceDirectoryConfig.fromJson(core.Map json_)
-      : this(
-          service: json_['service'] as core.String?,
-        );
+    : this(service: json_['service'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (service != null) 'service': service!,
-      };
+    if (service != null) 'service': service!,
+  };
 }
 
 /// Location of the source in a supported storage service.
@@ -8142,44 +8281,59 @@ class Source {
   });
 
   Source.fromJson(core.Map json_)
-      : this(
-          connectedRepository: json_.containsKey('connectedRepository')
-              ? ConnectedRepository.fromJson(json_['connectedRepository']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          developerConnectConfig: json_.containsKey('developerConnectConfig')
-              ? DeveloperConnectConfig.fromJson(json_['developerConnectConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          gitSource: json_.containsKey('gitSource')
-              ? GitSource.fromJson(
-                  json_['gitSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          repoSource: json_.containsKey('repoSource')
-              ? RepoSource.fromJson(
-                  json_['repoSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          storageSource: json_.containsKey('storageSource')
-              ? StorageSource.fromJson(
-                  json_['storageSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          storageSourceManifest: json_.containsKey('storageSourceManifest')
-              ? StorageSourceManifest.fromJson(json_['storageSourceManifest']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        connectedRepository:
+            json_.containsKey('connectedRepository')
+                ? ConnectedRepository.fromJson(
+                  json_['connectedRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        developerConnectConfig:
+            json_.containsKey('developerConnectConfig')
+                ? DeveloperConnectConfig.fromJson(
+                  json_['developerConnectConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gitSource:
+            json_.containsKey('gitSource')
+                ? GitSource.fromJson(
+                  json_['gitSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        repoSource:
+            json_.containsKey('repoSource')
+                ? RepoSource.fromJson(
+                  json_['repoSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        storageSource:
+            json_.containsKey('storageSource')
+                ? StorageSource.fromJson(
+                  json_['storageSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        storageSourceManifest:
+            json_.containsKey('storageSourceManifest')
+                ? StorageSourceManifest.fromJson(
+                  json_['storageSourceManifest']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectedRepository != null)
-          'connectedRepository': connectedRepository!,
-        if (developerConnectConfig != null)
-          'developerConnectConfig': developerConnectConfig!,
-        if (gitSource != null) 'gitSource': gitSource!,
-        if (repoSource != null) 'repoSource': repoSource!,
-        if (storageSource != null) 'storageSource': storageSource!,
-        if (storageSourceManifest != null)
-          'storageSourceManifest': storageSourceManifest!,
-      };
+    if (connectedRepository != null)
+      'connectedRepository': connectedRepository!,
+    if (developerConnectConfig != null)
+      'developerConnectConfig': developerConnectConfig!,
+    if (gitSource != null) 'gitSource': gitSource!,
+    if (repoSource != null) 'repoSource': repoSource!,
+    if (storageSource != null) 'storageSource': storageSource!,
+    if (storageSourceManifest != null)
+      'storageSourceManifest': storageSourceManifest!,
+  };
 }
 
 /// Provenance of the source.
@@ -8236,53 +8390,64 @@ class SourceProvenance {
   });
 
   SourceProvenance.fromJson(core.Map json_)
-      : this(
-          fileHashes:
-              (json_['fileHashes'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              FileHashes.fromJson(value as core.Map<core.String, core.dynamic>),
+    : this(
+        fileHashes:
+            (json_['fileHashes'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                FileHashes.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          resolvedConnectedRepository:
-              json_.containsKey('resolvedConnectedRepository')
-                  ? ConnectedRepository.fromJson(
-                      json_['resolvedConnectedRepository']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          resolvedGitSource: json_.containsKey('resolvedGitSource')
-              ? GitSource.fromJson(json_['resolvedGitSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          resolvedRepoSource: json_.containsKey('resolvedRepoSource')
-              ? RepoSource.fromJson(json_['resolvedRepoSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          resolvedStorageSource: json_.containsKey('resolvedStorageSource')
-              ? StorageSource.fromJson(json_['resolvedStorageSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          resolvedStorageSourceManifest:
-              json_.containsKey('resolvedStorageSourceManifest')
-                  ? StorageSourceManifest.fromJson(
-                      json_['resolvedStorageSourceManifest']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+        resolvedConnectedRepository:
+            json_.containsKey('resolvedConnectedRepository')
+                ? ConnectedRepository.fromJson(
+                  json_['resolvedConnectedRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resolvedGitSource:
+            json_.containsKey('resolvedGitSource')
+                ? GitSource.fromJson(
+                  json_['resolvedGitSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resolvedRepoSource:
+            json_.containsKey('resolvedRepoSource')
+                ? RepoSource.fromJson(
+                  json_['resolvedRepoSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resolvedStorageSource:
+            json_.containsKey('resolvedStorageSource')
+                ? StorageSource.fromJson(
+                  json_['resolvedStorageSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resolvedStorageSourceManifest:
+            json_.containsKey('resolvedStorageSourceManifest')
+                ? StorageSourceManifest.fromJson(
+                  json_['resolvedStorageSourceManifest']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileHashes != null) 'fileHashes': fileHashes!,
-        if (resolvedConnectedRepository != null)
-          'resolvedConnectedRepository': resolvedConnectedRepository!,
-        if (resolvedGitSource != null) 'resolvedGitSource': resolvedGitSource!,
-        if (resolvedRepoSource != null)
-          'resolvedRepoSource': resolvedRepoSource!,
-        if (resolvedStorageSource != null)
-          'resolvedStorageSource': resolvedStorageSource!,
-        if (resolvedStorageSourceManifest != null)
-          'resolvedStorageSourceManifest': resolvedStorageSourceManifest!,
-      };
+    if (fileHashes != null) 'fileHashes': fileHashes!,
+    if (resolvedConnectedRepository != null)
+      'resolvedConnectedRepository': resolvedConnectedRepository!,
+    if (resolvedGitSource != null) 'resolvedGitSource': resolvedGitSource!,
+    if (resolvedRepoSource != null) 'resolvedRepoSource': resolvedRepoSource!,
+    if (resolvedStorageSource != null)
+      'resolvedStorageSource': resolvedStorageSource!,
+    if (resolvedStorageSourceManifest != null)
+      'resolvedStorageSourceManifest': resolvedStorageSourceManifest!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -8333,19 +8498,19 @@ class StorageSource {
   });
 
   StorageSource.fromJson(core.Map json_)
-      : this(
-          bucket: json_['bucket'] as core.String?,
-          generation: json_['generation'] as core.String?,
-          object: json_['object'] as core.String?,
-          sourceFetcher: json_['sourceFetcher'] as core.String?,
-        );
+    : this(
+        bucket: json_['bucket'] as core.String?,
+        generation: json_['generation'] as core.String?,
+        object: json_['object'] as core.String?,
+        sourceFetcher: json_['sourceFetcher'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucket != null) 'bucket': bucket!,
-        if (generation != null) 'generation': generation!,
-        if (object != null) 'object': object!,
-        if (sourceFetcher != null) 'sourceFetcher': sourceFetcher!,
-      };
+    if (bucket != null) 'bucket': bucket!,
+    if (generation != null) 'generation': generation!,
+    if (object != null) 'object': object!,
+    if (sourceFetcher != null) 'sourceFetcher': sourceFetcher!,
+  };
 }
 
 /// Location of the source manifest in Cloud Storage.
@@ -8371,24 +8536,20 @@ class StorageSourceManifest {
   /// Required.
   core.String? object;
 
-  StorageSourceManifest({
-    this.bucket,
-    this.generation,
-    this.object,
-  });
+  StorageSourceManifest({this.bucket, this.generation, this.object});
 
   StorageSourceManifest.fromJson(core.Map json_)
-      : this(
-          bucket: json_['bucket'] as core.String?,
-          generation: json_['generation'] as core.String?,
-          object: json_['object'] as core.String?,
-        );
+    : this(
+        bucket: json_['bucket'] as core.String?,
+        generation: json_['generation'] as core.String?,
+        object: json_['object'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucket != null) 'bucket': bucket!,
-        if (generation != null) 'generation': generation!,
-        if (object != null) 'object': object!,
-      };
+    if (bucket != null) 'bucket': bucket!,
+    if (generation != null) 'generation': generation!,
+    if (object != null) 'object': object!,
+  };
 }
 
 /// Start and end times for a build execution phase.
@@ -8399,21 +8560,18 @@ class TimeSpan {
   /// Start of time span.
   core.String? startTime;
 
-  TimeSpan({
-    this.endTime,
-    this.startTime,
-  });
+  TimeSpan({this.endTime, this.startTime});
 
   TimeSpan.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// A Go module artifact uploaded to Artifact Registry using the GoModule
@@ -8430,30 +8588,30 @@ class UploadedGoModule {
   /// URI of the uploaded artifact.
   core.String? uri;
 
-  UploadedGoModule({
-    this.fileHashes,
-    this.pushTiming,
-    this.uri,
-  });
+  UploadedGoModule({this.fileHashes, this.pushTiming, this.uri});
 
   UploadedGoModule.fromJson(core.Map json_)
-      : this(
-          fileHashes: json_.containsKey('fileHashes')
-              ? FileHashes.fromJson(
-                  json_['fileHashes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pushTiming: json_.containsKey('pushTiming')
-              ? TimeSpan.fromJson(
-                  json_['pushTiming'] as core.Map<core.String, core.dynamic>)
-              : null,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        fileHashes:
+            json_.containsKey('fileHashes')
+                ? FileHashes.fromJson(
+                  json_['fileHashes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pushTiming:
+            json_.containsKey('pushTiming')
+                ? TimeSpan.fromJson(
+                  json_['pushTiming'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileHashes != null) 'fileHashes': fileHashes!,
-        if (pushTiming != null) 'pushTiming': pushTiming!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (fileHashes != null) 'fileHashes': fileHashes!,
+    if (pushTiming != null) 'pushTiming': pushTiming!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// A Maven artifact uploaded using the MavenArtifact directive.
@@ -8469,30 +8627,30 @@ class UploadedMavenArtifact {
   /// URI of the uploaded artifact.
   core.String? uri;
 
-  UploadedMavenArtifact({
-    this.fileHashes,
-    this.pushTiming,
-    this.uri,
-  });
+  UploadedMavenArtifact({this.fileHashes, this.pushTiming, this.uri});
 
   UploadedMavenArtifact.fromJson(core.Map json_)
-      : this(
-          fileHashes: json_.containsKey('fileHashes')
-              ? FileHashes.fromJson(
-                  json_['fileHashes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pushTiming: json_.containsKey('pushTiming')
-              ? TimeSpan.fromJson(
-                  json_['pushTiming'] as core.Map<core.String, core.dynamic>)
-              : null,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        fileHashes:
+            json_.containsKey('fileHashes')
+                ? FileHashes.fromJson(
+                  json_['fileHashes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pushTiming:
+            json_.containsKey('pushTiming')
+                ? TimeSpan.fromJson(
+                  json_['pushTiming'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileHashes != null) 'fileHashes': fileHashes!,
-        if (pushTiming != null) 'pushTiming': pushTiming!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (fileHashes != null) 'fileHashes': fileHashes!,
+    if (pushTiming != null) 'pushTiming': pushTiming!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// An npm package uploaded to Artifact Registry using the NpmPackage directive.
@@ -8508,30 +8666,30 @@ class UploadedNpmPackage {
   /// URI of the uploaded npm package.
   core.String? uri;
 
-  UploadedNpmPackage({
-    this.fileHashes,
-    this.pushTiming,
-    this.uri,
-  });
+  UploadedNpmPackage({this.fileHashes, this.pushTiming, this.uri});
 
   UploadedNpmPackage.fromJson(core.Map json_)
-      : this(
-          fileHashes: json_.containsKey('fileHashes')
-              ? FileHashes.fromJson(
-                  json_['fileHashes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pushTiming: json_.containsKey('pushTiming')
-              ? TimeSpan.fromJson(
-                  json_['pushTiming'] as core.Map<core.String, core.dynamic>)
-              : null,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        fileHashes:
+            json_.containsKey('fileHashes')
+                ? FileHashes.fromJson(
+                  json_['fileHashes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pushTiming:
+            json_.containsKey('pushTiming')
+                ? TimeSpan.fromJson(
+                  json_['pushTiming'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileHashes != null) 'fileHashes': fileHashes!,
-        if (pushTiming != null) 'pushTiming': pushTiming!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (fileHashes != null) 'fileHashes': fileHashes!,
+    if (pushTiming != null) 'pushTiming': pushTiming!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Artifact uploaded using the PythonPackage directive.
@@ -8547,30 +8705,30 @@ class UploadedPythonPackage {
   /// URI of the uploaded artifact.
   core.String? uri;
 
-  UploadedPythonPackage({
-    this.fileHashes,
-    this.pushTiming,
-    this.uri,
-  });
+  UploadedPythonPackage({this.fileHashes, this.pushTiming, this.uri});
 
   UploadedPythonPackage.fromJson(core.Map json_)
-      : this(
-          fileHashes: json_.containsKey('fileHashes')
-              ? FileHashes.fromJson(
-                  json_['fileHashes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pushTiming: json_.containsKey('pushTiming')
-              ? TimeSpan.fromJson(
-                  json_['pushTiming'] as core.Map<core.String, core.dynamic>)
-              : null,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        fileHashes:
+            json_.containsKey('fileHashes')
+                ? FileHashes.fromJson(
+                  json_['fileHashes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pushTiming:
+            json_.containsKey('pushTiming')
+                ? TimeSpan.fromJson(
+                  json_['pushTiming'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileHashes != null) 'fileHashes': fileHashes!,
-        if (pushTiming != null) 'pushTiming': pushTiming!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (fileHashes != null) 'fileHashes': fileHashes!,
+    if (pushTiming != null) 'pushTiming': pushTiming!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Volume describes a Docker container volume which is mounted into build steps
@@ -8589,21 +8747,18 @@ class Volume {
   /// same build step or with certain reserved volume paths.
   core.String? path;
 
-  Volume({
-    this.name,
-    this.path,
-  });
+  Volume({this.name, this.path});
 
   Volume.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          path: json_['path'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        path: json_['path'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (path != null) 'path': path!,
-      };
+    if (name != null) 'name': name!,
+    if (path != null) 'path': path!,
+  };
 }
 
 /// A non-fatal problem encountered during the execution of the build.
@@ -8620,21 +8775,18 @@ class Warning {
   /// Explanation of the warning generated.
   core.String? text;
 
-  Warning({
-    this.priority,
-    this.text,
-  });
+  Warning({this.priority, this.text});
 
   Warning.fromJson(core.Map json_)
-      : this(
-          priority: json_['priority'] as core.String?,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        priority: json_['priority'] as core.String?,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (priority != null) 'priority': priority!,
-        if (text != null) 'text': text!,
-      };
+    if (priority != null) 'priority': priority!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// WebhookConfig describes the configuration of a trigger that creates a build
@@ -8654,21 +8806,18 @@ class WebhookConfig {
   /// - "SECRET_DELETED" : The secret provided in auth_method has been deleted.
   core.String? state;
 
-  WebhookConfig({
-    this.secret,
-    this.state,
-  });
+  WebhookConfig({this.secret, this.state});
 
   WebhookConfig.fromJson(core.Map json_)
-      : this(
-          secret: json_['secret'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        secret: json_['secret'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (secret != null) 'secret': secret!,
-        if (state != null) 'state': state!,
-      };
+    if (secret != null) 'secret': secret!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Defines the configuration to be used for creating workers in the pool.
@@ -8690,21 +8839,18 @@ class WorkerConfig {
   /// Optional.
   core.String? machineType;
 
-  WorkerConfig({
-    this.diskSizeGb,
-    this.machineType,
-  });
+  WorkerConfig({this.diskSizeGb, this.machineType});
 
   WorkerConfig.fromJson(core.Map json_)
-      : this(
-          diskSizeGb: json_['diskSizeGb'] as core.String?,
-          machineType: json_['machineType'] as core.String?,
-        );
+    : this(
+        diskSizeGb: json_['diskSizeGb'] as core.String?,
+        machineType: json_['machineType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
-        if (machineType != null) 'machineType': machineType!,
-      };
+    if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
+    if (machineType != null) 'machineType': machineType!,
+  };
 }
 
 /// Configuration for a `WorkerPool`.
@@ -8797,40 +8943,38 @@ class WorkerPool {
   });
 
   WorkerPool.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          deleteTime: json_['deleteTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          privatePoolV1Config: json_.containsKey('privatePoolV1Config')
-              ? PrivatePoolV1Config.fromJson(json_['privatePoolV1Config']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        privatePoolV1Config:
+            json_.containsKey('privatePoolV1Config')
+                ? PrivatePoolV1Config.fromJson(
+                  json_['privatePoolV1Config']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (createTime != null) 'createTime': createTime!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (privatePoolV1Config != null)
-          'privatePoolV1Config': privatePoolV1Config!,
-        if (state != null) 'state': state!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (privatePoolV1Config != null)
+      'privatePoolV1Config': privatePoolV1Config!,
+    if (state != null) 'state': state!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }

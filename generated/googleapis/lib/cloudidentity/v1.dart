@@ -105,11 +105,16 @@ class CloudIdentityApi {
       InboundSsoAssignmentsResource(_requester);
   PoliciesResource get policies => PoliciesResource(_requester);
 
-  CloudIdentityApi(http.Client client,
-      {core.String rootUrl = 'https://cloudidentity.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudIdentityApi(
+    http.Client client, {
+    core.String rootUrl = 'https://cloudidentity.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class CustomersResource {
@@ -125,7 +130,7 @@ class CustomersUserinvitationsResource {
   final commons.ApiRequester _requester;
 
   CustomersUserinvitationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Cancels a UserInvitation that was already sent.
   ///
@@ -206,7 +211,8 @@ class CustomersUserinvitationsResource {
       queryParams: queryParams_,
     );
     return UserInvitation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Verifies whether a user account is eligible to receive a UserInvitation
@@ -251,7 +257,8 @@ class CustomersUserinvitationsResource {
       queryParams: queryParams_,
     );
     return IsInvitableUserResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a list of UserInvitation resources.
@@ -319,7 +326,8 @@ class CustomersUserinvitationsResource {
       queryParams: queryParams_,
     );
     return ListUserInvitationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sends a UserInvitation to email.
@@ -521,6 +529,7 @@ class DevicesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -572,7 +581,8 @@ class DevicesResource {
       queryParams: queryParams_,
     );
     return GoogleAppsCloudidentityDevicesV1Device.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists/Searches devices.
@@ -655,7 +665,8 @@ class DevicesResource {
       queryParams: queryParams_,
     );
     return GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Wipes all data on the specified device.
@@ -891,6 +902,7 @@ class DevicesDeviceUsersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -942,7 +954,8 @@ class DevicesDeviceUsersResource {
       queryParams: queryParams_,
     );
     return GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists/Searches DeviceUsers.
@@ -1014,7 +1027,8 @@ class DevicesDeviceUsersResource {
       queryParams: queryParams_,
     );
     return GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Looks up resource names of the DeviceUsers associated with the caller's
@@ -1072,7 +1086,7 @@ class DevicesDeviceUsersResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse>
-      lookup(
+  lookup(
     core.String parent, {
     core.String? androidId,
     core.int? pageSize,
@@ -1097,8 +1111,9 @@ class DevicesDeviceUsersResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Wipes the user's account on a device.
@@ -1157,7 +1172,7 @@ class DevicesDeviceUsersClientStatesResource {
   final commons.ApiRequester _requester;
 
   DevicesDeviceUsersClientStatesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the client state for the device user
   ///
@@ -1216,7 +1231,8 @@ class DevicesDeviceUsersClientStatesResource {
       queryParams: queryParams_,
     );
     return GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the client states for the given search query.
@@ -1282,7 +1298,8 @@ class DevicesDeviceUsersClientStatesResource {
       queryParams: queryParams_,
     );
     return GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the client state for the device user **Note**: This method is
@@ -1448,6 +1465,7 @@ class GroupsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1472,10 +1490,7 @@ class GroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Group> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1530,7 +1545,8 @@ class GroupsResource {
       queryParams: queryParams_,
     );
     return SecuritySettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the `Group` resources under a customer or namespace.
@@ -1594,7 +1610,8 @@ class GroupsResource {
       queryParams: queryParams_,
     );
     return ListGroupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Looks up the
@@ -1648,7 +1665,8 @@ class GroupsResource {
       queryParams: queryParams_,
     );
     return LookupGroupNameResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a `Group`.
@@ -1770,7 +1788,8 @@ class GroupsResource {
       queryParams: queryParams_,
     );
     return SearchGroupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update Security Settings
@@ -1871,7 +1890,8 @@ class GroupsMembershipsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/memberships:checkTransitiveMembership';
 
@@ -1881,7 +1901,8 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return CheckTransitiveMembershipResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a `Membership`.
@@ -1958,6 +1979,7 @@ class GroupsMembershipsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1983,10 +2005,7 @@ class GroupsMembershipsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Membership> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Membership> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1999,7 +2018,8 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return Membership.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get a membership graph of just a member or both a member and a group.
@@ -2051,7 +2071,8 @@ class GroupsMembershipsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/memberships:getMembershipGraph';
 
@@ -2121,7 +2142,8 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return ListMembershipsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Looks up the
@@ -2180,7 +2202,8 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return LookupMembershipNameResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Modifies the `MembershipRole`s of a `Membership`.
@@ -2225,7 +2248,8 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return ModifyMembershipRolesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Searches direct groups of a member.
@@ -2287,7 +2311,8 @@ class GroupsMembershipsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/memberships:searchDirectGroups';
 
@@ -2297,7 +2322,8 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return SearchDirectGroupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Search transitive groups of a member.
@@ -2361,7 +2387,8 @@ class GroupsMembershipsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/memberships:searchTransitiveGroups';
 
@@ -2371,7 +2398,8 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return SearchTransitiveGroupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Search transitive memberships of a group.
@@ -2418,7 +2446,8 @@ class GroupsMembershipsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/memberships:searchTransitiveMemberships';
 
@@ -2428,7 +2457,8 @@ class GroupsMembershipsResource {
       queryParams: queryParams_,
     );
     return SearchTransitiveMembershipsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2439,7 +2469,7 @@ class InboundSamlSsoProfilesResource {
       InboundSamlSsoProfilesIdpCredentialsResource(_requester);
 
   InboundSamlSsoProfilesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an InboundSamlSsoProfile for a customer.
   ///
@@ -2515,6 +2545,7 @@ class InboundSamlSsoProfilesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2556,7 +2587,8 @@ class InboundSamlSsoProfilesResource {
       queryParams: queryParams_,
     );
     return InboundSamlSsoProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists InboundSamlSsoProfiles for a customer.
@@ -2614,7 +2646,8 @@ class InboundSamlSsoProfilesResource {
       queryParams: queryParams_,
     );
     return ListInboundSamlSsoProfilesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an InboundSamlSsoProfile.
@@ -2673,7 +2706,7 @@ class InboundSamlSsoProfilesIdpCredentialsResource {
   final commons.ApiRequester _requester;
 
   InboundSamlSsoProfilesIdpCredentialsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Adds an IdpCredential.
   ///
@@ -2756,6 +2789,7 @@ class InboundSamlSsoProfilesIdpCredentialsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2798,7 +2832,8 @@ class InboundSamlSsoProfilesIdpCredentialsResource {
       queryParams: queryParams_,
     );
     return IdpCredential.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of IdpCredentials in an InboundSamlSsoProfile.
@@ -2847,7 +2882,8 @@ class InboundSamlSsoProfilesIdpCredentialsResource {
       queryParams: queryParams_,
     );
     return ListIdpCredentialsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2855,7 +2891,7 @@ class InboundSsoAssignmentsResource {
   final commons.ApiRequester _requester;
 
   InboundSsoAssignmentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an InboundSsoAssignment for users and devices in a `Customer`
   /// under a given `Group` or `OrgUnit`.
@@ -2930,6 +2966,7 @@ class InboundSsoAssignmentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2971,7 +3008,8 @@ class InboundSsoAssignmentsResource {
       queryParams: queryParams_,
     );
     return InboundSsoAssignment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the InboundSsoAssignments for a `Customer`.
@@ -3028,7 +3066,8 @@ class InboundSsoAssignmentsResource {
       queryParams: queryParams_,
     );
     return ListInboundSsoAssignmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an InboundSsoAssignment.
@@ -3108,10 +3147,7 @@ class PoliciesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Policy> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3185,7 +3221,8 @@ class PoliciesResource {
       queryParams: queryParams_,
     );
     return ListPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3197,18 +3234,14 @@ class AddIdpCredentialRequest {
   /// signatures.
   core.String? pemData;
 
-  AddIdpCredentialRequest({
-    this.pemData,
-  });
+  AddIdpCredentialRequest({this.pemData});
 
   AddIdpCredentialRequest.fromJson(core.Map json_)
-      : this(
-          pemData: json_['pemData'] as core.String?,
-        );
+    : this(pemData: json_['pemData'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pemData != null) 'pemData': pemData!,
-      };
+    if (pemData != null) 'pemData': pemData!,
+  };
 }
 
 /// Request to cancel sent invitation for target email in UserInvitation.
@@ -3223,18 +3256,14 @@ class CheckTransitiveMembershipResponse {
   /// possible lack of authorization in some of the paths.
   core.bool? hasMembership;
 
-  CheckTransitiveMembershipResponse({
-    this.hasMembership,
-  });
+  CheckTransitiveMembershipResponse({this.hasMembership});
 
   CheckTransitiveMembershipResponse.fromJson(core.Map json_)
-      : this(
-          hasMembership: json_['hasMembership'] as core.bool?,
-        );
+    : this(hasMembership: json_['hasMembership'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hasMembership != null) 'hasMembership': hasMembership!,
-      };
+    if (hasMembership != null) 'hasMembership': hasMembership!,
+  };
 }
 
 /// Information of a DSA public key.
@@ -3242,18 +3271,14 @@ class DsaPublicKeyInfo {
   /// Key size in bits (size of parameter P).
   core.int? keySize;
 
-  DsaPublicKeyInfo({
-    this.keySize,
-  });
+  DsaPublicKeyInfo({this.keySize});
 
   DsaPublicKeyInfo.fromJson(core.Map json_)
-      : this(
-          keySize: json_['keySize'] as core.int?,
-        );
+    : this(keySize: json_['keySize'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keySize != null) 'keySize': keySize!,
-      };
+    if (keySize != null) 'keySize': keySize!,
+  };
 }
 
 /// Dynamic group metadata like queries and status.
@@ -3269,27 +3294,30 @@ class DynamicGroupMetadata {
   /// Output only.
   DynamicGroupStatus? status;
 
-  DynamicGroupMetadata({
-    this.queries,
-    this.status,
-  });
+  DynamicGroupMetadata({this.queries, this.status});
 
   DynamicGroupMetadata.fromJson(core.Map json_)
-      : this(
-          queries: (json_['queries'] as core.List?)
-              ?.map((value) => DynamicGroupQuery.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          status: json_.containsKey('status')
-              ? DynamicGroupStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        queries:
+            (json_['queries'] as core.List?)
+                ?.map(
+                  (value) => DynamicGroupQuery.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        status:
+            json_.containsKey('status')
+                ? DynamicGroupStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (queries != null) 'queries': queries!,
-        if (status != null) 'status': status!,
-      };
+    if (queries != null) 'queries': queries!,
+    if (status != null) 'status': status!,
+  };
 }
 
 /// Defines a query on a resource.
@@ -3312,21 +3340,18 @@ class DynamicGroupQuery {
   /// - "USER" : For queries on User
   core.String? resourceType;
 
-  DynamicGroupQuery({
-    this.query,
-    this.resourceType,
-  });
+  DynamicGroupQuery({this.query, this.resourceType});
 
   DynamicGroupQuery.fromJson(core.Map json_)
-      : this(
-          query: json_['query'] as core.String?,
-          resourceType: json_['resourceType'] as core.String?,
-        );
+    : this(
+        query: json_['query'] as core.String?,
+        resourceType: json_['resourceType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (query != null) 'query': query!,
-        if (resourceType != null) 'resourceType': resourceType!,
-      };
+    if (query != null) 'query': query!,
+    if (resourceType != null) 'resourceType': resourceType!,
+  };
 }
 
 /// The current status of a dynamic group along with timestamp.
@@ -3349,21 +3374,18 @@ class DynamicGroupStatus {
   /// at which dynamic group was created.
   core.String? statusTime;
 
-  DynamicGroupStatus({
-    this.status,
-    this.statusTime,
-  });
+  DynamicGroupStatus({this.status, this.statusTime});
 
   DynamicGroupStatus.fromJson(core.Map json_)
-      : this(
-          status: json_['status'] as core.String?,
-          statusTime: json_['statusTime'] as core.String?,
-        );
+    : this(
+        status: json_['status'] as core.String?,
+        statusTime: json_['statusTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (status != null) 'status': status!,
-        if (statusTime != null) 'statusTime': statusTime!,
-      };
+    if (status != null) 'status': status!,
+    if (statusTime != null) 'statusTime': statusTime!,
+  };
 }
 
 /// A unique identifier for an entity in the Cloud Identity Groups API.
@@ -3391,21 +3413,18 @@ class EntityKey {
   /// the form of `identitysources/{identity_source}`.
   core.String? namespace;
 
-  EntityKey({
-    this.id,
-    this.namespace,
-  });
+  EntityKey({this.id, this.namespace});
 
   EntityKey.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          namespace: json_['namespace'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        namespace: json_['namespace'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (namespace != null) 'namespace': namespace!,
-      };
+    if (id != null) 'id': id!,
+    if (namespace != null) 'namespace': namespace!,
+  };
 }
 
 /// The `MembershipRole` expiry details.
@@ -3413,18 +3432,14 @@ class ExpiryDetail {
   /// The time at which the `MembershipRole` will expire.
   core.String? expireTime;
 
-  ExpiryDetail({
-    this.expireTime,
-  });
+  ExpiryDetail({this.expireTime});
 
   ExpiryDetail.fromJson(core.Map json_)
-      : this(
-          expireTime: json_['expireTime'] as core.String?,
-        );
+    : this(expireTime: json_['expireTime'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expireTime != null) 'expireTime': expireTime!,
-      };
+    if (expireTime != null) 'expireTime': expireTime!,
+  };
 }
 
 /// Resource representing the Android specific attributes of a Device.
@@ -3478,33 +3493,32 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   });
 
   GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(core.Map json_)
-      : this(
-          ctsProfileMatch: json_['ctsProfileMatch'] as core.bool?,
-          enabledUnknownSources: json_['enabledUnknownSources'] as core.bool?,
-          hasPotentiallyHarmfulApps:
-              json_['hasPotentiallyHarmfulApps'] as core.bool?,
-          ownerProfileAccount: json_['ownerProfileAccount'] as core.bool?,
-          ownershipPrivilege: json_['ownershipPrivilege'] as core.String?,
-          supportsWorkProfile: json_['supportsWorkProfile'] as core.bool?,
-          verifiedBoot: json_['verifiedBoot'] as core.bool?,
-          verifyAppsEnabled: json_['verifyAppsEnabled'] as core.bool?,
-        );
+    : this(
+        ctsProfileMatch: json_['ctsProfileMatch'] as core.bool?,
+        enabledUnknownSources: json_['enabledUnknownSources'] as core.bool?,
+        hasPotentiallyHarmfulApps:
+            json_['hasPotentiallyHarmfulApps'] as core.bool?,
+        ownerProfileAccount: json_['ownerProfileAccount'] as core.bool?,
+        ownershipPrivilege: json_['ownershipPrivilege'] as core.String?,
+        supportsWorkProfile: json_['supportsWorkProfile'] as core.bool?,
+        verifiedBoot: json_['verifiedBoot'] as core.bool?,
+        verifyAppsEnabled: json_['verifyAppsEnabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ctsProfileMatch != null) 'ctsProfileMatch': ctsProfileMatch!,
-        if (enabledUnknownSources != null)
-          'enabledUnknownSources': enabledUnknownSources!,
-        if (hasPotentiallyHarmfulApps != null)
-          'hasPotentiallyHarmfulApps': hasPotentiallyHarmfulApps!,
-        if (ownerProfileAccount != null)
-          'ownerProfileAccount': ownerProfileAccount!,
-        if (ownershipPrivilege != null)
-          'ownershipPrivilege': ownershipPrivilege!,
-        if (supportsWorkProfile != null)
-          'supportsWorkProfile': supportsWorkProfile!,
-        if (verifiedBoot != null) 'verifiedBoot': verifiedBoot!,
-        if (verifyAppsEnabled != null) 'verifyAppsEnabled': verifyAppsEnabled!,
-      };
+    if (ctsProfileMatch != null) 'ctsProfileMatch': ctsProfileMatch!,
+    if (enabledUnknownSources != null)
+      'enabledUnknownSources': enabledUnknownSources!,
+    if (hasPotentiallyHarmfulApps != null)
+      'hasPotentiallyHarmfulApps': hasPotentiallyHarmfulApps!,
+    if (ownerProfileAccount != null)
+      'ownerProfileAccount': ownerProfileAccount!,
+    if (ownershipPrivilege != null) 'ownershipPrivilege': ownershipPrivilege!,
+    if (supportsWorkProfile != null)
+      'supportsWorkProfile': supportsWorkProfile!,
+    if (verifiedBoot != null) 'verifiedBoot': verifiedBoot!,
+    if (verifyAppsEnabled != null) 'verifyAppsEnabled': verifyAppsEnabled!,
+  };
 }
 
 /// Request message for approving the device to access user data.
@@ -3538,22 +3552,24 @@ class GoogleAppsCloudidentityDevicesV1BrowserAttributes {
   });
 
   GoogleAppsCloudidentityDevicesV1BrowserAttributes.fromJson(core.Map json_)
-      : this(
-          chromeBrowserInfo: json_.containsKey('chromeBrowserInfo')
-              ? GoogleAppsCloudidentityDevicesV1BrowserInfo.fromJson(
+    : this(
+        chromeBrowserInfo:
+            json_.containsKey('chromeBrowserInfo')
+                ? GoogleAppsCloudidentityDevicesV1BrowserInfo.fromJson(
                   json_['chromeBrowserInfo']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          chromeProfileId: json_['chromeProfileId'] as core.String?,
-          lastProfileSyncTime: json_['lastProfileSyncTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        chromeProfileId: json_['chromeProfileId'] as core.String?,
+        lastProfileSyncTime: json_['lastProfileSyncTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chromeBrowserInfo != null) 'chromeBrowserInfo': chromeBrowserInfo!,
-        if (chromeProfileId != null) 'chromeProfileId': chromeProfileId!,
-        if (lastProfileSyncTime != null)
-          'lastProfileSyncTime': lastProfileSyncTime!,
-      };
+    if (chromeBrowserInfo != null) 'chromeBrowserInfo': chromeBrowserInfo!,
+    if (chromeProfileId != null) 'chromeProfileId': chromeProfileId!,
+    if (lastProfileSyncTime != null)
+      'lastProfileSyncTime': lastProfileSyncTime!,
+  };
 }
 
 /// Browser-specific fields reported by the
@@ -3669,71 +3685,70 @@ class GoogleAppsCloudidentityDevicesV1BrowserInfo {
   });
 
   GoogleAppsCloudidentityDevicesV1BrowserInfo.fromJson(core.Map json_)
-      : this(
-          browserManagementState:
-              json_['browserManagementState'] as core.String?,
-          browserVersion: json_['browserVersion'] as core.String?,
-          isBuiltInDnsClientEnabled:
-              json_['isBuiltInDnsClientEnabled'] as core.bool?,
-          isBulkDataEntryAnalysisEnabled:
-              json_['isBulkDataEntryAnalysisEnabled'] as core.bool?,
-          isChromeCleanupEnabled: json_['isChromeCleanupEnabled'] as core.bool?,
-          isChromeRemoteDesktopAppBlocked:
-              json_['isChromeRemoteDesktopAppBlocked'] as core.bool?,
-          isFileDownloadAnalysisEnabled:
-              json_['isFileDownloadAnalysisEnabled'] as core.bool?,
-          isFileUploadAnalysisEnabled:
-              json_['isFileUploadAnalysisEnabled'] as core.bool?,
-          isRealtimeUrlCheckEnabled:
-              json_['isRealtimeUrlCheckEnabled'] as core.bool?,
-          isSecurityEventAnalysisEnabled:
-              json_['isSecurityEventAnalysisEnabled'] as core.bool?,
-          isSiteIsolationEnabled: json_['isSiteIsolationEnabled'] as core.bool?,
-          isThirdPartyBlockingEnabled:
-              json_['isThirdPartyBlockingEnabled'] as core.bool?,
-          passwordProtectionWarningTrigger:
-              json_['passwordProtectionWarningTrigger'] as core.String?,
-          safeBrowsingProtectionLevel:
-              json_['safeBrowsingProtectionLevel'] as core.String?,
-        );
+    : this(
+        browserManagementState: json_['browserManagementState'] as core.String?,
+        browserVersion: json_['browserVersion'] as core.String?,
+        isBuiltInDnsClientEnabled:
+            json_['isBuiltInDnsClientEnabled'] as core.bool?,
+        isBulkDataEntryAnalysisEnabled:
+            json_['isBulkDataEntryAnalysisEnabled'] as core.bool?,
+        isChromeCleanupEnabled: json_['isChromeCleanupEnabled'] as core.bool?,
+        isChromeRemoteDesktopAppBlocked:
+            json_['isChromeRemoteDesktopAppBlocked'] as core.bool?,
+        isFileDownloadAnalysisEnabled:
+            json_['isFileDownloadAnalysisEnabled'] as core.bool?,
+        isFileUploadAnalysisEnabled:
+            json_['isFileUploadAnalysisEnabled'] as core.bool?,
+        isRealtimeUrlCheckEnabled:
+            json_['isRealtimeUrlCheckEnabled'] as core.bool?,
+        isSecurityEventAnalysisEnabled:
+            json_['isSecurityEventAnalysisEnabled'] as core.bool?,
+        isSiteIsolationEnabled: json_['isSiteIsolationEnabled'] as core.bool?,
+        isThirdPartyBlockingEnabled:
+            json_['isThirdPartyBlockingEnabled'] as core.bool?,
+        passwordProtectionWarningTrigger:
+            json_['passwordProtectionWarningTrigger'] as core.String?,
+        safeBrowsingProtectionLevel:
+            json_['safeBrowsingProtectionLevel'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (browserManagementState != null)
-          'browserManagementState': browserManagementState!,
-        if (browserVersion != null) 'browserVersion': browserVersion!,
-        if (isBuiltInDnsClientEnabled != null)
-          'isBuiltInDnsClientEnabled': isBuiltInDnsClientEnabled!,
-        if (isBulkDataEntryAnalysisEnabled != null)
-          'isBulkDataEntryAnalysisEnabled': isBulkDataEntryAnalysisEnabled!,
-        if (isChromeCleanupEnabled != null)
-          'isChromeCleanupEnabled': isChromeCleanupEnabled!,
-        if (isChromeRemoteDesktopAppBlocked != null)
-          'isChromeRemoteDesktopAppBlocked': isChromeRemoteDesktopAppBlocked!,
-        if (isFileDownloadAnalysisEnabled != null)
-          'isFileDownloadAnalysisEnabled': isFileDownloadAnalysisEnabled!,
-        if (isFileUploadAnalysisEnabled != null)
-          'isFileUploadAnalysisEnabled': isFileUploadAnalysisEnabled!,
-        if (isRealtimeUrlCheckEnabled != null)
-          'isRealtimeUrlCheckEnabled': isRealtimeUrlCheckEnabled!,
-        if (isSecurityEventAnalysisEnabled != null)
-          'isSecurityEventAnalysisEnabled': isSecurityEventAnalysisEnabled!,
-        if (isSiteIsolationEnabled != null)
-          'isSiteIsolationEnabled': isSiteIsolationEnabled!,
-        if (isThirdPartyBlockingEnabled != null)
-          'isThirdPartyBlockingEnabled': isThirdPartyBlockingEnabled!,
-        if (passwordProtectionWarningTrigger != null)
-          'passwordProtectionWarningTrigger': passwordProtectionWarningTrigger!,
-        if (safeBrowsingProtectionLevel != null)
-          'safeBrowsingProtectionLevel': safeBrowsingProtectionLevel!,
-      };
+    if (browserManagementState != null)
+      'browserManagementState': browserManagementState!,
+    if (browserVersion != null) 'browserVersion': browserVersion!,
+    if (isBuiltInDnsClientEnabled != null)
+      'isBuiltInDnsClientEnabled': isBuiltInDnsClientEnabled!,
+    if (isBulkDataEntryAnalysisEnabled != null)
+      'isBulkDataEntryAnalysisEnabled': isBulkDataEntryAnalysisEnabled!,
+    if (isChromeCleanupEnabled != null)
+      'isChromeCleanupEnabled': isChromeCleanupEnabled!,
+    if (isChromeRemoteDesktopAppBlocked != null)
+      'isChromeRemoteDesktopAppBlocked': isChromeRemoteDesktopAppBlocked!,
+    if (isFileDownloadAnalysisEnabled != null)
+      'isFileDownloadAnalysisEnabled': isFileDownloadAnalysisEnabled!,
+    if (isFileUploadAnalysisEnabled != null)
+      'isFileUploadAnalysisEnabled': isFileUploadAnalysisEnabled!,
+    if (isRealtimeUrlCheckEnabled != null)
+      'isRealtimeUrlCheckEnabled': isRealtimeUrlCheckEnabled!,
+    if (isSecurityEventAnalysisEnabled != null)
+      'isSecurityEventAnalysisEnabled': isSecurityEventAnalysisEnabled!,
+    if (isSiteIsolationEnabled != null)
+      'isSiteIsolationEnabled': isSiteIsolationEnabled!,
+    if (isThirdPartyBlockingEnabled != null)
+      'isThirdPartyBlockingEnabled': isThirdPartyBlockingEnabled!,
+    if (passwordProtectionWarningTrigger != null)
+      'passwordProtectionWarningTrigger': passwordProtectionWarningTrigger!,
+    if (safeBrowsingProtectionLevel != null)
+      'safeBrowsingProtectionLevel': safeBrowsingProtectionLevel!,
+  };
 }
 
 /// Request message for cancelling an unfinished device wipe.
 typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest = $Request01;
 
 /// Request message for cancelling an unfinished user account wipe.
-typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
-    = $Request01;
+typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest =
+    $Request01;
 
 /// Stores information about a certificate.
 class GoogleAppsCloudidentityDevicesV1CertificateAttributes {
@@ -3783,36 +3798,37 @@ class GoogleAppsCloudidentityDevicesV1CertificateAttributes {
   });
 
   GoogleAppsCloudidentityDevicesV1CertificateAttributes.fromJson(core.Map json_)
-      : this(
-          certificateTemplate: json_.containsKey('certificateTemplate')
-              ? GoogleAppsCloudidentityDevicesV1CertificateTemplate.fromJson(
+    : this(
+        certificateTemplate:
+            json_.containsKey('certificateTemplate')
+                ? GoogleAppsCloudidentityDevicesV1CertificateTemplate.fromJson(
                   json_['certificateTemplate']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          fingerprint: json_['fingerprint'] as core.String?,
-          issuer: json_['issuer'] as core.String?,
-          serialNumber: json_['serialNumber'] as core.String?,
-          subject: json_['subject'] as core.String?,
-          thumbprint: json_['thumbprint'] as core.String?,
-          validationState: json_['validationState'] as core.String?,
-          validityExpirationTime:
-              json_['validityExpirationTime'] as core.String?,
-          validityStartTime: json_['validityStartTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fingerprint: json_['fingerprint'] as core.String?,
+        issuer: json_['issuer'] as core.String?,
+        serialNumber: json_['serialNumber'] as core.String?,
+        subject: json_['subject'] as core.String?,
+        thumbprint: json_['thumbprint'] as core.String?,
+        validationState: json_['validationState'] as core.String?,
+        validityExpirationTime: json_['validityExpirationTime'] as core.String?,
+        validityStartTime: json_['validityStartTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certificateTemplate != null)
-          'certificateTemplate': certificateTemplate!,
-        if (fingerprint != null) 'fingerprint': fingerprint!,
-        if (issuer != null) 'issuer': issuer!,
-        if (serialNumber != null) 'serialNumber': serialNumber!,
-        if (subject != null) 'subject': subject!,
-        if (thumbprint != null) 'thumbprint': thumbprint!,
-        if (validationState != null) 'validationState': validationState!,
-        if (validityExpirationTime != null)
-          'validityExpirationTime': validityExpirationTime!,
-        if (validityStartTime != null) 'validityStartTime': validityStartTime!,
-      };
+    if (certificateTemplate != null)
+      'certificateTemplate': certificateTemplate!,
+    if (fingerprint != null) 'fingerprint': fingerprint!,
+    if (issuer != null) 'issuer': issuer!,
+    if (serialNumber != null) 'serialNumber': serialNumber!,
+    if (subject != null) 'subject': subject!,
+    if (thumbprint != null) 'thumbprint': thumbprint!,
+    if (validationState != null) 'validationState': validationState!,
+    if (validityExpirationTime != null)
+      'validityExpirationTime': validityExpirationTime!,
+    if (validityStartTime != null) 'validityStartTime': validityStartTime!,
+  };
 }
 
 /// CertificateTemplate (v3 Extension in X.509).
@@ -3840,17 +3856,17 @@ class GoogleAppsCloudidentityDevicesV1CertificateTemplate {
   });
 
   GoogleAppsCloudidentityDevicesV1CertificateTemplate.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          majorVersion: json_['majorVersion'] as core.int?,
-          minorVersion: json_['minorVersion'] as core.int?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        majorVersion: json_['majorVersion'] as core.int?,
+        minorVersion: json_['minorVersion'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (majorVersion != null) 'majorVersion': majorVersion!,
-        if (minorVersion != null) 'minorVersion': minorVersion!,
-      };
+    if (id != null) 'id': id!,
+    if (majorVersion != null) 'majorVersion': majorVersion!,
+    if (minorVersion != null) 'minorVersion': minorVersion!,
+  };
 }
 
 /// Represents the state associated with an API client calling the Devices API.
@@ -3905,7 +3921,7 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
   /// The total serialized length of this map may not exceed 10KB. No limit is
   /// placed on the number of attributes in a map.
   core.Map<core.String, GoogleAppsCloudidentityDevicesV1CustomAttributeValue>?
-      keyValuePairs;
+  keyValuePairs;
 
   /// The time the client state data was last updated.
   ///
@@ -3968,45 +3984,47 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
   });
 
   GoogleAppsCloudidentityDevicesV1ClientState.fromJson(core.Map json_)
-      : this(
-          assetTags: (json_['assetTags'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          complianceState: json_['complianceState'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          customId: json_['customId'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          healthScore: json_['healthScore'] as core.String?,
-          keyValuePairs:
-              (json_['keyValuePairs'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        assetTags:
+            (json_['assetTags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        complianceState: json_['complianceState'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        customId: json_['customId'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        healthScore: json_['healthScore'] as core.String?,
+        keyValuePairs: (json_['keyValuePairs']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          lastUpdateTime: json_['lastUpdateTime'] as core.String?,
-          managed: json_['managed'] as core.String?,
-          name: json_['name'] as core.String?,
-          ownerType: json_['ownerType'] as core.String?,
-          scoreReason: json_['scoreReason'] as core.String?,
-        );
+        lastUpdateTime: json_['lastUpdateTime'] as core.String?,
+        managed: json_['managed'] as core.String?,
+        name: json_['name'] as core.String?,
+        ownerType: json_['ownerType'] as core.String?,
+        scoreReason: json_['scoreReason'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assetTags != null) 'assetTags': assetTags!,
-        if (complianceState != null) 'complianceState': complianceState!,
-        if (createTime != null) 'createTime': createTime!,
-        if (customId != null) 'customId': customId!,
-        if (etag != null) 'etag': etag!,
-        if (healthScore != null) 'healthScore': healthScore!,
-        if (keyValuePairs != null) 'keyValuePairs': keyValuePairs!,
-        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
-        if (managed != null) 'managed': managed!,
-        if (name != null) 'name': name!,
-        if (ownerType != null) 'ownerType': ownerType!,
-        if (scoreReason != null) 'scoreReason': scoreReason!,
-      };
+    if (assetTags != null) 'assetTags': assetTags!,
+    if (complianceState != null) 'complianceState': complianceState!,
+    if (createTime != null) 'createTime': createTime!,
+    if (customId != null) 'customId': customId!,
+    if (etag != null) 'etag': etag!,
+    if (healthScore != null) 'healthScore': healthScore!,
+    if (keyValuePairs != null) 'keyValuePairs': keyValuePairs!,
+    if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+    if (managed != null) 'managed': managed!,
+    if (name != null) 'name': name!,
+    if (ownerType != null) 'ownerType': ownerType!,
+    if (scoreReason != null) 'scoreReason': scoreReason!,
+  };
 }
 
 /// Additional custom attribute values may be one of these types
@@ -4027,17 +4045,17 @@ class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
   });
 
   GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(core.Map json_)
-      : this(
-          boolValue: json_['boolValue'] as core.bool?,
-          numberValue: (json_['numberValue'] as core.num?)?.toDouble(),
-          stringValue: json_['stringValue'] as core.String?,
-        );
+    : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        numberValue: (json_['numberValue'] as core.num?)?.toDouble(),
+        stringValue: json_['stringValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue!,
-        if (numberValue != null) 'numberValue': numberValue!,
-        if (stringValue != null) 'stringValue': stringValue!,
-      };
+    if (boolValue != null) 'boolValue': boolValue!,
+    if (numberValue != null) 'numberValue': numberValue!,
+    if (stringValue != null) 'stringValue': stringValue!,
+  };
 }
 
 ///  A Device within the Cloud Identity Devices API.
@@ -4138,7 +4156,7 @@ class GoogleAppsCloudidentityDevicesV1Device {
   ///
   /// Output only.
   GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes?
-      endpointVerificationSpecificAttributes;
+  endpointVerificationSpecificAttributes;
 
   /// Host name of the device.
   core.String? hostname;
@@ -4293,95 +4311,98 @@ class GoogleAppsCloudidentityDevicesV1Device {
   });
 
   GoogleAppsCloudidentityDevicesV1Device.fromJson(core.Map json_)
-      : this(
-          androidSpecificAttributes:
-              json_.containsKey('androidSpecificAttributes')
-                  ? GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
-                      json_['androidSpecificAttributes']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          assetTag: json_['assetTag'] as core.String?,
-          basebandVersion: json_['basebandVersion'] as core.String?,
-          bootloaderVersion: json_['bootloaderVersion'] as core.String?,
-          brand: json_['brand'] as core.String?,
-          buildNumber: json_['buildNumber'] as core.String?,
-          compromisedState: json_['compromisedState'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          deviceId: json_['deviceId'] as core.String?,
-          deviceType: json_['deviceType'] as core.String?,
-          enabledDeveloperOptions:
-              json_['enabledDeveloperOptions'] as core.bool?,
-          enabledUsbDebugging: json_['enabledUsbDebugging'] as core.bool?,
-          encryptionState: json_['encryptionState'] as core.String?,
-          endpointVerificationSpecificAttributes: json_
-                  .containsKey('endpointVerificationSpecificAttributes')
-              ? GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes
-                  .fromJson(json_['endpointVerificationSpecificAttributes']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          hostname: json_['hostname'] as core.String?,
-          imei: json_['imei'] as core.String?,
-          kernelVersion: json_['kernelVersion'] as core.String?,
-          lastSyncTime: json_['lastSyncTime'] as core.String?,
-          managementState: json_['managementState'] as core.String?,
-          manufacturer: json_['manufacturer'] as core.String?,
-          meid: json_['meid'] as core.String?,
-          model: json_['model'] as core.String?,
-          name: json_['name'] as core.String?,
-          networkOperator: json_['networkOperator'] as core.String?,
-          osVersion: json_['osVersion'] as core.String?,
-          otherAccounts: (json_['otherAccounts'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          ownerType: json_['ownerType'] as core.String?,
-          releaseVersion: json_['releaseVersion'] as core.String?,
-          securityPatchTime: json_['securityPatchTime'] as core.String?,
-          serialNumber: json_['serialNumber'] as core.String?,
-          unifiedDeviceId: json_['unifiedDeviceId'] as core.String?,
-          wifiMacAddresses: (json_['wifiMacAddresses'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        androidSpecificAttributes:
+            json_.containsKey('androidSpecificAttributes')
+                ? GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
+                  json_['androidSpecificAttributes']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        assetTag: json_['assetTag'] as core.String?,
+        basebandVersion: json_['basebandVersion'] as core.String?,
+        bootloaderVersion: json_['bootloaderVersion'] as core.String?,
+        brand: json_['brand'] as core.String?,
+        buildNumber: json_['buildNumber'] as core.String?,
+        compromisedState: json_['compromisedState'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        deviceId: json_['deviceId'] as core.String?,
+        deviceType: json_['deviceType'] as core.String?,
+        enabledDeveloperOptions: json_['enabledDeveloperOptions'] as core.bool?,
+        enabledUsbDebugging: json_['enabledUsbDebugging'] as core.bool?,
+        encryptionState: json_['encryptionState'] as core.String?,
+        endpointVerificationSpecificAttributes:
+            json_.containsKey('endpointVerificationSpecificAttributes')
+                ? GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes.fromJson(
+                  json_['endpointVerificationSpecificAttributes']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hostname: json_['hostname'] as core.String?,
+        imei: json_['imei'] as core.String?,
+        kernelVersion: json_['kernelVersion'] as core.String?,
+        lastSyncTime: json_['lastSyncTime'] as core.String?,
+        managementState: json_['managementState'] as core.String?,
+        manufacturer: json_['manufacturer'] as core.String?,
+        meid: json_['meid'] as core.String?,
+        model: json_['model'] as core.String?,
+        name: json_['name'] as core.String?,
+        networkOperator: json_['networkOperator'] as core.String?,
+        osVersion: json_['osVersion'] as core.String?,
+        otherAccounts:
+            (json_['otherAccounts'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        ownerType: json_['ownerType'] as core.String?,
+        releaseVersion: json_['releaseVersion'] as core.String?,
+        securityPatchTime: json_['securityPatchTime'] as core.String?,
+        serialNumber: json_['serialNumber'] as core.String?,
+        unifiedDeviceId: json_['unifiedDeviceId'] as core.String?,
+        wifiMacAddresses:
+            (json_['wifiMacAddresses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (androidSpecificAttributes != null)
-          'androidSpecificAttributes': androidSpecificAttributes!,
-        if (assetTag != null) 'assetTag': assetTag!,
-        if (basebandVersion != null) 'basebandVersion': basebandVersion!,
-        if (bootloaderVersion != null) 'bootloaderVersion': bootloaderVersion!,
-        if (brand != null) 'brand': brand!,
-        if (buildNumber != null) 'buildNumber': buildNumber!,
-        if (compromisedState != null) 'compromisedState': compromisedState!,
-        if (createTime != null) 'createTime': createTime!,
-        if (deviceId != null) 'deviceId': deviceId!,
-        if (deviceType != null) 'deviceType': deviceType!,
-        if (enabledDeveloperOptions != null)
-          'enabledDeveloperOptions': enabledDeveloperOptions!,
-        if (enabledUsbDebugging != null)
-          'enabledUsbDebugging': enabledUsbDebugging!,
-        if (encryptionState != null) 'encryptionState': encryptionState!,
-        if (endpointVerificationSpecificAttributes != null)
-          'endpointVerificationSpecificAttributes':
-              endpointVerificationSpecificAttributes!,
-        if (hostname != null) 'hostname': hostname!,
-        if (imei != null) 'imei': imei!,
-        if (kernelVersion != null) 'kernelVersion': kernelVersion!,
-        if (lastSyncTime != null) 'lastSyncTime': lastSyncTime!,
-        if (managementState != null) 'managementState': managementState!,
-        if (manufacturer != null) 'manufacturer': manufacturer!,
-        if (meid != null) 'meid': meid!,
-        if (model != null) 'model': model!,
-        if (name != null) 'name': name!,
-        if (networkOperator != null) 'networkOperator': networkOperator!,
-        if (osVersion != null) 'osVersion': osVersion!,
-        if (otherAccounts != null) 'otherAccounts': otherAccounts!,
-        if (ownerType != null) 'ownerType': ownerType!,
-        if (releaseVersion != null) 'releaseVersion': releaseVersion!,
-        if (securityPatchTime != null) 'securityPatchTime': securityPatchTime!,
-        if (serialNumber != null) 'serialNumber': serialNumber!,
-        if (unifiedDeviceId != null) 'unifiedDeviceId': unifiedDeviceId!,
-        if (wifiMacAddresses != null) 'wifiMacAddresses': wifiMacAddresses!,
-      };
+    if (androidSpecificAttributes != null)
+      'androidSpecificAttributes': androidSpecificAttributes!,
+    if (assetTag != null) 'assetTag': assetTag!,
+    if (basebandVersion != null) 'basebandVersion': basebandVersion!,
+    if (bootloaderVersion != null) 'bootloaderVersion': bootloaderVersion!,
+    if (brand != null) 'brand': brand!,
+    if (buildNumber != null) 'buildNumber': buildNumber!,
+    if (compromisedState != null) 'compromisedState': compromisedState!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deviceId != null) 'deviceId': deviceId!,
+    if (deviceType != null) 'deviceType': deviceType!,
+    if (enabledDeveloperOptions != null)
+      'enabledDeveloperOptions': enabledDeveloperOptions!,
+    if (enabledUsbDebugging != null)
+      'enabledUsbDebugging': enabledUsbDebugging!,
+    if (encryptionState != null) 'encryptionState': encryptionState!,
+    if (endpointVerificationSpecificAttributes != null)
+      'endpointVerificationSpecificAttributes':
+          endpointVerificationSpecificAttributes!,
+    if (hostname != null) 'hostname': hostname!,
+    if (imei != null) 'imei': imei!,
+    if (kernelVersion != null) 'kernelVersion': kernelVersion!,
+    if (lastSyncTime != null) 'lastSyncTime': lastSyncTime!,
+    if (managementState != null) 'managementState': managementState!,
+    if (manufacturer != null) 'manufacturer': manufacturer!,
+    if (meid != null) 'meid': meid!,
+    if (model != null) 'model': model!,
+    if (name != null) 'name': name!,
+    if (networkOperator != null) 'networkOperator': networkOperator!,
+    if (osVersion != null) 'osVersion': osVersion!,
+    if (otherAccounts != null) 'otherAccounts': otherAccounts!,
+    if (ownerType != null) 'ownerType': ownerType!,
+    if (releaseVersion != null) 'releaseVersion': releaseVersion!,
+    if (securityPatchTime != null) 'securityPatchTime': securityPatchTime!,
+    if (serialNumber != null) 'serialNumber': serialNumber!,
+    if (unifiedDeviceId != null) 'unifiedDeviceId': unifiedDeviceId!,
+    if (wifiMacAddresses != null) 'wifiMacAddresses': wifiMacAddresses!,
+  };
 }
 
 /// Represents a user's use of a Device in the Cloud Identity Devices API.
@@ -4465,31 +4486,31 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
   });
 
   GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(core.Map json_)
-      : this(
-          compromisedState: json_['compromisedState'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          firstSyncTime: json_['firstSyncTime'] as core.String?,
-          languageCode: json_['languageCode'] as core.String?,
-          lastSyncTime: json_['lastSyncTime'] as core.String?,
-          managementState: json_['managementState'] as core.String?,
-          name: json_['name'] as core.String?,
-          passwordState: json_['passwordState'] as core.String?,
-          userAgent: json_['userAgent'] as core.String?,
-          userEmail: json_['userEmail'] as core.String?,
-        );
+    : this(
+        compromisedState: json_['compromisedState'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        firstSyncTime: json_['firstSyncTime'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        lastSyncTime: json_['lastSyncTime'] as core.String?,
+        managementState: json_['managementState'] as core.String?,
+        name: json_['name'] as core.String?,
+        passwordState: json_['passwordState'] as core.String?,
+        userAgent: json_['userAgent'] as core.String?,
+        userEmail: json_['userEmail'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (compromisedState != null) 'compromisedState': compromisedState!,
-        if (createTime != null) 'createTime': createTime!,
-        if (firstSyncTime != null) 'firstSyncTime': firstSyncTime!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (lastSyncTime != null) 'lastSyncTime': lastSyncTime!,
-        if (managementState != null) 'managementState': managementState!,
-        if (name != null) 'name': name!,
-        if (passwordState != null) 'passwordState': passwordState!,
-        if (userAgent != null) 'userAgent': userAgent!,
-        if (userEmail != null) 'userEmail': userEmail!,
-      };
+    if (compromisedState != null) 'compromisedState': compromisedState!,
+    if (createTime != null) 'createTime': createTime!,
+    if (firstSyncTime != null) 'firstSyncTime': firstSyncTime!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (lastSyncTime != null) 'lastSyncTime': lastSyncTime!,
+    if (managementState != null) 'managementState': managementState!,
+    if (name != null) 'name': name!,
+    if (passwordState != null) 'passwordState': passwordState!,
+    if (userAgent != null) 'userAgent': userAgent!,
+    if (userEmail != null) 'userEmail': userEmail!,
+  };
 }
 
 /// Resource representing the \[Endpoint Verification-specific
@@ -4512,11 +4533,11 @@ class GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes {
 
   /// Details of browser profiles reported by Endpoint Verification.
   core.List<GoogleAppsCloudidentityDevicesV1BrowserAttributes>?
-      browserAttributes;
+  browserAttributes;
 
   /// Details of certificates.
   core.List<GoogleAppsCloudidentityDevicesV1CertificateAttributes>?
-      certificateAttributes;
+  certificateAttributes;
 
   GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes({
     this.additionalSignals,
@@ -4525,30 +4546,39 @@ class GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes {
   });
 
   GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes.fromJson(
-      core.Map json_)
-      : this(
-          additionalSignals: json_.containsKey('additionalSignals')
-              ? json_['additionalSignals']
-                  as core.Map<core.String, core.dynamic>
-              : null,
-          browserAttributes: (json_['browserAttributes'] as core.List?)
-              ?.map((value) =>
-                  GoogleAppsCloudidentityDevicesV1BrowserAttributes.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          certificateAttributes: (json_['certificateAttributes'] as core.List?)
-              ?.map((value) =>
-                  GoogleAppsCloudidentityDevicesV1CertificateAttributes
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        additionalSignals:
+            json_.containsKey('additionalSignals')
+                ? json_['additionalSignals']
+                    as core.Map<core.String, core.dynamic>
+                : null,
+        browserAttributes:
+            (json_['browserAttributes'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleAppsCloudidentityDevicesV1BrowserAttributes.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        certificateAttributes:
+            (json_['certificateAttributes'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleAppsCloudidentityDevicesV1CertificateAttributes.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalSignals != null) 'additionalSignals': additionalSignals!,
-        if (browserAttributes != null) 'browserAttributes': browserAttributes!,
-        if (certificateAttributes != null)
-          'certificateAttributes': certificateAttributes!,
-      };
+    if (additionalSignals != null) 'additionalSignals': additionalSignals!,
+    if (browserAttributes != null) 'browserAttributes': browserAttributes!,
+    if (certificateAttributes != null)
+      'certificateAttributes': certificateAttributes!,
+  };
 }
 
 /// Response message that is returned in ListClientStates.
@@ -4567,20 +4597,24 @@ class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
   });
 
   GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
-      core.Map json_)
-      : this(
-          clientStates: (json_['clientStates'] as core.List?)
-              ?.map((value) =>
-                  GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        clientStates:
+            (json_['clientStates'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientStates != null) 'clientStates': clientStates!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (clientStates != null) 'clientStates': clientStates!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message that is returned from the ListDeviceUsers method.
@@ -4599,20 +4633,24 @@ class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
   });
 
   GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
-      core.Map json_)
-      : this(
-          deviceUsers: (json_['deviceUsers'] as core.List?)
-              ?.map((value) =>
-                  GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        deviceUsers:
+            (json_['deviceUsers'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceUsers != null) 'deviceUsers': deviceUsers!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (deviceUsers != null) 'deviceUsers': deviceUsers!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message that is returned from the ListDevices method.
@@ -4631,18 +4669,22 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
   });
 
   GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(core.Map json_)
-      : this(
-          devices: (json_['devices'] as core.List?)
-              ?.map((value) => GoogleAppsCloudidentityDevicesV1Device.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        devices:
+            (json_['devices'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCloudidentityDevicesV1Device.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devices != null) 'devices': devices!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (devices != null) 'devices': devices!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response containing resource names of the DeviceUsers associated with the
@@ -4670,20 +4712,21 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
   });
 
   GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse.fromJson(
-      core.Map json_)
-      : this(
-          customer: json_['customer'] as core.String?,
-          names: (json_['names'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        customer: json_['customer'] as core.String?,
+        names:
+            (json_['names'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-        if (names != null) 'names': names!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (customer != null) 'customer': customer!,
+    if (names != null) 'names': names!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Request message for wiping all data on the device.
@@ -4715,15 +4758,15 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
   });
 
   GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(core.Map json_)
-      : this(
-          customer: json_['customer'] as core.String?,
-          removeResetLock: json_['removeResetLock'] as core.bool?,
-        );
+    : this(
+        customer: json_['customer'] as core.String?,
+        removeResetLock: json_['removeResetLock'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-        if (removeResetLock != null) 'removeResetLock': removeResetLock!,
-      };
+    if (customer != null) 'customer': customer!,
+    if (removeResetLock != null) 'removeResetLock': removeResetLock!,
+  };
 }
 
 /// Request message for starting an account wipe on device.
@@ -4821,48 +4864,53 @@ class Group {
   });
 
   Group.fromJson(core.Map json_)
-      : this(
-          additionalGroupKeys: (json_['additionalGroupKeys'] as core.List?)
-              ?.map((value) => EntityKey.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          dynamicGroupMetadata: json_.containsKey('dynamicGroupMetadata')
-              ? DynamicGroupMetadata.fromJson(json_['dynamicGroupMetadata']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          groupKey: json_.containsKey('groupKey')
-              ? EntityKey.fromJson(
-                  json_['groupKey'] as core.Map<core.String, core.dynamic>)
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        additionalGroupKeys:
+            (json_['additionalGroupKeys'] as core.List?)
+                ?.map(
+                  (value) => EntityKey.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        dynamicGroupMetadata:
+            json_.containsKey('dynamicGroupMetadata')
+                ? DynamicGroupMetadata.fromJson(
+                  json_['dynamicGroupMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        groupKey:
+            json_.containsKey('groupKey')
+                ? EntityKey.fromJson(
+                  json_['groupKey'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalGroupKeys != null)
-          'additionalGroupKeys': additionalGroupKeys!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (dynamicGroupMetadata != null)
-          'dynamicGroupMetadata': dynamicGroupMetadata!,
-        if (groupKey != null) 'groupKey': groupKey!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (parent != null) 'parent': parent!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (additionalGroupKeys != null)
+      'additionalGroupKeys': additionalGroupKeys!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (dynamicGroupMetadata != null)
+      'dynamicGroupMetadata': dynamicGroupMetadata!,
+    if (groupKey != null) 'groupKey': groupKey!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (parent != null) 'parent': parent!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Message representing a transitive group of a user or a group.
@@ -4907,35 +4955,37 @@ class GroupRelation {
   });
 
   GroupRelation.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          group: json_['group'] as core.String?,
-          groupKey: json_.containsKey('groupKey')
-              ? EntityKey.fromJson(
-                  json_['groupKey'] as core.Map<core.String, core.dynamic>)
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          relationType: json_['relationType'] as core.String?,
-          roles: (json_['roles'] as core.List?)
-              ?.map((value) => TransitiveMembershipRole.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        group: json_['group'] as core.String?,
+        groupKey:
+            json_.containsKey('groupKey')
+                ? EntityKey.fromJson(
+                  json_['groupKey'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        relationType: json_['relationType'] as core.String?,
+        roles:
+            (json_['roles'] as core.List?)
+                ?.map(
+                  (value) => TransitiveMembershipRole.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (group != null) 'group': group!,
-        if (groupKey != null) 'groupKey': groupKey!,
-        if (labels != null) 'labels': labels!,
-        if (relationType != null) 'relationType': relationType!,
-        if (roles != null) 'roles': roles!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (group != null) 'group': group!,
+    if (groupKey != null) 'groupKey': groupKey!,
+    if (labels != null) 'labels': labels!,
+    if (relationType != null) 'relationType': relationType!,
+    if (roles != null) 'roles': roles!,
+  };
 }
 
 /// Credential for verifying signatures produced by the Identity Provider.
@@ -4961,33 +5011,32 @@ class IdpCredential {
   /// Output only.
   core.String? updateTime;
 
-  IdpCredential({
-    this.dsaKeyInfo,
-    this.name,
-    this.rsaKeyInfo,
-    this.updateTime,
-  });
+  IdpCredential({this.dsaKeyInfo, this.name, this.rsaKeyInfo, this.updateTime});
 
   IdpCredential.fromJson(core.Map json_)
-      : this(
-          dsaKeyInfo: json_.containsKey('dsaKeyInfo')
-              ? DsaPublicKeyInfo.fromJson(
-                  json_['dsaKeyInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          rsaKeyInfo: json_.containsKey('rsaKeyInfo')
-              ? RsaPublicKeyInfo.fromJson(
-                  json_['rsaKeyInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        dsaKeyInfo:
+            json_.containsKey('dsaKeyInfo')
+                ? DsaPublicKeyInfo.fromJson(
+                  json_['dsaKeyInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        rsaKeyInfo:
+            json_.containsKey('rsaKeyInfo')
+                ? RsaPublicKeyInfo.fromJson(
+                  json_['rsaKeyInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dsaKeyInfo != null) 'dsaKeyInfo': dsaKeyInfo!,
-        if (name != null) 'name': name!,
-        if (rsaKeyInfo != null) 'rsaKeyInfo': rsaKeyInfo!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (dsaKeyInfo != null) 'dsaKeyInfo': dsaKeyInfo!,
+    if (name != null) 'name': name!,
+    if (rsaKeyInfo != null) 'rsaKeyInfo': rsaKeyInfo!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A [SAML 2.0](https://www.oasis-open.org/standards#samlv2.0) federation
@@ -5027,27 +5076,31 @@ class InboundSamlSsoProfile {
   });
 
   InboundSamlSsoProfile.fromJson(core.Map json_)
-      : this(
-          customer: json_['customer'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          idpConfig: json_.containsKey('idpConfig')
-              ? SamlIdpConfig.fromJson(
-                  json_['idpConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          spConfig: json_.containsKey('spConfig')
-              ? SamlSpConfig.fromJson(
-                  json_['spConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        customer: json_['customer'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        idpConfig:
+            json_.containsKey('idpConfig')
+                ? SamlIdpConfig.fromJson(
+                  json_['idpConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        spConfig:
+            json_.containsKey('spConfig')
+                ? SamlSpConfig.fromJson(
+                  json_['spConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-        if (displayName != null) 'displayName': displayName!,
-        if (idpConfig != null) 'idpConfig': idpConfig!,
-        if (name != null) 'name': name!,
-        if (spConfig != null) 'spConfig': spConfig!,
-      };
+    if (customer != null) 'customer': customer!,
+    if (displayName != null) 'displayName': displayName!,
+    if (idpConfig != null) 'idpConfig': idpConfig!,
+    if (name != null) 'name': name!,
+    if (spConfig != null) 'spConfig': spConfig!,
+  };
 }
 
 /// Targets with "set" SSO assignments and their respective assignments.
@@ -5118,33 +5171,38 @@ class InboundSsoAssignment {
   });
 
   InboundSsoAssignment.fromJson(core.Map json_)
-      : this(
-          customer: json_['customer'] as core.String?,
-          name: json_['name'] as core.String?,
-          rank: json_['rank'] as core.int?,
-          samlSsoInfo: json_.containsKey('samlSsoInfo')
-              ? SamlSsoInfo.fromJson(
-                  json_['samlSsoInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          signInBehavior: json_.containsKey('signInBehavior')
-              ? SignInBehavior.fromJson(json_['signInBehavior']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          ssoMode: json_['ssoMode'] as core.String?,
-          targetGroup: json_['targetGroup'] as core.String?,
-          targetOrgUnit: json_['targetOrgUnit'] as core.String?,
-        );
+    : this(
+        customer: json_['customer'] as core.String?,
+        name: json_['name'] as core.String?,
+        rank: json_['rank'] as core.int?,
+        samlSsoInfo:
+            json_.containsKey('samlSsoInfo')
+                ? SamlSsoInfo.fromJson(
+                  json_['samlSsoInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        signInBehavior:
+            json_.containsKey('signInBehavior')
+                ? SignInBehavior.fromJson(
+                  json_['signInBehavior']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        ssoMode: json_['ssoMode'] as core.String?,
+        targetGroup: json_['targetGroup'] as core.String?,
+        targetOrgUnit: json_['targetOrgUnit'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-        if (name != null) 'name': name!,
-        if (rank != null) 'rank': rank!,
-        if (samlSsoInfo != null) 'samlSsoInfo': samlSsoInfo!,
-        if (signInBehavior != null) 'signInBehavior': signInBehavior!,
-        if (ssoMode != null) 'ssoMode': ssoMode!,
-        if (targetGroup != null) 'targetGroup': targetGroup!,
-        if (targetOrgUnit != null) 'targetOrgUnit': targetOrgUnit!,
-      };
+    if (customer != null) 'customer': customer!,
+    if (name != null) 'name': name!,
+    if (rank != null) 'rank': rank!,
+    if (samlSsoInfo != null) 'samlSsoInfo': samlSsoInfo!,
+    if (signInBehavior != null) 'signInBehavior': signInBehavior!,
+    if (ssoMode != null) 'ssoMode': ssoMode!,
+    if (targetGroup != null) 'targetGroup': targetGroup!,
+    if (targetOrgUnit != null) 'targetOrgUnit': targetOrgUnit!,
+  };
 }
 
 /// Response for IsInvitableUser RPC.
@@ -5152,18 +5210,14 @@ class IsInvitableUserResponse {
   /// Returns true if the email address is invitable.
   core.bool? isInvitableUser;
 
-  IsInvitableUserResponse({
-    this.isInvitableUser,
-  });
+  IsInvitableUserResponse({this.isInvitableUser});
 
   IsInvitableUserResponse.fromJson(core.Map json_)
-      : this(
-          isInvitableUser: json_['isInvitableUser'] as core.bool?,
-        );
+    : this(isInvitableUser: json_['isInvitableUser'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (isInvitableUser != null) 'isInvitableUser': isInvitableUser!,
-      };
+    if (isInvitableUser != null) 'isInvitableUser': isInvitableUser!,
+  };
 }
 
 /// Response message for ListGroups operation.
@@ -5177,24 +5231,25 @@ class ListGroupsResponse {
   /// results available for listing.
   core.String? nextPageToken;
 
-  ListGroupsResponse({
-    this.groups,
-    this.nextPageToken,
-  });
+  ListGroupsResponse({this.groups, this.nextPageToken});
 
   ListGroupsResponse.fromJson(core.Map json_)
-      : this(
-          groups: (json_['groups'] as core.List?)
-              ?.map((value) =>
-                  Group.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        groups:
+            (json_['groups'] as core.List?)
+                ?.map(
+                  (value) => Group.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groups != null) 'groups': groups!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (groups != null) 'groups': groups!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response of the InboundSamlSsoProfilesService.ListIdpCredentials method.
@@ -5207,24 +5262,25 @@ class ListIdpCredentialsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListIdpCredentialsResponse({
-    this.idpCredentials,
-    this.nextPageToken,
-  });
+  ListIdpCredentialsResponse({this.idpCredentials, this.nextPageToken});
 
   ListIdpCredentialsResponse.fromJson(core.Map json_)
-      : this(
-          idpCredentials: (json_['idpCredentials'] as core.List?)
-              ?.map((value) => IdpCredential.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        idpCredentials:
+            (json_['idpCredentials'] as core.List?)
+                ?.map(
+                  (value) => IdpCredential.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (idpCredentials != null) 'idpCredentials': idpCredentials!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (idpCredentials != null) 'idpCredentials': idpCredentials!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response of the InboundSamlSsoProfilesService.ListInboundSamlSsoProfiles
@@ -5244,20 +5300,23 @@ class ListInboundSamlSsoProfilesResponse {
   });
 
   ListInboundSamlSsoProfilesResponse.fromJson(core.Map json_)
-      : this(
-          inboundSamlSsoProfiles:
-              (json_['inboundSamlSsoProfiles'] as core.List?)
-                  ?.map((value) => InboundSamlSsoProfile.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        inboundSamlSsoProfiles:
+            (json_['inboundSamlSsoProfiles'] as core.List?)
+                ?.map(
+                  (value) => InboundSamlSsoProfile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inboundSamlSsoProfiles != null)
-          'inboundSamlSsoProfiles': inboundSamlSsoProfiles!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (inboundSamlSsoProfiles != null)
+      'inboundSamlSsoProfiles': inboundSamlSsoProfiles!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response of the InboundSsoAssignmentsService.ListInboundSsoAssignments
@@ -5277,19 +5336,23 @@ class ListInboundSsoAssignmentsResponse {
   });
 
   ListInboundSsoAssignmentsResponse.fromJson(core.Map json_)
-      : this(
-          inboundSsoAssignments: (json_['inboundSsoAssignments'] as core.List?)
-              ?.map((value) => InboundSsoAssignment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        inboundSsoAssignments:
+            (json_['inboundSsoAssignments'] as core.List?)
+                ?.map(
+                  (value) => InboundSsoAssignment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inboundSsoAssignments != null)
-          'inboundSsoAssignments': inboundSsoAssignments!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (inboundSsoAssignments != null)
+      'inboundSsoAssignments': inboundSsoAssignments!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for MembershipsService.ListMemberships.
@@ -5301,24 +5364,25 @@ class ListMembershipsResponse {
   /// there are no more results available.
   core.String? nextPageToken;
 
-  ListMembershipsResponse({
-    this.memberships,
-    this.nextPageToken,
-  });
+  ListMembershipsResponse({this.memberships, this.nextPageToken});
 
   ListMembershipsResponse.fromJson(core.Map json_)
-      : this(
-          memberships: (json_['memberships'] as core.List?)
-              ?.map((value) => Membership.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        memberships:
+            (json_['memberships'] as core.List?)
+                ?.map(
+                  (value) => Membership.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberships != null) 'memberships': memberships!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (memberships != null) 'memberships': memberships!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for PoliciesService.ListPolicies.
@@ -5331,24 +5395,25 @@ class ListPoliciesResponse {
   /// The results
   core.List<Policy>? policies;
 
-  ListPoliciesResponse({
-    this.nextPageToken,
-    this.policies,
-  });
+  ListPoliciesResponse({this.nextPageToken, this.policies});
 
   ListPoliciesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          policies: (json_['policies'] as core.List?)
-              ?.map((value) =>
-                  Policy.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        policies:
+            (json_['policies'] as core.List?)
+                ?.map(
+                  (value) => Policy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (policies != null) 'policies': policies!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (policies != null) 'policies': policies!,
+  };
 }
 
 /// Response message for UserInvitation listing request.
@@ -5364,24 +5429,25 @@ class ListUserInvitationsResponse {
   /// The list of UserInvitation resources.
   core.List<UserInvitation>? userInvitations;
 
-  ListUserInvitationsResponse({
-    this.nextPageToken,
-    this.userInvitations,
-  });
+  ListUserInvitationsResponse({this.nextPageToken, this.userInvitations});
 
   ListUserInvitationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          userInvitations: (json_['userInvitations'] as core.List?)
-              ?.map((value) => UserInvitation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        userInvitations:
+            (json_['userInvitations'] as core.List?)
+                ?.map(
+                  (value) => UserInvitation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (userInvitations != null) 'userInvitations': userInvitations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (userInvitations != null) 'userInvitations': userInvitations!,
+  };
 }
 
 /// The response message for GroupsService.LookupGroupName.
@@ -5390,18 +5456,14 @@ class LookupGroupNameResponse {
   /// of the looked-up `Group`.
   core.String? name;
 
-  LookupGroupNameResponse({
-    this.name,
-  });
+  LookupGroupNameResponse({this.name});
 
   LookupGroupNameResponse.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+    : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The response message for MembershipsService.LookupMembershipName.
@@ -5412,18 +5474,14 @@ class LookupMembershipNameResponse {
   /// Must be of the form `groups/{group}/memberships/{membership}`.
   core.String? name;
 
-  LookupMembershipNameResponse({
-    this.name,
-  });
+  LookupMembershipNameResponse({this.name});
 
   LookupMembershipNameResponse.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+    : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Message representing a transitive membership of a group.
@@ -5460,26 +5518,33 @@ class MemberRelation {
   });
 
   MemberRelation.fromJson(core.Map json_)
-      : this(
-          member: json_['member'] as core.String?,
-          preferredMemberKey: (json_['preferredMemberKey'] as core.List?)
-              ?.map((value) => EntityKey.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          relationType: json_['relationType'] as core.String?,
-          roles: (json_['roles'] as core.List?)
-              ?.map((value) => TransitiveMembershipRole.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        member: json_['member'] as core.String?,
+        preferredMemberKey:
+            (json_['preferredMemberKey'] as core.List?)
+                ?.map(
+                  (value) => EntityKey.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        relationType: json_['relationType'] as core.String?,
+        roles:
+            (json_['roles'] as core.List?)
+                ?.map(
+                  (value) => TransitiveMembershipRole.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (member != null) 'member': member!,
-        if (preferredMemberKey != null)
-          'preferredMemberKey': preferredMemberKey!,
-        if (relationType != null) 'relationType': relationType!,
-        if (roles != null) 'roles': roles!,
-      };
+    if (member != null) 'member': member!,
+    if (preferredMemberKey != null) 'preferredMemberKey': preferredMemberKey!,
+    if (relationType != null) 'relationType': relationType!,
+    if (roles != null) 'roles': roles!,
+  };
 }
 
 /// The definition of MemberRestriction
@@ -5500,24 +5565,23 @@ class MemberRestriction {
   /// users or groups to be members. `member.type == 1 || member.type == 3`
   core.String? query;
 
-  MemberRestriction({
-    this.evaluation,
-    this.query,
-  });
+  MemberRestriction({this.evaluation, this.query});
 
   MemberRestriction.fromJson(core.Map json_)
-      : this(
-          evaluation: json_.containsKey('evaluation')
-              ? RestrictionEvaluation.fromJson(
-                  json_['evaluation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          query: json_['query'] as core.String?,
-        );
+    : this(
+        evaluation:
+            json_.containsKey('evaluation')
+                ? RestrictionEvaluation.fromJson(
+                  json_['evaluation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        query: json_['query'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (evaluation != null) 'evaluation': evaluation!,
-        if (query != null) 'query': query!,
-      };
+    if (evaluation != null) 'evaluation': evaluation!,
+    if (query != null) 'query': query!,
+  };
 }
 
 /// A membership within the Cloud Identity Groups API.
@@ -5591,32 +5655,38 @@ class Membership {
   });
 
   Membership.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          deliverySetting: json_['deliverySetting'] as core.String?,
-          name: json_['name'] as core.String?,
-          preferredMemberKey: json_.containsKey('preferredMemberKey')
-              ? EntityKey.fromJson(json_['preferredMemberKey']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          roles: (json_['roles'] as core.List?)
-              ?.map((value) => MembershipRole.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          type: json_['type'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        deliverySetting: json_['deliverySetting'] as core.String?,
+        name: json_['name'] as core.String?,
+        preferredMemberKey:
+            json_.containsKey('preferredMemberKey')
+                ? EntityKey.fromJson(
+                  json_['preferredMemberKey']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        roles:
+            (json_['roles'] as core.List?)
+                ?.map(
+                  (value) => MembershipRole.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        type: json_['type'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (deliverySetting != null) 'deliverySetting': deliverySetting!,
-        if (name != null) 'name': name!,
-        if (preferredMemberKey != null)
-          'preferredMemberKey': preferredMemberKey!,
-        if (roles != null) 'roles': roles!,
-        if (type != null) 'type': type!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (deliverySetting != null) 'deliverySetting': deliverySetting!,
+    if (name != null) 'name': name!,
+    if (preferredMemberKey != null) 'preferredMemberKey': preferredMemberKey!,
+    if (roles != null) 'roles': roles!,
+    if (type != null) 'type': type!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Message containing membership relation.
@@ -5661,37 +5731,39 @@ class MembershipRelation {
   });
 
   MembershipRelation.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          group: json_['group'] as core.String?,
-          groupKey: json_.containsKey('groupKey')
-              ? EntityKey.fromJson(
-                  json_['groupKey'] as core.Map<core.String, core.dynamic>)
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          membership: json_['membership'] as core.String?,
-          roles: (json_['roles'] as core.List?)
-              ?.map((value) => MembershipRole.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        group: json_['group'] as core.String?,
+        groupKey:
+            json_.containsKey('groupKey')
+                ? EntityKey.fromJson(
+                  json_['groupKey'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        membership: json_['membership'] as core.String?,
+        roles:
+            (json_['roles'] as core.List?)
+                ?.map(
+                  (value) => MembershipRole.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (group != null) 'group': group!,
-        if (groupKey != null) 'groupKey': groupKey!,
-        if (labels != null) 'labels': labels!,
-        if (membership != null) 'membership': membership!,
-        if (roles != null) 'roles': roles!,
-      };
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (group != null) 'group': group!,
+    if (groupKey != null) 'groupKey': groupKey!,
+    if (labels != null) 'labels': labels!,
+    if (membership != null) 'membership': membership!,
+    if (roles != null) 'roles': roles!,
+  };
 }
 
 /// A membership role within the Cloud Identity Groups API.
@@ -5712,31 +5784,32 @@ class MembershipRole {
   /// Evaluations of restrictions applied to parent group on this membership.
   RestrictionEvaluations? restrictionEvaluations;
 
-  MembershipRole({
-    this.expiryDetail,
-    this.name,
-    this.restrictionEvaluations,
-  });
+  MembershipRole({this.expiryDetail, this.name, this.restrictionEvaluations});
 
   MembershipRole.fromJson(core.Map json_)
-      : this(
-          expiryDetail: json_.containsKey('expiryDetail')
-              ? ExpiryDetail.fromJson(
-                  json_['expiryDetail'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          restrictionEvaluations: json_.containsKey('restrictionEvaluations')
-              ? RestrictionEvaluations.fromJson(json_['restrictionEvaluations']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        expiryDetail:
+            json_.containsKey('expiryDetail')
+                ? ExpiryDetail.fromJson(
+                  json_['expiryDetail'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        restrictionEvaluations:
+            json_.containsKey('restrictionEvaluations')
+                ? RestrictionEvaluations.fromJson(
+                  json_['restrictionEvaluations']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expiryDetail != null) 'expiryDetail': expiryDetail!,
-        if (name != null) 'name': name!,
-        if (restrictionEvaluations != null)
-          'restrictionEvaluations': restrictionEvaluations!,
-      };
+    if (expiryDetail != null) 'expiryDetail': expiryDetail!,
+    if (name != null) 'name': name!,
+    if (restrictionEvaluations != null)
+      'restrictionEvaluations': restrictionEvaluations!,
+  };
 }
 
 /// The evaluated state of this restriction.
@@ -5755,18 +5828,14 @@ class MembershipRoleRestrictionEvaluation {
   /// - "EVALUATING" : The state of the membership is under evaluation.
   core.String? state;
 
-  MembershipRoleRestrictionEvaluation({
-    this.state,
-  });
+  MembershipRoleRestrictionEvaluation({this.state});
 
   MembershipRoleRestrictionEvaluation.fromJson(core.Map json_)
-      : this(
-          state: json_['state'] as core.String?,
-        );
+    : this(state: json_['state'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (state != null) 'state': state!,
-      };
+    if (state != null) 'state': state!,
+  };
 }
 
 /// The request message for MembershipsService.ModifyMembershipRoles.
@@ -5799,25 +5868,34 @@ class ModifyMembershipRolesRequest {
   });
 
   ModifyMembershipRolesRequest.fromJson(core.Map json_)
-      : this(
-          addRoles: (json_['addRoles'] as core.List?)
-              ?.map((value) => MembershipRole.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          removeRoles: (json_['removeRoles'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          updateRolesParams: (json_['updateRolesParams'] as core.List?)
-              ?.map((value) => UpdateMembershipRolesParams.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        addRoles:
+            (json_['addRoles'] as core.List?)
+                ?.map(
+                  (value) => MembershipRole.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        removeRoles:
+            (json_['removeRoles'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        updateRolesParams:
+            (json_['updateRolesParams'] as core.List?)
+                ?.map(
+                  (value) => UpdateMembershipRolesParams.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addRoles != null) 'addRoles': addRoles!,
-        if (removeRoles != null) 'removeRoles': removeRoles!,
-        if (updateRolesParams != null) 'updateRolesParams': updateRolesParams!,
-      };
+    if (addRoles != null) 'addRoles': addRoles!,
+    if (removeRoles != null) 'removeRoles': removeRoles!,
+    if (updateRolesParams != null) 'updateRolesParams': updateRolesParams!,
+  };
 }
 
 /// The response message for MembershipsService.ModifyMembershipRoles.
@@ -5825,21 +5903,21 @@ class ModifyMembershipRolesResponse {
   /// The `Membership` resource after modifying its `MembershipRole`s.
   Membership? membership;
 
-  ModifyMembershipRolesResponse({
-    this.membership,
-  });
+  ModifyMembershipRolesResponse({this.membership});
 
   ModifyMembershipRolesResponse.fromJson(core.Map json_)
-      : this(
-          membership: json_.containsKey('membership')
-              ? Membership.fromJson(
-                  json_['membership'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        membership:
+            json_.containsKey('membership')
+                ? Membership.fromJson(
+                  json_['membership'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (membership != null) 'membership': membership!,
-      };
+    if (membership != null) 'membership': membership!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -5885,37 +5963,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// A Policy resource binds an instance of a single Setting with the scope of a
@@ -5959,36 +6035,34 @@ class Policy {
   /// - "ADMIN" : Policy type denoting the admin-configurable policies.
   core.String? type;
 
-  Policy({
-    this.customer,
-    this.name,
-    this.policyQuery,
-    this.setting,
-    this.type,
-  });
+  Policy({this.customer, this.name, this.policyQuery, this.setting, this.type});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          customer: json_['customer'] as core.String?,
-          name: json_['name'] as core.String?,
-          policyQuery: json_.containsKey('policyQuery')
-              ? PolicyQuery.fromJson(
-                  json_['policyQuery'] as core.Map<core.String, core.dynamic>)
-              : null,
-          setting: json_.containsKey('setting')
-              ? Setting.fromJson(
-                  json_['setting'] as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        customer: json_['customer'] as core.String?,
+        name: json_['name'] as core.String?,
+        policyQuery:
+            json_.containsKey('policyQuery')
+                ? PolicyQuery.fromJson(
+                  json_['policyQuery'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        setting:
+            json_.containsKey('setting')
+                ? Setting.fromJson(
+                  json_['setting'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customer != null) 'customer': customer!,
-        if (name != null) 'name': name!,
-        if (policyQuery != null) 'policyQuery': policyQuery!,
-        if (setting != null) 'setting': setting!,
-        if (type != null) 'type': type!,
-      };
+    if (customer != null) 'customer': customer!,
+    if (name != null) 'name': name!,
+    if (policyQuery != null) 'policyQuery': policyQuery!,
+    if (setting != null) 'setting': setting!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// PolicyQuery
@@ -6037,27 +6111,22 @@ class PolicyQuery {
   /// Output only.
   core.double? sortOrder;
 
-  PolicyQuery({
-    this.group,
-    this.orgUnit,
-    this.query,
-    this.sortOrder,
-  });
+  PolicyQuery({this.group, this.orgUnit, this.query, this.sortOrder});
 
   PolicyQuery.fromJson(core.Map json_)
-      : this(
-          group: json_['group'] as core.String?,
-          orgUnit: json_['orgUnit'] as core.String?,
-          query: json_['query'] as core.String?,
-          sortOrder: (json_['sortOrder'] as core.num?)?.toDouble(),
-        );
+    : this(
+        group: json_['group'] as core.String?,
+        orgUnit: json_['orgUnit'] as core.String?,
+        query: json_['query'] as core.String?,
+        sortOrder: (json_['sortOrder'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (group != null) 'group': group!,
-        if (orgUnit != null) 'orgUnit': orgUnit!,
-        if (query != null) 'query': query!,
-        if (sortOrder != null) 'sortOrder': sortOrder!,
-      };
+    if (group != null) 'group': group!,
+    if (orgUnit != null) 'orgUnit': orgUnit!,
+    if (query != null) 'query': query!,
+    if (sortOrder != null) 'sortOrder': sortOrder!,
+  };
 }
 
 /// The evaluated state of this restriction.
@@ -6076,18 +6145,14 @@ class RestrictionEvaluation {
   /// may be added.
   core.String? state;
 
-  RestrictionEvaluation({
-    this.state,
-  });
+  RestrictionEvaluation({this.state});
 
   RestrictionEvaluation.fromJson(core.Map json_)
-      : this(
-          state: json_['state'] as core.String?,
-        );
+    : this(state: json_['state'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (state != null) 'state': state!,
-      };
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Evaluations of restrictions applied to parent group on this membership.
@@ -6097,24 +6162,23 @@ class RestrictionEvaluations {
   /// Empty if the user lacks permission to view the restriction evaluation.
   MembershipRoleRestrictionEvaluation? memberRestrictionEvaluation;
 
-  RestrictionEvaluations({
-    this.memberRestrictionEvaluation,
-  });
+  RestrictionEvaluations({this.memberRestrictionEvaluation});
 
   RestrictionEvaluations.fromJson(core.Map json_)
-      : this(
-          memberRestrictionEvaluation:
-              json_.containsKey('memberRestrictionEvaluation')
-                  ? MembershipRoleRestrictionEvaluation.fromJson(
-                      json_['memberRestrictionEvaluation']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        memberRestrictionEvaluation:
+            json_.containsKey('memberRestrictionEvaluation')
+                ? MembershipRoleRestrictionEvaluation.fromJson(
+                  json_['memberRestrictionEvaluation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberRestrictionEvaluation != null)
-          'memberRestrictionEvaluation': memberRestrictionEvaluation!,
-      };
+    if (memberRestrictionEvaluation != null)
+      'memberRestrictionEvaluation': memberRestrictionEvaluation!,
+  };
 }
 
 /// Information of a RSA public key.
@@ -6122,18 +6186,14 @@ class RsaPublicKeyInfo {
   /// Key size in bits (size of the modulus).
   core.int? keySize;
 
-  RsaPublicKeyInfo({
-    this.keySize,
-  });
+  RsaPublicKeyInfo({this.keySize});
 
   RsaPublicKeyInfo.fromJson(core.Map json_)
-      : this(
-          keySize: json_['keySize'] as core.int?,
-        );
+    : this(keySize: json_['keySize'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keySize != null) 'keySize': keySize!,
-      };
+    if (keySize != null) 'keySize': keySize!,
+  };
 }
 
 /// SAML IDP (identity provider) configuration.
@@ -6175,21 +6235,20 @@ class SamlIdpConfig {
   });
 
   SamlIdpConfig.fromJson(core.Map json_)
-      : this(
-          changePasswordUri: json_['changePasswordUri'] as core.String?,
-          entityId: json_['entityId'] as core.String?,
-          logoutRedirectUri: json_['logoutRedirectUri'] as core.String?,
-          singleSignOnServiceUri:
-              json_['singleSignOnServiceUri'] as core.String?,
-        );
+    : this(
+        changePasswordUri: json_['changePasswordUri'] as core.String?,
+        entityId: json_['entityId'] as core.String?,
+        logoutRedirectUri: json_['logoutRedirectUri'] as core.String?,
+        singleSignOnServiceUri: json_['singleSignOnServiceUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (changePasswordUri != null) 'changePasswordUri': changePasswordUri!,
-        if (entityId != null) 'entityId': entityId!,
-        if (logoutRedirectUri != null) 'logoutRedirectUri': logoutRedirectUri!,
-        if (singleSignOnServiceUri != null)
-          'singleSignOnServiceUri': singleSignOnServiceUri!,
-      };
+    if (changePasswordUri != null) 'changePasswordUri': changePasswordUri!,
+    if (entityId != null) 'entityId': entityId!,
+    if (logoutRedirectUri != null) 'logoutRedirectUri': logoutRedirectUri!,
+    if (singleSignOnServiceUri != null)
+      'singleSignOnServiceUri': singleSignOnServiceUri!,
+  };
 }
 
 /// SAML SP (service provider) configuration.
@@ -6207,23 +6266,20 @@ class SamlSpConfig {
   /// Output only.
   core.String? entityId;
 
-  SamlSpConfig({
-    this.assertionConsumerServiceUri,
-    this.entityId,
-  });
+  SamlSpConfig({this.assertionConsumerServiceUri, this.entityId});
 
   SamlSpConfig.fromJson(core.Map json_)
-      : this(
-          assertionConsumerServiceUri:
-              json_['assertionConsumerServiceUri'] as core.String?,
-          entityId: json_['entityId'] as core.String?,
-        );
+    : this(
+        assertionConsumerServiceUri:
+            json_['assertionConsumerServiceUri'] as core.String?,
+        entityId: json_['entityId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assertionConsumerServiceUri != null)
-          'assertionConsumerServiceUri': assertionConsumerServiceUri!,
-        if (entityId != null) 'entityId': entityId!,
-      };
+    if (assertionConsumerServiceUri != null)
+      'assertionConsumerServiceUri': assertionConsumerServiceUri!,
+    if (entityId != null) 'entityId': entityId!,
+  };
 }
 
 /// Details that are applicable when `sso_mode` == `SAML_SSO`.
@@ -6235,19 +6291,17 @@ class SamlSsoInfo {
   /// Required.
   core.String? inboundSamlSsoProfile;
 
-  SamlSsoInfo({
-    this.inboundSamlSsoProfile,
-  });
+  SamlSsoInfo({this.inboundSamlSsoProfile});
 
   SamlSsoInfo.fromJson(core.Map json_)
-      : this(
-          inboundSamlSsoProfile: json_['inboundSamlSsoProfile'] as core.String?,
-        );
+    : this(
+        inboundSamlSsoProfile: json_['inboundSamlSsoProfile'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inboundSamlSsoProfile != null)
-          'inboundSamlSsoProfile': inboundSamlSsoProfile!,
-      };
+    if (inboundSamlSsoProfile != null)
+      'inboundSamlSsoProfile': inboundSamlSsoProfile!,
+  };
 }
 
 /// The response message for MembershipsService.SearchDirectGroups.
@@ -6259,24 +6313,25 @@ class SearchDirectGroupsResponse {
   /// results available for listing.
   core.String? nextPageToken;
 
-  SearchDirectGroupsResponse({
-    this.memberships,
-    this.nextPageToken,
-  });
+  SearchDirectGroupsResponse({this.memberships, this.nextPageToken});
 
   SearchDirectGroupsResponse.fromJson(core.Map json_)
-      : this(
-          memberships: (json_['memberships'] as core.List?)
-              ?.map((value) => MembershipRelation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        memberships:
+            (json_['memberships'] as core.List?)
+                ?.map(
+                  (value) => MembershipRelation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberships != null) 'memberships': memberships!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (memberships != null) 'memberships': memberships!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for GroupsService.SearchGroups.
@@ -6288,24 +6343,25 @@ class SearchGroupsResponse {
   /// there are no more results available.
   core.String? nextPageToken;
 
-  SearchGroupsResponse({
-    this.groups,
-    this.nextPageToken,
-  });
+  SearchGroupsResponse({this.groups, this.nextPageToken});
 
   SearchGroupsResponse.fromJson(core.Map json_)
-      : this(
-          groups: (json_['groups'] as core.List?)
-              ?.map((value) =>
-                  Group.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        groups:
+            (json_['groups'] as core.List?)
+                ?.map(
+                  (value) => Group.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groups != null) 'groups': groups!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (groups != null) 'groups': groups!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for MembershipsService.SearchTransitiveGroups.
@@ -6317,24 +6373,25 @@ class SearchTransitiveGroupsResponse {
   /// results available for listing.
   core.String? nextPageToken;
 
-  SearchTransitiveGroupsResponse({
-    this.memberships,
-    this.nextPageToken,
-  });
+  SearchTransitiveGroupsResponse({this.memberships, this.nextPageToken});
 
   SearchTransitiveGroupsResponse.fromJson(core.Map json_)
-      : this(
-          memberships: (json_['memberships'] as core.List?)
-              ?.map((value) => GroupRelation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        memberships:
+            (json_['memberships'] as core.List?)
+                ?.map(
+                  (value) => GroupRelation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberships != null) 'memberships': memberships!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (memberships != null) 'memberships': memberships!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for MembershipsService.SearchTransitiveMemberships.
@@ -6346,24 +6403,25 @@ class SearchTransitiveMembershipsResponse {
   /// results.
   core.String? nextPageToken;
 
-  SearchTransitiveMembershipsResponse({
-    this.memberships,
-    this.nextPageToken,
-  });
+  SearchTransitiveMembershipsResponse({this.memberships, this.nextPageToken});
 
   SearchTransitiveMembershipsResponse.fromJson(core.Map json_)
-      : this(
-          memberships: (json_['memberships'] as core.List?)
-              ?.map((value) => MemberRelation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        memberships:
+            (json_['memberships'] as core.List?)
+                ?.map(
+                  (value) => MemberRelation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberships != null) 'memberships': memberships!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (memberships != null) 'memberships': memberships!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The definition of security settings.
@@ -6378,24 +6436,24 @@ class SecuritySettings {
   /// Output only.
   core.String? name;
 
-  SecuritySettings({
-    this.memberRestriction,
-    this.name,
-  });
+  SecuritySettings({this.memberRestriction, this.name});
 
   SecuritySettings.fromJson(core.Map json_)
-      : this(
-          memberRestriction: json_.containsKey('memberRestriction')
-              ? MemberRestriction.fromJson(json_['memberRestriction']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        memberRestriction:
+            json_.containsKey('memberRestriction')
+                ? MemberRestriction.fromJson(
+                  json_['memberRestriction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberRestriction != null) 'memberRestriction': memberRestriction!,
-        if (name != null) 'name': name!,
-      };
+    if (memberRestriction != null) 'memberRestriction': memberRestriction!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// A request to send email for inviting target user corresponding to the
@@ -6419,23 +6477,21 @@ class Setting {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? value;
 
-  Setting({
-    this.type,
-    this.value,
-  });
+  Setting({this.type, this.value});
 
   Setting.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-          value: json_.containsKey('value')
-              ? json_['value'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        type: json_['type'] as core.String?,
+        value:
+            json_.containsKey('value')
+                ? json_['value'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-        if (value != null) 'value': value!,
-      };
+    if (type != null) 'type': type!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Controls sign-in behavior.
@@ -6450,18 +6506,14 @@ class SignInBehavior {
   /// service URLs will accept the IdP's assertion of the user's identity.
   core.String? redirectCondition;
 
-  SignInBehavior({
-    this.redirectCondition,
-  });
+  SignInBehavior({this.redirectCondition});
 
   SignInBehavior.fromJson(core.Map json_)
-      : this(
-          redirectCondition: json_['redirectCondition'] as core.String?,
-        );
+    : this(redirectCondition: json_['redirectCondition'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (redirectCondition != null) 'redirectCondition': redirectCondition!,
-      };
+    if (redirectCondition != null) 'redirectCondition': redirectCondition!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -6481,18 +6533,14 @@ class TransitiveMembershipRole {
   /// `"MANAGER"`.
   core.String? role;
 
-  TransitiveMembershipRole({
-    this.role,
-  });
+  TransitiveMembershipRole({this.role});
 
   TransitiveMembershipRole.fromJson(core.Map json_)
-      : this(
-          role: json_['role'] as core.String?,
-        );
+    : this(role: json_['role'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (role != null) 'role': role!,
-      };
+    if (role != null) 'role': role!,
+  };
 }
 
 /// The details of an update to a `MembershipRole`.
@@ -6507,24 +6555,24 @@ class UpdateMembershipRolesParams {
   /// Only `MEMBER` `MembershipRole` can currently be updated.
   MembershipRole? membershipRole;
 
-  UpdateMembershipRolesParams({
-    this.fieldMask,
-    this.membershipRole,
-  });
+  UpdateMembershipRolesParams({this.fieldMask, this.membershipRole});
 
   UpdateMembershipRolesParams.fromJson(core.Map json_)
-      : this(
-          fieldMask: json_['fieldMask'] as core.String?,
-          membershipRole: json_.containsKey('membershipRole')
-              ? MembershipRole.fromJson(json_['membershipRole']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fieldMask: json_['fieldMask'] as core.String?,
+        membershipRole:
+            json_.containsKey('membershipRole')
+                ? MembershipRole.fromJson(
+                  json_['membershipRole']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fieldMask != null) 'fieldMask': fieldMask!,
-        if (membershipRole != null) 'membershipRole': membershipRole!,
-      };
+    if (fieldMask != null) 'fieldMask': fieldMask!,
+    if (membershipRole != null) 'membershipRole': membershipRole!,
+  };
 }
 
 /// The `UserInvitation` resource represents an email that can be sent to an
@@ -6557,25 +6605,20 @@ class UserInvitation {
   /// Time when the `UserInvitation` was last updated.
   core.String? updateTime;
 
-  UserInvitation({
-    this.mailsSentCount,
-    this.name,
-    this.state,
-    this.updateTime,
-  });
+  UserInvitation({this.mailsSentCount, this.name, this.state, this.updateTime});
 
   UserInvitation.fromJson(core.Map json_)
-      : this(
-          mailsSentCount: json_['mailsSentCount'] as core.String?,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        mailsSentCount: json_['mailsSentCount'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mailsSentCount != null) 'mailsSentCount': mailsSentCount!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (mailsSentCount != null) 'mailsSentCount': mailsSentCount!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }

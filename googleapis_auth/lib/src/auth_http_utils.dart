@@ -30,8 +30,11 @@ class AuthenticatedClient extends DelegatingClient implements AuthClient {
   @override
   Future<StreamedResponse> send(BaseRequest request) async {
     // Make new request object and perform the authenticated request.
-    final modifiedRequest =
-        RequestImpl(request.method, request.url, request.finalize());
+    final modifiedRequest = RequestImpl(
+      request.method,
+      request.url,
+      request.finalize(),
+    );
     modifiedRequest.headers.addAll(request.headers);
     modifiedRequest.headers['Authorization'] =
         'Bearer ${credentials.accessToken.data}';
@@ -60,8 +63,8 @@ class ApiKeyClient extends DelegatingClient {
   final String _encodedApiKey;
 
   ApiKeyClient(super.client, String apiKey)
-      : _encodedApiKey = Uri.encodeQueryComponent(apiKey),
-        super(closeUnderlyingClient: true);
+    : _encodedApiKey = Uri.encodeQueryComponent(apiKey),
+      super(closeUnderlyingClient: true);
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {
@@ -101,8 +104,8 @@ class AutoRefreshingClient extends AutoRefreshDelegatingClient {
     this.credentials, {
     super.closeUnderlyingClient,
     this.quotaProject,
-  })  : assert(credentials.accessToken.type == 'Bearer'),
-        assert(credentials.refreshToken != null) {
+  }) : assert(credentials.accessToken.type == 'Bearer'),
+       assert(credentials.refreshToken != null) {
     authClient = AuthenticatedClient(
       baseClient,
       credentials,
@@ -140,10 +143,7 @@ abstract class AutoRefreshDelegatingClient extends DelegatingClient
   final StreamController<AccessCredentials> _credentialStreamController =
       StreamController.broadcast(sync: true);
 
-  AutoRefreshDelegatingClient(
-    super.client, {
-    super.closeUnderlyingClient,
-  });
+  AutoRefreshDelegatingClient(super.client, {super.closeUnderlyingClient});
 
   @override
   Stream<AccessCredentials> get credentialUpdates =>

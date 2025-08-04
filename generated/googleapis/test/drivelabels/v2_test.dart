@@ -28,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterGoogleAppsDriveLabelsV2BadgeColors = 0;
 api.GoogleAppsDriveLabelsV2BadgeColors
-    buildGoogleAppsDriveLabelsV2BadgeColors() {
+buildGoogleAppsDriveLabelsV2BadgeColors() {
   final o = api.GoogleAppsDriveLabelsV2BadgeColors();
   buildCounterGoogleAppsDriveLabelsV2BadgeColors++;
   if (buildCounterGoogleAppsDriveLabelsV2BadgeColors < 3) {
@@ -41,7 +41,8 @@ api.GoogleAppsDriveLabelsV2BadgeColors
 }
 
 void checkGoogleAppsDriveLabelsV2BadgeColors(
-    api.GoogleAppsDriveLabelsV2BadgeColors o) {
+  api.GoogleAppsDriveLabelsV2BadgeColors o,
+) {
   buildCounterGoogleAppsDriveLabelsV2BadgeColors++;
   if (buildCounterGoogleAppsDriveLabelsV2BadgeColors < 3) {
     checkGoogleTypeColor(o.backgroundColor!);
@@ -53,7 +54,7 @@ void checkGoogleAppsDriveLabelsV2BadgeColors(
 
 core.int buildCounterGoogleAppsDriveLabelsV2BadgeConfig = 0;
 api.GoogleAppsDriveLabelsV2BadgeConfig
-    buildGoogleAppsDriveLabelsV2BadgeConfig() {
+buildGoogleAppsDriveLabelsV2BadgeConfig() {
   final o = api.GoogleAppsDriveLabelsV2BadgeConfig();
   buildCounterGoogleAppsDriveLabelsV2BadgeConfig++;
   if (buildCounterGoogleAppsDriveLabelsV2BadgeConfig < 3) {
@@ -65,26 +66,25 @@ api.GoogleAppsDriveLabelsV2BadgeConfig
 }
 
 void checkGoogleAppsDriveLabelsV2BadgeConfig(
-    api.GoogleAppsDriveLabelsV2BadgeConfig o) {
+  api.GoogleAppsDriveLabelsV2BadgeConfig o,
+) {
   buildCounterGoogleAppsDriveLabelsV2BadgeConfig++;
   if (buildCounterGoogleAppsDriveLabelsV2BadgeConfig < 3) {
     checkGoogleTypeColor(o.color!);
-    unittest.expect(
-      o.priorityOverride!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.priorityOverride!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2BadgeConfig--;
 }
 
 core.List<api.GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest>
-    buildUnnamed0() => [
-          buildGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest(),
-          buildGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest(),
-        ];
+buildUnnamed0() => [
+  buildGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest(),
+  buildGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest(),
+];
 
 void checkUnnamed0(
-    core.List<api.GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest> o) {
+  core.List<api.GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest(o[0]);
   checkGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest(o[1]);
@@ -93,7 +93,7 @@ void checkUnnamed0(
 core.int buildCounterGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest =
     0;
 api.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest
-    buildGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest() {
+buildGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest() {
   final o = api.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest();
   buildCounterGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest <
@@ -106,7 +106,8 @@ api.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest
 }
 
 void checkGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest(
-    api.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest o) {
+  api.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest <
       3) {
@@ -117,13 +118,14 @@ void checkGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest(
 }
 
 core.List<api.GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest>
-    buildUnnamed1() => [
-          buildGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest(),
-          buildGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest(),
-        ];
+buildUnnamed1() => [
+  buildGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest(),
+  buildGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest(),
+];
 
 void checkUnnamed1(
-    core.List<api.GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest> o) {
+  core.List<api.GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest(o[0]);
   checkGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest(o[1]);
@@ -132,7 +134,7 @@ void checkUnnamed1(
 core.int buildCounterGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest =
     0;
 api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest
-    buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest() {
+buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest() {
   final o = api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest();
   buildCounterGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest <
@@ -145,7 +147,8 @@ api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest
 }
 
 void checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest(
-    api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest o) {
+  api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest <
       3) {
@@ -156,9 +159,9 @@ void checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest(
 }
 
 core.List<api.GoogleAppsDriveLabelsV2LabelPermission> buildUnnamed2() => [
-      buildGoogleAppsDriveLabelsV2LabelPermission(),
-      buildGoogleAppsDriveLabelsV2LabelPermission(),
-    ];
+  buildGoogleAppsDriveLabelsV2LabelPermission(),
+  buildGoogleAppsDriveLabelsV2LabelPermission(),
+];
 
 void checkUnnamed2(core.List<api.GoogleAppsDriveLabelsV2LabelPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -167,9 +170,9 @@ void checkUnnamed2(core.List<api.GoogleAppsDriveLabelsV2LabelPermission> o) {
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse = 0;
+buildCounterGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse = 0;
 api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse
-    buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse() {
+buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse() {
   final o = api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse();
   buildCounterGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse <
@@ -181,7 +184,8 @@ api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse
 }
 
 void checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse(
-    api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse o) {
+  api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse o,
+) {
   buildCounterGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse <
       3) {
@@ -203,7 +207,8 @@ api.GoogleAppsDriveLabelsV2DateLimits buildGoogleAppsDriveLabelsV2DateLimits() {
 }
 
 void checkGoogleAppsDriveLabelsV2DateLimits(
-    api.GoogleAppsDriveLabelsV2DateLimits o) {
+  api.GoogleAppsDriveLabelsV2DateLimits o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DateLimits++;
   if (buildCounterGoogleAppsDriveLabelsV2DateLimits < 3) {
     checkGoogleTypeDate(o.maxValue!);
@@ -214,7 +219,7 @@ void checkGoogleAppsDriveLabelsV2DateLimits(
 
 core.int buildCounterGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest = 0;
 api.GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest
-    buildGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest() {
+buildGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest() {
   final o = api.GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest();
   buildCounterGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest < 3) {
@@ -226,26 +231,25 @@ api.GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest
 }
 
 void checkGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest(
-    api.GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest o) {
+  api.GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest < 3) {
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.useAdminAccess!, unittest.isTrue);
   }
   buildCounterGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest--;
 }
 
 core.List<api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest>
-    buildUnnamed3() => [
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest(),
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest(),
-        ];
+buildUnnamed3() => [
+  buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest(),
+  buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest(),
+];
 
 void checkUnnamed3(
-    core.List<api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest> o) {
+  core.List<api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest(o[0]);
   checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest(o[1]);
@@ -253,7 +257,7 @@ void checkUnnamed3(
 
 core.int buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest = 0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest() {
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest() {
   final o = api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest < 3) {
@@ -268,29 +272,24 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest
 }
 
 void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest o) {
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest < 3) {
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
     checkUnnamed3(o.requests!);
     unittest.expect(o.useAdminAccess!, unittest.isTrue);
-    unittest.expect(
-      o.view!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.view!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2WriteControl(o.writeControl!);
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest() {
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest() {
   final o =
       api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest++;
@@ -303,7 +302,8 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest
 }
 
 void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest o) {
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest <
       3) {
@@ -313,12 +313,12 @@ void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest(
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest <
       3) {
@@ -329,26 +329,25 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest
+  o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest <
       3) {
     checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice(o.choice!);
-    unittest.expect(
-      o.fieldId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fieldId!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest() {
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest() {
   final o =
       api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest++;
@@ -361,25 +360,23 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest
 }
 
 void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest o) {
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest <
       3) {
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest <
       3) {
@@ -390,29 +387,25 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest
+  o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest <
       3) {
-    unittest.expect(
-      o.fieldId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fieldId!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest() {
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest() {
   final o =
       api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest++;
@@ -427,30 +420,25 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest
 }
 
 void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest o) {
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest <
       3) {
     checkGoogleAppsDriveLabelsV2LifecycleDisabledPolicy(o.disabledPolicy!);
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updateMask!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(o.updateMask!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest <
       3) {
@@ -463,34 +451,27 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest
+  o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest <
       3) {
     checkGoogleAppsDriveLabelsV2LifecycleDisabledPolicy(o.disabledPolicy!);
-    unittest.expect(
-      o.fieldId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updateMask!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fieldId!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(o.updateMask!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest() {
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest() {
   final o =
       api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest++;
@@ -503,25 +484,23 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest
 }
 
 void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest o) {
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest <
       3) {
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest <
       3) {
@@ -532,27 +511,23 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest
+  o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest <
       3) {
-    unittest.expect(
-      o.fieldId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fieldId!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest = 0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest() {
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest() {
   final o = api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest < 3) {
@@ -586,44 +561,57 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest
 }
 
 void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest o) {
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest < 3) {
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest(
-        o.createField!);
+      o.createField!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest(
-        o.createSelectionChoice!);
+      o.createSelectionChoice!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest(
-        o.deleteField!);
+      o.deleteField!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest(
-        o.deleteSelectionChoice!);
+      o.deleteSelectionChoice!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest(
-        o.disableField!);
+      o.disableField!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest(
-        o.disableSelectionChoice!);
+      o.disableSelectionChoice!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest(
-        o.enableField!);
+      o.enableField!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest(
-        o.enableSelectionChoice!);
+      o.enableSelectionChoice!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest(
-        o.updateField!);
+      o.updateField!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest(
-        o.updateFieldType!);
+      o.updateFieldType!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest(
-        o.updateLabel!);
+      o.updateLabel!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest(
-        o.updateSelectionChoiceProperties!);
+      o.updateSelectionChoiceProperties!,
+    );
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest <
       3) {
@@ -635,32 +623,28 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest
+  o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest <
       3) {
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2FieldProperties(o.properties!);
-    unittest.expect(
-      o.updateMask!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.updateMask!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest <
       3) {
@@ -677,35 +661,29 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest
 }
 
 void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest
-        o) {
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest <
       3) {
     checkGoogleAppsDriveLabelsV2FieldDateOptions(o.dateOptions!);
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2FieldIntegerOptions(o.integerOptions!);
     checkGoogleAppsDriveLabelsV2FieldSelectionOptions(o.selectionOptions!);
     checkGoogleAppsDriveLabelsV2FieldTextOptions(o.textOptions!);
-    unittest.expect(
-      o.updateMask!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.updateMask!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2FieldUserOptions(o.userOptions!);
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest <
       3) {
@@ -716,28 +694,27 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest
+  o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest <
       3) {
     checkGoogleAppsDriveLabelsV2LabelProperties(o.properties!);
-    unittest.expect(
-      o.updateMask!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.updateMask!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest <
       3) {
@@ -751,38 +728,33 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertie
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest
+  o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest <
       3) {
-    unittest.expect(
-      o.fieldId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fieldId!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties(
-        o.properties!);
-    unittest.expect(
-      o.updateMask!,
-      unittest.equals('foo'),
+      o.properties!,
     );
+    unittest.expect(o.updateMask!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest--;
 }
 
 core.List<api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse>
-    buildUnnamed4() => [
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse(),
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse(),
-        ];
+buildUnnamed4() => [
+  buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse(),
+  buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse(),
+];
 
 void checkUnnamed4(
-    core.List<api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse> o) {
+  core.List<api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse(o[0]);
   checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse(o[1]);
@@ -790,7 +762,7 @@ void checkUnnamed4(
 
 core.int buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse = 0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse() {
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse() {
   final o = api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse < 3) {
@@ -802,7 +774,8 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse
 }
 
 void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse o) {
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse < 3) {
     checkUnnamed4(o.responses!);
@@ -812,10 +785,10 @@ void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse(
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse() {
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse() {
   final o =
       api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse++;
@@ -829,29 +802,24 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse
 }
 
 void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse o) {
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse <
       3) {
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.priority!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(o.priority!, unittest.equals(42));
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse <
       3) {
@@ -862,29 +830,25 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse
+  o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse <
       3) {
-    unittest.expect(
-      o.fieldId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.fieldId!, unittest.equals('foo'));
+    unittest.expect(o.id!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse() {
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse() {
   final o =
       api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse++;
@@ -895,7 +859,8 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse
 }
 
 void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse o) {
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse <
       3) {}
@@ -903,12 +868,12 @@ void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse(
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse <
       3) {}
@@ -916,9 +881,11 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse
+  o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse <
       3) {}
@@ -926,10 +893,10 @@ void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceRe
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse() {
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse() {
   final o =
       api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse++;
@@ -940,7 +907,8 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse
 }
 
 void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse o) {
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse <
       3) {}
@@ -948,12 +916,12 @@ void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse(
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse <
       3) {}
@@ -961,9 +929,11 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceRespons
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse
+  o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse <
       3) {}
@@ -971,10 +941,10 @@ void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceR
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse() {
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse() {
   final o =
       api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse++;
@@ -985,7 +955,8 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse
 }
 
 void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse o) {
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse <
       3) {}
@@ -993,12 +964,12 @@ void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse(
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse <
       3) {}
@@ -1006,9 +977,11 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse
+  o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse <
       3) {}
@@ -1018,7 +991,7 @@ void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceRe
 core.int buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse() {
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse() {
   final o = api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse < 3) {
@@ -1052,44 +1025,57 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse
 }
 
 void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse o) {
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse < 3) {
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse(
-        o.createField!);
+      o.createField!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse(
-        o.createSelectionChoice!);
+      o.createSelectionChoice!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse(
-        o.deleteField!);
+      o.deleteField!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse(
-        o.deleteSelectionChoice!);
+      o.deleteSelectionChoice!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse(
-        o.disableField!);
+      o.disableField!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse(
-        o.disableSelectionChoice!);
+      o.disableSelectionChoice!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse(
-        o.enableField!);
+      o.enableField!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse(
-        o.enableSelectionChoice!);
+      o.enableSelectionChoice!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse(
-        o.updateField!);
+      o.updateField!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse(
-        o.updateFieldType!);
+      o.updateFieldType!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse(
-        o.updateLabel!);
+      o.updateLabel!,
+    );
     checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse(
-        o.updateSelectionChoiceProperties!);
+      o.updateSelectionChoiceProperties!,
+    );
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse <
       3) {
@@ -1099,27 +1085,26 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse
+  o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse <
       3) {
-    unittest.expect(
-      o.priority!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.priority!, unittest.equals(42));
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse <
       3) {}
@@ -1127,9 +1112,10 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse <
       3) {}
@@ -1137,12 +1123,12 @@ void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse <
       3) {}
@@ -1150,9 +1136,11 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse
+  o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse <
       3) {}
@@ -1160,12 +1148,12 @@ void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesRe
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse =
+buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse =
     0;
 api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse
-    buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse() {
-  final o = api
-      .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse();
+buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse() {
+  final o =
+      api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse();
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse <
       3) {
@@ -1175,23 +1163,22 @@ api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoiceProperti
   return o;
 }
 
-void checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse(
-    api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse
-        o) {
+void
+checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse(
+  api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse
+  o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse <
       3) {
-    unittest.expect(
-      o.priority!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.priority!, unittest.equals(42));
   }
   buildCounterGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2DisableLabelRequest = 0;
 api.GoogleAppsDriveLabelsV2DisableLabelRequest
-    buildGoogleAppsDriveLabelsV2DisableLabelRequest() {
+buildGoogleAppsDriveLabelsV2DisableLabelRequest() {
   final o = api.GoogleAppsDriveLabelsV2DisableLabelRequest();
   buildCounterGoogleAppsDriveLabelsV2DisableLabelRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DisableLabelRequest < 3) {
@@ -1206,18 +1193,13 @@ api.GoogleAppsDriveLabelsV2DisableLabelRequest
 }
 
 void checkGoogleAppsDriveLabelsV2DisableLabelRequest(
-    api.GoogleAppsDriveLabelsV2DisableLabelRequest o) {
+  api.GoogleAppsDriveLabelsV2DisableLabelRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2DisableLabelRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2DisableLabelRequest < 3) {
     checkGoogleAppsDriveLabelsV2LifecycleDisabledPolicy(o.disabledPolicy!);
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.updateMask!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
+    unittest.expect(o.updateMask!, unittest.equals('foo'));
     unittest.expect(o.useAdminAccess!, unittest.isTrue);
     checkGoogleAppsDriveLabelsV2WriteControl(o.writeControl!);
   }
@@ -1226,7 +1208,7 @@ void checkGoogleAppsDriveLabelsV2DisableLabelRequest(
 
 core.int buildCounterGoogleAppsDriveLabelsV2EnableLabelRequest = 0;
 api.GoogleAppsDriveLabelsV2EnableLabelRequest
-    buildGoogleAppsDriveLabelsV2EnableLabelRequest() {
+buildGoogleAppsDriveLabelsV2EnableLabelRequest() {
   final o = api.GoogleAppsDriveLabelsV2EnableLabelRequest();
   buildCounterGoogleAppsDriveLabelsV2EnableLabelRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2EnableLabelRequest < 3) {
@@ -1239,13 +1221,11 @@ api.GoogleAppsDriveLabelsV2EnableLabelRequest
 }
 
 void checkGoogleAppsDriveLabelsV2EnableLabelRequest(
-    api.GoogleAppsDriveLabelsV2EnableLabelRequest o) {
+  api.GoogleAppsDriveLabelsV2EnableLabelRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2EnableLabelRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2EnableLabelRequest < 3) {
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.useAdminAccess!, unittest.isTrue);
     checkGoogleAppsDriveLabelsV2WriteControl(o.writeControl!);
   }
@@ -1288,39 +1268,25 @@ void checkGoogleAppsDriveLabelsV2Field(api.GoogleAppsDriveLabelsV2Field o) {
   buildCounterGoogleAppsDriveLabelsV2Field++;
   if (buildCounterGoogleAppsDriveLabelsV2Field < 3) {
     checkGoogleAppsDriveLabelsV2FieldAppliedCapabilities(
-        o.appliedCapabilities!);
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
+      o.appliedCapabilities!,
     );
+    unittest.expect(o.createTime!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2UserInfo(o.creator!);
     checkGoogleAppsDriveLabelsV2FieldDateOptions(o.dateOptions!);
-    unittest.expect(
-      o.disableTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.disableTime!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2UserInfo(o.disabler!);
     checkGoogleAppsDriveLabelsV2FieldDisplayHints(o.displayHints!);
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2FieldIntegerOptions(o.integerOptions!);
     checkGoogleAppsDriveLabelsV2Lifecycle(o.lifecycle!);
     checkGoogleAppsDriveLabelsV2LockStatus(o.lockStatus!);
     checkGoogleAppsDriveLabelsV2FieldProperties(o.properties!);
     checkGoogleAppsDriveLabelsV2UserInfo(o.publisher!);
-    unittest.expect(
-      o.queryKey!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.queryKey!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2FieldSchemaCapabilities(o.schemaCapabilities!);
     checkGoogleAppsDriveLabelsV2FieldSelectionOptions(o.selectionOptions!);
     checkGoogleAppsDriveLabelsV2FieldTextOptions(o.textOptions!);
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2UserInfo(o.updater!);
     checkGoogleAppsDriveLabelsV2FieldUserOptions(o.userOptions!);
   }
@@ -1329,7 +1295,7 @@ void checkGoogleAppsDriveLabelsV2Field(api.GoogleAppsDriveLabelsV2Field o) {
 
 core.int buildCounterGoogleAppsDriveLabelsV2FieldAppliedCapabilities = 0;
 api.GoogleAppsDriveLabelsV2FieldAppliedCapabilities
-    buildGoogleAppsDriveLabelsV2FieldAppliedCapabilities() {
+buildGoogleAppsDriveLabelsV2FieldAppliedCapabilities() {
   final o = api.GoogleAppsDriveLabelsV2FieldAppliedCapabilities();
   buildCounterGoogleAppsDriveLabelsV2FieldAppliedCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldAppliedCapabilities < 3) {
@@ -1342,7 +1308,8 @@ api.GoogleAppsDriveLabelsV2FieldAppliedCapabilities
 }
 
 void checkGoogleAppsDriveLabelsV2FieldAppliedCapabilities(
-    api.GoogleAppsDriveLabelsV2FieldAppliedCapabilities o) {
+  api.GoogleAppsDriveLabelsV2FieldAppliedCapabilities o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldAppliedCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldAppliedCapabilities < 3) {
     unittest.expect(o.canRead!, unittest.isTrue);
@@ -1354,7 +1321,7 @@ void checkGoogleAppsDriveLabelsV2FieldAppliedCapabilities(
 
 core.int buildCounterGoogleAppsDriveLabelsV2FieldDateOptions = 0;
 api.GoogleAppsDriveLabelsV2FieldDateOptions
-    buildGoogleAppsDriveLabelsV2FieldDateOptions() {
+buildGoogleAppsDriveLabelsV2FieldDateOptions() {
   final o = api.GoogleAppsDriveLabelsV2FieldDateOptions();
   buildCounterGoogleAppsDriveLabelsV2FieldDateOptions++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldDateOptions < 3) {
@@ -1368,17 +1335,12 @@ api.GoogleAppsDriveLabelsV2FieldDateOptions
 }
 
 void checkGoogleAppsDriveLabelsV2FieldDateOptions(
-    api.GoogleAppsDriveLabelsV2FieldDateOptions o) {
+  api.GoogleAppsDriveLabelsV2FieldDateOptions o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldDateOptions++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldDateOptions < 3) {
-    unittest.expect(
-      o.dateFormat!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.dateFormatType!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.dateFormat!, unittest.equals('foo'));
+    unittest.expect(o.dateFormatType!, unittest.equals('foo'));
     checkGoogleTypeDate(o.maxValue!);
     checkGoogleTypeDate(o.minValue!);
   }
@@ -1387,7 +1349,7 @@ void checkGoogleAppsDriveLabelsV2FieldDateOptions(
 
 core.int buildCounterGoogleAppsDriveLabelsV2FieldDisplayHints = 0;
 api.GoogleAppsDriveLabelsV2FieldDisplayHints
-    buildGoogleAppsDriveLabelsV2FieldDisplayHints() {
+buildGoogleAppsDriveLabelsV2FieldDisplayHints() {
   final o = api.GoogleAppsDriveLabelsV2FieldDisplayHints();
   buildCounterGoogleAppsDriveLabelsV2FieldDisplayHints++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldDisplayHints < 3) {
@@ -1401,7 +1363,8 @@ api.GoogleAppsDriveLabelsV2FieldDisplayHints
 }
 
 void checkGoogleAppsDriveLabelsV2FieldDisplayHints(
-    api.GoogleAppsDriveLabelsV2FieldDisplayHints o) {
+  api.GoogleAppsDriveLabelsV2FieldDisplayHints o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldDisplayHints++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldDisplayHints < 3) {
     unittest.expect(o.disabled!, unittest.isTrue);
@@ -1414,7 +1377,7 @@ void checkGoogleAppsDriveLabelsV2FieldDisplayHints(
 
 core.int buildCounterGoogleAppsDriveLabelsV2FieldIntegerOptions = 0;
 api.GoogleAppsDriveLabelsV2FieldIntegerOptions
-    buildGoogleAppsDriveLabelsV2FieldIntegerOptions() {
+buildGoogleAppsDriveLabelsV2FieldIntegerOptions() {
   final o = api.GoogleAppsDriveLabelsV2FieldIntegerOptions();
   buildCounterGoogleAppsDriveLabelsV2FieldIntegerOptions++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldIntegerOptions < 3) {
@@ -1426,24 +1389,19 @@ api.GoogleAppsDriveLabelsV2FieldIntegerOptions
 }
 
 void checkGoogleAppsDriveLabelsV2FieldIntegerOptions(
-    api.GoogleAppsDriveLabelsV2FieldIntegerOptions o) {
+  api.GoogleAppsDriveLabelsV2FieldIntegerOptions o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldIntegerOptions++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldIntegerOptions < 3) {
-    unittest.expect(
-      o.maxValue!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.minValue!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.maxValue!, unittest.equals('foo'));
+    unittest.expect(o.minValue!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2FieldIntegerOptions--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2FieldLimits = 0;
 api.GoogleAppsDriveLabelsV2FieldLimits
-    buildGoogleAppsDriveLabelsV2FieldLimits() {
+buildGoogleAppsDriveLabelsV2FieldLimits() {
   final o = api.GoogleAppsDriveLabelsV2FieldLimits();
   buildCounterGoogleAppsDriveLabelsV2FieldLimits++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldLimits < 3) {
@@ -1462,24 +1420,16 @@ api.GoogleAppsDriveLabelsV2FieldLimits
 }
 
 void checkGoogleAppsDriveLabelsV2FieldLimits(
-    api.GoogleAppsDriveLabelsV2FieldLimits o) {
+  api.GoogleAppsDriveLabelsV2FieldLimits o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldLimits++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldLimits < 3) {
     checkGoogleAppsDriveLabelsV2DateLimits(o.dateLimits!);
     checkGoogleAppsDriveLabelsV2IntegerLimits(o.integerLimits!);
     checkGoogleAppsDriveLabelsV2LongTextLimits(o.longTextLimits!);
-    unittest.expect(
-      o.maxDescriptionLength!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxDisplayNameLength!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxIdLength!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.maxDescriptionLength!, unittest.equals(42));
+    unittest.expect(o.maxDisplayNameLength!, unittest.equals(42));
+    unittest.expect(o.maxIdLength!, unittest.equals(42));
     checkGoogleAppsDriveLabelsV2SelectionLimits(o.selectionLimits!);
     checkGoogleAppsDriveLabelsV2TextLimits(o.textLimits!);
     checkGoogleAppsDriveLabelsV2UserLimits(o.userLimits!);
@@ -1489,7 +1439,7 @@ void checkGoogleAppsDriveLabelsV2FieldLimits(
 
 core.int buildCounterGoogleAppsDriveLabelsV2FieldListOptions = 0;
 api.GoogleAppsDriveLabelsV2FieldListOptions
-    buildGoogleAppsDriveLabelsV2FieldListOptions() {
+buildGoogleAppsDriveLabelsV2FieldListOptions() {
   final o = api.GoogleAppsDriveLabelsV2FieldListOptions();
   buildCounterGoogleAppsDriveLabelsV2FieldListOptions++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldListOptions < 3) {
@@ -1500,20 +1450,18 @@ api.GoogleAppsDriveLabelsV2FieldListOptions
 }
 
 void checkGoogleAppsDriveLabelsV2FieldListOptions(
-    api.GoogleAppsDriveLabelsV2FieldListOptions o) {
+  api.GoogleAppsDriveLabelsV2FieldListOptions o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldListOptions++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldListOptions < 3) {
-    unittest.expect(
-      o.maxEntries!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.maxEntries!, unittest.equals(42));
   }
   buildCounterGoogleAppsDriveLabelsV2FieldListOptions--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2FieldProperties = 0;
 api.GoogleAppsDriveLabelsV2FieldProperties
-    buildGoogleAppsDriveLabelsV2FieldProperties() {
+buildGoogleAppsDriveLabelsV2FieldProperties() {
   final o = api.GoogleAppsDriveLabelsV2FieldProperties();
   buildCounterGoogleAppsDriveLabelsV2FieldProperties++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldProperties < 3) {
@@ -1526,17 +1474,12 @@ api.GoogleAppsDriveLabelsV2FieldProperties
 }
 
 void checkGoogleAppsDriveLabelsV2FieldProperties(
-    api.GoogleAppsDriveLabelsV2FieldProperties o) {
+  api.GoogleAppsDriveLabelsV2FieldProperties o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldProperties++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldProperties < 3) {
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.insertBeforeField!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.insertBeforeField!, unittest.equals('foo'));
     unittest.expect(o.required!, unittest.isTrue);
   }
   buildCounterGoogleAppsDriveLabelsV2FieldProperties--;
@@ -1544,7 +1487,7 @@ void checkGoogleAppsDriveLabelsV2FieldProperties(
 
 core.int buildCounterGoogleAppsDriveLabelsV2FieldSchemaCapabilities = 0;
 api.GoogleAppsDriveLabelsV2FieldSchemaCapabilities
-    buildGoogleAppsDriveLabelsV2FieldSchemaCapabilities() {
+buildGoogleAppsDriveLabelsV2FieldSchemaCapabilities() {
   final o = api.GoogleAppsDriveLabelsV2FieldSchemaCapabilities();
   buildCounterGoogleAppsDriveLabelsV2FieldSchemaCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldSchemaCapabilities < 3) {
@@ -1558,7 +1501,8 @@ api.GoogleAppsDriveLabelsV2FieldSchemaCapabilities
 }
 
 void checkGoogleAppsDriveLabelsV2FieldSchemaCapabilities(
-    api.GoogleAppsDriveLabelsV2FieldSchemaCapabilities o) {
+  api.GoogleAppsDriveLabelsV2FieldSchemaCapabilities o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldSchemaCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldSchemaCapabilities < 3) {
     unittest.expect(o.canDelete!, unittest.isTrue);
@@ -1570,13 +1514,14 @@ void checkGoogleAppsDriveLabelsV2FieldSchemaCapabilities(
 }
 
 core.List<api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice>
-    buildUnnamed5() => [
-          buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice(),
-          buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice(),
-        ];
+buildUnnamed5() => [
+  buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice(),
+  buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice(),
+];
 
 void checkUnnamed5(
-    core.List<api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice> o) {
+  core.List<api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice(o[0]);
   checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice(o[1]);
@@ -1584,7 +1529,7 @@ void checkUnnamed5(
 
 core.int buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptions = 0;
 api.GoogleAppsDriveLabelsV2FieldSelectionOptions
-    buildGoogleAppsDriveLabelsV2FieldSelectionOptions() {
+buildGoogleAppsDriveLabelsV2FieldSelectionOptions() {
   final o = api.GoogleAppsDriveLabelsV2FieldSelectionOptions();
   buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptions++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptions < 3) {
@@ -1596,7 +1541,8 @@ api.GoogleAppsDriveLabelsV2FieldSelectionOptions
 }
 
 void checkGoogleAppsDriveLabelsV2FieldSelectionOptions(
-    api.GoogleAppsDriveLabelsV2FieldSelectionOptions o) {
+  api.GoogleAppsDriveLabelsV2FieldSelectionOptions o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptions++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptions < 3) {
     checkUnnamed5(o.choices!);
@@ -1607,7 +1553,7 @@ void checkGoogleAppsDriveLabelsV2FieldSelectionOptions(
 
 core.int buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice = 0;
 api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice
-    buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice() {
+buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice() {
   final o = api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice();
   buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice < 3) {
@@ -1636,54 +1582,44 @@ api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice
 }
 
 void checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice(
-    api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice o) {
+  api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice < 3) {
     checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities(
-        o.appliedCapabilities!);
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
+      o.appliedCapabilities!,
     );
+    unittest.expect(o.createTime!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2UserInfo(o.creator!);
-    unittest.expect(
-      o.disableTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.disableTime!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2UserInfo(o.disabler!);
     checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints(
-        o.displayHints!);
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
+      o.displayHints!,
     );
+    unittest.expect(o.id!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2Lifecycle(o.lifecycle!);
     checkGoogleAppsDriveLabelsV2LockStatus(o.lockStatus!);
     checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties(
-        o.properties!);
-    unittest.expect(
-      o.publishTime!,
-      unittest.equals('foo'),
+      o.properties!,
     );
+    unittest.expect(o.publishTime!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2UserInfo(o.publisher!);
     checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities(
-        o.schemaCapabilities!);
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
+      o.schemaCapabilities!,
     );
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2UserInfo(o.updater!);
   }
   buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities =
+buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities =
     0;
 api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities
-    buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities() {
-  final o = api
-      .GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities();
+buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities() {
+  final o =
+      api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities();
   buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities <
       3) {
@@ -1696,8 +1632,8 @@ api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities
 }
 
 void checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities(
-    api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities
-        o) {
+  api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities <
       3) {
@@ -1709,10 +1645,9 @@ void checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities(
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints =
-    0;
+buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints = 0;
 api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints
-    buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints() {
+buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints() {
   final o =
       api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints();
   buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints++;
@@ -1730,15 +1665,13 @@ api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints
 }
 
 void checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints(
-    api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints o) {
+  api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints <
       3) {
     checkGoogleAppsDriveLabelsV2BadgeColors(o.badgeColors!);
-    unittest.expect(
-      o.badgePriority!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.badgePriority!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2BadgeColors(o.darkBadgeColors!);
     unittest.expect(o.disabled!, unittest.isTrue);
     unittest.expect(o.hiddenInSearch!, unittest.isTrue);
@@ -1748,10 +1681,9 @@ void checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints(
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties =
-    0;
+buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties = 0;
 api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties
-    buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties() {
+buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties() {
   final o = api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties();
   buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties <
@@ -1766,34 +1698,26 @@ api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties
 }
 
 void checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties(
-    api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties o) {
+  api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties <
       3) {
     checkGoogleAppsDriveLabelsV2BadgeConfig(o.badgeConfig!);
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.insertBeforeChoice!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.insertBeforeChoice!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities =
+buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities =
     0;
 api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities
-    buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities() {
-  final o = api
-      .GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities();
+buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities() {
+  final o =
+      api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities();
   buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities <
       3) {
@@ -1807,8 +1731,8 @@ api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities
 }
 
 void checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities(
-    api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities
-        o) {
+  api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities <
       3) {
@@ -1822,7 +1746,7 @@ void checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities(
 
 core.int buildCounterGoogleAppsDriveLabelsV2FieldTextOptions = 0;
 api.GoogleAppsDriveLabelsV2FieldTextOptions
-    buildGoogleAppsDriveLabelsV2FieldTextOptions() {
+buildGoogleAppsDriveLabelsV2FieldTextOptions() {
   final o = api.GoogleAppsDriveLabelsV2FieldTextOptions();
   buildCounterGoogleAppsDriveLabelsV2FieldTextOptions++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldTextOptions < 3) {
@@ -1834,24 +1758,19 @@ api.GoogleAppsDriveLabelsV2FieldTextOptions
 }
 
 void checkGoogleAppsDriveLabelsV2FieldTextOptions(
-    api.GoogleAppsDriveLabelsV2FieldTextOptions o) {
+  api.GoogleAppsDriveLabelsV2FieldTextOptions o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldTextOptions++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldTextOptions < 3) {
-    unittest.expect(
-      o.maxLength!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.minLength!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.maxLength!, unittest.equals(42));
+    unittest.expect(o.minLength!, unittest.equals(42));
   }
   buildCounterGoogleAppsDriveLabelsV2FieldTextOptions--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2FieldUserOptions = 0;
 api.GoogleAppsDriveLabelsV2FieldUserOptions
-    buildGoogleAppsDriveLabelsV2FieldUserOptions() {
+buildGoogleAppsDriveLabelsV2FieldUserOptions() {
   final o = api.GoogleAppsDriveLabelsV2FieldUserOptions();
   buildCounterGoogleAppsDriveLabelsV2FieldUserOptions++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldUserOptions < 3) {
@@ -1862,7 +1781,8 @@ api.GoogleAppsDriveLabelsV2FieldUserOptions
 }
 
 void checkGoogleAppsDriveLabelsV2FieldUserOptions(
-    api.GoogleAppsDriveLabelsV2FieldUserOptions o) {
+  api.GoogleAppsDriveLabelsV2FieldUserOptions o,
+) {
   buildCounterGoogleAppsDriveLabelsV2FieldUserOptions++;
   if (buildCounterGoogleAppsDriveLabelsV2FieldUserOptions < 3) {
     checkGoogleAppsDriveLabelsV2FieldListOptions(o.listOptions!);
@@ -1872,7 +1792,7 @@ void checkGoogleAppsDriveLabelsV2FieldUserOptions(
 
 core.int buildCounterGoogleAppsDriveLabelsV2IntegerLimits = 0;
 api.GoogleAppsDriveLabelsV2IntegerLimits
-    buildGoogleAppsDriveLabelsV2IntegerLimits() {
+buildGoogleAppsDriveLabelsV2IntegerLimits() {
   final o = api.GoogleAppsDriveLabelsV2IntegerLimits();
   buildCounterGoogleAppsDriveLabelsV2IntegerLimits++;
   if (buildCounterGoogleAppsDriveLabelsV2IntegerLimits < 3) {
@@ -1884,25 +1804,20 @@ api.GoogleAppsDriveLabelsV2IntegerLimits
 }
 
 void checkGoogleAppsDriveLabelsV2IntegerLimits(
-    api.GoogleAppsDriveLabelsV2IntegerLimits o) {
+  api.GoogleAppsDriveLabelsV2IntegerLimits o,
+) {
   buildCounterGoogleAppsDriveLabelsV2IntegerLimits++;
   if (buildCounterGoogleAppsDriveLabelsV2IntegerLimits < 3) {
-    unittest.expect(
-      o.maxValue!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.minValue!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.maxValue!, unittest.equals('foo'));
+    unittest.expect(o.minValue!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2IntegerLimits--;
 }
 
 core.List<api.GoogleAppsDriveLabelsV2Field> buildUnnamed6() => [
-      buildGoogleAppsDriveLabelsV2Field(),
-      buildGoogleAppsDriveLabelsV2Field(),
-    ];
+  buildGoogleAppsDriveLabelsV2Field(),
+  buildGoogleAppsDriveLabelsV2Field(),
+];
 
 void checkUnnamed6(core.List<api.GoogleAppsDriveLabelsV2Field> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1951,58 +1866,29 @@ void checkGoogleAppsDriveLabelsV2Label(api.GoogleAppsDriveLabelsV2Label o) {
   buildCounterGoogleAppsDriveLabelsV2Label++;
   if (buildCounterGoogleAppsDriveLabelsV2Label < 3) {
     checkGoogleAppsDriveLabelsV2LabelAppliedCapabilities(
-        o.appliedCapabilities!);
+      o.appliedCapabilities!,
+    );
     checkGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy(o.appliedLabelPolicy!);
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.createTime!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2UserInfo(o.creator!);
-    unittest.expect(
-      o.customer!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.disableTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.customer!, unittest.equals('foo'));
+    unittest.expect(o.disableTime!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2UserInfo(o.disabler!);
     checkGoogleAppsDriveLabelsV2LabelDisplayHints(o.displayHints!);
     checkGoogleAppsDriveLabelsV2LabelEnabledAppSettings(o.enabledAppSettings!);
     checkUnnamed6(o.fields!);
-    unittest.expect(
-      o.id!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.labelType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.learnMoreUri!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.id!, unittest.equals('foo'));
+    unittest.expect(o.labelType!, unittest.equals('foo'));
+    unittest.expect(o.learnMoreUri!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2Lifecycle(o.lifecycle!);
     checkGoogleAppsDriveLabelsV2LockStatus(o.lockStatus!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2LabelProperties(o.properties!);
-    unittest.expect(
-      o.publishTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.publishTime!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2UserInfo(o.publisher!);
-    unittest.expect(
-      o.revisionCreateTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.revisionCreateTime!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2UserInfo(o.revisionCreator!);
-    unittest.expect(
-      o.revisionId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.revisionId!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2LabelSchemaCapabilities(o.schemaCapabilities!);
   }
   buildCounterGoogleAppsDriveLabelsV2Label--;
@@ -2010,7 +1896,7 @@ void checkGoogleAppsDriveLabelsV2Label(api.GoogleAppsDriveLabelsV2Label o) {
 
 core.int buildCounterGoogleAppsDriveLabelsV2LabelAppliedCapabilities = 0;
 api.GoogleAppsDriveLabelsV2LabelAppliedCapabilities
-    buildGoogleAppsDriveLabelsV2LabelAppliedCapabilities() {
+buildGoogleAppsDriveLabelsV2LabelAppliedCapabilities() {
   final o = api.GoogleAppsDriveLabelsV2LabelAppliedCapabilities();
   buildCounterGoogleAppsDriveLabelsV2LabelAppliedCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelAppliedCapabilities < 3) {
@@ -2023,7 +1909,8 @@ api.GoogleAppsDriveLabelsV2LabelAppliedCapabilities
 }
 
 void checkGoogleAppsDriveLabelsV2LabelAppliedCapabilities(
-    api.GoogleAppsDriveLabelsV2LabelAppliedCapabilities o) {
+  api.GoogleAppsDriveLabelsV2LabelAppliedCapabilities o,
+) {
   buildCounterGoogleAppsDriveLabelsV2LabelAppliedCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelAppliedCapabilities < 3) {
     unittest.expect(o.canApply!, unittest.isTrue);
@@ -2035,7 +1922,7 @@ void checkGoogleAppsDriveLabelsV2LabelAppliedCapabilities(
 
 core.int buildCounterGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy = 0;
 api.GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy
-    buildGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy() {
+buildGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy() {
   final o = api.GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy();
   buildCounterGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy < 3) {
@@ -2046,20 +1933,18 @@ api.GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy
 }
 
 void checkGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy(
-    api.GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy o) {
+  api.GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy o,
+) {
   buildCounterGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy < 3) {
-    unittest.expect(
-      o.copyMode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.copyMode!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2LabelDisplayHints = 0;
 api.GoogleAppsDriveLabelsV2LabelDisplayHints
-    buildGoogleAppsDriveLabelsV2LabelDisplayHints() {
+buildGoogleAppsDriveLabelsV2LabelDisplayHints() {
   final o = api.GoogleAppsDriveLabelsV2LabelDisplayHints();
   buildCounterGoogleAppsDriveLabelsV2LabelDisplayHints++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelDisplayHints < 3) {
@@ -2073,28 +1958,27 @@ api.GoogleAppsDriveLabelsV2LabelDisplayHints
 }
 
 void checkGoogleAppsDriveLabelsV2LabelDisplayHints(
-    api.GoogleAppsDriveLabelsV2LabelDisplayHints o) {
+  api.GoogleAppsDriveLabelsV2LabelDisplayHints o,
+) {
   buildCounterGoogleAppsDriveLabelsV2LabelDisplayHints++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelDisplayHints < 3) {
     unittest.expect(o.disabled!, unittest.isTrue);
     unittest.expect(o.hiddenInSearch!, unittest.isTrue);
-    unittest.expect(
-      o.priority!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.priority!, unittest.equals('foo'));
     unittest.expect(o.shownInApply!, unittest.isTrue);
   }
   buildCounterGoogleAppsDriveLabelsV2LabelDisplayHints--;
 }
 
 core.List<api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp>
-    buildUnnamed7() => [
-          buildGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(),
-          buildGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(),
-        ];
+buildUnnamed7() => [
+  buildGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(),
+  buildGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(),
+];
 
 void checkUnnamed7(
-    core.List<api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp> o) {
+  core.List<api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(o[0]);
   checkGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(o[1]);
@@ -2102,7 +1986,7 @@ void checkUnnamed7(
 
 core.int buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettings = 0;
 api.GoogleAppsDriveLabelsV2LabelEnabledAppSettings
-    buildGoogleAppsDriveLabelsV2LabelEnabledAppSettings() {
+buildGoogleAppsDriveLabelsV2LabelEnabledAppSettings() {
   final o = api.GoogleAppsDriveLabelsV2LabelEnabledAppSettings();
   buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettings++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettings < 3) {
@@ -2113,7 +1997,8 @@ api.GoogleAppsDriveLabelsV2LabelEnabledAppSettings
 }
 
 void checkGoogleAppsDriveLabelsV2LabelEnabledAppSettings(
-    api.GoogleAppsDriveLabelsV2LabelEnabledAppSettings o) {
+  api.GoogleAppsDriveLabelsV2LabelEnabledAppSettings o,
+) {
   buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettings++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettings < 3) {
     checkUnnamed7(o.enabledApps!);
@@ -2124,7 +2009,7 @@ void checkGoogleAppsDriveLabelsV2LabelEnabledAppSettings(
 core.int buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp =
     0;
 api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp
-    buildGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp() {
+buildGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp() {
   final o = api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp();
   buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp <
@@ -2136,21 +2021,19 @@ api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp
 }
 
 void checkGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(
-    api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp o) {
+  api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp o,
+) {
   buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp <
       3) {
-    unittest.expect(
-      o.app!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.app!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2LabelLimits = 0;
 api.GoogleAppsDriveLabelsV2LabelLimits
-    buildGoogleAppsDriveLabelsV2LabelLimits() {
+buildGoogleAppsDriveLabelsV2LabelLimits() {
   final o = api.GoogleAppsDriveLabelsV2LabelLimits();
   buildCounterGoogleAppsDriveLabelsV2LabelLimits++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelLimits < 3) {
@@ -2167,34 +2050,17 @@ api.GoogleAppsDriveLabelsV2LabelLimits
 }
 
 void checkGoogleAppsDriveLabelsV2LabelLimits(
-    api.GoogleAppsDriveLabelsV2LabelLimits o) {
+  api.GoogleAppsDriveLabelsV2LabelLimits o,
+) {
   buildCounterGoogleAppsDriveLabelsV2LabelLimits++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelLimits < 3) {
     checkGoogleAppsDriveLabelsV2FieldLimits(o.fieldLimits!);
-    unittest.expect(
-      o.maxDeletedFields!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxDescriptionLength!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxDraftRevisions!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxFields!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxTitleLength!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.maxDeletedFields!, unittest.equals(42));
+    unittest.expect(o.maxDescriptionLength!, unittest.equals(42));
+    unittest.expect(o.maxDraftRevisions!, unittest.equals(42));
+    unittest.expect(o.maxFields!, unittest.equals(42));
+    unittest.expect(o.maxTitleLength!, unittest.equals(42));
+    unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2LabelLimits--;
 }
@@ -2218,42 +2084,25 @@ api.GoogleAppsDriveLabelsV2LabelLock buildGoogleAppsDriveLabelsV2LabelLock() {
 }
 
 void checkGoogleAppsDriveLabelsV2LabelLock(
-    api.GoogleAppsDriveLabelsV2LabelLock o) {
+  api.GoogleAppsDriveLabelsV2LabelLock o,
+) {
   buildCounterGoogleAppsDriveLabelsV2LabelLock++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelLock < 3) {
     checkGoogleAppsDriveLabelsV2LabelLockCapabilities(o.capabilities!);
-    unittest.expect(
-      o.choiceId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.createTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.choiceId!, unittest.equals('foo'));
+    unittest.expect(o.createTime!, unittest.equals('foo'));
     checkGoogleAppsDriveLabelsV2UserInfo(o.creator!);
-    unittest.expect(
-      o.deleteTime!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.fieldId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.deleteTime!, unittest.equals('foo'));
+    unittest.expect(o.fieldId!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.state!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2LabelLock--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2LabelLockCapabilities = 0;
 api.GoogleAppsDriveLabelsV2LabelLockCapabilities
-    buildGoogleAppsDriveLabelsV2LabelLockCapabilities() {
+buildGoogleAppsDriveLabelsV2LabelLockCapabilities() {
   final o = api.GoogleAppsDriveLabelsV2LabelLockCapabilities();
   buildCounterGoogleAppsDriveLabelsV2LabelLockCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelLockCapabilities < 3) {
@@ -2264,7 +2113,8 @@ api.GoogleAppsDriveLabelsV2LabelLockCapabilities
 }
 
 void checkGoogleAppsDriveLabelsV2LabelLockCapabilities(
-    api.GoogleAppsDriveLabelsV2LabelLockCapabilities o) {
+  api.GoogleAppsDriveLabelsV2LabelLockCapabilities o,
+) {
   buildCounterGoogleAppsDriveLabelsV2LabelLockCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelLockCapabilities < 3) {
     unittest.expect(o.canViewPolicy!, unittest.isTrue);
@@ -2274,7 +2124,7 @@ void checkGoogleAppsDriveLabelsV2LabelLockCapabilities(
 
 core.int buildCounterGoogleAppsDriveLabelsV2LabelPermission = 0;
 api.GoogleAppsDriveLabelsV2LabelPermission
-    buildGoogleAppsDriveLabelsV2LabelPermission() {
+buildGoogleAppsDriveLabelsV2LabelPermission() {
   final o = api.GoogleAppsDriveLabelsV2LabelPermission();
   buildCounterGoogleAppsDriveLabelsV2LabelPermission++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelPermission < 3) {
@@ -2290,40 +2140,23 @@ api.GoogleAppsDriveLabelsV2LabelPermission
 }
 
 void checkGoogleAppsDriveLabelsV2LabelPermission(
-    api.GoogleAppsDriveLabelsV2LabelPermission o) {
+  api.GoogleAppsDriveLabelsV2LabelPermission o,
+) {
   buildCounterGoogleAppsDriveLabelsV2LabelPermission++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelPermission < 3) {
-    unittest.expect(
-      o.audience!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.email!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.group!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.person!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.role!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.audience!, unittest.equals('foo'));
+    unittest.expect(o.email!, unittest.equals('foo'));
+    unittest.expect(o.group!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.person!, unittest.equals('foo'));
+    unittest.expect(o.role!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2LabelPermission--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2LabelProperties = 0;
 api.GoogleAppsDriveLabelsV2LabelProperties
-    buildGoogleAppsDriveLabelsV2LabelProperties() {
+buildGoogleAppsDriveLabelsV2LabelProperties() {
   final o = api.GoogleAppsDriveLabelsV2LabelProperties();
   buildCounterGoogleAppsDriveLabelsV2LabelProperties++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelProperties < 3) {
@@ -2335,24 +2168,19 @@ api.GoogleAppsDriveLabelsV2LabelProperties
 }
 
 void checkGoogleAppsDriveLabelsV2LabelProperties(
-    api.GoogleAppsDriveLabelsV2LabelProperties o) {
+  api.GoogleAppsDriveLabelsV2LabelProperties o,
+) {
   buildCounterGoogleAppsDriveLabelsV2LabelProperties++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelProperties < 3) {
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.title!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.title!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2LabelProperties--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2LabelSchemaCapabilities = 0;
 api.GoogleAppsDriveLabelsV2LabelSchemaCapabilities
-    buildGoogleAppsDriveLabelsV2LabelSchemaCapabilities() {
+buildGoogleAppsDriveLabelsV2LabelSchemaCapabilities() {
   final o = api.GoogleAppsDriveLabelsV2LabelSchemaCapabilities();
   buildCounterGoogleAppsDriveLabelsV2LabelSchemaCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelSchemaCapabilities < 3) {
@@ -2366,7 +2194,8 @@ api.GoogleAppsDriveLabelsV2LabelSchemaCapabilities
 }
 
 void checkGoogleAppsDriveLabelsV2LabelSchemaCapabilities(
-    api.GoogleAppsDriveLabelsV2LabelSchemaCapabilities o) {
+  api.GoogleAppsDriveLabelsV2LabelSchemaCapabilities o,
+) {
   buildCounterGoogleAppsDriveLabelsV2LabelSchemaCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2LabelSchemaCapabilities < 3) {
     unittest.expect(o.canDelete!, unittest.isTrue);
@@ -2391,22 +2220,20 @@ api.GoogleAppsDriveLabelsV2Lifecycle buildGoogleAppsDriveLabelsV2Lifecycle() {
 }
 
 void checkGoogleAppsDriveLabelsV2Lifecycle(
-    api.GoogleAppsDriveLabelsV2Lifecycle o) {
+  api.GoogleAppsDriveLabelsV2Lifecycle o,
+) {
   buildCounterGoogleAppsDriveLabelsV2Lifecycle++;
   if (buildCounterGoogleAppsDriveLabelsV2Lifecycle < 3) {
     checkGoogleAppsDriveLabelsV2LifecycleDisabledPolicy(o.disabledPolicy!);
     unittest.expect(o.hasUnpublishedChanges!, unittest.isTrue);
-    unittest.expect(
-      o.state!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.state!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2Lifecycle--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2LifecycleDisabledPolicy = 0;
 api.GoogleAppsDriveLabelsV2LifecycleDisabledPolicy
-    buildGoogleAppsDriveLabelsV2LifecycleDisabledPolicy() {
+buildGoogleAppsDriveLabelsV2LifecycleDisabledPolicy() {
   final o = api.GoogleAppsDriveLabelsV2LifecycleDisabledPolicy();
   buildCounterGoogleAppsDriveLabelsV2LifecycleDisabledPolicy++;
   if (buildCounterGoogleAppsDriveLabelsV2LifecycleDisabledPolicy < 3) {
@@ -2418,7 +2245,8 @@ api.GoogleAppsDriveLabelsV2LifecycleDisabledPolicy
 }
 
 void checkGoogleAppsDriveLabelsV2LifecycleDisabledPolicy(
-    api.GoogleAppsDriveLabelsV2LifecycleDisabledPolicy o) {
+  api.GoogleAppsDriveLabelsV2LifecycleDisabledPolicy o,
+) {
   buildCounterGoogleAppsDriveLabelsV2LifecycleDisabledPolicy++;
   if (buildCounterGoogleAppsDriveLabelsV2LifecycleDisabledPolicy < 3) {
     unittest.expect(o.hideInSearch!, unittest.isTrue);
@@ -2428,9 +2256,9 @@ void checkGoogleAppsDriveLabelsV2LifecycleDisabledPolicy(
 }
 
 core.List<api.GoogleAppsDriveLabelsV2LabelLock> buildUnnamed8() => [
-      buildGoogleAppsDriveLabelsV2LabelLock(),
-      buildGoogleAppsDriveLabelsV2LabelLock(),
-    ];
+  buildGoogleAppsDriveLabelsV2LabelLock(),
+  buildGoogleAppsDriveLabelsV2LabelLock(),
+];
 
 void checkUnnamed8(core.List<api.GoogleAppsDriveLabelsV2LabelLock> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2440,7 +2268,7 @@ void checkUnnamed8(core.List<api.GoogleAppsDriveLabelsV2LabelLock> o) {
 
 core.int buildCounterGoogleAppsDriveLabelsV2ListLabelLocksResponse = 0;
 api.GoogleAppsDriveLabelsV2ListLabelLocksResponse
-    buildGoogleAppsDriveLabelsV2ListLabelLocksResponse() {
+buildGoogleAppsDriveLabelsV2ListLabelLocksResponse() {
   final o = api.GoogleAppsDriveLabelsV2ListLabelLocksResponse();
   buildCounterGoogleAppsDriveLabelsV2ListLabelLocksResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2ListLabelLocksResponse < 3) {
@@ -2452,22 +2280,20 @@ api.GoogleAppsDriveLabelsV2ListLabelLocksResponse
 }
 
 void checkGoogleAppsDriveLabelsV2ListLabelLocksResponse(
-    api.GoogleAppsDriveLabelsV2ListLabelLocksResponse o) {
+  api.GoogleAppsDriveLabelsV2ListLabelLocksResponse o,
+) {
   buildCounterGoogleAppsDriveLabelsV2ListLabelLocksResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2ListLabelLocksResponse < 3) {
     checkUnnamed8(o.labelLocks!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2ListLabelLocksResponse--;
 }
 
 core.List<api.GoogleAppsDriveLabelsV2LabelPermission> buildUnnamed9() => [
-      buildGoogleAppsDriveLabelsV2LabelPermission(),
-      buildGoogleAppsDriveLabelsV2LabelPermission(),
-    ];
+  buildGoogleAppsDriveLabelsV2LabelPermission(),
+  buildGoogleAppsDriveLabelsV2LabelPermission(),
+];
 
 void checkUnnamed9(core.List<api.GoogleAppsDriveLabelsV2LabelPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2477,7 +2303,7 @@ void checkUnnamed9(core.List<api.GoogleAppsDriveLabelsV2LabelPermission> o) {
 
 core.int buildCounterGoogleAppsDriveLabelsV2ListLabelPermissionsResponse = 0;
 api.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse
-    buildGoogleAppsDriveLabelsV2ListLabelPermissionsResponse() {
+buildGoogleAppsDriveLabelsV2ListLabelPermissionsResponse() {
   final o = api.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse();
   buildCounterGoogleAppsDriveLabelsV2ListLabelPermissionsResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2ListLabelPermissionsResponse < 3) {
@@ -2489,22 +2315,20 @@ api.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse
 }
 
 void checkGoogleAppsDriveLabelsV2ListLabelPermissionsResponse(
-    api.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse o) {
+  api.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse o,
+) {
   buildCounterGoogleAppsDriveLabelsV2ListLabelPermissionsResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2ListLabelPermissionsResponse < 3) {
     checkUnnamed9(o.labelPermissions!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2ListLabelPermissionsResponse--;
 }
 
 core.List<api.GoogleAppsDriveLabelsV2Label> buildUnnamed10() => [
-      buildGoogleAppsDriveLabelsV2Label(),
-      buildGoogleAppsDriveLabelsV2Label(),
-    ];
+  buildGoogleAppsDriveLabelsV2Label(),
+  buildGoogleAppsDriveLabelsV2Label(),
+];
 
 void checkUnnamed10(core.List<api.GoogleAppsDriveLabelsV2Label> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2514,7 +2338,7 @@ void checkUnnamed10(core.List<api.GoogleAppsDriveLabelsV2Label> o) {
 
 core.int buildCounterGoogleAppsDriveLabelsV2ListLabelsResponse = 0;
 api.GoogleAppsDriveLabelsV2ListLabelsResponse
-    buildGoogleAppsDriveLabelsV2ListLabelsResponse() {
+buildGoogleAppsDriveLabelsV2ListLabelsResponse() {
   final o = api.GoogleAppsDriveLabelsV2ListLabelsResponse();
   buildCounterGoogleAppsDriveLabelsV2ListLabelsResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2ListLabelsResponse < 3) {
@@ -2526,14 +2350,12 @@ api.GoogleAppsDriveLabelsV2ListLabelsResponse
 }
 
 void checkGoogleAppsDriveLabelsV2ListLabelsResponse(
-    api.GoogleAppsDriveLabelsV2ListLabelsResponse o) {
+  api.GoogleAppsDriveLabelsV2ListLabelsResponse o,
+) {
   buildCounterGoogleAppsDriveLabelsV2ListLabelsResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2ListLabelsResponse < 3) {
     checkUnnamed10(o.labels!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2ListLabelsResponse--;
 }
@@ -2550,13 +2372,11 @@ api.GoogleAppsDriveLabelsV2ListLimits buildGoogleAppsDriveLabelsV2ListLimits() {
 }
 
 void checkGoogleAppsDriveLabelsV2ListLimits(
-    api.GoogleAppsDriveLabelsV2ListLimits o) {
+  api.GoogleAppsDriveLabelsV2ListLimits o,
+) {
   buildCounterGoogleAppsDriveLabelsV2ListLimits++;
   if (buildCounterGoogleAppsDriveLabelsV2ListLimits < 3) {
-    unittest.expect(
-      o.maxEntries!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.maxEntries!, unittest.equals(42));
   }
   buildCounterGoogleAppsDriveLabelsV2ListLimits--;
 }
@@ -2573,7 +2393,8 @@ api.GoogleAppsDriveLabelsV2LockStatus buildGoogleAppsDriveLabelsV2LockStatus() {
 }
 
 void checkGoogleAppsDriveLabelsV2LockStatus(
-    api.GoogleAppsDriveLabelsV2LockStatus o) {
+  api.GoogleAppsDriveLabelsV2LockStatus o,
+) {
   buildCounterGoogleAppsDriveLabelsV2LockStatus++;
   if (buildCounterGoogleAppsDriveLabelsV2LockStatus < 3) {
     unittest.expect(o.locked!, unittest.isTrue);
@@ -2583,7 +2404,7 @@ void checkGoogleAppsDriveLabelsV2LockStatus(
 
 core.int buildCounterGoogleAppsDriveLabelsV2LongTextLimits = 0;
 api.GoogleAppsDriveLabelsV2LongTextLimits
-    buildGoogleAppsDriveLabelsV2LongTextLimits() {
+buildGoogleAppsDriveLabelsV2LongTextLimits() {
   final o = api.GoogleAppsDriveLabelsV2LongTextLimits();
   buildCounterGoogleAppsDriveLabelsV2LongTextLimits++;
   if (buildCounterGoogleAppsDriveLabelsV2LongTextLimits < 3) {
@@ -2595,24 +2416,19 @@ api.GoogleAppsDriveLabelsV2LongTextLimits
 }
 
 void checkGoogleAppsDriveLabelsV2LongTextLimits(
-    api.GoogleAppsDriveLabelsV2LongTextLimits o) {
+  api.GoogleAppsDriveLabelsV2LongTextLimits o,
+) {
   buildCounterGoogleAppsDriveLabelsV2LongTextLimits++;
   if (buildCounterGoogleAppsDriveLabelsV2LongTextLimits < 3) {
-    unittest.expect(
-      o.maxLength!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.minLength!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.maxLength!, unittest.equals(42));
+    unittest.expect(o.minLength!, unittest.equals(42));
   }
   buildCounterGoogleAppsDriveLabelsV2LongTextLimits--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2PublishLabelRequest = 0;
 api.GoogleAppsDriveLabelsV2PublishLabelRequest
-    buildGoogleAppsDriveLabelsV2PublishLabelRequest() {
+buildGoogleAppsDriveLabelsV2PublishLabelRequest() {
   final o = api.GoogleAppsDriveLabelsV2PublishLabelRequest();
   buildCounterGoogleAppsDriveLabelsV2PublishLabelRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2PublishLabelRequest < 3) {
@@ -2625,13 +2441,11 @@ api.GoogleAppsDriveLabelsV2PublishLabelRequest
 }
 
 void checkGoogleAppsDriveLabelsV2PublishLabelRequest(
-    api.GoogleAppsDriveLabelsV2PublishLabelRequest o) {
+  api.GoogleAppsDriveLabelsV2PublishLabelRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2PublishLabelRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2PublishLabelRequest < 3) {
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.useAdminAccess!, unittest.isTrue);
     checkGoogleAppsDriveLabelsV2WriteControl(o.writeControl!);
   }
@@ -2640,7 +2454,7 @@ void checkGoogleAppsDriveLabelsV2PublishLabelRequest(
 
 core.int buildCounterGoogleAppsDriveLabelsV2SelectionLimits = 0;
 api.GoogleAppsDriveLabelsV2SelectionLimits
-    buildGoogleAppsDriveLabelsV2SelectionLimits() {
+buildGoogleAppsDriveLabelsV2SelectionLimits() {
   final o = api.GoogleAppsDriveLabelsV2SelectionLimits();
   buildCounterGoogleAppsDriveLabelsV2SelectionLimits++;
   if (buildCounterGoogleAppsDriveLabelsV2SelectionLimits < 3) {
@@ -2655,26 +2469,15 @@ api.GoogleAppsDriveLabelsV2SelectionLimits
 }
 
 void checkGoogleAppsDriveLabelsV2SelectionLimits(
-    api.GoogleAppsDriveLabelsV2SelectionLimits o) {
+  api.GoogleAppsDriveLabelsV2SelectionLimits o,
+) {
   buildCounterGoogleAppsDriveLabelsV2SelectionLimits++;
   if (buildCounterGoogleAppsDriveLabelsV2SelectionLimits < 3) {
     checkGoogleAppsDriveLabelsV2ListLimits(o.listLimits!);
-    unittest.expect(
-      o.maxChoices!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxDeletedChoices!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxDisplayNameLength!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.maxIdLength!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.maxChoices!, unittest.equals(42));
+    unittest.expect(o.maxDeletedChoices!, unittest.equals(42));
+    unittest.expect(o.maxDisplayNameLength!, unittest.equals(42));
+    unittest.expect(o.maxIdLength!, unittest.equals(42));
   }
   buildCounterGoogleAppsDriveLabelsV2SelectionLimits--;
 }
@@ -2692,24 +2495,19 @@ api.GoogleAppsDriveLabelsV2TextLimits buildGoogleAppsDriveLabelsV2TextLimits() {
 }
 
 void checkGoogleAppsDriveLabelsV2TextLimits(
-    api.GoogleAppsDriveLabelsV2TextLimits o) {
+  api.GoogleAppsDriveLabelsV2TextLimits o,
+) {
   buildCounterGoogleAppsDriveLabelsV2TextLimits++;
   if (buildCounterGoogleAppsDriveLabelsV2TextLimits < 3) {
-    unittest.expect(
-      o.maxLength!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.minLength!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.maxLength!, unittest.equals(42));
+    unittest.expect(o.minLength!, unittest.equals(42));
   }
   buildCounterGoogleAppsDriveLabelsV2TextLimits--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest = 0;
 api.GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest
-    buildGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest() {
+buildGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest() {
   final o = api.GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest();
   buildCounterGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest < 3) {
@@ -2723,30 +2521,22 @@ api.GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest
 }
 
 void checkGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest(
-    api.GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest o) {
+  api.GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest < 3) {
-    unittest.expect(
-      o.copyMode!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.copyMode!, unittest.equals('foo'));
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.useAdminAccess!, unittest.isTrue);
-    unittest.expect(
-      o.view!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.view!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest--;
 }
 
 core.int
-    buildCounterGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest = 0;
+buildCounterGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest = 0;
 api.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest
-    buildGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest() {
+buildGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest() {
   final o = api.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest();
   buildCounterGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest <
@@ -2762,27 +2552,22 @@ api.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest
 }
 
 void checkGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest(
-    api.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest o) {
+  api.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest <
       3) {
     checkGoogleAppsDriveLabelsV2LabelEnabledAppSettings(o.enabledAppSettings!);
-    unittest.expect(
-      o.languageCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
     unittest.expect(o.useAdminAccess!, unittest.isTrue);
-    unittest.expect(
-      o.view!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.view!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest = 0;
 api.GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest
-    buildGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest() {
+buildGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest() {
   final o = api.GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest();
   buildCounterGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest < 3) {
@@ -2795,14 +2580,12 @@ api.GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest
 }
 
 void checkGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest(
-    api.GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest o) {
+  api.GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest o,
+) {
   buildCounterGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest++;
   if (buildCounterGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest < 3) {
     checkGoogleAppsDriveLabelsV2LabelPermission(o.labelPermission!);
-    unittest.expect(
-      o.parent!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.parent!, unittest.equals('foo'));
     unittest.expect(o.useAdminAccess!, unittest.isTrue);
   }
   buildCounterGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest--;
@@ -2810,7 +2593,7 @@ void checkGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest(
 
 core.int buildCounterGoogleAppsDriveLabelsV2UserCapabilities = 0;
 api.GoogleAppsDriveLabelsV2UserCapabilities
-    buildGoogleAppsDriveLabelsV2UserCapabilities() {
+buildGoogleAppsDriveLabelsV2UserCapabilities() {
   final o = api.GoogleAppsDriveLabelsV2UserCapabilities();
   buildCounterGoogleAppsDriveLabelsV2UserCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2UserCapabilities < 3) {
@@ -2825,17 +2608,15 @@ api.GoogleAppsDriveLabelsV2UserCapabilities
 }
 
 void checkGoogleAppsDriveLabelsV2UserCapabilities(
-    api.GoogleAppsDriveLabelsV2UserCapabilities o) {
+  api.GoogleAppsDriveLabelsV2UserCapabilities o,
+) {
   buildCounterGoogleAppsDriveLabelsV2UserCapabilities++;
   if (buildCounterGoogleAppsDriveLabelsV2UserCapabilities < 3) {
     unittest.expect(o.canAccessLabelManager!, unittest.isTrue);
     unittest.expect(o.canAdministrateLabels!, unittest.isTrue);
     unittest.expect(o.canCreateAdminLabels!, unittest.isTrue);
     unittest.expect(o.canCreateSharedLabels!, unittest.isTrue);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2UserCapabilities--;
 }
@@ -2852,13 +2633,11 @@ api.GoogleAppsDriveLabelsV2UserInfo buildGoogleAppsDriveLabelsV2UserInfo() {
 }
 
 void checkGoogleAppsDriveLabelsV2UserInfo(
-    api.GoogleAppsDriveLabelsV2UserInfo o) {
+  api.GoogleAppsDriveLabelsV2UserInfo o,
+) {
   buildCounterGoogleAppsDriveLabelsV2UserInfo++;
   if (buildCounterGoogleAppsDriveLabelsV2UserInfo < 3) {
-    unittest.expect(
-      o.person!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.person!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2UserInfo--;
 }
@@ -2875,7 +2654,8 @@ api.GoogleAppsDriveLabelsV2UserLimits buildGoogleAppsDriveLabelsV2UserLimits() {
 }
 
 void checkGoogleAppsDriveLabelsV2UserLimits(
-    api.GoogleAppsDriveLabelsV2UserLimits o) {
+  api.GoogleAppsDriveLabelsV2UserLimits o,
+) {
   buildCounterGoogleAppsDriveLabelsV2UserLimits++;
   if (buildCounterGoogleAppsDriveLabelsV2UserLimits < 3) {
     checkGoogleAppsDriveLabelsV2ListLimits(o.listLimits!);
@@ -2885,7 +2665,7 @@ void checkGoogleAppsDriveLabelsV2UserLimits(
 
 core.int buildCounterGoogleAppsDriveLabelsV2WriteControl = 0;
 api.GoogleAppsDriveLabelsV2WriteControl
-    buildGoogleAppsDriveLabelsV2WriteControl() {
+buildGoogleAppsDriveLabelsV2WriteControl() {
   final o = api.GoogleAppsDriveLabelsV2WriteControl();
   buildCounterGoogleAppsDriveLabelsV2WriteControl++;
   if (buildCounterGoogleAppsDriveLabelsV2WriteControl < 3) {
@@ -2896,13 +2676,11 @@ api.GoogleAppsDriveLabelsV2WriteControl
 }
 
 void checkGoogleAppsDriveLabelsV2WriteControl(
-    api.GoogleAppsDriveLabelsV2WriteControl o) {
+  api.GoogleAppsDriveLabelsV2WriteControl o,
+) {
   buildCounterGoogleAppsDriveLabelsV2WriteControl++;
   if (buildCounterGoogleAppsDriveLabelsV2WriteControl < 3) {
-    unittest.expect(
-      o.requiredRevisionId!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.requiredRevisionId!, unittest.equals('foo'));
   }
   buildCounterGoogleAppsDriveLabelsV2WriteControl--;
 }
@@ -2939,22 +2717,10 @@ api.GoogleTypeColor buildGoogleTypeColor() {
 void checkGoogleTypeColor(api.GoogleTypeColor o) {
   buildCounterGoogleTypeColor++;
   if (buildCounterGoogleTypeColor < 3) {
-    unittest.expect(
-      o.alpha!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.blue!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.green!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.red!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.alpha!, unittest.equals(42.0));
+    unittest.expect(o.blue!, unittest.equals(42.0));
+    unittest.expect(o.green!, unittest.equals(42.0));
+    unittest.expect(o.red!, unittest.equals(42.0));
   }
   buildCounterGoogleTypeColor--;
 }
@@ -2975,18 +2741,9 @@ api.GoogleTypeDate buildGoogleTypeDate() {
 void checkGoogleTypeDate(api.GoogleTypeDate o) {
   buildCounterGoogleTypeDate++;
   if (buildCounterGoogleTypeDate < 3) {
-    unittest.expect(
-      o.day!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.month!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.year!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.day!, unittest.equals(42));
+    unittest.expect(o.month!, unittest.equals(42));
+    unittest.expect(o.year!, unittest.equals(42));
   }
   buildCounterGoogleTypeDate--;
 }
@@ -2997,7 +2754,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2BadgeColors();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2BadgeColors.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2BadgeColors(od);
     });
   });
@@ -3007,481 +2765,584 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2BadgeConfig();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2BadgeConfig.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2BadgeConfig(od);
     });
   });
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleAppsDriveLabelsV2DateLimits', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsDriveLabelsV2DateLimits();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2DateLimits.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2DateLimits(od);
     });
   });
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeleteLabelPermissionRequest(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest(
-          od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse(
+          od,
+        );
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleAppsDriveLabelsV2DisableLabelRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsDriveLabelsV2DisableLabelRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2DisableLabelRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2DisableLabelRequest(od);
     });
   });
@@ -3491,7 +3352,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2EnableLabelRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2EnableLabelRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2EnableLabelRequest(od);
     });
   });
@@ -3501,28 +3363,33 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2Field();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2Field.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2Field(od);
     });
   });
 
-  unittest.group('obj-schema-GoogleAppsDriveLabelsV2FieldAppliedCapabilities',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2FieldAppliedCapabilities();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2FieldAppliedCapabilities.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2FieldAppliedCapabilities(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleAppsDriveLabelsV2FieldAppliedCapabilities',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2FieldAppliedCapabilities();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleAppsDriveLabelsV2FieldAppliedCapabilities.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2FieldAppliedCapabilities(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleAppsDriveLabelsV2FieldDateOptions', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsDriveLabelsV2FieldDateOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2FieldDateOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2FieldDateOptions(od);
     });
   });
@@ -3532,7 +3399,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2FieldDisplayHints();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2FieldDisplayHints.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2FieldDisplayHints(od);
     });
   });
@@ -3542,7 +3410,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2FieldIntegerOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2FieldIntegerOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2FieldIntegerOptions(od);
     });
   });
@@ -3552,7 +3421,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2FieldLimits();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2FieldLimits.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2FieldLimits(od);
     });
   });
@@ -3562,7 +3432,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2FieldListOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2FieldListOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2FieldListOptions(od);
     });
   });
@@ -3572,108 +3443,127 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2FieldProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2FieldProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2FieldProperties(od);
     });
   });
 
-  unittest.group('obj-schema-GoogleAppsDriveLabelsV2FieldSchemaCapabilities',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2FieldSchemaCapabilities();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2FieldSchemaCapabilities.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2FieldSchemaCapabilities(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleAppsDriveLabelsV2FieldSchemaCapabilities',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2FieldSchemaCapabilities();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleAppsDriveLabelsV2FieldSchemaCapabilities.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2FieldSchemaCapabilities(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleAppsDriveLabelsV2FieldSelectionOptions', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsDriveLabelsV2FieldSelectionOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2FieldSelectionOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2FieldSelectionOptions(od);
     });
   });
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoice(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities(
-          od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleAppsDriveLabelsV2FieldTextOptions', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsDriveLabelsV2FieldTextOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2FieldTextOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2FieldTextOptions(od);
     });
   });
@@ -3683,7 +3573,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2FieldUserOptions();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2FieldUserOptions.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2FieldUserOptions(od);
     });
   });
@@ -3693,7 +3584,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2IntegerLimits();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2IntegerLimits.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2IntegerLimits(od);
     });
   });
@@ -3703,73 +3595,88 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2Label();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2Label.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2Label(od);
     });
   });
 
-  unittest.group('obj-schema-GoogleAppsDriveLabelsV2LabelAppliedCapabilities',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2LabelAppliedCapabilities();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2LabelAppliedCapabilities.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2LabelAppliedCapabilities(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleAppsDriveLabelsV2LabelAppliedCapabilities',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2LabelAppliedCapabilities();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleAppsDriveLabelsV2LabelAppliedCapabilities.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2LabelAppliedCapabilities(od);
+      });
+    },
+  );
 
-  unittest.group('obj-schema-GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2LabelAppliedLabelPolicy(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleAppsDriveLabelsV2LabelDisplayHints', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsDriveLabelsV2LabelDisplayHints();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2LabelDisplayHints.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2LabelDisplayHints(od);
     });
   });
 
-  unittest.group('obj-schema-GoogleAppsDriveLabelsV2LabelEnabledAppSettings',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2LabelEnabledAppSettings();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2LabelEnabledAppSettings.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2LabelEnabledAppSettings(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleAppsDriveLabelsV2LabelEnabledAppSettings',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2LabelEnabledAppSettings();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleAppsDriveLabelsV2LabelEnabledAppSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2LabelEnabledAppSettings(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleAppsDriveLabelsV2LabelLimits', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsDriveLabelsV2LabelLimits();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2LabelLimits.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2LabelLimits(od);
     });
   });
@@ -3779,7 +3686,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2LabelLock();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2LabelLock.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2LabelLock(od);
     });
   });
@@ -3789,7 +3697,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2LabelLockCapabilities();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2LabelLockCapabilities.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2LabelLockCapabilities(od);
     });
   });
@@ -3799,7 +3708,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2LabelPermission();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2LabelPermission.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2LabelPermission(od);
     });
   });
@@ -3809,72 +3719,87 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2LabelProperties();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2LabelProperties.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2LabelProperties(od);
     });
   });
 
-  unittest.group('obj-schema-GoogleAppsDriveLabelsV2LabelSchemaCapabilities',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2LabelSchemaCapabilities();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2LabelSchemaCapabilities.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2LabelSchemaCapabilities(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleAppsDriveLabelsV2LabelSchemaCapabilities',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2LabelSchemaCapabilities();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleAppsDriveLabelsV2LabelSchemaCapabilities.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2LabelSchemaCapabilities(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleAppsDriveLabelsV2Lifecycle', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsDriveLabelsV2Lifecycle();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2Lifecycle.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2Lifecycle(od);
     });
   });
 
-  unittest.group('obj-schema-GoogleAppsDriveLabelsV2LifecycleDisabledPolicy',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2LifecycleDisabledPolicy();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2LifecycleDisabledPolicy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2LifecycleDisabledPolicy(od);
-    });
-  });
-
-  unittest.group('obj-schema-GoogleAppsDriveLabelsV2ListLabelLocksResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2ListLabelLocksResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2ListLabelLocksResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2ListLabelLocksResponse(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleAppsDriveLabelsV2LifecycleDisabledPolicy',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2LifecycleDisabledPolicy();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleAppsDriveLabelsV2LifecycleDisabledPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2LifecycleDisabledPolicy(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2ListLabelPermissionsResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2ListLabelPermissionsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2ListLabelPermissionsResponse(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2ListLabelLocksResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2ListLabelLocksResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleAppsDriveLabelsV2ListLabelLocksResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2ListLabelLocksResponse(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleAppsDriveLabelsV2ListLabelPermissionsResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2ListLabelPermissionsResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2ListLabelPermissionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2ListLabelPermissionsResponse(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleAppsDriveLabelsV2ListLabelsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsDriveLabelsV2ListLabelsResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2ListLabelsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2ListLabelsResponse(od);
     });
   });
@@ -3884,7 +3809,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2ListLimits();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2ListLimits.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2ListLimits(od);
     });
   });
@@ -3894,7 +3820,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2LockStatus();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2LockStatus.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2LockStatus(od);
     });
   });
@@ -3904,7 +3831,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2LongTextLimits();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2LongTextLimits.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2LongTextLimits(od);
     });
   });
@@ -3914,7 +3842,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2PublishLabelRequest();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2PublishLabelRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2PublishLabelRequest(od);
     });
   });
@@ -3924,7 +3853,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2SelectionLimits();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2SelectionLimits.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2SelectionLimits(od);
     });
   });
@@ -3934,53 +3864,65 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2TextLimits();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2TextLimits.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2TextLimits(od);
     });
   });
 
-  unittest.group('obj-schema-GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest(od);
-    });
-  });
+    'obj-schema-GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleAppsDriveLabelsV2UserCapabilities', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsDriveLabelsV2UserCapabilities();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2UserCapabilities.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2UserCapabilities(od);
     });
   });
@@ -3990,7 +3932,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2UserInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2UserInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2UserInfo(od);
     });
   });
@@ -4000,7 +3943,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2UserLimits();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2UserLimits.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2UserLimits(od);
     });
   });
@@ -4010,7 +3954,8 @@ void main() {
       final o = buildGoogleAppsDriveLabelsV2WriteControl();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleAppsDriveLabelsV2WriteControl.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleAppsDriveLabelsV2WriteControl(od);
     });
   });
@@ -4020,7 +3965,8 @@ void main() {
       final o = buildGoogleProtobufEmpty();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleProtobufEmpty.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleProtobufEmpty(od);
     });
   });
@@ -4030,7 +3976,8 @@ void main() {
       final o = buildGoogleTypeColor();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleTypeColor.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleTypeColor(od);
     });
   });
@@ -4040,7 +3987,8 @@ void main() {
       final o = buildGoogleTypeDate();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleTypeDate.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleTypeDate(od);
     });
   });
@@ -4053,66 +4001,71 @@ void main() {
       final arg_languageCode = 'foo';
       final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleAppsDriveLabelsV2Label.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2Label(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleAppsDriveLabelsV2Label.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2Label(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 9),
-          unittest.equals('v2/labels'),
-        );
-        pathOffset += 9;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 9),
+            unittest.equals('v2/labels'),
+          );
+          pathOffset += 9;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['languageCode']!.first,
-          unittest.equals(arg_languageCode),
-        );
-        unittest.expect(
-          queryMap['useAdminAccess']!.first,
-          unittest.equals('$arg_useAdminAccess'),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['languageCode']!.first,
+            unittest.equals(arg_languageCode),
+          );
+          unittest.expect(
+            queryMap['useAdminAccess']!.first,
+            unittest.equals('$arg_useAdminAccess'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.create(arg_request,
-          languageCode: arg_languageCode,
-          useAdminAccess: arg_useAdminAccess,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        languageCode: arg_languageCode,
+        useAdminAccess: arg_useAdminAccess,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2Label(
-          response as api.GoogleAppsDriveLabelsV2Label);
+        response as api.GoogleAppsDriveLabelsV2Label,
+      );
     });
 
     unittest.test('method--delete', () async {
@@ -4122,61 +4075,64 @@ void main() {
       final arg_useAdminAccess = true;
       final arg_writeControl_requiredRevisionId = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['useAdminAccess']!.first,
-          unittest.equals('$arg_useAdminAccess'),
-        );
-        unittest.expect(
-          queryMap['writeControl.requiredRevisionId']!.first,
-          unittest.equals(arg_writeControl_requiredRevisionId),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['useAdminAccess']!.first,
+            unittest.equals('$arg_useAdminAccess'),
+          );
+          unittest.expect(
+            queryMap['writeControl.requiredRevisionId']!.first,
+            unittest.equals(arg_writeControl_requiredRevisionId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleProtobufEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.delete(arg_name,
-          useAdminAccess: arg_useAdminAccess,
-          writeControl_requiredRevisionId: arg_writeControl_requiredRevisionId,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleProtobufEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        useAdminAccess: arg_useAdminAccess,
+        writeControl_requiredRevisionId: arg_writeControl_requiredRevisionId,
+        $fields: arg_$fields,
+      );
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
@@ -4186,58 +4142,66 @@ void main() {
       final arg_request = buildGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api
+              .GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2DeltaUpdateLabelRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.delta(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delta(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2DeltaUpdateLabelResponse(
-          response as api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse);
+        response as api.GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse,
+      );
     });
 
     unittest.test('method--disable', () async {
@@ -4246,57 +4210,63 @@ void main() {
       final arg_request = buildGoogleAppsDriveLabelsV2DisableLabelRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleAppsDriveLabelsV2DisableLabelRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2DisableLabelRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleAppsDriveLabelsV2DisableLabelRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2DisableLabelRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.disable(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.disable(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2Label(
-          response as api.GoogleAppsDriveLabelsV2Label);
+        response as api.GoogleAppsDriveLabelsV2Label,
+      );
     });
 
     unittest.test('method--enable', () async {
@@ -4305,57 +4275,63 @@ void main() {
       final arg_request = buildGoogleAppsDriveLabelsV2EnableLabelRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleAppsDriveLabelsV2EnableLabelRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2EnableLabelRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleAppsDriveLabelsV2EnableLabelRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2EnableLabelRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.enable(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.enable(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2Label(
-          response as api.GoogleAppsDriveLabelsV2Label);
+        response as api.GoogleAppsDriveLabelsV2Label,
+      );
     });
 
     unittest.test('method--get', () async {
@@ -4366,68 +4342,69 @@ void main() {
       final arg_useAdminAccess = true;
       final arg_view = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['languageCode']!.first,
-          unittest.equals(arg_languageCode),
-        );
-        unittest.expect(
-          queryMap['useAdminAccess']!.first,
-          unittest.equals('$arg_useAdminAccess'),
-        );
-        unittest.expect(
-          queryMap['view']!.first,
-          unittest.equals(arg_view),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['languageCode']!.first,
+            unittest.equals(arg_languageCode),
+          );
+          unittest.expect(
+            queryMap['useAdminAccess']!.first,
+            unittest.equals('$arg_useAdminAccess'),
+          );
+          unittest.expect(queryMap['view']!.first, unittest.equals(arg_view));
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.get(arg_name,
-          languageCode: arg_languageCode,
-          useAdminAccess: arg_useAdminAccess,
-          view: arg_view,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(
+        arg_name,
+        languageCode: arg_languageCode,
+        useAdminAccess: arg_useAdminAccess,
+        view: arg_view,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2Label(
-          response as api.GoogleAppsDriveLabelsV2Label);
+        response as api.GoogleAppsDriveLabelsV2Label,
+      );
     });
 
     unittest.test('method--list', () async {
@@ -4442,93 +4419,94 @@ void main() {
       final arg_useAdminAccess = true;
       final arg_view = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 9),
-          unittest.equals('v2/labels'),
-        );
-        pathOffset += 9;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 9),
+            unittest.equals('v2/labels'),
+          );
+          pathOffset += 9;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['customer']!.first,
-          unittest.equals(arg_customer),
-        );
-        unittest.expect(
-          queryMap['languageCode']!.first,
-          unittest.equals(arg_languageCode),
-        );
-        unittest.expect(
-          queryMap['minimumRole']!.first,
-          unittest.equals(arg_minimumRole),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['publishedOnly']!.first,
-          unittest.equals('$arg_publishedOnly'),
-        );
-        unittest.expect(
-          queryMap['useAdminAccess']!.first,
-          unittest.equals('$arg_useAdminAccess'),
-        );
-        unittest.expect(
-          queryMap['view']!.first,
-          unittest.equals(arg_view),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['customer']!.first,
+            unittest.equals(arg_customer),
+          );
+          unittest.expect(
+            queryMap['languageCode']!.first,
+            unittest.equals(arg_languageCode),
+          );
+          unittest.expect(
+            queryMap['minimumRole']!.first,
+            unittest.equals(arg_minimumRole),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['publishedOnly']!.first,
+            unittest.equals('$arg_publishedOnly'),
+          );
+          unittest.expect(
+            queryMap['useAdminAccess']!.first,
+            unittest.equals('$arg_useAdminAccess'),
+          );
+          unittest.expect(queryMap['view']!.first, unittest.equals(arg_view));
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleAppsDriveLabelsV2ListLabelsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAppsDriveLabelsV2ListLabelsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.list(
-          customer: arg_customer,
-          languageCode: arg_languageCode,
-          minimumRole: arg_minimumRole,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          publishedOnly: arg_publishedOnly,
-          useAdminAccess: arg_useAdminAccess,
-          view: arg_view,
-          $fields: arg_$fields);
+        customer: arg_customer,
+        languageCode: arg_languageCode,
+        minimumRole: arg_minimumRole,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        publishedOnly: arg_publishedOnly,
+        useAdminAccess: arg_useAdminAccess,
+        view: arg_view,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2ListLabelsResponse(
-          response as api.GoogleAppsDriveLabelsV2ListLabelsResponse);
+        response as api.GoogleAppsDriveLabelsV2ListLabelsResponse,
+      );
     });
 
     unittest.test('method--publish', () async {
@@ -4537,57 +4515,63 @@ void main() {
       final arg_request = buildGoogleAppsDriveLabelsV2PublishLabelRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleAppsDriveLabelsV2PublishLabelRequest.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2PublishLabelRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleAppsDriveLabelsV2PublishLabelRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2PublishLabelRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.publish(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.publish(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2Label(
-          response as api.GoogleAppsDriveLabelsV2Label);
+        response as api.GoogleAppsDriveLabelsV2Label,
+      );
     });
 
     unittest.test('method--updateLabelCopyMode', () async {
@@ -4597,58 +4581,64 @@ void main() {
           buildGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest.fromJson(
-                json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api
+              .GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.updateLabelCopyMode(arg_request, arg_name,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.updateLabelCopyMode(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2Label(
-          response as api.GoogleAppsDriveLabelsV2Label);
+        response as api.GoogleAppsDriveLabelsV2Label,
+      );
     });
 
     unittest.test('method--updateLabelEnabledAppSettings', () async {
@@ -4658,59 +4648,64 @@ void main() {
           buildGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest
-                .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api
+              .GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.updateLabelEnabledAppSettings(
-          arg_request, arg_name,
-          $fields: arg_$fields);
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2Label(
-          response as api.GoogleAppsDriveLabelsV2Label);
+        response as api.GoogleAppsDriveLabelsV2Label,
+      );
     });
 
     unittest.test('method--updatePermissions', () async {
@@ -4720,62 +4715,70 @@ void main() {
       final arg_parent = 'foo';
       final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleAppsDriveLabelsV2LabelPermission.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2LabelPermission(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleAppsDriveLabelsV2LabelPermission.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2LabelPermission(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['useAdminAccess']!.first,
-          unittest.equals('$arg_useAdminAccess'),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['useAdminAccess']!.first,
+            unittest.equals('$arg_useAdminAccess'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGoogleAppsDriveLabelsV2LabelPermission());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.updatePermissions(arg_request, arg_parent,
-          useAdminAccess: arg_useAdminAccess, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAppsDriveLabelsV2LabelPermission(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.updatePermissions(
+        arg_request,
+        arg_parent,
+        useAdminAccess: arg_useAdminAccess,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2LabelPermission(
-          response as api.GoogleAppsDriveLabelsV2LabelPermission);
+        response as api.GoogleAppsDriveLabelsV2LabelPermission,
+      );
     });
   });
 
@@ -4787,64 +4790,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleAppsDriveLabelsV2ListLabelLocksResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAppsDriveLabelsV2ListLabelLocksResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2ListLabelLocksResponse(
-          response as api.GoogleAppsDriveLabelsV2ListLabelLocksResponse);
+        response as api.GoogleAppsDriveLabelsV2ListLabelLocksResponse,
+      );
     });
   });
 
@@ -4856,56 +4864,61 @@ void main() {
           buildGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest
-                .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api
+              .GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleProtobufEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.batchDelete(arg_request, arg_parent, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleProtobufEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.batchDelete(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
@@ -4916,59 +4929,67 @@ void main() {
           buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest
-                .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api
+              .GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.batchUpdate(arg_request, arg_parent, $fields: arg_$fields);
-      checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse(response
-          as api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.batchUpdate(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse(
+        response
+            as api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse,
+      );
     });
 
     unittest.test('method--create', () async {
@@ -4978,62 +4999,70 @@ void main() {
       final arg_parent = 'foo';
       final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleAppsDriveLabelsV2LabelPermission.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2LabelPermission(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleAppsDriveLabelsV2LabelPermission.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2LabelPermission(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['useAdminAccess']!.first,
-          unittest.equals('$arg_useAdminAccess'),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['useAdminAccess']!.first,
+            unittest.equals('$arg_useAdminAccess'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGoogleAppsDriveLabelsV2LabelPermission());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.create(arg_request, arg_parent,
-          useAdminAccess: arg_useAdminAccess, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAppsDriveLabelsV2LabelPermission(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        useAdminAccess: arg_useAdminAccess,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2LabelPermission(
-          response as api.GoogleAppsDriveLabelsV2LabelPermission);
+        response as api.GoogleAppsDriveLabelsV2LabelPermission,
+      );
     });
 
     unittest.test('method--delete', () async {
@@ -5042,55 +5071,59 @@ void main() {
       final arg_name = 'foo';
       final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['useAdminAccess']!.first,
-          unittest.equals('$arg_useAdminAccess'),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['useAdminAccess']!.first,
+            unittest.equals('$arg_useAdminAccess'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleProtobufEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.delete(arg_name,
-          useAdminAccess: arg_useAdminAccess, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleProtobufEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        useAdminAccess: arg_useAdminAccess,
+        $fields: arg_$fields,
+      );
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
@@ -5102,69 +5135,74 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['useAdminAccess']!.first,
-          unittest.equals('$arg_useAdminAccess'),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['useAdminAccess']!.first,
+            unittest.equals('$arg_useAdminAccess'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleAppsDriveLabelsV2ListLabelPermissionsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          useAdminAccess: arg_useAdminAccess,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAppsDriveLabelsV2ListLabelPermissionsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        useAdminAccess: arg_useAdminAccess,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2ListLabelPermissionsResponse(
-          response as api.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse);
+        response as api.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse,
+      );
     });
   });
 
@@ -5176,62 +5214,70 @@ void main() {
       final arg_parent = 'foo';
       final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleAppsDriveLabelsV2LabelPermission.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2LabelPermission(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleAppsDriveLabelsV2LabelPermission.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2LabelPermission(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['useAdminAccess']!.first,
-          unittest.equals('$arg_useAdminAccess'),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['useAdminAccess']!.first,
+            unittest.equals('$arg_useAdminAccess'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGoogleAppsDriveLabelsV2LabelPermission());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.updatePermissions(arg_request, arg_parent,
-          useAdminAccess: arg_useAdminAccess, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAppsDriveLabelsV2LabelPermission(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.updatePermissions(
+        arg_request,
+        arg_parent,
+        useAdminAccess: arg_useAdminAccess,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2LabelPermission(
-          response as api.GoogleAppsDriveLabelsV2LabelPermission);
+        response as api.GoogleAppsDriveLabelsV2LabelPermission,
+      );
     });
   });
 
@@ -5243,64 +5289,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleAppsDriveLabelsV2ListLabelLocksResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAppsDriveLabelsV2ListLabelLocksResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2ListLabelLocksResponse(
-          response as api.GoogleAppsDriveLabelsV2ListLabelLocksResponse);
+        response as api.GoogleAppsDriveLabelsV2ListLabelLocksResponse,
+      );
     });
   });
 
@@ -5312,56 +5363,61 @@ void main() {
           buildGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest
-                .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api
+              .GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleProtobufEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.batchDelete(arg_request, arg_parent, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleProtobufEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.batchDelete(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
@@ -5372,59 +5428,67 @@ void main() {
           buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj =
-            api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest
-                .fromJson(json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api
+              .GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(
-            buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.batchUpdate(arg_request, arg_parent, $fields: arg_$fields);
-      checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse(response
-          as api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.batchUpdate(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkGoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse(
+        response
+            as api.GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse,
+      );
     });
 
     unittest.test('method--create', () async {
@@ -5434,62 +5498,70 @@ void main() {
       final arg_parent = 'foo';
       final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleAppsDriveLabelsV2LabelPermission.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleAppsDriveLabelsV2LabelPermission(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleAppsDriveLabelsV2LabelPermission.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleAppsDriveLabelsV2LabelPermission(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['useAdminAccess']!.first,
-          unittest.equals('$arg_useAdminAccess'),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['useAdminAccess']!.first,
+            unittest.equals('$arg_useAdminAccess'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGoogleAppsDriveLabelsV2LabelPermission());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.create(arg_request, arg_parent,
-          useAdminAccess: arg_useAdminAccess, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAppsDriveLabelsV2LabelPermission(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        useAdminAccess: arg_useAdminAccess,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2LabelPermission(
-          response as api.GoogleAppsDriveLabelsV2LabelPermission);
+        response as api.GoogleAppsDriveLabelsV2LabelPermission,
+      );
     });
 
     unittest.test('method--delete', () async {
@@ -5498,55 +5570,59 @@ void main() {
       final arg_name = 'foo';
       final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['useAdminAccess']!.first,
-          unittest.equals('$arg_useAdminAccess'),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['useAdminAccess']!.first,
+            unittest.equals('$arg_useAdminAccess'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleProtobufEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.delete(arg_name,
-          useAdminAccess: arg_useAdminAccess, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleProtobufEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        useAdminAccess: arg_useAdminAccess,
+        $fields: arg_$fields,
+      );
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
@@ -5558,69 +5634,74 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_useAdminAccess = true;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['useAdminAccess']!.first,
-          unittest.equals('$arg_useAdminAccess'),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['useAdminAccess']!.first,
+            unittest.equals('$arg_useAdminAccess'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleAppsDriveLabelsV2ListLabelPermissionsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          useAdminAccess: arg_useAdminAccess,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAppsDriveLabelsV2ListLabelPermissionsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        useAdminAccess: arg_useAdminAccess,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2ListLabelPermissionsResponse(
-          response as api.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse);
+        response as api.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse,
+      );
     });
   });
 
@@ -5630,56 +5711,56 @@ void main() {
       final res = api.DriveLabelsApi(mock).limits;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 15),
-          unittest.equals('v2/limits/label'),
-        );
-        pathOffset += 15;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 15),
+            unittest.equals('v2/limits/label'),
+          );
+          pathOffset += 15;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['name']!.first,
-          unittest.equals(arg_name),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(queryMap['name']!.first, unittest.equals(arg_name));
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGoogleAppsDriveLabelsV2LabelLimits());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAppsDriveLabelsV2LabelLimits(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.getLabel(name: arg_name, $fields: arg_$fields);
       checkGoogleAppsDriveLabelsV2LabelLimits(
-          response as api.GoogleAppsDriveLabelsV2LabelLimits);
+        response as api.GoogleAppsDriveLabelsV2LabelLimits,
+      );
     });
   });
 
@@ -5690,58 +5771,64 @@ void main() {
       final arg_name = 'foo';
       final arg_customer = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['customer']!.first,
-          unittest.equals(arg_customer),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['customer']!.first,
+            unittest.equals(arg_customer),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGoogleAppsDriveLabelsV2UserCapabilities());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.getCapabilities(arg_name,
-          customer: arg_customer, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleAppsDriveLabelsV2UserCapabilities(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getCapabilities(
+        arg_name,
+        customer: arg_customer,
+        $fields: arg_$fields,
+      );
       checkGoogleAppsDriveLabelsV2UserCapabilities(
-          response as api.GoogleAppsDriveLabelsV2UserCapabilities);
+        response as api.GoogleAppsDriveLabelsV2UserCapabilities,
+      );
     });
   });
 }

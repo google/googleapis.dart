@@ -61,11 +61,16 @@ class CloudAssetApi {
   SavedQueriesResource get savedQueries => SavedQueriesResource(_requester);
   V1Resource get v1 => V1Resource(_requester);
 
-  CloudAssetApi(http.Client client,
-      {core.String rootUrl = 'https://cloudasset.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudAssetApi(
+    http.Client client, {
+    core.String rootUrl = 'https://cloudasset.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class AssetsResource {
@@ -176,7 +181,8 @@ class AssetsResource {
       queryParams: queryParams_,
     );
     return ListAssetsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -184,7 +190,7 @@ class EffectiveIamPoliciesResource {
   final commons.ApiRequester _requester;
 
   EffectiveIamPoliciesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets effective IAM policies for a batch of resources.
   ///
@@ -226,7 +232,8 @@ class EffectiveIamPoliciesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$scope') +
         '/effectiveIamPolicies:batchGet';
 
@@ -236,7 +243,8 @@ class EffectiveIamPoliciesResource {
       queryParams: queryParams_,
     );
     return BatchGetEffectiveIamPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -309,10 +317,7 @@ class FeedsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -322,6 +327,7 @@ class FeedsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -346,10 +352,7 @@ class FeedsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Feed> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Feed> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -400,7 +403,8 @@ class FeedsResource {
       queryParams: queryParams_,
     );
     return ListFeedsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an asset feed configuration.
@@ -474,10 +478,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -549,7 +550,8 @@ class SavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a saved query.
@@ -572,10 +574,7 @@ class SavedQueriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -585,6 +584,7 @@ class SavedQueriesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -610,10 +610,7 @@ class SavedQueriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SavedQuery> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<SavedQuery> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -626,7 +623,8 @@ class SavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all saved queries in a parent project/folder/organization.
@@ -688,7 +686,8 @@ class SavedQueriesResource {
       queryParams: queryParams_,
     );
     return ListSavedQueriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a saved query.
@@ -736,7 +735,8 @@ class SavedQueriesResource {
       queryParams: queryParams_,
     );
     return SavedQuery.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -909,39 +909,39 @@ class V1Resource {
             analysisQuery_accessSelector_roles,
       if (analysisQuery_conditionContext_accessTime != null)
         'analysisQuery.conditionContext.accessTime': [
-          analysisQuery_conditionContext_accessTime
+          analysisQuery_conditionContext_accessTime,
         ],
       if (analysisQuery_identitySelector_identity != null)
         'analysisQuery.identitySelector.identity': [
-          analysisQuery_identitySelector_identity
+          analysisQuery_identitySelector_identity,
         ],
       if (analysisQuery_options_analyzeServiceAccountImpersonation != null)
         'analysisQuery.options.analyzeServiceAccountImpersonation': [
-          '${analysisQuery_options_analyzeServiceAccountImpersonation}'
+          '${analysisQuery_options_analyzeServiceAccountImpersonation}',
         ],
       if (analysisQuery_options_expandGroups != null)
         'analysisQuery.options.expandGroups': [
-          '${analysisQuery_options_expandGroups}'
+          '${analysisQuery_options_expandGroups}',
         ],
       if (analysisQuery_options_expandResources != null)
         'analysisQuery.options.expandResources': [
-          '${analysisQuery_options_expandResources}'
+          '${analysisQuery_options_expandResources}',
         ],
       if (analysisQuery_options_expandRoles != null)
         'analysisQuery.options.expandRoles': [
-          '${analysisQuery_options_expandRoles}'
+          '${analysisQuery_options_expandRoles}',
         ],
       if (analysisQuery_options_outputGroupEdges != null)
         'analysisQuery.options.outputGroupEdges': [
-          '${analysisQuery_options_outputGroupEdges}'
+          '${analysisQuery_options_outputGroupEdges}',
         ],
       if (analysisQuery_options_outputResourceEdges != null)
         'analysisQuery.options.outputResourceEdges': [
-          '${analysisQuery_options_outputResourceEdges}'
+          '${analysisQuery_options_outputResourceEdges}',
         ],
       if (analysisQuery_resourceSelector_fullResourceName != null)
         'analysisQuery.resourceSelector.fullResourceName': [
-          analysisQuery_resourceSelector_fullResourceName
+          analysisQuery_resourceSelector_fullResourceName,
         ],
       if (executionTimeout != null) 'executionTimeout': [executionTimeout],
       if (savedAnalysisQuery != null)
@@ -957,7 +957,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return AnalyzeIamPolicyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Analyzes IAM policies asynchronously to answer which identities have what
@@ -1080,7 +1081,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return AnalyzeMoveResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Analyzes organization policies under a scope.
@@ -1145,7 +1147,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return AnalyzeOrgPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Analyzes organization policies governed assets (Google Cloud resources or
@@ -1247,7 +1250,7 @@ class V1Resource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AnalyzeOrgPolicyGovernedAssetsResponse>
-      analyzeOrgPolicyGovernedAssets(
+  analyzeOrgPolicyGovernedAssets(
     core.String scope, {
     core.String? constraint,
     core.String? filter,
@@ -1263,7 +1266,8 @@ class V1Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$scope') +
         ':analyzeOrgPolicyGovernedAssets';
 
@@ -1273,7 +1277,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return AnalyzeOrgPolicyGovernedAssetsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Analyzes organization policies governed containers (projects, folders or
@@ -1318,7 +1323,7 @@ class V1Resource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AnalyzeOrgPolicyGovernedContainersResponse>
-      analyzeOrgPolicyGovernedContainers(
+  analyzeOrgPolicyGovernedContainers(
     core.String scope, {
     core.String? constraint,
     core.String? filter,
@@ -1334,7 +1339,8 @@ class V1Resource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$scope') +
         ':analyzeOrgPolicyGovernedContainers';
 
@@ -1344,7 +1350,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return AnalyzeOrgPolicyGovernedContainersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Batch gets the update history of assets that overlap a time window.
@@ -1437,7 +1444,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return BatchGetAssetsHistoryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Exports assets with time and resource types to a given Cloud Storage
@@ -1544,7 +1552,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return QueryAssetsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Searches all IAM policies within the specified scope, such as a project,
@@ -1669,7 +1678,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return SearchAllIamPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Searches all Google Cloud resources within the specified scope, such as a
@@ -1838,7 +1848,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return SearchAllResourcesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1859,25 +1870,24 @@ class AccessSelector {
   /// Optional.
   core.List<core.String>? roles;
 
-  AccessSelector({
-    this.permissions,
-    this.roles,
-  });
+  AccessSelector({this.permissions, this.roles});
 
   AccessSelector.fromJson(core.Map json_)
-      : this(
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          roles: (json_['roles'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        roles:
+            (json_['roles'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-        if (roles != null) 'roles': roles!,
-      };
+    if (permissions != null) 'permissions': permissions!,
+    if (roles != null) 'roles': roles!,
+  };
 }
 
 /// A request message for AssetService.AnalyzeIamPolicyLongrunning.
@@ -1916,24 +1926,27 @@ class AnalyzeIamPolicyLongrunningRequest {
   });
 
   AnalyzeIamPolicyLongrunningRequest.fromJson(core.Map json_)
-      : this(
-          analysisQuery: json_.containsKey('analysisQuery')
-              ? IamPolicyAnalysisQuery.fromJson(
-                  json_['analysisQuery'] as core.Map<core.String, core.dynamic>)
-              : null,
-          outputConfig: json_.containsKey('outputConfig')
-              ? IamPolicyAnalysisOutputConfig.fromJson(
-                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          savedAnalysisQuery: json_['savedAnalysisQuery'] as core.String?,
-        );
+    : this(
+        analysisQuery:
+            json_.containsKey('analysisQuery')
+                ? IamPolicyAnalysisQuery.fromJson(
+                  json_['analysisQuery'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        outputConfig:
+            json_.containsKey('outputConfig')
+                ? IamPolicyAnalysisOutputConfig.fromJson(
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        savedAnalysisQuery: json_['savedAnalysisQuery'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisQuery != null) 'analysisQuery': analysisQuery!,
-        if (outputConfig != null) 'outputConfig': outputConfig!,
-        if (savedAnalysisQuery != null)
-          'savedAnalysisQuery': savedAnalysisQuery!,
-      };
+    if (analysisQuery != null) 'analysisQuery': analysisQuery!,
+    if (outputConfig != null) 'outputConfig': outputConfig!,
+    if (savedAnalysisQuery != null) 'savedAnalysisQuery': savedAnalysisQuery!,
+  };
 }
 
 /// A response message for AssetService.AnalyzeIamPolicy.
@@ -1958,26 +1971,31 @@ class AnalyzeIamPolicyResponse {
   });
 
   AnalyzeIamPolicyResponse.fromJson(core.Map json_)
-      : this(
-          fullyExplored: json_['fullyExplored'] as core.bool?,
-          mainAnalysis: json_.containsKey('mainAnalysis')
-              ? IamPolicyAnalysis.fromJson(
-                  json_['mainAnalysis'] as core.Map<core.String, core.dynamic>)
-              : null,
-          serviceAccountImpersonationAnalysis:
-              (json_['serviceAccountImpersonationAnalysis'] as core.List?)
-                  ?.map((value) => IamPolicyAnalysis.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+    : this(
+        fullyExplored: json_['fullyExplored'] as core.bool?,
+        mainAnalysis:
+            json_.containsKey('mainAnalysis')
+                ? IamPolicyAnalysis.fromJson(
+                  json_['mainAnalysis'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serviceAccountImpersonationAnalysis:
+            (json_['serviceAccountImpersonationAnalysis'] as core.List?)
+                ?.map(
+                  (value) => IamPolicyAnalysis.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fullyExplored != null) 'fullyExplored': fullyExplored!,
-        if (mainAnalysis != null) 'mainAnalysis': mainAnalysis!,
-        if (serviceAccountImpersonationAnalysis != null)
-          'serviceAccountImpersonationAnalysis':
-              serviceAccountImpersonationAnalysis!,
-      };
+    if (fullyExplored != null) 'fullyExplored': fullyExplored!,
+    if (mainAnalysis != null) 'mainAnalysis': mainAnalysis!,
+    if (serviceAccountImpersonationAnalysis != null)
+      'serviceAccountImpersonationAnalysis':
+          serviceAccountImpersonationAnalysis!,
+  };
 }
 
 /// The response message for resource move analysis.
@@ -1988,21 +2006,23 @@ class AnalyzeMoveResponse {
   /// The analysis is grouped by different Google Cloud services.
   core.List<MoveAnalysis>? moveAnalysis;
 
-  AnalyzeMoveResponse({
-    this.moveAnalysis,
-  });
+  AnalyzeMoveResponse({this.moveAnalysis});
 
   AnalyzeMoveResponse.fromJson(core.Map json_)
-      : this(
-          moveAnalysis: (json_['moveAnalysis'] as core.List?)
-              ?.map((value) => MoveAnalysis.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        moveAnalysis:
+            (json_['moveAnalysis'] as core.List?)
+                ?.map(
+                  (value) => MoveAnalysis.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (moveAnalysis != null) 'moveAnalysis': moveAnalysis!,
-      };
+    if (moveAnalysis != null) 'moveAnalysis': moveAnalysis!,
+  };
 }
 
 /// The response message for AssetService.AnalyzeOrgPolicies.
@@ -2025,23 +2045,29 @@ class AnalyzeOrgPoliciesResponse {
   });
 
   AnalyzeOrgPoliciesResponse.fromJson(core.Map json_)
-      : this(
-          constraint: json_.containsKey('constraint')
-              ? AnalyzerOrgPolicyConstraint.fromJson(
-                  json_['constraint'] as core.Map<core.String, core.dynamic>)
-              : null,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          orgPolicyResults: (json_['orgPolicyResults'] as core.List?)
-              ?.map((value) => OrgPolicyResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        constraint:
+            json_.containsKey('constraint')
+                ? AnalyzerOrgPolicyConstraint.fromJson(
+                  json_['constraint'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        orgPolicyResults:
+            (json_['orgPolicyResults'] as core.List?)
+                ?.map(
+                  (value) => OrgPolicyResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (constraint != null) 'constraint': constraint!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (orgPolicyResults != null) 'orgPolicyResults': orgPolicyResults!,
-      };
+    if (constraint != null) 'constraint': constraint!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (orgPolicyResults != null) 'orgPolicyResults': orgPolicyResults!,
+  };
 }
 
 /// The response message for AssetService.AnalyzeOrgPolicyGovernedAssets.
@@ -2051,8 +2077,9 @@ class AnalyzeOrgPolicyGovernedAssetsResponse {
 
   /// The list of the analyzed governed assets.
   core.List<
-          GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset>?
-      governedAssets;
+    GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset
+  >?
+  governedAssets;
 
   /// The page token to fetch the next page for
   /// AnalyzeOrgPolicyGovernedAssetsResponse.governed_assets.
@@ -2065,24 +2092,30 @@ class AnalyzeOrgPolicyGovernedAssetsResponse {
   });
 
   AnalyzeOrgPolicyGovernedAssetsResponse.fromJson(core.Map json_)
-      : this(
-          constraint: json_.containsKey('constraint')
-              ? AnalyzerOrgPolicyConstraint.fromJson(
-                  json_['constraint'] as core.Map<core.String, core.dynamic>)
-              : null,
-          governedAssets: (json_['governedAssets'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        constraint:
+            json_.containsKey('constraint')
+                ? AnalyzerOrgPolicyConstraint.fromJson(
+                  json_['constraint'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        governedAssets:
+            (json_['governedAssets'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (constraint != null) 'constraint': constraint!,
-        if (governedAssets != null) 'governedAssets': governedAssets!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (constraint != null) 'constraint': constraint!,
+    if (governedAssets != null) 'governedAssets': governedAssets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for AssetService.AnalyzeOrgPolicyGovernedContainers.
@@ -2104,24 +2137,29 @@ class AnalyzeOrgPolicyGovernedContainersResponse {
   });
 
   AnalyzeOrgPolicyGovernedContainersResponse.fromJson(core.Map json_)
-      : this(
-          constraint: json_.containsKey('constraint')
-              ? AnalyzerOrgPolicyConstraint.fromJson(
-                  json_['constraint'] as core.Map<core.String, core.dynamic>)
-              : null,
-          governedContainers: (json_['governedContainers'] as core.List?)
-              ?.map((value) => GoogleCloudAssetV1GovernedContainer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        constraint:
+            json_.containsKey('constraint')
+                ? AnalyzerOrgPolicyConstraint.fromJson(
+                  json_['constraint'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        governedContainers:
+            (json_['governedContainers'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudAssetV1GovernedContainer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (constraint != null) 'constraint': constraint!,
-        if (governedContainers != null)
-          'governedContainers': governedContainers!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (constraint != null) 'constraint': constraint!,
+    if (governedContainers != null) 'governedContainers': governedContainers!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// This organization policy message is a modified version of the one defined in
@@ -2176,24 +2214,28 @@ class AnalyzerOrgPolicy {
   });
 
   AnalyzerOrgPolicy.fromJson(core.Map json_)
-      : this(
-          appliedResource: json_['appliedResource'] as core.String?,
-          attachedResource: json_['attachedResource'] as core.String?,
-          inheritFromParent: json_['inheritFromParent'] as core.bool?,
-          reset: json_['reset'] as core.bool?,
-          rules: (json_['rules'] as core.List?)
-              ?.map((value) => GoogleCloudAssetV1Rule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        appliedResource: json_['appliedResource'] as core.String?,
+        attachedResource: json_['attachedResource'] as core.String?,
+        inheritFromParent: json_['inheritFromParent'] as core.bool?,
+        reset: json_['reset'] as core.bool?,
+        rules:
+            (json_['rules'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudAssetV1Rule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appliedResource != null) 'appliedResource': appliedResource!,
-        if (attachedResource != null) 'attachedResource': attachedResource!,
-        if (inheritFromParent != null) 'inheritFromParent': inheritFromParent!,
-        if (reset != null) 'reset': reset!,
-        if (rules != null) 'rules': rules!,
-      };
+    if (appliedResource != null) 'appliedResource': appliedResource!,
+    if (attachedResource != null) 'attachedResource': attachedResource!,
+    if (inheritFromParent != null) 'inheritFromParent': inheritFromParent!,
+    if (reset != null) 'reset': reset!,
+    if (rules != null) 'rules': rules!,
+  };
 }
 
 /// The organization policy constraint definition.
@@ -2210,24 +2252,28 @@ class AnalyzerOrgPolicyConstraint {
   });
 
   AnalyzerOrgPolicyConstraint.fromJson(core.Map json_)
-      : this(
-          customConstraint: json_.containsKey('customConstraint')
-              ? GoogleCloudAssetV1CustomConstraint.fromJson(
+    : this(
+        customConstraint:
+            json_.containsKey('customConstraint')
+                ? GoogleCloudAssetV1CustomConstraint.fromJson(
                   json_['customConstraint']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          googleDefinedConstraint: json_.containsKey('googleDefinedConstraint')
-              ? GoogleCloudAssetV1Constraint.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        googleDefinedConstraint:
+            json_.containsKey('googleDefinedConstraint')
+                ? GoogleCloudAssetV1Constraint.fromJson(
                   json_['googleDefinedConstraint']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customConstraint != null) 'customConstraint': customConstraint!,
-        if (googleDefinedConstraint != null)
-          'googleDefinedConstraint': googleDefinedConstraint!,
-      };
+    if (customConstraint != null) 'customConstraint': customConstraint!,
+    if (googleDefinedConstraint != null)
+      'googleDefinedConstraint': googleDefinedConstraint!,
+  };
 }
 
 /// An asset in Google Cloud.
@@ -2348,72 +2394,97 @@ class Asset {
   });
 
   Asset.fromJson(core.Map json_)
-      : this(
-          accessLevel: json_.containsKey('accessLevel')
-              ? GoogleIdentityAccesscontextmanagerV1AccessLevel.fromJson(
-                  json_['accessLevel'] as core.Map<core.String, core.dynamic>)
-              : null,
-          accessPolicy: json_.containsKey('accessPolicy')
-              ? GoogleIdentityAccesscontextmanagerV1AccessPolicy.fromJson(
-                  json_['accessPolicy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          ancestors: (json_['ancestors'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          assetExceptions: (json_['assetExceptions'] as core.List?)
-              ?.map((value) => AssetException.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          assetType: json_['assetType'] as core.String?,
-          iamPolicy: json_.containsKey('iamPolicy')
-              ? Policy.fromJson(
-                  json_['iamPolicy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          orgPolicy: (json_['orgPolicy'] as core.List?)
-              ?.map((value) => GoogleCloudOrgpolicyV1Policy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          osInventory: json_.containsKey('osInventory')
-              ? Inventory.fromJson(
-                  json_['osInventory'] as core.Map<core.String, core.dynamic>)
-              : null,
-          relatedAsset: json_.containsKey('relatedAsset')
-              ? RelatedAsset.fromJson(
-                  json_['relatedAsset'] as core.Map<core.String, core.dynamic>)
-              : null,
-          relatedAssets: json_.containsKey('relatedAssets')
-              ? RelatedAssets.fromJson(
-                  json_['relatedAssets'] as core.Map<core.String, core.dynamic>)
-              : null,
-          resource: json_.containsKey('resource')
-              ? Resource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          servicePerimeter: json_.containsKey('servicePerimeter')
-              ? GoogleIdentityAccesscontextmanagerV1ServicePerimeter.fromJson(
+    : this(
+        accessLevel:
+            json_.containsKey('accessLevel')
+                ? GoogleIdentityAccesscontextmanagerV1AccessLevel.fromJson(
+                  json_['accessLevel'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        accessPolicy:
+            json_.containsKey('accessPolicy')
+                ? GoogleIdentityAccesscontextmanagerV1AccessPolicy.fromJson(
+                  json_['accessPolicy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        ancestors:
+            (json_['ancestors'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        assetExceptions:
+            (json_['assetExceptions'] as core.List?)
+                ?.map(
+                  (value) => AssetException.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        assetType: json_['assetType'] as core.String?,
+        iamPolicy:
+            json_.containsKey('iamPolicy')
+                ? Policy.fromJson(
+                  json_['iamPolicy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        orgPolicy:
+            (json_['orgPolicy'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudOrgpolicyV1Policy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        osInventory:
+            json_.containsKey('osInventory')
+                ? Inventory.fromJson(
+                  json_['osInventory'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        relatedAsset:
+            json_.containsKey('relatedAsset')
+                ? RelatedAsset.fromJson(
+                  json_['relatedAsset'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        relatedAssets:
+            json_.containsKey('relatedAssets')
+                ? RelatedAssets.fromJson(
+                  json_['relatedAssets'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resource:
+            json_.containsKey('resource')
+                ? Resource.fromJson(
+                  json_['resource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        servicePerimeter:
+            json_.containsKey('servicePerimeter')
+                ? GoogleIdentityAccesscontextmanagerV1ServicePerimeter.fromJson(
                   json_['servicePerimeter']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessLevel != null) 'accessLevel': accessLevel!,
-        if (accessPolicy != null) 'accessPolicy': accessPolicy!,
-        if (ancestors != null) 'ancestors': ancestors!,
-        if (assetExceptions != null) 'assetExceptions': assetExceptions!,
-        if (assetType != null) 'assetType': assetType!,
-        if (iamPolicy != null) 'iamPolicy': iamPolicy!,
-        if (name != null) 'name': name!,
-        if (orgPolicy != null) 'orgPolicy': orgPolicy!,
-        if (osInventory != null) 'osInventory': osInventory!,
-        if (relatedAsset != null) 'relatedAsset': relatedAsset!,
-        if (relatedAssets != null) 'relatedAssets': relatedAssets!,
-        if (resource != null) 'resource': resource!,
-        if (servicePerimeter != null) 'servicePerimeter': servicePerimeter!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (accessLevel != null) 'accessLevel': accessLevel!,
+    if (accessPolicy != null) 'accessPolicy': accessPolicy!,
+    if (ancestors != null) 'ancestors': ancestors!,
+    if (assetExceptions != null) 'assetExceptions': assetExceptions!,
+    if (assetType != null) 'assetType': assetType!,
+    if (iamPolicy != null) 'iamPolicy': iamPolicy!,
+    if (name != null) 'name': name!,
+    if (orgPolicy != null) 'orgPolicy': orgPolicy!,
+    if (osInventory != null) 'osInventory': osInventory!,
+    if (relatedAsset != null) 'relatedAsset': relatedAsset!,
+    if (relatedAssets != null) 'relatedAssets': relatedAssets!,
+    if (resource != null) 'resource': resource!,
+    if (servicePerimeter != null) 'servicePerimeter': servicePerimeter!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The enhanced metadata information for a resource.
@@ -2424,21 +2495,22 @@ class AssetEnrichment {
   /// role in the resource's IAM Policy.
   ResourceOwners? resourceOwners;
 
-  AssetEnrichment({
-    this.resourceOwners,
-  });
+  AssetEnrichment({this.resourceOwners});
 
   AssetEnrichment.fromJson(core.Map json_)
-      : this(
-          resourceOwners: json_.containsKey('resourceOwners')
-              ? ResourceOwners.fromJson(json_['resourceOwners']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        resourceOwners:
+            json_.containsKey('resourceOwners')
+                ? ResourceOwners.fromJson(
+                  json_['resourceOwners']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceOwners != null) 'resourceOwners': resourceOwners!,
-      };
+    if (resourceOwners != null) 'resourceOwners': resourceOwners!,
+  };
 }
 
 /// An exception of an asset.
@@ -2453,21 +2525,18 @@ class AssetException {
   /// - "TRUNCATION" : The asset content is truncated.
   core.String? exceptionType;
 
-  AssetException({
-    this.details,
-    this.exceptionType,
-  });
+  AssetException({this.details, this.exceptionType});
 
   AssetException.fromJson(core.Map json_)
-      : this(
-          details: json_['details'] as core.String?,
-          exceptionType: json_['exceptionType'] as core.String?,
-        );
+    : this(
+        details: json_['details'] as core.String?,
+        exceptionType: json_['exceptionType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-        if (exceptionType != null) 'exceptionType': exceptionType!,
-      };
+    if (details != null) 'details': details!,
+    if (exceptionType != null) 'exceptionType': exceptionType!,
+  };
 }
 
 /// Attached resource representation, which is defined by the corresponding
@@ -2488,25 +2557,25 @@ class AttachedResource {
   /// resource representations during version migration.
   core.List<VersionedResource>? versionedResources;
 
-  AttachedResource({
-    this.assetType,
-    this.versionedResources,
-  });
+  AttachedResource({this.assetType, this.versionedResources});
 
   AttachedResource.fromJson(core.Map json_)
-      : this(
-          assetType: json_['assetType'] as core.String?,
-          versionedResources: (json_['versionedResources'] as core.List?)
-              ?.map((value) => VersionedResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        assetType: json_['assetType'] as core.String?,
+        versionedResources:
+            (json_['versionedResources'] as core.List?)
+                ?.map(
+                  (value) => VersionedResource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assetType != null) 'assetType': assetType!,
-        if (versionedResources != null)
-          'versionedResources': versionedResources!,
-      };
+    if (assetType != null) 'assetType': assetType!,
+    if (versionedResources != null) 'versionedResources': versionedResources!,
+  };
 }
 
 /// Specifies the audit configuration for a service.
@@ -2536,24 +2605,25 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
-      : this(
-          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          service: json_['service'] as core.String?,
-        );
+    : this(
+        auditLogConfigs:
+            (json_['auditLogConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditLogConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        service: json_['service'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-        if (service != null) 'service': service!,
-      };
+    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+    if (service != null) 'service': service!,
+  };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -2569,21 +2639,23 @@ class BatchGetAssetsHistoryResponse {
   /// A list of assets with valid time windows.
   core.List<TemporalAsset>? assets;
 
-  BatchGetAssetsHistoryResponse({
-    this.assets,
-  });
+  BatchGetAssetsHistoryResponse({this.assets});
 
   BatchGetAssetsHistoryResponse.fromJson(core.Map json_)
-      : this(
-          assets: (json_['assets'] as core.List?)
-              ?.map((value) => TemporalAsset.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        assets:
+            (json_['assets'] as core.List?)
+                ?.map(
+                  (value) => TemporalAsset.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assets != null) 'assets': assets!,
-      };
+    if (assets != null) 'assets': assets!,
+  };
 }
 
 /// A response message for AssetService.BatchGetEffectiveIamPolicies.
@@ -2596,21 +2668,23 @@ class BatchGetEffectiveIamPoliciesResponse {
   /// empty EffectiveIamPolicy.policies.
   core.List<EffectiveIamPolicy>? policyResults;
 
-  BatchGetEffectiveIamPoliciesResponse({
-    this.policyResults,
-  });
+  BatchGetEffectiveIamPoliciesResponse({this.policyResults});
 
   BatchGetEffectiveIamPoliciesResponse.fromJson(core.Map json_)
-      : this(
-          policyResults: (json_['policyResults'] as core.List?)
-              ?.map((value) => EffectiveIamPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        policyResults:
+            (json_['policyResults'] as core.List?)
+                ?.map(
+                  (value) => EffectiveIamPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policyResults != null) 'policyResults': policyResults!,
-      };
+    if (policyResults != null) 'policyResults': policyResults!,
+  };
 }
 
 /// A BigQuery destination for exporting assets to.
@@ -2696,26 +2770,28 @@ class BigQueryDestination {
   });
 
   BigQueryDestination.fromJson(core.Map json_)
-      : this(
-          dataset: json_['dataset'] as core.String?,
-          force: json_['force'] as core.bool?,
-          partitionSpec: json_.containsKey('partitionSpec')
-              ? PartitionSpec.fromJson(
-                  json_['partitionSpec'] as core.Map<core.String, core.dynamic>)
-              : null,
-          separateTablesPerAssetType:
-              json_['separateTablesPerAssetType'] as core.bool?,
-          table: json_['table'] as core.String?,
-        );
+    : this(
+        dataset: json_['dataset'] as core.String?,
+        force: json_['force'] as core.bool?,
+        partitionSpec:
+            json_.containsKey('partitionSpec')
+                ? PartitionSpec.fromJson(
+                  json_['partitionSpec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        separateTablesPerAssetType:
+            json_['separateTablesPerAssetType'] as core.bool?,
+        table: json_['table'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataset != null) 'dataset': dataset!,
-        if (force != null) 'force': force!,
-        if (partitionSpec != null) 'partitionSpec': partitionSpec!,
-        if (separateTablesPerAssetType != null)
-          'separateTablesPerAssetType': separateTablesPerAssetType!,
-        if (table != null) 'table': table!,
-      };
+    if (dataset != null) 'dataset': dataset!,
+    if (force != null) 'force': force!,
+    if (partitionSpec != null) 'partitionSpec': partitionSpec!,
+    if (separateTablesPerAssetType != null)
+      'separateTablesPerAssetType': separateTablesPerAssetType!,
+    if (table != null) 'table': table!,
+  };
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -2798,29 +2874,28 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// The IAM conditions context.
@@ -2831,18 +2906,14 @@ class ConditionContext {
   /// an INVALID_ARGUMENT error will be returned.
   core.String? accessTime;
 
-  ConditionContext({
-    this.accessTime,
-  });
+  ConditionContext({this.accessTime});
 
   ConditionContext.fromJson(core.Map json_)
-      : this(
-          accessTime: json_['accessTime'] as core.String?,
-        );
+    : this(accessTime: json_['accessTime'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessTime != null) 'accessTime': accessTime!,
-      };
+    if (accessTime != null) 'accessTime': accessTime!,
+  };
 }
 
 /// The condition evaluation.
@@ -2857,18 +2928,14 @@ class ConditionEvaluation {
   /// values or have not been supported by Policy Analyzer yet.
   core.String? evaluationValue;
 
-  ConditionEvaluation({
-    this.evaluationValue,
-  });
+  ConditionEvaluation({this.evaluationValue});
 
   ConditionEvaluation.fromJson(core.Map json_)
-      : this(
-          evaluationValue: json_['evaluationValue'] as core.String?,
-        );
+    : this(evaluationValue: json_['evaluationValue'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (evaluationValue != null) 'evaluationValue': evaluationValue!,
-      };
+    if (evaluationValue != null) 'evaluationValue': evaluationValue!,
+  };
 }
 
 /// Create asset feed request.
@@ -2888,24 +2955,23 @@ class CreateFeedRequest {
   /// Required.
   core.String? feedId;
 
-  CreateFeedRequest({
-    this.feed,
-    this.feedId,
-  });
+  CreateFeedRequest({this.feed, this.feedId});
 
   CreateFeedRequest.fromJson(core.Map json_)
-      : this(
-          feed: json_.containsKey('feed')
-              ? Feed.fromJson(
-                  json_['feed'] as core.Map<core.String, core.dynamic>)
-              : null,
-          feedId: json_['feedId'] as core.String?,
-        );
+    : this(
+        feed:
+            json_.containsKey('feed')
+                ? Feed.fromJson(
+                  json_['feed'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        feedId: json_['feedId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (feed != null) 'feed': feed!,
-        if (feedId != null) 'feedId': feedId!,
-      };
+    if (feed != null) 'feed': feed!,
+    if (feedId != null) 'feedId': feedId!,
+  };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -2942,24 +3008,25 @@ class EffectiveIamPolicy {
   /// policies\[i+1\]'s PolicyInfo.attached_resource, if policies\[i+1\] exists.
   core.List<PolicyInfo>? policies;
 
-  EffectiveIamPolicy({
-    this.fullResourceName,
-    this.policies,
-  });
+  EffectiveIamPolicy({this.fullResourceName, this.policies});
 
   EffectiveIamPolicy.fromJson(core.Map json_)
-      : this(
-          fullResourceName: json_['fullResourceName'] as core.String?,
-          policies: (json_['policies'] as core.List?)
-              ?.map((value) => PolicyInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        fullResourceName: json_['fullResourceName'] as core.String?,
+        policies:
+            (json_['policies'] as core.List?)
+                ?.map(
+                  (value) => PolicyInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-        if (policies != null) 'policies': policies!,
-      };
+    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+    if (policies != null) 'policies': policies!,
+  };
 }
 
 /// The effective tags and the ancestor resources from which they were
@@ -2981,24 +3048,25 @@ class EffectiveTagDetails {
   /// [tag inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance).
   core.List<Tag>? effectiveTags;
 
-  EffectiveTagDetails({
-    this.attachedResource,
-    this.effectiveTags,
-  });
+  EffectiveTagDetails({this.attachedResource, this.effectiveTags});
 
   EffectiveTagDetails.fromJson(core.Map json_)
-      : this(
-          attachedResource: json_['attachedResource'] as core.String?,
-          effectiveTags: (json_['effectiveTags'] as core.List?)
-              ?.map((value) =>
-                  Tag.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        attachedResource: json_['attachedResource'] as core.String?,
+        effectiveTags:
+            (json_['effectiveTags'] as core.List?)
+                ?.map(
+                  (value) => Tag.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachedResource != null) 'attachedResource': attachedResource!,
-        if (effectiveTags != null) 'effectiveTags': effectiveTags!,
-      };
+    if (attachedResource != null) 'attachedResource': attachedResource!,
+    if (effectiveTags != null) 'effectiveTags': effectiveTags!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3021,27 +3089,25 @@ class Explanation {
   /// requests with permission queries.
   core.Map<core.String, Permissions>? matchedPermissions;
 
-  Explanation({
-    this.matchedPermissions,
-  });
+  Explanation({this.matchedPermissions});
 
   Explanation.fromJson(core.Map json_)
-      : this(
-          matchedPermissions: (json_['matchedPermissions']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              Permissions.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        matchedPermissions: (json_['matchedPermissions']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                Permissions.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-        );
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (matchedPermissions != null)
-          'matchedPermissions': matchedPermissions!,
-      };
+    if (matchedPermissions != null) 'matchedPermissions': matchedPermissions!,
+  };
 }
 
 /// Export asset request.
@@ -3114,28 +3180,32 @@ class ExportAssetsRequest {
   });
 
   ExportAssetsRequest.fromJson(core.Map json_)
-      : this(
-          assetTypes: (json_['assetTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          contentType: json_['contentType'] as core.String?,
-          outputConfig: json_.containsKey('outputConfig')
-              ? OutputConfig.fromJson(
-                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          readTime: json_['readTime'] as core.String?,
-          relationshipTypes: (json_['relationshipTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        assetTypes:
+            (json_['assetTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        contentType: json_['contentType'] as core.String?,
+        outputConfig:
+            json_.containsKey('outputConfig')
+                ? OutputConfig.fromJson(
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        readTime: json_['readTime'] as core.String?,
+        relationshipTypes:
+            (json_['relationshipTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assetTypes != null) 'assetTypes': assetTypes!,
-        if (contentType != null) 'contentType': contentType!,
-        if (outputConfig != null) 'outputConfig': outputConfig!,
-        if (readTime != null) 'readTime': readTime!,
-        if (relationshipTypes != null) 'relationshipTypes': relationshipTypes!,
-      };
+    if (assetTypes != null) 'assetTypes': assetTypes!,
+    if (contentType != null) 'contentType': contentType!,
+    if (outputConfig != null) 'outputConfig': outputConfig!,
+    if (readTime != null) 'readTime': readTime!,
+    if (relationshipTypes != null) 'relationshipTypes': relationshipTypes!,
+  };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3252,37 +3322,45 @@ class Feed {
   });
 
   Feed.fromJson(core.Map json_)
-      : this(
-          assetNames: (json_['assetNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          assetTypes: (json_['assetTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          contentType: json_['contentType'] as core.String?,
-          feedOutputConfig: json_.containsKey('feedOutputConfig')
-              ? FeedOutputConfig.fromJson(json_['feedOutputConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          relationshipTypes: (json_['relationshipTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        assetNames:
+            (json_['assetNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        assetTypes:
+            (json_['assetTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        contentType: json_['contentType'] as core.String?,
+        feedOutputConfig:
+            json_.containsKey('feedOutputConfig')
+                ? FeedOutputConfig.fromJson(
+                  json_['feedOutputConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        relationshipTypes:
+            (json_['relationshipTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assetNames != null) 'assetNames': assetNames!,
-        if (assetTypes != null) 'assetTypes': assetTypes!,
-        if (condition != null) 'condition': condition!,
-        if (contentType != null) 'contentType': contentType!,
-        if (feedOutputConfig != null) 'feedOutputConfig': feedOutputConfig!,
-        if (name != null) 'name': name!,
-        if (relationshipTypes != null) 'relationshipTypes': relationshipTypes!,
-      };
+    if (assetNames != null) 'assetNames': assetNames!,
+    if (assetTypes != null) 'assetTypes': assetTypes!,
+    if (condition != null) 'condition': condition!,
+    if (contentType != null) 'contentType': contentType!,
+    if (feedOutputConfig != null) 'feedOutputConfig': feedOutputConfig!,
+    if (name != null) 'name': name!,
+    if (relationshipTypes != null) 'relationshipTypes': relationshipTypes!,
+  };
 }
 
 /// Output configuration for asset feed destination.
@@ -3290,21 +3368,22 @@ class FeedOutputConfig {
   /// Destination on Pub/Sub.
   PubsubDestination? pubsubDestination;
 
-  FeedOutputConfig({
-    this.pubsubDestination,
-  });
+  FeedOutputConfig({this.pubsubDestination});
 
   FeedOutputConfig.fromJson(core.Map json_)
-      : this(
-          pubsubDestination: json_.containsKey('pubsubDestination')
-              ? PubsubDestination.fromJson(json_['pubsubDestination']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        pubsubDestination:
+            json_.containsKey('pubsubDestination')
+                ? PubsubDestination.fromJson(
+                  json_['pubsubDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pubsubDestination != null) 'pubsubDestination': pubsubDestination!,
-      };
+    if (pubsubDestination != null) 'pubsubDestination': pubsubDestination!,
+  };
 }
 
 /// A Cloud Storage location.
@@ -3331,21 +3410,18 @@ class GcsDestination {
   /// name "gs://bucket_name/object_name_prefix" already exists.
   core.String? uriPrefix;
 
-  GcsDestination({
-    this.uri,
-    this.uriPrefix,
-  });
+  GcsDestination({this.uri, this.uriPrefix});
 
   GcsDestination.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-          uriPrefix: json_['uriPrefix'] as core.String?,
-        );
+    : this(
+        uri: json_['uri'] as core.String?,
+        uriPrefix: json_['uriPrefix'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-        if (uriPrefix != null) 'uriPrefix': uriPrefix!,
-      };
+    if (uri != null) 'uri': uri!,
+    if (uriPrefix != null) 'uriPrefix': uriPrefix!,
+  };
 }
 
 /// An IAM role or permission under analysis.
@@ -3359,27 +3435,25 @@ class GoogleCloudAssetV1Access {
   /// The role.
   core.String? role;
 
-  GoogleCloudAssetV1Access({
-    this.analysisState,
-    this.permission,
-    this.role,
-  });
+  GoogleCloudAssetV1Access({this.analysisState, this.permission, this.role});
 
   GoogleCloudAssetV1Access.fromJson(core.Map json_)
-      : this(
-          analysisState: json_.containsKey('analysisState')
-              ? IamPolicyAnalysisState.fromJson(
-                  json_['analysisState'] as core.Map<core.String, core.dynamic>)
-              : null,
-          permission: json_['permission'] as core.String?,
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        analysisState:
+            json_.containsKey('analysisState')
+                ? IamPolicyAnalysisState.fromJson(
+                  json_['analysisState'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        permission: json_['permission'] as core.String?,
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisState != null) 'analysisState': analysisState!,
-        if (permission != null) 'permission': permission!,
-        if (role != null) 'role': role!,
-      };
+    if (analysisState != null) 'analysisState': analysisState!,
+    if (permission != null) 'permission': permission!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// An access control list, derived from the above IAM policy binding, which
@@ -3425,32 +3499,47 @@ class GoogleCloudAssetV1AccessControlList {
   });
 
   GoogleCloudAssetV1AccessControlList.fromJson(core.Map json_)
-      : this(
-          accesses: (json_['accesses'] as core.List?)
-              ?.map((value) => GoogleCloudAssetV1Access.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          conditionEvaluation: json_.containsKey('conditionEvaluation')
-              ? ConditionEvaluation.fromJson(json_['conditionEvaluation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          resourceEdges: (json_['resourceEdges'] as core.List?)
-              ?.map((value) => GoogleCloudAssetV1Edge.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          resources: (json_['resources'] as core.List?)
-              ?.map((value) => GoogleCloudAssetV1Resource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        accesses:
+            (json_['accesses'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudAssetV1Access.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        conditionEvaluation:
+            json_.containsKey('conditionEvaluation')
+                ? ConditionEvaluation.fromJson(
+                  json_['conditionEvaluation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resourceEdges:
+            (json_['resourceEdges'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudAssetV1Edge.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        resources:
+            (json_['resources'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudAssetV1Resource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accesses != null) 'accesses': accesses!,
-        if (conditionEvaluation != null)
-          'conditionEvaluation': conditionEvaluation!,
-        if (resourceEdges != null) 'resourceEdges': resourceEdges!,
-        if (resources != null) 'resources': resources!,
-      };
+    if (accesses != null) 'accesses': accesses!,
+    if (conditionEvaluation != null)
+      'conditionEvaluation': conditionEvaluation!,
+    if (resourceEdges != null) 'resourceEdges': resourceEdges!,
+    if (resources != null) 'resources': resources!,
+  };
 }
 
 /// Represents a Google Cloud asset(resource or IAM policy) governed by the
@@ -3468,12 +3557,12 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset {
   /// An IAM policy governed by the organization policies of the
   /// AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
   GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy?
-      governedIamPolicy;
+  governedIamPolicy;
 
   /// A Google Cloud resource governed by the organization policies of the
   /// AnalyzeOrgPolicyGovernedAssetsRequest.constraint.
   GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource?
-      governedResource;
+  governedResource;
 
   /// The ordered list of all organization policies from the
   /// consolidated_policy.attached_resource to the scope specified in the
@@ -3491,35 +3580,45 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset {
   });
 
   GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedAsset.fromJson(
-      core.Map json_)
-      : this(
-          consolidatedPolicy: json_.containsKey('consolidatedPolicy')
-              ? AnalyzerOrgPolicy.fromJson(json_['consolidatedPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          governedIamPolicy: json_.containsKey('governedIamPolicy')
-              ? GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy
-                  .fromJson(json_['governedIamPolicy']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          governedResource: json_.containsKey('governedResource')
-              ? GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource
-                  .fromJson(json_['governedResource']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          policyBundle: (json_['policyBundle'] as core.List?)
-              ?.map((value) => AnalyzerOrgPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        consolidatedPolicy:
+            json_.containsKey('consolidatedPolicy')
+                ? AnalyzerOrgPolicy.fromJson(
+                  json_['consolidatedPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        governedIamPolicy:
+            json_.containsKey('governedIamPolicy')
+                ? GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy.fromJson(
+                  json_['governedIamPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        governedResource:
+            json_.containsKey('governedResource')
+                ? GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource.fromJson(
+                  json_['governedResource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        policyBundle:
+            (json_['policyBundle'] as core.List?)
+                ?.map(
+                  (value) => AnalyzerOrgPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consolidatedPolicy != null)
-          'consolidatedPolicy': consolidatedPolicy!,
-        if (governedIamPolicy != null) 'governedIamPolicy': governedIamPolicy!,
-        if (governedResource != null) 'governedResource': governedResource!,
-        if (policyBundle != null) 'policyBundle': policyBundle!,
-      };
+    if (consolidatedPolicy != null) 'consolidatedPolicy': consolidatedPolicy!,
+    if (governedIamPolicy != null) 'governedIamPolicy': governedIamPolicy!,
+    if (governedResource != null) 'governedResource': governedResource!,
+    if (policyBundle != null) 'policyBundle': policyBundle!,
+  };
 }
 
 /// The IAM policies governed by the organization policies of the
@@ -3575,29 +3674,32 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy 
   });
 
   GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy.fromJson(
-      core.Map json_)
-      : this(
-          assetType: json_['assetType'] as core.String?,
-          attachedResource: json_['attachedResource'] as core.String?,
-          folders: (json_['folders'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          organization: json_['organization'] as core.String?,
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          project: json_['project'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        assetType: json_['assetType'] as core.String?,
+        attachedResource: json_['attachedResource'] as core.String?,
+        folders:
+            (json_['folders'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        organization: json_['organization'] as core.String?,
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        project: json_['project'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assetType != null) 'assetType': assetType!,
-        if (attachedResource != null) 'attachedResource': attachedResource!,
-        if (folders != null) 'folders': folders!,
-        if (organization != null) 'organization': organization!,
-        if (policy != null) 'policy': policy!,
-        if (project != null) 'project': project!,
-      };
+    if (assetType != null) 'assetType': assetType!,
+    if (attachedResource != null) 'attachedResource': attachedResource!,
+    if (folders != null) 'folders': folders!,
+    if (organization != null) 'organization': organization!,
+    if (policy != null) 'policy': policy!,
+    if (project != null) 'project': project!,
+  };
 }
 
 /// The Google Cloud resources governed by the organization policies of the
@@ -3655,31 +3757,36 @@ class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource {
   });
 
   GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource.fromJson(
-      core.Map json_)
-      : this(
-          assetType: json_['assetType'] as core.String?,
-          effectiveTags: (json_['effectiveTags'] as core.List?)
-              ?.map((value) => EffectiveTagDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          folders: (json_['folders'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          fullResourceName: json_['fullResourceName'] as core.String?,
-          organization: json_['organization'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          project: json_['project'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        assetType: json_['assetType'] as core.String?,
+        effectiveTags:
+            (json_['effectiveTags'] as core.List?)
+                ?.map(
+                  (value) => EffectiveTagDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        folders:
+            (json_['folders'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        fullResourceName: json_['fullResourceName'] as core.String?,
+        organization: json_['organization'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        project: json_['project'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assetType != null) 'assetType': assetType!,
-        if (effectiveTags != null) 'effectiveTags': effectiveTags!,
-        if (folders != null) 'folders': folders!,
-        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-        if (organization != null) 'organization': organization!,
-        if (parent != null) 'parent': parent!,
-        if (project != null) 'project': project!,
-      };
+    if (assetType != null) 'assetType': assetType!,
+    if (effectiveTags != null) 'effectiveTags': effectiveTags!,
+    if (folders != null) 'folders': folders!,
+    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+    if (organization != null) 'organization': organization!,
+    if (parent != null) 'parent': parent!,
+    if (project != null) 'project': project!,
+  };
 }
 
 /// A BigQuery destination.
@@ -3739,19 +3846,19 @@ class GoogleCloudAssetV1BigQueryDestination {
   });
 
   GoogleCloudAssetV1BigQueryDestination.fromJson(core.Map json_)
-      : this(
-          dataset: json_['dataset'] as core.String?,
-          partitionKey: json_['partitionKey'] as core.String?,
-          tablePrefix: json_['tablePrefix'] as core.String?,
-          writeDisposition: json_['writeDisposition'] as core.String?,
-        );
+    : this(
+        dataset: json_['dataset'] as core.String?,
+        partitionKey: json_['partitionKey'] as core.String?,
+        tablePrefix: json_['tablePrefix'] as core.String?,
+        writeDisposition: json_['writeDisposition'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataset != null) 'dataset': dataset!,
-        if (partitionKey != null) 'partitionKey': partitionKey!,
-        if (tablePrefix != null) 'tablePrefix': tablePrefix!,
-        if (writeDisposition != null) 'writeDisposition': writeDisposition!,
-      };
+    if (dataset != null) 'dataset': dataset!,
+    if (partitionKey != null) 'partitionKey': partitionKey!,
+    if (tablePrefix != null) 'tablePrefix': tablePrefix!,
+    if (writeDisposition != null) 'writeDisposition': writeDisposition!,
+  };
 }
 
 /// A `Constraint` that is either enforced or not.
@@ -3802,31 +3909,35 @@ class GoogleCloudAssetV1Constraint {
   });
 
   GoogleCloudAssetV1Constraint.fromJson(core.Map json_)
-      : this(
-          booleanConstraint: json_.containsKey('booleanConstraint')
-              ? GoogleCloudAssetV1BooleanConstraint.fromJson(
+    : this(
+        booleanConstraint:
+            json_.containsKey('booleanConstraint')
+                ? GoogleCloudAssetV1BooleanConstraint.fromJson(
                   json_['booleanConstraint']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          constraintDefault: json_['constraintDefault'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          listConstraint: json_.containsKey('listConstraint')
-              ? GoogleCloudAssetV1ListConstraint.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        constraintDefault: json_['constraintDefault'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        listConstraint:
+            json_.containsKey('listConstraint')
+                ? GoogleCloudAssetV1ListConstraint.fromJson(
                   json_['listConstraint']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (booleanConstraint != null) 'booleanConstraint': booleanConstraint!,
-        if (constraintDefault != null) 'constraintDefault': constraintDefault!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (listConstraint != null) 'listConstraint': listConstraint!,
-        if (name != null) 'name': name!,
-      };
+    if (booleanConstraint != null) 'booleanConstraint': booleanConstraint!,
+    if (constraintDefault != null) 'constraintDefault': constraintDefault!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (listConstraint != null) 'listConstraint': listConstraint!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The definition of a custom constraint.
@@ -3878,29 +3989,31 @@ class GoogleCloudAssetV1CustomConstraint {
   });
 
   GoogleCloudAssetV1CustomConstraint.fromJson(core.Map json_)
-      : this(
-          actionType: json_['actionType'] as core.String?,
-          condition: json_['condition'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          methodTypes: (json_['methodTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          resourceTypes: (json_['resourceTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        actionType: json_['actionType'] as core.String?,
+        condition: json_['condition'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        methodTypes:
+            (json_['methodTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        resourceTypes:
+            (json_['resourceTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionType != null) 'actionType': actionType!,
-        if (condition != null) 'condition': condition!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (methodTypes != null) 'methodTypes': methodTypes!,
-        if (name != null) 'name': name!,
-        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
-      };
+    if (actionType != null) 'actionType': actionType!,
+    if (condition != null) 'condition': condition!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (methodTypes != null) 'methodTypes': methodTypes!,
+    if (name != null) 'name': name!,
+    if (resourceTypes != null) 'resourceTypes': resourceTypes!,
+  };
 }
 
 /// A directional edge.
@@ -3917,21 +4030,18 @@ class GoogleCloudAssetV1Edge {
   /// email of an identity.
   core.String? targetNode;
 
-  GoogleCloudAssetV1Edge({
-    this.sourceNode,
-    this.targetNode,
-  });
+  GoogleCloudAssetV1Edge({this.sourceNode, this.targetNode});
 
   GoogleCloudAssetV1Edge.fromJson(core.Map json_)
-      : this(
-          sourceNode: json_['sourceNode'] as core.String?,
-          targetNode: json_['targetNode'] as core.String?,
-        );
+    : this(
+        sourceNode: json_['sourceNode'] as core.String?,
+        targetNode: json_['targetNode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sourceNode != null) 'sourceNode': sourceNode!,
-        if (targetNode != null) 'targetNode': targetNode!,
-      };
+    if (sourceNode != null) 'sourceNode': sourceNode!,
+    if (targetNode != null) 'targetNode': targetNode!,
+  };
 }
 
 /// A Cloud Storage location.
@@ -3949,18 +4059,14 @@ class GoogleCloudAssetV1GcsDestination {
   /// Required.
   core.String? uri;
 
-  GoogleCloudAssetV1GcsDestination({
-    this.uri,
-  });
+  GoogleCloudAssetV1GcsDestination({this.uri});
 
   GoogleCloudAssetV1GcsDestination.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+    : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// The organization/folder/project resource governed by organization policies
@@ -4027,39 +4133,50 @@ class GoogleCloudAssetV1GovernedContainer {
   });
 
   GoogleCloudAssetV1GovernedContainer.fromJson(core.Map json_)
-      : this(
-          consolidatedPolicy: json_.containsKey('consolidatedPolicy')
-              ? AnalyzerOrgPolicy.fromJson(json_['consolidatedPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          effectiveTags: (json_['effectiveTags'] as core.List?)
-              ?.map((value) => EffectiveTagDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          folders: (json_['folders'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          fullResourceName: json_['fullResourceName'] as core.String?,
-          organization: json_['organization'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          policyBundle: (json_['policyBundle'] as core.List?)
-              ?.map((value) => AnalyzerOrgPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          project: json_['project'] as core.String?,
-        );
+    : this(
+        consolidatedPolicy:
+            json_.containsKey('consolidatedPolicy')
+                ? AnalyzerOrgPolicy.fromJson(
+                  json_['consolidatedPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        effectiveTags:
+            (json_['effectiveTags'] as core.List?)
+                ?.map(
+                  (value) => EffectiveTagDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        folders:
+            (json_['folders'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        fullResourceName: json_['fullResourceName'] as core.String?,
+        organization: json_['organization'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        policyBundle:
+            (json_['policyBundle'] as core.List?)
+                ?.map(
+                  (value) => AnalyzerOrgPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        project: json_['project'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consolidatedPolicy != null)
-          'consolidatedPolicy': consolidatedPolicy!,
-        if (effectiveTags != null) 'effectiveTags': effectiveTags!,
-        if (folders != null) 'folders': folders!,
-        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-        if (organization != null) 'organization': organization!,
-        if (parent != null) 'parent': parent!,
-        if (policyBundle != null) 'policyBundle': policyBundle!,
-        if (project != null) 'project': project!,
-      };
+    if (consolidatedPolicy != null) 'consolidatedPolicy': consolidatedPolicy!,
+    if (effectiveTags != null) 'effectiveTags': effectiveTags!,
+    if (folders != null) 'folders': folders!,
+    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+    if (organization != null) 'organization': organization!,
+    if (parent != null) 'parent': parent!,
+    if (policyBundle != null) 'policyBundle': policyBundle!,
+    if (project != null) 'project': project!,
+  };
 }
 
 /// An identity under analysis.
@@ -4076,24 +4193,23 @@ class GoogleCloudAssetV1Identity {
   /// projectOwner:some_project_id - domain:google.com - allUsers
   core.String? name;
 
-  GoogleCloudAssetV1Identity({
-    this.analysisState,
-    this.name,
-  });
+  GoogleCloudAssetV1Identity({this.analysisState, this.name});
 
   GoogleCloudAssetV1Identity.fromJson(core.Map json_)
-      : this(
-          analysisState: json_.containsKey('analysisState')
-              ? IamPolicyAnalysisState.fromJson(
-                  json_['analysisState'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        analysisState:
+            json_.containsKey('analysisState')
+                ? IamPolicyAnalysisState.fromJson(
+                  json_['analysisState'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisState != null) 'analysisState': analysisState!,
-        if (name != null) 'name': name!,
-      };
+    if (analysisState != null) 'analysisState': analysisState!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The identities and group edges.
@@ -4112,27 +4228,32 @@ class GoogleCloudAssetV1IdentityList {
   /// Otherwise, identities reachable from the policy binding's members.
   core.List<GoogleCloudAssetV1Identity>? identities;
 
-  GoogleCloudAssetV1IdentityList({
-    this.groupEdges,
-    this.identities,
-  });
+  GoogleCloudAssetV1IdentityList({this.groupEdges, this.identities});
 
   GoogleCloudAssetV1IdentityList.fromJson(core.Map json_)
-      : this(
-          groupEdges: (json_['groupEdges'] as core.List?)
-              ?.map((value) => GoogleCloudAssetV1Edge.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          identities: (json_['identities'] as core.List?)
-              ?.map((value) => GoogleCloudAssetV1Identity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        groupEdges:
+            (json_['groupEdges'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudAssetV1Edge.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        identities:
+            (json_['identities'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudAssetV1Identity.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groupEdges != null) 'groupEdges': groupEdges!,
-        if (identities != null) 'identities': identities!,
-      };
+    if (groupEdges != null) 'groupEdges': groupEdges!,
+    if (identities != null) 'identities': identities!,
+  };
 }
 
 /// A `Constraint` that allows or disallows a list of string values, which are
@@ -4151,21 +4272,18 @@ class GoogleCloudAssetV1ListConstraint {
   /// 'folders/123' folder.
   core.bool? supportsUnder;
 
-  GoogleCloudAssetV1ListConstraint({
-    this.supportsIn,
-    this.supportsUnder,
-  });
+  GoogleCloudAssetV1ListConstraint({this.supportsIn, this.supportsUnder});
 
   GoogleCloudAssetV1ListConstraint.fromJson(core.Map json_)
-      : this(
-          supportsIn: json_['supportsIn'] as core.bool?,
-          supportsUnder: json_['supportsUnder'] as core.bool?,
-        );
+    : this(
+        supportsIn: json_['supportsIn'] as core.bool?,
+        supportsUnder: json_['supportsUnder'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (supportsIn != null) 'supportsIn': supportsIn!,
-        if (supportsUnder != null) 'supportsUnder': supportsUnder!,
-      };
+    if (supportsIn != null) 'supportsIn': supportsIn!,
+    if (supportsUnder != null) 'supportsUnder': supportsUnder!,
+  };
 }
 
 /// BigQuery destination.
@@ -4203,18 +4321,18 @@ class GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination {
   });
 
   GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination.fromJson(
-      core.Map json_)
-      : this(
-          dataset: json_['dataset'] as core.String?,
-          table: json_['table'] as core.String?,
-          writeDisposition: json_['writeDisposition'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        dataset: json_['dataset'] as core.String?,
+        table: json_['table'] as core.String?,
+        writeDisposition: json_['writeDisposition'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataset != null) 'dataset': dataset!,
-        if (table != null) 'table': table!,
-        if (writeDisposition != null) 'writeDisposition': writeDisposition!,
-      };
+    if (dataset != null) 'dataset': dataset!,
+    if (table != null) 'table': table!,
+    if (writeDisposition != null) 'writeDisposition': writeDisposition!,
+  };
 }
 
 /// A Google Cloud resource under analysis.
@@ -4226,24 +4344,23 @@ class GoogleCloudAssetV1Resource {
   /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   core.String? fullResourceName;
 
-  GoogleCloudAssetV1Resource({
-    this.analysisState,
-    this.fullResourceName,
-  });
+  GoogleCloudAssetV1Resource({this.analysisState, this.fullResourceName});
 
   GoogleCloudAssetV1Resource.fromJson(core.Map json_)
-      : this(
-          analysisState: json_.containsKey('analysisState')
-              ? IamPolicyAnalysisState.fromJson(
-                  json_['analysisState'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fullResourceName: json_['fullResourceName'] as core.String?,
-        );
+    : this(
+        analysisState:
+            json_.containsKey('analysisState')
+                ? IamPolicyAnalysisState.fromJson(
+                  json_['analysisState'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fullResourceName: json_['fullResourceName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisState != null) 'analysisState': analysisState!,
-        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-      };
+    if (analysisState != null) 'analysisState': analysisState!,
+    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+  };
 }
 
 /// This rule message is a customized version of the one defined in the
@@ -4298,33 +4415,40 @@ class GoogleCloudAssetV1Rule {
   });
 
   GoogleCloudAssetV1Rule.fromJson(core.Map json_)
-      : this(
-          allowAll: json_['allowAll'] as core.bool?,
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          conditionEvaluation: json_.containsKey('conditionEvaluation')
-              ? ConditionEvaluation.fromJson(json_['conditionEvaluation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          denyAll: json_['denyAll'] as core.bool?,
-          enforce: json_['enforce'] as core.bool?,
-          values: json_.containsKey('values')
-              ? GoogleCloudAssetV1StringValues.fromJson(
-                  json_['values'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        allowAll: json_['allowAll'] as core.bool?,
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conditionEvaluation:
+            json_.containsKey('conditionEvaluation')
+                ? ConditionEvaluation.fromJson(
+                  json_['conditionEvaluation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        denyAll: json_['denyAll'] as core.bool?,
+        enforce: json_['enforce'] as core.bool?,
+        values:
+            json_.containsKey('values')
+                ? GoogleCloudAssetV1StringValues.fromJson(
+                  json_['values'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowAll != null) 'allowAll': allowAll!,
-        if (condition != null) 'condition': condition!,
-        if (conditionEvaluation != null)
-          'conditionEvaluation': conditionEvaluation!,
-        if (denyAll != null) 'denyAll': denyAll!,
-        if (enforce != null) 'enforce': enforce!,
-        if (values != null) 'values': values!,
-      };
+    if (allowAll != null) 'allowAll': allowAll!,
+    if (condition != null) 'condition': condition!,
+    if (conditionEvaluation != null)
+      'conditionEvaluation': conditionEvaluation!,
+    if (denyAll != null) 'denyAll': denyAll!,
+    if (enforce != null) 'enforce': enforce!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// The string values for the list constraints.
@@ -4384,8 +4508,10 @@ class GoogleCloudOrgpolicyV1Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// List of values either allowed or disallowed.
@@ -4418,35 +4544,41 @@ class GoogleCloudOrgpolicyV1Policy {
   });
 
   GoogleCloudOrgpolicyV1Policy.fromJson(core.Map json_)
-      : this(
-          booleanPolicy: json_.containsKey('booleanPolicy')
-              ? GoogleCloudOrgpolicyV1BooleanPolicy.fromJson(
-                  json_['booleanPolicy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          constraint: json_['constraint'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          listPolicy: json_.containsKey('listPolicy')
-              ? GoogleCloudOrgpolicyV1ListPolicy.fromJson(
-                  json_['listPolicy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          restoreDefault: json_.containsKey('restoreDefault')
-              ? GoogleCloudOrgpolicyV1RestoreDefault.fromJson(
+    : this(
+        booleanPolicy:
+            json_.containsKey('booleanPolicy')
+                ? GoogleCloudOrgpolicyV1BooleanPolicy.fromJson(
+                  json_['booleanPolicy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        constraint: json_['constraint'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        listPolicy:
+            json_.containsKey('listPolicy')
+                ? GoogleCloudOrgpolicyV1ListPolicy.fromJson(
+                  json_['listPolicy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        restoreDefault:
+            json_.containsKey('restoreDefault')
+                ? GoogleCloudOrgpolicyV1RestoreDefault.fromJson(
                   json_['restoreDefault']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (booleanPolicy != null) 'booleanPolicy': booleanPolicy!,
-        if (constraint != null) 'constraint': constraint!,
-        if (etag != null) 'etag': etag!,
-        if (listPolicy != null) 'listPolicy': listPolicy!,
-        if (restoreDefault != null) 'restoreDefault': restoreDefault!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (version != null) 'version': version!,
-      };
+    if (booleanPolicy != null) 'booleanPolicy': booleanPolicy!,
+    if (constraint != null) 'constraint': constraint!,
+    if (etag != null) 'etag': etag!,
+    if (listPolicy != null) 'listPolicy': listPolicy!,
+    if (restoreDefault != null) 'restoreDefault': restoreDefault!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Ignores policies set above this resource and restores the
@@ -4501,27 +4633,31 @@ class GoogleIdentityAccesscontextmanagerV1AccessLevel {
   });
 
   GoogleIdentityAccesscontextmanagerV1AccessLevel.fromJson(core.Map json_)
-      : this(
-          basic: json_.containsKey('basic')
-              ? GoogleIdentityAccesscontextmanagerV1BasicLevel.fromJson(
-                  json_['basic'] as core.Map<core.String, core.dynamic>)
-              : null,
-          custom: json_.containsKey('custom')
-              ? GoogleIdentityAccesscontextmanagerV1CustomLevel.fromJson(
-                  json_['custom'] as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          name: json_['name'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        basic:
+            json_.containsKey('basic')
+                ? GoogleIdentityAccesscontextmanagerV1BasicLevel.fromJson(
+                  json_['basic'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        custom:
+            json_.containsKey('custom')
+                ? GoogleIdentityAccesscontextmanagerV1CustomLevel.fromJson(
+                  json_['custom'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        name: json_['name'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (basic != null) 'basic': basic!,
-        if (custom != null) 'custom': custom!,
-        if (description != null) 'description': description!,
-        if (name != null) 'name': name!,
-        if (title != null) 'title': title!,
-      };
+    if (basic != null) 'basic': basic!,
+    if (custom != null) 'custom': custom!,
+    if (description != null) 'description': description!,
+    if (name != null) 'name': name!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// `AccessPolicy` is a container for `AccessLevels` (which define the necessary
@@ -4541,7 +4677,7 @@ class GoogleIdentityAccesscontextmanagerV1ApiOperation {
   /// the `method` field will allow all methods AND permissions for the service
   /// specified in `service_name`.
   core.List<GoogleIdentityAccesscontextmanagerV1MethodSelector>?
-      methodSelectors;
+  methodSelectors;
 
   /// The name of the API whose methods or permissions the IngressPolicy or
   /// EgressPolicy want to allow.
@@ -4556,19 +4692,23 @@ class GoogleIdentityAccesscontextmanagerV1ApiOperation {
   });
 
   GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(core.Map json_)
-      : this(
-          methodSelectors: (json_['methodSelectors'] as core.List?)
-              ?.map((value) =>
-                  GoogleIdentityAccesscontextmanagerV1MethodSelector.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          serviceName: json_['serviceName'] as core.String?,
-        );
+    : this(
+        methodSelectors:
+            (json_['methodSelectors'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleIdentityAccesscontextmanagerV1MethodSelector.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        serviceName: json_['serviceName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (methodSelectors != null) 'methodSelectors': methodSelectors!,
-        if (serviceName != null) 'serviceName': serviceName!,
-      };
+    if (methodSelectors != null) 'methodSelectors': methodSelectors!,
+    if (serviceName != null) 'serviceName': serviceName!,
+  };
 }
 
 /// `BasicLevel` is an `AccessLevel` using a set of recommended features.
@@ -4597,19 +4737,23 @@ class GoogleIdentityAccesscontextmanagerV1BasicLevel {
   });
 
   GoogleIdentityAccesscontextmanagerV1BasicLevel.fromJson(core.Map json_)
-      : this(
-          combiningFunction: json_['combiningFunction'] as core.String?,
-          conditions: (json_['conditions'] as core.List?)
-              ?.map((value) =>
-                  GoogleIdentityAccesscontextmanagerV1Condition.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        combiningFunction: json_['combiningFunction'] as core.String?,
+        conditions:
+            (json_['conditions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleIdentityAccesscontextmanagerV1Condition.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (combiningFunction != null) 'combiningFunction': combiningFunction!,
-        if (conditions != null) 'conditions': conditions!,
-      };
+    if (combiningFunction != null) 'combiningFunction': combiningFunction!,
+    if (conditions != null) 'conditions': conditions!,
+  };
 }
 
 /// A condition necessary for an `AccessLevel` to be granted.
@@ -4669,7 +4813,7 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
   ///
   /// Cannot specify this field together with `ip_subnetworks`.
   core.List<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>?
-      vpcNetworkSources;
+  vpcNetworkSources;
 
   GoogleIdentityAccesscontextmanagerV1Condition({
     this.devicePolicy,
@@ -4682,41 +4826,51 @@ class GoogleIdentityAccesscontextmanagerV1Condition {
   });
 
   GoogleIdentityAccesscontextmanagerV1Condition.fromJson(core.Map json_)
-      : this(
-          devicePolicy: json_.containsKey('devicePolicy')
-              ? GoogleIdentityAccesscontextmanagerV1DevicePolicy.fromJson(
-                  json_['devicePolicy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          ipSubnetworks: (json_['ipSubnetworks'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          negate: json_['negate'] as core.bool?,
-          regions: (json_['regions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          requiredAccessLevels: (json_['requiredAccessLevels'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          vpcNetworkSources: (json_['vpcNetworkSources'] as core.List?)
-              ?.map((value) =>
-                  GoogleIdentityAccesscontextmanagerV1VpcNetworkSource.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        devicePolicy:
+            json_.containsKey('devicePolicy')
+                ? GoogleIdentityAccesscontextmanagerV1DevicePolicy.fromJson(
+                  json_['devicePolicy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        ipSubnetworks:
+            (json_['ipSubnetworks'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        negate: json_['negate'] as core.bool?,
+        regions:
+            (json_['regions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        requiredAccessLevels:
+            (json_['requiredAccessLevels'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        vpcNetworkSources:
+            (json_['vpcNetworkSources'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleIdentityAccesscontextmanagerV1VpcNetworkSource.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devicePolicy != null) 'devicePolicy': devicePolicy!,
-        if (ipSubnetworks != null) 'ipSubnetworks': ipSubnetworks!,
-        if (members != null) 'members': members!,
-        if (negate != null) 'negate': negate!,
-        if (regions != null) 'regions': regions!,
-        if (requiredAccessLevels != null)
-          'requiredAccessLevels': requiredAccessLevels!,
-        if (vpcNetworkSources != null) 'vpcNetworkSources': vpcNetworkSources!,
-      };
+    if (devicePolicy != null) 'devicePolicy': devicePolicy!,
+    if (ipSubnetworks != null) 'ipSubnetworks': ipSubnetworks!,
+    if (members != null) 'members': members!,
+    if (negate != null) 'negate': negate!,
+    if (regions != null) 'regions': regions!,
+    if (requiredAccessLevels != null)
+      'requiredAccessLevels': requiredAccessLevels!,
+    if (vpcNetworkSources != null) 'vpcNetworkSources': vpcNetworkSources!,
+  };
 }
 
 /// `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language
@@ -4729,21 +4883,21 @@ class GoogleIdentityAccesscontextmanagerV1CustomLevel {
   /// Required.
   Expr? expr;
 
-  GoogleIdentityAccesscontextmanagerV1CustomLevel({
-    this.expr,
-  });
+  GoogleIdentityAccesscontextmanagerV1CustomLevel({this.expr});
 
   GoogleIdentityAccesscontextmanagerV1CustomLevel.fromJson(core.Map json_)
-      : this(
-          expr: json_.containsKey('expr')
-              ? Expr.fromJson(
-                  json_['expr'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        expr:
+            json_.containsKey('expr')
+                ? Expr.fromJson(
+                  json_['expr'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expr != null) 'expr': expr!,
-      };
+    if (expr != null) 'expr': expr!,
+  };
 }
 
 /// `DevicePolicy` specifies device specific restrictions necessary to acquire a
@@ -4789,36 +4943,40 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
   });
 
   GoogleIdentityAccesscontextmanagerV1DevicePolicy.fromJson(core.Map json_)
-      : this(
-          allowedDeviceManagementLevels:
-              (json_['allowedDeviceManagementLevels'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          allowedEncryptionStatuses:
-              (json_['allowedEncryptionStatuses'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          osConstraints: (json_['osConstraints'] as core.List?)
-              ?.map((value) =>
-                  GoogleIdentityAccesscontextmanagerV1OsConstraint.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          requireAdminApproval: json_['requireAdminApproval'] as core.bool?,
-          requireCorpOwned: json_['requireCorpOwned'] as core.bool?,
-          requireScreenlock: json_['requireScreenlock'] as core.bool?,
-        );
+    : this(
+        allowedDeviceManagementLevels:
+            (json_['allowedDeviceManagementLevels'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        allowedEncryptionStatuses:
+            (json_['allowedEncryptionStatuses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        osConstraints:
+            (json_['osConstraints'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleIdentityAccesscontextmanagerV1OsConstraint.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        requireAdminApproval: json_['requireAdminApproval'] as core.bool?,
+        requireCorpOwned: json_['requireCorpOwned'] as core.bool?,
+        requireScreenlock: json_['requireScreenlock'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedDeviceManagementLevels != null)
-          'allowedDeviceManagementLevels': allowedDeviceManagementLevels!,
-        if (allowedEncryptionStatuses != null)
-          'allowedEncryptionStatuses': allowedEncryptionStatuses!,
-        if (osConstraints != null) 'osConstraints': osConstraints!,
-        if (requireAdminApproval != null)
-          'requireAdminApproval': requireAdminApproval!,
-        if (requireCorpOwned != null) 'requireCorpOwned': requireCorpOwned!,
-        if (requireScreenlock != null) 'requireScreenlock': requireScreenlock!,
-      };
+    if (allowedDeviceManagementLevels != null)
+      'allowedDeviceManagementLevels': allowedDeviceManagementLevels!,
+    if (allowedEncryptionStatuses != null)
+      'allowedEncryptionStatuses': allowedEncryptionStatuses!,
+    if (osConstraints != null) 'osConstraints': osConstraints!,
+    if (requireAdminApproval != null)
+      'requireAdminApproval': requireAdminApproval!,
+    if (requireCorpOwned != null) 'requireCorpOwned': requireCorpOwned!,
+    if (requireScreenlock != null) 'requireScreenlock': requireScreenlock!,
+  };
 }
 
 /// Defines the conditions under which an EgressPolicy matches a request.
@@ -4879,25 +5037,30 @@ class GoogleIdentityAccesscontextmanagerV1EgressFrom {
   });
 
   GoogleIdentityAccesscontextmanagerV1EgressFrom.fromJson(core.Map json_)
-      : this(
-          identities: (json_['identities'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          identityType: json_['identityType'] as core.String?,
-          sourceRestriction: json_['sourceRestriction'] as core.String?,
-          sources: (json_['sources'] as core.List?)
-              ?.map((value) =>
-                  GoogleIdentityAccesscontextmanagerV1EgressSource.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        identities:
+            (json_['identities'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        identityType: json_['identityType'] as core.String?,
+        sourceRestriction: json_['sourceRestriction'] as core.String?,
+        sources:
+            (json_['sources'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleIdentityAccesscontextmanagerV1EgressSource.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (identities != null) 'identities': identities!,
-        if (identityType != null) 'identityType': identityType!,
-        if (sourceRestriction != null) 'sourceRestriction': sourceRestriction!,
-        if (sources != null) 'sources': sources!,
-      };
+    if (identities != null) 'identities': identities!,
+    if (identityType != null) 'identityType': identityType!,
+    if (sourceRestriction != null) 'sourceRestriction': sourceRestriction!,
+    if (sources != null) 'sources': sources!,
+  };
 }
 
 /// Policy for egress from perimeter.
@@ -4939,23 +5102,27 @@ class GoogleIdentityAccesscontextmanagerV1EgressPolicy {
   });
 
   GoogleIdentityAccesscontextmanagerV1EgressPolicy.fromJson(core.Map json_)
-      : this(
-          egressFrom: json_.containsKey('egressFrom')
-              ? GoogleIdentityAccesscontextmanagerV1EgressFrom.fromJson(
-                  json_['egressFrom'] as core.Map<core.String, core.dynamic>)
-              : null,
-          egressTo: json_.containsKey('egressTo')
-              ? GoogleIdentityAccesscontextmanagerV1EgressTo.fromJson(
-                  json_['egressTo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        egressFrom:
+            json_.containsKey('egressFrom')
+                ? GoogleIdentityAccesscontextmanagerV1EgressFrom.fromJson(
+                  json_['egressFrom'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        egressTo:
+            json_.containsKey('egressTo')
+                ? GoogleIdentityAccesscontextmanagerV1EgressTo.fromJson(
+                  json_['egressTo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (egressFrom != null) 'egressFrom': egressFrom!,
-        if (egressTo != null) 'egressTo': egressTo!,
-        if (title != null) 'title': title!,
-      };
+    if (egressFrom != null) 'egressFrom': egressFrom!,
+    if (egressTo != null) 'egressTo': egressTo!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// The source that EgressPolicy authorizes access from inside the
@@ -5010,29 +5177,36 @@ class GoogleIdentityAccesscontextmanagerV1EgressTo {
   });
 
   GoogleIdentityAccesscontextmanagerV1EgressTo.fromJson(core.Map json_)
-      : this(
-          externalResources: (json_['externalResources'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) =>
-                  GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          resources: (json_['resources'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          roles: (json_['roles'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        externalResources:
+            (json_['externalResources'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        resources:
+            (json_['resources'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        roles:
+            (json_['roles'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (externalResources != null) 'externalResources': externalResources!,
-        if (operations != null) 'operations': operations!,
-        if (resources != null) 'resources': resources!,
-        if (roles != null) 'roles': roles!,
-      };
+    if (externalResources != null) 'externalResources': externalResources!,
+    if (operations != null) 'operations': operations!,
+    if (resources != null) 'resources': resources!,
+    if (roles != null) 'roles': roles!,
+  };
 }
 
 /// Defines the conditions under which an IngressPolicy matches a request.
@@ -5075,23 +5249,28 @@ class GoogleIdentityAccesscontextmanagerV1IngressFrom {
   });
 
   GoogleIdentityAccesscontextmanagerV1IngressFrom.fromJson(core.Map json_)
-      : this(
-          identities: (json_['identities'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          identityType: json_['identityType'] as core.String?,
-          sources: (json_['sources'] as core.List?)
-              ?.map((value) =>
-                  GoogleIdentityAccesscontextmanagerV1IngressSource.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        identities:
+            (json_['identities'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        identityType: json_['identityType'] as core.String?,
+        sources:
+            (json_['sources'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleIdentityAccesscontextmanagerV1IngressSource.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (identities != null) 'identities': identities!,
-        if (identityType != null) 'identityType': identityType!,
-        if (sources != null) 'sources': sources!,
-      };
+    if (identities != null) 'identities': identities!,
+    if (identityType != null) 'identityType': identityType!,
+    if (sources != null) 'sources': sources!,
+  };
 }
 
 /// Policy for ingress into ServicePerimeter.
@@ -5131,23 +5310,27 @@ class GoogleIdentityAccesscontextmanagerV1IngressPolicy {
   });
 
   GoogleIdentityAccesscontextmanagerV1IngressPolicy.fromJson(core.Map json_)
-      : this(
-          ingressFrom: json_.containsKey('ingressFrom')
-              ? GoogleIdentityAccesscontextmanagerV1IngressFrom.fromJson(
-                  json_['ingressFrom'] as core.Map<core.String, core.dynamic>)
-              : null,
-          ingressTo: json_.containsKey('ingressTo')
-              ? GoogleIdentityAccesscontextmanagerV1IngressTo.fromJson(
-                  json_['ingressTo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        ingressFrom:
+            json_.containsKey('ingressFrom')
+                ? GoogleIdentityAccesscontextmanagerV1IngressFrom.fromJson(
+                  json_['ingressFrom'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        ingressTo:
+            json_.containsKey('ingressTo')
+                ? GoogleIdentityAccesscontextmanagerV1IngressTo.fromJson(
+                  json_['ingressTo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ingressFrom != null) 'ingressFrom': ingressFrom!,
-        if (ingressTo != null) 'ingressTo': ingressTo!,
-        if (title != null) 'title': title!,
-      };
+    if (ingressFrom != null) 'ingressFrom': ingressFrom!,
+    if (ingressTo != null) 'ingressTo': ingressTo!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// The source that IngressPolicy authorizes access from.
@@ -5183,25 +5366,31 @@ class GoogleIdentityAccesscontextmanagerV1IngressTo {
   });
 
   GoogleIdentityAccesscontextmanagerV1IngressTo.fromJson(core.Map json_)
-      : this(
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) =>
-                  GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          resources: (json_['resources'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          roles: (json_['roles'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        resources:
+            (json_['resources'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        roles:
+            (json_['roles'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operations != null) 'operations': operations!,
-        if (resources != null) 'resources': resources!,
-        if (roles != null) 'roles': roles!,
-      };
+    if (operations != null) 'operations': operations!,
+    if (resources != null) 'resources': resources!,
+    if (roles != null) 'roles': roles!,
+  };
 }
 
 /// An allowed method or permission of a service specified in ApiOperation.
@@ -5302,36 +5491,38 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
   });
 
   GoogleIdentityAccesscontextmanagerV1ServicePerimeter.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          name: json_['name'] as core.String?,
-          perimeterType: json_['perimeterType'] as core.String?,
-          spec: json_.containsKey('spec')
-              ? GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig
-                  .fromJson(
-                      json_['spec'] as core.Map<core.String, core.dynamic>)
-              : null,
-          status: json_.containsKey('status')
-              ? GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig
-                  .fromJson(
-                      json_['status'] as core.Map<core.String, core.dynamic>)
-              : null,
-          title: json_['title'] as core.String?,
-          useExplicitDryRunSpec: json_['useExplicitDryRunSpec'] as core.bool?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        perimeterType: json_['perimeterType'] as core.String?,
+        spec:
+            json_.containsKey('spec')
+                ? GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        status:
+            json_.containsKey('status')
+                ? GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title: json_['title'] as core.String?,
+        useExplicitDryRunSpec: json_['useExplicitDryRunSpec'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (name != null) 'name': name!,
-        if (perimeterType != null) 'perimeterType': perimeterType!,
-        if (spec != null) 'spec': spec!,
-        if (status != null) 'status': status!,
-        if (title != null) 'title': title!,
-        if (useExplicitDryRunSpec != null)
-          'useExplicitDryRunSpec': useExplicitDryRunSpec!,
-      };
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (perimeterType != null) 'perimeterType': perimeterType!,
+    if (spec != null) 'spec': spec!,
+    if (status != null) 'status': status!,
+    if (title != null) 'title': title!,
+    if (useExplicitDryRunSpec != null)
+      'useExplicitDryRunSpec': useExplicitDryRunSpec!,
+  };
 }
 
 /// `ServicePerimeterConfig` specifies a set of Google Cloud resources that
@@ -5380,7 +5571,7 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
 
   /// Configuration for APIs allowed within Perimeter.
   GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices?
-      vpcAccessibleServices;
+  vpcAccessibleServices;
 
   GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig({
     this.accessLevels,
@@ -5392,70 +5583,82 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
   });
 
   GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig.fromJson(
-      core.Map json_)
-      : this(
-          accessLevels: (json_['accessLevels'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          egressPolicies: (json_['egressPolicies'] as core.List?)
-              ?.map((value) =>
-                  GoogleIdentityAccesscontextmanagerV1EgressPolicy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          ingressPolicies: (json_['ingressPolicies'] as core.List?)
-              ?.map((value) =>
-                  GoogleIdentityAccesscontextmanagerV1IngressPolicy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          resources: (json_['resources'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          restrictedServices: (json_['restrictedServices'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          vpcAccessibleServices: json_.containsKey('vpcAccessibleServices')
-              ? GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
-                  .fromJson(json_['vpcAccessibleServices']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        accessLevels:
+            (json_['accessLevels'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        egressPolicies:
+            (json_['egressPolicies'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleIdentityAccesscontextmanagerV1EgressPolicy.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        ingressPolicies:
+            (json_['ingressPolicies'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleIdentityAccesscontextmanagerV1IngressPolicy.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        resources:
+            (json_['resources'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        restrictedServices:
+            (json_['restrictedServices'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        vpcAccessibleServices:
+            json_.containsKey('vpcAccessibleServices')
+                ? GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices.fromJson(
+                  json_['vpcAccessibleServices']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessLevels != null) 'accessLevels': accessLevels!,
-        if (egressPolicies != null) 'egressPolicies': egressPolicies!,
-        if (ingressPolicies != null) 'ingressPolicies': ingressPolicies!,
-        if (resources != null) 'resources': resources!,
-        if (restrictedServices != null)
-          'restrictedServices': restrictedServices!,
-        if (vpcAccessibleServices != null)
-          'vpcAccessibleServices': vpcAccessibleServices!,
-      };
+    if (accessLevels != null) 'accessLevels': accessLevels!,
+    if (egressPolicies != null) 'egressPolicies': egressPolicies!,
+    if (ingressPolicies != null) 'ingressPolicies': ingressPolicies!,
+    if (resources != null) 'resources': resources!,
+    if (restrictedServices != null) 'restrictedServices': restrictedServices!,
+    if (vpcAccessibleServices != null)
+      'vpcAccessibleServices': vpcAccessibleServices!,
+  };
 }
 
 /// Specifies how APIs are allowed to communicate within the Service Perimeter.
-typedef GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
-    = $VpcAccessibleServices;
+typedef GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices =
+    $VpcAccessibleServices;
 
 /// The originating network source in Google Cloud.
 class GoogleIdentityAccesscontextmanagerV1VpcNetworkSource {
   /// Sub-segment ranges of a VPC network.
   GoogleIdentityAccesscontextmanagerV1VpcSubNetwork? vpcSubnetwork;
 
-  GoogleIdentityAccesscontextmanagerV1VpcNetworkSource({
-    this.vpcSubnetwork,
-  });
+  GoogleIdentityAccesscontextmanagerV1VpcNetworkSource({this.vpcSubnetwork});
 
   GoogleIdentityAccesscontextmanagerV1VpcNetworkSource.fromJson(core.Map json_)
-      : this(
-          vpcSubnetwork: json_.containsKey('vpcSubnetwork')
-              ? GoogleIdentityAccesscontextmanagerV1VpcSubNetwork.fromJson(
-                  json_['vpcSubnetwork'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        vpcSubnetwork:
+            json_.containsKey('vpcSubnetwork')
+                ? GoogleIdentityAccesscontextmanagerV1VpcSubNetwork.fromJson(
+                  json_['vpcSubnetwork'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (vpcSubnetwork != null) 'vpcSubnetwork': vpcSubnetwork!,
-      };
+    if (vpcSubnetwork != null) 'vpcSubnetwork': vpcSubnetwork!,
+  };
 }
 
 /// Sub-segment ranges inside of a VPC Network.
@@ -5485,28 +5688,38 @@ class IamPolicyAnalysis {
   });
 
   IamPolicyAnalysis.fromJson(core.Map json_)
-      : this(
-          analysisQuery: json_.containsKey('analysisQuery')
-              ? IamPolicyAnalysisQuery.fromJson(
-                  json_['analysisQuery'] as core.Map<core.String, core.dynamic>)
-              : null,
-          analysisResults: (json_['analysisResults'] as core.List?)
-              ?.map((value) => IamPolicyAnalysisResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          fullyExplored: json_['fullyExplored'] as core.bool?,
-          nonCriticalErrors: (json_['nonCriticalErrors'] as core.List?)
-              ?.map((value) => IamPolicyAnalysisState.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        analysisQuery:
+            json_.containsKey('analysisQuery')
+                ? IamPolicyAnalysisQuery.fromJson(
+                  json_['analysisQuery'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        analysisResults:
+            (json_['analysisResults'] as core.List?)
+                ?.map(
+                  (value) => IamPolicyAnalysisResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        fullyExplored: json_['fullyExplored'] as core.bool?,
+        nonCriticalErrors:
+            (json_['nonCriticalErrors'] as core.List?)
+                ?.map(
+                  (value) => IamPolicyAnalysisState.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisQuery != null) 'analysisQuery': analysisQuery!,
-        if (analysisResults != null) 'analysisResults': analysisResults!,
-        if (fullyExplored != null) 'fullyExplored': fullyExplored!,
-        if (nonCriticalErrors != null) 'nonCriticalErrors': nonCriticalErrors!,
-      };
+    if (analysisQuery != null) 'analysisQuery': analysisQuery!,
+    if (analysisResults != null) 'analysisResults': analysisResults!,
+    if (fullyExplored != null) 'fullyExplored': fullyExplored!,
+    if (nonCriticalErrors != null) 'nonCriticalErrors': nonCriticalErrors!,
+  };
 }
 
 /// Output configuration for export IAM policy analysis destination.
@@ -5523,24 +5736,28 @@ class IamPolicyAnalysisOutputConfig {
   });
 
   IamPolicyAnalysisOutputConfig.fromJson(core.Map json_)
-      : this(
-          bigqueryDestination: json_.containsKey('bigqueryDestination')
-              ? GoogleCloudAssetV1BigQueryDestination.fromJson(
+    : this(
+        bigqueryDestination:
+            json_.containsKey('bigqueryDestination')
+                ? GoogleCloudAssetV1BigQueryDestination.fromJson(
                   json_['bigqueryDestination']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          gcsDestination: json_.containsKey('gcsDestination')
-              ? GoogleCloudAssetV1GcsDestination.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gcsDestination:
+            json_.containsKey('gcsDestination')
+                ? GoogleCloudAssetV1GcsDestination.fromJson(
                   json_['gcsDestination']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination!,
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
-      };
+    if (bigqueryDestination != null)
+      'bigqueryDestination': bigqueryDestination!,
+    if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+  };
 }
 
 /// IAM policy analysis query message.
@@ -5596,38 +5813,52 @@ class IamPolicyAnalysisQuery {
   });
 
   IamPolicyAnalysisQuery.fromJson(core.Map json_)
-      : this(
-          accessSelector: json_.containsKey('accessSelector')
-              ? AccessSelector.fromJson(json_['accessSelector']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          conditionContext: json_.containsKey('conditionContext')
-              ? ConditionContext.fromJson(json_['conditionContext']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          identitySelector: json_.containsKey('identitySelector')
-              ? IdentitySelector.fromJson(json_['identitySelector']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          options: json_.containsKey('options')
-              ? Options.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>)
-              : null,
-          resourceSelector: json_.containsKey('resourceSelector')
-              ? ResourceSelector.fromJson(json_['resourceSelector']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          scope: json_['scope'] as core.String?,
-        );
+    : this(
+        accessSelector:
+            json_.containsKey('accessSelector')
+                ? AccessSelector.fromJson(
+                  json_['accessSelector']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conditionContext:
+            json_.containsKey('conditionContext')
+                ? ConditionContext.fromJson(
+                  json_['conditionContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        identitySelector:
+            json_.containsKey('identitySelector')
+                ? IdentitySelector.fromJson(
+                  json_['identitySelector']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        options:
+            json_.containsKey('options')
+                ? Options.fromJson(
+                  json_['options'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resourceSelector:
+            json_.containsKey('resourceSelector')
+                ? ResourceSelector.fromJson(
+                  json_['resourceSelector']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        scope: json_['scope'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessSelector != null) 'accessSelector': accessSelector!,
-        if (conditionContext != null) 'conditionContext': conditionContext!,
-        if (identitySelector != null) 'identitySelector': identitySelector!,
-        if (options != null) 'options': options!,
-        if (resourceSelector != null) 'resourceSelector': resourceSelector!,
-        if (scope != null) 'scope': scope!,
-      };
+    if (accessSelector != null) 'accessSelector': accessSelector!,
+    if (conditionContext != null) 'conditionContext': conditionContext!,
+    if (identitySelector != null) 'identitySelector': identitySelector!,
+    if (options != null) 'options': options!,
+    if (resourceSelector != null) 'resourceSelector': resourceSelector!,
+    if (scope != null) 'scope': scope!,
+  };
 }
 
 /// IAM Policy analysis result, consisting of one IAM policy binding and derived
@@ -5662,33 +5893,40 @@ class IamPolicyAnalysisResult {
   });
 
   IamPolicyAnalysisResult.fromJson(core.Map json_)
-      : this(
-          accessControlLists: (json_['accessControlLists'] as core.List?)
-              ?.map((value) => GoogleCloudAssetV1AccessControlList.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          attachedResourceFullName:
-              json_['attachedResourceFullName'] as core.String?,
-          fullyExplored: json_['fullyExplored'] as core.bool?,
-          iamBinding: json_.containsKey('iamBinding')
-              ? Binding.fromJson(
-                  json_['iamBinding'] as core.Map<core.String, core.dynamic>)
-              : null,
-          identityList: json_.containsKey('identityList')
-              ? GoogleCloudAssetV1IdentityList.fromJson(
-                  json_['identityList'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        accessControlLists:
+            (json_['accessControlLists'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudAssetV1AccessControlList.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        attachedResourceFullName:
+            json_['attachedResourceFullName'] as core.String?,
+        fullyExplored: json_['fullyExplored'] as core.bool?,
+        iamBinding:
+            json_.containsKey('iamBinding')
+                ? Binding.fromJson(
+                  json_['iamBinding'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        identityList:
+            json_.containsKey('identityList')
+                ? GoogleCloudAssetV1IdentityList.fromJson(
+                  json_['identityList'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessControlLists != null)
-          'accessControlLists': accessControlLists!,
-        if (attachedResourceFullName != null)
-          'attachedResourceFullName': attachedResourceFullName!,
-        if (fullyExplored != null) 'fullyExplored': fullyExplored!,
-        if (iamBinding != null) 'iamBinding': iamBinding!,
-        if (identityList != null) 'identityList': identityList!,
-      };
+    if (accessControlLists != null) 'accessControlLists': accessControlLists!,
+    if (attachedResourceFullName != null)
+      'attachedResourceFullName': attachedResourceFullName!,
+    if (fullyExplored != null) 'fullyExplored': fullyExplored!,
+    if (iamBinding != null) 'iamBinding': iamBinding!,
+    if (identityList != null) 'identityList': identityList!,
+  };
 }
 
 /// Represents the detailed state of an entity under analysis, such as a
@@ -5785,21 +6023,18 @@ class IamPolicyAnalysisState {
   /// Internal Server Error
   core.String? code;
 
-  IamPolicyAnalysisState({
-    this.cause,
-    this.code,
-  });
+  IamPolicyAnalysisState({this.cause, this.code});
 
   IamPolicyAnalysisState.fromJson(core.Map json_)
-      : this(
-          cause: json_['cause'] as core.String?,
-          code: json_['code'] as core.String?,
-        );
+    : this(
+        cause: json_['cause'] as core.String?,
+        code: json_['code'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cause != null) 'cause': cause!,
-        if (code != null) 'code': code!,
-      };
+    if (cause != null) 'cause': cause!,
+    if (code != null) 'code': code!,
+  };
 }
 
 /// A result of IAM Policy search, containing information of an IAM policy.
@@ -5878,33 +6113,38 @@ class IamPolicySearchResult {
   });
 
   IamPolicySearchResult.fromJson(core.Map json_)
-      : this(
-          assetType: json_['assetType'] as core.String?,
-          explanation: json_.containsKey('explanation')
-              ? Explanation.fromJson(
-                  json_['explanation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          folders: (json_['folders'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          organization: json_['organization'] as core.String?,
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          project: json_['project'] as core.String?,
-          resource: json_['resource'] as core.String?,
-        );
+    : this(
+        assetType: json_['assetType'] as core.String?,
+        explanation:
+            json_.containsKey('explanation')
+                ? Explanation.fromJson(
+                  json_['explanation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        folders:
+            (json_['folders'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        organization: json_['organization'] as core.String?,
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        project: json_['project'] as core.String?,
+        resource: json_['resource'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assetType != null) 'assetType': assetType!,
-        if (explanation != null) 'explanation': explanation!,
-        if (folders != null) 'folders': folders!,
-        if (organization != null) 'organization': organization!,
-        if (policy != null) 'policy': policy!,
-        if (project != null) 'project': project!,
-        if (resource != null) 'resource': resource!,
-      };
+    if (assetType != null) 'assetType': assetType!,
+    if (explanation != null) 'explanation': explanation!,
+    if (folders != null) 'folders': folders!,
+    if (organization != null) 'organization': organization!,
+    if (policy != null) 'policy': policy!,
+    if (project != null) 'project': project!,
+    if (resource != null) 'resource': resource!,
+  };
 }
 
 /// Specifies an identity for which to determine resource access, based on roles
@@ -5923,18 +6163,14 @@ class IdentitySelector {
   /// Required.
   core.String? identity;
 
-  IdentitySelector({
-    this.identity,
-  });
+  IdentitySelector({this.identity});
 
   IdentitySelector.fromJson(core.Map json_)
-      : this(
-          identity: json_['identity'] as core.String?,
-        );
+    : this(identity: json_['identity'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (identity != null) 'identity': identity!,
-      };
+    if (identity != null) 'identity': identity!,
+  };
 }
 
 /// This API resource represents the available inventory data for a Compute
@@ -5967,35 +6203,32 @@ class Inventory {
   /// Output only.
   core.String? updateTime;
 
-  Inventory({
-    this.items,
-    this.name,
-    this.osInfo,
-    this.updateTime,
-  });
+  Inventory({this.items, this.name, this.osInfo, this.updateTime});
 
   Inventory.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              Item.fromJson(value as core.Map<core.String, core.dynamic>),
-            ),
+    : this(
+        items: (json_['items'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            Item.fromJson(value as core.Map<core.String, core.dynamic>),
           ),
-          name: json_['name'] as core.String?,
-          osInfo: json_.containsKey('osInfo')
-              ? OsInfo.fromJson(
-                  json_['osInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+        ),
+        name: json_['name'] as core.String?,
+        osInfo:
+            json_.containsKey('osInfo')
+                ? OsInfo.fromJson(
+                  json_['osInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (name != null) 'name': name!,
-        if (osInfo != null) 'osInfo': osInfo!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (items != null) 'items': items!,
+    if (name != null) 'name': name!,
+    if (osInfo != null) 'osInfo': osInfo!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A single piece of inventory on a VM.
@@ -6042,31 +6275,37 @@ class Item {
   });
 
   Item.fromJson(core.Map json_)
-      : this(
-          availablePackage: json_.containsKey('availablePackage')
-              ? SoftwarePackage.fromJson(json_['availablePackage']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          id: json_['id'] as core.String?,
-          installedPackage: json_.containsKey('installedPackage')
-              ? SoftwarePackage.fromJson(json_['installedPackage']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          originType: json_['originType'] as core.String?,
-          type: json_['type'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        availablePackage:
+            json_.containsKey('availablePackage')
+                ? SoftwarePackage.fromJson(
+                  json_['availablePackage']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        id: json_['id'] as core.String?,
+        installedPackage:
+            json_.containsKey('installedPackage')
+                ? SoftwarePackage.fromJson(
+                  json_['installedPackage']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        originType: json_['originType'] as core.String?,
+        type: json_['type'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (availablePackage != null) 'availablePackage': availablePackage!,
-        if (createTime != null) 'createTime': createTime!,
-        if (id != null) 'id': id!,
-        if (installedPackage != null) 'installedPackage': installedPackage!,
-        if (originType != null) 'originType': originType!,
-        if (type != null) 'type': type!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (availablePackage != null) 'availablePackage': availablePackage!,
+    if (createTime != null) 'createTime': createTime!,
+    if (id != null) 'id': id!,
+    if (installedPackage != null) 'installedPackage': installedPackage!,
+    if (originType != null) 'originType': originType!,
+    if (type != null) 'type': type!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// ListAssets response.
@@ -6083,48 +6322,50 @@ class ListAssetsResponse {
   /// Time the snapshot was taken.
   core.String? readTime;
 
-  ListAssetsResponse({
-    this.assets,
-    this.nextPageToken,
-    this.readTime,
-  });
+  ListAssetsResponse({this.assets, this.nextPageToken, this.readTime});
 
   ListAssetsResponse.fromJson(core.Map json_)
-      : this(
-          assets: (json_['assets'] as core.List?)
-              ?.map((value) =>
-                  Asset.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          readTime: json_['readTime'] as core.String?,
-        );
+    : this(
+        assets:
+            (json_['assets'] as core.List?)
+                ?.map(
+                  (value) => Asset.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        readTime: json_['readTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assets != null) 'assets': assets!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (readTime != null) 'readTime': readTime!,
-      };
+    if (assets != null) 'assets': assets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (readTime != null) 'readTime': readTime!,
+  };
 }
 
 class ListFeedsResponse {
   /// A list of feeds.
   core.List<Feed>? feeds;
 
-  ListFeedsResponse({
-    this.feeds,
-  });
+  ListFeedsResponse({this.feeds});
 
   ListFeedsResponse.fromJson(core.Map json_)
-      : this(
-          feeds: (json_['feeds'] as core.List?)
-              ?.map((value) =>
-                  Feed.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        feeds:
+            (json_['feeds'] as core.List?)
+                ?.map(
+                  (value) => Feed.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (feeds != null) 'feeds': feeds!,
-      };
+    if (feeds != null) 'feeds': feeds!,
+  };
 }
 
 /// Response of listing saved queries.
@@ -6137,24 +6378,25 @@ class ListSavedQueriesResponse {
   /// A list of savedQueries.
   core.List<SavedQuery>? savedQueries;
 
-  ListSavedQueriesResponse({
-    this.nextPageToken,
-    this.savedQueries,
-  });
+  ListSavedQueriesResponse({this.nextPageToken, this.savedQueries});
 
   ListSavedQueriesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          savedQueries: (json_['savedQueries'] as core.List?)
-              ?.map((value) => SavedQuery.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        savedQueries:
+            (json_['savedQueries'] as core.List?)
+                ?.map(
+                  (value) => SavedQuery.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (savedQueries != null) 'savedQueries': savedQueries!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (savedQueries != null) 'savedQueries': savedQueries!,
+  };
 }
 
 /// A message to group the analysis information.
@@ -6170,30 +6412,30 @@ class MoveAnalysis {
   /// Description of error encountered when performing the analysis.
   Status? error;
 
-  MoveAnalysis({
-    this.analysis,
-    this.displayName,
-    this.error,
-  });
+  MoveAnalysis({this.analysis, this.displayName, this.error});
 
   MoveAnalysis.fromJson(core.Map json_)
-      : this(
-          analysis: json_.containsKey('analysis')
-              ? MoveAnalysisResult.fromJson(
-                  json_['analysis'] as core.Map<core.String, core.dynamic>)
-              : null,
-          displayName: json_['displayName'] as core.String?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        analysis:
+            json_.containsKey('analysis')
+                ? MoveAnalysisResult.fromJson(
+                  json_['analysis'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        displayName: json_['displayName'] as core.String?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysis != null) 'analysis': analysis!,
-        if (displayName != null) 'displayName': displayName!,
-        if (error != null) 'error': error!,
-      };
+    if (analysis != null) 'analysis': analysis!,
+    if (displayName != null) 'displayName': displayName!,
+    if (error != null) 'error': error!,
+  };
 }
 
 /// An analysis result including blockers and warnings.
@@ -6209,27 +6451,32 @@ class MoveAnalysisResult {
   /// but will not block moves at runtime.
   core.List<MoveImpact>? warnings;
 
-  MoveAnalysisResult({
-    this.blockers,
-    this.warnings,
-  });
+  MoveAnalysisResult({this.blockers, this.warnings});
 
   MoveAnalysisResult.fromJson(core.Map json_)
-      : this(
-          blockers: (json_['blockers'] as core.List?)
-              ?.map((value) => MoveImpact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          warnings: (json_['warnings'] as core.List?)
-              ?.map((value) => MoveImpact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        blockers:
+            (json_['blockers'] as core.List?)
+                ?.map(
+                  (value) => MoveImpact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        warnings:
+            (json_['warnings'] as core.List?)
+                ?.map(
+                  (value) => MoveImpact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blockers != null) 'blockers': blockers!,
-        if (warnings != null) 'warnings': warnings!,
-      };
+    if (blockers != null) 'blockers': blockers!,
+    if (warnings != null) 'warnings': warnings!,
+  };
 }
 
 /// A message to group impacts of moving the target resource.
@@ -6237,18 +6484,14 @@ class MoveImpact {
   /// User friendly impact detail in a free form message.
   core.String? detail;
 
-  MoveImpact({
-    this.detail,
-  });
+  MoveImpact({this.detail});
 
   MoveImpact.fromJson(core.Map json_)
-      : this(
-          detail: json_['detail'] as core.String?,
-        );
+    : this(detail: json_['detail'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detail != null) 'detail': detail!,
-      };
+    if (detail != null) 'detail': detail!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -6294,37 +6537,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Contains query options.
@@ -6427,27 +6668,26 @@ class Options {
   });
 
   Options.fromJson(core.Map json_)
-      : this(
-          analyzeServiceAccountImpersonation:
-              json_['analyzeServiceAccountImpersonation'] as core.bool?,
-          expandGroups: json_['expandGroups'] as core.bool?,
-          expandResources: json_['expandResources'] as core.bool?,
-          expandRoles: json_['expandRoles'] as core.bool?,
-          outputGroupEdges: json_['outputGroupEdges'] as core.bool?,
-          outputResourceEdges: json_['outputResourceEdges'] as core.bool?,
-        );
+    : this(
+        analyzeServiceAccountImpersonation:
+            json_['analyzeServiceAccountImpersonation'] as core.bool?,
+        expandGroups: json_['expandGroups'] as core.bool?,
+        expandResources: json_['expandResources'] as core.bool?,
+        expandRoles: json_['expandRoles'] as core.bool?,
+        outputGroupEdges: json_['outputGroupEdges'] as core.bool?,
+        outputResourceEdges: json_['outputResourceEdges'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analyzeServiceAccountImpersonation != null)
-          'analyzeServiceAccountImpersonation':
-              analyzeServiceAccountImpersonation!,
-        if (expandGroups != null) 'expandGroups': expandGroups!,
-        if (expandResources != null) 'expandResources': expandResources!,
-        if (expandRoles != null) 'expandRoles': expandRoles!,
-        if (outputGroupEdges != null) 'outputGroupEdges': outputGroupEdges!,
-        if (outputResourceEdges != null)
-          'outputResourceEdges': outputResourceEdges!,
-      };
+    if (analyzeServiceAccountImpersonation != null)
+      'analyzeServiceAccountImpersonation': analyzeServiceAccountImpersonation!,
+    if (expandGroups != null) 'expandGroups': expandGroups!,
+    if (expandResources != null) 'expandResources': expandResources!,
+    if (expandRoles != null) 'expandRoles': expandRoles!,
+    if (outputGroupEdges != null) 'outputGroupEdges': outputGroupEdges!,
+    if (outputResourceEdges != null)
+      'outputResourceEdges': outputResourceEdges!,
+  };
 }
 
 /// The organization policy result to the query.
@@ -6495,30 +6735,37 @@ class OrgPolicyResult {
   });
 
   OrgPolicyResult.fromJson(core.Map json_)
-      : this(
-          consolidatedPolicy: json_.containsKey('consolidatedPolicy')
-              ? AnalyzerOrgPolicy.fromJson(json_['consolidatedPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          folders: (json_['folders'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          organization: json_['organization'] as core.String?,
-          policyBundle: (json_['policyBundle'] as core.List?)
-              ?.map((value) => AnalyzerOrgPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          project: json_['project'] as core.String?,
-        );
+    : this(
+        consolidatedPolicy:
+            json_.containsKey('consolidatedPolicy')
+                ? AnalyzerOrgPolicy.fromJson(
+                  json_['consolidatedPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        folders:
+            (json_['folders'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        organization: json_['organization'] as core.String?,
+        policyBundle:
+            (json_['policyBundle'] as core.List?)
+                ?.map(
+                  (value) => AnalyzerOrgPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        project: json_['project'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consolidatedPolicy != null)
-          'consolidatedPolicy': consolidatedPolicy!,
-        if (folders != null) 'folders': folders!,
-        if (organization != null) 'organization': organization!,
-        if (policyBundle != null) 'policyBundle': policyBundle!,
-        if (project != null) 'project': project!,
-      };
+    if (consolidatedPolicy != null) 'consolidatedPolicy': consolidatedPolicy!,
+    if (folders != null) 'folders': folders!,
+    if (organization != null) 'organization': organization!,
+    if (policyBundle != null) 'policyBundle': policyBundle!,
+    if (project != null) 'project': project!,
+  };
 }
 
 /// Operating system information for the VM.
@@ -6535,28 +6782,31 @@ class OutputConfig {
   /// Destination on Cloud Storage.
   GcsDestination? gcsDestination;
 
-  OutputConfig({
-    this.bigqueryDestination,
-    this.gcsDestination,
-  });
+  OutputConfig({this.bigqueryDestination, this.gcsDestination});
 
   OutputConfig.fromJson(core.Map json_)
-      : this(
-          bigqueryDestination: json_.containsKey('bigqueryDestination')
-              ? BigQueryDestination.fromJson(json_['bigqueryDestination']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          gcsDestination: json_.containsKey('gcsDestination')
-              ? GcsDestination.fromJson(json_['gcsDestination']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bigqueryDestination:
+            json_.containsKey('bigqueryDestination')
+                ? BigQueryDestination.fromJson(
+                  json_['bigqueryDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gcsDestination:
+            json_.containsKey('gcsDestination')
+                ? GcsDestination.fromJson(
+                  json_['gcsDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination!,
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
-      };
+    if (bigqueryDestination != null)
+      'bigqueryDestination': bigqueryDestination!,
+    if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+  };
 }
 
 /// Specifications of BigQuery partitioned table as export destination.
@@ -6576,18 +6826,14 @@ class PartitionSpec {
   /// representing when the request was received.
   core.String? partitionKey;
 
-  PartitionSpec({
-    this.partitionKey,
-  });
+  PartitionSpec({this.partitionKey});
 
   PartitionSpec.fromJson(core.Map json_)
-      : this(
-          partitionKey: json_['partitionKey'] as core.String?,
-        );
+    : this(partitionKey: json_['partitionKey'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (partitionKey != null) 'partitionKey': partitionKey!,
-      };
+    if (partitionKey != null) 'partitionKey': partitionKey!,
+  };
 }
 
 /// IAM permissions
@@ -6597,20 +6843,19 @@ class Permissions {
   /// A sample permission string: `compute.disk.get`.
   core.List<core.String>? permissions;
 
-  Permissions({
-    this.permissions,
-  });
+  Permissions({this.permissions});
 
   Permissions.fromJson(core.Map json_)
-      : this(
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permissions != null) 'permissions': permissions!,
-      };
+    if (permissions != null) 'permissions': permissions!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -6676,8 +6921,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -6699,33 +6946,36 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        auditConfigs:
+            (json_['auditConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// The IAM policy and its attached resource.
@@ -6736,24 +6986,23 @@ class PolicyInfo {
   /// The IAM policy that's directly attached to the attached_resource.
   Policy? policy;
 
-  PolicyInfo({
-    this.attachedResource,
-    this.policy,
-  });
+  PolicyInfo({this.attachedResource, this.policy});
 
   PolicyInfo.fromJson(core.Map json_)
-      : this(
-          attachedResource: json_['attachedResource'] as core.String?,
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        attachedResource: json_['attachedResource'] as core.String?,
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachedResource != null) 'attachedResource': attachedResource!,
-        if (policy != null) 'policy': policy!,
-      };
+    if (attachedResource != null) 'attachedResource': attachedResource!,
+    if (policy != null) 'policy': policy!,
+  };
 }
 
 /// A Pub/Sub destination.
@@ -6763,43 +7012,39 @@ class PubsubDestination {
   /// Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
   core.String? topic;
 
-  PubsubDestination({
-    this.topic,
-  });
+  PubsubDestination({this.topic});
 
   PubsubDestination.fromJson(core.Map json_)
-      : this(
-          topic: json_['topic'] as core.String?,
-        );
+    : this(topic: json_['topic'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (topic != null) 'topic': topic!,
-      };
+    if (topic != null) 'topic': topic!,
+  };
 }
 
 /// Output configuration query assets.
 class QueryAssetsOutputConfig {
   /// BigQuery destination where the query results will be saved.
   GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination?
-      bigqueryDestination;
+  bigqueryDestination;
 
-  QueryAssetsOutputConfig({
-    this.bigqueryDestination,
-  });
+  QueryAssetsOutputConfig({this.bigqueryDestination});
 
   QueryAssetsOutputConfig.fromJson(core.Map json_)
-      : this(
-          bigqueryDestination: json_.containsKey('bigqueryDestination')
-              ? GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination
-                  .fromJson(json_['bigqueryDestination']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bigqueryDestination:
+            json_.containsKey('bigqueryDestination')
+                ? GoogleCloudAssetV1QueryAssetsOutputConfigBigQueryDestination.fromJson(
+                  json_['bigqueryDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigqueryDestination != null)
-          'bigqueryDestination': bigqueryDestination!,
-      };
+    if (bigqueryDestination != null)
+      'bigqueryDestination': bigqueryDestination!,
+  };
 }
 
 /// QueryAssets request.
@@ -6886,33 +7131,38 @@ class QueryAssetsRequest {
   });
 
   QueryAssetsRequest.fromJson(core.Map json_)
-      : this(
-          jobReference: json_['jobReference'] as core.String?,
-          outputConfig: json_.containsKey('outputConfig')
-              ? QueryAssetsOutputConfig.fromJson(
-                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pageSize: json_['pageSize'] as core.int?,
-          pageToken: json_['pageToken'] as core.String?,
-          readTime: json_['readTime'] as core.String?,
-          readTimeWindow: json_.containsKey('readTimeWindow')
-              ? TimeWindow.fromJson(json_['readTimeWindow']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          statement: json_['statement'] as core.String?,
-          timeout: json_['timeout'] as core.String?,
-        );
+    : this(
+        jobReference: json_['jobReference'] as core.String?,
+        outputConfig:
+            json_.containsKey('outputConfig')
+                ? QueryAssetsOutputConfig.fromJson(
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pageSize: json_['pageSize'] as core.int?,
+        pageToken: json_['pageToken'] as core.String?,
+        readTime: json_['readTime'] as core.String?,
+        readTimeWindow:
+            json_.containsKey('readTimeWindow')
+                ? TimeWindow.fromJson(
+                  json_['readTimeWindow']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        statement: json_['statement'] as core.String?,
+        timeout: json_['timeout'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (jobReference != null) 'jobReference': jobReference!,
-        if (outputConfig != null) 'outputConfig': outputConfig!,
-        if (pageSize != null) 'pageSize': pageSize!,
-        if (pageToken != null) 'pageToken': pageToken!,
-        if (readTime != null) 'readTime': readTime!,
-        if (readTimeWindow != null) 'readTimeWindow': readTimeWindow!,
-        if (statement != null) 'statement': statement!,
-        if (timeout != null) 'timeout': timeout!,
-      };
+    if (jobReference != null) 'jobReference': jobReference!,
+    if (outputConfig != null) 'outputConfig': outputConfig!,
+    if (pageSize != null) 'pageSize': pageSize!,
+    if (pageToken != null) 'pageToken': pageToken!,
+    if (readTime != null) 'readTime': readTime!,
+    if (readTimeWindow != null) 'readTimeWindow': readTimeWindow!,
+    if (statement != null) 'statement': statement!,
+    if (timeout != null) 'timeout': timeout!,
+  };
 }
 
 /// QueryAssets response.
@@ -6949,30 +7199,36 @@ class QueryAssetsResponse {
   });
 
   QueryAssetsResponse.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          jobReference: json_['jobReference'] as core.String?,
-          outputConfig: json_.containsKey('outputConfig')
-              ? QueryAssetsOutputConfig.fromJson(
-                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          queryResult: json_.containsKey('queryResult')
-              ? QueryResult.fromJson(
-                  json_['queryResult'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        jobReference: json_['jobReference'] as core.String?,
+        outputConfig:
+            json_.containsKey('outputConfig')
+                ? QueryAssetsOutputConfig.fromJson(
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        queryResult:
+            json_.containsKey('queryResult')
+                ? QueryResult.fromJson(
+                  json_['queryResult'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (jobReference != null) 'jobReference': jobReference!,
-        if (outputConfig != null) 'outputConfig': outputConfig!,
-        if (queryResult != null) 'queryResult': queryResult!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (jobReference != null) 'jobReference': jobReference!,
+    if (outputConfig != null) 'outputConfig': outputConfig!,
+    if (queryResult != null) 'queryResult': queryResult!,
+  };
 }
 
 /// The query content.
@@ -6982,22 +7238,23 @@ class QueryContent {
   /// AssetService.AnalyzeIamPolicyLongrunning RPC.
   IamPolicyAnalysisQuery? iamPolicyAnalysisQuery;
 
-  QueryContent({
-    this.iamPolicyAnalysisQuery,
-  });
+  QueryContent({this.iamPolicyAnalysisQuery});
 
   QueryContent.fromJson(core.Map json_)
-      : this(
-          iamPolicyAnalysisQuery: json_.containsKey('iamPolicyAnalysisQuery')
-              ? IamPolicyAnalysisQuery.fromJson(json_['iamPolicyAnalysisQuery']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        iamPolicyAnalysisQuery:
+            json_.containsKey('iamPolicyAnalysisQuery')
+                ? IamPolicyAnalysisQuery.fromJson(
+                  json_['iamPolicyAnalysisQuery']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iamPolicyAnalysisQuery != null)
-          'iamPolicyAnalysisQuery': iamPolicyAnalysisQuery!,
-      };
+    if (iamPolicyAnalysisQuery != null)
+      'iamPolicyAnalysisQuery': iamPolicyAnalysisQuery!,
+  };
 }
 
 /// Execution results of the query.
@@ -7021,32 +7278,30 @@ class QueryResult {
   /// Total rows of the whole query results.
   core.String? totalRows;
 
-  QueryResult({
-    this.nextPageToken,
-    this.rows,
-    this.schema,
-    this.totalRows,
-  });
+  QueryResult({this.nextPageToken, this.rows, this.schema, this.totalRows});
 
   QueryResult.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          rows: (json_['rows'] as core.List?)
-              ?.map((value) => value as core.Map<core.String, core.dynamic>)
-              .toList(),
-          schema: json_.containsKey('schema')
-              ? TableSchema.fromJson(
-                  json_['schema'] as core.Map<core.String, core.dynamic>)
-              : null,
-          totalRows: json_['totalRows'] as core.String?,
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        rows:
+            (json_['rows'] as core.List?)
+                ?.map((value) => value as core.Map<core.String, core.dynamic>)
+                .toList(),
+        schema:
+            json_.containsKey('schema')
+                ? TableSchema.fromJson(
+                  json_['schema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        totalRows: json_['totalRows'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (rows != null) 'rows': rows!,
-        if (schema != null) 'schema': schema!,
-        if (totalRows != null) 'totalRows': totalRows!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (rows != null) 'rows': rows!,
+    if (schema != null) 'schema': schema!,
+    if (totalRows != null) 'totalRows': totalRows!,
+  };
 }
 
 /// An asset identifier in Google Cloud which contains its name, type and
@@ -7097,21 +7352,22 @@ class RelatedAsset {
   });
 
   RelatedAsset.fromJson(core.Map json_)
-      : this(
-          ancestors: (json_['ancestors'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          asset: json_['asset'] as core.String?,
-          assetType: json_['assetType'] as core.String?,
-          relationshipType: json_['relationshipType'] as core.String?,
-        );
+    : this(
+        ancestors:
+            (json_['ancestors'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        asset: json_['asset'] as core.String?,
+        assetType: json_['assetType'] as core.String?,
+        relationshipType: json_['relationshipType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ancestors != null) 'ancestors': ancestors!,
-        if (asset != null) 'asset': asset!,
-        if (assetType != null) 'assetType': assetType!,
-        if (relationshipType != null) 'relationshipType': relationshipType!,
-      };
+    if (ancestors != null) 'ancestors': ancestors!,
+    if (asset != null) 'asset': asset!,
+    if (assetType != null) 'assetType': assetType!,
+    if (relationshipType != null) 'relationshipType': relationshipType!,
+  };
 }
 
 /// This message only presents for the purpose of backward-compatibility.
@@ -7127,28 +7383,32 @@ class RelatedAssets {
   /// The detailed relationship attributes.
   RelationshipAttributes? relationshipAttributes;
 
-  RelatedAssets({
-    this.assets,
-    this.relationshipAttributes,
-  });
+  RelatedAssets({this.assets, this.relationshipAttributes});
 
   RelatedAssets.fromJson(core.Map json_)
-      : this(
-          assets: (json_['assets'] as core.List?)
-              ?.map((value) => RelatedAsset.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          relationshipAttributes: json_.containsKey('relationshipAttributes')
-              ? RelationshipAttributes.fromJson(json_['relationshipAttributes']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        assets:
+            (json_['assets'] as core.List?)
+                ?.map(
+                  (value) => RelatedAsset.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        relationshipAttributes:
+            json_.containsKey('relationshipAttributes')
+                ? RelationshipAttributes.fromJson(
+                  json_['relationshipAttributes']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assets != null) 'assets': assets!,
-        if (relationshipAttributes != null)
-          'relationshipAttributes': relationshipAttributes!,
-      };
+    if (assets != null) 'assets': assets!,
+    if (relationshipAttributes != null)
+      'relationshipAttributes': relationshipAttributes!,
+  };
 }
 
 /// The detailed related resource.
@@ -7164,21 +7424,18 @@ class RelatedResource {
   /// `//compute.googleapis.com/projects/my_proj_123/zones/instance/instance123`
   core.String? fullResourceName;
 
-  RelatedResource({
-    this.assetType,
-    this.fullResourceName,
-  });
+  RelatedResource({this.assetType, this.fullResourceName});
 
   RelatedResource.fromJson(core.Map json_)
-      : this(
-          assetType: json_['assetType'] as core.String?,
-          fullResourceName: json_['fullResourceName'] as core.String?,
-        );
+    : this(
+        assetType: json_['assetType'] as core.String?,
+        fullResourceName: json_['fullResourceName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assetType != null) 'assetType': assetType!,
-        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-      };
+    if (assetType != null) 'assetType': assetType!,
+    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+  };
 }
 
 /// The related resources of the primary resource.
@@ -7186,21 +7443,23 @@ class RelatedResources {
   /// The detailed related resources of the primary resource.
   core.List<RelatedResource>? relatedResources;
 
-  RelatedResources({
-    this.relatedResources,
-  });
+  RelatedResources({this.relatedResources});
 
   RelatedResources.fromJson(core.Map json_)
-      : this(
-          relatedResources: (json_['relatedResources'] as core.List?)
-              ?.map((value) => RelatedResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        relatedResources:
+            (json_['relatedResources'] as core.List?)
+                ?.map(
+                  (value) => RelatedResource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (relatedResources != null) 'relatedResources': relatedResources!,
-      };
+    if (relatedResources != null) 'relatedResources': relatedResources!,
+  };
 }
 
 /// This message only presents for the purpose of backward-compatibility.
@@ -7237,21 +7496,19 @@ class RelationshipAttributes {
   });
 
   RelationshipAttributes.fromJson(core.Map json_)
-      : this(
-          action: json_['action'] as core.String?,
-          sourceResourceType: json_['sourceResourceType'] as core.String?,
-          targetResourceType: json_['targetResourceType'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        action: json_['action'] as core.String?,
+        sourceResourceType: json_['sourceResourceType'] as core.String?,
+        targetResourceType: json_['targetResourceType'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (sourceResourceType != null)
-          'sourceResourceType': sourceResourceType!,
-        if (targetResourceType != null)
-          'targetResourceType': targetResourceType!,
-        if (type != null) 'type': type!,
-      };
+    if (action != null) 'action': action!,
+    if (sourceResourceType != null) 'sourceResourceType': sourceResourceType!,
+    if (targetResourceType != null) 'targetResourceType': targetResourceType!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A representation of a Google Cloud resource.
@@ -7314,28 +7571,29 @@ class Resource {
   });
 
   Resource.fromJson(core.Map json_)
-      : this(
-          data: json_.containsKey('data')
-              ? json_['data'] as core.Map<core.String, core.dynamic>
-              : null,
-          discoveryDocumentUri: json_['discoveryDocumentUri'] as core.String?,
-          discoveryName: json_['discoveryName'] as core.String?,
-          location: json_['location'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          resourceUrl: json_['resourceUrl'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        data:
+            json_.containsKey('data')
+                ? json_['data'] as core.Map<core.String, core.dynamic>
+                : null,
+        discoveryDocumentUri: json_['discoveryDocumentUri'] as core.String?,
+        discoveryName: json_['discoveryName'] as core.String?,
+        location: json_['location'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        resourceUrl: json_['resourceUrl'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (discoveryDocumentUri != null)
-          'discoveryDocumentUri': discoveryDocumentUri!,
-        if (discoveryName != null) 'discoveryName': discoveryName!,
-        if (location != null) 'location': location!,
-        if (parent != null) 'parent': parent!,
-        if (resourceUrl != null) 'resourceUrl': resourceUrl!,
-        if (version != null) 'version': version!,
-      };
+    if (data != null) 'data': data!,
+    if (discoveryDocumentUri != null)
+      'discoveryDocumentUri': discoveryDocumentUri!,
+    if (discoveryName != null) 'discoveryName': discoveryName!,
+    if (location != null) 'location': location!,
+    if (parent != null) 'parent': parent!,
+    if (resourceUrl != null) 'resourceUrl': resourceUrl!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// The resource owners information.
@@ -7343,20 +7601,19 @@ class ResourceOwners {
   /// List of resource owners.
   core.List<core.String>? resourceOwners;
 
-  ResourceOwners({
-    this.resourceOwners,
-  });
+  ResourceOwners({this.resourceOwners});
 
   ResourceOwners.fromJson(core.Map json_)
-      : this(
-          resourceOwners: (json_['resourceOwners'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        resourceOwners:
+            (json_['resourceOwners'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceOwners != null) 'resourceOwners': resourceOwners!,
-      };
+    if (resourceOwners != null) 'resourceOwners': resourceOwners!,
+  };
 }
 
 /// A result of Resource Search, containing information of a cloud resource.
@@ -7691,122 +7948,139 @@ class ResourceSearchResult {
   });
 
   ResourceSearchResult.fromJson(core.Map json_)
-      : this(
-          additionalAttributes: json_.containsKey('additionalAttributes')
-              ? json_['additionalAttributes']
-                  as core.Map<core.String, core.dynamic>
-              : null,
-          assetType: json_['assetType'] as core.String?,
-          attachedResources: (json_['attachedResources'] as core.List?)
-              ?.map((value) => AttachedResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          effectiveTags: (json_['effectiveTags'] as core.List?)
-              ?.map((value) => EffectiveTagDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          enrichments: (json_['enrichments'] as core.List?)
-              ?.map((value) => AssetEnrichment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          folders: (json_['folders'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          kmsKey: json_['kmsKey'] as core.String?,
-          kmsKeys: (json_['kmsKeys'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
+    : this(
+        additionalAttributes:
+            json_.containsKey('additionalAttributes')
+                ? json_['additionalAttributes']
+                    as core.Map<core.String, core.dynamic>
+                : null,
+        assetType: json_['assetType'] as core.String?,
+        attachedResources:
+            (json_['attachedResources'] as core.List?)
+                ?.map(
+                  (value) => AttachedResource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        effectiveTags:
+            (json_['effectiveTags'] as core.List?)
+                ?.map(
+                  (value) => EffectiveTagDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        enrichments:
+            (json_['enrichments'] as core.List?)
+                ?.map(
+                  (value) => AssetEnrichment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        folders:
+            (json_['folders'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        kmsKey: json_['kmsKey'] as core.String?,
+        kmsKeys:
+            (json_['kmsKeys'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        location: json_['location'] as core.String?,
+        name: json_['name'] as core.String?,
+        networkTags:
+            (json_['networkTags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        organization: json_['organization'] as core.String?,
+        parentAssetType: json_['parentAssetType'] as core.String?,
+        parentFullResourceName: json_['parentFullResourceName'] as core.String?,
+        project: json_['project'] as core.String?,
+        relationships: (json_['relationships']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                RelatedResources.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          location: json_['location'] as core.String?,
-          name: json_['name'] as core.String?,
-          networkTags: (json_['networkTags'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          organization: json_['organization'] as core.String?,
-          parentAssetType: json_['parentAssetType'] as core.String?,
-          parentFullResourceName:
-              json_['parentFullResourceName'] as core.String?,
-          project: json_['project'] as core.String?,
-          relationships:
-              (json_['relationships'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              RelatedResources.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
-            ),
-          ),
-          sccSecurityMarks: (json_['sccSecurityMarks']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          state: json_['state'] as core.String?,
-          tagKeys: (json_['tagKeys'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          tagValueIds: (json_['tagValueIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          tagValues: (json_['tagValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          tags: (json_['tags'] as core.List?)
-              ?.map((value) =>
-                  Tag.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-          versionedResources: (json_['versionedResources'] as core.List?)
-              ?.map((value) => VersionedResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+        sccSecurityMarks: (json_['sccSecurityMarks']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        state: json_['state'] as core.String?,
+        tagKeys:
+            (json_['tagKeys'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        tagValueIds:
+            (json_['tagValueIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        tagValues:
+            (json_['tagValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        tags:
+            (json_['tags'] as core.List?)
+                ?.map(
+                  (value) => Tag.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+        versionedResources:
+            (json_['versionedResources'] as core.List?)
+                ?.map(
+                  (value) => VersionedResource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalAttributes != null)
-          'additionalAttributes': additionalAttributes!,
-        if (assetType != null) 'assetType': assetType!,
-        if (attachedResources != null) 'attachedResources': attachedResources!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (effectiveTags != null) 'effectiveTags': effectiveTags!,
-        if (enrichments != null) 'enrichments': enrichments!,
-        if (folders != null) 'folders': folders!,
-        if (kmsKey != null) 'kmsKey': kmsKey!,
-        if (kmsKeys != null) 'kmsKeys': kmsKeys!,
-        if (labels != null) 'labels': labels!,
-        if (location != null) 'location': location!,
-        if (name != null) 'name': name!,
-        if (networkTags != null) 'networkTags': networkTags!,
-        if (organization != null) 'organization': organization!,
-        if (parentAssetType != null) 'parentAssetType': parentAssetType!,
-        if (parentFullResourceName != null)
-          'parentFullResourceName': parentFullResourceName!,
-        if (project != null) 'project': project!,
-        if (relationships != null) 'relationships': relationships!,
-        if (sccSecurityMarks != null) 'sccSecurityMarks': sccSecurityMarks!,
-        if (state != null) 'state': state!,
-        if (tagKeys != null) 'tagKeys': tagKeys!,
-        if (tagValueIds != null) 'tagValueIds': tagValueIds!,
-        if (tagValues != null) 'tagValues': tagValues!,
-        if (tags != null) 'tags': tags!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (versionedResources != null)
-          'versionedResources': versionedResources!,
-      };
+    if (additionalAttributes != null)
+      'additionalAttributes': additionalAttributes!,
+    if (assetType != null) 'assetType': assetType!,
+    if (attachedResources != null) 'attachedResources': attachedResources!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (effectiveTags != null) 'effectiveTags': effectiveTags!,
+    if (enrichments != null) 'enrichments': enrichments!,
+    if (folders != null) 'folders': folders!,
+    if (kmsKey != null) 'kmsKey': kmsKey!,
+    if (kmsKeys != null) 'kmsKeys': kmsKeys!,
+    if (labels != null) 'labels': labels!,
+    if (location != null) 'location': location!,
+    if (name != null) 'name': name!,
+    if (networkTags != null) 'networkTags': networkTags!,
+    if (organization != null) 'organization': organization!,
+    if (parentAssetType != null) 'parentAssetType': parentAssetType!,
+    if (parentFullResourceName != null)
+      'parentFullResourceName': parentFullResourceName!,
+    if (project != null) 'project': project!,
+    if (relationships != null) 'relationships': relationships!,
+    if (sccSecurityMarks != null) 'sccSecurityMarks': sccSecurityMarks!,
+    if (state != null) 'state': state!,
+    if (tagKeys != null) 'tagKeys': tagKeys!,
+    if (tagValueIds != null) 'tagValueIds': tagValueIds!,
+    if (tagValues != null) 'tagValues': tagValues!,
+    if (tags != null) 'tags': tags!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (versionedResources != null) 'versionedResources': versionedResources!,
+  };
 }
 
 /// Specifies the resource to analyze for access policies, which may be set
@@ -7821,18 +8095,14 @@ class ResourceSelector {
   /// Required.
   core.String? fullResourceName;
 
-  ResourceSelector({
-    this.fullResourceName,
-  });
+  ResourceSelector({this.fullResourceName});
 
   ResourceSelector.fromJson(core.Map json_)
-      : this(
-          fullResourceName: json_['fullResourceName'] as core.String?,
-        );
+    : this(fullResourceName: json_['fullResourceName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
-      };
+    if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+  };
 }
 
 /// A saved query which can be shared with others or used later.
@@ -7891,36 +8161,34 @@ class SavedQuery {
   });
 
   SavedQuery.fromJson(core.Map json_)
-      : this(
-          content: json_.containsKey('content')
-              ? QueryContent.fromJson(
-                  json_['content'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          creator: json_['creator'] as core.String?,
-          description: json_['description'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          lastUpdateTime: json_['lastUpdateTime'] as core.String?,
-          lastUpdater: json_['lastUpdater'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        content:
+            json_.containsKey('content')
+                ? QueryContent.fromJson(
+                  json_['content'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        creator: json_['creator'] as core.String?,
+        description: json_['description'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        lastUpdateTime: json_['lastUpdateTime'] as core.String?,
+        lastUpdater: json_['lastUpdater'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (createTime != null) 'createTime': createTime!,
-        if (creator != null) 'creator': creator!,
-        if (description != null) 'description': description!,
-        if (labels != null) 'labels': labels!,
-        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
-        if (lastUpdater != null) 'lastUpdater': lastUpdater!,
-        if (name != null) 'name': name!,
-      };
+    if (content != null) 'content': content!,
+    if (createTime != null) 'createTime': createTime!,
+    if (creator != null) 'creator': creator!,
+    if (description != null) 'description': description!,
+    if (labels != null) 'labels': labels!,
+    if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+    if (lastUpdater != null) 'lastUpdater': lastUpdater!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Search all IAM policies response.
@@ -7936,24 +8204,25 @@ class SearchAllIamPoliciesResponse {
   /// the policy.
   core.List<IamPolicySearchResult>? results;
 
-  SearchAllIamPoliciesResponse({
-    this.nextPageToken,
-    this.results,
-  });
+  SearchAllIamPoliciesResponse({this.nextPageToken, this.results});
 
   SearchAllIamPoliciesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          results: (json_['results'] as core.List?)
-              ?.map((value) => IamPolicySearchResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        results:
+            (json_['results'] as core.List?)
+                ?.map(
+                  (value) => IamPolicySearchResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (results != null) 'results': results!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (results != null) 'results': results!,
+  };
 }
 
 /// Search all resources response.
@@ -7970,24 +8239,25 @@ class SearchAllResourcesResponse {
   /// It contains the resource standard metadata information.
   core.List<ResourceSearchResult>? results;
 
-  SearchAllResourcesResponse({
-    this.nextPageToken,
-    this.results,
-  });
+  SearchAllResourcesResponse({this.nextPageToken, this.results});
 
   SearchAllResourcesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          results: (json_['results'] as core.List?)
-              ?.map((value) => ResourceSearchResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        results:
+            (json_['results'] as core.List?)
+                ?.map(
+                  (value) => ResourceSearchResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (results != null) 'results': results!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (results != null) 'results': results!,
+  };
 }
 
 /// Software package information of the operating system.
@@ -8054,57 +8324,75 @@ class SoftwarePackage {
   });
 
   SoftwarePackage.fromJson(core.Map json_)
-      : this(
-          aptPackage: json_.containsKey('aptPackage')
-              ? VersionedPackage.fromJson(
-                  json_['aptPackage'] as core.Map<core.String, core.dynamic>)
-              : null,
-          cosPackage: json_.containsKey('cosPackage')
-              ? VersionedPackage.fromJson(
-                  json_['cosPackage'] as core.Map<core.String, core.dynamic>)
-              : null,
-          googetPackage: json_.containsKey('googetPackage')
-              ? VersionedPackage.fromJson(
-                  json_['googetPackage'] as core.Map<core.String, core.dynamic>)
-              : null,
-          qfePackage: json_.containsKey('qfePackage')
-              ? WindowsQuickFixEngineeringPackage.fromJson(
-                  json_['qfePackage'] as core.Map<core.String, core.dynamic>)
-              : null,
-          windowsApplication: json_.containsKey('windowsApplication')
-              ? WindowsApplication.fromJson(json_['windowsApplication']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          wuaPackage: json_.containsKey('wuaPackage')
-              ? WindowsUpdatePackage.fromJson(
-                  json_['wuaPackage'] as core.Map<core.String, core.dynamic>)
-              : null,
-          yumPackage: json_.containsKey('yumPackage')
-              ? VersionedPackage.fromJson(
-                  json_['yumPackage'] as core.Map<core.String, core.dynamic>)
-              : null,
-          zypperPackage: json_.containsKey('zypperPackage')
-              ? VersionedPackage.fromJson(
-                  json_['zypperPackage'] as core.Map<core.String, core.dynamic>)
-              : null,
-          zypperPatch: json_.containsKey('zypperPatch')
-              ? ZypperPatch.fromJson(
-                  json_['zypperPatch'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        aptPackage:
+            json_.containsKey('aptPackage')
+                ? VersionedPackage.fromJson(
+                  json_['aptPackage'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cosPackage:
+            json_.containsKey('cosPackage')
+                ? VersionedPackage.fromJson(
+                  json_['cosPackage'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        googetPackage:
+            json_.containsKey('googetPackage')
+                ? VersionedPackage.fromJson(
+                  json_['googetPackage'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        qfePackage:
+            json_.containsKey('qfePackage')
+                ? WindowsQuickFixEngineeringPackage.fromJson(
+                  json_['qfePackage'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        windowsApplication:
+            json_.containsKey('windowsApplication')
+                ? WindowsApplication.fromJson(
+                  json_['windowsApplication']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        wuaPackage:
+            json_.containsKey('wuaPackage')
+                ? WindowsUpdatePackage.fromJson(
+                  json_['wuaPackage'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        yumPackage:
+            json_.containsKey('yumPackage')
+                ? VersionedPackage.fromJson(
+                  json_['yumPackage'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        zypperPackage:
+            json_.containsKey('zypperPackage')
+                ? VersionedPackage.fromJson(
+                  json_['zypperPackage'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        zypperPatch:
+            json_.containsKey('zypperPatch')
+                ? ZypperPatch.fromJson(
+                  json_['zypperPatch'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aptPackage != null) 'aptPackage': aptPackage!,
-        if (cosPackage != null) 'cosPackage': cosPackage!,
-        if (googetPackage != null) 'googetPackage': googetPackage!,
-        if (qfePackage != null) 'qfePackage': qfePackage!,
-        if (windowsApplication != null)
-          'windowsApplication': windowsApplication!,
-        if (wuaPackage != null) 'wuaPackage': wuaPackage!,
-        if (yumPackage != null) 'yumPackage': yumPackage!,
-        if (zypperPackage != null) 'zypperPackage': zypperPackage!,
-        if (zypperPatch != null) 'zypperPatch': zypperPatch!,
-      };
+    if (aptPackage != null) 'aptPackage': aptPackage!,
+    if (cosPackage != null) 'cosPackage': cosPackage!,
+    if (googetPackage != null) 'googetPackage': googetPackage!,
+    if (qfePackage != null) 'qfePackage': qfePackage!,
+    if (windowsApplication != null) 'windowsApplication': windowsApplication!,
+    if (wuaPackage != null) 'wuaPackage': wuaPackage!,
+    if (yumPackage != null) 'yumPackage': yumPackage!,
+    if (zypperPackage != null) 'zypperPackage': zypperPackage!,
+    if (zypperPatch != null) 'zypperPatch': zypperPatch!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -8141,30 +8429,29 @@ class TableFieldSchema {
   /// RECORD (where RECORD indicates that the field contains a nested schema).
   core.String? type;
 
-  TableFieldSchema({
-    this.field,
-    this.fields,
-    this.mode,
-    this.type,
-  });
+  TableFieldSchema({this.field, this.fields, this.mode, this.type});
 
   TableFieldSchema.fromJson(core.Map json_)
-      : this(
-          field: json_['field'] as core.String?,
-          fields: (json_['fields'] as core.List?)
-              ?.map((value) => TableFieldSchema.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          mode: json_['mode'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        field: json_['field'] as core.String?,
+        fields:
+            (json_['fields'] as core.List?)
+                ?.map(
+                  (value) => TableFieldSchema.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        mode: json_['mode'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (field != null) 'field': field!,
-        if (fields != null) 'fields': fields!,
-        if (mode != null) 'mode': mode!,
-        if (type != null) 'type': type!,
-      };
+    if (field != null) 'field': field!,
+    if (fields != null) 'fields': fields!,
+    if (mode != null) 'mode': mode!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// BigQuery Compatible table schema.
@@ -8172,21 +8459,23 @@ class TableSchema {
   /// Describes the fields in a table.
   core.List<TableFieldSchema>? fields;
 
-  TableSchema({
-    this.fields,
-  });
+  TableSchema({this.fields});
 
   TableSchema.fromJson(core.Map json_)
-      : this(
-          fields: (json_['fields'] as core.List?)
-              ?.map((value) => TableFieldSchema.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        fields:
+            (json_['fields'] as core.List?)
+                ?.map(
+                  (value) => TableFieldSchema.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-      };
+    if (fields != null) 'fields': fields!,
+  };
 }
 
 /// The key and value for a
@@ -8205,27 +8494,22 @@ class Tag {
   /// TagValue ID, in the format of tagValues/{TAG_VALUE_ID}.
   core.String? tagValueId;
 
-  Tag({
-    this.tagKey,
-    this.tagKeyId,
-    this.tagValue,
-    this.tagValueId,
-  });
+  Tag({this.tagKey, this.tagKeyId, this.tagValue, this.tagValueId});
 
   Tag.fromJson(core.Map json_)
-      : this(
-          tagKey: json_['tagKey'] as core.String?,
-          tagKeyId: json_['tagKeyId'] as core.String?,
-          tagValue: json_['tagValue'] as core.String?,
-          tagValueId: json_['tagValueId'] as core.String?,
-        );
+    : this(
+        tagKey: json_['tagKey'] as core.String?,
+        tagKeyId: json_['tagKeyId'] as core.String?,
+        tagValue: json_['tagValue'] as core.String?,
+        tagValueId: json_['tagValueId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tagKey != null) 'tagKey': tagKey!,
-        if (tagKeyId != null) 'tagKeyId': tagKeyId!,
-        if (tagValue != null) 'tagValue': tagValue!,
-        if (tagValueId != null) 'tagValueId': tagValueId!,
-      };
+    if (tagKey != null) 'tagKey': tagKey!,
+    if (tagKeyId != null) 'tagKeyId': tagKeyId!,
+    if (tagValue != null) 'tagValue': tagValue!,
+    if (tagValueId != null) 'tagValueId': tagValueId!,
+  };
 }
 
 /// An asset in Google Cloud and its temporal metadata, including the time
@@ -8265,30 +8549,36 @@ class TemporalAsset {
   });
 
   TemporalAsset.fromJson(core.Map json_)
-      : this(
-          asset: json_.containsKey('asset')
-              ? Asset.fromJson(
-                  json_['asset'] as core.Map<core.String, core.dynamic>)
-              : null,
-          deleted: json_['deleted'] as core.bool?,
-          priorAsset: json_.containsKey('priorAsset')
-              ? Asset.fromJson(
-                  json_['priorAsset'] as core.Map<core.String, core.dynamic>)
-              : null,
-          priorAssetState: json_['priorAssetState'] as core.String?,
-          window: json_.containsKey('window')
-              ? TimeWindow.fromJson(
-                  json_['window'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        asset:
+            json_.containsKey('asset')
+                ? Asset.fromJson(
+                  json_['asset'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleted: json_['deleted'] as core.bool?,
+        priorAsset:
+            json_.containsKey('priorAsset')
+                ? Asset.fromJson(
+                  json_['priorAsset'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        priorAssetState: json_['priorAssetState'] as core.String?,
+        window:
+            json_.containsKey('window')
+                ? TimeWindow.fromJson(
+                  json_['window'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (asset != null) 'asset': asset!,
-        if (deleted != null) 'deleted': deleted!,
-        if (priorAsset != null) 'priorAsset': priorAsset!,
-        if (priorAssetState != null) 'priorAssetState': priorAssetState!,
-        if (window != null) 'window': window!,
-      };
+    if (asset != null) 'asset': asset!,
+    if (deleted != null) 'deleted': deleted!,
+    if (priorAsset != null) 'priorAsset': priorAsset!,
+    if (priorAssetState != null) 'priorAssetState': priorAssetState!,
+    if (window != null) 'window': window!,
+  };
 }
 
 /// A time window specified by its `start_time` and `end_time`.
@@ -8301,21 +8591,18 @@ class TimeWindow {
   /// Start time of the time window (exclusive).
   core.String? startTime;
 
-  TimeWindow({
-    this.endTime,
-    this.startTime,
-  });
+  TimeWindow({this.endTime, this.startTime});
 
   TimeWindow.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// Update asset feed request.
@@ -8338,24 +8625,23 @@ class UpdateFeedRequest {
   /// Required.
   core.String? updateMask;
 
-  UpdateFeedRequest({
-    this.feed,
-    this.updateMask,
-  });
+  UpdateFeedRequest({this.feed, this.updateMask});
 
   UpdateFeedRequest.fromJson(core.Map json_)
-      : this(
-          feed: json_.containsKey('feed')
-              ? Feed.fromJson(
-                  json_['feed'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        feed:
+            json_.containsKey('feed')
+                ? Feed.fromJson(
+                  json_['feed'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (feed != null) 'feed': feed!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (feed != null) 'feed': feed!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Information related to the a standard versioned package.
@@ -8390,23 +8676,21 @@ class VersionedResource {
   /// version will be "v1".
   core.String? version;
 
-  VersionedResource({
-    this.resource,
-    this.version,
-  });
+  VersionedResource({this.resource, this.version});
 
   VersionedResource.fromJson(core.Map json_)
-      : this(
-          resource: json_.containsKey('resource')
-              ? json_['resource'] as core.Map<core.String, core.dynamic>
-              : null,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        resource:
+            json_.containsKey('resource')
+                ? json_['resource'] as core.Map<core.String, core.dynamic>
+                : null,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resource != null) 'resource': resource!,
-        if (version != null) 'version': version!,
-      };
+    if (resource != null) 'resource': resource!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Contains information about a Windows application that is retrieved from the
@@ -8443,24 +8727,26 @@ class WindowsApplication {
   });
 
   WindowsApplication.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          displayVersion: json_['displayVersion'] as core.String?,
-          helpLink: json_['helpLink'] as core.String?,
-          installDate: json_.containsKey('installDate')
-              ? Date.fromJson(
-                  json_['installDate'] as core.Map<core.String, core.dynamic>)
-              : null,
-          publisher: json_['publisher'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        displayVersion: json_['displayVersion'] as core.String?,
+        helpLink: json_['helpLink'] as core.String?,
+        installDate:
+            json_.containsKey('installDate')
+                ? Date.fromJson(
+                  json_['installDate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        publisher: json_['publisher'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (displayVersion != null) 'displayVersion': displayVersion!,
-        if (helpLink != null) 'helpLink': helpLink!,
-        if (installDate != null) 'installDate': installDate!,
-        if (publisher != null) 'publisher': publisher!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (displayVersion != null) 'displayVersion': displayVersion!,
+    if (helpLink != null) 'helpLink': helpLink!,
+    if (installDate != null) 'installDate': installDate!,
+    if (publisher != null) 'publisher': publisher!,
+  };
 }
 
 /// Information related to a Quick Fix Engineering package.
@@ -8524,38 +8810,44 @@ class WindowsUpdatePackage {
   });
 
   WindowsUpdatePackage.fromJson(core.Map json_)
-      : this(
-          categories: (json_['categories'] as core.List?)
-              ?.map((value) => WindowsUpdateCategory.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          description: json_['description'] as core.String?,
-          kbArticleIds: (json_['kbArticleIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          lastDeploymentChangeTime:
-              json_['lastDeploymentChangeTime'] as core.String?,
-          moreInfoUrls: (json_['moreInfoUrls'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          revisionNumber: json_['revisionNumber'] as core.int?,
-          supportUrl: json_['supportUrl'] as core.String?,
-          title: json_['title'] as core.String?,
-          updateId: json_['updateId'] as core.String?,
-        );
+    : this(
+        categories:
+            (json_['categories'] as core.List?)
+                ?.map(
+                  (value) => WindowsUpdateCategory.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        description: json_['description'] as core.String?,
+        kbArticleIds:
+            (json_['kbArticleIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        lastDeploymentChangeTime:
+            json_['lastDeploymentChangeTime'] as core.String?,
+        moreInfoUrls:
+            (json_['moreInfoUrls'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        revisionNumber: json_['revisionNumber'] as core.int?,
+        supportUrl: json_['supportUrl'] as core.String?,
+        title: json_['title'] as core.String?,
+        updateId: json_['updateId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categories != null) 'categories': categories!,
-        if (description != null) 'description': description!,
-        if (kbArticleIds != null) 'kbArticleIds': kbArticleIds!,
-        if (lastDeploymentChangeTime != null)
-          'lastDeploymentChangeTime': lastDeploymentChangeTime!,
-        if (moreInfoUrls != null) 'moreInfoUrls': moreInfoUrls!,
-        if (revisionNumber != null) 'revisionNumber': revisionNumber!,
-        if (supportUrl != null) 'supportUrl': supportUrl!,
-        if (title != null) 'title': title!,
-        if (updateId != null) 'updateId': updateId!,
-      };
+    if (categories != null) 'categories': categories!,
+    if (description != null) 'description': description!,
+    if (kbArticleIds != null) 'kbArticleIds': kbArticleIds!,
+    if (lastDeploymentChangeTime != null)
+      'lastDeploymentChangeTime': lastDeploymentChangeTime!,
+    if (moreInfoUrls != null) 'moreInfoUrls': moreInfoUrls!,
+    if (revisionNumber != null) 'revisionNumber': revisionNumber!,
+    if (supportUrl != null) 'supportUrl': supportUrl!,
+    if (title != null) 'title': title!,
+    if (updateId != null) 'updateId': updateId!,
+  };
 }
 
 /// Details related to a Zypper Patch.

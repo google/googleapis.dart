@@ -28,7 +28,7 @@ import '../test_shared.dart';
 
 core.int buildCounterGoogleCloudOrgpolicyV2AlternatePolicySpec = 0;
 api.GoogleCloudOrgpolicyV2AlternatePolicySpec
-    buildGoogleCloudOrgpolicyV2AlternatePolicySpec() {
+buildGoogleCloudOrgpolicyV2AlternatePolicySpec() {
   final o = api.GoogleCloudOrgpolicyV2AlternatePolicySpec();
   buildCounterGoogleCloudOrgpolicyV2AlternatePolicySpec++;
   if (buildCounterGoogleCloudOrgpolicyV2AlternatePolicySpec < 3) {
@@ -40,13 +40,11 @@ api.GoogleCloudOrgpolicyV2AlternatePolicySpec
 }
 
 void checkGoogleCloudOrgpolicyV2AlternatePolicySpec(
-    api.GoogleCloudOrgpolicyV2AlternatePolicySpec o) {
+  api.GoogleCloudOrgpolicyV2AlternatePolicySpec o,
+) {
   buildCounterGoogleCloudOrgpolicyV2AlternatePolicySpec++;
   if (buildCounterGoogleCloudOrgpolicyV2AlternatePolicySpec < 3) {
-    unittest.expect(
-      o.launch!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.launch!, unittest.equals('foo'));
     checkGoogleCloudOrgpolicyV2PolicySpec(o.spec!);
   }
   buildCounterGoogleCloudOrgpolicyV2AlternatePolicySpec--;
@@ -73,32 +71,19 @@ api.GoogleCloudOrgpolicyV2Constraint buildGoogleCloudOrgpolicyV2Constraint() {
 }
 
 void checkGoogleCloudOrgpolicyV2Constraint(
-    api.GoogleCloudOrgpolicyV2Constraint o) {
+  api.GoogleCloudOrgpolicyV2Constraint o,
+) {
   buildCounterGoogleCloudOrgpolicyV2Constraint++;
   if (buildCounterGoogleCloudOrgpolicyV2Constraint < 3) {
     checkGoogleCloudOrgpolicyV2ConstraintBooleanConstraint(
-        o.booleanConstraint!);
-    unittest.expect(
-      o.constraintDefault!,
-      unittest.equals('foo'),
+      o.booleanConstraint!,
     );
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.equivalentConstraint!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.constraintDefault!, unittest.equals('foo'));
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.equivalentConstraint!, unittest.equals('foo'));
     checkGoogleCloudOrgpolicyV2ConstraintListConstraint(o.listConstraint!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.supportsDryRun!, unittest.isTrue);
     unittest.expect(o.supportsSimulation!, unittest.isTrue);
   }
@@ -107,7 +92,7 @@ void checkGoogleCloudOrgpolicyV2Constraint(
 
 core.int buildCounterGoogleCloudOrgpolicyV2ConstraintBooleanConstraint = 0;
 api.GoogleCloudOrgpolicyV2ConstraintBooleanConstraint
-    buildGoogleCloudOrgpolicyV2ConstraintBooleanConstraint() {
+buildGoogleCloudOrgpolicyV2ConstraintBooleanConstraint() {
   final o = api.GoogleCloudOrgpolicyV2ConstraintBooleanConstraint();
   buildCounterGoogleCloudOrgpolicyV2ConstraintBooleanConstraint++;
   if (buildCounterGoogleCloudOrgpolicyV2ConstraintBooleanConstraint < 3) {
@@ -119,75 +104,64 @@ api.GoogleCloudOrgpolicyV2ConstraintBooleanConstraint
 }
 
 void checkGoogleCloudOrgpolicyV2ConstraintBooleanConstraint(
-    api.GoogleCloudOrgpolicyV2ConstraintBooleanConstraint o) {
+  api.GoogleCloudOrgpolicyV2ConstraintBooleanConstraint o,
+) {
   buildCounterGoogleCloudOrgpolicyV2ConstraintBooleanConstraint++;
   if (buildCounterGoogleCloudOrgpolicyV2ConstraintBooleanConstraint < 3) {
     checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition(
-        o.customConstraintDefinition!);
+      o.customConstraintDefinition!,
+    );
   }
   buildCounterGoogleCloudOrgpolicyV2ConstraintBooleanConstraint--;
 }
 
-core.List<core.String> buildUnnamed0() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed0() => ['foo', 'foo'];
 
 void checkUnnamed0(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String,
-        api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter>
-    buildUnnamed1() => {
-          'x':
-              buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter(),
-          'y':
-              buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter(),
-        };
+core.Map<
+  core.String,
+  api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter
+>
+buildUnnamed1() => {
+  'x':
+      buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter(),
+  'y':
+      buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter(),
+};
 
 void checkUnnamed1(
-    core.Map<
-            core.String,
-            api
-            .GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter>
-        o) {
+  core.Map<
+    core.String,
+    api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter
+  >
+  o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter(
-      o['x']!);
+    o['x']!,
+  );
   checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter(
-      o['y']!);
+    o['y']!,
+  );
 }
 
-core.List<core.String> buildUnnamed2() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
 
 void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int
-    buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition = 0;
+buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition = 0;
 api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition
-    buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition() {
+buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition() {
   final o = api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition();
   buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition++;
   if (buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition <
@@ -203,18 +177,13 @@ api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition
 }
 
 void checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition(
-    api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition o) {
+  api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition o,
+) {
   buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition++;
   if (buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition <
       3) {
-    unittest.expect(
-      o.actionType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.condition!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.actionType!, unittest.equals('foo'));
+    unittest.expect(o.condition!, unittest.equals('foo'));
     checkUnnamed0(o.methodTypes!);
     checkUnnamed1(o.parameters!);
     checkUnnamed2(o.resourceTypes!);
@@ -223,10 +192,10 @@ void checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition(
 }
 
 core.int
-    buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter =
+buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter =
     0;
 api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter
-    buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter() {
+buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter() {
   final o =
       api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter();
   buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter++;
@@ -235,7 +204,7 @@ api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter
     o.defaultValue = {
       'list': [1, 2, 3],
       'bool': true,
-      'string': 'foo'
+      'string': 'foo',
     };
     o.item = 'foo';
     o.metadata =
@@ -248,49 +217,33 @@ api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter
 }
 
 void checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter(
-    api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter o) {
+  api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter o,
+) {
   buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter++;
   if (buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter <
       3) {
     var casted1 = (o.defaultValue!) as core.Map;
     unittest.expect(casted1, unittest.hasLength(3));
-    unittest.expect(
-      casted1['list'],
-      unittest.equals([1, 2, 3]),
-    );
-    unittest.expect(
-      casted1['bool'],
-      unittest.equals(true),
-    );
-    unittest.expect(
-      casted1['string'],
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.item!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+    unittest.expect(casted1['bool'], unittest.equals(true));
+    unittest.expect(casted1['string'], unittest.equals('foo'));
+    unittest.expect(o.item!, unittest.equals('foo'));
     checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata(
-        o.metadata!);
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
+      o.metadata!,
     );
-    unittest.expect(
-      o.validValuesExpr!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.type!, unittest.equals('foo'));
+    unittest.expect(o.validValuesExpr!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter--;
 }
 
 core.int
-    buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata =
+buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata =
     0;
 api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata
-    buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata() {
-  final o = api
-      .GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata();
+buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata() {
+  final o =
+      api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata();
   buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata++;
   if (buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata <
       3) {
@@ -300,23 +253,22 @@ api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata
   return o;
 }
 
-void checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata(
-    api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata
-        o) {
+void
+checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata(
+  api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata
+  o,
+) {
   buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata++;
   if (buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata <
       3) {
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.description!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata--;
 }
 
 core.int buildCounterGoogleCloudOrgpolicyV2ConstraintListConstraint = 0;
 api.GoogleCloudOrgpolicyV2ConstraintListConstraint
-    buildGoogleCloudOrgpolicyV2ConstraintListConstraint() {
+buildGoogleCloudOrgpolicyV2ConstraintListConstraint() {
   final o = api.GoogleCloudOrgpolicyV2ConstraintListConstraint();
   buildCounterGoogleCloudOrgpolicyV2ConstraintListConstraint++;
   if (buildCounterGoogleCloudOrgpolicyV2ConstraintListConstraint < 3) {
@@ -328,7 +280,8 @@ api.GoogleCloudOrgpolicyV2ConstraintListConstraint
 }
 
 void checkGoogleCloudOrgpolicyV2ConstraintListConstraint(
-    api.GoogleCloudOrgpolicyV2ConstraintListConstraint o) {
+  api.GoogleCloudOrgpolicyV2ConstraintListConstraint o,
+) {
   buildCounterGoogleCloudOrgpolicyV2ConstraintListConstraint++;
   if (buildCounterGoogleCloudOrgpolicyV2ConstraintListConstraint < 3) {
     unittest.expect(o.supportsIn!, unittest.isTrue);
@@ -337,43 +290,25 @@ void checkGoogleCloudOrgpolicyV2ConstraintListConstraint(
   buildCounterGoogleCloudOrgpolicyV2ConstraintListConstraint--;
 }
 
-core.List<core.String> buildUnnamed3() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed3() => ['foo', 'foo'];
 
 void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed4() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
 
 void checkUnnamed4(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudOrgpolicyV2CustomConstraint = 0;
 api.GoogleCloudOrgpolicyV2CustomConstraint
-    buildGoogleCloudOrgpolicyV2CustomConstraint() {
+buildGoogleCloudOrgpolicyV2CustomConstraint() {
   final o = api.GoogleCloudOrgpolicyV2CustomConstraint();
   buildCounterGoogleCloudOrgpolicyV2CustomConstraint++;
   if (buildCounterGoogleCloudOrgpolicyV2CustomConstraint < 3) {
@@ -391,43 +326,26 @@ api.GoogleCloudOrgpolicyV2CustomConstraint
 }
 
 void checkGoogleCloudOrgpolicyV2CustomConstraint(
-    api.GoogleCloudOrgpolicyV2CustomConstraint o) {
+  api.GoogleCloudOrgpolicyV2CustomConstraint o,
+) {
   buildCounterGoogleCloudOrgpolicyV2CustomConstraint++;
   if (buildCounterGoogleCloudOrgpolicyV2CustomConstraint < 3) {
-    unittest.expect(
-      o.actionType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.condition!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.actionType!, unittest.equals('foo'));
+    unittest.expect(o.condition!, unittest.equals('foo'));
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
     checkUnnamed3(o.methodTypes!);
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkUnnamed4(o.resourceTypes!);
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudOrgpolicyV2CustomConstraint--;
 }
 
 core.List<api.GoogleCloudOrgpolicyV2Constraint> buildUnnamed5() => [
-      buildGoogleCloudOrgpolicyV2Constraint(),
-      buildGoogleCloudOrgpolicyV2Constraint(),
-    ];
+  buildGoogleCloudOrgpolicyV2Constraint(),
+  buildGoogleCloudOrgpolicyV2Constraint(),
+];
 
 void checkUnnamed5(core.List<api.GoogleCloudOrgpolicyV2Constraint> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -437,7 +355,7 @@ void checkUnnamed5(core.List<api.GoogleCloudOrgpolicyV2Constraint> o) {
 
 core.int buildCounterGoogleCloudOrgpolicyV2ListConstraintsResponse = 0;
 api.GoogleCloudOrgpolicyV2ListConstraintsResponse
-    buildGoogleCloudOrgpolicyV2ListConstraintsResponse() {
+buildGoogleCloudOrgpolicyV2ListConstraintsResponse() {
   final o = api.GoogleCloudOrgpolicyV2ListConstraintsResponse();
   buildCounterGoogleCloudOrgpolicyV2ListConstraintsResponse++;
   if (buildCounterGoogleCloudOrgpolicyV2ListConstraintsResponse < 3) {
@@ -449,22 +367,20 @@ api.GoogleCloudOrgpolicyV2ListConstraintsResponse
 }
 
 void checkGoogleCloudOrgpolicyV2ListConstraintsResponse(
-    api.GoogleCloudOrgpolicyV2ListConstraintsResponse o) {
+  api.GoogleCloudOrgpolicyV2ListConstraintsResponse o,
+) {
   buildCounterGoogleCloudOrgpolicyV2ListConstraintsResponse++;
   if (buildCounterGoogleCloudOrgpolicyV2ListConstraintsResponse < 3) {
     checkUnnamed5(o.constraints!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudOrgpolicyV2ListConstraintsResponse--;
 }
 
 core.List<api.GoogleCloudOrgpolicyV2CustomConstraint> buildUnnamed6() => [
-      buildGoogleCloudOrgpolicyV2CustomConstraint(),
-      buildGoogleCloudOrgpolicyV2CustomConstraint(),
-    ];
+  buildGoogleCloudOrgpolicyV2CustomConstraint(),
+  buildGoogleCloudOrgpolicyV2CustomConstraint(),
+];
 
 void checkUnnamed6(core.List<api.GoogleCloudOrgpolicyV2CustomConstraint> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -474,7 +390,7 @@ void checkUnnamed6(core.List<api.GoogleCloudOrgpolicyV2CustomConstraint> o) {
 
 core.int buildCounterGoogleCloudOrgpolicyV2ListCustomConstraintsResponse = 0;
 api.GoogleCloudOrgpolicyV2ListCustomConstraintsResponse
-    buildGoogleCloudOrgpolicyV2ListCustomConstraintsResponse() {
+buildGoogleCloudOrgpolicyV2ListCustomConstraintsResponse() {
   final o = api.GoogleCloudOrgpolicyV2ListCustomConstraintsResponse();
   buildCounterGoogleCloudOrgpolicyV2ListCustomConstraintsResponse++;
   if (buildCounterGoogleCloudOrgpolicyV2ListCustomConstraintsResponse < 3) {
@@ -486,22 +402,20 @@ api.GoogleCloudOrgpolicyV2ListCustomConstraintsResponse
 }
 
 void checkGoogleCloudOrgpolicyV2ListCustomConstraintsResponse(
-    api.GoogleCloudOrgpolicyV2ListCustomConstraintsResponse o) {
+  api.GoogleCloudOrgpolicyV2ListCustomConstraintsResponse o,
+) {
   buildCounterGoogleCloudOrgpolicyV2ListCustomConstraintsResponse++;
   if (buildCounterGoogleCloudOrgpolicyV2ListCustomConstraintsResponse < 3) {
     checkUnnamed6(o.customConstraints!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudOrgpolicyV2ListCustomConstraintsResponse--;
 }
 
 core.List<api.GoogleCloudOrgpolicyV2Policy> buildUnnamed7() => [
-      buildGoogleCloudOrgpolicyV2Policy(),
-      buildGoogleCloudOrgpolicyV2Policy(),
-    ];
+  buildGoogleCloudOrgpolicyV2Policy(),
+  buildGoogleCloudOrgpolicyV2Policy(),
+];
 
 void checkUnnamed7(core.List<api.GoogleCloudOrgpolicyV2Policy> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -511,7 +425,7 @@ void checkUnnamed7(core.List<api.GoogleCloudOrgpolicyV2Policy> o) {
 
 core.int buildCounterGoogleCloudOrgpolicyV2ListPoliciesResponse = 0;
 api.GoogleCloudOrgpolicyV2ListPoliciesResponse
-    buildGoogleCloudOrgpolicyV2ListPoliciesResponse() {
+buildGoogleCloudOrgpolicyV2ListPoliciesResponse() {
   final o = api.GoogleCloudOrgpolicyV2ListPoliciesResponse();
   buildCounterGoogleCloudOrgpolicyV2ListPoliciesResponse++;
   if (buildCounterGoogleCloudOrgpolicyV2ListPoliciesResponse < 3) {
@@ -523,13 +437,11 @@ api.GoogleCloudOrgpolicyV2ListPoliciesResponse
 }
 
 void checkGoogleCloudOrgpolicyV2ListPoliciesResponse(
-    api.GoogleCloudOrgpolicyV2ListPoliciesResponse o) {
+  api.GoogleCloudOrgpolicyV2ListPoliciesResponse o,
+) {
   buildCounterGoogleCloudOrgpolicyV2ListPoliciesResponse++;
   if (buildCounterGoogleCloudOrgpolicyV2ListPoliciesResponse < 3) {
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed7(o.policies!);
   }
   buildCounterGoogleCloudOrgpolicyV2ListPoliciesResponse--;
@@ -555,26 +467,21 @@ void checkGoogleCloudOrgpolicyV2Policy(api.GoogleCloudOrgpolicyV2Policy o) {
   if (buildCounterGoogleCloudOrgpolicyV2Policy < 3) {
     checkGoogleCloudOrgpolicyV2AlternatePolicySpec(o.alternate!);
     checkGoogleCloudOrgpolicyV2PolicySpec(o.dryRunSpec!);
-    unittest.expect(
-      o.etag!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.etag!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleCloudOrgpolicyV2PolicySpec(o.spec!);
   }
   buildCounterGoogleCloudOrgpolicyV2Policy--;
 }
 
 core.List<api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule> buildUnnamed8() => [
-      buildGoogleCloudOrgpolicyV2PolicySpecPolicyRule(),
-      buildGoogleCloudOrgpolicyV2PolicySpecPolicyRule(),
-    ];
+  buildGoogleCloudOrgpolicyV2PolicySpecPolicyRule(),
+  buildGoogleCloudOrgpolicyV2PolicySpecPolicyRule(),
+];
 
 void checkUnnamed8(
-    core.List<api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule> o) {
+  core.List<api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule> o,
+) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudOrgpolicyV2PolicySpecPolicyRule(o[0]);
   checkGoogleCloudOrgpolicyV2PolicySpecPolicyRule(o[1]);
@@ -596,72 +503,49 @@ api.GoogleCloudOrgpolicyV2PolicySpec buildGoogleCloudOrgpolicyV2PolicySpec() {
 }
 
 void checkGoogleCloudOrgpolicyV2PolicySpec(
-    api.GoogleCloudOrgpolicyV2PolicySpec o) {
+  api.GoogleCloudOrgpolicyV2PolicySpec o,
+) {
   buildCounterGoogleCloudOrgpolicyV2PolicySpec++;
   if (buildCounterGoogleCloudOrgpolicyV2PolicySpec < 3) {
-    unittest.expect(
-      o.etag!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.inheritFromParent!, unittest.isTrue);
     unittest.expect(o.reset!, unittest.isTrue);
     checkUnnamed8(o.rules!);
-    unittest.expect(
-      o.updateTime!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudOrgpolicyV2PolicySpec--;
 }
 
 core.Map<core.String, core.Object?> buildUnnamed9() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed9(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted2 = (o['x']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(
-    casted2['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted2['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted2['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
   var casted3 = (o['y']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(
-    casted3['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted3['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted3['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRule = 0;
 api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule
-    buildGoogleCloudOrgpolicyV2PolicySpecPolicyRule() {
+buildGoogleCloudOrgpolicyV2PolicySpecPolicyRule() {
   final o = api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule();
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRule++;
   if (buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRule < 3) {
@@ -677,7 +561,8 @@ api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule
 }
 
 void checkGoogleCloudOrgpolicyV2PolicySpecPolicyRule(
-    api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule o) {
+  api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule o,
+) {
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRule++;
   if (buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRule < 3) {
     unittest.expect(o.allowAll!, unittest.isTrue);
@@ -690,43 +575,25 @@ void checkGoogleCloudOrgpolicyV2PolicySpecPolicyRule(
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRule--;
 }
 
-core.List<core.String> buildUnnamed10() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed10() => ['foo', 'foo'];
 
 void checkUnnamed10(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed11() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed11() => ['foo', 'foo'];
 
 void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues = 0;
 api.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
-    buildGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues() {
+buildGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues() {
   final o = api.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues();
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues++;
   if (buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues < 3) {
@@ -738,7 +605,8 @@ api.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues
 }
 
 void checkGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues(
-    api.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues o) {
+  api.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues o,
+) {
   buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues++;
   if (buildCounterGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues < 3) {
     checkUnnamed10(o.allowedValues!);
@@ -779,22 +647,10 @@ api.GoogleTypeExpr buildGoogleTypeExpr() {
 void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
   buildCounterGoogleTypeExpr++;
   if (buildCounterGoogleTypeExpr < 3) {
-    unittest.expect(
-      o.description!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.expression!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.location!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.title!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.expression!, unittest.equals('foo'));
+    unittest.expect(o.location!, unittest.equals('foo'));
+    unittest.expect(o.title!, unittest.equals('foo'));
   }
   buildCounterGoogleTypeExpr--;
 }
@@ -805,7 +661,8 @@ void main() {
       final o = buildGoogleCloudOrgpolicyV2AlternatePolicySpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleCloudOrgpolicyV2AlternatePolicySpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleCloudOrgpolicyV2AlternatePolicySpec(od);
     });
   });
@@ -815,115 +672,140 @@ void main() {
       final o = buildGoogleCloudOrgpolicyV2Constraint();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleCloudOrgpolicyV2Constraint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleCloudOrgpolicyV2Constraint(od);
     });
   });
 
-  unittest.group('obj-schema-GoogleCloudOrgpolicyV2ConstraintBooleanConstraint',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudOrgpolicyV2ConstraintBooleanConstraint();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudOrgpolicyV2ConstraintBooleanConstraint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudOrgpolicyV2ConstraintBooleanConstraint(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleCloudOrgpolicyV2ConstraintBooleanConstraint',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudOrgpolicyV2ConstraintBooleanConstraint();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleCloudOrgpolicyV2ConstraintBooleanConstraint.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudOrgpolicyV2ConstraintBooleanConstraint(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition
-          .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition(od);
-    });
-  });
+    'obj-schema-GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter(
-          od);
-    });
-  });
+    'obj-schema-GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter(
+          od,
+        );
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o =
-          buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata
-              .fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata(
-          od);
-    });
-  });
+    'obj-schema-GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata(
+          od,
+        );
+      });
+    },
+  );
 
-  unittest.group('obj-schema-GoogleCloudOrgpolicyV2ConstraintListConstraint',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudOrgpolicyV2ConstraintListConstraint();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudOrgpolicyV2ConstraintListConstraint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudOrgpolicyV2ConstraintListConstraint(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleCloudOrgpolicyV2ConstraintListConstraint',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudOrgpolicyV2ConstraintListConstraint();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleCloudOrgpolicyV2ConstraintListConstraint.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudOrgpolicyV2ConstraintListConstraint(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleCloudOrgpolicyV2CustomConstraint', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudOrgpolicyV2CustomConstraint();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleCloudOrgpolicyV2CustomConstraint(od);
     });
   });
 
-  unittest.group('obj-schema-GoogleCloudOrgpolicyV2ListConstraintsResponse',
-      () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudOrgpolicyV2ListConstraintsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GoogleCloudOrgpolicyV2ListConstraintsResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudOrgpolicyV2ListConstraintsResponse(od);
-    });
-  });
+  unittest.group(
+    'obj-schema-GoogleCloudOrgpolicyV2ListConstraintsResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudOrgpolicyV2ListConstraintsResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleCloudOrgpolicyV2ListConstraintsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudOrgpolicyV2ListConstraintsResponse(od);
+      });
+    },
+  );
 
   unittest.group(
-      'obj-schema-GoogleCloudOrgpolicyV2ListCustomConstraintsResponse', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudOrgpolicyV2ListCustomConstraintsResponse();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudOrgpolicyV2ListCustomConstraintsResponse.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudOrgpolicyV2ListCustomConstraintsResponse(od);
-    });
-  });
+    'obj-schema-GoogleCloudOrgpolicyV2ListCustomConstraintsResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudOrgpolicyV2ListCustomConstraintsResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleCloudOrgpolicyV2ListCustomConstraintsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudOrgpolicyV2ListCustomConstraintsResponse(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleCloudOrgpolicyV2ListPoliciesResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleCloudOrgpolicyV2ListPoliciesResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleCloudOrgpolicyV2ListPoliciesResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleCloudOrgpolicyV2ListPoliciesResponse(od);
     });
   });
@@ -933,7 +815,8 @@ void main() {
       final o = buildGoogleCloudOrgpolicyV2Policy();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleCloudOrgpolicyV2Policy.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleCloudOrgpolicyV2Policy(od);
     });
   });
@@ -943,7 +826,8 @@ void main() {
       final o = buildGoogleCloudOrgpolicyV2PolicySpec();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleCloudOrgpolicyV2PolicySpec.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleCloudOrgpolicyV2PolicySpec(od);
     });
   });
@@ -953,29 +837,34 @@ void main() {
       final o = buildGoogleCloudOrgpolicyV2PolicySpecPolicyRule();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleCloudOrgpolicyV2PolicySpecPolicyRule(od);
     });
   });
 
   unittest.group(
-      'obj-schema-GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
-              oJson as core.Map<core.String, core.dynamic>);
-      checkGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues(od);
-    });
-  });
+    'obj-schema-GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleProtobufEmpty();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleProtobufEmpty.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleProtobufEmpty(od);
     });
   });
@@ -985,7 +874,8 @@ void main() {
       final o = buildGoogleTypeExpr();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.GoogleTypeExpr.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGoogleTypeExpr(od);
     });
   });
@@ -998,64 +888,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleCloudOrgpolicyV2ListConstraintsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudOrgpolicyV2ListConstraintsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2ListConstraintsResponse(
-          response as api.GoogleCloudOrgpolicyV2ListConstraintsResponse);
+        response as api.GoogleCloudOrgpolicyV2ListConstraintsResponse,
+      );
     });
   });
 
@@ -1066,57 +961,63 @@ void main() {
       final arg_request = buildGoogleCloudOrgpolicyV2Policy();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudOrgpolicyV2Policy(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudOrgpolicyV2Policy(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2Policy(
-          response as api.GoogleCloudOrgpolicyV2Policy);
+        response as api.GoogleCloudOrgpolicyV2Policy,
+      );
     });
 
     unittest.test('method--delete', () async {
@@ -1125,55 +1026,56 @@ void main() {
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['etag']!.first,
-          unittest.equals(arg_etag),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(queryMap['etag']!.first, unittest.equals(arg_etag));
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleProtobufEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleProtobufEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        etag: arg_etag,
+        $fields: arg_$fields,
+      );
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
@@ -1182,52 +1084,54 @@ void main() {
       final res = api.OrgPolicyApi(mock).folders.policies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGoogleCloudOrgpolicyV2Policy(
-          response as api.GoogleCloudOrgpolicyV2Policy);
+        response as api.GoogleCloudOrgpolicyV2Policy,
+      );
     });
 
     unittest.test('method--getEffectivePolicy', () async {
@@ -1235,53 +1139,57 @@ void main() {
       final res = api.OrgPolicyApi(mock).folders.policies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.getEffectivePolicy(arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getEffectivePolicy(
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2Policy(
-          response as api.GoogleCloudOrgpolicyV2Policy);
+        response as api.GoogleCloudOrgpolicyV2Policy,
+      );
     });
 
     unittest.test('method--list', () async {
@@ -1291,64 +1199,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleCloudOrgpolicyV2ListPoliciesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudOrgpolicyV2ListPoliciesResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2ListPoliciesResponse(
-          response as api.GoogleCloudOrgpolicyV2ListPoliciesResponse);
+        response as api.GoogleCloudOrgpolicyV2ListPoliciesResponse,
+      );
     });
 
     unittest.test('method--patch', () async {
@@ -1358,61 +1271,68 @@ void main() {
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudOrgpolicyV2Policy(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudOrgpolicyV2Policy(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['updateMask']!.first,
-          unittest.equals(arg_updateMask),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.patch(arg_request, arg_name,
-          updateMask: arg_updateMask, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2Policy(
-          response as api.GoogleCloudOrgpolicyV2Policy);
+        response as api.GoogleCloudOrgpolicyV2Policy,
+      );
     });
   });
 
@@ -1424,64 +1344,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleCloudOrgpolicyV2ListConstraintsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudOrgpolicyV2ListConstraintsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2ListConstraintsResponse(
-          response as api.GoogleCloudOrgpolicyV2ListConstraintsResponse);
+        response as api.GoogleCloudOrgpolicyV2ListConstraintsResponse,
+      );
     });
   });
 
@@ -1492,58 +1417,65 @@ void main() {
       final arg_request = buildGoogleCloudOrgpolicyV2CustomConstraint();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudOrgpolicyV2CustomConstraint(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudOrgpolicyV2CustomConstraint(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGoogleCloudOrgpolicyV2CustomConstraint());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudOrgpolicyV2CustomConstraint(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2CustomConstraint(
-          response as api.GoogleCloudOrgpolicyV2CustomConstraint);
+        response as api.GoogleCloudOrgpolicyV2CustomConstraint,
+      );
     });
 
     unittest.test('method--delete', () async {
@@ -1551,49 +1483,50 @@ void main() {
       final res = api.OrgPolicyApi(mock).organizations.customConstraints;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleProtobufEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleProtobufEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
@@ -1603,53 +1536,56 @@ void main() {
       final res = api.OrgPolicyApi(mock).organizations.customConstraints;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGoogleCloudOrgpolicyV2CustomConstraint());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudOrgpolicyV2CustomConstraint(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGoogleCloudOrgpolicyV2CustomConstraint(
-          response as api.GoogleCloudOrgpolicyV2CustomConstraint);
+        response as api.GoogleCloudOrgpolicyV2CustomConstraint,
+      );
     });
 
     unittest.test('method--list', () async {
@@ -1659,64 +1595,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleCloudOrgpolicyV2ListCustomConstraintsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudOrgpolicyV2ListCustomConstraintsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2ListCustomConstraintsResponse(
-          response as api.GoogleCloudOrgpolicyV2ListCustomConstraintsResponse);
+        response as api.GoogleCloudOrgpolicyV2ListCustomConstraintsResponse,
+      );
     });
 
     unittest.test('method--patch', () async {
@@ -1725,58 +1666,65 @@ void main() {
       final arg_request = buildGoogleCloudOrgpolicyV2CustomConstraint();
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudOrgpolicyV2CustomConstraint(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleCloudOrgpolicyV2CustomConstraint.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudOrgpolicyV2CustomConstraint(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp =
-            convert.json.encode(buildGoogleCloudOrgpolicyV2CustomConstraint());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudOrgpolicyV2CustomConstraint(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2CustomConstraint(
-          response as api.GoogleCloudOrgpolicyV2CustomConstraint);
+        response as api.GoogleCloudOrgpolicyV2CustomConstraint,
+      );
     });
   });
 
@@ -1787,57 +1735,63 @@ void main() {
       final arg_request = buildGoogleCloudOrgpolicyV2Policy();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudOrgpolicyV2Policy(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudOrgpolicyV2Policy(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2Policy(
-          response as api.GoogleCloudOrgpolicyV2Policy);
+        response as api.GoogleCloudOrgpolicyV2Policy,
+      );
     });
 
     unittest.test('method--delete', () async {
@@ -1846,55 +1800,56 @@ void main() {
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['etag']!.first,
-          unittest.equals(arg_etag),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(queryMap['etag']!.first, unittest.equals(arg_etag));
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleProtobufEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleProtobufEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        etag: arg_etag,
+        $fields: arg_$fields,
+      );
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
@@ -1903,52 +1858,54 @@ void main() {
       final res = api.OrgPolicyApi(mock).organizations.policies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGoogleCloudOrgpolicyV2Policy(
-          response as api.GoogleCloudOrgpolicyV2Policy);
+        response as api.GoogleCloudOrgpolicyV2Policy,
+      );
     });
 
     unittest.test('method--getEffectivePolicy', () async {
@@ -1956,53 +1913,57 @@ void main() {
       final res = api.OrgPolicyApi(mock).organizations.policies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.getEffectivePolicy(arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getEffectivePolicy(
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2Policy(
-          response as api.GoogleCloudOrgpolicyV2Policy);
+        response as api.GoogleCloudOrgpolicyV2Policy,
+      );
     });
 
     unittest.test('method--list', () async {
@@ -2012,64 +1973,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleCloudOrgpolicyV2ListPoliciesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudOrgpolicyV2ListPoliciesResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2ListPoliciesResponse(
-          response as api.GoogleCloudOrgpolicyV2ListPoliciesResponse);
+        response as api.GoogleCloudOrgpolicyV2ListPoliciesResponse,
+      );
     });
 
     unittest.test('method--patch', () async {
@@ -2079,61 +2045,68 @@ void main() {
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudOrgpolicyV2Policy(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudOrgpolicyV2Policy(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['updateMask']!.first,
-          unittest.equals(arg_updateMask),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.patch(arg_request, arg_name,
-          updateMask: arg_updateMask, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2Policy(
-          response as api.GoogleCloudOrgpolicyV2Policy);
+        response as api.GoogleCloudOrgpolicyV2Policy,
+      );
     });
   });
 
@@ -2145,64 +2118,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleCloudOrgpolicyV2ListConstraintsResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudOrgpolicyV2ListConstraintsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2ListConstraintsResponse(
-          response as api.GoogleCloudOrgpolicyV2ListConstraintsResponse);
+        response as api.GoogleCloudOrgpolicyV2ListConstraintsResponse,
+      );
     });
   });
 
@@ -2213,57 +2191,63 @@ void main() {
       final arg_request = buildGoogleCloudOrgpolicyV2Policy();
       final arg_parent = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudOrgpolicyV2Policy(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudOrgpolicyV2Policy(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2Policy(
-          response as api.GoogleCloudOrgpolicyV2Policy);
+        response as api.GoogleCloudOrgpolicyV2Policy,
+      );
     });
 
     unittest.test('method--delete', () async {
@@ -2272,55 +2256,56 @@ void main() {
       final arg_name = 'foo';
       final arg_etag = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['etag']!.first,
-          unittest.equals(arg_etag),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(queryMap['etag']!.first, unittest.equals(arg_etag));
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleProtobufEmpty());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleProtobufEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(
+        arg_name,
+        etag: arg_etag,
+        $fields: arg_$fields,
+      );
       checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
@@ -2329,52 +2314,54 @@ void main() {
       final res = api.OrgPolicyApi(mock).projects.policies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkGoogleCloudOrgpolicyV2Policy(
-          response as api.GoogleCloudOrgpolicyV2Policy);
+        response as api.GoogleCloudOrgpolicyV2Policy,
+      );
     });
 
     unittest.test('method--getEffectivePolicy', () async {
@@ -2382,53 +2369,57 @@ void main() {
       final res = api.OrgPolicyApi(mock).projects.policies;
       final arg_name = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response =
-          await res.getEffectivePolicy(arg_name, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.getEffectivePolicy(
+        arg_name,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2Policy(
-          response as api.GoogleCloudOrgpolicyV2Policy);
+        response as api.GoogleCloudOrgpolicyV2Policy,
+      );
     });
 
     unittest.test('method--list', () async {
@@ -2438,64 +2429,69 @@ void main() {
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json
-            .encode(buildGoogleCloudOrgpolicyV2ListPoliciesResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.list(arg_parent,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudOrgpolicyV2ListPoliciesResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2ListPoliciesResponse(
-          response as api.GoogleCloudOrgpolicyV2ListPoliciesResponse);
+        response as api.GoogleCloudOrgpolicyV2ListPoliciesResponse,
+      );
     });
 
     unittest.test('method--patch', () async {
@@ -2505,61 +2501,68 @@ void main() {
       final arg_name = 'foo';
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
-            json as core.Map<core.String, core.dynamic>);
-        checkGoogleCloudOrgpolicyV2Policy(obj);
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.GoogleCloudOrgpolicyV2Policy.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudOrgpolicyV2Policy(obj);
 
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 3),
-          unittest.equals('v2/'),
-        );
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v2/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['updateMask']!.first,
-          unittest.equals(arg_updateMask),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['updateMask']!.first,
+            unittest.equals(arg_updateMask),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      final response = await res.patch(arg_request, arg_name,
-          updateMask: arg_updateMask, $fields: arg_$fields);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildGoogleCloudOrgpolicyV2Policy());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.patch(
+        arg_request,
+        arg_name,
+        updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
       checkGoogleCloudOrgpolicyV2Policy(
-          response as api.GoogleCloudOrgpolicyV2Policy);
+        response as api.GoogleCloudOrgpolicyV2Policy,
+      );
     });
   });
 }

@@ -25,10 +25,10 @@ class AccessToken {
   }
 
   factory AccessToken.fromJson(Map<String, dynamic> json) => AccessToken(
-        json['type'] as String,
-        json['data'] as String,
-        DateTime.parse(json['expiry'] as String),
-      );
+    json['type'] as String,
+    json['data'] as String,
+    DateTime.parse(json['expiry'] as String),
+  );
 
   bool get hasExpired => DateTime.now().toUtc().isAfter(expiry);
 
@@ -36,8 +36,8 @@ class AccessToken {
   String toString() => 'AccessToken(type=$type, data=$data, expiry=$expiry)';
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'type': type,
-        'data': data,
-        'expiry': expiry.toIso8601String(),
-      };
+    'type': type,
+    'data': data,
+    'expiry': expiry.toIso8601String(),
+  };
 }

@@ -62,9 +62,7 @@ Future<T> withClientFromDefaultCredentials<T>(
   List<String> scopes,
   Future<T> Function(AuthClient) action,
 ) async {
-  final client = await clientViaApplicationDefaultCredentials(
-    scopes: scopes,
-  );
+  final client = await clientViaApplicationDefaultCredentials(scopes: scopes);
   try {
     return await action(client);
   } finally {
@@ -73,9 +71,9 @@ Future<T> withClientFromDefaultCredentials<T>(
 }
 
 ClientId openClientId() => ClientId.fromJson(
-      (loadYamlNode(File('client_id.yaml').readAsStringSync()) as Map)
-          .cast<String, dynamic>(),
-    );
+  (loadYamlNode(File('client_id.yaml').readAsStringSync()) as Map)
+      .cast<String, dynamic>(),
+);
 
 Future<AccessCredentials> _credentials(
   Client client,

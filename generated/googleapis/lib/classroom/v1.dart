@@ -168,11 +168,16 @@ class ClassroomApi {
   RegistrationsResource get registrations => RegistrationsResource(_requester);
   UserProfilesResource get userProfiles => UserProfilesResource(_requester);
 
-  ClassroomApi(http.Client client,
-      {core.String rootUrl = 'https://classroom.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ClassroomApi(
+    http.Client client, {
+    core.String rootUrl = 'https://classroom.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class CoursesResource {
@@ -219,10 +224,7 @@ class CoursesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Course> create(
-    Course request, {
-    core.String? $fields,
-  }) async {
+  async.Future<Course> create(Course request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -260,10 +262,7 @@ class CoursesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -273,6 +272,7 @@ class CoursesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -299,10 +299,7 @@ class CoursesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Course> get(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<Course> get(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -346,7 +343,8 @@ class CoursesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/gradingPeriodSettings';
 
@@ -356,7 +354,8 @@ class CoursesResource {
       queryParams: queryParams_,
     );
     return GradingPeriodSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of courses that the requesting user is permitted to view,
@@ -428,7 +427,8 @@ class CoursesResource {
       queryParams: queryParams_,
     );
     return ListCoursesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates one or more fields in a course.
@@ -589,7 +589,8 @@ class CoursesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/gradingPeriodSettings';
 
@@ -600,7 +601,8 @@ class CoursesResource {
       queryParams: queryParams_,
     );
     return GradingPeriodSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -655,7 +657,8 @@ class CoursesAliasesResource {
       queryParams: queryParams_,
     );
     return CourseAlias.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an alias of a course.
@@ -694,7 +697,8 @@ class CoursesAliasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/aliases/' +
         commons.escapeVariable('$alias');
@@ -702,6 +706,7 @@ class CoursesAliasesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -758,7 +763,8 @@ class CoursesAliasesResource {
       queryParams: queryParams_,
     );
     return ListCourseAliasesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -769,7 +775,7 @@ class CoursesAnnouncementsResource {
       CoursesAnnouncementsAddOnAttachmentsResource(_requester);
 
   CoursesAnnouncementsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an announcement.
   ///
@@ -818,7 +824,8 @@ class CoursesAnnouncementsResource {
       queryParams: queryParams_,
     );
     return Announcement.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an announcement.
@@ -859,7 +866,8 @@ class CoursesAnnouncementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/announcements/' +
         commons.escapeVariable('$id');
@@ -867,6 +875,7 @@ class CoursesAnnouncementsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -906,7 +915,8 @@ class CoursesAnnouncementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/announcements/' +
         commons.escapeVariable('$id');
@@ -917,7 +927,8 @@ class CoursesAnnouncementsResource {
       queryParams: queryParams_,
     );
     return Announcement.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets metadata for Classroom add-ons in the context of a specific post.
@@ -976,7 +987,8 @@ class CoursesAnnouncementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/announcements/' +
         commons.escapeVariable('$itemId') +
@@ -988,7 +1000,8 @@ class CoursesAnnouncementsResource {
       queryParams: queryParams_,
     );
     return AddOnContext.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of announcements that the requester is permitted to view.
@@ -1059,7 +1072,8 @@ class CoursesAnnouncementsResource {
       queryParams: queryParams_,
     );
     return ListAnnouncementsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Modifies assignee mode and options of an announcement.
@@ -1101,7 +1115,8 @@ class CoursesAnnouncementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/announcements/' +
         commons.escapeVariable('$id') +
@@ -1114,7 +1129,8 @@ class CoursesAnnouncementsResource {
       queryParams: queryParams_,
     );
     return Announcement.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates one or more fields of an announcement.
@@ -1167,7 +1183,8 @@ class CoursesAnnouncementsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/announcements/' +
         commons.escapeVariable('$id');
@@ -1179,7 +1196,8 @@ class CoursesAnnouncementsResource {
       queryParams: queryParams_,
     );
     return Announcement.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1187,7 +1205,7 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
   final commons.ApiRequester _requester;
 
   CoursesAnnouncementsAddOnAttachmentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an add-on attachment under a post.
   ///
@@ -1241,7 +1259,8 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/announcements/' +
         commons.escapeVariable('$itemId') +
@@ -1254,7 +1273,8 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an add-on attachment.
@@ -1298,7 +1318,8 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/announcements/' +
         commons.escapeVariable('$itemId') +
@@ -1308,6 +1329,7 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1355,7 +1377,8 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/announcements/' +
         commons.escapeVariable('$itemId') +
@@ -1368,7 +1391,8 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns all attachments created by an add-on under the post.
@@ -1425,7 +1449,8 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/announcements/' +
         commons.escapeVariable('$itemId') +
@@ -1437,7 +1462,8 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return ListAddOnAttachmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an add-on attachment.
@@ -1496,7 +1522,8 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/announcements/' +
         commons.escapeVariable('$itemId') +
@@ -1510,7 +1537,8 @@ class CoursesAnnouncementsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1578,7 +1606,8 @@ class CoursesCourseWorkResource {
       queryParams: queryParams_,
     );
     return CourseWork.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a course work.
@@ -1619,7 +1648,8 @@ class CoursesCourseWorkResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$id');
@@ -1627,6 +1657,7 @@ class CoursesCourseWorkResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1666,7 +1697,8 @@ class CoursesCourseWorkResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$id');
@@ -1677,7 +1709,8 @@ class CoursesCourseWorkResource {
       queryParams: queryParams_,
     );
     return CourseWork.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets metadata for Classroom add-ons in the context of a specific post.
@@ -1736,7 +1769,8 @@ class CoursesCourseWorkResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$itemId') +
@@ -1748,7 +1782,8 @@ class CoursesCourseWorkResource {
       queryParams: queryParams_,
     );
     return AddOnContext.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of course work that the requester is permitted to view.
@@ -1819,7 +1854,8 @@ class CoursesCourseWorkResource {
       queryParams: queryParams_,
     );
     return ListCourseWorkResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Modifies assignee mode and options of a coursework.
@@ -1861,7 +1897,8 @@ class CoursesCourseWorkResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$id') +
@@ -1874,7 +1911,8 @@ class CoursesCourseWorkResource {
       queryParams: queryParams_,
     );
     return CourseWork.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates one or more fields of a course work.
@@ -1935,7 +1973,8 @@ class CoursesCourseWorkResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$id');
@@ -1947,7 +1986,8 @@ class CoursesCourseWorkResource {
       queryParams: queryParams_,
     );
     return CourseWork.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a rubric.
@@ -2017,7 +2057,8 @@ class CoursesCourseWorkResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -2037,12 +2078,11 @@ class CoursesCourseWorkAddOnAttachmentsResource {
   final commons.ApiRequester _requester;
 
   CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource
-      get studentSubmissions =>
-          CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource(
-              _requester);
+  get studentSubmissions =>
+      CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource(_requester);
 
   CoursesCourseWorkAddOnAttachmentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an add-on attachment under a post.
   ///
@@ -2096,7 +2136,8 @@ class CoursesCourseWorkAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$itemId') +
@@ -2109,7 +2150,8 @@ class CoursesCourseWorkAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an add-on attachment.
@@ -2153,7 +2195,8 @@ class CoursesCourseWorkAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$itemId') +
@@ -2163,6 +2206,7 @@ class CoursesCourseWorkAddOnAttachmentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2210,7 +2254,8 @@ class CoursesCourseWorkAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$itemId') +
@@ -2223,7 +2268,8 @@ class CoursesCourseWorkAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns all attachments created by an add-on under the post.
@@ -2280,7 +2326,8 @@ class CoursesCourseWorkAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$itemId') +
@@ -2292,7 +2339,8 @@ class CoursesCourseWorkAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return ListAddOnAttachmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an add-on attachment.
@@ -2351,7 +2399,8 @@ class CoursesCourseWorkAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$itemId') +
@@ -2365,7 +2414,8 @@ class CoursesCourseWorkAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2373,8 +2423,8 @@ class CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource {
   final commons.ApiRequester _requester;
 
   CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Returns a student submission for an add-on attachment.
   ///
@@ -2419,7 +2469,8 @@ class CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$itemId') +
@@ -2434,7 +2485,8 @@ class CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachmentStudentSubmission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates data associated with an add-on attachment submission.
@@ -2494,7 +2546,8 @@ class CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$itemId') +
@@ -2510,7 +2563,8 @@ class CoursesCourseWorkAddOnAttachmentsStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachmentStudentSubmission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2518,7 +2572,7 @@ class CoursesCourseWorkRubricsResource {
   final commons.ApiRequester _requester;
 
   CoursesCourseWorkRubricsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a rubric.
   ///
@@ -2568,7 +2622,8 @@ class CoursesCourseWorkRubricsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -2626,7 +2681,8 @@ class CoursesCourseWorkRubricsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -2636,6 +2692,7 @@ class CoursesCourseWorkRubricsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2676,7 +2733,8 @@ class CoursesCourseWorkRubricsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -2736,7 +2794,8 @@ class CoursesCourseWorkRubricsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -2748,7 +2807,8 @@ class CoursesCourseWorkRubricsResource {
       queryParams: queryParams_,
     );
     return ListRubricsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a rubric.
@@ -2817,7 +2877,8 @@ class CoursesCourseWorkRubricsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -2838,7 +2899,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
   final commons.ApiRequester _requester;
 
   CoursesCourseWorkStudentSubmissionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Returns a student submission.
   ///
@@ -2876,7 +2937,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -2889,7 +2951,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return StudentSubmission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of student submissions that the requester is permitted to
@@ -2969,7 +3032,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -2981,7 +3045,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return ListStudentSubmissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Modifies attachments of student submission.
@@ -3031,7 +3096,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -3046,7 +3112,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return StudentSubmission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates one or more fields of a student submission.
@@ -3103,7 +3170,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -3117,7 +3185,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return StudentSubmission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Reclaims a student submission on behalf of the student that owns it.
@@ -3169,7 +3238,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -3235,7 +3305,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -3299,7 +3370,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWork/' +
         commons.escapeVariable('$courseWorkId') +
@@ -3324,7 +3396,7 @@ class CoursesCourseWorkMaterialsResource {
       CoursesCourseWorkMaterialsAddOnAttachmentsResource(_requester);
 
   CoursesCourseWorkMaterialsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a course work material.
   ///
@@ -3363,7 +3435,8 @@ class CoursesCourseWorkMaterialsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials';
 
@@ -3374,7 +3447,8 @@ class CoursesCourseWorkMaterialsResource {
       queryParams: queryParams_,
     );
     return CourseWorkMaterial.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a course work material.
@@ -3416,7 +3490,8 @@ class CoursesCourseWorkMaterialsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.escapeVariable('$id');
@@ -3424,6 +3499,7 @@ class CoursesCourseWorkMaterialsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3463,7 +3539,8 @@ class CoursesCourseWorkMaterialsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.escapeVariable('$id');
@@ -3474,7 +3551,8 @@ class CoursesCourseWorkMaterialsResource {
       queryParams: queryParams_,
     );
     return CourseWorkMaterial.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets metadata for Classroom add-ons in the context of a specific post.
@@ -3533,7 +3611,8 @@ class CoursesCourseWorkMaterialsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.escapeVariable('$itemId') +
@@ -3545,7 +3624,8 @@ class CoursesCourseWorkMaterialsResource {
       queryParams: queryParams_,
     );
     return AddOnContext.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of course work material that the requester is permitted to
@@ -3621,7 +3701,8 @@ class CoursesCourseWorkMaterialsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials';
 
@@ -3631,7 +3712,8 @@ class CoursesCourseWorkMaterialsResource {
       queryParams: queryParams_,
     );
     return ListCourseWorkMaterialResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates one or more fields of a course work material.
@@ -3684,7 +3766,8 @@ class CoursesCourseWorkMaterialsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.escapeVariable('$id');
@@ -3696,7 +3779,8 @@ class CoursesCourseWorkMaterialsResource {
       queryParams: queryParams_,
     );
     return CourseWorkMaterial.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3704,8 +3788,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
   final commons.ApiRequester _requester;
 
   CoursesCourseWorkMaterialsAddOnAttachmentsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates an add-on attachment under a post.
   ///
@@ -3759,7 +3843,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.escapeVariable('$itemId') +
@@ -3772,7 +3857,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an add-on attachment.
@@ -3816,7 +3902,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.escapeVariable('$itemId') +
@@ -3826,6 +3913,7 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3873,7 +3961,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.escapeVariable('$itemId') +
@@ -3886,7 +3975,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns all attachments created by an add-on under the post.
@@ -3943,7 +4033,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.escapeVariable('$itemId') +
@@ -3955,7 +4046,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return ListAddOnAttachmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an add-on attachment.
@@ -4014,7 +4106,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.escapeVariable('$itemId') +
@@ -4028,7 +4121,8 @@ class CoursesCourseWorkMaterialsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4096,7 +4190,8 @@ class CoursesPostsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
@@ -4108,7 +4203,8 @@ class CoursesPostsResource {
       queryParams: queryParams_,
     );
     return AddOnContext.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4116,11 +4212,11 @@ class CoursesPostsAddOnAttachmentsResource {
   final commons.ApiRequester _requester;
 
   CoursesPostsAddOnAttachmentsStudentSubmissionsResource
-      get studentSubmissions =>
-          CoursesPostsAddOnAttachmentsStudentSubmissionsResource(_requester);
+  get studentSubmissions =>
+      CoursesPostsAddOnAttachmentsStudentSubmissionsResource(_requester);
 
   CoursesPostsAddOnAttachmentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an add-on attachment under a post.
   ///
@@ -4174,7 +4270,8 @@ class CoursesPostsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
@@ -4187,7 +4284,8 @@ class CoursesPostsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an add-on attachment.
@@ -4231,7 +4329,8 @@ class CoursesPostsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
@@ -4241,6 +4340,7 @@ class CoursesPostsAddOnAttachmentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4288,7 +4388,8 @@ class CoursesPostsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
@@ -4301,7 +4402,8 @@ class CoursesPostsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns all attachments created by an add-on under the post.
@@ -4358,7 +4460,8 @@ class CoursesPostsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
@@ -4370,7 +4473,8 @@ class CoursesPostsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return ListAddOnAttachmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an add-on attachment.
@@ -4429,7 +4533,8 @@ class CoursesPostsAddOnAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
@@ -4443,7 +4548,8 @@ class CoursesPostsAddOnAttachmentsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4451,8 +4557,8 @@ class CoursesPostsAddOnAttachmentsStudentSubmissionsResource {
   final commons.ApiRequester _requester;
 
   CoursesPostsAddOnAttachmentsStudentSubmissionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Returns a student submission for an add-on attachment.
   ///
@@ -4497,7 +4603,8 @@ class CoursesPostsAddOnAttachmentsStudentSubmissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
@@ -4512,7 +4619,8 @@ class CoursesPostsAddOnAttachmentsStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachmentStudentSubmission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates data associated with an add-on attachment submission.
@@ -4572,7 +4680,8 @@ class CoursesPostsAddOnAttachmentsStudentSubmissionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/posts/' +
         commons.escapeVariable('$postId') +
@@ -4588,7 +4697,8 @@ class CoursesPostsAddOnAttachmentsStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachmentStudentSubmission.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4694,7 +4804,8 @@ class CoursesStudentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/students/' +
         commons.escapeVariable('$userId');
@@ -4702,6 +4813,7 @@ class CoursesStudentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4743,7 +4855,8 @@ class CoursesStudentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/students/' +
         commons.escapeVariable('$userId');
@@ -4807,7 +4920,8 @@ class CoursesStudentsResource {
       queryParams: queryParams_,
     );
     return ListStudentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4910,7 +5024,8 @@ class CoursesTeachersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/teachers/' +
         commons.escapeVariable('$userId');
@@ -4918,6 +5033,7 @@ class CoursesTeachersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4959,7 +5075,8 @@ class CoursesTeachersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/teachers/' +
         commons.escapeVariable('$userId');
@@ -5023,7 +5140,8 @@ class CoursesTeachersResource {
       queryParams: queryParams_,
     );
     return ListTeachersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5116,7 +5234,8 @@ class CoursesTopicsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/topics/' +
         commons.escapeVariable('$id');
@@ -5124,6 +5243,7 @@ class CoursesTopicsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -5161,7 +5281,8 @@ class CoursesTopicsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/topics/' +
         commons.escapeVariable('$id');
@@ -5226,7 +5347,8 @@ class CoursesTopicsResource {
       queryParams: queryParams_,
     );
     return ListTopicResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates one or more fields of a topic.
@@ -5277,7 +5399,8 @@ class CoursesTopicsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/courses/' +
+    final url_ =
+        'v1/courses/' +
         commons.escapeVariable('$courseId') +
         '/topics/' +
         commons.escapeVariable('$id');
@@ -5322,10 +5445,7 @@ class InvitationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> accept(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> accept(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5335,6 +5455,7 @@ class InvitationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -5384,7 +5505,8 @@ class InvitationsResource {
       queryParams: queryParams_,
     );
     return Invitation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an invitation.
@@ -5408,10 +5530,7 @@ class InvitationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5421,6 +5540,7 @@ class InvitationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -5447,10 +5567,7 @@ class InvitationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Invitation> get(
-    core.String id, {
-    core.String? $fields,
-  }) async {
+  async.Future<Invitation> get(core.String id, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5463,7 +5580,8 @@ class InvitationsResource {
       queryParams: queryParams_,
     );
     return Invitation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of invitations that the requesting user is permitted to
@@ -5525,7 +5643,8 @@ class InvitationsResource {
       queryParams: queryParams_,
     );
     return ListInvitationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5591,7 +5710,8 @@ class RegistrationsResource {
       queryParams: queryParams_,
     );
     return Registration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a `Registration`, causing Classroom to stop sending notifications
@@ -5626,6 +5746,7 @@ class RegistrationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -5681,7 +5802,8 @@ class UserProfilesResource {
       queryParams: queryParams_,
     );
     return UserProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5689,7 +5811,7 @@ class UserProfilesGuardianInvitationsResource {
   final commons.ApiRequester _requester;
 
   UserProfilesGuardianInvitationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a guardian invitation, and sends an email to the guardian asking
   /// them to confirm that they are the student's guardian.
@@ -5743,7 +5865,8 @@ class UserProfilesGuardianInvitationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/userProfiles/' +
+    final url_ =
+        'v1/userProfiles/' +
         commons.escapeVariable('$studentId') +
         '/guardianInvitations';
 
@@ -5754,7 +5877,8 @@ class UserProfilesGuardianInvitationsResource {
       queryParams: queryParams_,
     );
     return GuardianInvitation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a specific guardian invitation.
@@ -5796,7 +5920,8 @@ class UserProfilesGuardianInvitationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/userProfiles/' +
+    final url_ =
+        'v1/userProfiles/' +
         commons.escapeVariable('$studentId') +
         '/guardianInvitations/' +
         commons.escapeVariable('$invitationId');
@@ -5807,7 +5932,8 @@ class UserProfilesGuardianInvitationsResource {
       queryParams: queryParams_,
     );
     return GuardianInvitation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of guardian invitations that the requesting user is
@@ -5876,7 +6002,8 @@ class UserProfilesGuardianInvitationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/userProfiles/' +
+    final url_ =
+        'v1/userProfiles/' +
         commons.escapeVariable('$studentId') +
         '/guardianInvitations';
 
@@ -5886,7 +6013,8 @@ class UserProfilesGuardianInvitationsResource {
       queryParams: queryParams_,
     );
     return ListGuardianInvitationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Modifies a guardian invitation.
@@ -5943,7 +6071,8 @@ class UserProfilesGuardianInvitationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/userProfiles/' +
+    final url_ =
+        'v1/userProfiles/' +
         commons.escapeVariable('$studentId') +
         '/guardianInvitations/' +
         commons.escapeVariable('$invitationId');
@@ -5955,7 +6084,8 @@ class UserProfilesGuardianInvitationsResource {
       queryParams: queryParams_,
     );
     return GuardianInvitation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -5963,7 +6093,7 @@ class UserProfilesGuardiansResource {
   final commons.ApiRequester _requester;
 
   UserProfilesGuardiansResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes a guardian.
   ///
@@ -6007,7 +6137,8 @@ class UserProfilesGuardiansResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/userProfiles/' +
+    final url_ =
+        'v1/userProfiles/' +
         commons.escapeVariable('$studentId') +
         '/guardians/' +
         commons.escapeVariable('$guardianId');
@@ -6015,6 +6146,7 @@ class UserProfilesGuardiansResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -6061,7 +6193,8 @@ class UserProfilesGuardiansResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/userProfiles/' +
+    final url_ =
+        'v1/userProfiles/' +
         commons.escapeVariable('$studentId') +
         '/guardians/' +
         commons.escapeVariable('$guardianId');
@@ -6139,7 +6272,8 @@ class UserProfilesGuardiansResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/userProfiles/' +
+    final url_ =
+        'v1/userProfiles/' +
         commons.escapeVariable('$studentId') +
         '/guardians';
 
@@ -6149,7 +6283,8 @@ class UserProfilesGuardiansResource {
       queryParams: queryParams_,
     );
     return ListGuardiansResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6257,54 +6392,71 @@ class AddOnAttachment {
   });
 
   AddOnAttachment.fromJson(core.Map json_)
-      : this(
-          copyHistory: (json_['copyHistory'] as core.List?)
-              ?.map((value) => CopyHistory.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          courseId: json_['courseId'] as core.String?,
-          dueDate: json_.containsKey('dueDate')
-              ? Date.fromJson(
-                  json_['dueDate'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dueTime: json_.containsKey('dueTime')
-              ? TimeOfDay.fromJson(
-                  json_['dueTime'] as core.Map<core.String, core.dynamic>)
-              : null,
-          id: json_['id'] as core.String?,
-          itemId: json_['itemId'] as core.String?,
-          maxPoints: (json_['maxPoints'] as core.num?)?.toDouble(),
-          postId: json_['postId'] as core.String?,
-          studentViewUri: json_.containsKey('studentViewUri')
-              ? EmbedUri.fromJson(json_['studentViewUri']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          studentWorkReviewUri: json_.containsKey('studentWorkReviewUri')
-              ? EmbedUri.fromJson(json_['studentWorkReviewUri']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          teacherViewUri: json_.containsKey('teacherViewUri')
-              ? EmbedUri.fromJson(json_['teacherViewUri']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        copyHistory:
+            (json_['copyHistory'] as core.List?)
+                ?.map(
+                  (value) => CopyHistory.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        courseId: json_['courseId'] as core.String?,
+        dueDate:
+            json_.containsKey('dueDate')
+                ? Date.fromJson(
+                  json_['dueDate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dueTime:
+            json_.containsKey('dueTime')
+                ? TimeOfDay.fromJson(
+                  json_['dueTime'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        id: json_['id'] as core.String?,
+        itemId: json_['itemId'] as core.String?,
+        maxPoints: (json_['maxPoints'] as core.num?)?.toDouble(),
+        postId: json_['postId'] as core.String?,
+        studentViewUri:
+            json_.containsKey('studentViewUri')
+                ? EmbedUri.fromJson(
+                  json_['studentViewUri']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        studentWorkReviewUri:
+            json_.containsKey('studentWorkReviewUri')
+                ? EmbedUri.fromJson(
+                  json_['studentWorkReviewUri']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        teacherViewUri:
+            json_.containsKey('teacherViewUri')
+                ? EmbedUri.fromJson(
+                  json_['teacherViewUri']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (copyHistory != null) 'copyHistory': copyHistory!,
-        if (courseId != null) 'courseId': courseId!,
-        if (dueDate != null) 'dueDate': dueDate!,
-        if (dueTime != null) 'dueTime': dueTime!,
-        if (id != null) 'id': id!,
-        if (itemId != null) 'itemId': itemId!,
-        if (maxPoints != null) 'maxPoints': maxPoints!,
-        if (postId != null) 'postId': postId!,
-        if (studentViewUri != null) 'studentViewUri': studentViewUri!,
-        if (studentWorkReviewUri != null)
-          'studentWorkReviewUri': studentWorkReviewUri!,
-        if (teacherViewUri != null) 'teacherViewUri': teacherViewUri!,
-        if (title != null) 'title': title!,
-      };
+    if (copyHistory != null) 'copyHistory': copyHistory!,
+    if (courseId != null) 'courseId': courseId!,
+    if (dueDate != null) 'dueDate': dueDate!,
+    if (dueTime != null) 'dueTime': dueTime!,
+    if (id != null) 'id': id!,
+    if (itemId != null) 'itemId': itemId!,
+    if (maxPoints != null) 'maxPoints': maxPoints!,
+    if (postId != null) 'postId': postId!,
+    if (studentViewUri != null) 'studentViewUri': studentViewUri!,
+    if (studentWorkReviewUri != null)
+      'studentWorkReviewUri': studentWorkReviewUri!,
+    if (teacherViewUri != null) 'teacherViewUri': teacherViewUri!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Payload for grade update requests.
@@ -6332,16 +6484,16 @@ class AddOnAttachmentStudentSubmission {
   });
 
   AddOnAttachmentStudentSubmission.fromJson(core.Map json_)
-      : this(
-          pointsEarned: (json_['pointsEarned'] as core.num?)?.toDouble(),
-          postSubmissionState: json_['postSubmissionState'] as core.String?,
-        );
+    : this(
+        pointsEarned: (json_['pointsEarned'] as core.num?)?.toDouble(),
+        postSubmissionState: json_['postSubmissionState'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pointsEarned != null) 'pointsEarned': pointsEarned!,
-        if (postSubmissionState != null)
-          'postSubmissionState': postSubmissionState!,
-      };
+    if (pointsEarned != null) 'pointsEarned': pointsEarned!,
+    if (postSubmissionState != null)
+      'postSubmissionState': postSubmissionState!,
+  };
 }
 
 /// Attachment-relevant metadata for Classroom add-ons in the context of a
@@ -6392,30 +6544,36 @@ class AddOnContext {
   });
 
   AddOnContext.fromJson(core.Map json_)
-      : this(
-          courseId: json_['courseId'] as core.String?,
-          itemId: json_['itemId'] as core.String?,
-          postId: json_['postId'] as core.String?,
-          studentContext: json_.containsKey('studentContext')
-              ? StudentContext.fromJson(json_['studentContext']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          supportsStudentWork: json_['supportsStudentWork'] as core.bool?,
-          teacherContext: json_.containsKey('teacherContext')
-              ? TeacherContext.fromJson(json_['teacherContext']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        courseId: json_['courseId'] as core.String?,
+        itemId: json_['itemId'] as core.String?,
+        postId: json_['postId'] as core.String?,
+        studentContext:
+            json_.containsKey('studentContext')
+                ? StudentContext.fromJson(
+                  json_['studentContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        supportsStudentWork: json_['supportsStudentWork'] as core.bool?,
+        teacherContext:
+            json_.containsKey('teacherContext')
+                ? TeacherContext.fromJson(
+                  json_['teacherContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (courseId != null) 'courseId': courseId!,
-        if (itemId != null) 'itemId': itemId!,
-        if (postId != null) 'postId': postId!,
-        if (studentContext != null) 'studentContext': studentContext!,
-        if (supportsStudentWork != null)
-          'supportsStudentWork': supportsStudentWork!,
-        if (teacherContext != null) 'teacherContext': teacherContext!,
-      };
+    if (courseId != null) 'courseId': courseId!,
+    if (itemId != null) 'itemId': itemId!,
+    if (postId != null) 'postId': postId!,
+    if (studentContext != null) 'studentContext': studentContext!,
+    if (supportsStudentWork != null)
+      'supportsStudentWork': supportsStudentWork!,
+    if (teacherContext != null) 'teacherContext': teacherContext!,
+  };
 }
 
 /// Announcement created by a teacher for students of the course
@@ -6514,44 +6672,49 @@ class Announcement {
   });
 
   Announcement.fromJson(core.Map json_)
-      : this(
-          alternateLink: json_['alternateLink'] as core.String?,
-          assigneeMode: json_['assigneeMode'] as core.String?,
-          courseId: json_['courseId'] as core.String?,
-          creationTime: json_['creationTime'] as core.String?,
-          creatorUserId: json_['creatorUserId'] as core.String?,
-          id: json_['id'] as core.String?,
-          individualStudentsOptions:
-              json_.containsKey('individualStudentsOptions')
-                  ? IndividualStudentsOptions.fromJson(
-                      json_['individualStudentsOptions']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          materials: (json_['materials'] as core.List?)
-              ?.map((value) => Material.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          scheduledTime: json_['scheduledTime'] as core.String?,
-          state: json_['state'] as core.String?,
-          text: json_['text'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        alternateLink: json_['alternateLink'] as core.String?,
+        assigneeMode: json_['assigneeMode'] as core.String?,
+        courseId: json_['courseId'] as core.String?,
+        creationTime: json_['creationTime'] as core.String?,
+        creatorUserId: json_['creatorUserId'] as core.String?,
+        id: json_['id'] as core.String?,
+        individualStudentsOptions:
+            json_.containsKey('individualStudentsOptions')
+                ? IndividualStudentsOptions.fromJson(
+                  json_['individualStudentsOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        materials:
+            (json_['materials'] as core.List?)
+                ?.map(
+                  (value) => Material.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        scheduledTime: json_['scheduledTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        text: json_['text'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink!,
-        if (assigneeMode != null) 'assigneeMode': assigneeMode!,
-        if (courseId != null) 'courseId': courseId!,
-        if (creationTime != null) 'creationTime': creationTime!,
-        if (creatorUserId != null) 'creatorUserId': creatorUserId!,
-        if (id != null) 'id': id!,
-        if (individualStudentsOptions != null)
-          'individualStudentsOptions': individualStudentsOptions!,
-        if (materials != null) 'materials': materials!,
-        if (scheduledTime != null) 'scheduledTime': scheduledTime!,
-        if (state != null) 'state': state!,
-        if (text != null) 'text': text!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (alternateLink != null) 'alternateLink': alternateLink!,
+    if (assigneeMode != null) 'assigneeMode': assigneeMode!,
+    if (courseId != null) 'courseId': courseId!,
+    if (creationTime != null) 'creationTime': creationTime!,
+    if (creatorUserId != null) 'creatorUserId': creatorUserId!,
+    if (id != null) 'id': id!,
+    if (individualStudentsOptions != null)
+      'individualStudentsOptions': individualStudentsOptions!,
+    if (materials != null) 'materials': materials!,
+    if (scheduledTime != null) 'scheduledTime': scheduledTime!,
+    if (state != null) 'state': state!,
+    if (text != null) 'text': text!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Additional details for assignments.
@@ -6561,21 +6724,22 @@ class Assignment {
   /// This is only populated for course teachers and administrators.
   DriveFolder? studentWorkFolder;
 
-  Assignment({
-    this.studentWorkFolder,
-  });
+  Assignment({this.studentWorkFolder});
 
   Assignment.fromJson(core.Map json_)
-      : this(
-          studentWorkFolder: json_.containsKey('studentWorkFolder')
-              ? DriveFolder.fromJson(json_['studentWorkFolder']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        studentWorkFolder:
+            json_.containsKey('studentWorkFolder')
+                ? DriveFolder.fromJson(
+                  json_['studentWorkFolder']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (studentWorkFolder != null) 'studentWorkFolder': studentWorkFolder!,
-      };
+    if (studentWorkFolder != null) 'studentWorkFolder': studentWorkFolder!,
+  };
 }
 
 /// Student work for an assignment.
@@ -6589,21 +6753,23 @@ class AssignmentSubmission {
   /// always available, but others (for example, title) may not be.
   core.List<Attachment>? attachments;
 
-  AssignmentSubmission({
-    this.attachments,
-  });
+  AssignmentSubmission({this.attachments});
 
   AssignmentSubmission.fromJson(core.Map json_)
-      : this(
-          attachments: (json_['attachments'] as core.List?)
-              ?.map((value) => Attachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        attachments:
+            (json_['attachments'] as core.List?)
+                ?.map(
+                  (value) => Attachment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachments != null) 'attachments': attachments!,
-      };
+    if (attachments != null) 'attachments': attachments!,
+  };
 }
 
 /// Attachment added to student assignment work.
@@ -6622,39 +6788,42 @@ class Attachment {
   /// Youtube video attachment.
   YouTubeVideo? youTubeVideo;
 
-  Attachment({
-    this.driveFile,
-    this.form,
-    this.link,
-    this.youTubeVideo,
-  });
+  Attachment({this.driveFile, this.form, this.link, this.youTubeVideo});
 
   Attachment.fromJson(core.Map json_)
-      : this(
-          driveFile: json_.containsKey('driveFile')
-              ? DriveFile.fromJson(
-                  json_['driveFile'] as core.Map<core.String, core.dynamic>)
-              : null,
-          form: json_.containsKey('form')
-              ? Form.fromJson(
-                  json_['form'] as core.Map<core.String, core.dynamic>)
-              : null,
-          link: json_.containsKey('link')
-              ? Link.fromJson(
-                  json_['link'] as core.Map<core.String, core.dynamic>)
-              : null,
-          youTubeVideo: json_.containsKey('youTubeVideo')
-              ? YouTubeVideo.fromJson(
-                  json_['youTubeVideo'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        driveFile:
+            json_.containsKey('driveFile')
+                ? DriveFile.fromJson(
+                  json_['driveFile'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        form:
+            json_.containsKey('form')
+                ? Form.fromJson(
+                  json_['form'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        link:
+            json_.containsKey('link')
+                ? Link.fromJson(
+                  json_['link'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        youTubeVideo:
+            json_.containsKey('youTubeVideo')
+                ? YouTubeVideo.fromJson(
+                  json_['youTubeVideo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile!,
-        if (form != null) 'form': form!,
-        if (link != null) 'link': link!,
-        if (youTubeVideo != null) 'youTubeVideo': youTubeVideo!,
-      };
+    if (driveFile != null) 'driveFile': driveFile!,
+    if (form != null) 'form': form!,
+    if (link != null) 'link': link!,
+    if (youTubeVideo != null) 'youTubeVideo': youTubeVideo!,
+  };
 }
 
 /// A reference to a Cloud Pub/Sub topic.
@@ -6667,18 +6836,14 @@ class CloudPubsubTopic {
   /// [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
   core.String? topicName;
 
-  CloudPubsubTopic({
-    this.topicName,
-  });
+  CloudPubsubTopic({this.topicName});
 
   CloudPubsubTopic.fromJson(core.Map json_)
-      : this(
-          topicName: json_['topicName'] as core.String?,
-        );
+    : this(topicName: json_['topicName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (topicName != null) 'topicName': topicName!,
-      };
+    if (topicName != null) 'topicName': topicName!,
+  };
 }
 
 /// Identifier of a previous copy of a given attachment.
@@ -6707,27 +6872,22 @@ class CopyHistory {
   )
   core.String? postId;
 
-  CopyHistory({
-    this.attachmentId,
-    this.courseId,
-    this.itemId,
-    this.postId,
-  });
+  CopyHistory({this.attachmentId, this.courseId, this.itemId, this.postId});
 
   CopyHistory.fromJson(core.Map json_)
-      : this(
-          attachmentId: json_['attachmentId'] as core.String?,
-          courseId: json_['courseId'] as core.String?,
-          itemId: json_['itemId'] as core.String?,
-          postId: json_['postId'] as core.String?,
-        );
+    : this(
+        attachmentId: json_['attachmentId'] as core.String?,
+        courseId: json_['courseId'] as core.String?,
+        itemId: json_['itemId'] as core.String?,
+        postId: json_['postId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachmentId != null) 'attachmentId': attachmentId!,
-        if (courseId != null) 'courseId': courseId!,
-        if (itemId != null) 'itemId': itemId!,
-        if (postId != null) 'postId': postId!,
-      };
+    if (attachmentId != null) 'attachmentId': attachmentId!,
+    if (courseId != null) 'courseId': courseId!,
+    if (itemId != null) 'itemId': itemId!,
+    if (postId != null) 'postId': postId!,
+  };
 }
 
 /// A Course in Classroom.
@@ -6899,60 +7059,67 @@ class Course {
   });
 
   Course.fromJson(core.Map json_)
-      : this(
-          alternateLink: json_['alternateLink'] as core.String?,
-          calendarId: json_['calendarId'] as core.String?,
-          courseGroupEmail: json_['courseGroupEmail'] as core.String?,
-          courseMaterialSets: (json_['courseMaterialSets'] as core.List?)
-              ?.map((value) => CourseMaterialSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          courseState: json_['courseState'] as core.String?,
-          creationTime: json_['creationTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          descriptionHeading: json_['descriptionHeading'] as core.String?,
-          enrollmentCode: json_['enrollmentCode'] as core.String?,
-          gradebookSettings: json_.containsKey('gradebookSettings')
-              ? GradebookSettings.fromJson(json_['gradebookSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          guardiansEnabled: json_['guardiansEnabled'] as core.bool?,
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-          ownerId: json_['ownerId'] as core.String?,
-          room: json_['room'] as core.String?,
-          section: json_['section'] as core.String?,
-          teacherFolder: json_.containsKey('teacherFolder')
-              ? DriveFolder.fromJson(
-                  json_['teacherFolder'] as core.Map<core.String, core.dynamic>)
-              : null,
-          teacherGroupEmail: json_['teacherGroupEmail'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        alternateLink: json_['alternateLink'] as core.String?,
+        calendarId: json_['calendarId'] as core.String?,
+        courseGroupEmail: json_['courseGroupEmail'] as core.String?,
+        courseMaterialSets:
+            (json_['courseMaterialSets'] as core.List?)
+                ?.map(
+                  (value) => CourseMaterialSet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        courseState: json_['courseState'] as core.String?,
+        creationTime: json_['creationTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        descriptionHeading: json_['descriptionHeading'] as core.String?,
+        enrollmentCode: json_['enrollmentCode'] as core.String?,
+        gradebookSettings:
+            json_.containsKey('gradebookSettings')
+                ? GradebookSettings.fromJson(
+                  json_['gradebookSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        guardiansEnabled: json_['guardiansEnabled'] as core.bool?,
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        ownerId: json_['ownerId'] as core.String?,
+        room: json_['room'] as core.String?,
+        section: json_['section'] as core.String?,
+        teacherFolder:
+            json_.containsKey('teacherFolder')
+                ? DriveFolder.fromJson(
+                  json_['teacherFolder'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        teacherGroupEmail: json_['teacherGroupEmail'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink!,
-        if (calendarId != null) 'calendarId': calendarId!,
-        if (courseGroupEmail != null) 'courseGroupEmail': courseGroupEmail!,
-        if (courseMaterialSets != null)
-          'courseMaterialSets': courseMaterialSets!,
-        if (courseState != null) 'courseState': courseState!,
-        if (creationTime != null) 'creationTime': creationTime!,
-        if (description != null) 'description': description!,
-        if (descriptionHeading != null)
-          'descriptionHeading': descriptionHeading!,
-        if (enrollmentCode != null) 'enrollmentCode': enrollmentCode!,
-        if (gradebookSettings != null) 'gradebookSettings': gradebookSettings!,
-        if (guardiansEnabled != null) 'guardiansEnabled': guardiansEnabled!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (ownerId != null) 'ownerId': ownerId!,
-        if (room != null) 'room': room!,
-        if (section != null) 'section': section!,
-        if (teacherFolder != null) 'teacherFolder': teacherFolder!,
-        if (teacherGroupEmail != null) 'teacherGroupEmail': teacherGroupEmail!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (alternateLink != null) 'alternateLink': alternateLink!,
+    if (calendarId != null) 'calendarId': calendarId!,
+    if (courseGroupEmail != null) 'courseGroupEmail': courseGroupEmail!,
+    if (courseMaterialSets != null) 'courseMaterialSets': courseMaterialSets!,
+    if (courseState != null) 'courseState': courseState!,
+    if (creationTime != null) 'creationTime': creationTime!,
+    if (description != null) 'description': description!,
+    if (descriptionHeading != null) 'descriptionHeading': descriptionHeading!,
+    if (enrollmentCode != null) 'enrollmentCode': enrollmentCode!,
+    if (gradebookSettings != null) 'gradebookSettings': gradebookSettings!,
+    if (guardiansEnabled != null) 'guardiansEnabled': guardiansEnabled!,
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (ownerId != null) 'ownerId': ownerId!,
+    if (room != null) 'room': room!,
+    if (section != null) 'section': section!,
+    if (teacherFolder != null) 'teacherFolder': teacherFolder!,
+    if (teacherGroupEmail != null) 'teacherGroupEmail': teacherGroupEmail!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Alternative identifier for a course.
@@ -6977,18 +7144,14 @@ class CourseAlias {
   /// of 256 characters.
   core.String? alias;
 
-  CourseAlias({
-    this.alias,
-  });
+  CourseAlias({this.alias});
 
   CourseAlias.fromJson(core.Map json_)
-      : this(
-          alias: json_['alias'] as core.String?,
-        );
+    : this(alias: json_['alias'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alias != null) 'alias': alias!,
-      };
+    if (alias != null) 'alias': alias!,
+  };
 }
 
 /// A material attached to a course as part of a material set.
@@ -7005,39 +7168,42 @@ class CourseMaterial {
   /// Youtube video attachment.
   YouTubeVideo? youTubeVideo;
 
-  CourseMaterial({
-    this.driveFile,
-    this.form,
-    this.link,
-    this.youTubeVideo,
-  });
+  CourseMaterial({this.driveFile, this.form, this.link, this.youTubeVideo});
 
   CourseMaterial.fromJson(core.Map json_)
-      : this(
-          driveFile: json_.containsKey('driveFile')
-              ? DriveFile.fromJson(
-                  json_['driveFile'] as core.Map<core.String, core.dynamic>)
-              : null,
-          form: json_.containsKey('form')
-              ? Form.fromJson(
-                  json_['form'] as core.Map<core.String, core.dynamic>)
-              : null,
-          link: json_.containsKey('link')
-              ? Link.fromJson(
-                  json_['link'] as core.Map<core.String, core.dynamic>)
-              : null,
-          youTubeVideo: json_.containsKey('youTubeVideo')
-              ? YouTubeVideo.fromJson(
-                  json_['youTubeVideo'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        driveFile:
+            json_.containsKey('driveFile')
+                ? DriveFile.fromJson(
+                  json_['driveFile'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        form:
+            json_.containsKey('form')
+                ? Form.fromJson(
+                  json_['form'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        link:
+            json_.containsKey('link')
+                ? Link.fromJson(
+                  json_['link'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        youTubeVideo:
+            json_.containsKey('youTubeVideo')
+                ? YouTubeVideo.fromJson(
+                  json_['youTubeVideo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile!,
-        if (form != null) 'form': form!,
-        if (link != null) 'link': link!,
-        if (youTubeVideo != null) 'youTubeVideo': youTubeVideo!,
-      };
+    if (driveFile != null) 'driveFile': driveFile!,
+    if (form != null) 'form': form!,
+    if (link != null) 'link': link!,
+    if (youTubeVideo != null) 'youTubeVideo': youTubeVideo!,
+  };
 }
 
 /// A set of materials that appears on the "About" page of the course.
@@ -7051,24 +7217,25 @@ class CourseMaterialSet {
   /// Title for this set.
   core.String? title;
 
-  CourseMaterialSet({
-    this.materials,
-    this.title,
-  });
+  CourseMaterialSet({this.materials, this.title});
 
   CourseMaterialSet.fromJson(core.Map json_)
-      : this(
-          materials: (json_['materials'] as core.List?)
-              ?.map((value) => CourseMaterial.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        materials:
+            (json_['materials'] as core.List?)
+                ?.map(
+                  (value) => CourseMaterial.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (materials != null) 'materials': materials!,
-        if (title != null) 'title': title!,
-      };
+    if (materials != null) 'materials': materials!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`.
@@ -7076,18 +7243,14 @@ class CourseRosterChangesInfo {
   /// The `course_id` of the course to subscribe to roster changes for.
   core.String? courseId;
 
-  CourseRosterChangesInfo({
-    this.courseId,
-  });
+  CourseRosterChangesInfo({this.courseId});
 
   CourseRosterChangesInfo.fromJson(core.Map json_)
-      : this(
-          courseId: json_['courseId'] as core.String?,
-        );
+    : this(courseId: json_['courseId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (courseId != null) 'courseId': courseId!,
-      };
+    if (courseId != null) 'courseId': courseId!,
+  };
 }
 
 /// Course work created by a teacher for students of the course.
@@ -7280,88 +7443,103 @@ class CourseWork {
   });
 
   CourseWork.fromJson(core.Map json_)
-      : this(
-          alternateLink: json_['alternateLink'] as core.String?,
-          assigneeMode: json_['assigneeMode'] as core.String?,
-          assignment: json_.containsKey('assignment')
-              ? Assignment.fromJson(
-                  json_['assignment'] as core.Map<core.String, core.dynamic>)
-              : null,
-          associatedWithDeveloper:
-              json_['associatedWithDeveloper'] as core.bool?,
-          courseId: json_['courseId'] as core.String?,
-          creationTime: json_['creationTime'] as core.String?,
-          creatorUserId: json_['creatorUserId'] as core.String?,
-          description: json_['description'] as core.String?,
-          dueDate: json_.containsKey('dueDate')
-              ? Date.fromJson(
-                  json_['dueDate'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dueTime: json_.containsKey('dueTime')
-              ? TimeOfDay.fromJson(
-                  json_['dueTime'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gradeCategory: json_.containsKey('gradeCategory')
-              ? GradeCategory.fromJson(
-                  json_['gradeCategory'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gradingPeriodId: json_['gradingPeriodId'] as core.String?,
-          id: json_['id'] as core.String?,
-          individualStudentsOptions:
-              json_.containsKey('individualStudentsOptions')
-                  ? IndividualStudentsOptions.fromJson(
-                      json_['individualStudentsOptions']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          materials: (json_['materials'] as core.List?)
-              ?.map((value) => Material.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          maxPoints: (json_['maxPoints'] as core.num?)?.toDouble(),
-          multipleChoiceQuestion: json_.containsKey('multipleChoiceQuestion')
-              ? MultipleChoiceQuestion.fromJson(json_['multipleChoiceQuestion']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          scheduledTime: json_['scheduledTime'] as core.String?,
-          state: json_['state'] as core.String?,
-          submissionModificationMode:
-              json_['submissionModificationMode'] as core.String?,
-          title: json_['title'] as core.String?,
-          topicId: json_['topicId'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          workType: json_['workType'] as core.String?,
-        );
+    : this(
+        alternateLink: json_['alternateLink'] as core.String?,
+        assigneeMode: json_['assigneeMode'] as core.String?,
+        assignment:
+            json_.containsKey('assignment')
+                ? Assignment.fromJson(
+                  json_['assignment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        associatedWithDeveloper: json_['associatedWithDeveloper'] as core.bool?,
+        courseId: json_['courseId'] as core.String?,
+        creationTime: json_['creationTime'] as core.String?,
+        creatorUserId: json_['creatorUserId'] as core.String?,
+        description: json_['description'] as core.String?,
+        dueDate:
+            json_.containsKey('dueDate')
+                ? Date.fromJson(
+                  json_['dueDate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dueTime:
+            json_.containsKey('dueTime')
+                ? TimeOfDay.fromJson(
+                  json_['dueTime'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gradeCategory:
+            json_.containsKey('gradeCategory')
+                ? GradeCategory.fromJson(
+                  json_['gradeCategory'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gradingPeriodId: json_['gradingPeriodId'] as core.String?,
+        id: json_['id'] as core.String?,
+        individualStudentsOptions:
+            json_.containsKey('individualStudentsOptions')
+                ? IndividualStudentsOptions.fromJson(
+                  json_['individualStudentsOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        materials:
+            (json_['materials'] as core.List?)
+                ?.map(
+                  (value) => Material.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        maxPoints: (json_['maxPoints'] as core.num?)?.toDouble(),
+        multipleChoiceQuestion:
+            json_.containsKey('multipleChoiceQuestion')
+                ? MultipleChoiceQuestion.fromJson(
+                  json_['multipleChoiceQuestion']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        scheduledTime: json_['scheduledTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        submissionModificationMode:
+            json_['submissionModificationMode'] as core.String?,
+        title: json_['title'] as core.String?,
+        topicId: json_['topicId'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        workType: json_['workType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink!,
-        if (assigneeMode != null) 'assigneeMode': assigneeMode!,
-        if (assignment != null) 'assignment': assignment!,
-        if (associatedWithDeveloper != null)
-          'associatedWithDeveloper': associatedWithDeveloper!,
-        if (courseId != null) 'courseId': courseId!,
-        if (creationTime != null) 'creationTime': creationTime!,
-        if (creatorUserId != null) 'creatorUserId': creatorUserId!,
-        if (description != null) 'description': description!,
-        if (dueDate != null) 'dueDate': dueDate!,
-        if (dueTime != null) 'dueTime': dueTime!,
-        if (gradeCategory != null) 'gradeCategory': gradeCategory!,
-        if (gradingPeriodId != null) 'gradingPeriodId': gradingPeriodId!,
-        if (id != null) 'id': id!,
-        if (individualStudentsOptions != null)
-          'individualStudentsOptions': individualStudentsOptions!,
-        if (materials != null) 'materials': materials!,
-        if (maxPoints != null) 'maxPoints': maxPoints!,
-        if (multipleChoiceQuestion != null)
-          'multipleChoiceQuestion': multipleChoiceQuestion!,
-        if (scheduledTime != null) 'scheduledTime': scheduledTime!,
-        if (state != null) 'state': state!,
-        if (submissionModificationMode != null)
-          'submissionModificationMode': submissionModificationMode!,
-        if (title != null) 'title': title!,
-        if (topicId != null) 'topicId': topicId!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (workType != null) 'workType': workType!,
-      };
+    if (alternateLink != null) 'alternateLink': alternateLink!,
+    if (assigneeMode != null) 'assigneeMode': assigneeMode!,
+    if (assignment != null) 'assignment': assignment!,
+    if (associatedWithDeveloper != null)
+      'associatedWithDeveloper': associatedWithDeveloper!,
+    if (courseId != null) 'courseId': courseId!,
+    if (creationTime != null) 'creationTime': creationTime!,
+    if (creatorUserId != null) 'creatorUserId': creatorUserId!,
+    if (description != null) 'description': description!,
+    if (dueDate != null) 'dueDate': dueDate!,
+    if (dueTime != null) 'dueTime': dueTime!,
+    if (gradeCategory != null) 'gradeCategory': gradeCategory!,
+    if (gradingPeriodId != null) 'gradingPeriodId': gradingPeriodId!,
+    if (id != null) 'id': id!,
+    if (individualStudentsOptions != null)
+      'individualStudentsOptions': individualStudentsOptions!,
+    if (materials != null) 'materials': materials!,
+    if (maxPoints != null) 'maxPoints': maxPoints!,
+    if (multipleChoiceQuestion != null)
+      'multipleChoiceQuestion': multipleChoiceQuestion!,
+    if (scheduledTime != null) 'scheduledTime': scheduledTime!,
+    if (state != null) 'state': state!,
+    if (submissionModificationMode != null)
+      'submissionModificationMode': submissionModificationMode!,
+    if (title != null) 'title': title!,
+    if (topicId != null) 'topicId': topicId!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (workType != null) 'workType': workType!,
+  };
 }
 
 /// Information about a `Feed` with a `feed_type` of `COURSE_WORK_CHANGES`.
@@ -7369,18 +7547,14 @@ class CourseWorkChangesInfo {
   /// The `course_id` of the course to subscribe to work changes for.
   core.String? courseId;
 
-  CourseWorkChangesInfo({
-    this.courseId,
-  });
+  CourseWorkChangesInfo({this.courseId});
 
   CourseWorkChangesInfo.fromJson(core.Map json_)
-      : this(
-          courseId: json_['courseId'] as core.String?,
-        );
+    : this(courseId: json_['courseId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (courseId != null) 'courseId': courseId!,
-      };
+    if (courseId != null) 'courseId': courseId!,
+  };
 }
 
 /// Course work material created by a teacher for students of the course
@@ -7495,48 +7669,53 @@ class CourseWorkMaterial {
   });
 
   CourseWorkMaterial.fromJson(core.Map json_)
-      : this(
-          alternateLink: json_['alternateLink'] as core.String?,
-          assigneeMode: json_['assigneeMode'] as core.String?,
-          courseId: json_['courseId'] as core.String?,
-          creationTime: json_['creationTime'] as core.String?,
-          creatorUserId: json_['creatorUserId'] as core.String?,
-          description: json_['description'] as core.String?,
-          id: json_['id'] as core.String?,
-          individualStudentsOptions:
-              json_.containsKey('individualStudentsOptions')
-                  ? IndividualStudentsOptions.fromJson(
-                      json_['individualStudentsOptions']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          materials: (json_['materials'] as core.List?)
-              ?.map((value) => Material.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          scheduledTime: json_['scheduledTime'] as core.String?,
-          state: json_['state'] as core.String?,
-          title: json_['title'] as core.String?,
-          topicId: json_['topicId'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        alternateLink: json_['alternateLink'] as core.String?,
+        assigneeMode: json_['assigneeMode'] as core.String?,
+        courseId: json_['courseId'] as core.String?,
+        creationTime: json_['creationTime'] as core.String?,
+        creatorUserId: json_['creatorUserId'] as core.String?,
+        description: json_['description'] as core.String?,
+        id: json_['id'] as core.String?,
+        individualStudentsOptions:
+            json_.containsKey('individualStudentsOptions')
+                ? IndividualStudentsOptions.fromJson(
+                  json_['individualStudentsOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        materials:
+            (json_['materials'] as core.List?)
+                ?.map(
+                  (value) => Material.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        scheduledTime: json_['scheduledTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        title: json_['title'] as core.String?,
+        topicId: json_['topicId'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink!,
-        if (assigneeMode != null) 'assigneeMode': assigneeMode!,
-        if (courseId != null) 'courseId': courseId!,
-        if (creationTime != null) 'creationTime': creationTime!,
-        if (creatorUserId != null) 'creatorUserId': creatorUserId!,
-        if (description != null) 'description': description!,
-        if (id != null) 'id': id!,
-        if (individualStudentsOptions != null)
-          'individualStudentsOptions': individualStudentsOptions!,
-        if (materials != null) 'materials': materials!,
-        if (scheduledTime != null) 'scheduledTime': scheduledTime!,
-        if (state != null) 'state': state!,
-        if (title != null) 'title': title!,
-        if (topicId != null) 'topicId': topicId!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (alternateLink != null) 'alternateLink': alternateLink!,
+    if (assigneeMode != null) 'assigneeMode': assigneeMode!,
+    if (courseId != null) 'courseId': courseId!,
+    if (creationTime != null) 'creationTime': creationTime!,
+    if (creatorUserId != null) 'creatorUserId': creatorUserId!,
+    if (description != null) 'description': description!,
+    if (id != null) 'id': id!,
+    if (individualStudentsOptions != null)
+      'individualStudentsOptions': individualStudentsOptions!,
+    if (materials != null) 'materials': materials!,
+    if (scheduledTime != null) 'scheduledTime': scheduledTime!,
+    if (state != null) 'state': state!,
+    if (title != null) 'title': title!,
+    if (topicId != null) 'topicId': topicId!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A rubric criterion.
@@ -7557,30 +7736,29 @@ class Criterion {
   /// The title of the criterion.
   core.String? title;
 
-  Criterion({
-    this.description,
-    this.id,
-    this.levels,
-    this.title,
-  });
+  Criterion({this.description, this.id, this.levels, this.title});
 
   Criterion.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          id: json_['id'] as core.String?,
-          levels: (json_['levels'] as core.List?)
-              ?.map((value) =>
-                  Level.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        id: json_['id'] as core.String?,
+        levels:
+            (json_['levels'] as core.List?)
+                ?.map(
+                  (value) => Level.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (id != null) 'id': id!,
-        if (levels != null) 'levels': levels!,
-        if (title != null) 'title': title!,
-      };
+    if (description != null) 'description': description!,
+    if (id != null) 'id': id!,
+    if (levels != null) 'levels': levels!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -7615,27 +7793,22 @@ class DriveFile {
   /// Read-only.
   core.String? title;
 
-  DriveFile({
-    this.alternateLink,
-    this.id,
-    this.thumbnailUrl,
-    this.title,
-  });
+  DriveFile({this.alternateLink, this.id, this.thumbnailUrl, this.title});
 
   DriveFile.fromJson(core.Map json_)
-      : this(
-          alternateLink: json_['alternateLink'] as core.String?,
-          id: json_['id'] as core.String?,
-          thumbnailUrl: json_['thumbnailUrl'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        alternateLink: json_['alternateLink'] as core.String?,
+        id: json_['id'] as core.String?,
+        thumbnailUrl: json_['thumbnailUrl'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink!,
-        if (id != null) 'id': id!,
-        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
-        if (title != null) 'title': title!,
-      };
+    if (alternateLink != null) 'alternateLink': alternateLink!,
+    if (id != null) 'id': id!,
+    if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Representation of a Google Drive folder.
@@ -7653,24 +7826,20 @@ class DriveFolder {
   /// Read-only.
   core.String? title;
 
-  DriveFolder({
-    this.alternateLink,
-    this.id,
-    this.title,
-  });
+  DriveFolder({this.alternateLink, this.id, this.title});
 
   DriveFolder.fromJson(core.Map json_)
-      : this(
-          alternateLink: json_['alternateLink'] as core.String?,
-          id: json_['id'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        alternateLink: json_['alternateLink'] as core.String?,
+        id: json_['id'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink!,
-        if (id != null) 'id': id!,
-        if (title != null) 'title': title!,
-      };
+    if (alternateLink != null) 'alternateLink': alternateLink!,
+    if (id != null) 'id': id!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// URI to be iframed after being populated with query parameters.
@@ -7683,18 +7852,13 @@ class EmbedUri {
   /// Required.
   core.String? uri;
 
-  EmbedUri({
-    this.uri,
-  });
+  EmbedUri({this.uri});
 
-  EmbedUri.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+  EmbedUri.fromJson(core.Map json_) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -7748,26 +7912,31 @@ class Feed {
   });
 
   Feed.fromJson(core.Map json_)
-      : this(
-          courseRosterChangesInfo: json_.containsKey('courseRosterChangesInfo')
-              ? CourseRosterChangesInfo.fromJson(
+    : this(
+        courseRosterChangesInfo:
+            json_.containsKey('courseRosterChangesInfo')
+                ? CourseRosterChangesInfo.fromJson(
                   json_['courseRosterChangesInfo']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          courseWorkChangesInfo: json_.containsKey('courseWorkChangesInfo')
-              ? CourseWorkChangesInfo.fromJson(json_['courseWorkChangesInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          feedType: json_['feedType'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        courseWorkChangesInfo:
+            json_.containsKey('courseWorkChangesInfo')
+                ? CourseWorkChangesInfo.fromJson(
+                  json_['courseWorkChangesInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        feedType: json_['feedType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (courseRosterChangesInfo != null)
-          'courseRosterChangesInfo': courseRosterChangesInfo!,
-        if (courseWorkChangesInfo != null)
-          'courseWorkChangesInfo': courseWorkChangesInfo!,
-        if (feedType != null) 'feedType': feedType!,
-      };
+    if (courseRosterChangesInfo != null)
+      'courseRosterChangesInfo': courseRosterChangesInfo!,
+    if (courseWorkChangesInfo != null)
+      'courseWorkChangesInfo': courseWorkChangesInfo!,
+    if (feedType != null) 'feedType': feedType!,
+  };
 }
 
 /// Google Forms item.
@@ -7791,27 +7960,22 @@ class Form {
   /// Read-only.
   core.String? title;
 
-  Form({
-    this.formUrl,
-    this.responseUrl,
-    this.thumbnailUrl,
-    this.title,
-  });
+  Form({this.formUrl, this.responseUrl, this.thumbnailUrl, this.title});
 
   Form.fromJson(core.Map json_)
-      : this(
-          formUrl: json_['formUrl'] as core.String?,
-          responseUrl: json_['responseUrl'] as core.String?,
-          thumbnailUrl: json_['thumbnailUrl'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        formUrl: json_['formUrl'] as core.String?,
+        responseUrl: json_['responseUrl'] as core.String?,
+        thumbnailUrl: json_['thumbnailUrl'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (formUrl != null) 'formUrl': formUrl!,
-        if (responseUrl != null) 'responseUrl': responseUrl!,
-        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
-        if (title != null) 'title': title!,
-      };
+    if (formUrl != null) 'formUrl': formUrl!,
+    if (responseUrl != null) 'responseUrl': responseUrl!,
+    if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Gemini Gem link.
@@ -7829,24 +7993,20 @@ class GeminiGem {
   /// Read-only.
   core.String? url;
 
-  GeminiGem({
-    this.id,
-    this.title,
-    this.url,
-  });
+  GeminiGem({this.id, this.title, this.url});
 
   GeminiGem.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          title: json_['title'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        title: json_['title'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (title != null) 'title': title!,
-        if (url != null) 'url': url!,
-      };
+    if (id != null) 'id': id!,
+    if (title != null) 'title': title!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Global user permission description.
@@ -7858,18 +8018,14 @@ class GlobalPermission {
   /// - "CREATE_COURSE" : User is permitted to create a course.
   core.String? permission;
 
-  GlobalPermission({
-    this.permission,
-  });
+  GlobalPermission({this.permission});
 
   GlobalPermission.fromJson(core.Map json_)
-      : this(
-          permission: json_['permission'] as core.String?,
-        );
+    : this(permission: json_['permission'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permission != null) 'permission': permission!,
-      };
+    if (permission != null) 'permission': permission!,
+  };
 }
 
 /// Details for a grade category in a course.
@@ -7905,21 +8061,20 @@ class GradeCategory {
   });
 
   GradeCategory.fromJson(core.Map json_)
-      : this(
-          defaultGradeDenominator:
-              json_['defaultGradeDenominator'] as core.int?,
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-          weight: json_['weight'] as core.int?,
-        );
+    : this(
+        defaultGradeDenominator: json_['defaultGradeDenominator'] as core.int?,
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        weight: json_['weight'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultGradeDenominator != null)
-          'defaultGradeDenominator': defaultGradeDenominator!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (weight != null) 'weight': weight!,
-      };
+    if (defaultGradeDenominator != null)
+      'defaultGradeDenominator': defaultGradeDenominator!,
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (weight != null) 'weight': weight!,
+  };
 }
 
 /// The history of each grade on this submission.
@@ -7956,21 +8111,21 @@ class GradeHistory {
   });
 
   GradeHistory.fromJson(core.Map json_)
-      : this(
-          actorUserId: json_['actorUserId'] as core.String?,
-          gradeChangeType: json_['gradeChangeType'] as core.String?,
-          gradeTimestamp: json_['gradeTimestamp'] as core.String?,
-          maxPoints: (json_['maxPoints'] as core.num?)?.toDouble(),
-          pointsEarned: (json_['pointsEarned'] as core.num?)?.toDouble(),
-        );
+    : this(
+        actorUserId: json_['actorUserId'] as core.String?,
+        gradeChangeType: json_['gradeChangeType'] as core.String?,
+        gradeTimestamp: json_['gradeTimestamp'] as core.String?,
+        maxPoints: (json_['maxPoints'] as core.num?)?.toDouble(),
+        pointsEarned: (json_['pointsEarned'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actorUserId != null) 'actorUserId': actorUserId!,
-        if (gradeChangeType != null) 'gradeChangeType': gradeChangeType!,
-        if (gradeTimestamp != null) 'gradeTimestamp': gradeTimestamp!,
-        if (maxPoints != null) 'maxPoints': maxPoints!,
-        if (pointsEarned != null) 'pointsEarned': pointsEarned!,
-      };
+    if (actorUserId != null) 'actorUserId': actorUserId!,
+    if (gradeChangeType != null) 'gradeChangeType': gradeChangeType!,
+    if (gradeTimestamp != null) 'gradeTimestamp': gradeTimestamp!,
+    if (maxPoints != null) 'maxPoints': maxPoints!,
+    if (pointsEarned != null) 'pointsEarned': pointsEarned!,
+  };
 }
 
 /// The gradebook settings for a course.
@@ -8012,20 +8167,24 @@ class GradebookSettings {
   });
 
   GradebookSettings.fromJson(core.Map json_)
-      : this(
-          calculationType: json_['calculationType'] as core.String?,
-          displaySetting: json_['displaySetting'] as core.String?,
-          gradeCategories: (json_['gradeCategories'] as core.List?)
-              ?.map((value) => GradeCategory.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        calculationType: json_['calculationType'] as core.String?,
+        displaySetting: json_['displaySetting'] as core.String?,
+        gradeCategories:
+            (json_['gradeCategories'] as core.List?)
+                ?.map(
+                  (value) => GradeCategory.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (calculationType != null) 'calculationType': calculationType!,
-        if (displaySetting != null) 'displaySetting': displaySetting!,
-        if (gradeCategories != null) 'gradeCategories': gradeCategories!,
-      };
+    if (calculationType != null) 'calculationType': calculationType!,
+    if (displaySetting != null) 'displaySetting': displaySetting!,
+    if (gradeCategories != null) 'gradeCategories': gradeCategories!,
+  };
 }
 
 /// An individual grading period.
@@ -8064,33 +8223,32 @@ class GradingPeriod {
   /// Required.
   core.String? title;
 
-  GradingPeriod({
-    this.endDate,
-    this.id,
-    this.startDate,
-    this.title,
-  });
+  GradingPeriod({this.endDate, this.id, this.startDate, this.title});
 
   GradingPeriod.fromJson(core.Map json_)
-      : this(
-          endDate: json_.containsKey('endDate')
-              ? Date.fromJson(
-                  json_['endDate'] as core.Map<core.String, core.dynamic>)
-              : null,
-          id: json_['id'] as core.String?,
-          startDate: json_.containsKey('startDate')
-              ? Date.fromJson(
-                  json_['startDate'] as core.Map<core.String, core.dynamic>)
-              : null,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        endDate:
+            json_.containsKey('endDate')
+                ? Date.fromJson(
+                  json_['endDate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        id: json_['id'] as core.String?,
+        startDate:
+            json_.containsKey('startDate')
+                ? Date.fromJson(
+                  json_['startDate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endDate != null) 'endDate': endDate!,
-        if (id != null) 'id': id!,
-        if (startDate != null) 'startDate': startDate!,
-        if (title != null) 'title': title!,
-      };
+    if (endDate != null) 'endDate': endDate!,
+    if (id != null) 'id': id!,
+    if (startDate != null) 'startDate': startDate!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Grading period settings that include all the individual grading periods in a
@@ -8111,26 +8269,27 @@ class GradingPeriodSettings {
   /// within a course.
   core.List<GradingPeriod>? gradingPeriods;
 
-  GradingPeriodSettings({
-    this.applyToExistingCoursework,
-    this.gradingPeriods,
-  });
+  GradingPeriodSettings({this.applyToExistingCoursework, this.gradingPeriods});
 
   GradingPeriodSettings.fromJson(core.Map json_)
-      : this(
-          applyToExistingCoursework:
-              json_['applyToExistingCoursework'] as core.bool?,
-          gradingPeriods: (json_['gradingPeriods'] as core.List?)
-              ?.map((value) => GradingPeriod.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        applyToExistingCoursework:
+            json_['applyToExistingCoursework'] as core.bool?,
+        gradingPeriods:
+            (json_['gradingPeriods'] as core.List?)
+                ?.map(
+                  (value) => GradingPeriod.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applyToExistingCoursework != null)
-          'applyToExistingCoursework': applyToExistingCoursework!,
-        if (gradingPeriods != null) 'gradingPeriods': gradingPeriods!,
-      };
+    if (applyToExistingCoursework != null)
+      'applyToExistingCoursework': applyToExistingCoursework!,
+    if (gradingPeriods != null) 'gradingPeriods': gradingPeriods!,
+  };
 }
 
 /// Association between a student and a guardian of that student.
@@ -8159,23 +8318,26 @@ class Guardian {
   });
 
   Guardian.fromJson(core.Map json_)
-      : this(
-          guardianId: json_['guardianId'] as core.String?,
-          guardianProfile: json_.containsKey('guardianProfile')
-              ? UserProfile.fromJson(json_['guardianProfile']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          invitedEmailAddress: json_['invitedEmailAddress'] as core.String?,
-          studentId: json_['studentId'] as core.String?,
-        );
+    : this(
+        guardianId: json_['guardianId'] as core.String?,
+        guardianProfile:
+            json_.containsKey('guardianProfile')
+                ? UserProfile.fromJson(
+                  json_['guardianProfile']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        invitedEmailAddress: json_['invitedEmailAddress'] as core.String?,
+        studentId: json_['studentId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (guardianId != null) 'guardianId': guardianId!,
-        if (guardianProfile != null) 'guardianProfile': guardianProfile!,
-        if (invitedEmailAddress != null)
-          'invitedEmailAddress': invitedEmailAddress!,
-        if (studentId != null) 'studentId': studentId!,
-      };
+    if (guardianId != null) 'guardianId': guardianId!,
+    if (guardianProfile != null) 'guardianProfile': guardianProfile!,
+    if (invitedEmailAddress != null)
+      'invitedEmailAddress': invitedEmailAddress!,
+    if (studentId != null) 'studentId': studentId!,
+  };
 }
 
 /// An invitation to become the guardian of a specified user, sent to a
@@ -8216,22 +8378,22 @@ class GuardianInvitation {
   });
 
   GuardianInvitation.fromJson(core.Map json_)
-      : this(
-          creationTime: json_['creationTime'] as core.String?,
-          invitationId: json_['invitationId'] as core.String?,
-          invitedEmailAddress: json_['invitedEmailAddress'] as core.String?,
-          state: json_['state'] as core.String?,
-          studentId: json_['studentId'] as core.String?,
-        );
+    : this(
+        creationTime: json_['creationTime'] as core.String?,
+        invitationId: json_['invitationId'] as core.String?,
+        invitedEmailAddress: json_['invitedEmailAddress'] as core.String?,
+        state: json_['state'] as core.String?,
+        studentId: json_['studentId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime!,
-        if (invitationId != null) 'invitationId': invitationId!,
-        if (invitedEmailAddress != null)
-          'invitedEmailAddress': invitedEmailAddress!,
-        if (state != null) 'state': state!,
-        if (studentId != null) 'studentId': studentId!,
-      };
+    if (creationTime != null) 'creationTime': creationTime!,
+    if (invitationId != null) 'invitationId': invitationId!,
+    if (invitedEmailAddress != null)
+      'invitedEmailAddress': invitedEmailAddress!,
+    if (state != null) 'state': state!,
+    if (studentId != null) 'studentId': studentId!,
+  };
 }
 
 /// Assignee details about a coursework/announcement.
@@ -8242,20 +8404,19 @@ class IndividualStudentsOptions {
   /// coursework/announcement.
   core.List<core.String>? studentIds;
 
-  IndividualStudentsOptions({
-    this.studentIds,
-  });
+  IndividualStudentsOptions({this.studentIds});
 
   IndividualStudentsOptions.fromJson(core.Map json_)
-      : this(
-          studentIds: (json_['studentIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        studentIds:
+            (json_['studentIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (studentIds != null) 'studentIds': studentIds!,
-      };
+    if (studentIds != null) 'studentIds': studentIds!,
+  };
 }
 
 /// An invitation to join a course.
@@ -8286,27 +8447,22 @@ class Invitation {
   /// user
   core.String? userId;
 
-  Invitation({
-    this.courseId,
-    this.id,
-    this.role,
-    this.userId,
-  });
+  Invitation({this.courseId, this.id, this.role, this.userId});
 
   Invitation.fromJson(core.Map json_)
-      : this(
-          courseId: json_['courseId'] as core.String?,
-          id: json_['id'] as core.String?,
-          role: json_['role'] as core.String?,
-          userId: json_['userId'] as core.String?,
-        );
+    : this(
+        courseId: json_['courseId'] as core.String?,
+        id: json_['id'] as core.String?,
+        role: json_['role'] as core.String?,
+        userId: json_['userId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (courseId != null) 'courseId': courseId!,
-        if (id != null) 'id': id!,
-        if (role != null) 'role': role!,
-        if (userId != null) 'userId': userId!,
-      };
+    if (courseId != null) 'courseId': courseId!,
+    if (id != null) 'id': id!,
+    if (role != null) 'role': role!,
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 /// A level of the criterion.
@@ -8331,27 +8487,22 @@ class Level {
   /// If the level has no points set, title must be set.
   core.String? title;
 
-  Level({
-    this.description,
-    this.id,
-    this.points,
-    this.title,
-  });
+  Level({this.description, this.id, this.points, this.title});
 
   Level.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          id: json_['id'] as core.String?,
-          points: (json_['points'] as core.num?)?.toDouble(),
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        id: json_['id'] as core.String?,
+        points: (json_['points'] as core.num?)?.toDouble(),
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (id != null) 'id': id!,
-        if (points != null) 'points': points!,
-        if (title != null) 'title': title!,
-      };
+    if (description != null) 'description': description!,
+    if (id != null) 'id': id!,
+    if (points != null) 'points': points!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// URL item.
@@ -8372,24 +8523,20 @@ class Link {
   /// characters.
   core.String? url;
 
-  Link({
-    this.thumbnailUrl,
-    this.title,
-    this.url,
-  });
+  Link({this.thumbnailUrl, this.title, this.url});
 
   Link.fromJson(core.Map json_)
-      : this(
-          thumbnailUrl: json_['thumbnailUrl'] as core.String?,
-          title: json_['title'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        thumbnailUrl: json_['thumbnailUrl'] as core.String?,
+        title: json_['title'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
-        if (title != null) 'title': title!,
-        if (url != null) 'url': url!,
-      };
+    if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
+    if (title != null) 'title': title!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Response when listing add-on attachments.
@@ -8402,24 +8549,25 @@ class ListAddOnAttachmentsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListAddOnAttachmentsResponse({
-    this.addOnAttachments,
-    this.nextPageToken,
-  });
+  ListAddOnAttachmentsResponse({this.addOnAttachments, this.nextPageToken});
 
   ListAddOnAttachmentsResponse.fromJson(core.Map json_)
-      : this(
-          addOnAttachments: (json_['addOnAttachments'] as core.List?)
-              ?.map((value) => AddOnAttachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        addOnAttachments:
+            (json_['addOnAttachments'] as core.List?)
+                ?.map(
+                  (value) => AddOnAttachment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addOnAttachments != null) 'addOnAttachments': addOnAttachments!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (addOnAttachments != null) 'addOnAttachments': addOnAttachments!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response when listing course work.
@@ -8432,24 +8580,25 @@ class ListAnnouncementsResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListAnnouncementsResponse({
-    this.announcements,
-    this.nextPageToken,
-  });
+  ListAnnouncementsResponse({this.announcements, this.nextPageToken});
 
   ListAnnouncementsResponse.fromJson(core.Map json_)
-      : this(
-          announcements: (json_['announcements'] as core.List?)
-              ?.map((value) => Announcement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        announcements:
+            (json_['announcements'] as core.List?)
+                ?.map(
+                  (value) => Announcement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (announcements != null) 'announcements': announcements!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (announcements != null) 'announcements': announcements!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response when listing course aliases.
@@ -8462,24 +8611,25 @@ class ListCourseAliasesResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListCourseAliasesResponse({
-    this.aliases,
-    this.nextPageToken,
-  });
+  ListCourseAliasesResponse({this.aliases, this.nextPageToken});
 
   ListCourseAliasesResponse.fromJson(core.Map json_)
-      : this(
-          aliases: (json_['aliases'] as core.List?)
-              ?.map((value) => CourseAlias.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        aliases:
+            (json_['aliases'] as core.List?)
+                ?.map(
+                  (value) => CourseAlias.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aliases != null) 'aliases': aliases!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (aliases != null) 'aliases': aliases!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response when listing course work material.
@@ -8492,25 +8642,25 @@ class ListCourseWorkMaterialResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListCourseWorkMaterialResponse({
-    this.courseWorkMaterial,
-    this.nextPageToken,
-  });
+  ListCourseWorkMaterialResponse({this.courseWorkMaterial, this.nextPageToken});
 
   ListCourseWorkMaterialResponse.fromJson(core.Map json_)
-      : this(
-          courseWorkMaterial: (json_['courseWorkMaterial'] as core.List?)
-              ?.map((value) => CourseWorkMaterial.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        courseWorkMaterial:
+            (json_['courseWorkMaterial'] as core.List?)
+                ?.map(
+                  (value) => CourseWorkMaterial.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (courseWorkMaterial != null)
-          'courseWorkMaterial': courseWorkMaterial!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (courseWorkMaterial != null) 'courseWorkMaterial': courseWorkMaterial!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response when listing course work.
@@ -8523,24 +8673,25 @@ class ListCourseWorkResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListCourseWorkResponse({
-    this.courseWork,
-    this.nextPageToken,
-  });
+  ListCourseWorkResponse({this.courseWork, this.nextPageToken});
 
   ListCourseWorkResponse.fromJson(core.Map json_)
-      : this(
-          courseWork: (json_['courseWork'] as core.List?)
-              ?.map((value) => CourseWork.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        courseWork:
+            (json_['courseWork'] as core.List?)
+                ?.map(
+                  (value) => CourseWork.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (courseWork != null) 'courseWork': courseWork!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (courseWork != null) 'courseWork': courseWork!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response when listing courses.
@@ -8553,24 +8704,25 @@ class ListCoursesResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListCoursesResponse({
-    this.courses,
-    this.nextPageToken,
-  });
+  ListCoursesResponse({this.courses, this.nextPageToken});
 
   ListCoursesResponse.fromJson(core.Map json_)
-      : this(
-          courses: (json_['courses'] as core.List?)
-              ?.map((value) =>
-                  Course.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        courses:
+            (json_['courses'] as core.List?)
+                ?.map(
+                  (value) => Course.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (courses != null) 'courses': courses!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (courses != null) 'courses': courses!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response when listing guardian invitations.
@@ -8589,19 +8741,23 @@ class ListGuardianInvitationsResponse {
   });
 
   ListGuardianInvitationsResponse.fromJson(core.Map json_)
-      : this(
-          guardianInvitations: (json_['guardianInvitations'] as core.List?)
-              ?.map((value) => GuardianInvitation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        guardianInvitations:
+            (json_['guardianInvitations'] as core.List?)
+                ?.map(
+                  (value) => GuardianInvitation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (guardianInvitations != null)
-          'guardianInvitations': guardianInvitations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (guardianInvitations != null)
+      'guardianInvitations': guardianInvitations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response when listing guardians.
@@ -8615,24 +8771,25 @@ class ListGuardiansResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListGuardiansResponse({
-    this.guardians,
-    this.nextPageToken,
-  });
+  ListGuardiansResponse({this.guardians, this.nextPageToken});
 
   ListGuardiansResponse.fromJson(core.Map json_)
-      : this(
-          guardians: (json_['guardians'] as core.List?)
-              ?.map((value) => Guardian.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        guardians:
+            (json_['guardians'] as core.List?)
+                ?.map(
+                  (value) => Guardian.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (guardians != null) 'guardians': guardians!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (guardians != null) 'guardians': guardians!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response when listing invitations.
@@ -8645,24 +8802,25 @@ class ListInvitationsResponse {
   /// If empty, no further results are available.
   core.String? nextPageToken;
 
-  ListInvitationsResponse({
-    this.invitations,
-    this.nextPageToken,
-  });
+  ListInvitationsResponse({this.invitations, this.nextPageToken});
 
   ListInvitationsResponse.fromJson(core.Map json_)
-      : this(
-          invitations: (json_['invitations'] as core.List?)
-              ?.map((value) => Invitation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        invitations:
+            (json_['invitations'] as core.List?)
+                ?.map(
+                  (value) => Invitation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (invitations != null) 'invitations': invitations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (invitations != null) 'invitations': invitations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response when listing rubrics.
@@ -8675,24 +8833,25 @@ class ListRubricsResponse {
   /// Rubrics that match the request.
   core.List<Rubric>? rubrics;
 
-  ListRubricsResponse({
-    this.nextPageToken,
-    this.rubrics,
-  });
+  ListRubricsResponse({this.nextPageToken, this.rubrics});
 
   ListRubricsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          rubrics: (json_['rubrics'] as core.List?)
-              ?.map((value) =>
-                  Rubric.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        rubrics:
+            (json_['rubrics'] as core.List?)
+                ?.map(
+                  (value) => Rubric.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (rubrics != null) 'rubrics': rubrics!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (rubrics != null) 'rubrics': rubrics!,
+  };
 }
 
 /// Response when listing student submissions.
@@ -8705,25 +8864,25 @@ class ListStudentSubmissionsResponse {
   /// Student work that matches the request.
   core.List<StudentSubmission>? studentSubmissions;
 
-  ListStudentSubmissionsResponse({
-    this.nextPageToken,
-    this.studentSubmissions,
-  });
+  ListStudentSubmissionsResponse({this.nextPageToken, this.studentSubmissions});
 
   ListStudentSubmissionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          studentSubmissions: (json_['studentSubmissions'] as core.List?)
-              ?.map((value) => StudentSubmission.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        studentSubmissions:
+            (json_['studentSubmissions'] as core.List?)
+                ?.map(
+                  (value) => StudentSubmission.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (studentSubmissions != null)
-          'studentSubmissions': studentSubmissions!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (studentSubmissions != null) 'studentSubmissions': studentSubmissions!,
+  };
 }
 
 /// Response when listing students.
@@ -8736,24 +8895,25 @@ class ListStudentsResponse {
   /// Students who match the list request.
   core.List<Student>? students;
 
-  ListStudentsResponse({
-    this.nextPageToken,
-    this.students,
-  });
+  ListStudentsResponse({this.nextPageToken, this.students});
 
   ListStudentsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          students: (json_['students'] as core.List?)
-              ?.map((value) => Student.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        students:
+            (json_['students'] as core.List?)
+                ?.map(
+                  (value) => Student.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (students != null) 'students': students!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (students != null) 'students': students!,
+  };
 }
 
 /// Response when listing teachers.
@@ -8766,24 +8926,25 @@ class ListTeachersResponse {
   /// Teachers who match the list request.
   core.List<Teacher>? teachers;
 
-  ListTeachersResponse({
-    this.nextPageToken,
-    this.teachers,
-  });
+  ListTeachersResponse({this.nextPageToken, this.teachers});
 
   ListTeachersResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          teachers: (json_['teachers'] as core.List?)
-              ?.map((value) => Teacher.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        teachers:
+            (json_['teachers'] as core.List?)
+                ?.map(
+                  (value) => Teacher.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (teachers != null) 'teachers': teachers!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (teachers != null) 'teachers': teachers!,
+  };
 }
 
 /// Response when listing topics.
@@ -8796,24 +8957,25 @@ class ListTopicResponse {
   /// Topic items that match the request.
   core.List<Topic>? topic;
 
-  ListTopicResponse({
-    this.nextPageToken,
-    this.topic,
-  });
+  ListTopicResponse({this.nextPageToken, this.topic});
 
   ListTopicResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          topic: (json_['topic'] as core.List?)
-              ?.map((value) =>
-                  Topic.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        topic:
+            (json_['topic'] as core.List?)
+                ?.map(
+                  (value) => Topic.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (topic != null) 'topic': topic!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (topic != null) 'topic': topic!,
+  };
 }
 
 /// Material attached to course work.
@@ -8858,41 +9020,53 @@ class Material {
   });
 
   Material.fromJson(core.Map json_)
-      : this(
-          driveFile: json_.containsKey('driveFile')
-              ? SharedDriveFile.fromJson(
-                  json_['driveFile'] as core.Map<core.String, core.dynamic>)
-              : null,
-          form: json_.containsKey('form')
-              ? Form.fromJson(
-                  json_['form'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gem: json_.containsKey('gem')
-              ? GeminiGem.fromJson(
-                  json_['gem'] as core.Map<core.String, core.dynamic>)
-              : null,
-          link: json_.containsKey('link')
-              ? Link.fromJson(
-                  json_['link'] as core.Map<core.String, core.dynamic>)
-              : null,
-          notebook: json_.containsKey('notebook')
-              ? NotebookLmNotebook.fromJson(
-                  json_['notebook'] as core.Map<core.String, core.dynamic>)
-              : null,
-          youtubeVideo: json_.containsKey('youtubeVideo')
-              ? YouTubeVideo.fromJson(
-                  json_['youtubeVideo'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        driveFile:
+            json_.containsKey('driveFile')
+                ? SharedDriveFile.fromJson(
+                  json_['driveFile'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        form:
+            json_.containsKey('form')
+                ? Form.fromJson(
+                  json_['form'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gem:
+            json_.containsKey('gem')
+                ? GeminiGem.fromJson(
+                  json_['gem'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        link:
+            json_.containsKey('link')
+                ? Link.fromJson(
+                  json_['link'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        notebook:
+            json_.containsKey('notebook')
+                ? NotebookLmNotebook.fromJson(
+                  json_['notebook'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        youtubeVideo:
+            json_.containsKey('youtubeVideo')
+                ? YouTubeVideo.fromJson(
+                  json_['youtubeVideo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile!,
-        if (form != null) 'form': form!,
-        if (gem != null) 'gem': gem!,
-        if (link != null) 'link': link!,
-        if (notebook != null) 'notebook': notebook!,
-        if (youtubeVideo != null) 'youtubeVideo': youtubeVideo!,
-      };
+    if (driveFile != null) 'driveFile': driveFile!,
+    if (form != null) 'form': form!,
+    if (gem != null) 'gem': gem!,
+    if (link != null) 'link': link!,
+    if (notebook != null) 'notebook': notebook!,
+    if (youtubeVideo != null) 'youtubeVideo': youtubeVideo!,
+  };
 }
 
 /// Request to modify assignee mode and options of an announcement.
@@ -8917,21 +9091,22 @@ class ModifyAnnouncementAssigneesRequest {
   });
 
   ModifyAnnouncementAssigneesRequest.fromJson(core.Map json_)
-      : this(
-          assigneeMode: json_['assigneeMode'] as core.String?,
-          modifyIndividualStudentsOptions:
-              json_.containsKey('modifyIndividualStudentsOptions')
-                  ? ModifyIndividualStudentsOptions.fromJson(
-                      json_['modifyIndividualStudentsOptions']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        assigneeMode: json_['assigneeMode'] as core.String?,
+        modifyIndividualStudentsOptions:
+            json_.containsKey('modifyIndividualStudentsOptions')
+                ? ModifyIndividualStudentsOptions.fromJson(
+                  json_['modifyIndividualStudentsOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assigneeMode != null) 'assigneeMode': assigneeMode!,
-        if (modifyIndividualStudentsOptions != null)
-          'modifyIndividualStudentsOptions': modifyIndividualStudentsOptions!,
-      };
+    if (assigneeMode != null) 'assigneeMode': assigneeMode!,
+    if (modifyIndividualStudentsOptions != null)
+      'modifyIndividualStudentsOptions': modifyIndividualStudentsOptions!,
+  };
 }
 
 /// Request to modify the attachments of a student submission.
@@ -8942,21 +9117,23 @@ class ModifyAttachmentsRequest {
   /// attachments are not supported.
   core.List<Attachment>? addAttachments;
 
-  ModifyAttachmentsRequest({
-    this.addAttachments,
-  });
+  ModifyAttachmentsRequest({this.addAttachments});
 
   ModifyAttachmentsRequest.fromJson(core.Map json_)
-      : this(
-          addAttachments: (json_['addAttachments'] as core.List?)
-              ?.map((value) => Attachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        addAttachments:
+            (json_['addAttachments'] as core.List?)
+                ?.map(
+                  (value) => Attachment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addAttachments != null) 'addAttachments': addAttachments!,
-      };
+    if (addAttachments != null) 'addAttachments': addAttachments!,
+  };
 }
 
 /// Request to modify assignee mode and options of a coursework.
@@ -8981,21 +9158,22 @@ class ModifyCourseWorkAssigneesRequest {
   });
 
   ModifyCourseWorkAssigneesRequest.fromJson(core.Map json_)
-      : this(
-          assigneeMode: json_['assigneeMode'] as core.String?,
-          modifyIndividualStudentsOptions:
-              json_.containsKey('modifyIndividualStudentsOptions')
-                  ? ModifyIndividualStudentsOptions.fromJson(
-                      json_['modifyIndividualStudentsOptions']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        assigneeMode: json_['assigneeMode'] as core.String?,
+        modifyIndividualStudentsOptions:
+            json_.containsKey('modifyIndividualStudentsOptions')
+                ? ModifyIndividualStudentsOptions.fromJson(
+                  json_['modifyIndividualStudentsOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assigneeMode != null) 'assigneeMode': assigneeMode!,
-        if (modifyIndividualStudentsOptions != null)
-          'modifyIndividualStudentsOptions': modifyIndividualStudentsOptions!,
-      };
+    if (assigneeMode != null) 'assigneeMode': assigneeMode!,
+    if (modifyIndividualStudentsOptions != null)
+      'modifyIndividualStudentsOptions': modifyIndividualStudentsOptions!,
+  };
 }
 
 /// Contains fields to add or remove students from a course work or announcement
@@ -9009,25 +9187,24 @@ class ModifyIndividualStudentsOptions {
   /// coursework/announcement.
   core.List<core.String>? removeStudentIds;
 
-  ModifyIndividualStudentsOptions({
-    this.addStudentIds,
-    this.removeStudentIds,
-  });
+  ModifyIndividualStudentsOptions({this.addStudentIds, this.removeStudentIds});
 
   ModifyIndividualStudentsOptions.fromJson(core.Map json_)
-      : this(
-          addStudentIds: (json_['addStudentIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          removeStudentIds: (json_['removeStudentIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        addStudentIds:
+            (json_['addStudentIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        removeStudentIds:
+            (json_['removeStudentIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addStudentIds != null) 'addStudentIds': addStudentIds!,
-        if (removeStudentIds != null) 'removeStudentIds': removeStudentIds!,
-      };
+    if (addStudentIds != null) 'addStudentIds': addStudentIds!,
+    if (removeStudentIds != null) 'removeStudentIds': removeStudentIds!,
+  };
 }
 
 /// Additional details for multiple-choice questions.
@@ -9035,20 +9212,19 @@ class MultipleChoiceQuestion {
   /// Possible choices.
   core.List<core.String>? choices;
 
-  MultipleChoiceQuestion({
-    this.choices,
-  });
+  MultipleChoiceQuestion({this.choices});
 
   MultipleChoiceQuestion.fromJson(core.Map json_)
-      : this(
-          choices: (json_['choices'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        choices:
+            (json_['choices'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (choices != null) 'choices': choices!,
-      };
+    if (choices != null) 'choices': choices!,
+  };
 }
 
 /// Student work for a multiple-choice question.
@@ -9056,18 +9232,14 @@ class MultipleChoiceSubmission {
   /// Student's select choice.
   core.String? answer;
 
-  MultipleChoiceSubmission({
-    this.answer,
-  });
+  MultipleChoiceSubmission({this.answer});
 
   MultipleChoiceSubmission.fromJson(core.Map json_)
-      : this(
-          answer: json_['answer'] as core.String?,
-        );
+    : this(answer: json_['answer'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (answer != null) 'answer': answer!,
-      };
+    if (answer != null) 'answer': answer!,
+  };
 }
 
 /// Details of the user's name.
@@ -9088,24 +9260,20 @@ class Name {
   /// Read-only.
   core.String? givenName;
 
-  Name({
-    this.familyName,
-    this.fullName,
-    this.givenName,
-  });
+  Name({this.familyName, this.fullName, this.givenName});
 
   Name.fromJson(core.Map json_)
-      : this(
-          familyName: json_['familyName'] as core.String?,
-          fullName: json_['fullName'] as core.String?,
-          givenName: json_['givenName'] as core.String?,
-        );
+    : this(
+        familyName: json_['familyName'] as core.String?,
+        fullName: json_['fullName'] as core.String?,
+        givenName: json_['givenName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (familyName != null) 'familyName': familyName!,
-        if (fullName != null) 'fullName': fullName!,
-        if (givenName != null) 'givenName': givenName!,
-      };
+    if (familyName != null) 'familyName': familyName!,
+    if (fullName != null) 'fullName': fullName!,
+    if (givenName != null) 'givenName': givenName!,
+  };
 }
 
 /// NotebookLM Notebook link.
@@ -9123,24 +9291,20 @@ class NotebookLmNotebook {
   /// Read-only.
   core.String? url;
 
-  NotebookLmNotebook({
-    this.id,
-    this.title,
-    this.url,
-  });
+  NotebookLmNotebook({this.id, this.title, this.url});
 
   NotebookLmNotebook.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          title: json_['title'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        title: json_['title'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (title != null) 'title': title!,
-        if (url != null) 'url': url!,
-      };
+    if (id != null) 'id': id!,
+    if (title != null) 'title': title!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Request to reclaim a student submission.
@@ -9174,25 +9338,30 @@ class Registration {
   });
 
   Registration.fromJson(core.Map json_)
-      : this(
-          cloudPubsubTopic: json_.containsKey('cloudPubsubTopic')
-              ? CloudPubsubTopic.fromJson(json_['cloudPubsubTopic']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          expiryTime: json_['expiryTime'] as core.String?,
-          feed: json_.containsKey('feed')
-              ? Feed.fromJson(
-                  json_['feed'] as core.Map<core.String, core.dynamic>)
-              : null,
-          registrationId: json_['registrationId'] as core.String?,
-        );
+    : this(
+        cloudPubsubTopic:
+            json_.containsKey('cloudPubsubTopic')
+                ? CloudPubsubTopic.fromJson(
+                  json_['cloudPubsubTopic']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        expiryTime: json_['expiryTime'] as core.String?,
+        feed:
+            json_.containsKey('feed')
+                ? Feed.fromJson(
+                  json_['feed'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        registrationId: json_['registrationId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudPubsubTopic != null) 'cloudPubsubTopic': cloudPubsubTopic!,
-        if (expiryTime != null) 'expiryTime': expiryTime!,
-        if (feed != null) 'feed': feed!,
-        if (registrationId != null) 'registrationId': registrationId!,
-      };
+    if (cloudPubsubTopic != null) 'cloudPubsubTopic': cloudPubsubTopic!,
+    if (expiryTime != null) 'expiryTime': expiryTime!,
+    if (feed != null) 'feed': feed!,
+    if (registrationId != null) 'registrationId': registrationId!,
+  };
 }
 
 /// Request to return a student submission.
@@ -9259,29 +9428,33 @@ class Rubric {
   });
 
   Rubric.fromJson(core.Map json_)
-      : this(
-          courseId: json_['courseId'] as core.String?,
-          courseWorkId: json_['courseWorkId'] as core.String?,
-          creationTime: json_['creationTime'] as core.String?,
-          criteria: (json_['criteria'] as core.List?)
-              ?.map((value) => Criterion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          id: json_['id'] as core.String?,
-          sourceSpreadsheetId: json_['sourceSpreadsheetId'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        courseId: json_['courseId'] as core.String?,
+        courseWorkId: json_['courseWorkId'] as core.String?,
+        creationTime: json_['creationTime'] as core.String?,
+        criteria:
+            (json_['criteria'] as core.List?)
+                ?.map(
+                  (value) => Criterion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        id: json_['id'] as core.String?,
+        sourceSpreadsheetId: json_['sourceSpreadsheetId'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (courseId != null) 'courseId': courseId!,
-        if (courseWorkId != null) 'courseWorkId': courseWorkId!,
-        if (creationTime != null) 'creationTime': creationTime!,
-        if (criteria != null) 'criteria': criteria!,
-        if (id != null) 'id': id!,
-        if (sourceSpreadsheetId != null)
-          'sourceSpreadsheetId': sourceSpreadsheetId!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (courseId != null) 'courseId': courseId!,
+    if (courseWorkId != null) 'courseWorkId': courseWorkId!,
+    if (creationTime != null) 'creationTime': creationTime!,
+    if (criteria != null) 'criteria': criteria!,
+    if (id != null) 'id': id!,
+    if (sourceSpreadsheetId != null)
+      'sourceSpreadsheetId': sourceSpreadsheetId!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A rubric grade set for the student submission.
@@ -9308,24 +9481,20 @@ class RubricGrade {
   /// Optional.
   core.double? points;
 
-  RubricGrade({
-    this.criterionId,
-    this.levelId,
-    this.points,
-  });
+  RubricGrade({this.criterionId, this.levelId, this.points});
 
   RubricGrade.fromJson(core.Map json_)
-      : this(
-          criterionId: json_['criterionId'] as core.String?,
-          levelId: json_['levelId'] as core.String?,
-          points: (json_['points'] as core.num?)?.toDouble(),
-        );
+    : this(
+        criterionId: json_['criterionId'] as core.String?,
+        levelId: json_['levelId'] as core.String?,
+        points: (json_['points'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (criterionId != null) 'criterionId': criterionId!,
-        if (levelId != null) 'levelId': levelId!,
-        if (points != null) 'points': points!,
-      };
+    if (criterionId != null) 'criterionId': criterionId!,
+    if (levelId != null) 'levelId': levelId!,
+    if (points != null) 'points': points!,
+  };
 }
 
 /// Drive file that is used as material for course work.
@@ -9342,24 +9511,23 @@ class SharedDriveFile {
   /// - "STUDENT_COPY" : Students have a personal copy of the shared file.
   core.String? shareMode;
 
-  SharedDriveFile({
-    this.driveFile,
-    this.shareMode,
-  });
+  SharedDriveFile({this.driveFile, this.shareMode});
 
   SharedDriveFile.fromJson(core.Map json_)
-      : this(
-          driveFile: json_.containsKey('driveFile')
-              ? DriveFile.fromJson(
-                  json_['driveFile'] as core.Map<core.String, core.dynamic>)
-              : null,
-          shareMode: json_['shareMode'] as core.String?,
-        );
+    : this(
+        driveFile:
+            json_.containsKey('driveFile')
+                ? DriveFile.fromJson(
+                  json_['driveFile'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        shareMode: json_['shareMode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (driveFile != null) 'driveFile': driveFile!,
-        if (shareMode != null) 'shareMode': shareMode!,
-      };
+    if (driveFile != null) 'driveFile': driveFile!,
+    if (shareMode != null) 'shareMode': shareMode!,
+  };
 }
 
 /// Student work for a short answer question.
@@ -9367,18 +9535,14 @@ class ShortAnswerSubmission {
   /// Student response to a short-answer question.
   core.String? answer;
 
-  ShortAnswerSubmission({
-    this.answer,
-  });
+  ShortAnswerSubmission({this.answer});
 
   ShortAnswerSubmission.fromJson(core.Map json_)
-      : this(
-          answer: json_['answer'] as core.String?,
-        );
+    : this(answer: json_['answer'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (answer != null) 'answer': answer!,
-      };
+    if (answer != null) 'answer': answer!,
+  };
 }
 
 /// The history of each state this submission has been in.
@@ -9405,24 +9569,20 @@ class StateHistory {
   /// When the submission entered this state.
   core.String? stateTimestamp;
 
-  StateHistory({
-    this.actorUserId,
-    this.state,
-    this.stateTimestamp,
-  });
+  StateHistory({this.actorUserId, this.state, this.stateTimestamp});
 
   StateHistory.fromJson(core.Map json_)
-      : this(
-          actorUserId: json_['actorUserId'] as core.String?,
-          state: json_['state'] as core.String?,
-          stateTimestamp: json_['stateTimestamp'] as core.String?,
-        );
+    : this(
+        actorUserId: json_['actorUserId'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateTimestamp: json_['stateTimestamp'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actorUserId != null) 'actorUserId': actorUserId!,
-        if (state != null) 'state': state!,
-        if (stateTimestamp != null) 'stateTimestamp': stateTimestamp!,
-      };
+    if (actorUserId != null) 'actorUserId': actorUserId!,
+    if (state != null) 'state': state!,
+    if (stateTimestamp != null) 'stateTimestamp': stateTimestamp!,
+  };
 }
 
 /// Student in a course.
@@ -9449,33 +9609,33 @@ class Student {
   /// of the user * the string literal `"me"`, indicating the requesting user
   core.String? userId;
 
-  Student({
-    this.courseId,
-    this.profile,
-    this.studentWorkFolder,
-    this.userId,
-  });
+  Student({this.courseId, this.profile, this.studentWorkFolder, this.userId});
 
   Student.fromJson(core.Map json_)
-      : this(
-          courseId: json_['courseId'] as core.String?,
-          profile: json_.containsKey('profile')
-              ? UserProfile.fromJson(
-                  json_['profile'] as core.Map<core.String, core.dynamic>)
-              : null,
-          studentWorkFolder: json_.containsKey('studentWorkFolder')
-              ? DriveFolder.fromJson(json_['studentWorkFolder']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          userId: json_['userId'] as core.String?,
-        );
+    : this(
+        courseId: json_['courseId'] as core.String?,
+        profile:
+            json_.containsKey('profile')
+                ? UserProfile.fromJson(
+                  json_['profile'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        studentWorkFolder:
+            json_.containsKey('studentWorkFolder')
+                ? DriveFolder.fromJson(
+                  json_['studentWorkFolder']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userId: json_['userId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (courseId != null) 'courseId': courseId!,
-        if (profile != null) 'profile': profile!,
-        if (studentWorkFolder != null) 'studentWorkFolder': studentWorkFolder!,
-        if (userId != null) 'userId': userId!,
-      };
+    if (courseId != null) 'courseId': courseId!,
+    if (profile != null) 'profile': profile!,
+    if (studentWorkFolder != null) 'studentWorkFolder': studentWorkFolder!,
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 /// Role-specific context if the requesting user is a student.
@@ -9486,18 +9646,14 @@ class StudentContext {
   /// This is set exactly when `supportsStudentWork` is `true`.
   core.String? submissionId;
 
-  StudentContext({
-    this.submissionId,
-  });
+  StudentContext({this.submissionId});
 
   StudentContext.fromJson(core.Map json_)
-      : this(
-          submissionId: json_['submissionId'] as core.String?,
-        );
+    : this(submissionId: json_['submissionId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (submissionId != null) 'submissionId': submissionId!,
-      };
+    if (submissionId != null) 'submissionId': submissionId!,
+  };
 }
 
 /// Student submission for course work.
@@ -9646,85 +9802,97 @@ class StudentSubmission {
   });
 
   StudentSubmission.fromJson(core.Map json_)
-      : this(
-          alternateLink: json_['alternateLink'] as core.String?,
-          assignedGrade: (json_['assignedGrade'] as core.num?)?.toDouble(),
-          assignedRubricGrades: (json_['assignedRubricGrades']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              RubricGrade.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        alternateLink: json_['alternateLink'] as core.String?,
+        assignedGrade: (json_['assignedGrade'] as core.num?)?.toDouble(),
+        assignedRubricGrades: (json_['assignedRubricGrades']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                RubricGrade.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          assignmentSubmission: json_.containsKey('assignmentSubmission')
-              ? AssignmentSubmission.fromJson(json_['assignmentSubmission']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          associatedWithDeveloper:
-              json_['associatedWithDeveloper'] as core.bool?,
-          courseId: json_['courseId'] as core.String?,
-          courseWorkId: json_['courseWorkId'] as core.String?,
-          courseWorkType: json_['courseWorkType'] as core.String?,
-          creationTime: json_['creationTime'] as core.String?,
-          draftGrade: (json_['draftGrade'] as core.num?)?.toDouble(),
-          draftRubricGrades: (json_['draftRubricGrades']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              RubricGrade.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        assignmentSubmission:
+            json_.containsKey('assignmentSubmission')
+                ? AssignmentSubmission.fromJson(
+                  json_['assignmentSubmission']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        associatedWithDeveloper: json_['associatedWithDeveloper'] as core.bool?,
+        courseId: json_['courseId'] as core.String?,
+        courseWorkId: json_['courseWorkId'] as core.String?,
+        courseWorkType: json_['courseWorkType'] as core.String?,
+        creationTime: json_['creationTime'] as core.String?,
+        draftGrade: (json_['draftGrade'] as core.num?)?.toDouble(),
+        draftRubricGrades: (json_['draftRubricGrades']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                RubricGrade.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          id: json_['id'] as core.String?,
-          late: json_['late'] as core.bool?,
-          multipleChoiceSubmission:
-              json_.containsKey('multipleChoiceSubmission')
-                  ? MultipleChoiceSubmission.fromJson(
-                      json_['multipleChoiceSubmission']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          shortAnswerSubmission: json_.containsKey('shortAnswerSubmission')
-              ? ShortAnswerSubmission.fromJson(json_['shortAnswerSubmission']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          submissionHistory: (json_['submissionHistory'] as core.List?)
-              ?.map((value) => SubmissionHistory.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-          userId: json_['userId'] as core.String?,
-        );
+        id: json_['id'] as core.String?,
+        late: json_['late'] as core.bool?,
+        multipleChoiceSubmission:
+            json_.containsKey('multipleChoiceSubmission')
+                ? MultipleChoiceSubmission.fromJson(
+                  json_['multipleChoiceSubmission']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        shortAnswerSubmission:
+            json_.containsKey('shortAnswerSubmission')
+                ? ShortAnswerSubmission.fromJson(
+                  json_['shortAnswerSubmission']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        submissionHistory:
+            (json_['submissionHistory'] as core.List?)
+                ?.map(
+                  (value) => SubmissionHistory.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+        userId: json_['userId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink!,
-        if (assignedGrade != null) 'assignedGrade': assignedGrade!,
-        if (assignedRubricGrades != null)
-          'assignedRubricGrades': assignedRubricGrades!,
-        if (assignmentSubmission != null)
-          'assignmentSubmission': assignmentSubmission!,
-        if (associatedWithDeveloper != null)
-          'associatedWithDeveloper': associatedWithDeveloper!,
-        if (courseId != null) 'courseId': courseId!,
-        if (courseWorkId != null) 'courseWorkId': courseWorkId!,
-        if (courseWorkType != null) 'courseWorkType': courseWorkType!,
-        if (creationTime != null) 'creationTime': creationTime!,
-        if (draftGrade != null) 'draftGrade': draftGrade!,
-        if (draftRubricGrades != null) 'draftRubricGrades': draftRubricGrades!,
-        if (id != null) 'id': id!,
-        if (late != null) 'late': late!,
-        if (multipleChoiceSubmission != null)
-          'multipleChoiceSubmission': multipleChoiceSubmission!,
-        if (shortAnswerSubmission != null)
-          'shortAnswerSubmission': shortAnswerSubmission!,
-        if (state != null) 'state': state!,
-        if (submissionHistory != null) 'submissionHistory': submissionHistory!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (userId != null) 'userId': userId!,
-      };
+    if (alternateLink != null) 'alternateLink': alternateLink!,
+    if (assignedGrade != null) 'assignedGrade': assignedGrade!,
+    if (assignedRubricGrades != null)
+      'assignedRubricGrades': assignedRubricGrades!,
+    if (assignmentSubmission != null)
+      'assignmentSubmission': assignmentSubmission!,
+    if (associatedWithDeveloper != null)
+      'associatedWithDeveloper': associatedWithDeveloper!,
+    if (courseId != null) 'courseId': courseId!,
+    if (courseWorkId != null) 'courseWorkId': courseWorkId!,
+    if (courseWorkType != null) 'courseWorkType': courseWorkType!,
+    if (creationTime != null) 'creationTime': creationTime!,
+    if (draftGrade != null) 'draftGrade': draftGrade!,
+    if (draftRubricGrades != null) 'draftRubricGrades': draftRubricGrades!,
+    if (id != null) 'id': id!,
+    if (late != null) 'late': late!,
+    if (multipleChoiceSubmission != null)
+      'multipleChoiceSubmission': multipleChoiceSubmission!,
+    if (shortAnswerSubmission != null)
+      'shortAnswerSubmission': shortAnswerSubmission!,
+    if (state != null) 'state': state!,
+    if (submissionHistory != null) 'submissionHistory': submissionHistory!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 /// The history of the submission.
@@ -9737,27 +9905,28 @@ class SubmissionHistory {
   /// The state history information of the submission, if present.
   StateHistory? stateHistory;
 
-  SubmissionHistory({
-    this.gradeHistory,
-    this.stateHistory,
-  });
+  SubmissionHistory({this.gradeHistory, this.stateHistory});
 
   SubmissionHistory.fromJson(core.Map json_)
-      : this(
-          gradeHistory: json_.containsKey('gradeHistory')
-              ? GradeHistory.fromJson(
-                  json_['gradeHistory'] as core.Map<core.String, core.dynamic>)
-              : null,
-          stateHistory: json_.containsKey('stateHistory')
-              ? StateHistory.fromJson(
-                  json_['stateHistory'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        gradeHistory:
+            json_.containsKey('gradeHistory')
+                ? GradeHistory.fromJson(
+                  json_['gradeHistory'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        stateHistory:
+            json_.containsKey('stateHistory')
+                ? StateHistory.fromJson(
+                  json_['stateHistory'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gradeHistory != null) 'gradeHistory': gradeHistory!,
-        if (stateHistory != null) 'stateHistory': stateHistory!,
-      };
+    if (gradeHistory != null) 'gradeHistory': gradeHistory!,
+    if (stateHistory != null) 'stateHistory': stateHistory!,
+  };
 }
 
 /// Teacher of a course.
@@ -9779,27 +9948,25 @@ class Teacher {
   /// of the user * the string literal `"me"`, indicating the requesting user
   core.String? userId;
 
-  Teacher({
-    this.courseId,
-    this.profile,
-    this.userId,
-  });
+  Teacher({this.courseId, this.profile, this.userId});
 
   Teacher.fromJson(core.Map json_)
-      : this(
-          courseId: json_['courseId'] as core.String?,
-          profile: json_.containsKey('profile')
-              ? UserProfile.fromJson(
-                  json_['profile'] as core.Map<core.String, core.dynamic>)
-              : null,
-          userId: json_['userId'] as core.String?,
-        );
+    : this(
+        courseId: json_['courseId'] as core.String?,
+        profile:
+            json_.containsKey('profile')
+                ? UserProfile.fromJson(
+                  json_['profile'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userId: json_['userId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (courseId != null) 'courseId': courseId!,
-        if (profile != null) 'profile': profile!,
-        if (userId != null) 'userId': userId!,
-      };
+    if (courseId != null) 'courseId': courseId!,
+    if (profile != null) 'profile': profile!,
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 /// Role-specific context if the requesting user is a teacher.
@@ -9837,27 +10004,22 @@ class Topic {
   /// Read-only.
   core.String? updateTime;
 
-  Topic({
-    this.courseId,
-    this.name,
-    this.topicId,
-    this.updateTime,
-  });
+  Topic({this.courseId, this.name, this.topicId, this.updateTime});
 
   Topic.fromJson(core.Map json_)
-      : this(
-          courseId: json_['courseId'] as core.String?,
-          name: json_['name'] as core.String?,
-          topicId: json_['topicId'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        courseId: json_['courseId'] as core.String?,
+        name: json_['name'] as core.String?,
+        topicId: json_['topicId'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (courseId != null) 'courseId': courseId!,
-        if (name != null) 'name': name!,
-        if (topicId != null) 'topicId': topicId!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (courseId != null) 'courseId': courseId!,
+    if (name != null) 'name': name!,
+    if (topicId != null) 'topicId': topicId!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Request to turn in a student submission.
@@ -9909,29 +10071,35 @@ class UserProfile {
   });
 
   UserProfile.fromJson(core.Map json_)
-      : this(
-          emailAddress: json_['emailAddress'] as core.String?,
-          id: json_['id'] as core.String?,
-          name: json_.containsKey('name')
-              ? Name.fromJson(
-                  json_['name'] as core.Map<core.String, core.dynamic>)
-              : null,
-          permissions: (json_['permissions'] as core.List?)
-              ?.map((value) => GlobalPermission.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          photoUrl: json_['photoUrl'] as core.String?,
-          verifiedTeacher: json_['verifiedTeacher'] as core.bool?,
-        );
+    : this(
+        emailAddress: json_['emailAddress'] as core.String?,
+        id: json_['id'] as core.String?,
+        name:
+            json_.containsKey('name')
+                ? Name.fromJson(
+                  json_['name'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        permissions:
+            (json_['permissions'] as core.List?)
+                ?.map(
+                  (value) => GlobalPermission.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        photoUrl: json_['photoUrl'] as core.String?,
+        verifiedTeacher: json_['verifiedTeacher'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (emailAddress != null) 'emailAddress': emailAddress!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (permissions != null) 'permissions': permissions!,
-        if (photoUrl != null) 'photoUrl': photoUrl!,
-        if (verifiedTeacher != null) 'verifiedTeacher': verifiedTeacher!,
-      };
+    if (emailAddress != null) 'emailAddress': emailAddress!,
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (permissions != null) 'permissions': permissions!,
+    if (photoUrl != null) 'photoUrl': photoUrl!,
+    if (verifiedTeacher != null) 'verifiedTeacher': verifiedTeacher!,
+  };
 }
 
 /// YouTube video item.
@@ -9954,25 +10122,20 @@ class YouTubeVideo {
   /// Read-only.
   core.String? title;
 
-  YouTubeVideo({
-    this.alternateLink,
-    this.id,
-    this.thumbnailUrl,
-    this.title,
-  });
+  YouTubeVideo({this.alternateLink, this.id, this.thumbnailUrl, this.title});
 
   YouTubeVideo.fromJson(core.Map json_)
-      : this(
-          alternateLink: json_['alternateLink'] as core.String?,
-          id: json_['id'] as core.String?,
-          thumbnailUrl: json_['thumbnailUrl'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        alternateLink: json_['alternateLink'] as core.String?,
+        id: json_['id'] as core.String?,
+        thumbnailUrl: json_['thumbnailUrl'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternateLink != null) 'alternateLink': alternateLink!,
-        if (id != null) 'id': id!,
-        if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
-        if (title != null) 'title': title!,
-      };
+    if (alternateLink != null) 'alternateLink': alternateLink!,
+    if (id != null) 'id': id!,
+    if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
+    if (title != null) 'title': title!,
+  };
 }

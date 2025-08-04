@@ -49,11 +49,16 @@ class ManufacturerCenterApi {
 
   AccountsResource get accounts => AccountsResource(_requester);
 
-  ManufacturerCenterApi(http.Client client,
-      {core.String rootUrl = 'https://manufacturers.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ManufacturerCenterApi(
+    http.Client client, {
+    core.String rootUrl = 'https://manufacturers.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class AccountsResource {
@@ -79,7 +84,7 @@ class AccountsLanguagesProductCertificationsResource {
   final commons.ApiRequester _requester;
 
   AccountsLanguagesProductCertificationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes a product certification by its name.
   ///
@@ -103,10 +108,7 @@ class AccountsLanguagesProductCertificationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -116,6 +118,7 @@ class AccountsLanguagesProductCertificationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -158,7 +161,8 @@ class AccountsLanguagesProductCertificationsResource {
       queryParams: queryParams_,
     );
     return ProductCertification.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists product certifications from a specified certification body.
@@ -213,7 +217,8 @@ class AccountsLanguagesProductCertificationsResource {
       queryParams: queryParams_,
     );
     return ListProductCertificationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates (or creates if allow_missing = true) a product certification which
@@ -270,7 +275,8 @@ class AccountsLanguagesProductCertificationsResource {
       queryParams: queryParams_,
     );
     return ProductCertification.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -315,7 +321,8 @@ class AccountsProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/products/' +
         core.Uri.encodeFull('$name');
@@ -323,6 +330,7 @@ class AccountsProductsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -375,7 +383,8 @@ class AccountsProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/products/' +
         core.Uri.encodeFull('$name');
@@ -436,7 +445,8 @@ class AccountsProductsResource {
       queryParams: queryParams_,
     );
     return ListProductsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Inserts or updates the attributes of the product in a Manufacturer Center
@@ -492,7 +502,8 @@ class AccountsProductsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/' +
+    final url_ =
+        'v1/' +
         core.Uri.encodeFull('$parent') +
         '/products/' +
         core.Uri.encodeFull('$name');
@@ -812,150 +823,186 @@ class Attributes {
   });
 
   Attributes.fromJson(core.Map json_)
-      : this(
-          additionalImageLink: (json_['additionalImageLink'] as core.List?)
-              ?.map((value) =>
-                  Image.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          ageGroup: json_['ageGroup'] as core.String?,
-          brand: json_['brand'] as core.String?,
-          capacity: json_.containsKey('capacity')
-              ? Capacity.fromJson(
-                  json_['capacity'] as core.Map<core.String, core.dynamic>)
-              : null,
-          certification: (json_['certification'] as core.List?)
-              ?.map((value) =>
-                  GoogleShoppingManufacturersV1ProductCertification.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          color: json_['color'] as core.String?,
-          count: json_.containsKey('count')
-              ? Count.fromJson(
-                  json_['count'] as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          disclosureDate: json_['disclosureDate'] as core.String?,
-          excludedDestination: (json_['excludedDestination'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          featureDescription: (json_['featureDescription'] as core.List?)
-              ?.map((value) => FeatureDescription.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          flavor: json_['flavor'] as core.String?,
-          format: json_['format'] as core.String?,
-          gender: json_['gender'] as core.String?,
-          grocery: json_.containsKey('grocery')
-              ? Grocery.fromJson(
-                  json_['grocery'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gtin: (json_['gtin'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          imageLink: json_.containsKey('imageLink')
-              ? Image.fromJson(
-                  json_['imageLink'] as core.Map<core.String, core.dynamic>)
-              : null,
-          includedDestination: (json_['includedDestination'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          intendedCountry: (json_['intendedCountry'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          itemGroupId: json_['itemGroupId'] as core.String?,
-          material: json_['material'] as core.String?,
-          mpn: json_['mpn'] as core.String?,
-          nutrition: json_.containsKey('nutrition')
-              ? Nutrition.fromJson(
-                  json_['nutrition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pattern: json_['pattern'] as core.String?,
-          productDetail: (json_['productDetail'] as core.List?)
-              ?.map((value) => ProductDetail.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          productHighlight: (json_['productHighlight'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          productLine: json_['productLine'] as core.String?,
-          productName: json_['productName'] as core.String?,
-          productPageUrl: json_['productPageUrl'] as core.String?,
-          productType: (json_['productType'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          releaseDate: json_['releaseDate'] as core.String?,
-          richProductContent: (json_['richProductContent'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          scent: json_['scent'] as core.String?,
-          size: json_['size'] as core.String?,
-          sizeSystem: json_['sizeSystem'] as core.String?,
-          sizeType: (json_['sizeType'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedRetailPrice: json_.containsKey('suggestedRetailPrice')
-              ? Price.fromJson(json_['suggestedRetailPrice']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          targetClientId: json_['targetClientId'] as core.String?,
-          theme: json_['theme'] as core.String?,
-          title: json_['title'] as core.String?,
-          videoLink: (json_['videoLink'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          virtualModelLink: json_['virtualModelLink'] as core.String?,
-        );
+    : this(
+        additionalImageLink:
+            (json_['additionalImageLink'] as core.List?)
+                ?.map(
+                  (value) => Image.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        ageGroup: json_['ageGroup'] as core.String?,
+        brand: json_['brand'] as core.String?,
+        capacity:
+            json_.containsKey('capacity')
+                ? Capacity.fromJson(
+                  json_['capacity'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        certification:
+            (json_['certification'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleShoppingManufacturersV1ProductCertification.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        color: json_['color'] as core.String?,
+        count:
+            json_.containsKey('count')
+                ? Count.fromJson(
+                  json_['count'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        disclosureDate: json_['disclosureDate'] as core.String?,
+        excludedDestination:
+            (json_['excludedDestination'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        featureDescription:
+            (json_['featureDescription'] as core.List?)
+                ?.map(
+                  (value) => FeatureDescription.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        flavor: json_['flavor'] as core.String?,
+        format: json_['format'] as core.String?,
+        gender: json_['gender'] as core.String?,
+        grocery:
+            json_.containsKey('grocery')
+                ? Grocery.fromJson(
+                  json_['grocery'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gtin:
+            (json_['gtin'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        imageLink:
+            json_.containsKey('imageLink')
+                ? Image.fromJson(
+                  json_['imageLink'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        includedDestination:
+            (json_['includedDestination'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        intendedCountry:
+            (json_['intendedCountry'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        itemGroupId: json_['itemGroupId'] as core.String?,
+        material: json_['material'] as core.String?,
+        mpn: json_['mpn'] as core.String?,
+        nutrition:
+            json_.containsKey('nutrition')
+                ? Nutrition.fromJson(
+                  json_['nutrition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pattern: json_['pattern'] as core.String?,
+        productDetail:
+            (json_['productDetail'] as core.List?)
+                ?.map(
+                  (value) => ProductDetail.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        productHighlight:
+            (json_['productHighlight'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        productLine: json_['productLine'] as core.String?,
+        productName: json_['productName'] as core.String?,
+        productPageUrl: json_['productPageUrl'] as core.String?,
+        productType:
+            (json_['productType'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        releaseDate: json_['releaseDate'] as core.String?,
+        richProductContent:
+            (json_['richProductContent'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        scent: json_['scent'] as core.String?,
+        size: json_['size'] as core.String?,
+        sizeSystem: json_['sizeSystem'] as core.String?,
+        sizeType:
+            (json_['sizeType'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedRetailPrice:
+            json_.containsKey('suggestedRetailPrice')
+                ? Price.fromJson(
+                  json_['suggestedRetailPrice']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        targetClientId: json_['targetClientId'] as core.String?,
+        theme: json_['theme'] as core.String?,
+        title: json_['title'] as core.String?,
+        videoLink:
+            (json_['videoLink'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        virtualModelLink: json_['virtualModelLink'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalImageLink != null)
-          'additionalImageLink': additionalImageLink!,
-        if (ageGroup != null) 'ageGroup': ageGroup!,
-        if (brand != null) 'brand': brand!,
-        if (capacity != null) 'capacity': capacity!,
-        if (certification != null) 'certification': certification!,
-        if (color != null) 'color': color!,
-        if (count != null) 'count': count!,
-        if (description != null) 'description': description!,
-        if (disclosureDate != null) 'disclosureDate': disclosureDate!,
-        if (excludedDestination != null)
-          'excludedDestination': excludedDestination!,
-        if (featureDescription != null)
-          'featureDescription': featureDescription!,
-        if (flavor != null) 'flavor': flavor!,
-        if (format != null) 'format': format!,
-        if (gender != null) 'gender': gender!,
-        if (grocery != null) 'grocery': grocery!,
-        if (gtin != null) 'gtin': gtin!,
-        if (imageLink != null) 'imageLink': imageLink!,
-        if (includedDestination != null)
-          'includedDestination': includedDestination!,
-        if (intendedCountry != null) 'intendedCountry': intendedCountry!,
-        if (itemGroupId != null) 'itemGroupId': itemGroupId!,
-        if (material != null) 'material': material!,
-        if (mpn != null) 'mpn': mpn!,
-        if (nutrition != null) 'nutrition': nutrition!,
-        if (pattern != null) 'pattern': pattern!,
-        if (productDetail != null) 'productDetail': productDetail!,
-        if (productHighlight != null) 'productHighlight': productHighlight!,
-        if (productLine != null) 'productLine': productLine!,
-        if (productName != null) 'productName': productName!,
-        if (productPageUrl != null) 'productPageUrl': productPageUrl!,
-        if (productType != null) 'productType': productType!,
-        if (releaseDate != null) 'releaseDate': releaseDate!,
-        if (richProductContent != null)
-          'richProductContent': richProductContent!,
-        if (scent != null) 'scent': scent!,
-        if (size != null) 'size': size!,
-        if (sizeSystem != null) 'sizeSystem': sizeSystem!,
-        if (sizeType != null) 'sizeType': sizeType!,
-        if (suggestedRetailPrice != null)
-          'suggestedRetailPrice': suggestedRetailPrice!,
-        if (targetClientId != null) 'targetClientId': targetClientId!,
-        if (theme != null) 'theme': theme!,
-        if (title != null) 'title': title!,
-        if (videoLink != null) 'videoLink': videoLink!,
-        if (virtualModelLink != null) 'virtualModelLink': virtualModelLink!,
-      };
+    if (additionalImageLink != null)
+      'additionalImageLink': additionalImageLink!,
+    if (ageGroup != null) 'ageGroup': ageGroup!,
+    if (brand != null) 'brand': brand!,
+    if (capacity != null) 'capacity': capacity!,
+    if (certification != null) 'certification': certification!,
+    if (color != null) 'color': color!,
+    if (count != null) 'count': count!,
+    if (description != null) 'description': description!,
+    if (disclosureDate != null) 'disclosureDate': disclosureDate!,
+    if (excludedDestination != null)
+      'excludedDestination': excludedDestination!,
+    if (featureDescription != null) 'featureDescription': featureDescription!,
+    if (flavor != null) 'flavor': flavor!,
+    if (format != null) 'format': format!,
+    if (gender != null) 'gender': gender!,
+    if (grocery != null) 'grocery': grocery!,
+    if (gtin != null) 'gtin': gtin!,
+    if (imageLink != null) 'imageLink': imageLink!,
+    if (includedDestination != null)
+      'includedDestination': includedDestination!,
+    if (intendedCountry != null) 'intendedCountry': intendedCountry!,
+    if (itemGroupId != null) 'itemGroupId': itemGroupId!,
+    if (material != null) 'material': material!,
+    if (mpn != null) 'mpn': mpn!,
+    if (nutrition != null) 'nutrition': nutrition!,
+    if (pattern != null) 'pattern': pattern!,
+    if (productDetail != null) 'productDetail': productDetail!,
+    if (productHighlight != null) 'productHighlight': productHighlight!,
+    if (productLine != null) 'productLine': productLine!,
+    if (productName != null) 'productName': productName!,
+    if (productPageUrl != null) 'productPageUrl': productPageUrl!,
+    if (productType != null) 'productType': productType!,
+    if (releaseDate != null) 'releaseDate': releaseDate!,
+    if (richProductContent != null) 'richProductContent': richProductContent!,
+    if (scent != null) 'scent': scent!,
+    if (size != null) 'size': size!,
+    if (sizeSystem != null) 'sizeSystem': sizeSystem!,
+    if (sizeType != null) 'sizeType': sizeType!,
+    if (suggestedRetailPrice != null)
+      'suggestedRetailPrice': suggestedRetailPrice!,
+    if (targetClientId != null) 'targetClientId': targetClientId!,
+    if (theme != null) 'theme': theme!,
+    if (title != null) 'title': title!,
+    if (videoLink != null) 'videoLink': videoLink!,
+    if (virtualModelLink != null) 'virtualModelLink': virtualModelLink!,
+  };
 }
 
 /// The capacity of a product.
@@ -969,21 +1016,18 @@ class Capacity {
   /// The numeric value of the capacity.
   core.String? value;
 
-  Capacity({
-    this.unit,
-    this.value,
-  });
+  Capacity({this.unit, this.value});
 
   Capacity.fromJson(core.Map json_)
-      : this(
-          unit: json_['unit'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (unit != null) 'unit': unit!,
-        if (value != null) 'value': value!,
-      };
+    if (unit != null) 'unit': unit!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Description of a certification.
@@ -1034,25 +1078,25 @@ class Certification {
   });
 
   Certification.fromJson(core.Map json_)
-      : this(
-          authority: json_['authority'] as core.String?,
-          code: json_['code'] as core.String?,
-          link: json_['link'] as core.String?,
-          logo: json_['logo'] as core.String?,
-          name: json_['name'] as core.String?,
-          validUntil: json_['validUntil'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        authority: json_['authority'] as core.String?,
+        code: json_['code'] as core.String?,
+        link: json_['link'] as core.String?,
+        logo: json_['logo'] as core.String?,
+        name: json_['name'] as core.String?,
+        validUntil: json_['validUntil'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authority != null) 'authority': authority!,
-        if (code != null) 'code': code!,
-        if (link != null) 'link': link!,
-        if (logo != null) 'logo': logo!,
-        if (name != null) 'name': name!,
-        if (validUntil != null) 'validUntil': validUntil!,
-        if (value != null) 'value': value!,
-      };
+    if (authority != null) 'authority': authority!,
+    if (code != null) 'code': code!,
+    if (link != null) 'link': link!,
+    if (logo != null) 'logo': logo!,
+    if (name != null) 'name': name!,
+    if (validUntil != null) 'validUntil': validUntil!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// The number of products in a single package.
@@ -1066,21 +1110,18 @@ class Count {
   /// The numeric value of the number of products in a package.
   core.String? value;
 
-  Count({
-    this.unit,
-    this.value,
-  });
+  Count({this.unit, this.value});
 
   Count.fromJson(core.Map json_)
-      : this(
-          unit: json_['unit'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (unit != null) 'unit': unit!,
-        if (value != null) 'value': value!,
-      };
+    if (unit != null) 'unit': unit!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// The destination status.
@@ -1121,28 +1162,31 @@ class DestinationStatus {
   });
 
   DestinationStatus.fromJson(core.Map json_)
-      : this(
-          approvedCountries: (json_['approvedCountries'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          destination: json_['destination'] as core.String?,
-          disapprovedCountries: (json_['disapprovedCountries'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          pendingCountries: (json_['pendingCountries'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          status: json_['status'] as core.String?,
-        );
+    : this(
+        approvedCountries:
+            (json_['approvedCountries'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        destination: json_['destination'] as core.String?,
+        disapprovedCountries:
+            (json_['disapprovedCountries'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        pendingCountries:
+            (json_['pendingCountries'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        status: json_['status'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (approvedCountries != null) 'approvedCountries': approvedCountries!,
-        if (destination != null) 'destination': destination!,
-        if (disapprovedCountries != null)
-          'disapprovedCountries': disapprovedCountries!,
-        if (pendingCountries != null) 'pendingCountries': pendingCountries!,
-        if (status != null) 'status': status!,
-      };
+    if (approvedCountries != null) 'approvedCountries': approvedCountries!,
+    if (destination != null) 'destination': destination!,
+    if (disapprovedCountries != null)
+      'disapprovedCountries': disapprovedCountries!,
+    if (pendingCountries != null) 'pendingCountries': pendingCountries!,
+    if (status != null) 'status': status!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1167,27 +1211,25 @@ class FeatureDescription {
   /// A detailed description of the feature.
   core.String? text;
 
-  FeatureDescription({
-    this.headline,
-    this.image,
-    this.text,
-  });
+  FeatureDescription({this.headline, this.image, this.text});
 
   FeatureDescription.fromJson(core.Map json_)
-      : this(
-          headline: json_['headline'] as core.String?,
-          image: json_.containsKey('image')
-              ? Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        headline: json_['headline'] as core.String?,
+        image:
+            json_.containsKey('image')
+                ? Image.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (headline != null) 'headline': headline!,
-        if (image != null) 'image': image!,
-        if (text != null) 'text': text!,
-      };
+    if (headline != null) 'headline': headline!,
+    if (image != null) 'image': image!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// Combination of float amount and unit.
@@ -1198,21 +1240,18 @@ class FloatUnit {
   /// unit.
   core.String? unit;
 
-  FloatUnit({
-    this.amount,
-    this.unit,
-  });
+  FloatUnit({this.amount, this.unit});
 
   FloatUnit.fromJson(core.Map json_)
-      : this(
-          amount: (json_['amount'] as core.num?)?.toDouble(),
-          unit: json_['unit'] as core.String?,
-        );
+    : this(
+        amount: (json_['amount'] as core.num?)?.toDouble(),
+        unit: json_['unit'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!,
-        if (unit != null) 'unit': unit!,
-      };
+    if (amount != null) 'amount': amount!,
+    if (unit != null) 'unit': unit!,
+  };
 }
 
 /// Description of a certification.
@@ -1239,17 +1278,17 @@ class GoogleShoppingManufacturersV1ProductCertification {
   });
 
   GoogleShoppingManufacturersV1ProductCertification.fromJson(core.Map json_)
-      : this(
-          authority: json_['authority'] as core.String?,
-          code: json_['code'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        authority: json_['authority'] as core.String?,
+        code: json_['code'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authority != null) 'authority': authority!,
-        if (code != null) 'code': code!,
-        if (name != null) 'name': name!,
-      };
+    if (authority != null) 'authority': authority!,
+    if (code != null) 'code': code!,
+    if (name != null) 'name': name!,
+  };
 }
 
 class Grocery {
@@ -1293,35 +1332,37 @@ class Grocery {
   });
 
   Grocery.fromJson(core.Map json_)
-      : this(
-          activeIngredients: json_['activeIngredients'] as core.String?,
-          alcoholByVolume: (json_['alcoholByVolume'] as core.num?)?.toDouble(),
-          allergens: json_['allergens'] as core.String?,
-          derivedNutritionClaim: (json_['derivedNutritionClaim'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          directions: json_['directions'] as core.String?,
-          indications: json_['indications'] as core.String?,
-          ingredients: json_['ingredients'] as core.String?,
-          nutritionClaim: (json_['nutritionClaim'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          storageInstructions: json_['storageInstructions'] as core.String?,
-        );
+    : this(
+        activeIngredients: json_['activeIngredients'] as core.String?,
+        alcoholByVolume: (json_['alcoholByVolume'] as core.num?)?.toDouble(),
+        allergens: json_['allergens'] as core.String?,
+        derivedNutritionClaim:
+            (json_['derivedNutritionClaim'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        directions: json_['directions'] as core.String?,
+        indications: json_['indications'] as core.String?,
+        ingredients: json_['ingredients'] as core.String?,
+        nutritionClaim:
+            (json_['nutritionClaim'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        storageInstructions: json_['storageInstructions'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activeIngredients != null) 'activeIngredients': activeIngredients!,
-        if (alcoholByVolume != null) 'alcoholByVolume': alcoholByVolume!,
-        if (allergens != null) 'allergens': allergens!,
-        if (derivedNutritionClaim != null)
-          'derivedNutritionClaim': derivedNutritionClaim!,
-        if (directions != null) 'directions': directions!,
-        if (indications != null) 'indications': indications!,
-        if (ingredients != null) 'ingredients': ingredients!,
-        if (nutritionClaim != null) 'nutritionClaim': nutritionClaim!,
-        if (storageInstructions != null)
-          'storageInstructions': storageInstructions!,
-      };
+    if (activeIngredients != null) 'activeIngredients': activeIngredients!,
+    if (alcoholByVolume != null) 'alcoholByVolume': alcoholByVolume!,
+    if (allergens != null) 'allergens': allergens!,
+    if (derivedNutritionClaim != null)
+      'derivedNutritionClaim': derivedNutritionClaim!,
+    if (directions != null) 'directions': directions!,
+    if (indications != null) 'indications': indications!,
+    if (ingredients != null) 'ingredients': ingredients!,
+    if (nutritionClaim != null) 'nutritionClaim': nutritionClaim!,
+    if (storageInstructions != null)
+      'storageInstructions': storageInstructions!,
+  };
 }
 
 /// An image.
@@ -1365,24 +1406,20 @@ class Image {
   /// - "UPLOADED" : The image was uploaded.
   core.String? type;
 
-  Image({
-    this.imageUrl,
-    this.status,
-    this.type,
-  });
+  Image({this.imageUrl, this.status, this.type});
 
   Image.fromJson(core.Map json_)
-      : this(
-          imageUrl: json_['imageUrl'] as core.String?,
-          status: json_['status'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        imageUrl: json_['imageUrl'] as core.String?,
+        status: json_['status'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (imageUrl != null) 'imageUrl': imageUrl!,
-        if (status != null) 'status': status!,
-        if (type != null) 'type': type!,
-      };
+    if (imageUrl != null) 'imageUrl': imageUrl!,
+    if (status != null) 'status': status!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Product issue.
@@ -1451,32 +1488,33 @@ class Issue {
   });
 
   Issue.fromJson(core.Map json_)
-      : this(
-          applicableCountries: (json_['applicableCountries'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          attribute: json_['attribute'] as core.String?,
-          description: json_['description'] as core.String?,
-          destination: json_['destination'] as core.String?,
-          resolution: json_['resolution'] as core.String?,
-          severity: json_['severity'] as core.String?,
-          timestamp: json_['timestamp'] as core.String?,
-          title: json_['title'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        applicableCountries:
+            (json_['applicableCountries'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        attribute: json_['attribute'] as core.String?,
+        description: json_['description'] as core.String?,
+        destination: json_['destination'] as core.String?,
+        resolution: json_['resolution'] as core.String?,
+        severity: json_['severity'] as core.String?,
+        timestamp: json_['timestamp'] as core.String?,
+        title: json_['title'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applicableCountries != null)
-          'applicableCountries': applicableCountries!,
-        if (attribute != null) 'attribute': attribute!,
-        if (description != null) 'description': description!,
-        if (destination != null) 'destination': destination!,
-        if (resolution != null) 'resolution': resolution!,
-        if (severity != null) 'severity': severity!,
-        if (timestamp != null) 'timestamp': timestamp!,
-        if (title != null) 'title': title!,
-        if (type != null) 'type': type!,
-      };
+    if (applicableCountries != null)
+      'applicableCountries': applicableCountries!,
+    if (attribute != null) 'attribute': attribute!,
+    if (description != null) 'description': description!,
+    if (destination != null) 'destination': destination!,
+    if (resolution != null) 'resolution': resolution!,
+    if (severity != null) 'severity': severity!,
+    if (timestamp != null) 'timestamp': timestamp!,
+    if (title != null) 'title': title!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Response for ListProductCertifications method.
@@ -1495,19 +1533,23 @@ class ListProductCertificationsResponse {
   });
 
   ListProductCertificationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          productCertifications: (json_['productCertifications'] as core.List?)
-              ?.map((value) => ProductCertification.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        productCertifications:
+            (json_['productCertifications'] as core.List?)
+                ?.map(
+                  (value) => ProductCertification.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (productCertifications != null)
-          'productCertifications': productCertifications!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (productCertifications != null)
+      'productCertifications': productCertifications!,
+  };
 }
 
 class ListProductsResponse {
@@ -1517,24 +1559,25 @@ class ListProductsResponse {
   /// List of the products.
   core.List<Product>? products;
 
-  ListProductsResponse({
-    this.nextPageToken,
-    this.products,
-  });
+  ListProductsResponse({this.nextPageToken, this.products});
 
   ListProductsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          products: (json_['products'] as core.List?)
-              ?.map((value) => Product.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        products:
+            (json_['products'] as core.List?)
+                ?.map(
+                  (value) => Product.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (products != null) 'products': products!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (products != null) 'products': products!,
+  };
 }
 
 class Nutrition {
@@ -1718,208 +1761,256 @@ class Nutrition {
   });
 
   Nutrition.fromJson(core.Map json_)
-      : this(
-          addedSugars: json_.containsKey('addedSugars')
-              ? FloatUnit.fromJson(
-                  json_['addedSugars'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addedSugarsDailyPercentage:
-              (json_['addedSugarsDailyPercentage'] as core.num?)?.toDouble(),
-          calcium: json_.containsKey('calcium')
-              ? FloatUnit.fromJson(
-                  json_['calcium'] as core.Map<core.String, core.dynamic>)
-              : null,
-          calciumDailyPercentage:
-              (json_['calciumDailyPercentage'] as core.num?)?.toDouble(),
-          cholesterol: json_.containsKey('cholesterol')
-              ? FloatUnit.fromJson(
-                  json_['cholesterol'] as core.Map<core.String, core.dynamic>)
-              : null,
-          cholesterolDailyPercentage:
-              (json_['cholesterolDailyPercentage'] as core.num?)?.toDouble(),
-          dietaryFiber: json_.containsKey('dietaryFiber')
-              ? FloatUnit.fromJson(
-                  json_['dietaryFiber'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dietaryFiberDailyPercentage:
-              (json_['dietaryFiberDailyPercentage'] as core.num?)?.toDouble(),
-          energy: json_.containsKey('energy')
-              ? FloatUnit.fromJson(
-                  json_['energy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          energyFromFat: json_.containsKey('energyFromFat')
-              ? FloatUnit.fromJson(
-                  json_['energyFromFat'] as core.Map<core.String, core.dynamic>)
-              : null,
-          folateDailyPercentage:
-              (json_['folateDailyPercentage'] as core.num?)?.toDouble(),
-          folateFolicAcid: json_.containsKey('folateFolicAcid')
-              ? FloatUnit.fromJson(json_['folateFolicAcid']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          folateMcgDfe: (json_['folateMcgDfe'] as core.num?)?.toDouble(),
-          iron: json_.containsKey('iron')
-              ? FloatUnit.fromJson(
-                  json_['iron'] as core.Map<core.String, core.dynamic>)
-              : null,
-          ironDailyPercentage:
-              (json_['ironDailyPercentage'] as core.num?)?.toDouble(),
-          monounsaturatedFat: json_.containsKey('monounsaturatedFat')
-              ? FloatUnit.fromJson(json_['monounsaturatedFat']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          nutritionFactMeasure: json_['nutritionFactMeasure'] as core.String?,
-          polyols: json_.containsKey('polyols')
-              ? FloatUnit.fromJson(
-                  json_['polyols'] as core.Map<core.String, core.dynamic>)
-              : null,
-          polyunsaturatedFat: json_.containsKey('polyunsaturatedFat')
-              ? FloatUnit.fromJson(json_['polyunsaturatedFat']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          potassium: json_.containsKey('potassium')
-              ? FloatUnit.fromJson(
-                  json_['potassium'] as core.Map<core.String, core.dynamic>)
-              : null,
-          potassiumDailyPercentage:
-              (json_['potassiumDailyPercentage'] as core.num?)?.toDouble(),
-          preparedSizeDescription:
-              json_['preparedSizeDescription'] as core.String?,
-          protein: json_.containsKey('protein')
-              ? FloatUnit.fromJson(
-                  json_['protein'] as core.Map<core.String, core.dynamic>)
-              : null,
-          proteinDailyPercentage:
-              (json_['proteinDailyPercentage'] as core.num?)?.toDouble(),
-          saturatedFat: json_.containsKey('saturatedFat')
-              ? FloatUnit.fromJson(
-                  json_['saturatedFat'] as core.Map<core.String, core.dynamic>)
-              : null,
-          saturatedFatDailyPercentage:
-              (json_['saturatedFatDailyPercentage'] as core.num?)?.toDouble(),
-          servingSizeDescription:
-              json_['servingSizeDescription'] as core.String?,
-          servingSizeMeasure: json_.containsKey('servingSizeMeasure')
-              ? FloatUnit.fromJson(json_['servingSizeMeasure']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          servingsPerContainer: json_['servingsPerContainer'] as core.String?,
-          sodium: json_.containsKey('sodium')
-              ? FloatUnit.fromJson(
-                  json_['sodium'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sodiumDailyPercentage:
-              (json_['sodiumDailyPercentage'] as core.num?)?.toDouble(),
-          starch: json_.containsKey('starch')
-              ? FloatUnit.fromJson(
-                  json_['starch'] as core.Map<core.String, core.dynamic>)
-              : null,
-          totalCarbohydrate: json_.containsKey('totalCarbohydrate')
-              ? FloatUnit.fromJson(json_['totalCarbohydrate']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          totalCarbohydrateDailyPercentage:
-              (json_['totalCarbohydrateDailyPercentage'] as core.num?)
-                  ?.toDouble(),
-          totalFat: json_.containsKey('totalFat')
-              ? FloatUnit.fromJson(
-                  json_['totalFat'] as core.Map<core.String, core.dynamic>)
-              : null,
-          totalFatDailyPercentage:
-              (json_['totalFatDailyPercentage'] as core.num?)?.toDouble(),
-          totalSugars: json_.containsKey('totalSugars')
-              ? FloatUnit.fromJson(
-                  json_['totalSugars'] as core.Map<core.String, core.dynamic>)
-              : null,
-          totalSugarsDailyPercentage:
-              (json_['totalSugarsDailyPercentage'] as core.num?)?.toDouble(),
-          transFat: json_.containsKey('transFat')
-              ? FloatUnit.fromJson(
-                  json_['transFat'] as core.Map<core.String, core.dynamic>)
-              : null,
-          transFatDailyPercentage:
-              (json_['transFatDailyPercentage'] as core.num?)?.toDouble(),
-          vitaminD: json_.containsKey('vitaminD')
-              ? FloatUnit.fromJson(
-                  json_['vitaminD'] as core.Map<core.String, core.dynamic>)
-              : null,
-          vitaminDDailyPercentage:
-              (json_['vitaminDDailyPercentage'] as core.num?)?.toDouble(),
-          voluntaryNutritionFact:
-              (json_['voluntaryNutritionFact'] as core.List?)
-                  ?.map((value) => VoluntaryNutritionFact.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+    : this(
+        addedSugars:
+            json_.containsKey('addedSugars')
+                ? FloatUnit.fromJson(
+                  json_['addedSugars'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addedSugarsDailyPercentage:
+            (json_['addedSugarsDailyPercentage'] as core.num?)?.toDouble(),
+        calcium:
+            json_.containsKey('calcium')
+                ? FloatUnit.fromJson(
+                  json_['calcium'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        calciumDailyPercentage:
+            (json_['calciumDailyPercentage'] as core.num?)?.toDouble(),
+        cholesterol:
+            json_.containsKey('cholesterol')
+                ? FloatUnit.fromJson(
+                  json_['cholesterol'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cholesterolDailyPercentage:
+            (json_['cholesterolDailyPercentage'] as core.num?)?.toDouble(),
+        dietaryFiber:
+            json_.containsKey('dietaryFiber')
+                ? FloatUnit.fromJson(
+                  json_['dietaryFiber'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dietaryFiberDailyPercentage:
+            (json_['dietaryFiberDailyPercentage'] as core.num?)?.toDouble(),
+        energy:
+            json_.containsKey('energy')
+                ? FloatUnit.fromJson(
+                  json_['energy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        energyFromFat:
+            json_.containsKey('energyFromFat')
+                ? FloatUnit.fromJson(
+                  json_['energyFromFat'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        folateDailyPercentage:
+            (json_['folateDailyPercentage'] as core.num?)?.toDouble(),
+        folateFolicAcid:
+            json_.containsKey('folateFolicAcid')
+                ? FloatUnit.fromJson(
+                  json_['folateFolicAcid']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        folateMcgDfe: (json_['folateMcgDfe'] as core.num?)?.toDouble(),
+        iron:
+            json_.containsKey('iron')
+                ? FloatUnit.fromJson(
+                  json_['iron'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        ironDailyPercentage:
+            (json_['ironDailyPercentage'] as core.num?)?.toDouble(),
+        monounsaturatedFat:
+            json_.containsKey('monounsaturatedFat')
+                ? FloatUnit.fromJson(
+                  json_['monounsaturatedFat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nutritionFactMeasure: json_['nutritionFactMeasure'] as core.String?,
+        polyols:
+            json_.containsKey('polyols')
+                ? FloatUnit.fromJson(
+                  json_['polyols'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        polyunsaturatedFat:
+            json_.containsKey('polyunsaturatedFat')
+                ? FloatUnit.fromJson(
+                  json_['polyunsaturatedFat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        potassium:
+            json_.containsKey('potassium')
+                ? FloatUnit.fromJson(
+                  json_['potassium'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        potassiumDailyPercentage:
+            (json_['potassiumDailyPercentage'] as core.num?)?.toDouble(),
+        preparedSizeDescription:
+            json_['preparedSizeDescription'] as core.String?,
+        protein:
+            json_.containsKey('protein')
+                ? FloatUnit.fromJson(
+                  json_['protein'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        proteinDailyPercentage:
+            (json_['proteinDailyPercentage'] as core.num?)?.toDouble(),
+        saturatedFat:
+            json_.containsKey('saturatedFat')
+                ? FloatUnit.fromJson(
+                  json_['saturatedFat'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        saturatedFatDailyPercentage:
+            (json_['saturatedFatDailyPercentage'] as core.num?)?.toDouble(),
+        servingSizeDescription: json_['servingSizeDescription'] as core.String?,
+        servingSizeMeasure:
+            json_.containsKey('servingSizeMeasure')
+                ? FloatUnit.fromJson(
+                  json_['servingSizeMeasure']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        servingsPerContainer: json_['servingsPerContainer'] as core.String?,
+        sodium:
+            json_.containsKey('sodium')
+                ? FloatUnit.fromJson(
+                  json_['sodium'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sodiumDailyPercentage:
+            (json_['sodiumDailyPercentage'] as core.num?)?.toDouble(),
+        starch:
+            json_.containsKey('starch')
+                ? FloatUnit.fromJson(
+                  json_['starch'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        totalCarbohydrate:
+            json_.containsKey('totalCarbohydrate')
+                ? FloatUnit.fromJson(
+                  json_['totalCarbohydrate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        totalCarbohydrateDailyPercentage:
+            (json_['totalCarbohydrateDailyPercentage'] as core.num?)
+                ?.toDouble(),
+        totalFat:
+            json_.containsKey('totalFat')
+                ? FloatUnit.fromJson(
+                  json_['totalFat'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        totalFatDailyPercentage:
+            (json_['totalFatDailyPercentage'] as core.num?)?.toDouble(),
+        totalSugars:
+            json_.containsKey('totalSugars')
+                ? FloatUnit.fromJson(
+                  json_['totalSugars'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        totalSugarsDailyPercentage:
+            (json_['totalSugarsDailyPercentage'] as core.num?)?.toDouble(),
+        transFat:
+            json_.containsKey('transFat')
+                ? FloatUnit.fromJson(
+                  json_['transFat'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        transFatDailyPercentage:
+            (json_['transFatDailyPercentage'] as core.num?)?.toDouble(),
+        vitaminD:
+            json_.containsKey('vitaminD')
+                ? FloatUnit.fromJson(
+                  json_['vitaminD'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        vitaminDDailyPercentage:
+            (json_['vitaminDDailyPercentage'] as core.num?)?.toDouble(),
+        voluntaryNutritionFact:
+            (json_['voluntaryNutritionFact'] as core.List?)
+                ?.map(
+                  (value) => VoluntaryNutritionFact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addedSugars != null) 'addedSugars': addedSugars!,
-        if (addedSugarsDailyPercentage != null)
-          'addedSugarsDailyPercentage': addedSugarsDailyPercentage!,
-        if (calcium != null) 'calcium': calcium!,
-        if (calciumDailyPercentage != null)
-          'calciumDailyPercentage': calciumDailyPercentage!,
-        if (cholesterol != null) 'cholesterol': cholesterol!,
-        if (cholesterolDailyPercentage != null)
-          'cholesterolDailyPercentage': cholesterolDailyPercentage!,
-        if (dietaryFiber != null) 'dietaryFiber': dietaryFiber!,
-        if (dietaryFiberDailyPercentage != null)
-          'dietaryFiberDailyPercentage': dietaryFiberDailyPercentage!,
-        if (energy != null) 'energy': energy!,
-        if (energyFromFat != null) 'energyFromFat': energyFromFat!,
-        if (folateDailyPercentage != null)
-          'folateDailyPercentage': folateDailyPercentage!,
-        if (folateFolicAcid != null) 'folateFolicAcid': folateFolicAcid!,
-        if (folateMcgDfe != null) 'folateMcgDfe': folateMcgDfe!,
-        if (iron != null) 'iron': iron!,
-        if (ironDailyPercentage != null)
-          'ironDailyPercentage': ironDailyPercentage!,
-        if (monounsaturatedFat != null)
-          'monounsaturatedFat': monounsaturatedFat!,
-        if (nutritionFactMeasure != null)
-          'nutritionFactMeasure': nutritionFactMeasure!,
-        if (polyols != null) 'polyols': polyols!,
-        if (polyunsaturatedFat != null)
-          'polyunsaturatedFat': polyunsaturatedFat!,
-        if (potassium != null) 'potassium': potassium!,
-        if (potassiumDailyPercentage != null)
-          'potassiumDailyPercentage': potassiumDailyPercentage!,
-        if (preparedSizeDescription != null)
-          'preparedSizeDescription': preparedSizeDescription!,
-        if (protein != null) 'protein': protein!,
-        if (proteinDailyPercentage != null)
-          'proteinDailyPercentage': proteinDailyPercentage!,
-        if (saturatedFat != null) 'saturatedFat': saturatedFat!,
-        if (saturatedFatDailyPercentage != null)
-          'saturatedFatDailyPercentage': saturatedFatDailyPercentage!,
-        if (servingSizeDescription != null)
-          'servingSizeDescription': servingSizeDescription!,
-        if (servingSizeMeasure != null)
-          'servingSizeMeasure': servingSizeMeasure!,
-        if (servingsPerContainer != null)
-          'servingsPerContainer': servingsPerContainer!,
-        if (sodium != null) 'sodium': sodium!,
-        if (sodiumDailyPercentage != null)
-          'sodiumDailyPercentage': sodiumDailyPercentage!,
-        if (starch != null) 'starch': starch!,
-        if (totalCarbohydrate != null) 'totalCarbohydrate': totalCarbohydrate!,
-        if (totalCarbohydrateDailyPercentage != null)
-          'totalCarbohydrateDailyPercentage': totalCarbohydrateDailyPercentage!,
-        if (totalFat != null) 'totalFat': totalFat!,
-        if (totalFatDailyPercentage != null)
-          'totalFatDailyPercentage': totalFatDailyPercentage!,
-        if (totalSugars != null) 'totalSugars': totalSugars!,
-        if (totalSugarsDailyPercentage != null)
-          'totalSugarsDailyPercentage': totalSugarsDailyPercentage!,
-        if (transFat != null) 'transFat': transFat!,
-        if (transFatDailyPercentage != null)
-          'transFatDailyPercentage': transFatDailyPercentage!,
-        if (vitaminD != null) 'vitaminD': vitaminD!,
-        if (vitaminDDailyPercentage != null)
-          'vitaminDDailyPercentage': vitaminDDailyPercentage!,
-        if (voluntaryNutritionFact != null)
-          'voluntaryNutritionFact': voluntaryNutritionFact!,
-      };
+    if (addedSugars != null) 'addedSugars': addedSugars!,
+    if (addedSugarsDailyPercentage != null)
+      'addedSugarsDailyPercentage': addedSugarsDailyPercentage!,
+    if (calcium != null) 'calcium': calcium!,
+    if (calciumDailyPercentage != null)
+      'calciumDailyPercentage': calciumDailyPercentage!,
+    if (cholesterol != null) 'cholesterol': cholesterol!,
+    if (cholesterolDailyPercentage != null)
+      'cholesterolDailyPercentage': cholesterolDailyPercentage!,
+    if (dietaryFiber != null) 'dietaryFiber': dietaryFiber!,
+    if (dietaryFiberDailyPercentage != null)
+      'dietaryFiberDailyPercentage': dietaryFiberDailyPercentage!,
+    if (energy != null) 'energy': energy!,
+    if (energyFromFat != null) 'energyFromFat': energyFromFat!,
+    if (folateDailyPercentage != null)
+      'folateDailyPercentage': folateDailyPercentage!,
+    if (folateFolicAcid != null) 'folateFolicAcid': folateFolicAcid!,
+    if (folateMcgDfe != null) 'folateMcgDfe': folateMcgDfe!,
+    if (iron != null) 'iron': iron!,
+    if (ironDailyPercentage != null)
+      'ironDailyPercentage': ironDailyPercentage!,
+    if (monounsaturatedFat != null) 'monounsaturatedFat': monounsaturatedFat!,
+    if (nutritionFactMeasure != null)
+      'nutritionFactMeasure': nutritionFactMeasure!,
+    if (polyols != null) 'polyols': polyols!,
+    if (polyunsaturatedFat != null) 'polyunsaturatedFat': polyunsaturatedFat!,
+    if (potassium != null) 'potassium': potassium!,
+    if (potassiumDailyPercentage != null)
+      'potassiumDailyPercentage': potassiumDailyPercentage!,
+    if (preparedSizeDescription != null)
+      'preparedSizeDescription': preparedSizeDescription!,
+    if (protein != null) 'protein': protein!,
+    if (proteinDailyPercentage != null)
+      'proteinDailyPercentage': proteinDailyPercentage!,
+    if (saturatedFat != null) 'saturatedFat': saturatedFat!,
+    if (saturatedFatDailyPercentage != null)
+      'saturatedFatDailyPercentage': saturatedFatDailyPercentage!,
+    if (servingSizeDescription != null)
+      'servingSizeDescription': servingSizeDescription!,
+    if (servingSizeMeasure != null) 'servingSizeMeasure': servingSizeMeasure!,
+    if (servingsPerContainer != null)
+      'servingsPerContainer': servingsPerContainer!,
+    if (sodium != null) 'sodium': sodium!,
+    if (sodiumDailyPercentage != null)
+      'sodiumDailyPercentage': sodiumDailyPercentage!,
+    if (starch != null) 'starch': starch!,
+    if (totalCarbohydrate != null) 'totalCarbohydrate': totalCarbohydrate!,
+    if (totalCarbohydrateDailyPercentage != null)
+      'totalCarbohydrateDailyPercentage': totalCarbohydrateDailyPercentage!,
+    if (totalFat != null) 'totalFat': totalFat!,
+    if (totalFatDailyPercentage != null)
+      'totalFatDailyPercentage': totalFatDailyPercentage!,
+    if (totalSugars != null) 'totalSugars': totalSugars!,
+    if (totalSugarsDailyPercentage != null)
+      'totalSugarsDailyPercentage': totalSugarsDailyPercentage!,
+    if (transFat != null) 'transFat': transFat!,
+    if (transFatDailyPercentage != null)
+      'transFatDailyPercentage': transFatDailyPercentage!,
+    if (vitaminD != null) 'vitaminD': vitaminD!,
+    if (vitaminDDailyPercentage != null)
+      'vitaminDDailyPercentage': vitaminDDailyPercentage!,
+    if (voluntaryNutritionFact != null)
+      'voluntaryNutritionFact': voluntaryNutritionFact!,
+  };
 }
 
 /// A price.
@@ -1930,21 +2021,18 @@ class Price {
   /// The currency in which the price is denoted.
   core.String? currency;
 
-  Price({
-    this.amount,
-    this.currency,
-  });
+  Price({this.amount, this.currency});
 
   Price.fromJson(core.Map json_)
-      : this(
-          amount: json_['amount'] as core.String?,
-          currency: json_['currency'] as core.String?,
-        );
+    : this(
+        amount: json_['amount'] as core.String?,
+        currency: json_['currency'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!,
-        if (currency != null) 'currency': currency!,
-      };
+    if (amount != null) 'amount': amount!,
+    if (currency != null) 'currency': currency!,
+  };
 }
 
 /// Product data.
@@ -2006,39 +2094,49 @@ class Product {
   });
 
   Product.fromJson(core.Map json_)
-      : this(
-          attributes: json_.containsKey('attributes')
-              ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          contentLanguage: json_['contentLanguage'] as core.String?,
-          destinationStatuses: (json_['destinationStatuses'] as core.List?)
-              ?.map((value) => DestinationStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          feedLabel: json_['feedLabel'] as core.String?,
-          issues: (json_['issues'] as core.List?)
-              ?.map((value) =>
-                  Issue.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          parent: json_['parent'] as core.String?,
-          productId: json_['productId'] as core.String?,
-          targetCountry: json_['targetCountry'] as core.String?,
-        );
+    : this(
+        attributes:
+            json_.containsKey('attributes')
+                ? Attributes.fromJson(
+                  json_['attributes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        contentLanguage: json_['contentLanguage'] as core.String?,
+        destinationStatuses:
+            (json_['destinationStatuses'] as core.List?)
+                ?.map(
+                  (value) => DestinationStatus.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        feedLabel: json_['feedLabel'] as core.String?,
+        issues:
+            (json_['issues'] as core.List?)
+                ?.map(
+                  (value) => Issue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        parent: json_['parent'] as core.String?,
+        productId: json_['productId'] as core.String?,
+        targetCountry: json_['targetCountry'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (contentLanguage != null) 'contentLanguage': contentLanguage!,
-        if (destinationStatuses != null)
-          'destinationStatuses': destinationStatuses!,
-        if (feedLabel != null) 'feedLabel': feedLabel!,
-        if (issues != null) 'issues': issues!,
-        if (name != null) 'name': name!,
-        if (parent != null) 'parent': parent!,
-        if (productId != null) 'productId': productId!,
-        if (targetCountry != null) 'targetCountry': targetCountry!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (contentLanguage != null) 'contentLanguage': contentLanguage!,
+    if (destinationStatuses != null)
+      'destinationStatuses': destinationStatuses!,
+    if (feedLabel != null) 'feedLabel': feedLabel!,
+    if (issues != null) 'issues': issues!,
+    if (name != null) 'name': name!,
+    if (parent != null) 'parent': parent!,
+    if (productId != null) 'productId': productId!,
+    if (targetCountry != null) 'targetCountry': targetCountry!,
+  };
 }
 
 /// Product certification data.
@@ -2116,49 +2214,65 @@ class ProductCertification {
   });
 
   ProductCertification.fromJson(core.Map json_)
-      : this(
-          brand: json_['brand'] as core.String?,
-          certification: (json_['certification'] as core.List?)
-              ?.map((value) => Certification.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          countryCode: (json_['countryCode'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          destinationStatuses: (json_['destinationStatuses'] as core.List?)
-              ?.map((value) => DestinationStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          issues: (json_['issues'] as core.List?)
-              ?.map((value) =>
-                  Issue.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          mpn: (json_['mpn'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          productCode: (json_['productCode'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          productType: (json_['productType'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        brand: json_['brand'] as core.String?,
+        certification:
+            (json_['certification'] as core.List?)
+                ?.map(
+                  (value) => Certification.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        countryCode:
+            (json_['countryCode'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        destinationStatuses:
+            (json_['destinationStatuses'] as core.List?)
+                ?.map(
+                  (value) => DestinationStatus.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        issues:
+            (json_['issues'] as core.List?)
+                ?.map(
+                  (value) => Issue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        mpn:
+            (json_['mpn'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        productCode:
+            (json_['productCode'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        productType:
+            (json_['productType'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (brand != null) 'brand': brand!,
-        if (certification != null) 'certification': certification!,
-        if (countryCode != null) 'countryCode': countryCode!,
-        if (destinationStatuses != null)
-          'destinationStatuses': destinationStatuses!,
-        if (issues != null) 'issues': issues!,
-        if (mpn != null) 'mpn': mpn!,
-        if (name != null) 'name': name!,
-        if (productCode != null) 'productCode': productCode!,
-        if (productType != null) 'productType': productType!,
-        if (title != null) 'title': title!,
-      };
+    if (brand != null) 'brand': brand!,
+    if (certification != null) 'certification': certification!,
+    if (countryCode != null) 'countryCode': countryCode!,
+    if (destinationStatuses != null)
+      'destinationStatuses': destinationStatuses!,
+    if (issues != null) 'issues': issues!,
+    if (mpn != null) 'mpn': mpn!,
+    if (name != null) 'name': name!,
+    if (productCode != null) 'productCode': productCode!,
+    if (productType != null) 'productType': productType!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// A product detail of the product.
@@ -2175,24 +2289,20 @@ class ProductDetail {
   /// A short section name that can be reused between multiple product details.
   core.String? sectionName;
 
-  ProductDetail({
-    this.attributeName,
-    this.attributeValue,
-    this.sectionName,
-  });
+  ProductDetail({this.attributeName, this.attributeValue, this.sectionName});
 
   ProductDetail.fromJson(core.Map json_)
-      : this(
-          attributeName: json_['attributeName'] as core.String?,
-          attributeValue: json_['attributeValue'] as core.String?,
-          sectionName: json_['sectionName'] as core.String?,
-        );
+    : this(
+        attributeName: json_['attributeName'] as core.String?,
+        attributeValue: json_['attributeValue'] as core.String?,
+        sectionName: json_['sectionName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeName != null) 'attributeName': attributeName!,
-        if (attributeValue != null) 'attributeValue': attributeValue!,
-        if (sectionName != null) 'sectionName': sectionName!,
-      };
+    if (attributeName != null) 'attributeName': attributeName!,
+    if (attributeValue != null) 'attributeValue': attributeValue!,
+    if (sectionName != null) 'sectionName': sectionName!,
+  };
 }
 
 /// Voluntary Nutrition Facts.
@@ -2206,25 +2316,23 @@ class VoluntaryNutritionFact {
   /// Value.
   FloatUnit? value;
 
-  VoluntaryNutritionFact({
-    this.dailyPercentage,
-    this.name,
-    this.value,
-  });
+  VoluntaryNutritionFact({this.dailyPercentage, this.name, this.value});
 
   VoluntaryNutritionFact.fromJson(core.Map json_)
-      : this(
-          dailyPercentage: (json_['dailyPercentage'] as core.num?)?.toDouble(),
-          name: json_['name'] as core.String?,
-          value: json_.containsKey('value')
-              ? FloatUnit.fromJson(
-                  json_['value'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dailyPercentage: (json_['dailyPercentage'] as core.num?)?.toDouble(),
+        name: json_['name'] as core.String?,
+        value:
+            json_.containsKey('value')
+                ? FloatUnit.fromJson(
+                  json_['value'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dailyPercentage != null) 'dailyPercentage': dailyPercentage!,
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
+    if (dailyPercentage != null) 'dailyPercentage': dailyPercentage!,
+    if (name != null) 'name': name!,
+    if (value != null) 'value': value!,
+  };
 }

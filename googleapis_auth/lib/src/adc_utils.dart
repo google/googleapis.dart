@@ -24,9 +24,7 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
   try {
     credentials = json.decode(await file.readAsString());
   } on IOException {
-    throw Exception(
-      'Failed to read credentials file from $fileSource',
-    );
+    throw Exception('Failed to read credentials file from $fileSource');
   } on FormatException {
     throw Exception(
       'Failed to parse JSON from credentials file from $fileSource',

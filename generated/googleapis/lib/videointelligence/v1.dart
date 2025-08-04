@@ -62,11 +62,16 @@ class CloudVideoIntelligenceApi {
   ProjectsResource get projects => ProjectsResource(_requester);
   VideosResource get videos => VideosResource(_requester);
 
-  CloudVideoIntelligenceApi(http.Client client,
-      {core.String rootUrl = 'https://videointelligence.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudVideoIntelligenceApi(
+    http.Client client, {
+    core.String rootUrl = 'https://videointelligence.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class OperationsResource {
@@ -94,14 +99,14 @@ class OperationsProjectsLocationsResource {
       OperationsProjectsLocationsOperationsResource(_requester);
 
   OperationsProjectsLocationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class OperationsProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   OperationsProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -143,10 +148,12 @@ class OperationsProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a long-running operation.
@@ -184,10 +191,12 @@ class OperationsProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the latest state of a long-running operation.
@@ -227,7 +236,8 @@ class OperationsProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -253,7 +263,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -303,7 +313,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a long-running operation.
@@ -341,10 +352,12 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the latest state of a long-running operation.
@@ -384,7 +397,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -434,7 +448,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -482,7 +497,8 @@ class VideosResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -502,8 +518,10 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
       convert.base64.decode(inputContent!);
 
   set inputContentAsBytes(core.List<core.int> bytes_) {
-    inputContent =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    inputContent = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Input video location.
@@ -552,28 +570,31 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
   });
 
   GoogleCloudVideointelligenceV1AnnotateVideoRequest.fromJson(core.Map json_)
-      : this(
-          features: (json_['features'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          inputContent: json_['inputContent'] as core.String?,
-          inputUri: json_['inputUri'] as core.String?,
-          locationId: json_['locationId'] as core.String?,
-          outputUri: json_['outputUri'] as core.String?,
-          videoContext: json_.containsKey('videoContext')
-              ? GoogleCloudVideointelligenceV1VideoContext.fromJson(
-                  json_['videoContext'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        features:
+            (json_['features'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        inputContent: json_['inputContent'] as core.String?,
+        inputUri: json_['inputUri'] as core.String?,
+        locationId: json_['locationId'] as core.String?,
+        outputUri: json_['outputUri'] as core.String?,
+        videoContext:
+            json_.containsKey('videoContext')
+                ? GoogleCloudVideointelligenceV1VideoContext.fromJson(
+                  json_['videoContext'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (features != null) 'features': features!,
-        if (inputContent != null) 'inputContent': inputContent!,
-        if (inputUri != null) 'inputUri': inputUri!,
-        if (locationId != null) 'locationId': locationId!,
-        if (outputUri != null) 'outputUri': outputUri!,
-        if (videoContext != null) 'videoContext': videoContext!,
-      };
+    if (features != null) 'features': features!,
+    if (inputContent != null) 'inputContent': inputContent!,
+    if (inputUri != null) 'inputUri': inputUri!,
+    if (locationId != null) 'locationId': locationId!,
+    if (outputUri != null) 'outputUri': outputUri!,
+    if (videoContext != null) 'videoContext': videoContext!,
+  };
 }
 
 /// Config for EXPLICIT_CONTENT_DETECTION.
@@ -584,19 +605,15 @@ class GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig {
   /// "builtin/latest".
   core.String? model;
 
-  GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig({
-    this.model,
-  });
+  GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig({this.model});
 
   GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig.fromJson(
-      core.Map json_)
-      : this(
-          model: json_['model'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(model: json_['model'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (model != null) 'model': model!,
-      };
+    if (model != null) 'model': model!,
+  };
 }
 
 /// Config for FACE_DETECTION.
@@ -623,18 +640,18 @@ class GoogleCloudVideointelligenceV1FaceDetectionConfig {
   });
 
   GoogleCloudVideointelligenceV1FaceDetectionConfig.fromJson(core.Map json_)
-      : this(
-          includeAttributes: json_['includeAttributes'] as core.bool?,
-          includeBoundingBoxes: json_['includeBoundingBoxes'] as core.bool?,
-          model: json_['model'] as core.String?,
-        );
+    : this(
+        includeAttributes: json_['includeAttributes'] as core.bool?,
+        includeBoundingBoxes: json_['includeBoundingBoxes'] as core.bool?,
+        model: json_['model'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (includeAttributes != null) 'includeAttributes': includeAttributes!,
-        if (includeBoundingBoxes != null)
-          'includeBoundingBoxes': includeBoundingBoxes!,
-        if (model != null) 'model': model!,
-      };
+    if (includeAttributes != null) 'includeAttributes': includeAttributes!,
+    if (includeBoundingBoxes != null)
+      'includeBoundingBoxes': includeBoundingBoxes!,
+    if (model != null) 'model': model!,
+  };
 }
 
 /// Config for LABEL_DETECTION.
@@ -690,26 +707,25 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
   });
 
   GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(core.Map json_)
-      : this(
-          frameConfidenceThreshold:
-              (json_['frameConfidenceThreshold'] as core.num?)?.toDouble(),
-          labelDetectionMode: json_['labelDetectionMode'] as core.String?,
-          model: json_['model'] as core.String?,
-          stationaryCamera: json_['stationaryCamera'] as core.bool?,
-          videoConfidenceThreshold:
-              (json_['videoConfidenceThreshold'] as core.num?)?.toDouble(),
-        );
+    : this(
+        frameConfidenceThreshold:
+            (json_['frameConfidenceThreshold'] as core.num?)?.toDouble(),
+        labelDetectionMode: json_['labelDetectionMode'] as core.String?,
+        model: json_['model'] as core.String?,
+        stationaryCamera: json_['stationaryCamera'] as core.bool?,
+        videoConfidenceThreshold:
+            (json_['videoConfidenceThreshold'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frameConfidenceThreshold != null)
-          'frameConfidenceThreshold': frameConfidenceThreshold!,
-        if (labelDetectionMode != null)
-          'labelDetectionMode': labelDetectionMode!,
-        if (model != null) 'model': model!,
-        if (stationaryCamera != null) 'stationaryCamera': stationaryCamera!,
-        if (videoConfidenceThreshold != null)
-          'videoConfidenceThreshold': videoConfidenceThreshold!,
-      };
+    if (frameConfidenceThreshold != null)
+      'frameConfidenceThreshold': frameConfidenceThreshold!,
+    if (labelDetectionMode != null) 'labelDetectionMode': labelDetectionMode!,
+    if (model != null) 'model': model!,
+    if (stationaryCamera != null) 'stationaryCamera': stationaryCamera!,
+    if (videoConfidenceThreshold != null)
+      'videoConfidenceThreshold': videoConfidenceThreshold!,
+  };
 }
 
 /// Config for OBJECT_TRACKING.
@@ -720,18 +736,14 @@ class GoogleCloudVideointelligenceV1ObjectTrackingConfig {
   /// "builtin/latest".
   core.String? model;
 
-  GoogleCloudVideointelligenceV1ObjectTrackingConfig({
-    this.model,
-  });
+  GoogleCloudVideointelligenceV1ObjectTrackingConfig({this.model});
 
   GoogleCloudVideointelligenceV1ObjectTrackingConfig.fromJson(core.Map json_)
-      : this(
-          model: json_['model'] as core.String?,
-        );
+    : this(model: json_['model'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (model != null) 'model': model!,
-      };
+    if (model != null) 'model': model!,
+  };
 }
 
 /// Config for PERSON_DETECTION.
@@ -759,19 +771,19 @@ class GoogleCloudVideointelligenceV1PersonDetectionConfig {
   });
 
   GoogleCloudVideointelligenceV1PersonDetectionConfig.fromJson(core.Map json_)
-      : this(
-          includeAttributes: json_['includeAttributes'] as core.bool?,
-          includeBoundingBoxes: json_['includeBoundingBoxes'] as core.bool?,
-          includePoseLandmarks: json_['includePoseLandmarks'] as core.bool?,
-        );
+    : this(
+        includeAttributes: json_['includeAttributes'] as core.bool?,
+        includeBoundingBoxes: json_['includeBoundingBoxes'] as core.bool?,
+        includePoseLandmarks: json_['includePoseLandmarks'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (includeAttributes != null) 'includeAttributes': includeAttributes!,
-        if (includeBoundingBoxes != null)
-          'includeBoundingBoxes': includeBoundingBoxes!,
-        if (includePoseLandmarks != null)
-          'includePoseLandmarks': includePoseLandmarks!,
-      };
+    if (includeAttributes != null) 'includeAttributes': includeAttributes!,
+    if (includeBoundingBoxes != null)
+      'includeBoundingBoxes': includeBoundingBoxes!,
+    if (includePoseLandmarks != null)
+      'includePoseLandmarks': includePoseLandmarks!,
+  };
 }
 
 /// Config for SHOT_CHANGE_DETECTION.
@@ -782,19 +794,15 @@ class GoogleCloudVideointelligenceV1ShotChangeDetectionConfig {
   /// "builtin/latest", and "builtin/legacy".
   core.String? model;
 
-  GoogleCloudVideointelligenceV1ShotChangeDetectionConfig({
-    this.model,
-  });
+  GoogleCloudVideointelligenceV1ShotChangeDetectionConfig({this.model});
 
   GoogleCloudVideointelligenceV1ShotChangeDetectionConfig.fromJson(
-      core.Map json_)
-      : this(
-          model: json_['model'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(model: json_['model'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (model != null) 'model': model!,
-      };
+    if (model != null) 'model': model!,
+  };
 }
 
 /// Provides "hints" to the speech recognizer to favor specific words and
@@ -812,20 +820,19 @@ class GoogleCloudVideointelligenceV1SpeechContext {
   /// Optional.
   core.List<core.String>? phrases;
 
-  GoogleCloudVideointelligenceV1SpeechContext({
-    this.phrases,
-  });
+  GoogleCloudVideointelligenceV1SpeechContext({this.phrases});
 
   GoogleCloudVideointelligenceV1SpeechContext.fromJson(core.Map json_)
-      : this(
-          phrases: (json_['phrases'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        phrases:
+            (json_['phrases'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (phrases != null) 'phrases': phrases!,
-      };
+    if (phrases != null) 'phrases': phrases!,
+  };
 }
 
 /// Config for SPEECH_TRANSCRIPTION.
@@ -925,43 +932,47 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
   });
 
   GoogleCloudVideointelligenceV1SpeechTranscriptionConfig.fromJson(
-      core.Map json_)
-      : this(
-          audioTracks: (json_['audioTracks'] as core.List?)
-              ?.map((value) => value as core.int)
-              .toList(),
-          diarizationSpeakerCount:
-              json_['diarizationSpeakerCount'] as core.int?,
-          enableAutomaticPunctuation:
-              json_['enableAutomaticPunctuation'] as core.bool?,
-          enableSpeakerDiarization:
-              json_['enableSpeakerDiarization'] as core.bool?,
-          enableWordConfidence: json_['enableWordConfidence'] as core.bool?,
-          filterProfanity: json_['filterProfanity'] as core.bool?,
-          languageCode: json_['languageCode'] as core.String?,
-          maxAlternatives: json_['maxAlternatives'] as core.int?,
-          speechContexts: (json_['speechContexts'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudVideointelligenceV1SpeechContext.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        audioTracks:
+            (json_['audioTracks'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        diarizationSpeakerCount: json_['diarizationSpeakerCount'] as core.int?,
+        enableAutomaticPunctuation:
+            json_['enableAutomaticPunctuation'] as core.bool?,
+        enableSpeakerDiarization:
+            json_['enableSpeakerDiarization'] as core.bool?,
+        enableWordConfidence: json_['enableWordConfidence'] as core.bool?,
+        filterProfanity: json_['filterProfanity'] as core.bool?,
+        languageCode: json_['languageCode'] as core.String?,
+        maxAlternatives: json_['maxAlternatives'] as core.int?,
+        speechContexts:
+            (json_['speechContexts'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudVideointelligenceV1SpeechContext.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audioTracks != null) 'audioTracks': audioTracks!,
-        if (diarizationSpeakerCount != null)
-          'diarizationSpeakerCount': diarizationSpeakerCount!,
-        if (enableAutomaticPunctuation != null)
-          'enableAutomaticPunctuation': enableAutomaticPunctuation!,
-        if (enableSpeakerDiarization != null)
-          'enableSpeakerDiarization': enableSpeakerDiarization!,
-        if (enableWordConfidence != null)
-          'enableWordConfidence': enableWordConfidence!,
-        if (filterProfanity != null) 'filterProfanity': filterProfanity!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (maxAlternatives != null) 'maxAlternatives': maxAlternatives!,
-        if (speechContexts != null) 'speechContexts': speechContexts!,
-      };
+    if (audioTracks != null) 'audioTracks': audioTracks!,
+    if (diarizationSpeakerCount != null)
+      'diarizationSpeakerCount': diarizationSpeakerCount!,
+    if (enableAutomaticPunctuation != null)
+      'enableAutomaticPunctuation': enableAutomaticPunctuation!,
+    if (enableSpeakerDiarization != null)
+      'enableSpeakerDiarization': enableSpeakerDiarization!,
+    if (enableWordConfidence != null)
+      'enableWordConfidence': enableWordConfidence!,
+    if (filterProfanity != null) 'filterProfanity': filterProfanity!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (maxAlternatives != null) 'maxAlternatives': maxAlternatives!,
+    if (speechContexts != null) 'speechContexts': speechContexts!,
+  };
 }
 
 /// Config for TEXT_DETECTION.
@@ -986,24 +997,25 @@ class GoogleCloudVideointelligenceV1TextDetectionConfig {
   });
 
   GoogleCloudVideointelligenceV1TextDetectionConfig.fromJson(core.Map json_)
-      : this(
-          languageHints: (json_['languageHints'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          model: json_['model'] as core.String?,
-        );
+    : this(
+        languageHints:
+            (json_['languageHints'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        model: json_['model'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (languageHints != null) 'languageHints': languageHints!,
-        if (model != null) 'model': model!,
-      };
+    if (languageHints != null) 'languageHints': languageHints!,
+    if (model != null) 'model': model!,
+  };
 }
 
 /// Video context and/or feature-specific parameters.
 class GoogleCloudVideointelligenceV1VideoContext {
   /// Config for EXPLICIT_CONTENT_DETECTION.
   GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig?
-      explicitContentDetectionConfig;
+  explicitContentDetectionConfig;
 
   /// Config for FACE_DETECTION.
   GoogleCloudVideointelligenceV1FaceDetectionConfig? faceDetectionConfig;
@@ -1025,11 +1037,11 @@ class GoogleCloudVideointelligenceV1VideoContext {
 
   /// Config for SHOT_CHANGE_DETECTION.
   GoogleCloudVideointelligenceV1ShotChangeDetectionConfig?
-      shotChangeDetectionConfig;
+  shotChangeDetectionConfig;
 
   /// Config for SPEECH_TRANSCRIPTION.
   GoogleCloudVideointelligenceV1SpeechTranscriptionConfig?
-      speechTranscriptionConfig;
+  speechTranscriptionConfig;
 
   /// Config for TEXT_DETECTION.
   GoogleCloudVideointelligenceV1TextDetectionConfig? textDetectionConfig;
@@ -1047,76 +1059,93 @@ class GoogleCloudVideointelligenceV1VideoContext {
   });
 
   GoogleCloudVideointelligenceV1VideoContext.fromJson(core.Map json_)
-      : this(
-          explicitContentDetectionConfig:
-              json_.containsKey('explicitContentDetectionConfig')
-                  ? GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig
-                      .fromJson(json_['explicitContentDetectionConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          faceDetectionConfig: json_.containsKey('faceDetectionConfig')
-              ? GoogleCloudVideointelligenceV1FaceDetectionConfig.fromJson(
+    : this(
+        explicitContentDetectionConfig:
+            json_.containsKey('explicitContentDetectionConfig')
+                ? GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig.fromJson(
+                  json_['explicitContentDetectionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        faceDetectionConfig:
+            json_.containsKey('faceDetectionConfig')
+                ? GoogleCloudVideointelligenceV1FaceDetectionConfig.fromJson(
                   json_['faceDetectionConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          labelDetectionConfig: json_.containsKey('labelDetectionConfig')
-              ? GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labelDetectionConfig:
+            json_.containsKey('labelDetectionConfig')
+                ? GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(
                   json_['labelDetectionConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          objectTrackingConfig: json_.containsKey('objectTrackingConfig')
-              ? GoogleCloudVideointelligenceV1ObjectTrackingConfig.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        objectTrackingConfig:
+            json_.containsKey('objectTrackingConfig')
+                ? GoogleCloudVideointelligenceV1ObjectTrackingConfig.fromJson(
                   json_['objectTrackingConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          personDetectionConfig: json_.containsKey('personDetectionConfig')
-              ? GoogleCloudVideointelligenceV1PersonDetectionConfig.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        personDetectionConfig:
+            json_.containsKey('personDetectionConfig')
+                ? GoogleCloudVideointelligenceV1PersonDetectionConfig.fromJson(
                   json_['personDetectionConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          segments: (json_['segments'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudVideointelligenceV1VideoSegment.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          shotChangeDetectionConfig:
-              json_.containsKey('shotChangeDetectionConfig')
-                  ? GoogleCloudVideointelligenceV1ShotChangeDetectionConfig
-                      .fromJson(json_['shotChangeDetectionConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          speechTranscriptionConfig:
-              json_.containsKey('speechTranscriptionConfig')
-                  ? GoogleCloudVideointelligenceV1SpeechTranscriptionConfig
-                      .fromJson(json_['speechTranscriptionConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          textDetectionConfig: json_.containsKey('textDetectionConfig')
-              ? GoogleCloudVideointelligenceV1TextDetectionConfig.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        segments:
+            (json_['segments'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudVideointelligenceV1VideoSegment.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        shotChangeDetectionConfig:
+            json_.containsKey('shotChangeDetectionConfig')
+                ? GoogleCloudVideointelligenceV1ShotChangeDetectionConfig.fromJson(
+                  json_['shotChangeDetectionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        speechTranscriptionConfig:
+            json_.containsKey('speechTranscriptionConfig')
+                ? GoogleCloudVideointelligenceV1SpeechTranscriptionConfig.fromJson(
+                  json_['speechTranscriptionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textDetectionConfig:
+            json_.containsKey('textDetectionConfig')
+                ? GoogleCloudVideointelligenceV1TextDetectionConfig.fromJson(
                   json_['textDetectionConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (explicitContentDetectionConfig != null)
-          'explicitContentDetectionConfig': explicitContentDetectionConfig!,
-        if (faceDetectionConfig != null)
-          'faceDetectionConfig': faceDetectionConfig!,
-        if (labelDetectionConfig != null)
-          'labelDetectionConfig': labelDetectionConfig!,
-        if (objectTrackingConfig != null)
-          'objectTrackingConfig': objectTrackingConfig!,
-        if (personDetectionConfig != null)
-          'personDetectionConfig': personDetectionConfig!,
-        if (segments != null) 'segments': segments!,
-        if (shotChangeDetectionConfig != null)
-          'shotChangeDetectionConfig': shotChangeDetectionConfig!,
-        if (speechTranscriptionConfig != null)
-          'speechTranscriptionConfig': speechTranscriptionConfig!,
-        if (textDetectionConfig != null)
-          'textDetectionConfig': textDetectionConfig!,
-      };
+    if (explicitContentDetectionConfig != null)
+      'explicitContentDetectionConfig': explicitContentDetectionConfig!,
+    if (faceDetectionConfig != null)
+      'faceDetectionConfig': faceDetectionConfig!,
+    if (labelDetectionConfig != null)
+      'labelDetectionConfig': labelDetectionConfig!,
+    if (objectTrackingConfig != null)
+      'objectTrackingConfig': objectTrackingConfig!,
+    if (personDetectionConfig != null)
+      'personDetectionConfig': personDetectionConfig!,
+    if (segments != null) 'segments': segments!,
+    if (shotChangeDetectionConfig != null)
+      'shotChangeDetectionConfig': shotChangeDetectionConfig!,
+    if (speechTranscriptionConfig != null)
+      'speechTranscriptionConfig': speechTranscriptionConfig!,
+    if (textDetectionConfig != null)
+      'textDetectionConfig': textDetectionConfig!,
+  };
 }
 
 /// Video segment.
@@ -1135,15 +1164,15 @@ class GoogleCloudVideointelligenceV1VideoSegment {
   });
 
   GoogleCloudVideointelligenceV1VideoSegment.fromJson(core.Map json_)
-      : this(
-          endTimeOffset: json_['endTimeOffset'] as core.String?,
-          startTimeOffset: json_['startTimeOffset'] as core.String?,
-        );
+    : this(
+        endTimeOffset: json_['endTimeOffset'] as core.String?,
+        startTimeOffset: json_['startTimeOffset'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
-      };
+    if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
+    if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -1163,18 +1192,22 @@ class GoogleLongrunningListOperationsResponse {
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => GoogleLongrunningOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1229,28 +1262,32 @@ class GoogleLongrunningOperation {
   });
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated

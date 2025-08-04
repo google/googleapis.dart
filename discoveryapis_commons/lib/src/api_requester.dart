@@ -66,8 +66,16 @@ class ApiRequester {
     }
     queryParams = queryParams?.cast<String, List<String>>();
 
-    var response = await _request(requestUrl, method, body, queryParams,
-        uploadMedia, uploadOptions, downloadOptions, downloadRange);
+    var response = await _request(
+      requestUrl,
+      method,
+      body,
+      queryParams,
+      uploadMedia,
+      uploadOptions,
+      downloadOptions,
+      downloadRange,
+    );
 
     response = await validateResponse(response);
 
@@ -94,7 +102,8 @@ class ApiRequester {
     final contentType = response.headers['content-type'];
     if (contentType == null) {
       throw client_requests.ApiRequestError(
-          "No 'content-type' header in media response.");
+        "No 'content-type' header in media response.",
+      );
     }
 
     int? contentLength;
@@ -124,8 +133,11 @@ class ApiRequester {
       }
     }
 
-    return client_requests.Media(response.stream, contentLength,
-        contentType: contentType);
+    return client_requests.Media(
+      response.stream,
+      contentLength,
+      contentType: contentType,
+    );
   }
 
   Future<http.StreamedResponse> _request(
@@ -138,7 +150,8 @@ class ApiRequester {
     client_requests.DownloadOptions? downloadOptions,
     client_requests.ByteRange? downloadRange,
   ) {
-    final downloadAsMedia = downloadOptions != null &&
+    final downloadAsMedia =
+        downloadOptions != null &&
         downloadOptions != client_requests.DownloadOptions.metadata;
 
     queryParams ??= {};
@@ -195,7 +208,7 @@ class ApiRequester {
         headers: {
           ..._requestHeaders,
           'content-type': uploadMedia.contentType,
-          'content-length': '${uploadMedia.length}'
+          'content-length': '${uploadMedia.length}',
         },
       );
       return _httpClient.send(request);
@@ -298,17 +311,27 @@ Future<http.StreamedResponse> validateResponse(
 
         var errors = <client_requests.ApiRequestErrorDetail>[];
         if (error.containsKey('errors') && error['errors'] is List) {
-          errors = (error['errors'] as List)
-              .map((e) =>
-                  client_requests.ApiRequestErrorDetail.fromJson(e as Map))
-              .toList();
+          errors =
+              (error['errors'] as List)
+                  .map(
+                    (e) => client_requests.ApiRequestErrorDetail.fromJson(
+                      e as Map,
+                    ),
+                  )
+                  .toList();
         }
-        throw client_requests.DetailedApiRequestError(code, message,
-            errors: errors, jsonResponse: jsonResponse as Map<String, dynamic>);
+        throw client_requests.DetailedApiRequestError(
+          code,
+          message,
+          errors: errors,
+          jsonResponse: jsonResponse as Map<String, dynamic>,
+        );
       }
     }
     throw client_requests.DetailedApiRequestError(
-        statusCode, 'No error details. HTTP status was: $statusCode.');
+      statusCode,
+      'No error details. HTTP status was: $statusCode.',
+    );
   }
 
   return response;

@@ -68,13 +68,16 @@ class ClientApiLibrary extends BaseApiLibrary {
         final pathPrefix = '${path.toUri(packageRoot)}/lib';
         if (!importPath.startsWith(pathPrefix)) {
           throw GeneratorError(
-              description.name,
-              description.version,
-              'RPC message classes must reside in the package\'s lib '
-              'directory.');
+            description.name,
+            description.version,
+            'RPC message classes must reside in the package\'s lib '
+            'directory.',
+          );
         }
-        importPath =
-            importPath.replaceFirst(pathPrefix, 'package:$packageName');
+        importPath = importPath.replaceFirst(
+          pathPrefix,
+          'package:$packageName',
+        );
       }
       parsedImports.add('import \'$importPath\';');
     }
@@ -94,12 +97,7 @@ class ClientApiLibrary extends BaseApiLibrary {
     var result = '''
 // This is a generated file (see the discoveryapis_generator project).
 
-${ignoreForFileComments(
-      {
-        ...ignoreForFileSet,
-        'avoid_classes_with_only_static_members',
-      },
-    )}
+${ignoreForFileComments({...ignoreForFileSet, 'avoid_classes_with_only_static_members'})}
 
 ''';
 
@@ -132,9 +130,7 @@ ${ignoreForFileComments(
       'ApiRequestError',
       'DetailedApiRequestError',
       ...exportedClasses,
-    }.toList(growable: false)
-          ..sort())
-        .join(', ');
+    }.toList(growable: false)..sort()).join(', ');
 
     return """$result${"""
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show $exports;

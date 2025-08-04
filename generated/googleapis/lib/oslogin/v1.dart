@@ -61,11 +61,16 @@ class CloudOSLoginApi {
 
   UsersResource get users => UsersResource(_requester);
 
-  CloudOSLoginApi(http.Client client,
-      {core.String rootUrl = 'https://oslogin.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudOSLoginApi(
+    http.Client client, {
+    core.String rootUrl = 'https://oslogin.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class UsersResource {
@@ -121,7 +126,8 @@ class UsersResource {
       queryParams: queryParams_,
     );
     return LoginProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds an SSH public key and returns the profile information.
@@ -175,7 +181,8 @@ class UsersResource {
       queryParams: queryParams_,
     );
     return ImportSshPublicKeyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -204,10 +211,7 @@ class UsersProjectsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -217,6 +221,7 @@ class UsersProjectsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -266,7 +271,8 @@ class UsersSshPublicKeysResource {
       queryParams: queryParams_,
     );
     return SshPublicKey.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an SSH public key.
@@ -288,10 +294,7 @@ class UsersSshPublicKeysResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -301,6 +304,7 @@ class UsersSshPublicKeysResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -341,7 +345,8 @@ class UsersSshPublicKeysResource {
       queryParams: queryParams_,
     );
     return SshPublicKey.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an SSH public key and returns the profile information.
@@ -391,7 +396,8 @@ class UsersSshPublicKeysResource {
       queryParams: queryParams_,
     );
     return SshPublicKey.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -411,24 +417,23 @@ class ImportSshPublicKeyResponse {
   /// The login profile information for the user.
   LoginProfile? loginProfile;
 
-  ImportSshPublicKeyResponse({
-    this.details,
-    this.loginProfile,
-  });
+  ImportSshPublicKeyResponse({this.details, this.loginProfile});
 
   ImportSshPublicKeyResponse.fromJson(core.Map json_)
-      : this(
-          details: json_['details'] as core.String?,
-          loginProfile: json_.containsKey('loginProfile')
-              ? LoginProfile.fromJson(
-                  json_['loginProfile'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        details: json_['details'] as core.String?,
+        loginProfile:
+            json_.containsKey('loginProfile')
+                ? LoginProfile.fromJson(
+                  json_['loginProfile'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-        if (loginProfile != null) 'loginProfile': loginProfile!,
-      };
+    if (details != null) 'details': details!,
+    if (loginProfile != null) 'loginProfile': loginProfile!,
+  };
 }
 
 /// The user profile information used for logging in to a virtual machine on
@@ -445,35 +450,36 @@ class LoginProfile {
   /// A map from SSH public key fingerprint to the associated key object.
   core.Map<core.String, SshPublicKey>? sshPublicKeys;
 
-  LoginProfile({
-    this.name,
-    this.posixAccounts,
-    this.sshPublicKeys,
-  });
+  LoginProfile({this.name, this.posixAccounts, this.sshPublicKeys});
 
   LoginProfile.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          posixAccounts: (json_['posixAccounts'] as core.List?)
-              ?.map((value) => PosixAccount.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          sshPublicKeys:
-              (json_['sshPublicKeys'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SshPublicKey.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        name: json_['name'] as core.String?,
+        posixAccounts:
+            (json_['posixAccounts'] as core.List?)
+                ?.map(
+                  (value) => PosixAccount.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        sshPublicKeys: (json_['sshPublicKeys']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SshPublicKey.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-        );
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (posixAccounts != null) 'posixAccounts': posixAccounts!,
-        if (sshPublicKeys != null) 'sshPublicKeys': sshPublicKeys!,
-      };
+    if (name != null) 'name': name!,
+    if (posixAccounts != null) 'posixAccounts': posixAccounts!,
+    if (sshPublicKeys != null) 'sshPublicKeys': sshPublicKeys!,
+  };
 }
 
 /// The POSIX account information associated with a Google account.
@@ -537,34 +543,34 @@ class PosixAccount {
   });
 
   PosixAccount.fromJson(core.Map json_)
-      : this(
-          accountId: json_['accountId'] as core.String?,
-          gecos: json_['gecos'] as core.String?,
-          gid: json_['gid'] as core.String?,
-          homeDirectory: json_['homeDirectory'] as core.String?,
-          name: json_['name'] as core.String?,
-          operatingSystemType: json_['operatingSystemType'] as core.String?,
-          primary: json_['primary'] as core.bool?,
-          shell: json_['shell'] as core.String?,
-          systemId: json_['systemId'] as core.String?,
-          uid: json_['uid'] as core.String?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        accountId: json_['accountId'] as core.String?,
+        gecos: json_['gecos'] as core.String?,
+        gid: json_['gid'] as core.String?,
+        homeDirectory: json_['homeDirectory'] as core.String?,
+        name: json_['name'] as core.String?,
+        operatingSystemType: json_['operatingSystemType'] as core.String?,
+        primary: json_['primary'] as core.bool?,
+        shell: json_['shell'] as core.String?,
+        systemId: json_['systemId'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accountId != null) 'accountId': accountId!,
-        if (gecos != null) 'gecos': gecos!,
-        if (gid != null) 'gid': gid!,
-        if (homeDirectory != null) 'homeDirectory': homeDirectory!,
-        if (name != null) 'name': name!,
-        if (operatingSystemType != null)
-          'operatingSystemType': operatingSystemType!,
-        if (primary != null) 'primary': primary!,
-        if (shell != null) 'shell': shell!,
-        if (systemId != null) 'systemId': systemId!,
-        if (uid != null) 'uid': uid!,
-        if (username != null) 'username': username!,
-      };
+    if (accountId != null) 'accountId': accountId!,
+    if (gecos != null) 'gecos': gecos!,
+    if (gid != null) 'gid': gid!,
+    if (homeDirectory != null) 'homeDirectory': homeDirectory!,
+    if (name != null) 'name': name!,
+    if (operatingSystemType != null)
+      'operatingSystemType': operatingSystemType!,
+    if (primary != null) 'primary': primary!,
+    if (shell != null) 'shell': shell!,
+    if (systemId != null) 'systemId': systemId!,
+    if (uid != null) 'uid': uid!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// The SSH public key information associated with a Google account.
@@ -596,18 +602,17 @@ class SshPublicKey {
   });
 
   SshPublicKey.fromJson(core.Map json_)
-      : this(
-          expirationTimeUsec: json_['expirationTimeUsec'] as core.String?,
-          fingerprint: json_['fingerprint'] as core.String?,
-          key: json_['key'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        expirationTimeUsec: json_['expirationTimeUsec'] as core.String?,
+        fingerprint: json_['fingerprint'] as core.String?,
+        key: json_['key'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expirationTimeUsec != null)
-          'expirationTimeUsec': expirationTimeUsec!,
-        if (fingerprint != null) 'fingerprint': fingerprint!,
-        if (key != null) 'key': key!,
-        if (name != null) 'name': name!,
-      };
+    if (expirationTimeUsec != null) 'expirationTimeUsec': expirationTimeUsec!,
+    if (fingerprint != null) 'fingerprint': fingerprint!,
+    if (key != null) 'key': key!,
+    if (name != null) 'name': name!,
+  };
 }

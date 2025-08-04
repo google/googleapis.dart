@@ -16,8 +16,11 @@ class Media {
   ///
   /// When uploading media, [length] can only be null if
   /// [ResumableUploadOptions] is used.
-  Media(this.stream, this.length,
-      {this.contentType = 'application/octet-stream'}) {
+  Media(
+    this.stream,
+    this.length, {
+    this.contentType = 'application/octet-stream',
+  }) {
     if (length != null && length! < 0) {
       throw ArgumentError('A negative content length is not allowed');
     }
@@ -107,8 +110,9 @@ class DownloadOptions {
 
   /// Download full media.
   // ignoring the non-standard name since we'd have to update the generator!
-  static final PartialDownloadOptions fullMedia =
-      PartialDownloadOptions(ByteRange(0, -1));
+  static final PartialDownloadOptions fullMedia = PartialDownloadOptions(
+    ByteRange(0, -1),
+  );
 
   const DownloadOptions();
 
@@ -169,9 +173,12 @@ class DetailedApiRequestError extends ApiRequestError {
   /// The full error response as decoded json if available. `null` otherwise.
   final Map<String, dynamic>? jsonResponse;
 
-  DetailedApiRequestError(this.status, String? message,
-      {this.errors = const [], this.jsonResponse})
-      : super(message);
+  DetailedApiRequestError(
+    this.status,
+    String? message, {
+    this.errors = const [],
+    this.jsonResponse,
+  }) : super(message);
 
   @override
   String toString() =>
@@ -228,11 +235,11 @@ class ApiRequestErrorDetail {
   }) : originalJson = null;
 
   ApiRequestErrorDetail.fromJson(Map<dynamic, dynamic> this.originalJson)
-      : domain = originalJson['domain'] as String?,
-        reason = originalJson['reason'] as String?,
-        message = originalJson['message'] as String?,
-        location = originalJson['location'] as String?,
-        locationType = originalJson['locationType'] as String?,
-        extendedHelp = originalJson['extendedHelp'] as String?,
-        sendReport = originalJson['sendReport'] as String?;
+    : domain = originalJson['domain'] as String?,
+      reason = originalJson['reason'] as String?,
+      message = originalJson['message'] as String?,
+      location = originalJson['location'] as String?,
+      locationType = originalJson['locationType'] as String?,
+      extendedHelp = originalJson['extendedHelp'] as String?,
+      sendReport = originalJson['sendReport'] as String?;
 }

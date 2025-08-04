@@ -54,11 +54,16 @@ class CloudIAPApi {
   ProjectsResource get projects => ProjectsResource(_requester);
   V1Resource get v1 => V1Resource(_requester);
 
-  CloudIAPApi(http.Client client,
-      {core.String rootUrl = 'https://iap.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudIAPApi(
+    http.Client client, {
+    core.String rootUrl = 'https://iap.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -75,8 +80,8 @@ class ProjectsBrandsResource {
   final commons.ApiRequester _requester;
 
   ProjectsBrandsIdentityAwareProxyClientsResource
-      get identityAwareProxyClients =>
-          ProjectsBrandsIdentityAwareProxyClientsResource(_requester);
+  get identityAwareProxyClients =>
+      ProjectsBrandsIdentityAwareProxyClientsResource(_requester);
 
   ProjectsBrandsResource(commons.ApiRequester client) : _requester = client;
 
@@ -147,10 +152,7 @@ class ProjectsBrandsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Brand> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Brand> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -199,7 +201,8 @@ class ProjectsBrandsResource {
       queryParams: queryParams_,
     );
     return ListBrandsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -207,7 +210,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
   final commons.ApiRequester _requester;
 
   ProjectsBrandsIdentityAwareProxyClientsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an Identity Aware Proxy (IAP) OAuth client.
   ///
@@ -253,7 +256,8 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       queryParams: queryParams_,
     );
     return IdentityAwareProxyClient.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an Identity Aware Proxy (IAP) OAuth client.
@@ -280,10 +284,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -293,6 +294,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -336,7 +338,8 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       queryParams: queryParams_,
     );
     return IdentityAwareProxyClient.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the existing clients for the brand.
@@ -389,7 +392,8 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       queryParams: queryParams_,
     );
     return ListIdentityAwareProxyClientsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Resets an Identity Aware Proxy (IAP) OAuth client secret.
@@ -436,7 +440,8 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       queryParams: queryParams_,
     );
     return IdentityAwareProxyClient.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -456,14 +461,14 @@ class ProjectsIapTunnelLocationsResource {
       ProjectsIapTunnelLocationsDestGroupsResource(_requester);
 
   ProjectsIapTunnelLocationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class ProjectsIapTunnelLocationsDestGroupsResource {
   final commons.ApiRequester _requester;
 
   ProjectsIapTunnelLocationsDestGroupsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new TunnelDestGroup.
   ///
@@ -511,7 +516,8 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
       queryParams: queryParams_,
     );
     return TunnelDestGroup.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a TunnelDestGroup.
@@ -534,10 +540,7 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -547,6 +550,7 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -588,7 +592,8 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
       queryParams: queryParams_,
     );
     return TunnelDestGroup.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the existing TunnelDestGroups.
@@ -644,7 +649,8 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
       queryParams: queryParams_,
     );
     return ListTunnelDestGroupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a TunnelDestGroup.
@@ -694,7 +700,8 @@ class ProjectsIapTunnelLocationsDestGroupsResource {
       queryParams: queryParams_,
     );
     return TunnelDestGroup.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -785,7 +792,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return IapSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy for an Identity-Aware Proxy protected
@@ -882,7 +890,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the IAP settings on a particular IAP protected resource.
@@ -933,7 +942,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return IapSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Validates that a given CEL expression conforms to IAP restrictions.
@@ -958,7 +968,7 @@ class V1Resource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ValidateIapAttributeExpressionResponse>
-      validateAttributeExpression(
+  validateAttributeExpression(
     core.String name, {
     core.String? expression,
     core.String? $fields,
@@ -974,10 +984,12 @@ class V1Resource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return ValidateIapAttributeExpressionResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1005,23 +1017,22 @@ class AccessDeniedPageSettings {
   });
 
   AccessDeniedPageSettings.fromJson(core.Map json_)
-      : this(
-          accessDeniedPageUri: json_['accessDeniedPageUri'] as core.String?,
-          generateTroubleshootingUri:
-              json_['generateTroubleshootingUri'] as core.bool?,
-          remediationTokenGenerationEnabled:
-              json_['remediationTokenGenerationEnabled'] as core.bool?,
-        );
+    : this(
+        accessDeniedPageUri: json_['accessDeniedPageUri'] as core.String?,
+        generateTroubleshootingUri:
+            json_['generateTroubleshootingUri'] as core.bool?,
+        remediationTokenGenerationEnabled:
+            json_['remediationTokenGenerationEnabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessDeniedPageUri != null)
-          'accessDeniedPageUri': accessDeniedPageUri!,
-        if (generateTroubleshootingUri != null)
-          'generateTroubleshootingUri': generateTroubleshootingUri!,
-        if (remediationTokenGenerationEnabled != null)
-          'remediationTokenGenerationEnabled':
-              remediationTokenGenerationEnabled!,
-      };
+    if (accessDeniedPageUri != null)
+      'accessDeniedPageUri': accessDeniedPageUri!,
+    if (generateTroubleshootingUri != null)
+      'generateTroubleshootingUri': generateTroubleshootingUri!,
+    if (remediationTokenGenerationEnabled != null)
+      'remediationTokenGenerationEnabled': remediationTokenGenerationEnabled!,
+  };
 }
 
 /// Access related settings for IAP protected apps.
@@ -1082,57 +1093,72 @@ class AccessSettings {
   });
 
   AccessSettings.fromJson(core.Map json_)
-      : this(
-          allowedDomainsSettings: json_.containsKey('allowedDomainsSettings')
-              ? AllowedDomainsSettings.fromJson(json_['allowedDomainsSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          corsSettings: json_.containsKey('corsSettings')
-              ? CorsSettings.fromJson(
-                  json_['corsSettings'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gcipSettings: json_.containsKey('gcipSettings')
-              ? GcipSettings.fromJson(
-                  json_['gcipSettings'] as core.Map<core.String, core.dynamic>)
-              : null,
-          identitySources: (json_['identitySources'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          oauthSettings: json_.containsKey('oauthSettings')
-              ? OAuthSettings.fromJson(
-                  json_['oauthSettings'] as core.Map<core.String, core.dynamic>)
-              : null,
-          policyDelegationSettings:
-              json_.containsKey('policyDelegationSettings')
-                  ? PolicyDelegationSettings.fromJson(
-                      json_['policyDelegationSettings']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          reauthSettings: json_.containsKey('reauthSettings')
-              ? ReauthSettings.fromJson(json_['reauthSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          workforceIdentitySettings:
-              json_.containsKey('workforceIdentitySettings')
-                  ? WorkforceIdentitySettings.fromJson(
-                      json_['workforceIdentitySettings']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        allowedDomainsSettings:
+            json_.containsKey('allowedDomainsSettings')
+                ? AllowedDomainsSettings.fromJson(
+                  json_['allowedDomainsSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        corsSettings:
+            json_.containsKey('corsSettings')
+                ? CorsSettings.fromJson(
+                  json_['corsSettings'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gcipSettings:
+            json_.containsKey('gcipSettings')
+                ? GcipSettings.fromJson(
+                  json_['gcipSettings'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        identitySources:
+            (json_['identitySources'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        oauthSettings:
+            json_.containsKey('oauthSettings')
+                ? OAuthSettings.fromJson(
+                  json_['oauthSettings'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        policyDelegationSettings:
+            json_.containsKey('policyDelegationSettings')
+                ? PolicyDelegationSettings.fromJson(
+                  json_['policyDelegationSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reauthSettings:
+            json_.containsKey('reauthSettings')
+                ? ReauthSettings.fromJson(
+                  json_['reauthSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        workforceIdentitySettings:
+            json_.containsKey('workforceIdentitySettings')
+                ? WorkforceIdentitySettings.fromJson(
+                  json_['workforceIdentitySettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedDomainsSettings != null)
-          'allowedDomainsSettings': allowedDomainsSettings!,
-        if (corsSettings != null) 'corsSettings': corsSettings!,
-        if (gcipSettings != null) 'gcipSettings': gcipSettings!,
-        if (identitySources != null) 'identitySources': identitySources!,
-        if (oauthSettings != null) 'oauthSettings': oauthSettings!,
-        if (policyDelegationSettings != null)
-          'policyDelegationSettings': policyDelegationSettings!,
-        if (reauthSettings != null) 'reauthSettings': reauthSettings!,
-        if (workforceIdentitySettings != null)
-          'workforceIdentitySettings': workforceIdentitySettings!,
-      };
+    if (allowedDomainsSettings != null)
+      'allowedDomainsSettings': allowedDomainsSettings!,
+    if (corsSettings != null) 'corsSettings': corsSettings!,
+    if (gcipSettings != null) 'gcipSettings': gcipSettings!,
+    if (identitySources != null) 'identitySources': identitySources!,
+    if (oauthSettings != null) 'oauthSettings': oauthSettings!,
+    if (policyDelegationSettings != null)
+      'policyDelegationSettings': policyDelegationSettings!,
+    if (reauthSettings != null) 'reauthSettings': reauthSettings!,
+    if (workforceIdentitySettings != null)
+      'workforceIdentitySettings': workforceIdentitySettings!,
+  };
 }
 
 /// Configuration for IAP allowed domains.
@@ -1150,23 +1176,21 @@ class AllowedDomainsSettings {
   /// Optional.
   core.bool? enable;
 
-  AllowedDomainsSettings({
-    this.domains,
-    this.enable,
-  });
+  AllowedDomainsSettings({this.domains, this.enable});
 
   AllowedDomainsSettings.fromJson(core.Map json_)
-      : this(
-          domains: (json_['domains'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          enable: json_['enable'] as core.bool?,
-        );
+    : this(
+        domains:
+            (json_['domains'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        enable: json_['enable'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domains != null) 'domains': domains!,
-        if (enable != null) 'enable': enable!,
-      };
+    if (domains != null) 'domains': domains!,
+    if (enable != null) 'enable': enable!,
+  };
 }
 
 /// Wrapper over application specific settings for IAP.
@@ -1200,34 +1224,38 @@ class ApplicationSettings {
   });
 
   ApplicationSettings.fromJson(core.Map json_)
-      : this(
-          accessDeniedPageSettings:
-              json_.containsKey('accessDeniedPageSettings')
-                  ? AccessDeniedPageSettings.fromJson(
-                      json_['accessDeniedPageSettings']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          attributePropagationSettings:
-              json_.containsKey('attributePropagationSettings')
-                  ? AttributePropagationSettings.fromJson(
-                      json_['attributePropagationSettings']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          cookieDomain: json_['cookieDomain'] as core.String?,
-          csmSettings: json_.containsKey('csmSettings')
-              ? CsmSettings.fromJson(
-                  json_['csmSettings'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        accessDeniedPageSettings:
+            json_.containsKey('accessDeniedPageSettings')
+                ? AccessDeniedPageSettings.fromJson(
+                  json_['accessDeniedPageSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        attributePropagationSettings:
+            json_.containsKey('attributePropagationSettings')
+                ? AttributePropagationSettings.fromJson(
+                  json_['attributePropagationSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cookieDomain: json_['cookieDomain'] as core.String?,
+        csmSettings:
+            json_.containsKey('csmSettings')
+                ? CsmSettings.fromJson(
+                  json_['csmSettings'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessDeniedPageSettings != null)
-          'accessDeniedPageSettings': accessDeniedPageSettings!,
-        if (attributePropagationSettings != null)
-          'attributePropagationSettings': attributePropagationSettings!,
-        if (cookieDomain != null) 'cookieDomain': cookieDomain!,
-        if (csmSettings != null) 'csmSettings': csmSettings!,
-      };
+    if (accessDeniedPageSettings != null)
+      'accessDeniedPageSettings': accessDeniedPageSettings!,
+    if (attributePropagationSettings != null)
+      'attributePropagationSettings': attributePropagationSettings!,
+    if (cookieDomain != null) 'cookieDomain': cookieDomain!,
+    if (csmSettings != null) 'csmSettings': csmSettings!,
+  };
 }
 
 /// Configuration for propagating attributes to applications protected by IAP.
@@ -1277,19 +1305,20 @@ class AttributePropagationSettings {
   });
 
   AttributePropagationSettings.fromJson(core.Map json_)
-      : this(
-          enable: json_['enable'] as core.bool?,
-          expression: json_['expression'] as core.String?,
-          outputCredentials: (json_['outputCredentials'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        enable: json_['enable'] as core.bool?,
+        expression: json_['expression'] as core.String?,
+        outputCredentials:
+            (json_['outputCredentials'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enable != null) 'enable': enable!,
-        if (expression != null) 'expression': expression!,
-        if (outputCredentials != null) 'outputCredentials': outputCredentials!,
-      };
+    if (enable != null) 'enable': enable!,
+    if (expression != null) 'expression': expression!,
+    if (outputCredentials != null) 'outputCredentials': outputCredentials!,
+  };
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -1372,29 +1401,28 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// OAuth brand data.
@@ -1429,19 +1457,19 @@ class Brand {
   });
 
   Brand.fromJson(core.Map json_)
-      : this(
-          applicationTitle: json_['applicationTitle'] as core.String?,
-          name: json_['name'] as core.String?,
-          orgInternalOnly: json_['orgInternalOnly'] as core.bool?,
-          supportEmail: json_['supportEmail'] as core.String?,
-        );
+    : this(
+        applicationTitle: json_['applicationTitle'] as core.String?,
+        name: json_['name'] as core.String?,
+        orgInternalOnly: json_['orgInternalOnly'] as core.bool?,
+        supportEmail: json_['supportEmail'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applicationTitle != null) 'applicationTitle': applicationTitle!,
-        if (name != null) 'name': name!,
-        if (orgInternalOnly != null) 'orgInternalOnly': orgInternalOnly!,
-        if (supportEmail != null) 'supportEmail': supportEmail!,
-      };
+    if (applicationTitle != null) 'applicationTitle': applicationTitle!,
+    if (name != null) 'name': name!,
+    if (orgInternalOnly != null) 'orgInternalOnly': orgInternalOnly!,
+    if (supportEmail != null) 'supportEmail': supportEmail!,
+  };
 }
 
 /// Allows customers to configure HTTP request paths that'll allow HTTP
@@ -1453,18 +1481,14 @@ class CorsSettings {
   /// If undefined, IAP will not apply any special logic to `OPTIONS` requests.
   core.bool? allowHttpOptions;
 
-  CorsSettings({
-    this.allowHttpOptions,
-  });
+  CorsSettings({this.allowHttpOptions});
 
   CorsSettings.fromJson(core.Map json_)
-      : this(
-          allowHttpOptions: json_['allowHttpOptions'] as core.bool?,
-        );
+    : this(allowHttpOptions: json_['allowHttpOptions'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowHttpOptions != null) 'allowHttpOptions': allowHttpOptions!,
-      };
+    if (allowHttpOptions != null) 'allowHttpOptions': allowHttpOptions!,
+  };
 }
 
 /// Configuration for RCToken generated for service mesh workloads protected by
@@ -1479,18 +1503,14 @@ class CsmSettings {
   /// This value is not validated by IAP.
   core.String? rctokenAud;
 
-  CsmSettings({
-    this.rctokenAud,
-  });
+  CsmSettings({this.rctokenAud});
 
   CsmSettings.fromJson(core.Map json_)
-      : this(
-          rctokenAud: json_['rctokenAud'] as core.String?,
-        );
+    : this(rctokenAud: json_['rctokenAud'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rctokenAud != null) 'rctokenAud': rctokenAud!,
-      };
+    if (rctokenAud != null) 'rctokenAud': rctokenAud!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1541,23 +1561,21 @@ class GcipSettings {
   /// Optional.
   core.List<core.String>? tenantIds;
 
-  GcipSettings({
-    this.loginPageUri,
-    this.tenantIds,
-  });
+  GcipSettings({this.loginPageUri, this.tenantIds});
 
   GcipSettings.fromJson(core.Map json_)
-      : this(
-          loginPageUri: json_['loginPageUri'] as core.String?,
-          tenantIds: (json_['tenantIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        loginPageUri: json_['loginPageUri'] as core.String?,
+        tenantIds:
+            (json_['tenantIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (loginPageUri != null) 'loginPageUri': loginPageUri!,
-        if (tenantIds != null) 'tenantIds': tenantIds!,
-      };
+    if (loginPageUri != null) 'loginPageUri': loginPageUri!,
+    if (tenantIds != null) 'tenantIds': tenantIds!,
+  };
 }
 
 /// Request message for `GetIamPolicy` method.
@@ -1566,21 +1584,21 @@ class GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GetPolicyOptions? options;
 
-  GetIamPolicyRequest({
-    this.options,
-  });
+  GetIamPolicyRequest({this.options});
 
   GetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          options: json_.containsKey('options')
-              ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        options:
+            json_.containsKey('options')
+                ? GetPolicyOptions.fromJson(
+                  json_['options'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!,
-      };
+    if (options != null) 'options': options!,
+  };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -1603,31 +1621,33 @@ class IapSettings {
   /// Required.
   core.String? name;
 
-  IapSettings({
-    this.accessSettings,
-    this.applicationSettings,
-    this.name,
-  });
+  IapSettings({this.accessSettings, this.applicationSettings, this.name});
 
   IapSettings.fromJson(core.Map json_)
-      : this(
-          accessSettings: json_.containsKey('accessSettings')
-              ? AccessSettings.fromJson(json_['accessSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          applicationSettings: json_.containsKey('applicationSettings')
-              ? ApplicationSettings.fromJson(json_['applicationSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        accessSettings:
+            json_.containsKey('accessSettings')
+                ? AccessSettings.fromJson(
+                  json_['accessSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        applicationSettings:
+            json_.containsKey('applicationSettings')
+                ? ApplicationSettings.fromJson(
+                  json_['applicationSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessSettings != null) 'accessSettings': accessSettings!,
-        if (applicationSettings != null)
-          'applicationSettings': applicationSettings!,
-        if (name != null) 'name': name!,
-      };
+    if (accessSettings != null) 'accessSettings': accessSettings!,
+    if (applicationSettings != null)
+      'applicationSettings': applicationSettings!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Contains the data that describes an Identity Aware Proxy owned client.
@@ -1645,24 +1665,20 @@ class IdentityAwareProxyClient {
   /// Output only.
   core.String? secret;
 
-  IdentityAwareProxyClient({
-    this.displayName,
-    this.name,
-    this.secret,
-  });
+  IdentityAwareProxyClient({this.displayName, this.name, this.secret});
 
   IdentityAwareProxyClient.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          secret: json_['secret'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        secret: json_['secret'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (secret != null) 'secret': secret!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (secret != null) 'secret': secret!,
+  };
 }
 
 /// Response message for ListBrands.
@@ -1670,21 +1686,23 @@ class ListBrandsResponse {
   /// Brands existing in the project.
   core.List<Brand>? brands;
 
-  ListBrandsResponse({
-    this.brands,
-  });
+  ListBrandsResponse({this.brands});
 
   ListBrandsResponse.fromJson(core.Map json_)
-      : this(
-          brands: (json_['brands'] as core.List?)
-              ?.map((value) =>
-                  Brand.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        brands:
+            (json_['brands'] as core.List?)
+                ?.map(
+                  (value) => Brand.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (brands != null) 'brands': brands!,
-      };
+    if (brands != null) 'brands': brands!,
+  };
 }
 
 /// Response message for ListIdentityAwareProxyClients.
@@ -1703,20 +1721,23 @@ class ListIdentityAwareProxyClientsResponse {
   });
 
   ListIdentityAwareProxyClientsResponse.fromJson(core.Map json_)
-      : this(
-          identityAwareProxyClients:
-              (json_['identityAwareProxyClients'] as core.List?)
-                  ?.map((value) => IdentityAwareProxyClient.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        identityAwareProxyClients:
+            (json_['identityAwareProxyClients'] as core.List?)
+                ?.map(
+                  (value) => IdentityAwareProxyClient.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (identityAwareProxyClients != null)
-          'identityAwareProxyClients': identityAwareProxyClients!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (identityAwareProxyClients != null)
+      'identityAwareProxyClients': identityAwareProxyClients!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response from ListTunnelDestGroups.
@@ -1729,24 +1750,25 @@ class ListTunnelDestGroupsResponse {
   /// TunnelDestGroup existing in the project.
   core.List<TunnelDestGroup>? tunnelDestGroups;
 
-  ListTunnelDestGroupsResponse({
-    this.nextPageToken,
-    this.tunnelDestGroups,
-  });
+  ListTunnelDestGroupsResponse({this.nextPageToken, this.tunnelDestGroups});
 
   ListTunnelDestGroupsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          tunnelDestGroups: (json_['tunnelDestGroups'] as core.List?)
-              ?.map((value) => TunnelDestGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        tunnelDestGroups:
+            (json_['tunnelDestGroups'] as core.List?)
+                ?.map(
+                  (value) => TunnelDestGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tunnelDestGroups != null) 'tunnelDestGroups': tunnelDestGroups!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (tunnelDestGroups != null) 'tunnelDestGroups': tunnelDestGroups!,
+  };
 }
 
 /// Used for calculating the next state of tags on the resource being passed for
@@ -1766,29 +1788,35 @@ class NextStateOfTags {
   });
 
   NextStateOfTags.fromJson(core.Map json_)
-      : this(
-          tagsFullState: json_.containsKey('tagsFullState')
-              ? TagsFullState.fromJson(
-                  json_['tagsFullState'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tagsFullStateForChildResource:
-              json_.containsKey('tagsFullStateForChildResource')
-                  ? TagsFullStateForChildResource.fromJson(
-                      json_['tagsFullStateForChildResource']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          tagsPartialState: json_.containsKey('tagsPartialState')
-              ? TagsPartialState.fromJson(json_['tagsPartialState']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        tagsFullState:
+            json_.containsKey('tagsFullState')
+                ? TagsFullState.fromJson(
+                  json_['tagsFullState'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tagsFullStateForChildResource:
+            json_.containsKey('tagsFullStateForChildResource')
+                ? TagsFullStateForChildResource.fromJson(
+                  json_['tagsFullStateForChildResource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tagsPartialState:
+            json_.containsKey('tagsPartialState')
+                ? TagsPartialState.fromJson(
+                  json_['tagsPartialState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tagsFullState != null) 'tagsFullState': tagsFullState!,
-        if (tagsFullStateForChildResource != null)
-          'tagsFullStateForChildResource': tagsFullStateForChildResource!,
-        if (tagsPartialState != null) 'tagsPartialState': tagsPartialState!,
-      };
+    if (tagsFullState != null) 'tagsFullState': tagsFullState!,
+    if (tagsFullStateForChildResource != null)
+      'tagsFullStateForChildResource': tagsFullStateForChildResource!,
+    if (tagsPartialState != null) 'tagsPartialState': tagsPartialState!,
+  };
 }
 
 /// The OAuth 2.0 Settings
@@ -1809,25 +1837,20 @@ class OAuth2 {
   /// Output only.
   core.String? clientSecretSha256;
 
-  OAuth2({
-    this.clientId,
-    this.clientSecret,
-    this.clientSecretSha256,
-  });
+  OAuth2({this.clientId, this.clientSecret, this.clientSecretSha256});
 
   OAuth2.fromJson(core.Map json_)
-      : this(
-          clientId: json_['clientId'] as core.String?,
-          clientSecret: json_['clientSecret'] as core.String?,
-          clientSecretSha256: json_['clientSecretSha256'] as core.String?,
-        );
+    : this(
+        clientId: json_['clientId'] as core.String?,
+        clientSecret: json_['clientSecret'] as core.String?,
+        clientSecretSha256: json_['clientSecretSha256'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientId != null) 'clientId': clientId!,
-        if (clientSecret != null) 'clientSecret': clientSecret!,
-        if (clientSecretSha256 != null)
-          'clientSecretSha256': clientSecretSha256!,
-      };
+    if (clientId != null) 'clientId': clientId!,
+    if (clientSecret != null) 'clientSecret': clientSecret!,
+    if (clientSecretSha256 != null) 'clientSecretSha256': clientSecretSha256!,
+  };
 }
 
 /// Configuration for OAuth login&consent flow behavior as well as for OAuth
@@ -1846,24 +1869,22 @@ class OAuthSettings {
   /// Optional.
   core.List<core.String>? programmaticClients;
 
-  OAuthSettings({
-    this.loginHint,
-    this.programmaticClients,
-  });
+  OAuthSettings({this.loginHint, this.programmaticClients});
 
   OAuthSettings.fromJson(core.Map json_)
-      : this(
-          loginHint: json_['loginHint'] as core.String?,
-          programmaticClients: (json_['programmaticClients'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        loginHint: json_['loginHint'] as core.String?,
+        programmaticClients:
+            (json_['programmaticClients'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (loginHint != null) 'loginHint': loginHint!,
-        if (programmaticClients != null)
-          'programmaticClients': programmaticClients!,
-      };
+    if (loginHint != null) 'loginHint': loginHint!,
+    if (programmaticClients != null)
+      'programmaticClients': programmaticClients!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -1926,8 +1947,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -1949,27 +1972,27 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// PolicyDelegationConfig allows google-internal teams to use IAP for apps
@@ -2003,25 +2026,29 @@ class PolicyDelegationSettings {
   });
 
   PolicyDelegationSettings.fromJson(core.Map json_)
-      : this(
-          iamPermission: json_['iamPermission'] as core.String?,
-          iamServiceName: json_['iamServiceName'] as core.String?,
-          policyName: json_.containsKey('policyName')
-              ? PolicyName.fromJson(
-                  json_['policyName'] as core.Map<core.String, core.dynamic>)
-              : null,
-          resource: json_.containsKey('resource')
-              ? Resource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        iamPermission: json_['iamPermission'] as core.String?,
+        iamServiceName: json_['iamServiceName'] as core.String?,
+        policyName:
+            json_.containsKey('policyName')
+                ? PolicyName.fromJson(
+                  json_['policyName'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resource:
+            json_.containsKey('resource')
+                ? Resource.fromJson(
+                  json_['resource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iamPermission != null) 'iamPermission': iamPermission!,
-        if (iamServiceName != null) 'iamServiceName': iamServiceName!,
-        if (policyName != null) 'policyName': policyName!,
-        if (resource != null) 'resource': resource!,
-      };
+    if (iamPermission != null) 'iamPermission': iamPermission!,
+    if (iamServiceName != null) 'iamServiceName': iamServiceName!,
+    if (policyName != null) 'policyName': policyName!,
+    if (resource != null) 'resource': resource!,
+  };
 }
 
 /// An internal name for an IAM policy, based on the resource to which the
@@ -2051,24 +2078,20 @@ class PolicyName {
   /// 'billing_accounts', etc.
   core.String? type;
 
-  PolicyName({
-    this.id,
-    this.region,
-    this.type,
-  });
+  PolicyName({this.id, this.region, this.type});
 
   PolicyName.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          region: json_['region'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        region: json_['region'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (region != null) 'region': region!,
-        if (type != null) 'type': type!,
-      };
+    if (id != null) 'id': id!,
+    if (region != null) 'region': region!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Configuration for IAP reauthentication policies.
@@ -2104,24 +2127,20 @@ class ReauthSettings {
   /// set.
   core.String? policyType;
 
-  ReauthSettings({
-    this.maxAge,
-    this.method,
-    this.policyType,
-  });
+  ReauthSettings({this.maxAge, this.method, this.policyType});
 
   ReauthSettings.fromJson(core.Map json_)
-      : this(
-          maxAge: json_['maxAge'] as core.String?,
-          method: json_['method'] as core.String?,
-          policyType: json_['policyType'] as core.String?,
-        );
+    : this(
+        maxAge: json_['maxAge'] as core.String?,
+        method: json_['method'] as core.String?,
+        policyType: json_['policyType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxAge != null) 'maxAge': maxAge!,
-        if (method != null) 'method': method!,
-        if (policyType != null) 'policyType': policyType!,
-      };
+    if (maxAge != null) 'maxAge': maxAge!,
+    if (method != null) 'method': method!,
+    if (policyType != null) 'policyType': policyType!,
+  };
 }
 
 /// The request sent to ResetIdentityAwareProxyClientSecret.
@@ -2239,39 +2258,40 @@ class Resource {
   });
 
   Resource.fromJson(core.Map json_)
-      : this(
-          expectedNextState: json_.containsKey('expectedNextState')
-              ? json_['expectedNextState']
-                  as core.Map<core.String, core.dynamic>
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          nextStateOfTags: json_.containsKey('nextStateOfTags')
-              ? NextStateOfTags.fromJson(json_['nextStateOfTags']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          service: json_['service'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        expectedNextState:
+            json_.containsKey('expectedNextState')
+                ? json_['expectedNextState']
+                    as core.Map<core.String, core.dynamic>
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        nextStateOfTags:
+            json_.containsKey('nextStateOfTags')
+                ? NextStateOfTags.fromJson(
+                  json_['nextStateOfTags']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        service: json_['service'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expectedNextState != null) 'expectedNextState': expectedNextState!,
-        if (labels != null) 'labels': labels!,
-        if (locations != null) 'locations': locations!,
-        if (name != null) 'name': name!,
-        if (nextStateOfTags != null) 'nextStateOfTags': nextStateOfTags!,
-        if (service != null) 'service': service!,
-        if (type != null) 'type': type!,
-      };
+    if (expectedNextState != null) 'expectedNextState': expectedNextState!,
+    if (labels != null) 'labels': labels!,
+    if (locations != null) 'locations': locations!,
+    if (name != null) 'name': name!,
+    if (nextStateOfTags != null) 'nextStateOfTags': nextStateOfTags!,
+    if (service != null) 'service': service!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -2283,21 +2303,21 @@ class SetIamPolicyRequest {
   /// reject them.
   Policy? policy;
 
-  SetIamPolicyRequest({
-    this.policy,
-  });
+  SetIamPolicyRequest({this.policy});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-      };
+    if (policy != null) 'policy': policy!,
+  };
 }
 
 class TagsFullState {
@@ -2309,23 +2329,18 @@ class TagsFullState {
   /// namespace) is required to be passed.
   core.Map<core.String, core.String>? tags;
 
-  TagsFullState({
-    this.tags,
-  });
+  TagsFullState({this.tags});
 
   TagsFullState.fromJson(core.Map json_)
-      : this(
-          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tags != null) 'tags': tags!,
-      };
+    if (tags != null) 'tags': tags!,
+  };
 }
 
 class TagsFullStateForChildResource {
@@ -2338,23 +2353,18 @@ class TagsFullStateForChildResource {
   /// being passed in the request.
   core.Map<core.String, core.String>? tags;
 
-  TagsFullStateForChildResource({
-    this.tags,
-  });
+  TagsFullStateForChildResource({this.tags});
 
   TagsFullStateForChildResource.fromJson(core.Map json_)
-      : this(
-          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tags != null) 'tags': tags!,
-      };
+    if (tags != null) 'tags': tags!,
+  };
 }
 
 class TagsPartialState {
@@ -2373,30 +2383,23 @@ class TagsPartialState {
   /// (numeric or namespace) is required to be passed.
   core.Map<core.String, core.String>? tagsToUpsert;
 
-  TagsPartialState({
-    this.tagKeysToRemove,
-    this.tagsToUpsert,
-  });
+  TagsPartialState({this.tagKeysToRemove, this.tagsToUpsert});
 
   TagsPartialState.fromJson(core.Map json_)
-      : this(
-          tagKeysToRemove: (json_['tagKeysToRemove'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          tagsToUpsert:
-              (json_['tagsToUpsert'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        tagKeysToRemove:
+            (json_['tagKeysToRemove'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        tagsToUpsert: (json_['tagsToUpsert']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tagKeysToRemove != null) 'tagKeysToRemove': tagKeysToRemove!,
-        if (tagsToUpsert != null) 'tagsToUpsert': tagsToUpsert!,
-      };
+    if (tagKeysToRemove != null) 'tagKeysToRemove': tagKeysToRemove!,
+    if (tagsToUpsert != null) 'tagsToUpsert': tagsToUpsert!,
+  };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -2427,28 +2430,26 @@ class TunnelDestGroup {
   /// contain only lower case letters (a-z) and dashes (-).
   core.String? name;
 
-  TunnelDestGroup({
-    this.cidrs,
-    this.fqdns,
-    this.name,
-  });
+  TunnelDestGroup({this.cidrs, this.fqdns, this.name});
 
   TunnelDestGroup.fromJson(core.Map json_)
-      : this(
-          cidrs: (json_['cidrs'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          fqdns: (json_['fqdns'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        cidrs:
+            (json_['cidrs'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        fqdns:
+            (json_['fqdns'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cidrs != null) 'cidrs': cidrs!,
-        if (fqdns != null) 'fqdns': fqdns!,
-        if (name != null) 'name': name!,
-      };
+    if (cidrs != null) 'cidrs': cidrs!,
+    if (fqdns != null) 'fqdns': fqdns!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// IAP Expression Linter endpoint returns empty response body.
@@ -2467,24 +2468,24 @@ class WorkforceIdentitySettings {
   /// Only one workforce pool is accepted.
   core.List<core.String>? workforcePools;
 
-  WorkforceIdentitySettings({
-    this.oauth2,
-    this.workforcePools,
-  });
+  WorkforceIdentitySettings({this.oauth2, this.workforcePools});
 
   WorkforceIdentitySettings.fromJson(core.Map json_)
-      : this(
-          oauth2: json_.containsKey('oauth2')
-              ? OAuth2.fromJson(
-                  json_['oauth2'] as core.Map<core.String, core.dynamic>)
-              : null,
-          workforcePools: (json_['workforcePools'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        oauth2:
+            json_.containsKey('oauth2')
+                ? OAuth2.fromJson(
+                  json_['oauth2'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        workforcePools:
+            (json_['workforcePools'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (oauth2 != null) 'oauth2': oauth2!,
-        if (workforcePools != null) 'workforcePools': workforcePools!,
-      };
+    if (oauth2 != null) 'oauth2': oauth2!,
+    if (workforcePools != null) 'workforcePools': workforcePools!,
+  };
 }

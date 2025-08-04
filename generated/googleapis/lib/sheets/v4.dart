@@ -64,11 +64,16 @@ class SheetsApi {
 
   SpreadsheetsResource get spreadsheets => SpreadsheetsResource(_requester);
 
-  SheetsApi(http.Client client,
-      {core.String rootUrl = 'https://sheets.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  SheetsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://sheets.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class SpreadsheetsResource {
@@ -124,7 +129,8 @@ class SpreadsheetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         ':batchUpdate';
 
@@ -135,7 +141,8 @@ class SpreadsheetsResource {
       queryParams: queryParams_,
     );
     return BatchUpdateSpreadsheetResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a spreadsheet, returning the newly created spreadsheet.
@@ -172,7 +179,8 @@ class SpreadsheetsResource {
       queryParams: queryParams_,
     );
     return Spreadsheet.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the spreadsheet at the given ID.
@@ -239,7 +247,8 @@ class SpreadsheetsResource {
       queryParams: queryParams_,
     );
     return Spreadsheet.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns the spreadsheet at the given ID.
@@ -283,7 +292,8 @@ class SpreadsheetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         ':getByDataFilter';
 
@@ -294,7 +304,8 @@ class SpreadsheetsResource {
       queryParams: queryParams_,
     );
     return Spreadsheet.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -302,7 +313,7 @@ class SpreadsheetsDeveloperMetadataResource {
   final commons.ApiRequester _requester;
 
   SpreadsheetsDeveloperMetadataResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Returns the developer metadata with the specified ID.
   ///
@@ -334,7 +345,8 @@ class SpreadsheetsDeveloperMetadataResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         '/developerMetadata/' +
         commons.escapeVariable('$metadataId');
@@ -345,7 +357,8 @@ class SpreadsheetsDeveloperMetadataResource {
       queryParams: queryParams_,
     );
     return DeveloperMetadata.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns all developer metadata matching the specified DataFilter.
@@ -381,7 +394,8 @@ class SpreadsheetsDeveloperMetadataResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         '/developerMetadata:search';
 
@@ -392,7 +406,8 @@ class SpreadsheetsDeveloperMetadataResource {
       queryParams: queryParams_,
     );
     return SearchDeveloperMetadataResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -434,7 +449,8 @@ class SpreadsheetsSheetsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         '/sheets/' +
         commons.escapeVariable('$sheetId') +
@@ -447,7 +463,8 @@ class SpreadsheetsSheetsResource {
       queryParams: queryParams_,
     );
     return SheetProperties.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -573,7 +590,8 @@ class SpreadsheetsValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         '/values/' +
         commons.escapeVariable('$range') +
@@ -586,7 +604,8 @@ class SpreadsheetsValuesResource {
       queryParams: queryParams_,
     );
     return AppendValuesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Clears one or more ranges of values from a spreadsheet.
@@ -621,7 +640,8 @@ class SpreadsheetsValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         '/values:batchClear';
 
@@ -632,7 +652,8 @@ class SpreadsheetsValuesResource {
       queryParams: queryParams_,
     );
     return BatchClearValuesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Clears one or more ranges of values from a spreadsheet.
@@ -668,7 +689,8 @@ class SpreadsheetsValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         '/values:batchClearByDataFilter';
 
@@ -679,7 +701,8 @@ class SpreadsheetsValuesResource {
       queryParams: queryParams_,
     );
     return BatchClearValuesByDataFilterResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns one or more ranges of values from a spreadsheet.
@@ -766,7 +789,8 @@ class SpreadsheetsValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         '/values:batchGet';
 
@@ -776,7 +800,8 @@ class SpreadsheetsValuesResource {
       queryParams: queryParams_,
     );
     return BatchGetValuesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns one or more ranges of values that match the specified data
@@ -811,7 +836,8 @@ class SpreadsheetsValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         '/values:batchGetByDataFilter';
 
@@ -822,7 +848,8 @@ class SpreadsheetsValuesResource {
       queryParams: queryParams_,
     );
     return BatchGetValuesByDataFilterResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets values in one or more ranges of a spreadsheet.
@@ -856,7 +883,8 @@ class SpreadsheetsValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         '/values:batchUpdate';
 
@@ -867,7 +895,8 @@ class SpreadsheetsValuesResource {
       queryParams: queryParams_,
     );
     return BatchUpdateValuesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets values in one or more ranges of a spreadsheet.
@@ -901,7 +930,8 @@ class SpreadsheetsValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         '/values:batchUpdateByDataFilter';
 
@@ -912,7 +942,8 @@ class SpreadsheetsValuesResource {
       queryParams: queryParams_,
     );
     return BatchUpdateValuesByDataFilterResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Clears values from a spreadsheet.
@@ -952,7 +983,8 @@ class SpreadsheetsValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         '/values/' +
         commons.escapeVariable('$range') +
@@ -965,7 +997,8 @@ class SpreadsheetsValuesResource {
       queryParams: queryParams_,
     );
     return ClearValuesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a range of values from a spreadsheet.
@@ -1051,7 +1084,8 @@ class SpreadsheetsValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         '/values/' +
         commons.escapeVariable('$range');
@@ -1062,7 +1096,8 @@ class SpreadsheetsValuesResource {
       queryParams: queryParams_,
     );
     return ValueRange.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets values in a range of a spreadsheet.
@@ -1164,7 +1199,8 @@ class SpreadsheetsValuesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v4/spreadsheets/' +
+    final url_ =
+        'v4/spreadsheets/' +
         commons.escapeVariable('$spreadsheetId') +
         '/values/' +
         commons.escapeVariable('$range');
@@ -1176,7 +1212,8 @@ class SpreadsheetsValuesResource {
       queryParams: queryParams_,
     );
     return UpdateValuesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1189,21 +1226,21 @@ class AddBandingRequest {
   /// already exists.)
   BandedRange? bandedRange;
 
-  AddBandingRequest({
-    this.bandedRange,
-  });
+  AddBandingRequest({this.bandedRange});
 
   AddBandingRequest.fromJson(core.Map json_)
-      : this(
-          bandedRange: json_.containsKey('bandedRange')
-              ? BandedRange.fromJson(
-                  json_['bandedRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bandedRange:
+            json_.containsKey('bandedRange')
+                ? BandedRange.fromJson(
+                  json_['bandedRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bandedRange != null) 'bandedRange': bandedRange!,
-      };
+    if (bandedRange != null) 'bandedRange': bandedRange!,
+  };
 }
 
 /// The result of adding a banded range.
@@ -1211,21 +1248,21 @@ class AddBandingResponse {
   /// The banded range that was added.
   BandedRange? bandedRange;
 
-  AddBandingResponse({
-    this.bandedRange,
-  });
+  AddBandingResponse({this.bandedRange});
 
   AddBandingResponse.fromJson(core.Map json_)
-      : this(
-          bandedRange: json_.containsKey('bandedRange')
-              ? BandedRange.fromJson(
-                  json_['bandedRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bandedRange:
+            json_.containsKey('bandedRange')
+                ? BandedRange.fromJson(
+                  json_['bandedRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bandedRange != null) 'bandedRange': bandedRange!,
-      };
+    if (bandedRange != null) 'bandedRange': bandedRange!,
+  };
 }
 
 /// Adds a chart to a sheet in the spreadsheet.
@@ -1238,21 +1275,21 @@ class AddChartRequest {
   /// already exists.)
   EmbeddedChart? chart;
 
-  AddChartRequest({
-    this.chart,
-  });
+  AddChartRequest({this.chart});
 
   AddChartRequest.fromJson(core.Map json_)
-      : this(
-          chart: json_.containsKey('chart')
-              ? EmbeddedChart.fromJson(
-                  json_['chart'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        chart:
+            json_.containsKey('chart')
+                ? EmbeddedChart.fromJson(
+                  json_['chart'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chart != null) 'chart': chart!,
-      };
+    if (chart != null) 'chart': chart!,
+  };
 }
 
 /// The result of adding a chart to a spreadsheet.
@@ -1260,21 +1297,21 @@ class AddChartResponse {
   /// The newly added chart.
   EmbeddedChart? chart;
 
-  AddChartResponse({
-    this.chart,
-  });
+  AddChartResponse({this.chart});
 
   AddChartResponse.fromJson(core.Map json_)
-      : this(
-          chart: json_.containsKey('chart')
-              ? EmbeddedChart.fromJson(
-                  json_['chart'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        chart:
+            json_.containsKey('chart')
+                ? EmbeddedChart.fromJson(
+                  json_['chart'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chart != null) 'chart': chart!,
-      };
+    if (chart != null) 'chart': chart!,
+  };
 }
 
 /// Adds a new conditional format rule at the given index.
@@ -1287,24 +1324,23 @@ class AddConditionalFormatRuleRequest {
   /// The rule to add.
   ConditionalFormatRule? rule;
 
-  AddConditionalFormatRuleRequest({
-    this.index,
-    this.rule,
-  });
+  AddConditionalFormatRuleRequest({this.index, this.rule});
 
   AddConditionalFormatRuleRequest.fromJson(core.Map json_)
-      : this(
-          index: json_['index'] as core.int?,
-          rule: json_.containsKey('rule')
-              ? ConditionalFormatRule.fromJson(
-                  json_['rule'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        index: json_['index'] as core.int?,
+        rule:
+            json_.containsKey('rule')
+                ? ConditionalFormatRule.fromJson(
+                  json_['rule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (index != null) 'index': index!,
-        if (rule != null) 'rule': rule!,
-      };
+    if (index != null) 'index': index!,
+    if (rule != null) 'rule': rule!,
+  };
 }
 
 /// Adds a data source.
@@ -1317,21 +1353,21 @@ class AddDataSourceRequest {
   /// The data source to add.
   DataSource? dataSource;
 
-  AddDataSourceRequest({
-    this.dataSource,
-  });
+  AddDataSourceRequest({this.dataSource});
 
   AddDataSourceRequest.fromJson(core.Map json_)
-      : this(
-          dataSource: json_.containsKey('dataSource')
-              ? DataSource.fromJson(
-                  json_['dataSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dataSource:
+            json_.containsKey('dataSource')
+                ? DataSource.fromJson(
+                  json_['dataSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSource != null) 'dataSource': dataSource!,
-      };
+    if (dataSource != null) 'dataSource': dataSource!,
+  };
 }
 
 /// The result of adding a data source.
@@ -1342,28 +1378,30 @@ class AddDataSourceResponse {
   /// The data source that was created.
   DataSource? dataSource;
 
-  AddDataSourceResponse({
-    this.dataExecutionStatus,
-    this.dataSource,
-  });
+  AddDataSourceResponse({this.dataExecutionStatus, this.dataSource});
 
   AddDataSourceResponse.fromJson(core.Map json_)
-      : this(
-          dataExecutionStatus: json_.containsKey('dataExecutionStatus')
-              ? DataExecutionStatus.fromJson(json_['dataExecutionStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataSource: json_.containsKey('dataSource')
-              ? DataSource.fromJson(
-                  json_['dataSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dataExecutionStatus:
+            json_.containsKey('dataExecutionStatus')
+                ? DataExecutionStatus.fromJson(
+                  json_['dataExecutionStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataSource:
+            json_.containsKey('dataSource')
+                ? DataSource.fromJson(
+                  json_['dataSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus!,
-        if (dataSource != null) 'dataSource': dataSource!,
-      };
+    if (dataExecutionStatus != null)
+      'dataExecutionStatus': dataExecutionStatus!,
+    if (dataSource != null) 'dataSource': dataSource!,
+  };
 }
 
 /// Creates a group over the specified range.
@@ -1385,21 +1423,21 @@ class AddDimensionGroupRequest {
   /// The range over which to create a group.
   DimensionRange? range;
 
-  AddDimensionGroupRequest({
-    this.range,
-  });
+  AddDimensionGroupRequest({this.range});
 
   AddDimensionGroupRequest.fromJson(core.Map json_)
-      : this(
-          range: json_.containsKey('range')
-              ? DimensionRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        range:
+            json_.containsKey('range')
+                ? DimensionRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (range != null) 'range': range!,
-      };
+    if (range != null) 'range': range!,
+  };
 }
 
 /// The result of adding a group.
@@ -1407,21 +1445,23 @@ class AddDimensionGroupResponse {
   /// All groups of a dimension after adding a group to that dimension.
   core.List<DimensionGroup>? dimensionGroups;
 
-  AddDimensionGroupResponse({
-    this.dimensionGroups,
-  });
+  AddDimensionGroupResponse({this.dimensionGroups});
 
   AddDimensionGroupResponse.fromJson(core.Map json_)
-      : this(
-          dimensionGroups: (json_['dimensionGroups'] as core.List?)
-              ?.map((value) => DimensionGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        dimensionGroups:
+            (json_['dimensionGroups'] as core.List?)
+                ?.map(
+                  (value) => DimensionGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionGroups != null) 'dimensionGroups': dimensionGroups!,
-      };
+    if (dimensionGroups != null) 'dimensionGroups': dimensionGroups!,
+  };
 }
 
 /// Adds a filter view.
@@ -1433,21 +1473,21 @@ class AddFilterViewRequest {
   /// already exists.)
   FilterView? filter;
 
-  AddFilterViewRequest({
-    this.filter,
-  });
+  AddFilterViewRequest({this.filter});
 
   AddFilterViewRequest.fromJson(core.Map json_)
-      : this(
-          filter: json_.containsKey('filter')
-              ? FilterView.fromJson(
-                  json_['filter'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        filter:
+            json_.containsKey('filter')
+                ? FilterView.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-      };
+    if (filter != null) 'filter': filter!,
+  };
 }
 
 /// The result of adding a filter view.
@@ -1455,21 +1495,21 @@ class AddFilterViewResponse {
   /// The newly added filter view.
   FilterView? filter;
 
-  AddFilterViewResponse({
-    this.filter,
-  });
+  AddFilterViewResponse({this.filter});
 
   AddFilterViewResponse.fromJson(core.Map json_)
-      : this(
-          filter: json_.containsKey('filter')
-              ? FilterView.fromJson(
-                  json_['filter'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        filter:
+            json_.containsKey('filter')
+                ? FilterView.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-      };
+    if (filter != null) 'filter': filter!,
+  };
 }
 
 /// Adds a named range to the spreadsheet.
@@ -1481,21 +1521,21 @@ class AddNamedRangeRequest {
   /// already exists.)
   NamedRange? namedRange;
 
-  AddNamedRangeRequest({
-    this.namedRange,
-  });
+  AddNamedRangeRequest({this.namedRange});
 
   AddNamedRangeRequest.fromJson(core.Map json_)
-      : this(
-          namedRange: json_.containsKey('namedRange')
-              ? NamedRange.fromJson(
-                  json_['namedRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        namedRange:
+            json_.containsKey('namedRange')
+                ? NamedRange.fromJson(
+                  json_['namedRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (namedRange != null) 'namedRange': namedRange!,
-      };
+    if (namedRange != null) 'namedRange': namedRange!,
+  };
 }
 
 /// The result of adding a named range.
@@ -1503,21 +1543,21 @@ class AddNamedRangeResponse {
   /// The named range to add.
   NamedRange? namedRange;
 
-  AddNamedRangeResponse({
-    this.namedRange,
-  });
+  AddNamedRangeResponse({this.namedRange});
 
   AddNamedRangeResponse.fromJson(core.Map json_)
-      : this(
-          namedRange: json_.containsKey('namedRange')
-              ? NamedRange.fromJson(
-                  json_['namedRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        namedRange:
+            json_.containsKey('namedRange')
+                ? NamedRange.fromJson(
+                  json_['namedRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (namedRange != null) 'namedRange': namedRange!,
-      };
+    if (namedRange != null) 'namedRange': namedRange!,
+  };
 }
 
 /// Adds a new protected range.
@@ -1529,21 +1569,22 @@ class AddProtectedRangeRequest {
   /// already exists.)
   ProtectedRange? protectedRange;
 
-  AddProtectedRangeRequest({
-    this.protectedRange,
-  });
+  AddProtectedRangeRequest({this.protectedRange});
 
   AddProtectedRangeRequest.fromJson(core.Map json_)
-      : this(
-          protectedRange: json_.containsKey('protectedRange')
-              ? ProtectedRange.fromJson(json_['protectedRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        protectedRange:
+            json_.containsKey('protectedRange')
+                ? ProtectedRange.fromJson(
+                  json_['protectedRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (protectedRange != null) 'protectedRange': protectedRange!,
-      };
+    if (protectedRange != null) 'protectedRange': protectedRange!,
+  };
 }
 
 /// The result of adding a new protected range.
@@ -1551,21 +1592,22 @@ class AddProtectedRangeResponse {
   /// The newly added protected range.
   ProtectedRange? protectedRange;
 
-  AddProtectedRangeResponse({
-    this.protectedRange,
-  });
+  AddProtectedRangeResponse({this.protectedRange});
 
   AddProtectedRangeResponse.fromJson(core.Map json_)
-      : this(
-          protectedRange: json_.containsKey('protectedRange')
-              ? ProtectedRange.fromJson(json_['protectedRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        protectedRange:
+            json_.containsKey('protectedRange')
+                ? ProtectedRange.fromJson(
+                  json_['protectedRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (protectedRange != null) 'protectedRange': protectedRange!,
-      };
+    if (protectedRange != null) 'protectedRange': protectedRange!,
+  };
 }
 
 /// Adds a new sheet.
@@ -1581,21 +1623,21 @@ class AddSheetRequest {
   /// of a sheet that already exists.)
   SheetProperties? properties;
 
-  AddSheetRequest({
-    this.properties,
-  });
+  AddSheetRequest({this.properties});
 
   AddSheetRequest.fromJson(core.Map json_)
-      : this(
-          properties: json_.containsKey('properties')
-              ? SheetProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        properties:
+            json_.containsKey('properties')
+                ? SheetProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (properties != null) 'properties': properties!,
-      };
+    if (properties != null) 'properties': properties!,
+  };
 }
 
 /// The result of adding a sheet.
@@ -1603,21 +1645,21 @@ class AddSheetResponse {
   /// The properties of the newly added sheet.
   SheetProperties? properties;
 
-  AddSheetResponse({
-    this.properties,
-  });
+  AddSheetResponse({this.properties});
 
   AddSheetResponse.fromJson(core.Map json_)
-      : this(
-          properties: json_.containsKey('properties')
-              ? SheetProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        properties:
+            json_.containsKey('properties')
+                ? SheetProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (properties != null) 'properties': properties!,
-      };
+    if (properties != null) 'properties': properties!,
+  };
 }
 
 /// Adds a slicer to a sheet in the spreadsheet.
@@ -1630,21 +1672,21 @@ class AddSlicerRequest {
   /// exists.)
   Slicer? slicer;
 
-  AddSlicerRequest({
-    this.slicer,
-  });
+  AddSlicerRequest({this.slicer});
 
   AddSlicerRequest.fromJson(core.Map json_)
-      : this(
-          slicer: json_.containsKey('slicer')
-              ? Slicer.fromJson(
-                  json_['slicer'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        slicer:
+            json_.containsKey('slicer')
+                ? Slicer.fromJson(
+                  json_['slicer'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (slicer != null) 'slicer': slicer!,
-      };
+    if (slicer != null) 'slicer': slicer!,
+  };
 }
 
 /// The result of adding a slicer to a spreadsheet.
@@ -1652,21 +1694,21 @@ class AddSlicerResponse {
   /// The newly added slicer.
   Slicer? slicer;
 
-  AddSlicerResponse({
-    this.slicer,
-  });
+  AddSlicerResponse({this.slicer});
 
   AddSlicerResponse.fromJson(core.Map json_)
-      : this(
-          slicer: json_.containsKey('slicer')
-              ? Slicer.fromJson(
-                  json_['slicer'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        slicer:
+            json_.containsKey('slicer')
+                ? Slicer.fromJson(
+                  json_['slicer'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (slicer != null) 'slicer': slicer!,
-      };
+    if (slicer != null) 'slicer': slicer!,
+  };
 }
 
 /// Adds a new table to the spreadsheet.
@@ -1676,21 +1718,21 @@ class AddTableRequest {
   /// Required.
   Table? table;
 
-  AddTableRequest({
-    this.table,
-  });
+  AddTableRequest({this.table});
 
   AddTableRequest.fromJson(core.Map json_)
-      : this(
-          table: json_.containsKey('table')
-              ? Table.fromJson(
-                  json_['table'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        table:
+            json_.containsKey('table')
+                ? Table.fromJson(
+                  json_['table'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (table != null) 'table': table!,
-      };
+    if (table != null) 'table': table!,
+  };
 }
 
 /// The result of adding a table.
@@ -1700,21 +1742,21 @@ class AddTableResponse {
   /// Output only.
   Table? table;
 
-  AddTableResponse({
-    this.table,
-  });
+  AddTableResponse({this.table});
 
   AddTableResponse.fromJson(core.Map json_)
-      : this(
-          table: json_.containsKey('table')
-              ? Table.fromJson(
-                  json_['table'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        table:
+            json_.containsKey('table')
+                ? Table.fromJson(
+                  json_['table'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (table != null) 'table': table!,
-      };
+    if (table != null) 'table': table!,
+  };
 }
 
 /// Adds new cells after the last row with data in a sheet, inserting new rows
@@ -1739,30 +1781,29 @@ class AppendCellsRequest {
   /// precedence over the `sheet_id` field.
   core.String? tableId;
 
-  AppendCellsRequest({
-    this.fields,
-    this.rows,
-    this.sheetId,
-    this.tableId,
-  });
+  AppendCellsRequest({this.fields, this.rows, this.sheetId, this.tableId});
 
   AppendCellsRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          rows: (json_['rows'] as core.List?)
-              ?.map((value) => RowData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          sheetId: json_['sheetId'] as core.int?,
-          tableId: json_['tableId'] as core.String?,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        rows:
+            (json_['rows'] as core.List?)
+                ?.map(
+                  (value) => RowData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        sheetId: json_['sheetId'] as core.int?,
+        tableId: json_['tableId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (rows != null) 'rows': rows!,
-        if (sheetId != null) 'sheetId': sheetId!,
-        if (tableId != null) 'tableId': tableId!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (rows != null) 'rows': rows!,
+    if (sheetId != null) 'sheetId': sheetId!,
+    if (tableId != null) 'tableId': tableId!,
+  };
 }
 
 /// Appends rows or columns to the end of a sheet.
@@ -1780,24 +1821,20 @@ class AppendDimensionRequest {
   /// The sheet to append rows or columns to.
   core.int? sheetId;
 
-  AppendDimensionRequest({
-    this.dimension,
-    this.length,
-    this.sheetId,
-  });
+  AppendDimensionRequest({this.dimension, this.length, this.sheetId});
 
   AppendDimensionRequest.fromJson(core.Map json_)
-      : this(
-          dimension: json_['dimension'] as core.String?,
-          length: json_['length'] as core.int?,
-          sheetId: json_['sheetId'] as core.int?,
-        );
+    : this(
+        dimension: json_['dimension'] as core.String?,
+        length: json_['length'] as core.int?,
+        sheetId: json_['sheetId'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimension != null) 'dimension': dimension!,
-        if (length != null) 'length': length!,
-        if (sheetId != null) 'sheetId': sheetId!,
-      };
+    if (dimension != null) 'dimension': dimension!,
+    if (length != null) 'length': length!,
+    if (sheetId != null) 'sheetId': sheetId!,
+  };
 }
 
 /// The response when updating a range of values in a spreadsheet.
@@ -1814,27 +1851,25 @@ class AppendValuesResponse {
   /// Information about the updates that were applied.
   UpdateValuesResponse? updates;
 
-  AppendValuesResponse({
-    this.spreadsheetId,
-    this.tableRange,
-    this.updates,
-  });
+  AppendValuesResponse({this.spreadsheetId, this.tableRange, this.updates});
 
   AppendValuesResponse.fromJson(core.Map json_)
-      : this(
-          spreadsheetId: json_['spreadsheetId'] as core.String?,
-          tableRange: json_['tableRange'] as core.String?,
-          updates: json_.containsKey('updates')
-              ? UpdateValuesResponse.fromJson(
-                  json_['updates'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        spreadsheetId: json_['spreadsheetId'] as core.String?,
+        tableRange: json_['tableRange'] as core.String?,
+        updates:
+            json_.containsKey('updates')
+                ? UpdateValuesResponse.fromJson(
+                  json_['updates'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-        if (tableRange != null) 'tableRange': tableRange!,
-        if (updates != null) 'updates': updates!,
-      };
+    if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+    if (tableRange != null) 'tableRange': tableRange!,
+    if (updates != null) 'updates': updates!,
+  };
 }
 
 /// Fills in more data based on existing data.
@@ -1863,25 +1898,29 @@ class AutoFillRequest {
   });
 
   AutoFillRequest.fromJson(core.Map json_)
-      : this(
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceAndDestination: json_.containsKey('sourceAndDestination')
-              ? SourceAndDestination.fromJson(json_['sourceAndDestination']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          useAlternateSeries: json_['useAlternateSeries'] as core.bool?,
-        );
+    : this(
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceAndDestination:
+            json_.containsKey('sourceAndDestination')
+                ? SourceAndDestination.fromJson(
+                  json_['sourceAndDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        useAlternateSeries: json_['useAlternateSeries'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (range != null) 'range': range!,
-        if (sourceAndDestination != null)
-          'sourceAndDestination': sourceAndDestination!,
-        if (useAlternateSeries != null)
-          'useAlternateSeries': useAlternateSeries!,
-      };
+    if (range != null) 'range': range!,
+    if (sourceAndDestination != null)
+      'sourceAndDestination': sourceAndDestination!,
+    if (useAlternateSeries != null) 'useAlternateSeries': useAlternateSeries!,
+  };
 }
 
 /// Automatically resizes one or more dimensions based on the contents of the
@@ -1899,24 +1938,27 @@ class AutoResizeDimensionsRequest {
   });
 
   AutoResizeDimensionsRequest.fromJson(core.Map json_)
-      : this(
-          dataSourceSheetDimensions:
-              json_.containsKey('dataSourceSheetDimensions')
-                  ? DataSourceSheetDimensionRange.fromJson(
-                      json_['dataSourceSheetDimensions']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          dimensions: json_.containsKey('dimensions')
-              ? DimensionRange.fromJson(
-                  json_['dimensions'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dataSourceSheetDimensions:
+            json_.containsKey('dataSourceSheetDimensions')
+                ? DataSourceSheetDimensionRange.fromJson(
+                  json_['dataSourceSheetDimensions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dimensions:
+            json_.containsKey('dimensions')
+                ? DimensionRange.fromJson(
+                  json_['dimensions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSourceSheetDimensions != null)
-          'dataSourceSheetDimensions': dataSourceSheetDimensions!,
-        if (dimensions != null) 'dimensions': dimensions!,
-      };
+    if (dataSourceSheetDimensions != null)
+      'dataSourceSheetDimensions': dataSourceSheetDimensions!,
+    if (dimensions != null) 'dimensions': dimensions!,
+  };
 }
 
 /// A banded (alternating colors) range in a sheet.
@@ -1958,31 +2000,38 @@ class BandedRange {
   });
 
   BandedRange.fromJson(core.Map json_)
-      : this(
-          bandedRangeId: json_['bandedRangeId'] as core.int?,
-          bandedRangeReference: json_['bandedRangeReference'] as core.String?,
-          columnProperties: json_.containsKey('columnProperties')
-              ? BandingProperties.fromJson(json_['columnProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rowProperties: json_.containsKey('rowProperties')
-              ? BandingProperties.fromJson(
-                  json_['rowProperties'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bandedRangeId: json_['bandedRangeId'] as core.int?,
+        bandedRangeReference: json_['bandedRangeReference'] as core.String?,
+        columnProperties:
+            json_.containsKey('columnProperties')
+                ? BandingProperties.fromJson(
+                  json_['columnProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rowProperties:
+            json_.containsKey('rowProperties')
+                ? BandingProperties.fromJson(
+                  json_['rowProperties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bandedRangeId != null) 'bandedRangeId': bandedRangeId!,
-        if (bandedRangeReference != null)
-          'bandedRangeReference': bandedRangeReference!,
-        if (columnProperties != null) 'columnProperties': columnProperties!,
-        if (range != null) 'range': range!,
-        if (rowProperties != null) 'rowProperties': rowProperties!,
-      };
+    if (bandedRangeId != null) 'bandedRangeId': bandedRangeId!,
+    if (bandedRangeReference != null)
+      'bandedRangeReference': bandedRangeReference!,
+    if (columnProperties != null) 'columnProperties': columnProperties!,
+    if (range != null) 'range': range!,
+    if (rowProperties != null) 'rowProperties': rowProperties!,
+  };
 }
 
 /// Properties referring a single dimension (either row or column).
@@ -2075,53 +2124,75 @@ class BandingProperties {
   });
 
   BandingProperties.fromJson(core.Map json_)
-      : this(
-          firstBandColor: json_.containsKey('firstBandColor')
-              ? Color.fromJson(json_['firstBandColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          firstBandColorStyle: json_.containsKey('firstBandColorStyle')
-              ? ColorStyle.fromJson(json_['firstBandColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          footerColor: json_.containsKey('footerColor')
-              ? Color.fromJson(
-                  json_['footerColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          footerColorStyle: json_.containsKey('footerColorStyle')
-              ? ColorStyle.fromJson(json_['footerColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          headerColor: json_.containsKey('headerColor')
-              ? Color.fromJson(
-                  json_['headerColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          headerColorStyle: json_.containsKey('headerColorStyle')
-              ? ColorStyle.fromJson(json_['headerColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          secondBandColor: json_.containsKey('secondBandColor')
-              ? Color.fromJson(json_['secondBandColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          secondBandColorStyle: json_.containsKey('secondBandColorStyle')
-              ? ColorStyle.fromJson(json_['secondBandColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        firstBandColor:
+            json_.containsKey('firstBandColor')
+                ? Color.fromJson(
+                  json_['firstBandColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        firstBandColorStyle:
+            json_.containsKey('firstBandColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['firstBandColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        footerColor:
+            json_.containsKey('footerColor')
+                ? Color.fromJson(
+                  json_['footerColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        footerColorStyle:
+            json_.containsKey('footerColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['footerColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        headerColor:
+            json_.containsKey('headerColor')
+                ? Color.fromJson(
+                  json_['headerColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        headerColorStyle:
+            json_.containsKey('headerColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['headerColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        secondBandColor:
+            json_.containsKey('secondBandColor')
+                ? Color.fromJson(
+                  json_['secondBandColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        secondBandColorStyle:
+            json_.containsKey('secondBandColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['secondBandColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (firstBandColor != null) 'firstBandColor': firstBandColor!,
-        if (firstBandColorStyle != null)
-          'firstBandColorStyle': firstBandColorStyle!,
-        if (footerColor != null) 'footerColor': footerColor!,
-        if (footerColorStyle != null) 'footerColorStyle': footerColorStyle!,
-        if (headerColor != null) 'headerColor': headerColor!,
-        if (headerColorStyle != null) 'headerColorStyle': headerColorStyle!,
-        if (secondBandColor != null) 'secondBandColor': secondBandColor!,
-        if (secondBandColorStyle != null)
-          'secondBandColorStyle': secondBandColorStyle!,
-      };
+    if (firstBandColor != null) 'firstBandColor': firstBandColor!,
+    if (firstBandColorStyle != null)
+      'firstBandColorStyle': firstBandColorStyle!,
+    if (footerColor != null) 'footerColor': footerColor!,
+    if (footerColorStyle != null) 'footerColorStyle': footerColorStyle!,
+    if (headerColor != null) 'headerColor': headerColor!,
+    if (headerColorStyle != null) 'headerColorStyle': headerColorStyle!,
+    if (secondBandColor != null) 'secondBandColor': secondBandColor!,
+    if (secondBandColorStyle != null)
+      'secondBandColorStyle': secondBandColorStyle!,
+  };
 }
 
 /// Formatting options for baseline value.
@@ -2194,47 +2265,59 @@ class BaselineValueFormat {
   });
 
   BaselineValueFormat.fromJson(core.Map json_)
-      : this(
-          comparisonType: json_['comparisonType'] as core.String?,
-          description: json_['description'] as core.String?,
-          negativeColor: json_.containsKey('negativeColor')
-              ? Color.fromJson(
-                  json_['negativeColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          negativeColorStyle: json_.containsKey('negativeColorStyle')
-              ? ColorStyle.fromJson(json_['negativeColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          position: json_.containsKey('position')
-              ? TextPosition.fromJson(
-                  json_['position'] as core.Map<core.String, core.dynamic>)
-              : null,
-          positiveColor: json_.containsKey('positiveColor')
-              ? Color.fromJson(
-                  json_['positiveColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          positiveColorStyle: json_.containsKey('positiveColorStyle')
-              ? ColorStyle.fromJson(json_['positiveColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          textFormat: json_.containsKey('textFormat')
-              ? TextFormat.fromJson(
-                  json_['textFormat'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        comparisonType: json_['comparisonType'] as core.String?,
+        description: json_['description'] as core.String?,
+        negativeColor:
+            json_.containsKey('negativeColor')
+                ? Color.fromJson(
+                  json_['negativeColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        negativeColorStyle:
+            json_.containsKey('negativeColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['negativeColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        position:
+            json_.containsKey('position')
+                ? TextPosition.fromJson(
+                  json_['position'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        positiveColor:
+            json_.containsKey('positiveColor')
+                ? Color.fromJson(
+                  json_['positiveColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        positiveColorStyle:
+            json_.containsKey('positiveColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['positiveColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textFormat:
+            json_.containsKey('textFormat')
+                ? TextFormat.fromJson(
+                  json_['textFormat'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (comparisonType != null) 'comparisonType': comparisonType!,
-        if (description != null) 'description': description!,
-        if (negativeColor != null) 'negativeColor': negativeColor!,
-        if (negativeColorStyle != null)
-          'negativeColorStyle': negativeColorStyle!,
-        if (position != null) 'position': position!,
-        if (positiveColor != null) 'positiveColor': positiveColor!,
-        if (positiveColorStyle != null)
-          'positiveColorStyle': positiveColorStyle!,
-        if (textFormat != null) 'textFormat': textFormat!,
-      };
+    if (comparisonType != null) 'comparisonType': comparisonType!,
+    if (description != null) 'description': description!,
+    if (negativeColor != null) 'negativeColor': negativeColor!,
+    if (negativeColorStyle != null) 'negativeColorStyle': negativeColorStyle!,
+    if (position != null) 'position': position!,
+    if (positiveColor != null) 'positiveColor': positiveColor!,
+    if (positiveColorStyle != null) 'positiveColorStyle': positiveColorStyle!,
+    if (textFormat != null) 'textFormat': textFormat!,
+  };
 }
 
 /// An axis of the chart.
@@ -2280,30 +2363,38 @@ class BasicChartAxis {
   });
 
   BasicChartAxis.fromJson(core.Map json_)
-      : this(
-          format: json_.containsKey('format')
-              ? TextFormat.fromJson(
-                  json_['format'] as core.Map<core.String, core.dynamic>)
-              : null,
-          position: json_['position'] as core.String?,
-          title: json_['title'] as core.String?,
-          titleTextPosition: json_.containsKey('titleTextPosition')
-              ? TextPosition.fromJson(json_['titleTextPosition']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          viewWindowOptions: json_.containsKey('viewWindowOptions')
-              ? ChartAxisViewWindowOptions.fromJson(json_['viewWindowOptions']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        format:
+            json_.containsKey('format')
+                ? TextFormat.fromJson(
+                  json_['format'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        position: json_['position'] as core.String?,
+        title: json_['title'] as core.String?,
+        titleTextPosition:
+            json_.containsKey('titleTextPosition')
+                ? TextPosition.fromJson(
+                  json_['titleTextPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        viewWindowOptions:
+            json_.containsKey('viewWindowOptions')
+                ? ChartAxisViewWindowOptions.fromJson(
+                  json_['viewWindowOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (format != null) 'format': format!,
-        if (position != null) 'position': position!,
-        if (title != null) 'title': title!,
-        if (titleTextPosition != null) 'titleTextPosition': titleTextPosition!,
-        if (viewWindowOptions != null) 'viewWindowOptions': viewWindowOptions!,
-      };
+    if (format != null) 'format': format!,
+    if (position != null) 'position': position!,
+    if (title != null) 'title': title!,
+    if (titleTextPosition != null) 'titleTextPosition': titleTextPosition!,
+    if (viewWindowOptions != null) 'viewWindowOptions': viewWindowOptions!,
+  };
 }
 
 /// The domain of a chart.
@@ -2319,24 +2410,23 @@ class BasicChartDomain {
   /// True to reverse the order of the domain values (horizontal axis).
   core.bool? reversed;
 
-  BasicChartDomain({
-    this.domain,
-    this.reversed,
-  });
+  BasicChartDomain({this.domain, this.reversed});
 
   BasicChartDomain.fromJson(core.Map json_)
-      : this(
-          domain: json_.containsKey('domain')
-              ? ChartData.fromJson(
-                  json_['domain'] as core.Map<core.String, core.dynamic>)
-              : null,
-          reversed: json_['reversed'] as core.bool?,
-        );
+    : this(
+        domain:
+            json_.containsKey('domain')
+                ? ChartData.fromJson(
+                  json_['domain'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reversed: json_['reversed'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domain != null) 'domain': domain!,
-        if (reversed != null) 'reversed': reversed!,
-      };
+    if (domain != null) 'domain': domain!,
+    if (reversed != null) 'reversed': reversed!,
+  };
 }
 
 /// A single series of data in a chart.
@@ -2429,50 +2519,66 @@ class BasicChartSeries {
   });
 
   BasicChartSeries.fromJson(core.Map json_)
-      : this(
-          color: json_.containsKey('color')
-              ? Color.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-          colorStyle: json_.containsKey('colorStyle')
-              ? ColorStyle.fromJson(
-                  json_['colorStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dataLabel: json_.containsKey('dataLabel')
-              ? DataLabel.fromJson(
-                  json_['dataLabel'] as core.Map<core.String, core.dynamic>)
-              : null,
-          lineStyle: json_.containsKey('lineStyle')
-              ? LineStyle.fromJson(
-                  json_['lineStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pointStyle: json_.containsKey('pointStyle')
-              ? PointStyle.fromJson(
-                  json_['pointStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          series: json_.containsKey('series')
-              ? ChartData.fromJson(
-                  json_['series'] as core.Map<core.String, core.dynamic>)
-              : null,
-          styleOverrides: (json_['styleOverrides'] as core.List?)
-              ?.map((value) => BasicSeriesDataPointStyleOverride.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          targetAxis: json_['targetAxis'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        color:
+            json_.containsKey('color')
+                ? Color.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        colorStyle:
+            json_.containsKey('colorStyle')
+                ? ColorStyle.fromJson(
+                  json_['colorStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataLabel:
+            json_.containsKey('dataLabel')
+                ? DataLabel.fromJson(
+                  json_['dataLabel'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lineStyle:
+            json_.containsKey('lineStyle')
+                ? LineStyle.fromJson(
+                  json_['lineStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pointStyle:
+            json_.containsKey('pointStyle')
+                ? PointStyle.fromJson(
+                  json_['pointStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        series:
+            json_.containsKey('series')
+                ? ChartData.fromJson(
+                  json_['series'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        styleOverrides:
+            (json_['styleOverrides'] as core.List?)
+                ?.map(
+                  (value) => BasicSeriesDataPointStyleOverride.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        targetAxis: json_['targetAxis'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!,
-        if (colorStyle != null) 'colorStyle': colorStyle!,
-        if (dataLabel != null) 'dataLabel': dataLabel!,
-        if (lineStyle != null) 'lineStyle': lineStyle!,
-        if (pointStyle != null) 'pointStyle': pointStyle!,
-        if (series != null) 'series': series!,
-        if (styleOverrides != null) 'styleOverrides': styleOverrides!,
-        if (targetAxis != null) 'targetAxis': targetAxis!,
-        if (type != null) 'type': type!,
-      };
+    if (color != null) 'color': color!,
+    if (colorStyle != null) 'colorStyle': colorStyle!,
+    if (dataLabel != null) 'dataLabel': dataLabel!,
+    if (lineStyle != null) 'lineStyle': lineStyle!,
+    if (pointStyle != null) 'pointStyle': pointStyle!,
+    if (series != null) 'series': series!,
+    if (styleOverrides != null) 'styleOverrides': styleOverrides!,
+    if (targetAxis != null) 'targetAxis': targetAxis!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// The specification for a basic chart.
@@ -2589,47 +2695,62 @@ class BasicChartSpec {
   });
 
   BasicChartSpec.fromJson(core.Map json_)
-      : this(
-          axis: (json_['axis'] as core.List?)
-              ?.map((value) => BasicChartAxis.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          chartType: json_['chartType'] as core.String?,
-          compareMode: json_['compareMode'] as core.String?,
-          domains: (json_['domains'] as core.List?)
-              ?.map((value) => BasicChartDomain.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          headerCount: json_['headerCount'] as core.int?,
-          interpolateNulls: json_['interpolateNulls'] as core.bool?,
-          legendPosition: json_['legendPosition'] as core.String?,
-          lineSmoothing: json_['lineSmoothing'] as core.bool?,
-          series: (json_['series'] as core.List?)
-              ?.map((value) => BasicChartSeries.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          stackedType: json_['stackedType'] as core.String?,
-          threeDimensional: json_['threeDimensional'] as core.bool?,
-          totalDataLabel: json_.containsKey('totalDataLabel')
-              ? DataLabel.fromJson(json_['totalDataLabel']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        axis:
+            (json_['axis'] as core.List?)
+                ?.map(
+                  (value) => BasicChartAxis.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        chartType: json_['chartType'] as core.String?,
+        compareMode: json_['compareMode'] as core.String?,
+        domains:
+            (json_['domains'] as core.List?)
+                ?.map(
+                  (value) => BasicChartDomain.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        headerCount: json_['headerCount'] as core.int?,
+        interpolateNulls: json_['interpolateNulls'] as core.bool?,
+        legendPosition: json_['legendPosition'] as core.String?,
+        lineSmoothing: json_['lineSmoothing'] as core.bool?,
+        series:
+            (json_['series'] as core.List?)
+                ?.map(
+                  (value) => BasicChartSeries.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        stackedType: json_['stackedType'] as core.String?,
+        threeDimensional: json_['threeDimensional'] as core.bool?,
+        totalDataLabel:
+            json_.containsKey('totalDataLabel')
+                ? DataLabel.fromJson(
+                  json_['totalDataLabel']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (axis != null) 'axis': axis!,
-        if (chartType != null) 'chartType': chartType!,
-        if (compareMode != null) 'compareMode': compareMode!,
-        if (domains != null) 'domains': domains!,
-        if (headerCount != null) 'headerCount': headerCount!,
-        if (interpolateNulls != null) 'interpolateNulls': interpolateNulls!,
-        if (legendPosition != null) 'legendPosition': legendPosition!,
-        if (lineSmoothing != null) 'lineSmoothing': lineSmoothing!,
-        if (series != null) 'series': series!,
-        if (stackedType != null) 'stackedType': stackedType!,
-        if (threeDimensional != null) 'threeDimensional': threeDimensional!,
-        if (totalDataLabel != null) 'totalDataLabel': totalDataLabel!,
-      };
+    if (axis != null) 'axis': axis!,
+    if (chartType != null) 'chartType': chartType!,
+    if (compareMode != null) 'compareMode': compareMode!,
+    if (domains != null) 'domains': domains!,
+    if (headerCount != null) 'headerCount': headerCount!,
+    if (interpolateNulls != null) 'interpolateNulls': interpolateNulls!,
+    if (legendPosition != null) 'legendPosition': legendPosition!,
+    if (lineSmoothing != null) 'lineSmoothing': lineSmoothing!,
+    if (series != null) 'series': series!,
+    if (stackedType != null) 'stackedType': stackedType!,
+    if (threeDimensional != null) 'threeDimensional': threeDimensional!,
+    if (totalDataLabel != null) 'totalDataLabel': totalDataLabel!,
+  };
 }
 
 /// The default filter associated with a sheet.
@@ -2672,37 +2793,48 @@ class BasicFilter {
   });
 
   BasicFilter.fromJson(core.Map json_)
-      : this(
-          criteria:
-              (json_['criteria'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              FilterCriteria.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        criteria: (json_['criteria'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                FilterCriteria.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          filterSpecs: (json_['filterSpecs'] as core.List?)
-              ?.map((value) => FilterSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sortSpecs: (json_['sortSpecs'] as core.List?)
-              ?.map((value) => SortSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          tableId: json_['tableId'] as core.String?,
-        );
+        filterSpecs:
+            (json_['filterSpecs'] as core.List?)
+                ?.map(
+                  (value) => FilterSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sortSpecs:
+            (json_['sortSpecs'] as core.List?)
+                ?.map(
+                  (value) => SortSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        tableId: json_['tableId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (criteria != null) 'criteria': criteria!,
-        if (filterSpecs != null) 'filterSpecs': filterSpecs!,
-        if (range != null) 'range': range!,
-        if (sortSpecs != null) 'sortSpecs': sortSpecs!,
-        if (tableId != null) 'tableId': tableId!,
-      };
+    if (criteria != null) 'criteria': criteria!,
+    if (filterSpecs != null) 'filterSpecs': filterSpecs!,
+    if (range != null) 'range': range!,
+    if (sortSpecs != null) 'sortSpecs': sortSpecs!,
+    if (tableId != null) 'tableId': tableId!,
+  };
 }
 
 /// Style override settings for a single series data point.
@@ -2739,28 +2871,34 @@ class BasicSeriesDataPointStyleOverride {
   });
 
   BasicSeriesDataPointStyleOverride.fromJson(core.Map json_)
-      : this(
-          color: json_.containsKey('color')
-              ? Color.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-          colorStyle: json_.containsKey('colorStyle')
-              ? ColorStyle.fromJson(
-                  json_['colorStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          index: json_['index'] as core.int?,
-          pointStyle: json_.containsKey('pointStyle')
-              ? PointStyle.fromJson(
-                  json_['pointStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        color:
+            json_.containsKey('color')
+                ? Color.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        colorStyle:
+            json_.containsKey('colorStyle')
+                ? ColorStyle.fromJson(
+                  json_['colorStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        index: json_['index'] as core.int?,
+        pointStyle:
+            json_.containsKey('pointStyle')
+                ? PointStyle.fromJson(
+                  json_['pointStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!,
-        if (colorStyle != null) 'colorStyle': colorStyle!,
-        if (index != null) 'index': index!,
-        if (pointStyle != null) 'pointStyle': pointStyle!,
-      };
+    if (color != null) 'color': color!,
+    if (colorStyle != null) 'colorStyle': colorStyle!,
+    if (index != null) 'index': index!,
+    if (pointStyle != null) 'pointStyle': pointStyle!,
+  };
 }
 
 /// The request for clearing more than one range selected by a DataFilter in a
@@ -2769,21 +2907,23 @@ class BatchClearValuesByDataFilterRequest {
   /// The DataFilters used to determine which ranges to clear.
   core.List<DataFilter>? dataFilters;
 
-  BatchClearValuesByDataFilterRequest({
-    this.dataFilters,
-  });
+  BatchClearValuesByDataFilterRequest({this.dataFilters});
 
   BatchClearValuesByDataFilterRequest.fromJson(core.Map json_)
-      : this(
-          dataFilters: (json_['dataFilters'] as core.List?)
-              ?.map((value) => DataFilter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        dataFilters:
+            (json_['dataFilters'] as core.List?)
+                ?.map(
+                  (value) => DataFilter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataFilters != null) 'dataFilters': dataFilters!,
-      };
+    if (dataFilters != null) 'dataFilters': dataFilters!,
+  };
 }
 
 /// The response when clearing a range of values selected with DataFilters in a
@@ -2806,17 +2946,18 @@ class BatchClearValuesByDataFilterResponse {
   });
 
   BatchClearValuesByDataFilterResponse.fromJson(core.Map json_)
-      : this(
-          clearedRanges: (json_['clearedRanges'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          spreadsheetId: json_['spreadsheetId'] as core.String?,
-        );
+    : this(
+        clearedRanges:
+            (json_['clearedRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        spreadsheetId: json_['spreadsheetId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clearedRanges != null) 'clearedRanges': clearedRanges!,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-      };
+    if (clearedRanges != null) 'clearedRanges': clearedRanges!,
+    if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+  };
 }
 
 /// The request for clearing more than one range of values in a spreadsheet.
@@ -2825,20 +2966,19 @@ class BatchClearValuesRequest {
   /// [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell).
   core.List<core.String>? ranges;
 
-  BatchClearValuesRequest({
-    this.ranges,
-  });
+  BatchClearValuesRequest({this.ranges});
 
   BatchClearValuesRequest.fromJson(core.Map json_)
-      : this(
-          ranges: (json_['ranges'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        ranges:
+            (json_['ranges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ranges != null) 'ranges': ranges!,
-      };
+    if (ranges != null) 'ranges': ranges!,
+  };
 }
 
 /// The response when clearing a range of values in a spreadsheet.
@@ -2853,23 +2993,21 @@ class BatchClearValuesResponse {
   /// The spreadsheet the updates were applied to.
   core.String? spreadsheetId;
 
-  BatchClearValuesResponse({
-    this.clearedRanges,
-    this.spreadsheetId,
-  });
+  BatchClearValuesResponse({this.clearedRanges, this.spreadsheetId});
 
   BatchClearValuesResponse.fromJson(core.Map json_)
-      : this(
-          clearedRanges: (json_['clearedRanges'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          spreadsheetId: json_['spreadsheetId'] as core.String?,
-        );
+    : this(
+        clearedRanges:
+            (json_['clearedRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        spreadsheetId: json_['spreadsheetId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clearedRanges != null) 'clearedRanges': clearedRanges!,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-      };
+    if (clearedRanges != null) 'clearedRanges': clearedRanges!,
+    if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+  };
 }
 
 /// The request for retrieving a range of values in a spreadsheet selected by a
@@ -2940,23 +3078,27 @@ class BatchGetValuesByDataFilterRequest {
   });
 
   BatchGetValuesByDataFilterRequest.fromJson(core.Map json_)
-      : this(
-          dataFilters: (json_['dataFilters'] as core.List?)
-              ?.map((value) => DataFilter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          dateTimeRenderOption: json_['dateTimeRenderOption'] as core.String?,
-          majorDimension: json_['majorDimension'] as core.String?,
-          valueRenderOption: json_['valueRenderOption'] as core.String?,
-        );
+    : this(
+        dataFilters:
+            (json_['dataFilters'] as core.List?)
+                ?.map(
+                  (value) => DataFilter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dateTimeRenderOption: json_['dateTimeRenderOption'] as core.String?,
+        majorDimension: json_['majorDimension'] as core.String?,
+        valueRenderOption: json_['valueRenderOption'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataFilters != null) 'dataFilters': dataFilters!,
-        if (dateTimeRenderOption != null)
-          'dateTimeRenderOption': dateTimeRenderOption!,
-        if (majorDimension != null) 'majorDimension': majorDimension!,
-        if (valueRenderOption != null) 'valueRenderOption': valueRenderOption!,
-      };
+    if (dataFilters != null) 'dataFilters': dataFilters!,
+    if (dateTimeRenderOption != null)
+      'dateTimeRenderOption': dateTimeRenderOption!,
+    if (majorDimension != null) 'majorDimension': majorDimension!,
+    if (valueRenderOption != null) 'valueRenderOption': valueRenderOption!,
+  };
 }
 
 /// The response when retrieving more than one range of values in a spreadsheet
@@ -2968,24 +3110,25 @@ class BatchGetValuesByDataFilterResponse {
   /// The requested values with the list of data filters that matched them.
   core.List<MatchedValueRange>? valueRanges;
 
-  BatchGetValuesByDataFilterResponse({
-    this.spreadsheetId,
-    this.valueRanges,
-  });
+  BatchGetValuesByDataFilterResponse({this.spreadsheetId, this.valueRanges});
 
   BatchGetValuesByDataFilterResponse.fromJson(core.Map json_)
-      : this(
-          spreadsheetId: json_['spreadsheetId'] as core.String?,
-          valueRanges: (json_['valueRanges'] as core.List?)
-              ?.map((value) => MatchedValueRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        spreadsheetId: json_['spreadsheetId'] as core.String?,
+        valueRanges:
+            (json_['valueRanges'] as core.List?)
+                ?.map(
+                  (value) => MatchedValueRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-        if (valueRanges != null) 'valueRanges': valueRanges!,
-      };
+    if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+    if (valueRanges != null) 'valueRanges': valueRanges!,
+  };
 }
 
 /// The response when retrieving more than one range of values in a spreadsheet.
@@ -2999,24 +3142,25 @@ class BatchGetValuesResponse {
   /// ranges.
   core.List<ValueRange>? valueRanges;
 
-  BatchGetValuesResponse({
-    this.spreadsheetId,
-    this.valueRanges,
-  });
+  BatchGetValuesResponse({this.spreadsheetId, this.valueRanges});
 
   BatchGetValuesResponse.fromJson(core.Map json_)
-      : this(
-          spreadsheetId: json_['spreadsheetId'] as core.String?,
-          valueRanges: (json_['valueRanges'] as core.List?)
-              ?.map((value) => ValueRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        spreadsheetId: json_['spreadsheetId'] as core.String?,
+        valueRanges:
+            (json_['valueRanges'] as core.List?)
+                ?.map(
+                  (value) => ValueRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-        if (valueRanges != null) 'valueRanges': valueRanges!,
-      };
+    if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+    if (valueRanges != null) 'valueRanges': valueRanges!,
+  };
 }
 
 /// The request for updating any aspect of a spreadsheet.
@@ -3049,28 +3193,32 @@ class BatchUpdateSpreadsheetRequest {
   });
 
   BatchUpdateSpreadsheetRequest.fromJson(core.Map json_)
-      : this(
-          includeSpreadsheetInResponse:
-              json_['includeSpreadsheetInResponse'] as core.bool?,
-          requests: (json_['requests'] as core.List?)
-              ?.map((value) => Request.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          responseIncludeGridData:
-              json_['responseIncludeGridData'] as core.bool?,
-          responseRanges: (json_['responseRanges'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        includeSpreadsheetInResponse:
+            json_['includeSpreadsheetInResponse'] as core.bool?,
+        requests:
+            (json_['requests'] as core.List?)
+                ?.map(
+                  (value) => Request.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        responseIncludeGridData: json_['responseIncludeGridData'] as core.bool?,
+        responseRanges:
+            (json_['responseRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (includeSpreadsheetInResponse != null)
-          'includeSpreadsheetInResponse': includeSpreadsheetInResponse!,
-        if (requests != null) 'requests': requests!,
-        if (responseIncludeGridData != null)
-          'responseIncludeGridData': responseIncludeGridData!,
-        if (responseRanges != null) 'responseRanges': responseRanges!,
-      };
+    if (includeSpreadsheetInResponse != null)
+      'includeSpreadsheetInResponse': includeSpreadsheetInResponse!,
+    if (requests != null) 'requests': requests!,
+    if (responseIncludeGridData != null)
+      'responseIncludeGridData': responseIncludeGridData!,
+    if (responseRanges != null) 'responseRanges': responseRanges!,
+  };
 }
 
 /// The reply for batch updating a spreadsheet.
@@ -3097,24 +3245,30 @@ class BatchUpdateSpreadsheetResponse {
   });
 
   BatchUpdateSpreadsheetResponse.fromJson(core.Map json_)
-      : this(
-          replies: (json_['replies'] as core.List?)
-              ?.map((value) => Response.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          spreadsheetId: json_['spreadsheetId'] as core.String?,
-          updatedSpreadsheet: json_.containsKey('updatedSpreadsheet')
-              ? Spreadsheet.fromJson(json_['updatedSpreadsheet']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        replies:
+            (json_['replies'] as core.List?)
+                ?.map(
+                  (value) => Response.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        spreadsheetId: json_['spreadsheetId'] as core.String?,
+        updatedSpreadsheet:
+            json_.containsKey('updatedSpreadsheet')
+                ? Spreadsheet.fromJson(
+                  json_['updatedSpreadsheet']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (replies != null) 'replies': replies!,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-        if (updatedSpreadsheet != null)
-          'updatedSpreadsheet': updatedSpreadsheet!,
-      };
+    if (replies != null) 'replies': replies!,
+    if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+    if (updatedSpreadsheet != null) 'updatedSpreadsheet': updatedSpreadsheet!,
+  };
 }
 
 /// The request for updating more than one range of values in a spreadsheet.
@@ -3196,30 +3350,33 @@ class BatchUpdateValuesByDataFilterRequest {
   });
 
   BatchUpdateValuesByDataFilterRequest.fromJson(core.Map json_)
-      : this(
-          data: (json_['data'] as core.List?)
-              ?.map((value) => DataFilterValueRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          includeValuesInResponse:
-              json_['includeValuesInResponse'] as core.bool?,
-          responseDateTimeRenderOption:
-              json_['responseDateTimeRenderOption'] as core.String?,
-          responseValueRenderOption:
-              json_['responseValueRenderOption'] as core.String?,
-          valueInputOption: json_['valueInputOption'] as core.String?,
-        );
+    : this(
+        data:
+            (json_['data'] as core.List?)
+                ?.map(
+                  (value) => DataFilterValueRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        includeValuesInResponse: json_['includeValuesInResponse'] as core.bool?,
+        responseDateTimeRenderOption:
+            json_['responseDateTimeRenderOption'] as core.String?,
+        responseValueRenderOption:
+            json_['responseValueRenderOption'] as core.String?,
+        valueInputOption: json_['valueInputOption'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (includeValuesInResponse != null)
-          'includeValuesInResponse': includeValuesInResponse!,
-        if (responseDateTimeRenderOption != null)
-          'responseDateTimeRenderOption': responseDateTimeRenderOption!,
-        if (responseValueRenderOption != null)
-          'responseValueRenderOption': responseValueRenderOption!,
-        if (valueInputOption != null) 'valueInputOption': valueInputOption!,
-      };
+    if (data != null) 'data': data!,
+    if (includeValuesInResponse != null)
+      'includeValuesInResponse': includeValuesInResponse!,
+    if (responseDateTimeRenderOption != null)
+      'responseDateTimeRenderOption': responseDateTimeRenderOption!,
+    if (responseValueRenderOption != null)
+      'responseValueRenderOption': responseValueRenderOption!,
+    if (valueInputOption != null) 'valueInputOption': valueInputOption!,
+  };
 }
 
 /// The response when updating a range of values in a spreadsheet.
@@ -3254,28 +3411,31 @@ class BatchUpdateValuesByDataFilterResponse {
   });
 
   BatchUpdateValuesByDataFilterResponse.fromJson(core.Map json_)
-      : this(
-          responses: (json_['responses'] as core.List?)
-              ?.map((value) => UpdateValuesByDataFilterResponse.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          spreadsheetId: json_['spreadsheetId'] as core.String?,
-          totalUpdatedCells: json_['totalUpdatedCells'] as core.int?,
-          totalUpdatedColumns: json_['totalUpdatedColumns'] as core.int?,
-          totalUpdatedRows: json_['totalUpdatedRows'] as core.int?,
-          totalUpdatedSheets: json_['totalUpdatedSheets'] as core.int?,
-        );
+    : this(
+        responses:
+            (json_['responses'] as core.List?)
+                ?.map(
+                  (value) => UpdateValuesByDataFilterResponse.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        spreadsheetId: json_['spreadsheetId'] as core.String?,
+        totalUpdatedCells: json_['totalUpdatedCells'] as core.int?,
+        totalUpdatedColumns: json_['totalUpdatedColumns'] as core.int?,
+        totalUpdatedRows: json_['totalUpdatedRows'] as core.int?,
+        totalUpdatedSheets: json_['totalUpdatedSheets'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (responses != null) 'responses': responses!,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-        if (totalUpdatedCells != null) 'totalUpdatedCells': totalUpdatedCells!,
-        if (totalUpdatedColumns != null)
-          'totalUpdatedColumns': totalUpdatedColumns!,
-        if (totalUpdatedRows != null) 'totalUpdatedRows': totalUpdatedRows!,
-        if (totalUpdatedSheets != null)
-          'totalUpdatedSheets': totalUpdatedSheets!,
-      };
+    if (responses != null) 'responses': responses!,
+    if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+    if (totalUpdatedCells != null) 'totalUpdatedCells': totalUpdatedCells!,
+    if (totalUpdatedColumns != null)
+      'totalUpdatedColumns': totalUpdatedColumns!,
+    if (totalUpdatedRows != null) 'totalUpdatedRows': totalUpdatedRows!,
+    if (totalUpdatedSheets != null) 'totalUpdatedSheets': totalUpdatedSheets!,
+  };
 }
 
 /// The request for updating more than one range of values in a spreadsheet.
@@ -3354,30 +3514,33 @@ class BatchUpdateValuesRequest {
   });
 
   BatchUpdateValuesRequest.fromJson(core.Map json_)
-      : this(
-          data: (json_['data'] as core.List?)
-              ?.map((value) => ValueRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          includeValuesInResponse:
-              json_['includeValuesInResponse'] as core.bool?,
-          responseDateTimeRenderOption:
-              json_['responseDateTimeRenderOption'] as core.String?,
-          responseValueRenderOption:
-              json_['responseValueRenderOption'] as core.String?,
-          valueInputOption: json_['valueInputOption'] as core.String?,
-        );
+    : this(
+        data:
+            (json_['data'] as core.List?)
+                ?.map(
+                  (value) => ValueRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        includeValuesInResponse: json_['includeValuesInResponse'] as core.bool?,
+        responseDateTimeRenderOption:
+            json_['responseDateTimeRenderOption'] as core.String?,
+        responseValueRenderOption:
+            json_['responseValueRenderOption'] as core.String?,
+        valueInputOption: json_['valueInputOption'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (includeValuesInResponse != null)
-          'includeValuesInResponse': includeValuesInResponse!,
-        if (responseDateTimeRenderOption != null)
-          'responseDateTimeRenderOption': responseDateTimeRenderOption!,
-        if (responseValueRenderOption != null)
-          'responseValueRenderOption': responseValueRenderOption!,
-        if (valueInputOption != null) 'valueInputOption': valueInputOption!,
-      };
+    if (data != null) 'data': data!,
+    if (includeValuesInResponse != null)
+      'includeValuesInResponse': includeValuesInResponse!,
+    if (responseDateTimeRenderOption != null)
+      'responseDateTimeRenderOption': responseDateTimeRenderOption!,
+    if (responseValueRenderOption != null)
+      'responseValueRenderOption': responseValueRenderOption!,
+    if (valueInputOption != null) 'valueInputOption': valueInputOption!,
+  };
 }
 
 /// The response when updating a range of values in a spreadsheet.
@@ -3413,28 +3576,31 @@ class BatchUpdateValuesResponse {
   });
 
   BatchUpdateValuesResponse.fromJson(core.Map json_)
-      : this(
-          responses: (json_['responses'] as core.List?)
-              ?.map((value) => UpdateValuesResponse.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          spreadsheetId: json_['spreadsheetId'] as core.String?,
-          totalUpdatedCells: json_['totalUpdatedCells'] as core.int?,
-          totalUpdatedColumns: json_['totalUpdatedColumns'] as core.int?,
-          totalUpdatedRows: json_['totalUpdatedRows'] as core.int?,
-          totalUpdatedSheets: json_['totalUpdatedSheets'] as core.int?,
-        );
+    : this(
+        responses:
+            (json_['responses'] as core.List?)
+                ?.map(
+                  (value) => UpdateValuesResponse.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        spreadsheetId: json_['spreadsheetId'] as core.String?,
+        totalUpdatedCells: json_['totalUpdatedCells'] as core.int?,
+        totalUpdatedColumns: json_['totalUpdatedColumns'] as core.int?,
+        totalUpdatedRows: json_['totalUpdatedRows'] as core.int?,
+        totalUpdatedSheets: json_['totalUpdatedSheets'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (responses != null) 'responses': responses!,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-        if (totalUpdatedCells != null) 'totalUpdatedCells': totalUpdatedCells!,
-        if (totalUpdatedColumns != null)
-          'totalUpdatedColumns': totalUpdatedColumns!,
-        if (totalUpdatedRows != null) 'totalUpdatedRows': totalUpdatedRows!,
-        if (totalUpdatedSheets != null)
-          'totalUpdatedSheets': totalUpdatedSheets!,
-      };
+    if (responses != null) 'responses': responses!,
+    if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+    if (totalUpdatedCells != null) 'totalUpdatedCells': totalUpdatedCells!,
+    if (totalUpdatedColumns != null)
+      'totalUpdatedColumns': totalUpdatedColumns!,
+    if (totalUpdatedRows != null) 'totalUpdatedRows': totalUpdatedRows!,
+    if (totalUpdatedSheets != null) 'totalUpdatedSheets': totalUpdatedSheets!,
+  };
 }
 
 /// The specification of a BigQuery data source that's connected to a sheet.
@@ -3451,30 +3617,30 @@ class BigQueryDataSourceSpec {
   /// A BigQueryTableSpec.
   BigQueryTableSpec? tableSpec;
 
-  BigQueryDataSourceSpec({
-    this.projectId,
-    this.querySpec,
-    this.tableSpec,
-  });
+  BigQueryDataSourceSpec({this.projectId, this.querySpec, this.tableSpec});
 
   BigQueryDataSourceSpec.fromJson(core.Map json_)
-      : this(
-          projectId: json_['projectId'] as core.String?,
-          querySpec: json_.containsKey('querySpec')
-              ? BigQueryQuerySpec.fromJson(
-                  json_['querySpec'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tableSpec: json_.containsKey('tableSpec')
-              ? BigQueryTableSpec.fromJson(
-                  json_['tableSpec'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        projectId: json_['projectId'] as core.String?,
+        querySpec:
+            json_.containsKey('querySpec')
+                ? BigQueryQuerySpec.fromJson(
+                  json_['querySpec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tableSpec:
+            json_.containsKey('tableSpec')
+                ? BigQueryTableSpec.fromJson(
+                  json_['tableSpec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (projectId != null) 'projectId': projectId!,
-        if (querySpec != null) 'querySpec': querySpec!,
-        if (tableSpec != null) 'tableSpec': tableSpec!,
-      };
+    if (projectId != null) 'projectId': projectId!,
+    if (querySpec != null) 'querySpec': querySpec!,
+    if (tableSpec != null) 'tableSpec': tableSpec!,
+  };
 }
 
 /// Specifies a custom BigQuery query.
@@ -3482,18 +3648,14 @@ class BigQueryQuerySpec {
   /// The raw query string.
   core.String? rawQuery;
 
-  BigQueryQuerySpec({
-    this.rawQuery,
-  });
+  BigQueryQuerySpec({this.rawQuery});
 
   BigQueryQuerySpec.fromJson(core.Map json_)
-      : this(
-          rawQuery: json_['rawQuery'] as core.String?,
-        );
+    : this(rawQuery: json_['rawQuery'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rawQuery != null) 'rawQuery': rawQuery!,
-      };
+    if (rawQuery != null) 'rawQuery': rawQuery!,
+  };
 }
 
 /// Specifies a BigQuery table definition.
@@ -3512,24 +3674,20 @@ class BigQueryTableSpec {
   /// If not specified, the project_id is assumed.
   core.String? tableProjectId;
 
-  BigQueryTableSpec({
-    this.datasetId,
-    this.tableId,
-    this.tableProjectId,
-  });
+  BigQueryTableSpec({this.datasetId, this.tableId, this.tableProjectId});
 
   BigQueryTableSpec.fromJson(core.Map json_)
-      : this(
-          datasetId: json_['datasetId'] as core.String?,
-          tableId: json_['tableId'] as core.String?,
-          tableProjectId: json_['tableProjectId'] as core.String?,
-        );
+    : this(
+        datasetId: json_['datasetId'] as core.String?,
+        tableId: json_['tableId'] as core.String?,
+        tableProjectId: json_['tableProjectId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (datasetId != null) 'datasetId': datasetId!,
-        if (tableId != null) 'tableId': tableId!,
-        if (tableProjectId != null) 'tableProjectId': tableProjectId!,
-      };
+    if (datasetId != null) 'datasetId': datasetId!,
+    if (tableId != null) 'tableId': tableId!,
+    if (tableProjectId != null) 'tableProjectId': tableProjectId!,
+  };
 }
 
 /// A condition that can evaluate to true or false.
@@ -3655,24 +3813,25 @@ class BooleanCondition {
   /// supports an arbitrary number of values.
   core.List<ConditionValue>? values;
 
-  BooleanCondition({
-    this.type,
-    this.values,
-  });
+  BooleanCondition({this.type, this.values});
 
   BooleanCondition.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-          values: (json_['values'] as core.List?)
-              ?.map((value) => ConditionValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        type: json_['type'] as core.String?,
+        values:
+            (json_['values'] as core.List?)
+                ?.map(
+                  (value) => ConditionValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-        if (values != null) 'values': values!,
-      };
+    if (type != null) 'type': type!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// A rule that may or may not match, depending on the condition.
@@ -3688,27 +3847,28 @@ class BooleanRule {
   /// italic, strikethrough, foreground color and, background color.
   CellFormat? format;
 
-  BooleanRule({
-    this.condition,
-    this.format,
-  });
+  BooleanRule({this.condition, this.format});
 
   BooleanRule.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? BooleanCondition.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          format: json_.containsKey('format')
-              ? CellFormat.fromJson(
-                  json_['format'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? BooleanCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        format:
+            json_.containsKey('format')
+                ? CellFormat.fromJson(
+                  json_['format'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (format != null) 'format': format!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (format != null) 'format': format!,
+  };
 }
 
 /// A border along a cell.
@@ -3747,33 +3907,32 @@ class Border {
   )
   core.int? width;
 
-  Border({
-    this.color,
-    this.colorStyle,
-    this.style,
-    this.width,
-  });
+  Border({this.color, this.colorStyle, this.style, this.width});
 
   Border.fromJson(core.Map json_)
-      : this(
-          color: json_.containsKey('color')
-              ? Color.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-          colorStyle: json_.containsKey('colorStyle')
-              ? ColorStyle.fromJson(
-                  json_['colorStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          style: json_['style'] as core.String?,
-          width: json_['width'] as core.int?,
-        );
+    : this(
+        color:
+            json_.containsKey('color')
+                ? Color.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        colorStyle:
+            json_.containsKey('colorStyle')
+                ? ColorStyle.fromJson(
+                  json_['colorStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        style: json_['style'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!,
-        if (colorStyle != null) 'colorStyle': colorStyle!,
-        if (style != null) 'style': style!,
-        if (width != null) 'width': width!,
-      };
+    if (color != null) 'color': color!,
+    if (colorStyle != null) 'colorStyle': colorStyle!,
+    if (style != null) 'style': style!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// The borders of the cell.
@@ -3790,39 +3949,42 @@ class Borders {
   /// The top border of the cell.
   Border? top;
 
-  Borders({
-    this.bottom,
-    this.left,
-    this.right,
-    this.top,
-  });
+  Borders({this.bottom, this.left, this.right, this.top});
 
   Borders.fromJson(core.Map json_)
-      : this(
-          bottom: json_.containsKey('bottom')
-              ? Border.fromJson(
-                  json_['bottom'] as core.Map<core.String, core.dynamic>)
-              : null,
-          left: json_.containsKey('left')
-              ? Border.fromJson(
-                  json_['left'] as core.Map<core.String, core.dynamic>)
-              : null,
-          right: json_.containsKey('right')
-              ? Border.fromJson(
-                  json_['right'] as core.Map<core.String, core.dynamic>)
-              : null,
-          top: json_.containsKey('top')
-              ? Border.fromJson(
-                  json_['top'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bottom:
+            json_.containsKey('bottom')
+                ? Border.fromJson(
+                  json_['bottom'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        left:
+            json_.containsKey('left')
+                ? Border.fromJson(
+                  json_['left'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        right:
+            json_.containsKey('right')
+                ? Border.fromJson(
+                  json_['right'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        top:
+            json_.containsKey('top')
+                ? Border.fromJson(
+                  json_['top'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bottom != null) 'bottom': bottom!,
-        if (left != null) 'left': left!,
-        if (right != null) 'right': right!,
-        if (top != null) 'top': top!,
-      };
+    if (bottom != null) 'bottom': bottom!,
+    if (left != null) 'left': left!,
+    if (right != null) 'right': right!,
+    if (top != null) 'top': top!,
+  };
 }
 
 /// A bubble chart.
@@ -3916,62 +4078,81 @@ class BubbleChartSpec {
   });
 
   BubbleChartSpec.fromJson(core.Map json_)
-      : this(
-          bubbleBorderColor: json_.containsKey('bubbleBorderColor')
-              ? Color.fromJson(json_['bubbleBorderColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          bubbleBorderColorStyle: json_.containsKey('bubbleBorderColorStyle')
-              ? ColorStyle.fromJson(json_['bubbleBorderColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          bubbleLabels: json_.containsKey('bubbleLabels')
-              ? ChartData.fromJson(
-                  json_['bubbleLabels'] as core.Map<core.String, core.dynamic>)
-              : null,
-          bubbleMaxRadiusSize: json_['bubbleMaxRadiusSize'] as core.int?,
-          bubbleMinRadiusSize: json_['bubbleMinRadiusSize'] as core.int?,
-          bubbleOpacity: (json_['bubbleOpacity'] as core.num?)?.toDouble(),
-          bubbleSizes: json_.containsKey('bubbleSizes')
-              ? ChartData.fromJson(
-                  json_['bubbleSizes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          bubbleTextStyle: json_.containsKey('bubbleTextStyle')
-              ? TextFormat.fromJson(json_['bubbleTextStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          domain: json_.containsKey('domain')
-              ? ChartData.fromJson(
-                  json_['domain'] as core.Map<core.String, core.dynamic>)
-              : null,
-          groupIds: json_.containsKey('groupIds')
-              ? ChartData.fromJson(
-                  json_['groupIds'] as core.Map<core.String, core.dynamic>)
-              : null,
-          legendPosition: json_['legendPosition'] as core.String?,
-          series: json_.containsKey('series')
-              ? ChartData.fromJson(
-                  json_['series'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bubbleBorderColor:
+            json_.containsKey('bubbleBorderColor')
+                ? Color.fromJson(
+                  json_['bubbleBorderColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bubbleBorderColorStyle:
+            json_.containsKey('bubbleBorderColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['bubbleBorderColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bubbleLabels:
+            json_.containsKey('bubbleLabels')
+                ? ChartData.fromJson(
+                  json_['bubbleLabels'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bubbleMaxRadiusSize: json_['bubbleMaxRadiusSize'] as core.int?,
+        bubbleMinRadiusSize: json_['bubbleMinRadiusSize'] as core.int?,
+        bubbleOpacity: (json_['bubbleOpacity'] as core.num?)?.toDouble(),
+        bubbleSizes:
+            json_.containsKey('bubbleSizes')
+                ? ChartData.fromJson(
+                  json_['bubbleSizes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bubbleTextStyle:
+            json_.containsKey('bubbleTextStyle')
+                ? TextFormat.fromJson(
+                  json_['bubbleTextStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        domain:
+            json_.containsKey('domain')
+                ? ChartData.fromJson(
+                  json_['domain'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        groupIds:
+            json_.containsKey('groupIds')
+                ? ChartData.fromJson(
+                  json_['groupIds'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        legendPosition: json_['legendPosition'] as core.String?,
+        series:
+            json_.containsKey('series')
+                ? ChartData.fromJson(
+                  json_['series'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bubbleBorderColor != null) 'bubbleBorderColor': bubbleBorderColor!,
-        if (bubbleBorderColorStyle != null)
-          'bubbleBorderColorStyle': bubbleBorderColorStyle!,
-        if (bubbleLabels != null) 'bubbleLabels': bubbleLabels!,
-        if (bubbleMaxRadiusSize != null)
-          'bubbleMaxRadiusSize': bubbleMaxRadiusSize!,
-        if (bubbleMinRadiusSize != null)
-          'bubbleMinRadiusSize': bubbleMinRadiusSize!,
-        if (bubbleOpacity != null) 'bubbleOpacity': bubbleOpacity!,
-        if (bubbleSizes != null) 'bubbleSizes': bubbleSizes!,
-        if (bubbleTextStyle != null) 'bubbleTextStyle': bubbleTextStyle!,
-        if (domain != null) 'domain': domain!,
-        if (groupIds != null) 'groupIds': groupIds!,
-        if (legendPosition != null) 'legendPosition': legendPosition!,
-        if (series != null) 'series': series!,
-      };
+    if (bubbleBorderColor != null) 'bubbleBorderColor': bubbleBorderColor!,
+    if (bubbleBorderColorStyle != null)
+      'bubbleBorderColorStyle': bubbleBorderColorStyle!,
+    if (bubbleLabels != null) 'bubbleLabels': bubbleLabels!,
+    if (bubbleMaxRadiusSize != null)
+      'bubbleMaxRadiusSize': bubbleMaxRadiusSize!,
+    if (bubbleMinRadiusSize != null)
+      'bubbleMinRadiusSize': bubbleMinRadiusSize!,
+    if (bubbleOpacity != null) 'bubbleOpacity': bubbleOpacity!,
+    if (bubbleSizes != null) 'bubbleSizes': bubbleSizes!,
+    if (bubbleTextStyle != null) 'bubbleTextStyle': bubbleTextStyle!,
+    if (domain != null) 'domain': domain!,
+    if (groupIds != null) 'groupIds': groupIds!,
+    if (legendPosition != null) 'legendPosition': legendPosition!,
+    if (series != null) 'series': series!,
+  };
 }
 
 /// Cancels one or multiple refreshes of data source objects in the spreadsheet
@@ -4000,20 +4181,22 @@ class CancelDataSourceRefreshRequest {
   });
 
   CancelDataSourceRefreshRequest.fromJson(core.Map json_)
-      : this(
-          dataSourceId: json_['dataSourceId'] as core.String?,
-          isAll: json_['isAll'] as core.bool?,
-          references: json_.containsKey('references')
-              ? DataSourceObjectReferences.fromJson(
-                  json_['references'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dataSourceId: json_['dataSourceId'] as core.String?,
+        isAll: json_['isAll'] as core.bool?,
+        references:
+            json_.containsKey('references')
+                ? DataSourceObjectReferences.fromJson(
+                  json_['references'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-        if (isAll != null) 'isAll': isAll!,
-        if (references != null) 'references': references!,
-      };
+    if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+    if (isAll != null) 'isAll': isAll!,
+    if (references != null) 'references': references!,
+  };
 }
 
 /// The response from cancelling one or multiple data source object refreshes.
@@ -4026,21 +4209,23 @@ class CancelDataSourceRefreshResponse {
   /// allowed in the same `batchUpdate`.
   core.List<CancelDataSourceRefreshStatus>? statuses;
 
-  CancelDataSourceRefreshResponse({
-    this.statuses,
-  });
+  CancelDataSourceRefreshResponse({this.statuses});
 
   CancelDataSourceRefreshResponse.fromJson(core.Map json_)
-      : this(
-          statuses: (json_['statuses'] as core.List?)
-              ?.map((value) => CancelDataSourceRefreshStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        statuses:
+            (json_['statuses'] as core.List?)
+                ?.map(
+                  (value) => CancelDataSourceRefreshStatus.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (statuses != null) 'statuses': statuses!,
-      };
+    if (statuses != null) 'statuses': statuses!,
+  };
 }
 
 /// The status of cancelling a single data source object refresh.
@@ -4057,24 +4242,27 @@ class CancelDataSourceRefreshStatus {
   });
 
   CancelDataSourceRefreshStatus.fromJson(core.Map json_)
-      : this(
-          reference: json_.containsKey('reference')
-              ? DataSourceObjectReference.fromJson(
-                  json_['reference'] as core.Map<core.String, core.dynamic>)
-              : null,
-          refreshCancellationStatus:
-              json_.containsKey('refreshCancellationStatus')
-                  ? RefreshCancellationStatus.fromJson(
-                      json_['refreshCancellationStatus']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        reference:
+            json_.containsKey('reference')
+                ? DataSourceObjectReference.fromJson(
+                  json_['reference'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        refreshCancellationStatus:
+            json_.containsKey('refreshCancellationStatus')
+                ? RefreshCancellationStatus.fromJson(
+                  json_['refreshCancellationStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (reference != null) 'reference': reference!,
-        if (refreshCancellationStatus != null)
-          'refreshCancellationStatus': refreshCancellationStatus!,
-      };
+    if (reference != null) 'reference': reference!,
+    if (refreshCancellationStatus != null)
+      'refreshCancellationStatus': refreshCancellationStatus!,
+  };
 }
 
 /// A candlestick chart.
@@ -4090,27 +4278,30 @@ class CandlestickChartSpec {
   /// as continuous values.
   CandlestickDomain? domain;
 
-  CandlestickChartSpec({
-    this.data,
-    this.domain,
-  });
+  CandlestickChartSpec({this.data, this.domain});
 
   CandlestickChartSpec.fromJson(core.Map json_)
-      : this(
-          data: (json_['data'] as core.List?)
-              ?.map((value) => CandlestickData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          domain: json_.containsKey('domain')
-              ? CandlestickDomain.fromJson(
-                  json_['domain'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        data:
+            (json_['data'] as core.List?)
+                ?.map(
+                  (value) => CandlestickData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        domain:
+            json_.containsKey('domain')
+                ? CandlestickDomain.fromJson(
+                  json_['domain'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (domain != null) 'domain': domain!,
-      };
+    if (data != null) 'data': data!,
+    if (domain != null) 'domain': domain!,
+  };
 }
 
 /// The Candlestick chart data, each containing the low, open, close, and high
@@ -4146,31 +4337,39 @@ class CandlestickData {
   });
 
   CandlestickData.fromJson(core.Map json_)
-      : this(
-          closeSeries: json_.containsKey('closeSeries')
-              ? CandlestickSeries.fromJson(
-                  json_['closeSeries'] as core.Map<core.String, core.dynamic>)
-              : null,
-          highSeries: json_.containsKey('highSeries')
-              ? CandlestickSeries.fromJson(
-                  json_['highSeries'] as core.Map<core.String, core.dynamic>)
-              : null,
-          lowSeries: json_.containsKey('lowSeries')
-              ? CandlestickSeries.fromJson(
-                  json_['lowSeries'] as core.Map<core.String, core.dynamic>)
-              : null,
-          openSeries: json_.containsKey('openSeries')
-              ? CandlestickSeries.fromJson(
-                  json_['openSeries'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        closeSeries:
+            json_.containsKey('closeSeries')
+                ? CandlestickSeries.fromJson(
+                  json_['closeSeries'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        highSeries:
+            json_.containsKey('highSeries')
+                ? CandlestickSeries.fromJson(
+                  json_['highSeries'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lowSeries:
+            json_.containsKey('lowSeries')
+                ? CandlestickSeries.fromJson(
+                  json_['lowSeries'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        openSeries:
+            json_.containsKey('openSeries')
+                ? CandlestickSeries.fromJson(
+                  json_['openSeries'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (closeSeries != null) 'closeSeries': closeSeries!,
-        if (highSeries != null) 'highSeries': highSeries!,
-        if (lowSeries != null) 'lowSeries': lowSeries!,
-        if (openSeries != null) 'openSeries': openSeries!,
-      };
+    if (closeSeries != null) 'closeSeries': closeSeries!,
+    if (highSeries != null) 'highSeries': highSeries!,
+    if (lowSeries != null) 'lowSeries': lowSeries!,
+    if (openSeries != null) 'openSeries': openSeries!,
+  };
 }
 
 /// The domain of a CandlestickChart.
@@ -4181,24 +4380,23 @@ class CandlestickDomain {
   /// True to reverse the order of the domain values (horizontal axis).
   core.bool? reversed;
 
-  CandlestickDomain({
-    this.data,
-    this.reversed,
-  });
+  CandlestickDomain({this.data, this.reversed});
 
   CandlestickDomain.fromJson(core.Map json_)
-      : this(
-          data: json_.containsKey('data')
-              ? ChartData.fromJson(
-                  json_['data'] as core.Map<core.String, core.dynamic>)
-              : null,
-          reversed: json_['reversed'] as core.bool?,
-        );
+    : this(
+        data:
+            json_.containsKey('data')
+                ? ChartData.fromJson(
+                  json_['data'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reversed: json_['reversed'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (reversed != null) 'reversed': reversed!,
-      };
+    if (data != null) 'data': data!,
+    if (reversed != null) 'reversed': reversed!,
+  };
 }
 
 /// The series of a CandlestickData.
@@ -4206,21 +4404,21 @@ class CandlestickSeries {
   /// The data of the CandlestickSeries.
   ChartData? data;
 
-  CandlestickSeries({
-    this.data,
-  });
+  CandlestickSeries({this.data});
 
   CandlestickSeries.fromJson(core.Map json_)
-      : this(
-          data: json_.containsKey('data')
-              ? ChartData.fromJson(
-                  json_['data'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        data:
+            json_.containsKey('data')
+                ? ChartData.fromJson(
+                  json_['data'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-      };
+    if (data != null) 'data': data!,
+  };
 }
 
 /// Data about a specific cell.
@@ -4339,67 +4537,98 @@ class CellData {
   });
 
   CellData.fromJson(core.Map json_)
-      : this(
-          chipRuns: (json_['chipRuns'] as core.List?)
-              ?.map((value) => ChipRun.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          dataSourceFormula: json_.containsKey('dataSourceFormula')
-              ? DataSourceFormula.fromJson(json_['dataSourceFormula']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataSourceTable: json_.containsKey('dataSourceTable')
-              ? DataSourceTable.fromJson(json_['dataSourceTable']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataValidation: json_.containsKey('dataValidation')
-              ? DataValidationRule.fromJson(json_['dataValidation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          effectiveFormat: json_.containsKey('effectiveFormat')
-              ? CellFormat.fromJson(json_['effectiveFormat']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          effectiveValue: json_.containsKey('effectiveValue')
-              ? ExtendedValue.fromJson(json_['effectiveValue']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          formattedValue: json_['formattedValue'] as core.String?,
-          hyperlink: json_['hyperlink'] as core.String?,
-          note: json_['note'] as core.String?,
-          pivotTable: json_.containsKey('pivotTable')
-              ? PivotTable.fromJson(
-                  json_['pivotTable'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textFormatRuns: (json_['textFormatRuns'] as core.List?)
-              ?.map((value) => TextFormatRun.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          userEnteredFormat: json_.containsKey('userEnteredFormat')
-              ? CellFormat.fromJson(json_['userEnteredFormat']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          userEnteredValue: json_.containsKey('userEnteredValue')
-              ? ExtendedValue.fromJson(json_['userEnteredValue']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        chipRuns:
+            (json_['chipRuns'] as core.List?)
+                ?.map(
+                  (value) => ChipRun.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dataSourceFormula:
+            json_.containsKey('dataSourceFormula')
+                ? DataSourceFormula.fromJson(
+                  json_['dataSourceFormula']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataSourceTable:
+            json_.containsKey('dataSourceTable')
+                ? DataSourceTable.fromJson(
+                  json_['dataSourceTable']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataValidation:
+            json_.containsKey('dataValidation')
+                ? DataValidationRule.fromJson(
+                  json_['dataValidation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        effectiveFormat:
+            json_.containsKey('effectiveFormat')
+                ? CellFormat.fromJson(
+                  json_['effectiveFormat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        effectiveValue:
+            json_.containsKey('effectiveValue')
+                ? ExtendedValue.fromJson(
+                  json_['effectiveValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        formattedValue: json_['formattedValue'] as core.String?,
+        hyperlink: json_['hyperlink'] as core.String?,
+        note: json_['note'] as core.String?,
+        pivotTable:
+            json_.containsKey('pivotTable')
+                ? PivotTable.fromJson(
+                  json_['pivotTable'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textFormatRuns:
+            (json_['textFormatRuns'] as core.List?)
+                ?.map(
+                  (value) => TextFormatRun.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        userEnteredFormat:
+            json_.containsKey('userEnteredFormat')
+                ? CellFormat.fromJson(
+                  json_['userEnteredFormat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userEnteredValue:
+            json_.containsKey('userEnteredValue')
+                ? ExtendedValue.fromJson(
+                  json_['userEnteredValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chipRuns != null) 'chipRuns': chipRuns!,
-        if (dataSourceFormula != null) 'dataSourceFormula': dataSourceFormula!,
-        if (dataSourceTable != null) 'dataSourceTable': dataSourceTable!,
-        if (dataValidation != null) 'dataValidation': dataValidation!,
-        if (effectiveFormat != null) 'effectiveFormat': effectiveFormat!,
-        if (effectiveValue != null) 'effectiveValue': effectiveValue!,
-        if (formattedValue != null) 'formattedValue': formattedValue!,
-        if (hyperlink != null) 'hyperlink': hyperlink!,
-        if (note != null) 'note': note!,
-        if (pivotTable != null) 'pivotTable': pivotTable!,
-        if (textFormatRuns != null) 'textFormatRuns': textFormatRuns!,
-        if (userEnteredFormat != null) 'userEnteredFormat': userEnteredFormat!,
-        if (userEnteredValue != null) 'userEnteredValue': userEnteredValue!,
-      };
+    if (chipRuns != null) 'chipRuns': chipRuns!,
+    if (dataSourceFormula != null) 'dataSourceFormula': dataSourceFormula!,
+    if (dataSourceTable != null) 'dataSourceTable': dataSourceTable!,
+    if (dataValidation != null) 'dataValidation': dataValidation!,
+    if (effectiveFormat != null) 'effectiveFormat': effectiveFormat!,
+    if (effectiveValue != null) 'effectiveValue': effectiveValue!,
+    if (formattedValue != null) 'formattedValue': formattedValue!,
+    if (hyperlink != null) 'hyperlink': hyperlink!,
+    if (note != null) 'note': note!,
+    if (pivotTable != null) 'pivotTable': pivotTable!,
+    if (textFormatRuns != null) 'textFormatRuns': textFormatRuns!,
+    if (userEnteredFormat != null) 'userEnteredFormat': userEnteredFormat!,
+    if (userEnteredValue != null) 'userEnteredValue': userEnteredValue!,
+  };
 }
 
 /// The format of a cell.
@@ -4511,59 +4740,75 @@ class CellFormat {
   });
 
   CellFormat.fromJson(core.Map json_)
-      : this(
-          backgroundColor: json_.containsKey('backgroundColor')
-              ? Color.fromJson(json_['backgroundColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          backgroundColorStyle: json_.containsKey('backgroundColorStyle')
-              ? ColorStyle.fromJson(json_['backgroundColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          borders: json_.containsKey('borders')
-              ? Borders.fromJson(
-                  json_['borders'] as core.Map<core.String, core.dynamic>)
-              : null,
-          horizontalAlignment: json_['horizontalAlignment'] as core.String?,
-          hyperlinkDisplayType: json_['hyperlinkDisplayType'] as core.String?,
-          numberFormat: json_.containsKey('numberFormat')
-              ? NumberFormat.fromJson(
-                  json_['numberFormat'] as core.Map<core.String, core.dynamic>)
-              : null,
-          padding: json_.containsKey('padding')
-              ? Padding.fromJson(
-                  json_['padding'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textDirection: json_['textDirection'] as core.String?,
-          textFormat: json_.containsKey('textFormat')
-              ? TextFormat.fromJson(
-                  json_['textFormat'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textRotation: json_.containsKey('textRotation')
-              ? TextRotation.fromJson(
-                  json_['textRotation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          verticalAlignment: json_['verticalAlignment'] as core.String?,
-          wrapStrategy: json_['wrapStrategy'] as core.String?,
-        );
+    : this(
+        backgroundColor:
+            json_.containsKey('backgroundColor')
+                ? Color.fromJson(
+                  json_['backgroundColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        backgroundColorStyle:
+            json_.containsKey('backgroundColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['backgroundColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        borders:
+            json_.containsKey('borders')
+                ? Borders.fromJson(
+                  json_['borders'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        horizontalAlignment: json_['horizontalAlignment'] as core.String?,
+        hyperlinkDisplayType: json_['hyperlinkDisplayType'] as core.String?,
+        numberFormat:
+            json_.containsKey('numberFormat')
+                ? NumberFormat.fromJson(
+                  json_['numberFormat'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        padding:
+            json_.containsKey('padding')
+                ? Padding.fromJson(
+                  json_['padding'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textDirection: json_['textDirection'] as core.String?,
+        textFormat:
+            json_.containsKey('textFormat')
+                ? TextFormat.fromJson(
+                  json_['textFormat'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textRotation:
+            json_.containsKey('textRotation')
+                ? TextRotation.fromJson(
+                  json_['textRotation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        verticalAlignment: json_['verticalAlignment'] as core.String?,
+        wrapStrategy: json_['wrapStrategy'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
-        if (backgroundColorStyle != null)
-          'backgroundColorStyle': backgroundColorStyle!,
-        if (borders != null) 'borders': borders!,
-        if (horizontalAlignment != null)
-          'horizontalAlignment': horizontalAlignment!,
-        if (hyperlinkDisplayType != null)
-          'hyperlinkDisplayType': hyperlinkDisplayType!,
-        if (numberFormat != null) 'numberFormat': numberFormat!,
-        if (padding != null) 'padding': padding!,
-        if (textDirection != null) 'textDirection': textDirection!,
-        if (textFormat != null) 'textFormat': textFormat!,
-        if (textRotation != null) 'textRotation': textRotation!,
-        if (verticalAlignment != null) 'verticalAlignment': verticalAlignment!,
-        if (wrapStrategy != null) 'wrapStrategy': wrapStrategy!,
-      };
+    if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+    if (backgroundColorStyle != null)
+      'backgroundColorStyle': backgroundColorStyle!,
+    if (borders != null) 'borders': borders!,
+    if (horizontalAlignment != null)
+      'horizontalAlignment': horizontalAlignment!,
+    if (hyperlinkDisplayType != null)
+      'hyperlinkDisplayType': hyperlinkDisplayType!,
+    if (numberFormat != null) 'numberFormat': numberFormat!,
+    if (padding != null) 'padding': padding!,
+    if (textDirection != null) 'textDirection': textDirection!,
+    if (textFormat != null) 'textFormat': textFormat!,
+    if (textRotation != null) 'textRotation': textRotation!,
+    if (verticalAlignment != null) 'verticalAlignment': verticalAlignment!,
+    if (wrapStrategy != null) 'wrapStrategy': wrapStrategy!,
+  };
 }
 
 /// The options that define a "view window" for a chart (such as the visible
@@ -4601,17 +4846,17 @@ class ChartAxisViewWindowOptions {
   });
 
   ChartAxisViewWindowOptions.fromJson(core.Map json_)
-      : this(
-          viewWindowMax: (json_['viewWindowMax'] as core.num?)?.toDouble(),
-          viewWindowMin: (json_['viewWindowMin'] as core.num?)?.toDouble(),
-          viewWindowMode: json_['viewWindowMode'] as core.String?,
-        );
+    : this(
+        viewWindowMax: (json_['viewWindowMax'] as core.num?)?.toDouble(),
+        viewWindowMin: (json_['viewWindowMin'] as core.num?)?.toDouble(),
+        viewWindowMode: json_['viewWindowMode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (viewWindowMax != null) 'viewWindowMax': viewWindowMax!,
-        if (viewWindowMin != null) 'viewWindowMin': viewWindowMin!,
-        if (viewWindowMode != null) 'viewWindowMode': viewWindowMode!,
-      };
+    if (viewWindowMax != null) 'viewWindowMax': viewWindowMax!,
+    if (viewWindowMin != null) 'viewWindowMin': viewWindowMin!,
+    if (viewWindowMode != null) 'viewWindowMode': viewWindowMode!,
+  };
 }
 
 /// Custom number formatting options for chart attributes.
@@ -4626,21 +4871,18 @@ class ChartCustomNumberFormatOptions {
   /// This field is optional.
   core.String? suffix;
 
-  ChartCustomNumberFormatOptions({
-    this.prefix,
-    this.suffix,
-  });
+  ChartCustomNumberFormatOptions({this.prefix, this.suffix});
 
   ChartCustomNumberFormatOptions.fromJson(core.Map json_)
-      : this(
-          prefix: json_['prefix'] as core.String?,
-          suffix: json_['suffix'] as core.String?,
-        );
+    : this(
+        prefix: json_['prefix'] as core.String?,
+        suffix: json_['suffix'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (prefix != null) 'prefix': prefix!,
-        if (suffix != null) 'suffix': suffix!,
-      };
+    if (prefix != null) 'prefix': prefix!,
+    if (suffix != null) 'suffix': suffix!,
+  };
 }
 
 /// The data included in a domain or series.
@@ -4678,28 +4920,35 @@ class ChartData {
   });
 
   ChartData.fromJson(core.Map json_)
-      : this(
-          aggregateType: json_['aggregateType'] as core.String?,
-          columnReference: json_.containsKey('columnReference')
-              ? DataSourceColumnReference.fromJson(json_['columnReference']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          groupRule: json_.containsKey('groupRule')
-              ? ChartGroupRule.fromJson(
-                  json_['groupRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceRange: json_.containsKey('sourceRange')
-              ? ChartSourceRange.fromJson(
-                  json_['sourceRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        aggregateType: json_['aggregateType'] as core.String?,
+        columnReference:
+            json_.containsKey('columnReference')
+                ? DataSourceColumnReference.fromJson(
+                  json_['columnReference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        groupRule:
+            json_.containsKey('groupRule')
+                ? ChartGroupRule.fromJson(
+                  json_['groupRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceRange:
+            json_.containsKey('sourceRange')
+                ? ChartSourceRange.fromJson(
+                  json_['sourceRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aggregateType != null) 'aggregateType': aggregateType!,
-        if (columnReference != null) 'columnReference': columnReference!,
-        if (groupRule != null) 'groupRule': groupRule!,
-        if (sourceRange != null) 'sourceRange': sourceRange!,
-      };
+    if (aggregateType != null) 'aggregateType': aggregateType!,
+    if (columnReference != null) 'columnReference': columnReference!,
+    if (groupRule != null) 'groupRule': groupRule!,
+    if (sourceRange != null) 'sourceRange': sourceRange!,
+  };
 }
 
 /// Allows you to organize the date-time values in a source data column into
@@ -4736,18 +4985,14 @@ class ChartDateTimeRule {
   /// 2008-11-22.
   core.String? type;
 
-  ChartDateTimeRule({
-    this.type,
-  });
+  ChartDateTimeRule({this.type});
 
   ChartDateTimeRule.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-        );
+    : this(type: json_['type'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-      };
+    if (type != null) 'type': type!,
+  };
 }
 
 /// An optional setting on the ChartData of the domain of a data source chart
@@ -4765,27 +5010,28 @@ class ChartGroupRule {
   /// A ChartHistogramRule
   ChartHistogramRule? histogramRule;
 
-  ChartGroupRule({
-    this.dateTimeRule,
-    this.histogramRule,
-  });
+  ChartGroupRule({this.dateTimeRule, this.histogramRule});
 
   ChartGroupRule.fromJson(core.Map json_)
-      : this(
-          dateTimeRule: json_.containsKey('dateTimeRule')
-              ? ChartDateTimeRule.fromJson(
-                  json_['dateTimeRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          histogramRule: json_.containsKey('histogramRule')
-              ? ChartHistogramRule.fromJson(
-                  json_['histogramRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dateTimeRule:
+            json_.containsKey('dateTimeRule')
+                ? ChartDateTimeRule.fromJson(
+                  json_['dateTimeRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        histogramRule:
+            json_.containsKey('histogramRule')
+                ? ChartHistogramRule.fromJson(
+                  json_['histogramRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dateTimeRule != null) 'dateTimeRule': dateTimeRule!,
-        if (histogramRule != null) 'histogramRule': histogramRule!,
-      };
+    if (dateTimeRule != null) 'dateTimeRule': dateTimeRule!,
+    if (histogramRule != null) 'histogramRule': histogramRule!,
+  };
 }
 
 /// Allows you to organize numeric values in a source data column into buckets
@@ -4808,24 +5054,20 @@ class ChartHistogramRule {
   /// omitted, it is determined by the minimum item value.
   core.double? minValue;
 
-  ChartHistogramRule({
-    this.intervalSize,
-    this.maxValue,
-    this.minValue,
-  });
+  ChartHistogramRule({this.intervalSize, this.maxValue, this.minValue});
 
   ChartHistogramRule.fromJson(core.Map json_)
-      : this(
-          intervalSize: (json_['intervalSize'] as core.num?)?.toDouble(),
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
-        );
+    : this(
+        intervalSize: (json_['intervalSize'] as core.num?)?.toDouble(),
+        maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
+        minValue: (json_['minValue'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (intervalSize != null) 'intervalSize': intervalSize!,
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
-      };
+    if (intervalSize != null) 'intervalSize': intervalSize!,
+    if (maxValue != null) 'maxValue': maxValue!,
+    if (minValue != null) 'minValue': minValue!,
+  };
 }
 
 /// Source ranges for a chart.
@@ -4842,21 +5084,23 @@ class ChartSourceRange {
   /// D10:D12 series2 sources: C1:C5, E10:E12
   core.List<GridRange>? sources;
 
-  ChartSourceRange({
-    this.sources,
-  });
+  ChartSourceRange({this.sources});
 
   ChartSourceRange.fromJson(core.Map json_)
-      : this(
-          sources: (json_['sources'] as core.List?)
-              ?.map((value) => GridRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        sources:
+            (json_['sources'] as core.List?)
+                ?.map(
+                  (value) => GridRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sources != null) 'sources': sources!,
-      };
+    if (sources != null) 'sources': sources!,
+  };
 }
 
 /// The specifications of a chart.
@@ -5001,121 +5245,169 @@ class ChartSpec {
   });
 
   ChartSpec.fromJson(core.Map json_)
-      : this(
-          altText: json_['altText'] as core.String?,
-          backgroundColor: json_.containsKey('backgroundColor')
-              ? Color.fromJson(json_['backgroundColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          backgroundColorStyle: json_.containsKey('backgroundColorStyle')
-              ? ColorStyle.fromJson(json_['backgroundColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          basicChart: json_.containsKey('basicChart')
-              ? BasicChartSpec.fromJson(
-                  json_['basicChart'] as core.Map<core.String, core.dynamic>)
-              : null,
-          bubbleChart: json_.containsKey('bubbleChart')
-              ? BubbleChartSpec.fromJson(
-                  json_['bubbleChart'] as core.Map<core.String, core.dynamic>)
-              : null,
-          candlestickChart: json_.containsKey('candlestickChart')
-              ? CandlestickChartSpec.fromJson(json_['candlestickChart']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataSourceChartProperties:
-              json_.containsKey('dataSourceChartProperties')
-                  ? DataSourceChartProperties.fromJson(
-                      json_['dataSourceChartProperties']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          filterSpecs: (json_['filterSpecs'] as core.List?)
-              ?.map((value) => FilterSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          fontName: json_['fontName'] as core.String?,
-          hiddenDimensionStrategy:
-              json_['hiddenDimensionStrategy'] as core.String?,
-          histogramChart: json_.containsKey('histogramChart')
-              ? HistogramChartSpec.fromJson(json_['histogramChart']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          maximized: json_['maximized'] as core.bool?,
-          orgChart: json_.containsKey('orgChart')
-              ? OrgChartSpec.fromJson(
-                  json_['orgChart'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pieChart: json_.containsKey('pieChart')
-              ? PieChartSpec.fromJson(
-                  json_['pieChart'] as core.Map<core.String, core.dynamic>)
-              : null,
-          scorecardChart: json_.containsKey('scorecardChart')
-              ? ScorecardChartSpec.fromJson(json_['scorecardChart']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sortSpecs: (json_['sortSpecs'] as core.List?)
-              ?.map((value) => SortSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          subtitle: json_['subtitle'] as core.String?,
-          subtitleTextFormat: json_.containsKey('subtitleTextFormat')
-              ? TextFormat.fromJson(json_['subtitleTextFormat']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          subtitleTextPosition: json_.containsKey('subtitleTextPosition')
-              ? TextPosition.fromJson(json_['subtitleTextPosition']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          title: json_['title'] as core.String?,
-          titleTextFormat: json_.containsKey('titleTextFormat')
-              ? TextFormat.fromJson(json_['titleTextFormat']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          titleTextPosition: json_.containsKey('titleTextPosition')
-              ? TextPosition.fromJson(json_['titleTextPosition']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          treemapChart: json_.containsKey('treemapChart')
-              ? TreemapChartSpec.fromJson(
-                  json_['treemapChart'] as core.Map<core.String, core.dynamic>)
-              : null,
-          waterfallChart: json_.containsKey('waterfallChart')
-              ? WaterfallChartSpec.fromJson(json_['waterfallChart']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        altText: json_['altText'] as core.String?,
+        backgroundColor:
+            json_.containsKey('backgroundColor')
+                ? Color.fromJson(
+                  json_['backgroundColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        backgroundColorStyle:
+            json_.containsKey('backgroundColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['backgroundColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        basicChart:
+            json_.containsKey('basicChart')
+                ? BasicChartSpec.fromJson(
+                  json_['basicChart'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bubbleChart:
+            json_.containsKey('bubbleChart')
+                ? BubbleChartSpec.fromJson(
+                  json_['bubbleChart'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        candlestickChart:
+            json_.containsKey('candlestickChart')
+                ? CandlestickChartSpec.fromJson(
+                  json_['candlestickChart']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataSourceChartProperties:
+            json_.containsKey('dataSourceChartProperties')
+                ? DataSourceChartProperties.fromJson(
+                  json_['dataSourceChartProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filterSpecs:
+            (json_['filterSpecs'] as core.List?)
+                ?.map(
+                  (value) => FilterSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        fontName: json_['fontName'] as core.String?,
+        hiddenDimensionStrategy:
+            json_['hiddenDimensionStrategy'] as core.String?,
+        histogramChart:
+            json_.containsKey('histogramChart')
+                ? HistogramChartSpec.fromJson(
+                  json_['histogramChart']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maximized: json_['maximized'] as core.bool?,
+        orgChart:
+            json_.containsKey('orgChart')
+                ? OrgChartSpec.fromJson(
+                  json_['orgChart'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pieChart:
+            json_.containsKey('pieChart')
+                ? PieChartSpec.fromJson(
+                  json_['pieChart'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        scorecardChart:
+            json_.containsKey('scorecardChart')
+                ? ScorecardChartSpec.fromJson(
+                  json_['scorecardChart']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sortSpecs:
+            (json_['sortSpecs'] as core.List?)
+                ?.map(
+                  (value) => SortSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        subtitle: json_['subtitle'] as core.String?,
+        subtitleTextFormat:
+            json_.containsKey('subtitleTextFormat')
+                ? TextFormat.fromJson(
+                  json_['subtitleTextFormat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        subtitleTextPosition:
+            json_.containsKey('subtitleTextPosition')
+                ? TextPosition.fromJson(
+                  json_['subtitleTextPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title: json_['title'] as core.String?,
+        titleTextFormat:
+            json_.containsKey('titleTextFormat')
+                ? TextFormat.fromJson(
+                  json_['titleTextFormat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        titleTextPosition:
+            json_.containsKey('titleTextPosition')
+                ? TextPosition.fromJson(
+                  json_['titleTextPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        treemapChart:
+            json_.containsKey('treemapChart')
+                ? TreemapChartSpec.fromJson(
+                  json_['treemapChart'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        waterfallChart:
+            json_.containsKey('waterfallChart')
+                ? WaterfallChartSpec.fromJson(
+                  json_['waterfallChart']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (altText != null) 'altText': altText!,
-        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
-        if (backgroundColorStyle != null)
-          'backgroundColorStyle': backgroundColorStyle!,
-        if (basicChart != null) 'basicChart': basicChart!,
-        if (bubbleChart != null) 'bubbleChart': bubbleChart!,
-        if (candlestickChart != null) 'candlestickChart': candlestickChart!,
-        if (dataSourceChartProperties != null)
-          'dataSourceChartProperties': dataSourceChartProperties!,
-        if (filterSpecs != null) 'filterSpecs': filterSpecs!,
-        if (fontName != null) 'fontName': fontName!,
-        if (hiddenDimensionStrategy != null)
-          'hiddenDimensionStrategy': hiddenDimensionStrategy!,
-        if (histogramChart != null) 'histogramChart': histogramChart!,
-        if (maximized != null) 'maximized': maximized!,
-        if (orgChart != null) 'orgChart': orgChart!,
-        if (pieChart != null) 'pieChart': pieChart!,
-        if (scorecardChart != null) 'scorecardChart': scorecardChart!,
-        if (sortSpecs != null) 'sortSpecs': sortSpecs!,
-        if (subtitle != null) 'subtitle': subtitle!,
-        if (subtitleTextFormat != null)
-          'subtitleTextFormat': subtitleTextFormat!,
-        if (subtitleTextPosition != null)
-          'subtitleTextPosition': subtitleTextPosition!,
-        if (title != null) 'title': title!,
-        if (titleTextFormat != null) 'titleTextFormat': titleTextFormat!,
-        if (titleTextPosition != null) 'titleTextPosition': titleTextPosition!,
-        if (treemapChart != null) 'treemapChart': treemapChart!,
-        if (waterfallChart != null) 'waterfallChart': waterfallChart!,
-      };
+    if (altText != null) 'altText': altText!,
+    if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+    if (backgroundColorStyle != null)
+      'backgroundColorStyle': backgroundColorStyle!,
+    if (basicChart != null) 'basicChart': basicChart!,
+    if (bubbleChart != null) 'bubbleChart': bubbleChart!,
+    if (candlestickChart != null) 'candlestickChart': candlestickChart!,
+    if (dataSourceChartProperties != null)
+      'dataSourceChartProperties': dataSourceChartProperties!,
+    if (filterSpecs != null) 'filterSpecs': filterSpecs!,
+    if (fontName != null) 'fontName': fontName!,
+    if (hiddenDimensionStrategy != null)
+      'hiddenDimensionStrategy': hiddenDimensionStrategy!,
+    if (histogramChart != null) 'histogramChart': histogramChart!,
+    if (maximized != null) 'maximized': maximized!,
+    if (orgChart != null) 'orgChart': orgChart!,
+    if (pieChart != null) 'pieChart': pieChart!,
+    if (scorecardChart != null) 'scorecardChart': scorecardChart!,
+    if (sortSpecs != null) 'sortSpecs': sortSpecs!,
+    if (subtitle != null) 'subtitle': subtitle!,
+    if (subtitleTextFormat != null) 'subtitleTextFormat': subtitleTextFormat!,
+    if (subtitleTextPosition != null)
+      'subtitleTextPosition': subtitleTextPosition!,
+    if (title != null) 'title': title!,
+    if (titleTextFormat != null) 'titleTextFormat': titleTextFormat!,
+    if (titleTextPosition != null) 'titleTextPosition': titleTextPosition!,
+    if (treemapChart != null) 'treemapChart': treemapChart!,
+    if (waterfallChart != null) 'waterfallChart': waterfallChart!,
+  };
 }
 
 /// The Smart Chip.
@@ -5126,28 +5418,30 @@ class Chip {
   /// Properties of a rich link.
   RichLinkProperties? richLinkProperties;
 
-  Chip({
-    this.personProperties,
-    this.richLinkProperties,
-  });
+  Chip({this.personProperties, this.richLinkProperties});
 
   Chip.fromJson(core.Map json_)
-      : this(
-          personProperties: json_.containsKey('personProperties')
-              ? PersonProperties.fromJson(json_['personProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          richLinkProperties: json_.containsKey('richLinkProperties')
-              ? RichLinkProperties.fromJson(json_['richLinkProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        personProperties:
+            json_.containsKey('personProperties')
+                ? PersonProperties.fromJson(
+                  json_['personProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        richLinkProperties:
+            json_.containsKey('richLinkProperties')
+                ? RichLinkProperties.fromJson(
+                  json_['richLinkProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (personProperties != null) 'personProperties': personProperties!,
-        if (richLinkProperties != null)
-          'richLinkProperties': richLinkProperties!,
-      };
+    if (personProperties != null) 'personProperties': personProperties!,
+    if (richLinkProperties != null) 'richLinkProperties': richLinkProperties!,
+  };
 }
 
 /// The run of a chip.
@@ -5165,24 +5459,23 @@ class ChipRun {
   /// Required.
   core.int? startIndex;
 
-  ChipRun({
-    this.chip,
-    this.startIndex,
-  });
+  ChipRun({this.chip, this.startIndex});
 
   ChipRun.fromJson(core.Map json_)
-      : this(
-          chip: json_.containsKey('chip')
-              ? Chip.fromJson(
-                  json_['chip'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startIndex: json_['startIndex'] as core.int?,
-        );
+    : this(
+        chip:
+            json_.containsKey('chip')
+                ? Chip.fromJson(
+                  json_['chip'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startIndex: json_['startIndex'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chip != null) 'chip': chip!,
-        if (startIndex != null) 'startIndex': startIndex!,
-      };
+    if (chip != null) 'chip': chip!,
+    if (startIndex != null) 'startIndex': startIndex!,
+  };
 }
 
 /// Clears the basic filter, if any exists on the sheet.
@@ -5190,18 +5483,14 @@ class ClearBasicFilterRequest {
   /// The sheet ID on which the basic filter should be cleared.
   core.int? sheetId;
 
-  ClearBasicFilterRequest({
-    this.sheetId,
-  });
+  ClearBasicFilterRequest({this.sheetId});
 
   ClearBasicFilterRequest.fromJson(core.Map json_)
-      : this(
-          sheetId: json_['sheetId'] as core.int?,
-        );
+    : this(sheetId: json_['sheetId'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sheetId != null) 'sheetId': sheetId!,
-      };
+    if (sheetId != null) 'sheetId': sheetId!,
+  };
 }
 
 /// The request for clearing a range of values in a spreadsheet.
@@ -5219,21 +5508,18 @@ class ClearValuesResponse {
   /// The spreadsheet the updates were applied to.
   core.String? spreadsheetId;
 
-  ClearValuesResponse({
-    this.clearedRange,
-    this.spreadsheetId,
-  });
+  ClearValuesResponse({this.clearedRange, this.spreadsheetId});
 
   ClearValuesResponse.fromJson(core.Map json_)
-      : this(
-          clearedRange: json_['clearedRange'] as core.String?,
-          spreadsheetId: json_['spreadsheetId'] as core.String?,
-        );
+    : this(
+        clearedRange: json_['clearedRange'] as core.String?,
+        spreadsheetId: json_['spreadsheetId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clearedRange != null) 'clearedRange': clearedRange!,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-      };
+    if (clearedRange != null) 'clearedRange': clearedRange!,
+    if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+  };
 }
 
 /// Represents a color in the RGBA color space.
@@ -5312,24 +5598,23 @@ class ColorStyle {
   /// - "LINK" : Represents the color to use for hyperlinks
   core.String? themeColor;
 
-  ColorStyle({
-    this.rgbColor,
-    this.themeColor,
-  });
+  ColorStyle({this.rgbColor, this.themeColor});
 
   ColorStyle.fromJson(core.Map json_)
-      : this(
-          rgbColor: json_.containsKey('rgbColor')
-              ? Color.fromJson(
-                  json_['rgbColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          themeColor: json_['themeColor'] as core.String?,
-        );
+    : this(
+        rgbColor:
+            json_.containsKey('rgbColor')
+                ? Color.fromJson(
+                  json_['rgbColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        themeColor: json_['themeColor'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rgbColor != null) 'rgbColor': rgbColor!,
-        if (themeColor != null) 'themeColor': themeColor!,
-      };
+    if (rgbColor != null) 'rgbColor': rgbColor!,
+    if (themeColor != null) 'themeColor': themeColor!,
+  };
 }
 
 /// The value of the condition.
@@ -5355,21 +5640,18 @@ class ConditionValue {
   /// supported (and must begin with an `=` or a '+').
   core.String? userEnteredValue;
 
-  ConditionValue({
-    this.relativeDate,
-    this.userEnteredValue,
-  });
+  ConditionValue({this.relativeDate, this.userEnteredValue});
 
   ConditionValue.fromJson(core.Map json_)
-      : this(
-          relativeDate: json_['relativeDate'] as core.String?,
-          userEnteredValue: json_['userEnteredValue'] as core.String?,
-        );
+    : this(
+        relativeDate: json_['relativeDate'] as core.String?,
+        userEnteredValue: json_['userEnteredValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (relativeDate != null) 'relativeDate': relativeDate!,
-        if (userEnteredValue != null) 'userEnteredValue': userEnteredValue!,
-      };
+    if (relativeDate != null) 'relativeDate': relativeDate!,
+    if (userEnteredValue != null) 'userEnteredValue': userEnteredValue!,
+  };
 }
 
 /// A rule describing a conditional format.
@@ -5385,33 +5667,37 @@ class ConditionalFormatRule {
   /// All the ranges must be on the same grid.
   core.List<GridRange>? ranges;
 
-  ConditionalFormatRule({
-    this.booleanRule,
-    this.gradientRule,
-    this.ranges,
-  });
+  ConditionalFormatRule({this.booleanRule, this.gradientRule, this.ranges});
 
   ConditionalFormatRule.fromJson(core.Map json_)
-      : this(
-          booleanRule: json_.containsKey('booleanRule')
-              ? BooleanRule.fromJson(
-                  json_['booleanRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gradientRule: json_.containsKey('gradientRule')
-              ? GradientRule.fromJson(
-                  json_['gradientRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          ranges: (json_['ranges'] as core.List?)
-              ?.map((value) => GridRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        booleanRule:
+            json_.containsKey('booleanRule')
+                ? BooleanRule.fromJson(
+                  json_['booleanRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gradientRule:
+            json_.containsKey('gradientRule')
+                ? GradientRule.fromJson(
+                  json_['gradientRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        ranges:
+            (json_['ranges'] as core.List?)
+                ?.map(
+                  (value) => GridRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (booleanRule != null) 'booleanRule': booleanRule!,
-        if (gradientRule != null) 'gradientRule': gradientRule!,
-        if (ranges != null) 'ranges': ranges!,
-      };
+    if (booleanRule != null) 'booleanRule': booleanRule!,
+    if (gradientRule != null) 'gradientRule': gradientRule!,
+    if (ranges != null) 'ranges': ranges!,
+  };
 }
 
 /// Copies data from the source to the destination.
@@ -5455,25 +5741,29 @@ class CopyPasteRequest {
   });
 
   CopyPasteRequest.fromJson(core.Map json_)
-      : this(
-          destination: json_.containsKey('destination')
-              ? GridRange.fromJson(
-                  json_['destination'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pasteOrientation: json_['pasteOrientation'] as core.String?,
-          pasteType: json_['pasteType'] as core.String?,
-          source: json_.containsKey('source')
-              ? GridRange.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        destination:
+            json_.containsKey('destination')
+                ? GridRange.fromJson(
+                  json_['destination'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pasteOrientation: json_['pasteOrientation'] as core.String?,
+        pasteType: json_['pasteType'] as core.String?,
+        source:
+            json_.containsKey('source')
+                ? GridRange.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destination != null) 'destination': destination!,
-        if (pasteOrientation != null) 'pasteOrientation': pasteOrientation!,
-        if (pasteType != null) 'pasteType': pasteType!,
-        if (source != null) 'source': source!,
-      };
+    if (destination != null) 'destination': destination!,
+    if (pasteOrientation != null) 'pasteOrientation': pasteOrientation!,
+    if (pasteType != null) 'pasteType': pasteType!,
+    if (source != null) 'source': source!,
+  };
 }
 
 /// The request to copy a sheet across spreadsheets.
@@ -5481,20 +5771,18 @@ class CopySheetToAnotherSpreadsheetRequest {
   /// The ID of the spreadsheet to copy the sheet to.
   core.String? destinationSpreadsheetId;
 
-  CopySheetToAnotherSpreadsheetRequest({
-    this.destinationSpreadsheetId,
-  });
+  CopySheetToAnotherSpreadsheetRequest({this.destinationSpreadsheetId});
 
   CopySheetToAnotherSpreadsheetRequest.fromJson(core.Map json_)
-      : this(
-          destinationSpreadsheetId:
-              json_['destinationSpreadsheetId'] as core.String?,
-        );
+    : this(
+        destinationSpreadsheetId:
+            json_['destinationSpreadsheetId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationSpreadsheetId != null)
-          'destinationSpreadsheetId': destinationSpreadsheetId!,
-      };
+    if (destinationSpreadsheetId != null)
+      'destinationSpreadsheetId': destinationSpreadsheetId!,
+  };
 }
 
 /// A request to create developer metadata.
@@ -5502,21 +5790,22 @@ class CreateDeveloperMetadataRequest {
   /// The developer metadata to create.
   DeveloperMetadata? developerMetadata;
 
-  CreateDeveloperMetadataRequest({
-    this.developerMetadata,
-  });
+  CreateDeveloperMetadataRequest({this.developerMetadata});
 
   CreateDeveloperMetadataRequest.fromJson(core.Map json_)
-      : this(
-          developerMetadata: json_.containsKey('developerMetadata')
-              ? DeveloperMetadata.fromJson(json_['developerMetadata']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        developerMetadata:
+            json_.containsKey('developerMetadata')
+                ? DeveloperMetadata.fromJson(
+                  json_['developerMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (developerMetadata != null) 'developerMetadata': developerMetadata!,
-      };
+    if (developerMetadata != null) 'developerMetadata': developerMetadata!,
+  };
 }
 
 /// The response from creating developer metadata.
@@ -5524,21 +5813,22 @@ class CreateDeveloperMetadataResponse {
   /// The developer metadata that was created.
   DeveloperMetadata? developerMetadata;
 
-  CreateDeveloperMetadataResponse({
-    this.developerMetadata,
-  });
+  CreateDeveloperMetadataResponse({this.developerMetadata});
 
   CreateDeveloperMetadataResponse.fromJson(core.Map json_)
-      : this(
-          developerMetadata: json_.containsKey('developerMetadata')
-              ? DeveloperMetadata.fromJson(json_['developerMetadata']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        developerMetadata:
+            json_.containsKey('developerMetadata')
+                ? DeveloperMetadata.fromJson(
+                  json_['developerMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (developerMetadata != null) 'developerMetadata': developerMetadata!,
-      };
+    if (developerMetadata != null) 'developerMetadata': developerMetadata!,
+  };
 }
 
 /// Moves data from the source to the destination.
@@ -5564,30 +5854,30 @@ class CutPasteRequest {
   /// The source data to cut.
   GridRange? source;
 
-  CutPasteRequest({
-    this.destination,
-    this.pasteType,
-    this.source,
-  });
+  CutPasteRequest({this.destination, this.pasteType, this.source});
 
   CutPasteRequest.fromJson(core.Map json_)
-      : this(
-          destination: json_.containsKey('destination')
-              ? GridCoordinate.fromJson(
-                  json_['destination'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pasteType: json_['pasteType'] as core.String?,
-          source: json_.containsKey('source')
-              ? GridRange.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        destination:
+            json_.containsKey('destination')
+                ? GridCoordinate.fromJson(
+                  json_['destination'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pasteType: json_['pasteType'] as core.String?,
+        source:
+            json_.containsKey('source')
+                ? GridRange.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destination != null) 'destination': destination!,
-        if (pasteType != null) 'pasteType': pasteType!,
-        if (source != null) 'source': source!,
-      };
+    if (destination != null) 'destination': destination!,
+    if (pasteType != null) 'pasteType': pasteType!,
+    if (source != null) 'source': source!,
+  };
 }
 
 /// The data execution status.
@@ -5661,19 +5951,19 @@ class DataExecutionStatus {
   });
 
   DataExecutionStatus.fromJson(core.Map json_)
-      : this(
-          errorCode: json_['errorCode'] as core.String?,
-          errorMessage: json_['errorMessage'] as core.String?,
-          lastRefreshTime: json_['lastRefreshTime'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        errorCode: json_['errorCode'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        lastRefreshTime: json_['lastRefreshTime'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
-        if (state != null) 'state': state!,
-      };
+    if (errorCode != null) 'errorCode': errorCode!,
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+    if (lastRefreshTime != null) 'lastRefreshTime': lastRefreshTime!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Filter that describes what data should be selected or returned from a
@@ -5689,32 +5979,32 @@ class DataFilter {
   /// Selects data that matches the range described by the GridRange.
   GridRange? gridRange;
 
-  DataFilter({
-    this.a1Range,
-    this.developerMetadataLookup,
-    this.gridRange,
-  });
+  DataFilter({this.a1Range, this.developerMetadataLookup, this.gridRange});
 
   DataFilter.fromJson(core.Map json_)
-      : this(
-          a1Range: json_['a1Range'] as core.String?,
-          developerMetadataLookup: json_.containsKey('developerMetadataLookup')
-              ? DeveloperMetadataLookup.fromJson(
+    : this(
+        a1Range: json_['a1Range'] as core.String?,
+        developerMetadataLookup:
+            json_.containsKey('developerMetadataLookup')
+                ? DeveloperMetadataLookup.fromJson(
                   json_['developerMetadataLookup']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          gridRange: json_.containsKey('gridRange')
-              ? GridRange.fromJson(
-                  json_['gridRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gridRange:
+            json_.containsKey('gridRange')
+                ? GridRange.fromJson(
+                  json_['gridRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (a1Range != null) 'a1Range': a1Range!,
-        if (developerMetadataLookup != null)
-          'developerMetadataLookup': developerMetadataLookup!,
-        if (gridRange != null) 'gridRange': gridRange!,
-      };
+    if (a1Range != null) 'a1Range': a1Range!,
+    if (developerMetadataLookup != null)
+      'developerMetadataLookup': developerMetadataLookup!,
+    if (gridRange != null) 'gridRange': gridRange!,
+  };
 }
 
 /// A range of values whose location is specified by a DataFilter.
@@ -5740,29 +6030,28 @@ class DataFilterValueRange {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.List<core.Object?>>? values;
 
-  DataFilterValueRange({
-    this.dataFilter,
-    this.majorDimension,
-    this.values,
-  });
+  DataFilterValueRange({this.dataFilter, this.majorDimension, this.values});
 
   DataFilterValueRange.fromJson(core.Map json_)
-      : this(
-          dataFilter: json_.containsKey('dataFilter')
-              ? DataFilter.fromJson(
-                  json_['dataFilter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          majorDimension: json_['majorDimension'] as core.String?,
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.List)
-              .toList(),
-        );
+    : this(
+        dataFilter:
+            json_.containsKey('dataFilter')
+                ? DataFilter.fromJson(
+                  json_['dataFilter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        majorDimension: json_['majorDimension'] as core.String?,
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.List)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataFilter != null) 'dataFilter': dataFilter!,
-        if (majorDimension != null) 'majorDimension': majorDimension!,
-        if (values != null) 'values': values!,
-      };
+    if (dataFilter != null) 'dataFilter': dataFilter!,
+    if (majorDimension != null) 'majorDimension': majorDimension!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Settings for one set of data labels.
@@ -5813,33 +6102,33 @@ class DataLabel {
   /// source indicated by customLabelData.
   core.String? type;
 
-  DataLabel({
-    this.customLabelData,
-    this.placement,
-    this.textFormat,
-    this.type,
-  });
+  DataLabel({this.customLabelData, this.placement, this.textFormat, this.type});
 
   DataLabel.fromJson(core.Map json_)
-      : this(
-          customLabelData: json_.containsKey('customLabelData')
-              ? ChartData.fromJson(json_['customLabelData']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          placement: json_['placement'] as core.String?,
-          textFormat: json_.containsKey('textFormat')
-              ? TextFormat.fromJson(
-                  json_['textFormat'] as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        customLabelData:
+            json_.containsKey('customLabelData')
+                ? ChartData.fromJson(
+                  json_['customLabelData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        placement: json_['placement'] as core.String?,
+        textFormat:
+            json_.containsKey('textFormat')
+                ? TextFormat.fromJson(
+                  json_['textFormat'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customLabelData != null) 'customLabelData': customLabelData!,
-        if (placement != null) 'placement': placement!,
-        if (textFormat != null) 'textFormat': textFormat!,
-        if (type != null) 'type': type!,
-      };
+    if (customLabelData != null) 'customLabelData': customLabelData!,
+    if (placement != null) 'placement': placement!,
+    if (textFormat != null) 'textFormat': textFormat!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Information about an external data source in the spreadsheet.
@@ -5870,25 +6159,31 @@ class DataSource {
   });
 
   DataSource.fromJson(core.Map json_)
-      : this(
-          calculatedColumns: (json_['calculatedColumns'] as core.List?)
-              ?.map((value) => DataSourceColumn.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          dataSourceId: json_['dataSourceId'] as core.String?,
-          sheetId: json_['sheetId'] as core.int?,
-          spec: json_.containsKey('spec')
-              ? DataSourceSpec.fromJson(
-                  json_['spec'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        calculatedColumns:
+            (json_['calculatedColumns'] as core.List?)
+                ?.map(
+                  (value) => DataSourceColumn.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dataSourceId: json_['dataSourceId'] as core.String?,
+        sheetId: json_['sheetId'] as core.int?,
+        spec:
+            json_.containsKey('spec')
+                ? DataSourceSpec.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (calculatedColumns != null) 'calculatedColumns': calculatedColumns!,
-        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-        if (sheetId != null) 'sheetId': sheetId!,
-        if (spec != null) 'spec': spec!,
-      };
+    if (calculatedColumns != null) 'calculatedColumns': calculatedColumns!,
+    if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+    if (sheetId != null) 'sheetId': sheetId!,
+    if (spec != null) 'spec': spec!,
+  };
 }
 
 /// Properties of a data source chart.
@@ -5901,25 +6196,25 @@ class DataSourceChartProperties {
   /// ID of the data source that the chart is associated with.
   core.String? dataSourceId;
 
-  DataSourceChartProperties({
-    this.dataExecutionStatus,
-    this.dataSourceId,
-  });
+  DataSourceChartProperties({this.dataExecutionStatus, this.dataSourceId});
 
   DataSourceChartProperties.fromJson(core.Map json_)
-      : this(
-          dataExecutionStatus: json_.containsKey('dataExecutionStatus')
-              ? DataExecutionStatus.fromJson(json_['dataExecutionStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataSourceId: json_['dataSourceId'] as core.String?,
-        );
+    : this(
+        dataExecutionStatus:
+            json_.containsKey('dataExecutionStatus')
+                ? DataExecutionStatus.fromJson(
+                  json_['dataExecutionStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataSourceId: json_['dataSourceId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus!,
-        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-      };
+    if (dataExecutionStatus != null)
+      'dataExecutionStatus': dataExecutionStatus!,
+    if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+  };
 }
 
 /// A column in a data source.
@@ -5930,24 +6225,23 @@ class DataSourceColumn {
   /// The column reference.
   DataSourceColumnReference? reference;
 
-  DataSourceColumn({
-    this.formula,
-    this.reference,
-  });
+  DataSourceColumn({this.formula, this.reference});
 
   DataSourceColumn.fromJson(core.Map json_)
-      : this(
-          formula: json_['formula'] as core.String?,
-          reference: json_.containsKey('reference')
-              ? DataSourceColumnReference.fromJson(
-                  json_['reference'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        formula: json_['formula'] as core.String?,
+        reference:
+            json_.containsKey('reference')
+                ? DataSourceColumnReference.fromJson(
+                  json_['reference'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (formula != null) 'formula': formula!,
-        if (reference != null) 'reference': reference!,
-      };
+    if (formula != null) 'formula': formula!,
+    if (reference != null) 'reference': reference!,
+  };
 }
 
 /// An unique identifier that references a data source column.
@@ -5957,18 +6251,14 @@ class DataSourceColumnReference {
   /// It should be unique within a data source.
   core.String? name;
 
-  DataSourceColumnReference({
-    this.name,
-  });
+  DataSourceColumnReference({this.name});
 
   DataSourceColumnReference.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+    : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
+    if (name != null) 'name': name!,
+  };
 }
 
 /// A data source formula.
@@ -5981,25 +6271,25 @@ class DataSourceFormula {
   /// The ID of the data source the formula is associated with.
   core.String? dataSourceId;
 
-  DataSourceFormula({
-    this.dataExecutionStatus,
-    this.dataSourceId,
-  });
+  DataSourceFormula({this.dataExecutionStatus, this.dataSourceId});
 
   DataSourceFormula.fromJson(core.Map json_)
-      : this(
-          dataExecutionStatus: json_.containsKey('dataExecutionStatus')
-              ? DataExecutionStatus.fromJson(json_['dataExecutionStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataSourceId: json_['dataSourceId'] as core.String?,
-        );
+    : this(
+        dataExecutionStatus:
+            json_.containsKey('dataExecutionStatus')
+                ? DataExecutionStatus.fromJson(
+                  json_['dataExecutionStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataSourceId: json_['dataSourceId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus!,
-        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-      };
+    if (dataExecutionStatus != null)
+      'dataExecutionStatus': dataExecutionStatus!,
+    if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+  };
 }
 
 /// Reference to a data source object.
@@ -6028,35 +6318,42 @@ class DataSourceObjectReference {
   });
 
   DataSourceObjectReference.fromJson(core.Map json_)
-      : this(
-          chartId: json_['chartId'] as core.int?,
-          dataSourceFormulaCell: json_.containsKey('dataSourceFormulaCell')
-              ? GridCoordinate.fromJson(json_['dataSourceFormulaCell']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataSourcePivotTableAnchorCell: json_
-                  .containsKey('dataSourcePivotTableAnchorCell')
-              ? GridCoordinate.fromJson(json_['dataSourcePivotTableAnchorCell']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataSourceTableAnchorCell:
-              json_.containsKey('dataSourceTableAnchorCell')
-                  ? GridCoordinate.fromJson(json_['dataSourceTableAnchorCell']
-                      as core.Map<core.String, core.dynamic>)
-                  : null,
-          sheetId: json_['sheetId'] as core.String?,
-        );
+    : this(
+        chartId: json_['chartId'] as core.int?,
+        dataSourceFormulaCell:
+            json_.containsKey('dataSourceFormulaCell')
+                ? GridCoordinate.fromJson(
+                  json_['dataSourceFormulaCell']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataSourcePivotTableAnchorCell:
+            json_.containsKey('dataSourcePivotTableAnchorCell')
+                ? GridCoordinate.fromJson(
+                  json_['dataSourcePivotTableAnchorCell']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataSourceTableAnchorCell:
+            json_.containsKey('dataSourceTableAnchorCell')
+                ? GridCoordinate.fromJson(
+                  json_['dataSourceTableAnchorCell']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sheetId: json_['sheetId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chartId != null) 'chartId': chartId!,
-        if (dataSourceFormulaCell != null)
-          'dataSourceFormulaCell': dataSourceFormulaCell!,
-        if (dataSourcePivotTableAnchorCell != null)
-          'dataSourcePivotTableAnchorCell': dataSourcePivotTableAnchorCell!,
-        if (dataSourceTableAnchorCell != null)
-          'dataSourceTableAnchorCell': dataSourceTableAnchorCell!,
-        if (sheetId != null) 'sheetId': sheetId!,
-      };
+    if (chartId != null) 'chartId': chartId!,
+    if (dataSourceFormulaCell != null)
+      'dataSourceFormulaCell': dataSourceFormulaCell!,
+    if (dataSourcePivotTableAnchorCell != null)
+      'dataSourcePivotTableAnchorCell': dataSourcePivotTableAnchorCell!,
+    if (dataSourceTableAnchorCell != null)
+      'dataSourceTableAnchorCell': dataSourceTableAnchorCell!,
+    if (sheetId != null) 'sheetId': sheetId!,
+  };
 }
 
 /// A list of references to data source objects.
@@ -6064,21 +6361,23 @@ class DataSourceObjectReferences {
   /// The references.
   core.List<DataSourceObjectReference>? references;
 
-  DataSourceObjectReferences({
-    this.references,
-  });
+  DataSourceObjectReferences({this.references});
 
   DataSourceObjectReferences.fromJson(core.Map json_)
-      : this(
-          references: (json_['references'] as core.List?)
-              ?.map((value) => DataSourceObjectReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        references:
+            (json_['references'] as core.List?)
+                ?.map(
+                  (value) => DataSourceObjectReference.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (references != null) 'references': references!,
-      };
+    if (references != null) 'references': references!,
+  };
 }
 
 /// A parameter in a data source's query.
@@ -6103,27 +6402,25 @@ class DataSourceParameter {
   /// Its size must be 1x1.
   GridRange? range;
 
-  DataSourceParameter({
-    this.name,
-    this.namedRangeId,
-    this.range,
-  });
+  DataSourceParameter({this.name, this.namedRangeId, this.range});
 
   DataSourceParameter.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          namedRangeId: json_['namedRangeId'] as core.String?,
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        namedRangeId: json_['namedRangeId'] as core.String?,
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
-        if (range != null) 'range': range!,
-      };
+    if (name != null) 'name': name!,
+    if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+    if (range != null) 'range': range!,
+  };
 }
 
 /// A schedule for data to refresh every day in a given time interval.
@@ -6135,21 +6432,21 @@ class DataSourceRefreshDailySchedule {
   /// Sheets editor.
   TimeOfDay? startTime;
 
-  DataSourceRefreshDailySchedule({
-    this.startTime,
-  });
+  DataSourceRefreshDailySchedule({this.startTime});
 
   DataSourceRefreshDailySchedule.fromJson(core.Map json_)
-      : this(
-          startTime: json_.containsKey('startTime')
-              ? TimeOfDay.fromJson(
-                  json_['startTime'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        startTime:
+            json_.containsKey('startTime')
+                ? TimeOfDay.fromJson(
+                  json_['startTime'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// A monthly schedule for data to refresh on specific days in the month in a
@@ -6168,26 +6465,26 @@ class DataSourceRefreshMonthlySchedule {
   /// Sheets editor.
   TimeOfDay? startTime;
 
-  DataSourceRefreshMonthlySchedule({
-    this.daysOfMonth,
-    this.startTime,
-  });
+  DataSourceRefreshMonthlySchedule({this.daysOfMonth, this.startTime});
 
   DataSourceRefreshMonthlySchedule.fromJson(core.Map json_)
-      : this(
-          daysOfMonth: (json_['daysOfMonth'] as core.List?)
-              ?.map((value) => value as core.int)
-              .toList(),
-          startTime: json_.containsKey('startTime')
-              ? TimeOfDay.fromJson(
-                  json_['startTime'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        daysOfMonth:
+            (json_['daysOfMonth'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        startTime:
+            json_.containsKey('startTime')
+                ? TimeOfDay.fromJson(
+                  json_['startTime'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (daysOfMonth != null) 'daysOfMonth': daysOfMonth!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (daysOfMonth != null) 'daysOfMonth': daysOfMonth!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// Schedule for refreshing the data source.
@@ -6234,36 +6531,45 @@ class DataSourceRefreshSchedule {
   });
 
   DataSourceRefreshSchedule.fromJson(core.Map json_)
-      : this(
-          dailySchedule: json_.containsKey('dailySchedule')
-              ? DataSourceRefreshDailySchedule.fromJson(
-                  json_['dailySchedule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          enabled: json_['enabled'] as core.bool?,
-          monthlySchedule: json_.containsKey('monthlySchedule')
-              ? DataSourceRefreshMonthlySchedule.fromJson(
+    : this(
+        dailySchedule:
+            json_.containsKey('dailySchedule')
+                ? DataSourceRefreshDailySchedule.fromJson(
+                  json_['dailySchedule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        enabled: json_['enabled'] as core.bool?,
+        monthlySchedule:
+            json_.containsKey('monthlySchedule')
+                ? DataSourceRefreshMonthlySchedule.fromJson(
                   json_['monthlySchedule']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          nextRun: json_.containsKey('nextRun')
-              ? Interval.fromJson(
-                  json_['nextRun'] as core.Map<core.String, core.dynamic>)
-              : null,
-          refreshScope: json_['refreshScope'] as core.String?,
-          weeklySchedule: json_.containsKey('weeklySchedule')
-              ? DataSourceRefreshWeeklySchedule.fromJson(json_['weeklySchedule']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nextRun:
+            json_.containsKey('nextRun')
+                ? Interval.fromJson(
+                  json_['nextRun'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        refreshScope: json_['refreshScope'] as core.String?,
+        weeklySchedule:
+            json_.containsKey('weeklySchedule')
+                ? DataSourceRefreshWeeklySchedule.fromJson(
+                  json_['weeklySchedule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dailySchedule != null) 'dailySchedule': dailySchedule!,
-        if (enabled != null) 'enabled': enabled!,
-        if (monthlySchedule != null) 'monthlySchedule': monthlySchedule!,
-        if (nextRun != null) 'nextRun': nextRun!,
-        if (refreshScope != null) 'refreshScope': refreshScope!,
-        if (weeklySchedule != null) 'weeklySchedule': weeklySchedule!,
-      };
+    if (dailySchedule != null) 'dailySchedule': dailySchedule!,
+    if (enabled != null) 'enabled': enabled!,
+    if (monthlySchedule != null) 'monthlySchedule': monthlySchedule!,
+    if (nextRun != null) 'nextRun': nextRun!,
+    if (refreshScope != null) 'refreshScope': refreshScope!,
+    if (weeklySchedule != null) 'weeklySchedule': weeklySchedule!,
+  };
 }
 
 /// A weekly schedule for data to refresh on specific days in a given time
@@ -6281,26 +6587,26 @@ class DataSourceRefreshWeeklySchedule {
   /// Sheets editor.
   TimeOfDay? startTime;
 
-  DataSourceRefreshWeeklySchedule({
-    this.daysOfWeek,
-    this.startTime,
-  });
+  DataSourceRefreshWeeklySchedule({this.daysOfWeek, this.startTime});
 
   DataSourceRefreshWeeklySchedule.fromJson(core.Map json_)
-      : this(
-          daysOfWeek: (json_['daysOfWeek'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          startTime: json_.containsKey('startTime')
-              ? TimeOfDay.fromJson(
-                  json_['startTime'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        daysOfWeek:
+            (json_['daysOfWeek'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        startTime:
+            json_.containsKey('startTime')
+                ? TimeOfDay.fromJson(
+                  json_['startTime'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (daysOfWeek != null) 'daysOfWeek': daysOfWeek!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (daysOfWeek != null) 'daysOfWeek': daysOfWeek!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// A range along a single dimension on a DATA_SOURCE sheet.
@@ -6311,24 +6617,25 @@ class DataSourceSheetDimensionRange {
   /// The ID of the data source sheet the range is on.
   core.int? sheetId;
 
-  DataSourceSheetDimensionRange({
-    this.columnReferences,
-    this.sheetId,
-  });
+  DataSourceSheetDimensionRange({this.columnReferences, this.sheetId});
 
   DataSourceSheetDimensionRange.fromJson(core.Map json_)
-      : this(
-          columnReferences: (json_['columnReferences'] as core.List?)
-              ?.map((value) => DataSourceColumnReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          sheetId: json_['sheetId'] as core.int?,
-        );
+    : this(
+        columnReferences:
+            (json_['columnReferences'] as core.List?)
+                ?.map(
+                  (value) => DataSourceColumnReference.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        sheetId: json_['sheetId'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnReferences != null) 'columnReferences': columnReferences!,
-        if (sheetId != null) 'sheetId': sheetId!,
-      };
+    if (columnReferences != null) 'columnReferences': columnReferences!,
+    if (sheetId != null) 'sheetId': sheetId!,
+  };
 }
 
 /// Additional properties of a DATA_SOURCE sheet.
@@ -6350,24 +6657,31 @@ class DataSourceSheetProperties {
   });
 
   DataSourceSheetProperties.fromJson(core.Map json_)
-      : this(
-          columns: (json_['columns'] as core.List?)
-              ?.map((value) => DataSourceColumn.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          dataExecutionStatus: json_.containsKey('dataExecutionStatus')
-              ? DataExecutionStatus.fromJson(json_['dataExecutionStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataSourceId: json_['dataSourceId'] as core.String?,
-        );
+    : this(
+        columns:
+            (json_['columns'] as core.List?)
+                ?.map(
+                  (value) => DataSourceColumn.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dataExecutionStatus:
+            json_.containsKey('dataExecutionStatus')
+                ? DataExecutionStatus.fromJson(
+                  json_['dataExecutionStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataSourceId: json_['dataSourceId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columns != null) 'columns': columns!,
-        if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus!,
-        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-      };
+    if (columns != null) 'columns': columns!,
+    if (dataExecutionStatus != null)
+      'dataExecutionStatus': dataExecutionStatus!,
+    if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+  };
 }
 
 /// This specifies the details of the data source.
@@ -6384,33 +6698,37 @@ class DataSourceSpec {
   /// The parameters of the data source, used when querying the data source.
   core.List<DataSourceParameter>? parameters;
 
-  DataSourceSpec({
-    this.bigQuery,
-    this.looker,
-    this.parameters,
-  });
+  DataSourceSpec({this.bigQuery, this.looker, this.parameters});
 
   DataSourceSpec.fromJson(core.Map json_)
-      : this(
-          bigQuery: json_.containsKey('bigQuery')
-              ? BigQueryDataSourceSpec.fromJson(
-                  json_['bigQuery'] as core.Map<core.String, core.dynamic>)
-              : null,
-          looker: json_.containsKey('looker')
-              ? LookerDataSourceSpec.fromJson(
-                  json_['looker'] as core.Map<core.String, core.dynamic>)
-              : null,
-          parameters: (json_['parameters'] as core.List?)
-              ?.map((value) => DataSourceParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        bigQuery:
+            json_.containsKey('bigQuery')
+                ? BigQueryDataSourceSpec.fromJson(
+                  json_['bigQuery'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        looker:
+            json_.containsKey('looker')
+                ? LookerDataSourceSpec.fromJson(
+                  json_['looker'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        parameters:
+            (json_['parameters'] as core.List?)
+                ?.map(
+                  (value) => DataSourceParameter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigQuery != null) 'bigQuery': bigQuery!,
-        if (looker != null) 'looker': looker!,
-        if (parameters != null) 'parameters': parameters!,
-      };
+    if (bigQuery != null) 'bigQuery': bigQuery!,
+    if (looker != null) 'looker': looker!,
+    if (parameters != null) 'parameters': parameters!,
+  };
 }
 
 /// A data source table, which allows the user to import a static table of data
@@ -6469,39 +6787,54 @@ class DataSourceTable {
   });
 
   DataSourceTable.fromJson(core.Map json_)
-      : this(
-          columnSelectionType: json_['columnSelectionType'] as core.String?,
-          columns: (json_['columns'] as core.List?)
-              ?.map((value) => DataSourceColumnReference.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          dataExecutionStatus: json_.containsKey('dataExecutionStatus')
-              ? DataExecutionStatus.fromJson(json_['dataExecutionStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataSourceId: json_['dataSourceId'] as core.String?,
-          filterSpecs: (json_['filterSpecs'] as core.List?)
-              ?.map((value) => FilterSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          rowLimit: json_['rowLimit'] as core.int?,
-          sortSpecs: (json_['sortSpecs'] as core.List?)
-              ?.map((value) => SortSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        columnSelectionType: json_['columnSelectionType'] as core.String?,
+        columns:
+            (json_['columns'] as core.List?)
+                ?.map(
+                  (value) => DataSourceColumnReference.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dataExecutionStatus:
+            json_.containsKey('dataExecutionStatus')
+                ? DataExecutionStatus.fromJson(
+                  json_['dataExecutionStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataSourceId: json_['dataSourceId'] as core.String?,
+        filterSpecs:
+            (json_['filterSpecs'] as core.List?)
+                ?.map(
+                  (value) => FilterSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        rowLimit: json_['rowLimit'] as core.int?,
+        sortSpecs:
+            (json_['sortSpecs'] as core.List?)
+                ?.map(
+                  (value) => SortSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnSelectionType != null)
-          'columnSelectionType': columnSelectionType!,
-        if (columns != null) 'columns': columns!,
-        if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus!,
-        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-        if (filterSpecs != null) 'filterSpecs': filterSpecs!,
-        if (rowLimit != null) 'rowLimit': rowLimit!,
-        if (sortSpecs != null) 'sortSpecs': sortSpecs!,
-      };
+    if (columnSelectionType != null)
+      'columnSelectionType': columnSelectionType!,
+    if (columns != null) 'columns': columns!,
+    if (dataExecutionStatus != null)
+      'dataExecutionStatus': dataExecutionStatus!,
+    if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+    if (filterSpecs != null) 'filterSpecs': filterSpecs!,
+    if (rowLimit != null) 'rowLimit': rowLimit!,
+    if (sortSpecs != null) 'sortSpecs': sortSpecs!,
+  };
 }
 
 /// A data validation rule.
@@ -6528,22 +6861,24 @@ class DataValidationRule {
   });
 
   DataValidationRule.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? BooleanCondition.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          inputMessage: json_['inputMessage'] as core.String?,
-          showCustomUi: json_['showCustomUi'] as core.bool?,
-          strict: json_['strict'] as core.bool?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? BooleanCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        inputMessage: json_['inputMessage'] as core.String?,
+        showCustomUi: json_['showCustomUi'] as core.bool?,
+        strict: json_['strict'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (inputMessage != null) 'inputMessage': inputMessage!,
-        if (showCustomUi != null) 'showCustomUi': showCustomUi!,
-        if (strict != null) 'strict': strict!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (inputMessage != null) 'inputMessage': inputMessage!,
+    if (showCustomUi != null) 'showCustomUi': showCustomUi!,
+    if (strict != null) 'strict': strict!,
+  };
 }
 
 /// Allows you to organize the date-time values in a source data column into
@@ -6589,18 +6924,14 @@ class DateTimeRule {
   /// 2008-11-22.
   core.String? type;
 
-  DateTimeRule({
-    this.type,
-  });
+  DateTimeRule({this.type});
 
   DateTimeRule.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-        );
+    : this(type: json_['type'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-      };
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Removes the banded range with the given ID from the spreadsheet.
@@ -6608,18 +6939,14 @@ class DeleteBandingRequest {
   /// The ID of the banded range to delete.
   core.int? bandedRangeId;
 
-  DeleteBandingRequest({
-    this.bandedRangeId,
-  });
+  DeleteBandingRequest({this.bandedRangeId});
 
   DeleteBandingRequest.fromJson(core.Map json_)
-      : this(
-          bandedRangeId: json_['bandedRangeId'] as core.int?,
-        );
+    : this(bandedRangeId: json_['bandedRangeId'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bandedRangeId != null) 'bandedRangeId': bandedRangeId!,
-      };
+    if (bandedRangeId != null) 'bandedRangeId': bandedRangeId!,
+  };
 }
 
 /// Deletes a conditional format rule at the given index.
@@ -6632,21 +6959,18 @@ class DeleteConditionalFormatRuleRequest {
   /// The sheet the rule is being deleted from.
   core.int? sheetId;
 
-  DeleteConditionalFormatRuleRequest({
-    this.index,
-    this.sheetId,
-  });
+  DeleteConditionalFormatRuleRequest({this.index, this.sheetId});
 
   DeleteConditionalFormatRuleRequest.fromJson(core.Map json_)
-      : this(
-          index: json_['index'] as core.int?,
-          sheetId: json_['sheetId'] as core.int?,
-        );
+    : this(
+        index: json_['index'] as core.int?,
+        sheetId: json_['sheetId'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (index != null) 'index': index!,
-        if (sheetId != null) 'sheetId': sheetId!,
-      };
+    if (index != null) 'index': index!,
+    if (sheetId != null) 'sheetId': sheetId!,
+  };
 }
 
 /// The result of deleting a conditional format rule.
@@ -6654,21 +6978,21 @@ class DeleteConditionalFormatRuleResponse {
   /// The rule that was deleted.
   ConditionalFormatRule? rule;
 
-  DeleteConditionalFormatRuleResponse({
-    this.rule,
-  });
+  DeleteConditionalFormatRuleResponse({this.rule});
 
   DeleteConditionalFormatRuleResponse.fromJson(core.Map json_)
-      : this(
-          rule: json_.containsKey('rule')
-              ? ConditionalFormatRule.fromJson(
-                  json_['rule'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        rule:
+            json_.containsKey('rule')
+                ? ConditionalFormatRule.fromJson(
+                  json_['rule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rule != null) 'rule': rule!,
-      };
+    if (rule != null) 'rule': rule!,
+  };
 }
 
 /// Deletes a data source.
@@ -6679,18 +7003,14 @@ class DeleteDataSourceRequest {
   /// The ID of the data source to delete.
   core.String? dataSourceId;
 
-  DeleteDataSourceRequest({
-    this.dataSourceId,
-  });
+  DeleteDataSourceRequest({this.dataSourceId});
 
   DeleteDataSourceRequest.fromJson(core.Map json_)
-      : this(
-          dataSourceId: json_['dataSourceId'] as core.String?,
-        );
+    : this(dataSourceId: json_['dataSourceId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-      };
+    if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+  };
 }
 
 /// A request to delete developer metadata.
@@ -6699,21 +7019,21 @@ class DeleteDeveloperMetadataRequest {
   /// metadata entry to delete.
   DataFilter? dataFilter;
 
-  DeleteDeveloperMetadataRequest({
-    this.dataFilter,
-  });
+  DeleteDeveloperMetadataRequest({this.dataFilter});
 
   DeleteDeveloperMetadataRequest.fromJson(core.Map json_)
-      : this(
-          dataFilter: json_.containsKey('dataFilter')
-              ? DataFilter.fromJson(
-                  json_['dataFilter'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dataFilter:
+            json_.containsKey('dataFilter')
+                ? DataFilter.fromJson(
+                  json_['dataFilter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataFilter != null) 'dataFilter': dataFilter!,
-      };
+    if (dataFilter != null) 'dataFilter': dataFilter!,
+  };
 }
 
 /// The response from deleting developer metadata.
@@ -6721,23 +7041,24 @@ class DeleteDeveloperMetadataResponse {
   /// The metadata that was deleted.
   core.List<DeveloperMetadata>? deletedDeveloperMetadata;
 
-  DeleteDeveloperMetadataResponse({
-    this.deletedDeveloperMetadata,
-  });
+  DeleteDeveloperMetadataResponse({this.deletedDeveloperMetadata});
 
   DeleteDeveloperMetadataResponse.fromJson(core.Map json_)
-      : this(
-          deletedDeveloperMetadata:
-              (json_['deletedDeveloperMetadata'] as core.List?)
-                  ?.map((value) => DeveloperMetadata.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+    : this(
+        deletedDeveloperMetadata:
+            (json_['deletedDeveloperMetadata'] as core.List?)
+                ?.map(
+                  (value) => DeveloperMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deletedDeveloperMetadata != null)
-          'deletedDeveloperMetadata': deletedDeveloperMetadata!,
-      };
+    if (deletedDeveloperMetadata != null)
+      'deletedDeveloperMetadata': deletedDeveloperMetadata!,
+  };
 }
 
 /// Deletes a group over the specified range by decrementing the depth of the
@@ -6750,21 +7071,21 @@ class DeleteDimensionGroupRequest {
   /// The range of the group to be deleted.
   DimensionRange? range;
 
-  DeleteDimensionGroupRequest({
-    this.range,
-  });
+  DeleteDimensionGroupRequest({this.range});
 
   DeleteDimensionGroupRequest.fromJson(core.Map json_)
-      : this(
-          range: json_.containsKey('range')
-              ? DimensionRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        range:
+            json_.containsKey('range')
+                ? DimensionRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (range != null) 'range': range!,
-      };
+    if (range != null) 'range': range!,
+  };
 }
 
 /// The result of deleting a group.
@@ -6772,21 +7093,23 @@ class DeleteDimensionGroupResponse {
   /// All groups of a dimension after deleting a group from that dimension.
   core.List<DimensionGroup>? dimensionGroups;
 
-  DeleteDimensionGroupResponse({
-    this.dimensionGroups,
-  });
+  DeleteDimensionGroupResponse({this.dimensionGroups});
 
   DeleteDimensionGroupResponse.fromJson(core.Map json_)
-      : this(
-          dimensionGroups: (json_['dimensionGroups'] as core.List?)
-              ?.map((value) => DimensionGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        dimensionGroups:
+            (json_['dimensionGroups'] as core.List?)
+                ?.map(
+                  (value) => DimensionGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionGroups != null) 'dimensionGroups': dimensionGroups!,
-      };
+    if (dimensionGroups != null) 'dimensionGroups': dimensionGroups!,
+  };
 }
 
 ///  Deletes the dimensions from the sheet.
@@ -6794,21 +7117,21 @@ class DeleteDimensionRequest {
   /// The dimensions to delete from the sheet.
   DimensionRange? range;
 
-  DeleteDimensionRequest({
-    this.range,
-  });
+  DeleteDimensionRequest({this.range});
 
   DeleteDimensionRequest.fromJson(core.Map json_)
-      : this(
-          range: json_.containsKey('range')
-              ? DimensionRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        range:
+            json_.containsKey('range')
+                ? DimensionRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (range != null) 'range': range!,
-      };
+    if (range != null) 'range': range!,
+  };
 }
 
 /// Removes rows within this range that contain values in the specified columns
@@ -6830,27 +7153,30 @@ class DeleteDuplicatesRequest {
   /// The range to remove duplicates rows from.
   GridRange? range;
 
-  DeleteDuplicatesRequest({
-    this.comparisonColumns,
-    this.range,
-  });
+  DeleteDuplicatesRequest({this.comparisonColumns, this.range});
 
   DeleteDuplicatesRequest.fromJson(core.Map json_)
-      : this(
-          comparisonColumns: (json_['comparisonColumns'] as core.List?)
-              ?.map((value) => DimensionRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        comparisonColumns:
+            (json_['comparisonColumns'] as core.List?)
+                ?.map(
+                  (value) => DimensionRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (comparisonColumns != null) 'comparisonColumns': comparisonColumns!,
-        if (range != null) 'range': range!,
-      };
+    if (comparisonColumns != null) 'comparisonColumns': comparisonColumns!,
+    if (range != null) 'range': range!,
+  };
 }
 
 /// The result of removing duplicates in a range.
@@ -6858,19 +7184,17 @@ class DeleteDuplicatesResponse {
   /// The number of duplicate rows removed.
   core.int? duplicatesRemovedCount;
 
-  DeleteDuplicatesResponse({
-    this.duplicatesRemovedCount,
-  });
+  DeleteDuplicatesResponse({this.duplicatesRemovedCount});
 
   DeleteDuplicatesResponse.fromJson(core.Map json_)
-      : this(
-          duplicatesRemovedCount: json_['duplicatesRemovedCount'] as core.int?,
-        );
+    : this(
+        duplicatesRemovedCount: json_['duplicatesRemovedCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (duplicatesRemovedCount != null)
-          'duplicatesRemovedCount': duplicatesRemovedCount!,
-      };
+    if (duplicatesRemovedCount != null)
+      'duplicatesRemovedCount': duplicatesRemovedCount!,
+  };
 }
 
 /// Deletes the embedded object with the given ID.
@@ -6878,18 +7202,14 @@ class DeleteEmbeddedObjectRequest {
   /// The ID of the embedded object to delete.
   core.int? objectId;
 
-  DeleteEmbeddedObjectRequest({
-    this.objectId,
-  });
+  DeleteEmbeddedObjectRequest({this.objectId});
 
   DeleteEmbeddedObjectRequest.fromJson(core.Map json_)
-      : this(
-          objectId: json_['objectId'] as core.int?,
-        );
+    : this(objectId: json_['objectId'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectId != null) 'objectId': objectId!,
-      };
+    if (objectId != null) 'objectId': objectId!,
+  };
 }
 
 /// Deletes a particular filter view.
@@ -6897,18 +7217,14 @@ class DeleteFilterViewRequest {
   /// The ID of the filter to delete.
   core.int? filterId;
 
-  DeleteFilterViewRequest({
-    this.filterId,
-  });
+  DeleteFilterViewRequest({this.filterId});
 
   DeleteFilterViewRequest.fromJson(core.Map json_)
-      : this(
-          filterId: json_['filterId'] as core.int?,
-        );
+    : this(filterId: json_['filterId'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filterId != null) 'filterId': filterId!,
-      };
+    if (filterId != null) 'filterId': filterId!,
+  };
 }
 
 /// Removes the named range with the given ID from the spreadsheet.
@@ -6916,18 +7232,14 @@ class DeleteNamedRangeRequest {
   /// The ID of the named range to delete.
   core.String? namedRangeId;
 
-  DeleteNamedRangeRequest({
-    this.namedRangeId,
-  });
+  DeleteNamedRangeRequest({this.namedRangeId});
 
   DeleteNamedRangeRequest.fromJson(core.Map json_)
-      : this(
-          namedRangeId: json_['namedRangeId'] as core.String?,
-        );
+    : this(namedRangeId: json_['namedRangeId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
-      };
+    if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+  };
 }
 
 /// Deletes the protected range with the given ID.
@@ -6935,18 +7247,14 @@ class DeleteProtectedRangeRequest {
   /// The ID of the protected range to delete.
   core.int? protectedRangeId;
 
-  DeleteProtectedRangeRequest({
-    this.protectedRangeId,
-  });
+  DeleteProtectedRangeRequest({this.protectedRangeId});
 
   DeleteProtectedRangeRequest.fromJson(core.Map json_)
-      : this(
-          protectedRangeId: json_['protectedRangeId'] as core.int?,
-        );
+    : this(protectedRangeId: json_['protectedRangeId'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (protectedRangeId != null) 'protectedRangeId': protectedRangeId!,
-      };
+    if (protectedRangeId != null) 'protectedRangeId': protectedRangeId!,
+  };
 }
 
 /// Deletes a range of cells, shifting other cells into the deleted area.
@@ -6965,24 +7273,23 @@ class DeleteRangeRequest {
   /// - "COLUMNS" : Operates on the columns of a sheet.
   core.String? shiftDimension;
 
-  DeleteRangeRequest({
-    this.range,
-    this.shiftDimension,
-  });
+  DeleteRangeRequest({this.range, this.shiftDimension});
 
   DeleteRangeRequest.fromJson(core.Map json_)
-      : this(
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          shiftDimension: json_['shiftDimension'] as core.String?,
-        );
+    : this(
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        shiftDimension: json_['shiftDimension'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (range != null) 'range': range!,
-        if (shiftDimension != null) 'shiftDimension': shiftDimension!,
-      };
+    if (range != null) 'range': range!,
+    if (shiftDimension != null) 'shiftDimension': shiftDimension!,
+  };
 }
 
 /// Deletes the requested sheet.
@@ -6993,18 +7300,14 @@ class DeleteSheetRequest {
   /// deleted.
   core.int? sheetId;
 
-  DeleteSheetRequest({
-    this.sheetId,
-  });
+  DeleteSheetRequest({this.sheetId});
 
   DeleteSheetRequest.fromJson(core.Map json_)
-      : this(
-          sheetId: json_['sheetId'] as core.int?,
-        );
+    : this(sheetId: json_['sheetId'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sheetId != null) 'sheetId': sheetId!,
-      };
+    if (sheetId != null) 'sheetId': sheetId!,
+  };
 }
 
 /// Removes the table with the given ID from the spreadsheet.
@@ -7012,18 +7315,14 @@ class DeleteTableRequest {
   /// The ID of the table to delete.
   core.String? tableId;
 
-  DeleteTableRequest({
-    this.tableId,
-  });
+  DeleteTableRequest({this.tableId});
 
   DeleteTableRequest.fromJson(core.Map json_)
-      : this(
-          tableId: json_['tableId'] as core.String?,
-        );
+    : this(tableId: json_['tableId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tableId != null) 'tableId': tableId!,
-      };
+    if (tableId != null) 'tableId': tableId!,
+  };
 }
 
 /// Developer metadata associated with a location or object in a spreadsheet.
@@ -7074,24 +7373,26 @@ class DeveloperMetadata {
   });
 
   DeveloperMetadata.fromJson(core.Map json_)
-      : this(
-          location: json_.containsKey('location')
-              ? DeveloperMetadataLocation.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadataId: json_['metadataId'] as core.int?,
-          metadataKey: json_['metadataKey'] as core.String?,
-          metadataValue: json_['metadataValue'] as core.String?,
-          visibility: json_['visibility'] as core.String?,
-        );
+    : this(
+        location:
+            json_.containsKey('location')
+                ? DeveloperMetadataLocation.fromJson(
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadataId: json_['metadataId'] as core.int?,
+        metadataKey: json_['metadataKey'] as core.String?,
+        metadataValue: json_['metadataValue'] as core.String?,
+        visibility: json_['visibility'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (location != null) 'location': location!,
-        if (metadataId != null) 'metadataId': metadataId!,
-        if (metadataKey != null) 'metadataKey': metadataKey!,
-        if (metadataValue != null) 'metadataValue': metadataValue!,
-        if (visibility != null) 'visibility': visibility!,
-      };
+    if (location != null) 'location': location!,
+    if (metadataId != null) 'metadataId': metadataId!,
+    if (metadataKey != null) 'metadataKey': metadataKey!,
+    if (metadataValue != null) 'metadataValue': metadataValue!,
+    if (visibility != null) 'visibility': visibility!,
+  };
 }
 
 /// A location where metadata may be associated in a spreadsheet.
@@ -7127,22 +7428,25 @@ class DeveloperMetadataLocation {
   });
 
   DeveloperMetadataLocation.fromJson(core.Map json_)
-      : this(
-          dimensionRange: json_.containsKey('dimensionRange')
-              ? DimensionRange.fromJson(json_['dimensionRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          locationType: json_['locationType'] as core.String?,
-          sheetId: json_['sheetId'] as core.int?,
-          spreadsheet: json_['spreadsheet'] as core.bool?,
-        );
+    : this(
+        dimensionRange:
+            json_.containsKey('dimensionRange')
+                ? DimensionRange.fromJson(
+                  json_['dimensionRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        locationType: json_['locationType'] as core.String?,
+        sheetId: json_['sheetId'] as core.int?,
+        spreadsheet: json_['spreadsheet'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionRange != null) 'dimensionRange': dimensionRange!,
-        if (locationType != null) 'locationType': locationType!,
-        if (sheetId != null) 'sheetId': sheetId!,
-        if (spreadsheet != null) 'spreadsheet': spreadsheet!,
-      };
+    if (dimensionRange != null) 'dimensionRange': dimensionRange!,
+    if (locationType != null) 'locationType': locationType!,
+    if (sheetId != null) 'sheetId': sheetId!,
+    if (spreadsheet != null) 'spreadsheet': spreadsheet!,
+  };
 }
 
 /// Selects DeveloperMetadata that matches all of the specified fields.
@@ -7242,30 +7546,33 @@ class DeveloperMetadataLookup {
   });
 
   DeveloperMetadataLookup.fromJson(core.Map json_)
-      : this(
-          locationMatchingStrategy:
-              json_['locationMatchingStrategy'] as core.String?,
-          locationType: json_['locationType'] as core.String?,
-          metadataId: json_['metadataId'] as core.int?,
-          metadataKey: json_['metadataKey'] as core.String?,
-          metadataLocation: json_.containsKey('metadataLocation')
-              ? DeveloperMetadataLocation.fromJson(json_['metadataLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          metadataValue: json_['metadataValue'] as core.String?,
-          visibility: json_['visibility'] as core.String?,
-        );
+    : this(
+        locationMatchingStrategy:
+            json_['locationMatchingStrategy'] as core.String?,
+        locationType: json_['locationType'] as core.String?,
+        metadataId: json_['metadataId'] as core.int?,
+        metadataKey: json_['metadataKey'] as core.String?,
+        metadataLocation:
+            json_.containsKey('metadataLocation')
+                ? DeveloperMetadataLocation.fromJson(
+                  json_['metadataLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadataValue: json_['metadataValue'] as core.String?,
+        visibility: json_['visibility'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locationMatchingStrategy != null)
-          'locationMatchingStrategy': locationMatchingStrategy!,
-        if (locationType != null) 'locationType': locationType!,
-        if (metadataId != null) 'metadataId': metadataId!,
-        if (metadataKey != null) 'metadataKey': metadataKey!,
-        if (metadataLocation != null) 'metadataLocation': metadataLocation!,
-        if (metadataValue != null) 'metadataValue': metadataValue!,
-        if (visibility != null) 'visibility': visibility!,
-      };
+    if (locationMatchingStrategy != null)
+      'locationMatchingStrategy': locationMatchingStrategy!,
+    if (locationType != null) 'locationType': locationType!,
+    if (metadataId != null) 'metadataId': metadataId!,
+    if (metadataKey != null) 'metadataKey': metadataKey!,
+    if (metadataLocation != null) 'metadataLocation': metadataLocation!,
+    if (metadataValue != null) 'metadataValue': metadataValue!,
+    if (visibility != null) 'visibility': visibility!,
+  };
 }
 
 /// A group over an interval of rows or columns on a sheet, which can contain or
@@ -7290,27 +7597,25 @@ class DimensionGroup {
   /// The range over which this group exists.
   DimensionRange? range;
 
-  DimensionGroup({
-    this.collapsed,
-    this.depth,
-    this.range,
-  });
+  DimensionGroup({this.collapsed, this.depth, this.range});
 
   DimensionGroup.fromJson(core.Map json_)
-      : this(
-          collapsed: json_['collapsed'] as core.bool?,
-          depth: json_['depth'] as core.int?,
-          range: json_.containsKey('range')
-              ? DimensionRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        collapsed: json_['collapsed'] as core.bool?,
+        depth: json_['depth'] as core.int?,
+        range:
+            json_.containsKey('range')
+                ? DimensionRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (collapsed != null) 'collapsed': collapsed!,
-        if (depth != null) 'depth': depth!,
-        if (range != null) 'range': range!,
-      };
+    if (collapsed != null) 'collapsed': collapsed!,
+    if (depth != null) 'depth': depth!,
+    if (range != null) 'range': range!,
+  };
 }
 
 /// Properties about a dimension.
@@ -7343,30 +7648,35 @@ class DimensionProperties {
   });
 
   DimensionProperties.fromJson(core.Map json_)
-      : this(
-          dataSourceColumnReference:
-              json_.containsKey('dataSourceColumnReference')
-                  ? DataSourceColumnReference.fromJson(
-                      json_['dataSourceColumnReference']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          developerMetadata: (json_['developerMetadata'] as core.List?)
-              ?.map((value) => DeveloperMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          hiddenByFilter: json_['hiddenByFilter'] as core.bool?,
-          hiddenByUser: json_['hiddenByUser'] as core.bool?,
-          pixelSize: json_['pixelSize'] as core.int?,
-        );
+    : this(
+        dataSourceColumnReference:
+            json_.containsKey('dataSourceColumnReference')
+                ? DataSourceColumnReference.fromJson(
+                  json_['dataSourceColumnReference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        developerMetadata:
+            (json_['developerMetadata'] as core.List?)
+                ?.map(
+                  (value) => DeveloperMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        hiddenByFilter: json_['hiddenByFilter'] as core.bool?,
+        hiddenByUser: json_['hiddenByUser'] as core.bool?,
+        pixelSize: json_['pixelSize'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSourceColumnReference != null)
-          'dataSourceColumnReference': dataSourceColumnReference!,
-        if (developerMetadata != null) 'developerMetadata': developerMetadata!,
-        if (hiddenByFilter != null) 'hiddenByFilter': hiddenByFilter!,
-        if (hiddenByUser != null) 'hiddenByUser': hiddenByUser!,
-        if (pixelSize != null) 'pixelSize': pixelSize!,
-      };
+    if (dataSourceColumnReference != null)
+      'dataSourceColumnReference': dataSourceColumnReference!,
+    if (developerMetadata != null) 'developerMetadata': developerMetadata!,
+    if (hiddenByFilter != null) 'hiddenByFilter': hiddenByFilter!,
+    if (hiddenByUser != null) 'hiddenByUser': hiddenByUser!,
+    if (pixelSize != null) 'pixelSize': pixelSize!,
+  };
 }
 
 /// A range along a single dimension on a sheet.
@@ -7399,19 +7709,19 @@ class DimensionRange {
   });
 
   DimensionRange.fromJson(core.Map json_)
-      : this(
-          dimension: json_['dimension'] as core.String?,
-          endIndex: json_['endIndex'] as core.int?,
-          sheetId: json_['sheetId'] as core.int?,
-          startIndex: json_['startIndex'] as core.int?,
-        );
+    : this(
+        dimension: json_['dimension'] as core.String?,
+        endIndex: json_['endIndex'] as core.int?,
+        sheetId: json_['sheetId'] as core.int?,
+        startIndex: json_['startIndex'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimension != null) 'dimension': dimension!,
-        if (endIndex != null) 'endIndex': endIndex!,
-        if (sheetId != null) 'sheetId': sheetId!,
-        if (startIndex != null) 'startIndex': startIndex!,
-      };
+    if (dimension != null) 'dimension': dimension!,
+    if (endIndex != null) 'endIndex': endIndex!,
+    if (sheetId != null) 'sheetId': sheetId!,
+    if (startIndex != null) 'startIndex': startIndex!,
+  };
 }
 
 /// Duplicates a particular filter view.
@@ -7419,18 +7729,14 @@ class DuplicateFilterViewRequest {
   /// The ID of the filter being duplicated.
   core.int? filterId;
 
-  DuplicateFilterViewRequest({
-    this.filterId,
-  });
+  DuplicateFilterViewRequest({this.filterId});
 
   DuplicateFilterViewRequest.fromJson(core.Map json_)
-      : this(
-          filterId: json_['filterId'] as core.int?,
-        );
+    : this(filterId: json_['filterId'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filterId != null) 'filterId': filterId!,
-      };
+    if (filterId != null) 'filterId': filterId!,
+  };
 }
 
 /// The result of a filter view being duplicated.
@@ -7438,21 +7744,21 @@ class DuplicateFilterViewResponse {
   /// The newly created filter.
   FilterView? filter;
 
-  DuplicateFilterViewResponse({
-    this.filter,
-  });
+  DuplicateFilterViewResponse({this.filter});
 
   DuplicateFilterViewResponse.fromJson(core.Map json_)
-      : this(
-          filter: json_.containsKey('filter')
-              ? FilterView.fromJson(
-                  json_['filter'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        filter:
+            json_.containsKey('filter')
+                ? FilterView.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-      };
+    if (filter != null) 'filter': filter!,
+  };
 }
 
 /// Duplicates the contents of a sheet.
@@ -7489,19 +7795,19 @@ class DuplicateSheetRequest {
   });
 
   DuplicateSheetRequest.fromJson(core.Map json_)
-      : this(
-          insertSheetIndex: json_['insertSheetIndex'] as core.int?,
-          newSheetId: json_['newSheetId'] as core.int?,
-          newSheetName: json_['newSheetName'] as core.String?,
-          sourceSheetId: json_['sourceSheetId'] as core.int?,
-        );
+    : this(
+        insertSheetIndex: json_['insertSheetIndex'] as core.int?,
+        newSheetId: json_['newSheetId'] as core.int?,
+        newSheetName: json_['newSheetName'] as core.String?,
+        sourceSheetId: json_['sourceSheetId'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (insertSheetIndex != null) 'insertSheetIndex': insertSheetIndex!,
-        if (newSheetId != null) 'newSheetId': newSheetId!,
-        if (newSheetName != null) 'newSheetName': newSheetName!,
-        if (sourceSheetId != null) 'sourceSheetId': sourceSheetId!,
-      };
+    if (insertSheetIndex != null) 'insertSheetIndex': insertSheetIndex!,
+    if (newSheetId != null) 'newSheetId': newSheetId!,
+    if (newSheetName != null) 'newSheetName': newSheetName!,
+    if (sourceSheetId != null) 'sourceSheetId': sourceSheetId!,
+  };
 }
 
 /// The result of duplicating a sheet.
@@ -7509,21 +7815,21 @@ class DuplicateSheetResponse {
   /// The properties of the duplicate sheet.
   SheetProperties? properties;
 
-  DuplicateSheetResponse({
-    this.properties,
-  });
+  DuplicateSheetResponse({this.properties});
 
   DuplicateSheetResponse.fromJson(core.Map json_)
-      : this(
-          properties: json_.containsKey('properties')
-              ? SheetProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        properties:
+            json_.containsKey('properties')
+                ? SheetProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (properties != null) 'properties': properties!,
-      };
+    if (properties != null) 'properties': properties!,
+  };
 }
 
 /// The editors of a protected range.
@@ -7540,29 +7846,26 @@ class Editors {
   /// The email addresses of users with edit access to the protected range.
   core.List<core.String>? users;
 
-  Editors({
-    this.domainUsersCanEdit,
-    this.groups,
-    this.users,
-  });
+  Editors({this.domainUsersCanEdit, this.groups, this.users});
 
   Editors.fromJson(core.Map json_)
-      : this(
-          domainUsersCanEdit: json_['domainUsersCanEdit'] as core.bool?,
-          groups: (json_['groups'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          users: (json_['users'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        domainUsersCanEdit: json_['domainUsersCanEdit'] as core.bool?,
+        groups:
+            (json_['groups'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        users:
+            (json_['users'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domainUsersCanEdit != null)
-          'domainUsersCanEdit': domainUsersCanEdit!,
-        if (groups != null) 'groups': groups!,
-        if (users != null) 'users': users!,
-      };
+    if (domainUsersCanEdit != null) 'domainUsersCanEdit': domainUsersCanEdit!,
+    if (groups != null) 'groups': groups!,
+    if (users != null) 'users': users!,
+  };
 }
 
 /// A chart embedded in a sheet.
@@ -7579,36 +7882,37 @@ class EmbeddedChart {
   /// The specification of the chart.
   ChartSpec? spec;
 
-  EmbeddedChart({
-    this.border,
-    this.chartId,
-    this.position,
-    this.spec,
-  });
+  EmbeddedChart({this.border, this.chartId, this.position, this.spec});
 
   EmbeddedChart.fromJson(core.Map json_)
-      : this(
-          border: json_.containsKey('border')
-              ? EmbeddedObjectBorder.fromJson(
-                  json_['border'] as core.Map<core.String, core.dynamic>)
-              : null,
-          chartId: json_['chartId'] as core.int?,
-          position: json_.containsKey('position')
-              ? EmbeddedObjectPosition.fromJson(
-                  json_['position'] as core.Map<core.String, core.dynamic>)
-              : null,
-          spec: json_.containsKey('spec')
-              ? ChartSpec.fromJson(
-                  json_['spec'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        border:
+            json_.containsKey('border')
+                ? EmbeddedObjectBorder.fromJson(
+                  json_['border'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        chartId: json_['chartId'] as core.int?,
+        position:
+            json_.containsKey('position')
+                ? EmbeddedObjectPosition.fromJson(
+                  json_['position'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spec:
+            json_.containsKey('spec')
+                ? ChartSpec.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (border != null) 'border': border!,
-        if (chartId != null) 'chartId': chartId!,
-        if (position != null) 'position': position!,
-        if (spec != null) 'spec': spec!,
-      };
+    if (border != null) 'border': border!,
+    if (chartId != null) 'chartId': chartId!,
+    if (position != null) 'position': position!,
+    if (spec != null) 'spec': spec!,
+  };
 }
 
 /// A border along an embedded object.
@@ -7626,27 +7930,28 @@ class EmbeddedObjectBorder {
   /// If color is also set, this field takes precedence.
   ColorStyle? colorStyle;
 
-  EmbeddedObjectBorder({
-    this.color,
-    this.colorStyle,
-  });
+  EmbeddedObjectBorder({this.color, this.colorStyle});
 
   EmbeddedObjectBorder.fromJson(core.Map json_)
-      : this(
-          color: json_.containsKey('color')
-              ? Color.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-          colorStyle: json_.containsKey('colorStyle')
-              ? ColorStyle.fromJson(
-                  json_['colorStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        color:
+            json_.containsKey('color')
+                ? Color.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        colorStyle:
+            json_.containsKey('colorStyle')
+                ? ColorStyle.fromJson(
+                  json_['colorStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!,
-        if (colorStyle != null) 'colorStyle': colorStyle!,
-      };
+    if (color != null) 'color': color!,
+    if (colorStyle != null) 'colorStyle': colorStyle!,
+  };
 }
 
 /// The position of an embedded object such as a chart.
@@ -7665,27 +7970,26 @@ class EmbeddedObjectPosition {
   /// Set only if the embedded object is on its own sheet. Must be non-negative.
   core.int? sheetId;
 
-  EmbeddedObjectPosition({
-    this.newSheet,
-    this.overlayPosition,
-    this.sheetId,
-  });
+  EmbeddedObjectPosition({this.newSheet, this.overlayPosition, this.sheetId});
 
   EmbeddedObjectPosition.fromJson(core.Map json_)
-      : this(
-          newSheet: json_['newSheet'] as core.bool?,
-          overlayPosition: json_.containsKey('overlayPosition')
-              ? OverlayPosition.fromJson(json_['overlayPosition']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sheetId: json_['sheetId'] as core.int?,
-        );
+    : this(
+        newSheet: json_['newSheet'] as core.bool?,
+        overlayPosition:
+            json_.containsKey('overlayPosition')
+                ? OverlayPosition.fromJson(
+                  json_['overlayPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sheetId: json_['sheetId'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (newSheet != null) 'newSheet': newSheet!,
-        if (overlayPosition != null) 'overlayPosition': overlayPosition!,
-        if (sheetId != null) 'sheetId': sheetId!,
-      };
+    if (newSheet != null) 'newSheet': newSheet!,
+    if (overlayPosition != null) 'overlayPosition': overlayPosition!,
+    if (sheetId != null) 'sheetId': sheetId!,
+  };
 }
 
 /// An error in a cell.
@@ -7708,21 +8012,18 @@ class ErrorValue {
   /// - "LOADING" : Corresponds to the `Loading...` state.
   core.String? type;
 
-  ErrorValue({
-    this.message,
-    this.type,
-  });
+  ErrorValue({this.message, this.type});
 
   ErrorValue.fromJson(core.Map json_)
-      : this(
-          message: json_['message'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        message: json_['message'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!,
-        if (type != null) 'type': type!,
-      };
+    if (message != null) 'message': message!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// The kinds of value that a cell in a spreadsheet can have.
@@ -7760,24 +8061,26 @@ class ExtendedValue {
   });
 
   ExtendedValue.fromJson(core.Map json_)
-      : this(
-          boolValue: json_['boolValue'] as core.bool?,
-          errorValue: json_.containsKey('errorValue')
-              ? ErrorValue.fromJson(
-                  json_['errorValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          formulaValue: json_['formulaValue'] as core.String?,
-          numberValue: (json_['numberValue'] as core.num?)?.toDouble(),
-          stringValue: json_['stringValue'] as core.String?,
-        );
+    : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        errorValue:
+            json_.containsKey('errorValue')
+                ? ErrorValue.fromJson(
+                  json_['errorValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        formulaValue: json_['formulaValue'] as core.String?,
+        numberValue: (json_['numberValue'] as core.num?)?.toDouble(),
+        stringValue: json_['stringValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue!,
-        if (errorValue != null) 'errorValue': errorValue!,
-        if (formulaValue != null) 'formulaValue': formulaValue!,
-        if (numberValue != null) 'numberValue': numberValue!,
-        if (stringValue != null) 'stringValue': stringValue!,
-      };
+    if (boolValue != null) 'boolValue': boolValue!,
+    if (errorValue != null) 'errorValue': errorValue!,
+    if (formulaValue != null) 'formulaValue': formulaValue!,
+    if (numberValue != null) 'numberValue': numberValue!,
+    if (stringValue != null) 'stringValue': stringValue!,
+  };
 }
 
 /// Criteria for showing/hiding rows in a filter or filter view.
@@ -7837,46 +8140,59 @@ class FilterCriteria {
   });
 
   FilterCriteria.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? BooleanCondition.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          hiddenValues: (json_['hiddenValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          visibleBackgroundColor: json_.containsKey('visibleBackgroundColor')
-              ? Color.fromJson(json_['visibleBackgroundColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          visibleBackgroundColorStyle:
-              json_.containsKey('visibleBackgroundColorStyle')
-                  ? ColorStyle.fromJson(json_['visibleBackgroundColorStyle']
-                      as core.Map<core.String, core.dynamic>)
-                  : null,
-          visibleForegroundColor: json_.containsKey('visibleForegroundColor')
-              ? Color.fromJson(json_['visibleForegroundColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          visibleForegroundColorStyle:
-              json_.containsKey('visibleForegroundColorStyle')
-                  ? ColorStyle.fromJson(json_['visibleForegroundColorStyle']
-                      as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? BooleanCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hiddenValues:
+            (json_['hiddenValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        visibleBackgroundColor:
+            json_.containsKey('visibleBackgroundColor')
+                ? Color.fromJson(
+                  json_['visibleBackgroundColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        visibleBackgroundColorStyle:
+            json_.containsKey('visibleBackgroundColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['visibleBackgroundColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        visibleForegroundColor:
+            json_.containsKey('visibleForegroundColor')
+                ? Color.fromJson(
+                  json_['visibleForegroundColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        visibleForegroundColorStyle:
+            json_.containsKey('visibleForegroundColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['visibleForegroundColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (hiddenValues != null) 'hiddenValues': hiddenValues!,
-        if (visibleBackgroundColor != null)
-          'visibleBackgroundColor': visibleBackgroundColor!,
-        if (visibleBackgroundColorStyle != null)
-          'visibleBackgroundColorStyle': visibleBackgroundColorStyle!,
-        if (visibleForegroundColor != null)
-          'visibleForegroundColor': visibleForegroundColor!,
-        if (visibleForegroundColorStyle != null)
-          'visibleForegroundColorStyle': visibleForegroundColorStyle!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (hiddenValues != null) 'hiddenValues': hiddenValues!,
+    if (visibleBackgroundColor != null)
+      'visibleBackgroundColor': visibleBackgroundColor!,
+    if (visibleBackgroundColorStyle != null)
+      'visibleBackgroundColorStyle': visibleBackgroundColorStyle!,
+    if (visibleForegroundColor != null)
+      'visibleForegroundColor': visibleForegroundColor!,
+    if (visibleForegroundColorStyle != null)
+      'visibleForegroundColorStyle': visibleForegroundColorStyle!,
+  };
 }
 
 /// The filter criteria associated with a specific column.
@@ -7897,26 +8213,30 @@ class FilterSpec {
   });
 
   FilterSpec.fromJson(core.Map json_)
-      : this(
-          columnIndex: json_['columnIndex'] as core.int?,
-          dataSourceColumnReference:
-              json_.containsKey('dataSourceColumnReference')
-                  ? DataSourceColumnReference.fromJson(
-                      json_['dataSourceColumnReference']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          filterCriteria: json_.containsKey('filterCriteria')
-              ? FilterCriteria.fromJson(json_['filterCriteria']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        columnIndex: json_['columnIndex'] as core.int?,
+        dataSourceColumnReference:
+            json_.containsKey('dataSourceColumnReference')
+                ? DataSourceColumnReference.fromJson(
+                  json_['dataSourceColumnReference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filterCriteria:
+            json_.containsKey('filterCriteria')
+                ? FilterCriteria.fromJson(
+                  json_['filterCriteria']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnIndex != null) 'columnIndex': columnIndex!,
-        if (dataSourceColumnReference != null)
-          'dataSourceColumnReference': dataSourceColumnReference!,
-        if (filterCriteria != null) 'filterCriteria': filterCriteria!,
-      };
+    if (columnIndex != null) 'columnIndex': columnIndex!,
+    if (dataSourceColumnReference != null)
+      'dataSourceColumnReference': dataSourceColumnReference!,
+    if (filterCriteria != null) 'filterCriteria': filterCriteria!,
+  };
 }
 
 /// A filter view.
@@ -7975,43 +8295,54 @@ class FilterView {
   });
 
   FilterView.fromJson(core.Map json_)
-      : this(
-          criteria:
-              (json_['criteria'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              FilterCriteria.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        criteria: (json_['criteria'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                FilterCriteria.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          filterSpecs: (json_['filterSpecs'] as core.List?)
-              ?.map((value) => FilterSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          filterViewId: json_['filterViewId'] as core.int?,
-          namedRangeId: json_['namedRangeId'] as core.String?,
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sortSpecs: (json_['sortSpecs'] as core.List?)
-              ?.map((value) => SortSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          tableId: json_['tableId'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+        filterSpecs:
+            (json_['filterSpecs'] as core.List?)
+                ?.map(
+                  (value) => FilterSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        filterViewId: json_['filterViewId'] as core.int?,
+        namedRangeId: json_['namedRangeId'] as core.String?,
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sortSpecs:
+            (json_['sortSpecs'] as core.List?)
+                ?.map(
+                  (value) => SortSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        tableId: json_['tableId'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (criteria != null) 'criteria': criteria!,
-        if (filterSpecs != null) 'filterSpecs': filterSpecs!,
-        if (filterViewId != null) 'filterViewId': filterViewId!,
-        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
-        if (range != null) 'range': range!,
-        if (sortSpecs != null) 'sortSpecs': sortSpecs!,
-        if (tableId != null) 'tableId': tableId!,
-        if (title != null) 'title': title!,
-      };
+    if (criteria != null) 'criteria': criteria!,
+    if (filterSpecs != null) 'filterSpecs': filterSpecs!,
+    if (filterViewId != null) 'filterViewId': filterViewId!,
+    if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+    if (range != null) 'range': range!,
+    if (sortSpecs != null) 'sortSpecs': sortSpecs!,
+    if (tableId != null) 'tableId': tableId!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Finds and replaces data in cells over a range, sheet, or all sheets.
@@ -8066,32 +8397,34 @@ class FindReplaceRequest {
   });
 
   FindReplaceRequest.fromJson(core.Map json_)
-      : this(
-          allSheets: json_['allSheets'] as core.bool?,
-          find: json_['find'] as core.String?,
-          includeFormulas: json_['includeFormulas'] as core.bool?,
-          matchCase: json_['matchCase'] as core.bool?,
-          matchEntireCell: json_['matchEntireCell'] as core.bool?,
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          replacement: json_['replacement'] as core.String?,
-          searchByRegex: json_['searchByRegex'] as core.bool?,
-          sheetId: json_['sheetId'] as core.int?,
-        );
+    : this(
+        allSheets: json_['allSheets'] as core.bool?,
+        find: json_['find'] as core.String?,
+        includeFormulas: json_['includeFormulas'] as core.bool?,
+        matchCase: json_['matchCase'] as core.bool?,
+        matchEntireCell: json_['matchEntireCell'] as core.bool?,
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        replacement: json_['replacement'] as core.String?,
+        searchByRegex: json_['searchByRegex'] as core.bool?,
+        sheetId: json_['sheetId'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allSheets != null) 'allSheets': allSheets!,
-        if (find != null) 'find': find!,
-        if (includeFormulas != null) 'includeFormulas': includeFormulas!,
-        if (matchCase != null) 'matchCase': matchCase!,
-        if (matchEntireCell != null) 'matchEntireCell': matchEntireCell!,
-        if (range != null) 'range': range!,
-        if (replacement != null) 'replacement': replacement!,
-        if (searchByRegex != null) 'searchByRegex': searchByRegex!,
-        if (sheetId != null) 'sheetId': sheetId!,
-      };
+    if (allSheets != null) 'allSheets': allSheets!,
+    if (find != null) 'find': find!,
+    if (includeFormulas != null) 'includeFormulas': includeFormulas!,
+    if (matchCase != null) 'matchCase': matchCase!,
+    if (matchEntireCell != null) 'matchEntireCell': matchEntireCell!,
+    if (range != null) 'range': range!,
+    if (replacement != null) 'replacement': replacement!,
+    if (searchByRegex != null) 'searchByRegex': searchByRegex!,
+    if (sheetId != null) 'sheetId': sheetId!,
+  };
 }
 
 /// The result of the find/replace.
@@ -8123,22 +8456,21 @@ class FindReplaceResponse {
   });
 
   FindReplaceResponse.fromJson(core.Map json_)
-      : this(
-          formulasChanged: json_['formulasChanged'] as core.int?,
-          occurrencesChanged: json_['occurrencesChanged'] as core.int?,
-          rowsChanged: json_['rowsChanged'] as core.int?,
-          sheetsChanged: json_['sheetsChanged'] as core.int?,
-          valuesChanged: json_['valuesChanged'] as core.int?,
-        );
+    : this(
+        formulasChanged: json_['formulasChanged'] as core.int?,
+        occurrencesChanged: json_['occurrencesChanged'] as core.int?,
+        rowsChanged: json_['rowsChanged'] as core.int?,
+        sheetsChanged: json_['sheetsChanged'] as core.int?,
+        valuesChanged: json_['valuesChanged'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (formulasChanged != null) 'formulasChanged': formulasChanged!,
-        if (occurrencesChanged != null)
-          'occurrencesChanged': occurrencesChanged!,
-        if (rowsChanged != null) 'rowsChanged': rowsChanged!,
-        if (sheetsChanged != null) 'sheetsChanged': sheetsChanged!,
-        if (valuesChanged != null) 'valuesChanged': valuesChanged!,
-      };
+    if (formulasChanged != null) 'formulasChanged': formulasChanged!,
+    if (occurrencesChanged != null) 'occurrencesChanged': occurrencesChanged!,
+    if (rowsChanged != null) 'rowsChanged': rowsChanged!,
+    if (sheetsChanged != null) 'sheetsChanged': sheetsChanged!,
+    if (valuesChanged != null) 'valuesChanged': valuesChanged!,
+  };
 }
 
 /// The request for retrieving a Spreadsheet.
@@ -8164,22 +8496,26 @@ class GetSpreadsheetByDataFilterRequest {
   });
 
   GetSpreadsheetByDataFilterRequest.fromJson(core.Map json_)
-      : this(
-          dataFilters: (json_['dataFilters'] as core.List?)
-              ?.map((value) => DataFilter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          excludeTablesInBandedRanges:
-              json_['excludeTablesInBandedRanges'] as core.bool?,
-          includeGridData: json_['includeGridData'] as core.bool?,
-        );
+    : this(
+        dataFilters:
+            (json_['dataFilters'] as core.List?)
+                ?.map(
+                  (value) => DataFilter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        excludeTablesInBandedRanges:
+            json_['excludeTablesInBandedRanges'] as core.bool?,
+        includeGridData: json_['includeGridData'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataFilters != null) 'dataFilters': dataFilters!,
-        if (excludeTablesInBandedRanges != null)
-          'excludeTablesInBandedRanges': excludeTablesInBandedRanges!,
-        if (includeGridData != null) 'includeGridData': includeGridData!,
-      };
+    if (dataFilters != null) 'dataFilters': dataFilters!,
+    if (excludeTablesInBandedRanges != null)
+      'excludeTablesInBandedRanges': excludeTablesInBandedRanges!,
+    if (includeGridData != null) 'includeGridData': includeGridData!,
+  };
 }
 
 /// A rule that applies a gradient color scale format, based on the
@@ -8197,33 +8533,35 @@ class GradientRule {
   /// The starting interpolation point.
   InterpolationPoint? minpoint;
 
-  GradientRule({
-    this.maxpoint,
-    this.midpoint,
-    this.minpoint,
-  });
+  GradientRule({this.maxpoint, this.midpoint, this.minpoint});
 
   GradientRule.fromJson(core.Map json_)
-      : this(
-          maxpoint: json_.containsKey('maxpoint')
-              ? InterpolationPoint.fromJson(
-                  json_['maxpoint'] as core.Map<core.String, core.dynamic>)
-              : null,
-          midpoint: json_.containsKey('midpoint')
-              ? InterpolationPoint.fromJson(
-                  json_['midpoint'] as core.Map<core.String, core.dynamic>)
-              : null,
-          minpoint: json_.containsKey('minpoint')
-              ? InterpolationPoint.fromJson(
-                  json_['minpoint'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        maxpoint:
+            json_.containsKey('maxpoint')
+                ? InterpolationPoint.fromJson(
+                  json_['maxpoint'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        midpoint:
+            json_.containsKey('midpoint')
+                ? InterpolationPoint.fromJson(
+                  json_['midpoint'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        minpoint:
+            json_.containsKey('minpoint')
+                ? InterpolationPoint.fromJson(
+                  json_['minpoint'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxpoint != null) 'maxpoint': maxpoint!,
-        if (midpoint != null) 'midpoint': midpoint!,
-        if (minpoint != null) 'minpoint': minpoint!,
-      };
+    if (maxpoint != null) 'maxpoint': maxpoint!,
+    if (midpoint != null) 'midpoint': midpoint!,
+    if (minpoint != null) 'minpoint': minpoint!,
+  };
 }
 
 /// A coordinate in a sheet.
@@ -8239,24 +8577,20 @@ class GridCoordinate {
   /// The sheet this coordinate is on.
   core.int? sheetId;
 
-  GridCoordinate({
-    this.columnIndex,
-    this.rowIndex,
-    this.sheetId,
-  });
+  GridCoordinate({this.columnIndex, this.rowIndex, this.sheetId});
 
   GridCoordinate.fromJson(core.Map json_)
-      : this(
-          columnIndex: json_['columnIndex'] as core.int?,
-          rowIndex: json_['rowIndex'] as core.int?,
-          sheetId: json_['sheetId'] as core.int?,
-        );
+    : this(
+        columnIndex: json_['columnIndex'] as core.int?,
+        rowIndex: json_['rowIndex'] as core.int?,
+        sheetId: json_['sheetId'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnIndex != null) 'columnIndex': columnIndex!,
-        if (rowIndex != null) 'rowIndex': rowIndex!,
-        if (sheetId != null) 'sheetId': sheetId!,
-      };
+    if (columnIndex != null) 'columnIndex': columnIndex!,
+    if (rowIndex != null) 'rowIndex': rowIndex!,
+    if (sheetId != null) 'sheetId': sheetId!,
+  };
 }
 
 /// Data in the grid, as well as metadata about the dimensions.
@@ -8290,30 +8624,42 @@ class GridData {
   });
 
   GridData.fromJson(core.Map json_)
-      : this(
-          columnMetadata: (json_['columnMetadata'] as core.List?)
-              ?.map((value) => DimensionProperties.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          rowData: (json_['rowData'] as core.List?)
-              ?.map((value) => RowData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          rowMetadata: (json_['rowMetadata'] as core.List?)
-              ?.map((value) => DimensionProperties.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          startColumn: json_['startColumn'] as core.int?,
-          startRow: json_['startRow'] as core.int?,
-        );
+    : this(
+        columnMetadata:
+            (json_['columnMetadata'] as core.List?)
+                ?.map(
+                  (value) => DimensionProperties.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        rowData:
+            (json_['rowData'] as core.List?)
+                ?.map(
+                  (value) => RowData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        rowMetadata:
+            (json_['rowMetadata'] as core.List?)
+                ?.map(
+                  (value) => DimensionProperties.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        startColumn: json_['startColumn'] as core.int?,
+        startRow: json_['startRow'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnMetadata != null) 'columnMetadata': columnMetadata!,
-        if (rowData != null) 'rowData': rowData!,
-        if (rowMetadata != null) 'rowMetadata': rowMetadata!,
-        if (startColumn != null) 'startColumn': startColumn!,
-        if (startRow != null) 'startRow': startRow!,
-      };
+    if (columnMetadata != null) 'columnMetadata': columnMetadata!,
+    if (rowData != null) 'rowData': rowData!,
+    if (rowMetadata != null) 'rowMetadata': rowMetadata!,
+    if (startColumn != null) 'startColumn': startColumn!,
+    if (startRow != null) 'startRow': startRow!,
+  };
 }
 
 /// Properties of a grid.
@@ -8350,28 +8696,27 @@ class GridProperties {
   });
 
   GridProperties.fromJson(core.Map json_)
-      : this(
-          columnCount: json_['columnCount'] as core.int?,
-          columnGroupControlAfter:
-              json_['columnGroupControlAfter'] as core.bool?,
-          frozenColumnCount: json_['frozenColumnCount'] as core.int?,
-          frozenRowCount: json_['frozenRowCount'] as core.int?,
-          hideGridlines: json_['hideGridlines'] as core.bool?,
-          rowCount: json_['rowCount'] as core.int?,
-          rowGroupControlAfter: json_['rowGroupControlAfter'] as core.bool?,
-        );
+    : this(
+        columnCount: json_['columnCount'] as core.int?,
+        columnGroupControlAfter: json_['columnGroupControlAfter'] as core.bool?,
+        frozenColumnCount: json_['frozenColumnCount'] as core.int?,
+        frozenRowCount: json_['frozenRowCount'] as core.int?,
+        hideGridlines: json_['hideGridlines'] as core.bool?,
+        rowCount: json_['rowCount'] as core.int?,
+        rowGroupControlAfter: json_['rowGroupControlAfter'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnCount != null) 'columnCount': columnCount!,
-        if (columnGroupControlAfter != null)
-          'columnGroupControlAfter': columnGroupControlAfter!,
-        if (frozenColumnCount != null) 'frozenColumnCount': frozenColumnCount!,
-        if (frozenRowCount != null) 'frozenRowCount': frozenRowCount!,
-        if (hideGridlines != null) 'hideGridlines': hideGridlines!,
-        if (rowCount != null) 'rowCount': rowCount!,
-        if (rowGroupControlAfter != null)
-          'rowGroupControlAfter': rowGroupControlAfter!,
-      };
+    if (columnCount != null) 'columnCount': columnCount!,
+    if (columnGroupControlAfter != null)
+      'columnGroupControlAfter': columnGroupControlAfter!,
+    if (frozenColumnCount != null) 'frozenColumnCount': frozenColumnCount!,
+    if (frozenRowCount != null) 'frozenRowCount': frozenRowCount!,
+    if (hideGridlines != null) 'hideGridlines': hideGridlines!,
+    if (rowCount != null) 'rowCount': rowCount!,
+    if (rowGroupControlAfter != null)
+      'rowGroupControlAfter': rowGroupControlAfter!,
+  };
 }
 
 /// A range on a sheet.
@@ -8414,21 +8759,21 @@ class GridRange {
   });
 
   GridRange.fromJson(core.Map json_)
-      : this(
-          endColumnIndex: json_['endColumnIndex'] as core.int?,
-          endRowIndex: json_['endRowIndex'] as core.int?,
-          sheetId: json_['sheetId'] as core.int?,
-          startColumnIndex: json_['startColumnIndex'] as core.int?,
-          startRowIndex: json_['startRowIndex'] as core.int?,
-        );
+    : this(
+        endColumnIndex: json_['endColumnIndex'] as core.int?,
+        endRowIndex: json_['endRowIndex'] as core.int?,
+        sheetId: json_['sheetId'] as core.int?,
+        startColumnIndex: json_['startColumnIndex'] as core.int?,
+        startRowIndex: json_['startRowIndex'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endColumnIndex != null) 'endColumnIndex': endColumnIndex!,
-        if (endRowIndex != null) 'endRowIndex': endRowIndex!,
-        if (sheetId != null) 'sheetId': sheetId!,
-        if (startColumnIndex != null) 'startColumnIndex': startColumnIndex!,
-        if (startRowIndex != null) 'startRowIndex': startRowIndex!,
-      };
+    if (endColumnIndex != null) 'endColumnIndex': endColumnIndex!,
+    if (endRowIndex != null) 'endRowIndex': endRowIndex!,
+    if (sheetId != null) 'sheetId': sheetId!,
+    if (startColumnIndex != null) 'startColumnIndex': startColumnIndex!,
+    if (startRowIndex != null) 'startRowIndex': startRowIndex!,
+  };
 }
 
 /// A histogram chart.
@@ -8485,25 +8830,29 @@ class HistogramChartSpec {
   });
 
   HistogramChartSpec.fromJson(core.Map json_)
-      : this(
-          bucketSize: (json_['bucketSize'] as core.num?)?.toDouble(),
-          legendPosition: json_['legendPosition'] as core.String?,
-          outlierPercentile:
-              (json_['outlierPercentile'] as core.num?)?.toDouble(),
-          series: (json_['series'] as core.List?)
-              ?.map((value) => HistogramSeries.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          showItemDividers: json_['showItemDividers'] as core.bool?,
-        );
+    : this(
+        bucketSize: (json_['bucketSize'] as core.num?)?.toDouble(),
+        legendPosition: json_['legendPosition'] as core.String?,
+        outlierPercentile:
+            (json_['outlierPercentile'] as core.num?)?.toDouble(),
+        series:
+            (json_['series'] as core.List?)
+                ?.map(
+                  (value) => HistogramSeries.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        showItemDividers: json_['showItemDividers'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucketSize != null) 'bucketSize': bucketSize!,
-        if (legendPosition != null) 'legendPosition': legendPosition!,
-        if (outlierPercentile != null) 'outlierPercentile': outlierPercentile!,
-        if (series != null) 'series': series!,
-        if (showItemDividers != null) 'showItemDividers': showItemDividers!,
-      };
+    if (bucketSize != null) 'bucketSize': bucketSize!,
+    if (legendPosition != null) 'legendPosition': legendPosition!,
+    if (outlierPercentile != null) 'outlierPercentile': outlierPercentile!,
+    if (series != null) 'series': series!,
+    if (showItemDividers != null) 'showItemDividers': showItemDividers!,
+  };
 }
 
 /// Allows you to organize the numeric values in a source data column into
@@ -8543,24 +8892,20 @@ class HistogramRule {
   /// optional.
   core.double? start;
 
-  HistogramRule({
-    this.end,
-    this.interval,
-    this.start,
-  });
+  HistogramRule({this.end, this.interval, this.start});
 
   HistogramRule.fromJson(core.Map json_)
-      : this(
-          end: (json_['end'] as core.num?)?.toDouble(),
-          interval: (json_['interval'] as core.num?)?.toDouble(),
-          start: (json_['start'] as core.num?)?.toDouble(),
-        );
+    : this(
+        end: (json_['end'] as core.num?)?.toDouble(),
+        interval: (json_['interval'] as core.num?)?.toDouble(),
+        start: (json_['start'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (end != null) 'end': end!,
-        if (interval != null) 'interval': interval!,
-        if (start != null) 'start': start!,
-      };
+    if (end != null) 'end': end!,
+    if (interval != null) 'interval': interval!,
+    if (start != null) 'start': start!,
+  };
 }
 
 /// A histogram series containing the series color and data.
@@ -8582,33 +8927,35 @@ class HistogramSeries {
   /// The data for this histogram series.
   ChartData? data;
 
-  HistogramSeries({
-    this.barColor,
-    this.barColorStyle,
-    this.data,
-  });
+  HistogramSeries({this.barColor, this.barColorStyle, this.data});
 
   HistogramSeries.fromJson(core.Map json_)
-      : this(
-          barColor: json_.containsKey('barColor')
-              ? Color.fromJson(
-                  json_['barColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          barColorStyle: json_.containsKey('barColorStyle')
-              ? ColorStyle.fromJson(
-                  json_['barColorStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          data: json_.containsKey('data')
-              ? ChartData.fromJson(
-                  json_['data'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        barColor:
+            json_.containsKey('barColor')
+                ? Color.fromJson(
+                  json_['barColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        barColorStyle:
+            json_.containsKey('barColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['barColorStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        data:
+            json_.containsKey('data')
+                ? ChartData.fromJson(
+                  json_['data'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (barColor != null) 'barColor': barColor!,
-        if (barColorStyle != null) 'barColorStyle': barColorStyle!,
-        if (data != null) 'data': data!,
-      };
+    if (barColor != null) 'barColor': barColor!,
+    if (barColorStyle != null) 'barColorStyle': barColorStyle!,
+    if (data != null) 'data': data!,
+  };
 }
 
 /// Inserts rows or columns in a sheet at a particular index.
@@ -8631,24 +8978,23 @@ class InsertDimensionRequest {
   /// Both the start and end indexes must be bounded.
   DimensionRange? range;
 
-  InsertDimensionRequest({
-    this.inheritFromBefore,
-    this.range,
-  });
+  InsertDimensionRequest({this.inheritFromBefore, this.range});
 
   InsertDimensionRequest.fromJson(core.Map json_)
-      : this(
-          inheritFromBefore: json_['inheritFromBefore'] as core.bool?,
-          range: json_.containsKey('range')
-              ? DimensionRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        inheritFromBefore: json_['inheritFromBefore'] as core.bool?,
+        range:
+            json_.containsKey('range')
+                ? DimensionRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inheritFromBefore != null) 'inheritFromBefore': inheritFromBefore!,
-        if (range != null) 'range': range!,
-      };
+    if (inheritFromBefore != null) 'inheritFromBefore': inheritFromBefore!,
+    if (range != null) 'range': range!,
+  };
 }
 
 /// Inserts cells into a range, shifting the existing cells over or down.
@@ -8668,24 +9014,23 @@ class InsertRangeRequest {
   /// - "COLUMNS" : Operates on the columns of a sheet.
   core.String? shiftDimension;
 
-  InsertRangeRequest({
-    this.range,
-    this.shiftDimension,
-  });
+  InsertRangeRequest({this.range, this.shiftDimension});
 
   InsertRangeRequest.fromJson(core.Map json_)
-      : this(
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          shiftDimension: json_['shiftDimension'] as core.String?,
-        );
+    : this(
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        shiftDimension: json_['shiftDimension'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (range != null) 'range': range!,
-        if (shiftDimension != null) 'shiftDimension': shiftDimension!,
-      };
+    if (range != null) 'range': range!,
+    if (shiftDimension != null) 'shiftDimension': shiftDimension!,
+  };
 }
 
 /// A single interpolation point on a gradient conditional format.
@@ -8731,33 +9076,32 @@ class InterpolationPoint {
   /// May be a formula. Unused if type is MIN or MAX.
   core.String? value;
 
-  InterpolationPoint({
-    this.color,
-    this.colorStyle,
-    this.type,
-    this.value,
-  });
+  InterpolationPoint({this.color, this.colorStyle, this.type, this.value});
 
   InterpolationPoint.fromJson(core.Map json_)
-      : this(
-          color: json_.containsKey('color')
-              ? Color.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-          colorStyle: json_.containsKey('colorStyle')
-              ? ColorStyle.fromJson(
-                  json_['colorStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_['type'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        color:
+            json_.containsKey('color')
+                ? Color.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        colorStyle:
+            json_.containsKey('colorStyle')
+                ? ColorStyle.fromJson(
+                  json_['colorStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!,
-        if (colorStyle != null) 'colorStyle': colorStyle!,
-        if (type != null) 'type': type!,
-        if (value != null) 'value': value!,
-      };
+    if (color != null) 'color': color!,
+    if (colorStyle != null) 'colorStyle': colorStyle!,
+    if (type != null) 'type': type!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Represents a time interval, encoded as a Timestamp start (inclusive) and a
@@ -8779,23 +9123,20 @@ class IterativeCalculationSettings {
   /// rounds to perform.
   core.int? maxIterations;
 
-  IterativeCalculationSettings({
-    this.convergenceThreshold,
-    this.maxIterations,
-  });
+  IterativeCalculationSettings({this.convergenceThreshold, this.maxIterations});
 
   IterativeCalculationSettings.fromJson(core.Map json_)
-      : this(
-          convergenceThreshold:
-              (json_['convergenceThreshold'] as core.num?)?.toDouble(),
-          maxIterations: json_['maxIterations'] as core.int?,
-        );
+    : this(
+        convergenceThreshold:
+            (json_['convergenceThreshold'] as core.num?)?.toDouble(),
+        maxIterations: json_['maxIterations'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (convergenceThreshold != null)
-          'convergenceThreshold': convergenceThreshold!,
-        if (maxIterations != null) 'maxIterations': maxIterations!,
-      };
+    if (convergenceThreshold != null)
+      'convergenceThreshold': convergenceThreshold!,
+    if (maxIterations != null) 'maxIterations': maxIterations!,
+  };
 }
 
 /// Formatting options for key value.
@@ -8810,27 +9151,28 @@ class KeyValueFormat {
   /// The link field is not supported.
   TextFormat? textFormat;
 
-  KeyValueFormat({
-    this.position,
-    this.textFormat,
-  });
+  KeyValueFormat({this.position, this.textFormat});
 
   KeyValueFormat.fromJson(core.Map json_)
-      : this(
-          position: json_.containsKey('position')
-              ? TextPosition.fromJson(
-                  json_['position'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textFormat: json_.containsKey('textFormat')
-              ? TextFormat.fromJson(
-                  json_['textFormat'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        position:
+            json_.containsKey('position')
+                ? TextPosition.fromJson(
+                  json_['position'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textFormat:
+            json_.containsKey('textFormat')
+                ? TextFormat.fromJson(
+                  json_['textFormat'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (position != null) 'position': position!,
-        if (textFormat != null) 'textFormat': textFormat!,
-      };
+    if (position != null) 'position': position!,
+    if (textFormat != null) 'textFormat': textFormat!,
+  };
 }
 
 /// Properties that describe the style of a line.
@@ -8854,21 +9196,18 @@ class LineStyle {
   /// The thickness of the line, in px.
   core.int? width;
 
-  LineStyle({
-    this.type,
-    this.width,
-  });
+  LineStyle({this.type, this.width});
 
   LineStyle.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-          width: json_['width'] as core.int?,
-        );
+    : this(
+        type: json_['type'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-        if (width != null) 'width': width!,
-      };
+    if (type != null) 'type': type!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// An external or local reference.
@@ -8876,18 +9215,13 @@ class Link {
   /// The link identifier.
   core.String? uri;
 
-  Link({
-    this.uri,
-  });
+  Link({this.uri});
 
-  Link.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+  Link.fromJson(core.Map json_) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// The specification of a Looker data source.
@@ -8901,24 +9235,20 @@ class LookerDataSourceSpec {
   /// Name of a Looker model.
   core.String? model;
 
-  LookerDataSourceSpec({
-    this.explore,
-    this.instanceUri,
-    this.model,
-  });
+  LookerDataSourceSpec({this.explore, this.instanceUri, this.model});
 
   LookerDataSourceSpec.fromJson(core.Map json_)
-      : this(
-          explore: json_['explore'] as core.String?,
-          instanceUri: json_['instanceUri'] as core.String?,
-          model: json_['model'] as core.String?,
-        );
+    : this(
+        explore: json_['explore'] as core.String?,
+        instanceUri: json_['instanceUri'] as core.String?,
+        model: json_['model'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (explore != null) 'explore': explore!,
-        if (instanceUri != null) 'instanceUri': instanceUri!,
-        if (model != null) 'model': model!,
-      };
+    if (explore != null) 'explore': explore!,
+    if (instanceUri != null) 'instanceUri': instanceUri!,
+    if (model != null) 'model': model!,
+  };
 }
 
 /// Allows you to manually organize the values in a source data column into
@@ -8940,21 +9270,23 @@ class ManualRule {
   /// that map to each group name.
   core.List<ManualRuleGroup>? groups;
 
-  ManualRule({
-    this.groups,
-  });
+  ManualRule({this.groups});
 
   ManualRule.fromJson(core.Map json_)
-      : this(
-          groups: (json_['groups'] as core.List?)
-              ?.map((value) => ManualRuleGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        groups:
+            (json_['groups'] as core.List?)
+                ?.map(
+                  (value) => ManualRuleGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groups != null) 'groups': groups!,
-      };
+    if (groups != null) 'groups': groups!,
+  };
 }
 
 /// A group name and a list of items from the source data that should be placed
@@ -8972,27 +9304,30 @@ class ManualRuleGroup {
   /// will appear on their own.
   core.List<ExtendedValue>? items;
 
-  ManualRuleGroup({
-    this.groupName,
-    this.items,
-  });
+  ManualRuleGroup({this.groupName, this.items});
 
   ManualRuleGroup.fromJson(core.Map json_)
-      : this(
-          groupName: json_.containsKey('groupName')
-              ? ExtendedValue.fromJson(
-                  json_['groupName'] as core.Map<core.String, core.dynamic>)
-              : null,
-          items: (json_['items'] as core.List?)
-              ?.map((value) => ExtendedValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        groupName:
+            json_.containsKey('groupName')
+                ? ExtendedValue.fromJson(
+                  json_['groupName'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => ExtendedValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groupName != null) 'groupName': groupName!,
-        if (items != null) 'items': items!,
-      };
+    if (groupName != null) 'groupName': groupName!,
+    if (items != null) 'items': items!,
+  };
 }
 
 /// A developer metadata entry and the data filters specified in the original
@@ -9004,27 +9339,31 @@ class MatchedDeveloperMetadata {
   /// The developer metadata matching the specified filters.
   DeveloperMetadata? developerMetadata;
 
-  MatchedDeveloperMetadata({
-    this.dataFilters,
-    this.developerMetadata,
-  });
+  MatchedDeveloperMetadata({this.dataFilters, this.developerMetadata});
 
   MatchedDeveloperMetadata.fromJson(core.Map json_)
-      : this(
-          dataFilters: (json_['dataFilters'] as core.List?)
-              ?.map((value) => DataFilter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          developerMetadata: json_.containsKey('developerMetadata')
-              ? DeveloperMetadata.fromJson(json_['developerMetadata']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dataFilters:
+            (json_['dataFilters'] as core.List?)
+                ?.map(
+                  (value) => DataFilter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        developerMetadata:
+            json_.containsKey('developerMetadata')
+                ? DeveloperMetadata.fromJson(
+                  json_['developerMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataFilters != null) 'dataFilters': dataFilters!,
-        if (developerMetadata != null) 'developerMetadata': developerMetadata!,
-      };
+    if (dataFilters != null) 'dataFilters': dataFilters!,
+    if (developerMetadata != null) 'developerMetadata': developerMetadata!,
+  };
 }
 
 /// A value range that was matched by one or more data filers.
@@ -9035,27 +9374,30 @@ class MatchedValueRange {
   /// The values matched by the DataFilter.
   ValueRange? valueRange;
 
-  MatchedValueRange({
-    this.dataFilters,
-    this.valueRange,
-  });
+  MatchedValueRange({this.dataFilters, this.valueRange});
 
   MatchedValueRange.fromJson(core.Map json_)
-      : this(
-          dataFilters: (json_['dataFilters'] as core.List?)
-              ?.map((value) => DataFilter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          valueRange: json_.containsKey('valueRange')
-              ? ValueRange.fromJson(
-                  json_['valueRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dataFilters:
+            (json_['dataFilters'] as core.List?)
+                ?.map(
+                  (value) => DataFilter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        valueRange:
+            json_.containsKey('valueRange')
+                ? ValueRange.fromJson(
+                  json_['valueRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataFilters != null) 'dataFilters': dataFilters!,
-        if (valueRange != null) 'valueRange': valueRange!,
-      };
+    if (dataFilters != null) 'dataFilters': dataFilters!,
+    if (valueRange != null) 'valueRange': valueRange!,
+  };
 }
 
 /// Merges all cells in the range.
@@ -9070,24 +9412,23 @@ class MergeCellsRequest {
   /// The range of cells to merge.
   GridRange? range;
 
-  MergeCellsRequest({
-    this.mergeType,
-    this.range,
-  });
+  MergeCellsRequest({this.mergeType, this.range});
 
   MergeCellsRequest.fromJson(core.Map json_)
-      : this(
-          mergeType: json_['mergeType'] as core.String?,
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        mergeType: json_['mergeType'] as core.String?,
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mergeType != null) 'mergeType': mergeType!,
-        if (range != null) 'range': range!,
-      };
+    if (mergeType != null) 'mergeType': mergeType!,
+    if (range != null) 'range': range!,
+  };
 }
 
 /// Moves one or more rows or columns.
@@ -9107,24 +9448,23 @@ class MoveDimensionRequest {
   /// The source dimensions to move.
   DimensionRange? source;
 
-  MoveDimensionRequest({
-    this.destinationIndex,
-    this.source,
-  });
+  MoveDimensionRequest({this.destinationIndex, this.source});
 
   MoveDimensionRequest.fromJson(core.Map json_)
-      : this(
-          destinationIndex: json_['destinationIndex'] as core.int?,
-          source: json_.containsKey('source')
-              ? DimensionRange.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        destinationIndex: json_['destinationIndex'] as core.int?,
+        source:
+            json_.containsKey('source')
+                ? DimensionRange.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destinationIndex != null) 'destinationIndex': destinationIndex!,
-        if (source != null) 'source': source!,
-      };
+    if (destinationIndex != null) 'destinationIndex': destinationIndex!,
+    if (source != null) 'source': source!,
+  };
 }
 
 /// A named range.
@@ -9138,27 +9478,25 @@ class NamedRange {
   /// The range this represents.
   GridRange? range;
 
-  NamedRange({
-    this.name,
-    this.namedRangeId,
-    this.range,
-  });
+  NamedRange({this.name, this.namedRangeId, this.range});
 
   NamedRange.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          namedRangeId: json_['namedRangeId'] as core.String?,
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        namedRangeId: json_['namedRangeId'] as core.String?,
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
-        if (range != null) 'range': range!,
-      };
+    if (name != null) 'name': name!,
+    if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+    if (range != null) 'range': range!,
+  };
 }
 
 /// The number format of a cell.
@@ -9187,21 +9525,18 @@ class NumberFormat {
   /// - "SCIENTIFIC" : Scientific number formatting, e.g `1.01E+03`
   core.String? type;
 
-  NumberFormat({
-    this.pattern,
-    this.type,
-  });
+  NumberFormat({this.pattern, this.type});
 
   NumberFormat.fromJson(core.Map json_)
-      : this(
-          pattern: json_['pattern'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        pattern: json_['pattern'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pattern != null) 'pattern': pattern!,
-        if (type != null) 'type': type!,
-      };
+    if (pattern != null) 'pattern': pattern!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// An org chart.
@@ -9278,49 +9613,66 @@ class OrgChartSpec {
   });
 
   OrgChartSpec.fromJson(core.Map json_)
-      : this(
-          labels: json_.containsKey('labels')
-              ? ChartData.fromJson(
-                  json_['labels'] as core.Map<core.String, core.dynamic>)
-              : null,
-          nodeColor: json_.containsKey('nodeColor')
-              ? Color.fromJson(
-                  json_['nodeColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          nodeColorStyle: json_.containsKey('nodeColorStyle')
-              ? ColorStyle.fromJson(json_['nodeColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          nodeSize: json_['nodeSize'] as core.String?,
-          parentLabels: json_.containsKey('parentLabels')
-              ? ChartData.fromJson(
-                  json_['parentLabels'] as core.Map<core.String, core.dynamic>)
-              : null,
-          selectedNodeColor: json_.containsKey('selectedNodeColor')
-              ? Color.fromJson(json_['selectedNodeColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          selectedNodeColorStyle: json_.containsKey('selectedNodeColorStyle')
-              ? ColorStyle.fromJson(json_['selectedNodeColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          tooltips: json_.containsKey('tooltips')
-              ? ChartData.fromJson(
-                  json_['tooltips'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        labels:
+            json_.containsKey('labels')
+                ? ChartData.fromJson(
+                  json_['labels'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nodeColor:
+            json_.containsKey('nodeColor')
+                ? Color.fromJson(
+                  json_['nodeColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nodeColorStyle:
+            json_.containsKey('nodeColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['nodeColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nodeSize: json_['nodeSize'] as core.String?,
+        parentLabels:
+            json_.containsKey('parentLabels')
+                ? ChartData.fromJson(
+                  json_['parentLabels'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        selectedNodeColor:
+            json_.containsKey('selectedNodeColor')
+                ? Color.fromJson(
+                  json_['selectedNodeColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        selectedNodeColorStyle:
+            json_.containsKey('selectedNodeColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['selectedNodeColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tooltips:
+            json_.containsKey('tooltips')
+                ? ChartData.fromJson(
+                  json_['tooltips'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-        if (nodeColor != null) 'nodeColor': nodeColor!,
-        if (nodeColorStyle != null) 'nodeColorStyle': nodeColorStyle!,
-        if (nodeSize != null) 'nodeSize': nodeSize!,
-        if (parentLabels != null) 'parentLabels': parentLabels!,
-        if (selectedNodeColor != null) 'selectedNodeColor': selectedNodeColor!,
-        if (selectedNodeColorStyle != null)
-          'selectedNodeColorStyle': selectedNodeColorStyle!,
-        if (tooltips != null) 'tooltips': tooltips!,
-      };
+    if (labels != null) 'labels': labels!,
+    if (nodeColor != null) 'nodeColor': nodeColor!,
+    if (nodeColorStyle != null) 'nodeColorStyle': nodeColorStyle!,
+    if (nodeSize != null) 'nodeSize': nodeSize!,
+    if (parentLabels != null) 'parentLabels': parentLabels!,
+    if (selectedNodeColor != null) 'selectedNodeColor': selectedNodeColor!,
+    if (selectedNodeColorStyle != null)
+      'selectedNodeColorStyle': selectedNodeColorStyle!,
+    if (tooltips != null) 'tooltips': tooltips!,
+  };
 }
 
 /// The location an object is overlaid on top of a grid.
@@ -9355,24 +9707,26 @@ class OverlayPosition {
   });
 
   OverlayPosition.fromJson(core.Map json_)
-      : this(
-          anchorCell: json_.containsKey('anchorCell')
-              ? GridCoordinate.fromJson(
-                  json_['anchorCell'] as core.Map<core.String, core.dynamic>)
-              : null,
-          heightPixels: json_['heightPixels'] as core.int?,
-          offsetXPixels: json_['offsetXPixels'] as core.int?,
-          offsetYPixels: json_['offsetYPixels'] as core.int?,
-          widthPixels: json_['widthPixels'] as core.int?,
-        );
+    : this(
+        anchorCell:
+            json_.containsKey('anchorCell')
+                ? GridCoordinate.fromJson(
+                  json_['anchorCell'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        heightPixels: json_['heightPixels'] as core.int?,
+        offsetXPixels: json_['offsetXPixels'] as core.int?,
+        offsetYPixels: json_['offsetYPixels'] as core.int?,
+        widthPixels: json_['widthPixels'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (anchorCell != null) 'anchorCell': anchorCell!,
-        if (heightPixels != null) 'heightPixels': heightPixels!,
-        if (offsetXPixels != null) 'offsetXPixels': offsetXPixels!,
-        if (offsetYPixels != null) 'offsetYPixels': offsetYPixels!,
-        if (widthPixels != null) 'widthPixels': widthPixels!,
-      };
+    if (anchorCell != null) 'anchorCell': anchorCell!,
+    if (heightPixels != null) 'heightPixels': heightPixels!,
+    if (offsetXPixels != null) 'offsetXPixels': offsetXPixels!,
+    if (offsetYPixels != null) 'offsetYPixels': offsetYPixels!,
+    if (widthPixels != null) 'widthPixels': widthPixels!,
+  };
 }
 
 /// The amount of padding around the cell, in pixels.
@@ -9391,27 +9745,22 @@ class Padding {
   /// The top padding of the cell.
   core.int? top;
 
-  Padding({
-    this.bottom,
-    this.left,
-    this.right,
-    this.top,
-  });
+  Padding({this.bottom, this.left, this.right, this.top});
 
   Padding.fromJson(core.Map json_)
-      : this(
-          bottom: json_['bottom'] as core.int?,
-          left: json_['left'] as core.int?,
-          right: json_['right'] as core.int?,
-          top: json_['top'] as core.int?,
-        );
+    : this(
+        bottom: json_['bottom'] as core.int?,
+        left: json_['left'] as core.int?,
+        right: json_['right'] as core.int?,
+        top: json_['top'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bottom != null) 'bottom': bottom!,
-        if (left != null) 'left': left!,
-        if (right != null) 'right': right!,
-        if (top != null) 'top': top!,
-      };
+    if (bottom != null) 'bottom': bottom!,
+    if (left != null) 'left': left!,
+    if (right != null) 'right': right!,
+    if (top != null) 'top': top!,
+  };
 }
 
 /// Inserts data into the spreadsheet starting at the specified coordinate.
@@ -9450,24 +9799,26 @@ class PasteDataRequest {
   });
 
   PasteDataRequest.fromJson(core.Map json_)
-      : this(
-          coordinate: json_.containsKey('coordinate')
-              ? GridCoordinate.fromJson(
-                  json_['coordinate'] as core.Map<core.String, core.dynamic>)
-              : null,
-          data: json_['data'] as core.String?,
-          delimiter: json_['delimiter'] as core.String?,
-          html: json_['html'] as core.bool?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        coordinate:
+            json_.containsKey('coordinate')
+                ? GridCoordinate.fromJson(
+                  json_['coordinate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        data: json_['data'] as core.String?,
+        delimiter: json_['delimiter'] as core.String?,
+        html: json_['html'] as core.bool?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (coordinate != null) 'coordinate': coordinate!,
-        if (data != null) 'data': data!,
-        if (delimiter != null) 'delimiter': delimiter!,
-        if (html != null) 'html': html!,
-        if (type != null) 'type': type!,
-      };
+    if (coordinate != null) 'coordinate': coordinate!,
+    if (data != null) 'data': data!,
+    if (delimiter != null) 'delimiter': delimiter!,
+    if (html != null) 'html': html!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Properties specific to a linked person.
@@ -9491,21 +9842,18 @@ class PersonProperties {
   /// Required.
   core.String? email;
 
-  PersonProperties({
-    this.displayFormat,
-    this.email,
-  });
+  PersonProperties({this.displayFormat, this.email});
 
   PersonProperties.fromJson(core.Map json_)
-      : this(
-          displayFormat: json_['displayFormat'] as core.String?,
-          email: json_['email'] as core.String?,
-        );
+    : this(
+        displayFormat: json_['displayFormat'] as core.String?,
+        email: json_['email'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayFormat != null) 'displayFormat': displayFormat!,
-        if (email != null) 'email': email!,
-      };
+    if (displayFormat != null) 'displayFormat': displayFormat!,
+    if (email != null) 'email': email!,
+  };
 }
 
 /// A pie chart.
@@ -9542,27 +9890,31 @@ class PieChartSpec {
   });
 
   PieChartSpec.fromJson(core.Map json_)
-      : this(
-          domain: json_.containsKey('domain')
-              ? ChartData.fromJson(
-                  json_['domain'] as core.Map<core.String, core.dynamic>)
-              : null,
-          legendPosition: json_['legendPosition'] as core.String?,
-          pieHole: (json_['pieHole'] as core.num?)?.toDouble(),
-          series: json_.containsKey('series')
-              ? ChartData.fromJson(
-                  json_['series'] as core.Map<core.String, core.dynamic>)
-              : null,
-          threeDimensional: json_['threeDimensional'] as core.bool?,
-        );
+    : this(
+        domain:
+            json_.containsKey('domain')
+                ? ChartData.fromJson(
+                  json_['domain'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        legendPosition: json_['legendPosition'] as core.String?,
+        pieHole: (json_['pieHole'] as core.num?)?.toDouble(),
+        series:
+            json_.containsKey('series')
+                ? ChartData.fromJson(
+                  json_['series'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        threeDimensional: json_['threeDimensional'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domain != null) 'domain': domain!,
-        if (legendPosition != null) 'legendPosition': legendPosition!,
-        if (pieHole != null) 'pieHole': pieHole!,
-        if (series != null) 'series': series!,
-        if (threeDimensional != null) 'threeDimensional': threeDimensional!,
-      };
+    if (domain != null) 'domain': domain!,
+    if (legendPosition != null) 'legendPosition': legendPosition!,
+    if (pieHole != null) 'pieHole': pieHole!,
+    if (series != null) 'series': series!,
+    if (threeDimensional != null) 'threeDimensional': threeDimensional!,
+  };
 }
 
 /// Criteria for showing/hiding rows in a pivot table.
@@ -9600,22 +9952,25 @@ class PivotFilterCriteria {
   });
 
   PivotFilterCriteria.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? BooleanCondition.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          visibleByDefault: json_['visibleByDefault'] as core.bool?,
-          visibleValues: (json_['visibleValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? BooleanCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        visibleByDefault: json_['visibleByDefault'] as core.bool?,
+        visibleValues:
+            (json_['visibleValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (visibleByDefault != null) 'visibleByDefault': visibleByDefault!,
-        if (visibleValues != null) 'visibleValues': visibleValues!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (visibleByDefault != null) 'visibleByDefault': visibleByDefault!,
+    if (visibleValues != null) 'visibleValues': visibleValues!,
+  };
 }
 
 /// The pivot table filter criteria associated with a specific source column
@@ -9637,26 +9992,30 @@ class PivotFilterSpec {
   });
 
   PivotFilterSpec.fromJson(core.Map json_)
-      : this(
-          columnOffsetIndex: json_['columnOffsetIndex'] as core.int?,
-          dataSourceColumnReference:
-              json_.containsKey('dataSourceColumnReference')
-                  ? DataSourceColumnReference.fromJson(
-                      json_['dataSourceColumnReference']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          filterCriteria: json_.containsKey('filterCriteria')
-              ? PivotFilterCriteria.fromJson(json_['filterCriteria']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        columnOffsetIndex: json_['columnOffsetIndex'] as core.int?,
+        dataSourceColumnReference:
+            json_.containsKey('dataSourceColumnReference')
+                ? DataSourceColumnReference.fromJson(
+                  json_['dataSourceColumnReference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filterCriteria:
+            json_.containsKey('filterCriteria')
+                ? PivotFilterCriteria.fromJson(
+                  json_['filterCriteria']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnOffsetIndex != null) 'columnOffsetIndex': columnOffsetIndex!,
-        if (dataSourceColumnReference != null)
-          'dataSourceColumnReference': dataSourceColumnReference!,
-        if (filterCriteria != null) 'filterCriteria': filterCriteria!,
-      };
+    if (columnOffsetIndex != null) 'columnOffsetIndex': columnOffsetIndex!,
+    if (dataSourceColumnReference != null)
+      'dataSourceColumnReference': dataSourceColumnReference!,
+    if (filterCriteria != null) 'filterCriteria': filterCriteria!,
+  };
 }
 
 /// A single grouping (either row or column) in a pivot table.
@@ -9735,50 +10094,60 @@ class PivotGroup {
   });
 
   PivotGroup.fromJson(core.Map json_)
-      : this(
-          dataSourceColumnReference:
-              json_.containsKey('dataSourceColumnReference')
-                  ? DataSourceColumnReference.fromJson(
-                      json_['dataSourceColumnReference']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          groupLimit: json_.containsKey('groupLimit')
-              ? PivotGroupLimit.fromJson(
-                  json_['groupLimit'] as core.Map<core.String, core.dynamic>)
-              : null,
-          groupRule: json_.containsKey('groupRule')
-              ? PivotGroupRule.fromJson(
-                  json_['groupRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          label: json_['label'] as core.String?,
-          repeatHeadings: json_['repeatHeadings'] as core.bool?,
-          showTotals: json_['showTotals'] as core.bool?,
-          sortOrder: json_['sortOrder'] as core.String?,
-          sourceColumnOffset: json_['sourceColumnOffset'] as core.int?,
-          valueBucket: json_.containsKey('valueBucket')
-              ? PivotGroupSortValueBucket.fromJson(
-                  json_['valueBucket'] as core.Map<core.String, core.dynamic>)
-              : null,
-          valueMetadata: (json_['valueMetadata'] as core.List?)
-              ?.map((value) => PivotGroupValueMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        dataSourceColumnReference:
+            json_.containsKey('dataSourceColumnReference')
+                ? DataSourceColumnReference.fromJson(
+                  json_['dataSourceColumnReference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        groupLimit:
+            json_.containsKey('groupLimit')
+                ? PivotGroupLimit.fromJson(
+                  json_['groupLimit'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        groupRule:
+            json_.containsKey('groupRule')
+                ? PivotGroupRule.fromJson(
+                  json_['groupRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        label: json_['label'] as core.String?,
+        repeatHeadings: json_['repeatHeadings'] as core.bool?,
+        showTotals: json_['showTotals'] as core.bool?,
+        sortOrder: json_['sortOrder'] as core.String?,
+        sourceColumnOffset: json_['sourceColumnOffset'] as core.int?,
+        valueBucket:
+            json_.containsKey('valueBucket')
+                ? PivotGroupSortValueBucket.fromJson(
+                  json_['valueBucket'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        valueMetadata:
+            (json_['valueMetadata'] as core.List?)
+                ?.map(
+                  (value) => PivotGroupValueMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSourceColumnReference != null)
-          'dataSourceColumnReference': dataSourceColumnReference!,
-        if (groupLimit != null) 'groupLimit': groupLimit!,
-        if (groupRule != null) 'groupRule': groupRule!,
-        if (label != null) 'label': label!,
-        if (repeatHeadings != null) 'repeatHeadings': repeatHeadings!,
-        if (showTotals != null) 'showTotals': showTotals!,
-        if (sortOrder != null) 'sortOrder': sortOrder!,
-        if (sourceColumnOffset != null)
-          'sourceColumnOffset': sourceColumnOffset!,
-        if (valueBucket != null) 'valueBucket': valueBucket!,
-        if (valueMetadata != null) 'valueMetadata': valueMetadata!,
-      };
+    if (dataSourceColumnReference != null)
+      'dataSourceColumnReference': dataSourceColumnReference!,
+    if (groupLimit != null) 'groupLimit': groupLimit!,
+    if (groupRule != null) 'groupRule': groupRule!,
+    if (label != null) 'label': label!,
+    if (repeatHeadings != null) 'repeatHeadings': repeatHeadings!,
+    if (showTotals != null) 'showTotals': showTotals!,
+    if (sortOrder != null) 'sortOrder': sortOrder!,
+    if (sourceColumnOffset != null) 'sourceColumnOffset': sourceColumnOffset!,
+    if (valueBucket != null) 'valueBucket': valueBucket!,
+    if (valueMetadata != null) 'valueMetadata': valueMetadata!,
+  };
 }
 
 /// The count limit on rows or columns in the pivot group.
@@ -9796,21 +10165,18 @@ class PivotGroupLimit {
   /// The count limit.
   core.int? countLimit;
 
-  PivotGroupLimit({
-    this.applyOrder,
-    this.countLimit,
-  });
+  PivotGroupLimit({this.applyOrder, this.countLimit});
 
   PivotGroupLimit.fromJson(core.Map json_)
-      : this(
-          applyOrder: json_['applyOrder'] as core.int?,
-          countLimit: json_['countLimit'] as core.int?,
-        );
+    : this(
+        applyOrder: json_['applyOrder'] as core.int?,
+        countLimit: json_['countLimit'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applyOrder != null) 'applyOrder': applyOrder!,
-        if (countLimit != null) 'countLimit': countLimit!,
-      };
+    if (applyOrder != null) 'applyOrder': applyOrder!,
+    if (countLimit != null) 'countLimit': countLimit!,
+  };
 }
 
 /// An optional setting on a PivotGroup that defines buckets for the values in
@@ -9829,33 +10195,35 @@ class PivotGroupRule {
   /// A ManualRule.
   ManualRule? manualRule;
 
-  PivotGroupRule({
-    this.dateTimeRule,
-    this.histogramRule,
-    this.manualRule,
-  });
+  PivotGroupRule({this.dateTimeRule, this.histogramRule, this.manualRule});
 
   PivotGroupRule.fromJson(core.Map json_)
-      : this(
-          dateTimeRule: json_.containsKey('dateTimeRule')
-              ? DateTimeRule.fromJson(
-                  json_['dateTimeRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          histogramRule: json_.containsKey('histogramRule')
-              ? HistogramRule.fromJson(
-                  json_['histogramRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          manualRule: json_.containsKey('manualRule')
-              ? ManualRule.fromJson(
-                  json_['manualRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dateTimeRule:
+            json_.containsKey('dateTimeRule')
+                ? DateTimeRule.fromJson(
+                  json_['dateTimeRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        histogramRule:
+            json_.containsKey('histogramRule')
+                ? HistogramRule.fromJson(
+                  json_['histogramRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        manualRule:
+            json_.containsKey('manualRule')
+                ? ManualRule.fromJson(
+                  json_['manualRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dateTimeRule != null) 'dateTimeRule': dateTimeRule!,
-        if (histogramRule != null) 'histogramRule': histogramRule!,
-        if (manualRule != null) 'manualRule': manualRule!,
-      };
+    if (dateTimeRule != null) 'dateTimeRule': dateTimeRule!,
+    if (histogramRule != null) 'histogramRule': histogramRule!,
+    if (manualRule != null) 'manualRule': manualRule!,
+  };
 }
 
 /// Information about which values in a pivot group should be used for sorting.
@@ -9875,24 +10243,25 @@ class PivotGroupSortValueBucket {
   /// should be sorted by.
   core.int? valuesIndex;
 
-  PivotGroupSortValueBucket({
-    this.buckets,
-    this.valuesIndex,
-  });
+  PivotGroupSortValueBucket({this.buckets, this.valuesIndex});
 
   PivotGroupSortValueBucket.fromJson(core.Map json_)
-      : this(
-          buckets: (json_['buckets'] as core.List?)
-              ?.map((value) => ExtendedValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          valuesIndex: json_['valuesIndex'] as core.int?,
-        );
+    : this(
+        buckets:
+            (json_['buckets'] as core.List?)
+                ?.map(
+                  (value) => ExtendedValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        valuesIndex: json_['valuesIndex'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buckets != null) 'buckets': buckets!,
-        if (valuesIndex != null) 'valuesIndex': valuesIndex!,
-      };
+    if (buckets != null) 'buckets': buckets!,
+    if (valuesIndex != null) 'valuesIndex': valuesIndex!,
+  };
 }
 
 /// Metadata about a value in a pivot grouping.
@@ -9906,24 +10275,23 @@ class PivotGroupValueMetadata {
   /// calculated.)
   ExtendedValue? value;
 
-  PivotGroupValueMetadata({
-    this.collapsed,
-    this.value,
-  });
+  PivotGroupValueMetadata({this.collapsed, this.value});
 
   PivotGroupValueMetadata.fromJson(core.Map json_)
-      : this(
-          collapsed: json_['collapsed'] as core.bool?,
-          value: json_.containsKey('value')
-              ? ExtendedValue.fromJson(
-                  json_['value'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        collapsed: json_['collapsed'] as core.bool?,
+        value:
+            json_.containsKey('value')
+                ? ExtendedValue.fromJson(
+                  json_['value'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (collapsed != null) 'collapsed': collapsed!,
-        if (value != null) 'value': value!,
-      };
+    if (collapsed != null) 'collapsed': collapsed!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// A pivot table.
@@ -9988,55 +10356,77 @@ class PivotTable {
   });
 
   PivotTable.fromJson(core.Map json_)
-      : this(
-          columns: (json_['columns'] as core.List?)
-              ?.map((value) => PivotGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          criteria:
-              (json_['criteria'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              PivotFilterCriteria.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        columns:
+            (json_['columns'] as core.List?)
+                ?.map(
+                  (value) => PivotGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        criteria: (json_['criteria'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                PivotFilterCriteria.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          dataExecutionStatus: json_.containsKey('dataExecutionStatus')
-              ? DataExecutionStatus.fromJson(json_['dataExecutionStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataSourceId: json_['dataSourceId'] as core.String?,
-          filterSpecs: (json_['filterSpecs'] as core.List?)
-              ?.map((value) => PivotFilterSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          rows: (json_['rows'] as core.List?)
-              ?.map((value) => PivotGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          source: json_.containsKey('source')
-              ? GridRange.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          valueLayout: json_['valueLayout'] as core.String?,
-          values: (json_['values'] as core.List?)
-              ?.map((value) => PivotValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+        dataExecutionStatus:
+            json_.containsKey('dataExecutionStatus')
+                ? DataExecutionStatus.fromJson(
+                  json_['dataExecutionStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataSourceId: json_['dataSourceId'] as core.String?,
+        filterSpecs:
+            (json_['filterSpecs'] as core.List?)
+                ?.map(
+                  (value) => PivotFilterSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        rows:
+            (json_['rows'] as core.List?)
+                ?.map(
+                  (value) => PivotGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        source:
+            json_.containsKey('source')
+                ? GridRange.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        valueLayout: json_['valueLayout'] as core.String?,
+        values:
+            (json_['values'] as core.List?)
+                ?.map(
+                  (value) => PivotValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columns != null) 'columns': columns!,
-        if (criteria != null) 'criteria': criteria!,
-        if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus!,
-        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-        if (filterSpecs != null) 'filterSpecs': filterSpecs!,
-        if (rows != null) 'rows': rows!,
-        if (source != null) 'source': source!,
-        if (valueLayout != null) 'valueLayout': valueLayout!,
-        if (values != null) 'values': values!,
-      };
+    if (columns != null) 'columns': columns!,
+    if (criteria != null) 'criteria': criteria!,
+    if (dataExecutionStatus != null)
+      'dataExecutionStatus': dataExecutionStatus!,
+    if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+    if (filterSpecs != null) 'filterSpecs': filterSpecs!,
+    if (rows != null) 'rows': rows!,
+    if (source != null) 'source': source!,
+    if (valueLayout != null) 'valueLayout': valueLayout!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// The definition of how a value in a pivot table should be calculated.
@@ -10113,31 +10503,31 @@ class PivotValue {
   });
 
   PivotValue.fromJson(core.Map json_)
-      : this(
-          calculatedDisplayType: json_['calculatedDisplayType'] as core.String?,
-          dataSourceColumnReference:
-              json_.containsKey('dataSourceColumnReference')
-                  ? DataSourceColumnReference.fromJson(
-                      json_['dataSourceColumnReference']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          formula: json_['formula'] as core.String?,
-          name: json_['name'] as core.String?,
-          sourceColumnOffset: json_['sourceColumnOffset'] as core.int?,
-          summarizeFunction: json_['summarizeFunction'] as core.String?,
-        );
+    : this(
+        calculatedDisplayType: json_['calculatedDisplayType'] as core.String?,
+        dataSourceColumnReference:
+            json_.containsKey('dataSourceColumnReference')
+                ? DataSourceColumnReference.fromJson(
+                  json_['dataSourceColumnReference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        formula: json_['formula'] as core.String?,
+        name: json_['name'] as core.String?,
+        sourceColumnOffset: json_['sourceColumnOffset'] as core.int?,
+        summarizeFunction: json_['summarizeFunction'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (calculatedDisplayType != null)
-          'calculatedDisplayType': calculatedDisplayType!,
-        if (dataSourceColumnReference != null)
-          'dataSourceColumnReference': dataSourceColumnReference!,
-        if (formula != null) 'formula': formula!,
-        if (name != null) 'name': name!,
-        if (sourceColumnOffset != null)
-          'sourceColumnOffset': sourceColumnOffset!,
-        if (summarizeFunction != null) 'summarizeFunction': summarizeFunction!,
-      };
+    if (calculatedDisplayType != null)
+      'calculatedDisplayType': calculatedDisplayType!,
+    if (dataSourceColumnReference != null)
+      'dataSourceColumnReference': dataSourceColumnReference!,
+    if (formula != null) 'formula': formula!,
+    if (name != null) 'name': name!,
+    if (sourceColumnOffset != null) 'sourceColumnOffset': sourceColumnOffset!,
+    if (summarizeFunction != null) 'summarizeFunction': summarizeFunction!,
+  };
 }
 
 /// The style of a point on the chart.
@@ -10162,21 +10552,18 @@ class PointStyle {
   /// If empty, a default size is used.
   core.double? size;
 
-  PointStyle({
-    this.shape,
-    this.size,
-  });
+  PointStyle({this.shape, this.size});
 
   PointStyle.fromJson(core.Map json_)
-      : this(
-          shape: json_['shape'] as core.String?,
-          size: (json_['size'] as core.num?)?.toDouble(),
-        );
+    : this(
+        shape: json_['shape'] as core.String?,
+        size: (json_['size'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (shape != null) 'shape': shape!,
-        if (size != null) 'size': size!,
-      };
+    if (shape != null) 'shape': shape!,
+    if (size != null) 'size': size!,
+  };
 }
 
 /// A protected range.
@@ -10247,39 +10634,47 @@ class ProtectedRange {
   });
 
   ProtectedRange.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          editors: json_.containsKey('editors')
-              ? Editors.fromJson(
-                  json_['editors'] as core.Map<core.String, core.dynamic>)
-              : null,
-          namedRangeId: json_['namedRangeId'] as core.String?,
-          protectedRangeId: json_['protectedRangeId'] as core.int?,
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          requestingUserCanEdit: json_['requestingUserCanEdit'] as core.bool?,
-          tableId: json_['tableId'] as core.String?,
-          unprotectedRanges: (json_['unprotectedRanges'] as core.List?)
-              ?.map((value) => GridRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          warningOnly: json_['warningOnly'] as core.bool?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        editors:
+            json_.containsKey('editors')
+                ? Editors.fromJson(
+                  json_['editors'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        namedRangeId: json_['namedRangeId'] as core.String?,
+        protectedRangeId: json_['protectedRangeId'] as core.int?,
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requestingUserCanEdit: json_['requestingUserCanEdit'] as core.bool?,
+        tableId: json_['tableId'] as core.String?,
+        unprotectedRanges:
+            (json_['unprotectedRanges'] as core.List?)
+                ?.map(
+                  (value) => GridRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        warningOnly: json_['warningOnly'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (editors != null) 'editors': editors!,
-        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
-        if (protectedRangeId != null) 'protectedRangeId': protectedRangeId!,
-        if (range != null) 'range': range!,
-        if (requestingUserCanEdit != null)
-          'requestingUserCanEdit': requestingUserCanEdit!,
-        if (tableId != null) 'tableId': tableId!,
-        if (unprotectedRanges != null) 'unprotectedRanges': unprotectedRanges!,
-        if (warningOnly != null) 'warningOnly': warningOnly!,
-      };
+    if (description != null) 'description': description!,
+    if (editors != null) 'editors': editors!,
+    if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+    if (protectedRangeId != null) 'protectedRangeId': protectedRangeId!,
+    if (range != null) 'range': range!,
+    if (requestingUserCanEdit != null)
+      'requestingUserCanEdit': requestingUserCanEdit!,
+    if (tableId != null) 'tableId': tableId!,
+    if (unprotectedRanges != null) 'unprotectedRanges': unprotectedRanges!,
+    if (warningOnly != null) 'warningOnly': warningOnly!,
+  };
 }
 
 /// Randomizes the order of the rows in a range.
@@ -10287,21 +10682,21 @@ class RandomizeRangeRequest {
   /// The range to randomize.
   GridRange? range;
 
-  RandomizeRangeRequest({
-    this.range,
-  });
+  RandomizeRangeRequest({this.range});
 
   RandomizeRangeRequest.fromJson(core.Map json_)
-      : this(
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (range != null) 'range': range!,
-      };
+    if (range != null) 'range': range!,
+  };
 }
 
 /// The status of a refresh cancellation.
@@ -10333,21 +10728,18 @@ class RefreshCancellationStatus {
   /// - "CANCEL_FAILED" : The API call to Sheets to cancel a refresh has failed.
   core.String? state;
 
-  RefreshCancellationStatus({
-    this.errorCode,
-    this.state,
-  });
+  RefreshCancellationStatus({this.errorCode, this.state});
 
   RefreshCancellationStatus.fromJson(core.Map json_)
-      : this(
-          errorCode: json_['errorCode'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        errorCode: json_['errorCode'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode!,
-        if (state != null) 'state': state!,
-      };
+    if (errorCode != null) 'errorCode': errorCode!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// The execution status of refreshing one data source object.
@@ -10364,22 +10756,27 @@ class RefreshDataSourceObjectExecutionStatus {
   });
 
   RefreshDataSourceObjectExecutionStatus.fromJson(core.Map json_)
-      : this(
-          dataExecutionStatus: json_.containsKey('dataExecutionStatus')
-              ? DataExecutionStatus.fromJson(json_['dataExecutionStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          reference: json_.containsKey('reference')
-              ? DataSourceObjectReference.fromJson(
-                  json_['reference'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dataExecutionStatus:
+            json_.containsKey('dataExecutionStatus')
+                ? DataExecutionStatus.fromJson(
+                  json_['dataExecutionStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reference:
+            json_.containsKey('reference')
+                ? DataSourceObjectReference.fromJson(
+                  json_['reference'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus!,
-        if (reference != null) 'reference': reference!,
-      };
+    if (dataExecutionStatus != null)
+      'dataExecutionStatus': dataExecutionStatus!,
+    if (reference != null) 'reference': reference!,
+  };
 }
 
 /// Refreshes one or multiple data source objects in the spreadsheet by the
@@ -10417,22 +10814,24 @@ class RefreshDataSourceRequest {
   });
 
   RefreshDataSourceRequest.fromJson(core.Map json_)
-      : this(
-          dataSourceId: json_['dataSourceId'] as core.String?,
-          force: json_['force'] as core.bool?,
-          isAll: json_['isAll'] as core.bool?,
-          references: json_.containsKey('references')
-              ? DataSourceObjectReferences.fromJson(
-                  json_['references'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dataSourceId: json_['dataSourceId'] as core.String?,
+        force: json_['force'] as core.bool?,
+        isAll: json_['isAll'] as core.bool?,
+        references:
+            json_.containsKey('references')
+                ? DataSourceObjectReferences.fromJson(
+                  json_['references'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSourceId != null) 'dataSourceId': dataSourceId!,
-        if (force != null) 'force': force!,
-        if (isAll != null) 'isAll': isAll!,
-        if (references != null) 'references': references!,
-      };
+    if (dataSourceId != null) 'dataSourceId': dataSourceId!,
+    if (force != null) 'force': force!,
+    if (isAll != null) 'isAll': isAll!,
+    if (references != null) 'references': references!,
+  };
 }
 
 /// The response from refreshing one or multiple data source objects.
@@ -10443,21 +10842,23 @@ class RefreshDataSourceResponse {
   /// If is_all is specified, the field contains only those in failure status.
   core.List<RefreshDataSourceObjectExecutionStatus>? statuses;
 
-  RefreshDataSourceResponse({
-    this.statuses,
-  });
+  RefreshDataSourceResponse({this.statuses});
 
   RefreshDataSourceResponse.fromJson(core.Map json_)
-      : this(
-          statuses: (json_['statuses'] as core.List?)
-              ?.map((value) => RefreshDataSourceObjectExecutionStatus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        statuses:
+            (json_['statuses'] as core.List?)
+                ?.map(
+                  (value) => RefreshDataSourceObjectExecutionStatus.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (statuses != null) 'statuses': statuses!,
-      };
+    if (statuses != null) 'statuses': statuses!,
+  };
 }
 
 /// Updates all cells in the range to the values in the given Cell object.
@@ -10484,30 +10885,30 @@ class RepeatCellRequest {
   /// The range to repeat the cell in.
   GridRange? range;
 
-  RepeatCellRequest({
-    this.cell,
-    this.fields,
-    this.range,
-  });
+  RepeatCellRequest({this.cell, this.fields, this.range});
 
   RepeatCellRequest.fromJson(core.Map json_)
-      : this(
-          cell: json_.containsKey('cell')
-              ? CellData.fromJson(
-                  json_['cell'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fields: json_['fields'] as core.String?,
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        cell:
+            json_.containsKey('cell')
+                ? CellData.fromJson(
+                  json_['cell'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fields: json_['fields'] as core.String?,
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cell != null) 'cell': cell!,
-        if (fields != null) 'fields': fields!,
-        if (range != null) 'range': range!,
-      };
+    if (cell != null) 'cell': cell!,
+    if (fields != null) 'fields': fields!,
+    if (range != null) 'range': range!,
+  };
 }
 
 /// A single kind of update to apply to a spreadsheet.
@@ -10795,400 +11196,553 @@ class Request {
   });
 
   Request.fromJson(core.Map json_)
-      : this(
-          addBanding: json_.containsKey('addBanding')
-              ? AddBandingRequest.fromJson(
-                  json_['addBanding'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addChart: json_.containsKey('addChart')
-              ? AddChartRequest.fromJson(
-                  json_['addChart'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addConditionalFormatRule:
-              json_.containsKey('addConditionalFormatRule')
-                  ? AddConditionalFormatRuleRequest.fromJson(
-                      json_['addConditionalFormatRule']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          addDataSource: json_.containsKey('addDataSource')
-              ? AddDataSourceRequest.fromJson(
-                  json_['addDataSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addDimensionGroup: json_.containsKey('addDimensionGroup')
-              ? AddDimensionGroupRequest.fromJson(json_['addDimensionGroup']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          addFilterView: json_.containsKey('addFilterView')
-              ? AddFilterViewRequest.fromJson(
-                  json_['addFilterView'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addNamedRange: json_.containsKey('addNamedRange')
-              ? AddNamedRangeRequest.fromJson(
-                  json_['addNamedRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addProtectedRange: json_.containsKey('addProtectedRange')
-              ? AddProtectedRangeRequest.fromJson(json_['addProtectedRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          addSheet: json_.containsKey('addSheet')
-              ? AddSheetRequest.fromJson(
-                  json_['addSheet'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addSlicer: json_.containsKey('addSlicer')
-              ? AddSlicerRequest.fromJson(
-                  json_['addSlicer'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addTable: json_.containsKey('addTable')
-              ? AddTableRequest.fromJson(
-                  json_['addTable'] as core.Map<core.String, core.dynamic>)
-              : null,
-          appendCells: json_.containsKey('appendCells')
-              ? AppendCellsRequest.fromJson(
-                  json_['appendCells'] as core.Map<core.String, core.dynamic>)
-              : null,
-          appendDimension: json_.containsKey('appendDimension')
-              ? AppendDimensionRequest.fromJson(json_['appendDimension']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          autoFill: json_.containsKey('autoFill')
-              ? AutoFillRequest.fromJson(
-                  json_['autoFill'] as core.Map<core.String, core.dynamic>)
-              : null,
-          autoResizeDimensions: json_.containsKey('autoResizeDimensions')
-              ? AutoResizeDimensionsRequest.fromJson(
+    : this(
+        addBanding:
+            json_.containsKey('addBanding')
+                ? AddBandingRequest.fromJson(
+                  json_['addBanding'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addChart:
+            json_.containsKey('addChart')
+                ? AddChartRequest.fromJson(
+                  json_['addChart'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addConditionalFormatRule:
+            json_.containsKey('addConditionalFormatRule')
+                ? AddConditionalFormatRuleRequest.fromJson(
+                  json_['addConditionalFormatRule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addDataSource:
+            json_.containsKey('addDataSource')
+                ? AddDataSourceRequest.fromJson(
+                  json_['addDataSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addDimensionGroup:
+            json_.containsKey('addDimensionGroup')
+                ? AddDimensionGroupRequest.fromJson(
+                  json_['addDimensionGroup']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addFilterView:
+            json_.containsKey('addFilterView')
+                ? AddFilterViewRequest.fromJson(
+                  json_['addFilterView'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addNamedRange:
+            json_.containsKey('addNamedRange')
+                ? AddNamedRangeRequest.fromJson(
+                  json_['addNamedRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addProtectedRange:
+            json_.containsKey('addProtectedRange')
+                ? AddProtectedRangeRequest.fromJson(
+                  json_['addProtectedRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addSheet:
+            json_.containsKey('addSheet')
+                ? AddSheetRequest.fromJson(
+                  json_['addSheet'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addSlicer:
+            json_.containsKey('addSlicer')
+                ? AddSlicerRequest.fromJson(
+                  json_['addSlicer'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addTable:
+            json_.containsKey('addTable')
+                ? AddTableRequest.fromJson(
+                  json_['addTable'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        appendCells:
+            json_.containsKey('appendCells')
+                ? AppendCellsRequest.fromJson(
+                  json_['appendCells'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        appendDimension:
+            json_.containsKey('appendDimension')
+                ? AppendDimensionRequest.fromJson(
+                  json_['appendDimension']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        autoFill:
+            json_.containsKey('autoFill')
+                ? AutoFillRequest.fromJson(
+                  json_['autoFill'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        autoResizeDimensions:
+            json_.containsKey('autoResizeDimensions')
+                ? AutoResizeDimensionsRequest.fromJson(
                   json_['autoResizeDimensions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          cancelDataSourceRefresh: json_.containsKey('cancelDataSourceRefresh')
-              ? CancelDataSourceRefreshRequest.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cancelDataSourceRefresh:
+            json_.containsKey('cancelDataSourceRefresh')
+                ? CancelDataSourceRefreshRequest.fromJson(
                   json_['cancelDataSourceRefresh']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          clearBasicFilter: json_.containsKey('clearBasicFilter')
-              ? ClearBasicFilterRequest.fromJson(json_['clearBasicFilter']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          copyPaste: json_.containsKey('copyPaste')
-              ? CopyPasteRequest.fromJson(
-                  json_['copyPaste'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createDeveloperMetadata: json_.containsKey('createDeveloperMetadata')
-              ? CreateDeveloperMetadataRequest.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        clearBasicFilter:
+            json_.containsKey('clearBasicFilter')
+                ? ClearBasicFilterRequest.fromJson(
+                  json_['clearBasicFilter']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        copyPaste:
+            json_.containsKey('copyPaste')
+                ? CopyPasteRequest.fromJson(
+                  json_['copyPaste'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createDeveloperMetadata:
+            json_.containsKey('createDeveloperMetadata')
+                ? CreateDeveloperMetadataRequest.fromJson(
                   json_['createDeveloperMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          cutPaste: json_.containsKey('cutPaste')
-              ? CutPasteRequest.fromJson(
-                  json_['cutPaste'] as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteBanding: json_.containsKey('deleteBanding')
-              ? DeleteBandingRequest.fromJson(
-                  json_['deleteBanding'] as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteConditionalFormatRule:
-              json_.containsKey('deleteConditionalFormatRule')
-                  ? DeleteConditionalFormatRuleRequest.fromJson(
-                      json_['deleteConditionalFormatRule']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          deleteDataSource: json_.containsKey('deleteDataSource')
-              ? DeleteDataSourceRequest.fromJson(json_['deleteDataSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteDeveloperMetadata: json_.containsKey('deleteDeveloperMetadata')
-              ? DeleteDeveloperMetadataRequest.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cutPaste:
+            json_.containsKey('cutPaste')
+                ? CutPasteRequest.fromJson(
+                  json_['cutPaste'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteBanding:
+            json_.containsKey('deleteBanding')
+                ? DeleteBandingRequest.fromJson(
+                  json_['deleteBanding'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteConditionalFormatRule:
+            json_.containsKey('deleteConditionalFormatRule')
+                ? DeleteConditionalFormatRuleRequest.fromJson(
+                  json_['deleteConditionalFormatRule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteDataSource:
+            json_.containsKey('deleteDataSource')
+                ? DeleteDataSourceRequest.fromJson(
+                  json_['deleteDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteDeveloperMetadata:
+            json_.containsKey('deleteDeveloperMetadata')
+                ? DeleteDeveloperMetadataRequest.fromJson(
                   json_['deleteDeveloperMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteDimension: json_.containsKey('deleteDimension')
-              ? DeleteDimensionRequest.fromJson(json_['deleteDimension']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteDimensionGroup: json_.containsKey('deleteDimensionGroup')
-              ? DeleteDimensionGroupRequest.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteDimension:
+            json_.containsKey('deleteDimension')
+                ? DeleteDimensionRequest.fromJson(
+                  json_['deleteDimension']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteDimensionGroup:
+            json_.containsKey('deleteDimensionGroup')
+                ? DeleteDimensionGroupRequest.fromJson(
                   json_['deleteDimensionGroup']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteDuplicates: json_.containsKey('deleteDuplicates')
-              ? DeleteDuplicatesRequest.fromJson(json_['deleteDuplicates']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteEmbeddedObject: json_.containsKey('deleteEmbeddedObject')
-              ? DeleteEmbeddedObjectRequest.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteDuplicates:
+            json_.containsKey('deleteDuplicates')
+                ? DeleteDuplicatesRequest.fromJson(
+                  json_['deleteDuplicates']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteEmbeddedObject:
+            json_.containsKey('deleteEmbeddedObject')
+                ? DeleteEmbeddedObjectRequest.fromJson(
                   json_['deleteEmbeddedObject']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteFilterView: json_.containsKey('deleteFilterView')
-              ? DeleteFilterViewRequest.fromJson(json_['deleteFilterView']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteNamedRange: json_.containsKey('deleteNamedRange')
-              ? DeleteNamedRangeRequest.fromJson(json_['deleteNamedRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteProtectedRange: json_.containsKey('deleteProtectedRange')
-              ? DeleteProtectedRangeRequest.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteFilterView:
+            json_.containsKey('deleteFilterView')
+                ? DeleteFilterViewRequest.fromJson(
+                  json_['deleteFilterView']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteNamedRange:
+            json_.containsKey('deleteNamedRange')
+                ? DeleteNamedRangeRequest.fromJson(
+                  json_['deleteNamedRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteProtectedRange:
+            json_.containsKey('deleteProtectedRange')
+                ? DeleteProtectedRangeRequest.fromJson(
                   json_['deleteProtectedRange']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteRange: json_.containsKey('deleteRange')
-              ? DeleteRangeRequest.fromJson(
-                  json_['deleteRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteSheet: json_.containsKey('deleteSheet')
-              ? DeleteSheetRequest.fromJson(
-                  json_['deleteSheet'] as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteTable: json_.containsKey('deleteTable')
-              ? DeleteTableRequest.fromJson(
-                  json_['deleteTable'] as core.Map<core.String, core.dynamic>)
-              : null,
-          duplicateFilterView: json_.containsKey('duplicateFilterView')
-              ? DuplicateFilterViewRequest.fromJson(json_['duplicateFilterView']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          duplicateSheet: json_.containsKey('duplicateSheet')
-              ? DuplicateSheetRequest.fromJson(json_['duplicateSheet']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          findReplace: json_.containsKey('findReplace')
-              ? FindReplaceRequest.fromJson(
-                  json_['findReplace'] as core.Map<core.String, core.dynamic>)
-              : null,
-          insertDimension: json_.containsKey('insertDimension')
-              ? InsertDimensionRequest.fromJson(json_['insertDimension']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          insertRange: json_.containsKey('insertRange')
-              ? InsertRangeRequest.fromJson(
-                  json_['insertRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          mergeCells: json_.containsKey('mergeCells')
-              ? MergeCellsRequest.fromJson(
-                  json_['mergeCells'] as core.Map<core.String, core.dynamic>)
-              : null,
-          moveDimension: json_.containsKey('moveDimension')
-              ? MoveDimensionRequest.fromJson(
-                  json_['moveDimension'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pasteData: json_.containsKey('pasteData')
-              ? PasteDataRequest.fromJson(
-                  json_['pasteData'] as core.Map<core.String, core.dynamic>)
-              : null,
-          randomizeRange: json_.containsKey('randomizeRange')
-              ? RandomizeRangeRequest.fromJson(json_['randomizeRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          refreshDataSource: json_.containsKey('refreshDataSource')
-              ? RefreshDataSourceRequest.fromJson(json_['refreshDataSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          repeatCell: json_.containsKey('repeatCell')
-              ? RepeatCellRequest.fromJson(
-                  json_['repeatCell'] as core.Map<core.String, core.dynamic>)
-              : null,
-          setBasicFilter: json_.containsKey('setBasicFilter')
-              ? SetBasicFilterRequest.fromJson(json_['setBasicFilter']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          setDataValidation: json_.containsKey('setDataValidation')
-              ? SetDataValidationRequest.fromJson(json_['setDataValidation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sortRange: json_.containsKey('sortRange')
-              ? SortRangeRequest.fromJson(
-                  json_['sortRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textToColumns: json_.containsKey('textToColumns')
-              ? TextToColumnsRequest.fromJson(
-                  json_['textToColumns'] as core.Map<core.String, core.dynamic>)
-              : null,
-          trimWhitespace: json_.containsKey('trimWhitespace')
-              ? TrimWhitespaceRequest.fromJson(json_['trimWhitespace']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          unmergeCells: json_.containsKey('unmergeCells')
-              ? UnmergeCellsRequest.fromJson(
-                  json_['unmergeCells'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateBanding: json_.containsKey('updateBanding')
-              ? UpdateBandingRequest.fromJson(
-                  json_['updateBanding'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateBorders: json_.containsKey('updateBorders')
-              ? UpdateBordersRequest.fromJson(
-                  json_['updateBorders'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateCells: json_.containsKey('updateCells')
-              ? UpdateCellsRequest.fromJson(
-                  json_['updateCells'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateChartSpec: json_.containsKey('updateChartSpec')
-              ? UpdateChartSpecRequest.fromJson(json_['updateChartSpec']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateConditionalFormatRule:
-              json_.containsKey('updateConditionalFormatRule')
-                  ? UpdateConditionalFormatRuleRequest.fromJson(
-                      json_['updateConditionalFormatRule']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          updateDataSource: json_.containsKey('updateDataSource')
-              ? UpdateDataSourceRequest.fromJson(json_['updateDataSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateDeveloperMetadata: json_.containsKey('updateDeveloperMetadata')
-              ? UpdateDeveloperMetadataRequest.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteRange:
+            json_.containsKey('deleteRange')
+                ? DeleteRangeRequest.fromJson(
+                  json_['deleteRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteSheet:
+            json_.containsKey('deleteSheet')
+                ? DeleteSheetRequest.fromJson(
+                  json_['deleteSheet'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteTable:
+            json_.containsKey('deleteTable')
+                ? DeleteTableRequest.fromJson(
+                  json_['deleteTable'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        duplicateFilterView:
+            json_.containsKey('duplicateFilterView')
+                ? DuplicateFilterViewRequest.fromJson(
+                  json_['duplicateFilterView']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        duplicateSheet:
+            json_.containsKey('duplicateSheet')
+                ? DuplicateSheetRequest.fromJson(
+                  json_['duplicateSheet']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        findReplace:
+            json_.containsKey('findReplace')
+                ? FindReplaceRequest.fromJson(
+                  json_['findReplace'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insertDimension:
+            json_.containsKey('insertDimension')
+                ? InsertDimensionRequest.fromJson(
+                  json_['insertDimension']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insertRange:
+            json_.containsKey('insertRange')
+                ? InsertRangeRequest.fromJson(
+                  json_['insertRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mergeCells:
+            json_.containsKey('mergeCells')
+                ? MergeCellsRequest.fromJson(
+                  json_['mergeCells'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        moveDimension:
+            json_.containsKey('moveDimension')
+                ? MoveDimensionRequest.fromJson(
+                  json_['moveDimension'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pasteData:
+            json_.containsKey('pasteData')
+                ? PasteDataRequest.fromJson(
+                  json_['pasteData'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        randomizeRange:
+            json_.containsKey('randomizeRange')
+                ? RandomizeRangeRequest.fromJson(
+                  json_['randomizeRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        refreshDataSource:
+            json_.containsKey('refreshDataSource')
+                ? RefreshDataSourceRequest.fromJson(
+                  json_['refreshDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        repeatCell:
+            json_.containsKey('repeatCell')
+                ? RepeatCellRequest.fromJson(
+                  json_['repeatCell'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        setBasicFilter:
+            json_.containsKey('setBasicFilter')
+                ? SetBasicFilterRequest.fromJson(
+                  json_['setBasicFilter']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        setDataValidation:
+            json_.containsKey('setDataValidation')
+                ? SetDataValidationRequest.fromJson(
+                  json_['setDataValidation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sortRange:
+            json_.containsKey('sortRange')
+                ? SortRangeRequest.fromJson(
+                  json_['sortRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textToColumns:
+            json_.containsKey('textToColumns')
+                ? TextToColumnsRequest.fromJson(
+                  json_['textToColumns'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        trimWhitespace:
+            json_.containsKey('trimWhitespace')
+                ? TrimWhitespaceRequest.fromJson(
+                  json_['trimWhitespace']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        unmergeCells:
+            json_.containsKey('unmergeCells')
+                ? UnmergeCellsRequest.fromJson(
+                  json_['unmergeCells'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateBanding:
+            json_.containsKey('updateBanding')
+                ? UpdateBandingRequest.fromJson(
+                  json_['updateBanding'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateBorders:
+            json_.containsKey('updateBorders')
+                ? UpdateBordersRequest.fromJson(
+                  json_['updateBorders'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateCells:
+            json_.containsKey('updateCells')
+                ? UpdateCellsRequest.fromJson(
+                  json_['updateCells'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateChartSpec:
+            json_.containsKey('updateChartSpec')
+                ? UpdateChartSpecRequest.fromJson(
+                  json_['updateChartSpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateConditionalFormatRule:
+            json_.containsKey('updateConditionalFormatRule')
+                ? UpdateConditionalFormatRuleRequest.fromJson(
+                  json_['updateConditionalFormatRule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateDataSource:
+            json_.containsKey('updateDataSource')
+                ? UpdateDataSourceRequest.fromJson(
+                  json_['updateDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateDeveloperMetadata:
+            json_.containsKey('updateDeveloperMetadata')
+                ? UpdateDeveloperMetadataRequest.fromJson(
                   json_['updateDeveloperMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateDimensionGroup: json_.containsKey('updateDimensionGroup')
-              ? UpdateDimensionGroupRequest.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateDimensionGroup:
+            json_.containsKey('updateDimensionGroup')
+                ? UpdateDimensionGroupRequest.fromJson(
                   json_['updateDimensionGroup']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateDimensionProperties:
-              json_.containsKey('updateDimensionProperties')
-                  ? UpdateDimensionPropertiesRequest.fromJson(
-                      json_['updateDimensionProperties']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          updateEmbeddedObjectBorder:
-              json_.containsKey('updateEmbeddedObjectBorder')
-                  ? UpdateEmbeddedObjectBorderRequest.fromJson(
-                      json_['updateEmbeddedObjectBorder']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          updateEmbeddedObjectPosition:
-              json_.containsKey('updateEmbeddedObjectPosition')
-                  ? UpdateEmbeddedObjectPositionRequest.fromJson(
-                      json_['updateEmbeddedObjectPosition']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          updateFilterView: json_.containsKey('updateFilterView')
-              ? UpdateFilterViewRequest.fromJson(json_['updateFilterView']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateNamedRange: json_.containsKey('updateNamedRange')
-              ? UpdateNamedRangeRequest.fromJson(json_['updateNamedRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateProtectedRange: json_.containsKey('updateProtectedRange')
-              ? UpdateProtectedRangeRequest.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateDimensionProperties:
+            json_.containsKey('updateDimensionProperties')
+                ? UpdateDimensionPropertiesRequest.fromJson(
+                  json_['updateDimensionProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateEmbeddedObjectBorder:
+            json_.containsKey('updateEmbeddedObjectBorder')
+                ? UpdateEmbeddedObjectBorderRequest.fromJson(
+                  json_['updateEmbeddedObjectBorder']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateEmbeddedObjectPosition:
+            json_.containsKey('updateEmbeddedObjectPosition')
+                ? UpdateEmbeddedObjectPositionRequest.fromJson(
+                  json_['updateEmbeddedObjectPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateFilterView:
+            json_.containsKey('updateFilterView')
+                ? UpdateFilterViewRequest.fromJson(
+                  json_['updateFilterView']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateNamedRange:
+            json_.containsKey('updateNamedRange')
+                ? UpdateNamedRangeRequest.fromJson(
+                  json_['updateNamedRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateProtectedRange:
+            json_.containsKey('updateProtectedRange')
+                ? UpdateProtectedRangeRequest.fromJson(
                   json_['updateProtectedRange']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateSheetProperties: json_.containsKey('updateSheetProperties')
-              ? UpdateSheetPropertiesRequest.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateSheetProperties:
+            json_.containsKey('updateSheetProperties')
+                ? UpdateSheetPropertiesRequest.fromJson(
                   json_['updateSheetProperties']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateSlicerSpec: json_.containsKey('updateSlicerSpec')
-              ? UpdateSlicerSpecRequest.fromJson(json_['updateSlicerSpec']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateSpreadsheetProperties:
-              json_.containsKey('updateSpreadsheetProperties')
-                  ? UpdateSpreadsheetPropertiesRequest.fromJson(
-                      json_['updateSpreadsheetProperties']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          updateTable: json_.containsKey('updateTable')
-              ? UpdateTableRequest.fromJson(
-                  json_['updateTable'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateSlicerSpec:
+            json_.containsKey('updateSlicerSpec')
+                ? UpdateSlicerSpecRequest.fromJson(
+                  json_['updateSlicerSpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateSpreadsheetProperties:
+            json_.containsKey('updateSpreadsheetProperties')
+                ? UpdateSpreadsheetPropertiesRequest.fromJson(
+                  json_['updateSpreadsheetProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTable:
+            json_.containsKey('updateTable')
+                ? UpdateTableRequest.fromJson(
+                  json_['updateTable'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addBanding != null) 'addBanding': addBanding!,
-        if (addChart != null) 'addChart': addChart!,
-        if (addConditionalFormatRule != null)
-          'addConditionalFormatRule': addConditionalFormatRule!,
-        if (addDataSource != null) 'addDataSource': addDataSource!,
-        if (addDimensionGroup != null) 'addDimensionGroup': addDimensionGroup!,
-        if (addFilterView != null) 'addFilterView': addFilterView!,
-        if (addNamedRange != null) 'addNamedRange': addNamedRange!,
-        if (addProtectedRange != null) 'addProtectedRange': addProtectedRange!,
-        if (addSheet != null) 'addSheet': addSheet!,
-        if (addSlicer != null) 'addSlicer': addSlicer!,
-        if (addTable != null) 'addTable': addTable!,
-        if (appendCells != null) 'appendCells': appendCells!,
-        if (appendDimension != null) 'appendDimension': appendDimension!,
-        if (autoFill != null) 'autoFill': autoFill!,
-        if (autoResizeDimensions != null)
-          'autoResizeDimensions': autoResizeDimensions!,
-        if (cancelDataSourceRefresh != null)
-          'cancelDataSourceRefresh': cancelDataSourceRefresh!,
-        if (clearBasicFilter != null) 'clearBasicFilter': clearBasicFilter!,
-        if (copyPaste != null) 'copyPaste': copyPaste!,
-        if (createDeveloperMetadata != null)
-          'createDeveloperMetadata': createDeveloperMetadata!,
-        if (cutPaste != null) 'cutPaste': cutPaste!,
-        if (deleteBanding != null) 'deleteBanding': deleteBanding!,
-        if (deleteConditionalFormatRule != null)
-          'deleteConditionalFormatRule': deleteConditionalFormatRule!,
-        if (deleteDataSource != null) 'deleteDataSource': deleteDataSource!,
-        if (deleteDeveloperMetadata != null)
-          'deleteDeveloperMetadata': deleteDeveloperMetadata!,
-        if (deleteDimension != null) 'deleteDimension': deleteDimension!,
-        if (deleteDimensionGroup != null)
-          'deleteDimensionGroup': deleteDimensionGroup!,
-        if (deleteDuplicates != null) 'deleteDuplicates': deleteDuplicates!,
-        if (deleteEmbeddedObject != null)
-          'deleteEmbeddedObject': deleteEmbeddedObject!,
-        if (deleteFilterView != null) 'deleteFilterView': deleteFilterView!,
-        if (deleteNamedRange != null) 'deleteNamedRange': deleteNamedRange!,
-        if (deleteProtectedRange != null)
-          'deleteProtectedRange': deleteProtectedRange!,
-        if (deleteRange != null) 'deleteRange': deleteRange!,
-        if (deleteSheet != null) 'deleteSheet': deleteSheet!,
-        if (deleteTable != null) 'deleteTable': deleteTable!,
-        if (duplicateFilterView != null)
-          'duplicateFilterView': duplicateFilterView!,
-        if (duplicateSheet != null) 'duplicateSheet': duplicateSheet!,
-        if (findReplace != null) 'findReplace': findReplace!,
-        if (insertDimension != null) 'insertDimension': insertDimension!,
-        if (insertRange != null) 'insertRange': insertRange!,
-        if (mergeCells != null) 'mergeCells': mergeCells!,
-        if (moveDimension != null) 'moveDimension': moveDimension!,
-        if (pasteData != null) 'pasteData': pasteData!,
-        if (randomizeRange != null) 'randomizeRange': randomizeRange!,
-        if (refreshDataSource != null) 'refreshDataSource': refreshDataSource!,
-        if (repeatCell != null) 'repeatCell': repeatCell!,
-        if (setBasicFilter != null) 'setBasicFilter': setBasicFilter!,
-        if (setDataValidation != null) 'setDataValidation': setDataValidation!,
-        if (sortRange != null) 'sortRange': sortRange!,
-        if (textToColumns != null) 'textToColumns': textToColumns!,
-        if (trimWhitespace != null) 'trimWhitespace': trimWhitespace!,
-        if (unmergeCells != null) 'unmergeCells': unmergeCells!,
-        if (updateBanding != null) 'updateBanding': updateBanding!,
-        if (updateBorders != null) 'updateBorders': updateBorders!,
-        if (updateCells != null) 'updateCells': updateCells!,
-        if (updateChartSpec != null) 'updateChartSpec': updateChartSpec!,
-        if (updateConditionalFormatRule != null)
-          'updateConditionalFormatRule': updateConditionalFormatRule!,
-        if (updateDataSource != null) 'updateDataSource': updateDataSource!,
-        if (updateDeveloperMetadata != null)
-          'updateDeveloperMetadata': updateDeveloperMetadata!,
-        if (updateDimensionGroup != null)
-          'updateDimensionGroup': updateDimensionGroup!,
-        if (updateDimensionProperties != null)
-          'updateDimensionProperties': updateDimensionProperties!,
-        if (updateEmbeddedObjectBorder != null)
-          'updateEmbeddedObjectBorder': updateEmbeddedObjectBorder!,
-        if (updateEmbeddedObjectPosition != null)
-          'updateEmbeddedObjectPosition': updateEmbeddedObjectPosition!,
-        if (updateFilterView != null) 'updateFilterView': updateFilterView!,
-        if (updateNamedRange != null) 'updateNamedRange': updateNamedRange!,
-        if (updateProtectedRange != null)
-          'updateProtectedRange': updateProtectedRange!,
-        if (updateSheetProperties != null)
-          'updateSheetProperties': updateSheetProperties!,
-        if (updateSlicerSpec != null) 'updateSlicerSpec': updateSlicerSpec!,
-        if (updateSpreadsheetProperties != null)
-          'updateSpreadsheetProperties': updateSpreadsheetProperties!,
-        if (updateTable != null) 'updateTable': updateTable!,
-      };
+    if (addBanding != null) 'addBanding': addBanding!,
+    if (addChart != null) 'addChart': addChart!,
+    if (addConditionalFormatRule != null)
+      'addConditionalFormatRule': addConditionalFormatRule!,
+    if (addDataSource != null) 'addDataSource': addDataSource!,
+    if (addDimensionGroup != null) 'addDimensionGroup': addDimensionGroup!,
+    if (addFilterView != null) 'addFilterView': addFilterView!,
+    if (addNamedRange != null) 'addNamedRange': addNamedRange!,
+    if (addProtectedRange != null) 'addProtectedRange': addProtectedRange!,
+    if (addSheet != null) 'addSheet': addSheet!,
+    if (addSlicer != null) 'addSlicer': addSlicer!,
+    if (addTable != null) 'addTable': addTable!,
+    if (appendCells != null) 'appendCells': appendCells!,
+    if (appendDimension != null) 'appendDimension': appendDimension!,
+    if (autoFill != null) 'autoFill': autoFill!,
+    if (autoResizeDimensions != null)
+      'autoResizeDimensions': autoResizeDimensions!,
+    if (cancelDataSourceRefresh != null)
+      'cancelDataSourceRefresh': cancelDataSourceRefresh!,
+    if (clearBasicFilter != null) 'clearBasicFilter': clearBasicFilter!,
+    if (copyPaste != null) 'copyPaste': copyPaste!,
+    if (createDeveloperMetadata != null)
+      'createDeveloperMetadata': createDeveloperMetadata!,
+    if (cutPaste != null) 'cutPaste': cutPaste!,
+    if (deleteBanding != null) 'deleteBanding': deleteBanding!,
+    if (deleteConditionalFormatRule != null)
+      'deleteConditionalFormatRule': deleteConditionalFormatRule!,
+    if (deleteDataSource != null) 'deleteDataSource': deleteDataSource!,
+    if (deleteDeveloperMetadata != null)
+      'deleteDeveloperMetadata': deleteDeveloperMetadata!,
+    if (deleteDimension != null) 'deleteDimension': deleteDimension!,
+    if (deleteDimensionGroup != null)
+      'deleteDimensionGroup': deleteDimensionGroup!,
+    if (deleteDuplicates != null) 'deleteDuplicates': deleteDuplicates!,
+    if (deleteEmbeddedObject != null)
+      'deleteEmbeddedObject': deleteEmbeddedObject!,
+    if (deleteFilterView != null) 'deleteFilterView': deleteFilterView!,
+    if (deleteNamedRange != null) 'deleteNamedRange': deleteNamedRange!,
+    if (deleteProtectedRange != null)
+      'deleteProtectedRange': deleteProtectedRange!,
+    if (deleteRange != null) 'deleteRange': deleteRange!,
+    if (deleteSheet != null) 'deleteSheet': deleteSheet!,
+    if (deleteTable != null) 'deleteTable': deleteTable!,
+    if (duplicateFilterView != null)
+      'duplicateFilterView': duplicateFilterView!,
+    if (duplicateSheet != null) 'duplicateSheet': duplicateSheet!,
+    if (findReplace != null) 'findReplace': findReplace!,
+    if (insertDimension != null) 'insertDimension': insertDimension!,
+    if (insertRange != null) 'insertRange': insertRange!,
+    if (mergeCells != null) 'mergeCells': mergeCells!,
+    if (moveDimension != null) 'moveDimension': moveDimension!,
+    if (pasteData != null) 'pasteData': pasteData!,
+    if (randomizeRange != null) 'randomizeRange': randomizeRange!,
+    if (refreshDataSource != null) 'refreshDataSource': refreshDataSource!,
+    if (repeatCell != null) 'repeatCell': repeatCell!,
+    if (setBasicFilter != null) 'setBasicFilter': setBasicFilter!,
+    if (setDataValidation != null) 'setDataValidation': setDataValidation!,
+    if (sortRange != null) 'sortRange': sortRange!,
+    if (textToColumns != null) 'textToColumns': textToColumns!,
+    if (trimWhitespace != null) 'trimWhitespace': trimWhitespace!,
+    if (unmergeCells != null) 'unmergeCells': unmergeCells!,
+    if (updateBanding != null) 'updateBanding': updateBanding!,
+    if (updateBorders != null) 'updateBorders': updateBorders!,
+    if (updateCells != null) 'updateCells': updateCells!,
+    if (updateChartSpec != null) 'updateChartSpec': updateChartSpec!,
+    if (updateConditionalFormatRule != null)
+      'updateConditionalFormatRule': updateConditionalFormatRule!,
+    if (updateDataSource != null) 'updateDataSource': updateDataSource!,
+    if (updateDeveloperMetadata != null)
+      'updateDeveloperMetadata': updateDeveloperMetadata!,
+    if (updateDimensionGroup != null)
+      'updateDimensionGroup': updateDimensionGroup!,
+    if (updateDimensionProperties != null)
+      'updateDimensionProperties': updateDimensionProperties!,
+    if (updateEmbeddedObjectBorder != null)
+      'updateEmbeddedObjectBorder': updateEmbeddedObjectBorder!,
+    if (updateEmbeddedObjectPosition != null)
+      'updateEmbeddedObjectPosition': updateEmbeddedObjectPosition!,
+    if (updateFilterView != null) 'updateFilterView': updateFilterView!,
+    if (updateNamedRange != null) 'updateNamedRange': updateNamedRange!,
+    if (updateProtectedRange != null)
+      'updateProtectedRange': updateProtectedRange!,
+    if (updateSheetProperties != null)
+      'updateSheetProperties': updateSheetProperties!,
+    if (updateSlicerSpec != null) 'updateSlicerSpec': updateSlicerSpec!,
+    if (updateSpreadsheetProperties != null)
+      'updateSpreadsheetProperties': updateSpreadsheetProperties!,
+    if (updateTable != null) 'updateTable': updateTable!,
+  };
 }
 
 /// A single response from an update.
@@ -11297,157 +11851,211 @@ class Response {
   });
 
   Response.fromJson(core.Map json_)
-      : this(
-          addBanding: json_.containsKey('addBanding')
-              ? AddBandingResponse.fromJson(
-                  json_['addBanding'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addChart: json_.containsKey('addChart')
-              ? AddChartResponse.fromJson(
-                  json_['addChart'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addDataSource: json_.containsKey('addDataSource')
-              ? AddDataSourceResponse.fromJson(
-                  json_['addDataSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addDimensionGroup: json_.containsKey('addDimensionGroup')
-              ? AddDimensionGroupResponse.fromJson(json_['addDimensionGroup']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          addFilterView: json_.containsKey('addFilterView')
-              ? AddFilterViewResponse.fromJson(
-                  json_['addFilterView'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addNamedRange: json_.containsKey('addNamedRange')
-              ? AddNamedRangeResponse.fromJson(
-                  json_['addNamedRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addProtectedRange: json_.containsKey('addProtectedRange')
-              ? AddProtectedRangeResponse.fromJson(json_['addProtectedRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          addSheet: json_.containsKey('addSheet')
-              ? AddSheetResponse.fromJson(
-                  json_['addSheet'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addSlicer: json_.containsKey('addSlicer')
-              ? AddSlicerResponse.fromJson(
-                  json_['addSlicer'] as core.Map<core.String, core.dynamic>)
-              : null,
-          addTable: json_.containsKey('addTable')
-              ? AddTableResponse.fromJson(
-                  json_['addTable'] as core.Map<core.String, core.dynamic>)
-              : null,
-          cancelDataSourceRefresh: json_.containsKey('cancelDataSourceRefresh')
-              ? CancelDataSourceRefreshResponse.fromJson(
+    : this(
+        addBanding:
+            json_.containsKey('addBanding')
+                ? AddBandingResponse.fromJson(
+                  json_['addBanding'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addChart:
+            json_.containsKey('addChart')
+                ? AddChartResponse.fromJson(
+                  json_['addChart'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addDataSource:
+            json_.containsKey('addDataSource')
+                ? AddDataSourceResponse.fromJson(
+                  json_['addDataSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addDimensionGroup:
+            json_.containsKey('addDimensionGroup')
+                ? AddDimensionGroupResponse.fromJson(
+                  json_['addDimensionGroup']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addFilterView:
+            json_.containsKey('addFilterView')
+                ? AddFilterViewResponse.fromJson(
+                  json_['addFilterView'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addNamedRange:
+            json_.containsKey('addNamedRange')
+                ? AddNamedRangeResponse.fromJson(
+                  json_['addNamedRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addProtectedRange:
+            json_.containsKey('addProtectedRange')
+                ? AddProtectedRangeResponse.fromJson(
+                  json_['addProtectedRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addSheet:
+            json_.containsKey('addSheet')
+                ? AddSheetResponse.fromJson(
+                  json_['addSheet'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addSlicer:
+            json_.containsKey('addSlicer')
+                ? AddSlicerResponse.fromJson(
+                  json_['addSlicer'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addTable:
+            json_.containsKey('addTable')
+                ? AddTableResponse.fromJson(
+                  json_['addTable'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cancelDataSourceRefresh:
+            json_.containsKey('cancelDataSourceRefresh')
+                ? CancelDataSourceRefreshResponse.fromJson(
                   json_['cancelDataSourceRefresh']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          createDeveloperMetadata: json_.containsKey('createDeveloperMetadata')
-              ? CreateDeveloperMetadataResponse.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createDeveloperMetadata:
+            json_.containsKey('createDeveloperMetadata')
+                ? CreateDeveloperMetadataResponse.fromJson(
                   json_['createDeveloperMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteConditionalFormatRule:
-              json_.containsKey('deleteConditionalFormatRule')
-                  ? DeleteConditionalFormatRuleResponse.fromJson(
-                      json_['deleteConditionalFormatRule']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          deleteDeveloperMetadata: json_.containsKey('deleteDeveloperMetadata')
-              ? DeleteDeveloperMetadataResponse.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteConditionalFormatRule:
+            json_.containsKey('deleteConditionalFormatRule')
+                ? DeleteConditionalFormatRuleResponse.fromJson(
+                  json_['deleteConditionalFormatRule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteDeveloperMetadata:
+            json_.containsKey('deleteDeveloperMetadata')
+                ? DeleteDeveloperMetadataResponse.fromJson(
                   json_['deleteDeveloperMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteDimensionGroup: json_.containsKey('deleteDimensionGroup')
-              ? DeleteDimensionGroupResponse.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteDimensionGroup:
+            json_.containsKey('deleteDimensionGroup')
+                ? DeleteDimensionGroupResponse.fromJson(
                   json_['deleteDimensionGroup']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteDuplicates: json_.containsKey('deleteDuplicates')
-              ? DeleteDuplicatesResponse.fromJson(json_['deleteDuplicates']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          duplicateFilterView: json_.containsKey('duplicateFilterView')
-              ? DuplicateFilterViewResponse.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteDuplicates:
+            json_.containsKey('deleteDuplicates')
+                ? DeleteDuplicatesResponse.fromJson(
+                  json_['deleteDuplicates']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        duplicateFilterView:
+            json_.containsKey('duplicateFilterView')
+                ? DuplicateFilterViewResponse.fromJson(
                   json_['duplicateFilterView']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          duplicateSheet: json_.containsKey('duplicateSheet')
-              ? DuplicateSheetResponse.fromJson(json_['duplicateSheet']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          findReplace: json_.containsKey('findReplace')
-              ? FindReplaceResponse.fromJson(
-                  json_['findReplace'] as core.Map<core.String, core.dynamic>)
-              : null,
-          refreshDataSource: json_.containsKey('refreshDataSource')
-              ? RefreshDataSourceResponse.fromJson(json_['refreshDataSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          trimWhitespace: json_.containsKey('trimWhitespace')
-              ? TrimWhitespaceResponse.fromJson(json_['trimWhitespace']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateConditionalFormatRule:
-              json_.containsKey('updateConditionalFormatRule')
-                  ? UpdateConditionalFormatRuleResponse.fromJson(
-                      json_['updateConditionalFormatRule']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          updateDataSource: json_.containsKey('updateDataSource')
-              ? UpdateDataSourceResponse.fromJson(json_['updateDataSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateDeveloperMetadata: json_.containsKey('updateDeveloperMetadata')
-              ? UpdateDeveloperMetadataResponse.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        duplicateSheet:
+            json_.containsKey('duplicateSheet')
+                ? DuplicateSheetResponse.fromJson(
+                  json_['duplicateSheet']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        findReplace:
+            json_.containsKey('findReplace')
+                ? FindReplaceResponse.fromJson(
+                  json_['findReplace'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        refreshDataSource:
+            json_.containsKey('refreshDataSource')
+                ? RefreshDataSourceResponse.fromJson(
+                  json_['refreshDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        trimWhitespace:
+            json_.containsKey('trimWhitespace')
+                ? TrimWhitespaceResponse.fromJson(
+                  json_['trimWhitespace']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateConditionalFormatRule:
+            json_.containsKey('updateConditionalFormatRule')
+                ? UpdateConditionalFormatRuleResponse.fromJson(
+                  json_['updateConditionalFormatRule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateDataSource:
+            json_.containsKey('updateDataSource')
+                ? UpdateDataSourceResponse.fromJson(
+                  json_['updateDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateDeveloperMetadata:
+            json_.containsKey('updateDeveloperMetadata')
+                ? UpdateDeveloperMetadataResponse.fromJson(
                   json_['updateDeveloperMetadata']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateEmbeddedObjectPosition:
-              json_.containsKey('updateEmbeddedObjectPosition')
-                  ? UpdateEmbeddedObjectPositionResponse.fromJson(
-                      json_['updateEmbeddedObjectPosition']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateEmbeddedObjectPosition:
+            json_.containsKey('updateEmbeddedObjectPosition')
+                ? UpdateEmbeddedObjectPositionResponse.fromJson(
+                  json_['updateEmbeddedObjectPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addBanding != null) 'addBanding': addBanding!,
-        if (addChart != null) 'addChart': addChart!,
-        if (addDataSource != null) 'addDataSource': addDataSource!,
-        if (addDimensionGroup != null) 'addDimensionGroup': addDimensionGroup!,
-        if (addFilterView != null) 'addFilterView': addFilterView!,
-        if (addNamedRange != null) 'addNamedRange': addNamedRange!,
-        if (addProtectedRange != null) 'addProtectedRange': addProtectedRange!,
-        if (addSheet != null) 'addSheet': addSheet!,
-        if (addSlicer != null) 'addSlicer': addSlicer!,
-        if (addTable != null) 'addTable': addTable!,
-        if (cancelDataSourceRefresh != null)
-          'cancelDataSourceRefresh': cancelDataSourceRefresh!,
-        if (createDeveloperMetadata != null)
-          'createDeveloperMetadata': createDeveloperMetadata!,
-        if (deleteConditionalFormatRule != null)
-          'deleteConditionalFormatRule': deleteConditionalFormatRule!,
-        if (deleteDeveloperMetadata != null)
-          'deleteDeveloperMetadata': deleteDeveloperMetadata!,
-        if (deleteDimensionGroup != null)
-          'deleteDimensionGroup': deleteDimensionGroup!,
-        if (deleteDuplicates != null) 'deleteDuplicates': deleteDuplicates!,
-        if (duplicateFilterView != null)
-          'duplicateFilterView': duplicateFilterView!,
-        if (duplicateSheet != null) 'duplicateSheet': duplicateSheet!,
-        if (findReplace != null) 'findReplace': findReplace!,
-        if (refreshDataSource != null) 'refreshDataSource': refreshDataSource!,
-        if (trimWhitespace != null) 'trimWhitespace': trimWhitespace!,
-        if (updateConditionalFormatRule != null)
-          'updateConditionalFormatRule': updateConditionalFormatRule!,
-        if (updateDataSource != null) 'updateDataSource': updateDataSource!,
-        if (updateDeveloperMetadata != null)
-          'updateDeveloperMetadata': updateDeveloperMetadata!,
-        if (updateEmbeddedObjectPosition != null)
-          'updateEmbeddedObjectPosition': updateEmbeddedObjectPosition!,
-      };
+    if (addBanding != null) 'addBanding': addBanding!,
+    if (addChart != null) 'addChart': addChart!,
+    if (addDataSource != null) 'addDataSource': addDataSource!,
+    if (addDimensionGroup != null) 'addDimensionGroup': addDimensionGroup!,
+    if (addFilterView != null) 'addFilterView': addFilterView!,
+    if (addNamedRange != null) 'addNamedRange': addNamedRange!,
+    if (addProtectedRange != null) 'addProtectedRange': addProtectedRange!,
+    if (addSheet != null) 'addSheet': addSheet!,
+    if (addSlicer != null) 'addSlicer': addSlicer!,
+    if (addTable != null) 'addTable': addTable!,
+    if (cancelDataSourceRefresh != null)
+      'cancelDataSourceRefresh': cancelDataSourceRefresh!,
+    if (createDeveloperMetadata != null)
+      'createDeveloperMetadata': createDeveloperMetadata!,
+    if (deleteConditionalFormatRule != null)
+      'deleteConditionalFormatRule': deleteConditionalFormatRule!,
+    if (deleteDeveloperMetadata != null)
+      'deleteDeveloperMetadata': deleteDeveloperMetadata!,
+    if (deleteDimensionGroup != null)
+      'deleteDimensionGroup': deleteDimensionGroup!,
+    if (deleteDuplicates != null) 'deleteDuplicates': deleteDuplicates!,
+    if (duplicateFilterView != null)
+      'duplicateFilterView': duplicateFilterView!,
+    if (duplicateSheet != null) 'duplicateSheet': duplicateSheet!,
+    if (findReplace != null) 'findReplace': findReplace!,
+    if (refreshDataSource != null) 'refreshDataSource': refreshDataSource!,
+    if (trimWhitespace != null) 'trimWhitespace': trimWhitespace!,
+    if (updateConditionalFormatRule != null)
+      'updateConditionalFormatRule': updateConditionalFormatRule!,
+    if (updateDataSource != null) 'updateDataSource': updateDataSource!,
+    if (updateDeveloperMetadata != null)
+      'updateDeveloperMetadata': updateDeveloperMetadata!,
+    if (updateEmbeddedObjectPosition != null)
+      'updateEmbeddedObjectPosition': updateEmbeddedObjectPosition!,
+  };
 }
 
 /// Properties of a link to a Google resource (such as a file in Drive, a
@@ -11471,21 +12079,18 @@ class RichLinkProperties {
   /// Required.
   core.String? uri;
 
-  RichLinkProperties({
-    this.mimeType,
-    this.uri,
-  });
+  RichLinkProperties({this.mimeType, this.uri});
 
   RichLinkProperties.fromJson(core.Map json_)
-      : this(
-          mimeType: json_['mimeType'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        mimeType: json_['mimeType'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (mimeType != null) 'mimeType': mimeType!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Data about each cell in a row.
@@ -11493,21 +12098,23 @@ class RowData {
   /// The values in the row, one per column.
   core.List<CellData>? values;
 
-  RowData({
-    this.values,
-  });
+  RowData({this.values});
 
   RowData.fromJson(core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => CellData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map(
+                  (value) => CellData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 /// A scorecard chart.
@@ -11584,46 +12191,58 @@ class ScorecardChartSpec {
   });
 
   ScorecardChartSpec.fromJson(core.Map json_)
-      : this(
-          aggregateType: json_['aggregateType'] as core.String?,
-          baselineValueData: json_.containsKey('baselineValueData')
-              ? ChartData.fromJson(json_['baselineValueData']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          baselineValueFormat: json_.containsKey('baselineValueFormat')
-              ? BaselineValueFormat.fromJson(json_['baselineValueFormat']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          customFormatOptions: json_.containsKey('customFormatOptions')
-              ? ChartCustomNumberFormatOptions.fromJson(
+    : this(
+        aggregateType: json_['aggregateType'] as core.String?,
+        baselineValueData:
+            json_.containsKey('baselineValueData')
+                ? ChartData.fromJson(
+                  json_['baselineValueData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        baselineValueFormat:
+            json_.containsKey('baselineValueFormat')
+                ? BaselineValueFormat.fromJson(
+                  json_['baselineValueFormat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        customFormatOptions:
+            json_.containsKey('customFormatOptions')
+                ? ChartCustomNumberFormatOptions.fromJson(
                   json_['customFormatOptions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          keyValueData: json_.containsKey('keyValueData')
-              ? ChartData.fromJson(
-                  json_['keyValueData'] as core.Map<core.String, core.dynamic>)
-              : null,
-          keyValueFormat: json_.containsKey('keyValueFormat')
-              ? KeyValueFormat.fromJson(json_['keyValueFormat']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          numberFormatSource: json_['numberFormatSource'] as core.String?,
-          scaleFactor: (json_['scaleFactor'] as core.num?)?.toDouble(),
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        keyValueData:
+            json_.containsKey('keyValueData')
+                ? ChartData.fromJson(
+                  json_['keyValueData'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        keyValueFormat:
+            json_.containsKey('keyValueFormat')
+                ? KeyValueFormat.fromJson(
+                  json_['keyValueFormat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        numberFormatSource: json_['numberFormatSource'] as core.String?,
+        scaleFactor: (json_['scaleFactor'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aggregateType != null) 'aggregateType': aggregateType!,
-        if (baselineValueData != null) 'baselineValueData': baselineValueData!,
-        if (baselineValueFormat != null)
-          'baselineValueFormat': baselineValueFormat!,
-        if (customFormatOptions != null)
-          'customFormatOptions': customFormatOptions!,
-        if (keyValueData != null) 'keyValueData': keyValueData!,
-        if (keyValueFormat != null) 'keyValueFormat': keyValueFormat!,
-        if (numberFormatSource != null)
-          'numberFormatSource': numberFormatSource!,
-        if (scaleFactor != null) 'scaleFactor': scaleFactor!,
-      };
+    if (aggregateType != null) 'aggregateType': aggregateType!,
+    if (baselineValueData != null) 'baselineValueData': baselineValueData!,
+    if (baselineValueFormat != null)
+      'baselineValueFormat': baselineValueFormat!,
+    if (customFormatOptions != null)
+      'customFormatOptions': customFormatOptions!,
+    if (keyValueData != null) 'keyValueData': keyValueData!,
+    if (keyValueFormat != null) 'keyValueFormat': keyValueFormat!,
+    if (numberFormatSource != null) 'numberFormatSource': numberFormatSource!,
+    if (scaleFactor != null) 'scaleFactor': scaleFactor!,
+  };
 }
 
 /// A request to retrieve all developer metadata matching the set of specified
@@ -11636,21 +12255,23 @@ class SearchDeveloperMetadataRequest {
   /// the response.
   core.List<DataFilter>? dataFilters;
 
-  SearchDeveloperMetadataRequest({
-    this.dataFilters,
-  });
+  SearchDeveloperMetadataRequest({this.dataFilters});
 
   SearchDeveloperMetadataRequest.fromJson(core.Map json_)
-      : this(
-          dataFilters: (json_['dataFilters'] as core.List?)
-              ?.map((value) => DataFilter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        dataFilters:
+            (json_['dataFilters'] as core.List?)
+                ?.map(
+                  (value) => DataFilter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataFilters != null) 'dataFilters': dataFilters!,
-      };
+    if (dataFilters != null) 'dataFilters': dataFilters!,
+  };
 }
 
 /// A reply to a developer metadata search request.
@@ -11658,23 +12279,24 @@ class SearchDeveloperMetadataResponse {
   /// The metadata matching the criteria of the search request.
   core.List<MatchedDeveloperMetadata>? matchedDeveloperMetadata;
 
-  SearchDeveloperMetadataResponse({
-    this.matchedDeveloperMetadata,
-  });
+  SearchDeveloperMetadataResponse({this.matchedDeveloperMetadata});
 
   SearchDeveloperMetadataResponse.fromJson(core.Map json_)
-      : this(
-          matchedDeveloperMetadata:
-              (json_['matchedDeveloperMetadata'] as core.List?)
-                  ?.map((value) => MatchedDeveloperMetadata.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+    : this(
+        matchedDeveloperMetadata:
+            (json_['matchedDeveloperMetadata'] as core.List?)
+                ?.map(
+                  (value) => MatchedDeveloperMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (matchedDeveloperMetadata != null)
-          'matchedDeveloperMetadata': matchedDeveloperMetadata!,
-      };
+    if (matchedDeveloperMetadata != null)
+      'matchedDeveloperMetadata': matchedDeveloperMetadata!,
+  };
 }
 
 /// Sets the basic filter associated with a sheet.
@@ -11682,21 +12304,21 @@ class SetBasicFilterRequest {
   /// The filter to set.
   BasicFilter? filter;
 
-  SetBasicFilterRequest({
-    this.filter,
-  });
+  SetBasicFilterRequest({this.filter});
 
   SetBasicFilterRequest.fromJson(core.Map json_)
-      : this(
-          filter: json_.containsKey('filter')
-              ? BasicFilter.fromJson(
-                  json_['filter'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        filter:
+            json_.containsKey('filter')
+                ? BasicFilter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-      };
+    if (filter != null) 'filter': filter!,
+  };
 }
 
 /// Sets a data validation rule to every cell in the range.
@@ -11716,31 +12338,31 @@ class SetDataValidationRequest {
   /// clear the data validation in the range.
   DataValidationRule? rule;
 
-  SetDataValidationRequest({
-    this.filteredRowsIncluded,
-    this.range,
-    this.rule,
-  });
+  SetDataValidationRequest({this.filteredRowsIncluded, this.range, this.rule});
 
   SetDataValidationRequest.fromJson(core.Map json_)
-      : this(
-          filteredRowsIncluded: json_['filteredRowsIncluded'] as core.bool?,
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rule: json_.containsKey('rule')
-              ? DataValidationRule.fromJson(
-                  json_['rule'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        filteredRowsIncluded: json_['filteredRowsIncluded'] as core.bool?,
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rule:
+            json_.containsKey('rule')
+                ? DataValidationRule.fromJson(
+                  json_['rule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filteredRowsIncluded != null)
-          'filteredRowsIncluded': filteredRowsIncluded!,
-        if (range != null) 'range': range!,
-        if (rule != null) 'rule': rule!,
-      };
+    if (filteredRowsIncluded != null)
+      'filteredRowsIncluded': filteredRowsIncluded!,
+    if (range != null) 'range': range!,
+    if (rule != null) 'rule': rule!,
+  };
 }
 
 /// A sheet in a spreadsheet.
@@ -11816,82 +12438,133 @@ class Sheet {
   });
 
   Sheet.fromJson(core.Map json_)
-      : this(
-          bandedRanges: (json_['bandedRanges'] as core.List?)
-              ?.map((value) => BandedRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          basicFilter: json_.containsKey('basicFilter')
-              ? BasicFilter.fromJson(
-                  json_['basicFilter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          charts: (json_['charts'] as core.List?)
-              ?.map((value) => EmbeddedChart.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          columnGroups: (json_['columnGroups'] as core.List?)
-              ?.map((value) => DimensionGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          conditionalFormats: (json_['conditionalFormats'] as core.List?)
-              ?.map((value) => ConditionalFormatRule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          data: (json_['data'] as core.List?)
-              ?.map((value) => GridData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          developerMetadata: (json_['developerMetadata'] as core.List?)
-              ?.map((value) => DeveloperMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          filterViews: (json_['filterViews'] as core.List?)
-              ?.map((value) => FilterView.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          merges: (json_['merges'] as core.List?)
-              ?.map((value) => GridRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          properties: json_.containsKey('properties')
-              ? SheetProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-          protectedRanges: (json_['protectedRanges'] as core.List?)
-              ?.map((value) => ProtectedRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          rowGroups: (json_['rowGroups'] as core.List?)
-              ?.map((value) => DimensionGroup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          slicers: (json_['slicers'] as core.List?)
-              ?.map((value) =>
-                  Slicer.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          tables: (json_['tables'] as core.List?)
-              ?.map((value) =>
-                  Table.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        bandedRanges:
+            (json_['bandedRanges'] as core.List?)
+                ?.map(
+                  (value) => BandedRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        basicFilter:
+            json_.containsKey('basicFilter')
+                ? BasicFilter.fromJson(
+                  json_['basicFilter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        charts:
+            (json_['charts'] as core.List?)
+                ?.map(
+                  (value) => EmbeddedChart.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        columnGroups:
+            (json_['columnGroups'] as core.List?)
+                ?.map(
+                  (value) => DimensionGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        conditionalFormats:
+            (json_['conditionalFormats'] as core.List?)
+                ?.map(
+                  (value) => ConditionalFormatRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        data:
+            (json_['data'] as core.List?)
+                ?.map(
+                  (value) => GridData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        developerMetadata:
+            (json_['developerMetadata'] as core.List?)
+                ?.map(
+                  (value) => DeveloperMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        filterViews:
+            (json_['filterViews'] as core.List?)
+                ?.map(
+                  (value) => FilterView.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        merges:
+            (json_['merges'] as core.List?)
+                ?.map(
+                  (value) => GridRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        properties:
+            json_.containsKey('properties')
+                ? SheetProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        protectedRanges:
+            (json_['protectedRanges'] as core.List?)
+                ?.map(
+                  (value) => ProtectedRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        rowGroups:
+            (json_['rowGroups'] as core.List?)
+                ?.map(
+                  (value) => DimensionGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        slicers:
+            (json_['slicers'] as core.List?)
+                ?.map(
+                  (value) => Slicer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        tables:
+            (json_['tables'] as core.List?)
+                ?.map(
+                  (value) => Table.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bandedRanges != null) 'bandedRanges': bandedRanges!,
-        if (basicFilter != null) 'basicFilter': basicFilter!,
-        if (charts != null) 'charts': charts!,
-        if (columnGroups != null) 'columnGroups': columnGroups!,
-        if (conditionalFormats != null)
-          'conditionalFormats': conditionalFormats!,
-        if (data != null) 'data': data!,
-        if (developerMetadata != null) 'developerMetadata': developerMetadata!,
-        if (filterViews != null) 'filterViews': filterViews!,
-        if (merges != null) 'merges': merges!,
-        if (properties != null) 'properties': properties!,
-        if (protectedRanges != null) 'protectedRanges': protectedRanges!,
-        if (rowGroups != null) 'rowGroups': rowGroups!,
-        if (slicers != null) 'slicers': slicers!,
-        if (tables != null) 'tables': tables!,
-      };
+    if (bandedRanges != null) 'bandedRanges': bandedRanges!,
+    if (basicFilter != null) 'basicFilter': basicFilter!,
+    if (charts != null) 'charts': charts!,
+    if (columnGroups != null) 'columnGroups': columnGroups!,
+    if (conditionalFormats != null) 'conditionalFormats': conditionalFormats!,
+    if (data != null) 'data': data!,
+    if (developerMetadata != null) 'developerMetadata': developerMetadata!,
+    if (filterViews != null) 'filterViews': filterViews!,
+    if (merges != null) 'merges': merges!,
+    if (properties != null) 'properties': properties!,
+    if (protectedRanges != null) 'protectedRanges': protectedRanges!,
+    if (rowGroups != null) 'rowGroups': rowGroups!,
+    if (slicers != null) 'slicers': slicers!,
+    if (tables != null) 'tables': tables!,
+  };
 }
 
 /// Properties of a sheet.
@@ -11975,46 +12648,54 @@ class SheetProperties {
   });
 
   SheetProperties.fromJson(core.Map json_)
-      : this(
-          dataSourceSheetProperties:
-              json_.containsKey('dataSourceSheetProperties')
-                  ? DataSourceSheetProperties.fromJson(
-                      json_['dataSourceSheetProperties']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          gridProperties: json_.containsKey('gridProperties')
-              ? GridProperties.fromJson(json_['gridProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          hidden: json_['hidden'] as core.bool?,
-          index: json_['index'] as core.int?,
-          rightToLeft: json_['rightToLeft'] as core.bool?,
-          sheetId: json_['sheetId'] as core.int?,
-          sheetType: json_['sheetType'] as core.String?,
-          tabColor: json_.containsKey('tabColor')
-              ? Color.fromJson(
-                  json_['tabColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tabColorStyle: json_.containsKey('tabColorStyle')
-              ? ColorStyle.fromJson(
-                  json_['tabColorStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        dataSourceSheetProperties:
+            json_.containsKey('dataSourceSheetProperties')
+                ? DataSourceSheetProperties.fromJson(
+                  json_['dataSourceSheetProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gridProperties:
+            json_.containsKey('gridProperties')
+                ? GridProperties.fromJson(
+                  json_['gridProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hidden: json_['hidden'] as core.bool?,
+        index: json_['index'] as core.int?,
+        rightToLeft: json_['rightToLeft'] as core.bool?,
+        sheetId: json_['sheetId'] as core.int?,
+        sheetType: json_['sheetType'] as core.String?,
+        tabColor:
+            json_.containsKey('tabColor')
+                ? Color.fromJson(
+                  json_['tabColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tabColorStyle:
+            json_.containsKey('tabColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['tabColorStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSourceSheetProperties != null)
-          'dataSourceSheetProperties': dataSourceSheetProperties!,
-        if (gridProperties != null) 'gridProperties': gridProperties!,
-        if (hidden != null) 'hidden': hidden!,
-        if (index != null) 'index': index!,
-        if (rightToLeft != null) 'rightToLeft': rightToLeft!,
-        if (sheetId != null) 'sheetId': sheetId!,
-        if (sheetType != null) 'sheetType': sheetType!,
-        if (tabColor != null) 'tabColor': tabColor!,
-        if (tabColorStyle != null) 'tabColorStyle': tabColorStyle!,
-        if (title != null) 'title': title!,
-      };
+    if (dataSourceSheetProperties != null)
+      'dataSourceSheetProperties': dataSourceSheetProperties!,
+    if (gridProperties != null) 'gridProperties': gridProperties!,
+    if (hidden != null) 'hidden': hidden!,
+    if (index != null) 'index': index!,
+    if (rightToLeft != null) 'rightToLeft': rightToLeft!,
+    if (sheetId != null) 'sheetId': sheetId!,
+    if (sheetType != null) 'sheetType': sheetType!,
+    if (tabColor != null) 'tabColor': tabColor!,
+    if (tabColorStyle != null) 'tabColorStyle': tabColorStyle!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// A slicer in a sheet.
@@ -12032,30 +12713,30 @@ class Slicer {
   /// The specification of the slicer.
   SlicerSpec? spec;
 
-  Slicer({
-    this.position,
-    this.slicerId,
-    this.spec,
-  });
+  Slicer({this.position, this.slicerId, this.spec});
 
   Slicer.fromJson(core.Map json_)
-      : this(
-          position: json_.containsKey('position')
-              ? EmbeddedObjectPosition.fromJson(
-                  json_['position'] as core.Map<core.String, core.dynamic>)
-              : null,
-          slicerId: json_['slicerId'] as core.int?,
-          spec: json_.containsKey('spec')
-              ? SlicerSpec.fromJson(
-                  json_['spec'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        position:
+            json_.containsKey('position')
+                ? EmbeddedObjectPosition.fromJson(
+                  json_['position'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        slicerId: json_['slicerId'] as core.int?,
+        spec:
+            json_.containsKey('spec')
+                ? SlicerSpec.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (position != null) 'position': position!,
-        if (slicerId != null) 'slicerId': slicerId!,
-        if (spec != null) 'spec': spec!,
-      };
+    if (position != null) 'position': position!,
+    if (slicerId != null) 'slicerId': slicerId!,
+    if (spec != null) 'spec': spec!,
+  };
 }
 
 /// The specifications of a slicer.
@@ -12120,47 +12801,59 @@ class SlicerSpec {
   });
 
   SlicerSpec.fromJson(core.Map json_)
-      : this(
-          applyToPivotTables: json_['applyToPivotTables'] as core.bool?,
-          backgroundColor: json_.containsKey('backgroundColor')
-              ? Color.fromJson(json_['backgroundColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          backgroundColorStyle: json_.containsKey('backgroundColorStyle')
-              ? ColorStyle.fromJson(json_['backgroundColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          columnIndex: json_['columnIndex'] as core.int?,
-          dataRange: json_.containsKey('dataRange')
-              ? GridRange.fromJson(
-                  json_['dataRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          filterCriteria: json_.containsKey('filterCriteria')
-              ? FilterCriteria.fromJson(json_['filterCriteria']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          horizontalAlignment: json_['horizontalAlignment'] as core.String?,
-          textFormat: json_.containsKey('textFormat')
-              ? TextFormat.fromJson(
-                  json_['textFormat'] as core.Map<core.String, core.dynamic>)
-              : null,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        applyToPivotTables: json_['applyToPivotTables'] as core.bool?,
+        backgroundColor:
+            json_.containsKey('backgroundColor')
+                ? Color.fromJson(
+                  json_['backgroundColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        backgroundColorStyle:
+            json_.containsKey('backgroundColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['backgroundColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        columnIndex: json_['columnIndex'] as core.int?,
+        dataRange:
+            json_.containsKey('dataRange')
+                ? GridRange.fromJson(
+                  json_['dataRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filterCriteria:
+            json_.containsKey('filterCriteria')
+                ? FilterCriteria.fromJson(
+                  json_['filterCriteria']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        horizontalAlignment: json_['horizontalAlignment'] as core.String?,
+        textFormat:
+            json_.containsKey('textFormat')
+                ? TextFormat.fromJson(
+                  json_['textFormat'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (applyToPivotTables != null)
-          'applyToPivotTables': applyToPivotTables!,
-        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
-        if (backgroundColorStyle != null)
-          'backgroundColorStyle': backgroundColorStyle!,
-        if (columnIndex != null) 'columnIndex': columnIndex!,
-        if (dataRange != null) 'dataRange': dataRange!,
-        if (filterCriteria != null) 'filterCriteria': filterCriteria!,
-        if (horizontalAlignment != null)
-          'horizontalAlignment': horizontalAlignment!,
-        if (textFormat != null) 'textFormat': textFormat!,
-        if (title != null) 'title': title!,
-      };
+    if (applyToPivotTables != null) 'applyToPivotTables': applyToPivotTables!,
+    if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+    if (backgroundColorStyle != null)
+      'backgroundColorStyle': backgroundColorStyle!,
+    if (columnIndex != null) 'columnIndex': columnIndex!,
+    if (dataRange != null) 'dataRange': dataRange!,
+    if (filterCriteria != null) 'filterCriteria': filterCriteria!,
+    if (horizontalAlignment != null)
+      'horizontalAlignment': horizontalAlignment!,
+    if (textFormat != null) 'textFormat': textFormat!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Sorts data in rows based on a sort order per column.
@@ -12174,27 +12867,30 @@ class SortRangeRequest {
   /// specifications.
   core.List<SortSpec>? sortSpecs;
 
-  SortRangeRequest({
-    this.range,
-    this.sortSpecs,
-  });
+  SortRangeRequest({this.range, this.sortSpecs});
 
   SortRangeRequest.fromJson(core.Map json_)
-      : this(
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sortSpecs: (json_['sortSpecs'] as core.List?)
-              ?.map((value) => SortSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sortSpecs:
+            (json_['sortSpecs'] as core.List?)
+                ?.map(
+                  (value) => SortSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (range != null) 'range': range!,
-        if (sortSpecs != null) 'sortSpecs': sortSpecs!,
-      };
+    if (range != null) 'range': range!,
+    if (sortSpecs != null) 'sortSpecs': sortSpecs!,
+  };
 }
 
 /// A sort order associated with a specific column or row.
@@ -12257,45 +12953,58 @@ class SortSpec {
   });
 
   SortSpec.fromJson(core.Map json_)
-      : this(
-          backgroundColor: json_.containsKey('backgroundColor')
-              ? Color.fromJson(json_['backgroundColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          backgroundColorStyle: json_.containsKey('backgroundColorStyle')
-              ? ColorStyle.fromJson(json_['backgroundColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataSourceColumnReference:
-              json_.containsKey('dataSourceColumnReference')
-                  ? DataSourceColumnReference.fromJson(
-                      json_['dataSourceColumnReference']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          dimensionIndex: json_['dimensionIndex'] as core.int?,
-          foregroundColor: json_.containsKey('foregroundColor')
-              ? Color.fromJson(json_['foregroundColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          foregroundColorStyle: json_.containsKey('foregroundColorStyle')
-              ? ColorStyle.fromJson(json_['foregroundColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sortOrder: json_['sortOrder'] as core.String?,
-        );
+    : this(
+        backgroundColor:
+            json_.containsKey('backgroundColor')
+                ? Color.fromJson(
+                  json_['backgroundColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        backgroundColorStyle:
+            json_.containsKey('backgroundColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['backgroundColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataSourceColumnReference:
+            json_.containsKey('dataSourceColumnReference')
+                ? DataSourceColumnReference.fromJson(
+                  json_['dataSourceColumnReference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dimensionIndex: json_['dimensionIndex'] as core.int?,
+        foregroundColor:
+            json_.containsKey('foregroundColor')
+                ? Color.fromJson(
+                  json_['foregroundColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        foregroundColorStyle:
+            json_.containsKey('foregroundColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['foregroundColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sortOrder: json_['sortOrder'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
-        if (backgroundColorStyle != null)
-          'backgroundColorStyle': backgroundColorStyle!,
-        if (dataSourceColumnReference != null)
-          'dataSourceColumnReference': dataSourceColumnReference!,
-        if (dimensionIndex != null) 'dimensionIndex': dimensionIndex!,
-        if (foregroundColor != null) 'foregroundColor': foregroundColor!,
-        if (foregroundColorStyle != null)
-          'foregroundColorStyle': foregroundColorStyle!,
-        if (sortOrder != null) 'sortOrder': sortOrder!,
-      };
+    if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+    if (backgroundColorStyle != null)
+      'backgroundColorStyle': backgroundColorStyle!,
+    if (dataSourceColumnReference != null)
+      'dataSourceColumnReference': dataSourceColumnReference!,
+    if (dimensionIndex != null) 'dimensionIndex': dimensionIndex!,
+    if (foregroundColor != null) 'foregroundColor': foregroundColor!,
+    if (foregroundColorStyle != null)
+      'foregroundColorStyle': foregroundColorStyle!,
+    if (sortOrder != null) 'sortOrder': sortOrder!,
+  };
 }
 
 /// A combination of a source range and how to extend that source.
@@ -12317,27 +13026,25 @@ class SourceAndDestination {
   /// The location of the data to use as the source of the autofill.
   GridRange? source;
 
-  SourceAndDestination({
-    this.dimension,
-    this.fillLength,
-    this.source,
-  });
+  SourceAndDestination({this.dimension, this.fillLength, this.source});
 
   SourceAndDestination.fromJson(core.Map json_)
-      : this(
-          dimension: json_['dimension'] as core.String?,
-          fillLength: json_['fillLength'] as core.int?,
-          source: json_.containsKey('source')
-              ? GridRange.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dimension: json_['dimension'] as core.String?,
+        fillLength: json_['fillLength'] as core.int?,
+        source:
+            json_.containsKey('source')
+                ? GridRange.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimension != null) 'dimension': dimension!,
-        if (fillLength != null) 'fillLength': fillLength!,
-        if (source != null) 'source': source!,
-      };
+    if (dimension != null) 'dimension': dimension!,
+    if (fillLength != null) 'fillLength': fillLength!,
+    if (source != null) 'source': source!,
+  };
 }
 
 /// Resource that represents a spreadsheet.
@@ -12384,46 +13091,68 @@ class Spreadsheet {
   });
 
   Spreadsheet.fromJson(core.Map json_)
-      : this(
-          dataSourceSchedules: (json_['dataSourceSchedules'] as core.List?)
-              ?.map((value) => DataSourceRefreshSchedule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          dataSources: (json_['dataSources'] as core.List?)
-              ?.map((value) => DataSource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          developerMetadata: (json_['developerMetadata'] as core.List?)
-              ?.map((value) => DeveloperMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          namedRanges: (json_['namedRanges'] as core.List?)
-              ?.map((value) => NamedRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          properties: json_.containsKey('properties')
-              ? SpreadsheetProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sheets: (json_['sheets'] as core.List?)
-              ?.map((value) =>
-                  Sheet.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          spreadsheetId: json_['spreadsheetId'] as core.String?,
-          spreadsheetUrl: json_['spreadsheetUrl'] as core.String?,
-        );
+    : this(
+        dataSourceSchedules:
+            (json_['dataSourceSchedules'] as core.List?)
+                ?.map(
+                  (value) => DataSourceRefreshSchedule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dataSources:
+            (json_['dataSources'] as core.List?)
+                ?.map(
+                  (value) => DataSource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        developerMetadata:
+            (json_['developerMetadata'] as core.List?)
+                ?.map(
+                  (value) => DeveloperMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        namedRanges:
+            (json_['namedRanges'] as core.List?)
+                ?.map(
+                  (value) => NamedRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        properties:
+            json_.containsKey('properties')
+                ? SpreadsheetProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sheets:
+            (json_['sheets'] as core.List?)
+                ?.map(
+                  (value) => Sheet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        spreadsheetId: json_['spreadsheetId'] as core.String?,
+        spreadsheetUrl: json_['spreadsheetUrl'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSourceSchedules != null)
-          'dataSourceSchedules': dataSourceSchedules!,
-        if (dataSources != null) 'dataSources': dataSources!,
-        if (developerMetadata != null) 'developerMetadata': developerMetadata!,
-        if (namedRanges != null) 'namedRanges': namedRanges!,
-        if (properties != null) 'properties': properties!,
-        if (sheets != null) 'sheets': sheets!,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-        if (spreadsheetUrl != null) 'spreadsheetUrl': spreadsheetUrl!,
-      };
+    if (dataSourceSchedules != null)
+      'dataSourceSchedules': dataSourceSchedules!,
+    if (dataSources != null) 'dataSources': dataSources!,
+    if (developerMetadata != null) 'developerMetadata': developerMetadata!,
+    if (namedRanges != null) 'namedRanges': namedRanges!,
+    if (properties != null) 'properties': properties!,
+    if (sheets != null) 'sheets': sheets!,
+    if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+    if (spreadsheetUrl != null) 'spreadsheetUrl': spreadsheetUrl!,
+  };
 }
 
 /// Properties of a spreadsheet.
@@ -12490,42 +13219,48 @@ class SpreadsheetProperties {
   });
 
   SpreadsheetProperties.fromJson(core.Map json_)
-      : this(
-          autoRecalc: json_['autoRecalc'] as core.String?,
-          defaultFormat: json_.containsKey('defaultFormat')
-              ? CellFormat.fromJson(
-                  json_['defaultFormat'] as core.Map<core.String, core.dynamic>)
-              : null,
-          importFunctionsExternalUrlAccessAllowed:
-              json_['importFunctionsExternalUrlAccessAllowed'] as core.bool?,
-          iterativeCalculationSettings:
-              json_.containsKey('iterativeCalculationSettings')
-                  ? IterativeCalculationSettings.fromJson(
-                      json_['iterativeCalculationSettings']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          locale: json_['locale'] as core.String?,
-          spreadsheetTheme: json_.containsKey('spreadsheetTheme')
-              ? SpreadsheetTheme.fromJson(json_['spreadsheetTheme']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          timeZone: json_['timeZone'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        autoRecalc: json_['autoRecalc'] as core.String?,
+        defaultFormat:
+            json_.containsKey('defaultFormat')
+                ? CellFormat.fromJson(
+                  json_['defaultFormat'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        importFunctionsExternalUrlAccessAllowed:
+            json_['importFunctionsExternalUrlAccessAllowed'] as core.bool?,
+        iterativeCalculationSettings:
+            json_.containsKey('iterativeCalculationSettings')
+                ? IterativeCalculationSettings.fromJson(
+                  json_['iterativeCalculationSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        locale: json_['locale'] as core.String?,
+        spreadsheetTheme:
+            json_.containsKey('spreadsheetTheme')
+                ? SpreadsheetTheme.fromJson(
+                  json_['spreadsheetTheme']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        timeZone: json_['timeZone'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoRecalc != null) 'autoRecalc': autoRecalc!,
-        if (defaultFormat != null) 'defaultFormat': defaultFormat!,
-        if (importFunctionsExternalUrlAccessAllowed != null)
-          'importFunctionsExternalUrlAccessAllowed':
-              importFunctionsExternalUrlAccessAllowed!,
-        if (iterativeCalculationSettings != null)
-          'iterativeCalculationSettings': iterativeCalculationSettings!,
-        if (locale != null) 'locale': locale!,
-        if (spreadsheetTheme != null) 'spreadsheetTheme': spreadsheetTheme!,
-        if (timeZone != null) 'timeZone': timeZone!,
-        if (title != null) 'title': title!,
-      };
+    if (autoRecalc != null) 'autoRecalc': autoRecalc!,
+    if (defaultFormat != null) 'defaultFormat': defaultFormat!,
+    if (importFunctionsExternalUrlAccessAllowed != null)
+      'importFunctionsExternalUrlAccessAllowed':
+          importFunctionsExternalUrlAccessAllowed!,
+    if (iterativeCalculationSettings != null)
+      'iterativeCalculationSettings': iterativeCalculationSettings!,
+    if (locale != null) 'locale': locale!,
+    if (spreadsheetTheme != null) 'spreadsheetTheme': spreadsheetTheme!,
+    if (timeZone != null) 'timeZone': timeZone!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Represents spreadsheet theme
@@ -12538,24 +13273,25 @@ class SpreadsheetTheme {
   /// To update you must provide all theme color pairs.
   core.List<ThemeColorPair>? themeColors;
 
-  SpreadsheetTheme({
-    this.primaryFontFamily,
-    this.themeColors,
-  });
+  SpreadsheetTheme({this.primaryFontFamily, this.themeColors});
 
   SpreadsheetTheme.fromJson(core.Map json_)
-      : this(
-          primaryFontFamily: json_['primaryFontFamily'] as core.String?,
-          themeColors: (json_['themeColors'] as core.List?)
-              ?.map((value) => ThemeColorPair.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        primaryFontFamily: json_['primaryFontFamily'] as core.String?,
+        themeColors:
+            (json_['themeColors'] as core.List?)
+                ?.map(
+                  (value) => ThemeColorPair.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (primaryFontFamily != null) 'primaryFontFamily': primaryFontFamily!,
-        if (themeColors != null) 'themeColors': themeColors!,
-      };
+    if (primaryFontFamily != null) 'primaryFontFamily': primaryFontFamily!,
+    if (themeColors != null) 'themeColors': themeColors!,
+  };
 }
 
 /// A table.
@@ -12586,30 +13322,39 @@ class Table {
   });
 
   Table.fromJson(core.Map json_)
-      : this(
-          columnProperties: (json_['columnProperties'] as core.List?)
-              ?.map((value) => TableColumnProperties.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rowsProperties: json_.containsKey('rowsProperties')
-              ? TableRowsProperties.fromJson(json_['rowsProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          tableId: json_['tableId'] as core.String?,
-        );
+    : this(
+        columnProperties:
+            (json_['columnProperties'] as core.List?)
+                ?.map(
+                  (value) => TableColumnProperties.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rowsProperties:
+            json_.containsKey('rowsProperties')
+                ? TableRowsProperties.fromJson(
+                  json_['rowsProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tableId: json_['tableId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnProperties != null) 'columnProperties': columnProperties!,
-        if (name != null) 'name': name!,
-        if (range != null) 'range': range!,
-        if (rowsProperties != null) 'rowsProperties': rowsProperties!,
-        if (tableId != null) 'tableId': tableId!,
-      };
+    if (columnProperties != null) 'columnProperties': columnProperties!,
+    if (name != null) 'name': name!,
+    if (range != null) 'range': range!,
+    if (rowsProperties != null) 'rowsProperties': rowsProperties!,
+    if (tableId != null) 'tableId': tableId!,
+  };
 }
 
 /// A data validation rule for a column in a table.
@@ -12619,21 +13364,21 @@ class TableColumnDataValidationRule {
   /// Valid only if the \[BooleanCondition.type\] is ONE_OF_LIST.
   BooleanCondition? condition;
 
-  TableColumnDataValidationRule({
-    this.condition,
-  });
+  TableColumnDataValidationRule({this.condition});
 
   TableColumnDataValidationRule.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? BooleanCondition.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? BooleanCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-      };
+    if (condition != null) 'condition': condition!,
+  };
 }
 
 /// The table column.
@@ -12679,24 +13424,25 @@ class TableColumnProperties {
   });
 
   TableColumnProperties.fromJson(core.Map json_)
-      : this(
-          columnIndex: json_['columnIndex'] as core.int?,
-          columnName: json_['columnName'] as core.String?,
-          columnType: json_['columnType'] as core.String?,
-          dataValidationRule: json_.containsKey('dataValidationRule')
-              ? TableColumnDataValidationRule.fromJson(
+    : this(
+        columnIndex: json_['columnIndex'] as core.int?,
+        columnName: json_['columnName'] as core.String?,
+        columnType: json_['columnType'] as core.String?,
+        dataValidationRule:
+            json_.containsKey('dataValidationRule')
+                ? TableColumnDataValidationRule.fromJson(
                   json_['dataValidationRule']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnIndex != null) 'columnIndex': columnIndex!,
-        if (columnName != null) 'columnName': columnName!,
-        if (columnType != null) 'columnType': columnType!,
-        if (dataValidationRule != null)
-          'dataValidationRule': dataValidationRule!,
-      };
+    if (columnIndex != null) 'columnIndex': columnIndex!,
+    if (columnName != null) 'columnName': columnName!,
+    if (columnType != null) 'columnType': columnType!,
+    if (dataValidationRule != null) 'dataValidationRule': dataValidationRule!,
+  };
 }
 
 /// The table row properties.
@@ -12737,33 +13483,45 @@ class TableRowsProperties {
   });
 
   TableRowsProperties.fromJson(core.Map json_)
-      : this(
-          firstBandColorStyle: json_.containsKey('firstBandColorStyle')
-              ? ColorStyle.fromJson(json_['firstBandColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          footerColorStyle: json_.containsKey('footerColorStyle')
-              ? ColorStyle.fromJson(json_['footerColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          headerColorStyle: json_.containsKey('headerColorStyle')
-              ? ColorStyle.fromJson(json_['headerColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          secondBandColorStyle: json_.containsKey('secondBandColorStyle')
-              ? ColorStyle.fromJson(json_['secondBandColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        firstBandColorStyle:
+            json_.containsKey('firstBandColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['firstBandColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        footerColorStyle:
+            json_.containsKey('footerColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['footerColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        headerColorStyle:
+            json_.containsKey('headerColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['headerColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        secondBandColorStyle:
+            json_.containsKey('secondBandColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['secondBandColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (firstBandColorStyle != null)
-          'firstBandColorStyle': firstBandColorStyle!,
-        if (footerColorStyle != null) 'footerColorStyle': footerColorStyle!,
-        if (headerColorStyle != null) 'headerColorStyle': headerColorStyle!,
-        if (secondBandColorStyle != null)
-          'secondBandColorStyle': secondBandColorStyle!,
-      };
+    if (firstBandColorStyle != null)
+      'firstBandColorStyle': firstBandColorStyle!,
+    if (footerColorStyle != null) 'footerColorStyle': footerColorStyle!,
+    if (headerColorStyle != null) 'headerColorStyle': headerColorStyle!,
+    if (secondBandColorStyle != null)
+      'secondBandColorStyle': secondBandColorStyle!,
+  };
 }
 
 /// The format of a run of text in a cell.
@@ -12823,39 +13581,47 @@ class TextFormat {
   });
 
   TextFormat.fromJson(core.Map json_)
-      : this(
-          bold: json_['bold'] as core.bool?,
-          fontFamily: json_['fontFamily'] as core.String?,
-          fontSize: json_['fontSize'] as core.int?,
-          foregroundColor: json_.containsKey('foregroundColor')
-              ? Color.fromJson(json_['foregroundColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          foregroundColorStyle: json_.containsKey('foregroundColorStyle')
-              ? ColorStyle.fromJson(json_['foregroundColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          italic: json_['italic'] as core.bool?,
-          link: json_.containsKey('link')
-              ? Link.fromJson(
-                  json_['link'] as core.Map<core.String, core.dynamic>)
-              : null,
-          strikethrough: json_['strikethrough'] as core.bool?,
-          underline: json_['underline'] as core.bool?,
-        );
+    : this(
+        bold: json_['bold'] as core.bool?,
+        fontFamily: json_['fontFamily'] as core.String?,
+        fontSize: json_['fontSize'] as core.int?,
+        foregroundColor:
+            json_.containsKey('foregroundColor')
+                ? Color.fromJson(
+                  json_['foregroundColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        foregroundColorStyle:
+            json_.containsKey('foregroundColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['foregroundColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        italic: json_['italic'] as core.bool?,
+        link:
+            json_.containsKey('link')
+                ? Link.fromJson(
+                  json_['link'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        strikethrough: json_['strikethrough'] as core.bool?,
+        underline: json_['underline'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bold != null) 'bold': bold!,
-        if (fontFamily != null) 'fontFamily': fontFamily!,
-        if (fontSize != null) 'fontSize': fontSize!,
-        if (foregroundColor != null) 'foregroundColor': foregroundColor!,
-        if (foregroundColorStyle != null)
-          'foregroundColorStyle': foregroundColorStyle!,
-        if (italic != null) 'italic': italic!,
-        if (link != null) 'link': link!,
-        if (strikethrough != null) 'strikethrough': strikethrough!,
-        if (underline != null) 'underline': underline!,
-      };
+    if (bold != null) 'bold': bold!,
+    if (fontFamily != null) 'fontFamily': fontFamily!,
+    if (fontSize != null) 'fontSize': fontSize!,
+    if (foregroundColor != null) 'foregroundColor': foregroundColor!,
+    if (foregroundColorStyle != null)
+      'foregroundColorStyle': foregroundColorStyle!,
+    if (italic != null) 'italic': italic!,
+    if (link != null) 'link': link!,
+    if (strikethrough != null) 'strikethrough': strikethrough!,
+    if (underline != null) 'underline': underline!,
+  };
 }
 
 /// A run of a text format.
@@ -12872,24 +13638,23 @@ class TextFormatRun {
   /// units.
   core.int? startIndex;
 
-  TextFormatRun({
-    this.format,
-    this.startIndex,
-  });
+  TextFormatRun({this.format, this.startIndex});
 
   TextFormatRun.fromJson(core.Map json_)
-      : this(
-          format: json_.containsKey('format')
-              ? TextFormat.fromJson(
-                  json_['format'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startIndex: json_['startIndex'] as core.int?,
-        );
+    : this(
+        format:
+            json_.containsKey('format')
+                ? TextFormat.fromJson(
+                  json_['format'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startIndex: json_['startIndex'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (format != null) 'format': format!,
-        if (startIndex != null) 'startIndex': startIndex!,
-      };
+    if (format != null) 'format': format!,
+    if (startIndex != null) 'startIndex': startIndex!,
+  };
 }
 
 /// Position settings for text.
@@ -12903,19 +13668,15 @@ class TextPosition {
   /// - "RIGHT" : The text is explicitly aligned to the right of the cell.
   core.String? horizontalAlignment;
 
-  TextPosition({
-    this.horizontalAlignment,
-  });
+  TextPosition({this.horizontalAlignment});
 
   TextPosition.fromJson(core.Map json_)
-      : this(
-          horizontalAlignment: json_['horizontalAlignment'] as core.String?,
-        );
+    : this(horizontalAlignment: json_['horizontalAlignment'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (horizontalAlignment != null)
-          'horizontalAlignment': horizontalAlignment!,
-      };
+    if (horizontalAlignment != null)
+      'horizontalAlignment': horizontalAlignment!,
+  };
 }
 
 /// The rotation applied to text in a cell.
@@ -12934,21 +13695,18 @@ class TextRotation {
   /// For example: | V | | e | | r | | t | | i | | c | | a | | l |
   core.bool? vertical;
 
-  TextRotation({
-    this.angle,
-    this.vertical,
-  });
+  TextRotation({this.angle, this.vertical});
 
   TextRotation.fromJson(core.Map json_)
-      : this(
-          angle: json_['angle'] as core.int?,
-          vertical: json_['vertical'] as core.bool?,
-        );
+    : this(
+        angle: json_['angle'] as core.int?,
+        vertical: json_['vertical'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (angle != null) 'angle': angle!,
-        if (vertical != null) 'vertical': vertical!,
-      };
+    if (angle != null) 'angle': angle!,
+    if (vertical != null) 'vertical': vertical!,
+  };
 }
 
 /// Splits a column of text into multiple columns, based on a delimiter in each
@@ -12976,27 +13734,25 @@ class TextToColumnsRequest {
   /// This must span exactly one column.
   GridRange? source;
 
-  TextToColumnsRequest({
-    this.delimiter,
-    this.delimiterType,
-    this.source,
-  });
+  TextToColumnsRequest({this.delimiter, this.delimiterType, this.source});
 
   TextToColumnsRequest.fromJson(core.Map json_)
-      : this(
-          delimiter: json_['delimiter'] as core.String?,
-          delimiterType: json_['delimiterType'] as core.String?,
-          source: json_.containsKey('source')
-              ? GridRange.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        delimiter: json_['delimiter'] as core.String?,
+        delimiterType: json_['delimiterType'] as core.String?,
+        source:
+            json_.containsKey('source')
+                ? GridRange.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (delimiter != null) 'delimiter': delimiter!,
-        if (delimiterType != null) 'delimiterType': delimiterType!,
-        if (source != null) 'source': source!,
-      };
+    if (delimiter != null) 'delimiter': delimiter!,
+    if (delimiterType != null) 'delimiterType': delimiterType!,
+    if (source != null) 'source': source!,
+  };
 }
 
 /// A pair mapping a spreadsheet theme color type to the concrete color it
@@ -13019,24 +13775,23 @@ class ThemeColorPair {
   /// - "LINK" : Represents the color to use for hyperlinks
   core.String? colorType;
 
-  ThemeColorPair({
-    this.color,
-    this.colorType,
-  });
+  ThemeColorPair({this.color, this.colorType});
 
   ThemeColorPair.fromJson(core.Map json_)
-      : this(
-          color: json_.containsKey('color')
-              ? ColorStyle.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-          colorType: json_['colorType'] as core.String?,
-        );
+    : this(
+        color:
+            json_.containsKey('color')
+                ? ColorStyle.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        colorType: json_['colorType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!,
-        if (colorType != null) 'colorType': colorType!,
-      };
+    if (color != null) 'color': color!,
+    if (colorType != null) 'colorType': colorType!,
+  };
 }
 
 /// Represents a time of day.
@@ -13127,54 +13882,71 @@ class TreemapChartColorScale {
   });
 
   TreemapChartColorScale.fromJson(core.Map json_)
-      : this(
-          maxValueColor: json_.containsKey('maxValueColor')
-              ? Color.fromJson(
-                  json_['maxValueColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          maxValueColorStyle: json_.containsKey('maxValueColorStyle')
-              ? ColorStyle.fromJson(json_['maxValueColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          midValueColor: json_.containsKey('midValueColor')
-              ? Color.fromJson(
-                  json_['midValueColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          midValueColorStyle: json_.containsKey('midValueColorStyle')
-              ? ColorStyle.fromJson(json_['midValueColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          minValueColor: json_.containsKey('minValueColor')
-              ? Color.fromJson(
-                  json_['minValueColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          minValueColorStyle: json_.containsKey('minValueColorStyle')
-              ? ColorStyle.fromJson(json_['minValueColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          noDataColor: json_.containsKey('noDataColor')
-              ? Color.fromJson(
-                  json_['noDataColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          noDataColorStyle: json_.containsKey('noDataColorStyle')
-              ? ColorStyle.fromJson(json_['noDataColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        maxValueColor:
+            json_.containsKey('maxValueColor')
+                ? Color.fromJson(
+                  json_['maxValueColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maxValueColorStyle:
+            json_.containsKey('maxValueColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['maxValueColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        midValueColor:
+            json_.containsKey('midValueColor')
+                ? Color.fromJson(
+                  json_['midValueColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        midValueColorStyle:
+            json_.containsKey('midValueColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['midValueColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        minValueColor:
+            json_.containsKey('minValueColor')
+                ? Color.fromJson(
+                  json_['minValueColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        minValueColorStyle:
+            json_.containsKey('minValueColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['minValueColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        noDataColor:
+            json_.containsKey('noDataColor')
+                ? Color.fromJson(
+                  json_['noDataColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        noDataColorStyle:
+            json_.containsKey('noDataColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['noDataColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxValueColor != null) 'maxValueColor': maxValueColor!,
-        if (maxValueColorStyle != null)
-          'maxValueColorStyle': maxValueColorStyle!,
-        if (midValueColor != null) 'midValueColor': midValueColor!,
-        if (midValueColorStyle != null)
-          'midValueColorStyle': midValueColorStyle!,
-        if (minValueColor != null) 'minValueColor': minValueColor!,
-        if (minValueColorStyle != null)
-          'minValueColorStyle': minValueColorStyle!,
-        if (noDataColor != null) 'noDataColor': noDataColor!,
-        if (noDataColorStyle != null) 'noDataColorStyle': noDataColorStyle!,
-      };
+    if (maxValueColor != null) 'maxValueColor': maxValueColor!,
+    if (maxValueColorStyle != null) 'maxValueColorStyle': maxValueColorStyle!,
+    if (midValueColor != null) 'midValueColor': midValueColor!,
+    if (midValueColorStyle != null) 'midValueColorStyle': midValueColorStyle!,
+    if (minValueColor != null) 'minValueColor': minValueColor!,
+    if (minValueColorStyle != null) 'minValueColorStyle': minValueColorStyle!,
+    if (noDataColor != null) 'noDataColor': noDataColor!,
+    if (noDataColorStyle != null) 'noDataColorStyle': noDataColorStyle!,
+  };
 }
 
 /// A Treemap chart.
@@ -13282,61 +14054,78 @@ class TreemapChartSpec {
   });
 
   TreemapChartSpec.fromJson(core.Map json_)
-      : this(
-          colorData: json_.containsKey('colorData')
-              ? ChartData.fromJson(
-                  json_['colorData'] as core.Map<core.String, core.dynamic>)
-              : null,
-          colorScale: json_.containsKey('colorScale')
-              ? TreemapChartColorScale.fromJson(
-                  json_['colorScale'] as core.Map<core.String, core.dynamic>)
-              : null,
-          headerColor: json_.containsKey('headerColor')
-              ? Color.fromJson(
-                  json_['headerColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          headerColorStyle: json_.containsKey('headerColorStyle')
-              ? ColorStyle.fromJson(json_['headerColorStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          hideTooltips: json_['hideTooltips'] as core.bool?,
-          hintedLevels: json_['hintedLevels'] as core.int?,
-          labels: json_.containsKey('labels')
-              ? ChartData.fromJson(
-                  json_['labels'] as core.Map<core.String, core.dynamic>)
-              : null,
-          levels: json_['levels'] as core.int?,
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
-          parentLabels: json_.containsKey('parentLabels')
-              ? ChartData.fromJson(
-                  json_['parentLabels'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sizeData: json_.containsKey('sizeData')
-              ? ChartData.fromJson(
-                  json_['sizeData'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textFormat: json_.containsKey('textFormat')
-              ? TextFormat.fromJson(
-                  json_['textFormat'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        colorData:
+            json_.containsKey('colorData')
+                ? ChartData.fromJson(
+                  json_['colorData'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        colorScale:
+            json_.containsKey('colorScale')
+                ? TreemapChartColorScale.fromJson(
+                  json_['colorScale'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        headerColor:
+            json_.containsKey('headerColor')
+                ? Color.fromJson(
+                  json_['headerColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        headerColorStyle:
+            json_.containsKey('headerColorStyle')
+                ? ColorStyle.fromJson(
+                  json_['headerColorStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hideTooltips: json_['hideTooltips'] as core.bool?,
+        hintedLevels: json_['hintedLevels'] as core.int?,
+        labels:
+            json_.containsKey('labels')
+                ? ChartData.fromJson(
+                  json_['labels'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        levels: json_['levels'] as core.int?,
+        maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
+        minValue: (json_['minValue'] as core.num?)?.toDouble(),
+        parentLabels:
+            json_.containsKey('parentLabels')
+                ? ChartData.fromJson(
+                  json_['parentLabels'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sizeData:
+            json_.containsKey('sizeData')
+                ? ChartData.fromJson(
+                  json_['sizeData'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textFormat:
+            json_.containsKey('textFormat')
+                ? TextFormat.fromJson(
+                  json_['textFormat'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (colorData != null) 'colorData': colorData!,
-        if (colorScale != null) 'colorScale': colorScale!,
-        if (headerColor != null) 'headerColor': headerColor!,
-        if (headerColorStyle != null) 'headerColorStyle': headerColorStyle!,
-        if (hideTooltips != null) 'hideTooltips': hideTooltips!,
-        if (hintedLevels != null) 'hintedLevels': hintedLevels!,
-        if (labels != null) 'labels': labels!,
-        if (levels != null) 'levels': levels!,
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
-        if (parentLabels != null) 'parentLabels': parentLabels!,
-        if (sizeData != null) 'sizeData': sizeData!,
-        if (textFormat != null) 'textFormat': textFormat!,
-      };
+    if (colorData != null) 'colorData': colorData!,
+    if (colorScale != null) 'colorScale': colorScale!,
+    if (headerColor != null) 'headerColor': headerColor!,
+    if (headerColorStyle != null) 'headerColorStyle': headerColorStyle!,
+    if (hideTooltips != null) 'hideTooltips': hideTooltips!,
+    if (hintedLevels != null) 'hintedLevels': hintedLevels!,
+    if (labels != null) 'labels': labels!,
+    if (levels != null) 'levels': levels!,
+    if (maxValue != null) 'maxValue': maxValue!,
+    if (minValue != null) 'minValue': minValue!,
+    if (parentLabels != null) 'parentLabels': parentLabels!,
+    if (sizeData != null) 'sizeData': sizeData!,
+    if (textFormat != null) 'textFormat': textFormat!,
+  };
 }
 
 /// Trims the whitespace (such as spaces, tabs, or new lines) in every cell in
@@ -13351,21 +14140,21 @@ class TrimWhitespaceRequest {
   /// The range whose cells to trim.
   GridRange? range;
 
-  TrimWhitespaceRequest({
-    this.range,
-  });
+  TrimWhitespaceRequest({this.range});
 
   TrimWhitespaceRequest.fromJson(core.Map json_)
-      : this(
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (range != null) 'range': range!,
-      };
+    if (range != null) 'range': range!,
+  };
 }
 
 /// The result of trimming whitespace in cells.
@@ -13373,18 +14162,14 @@ class TrimWhitespaceResponse {
   /// The number of cells that were trimmed of whitespace.
   core.int? cellsChangedCount;
 
-  TrimWhitespaceResponse({
-    this.cellsChangedCount,
-  });
+  TrimWhitespaceResponse({this.cellsChangedCount});
 
   TrimWhitespaceResponse.fromJson(core.Map json_)
-      : this(
-          cellsChangedCount: json_['cellsChangedCount'] as core.int?,
-        );
+    : this(cellsChangedCount: json_['cellsChangedCount'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cellsChangedCount != null) 'cellsChangedCount': cellsChangedCount!,
-      };
+    if (cellsChangedCount != null) 'cellsChangedCount': cellsChangedCount!,
+  };
 }
 
 /// Unmerges cells in the given range.
@@ -13395,21 +14180,21 @@ class UnmergeCellsRequest {
   /// not partially span any merge.
   GridRange? range;
 
-  UnmergeCellsRequest({
-    this.range,
-  });
+  UnmergeCellsRequest({this.range});
 
   UnmergeCellsRequest.fromJson(core.Map json_)
-      : this(
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (range != null) 'range': range!,
-      };
+    if (range != null) 'range': range!,
+  };
 }
 
 /// Updates properties of the supplied banded range.
@@ -13424,24 +14209,23 @@ class UpdateBandingRequest {
   /// listing every field.
   core.String? fields;
 
-  UpdateBandingRequest({
-    this.bandedRange,
-    this.fields,
-  });
+  UpdateBandingRequest({this.bandedRange, this.fields});
 
   UpdateBandingRequest.fromJson(core.Map json_)
-      : this(
-          bandedRange: json_.containsKey('bandedRange')
-              ? BandedRange.fromJson(
-                  json_['bandedRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fields: json_['fields'] as core.String?,
-        );
+    : this(
+        bandedRange:
+            json_.containsKey('bandedRange')
+                ? BandedRange.fromJson(
+                  json_['bandedRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fields: json_['fields'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bandedRange != null) 'bandedRange': bandedRange!,
-        if (fields != null) 'fields': fields!,
-      };
+    if (bandedRange != null) 'bandedRange': bandedRange!,
+    if (fields != null) 'fields': fields!,
+  };
 }
 
 /// Updates the borders of a range.
@@ -13484,46 +14268,61 @@ class UpdateBordersRequest {
   });
 
   UpdateBordersRequest.fromJson(core.Map json_)
-      : this(
-          bottom: json_.containsKey('bottom')
-              ? Border.fromJson(
-                  json_['bottom'] as core.Map<core.String, core.dynamic>)
-              : null,
-          innerHorizontal: json_.containsKey('innerHorizontal')
-              ? Border.fromJson(json_['innerHorizontal']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          innerVertical: json_.containsKey('innerVertical')
-              ? Border.fromJson(
-                  json_['innerVertical'] as core.Map<core.String, core.dynamic>)
-              : null,
-          left: json_.containsKey('left')
-              ? Border.fromJson(
-                  json_['left'] as core.Map<core.String, core.dynamic>)
-              : null,
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          right: json_.containsKey('right')
-              ? Border.fromJson(
-                  json_['right'] as core.Map<core.String, core.dynamic>)
-              : null,
-          top: json_.containsKey('top')
-              ? Border.fromJson(
-                  json_['top'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bottom:
+            json_.containsKey('bottom')
+                ? Border.fromJson(
+                  json_['bottom'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        innerHorizontal:
+            json_.containsKey('innerHorizontal')
+                ? Border.fromJson(
+                  json_['innerHorizontal']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        innerVertical:
+            json_.containsKey('innerVertical')
+                ? Border.fromJson(
+                  json_['innerVertical'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        left:
+            json_.containsKey('left')
+                ? Border.fromJson(
+                  json_['left'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        right:
+            json_.containsKey('right')
+                ? Border.fromJson(
+                  json_['right'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        top:
+            json_.containsKey('top')
+                ? Border.fromJson(
+                  json_['top'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bottom != null) 'bottom': bottom!,
-        if (innerHorizontal != null) 'innerHorizontal': innerHorizontal!,
-        if (innerVertical != null) 'innerVertical': innerVertical!,
-        if (left != null) 'left': left!,
-        if (range != null) 'range': range!,
-        if (right != null) 'right': right!,
-        if (top != null) 'top': top!,
-      };
+    if (bottom != null) 'bottom': bottom!,
+    if (innerHorizontal != null) 'innerHorizontal': innerHorizontal!,
+    if (innerVertical != null) 'innerVertical': innerVertical!,
+    if (left != null) 'left': left!,
+    if (range != null) 'range': range!,
+    if (right != null) 'right': right!,
+    if (top != null) 'top': top!,
+  };
 }
 
 /// Updates all cells in a range with new data.
@@ -13550,36 +14349,39 @@ class UpdateCellsRequest {
   /// per row) may be written.
   GridCoordinate? start;
 
-  UpdateCellsRequest({
-    this.fields,
-    this.range,
-    this.rows,
-    this.start,
-  });
+  UpdateCellsRequest({this.fields, this.range, this.rows, this.start});
 
   UpdateCellsRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          range: json_.containsKey('range')
-              ? GridRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rows: (json_['rows'] as core.List?)
-              ?.map((value) => RowData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          start: json_.containsKey('start')
-              ? GridCoordinate.fromJson(
-                  json_['start'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        range:
+            json_.containsKey('range')
+                ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rows:
+            (json_['rows'] as core.List?)
+                ?.map(
+                  (value) => RowData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        start:
+            json_.containsKey('start')
+                ? GridCoordinate.fromJson(
+                  json_['start'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (range != null) 'range': range!,
-        if (rows != null) 'rows': rows!,
-        if (start != null) 'start': start!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (range != null) 'range': range!,
+    if (rows != null) 'rows': rows!,
+    if (start != null) 'start': start!,
+  };
 }
 
 /// Updates a chart's specifications.
@@ -13593,24 +14395,23 @@ class UpdateChartSpecRequest {
   /// The specification to apply to the chart.
   ChartSpec? spec;
 
-  UpdateChartSpecRequest({
-    this.chartId,
-    this.spec,
-  });
+  UpdateChartSpecRequest({this.chartId, this.spec});
 
   UpdateChartSpecRequest.fromJson(core.Map json_)
-      : this(
-          chartId: json_['chartId'] as core.int?,
-          spec: json_.containsKey('spec')
-              ? ChartSpec.fromJson(
-                  json_['spec'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        chartId: json_['chartId'] as core.int?,
+        spec:
+            json_.containsKey('spec')
+                ? ChartSpec.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chartId != null) 'chartId': chartId!,
-        if (spec != null) 'spec': spec!,
-      };
+    if (chartId != null) 'chartId': chartId!,
+    if (spec != null) 'spec': spec!,
+  };
 }
 
 /// Updates a conditional format rule at the given index, or moves a conditional
@@ -13638,22 +14439,24 @@ class UpdateConditionalFormatRuleRequest {
   });
 
   UpdateConditionalFormatRuleRequest.fromJson(core.Map json_)
-      : this(
-          index: json_['index'] as core.int?,
-          newIndex: json_['newIndex'] as core.int?,
-          rule: json_.containsKey('rule')
-              ? ConditionalFormatRule.fromJson(
-                  json_['rule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sheetId: json_['sheetId'] as core.int?,
-        );
+    : this(
+        index: json_['index'] as core.int?,
+        newIndex: json_['newIndex'] as core.int?,
+        rule:
+            json_.containsKey('rule')
+                ? ConditionalFormatRule.fromJson(
+                  json_['rule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sheetId: json_['sheetId'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (index != null) 'index': index!,
-        if (newIndex != null) 'newIndex': newIndex!,
-        if (rule != null) 'rule': rule!,
-        if (sheetId != null) 'sheetId': sheetId!,
-      };
+    if (index != null) 'index': index!,
+    if (newIndex != null) 'newIndex': newIndex!,
+    if (rule != null) 'rule': rule!,
+    if (sheetId != null) 'sheetId': sheetId!,
+  };
 }
 
 /// The result of updating a conditional format rule.
@@ -13683,25 +14486,29 @@ class UpdateConditionalFormatRuleResponse {
   });
 
   UpdateConditionalFormatRuleResponse.fromJson(core.Map json_)
-      : this(
-          newIndex: json_['newIndex'] as core.int?,
-          newRule: json_.containsKey('newRule')
-              ? ConditionalFormatRule.fromJson(
-                  json_['newRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-          oldIndex: json_['oldIndex'] as core.int?,
-          oldRule: json_.containsKey('oldRule')
-              ? ConditionalFormatRule.fromJson(
-                  json_['oldRule'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        newIndex: json_['newIndex'] as core.int?,
+        newRule:
+            json_.containsKey('newRule')
+                ? ConditionalFormatRule.fromJson(
+                  json_['newRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        oldIndex: json_['oldIndex'] as core.int?,
+        oldRule:
+            json_.containsKey('oldRule')
+                ? ConditionalFormatRule.fromJson(
+                  json_['oldRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (newIndex != null) 'newIndex': newIndex!,
-        if (newRule != null) 'newRule': newRule!,
-        if (oldIndex != null) 'oldIndex': oldIndex!,
-        if (oldRule != null) 'oldRule': oldRule!,
-      };
+    if (newIndex != null) 'newIndex': newIndex!,
+    if (newRule != null) 'newRule': newRule!,
+    if (oldIndex != null) 'oldIndex': oldIndex!,
+    if (oldRule != null) 'oldRule': oldRule!,
+  };
 }
 
 /// Updates a data source.
@@ -13721,24 +14528,23 @@ class UpdateDataSourceRequest {
   /// listing every field.
   core.String? fields;
 
-  UpdateDataSourceRequest({
-    this.dataSource,
-    this.fields,
-  });
+  UpdateDataSourceRequest({this.dataSource, this.fields});
 
   UpdateDataSourceRequest.fromJson(core.Map json_)
-      : this(
-          dataSource: json_.containsKey('dataSource')
-              ? DataSource.fromJson(
-                  json_['dataSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fields: json_['fields'] as core.String?,
-        );
+    : this(
+        dataSource:
+            json_.containsKey('dataSource')
+                ? DataSource.fromJson(
+                  json_['dataSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fields: json_['fields'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSource != null) 'dataSource': dataSource!,
-        if (fields != null) 'fields': fields!,
-      };
+    if (dataSource != null) 'dataSource': dataSource!,
+    if (fields != null) 'fields': fields!,
+  };
 }
 
 /// The response from updating data source.
@@ -13749,28 +14555,30 @@ class UpdateDataSourceResponse {
   /// The updated data source.
   DataSource? dataSource;
 
-  UpdateDataSourceResponse({
-    this.dataExecutionStatus,
-    this.dataSource,
-  });
+  UpdateDataSourceResponse({this.dataExecutionStatus, this.dataSource});
 
   UpdateDataSourceResponse.fromJson(core.Map json_)
-      : this(
-          dataExecutionStatus: json_.containsKey('dataExecutionStatus')
-              ? DataExecutionStatus.fromJson(json_['dataExecutionStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataSource: json_.containsKey('dataSource')
-              ? DataSource.fromJson(
-                  json_['dataSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dataExecutionStatus:
+            json_.containsKey('dataExecutionStatus')
+                ? DataExecutionStatus.fromJson(
+                  json_['dataExecutionStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataSource:
+            json_.containsKey('dataSource')
+                ? DataSource.fromJson(
+                  json_['dataSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataExecutionStatus != null)
-          'dataExecutionStatus': dataExecutionStatus!,
-        if (dataSource != null) 'dataSource': dataSource!,
-      };
+    if (dataExecutionStatus != null)
+      'dataExecutionStatus': dataExecutionStatus!,
+    if (dataSource != null) 'dataSource': dataSource!,
+  };
 }
 
 /// A request to update properties of developer metadata.
@@ -13801,23 +14609,30 @@ class UpdateDeveloperMetadataRequest {
   });
 
   UpdateDeveloperMetadataRequest.fromJson(core.Map json_)
-      : this(
-          dataFilters: (json_['dataFilters'] as core.List?)
-              ?.map((value) => DataFilter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          developerMetadata: json_.containsKey('developerMetadata')
-              ? DeveloperMetadata.fromJson(json_['developerMetadata']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          fields: json_['fields'] as core.String?,
-        );
+    : this(
+        dataFilters:
+            (json_['dataFilters'] as core.List?)
+                ?.map(
+                  (value) => DataFilter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        developerMetadata:
+            json_.containsKey('developerMetadata')
+                ? DeveloperMetadata.fromJson(
+                  json_['developerMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fields: json_['fields'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataFilters != null) 'dataFilters': dataFilters!,
-        if (developerMetadata != null) 'developerMetadata': developerMetadata!,
-        if (fields != null) 'fields': fields!,
-      };
+    if (dataFilters != null) 'dataFilters': dataFilters!,
+    if (developerMetadata != null) 'developerMetadata': developerMetadata!,
+    if (fields != null) 'fields': fields!,
+  };
 }
 
 /// The response from updating developer metadata.
@@ -13825,21 +14640,23 @@ class UpdateDeveloperMetadataResponse {
   /// The updated developer metadata.
   core.List<DeveloperMetadata>? developerMetadata;
 
-  UpdateDeveloperMetadataResponse({
-    this.developerMetadata,
-  });
+  UpdateDeveloperMetadataResponse({this.developerMetadata});
 
   UpdateDeveloperMetadataResponse.fromJson(core.Map json_)
-      : this(
-          developerMetadata: (json_['developerMetadata'] as core.List?)
-              ?.map((value) => DeveloperMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        developerMetadata:
+            (json_['developerMetadata'] as core.List?)
+                ?.map(
+                  (value) => DeveloperMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (developerMetadata != null) 'developerMetadata': developerMetadata!,
-      };
+    if (developerMetadata != null) 'developerMetadata': developerMetadata!,
+  };
 }
 
 /// Updates the state of the specified group.
@@ -13857,24 +14674,24 @@ class UpdateDimensionGroupRequest {
   /// listing every field.
   core.String? fields;
 
-  UpdateDimensionGroupRequest({
-    this.dimensionGroup,
-    this.fields,
-  });
+  UpdateDimensionGroupRequest({this.dimensionGroup, this.fields});
 
   UpdateDimensionGroupRequest.fromJson(core.Map json_)
-      : this(
-          dimensionGroup: json_.containsKey('dimensionGroup')
-              ? DimensionGroup.fromJson(json_['dimensionGroup']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          fields: json_['fields'] as core.String?,
-        );
+    : this(
+        dimensionGroup:
+            json_.containsKey('dimensionGroup')
+                ? DimensionGroup.fromJson(
+                  json_['dimensionGroup']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fields: json_['fields'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimensionGroup != null) 'dimensionGroup': dimensionGroup!,
-        if (fields != null) 'fields': fields!,
-      };
+    if (dimensionGroup != null) 'dimensionGroup': dimensionGroup!,
+    if (fields != null) 'fields': fields!,
+  };
 }
 
 /// Updates properties of dimensions within the specified range.
@@ -13903,30 +14720,36 @@ class UpdateDimensionPropertiesRequest {
   });
 
   UpdateDimensionPropertiesRequest.fromJson(core.Map json_)
-      : this(
-          dataSourceSheetRange: json_.containsKey('dataSourceSheetRange')
-              ? DataSourceSheetDimensionRange.fromJson(
+    : this(
+        dataSourceSheetRange:
+            json_.containsKey('dataSourceSheetRange')
+                ? DataSourceSheetDimensionRange.fromJson(
                   json_['dataSourceSheetRange']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          fields: json_['fields'] as core.String?,
-          properties: json_.containsKey('properties')
-              ? DimensionProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-          range: json_.containsKey('range')
-              ? DimensionRange.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fields: json_['fields'] as core.String?,
+        properties:
+            json_.containsKey('properties')
+                ? DimensionProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        range:
+            json_.containsKey('range')
+                ? DimensionRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSourceSheetRange != null)
-          'dataSourceSheetRange': dataSourceSheetRange!,
-        if (fields != null) 'fields': fields!,
-        if (properties != null) 'properties': properties!,
-        if (range != null) 'range': range!,
-      };
+    if (dataSourceSheetRange != null)
+      'dataSourceSheetRange': dataSourceSheetRange!,
+    if (fields != null) 'fields': fields!,
+    if (properties != null) 'properties': properties!,
+    if (range != null) 'range': range!,
+  };
 }
 
 /// Updates an embedded object's border property.
@@ -13944,27 +14767,25 @@ class UpdateEmbeddedObjectBorderRequest {
   /// The ID of the embedded object to update.
   core.int? objectId;
 
-  UpdateEmbeddedObjectBorderRequest({
-    this.border,
-    this.fields,
-    this.objectId,
-  });
+  UpdateEmbeddedObjectBorderRequest({this.border, this.fields, this.objectId});
 
   UpdateEmbeddedObjectBorderRequest.fromJson(core.Map json_)
-      : this(
-          border: json_.containsKey('border')
-              ? EmbeddedObjectBorder.fromJson(
-                  json_['border'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fields: json_['fields'] as core.String?,
-          objectId: json_['objectId'] as core.int?,
-        );
+    : this(
+        border:
+            json_.containsKey('border')
+                ? EmbeddedObjectBorder.fromJson(
+                  json_['border'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fields: json_['fields'] as core.String?,
+        objectId: json_['objectId'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (border != null) 'border': border!,
-        if (fields != null) 'fields': fields!,
-        if (objectId != null) 'objectId': objectId!,
-      };
+    if (border != null) 'border': border!,
+    if (fields != null) 'fields': fields!,
+    if (objectId != null) 'objectId': objectId!,
+  };
 }
 
 /// Update an embedded object's position (such as a moving or resizing a chart
@@ -13996,20 +14817,22 @@ class UpdateEmbeddedObjectPositionRequest {
   });
 
   UpdateEmbeddedObjectPositionRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          newPosition: json_.containsKey('newPosition')
-              ? EmbeddedObjectPosition.fromJson(
-                  json_['newPosition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          objectId: json_['objectId'] as core.int?,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        newPosition:
+            json_.containsKey('newPosition')
+                ? EmbeddedObjectPosition.fromJson(
+                  json_['newPosition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        objectId: json_['objectId'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (newPosition != null) 'newPosition': newPosition!,
-        if (objectId != null) 'objectId': objectId!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (newPosition != null) 'newPosition': newPosition!,
+    if (objectId != null) 'objectId': objectId!,
+  };
 }
 
 /// The result of updating an embedded object's position.
@@ -14017,21 +14840,21 @@ class UpdateEmbeddedObjectPositionResponse {
   /// The new position of the embedded object.
   EmbeddedObjectPosition? position;
 
-  UpdateEmbeddedObjectPositionResponse({
-    this.position,
-  });
+  UpdateEmbeddedObjectPositionResponse({this.position});
 
   UpdateEmbeddedObjectPositionResponse.fromJson(core.Map json_)
-      : this(
-          position: json_.containsKey('position')
-              ? EmbeddedObjectPosition.fromJson(
-                  json_['position'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        position:
+            json_.containsKey('position')
+                ? EmbeddedObjectPosition.fromJson(
+                  json_['position'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (position != null) 'position': position!,
-      };
+    if (position != null) 'position': position!,
+  };
 }
 
 /// Updates properties of the filter view.
@@ -14046,24 +14869,23 @@ class UpdateFilterViewRequest {
   /// The new properties of the filter view.
   FilterView? filter;
 
-  UpdateFilterViewRequest({
-    this.fields,
-    this.filter,
-  });
+  UpdateFilterViewRequest({this.fields, this.filter});
 
   UpdateFilterViewRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          filter: json_.containsKey('filter')
-              ? FilterView.fromJson(
-                  json_['filter'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        filter:
+            json_.containsKey('filter')
+                ? FilterView.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (filter != null) 'filter': filter!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (filter != null) 'filter': filter!,
+  };
 }
 
 /// Updates properties of the named range with the specified namedRangeId.
@@ -14078,24 +14900,23 @@ class UpdateNamedRangeRequest {
   /// The named range to update with the new properties.
   NamedRange? namedRange;
 
-  UpdateNamedRangeRequest({
-    this.fields,
-    this.namedRange,
-  });
+  UpdateNamedRangeRequest({this.fields, this.namedRange});
 
   UpdateNamedRangeRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          namedRange: json_.containsKey('namedRange')
-              ? NamedRange.fromJson(
-                  json_['namedRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        namedRange:
+            json_.containsKey('namedRange')
+                ? NamedRange.fromJson(
+                  json_['namedRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (namedRange != null) 'namedRange': namedRange!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (namedRange != null) 'namedRange': namedRange!,
+  };
 }
 
 /// Updates an existing protected range with the specified protectedRangeId.
@@ -14110,24 +14931,24 @@ class UpdateProtectedRangeRequest {
   /// The protected range to update with the new properties.
   ProtectedRange? protectedRange;
 
-  UpdateProtectedRangeRequest({
-    this.fields,
-    this.protectedRange,
-  });
+  UpdateProtectedRangeRequest({this.fields, this.protectedRange});
 
   UpdateProtectedRangeRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          protectedRange: json_.containsKey('protectedRange')
-              ? ProtectedRange.fromJson(json_['protectedRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        protectedRange:
+            json_.containsKey('protectedRange')
+                ? ProtectedRange.fromJson(
+                  json_['protectedRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (protectedRange != null) 'protectedRange': protectedRange!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (protectedRange != null) 'protectedRange': protectedRange!,
+  };
 }
 
 /// Updates properties of the sheet with the specified sheetId.
@@ -14142,24 +14963,23 @@ class UpdateSheetPropertiesRequest {
   /// The properties to update.
   SheetProperties? properties;
 
-  UpdateSheetPropertiesRequest({
-    this.fields,
-    this.properties,
-  });
+  UpdateSheetPropertiesRequest({this.fields, this.properties});
 
   UpdateSheetPropertiesRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          properties: json_.containsKey('properties')
-              ? SheetProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        properties:
+            json_.containsKey('properties')
+                ? SheetProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (properties != null) 'properties': properties!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (properties != null) 'properties': properties!,
+  };
 }
 
 /// Updates a slicer's specifications.
@@ -14180,27 +15000,25 @@ class UpdateSlicerSpecRequest {
   /// The specification to apply to the slicer.
   SlicerSpec? spec;
 
-  UpdateSlicerSpecRequest({
-    this.fields,
-    this.slicerId,
-    this.spec,
-  });
+  UpdateSlicerSpecRequest({this.fields, this.slicerId, this.spec});
 
   UpdateSlicerSpecRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          slicerId: json_['slicerId'] as core.int?,
-          spec: json_.containsKey('spec')
-              ? SlicerSpec.fromJson(
-                  json_['spec'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        slicerId: json_['slicerId'] as core.int?,
+        spec:
+            json_.containsKey('spec')
+                ? SlicerSpec.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (slicerId != null) 'slicerId': slicerId!,
-        if (spec != null) 'spec': spec!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (slicerId != null) 'slicerId': slicerId!,
+    if (spec != null) 'spec': spec!,
+  };
 }
 
 /// Updates properties of a spreadsheet.
@@ -14215,24 +15033,23 @@ class UpdateSpreadsheetPropertiesRequest {
   /// The properties to update.
   SpreadsheetProperties? properties;
 
-  UpdateSpreadsheetPropertiesRequest({
-    this.fields,
-    this.properties,
-  });
+  UpdateSpreadsheetPropertiesRequest({this.fields, this.properties});
 
   UpdateSpreadsheetPropertiesRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          properties: json_.containsKey('properties')
-              ? SpreadsheetProperties.fromJson(
-                  json_['properties'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        properties:
+            json_.containsKey('properties')
+                ? SpreadsheetProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (properties != null) 'properties': properties!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (properties != null) 'properties': properties!,
+  };
 }
 
 /// Updates a table in the spreadsheet.
@@ -14251,24 +15068,23 @@ class UpdateTableRequest {
   /// Required.
   Table? table;
 
-  UpdateTableRequest({
-    this.fields,
-    this.table,
-  });
+  UpdateTableRequest({this.fields, this.table});
 
   UpdateTableRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          table: json_.containsKey('table')
-              ? Table.fromJson(
-                  json_['table'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        table:
+            json_.containsKey('table')
+                ? Table.fromJson(
+                  json_['table'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (table != null) 'table': table!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (table != null) 'table': table!,
+  };
 }
 
 /// The response when updating a range of values by a data filter in a
@@ -14308,29 +15124,33 @@ class UpdateValuesByDataFilterResponse {
   });
 
   UpdateValuesByDataFilterResponse.fromJson(core.Map json_)
-      : this(
-          dataFilter: json_.containsKey('dataFilter')
-              ? DataFilter.fromJson(
-                  json_['dataFilter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updatedCells: json_['updatedCells'] as core.int?,
-          updatedColumns: json_['updatedColumns'] as core.int?,
-          updatedData: json_.containsKey('updatedData')
-              ? ValueRange.fromJson(
-                  json_['updatedData'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updatedRange: json_['updatedRange'] as core.String?,
-          updatedRows: json_['updatedRows'] as core.int?,
-        );
+    : this(
+        dataFilter:
+            json_.containsKey('dataFilter')
+                ? DataFilter.fromJson(
+                  json_['dataFilter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updatedCells: json_['updatedCells'] as core.int?,
+        updatedColumns: json_['updatedColumns'] as core.int?,
+        updatedData:
+            json_.containsKey('updatedData')
+                ? ValueRange.fromJson(
+                  json_['updatedData'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updatedRange: json_['updatedRange'] as core.String?,
+        updatedRows: json_['updatedRows'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataFilter != null) 'dataFilter': dataFilter!,
-        if (updatedCells != null) 'updatedCells': updatedCells!,
-        if (updatedColumns != null) 'updatedColumns': updatedColumns!,
-        if (updatedData != null) 'updatedData': updatedData!,
-        if (updatedRange != null) 'updatedRange': updatedRange!,
-        if (updatedRows != null) 'updatedRows': updatedRows!,
-      };
+    if (dataFilter != null) 'dataFilter': dataFilter!,
+    if (updatedCells != null) 'updatedCells': updatedCells!,
+    if (updatedColumns != null) 'updatedColumns': updatedColumns!,
+    if (updatedData != null) 'updatedData': updatedData!,
+    if (updatedRange != null) 'updatedRange': updatedRange!,
+    if (updatedRows != null) 'updatedRows': updatedRows!,
+  };
 }
 
 /// The response when updating a range of values in a spreadsheet.
@@ -14366,26 +15186,28 @@ class UpdateValuesResponse {
   });
 
   UpdateValuesResponse.fromJson(core.Map json_)
-      : this(
-          spreadsheetId: json_['spreadsheetId'] as core.String?,
-          updatedCells: json_['updatedCells'] as core.int?,
-          updatedColumns: json_['updatedColumns'] as core.int?,
-          updatedData: json_.containsKey('updatedData')
-              ? ValueRange.fromJson(
-                  json_['updatedData'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updatedRange: json_['updatedRange'] as core.String?,
-          updatedRows: json_['updatedRows'] as core.int?,
-        );
+    : this(
+        spreadsheetId: json_['spreadsheetId'] as core.String?,
+        updatedCells: json_['updatedCells'] as core.int?,
+        updatedColumns: json_['updatedColumns'] as core.int?,
+        updatedData:
+            json_.containsKey('updatedData')
+                ? ValueRange.fromJson(
+                  json_['updatedData'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updatedRange: json_['updatedRange'] as core.String?,
+        updatedRows: json_['updatedRows'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-        if (updatedCells != null) 'updatedCells': updatedCells!,
-        if (updatedColumns != null) 'updatedColumns': updatedColumns!,
-        if (updatedData != null) 'updatedData': updatedData!,
-        if (updatedRange != null) 'updatedRange': updatedRange!,
-        if (updatedRows != null) 'updatedRows': updatedRows!,
-      };
+    if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+    if (updatedCells != null) 'updatedCells': updatedCells!,
+    if (updatedColumns != null) 'updatedColumns': updatedColumns!,
+    if (updatedData != null) 'updatedData': updatedData!,
+    if (updatedRange != null) 'updatedRange': updatedRange!,
+    if (updatedRows != null) 'updatedRows': updatedRows!,
+  };
 }
 
 /// Data within a range of the spreadsheet.
@@ -14428,26 +15250,23 @@ class ValueRange {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.List<core.Object?>>? values;
 
-  ValueRange({
-    this.majorDimension,
-    this.range,
-    this.values,
-  });
+  ValueRange({this.majorDimension, this.range, this.values});
 
   ValueRange.fromJson(core.Map json_)
-      : this(
-          majorDimension: json_['majorDimension'] as core.String?,
-          range: json_['range'] as core.String?,
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.List)
-              .toList(),
-        );
+    : this(
+        majorDimension: json_['majorDimension'] as core.String?,
+        range: json_['range'] as core.String?,
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.List)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (majorDimension != null) 'majorDimension': majorDimension!,
-        if (range != null) 'range': range!,
-        if (values != null) 'values': values!,
-      };
+    if (majorDimension != null) 'majorDimension': majorDimension!,
+    if (range != null) 'range': range!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Styles for a waterfall chart column.
@@ -14468,30 +15287,30 @@ class WaterfallChartColumnStyle {
   /// The label of the column's legend.
   core.String? label;
 
-  WaterfallChartColumnStyle({
-    this.color,
-    this.colorStyle,
-    this.label,
-  });
+  WaterfallChartColumnStyle({this.color, this.colorStyle, this.label});
 
   WaterfallChartColumnStyle.fromJson(core.Map json_)
-      : this(
-          color: json_.containsKey('color')
-              ? Color.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-          colorStyle: json_.containsKey('colorStyle')
-              ? ColorStyle.fromJson(
-                  json_['colorStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          label: json_['label'] as core.String?,
-        );
+    : this(
+        color:
+            json_.containsKey('color')
+                ? Color.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        colorStyle:
+            json_.containsKey('colorStyle')
+                ? ColorStyle.fromJson(
+                  json_['colorStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        label: json_['label'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!,
-        if (colorStyle != null) 'colorStyle': colorStyle!,
-        if (label != null) 'label': label!,
-      };
+    if (color != null) 'color': color!,
+    if (colorStyle != null) 'colorStyle': colorStyle!,
+    if (label != null) 'label': label!,
+  };
 }
 
 /// A custom subtotal column for a waterfall chart series.
@@ -14522,17 +15341,17 @@ class WaterfallChartCustomSubtotal {
   });
 
   WaterfallChartCustomSubtotal.fromJson(core.Map json_)
-      : this(
-          dataIsSubtotal: json_['dataIsSubtotal'] as core.bool?,
-          label: json_['label'] as core.String?,
-          subtotalIndex: json_['subtotalIndex'] as core.int?,
-        );
+    : this(
+        dataIsSubtotal: json_['dataIsSubtotal'] as core.bool?,
+        label: json_['label'] as core.String?,
+        subtotalIndex: json_['subtotalIndex'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataIsSubtotal != null) 'dataIsSubtotal': dataIsSubtotal!,
-        if (label != null) 'label': label!,
-        if (subtotalIndex != null) 'subtotalIndex': subtotalIndex!,
-      };
+    if (dataIsSubtotal != null) 'dataIsSubtotal': dataIsSubtotal!,
+    if (label != null) 'label': label!,
+    if (subtotalIndex != null) 'subtotalIndex': subtotalIndex!,
+  };
 }
 
 /// The domain of a waterfall chart.
@@ -14543,24 +15362,23 @@ class WaterfallChartDomain {
   /// True to reverse the order of the domain values (horizontal axis).
   core.bool? reversed;
 
-  WaterfallChartDomain({
-    this.data,
-    this.reversed,
-  });
+  WaterfallChartDomain({this.data, this.reversed});
 
   WaterfallChartDomain.fromJson(core.Map json_)
-      : this(
-          data: json_.containsKey('data')
-              ? ChartData.fromJson(
-                  json_['data'] as core.Map<core.String, core.dynamic>)
-              : null,
-          reversed: json_['reversed'] as core.bool?,
-        );
+    : this(
+        data:
+            json_.containsKey('data')
+                ? ChartData.fromJson(
+                  json_['data'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reversed: json_['reversed'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-        if (reversed != null) 'reversed': reversed!,
-      };
+    if (data != null) 'data': data!,
+    if (reversed != null) 'reversed': reversed!,
+  };
 }
 
 /// A single series of data for a waterfall chart.
@@ -14603,47 +15421,64 @@ class WaterfallChartSeries {
   });
 
   WaterfallChartSeries.fromJson(core.Map json_)
-      : this(
-          customSubtotals: (json_['customSubtotals'] as core.List?)
-              ?.map((value) => WaterfallChartCustomSubtotal.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          data: json_.containsKey('data')
-              ? ChartData.fromJson(
-                  json_['data'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dataLabel: json_.containsKey('dataLabel')
-              ? DataLabel.fromJson(
-                  json_['dataLabel'] as core.Map<core.String, core.dynamic>)
-              : null,
-          hideTrailingSubtotal: json_['hideTrailingSubtotal'] as core.bool?,
-          negativeColumnsStyle: json_.containsKey('negativeColumnsStyle')
-              ? WaterfallChartColumnStyle.fromJson(json_['negativeColumnsStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          positiveColumnsStyle: json_.containsKey('positiveColumnsStyle')
-              ? WaterfallChartColumnStyle.fromJson(json_['positiveColumnsStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          subtotalColumnsStyle: json_.containsKey('subtotalColumnsStyle')
-              ? WaterfallChartColumnStyle.fromJson(json_['subtotalColumnsStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        customSubtotals:
+            (json_['customSubtotals'] as core.List?)
+                ?.map(
+                  (value) => WaterfallChartCustomSubtotal.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        data:
+            json_.containsKey('data')
+                ? ChartData.fromJson(
+                  json_['data'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataLabel:
+            json_.containsKey('dataLabel')
+                ? DataLabel.fromJson(
+                  json_['dataLabel'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hideTrailingSubtotal: json_['hideTrailingSubtotal'] as core.bool?,
+        negativeColumnsStyle:
+            json_.containsKey('negativeColumnsStyle')
+                ? WaterfallChartColumnStyle.fromJson(
+                  json_['negativeColumnsStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        positiveColumnsStyle:
+            json_.containsKey('positiveColumnsStyle')
+                ? WaterfallChartColumnStyle.fromJson(
+                  json_['positiveColumnsStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        subtotalColumnsStyle:
+            json_.containsKey('subtotalColumnsStyle')
+                ? WaterfallChartColumnStyle.fromJson(
+                  json_['subtotalColumnsStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customSubtotals != null) 'customSubtotals': customSubtotals!,
-        if (data != null) 'data': data!,
-        if (dataLabel != null) 'dataLabel': dataLabel!,
-        if (hideTrailingSubtotal != null)
-          'hideTrailingSubtotal': hideTrailingSubtotal!,
-        if (negativeColumnsStyle != null)
-          'negativeColumnsStyle': negativeColumnsStyle!,
-        if (positiveColumnsStyle != null)
-          'positiveColumnsStyle': positiveColumnsStyle!,
-        if (subtotalColumnsStyle != null)
-          'subtotalColumnsStyle': subtotalColumnsStyle!,
-      };
+    if (customSubtotals != null) 'customSubtotals': customSubtotals!,
+    if (data != null) 'data': data!,
+    if (dataLabel != null) 'dataLabel': dataLabel!,
+    if (hideTrailingSubtotal != null)
+      'hideTrailingSubtotal': hideTrailingSubtotal!,
+    if (negativeColumnsStyle != null)
+      'negativeColumnsStyle': negativeColumnsStyle!,
+    if (positiveColumnsStyle != null)
+      'positiveColumnsStyle': positiveColumnsStyle!,
+    if (subtotalColumnsStyle != null)
+      'subtotalColumnsStyle': subtotalColumnsStyle!,
+  };
 }
 
 /// A waterfall chart.
@@ -14690,37 +15525,47 @@ class WaterfallChartSpec {
   });
 
   WaterfallChartSpec.fromJson(core.Map json_)
-      : this(
-          connectorLineStyle: json_.containsKey('connectorLineStyle')
-              ? LineStyle.fromJson(json_['connectorLineStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          domain: json_.containsKey('domain')
-              ? WaterfallChartDomain.fromJson(
-                  json_['domain'] as core.Map<core.String, core.dynamic>)
-              : null,
-          firstValueIsTotal: json_['firstValueIsTotal'] as core.bool?,
-          hideConnectorLines: json_['hideConnectorLines'] as core.bool?,
-          series: (json_['series'] as core.List?)
-              ?.map((value) => WaterfallChartSeries.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          stackedType: json_['stackedType'] as core.String?,
-          totalDataLabel: json_.containsKey('totalDataLabel')
-              ? DataLabel.fromJson(json_['totalDataLabel']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        connectorLineStyle:
+            json_.containsKey('connectorLineStyle')
+                ? LineStyle.fromJson(
+                  json_['connectorLineStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        domain:
+            json_.containsKey('domain')
+                ? WaterfallChartDomain.fromJson(
+                  json_['domain'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        firstValueIsTotal: json_['firstValueIsTotal'] as core.bool?,
+        hideConnectorLines: json_['hideConnectorLines'] as core.bool?,
+        series:
+            (json_['series'] as core.List?)
+                ?.map(
+                  (value) => WaterfallChartSeries.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        stackedType: json_['stackedType'] as core.String?,
+        totalDataLabel:
+            json_.containsKey('totalDataLabel')
+                ? DataLabel.fromJson(
+                  json_['totalDataLabel']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectorLineStyle != null)
-          'connectorLineStyle': connectorLineStyle!,
-        if (domain != null) 'domain': domain!,
-        if (firstValueIsTotal != null) 'firstValueIsTotal': firstValueIsTotal!,
-        if (hideConnectorLines != null)
-          'hideConnectorLines': hideConnectorLines!,
-        if (series != null) 'series': series!,
-        if (stackedType != null) 'stackedType': stackedType!,
-        if (totalDataLabel != null) 'totalDataLabel': totalDataLabel!,
-      };
+    if (connectorLineStyle != null) 'connectorLineStyle': connectorLineStyle!,
+    if (domain != null) 'domain': domain!,
+    if (firstValueIsTotal != null) 'firstValueIsTotal': firstValueIsTotal!,
+    if (hideConnectorLines != null) 'hideConnectorLines': hideConnectorLines!,
+    if (series != null) 'series': series!,
+    if (stackedType != null) 'stackedType': stackedType!,
+    if (totalDataLabel != null) 'totalDataLabel': totalDataLabel!,
+  };
 }

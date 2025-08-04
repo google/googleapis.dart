@@ -54,11 +54,16 @@ class RapidMigrationAssessmentApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  RapidMigrationAssessmentApi(http.Client client,
-      {core.String rootUrl = 'https://rapidmigrationassessment.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  RapidMigrationAssessmentApi(
+    http.Client client, {
+    core.String rootUrl = 'https://rapidmigrationassessment.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -99,10 +104,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -172,7 +174,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -180,7 +183,7 @@ class ProjectsLocationsAnnotationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAnnotationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an Annotation
   ///
@@ -244,10 +247,7 @@ class ProjectsLocationsAnnotationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Annotation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Annotation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -260,7 +260,8 @@ class ProjectsLocationsAnnotationsResource {
       queryParams: queryParams_,
     );
     return Annotation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -268,7 +269,7 @@ class ProjectsLocationsCollectorsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCollectorsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create a Collector to manage the on-prem appliance which collects
   /// information about Customer assets.
@@ -366,6 +367,7 @@ class ProjectsLocationsCollectorsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -389,10 +391,7 @@ class ProjectsLocationsCollectorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Collector> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Collector> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -458,7 +457,8 @@ class ProjectsLocationsCollectorsResource {
       queryParams: queryParams_,
     );
     return ListCollectorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single Collector.
@@ -652,7 +652,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -726,10 +726,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -739,6 +736,7 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -765,10 +763,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -830,7 +825,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -869,27 +865,23 @@ class Annotation {
   });
 
   Annotation.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          type: json_['type'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -988,54 +980,53 @@ class Collector {
   });
 
   Collector.fromJson(core.Map json_)
-      : this(
-          bucket: json_['bucket'] as core.String?,
-          clientVersion: json_['clientVersion'] as core.String?,
-          collectionDays: json_['collectionDays'] as core.int?,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          eulaUri: json_['eulaUri'] as core.String?,
-          expectedAssetCount: json_['expectedAssetCount'] as core.String?,
-          guestOsScan: json_.containsKey('guestOsScan')
-              ? GuestOsScan.fromJson(
-                  json_['guestOsScan'] as core.Map<core.String, core.dynamic>)
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          serviceAccount: json_['serviceAccount'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          vsphereScan: json_.containsKey('vsphereScan')
-              ? VSphereScan.fromJson(
-                  json_['vsphereScan'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bucket: json_['bucket'] as core.String?,
+        clientVersion: json_['clientVersion'] as core.String?,
+        collectionDays: json_['collectionDays'] as core.int?,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        eulaUri: json_['eulaUri'] as core.String?,
+        expectedAssetCount: json_['expectedAssetCount'] as core.String?,
+        guestOsScan:
+            json_.containsKey('guestOsScan')
+                ? GuestOsScan.fromJson(
+                  json_['guestOsScan'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        vsphereScan:
+            json_.containsKey('vsphereScan')
+                ? VSphereScan.fromJson(
+                  json_['vsphereScan'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucket != null) 'bucket': bucket!,
-        if (clientVersion != null) 'clientVersion': clientVersion!,
-        if (collectionDays != null) 'collectionDays': collectionDays!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (eulaUri != null) 'eulaUri': eulaUri!,
-        if (expectedAssetCount != null)
-          'expectedAssetCount': expectedAssetCount!,
-        if (guestOsScan != null) 'guestOsScan': guestOsScan!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (vsphereScan != null) 'vsphereScan': vsphereScan!,
-      };
+    if (bucket != null) 'bucket': bucket!,
+    if (clientVersion != null) 'clientVersion': clientVersion!,
+    if (collectionDays != null) 'collectionDays': collectionDays!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (eulaUri != null) 'eulaUri': eulaUri!,
+    if (expectedAssetCount != null) 'expectedAssetCount': expectedAssetCount!,
+    if (guestOsScan != null) 'guestOsScan': guestOsScan!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (vsphereScan != null) 'vsphereScan': vsphereScan!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1051,18 +1042,14 @@ class GuestOsScan {
   /// reference to the corresponding Guest OS Scan in MC Source.
   core.String? coreSource;
 
-  GuestOsScan({
-    this.coreSource,
-  });
+  GuestOsScan({this.coreSource});
 
   GuestOsScan.fromJson(core.Map json_)
-      : this(
-          coreSource: json_['coreSource'] as core.String?,
-        );
+    : this(coreSource: json_['coreSource'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (coreSource != null) 'coreSource': coreSource!,
-      };
+    if (coreSource != null) 'coreSource': coreSource!,
+  };
 }
 
 /// Message for response to listing Collectors.
@@ -1083,22 +1070,27 @@ class ListCollectorsResponse {
   });
 
   ListCollectorsResponse.fromJson(core.Map json_)
-      : this(
-          collectors: (json_['collectors'] as core.List?)
-              ?.map((value) => Collector.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        collectors:
+            (json_['collectors'] as core.List?)
+                ?.map(
+                  (value) => Collector.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (collectors != null) 'collectors': collectors!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (collectors != null) 'collectors': collectors!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -1109,24 +1101,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1137,24 +1130,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -1203,37 +1197,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Message for pausing a Collector.
@@ -1259,16 +1251,12 @@ class VSphereScan {
   /// reference to the corresponding VSphere Scan in MC Source.
   core.String? coreSource;
 
-  VSphereScan({
-    this.coreSource,
-  });
+  VSphereScan({this.coreSource});
 
   VSphereScan.fromJson(core.Map json_)
-      : this(
-          coreSource: json_['coreSource'] as core.String?,
-        );
+    : this(coreSource: json_['coreSource'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (coreSource != null) 'coreSource': coreSource!,
-      };
+    if (coreSource != null) 'coreSource': coreSource!,
+  };
 }

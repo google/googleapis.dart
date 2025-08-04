@@ -49,11 +49,16 @@ class FirebaseDynamicLinksApi {
   ShortLinksResource get shortLinks => ShortLinksResource(_requester);
   V1Resource get v1 => V1Resource(_requester);
 
-  FirebaseDynamicLinksApi(http.Client client,
-      {core.String rootUrl = 'https://firebasedynamiclinks.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  FirebaseDynamicLinksApi(
+    http.Client client, {
+    core.String rootUrl = 'https://firebasedynamiclinks.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ManagedShortLinksResource {
@@ -105,7 +110,8 @@ class ManagedShortLinksResource {
       queryParams: queryParams_,
     );
     return CreateManagedShortLinkResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -154,7 +160,8 @@ class ShortLinksResource {
       queryParams: queryParams_,
     );
     return CreateShortDynamicLinkResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -207,7 +214,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return DynamicLinkStats.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get iOS strong/weak-match info for post-install attribution.
@@ -244,7 +252,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return GetIosPostInstallAttributionResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get iOS reopen attribution for app universal link open deeplinking.
@@ -281,7 +290,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return GetIosReopenAttributionResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -293,29 +303,32 @@ class AnalyticsInfo {
   /// iTunes Connect App Analytics.
   ITunesConnectAnalytics? itunesConnectAnalytics;
 
-  AnalyticsInfo({
-    this.googlePlayAnalytics,
-    this.itunesConnectAnalytics,
-  });
+  AnalyticsInfo({this.googlePlayAnalytics, this.itunesConnectAnalytics});
 
   AnalyticsInfo.fromJson(core.Map json_)
-      : this(
-          googlePlayAnalytics: json_.containsKey('googlePlayAnalytics')
-              ? GooglePlayAnalytics.fromJson(json_['googlePlayAnalytics']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          itunesConnectAnalytics: json_.containsKey('itunesConnectAnalytics')
-              ? ITunesConnectAnalytics.fromJson(json_['itunesConnectAnalytics']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        googlePlayAnalytics:
+            json_.containsKey('googlePlayAnalytics')
+                ? GooglePlayAnalytics.fromJson(
+                  json_['googlePlayAnalytics']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        itunesConnectAnalytics:
+            json_.containsKey('itunesConnectAnalytics')
+                ? ITunesConnectAnalytics.fromJson(
+                  json_['itunesConnectAnalytics']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (googlePlayAnalytics != null)
-          'googlePlayAnalytics': googlePlayAnalytics!,
-        if (itunesConnectAnalytics != null)
-          'itunesConnectAnalytics': itunesConnectAnalytics!,
-      };
+    if (googlePlayAnalytics != null)
+      'googlePlayAnalytics': googlePlayAnalytics!,
+    if (itunesConnectAnalytics != null)
+      'itunesConnectAnalytics': itunesConnectAnalytics!,
+  };
 }
 
 /// Android related attributes to the Dynamic Link.
@@ -343,23 +356,22 @@ class AndroidInfo {
   });
 
   AndroidInfo.fromJson(core.Map json_)
-      : this(
-          androidFallbackLink: json_['androidFallbackLink'] as core.String?,
-          androidLink: json_['androidLink'] as core.String?,
-          androidMinPackageVersionCode:
-              json_['androidMinPackageVersionCode'] as core.String?,
-          androidPackageName: json_['androidPackageName'] as core.String?,
-        );
+    : this(
+        androidFallbackLink: json_['androidFallbackLink'] as core.String?,
+        androidLink: json_['androidLink'] as core.String?,
+        androidMinPackageVersionCode:
+            json_['androidMinPackageVersionCode'] as core.String?,
+        androidPackageName: json_['androidPackageName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (androidFallbackLink != null)
-          'androidFallbackLink': androidFallbackLink!,
-        if (androidLink != null) 'androidLink': androidLink!,
-        if (androidMinPackageVersionCode != null)
-          'androidMinPackageVersionCode': androidMinPackageVersionCode!,
-        if (androidPackageName != null)
-          'androidPackageName': androidPackageName!,
-      };
+    if (androidFallbackLink != null)
+      'androidFallbackLink': androidFallbackLink!,
+    if (androidLink != null) 'androidLink': androidLink!,
+    if (androidMinPackageVersionCode != null)
+      'androidMinPackageVersionCode': androidMinPackageVersionCode!,
+    if (androidPackageName != null) 'androidPackageName': androidPackageName!,
+  };
 }
 
 /// Request to create a managed Short Dynamic Link.
@@ -402,27 +414,32 @@ class CreateManagedShortLinkRequest {
   });
 
   CreateManagedShortLinkRequest.fromJson(core.Map json_)
-      : this(
-          dynamicLinkInfo: json_.containsKey('dynamicLinkInfo')
-              ? DynamicLinkInfo.fromJson(json_['dynamicLinkInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          longDynamicLink: json_['longDynamicLink'] as core.String?,
-          name: json_['name'] as core.String?,
-          sdkVersion: json_['sdkVersion'] as core.String?,
-          suffix: json_.containsKey('suffix')
-              ? Suffix.fromJson(
-                  json_['suffix'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dynamicLinkInfo:
+            json_.containsKey('dynamicLinkInfo')
+                ? DynamicLinkInfo.fromJson(
+                  json_['dynamicLinkInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        longDynamicLink: json_['longDynamicLink'] as core.String?,
+        name: json_['name'] as core.String?,
+        sdkVersion: json_['sdkVersion'] as core.String?,
+        suffix:
+            json_.containsKey('suffix')
+                ? Suffix.fromJson(
+                  json_['suffix'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dynamicLinkInfo != null) 'dynamicLinkInfo': dynamicLinkInfo!,
-        if (longDynamicLink != null) 'longDynamicLink': longDynamicLink!,
-        if (name != null) 'name': name!,
-        if (sdkVersion != null) 'sdkVersion': sdkVersion!,
-        if (suffix != null) 'suffix': suffix!,
-      };
+    if (dynamicLinkInfo != null) 'dynamicLinkInfo': dynamicLinkInfo!,
+    if (longDynamicLink != null) 'longDynamicLink': longDynamicLink!,
+    if (name != null) 'name': name!,
+    if (sdkVersion != null) 'sdkVersion': sdkVersion!,
+    if (suffix != null) 'suffix': suffix!,
+  };
 }
 
 /// Response to create a short Dynamic Link.
@@ -447,23 +464,30 @@ class CreateManagedShortLinkResponse {
   });
 
   CreateManagedShortLinkResponse.fromJson(core.Map json_)
-      : this(
-          managedShortLink: json_.containsKey('managedShortLink')
-              ? ManagedShortLink.fromJson(json_['managedShortLink']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          previewLink: json_['previewLink'] as core.String?,
-          warning: (json_['warning'] as core.List?)
-              ?.map((value) => DynamicLinkWarning.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        managedShortLink:
+            json_.containsKey('managedShortLink')
+                ? ManagedShortLink.fromJson(
+                  json_['managedShortLink']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        previewLink: json_['previewLink'] as core.String?,
+        warning:
+            (json_['warning'] as core.List?)
+                ?.map(
+                  (value) => DynamicLinkWarning.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (managedShortLink != null) 'managedShortLink': managedShortLink!,
-        if (previewLink != null) 'previewLink': previewLink!,
-        if (warning != null) 'warning': warning!,
-      };
+    if (managedShortLink != null) 'managedShortLink': managedShortLink!,
+    if (previewLink != null) 'previewLink': previewLink!,
+    if (warning != null) 'warning': warning!,
+  };
 }
 
 /// Request to create a short Dynamic Link.
@@ -498,25 +522,30 @@ class CreateShortDynamicLinkRequest {
   });
 
   CreateShortDynamicLinkRequest.fromJson(core.Map json_)
-      : this(
-          dynamicLinkInfo: json_.containsKey('dynamicLinkInfo')
-              ? DynamicLinkInfo.fromJson(json_['dynamicLinkInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          longDynamicLink: json_['longDynamicLink'] as core.String?,
-          sdkVersion: json_['sdkVersion'] as core.String?,
-          suffix: json_.containsKey('suffix')
-              ? Suffix.fromJson(
-                  json_['suffix'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dynamicLinkInfo:
+            json_.containsKey('dynamicLinkInfo')
+                ? DynamicLinkInfo.fromJson(
+                  json_['dynamicLinkInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        longDynamicLink: json_['longDynamicLink'] as core.String?,
+        sdkVersion: json_['sdkVersion'] as core.String?,
+        suffix:
+            json_.containsKey('suffix')
+                ? Suffix.fromJson(
+                  json_['suffix'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dynamicLinkInfo != null) 'dynamicLinkInfo': dynamicLinkInfo!,
-        if (longDynamicLink != null) 'longDynamicLink': longDynamicLink!,
-        if (sdkVersion != null) 'sdkVersion': sdkVersion!,
-        if (suffix != null) 'suffix': suffix!,
-      };
+    if (dynamicLinkInfo != null) 'dynamicLinkInfo': dynamicLinkInfo!,
+    if (longDynamicLink != null) 'longDynamicLink': longDynamicLink!,
+    if (sdkVersion != null) 'sdkVersion': sdkVersion!,
+    if (suffix != null) 'suffix': suffix!,
+  };
 }
 
 /// Response to create a short Dynamic Link.
@@ -541,20 +570,24 @@ class CreateShortDynamicLinkResponse {
   });
 
   CreateShortDynamicLinkResponse.fromJson(core.Map json_)
-      : this(
-          previewLink: json_['previewLink'] as core.String?,
-          shortLink: json_['shortLink'] as core.String?,
-          warning: (json_['warning'] as core.List?)
-              ?.map((value) => DynamicLinkWarning.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        previewLink: json_['previewLink'] as core.String?,
+        shortLink: json_['shortLink'] as core.String?,
+        warning:
+            (json_['warning'] as core.List?)
+                ?.map(
+                  (value) => DynamicLinkWarning.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (previewLink != null) 'previewLink': previewLink!,
-        if (shortLink != null) 'shortLink': shortLink!,
-        if (warning != null) 'warning': warning!,
-      };
+    if (previewLink != null) 'previewLink': previewLink!,
+    if (shortLink != null) 'shortLink': shortLink!,
+    if (warning != null) 'warning': warning!,
+  };
 }
 
 /// Desktop related attributes to the Dynamic Link.
@@ -562,19 +595,15 @@ class DesktopInfo {
   /// Link to open on desktop.
   core.String? desktopFallbackLink;
 
-  DesktopInfo({
-    this.desktopFallbackLink,
-  });
+  DesktopInfo({this.desktopFallbackLink});
 
   DesktopInfo.fromJson(core.Map json_)
-      : this(
-          desktopFallbackLink: json_['desktopFallbackLink'] as core.String?,
-        );
+    : this(desktopFallbackLink: json_['desktopFallbackLink'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (desktopFallbackLink != null)
-          'desktopFallbackLink': desktopFallbackLink!,
-      };
+    if (desktopFallbackLink != null)
+      'desktopFallbackLink': desktopFallbackLink!,
+  };
 }
 
 /// Signals associated with the device making the request.
@@ -622,30 +651,29 @@ class DeviceInfo {
   });
 
   DeviceInfo.fromJson(core.Map json_)
-      : this(
-          deviceModelName: json_['deviceModelName'] as core.String?,
-          languageCode: json_['languageCode'] as core.String?,
-          languageCodeFromWebview:
-              json_['languageCodeFromWebview'] as core.String?,
-          languageCodeRaw: json_['languageCodeRaw'] as core.String?,
-          screenResolutionHeight:
-              json_['screenResolutionHeight'] as core.String?,
-          screenResolutionWidth: json_['screenResolutionWidth'] as core.String?,
-          timezone: json_['timezone'] as core.String?,
-        );
+    : this(
+        deviceModelName: json_['deviceModelName'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        languageCodeFromWebview:
+            json_['languageCodeFromWebview'] as core.String?,
+        languageCodeRaw: json_['languageCodeRaw'] as core.String?,
+        screenResolutionHeight: json_['screenResolutionHeight'] as core.String?,
+        screenResolutionWidth: json_['screenResolutionWidth'] as core.String?,
+        timezone: json_['timezone'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceModelName != null) 'deviceModelName': deviceModelName!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (languageCodeFromWebview != null)
-          'languageCodeFromWebview': languageCodeFromWebview!,
-        if (languageCodeRaw != null) 'languageCodeRaw': languageCodeRaw!,
-        if (screenResolutionHeight != null)
-          'screenResolutionHeight': screenResolutionHeight!,
-        if (screenResolutionWidth != null)
-          'screenResolutionWidth': screenResolutionWidth!,
-        if (timezone != null) 'timezone': timezone!,
-      };
+    if (deviceModelName != null) 'deviceModelName': deviceModelName!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (languageCodeFromWebview != null)
+      'languageCodeFromWebview': languageCodeFromWebview!,
+    if (languageCodeRaw != null) 'languageCodeRaw': languageCodeRaw!,
+    if (screenResolutionHeight != null)
+      'screenResolutionHeight': screenResolutionHeight!,
+    if (screenResolutionWidth != null)
+      'screenResolutionWidth': screenResolutionWidth!,
+    if (timezone != null) 'timezone': timezone!,
+  };
 }
 
 /// Dynamic Link event stat.
@@ -678,24 +706,20 @@ class DynamicLinkEventStat {
   /// here.
   core.String? platform;
 
-  DynamicLinkEventStat({
-    this.count,
-    this.event,
-    this.platform,
-  });
+  DynamicLinkEventStat({this.count, this.event, this.platform});
 
   DynamicLinkEventStat.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.String?,
-          event: json_['event'] as core.String?,
-          platform: json_['platform'] as core.String?,
-        );
+    : this(
+        count: json_['count'] as core.String?,
+        event: json_['event'] as core.String?,
+        platform: json_['platform'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (event != null) 'event': event!,
-        if (platform != null) 'platform': platform!,
-      };
+    if (count != null) 'count': count!,
+    if (event != null) 'event': event!,
+    if (platform != null) 'platform': platform!,
+  };
 }
 
 /// Information about a Dynamic Link.
@@ -770,47 +794,61 @@ class DynamicLinkInfo {
   });
 
   DynamicLinkInfo.fromJson(core.Map json_)
-      : this(
-          analyticsInfo: json_.containsKey('analyticsInfo')
-              ? AnalyticsInfo.fromJson(
-                  json_['analyticsInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          androidInfo: json_.containsKey('androidInfo')
-              ? AndroidInfo.fromJson(
-                  json_['androidInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          desktopInfo: json_.containsKey('desktopInfo')
-              ? DesktopInfo.fromJson(
-                  json_['desktopInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          domainUriPrefix: json_['domainUriPrefix'] as core.String?,
-          dynamicLinkDomain: json_['dynamicLinkDomain'] as core.String?,
-          iosInfo: json_.containsKey('iosInfo')
-              ? IosInfo.fromJson(
-                  json_['iosInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          link: json_['link'] as core.String?,
-          navigationInfo: json_.containsKey('navigationInfo')
-              ? NavigationInfo.fromJson(json_['navigationInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          socialMetaTagInfo: json_.containsKey('socialMetaTagInfo')
-              ? SocialMetaTagInfo.fromJson(json_['socialMetaTagInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        analyticsInfo:
+            json_.containsKey('analyticsInfo')
+                ? AnalyticsInfo.fromJson(
+                  json_['analyticsInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        androidInfo:
+            json_.containsKey('androidInfo')
+                ? AndroidInfo.fromJson(
+                  json_['androidInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        desktopInfo:
+            json_.containsKey('desktopInfo')
+                ? DesktopInfo.fromJson(
+                  json_['desktopInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        domainUriPrefix: json_['domainUriPrefix'] as core.String?,
+        dynamicLinkDomain: json_['dynamicLinkDomain'] as core.String?,
+        iosInfo:
+            json_.containsKey('iosInfo')
+                ? IosInfo.fromJson(
+                  json_['iosInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        link: json_['link'] as core.String?,
+        navigationInfo:
+            json_.containsKey('navigationInfo')
+                ? NavigationInfo.fromJson(
+                  json_['navigationInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        socialMetaTagInfo:
+            json_.containsKey('socialMetaTagInfo')
+                ? SocialMetaTagInfo.fromJson(
+                  json_['socialMetaTagInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analyticsInfo != null) 'analyticsInfo': analyticsInfo!,
-        if (androidInfo != null) 'androidInfo': androidInfo!,
-        if (desktopInfo != null) 'desktopInfo': desktopInfo!,
-        if (domainUriPrefix != null) 'domainUriPrefix': domainUriPrefix!,
-        if (dynamicLinkDomain != null) 'dynamicLinkDomain': dynamicLinkDomain!,
-        if (iosInfo != null) 'iosInfo': iosInfo!,
-        if (link != null) 'link': link!,
-        if (navigationInfo != null) 'navigationInfo': navigationInfo!,
-        if (socialMetaTagInfo != null) 'socialMetaTagInfo': socialMetaTagInfo!,
-      };
+    if (analyticsInfo != null) 'analyticsInfo': analyticsInfo!,
+    if (androidInfo != null) 'androidInfo': androidInfo!,
+    if (desktopInfo != null) 'desktopInfo': desktopInfo!,
+    if (domainUriPrefix != null) 'domainUriPrefix': domainUriPrefix!,
+    if (dynamicLinkDomain != null) 'dynamicLinkDomain': dynamicLinkDomain!,
+    if (iosInfo != null) 'iosInfo': iosInfo!,
+    if (link != null) 'link': link!,
+    if (navigationInfo != null) 'navigationInfo': navigationInfo!,
+    if (socialMetaTagInfo != null) 'socialMetaTagInfo': socialMetaTagInfo!,
+  };
 }
 
 /// Analytics stats of a Dynamic Link for a given timeframe.
@@ -821,27 +859,32 @@ class DynamicLinkStats {
   /// Optional warnings associated this API request.
   core.List<DynamicLinkWarning>? warnings;
 
-  DynamicLinkStats({
-    this.linkEventStats,
-    this.warnings,
-  });
+  DynamicLinkStats({this.linkEventStats, this.warnings});
 
   DynamicLinkStats.fromJson(core.Map json_)
-      : this(
-          linkEventStats: (json_['linkEventStats'] as core.List?)
-              ?.map((value) => DynamicLinkEventStat.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          warnings: (json_['warnings'] as core.List?)
-              ?.map((value) => DynamicLinkWarning.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        linkEventStats:
+            (json_['linkEventStats'] as core.List?)
+                ?.map(
+                  (value) => DynamicLinkEventStat.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        warnings:
+            (json_['warnings'] as core.List?)
+                ?.map(
+                  (value) => DynamicLinkWarning.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (linkEventStats != null) 'linkEventStats': linkEventStats!,
-        if (warnings != null) 'warnings': warnings!,
-      };
+    if (linkEventStats != null) 'linkEventStats': linkEventStats!,
+    if (warnings != null) 'warnings': warnings!,
+  };
 }
 
 /// Dynamic Links warning messages.
@@ -908,18 +951,18 @@ class DynamicLinkWarning {
   });
 
   DynamicLinkWarning.fromJson(core.Map json_)
-      : this(
-          warningCode: json_['warningCode'] as core.String?,
-          warningDocumentLink: json_['warningDocumentLink'] as core.String?,
-          warningMessage: json_['warningMessage'] as core.String?,
-        );
+    : this(
+        warningCode: json_['warningCode'] as core.String?,
+        warningDocumentLink: json_['warningDocumentLink'] as core.String?,
+        warningMessage: json_['warningMessage'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (warningCode != null) 'warningCode': warningCode!,
-        if (warningDocumentLink != null)
-          'warningDocumentLink': warningDocumentLink!,
-        if (warningMessage != null) 'warningMessage': warningMessage!,
-      };
+    if (warningCode != null) 'warningCode': warningCode!,
+    if (warningDocumentLink != null)
+      'warningDocumentLink': warningDocumentLink!,
+    if (warningMessage != null) 'warningMessage': warningMessage!,
+  };
 }
 
 /// Request for iSDK to execute strong match flow for post-install attribution.
@@ -992,33 +1035,34 @@ class GetIosPostInstallAttributionRequest {
   });
 
   GetIosPostInstallAttributionRequest.fromJson(core.Map json_)
-      : this(
-          appInstallationTime: json_['appInstallationTime'] as core.String?,
-          bundleId: json_['bundleId'] as core.String?,
-          device: json_.containsKey('device')
-              ? DeviceInfo.fromJson(
-                  json_['device'] as core.Map<core.String, core.dynamic>)
-              : null,
-          iosVersion: json_['iosVersion'] as core.String?,
-          retrievalMethod: json_['retrievalMethod'] as core.String?,
-          sdkVersion: json_['sdkVersion'] as core.String?,
-          uniqueMatchLinkToCheck:
-              json_['uniqueMatchLinkToCheck'] as core.String?,
-          visualStyle: json_['visualStyle'] as core.String?,
-        );
+    : this(
+        appInstallationTime: json_['appInstallationTime'] as core.String?,
+        bundleId: json_['bundleId'] as core.String?,
+        device:
+            json_.containsKey('device')
+                ? DeviceInfo.fromJson(
+                  json_['device'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        iosVersion: json_['iosVersion'] as core.String?,
+        retrievalMethod: json_['retrievalMethod'] as core.String?,
+        sdkVersion: json_['sdkVersion'] as core.String?,
+        uniqueMatchLinkToCheck: json_['uniqueMatchLinkToCheck'] as core.String?,
+        visualStyle: json_['visualStyle'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appInstallationTime != null)
-          'appInstallationTime': appInstallationTime!,
-        if (bundleId != null) 'bundleId': bundleId!,
-        if (device != null) 'device': device!,
-        if (iosVersion != null) 'iosVersion': iosVersion!,
-        if (retrievalMethod != null) 'retrievalMethod': retrievalMethod!,
-        if (sdkVersion != null) 'sdkVersion': sdkVersion!,
-        if (uniqueMatchLinkToCheck != null)
-          'uniqueMatchLinkToCheck': uniqueMatchLinkToCheck!,
-        if (visualStyle != null) 'visualStyle': visualStyle!,
-      };
+    if (appInstallationTime != null)
+      'appInstallationTime': appInstallationTime!,
+    if (bundleId != null) 'bundleId': bundleId!,
+    if (device != null) 'device': device!,
+    if (iosVersion != null) 'iosVersion': iosVersion!,
+    if (retrievalMethod != null) 'retrievalMethod': retrievalMethod!,
+    if (sdkVersion != null) 'sdkVersion': sdkVersion!,
+    if (uniqueMatchLinkToCheck != null)
+      'uniqueMatchLinkToCheck': uniqueMatchLinkToCheck!,
+    if (visualStyle != null) 'visualStyle': visualStyle!,
+  };
 }
 
 /// Response for iSDK to execute strong match flow for post-install attribution.
@@ -1129,48 +1173,47 @@ class GetIosPostInstallAttributionResponse {
   });
 
   GetIosPostInstallAttributionResponse.fromJson(core.Map json_)
-      : this(
-          appMinimumVersion: json_['appMinimumVersion'] as core.String?,
-          attributionConfidence: json_['attributionConfidence'] as core.String?,
-          deepLink: json_['deepLink'] as core.String?,
-          externalBrowserDestinationLink:
-              json_['externalBrowserDestinationLink'] as core.String?,
-          fallbackLink: json_['fallbackLink'] as core.String?,
-          invitationId: json_['invitationId'] as core.String?,
-          isStrongMatchExecutable:
-              json_['isStrongMatchExecutable'] as core.bool?,
-          matchMessage: json_['matchMessage'] as core.String?,
-          requestIpVersion: json_['requestIpVersion'] as core.String?,
-          requestedLink: json_['requestedLink'] as core.String?,
-          resolvedLink: json_['resolvedLink'] as core.String?,
-          utmCampaign: json_['utmCampaign'] as core.String?,
-          utmContent: json_['utmContent'] as core.String?,
-          utmMedium: json_['utmMedium'] as core.String?,
-          utmSource: json_['utmSource'] as core.String?,
-          utmTerm: json_['utmTerm'] as core.String?,
-        );
+    : this(
+        appMinimumVersion: json_['appMinimumVersion'] as core.String?,
+        attributionConfidence: json_['attributionConfidence'] as core.String?,
+        deepLink: json_['deepLink'] as core.String?,
+        externalBrowserDestinationLink:
+            json_['externalBrowserDestinationLink'] as core.String?,
+        fallbackLink: json_['fallbackLink'] as core.String?,
+        invitationId: json_['invitationId'] as core.String?,
+        isStrongMatchExecutable: json_['isStrongMatchExecutable'] as core.bool?,
+        matchMessage: json_['matchMessage'] as core.String?,
+        requestIpVersion: json_['requestIpVersion'] as core.String?,
+        requestedLink: json_['requestedLink'] as core.String?,
+        resolvedLink: json_['resolvedLink'] as core.String?,
+        utmCampaign: json_['utmCampaign'] as core.String?,
+        utmContent: json_['utmContent'] as core.String?,
+        utmMedium: json_['utmMedium'] as core.String?,
+        utmSource: json_['utmSource'] as core.String?,
+        utmTerm: json_['utmTerm'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appMinimumVersion != null) 'appMinimumVersion': appMinimumVersion!,
-        if (attributionConfidence != null)
-          'attributionConfidence': attributionConfidence!,
-        if (deepLink != null) 'deepLink': deepLink!,
-        if (externalBrowserDestinationLink != null)
-          'externalBrowserDestinationLink': externalBrowserDestinationLink!,
-        if (fallbackLink != null) 'fallbackLink': fallbackLink!,
-        if (invitationId != null) 'invitationId': invitationId!,
-        if (isStrongMatchExecutable != null)
-          'isStrongMatchExecutable': isStrongMatchExecutable!,
-        if (matchMessage != null) 'matchMessage': matchMessage!,
-        if (requestIpVersion != null) 'requestIpVersion': requestIpVersion!,
-        if (requestedLink != null) 'requestedLink': requestedLink!,
-        if (resolvedLink != null) 'resolvedLink': resolvedLink!,
-        if (utmCampaign != null) 'utmCampaign': utmCampaign!,
-        if (utmContent != null) 'utmContent': utmContent!,
-        if (utmMedium != null) 'utmMedium': utmMedium!,
-        if (utmSource != null) 'utmSource': utmSource!,
-        if (utmTerm != null) 'utmTerm': utmTerm!,
-      };
+    if (appMinimumVersion != null) 'appMinimumVersion': appMinimumVersion!,
+    if (attributionConfidence != null)
+      'attributionConfidence': attributionConfidence!,
+    if (deepLink != null) 'deepLink': deepLink!,
+    if (externalBrowserDestinationLink != null)
+      'externalBrowserDestinationLink': externalBrowserDestinationLink!,
+    if (fallbackLink != null) 'fallbackLink': fallbackLink!,
+    if (invitationId != null) 'invitationId': invitationId!,
+    if (isStrongMatchExecutable != null)
+      'isStrongMatchExecutable': isStrongMatchExecutable!,
+    if (matchMessage != null) 'matchMessage': matchMessage!,
+    if (requestIpVersion != null) 'requestIpVersion': requestIpVersion!,
+    if (requestedLink != null) 'requestedLink': requestedLink!,
+    if (resolvedLink != null) 'resolvedLink': resolvedLink!,
+    if (utmCampaign != null) 'utmCampaign': utmCampaign!,
+    if (utmContent != null) 'utmContent': utmContent!,
+    if (utmMedium != null) 'utmMedium': utmMedium!,
+    if (utmSource != null) 'utmSource': utmSource!,
+    if (utmTerm != null) 'utmTerm': utmTerm!,
+  };
 }
 
 /// Request for iSDK to get reopen attribution for app universal link open
@@ -1199,17 +1242,17 @@ class GetIosReopenAttributionRequest {
   });
 
   GetIosReopenAttributionRequest.fromJson(core.Map json_)
-      : this(
-          bundleId: json_['bundleId'] as core.String?,
-          requestedLink: json_['requestedLink'] as core.String?,
-          sdkVersion: json_['sdkVersion'] as core.String?,
-        );
+    : this(
+        bundleId: json_['bundleId'] as core.String?,
+        requestedLink: json_['requestedLink'] as core.String?,
+        sdkVersion: json_['sdkVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bundleId != null) 'bundleId': bundleId!,
-        if (requestedLink != null) 'requestedLink': requestedLink!,
-        if (sdkVersion != null) 'sdkVersion': sdkVersion!,
-      };
+    if (bundleId != null) 'bundleId': bundleId!,
+    if (requestedLink != null) 'requestedLink': requestedLink!,
+    if (sdkVersion != null) 'sdkVersion': sdkVersion!,
+  };
 }
 
 /// Response for iSDK to get reopen attribution for app universal link open
@@ -1266,34 +1309,38 @@ class GetIosReopenAttributionResponse {
   });
 
   GetIosReopenAttributionResponse.fromJson(core.Map json_)
-      : this(
-          deepLink: json_['deepLink'] as core.String?,
-          invitationId: json_['invitationId'] as core.String?,
-          iosMinAppVersion: json_['iosMinAppVersion'] as core.String?,
-          resolvedLink: json_['resolvedLink'] as core.String?,
-          utmCampaign: json_['utmCampaign'] as core.String?,
-          utmContent: json_['utmContent'] as core.String?,
-          utmMedium: json_['utmMedium'] as core.String?,
-          utmSource: json_['utmSource'] as core.String?,
-          utmTerm: json_['utmTerm'] as core.String?,
-          warning: (json_['warning'] as core.List?)
-              ?.map((value) => DynamicLinkWarning.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        deepLink: json_['deepLink'] as core.String?,
+        invitationId: json_['invitationId'] as core.String?,
+        iosMinAppVersion: json_['iosMinAppVersion'] as core.String?,
+        resolvedLink: json_['resolvedLink'] as core.String?,
+        utmCampaign: json_['utmCampaign'] as core.String?,
+        utmContent: json_['utmContent'] as core.String?,
+        utmMedium: json_['utmMedium'] as core.String?,
+        utmSource: json_['utmSource'] as core.String?,
+        utmTerm: json_['utmTerm'] as core.String?,
+        warning:
+            (json_['warning'] as core.List?)
+                ?.map(
+                  (value) => DynamicLinkWarning.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deepLink != null) 'deepLink': deepLink!,
-        if (invitationId != null) 'invitationId': invitationId!,
-        if (iosMinAppVersion != null) 'iosMinAppVersion': iosMinAppVersion!,
-        if (resolvedLink != null) 'resolvedLink': resolvedLink!,
-        if (utmCampaign != null) 'utmCampaign': utmCampaign!,
-        if (utmContent != null) 'utmContent': utmContent!,
-        if (utmMedium != null) 'utmMedium': utmMedium!,
-        if (utmSource != null) 'utmSource': utmSource!,
-        if (utmTerm != null) 'utmTerm': utmTerm!,
-        if (warning != null) 'warning': warning!,
-      };
+    if (deepLink != null) 'deepLink': deepLink!,
+    if (invitationId != null) 'invitationId': invitationId!,
+    if (iosMinAppVersion != null) 'iosMinAppVersion': iosMinAppVersion!,
+    if (resolvedLink != null) 'resolvedLink': resolvedLink!,
+    if (utmCampaign != null) 'utmCampaign': utmCampaign!,
+    if (utmContent != null) 'utmContent': utmContent!,
+    if (utmMedium != null) 'utmMedium': utmMedium!,
+    if (utmSource != null) 'utmSource': utmSource!,
+    if (utmTerm != null) 'utmTerm': utmTerm!,
+    if (warning != null) 'warning': warning!,
+  };
 }
 
 /// Parameters for Google Play Campaign Measurements.
@@ -1335,23 +1382,23 @@ class GooglePlayAnalytics {
   });
 
   GooglePlayAnalytics.fromJson(core.Map json_)
-      : this(
-          gclid: json_['gclid'] as core.String?,
-          utmCampaign: json_['utmCampaign'] as core.String?,
-          utmContent: json_['utmContent'] as core.String?,
-          utmMedium: json_['utmMedium'] as core.String?,
-          utmSource: json_['utmSource'] as core.String?,
-          utmTerm: json_['utmTerm'] as core.String?,
-        );
+    : this(
+        gclid: json_['gclid'] as core.String?,
+        utmCampaign: json_['utmCampaign'] as core.String?,
+        utmContent: json_['utmContent'] as core.String?,
+        utmMedium: json_['utmMedium'] as core.String?,
+        utmSource: json_['utmSource'] as core.String?,
+        utmTerm: json_['utmTerm'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gclid != null) 'gclid': gclid!,
-        if (utmCampaign != null) 'utmCampaign': utmCampaign!,
-        if (utmContent != null) 'utmContent': utmContent!,
-        if (utmMedium != null) 'utmMedium': utmMedium!,
-        if (utmSource != null) 'utmSource': utmSource!,
-        if (utmTerm != null) 'utmTerm': utmTerm!,
-      };
+    if (gclid != null) 'gclid': gclid!,
+    if (utmCampaign != null) 'utmCampaign': utmCampaign!,
+    if (utmContent != null) 'utmContent': utmContent!,
+    if (utmMedium != null) 'utmMedium': utmMedium!,
+    if (utmSource != null) 'utmSource': utmSource!,
+    if (utmTerm != null) 'utmTerm': utmTerm!,
+  };
 }
 
 /// Parameters for iTunes Connect App Analytics.
@@ -1370,27 +1417,22 @@ class ITunesConnectAnalytics {
   /// Connect.
   core.String? pt;
 
-  ITunesConnectAnalytics({
-    this.at,
-    this.ct,
-    this.mt,
-    this.pt,
-  });
+  ITunesConnectAnalytics({this.at, this.ct, this.mt, this.pt});
 
   ITunesConnectAnalytics.fromJson(core.Map json_)
-      : this(
-          at: json_['at'] as core.String?,
-          ct: json_['ct'] as core.String?,
-          mt: json_['mt'] as core.String?,
-          pt: json_['pt'] as core.String?,
-        );
+    : this(
+        at: json_['at'] as core.String?,
+        ct: json_['ct'] as core.String?,
+        mt: json_['mt'] as core.String?,
+        pt: json_['pt'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (at != null) 'at': at!,
-        if (ct != null) 'ct': ct!,
-        if (mt != null) 'mt': mt!,
-        if (pt != null) 'pt': pt!,
-      };
+    if (at != null) 'at': at!,
+    if (ct != null) 'ct': ct!,
+    if (mt != null) 'mt': mt!,
+    if (pt != null) 'pt': pt!,
+  };
 }
 
 /// iOS related attributes to the Dynamic Link..
@@ -1430,26 +1472,26 @@ class IosInfo {
   });
 
   IosInfo.fromJson(core.Map json_)
-      : this(
-          iosAppStoreId: json_['iosAppStoreId'] as core.String?,
-          iosBundleId: json_['iosBundleId'] as core.String?,
-          iosCustomScheme: json_['iosCustomScheme'] as core.String?,
-          iosFallbackLink: json_['iosFallbackLink'] as core.String?,
-          iosIpadBundleId: json_['iosIpadBundleId'] as core.String?,
-          iosIpadFallbackLink: json_['iosIpadFallbackLink'] as core.String?,
-          iosMinimumVersion: json_['iosMinimumVersion'] as core.String?,
-        );
+    : this(
+        iosAppStoreId: json_['iosAppStoreId'] as core.String?,
+        iosBundleId: json_['iosBundleId'] as core.String?,
+        iosCustomScheme: json_['iosCustomScheme'] as core.String?,
+        iosFallbackLink: json_['iosFallbackLink'] as core.String?,
+        iosIpadBundleId: json_['iosIpadBundleId'] as core.String?,
+        iosIpadFallbackLink: json_['iosIpadFallbackLink'] as core.String?,
+        iosMinimumVersion: json_['iosMinimumVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iosAppStoreId != null) 'iosAppStoreId': iosAppStoreId!,
-        if (iosBundleId != null) 'iosBundleId': iosBundleId!,
-        if (iosCustomScheme != null) 'iosCustomScheme': iosCustomScheme!,
-        if (iosFallbackLink != null) 'iosFallbackLink': iosFallbackLink!,
-        if (iosIpadBundleId != null) 'iosIpadBundleId': iosIpadBundleId!,
-        if (iosIpadFallbackLink != null)
-          'iosIpadFallbackLink': iosIpadFallbackLink!,
-        if (iosMinimumVersion != null) 'iosMinimumVersion': iosMinimumVersion!,
-      };
+    if (iosAppStoreId != null) 'iosAppStoreId': iosAppStoreId!,
+    if (iosBundleId != null) 'iosBundleId': iosBundleId!,
+    if (iosCustomScheme != null) 'iosCustomScheme': iosCustomScheme!,
+    if (iosFallbackLink != null) 'iosFallbackLink': iosFallbackLink!,
+    if (iosIpadBundleId != null) 'iosIpadBundleId': iosIpadBundleId!,
+    if (iosIpadFallbackLink != null)
+      'iosIpadFallbackLink': iosIpadFallbackLink!,
+    if (iosMinimumVersion != null) 'iosMinimumVersion': iosMinimumVersion!,
+  };
 }
 
 /// Managed Short Link.
@@ -1493,28 +1535,31 @@ class ManagedShortLink {
   });
 
   ManagedShortLink.fromJson(core.Map json_)
-      : this(
-          creationTime: json_['creationTime'] as core.String?,
-          flaggedAttribute: (json_['flaggedAttribute'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          info: json_.containsKey('info')
-              ? DynamicLinkInfo.fromJson(
-                  json_['info'] as core.Map<core.String, core.dynamic>)
-              : null,
-          link: json_['link'] as core.String?,
-          linkName: json_['linkName'] as core.String?,
-          visibility: json_['visibility'] as core.String?,
-        );
+    : this(
+        creationTime: json_['creationTime'] as core.String?,
+        flaggedAttribute:
+            (json_['flaggedAttribute'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        info:
+            json_.containsKey('info')
+                ? DynamicLinkInfo.fromJson(
+                  json_['info'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        link: json_['link'] as core.String?,
+        linkName: json_['linkName'] as core.String?,
+        visibility: json_['visibility'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime!,
-        if (flaggedAttribute != null) 'flaggedAttribute': flaggedAttribute!,
-        if (info != null) 'info': info!,
-        if (link != null) 'link': link!,
-        if (linkName != null) 'linkName': linkName!,
-        if (visibility != null) 'visibility': visibility!,
-      };
+    if (creationTime != null) 'creationTime': creationTime!,
+    if (flaggedAttribute != null) 'flaggedAttribute': flaggedAttribute!,
+    if (info != null) 'info': info!,
+    if (link != null) 'link': link!,
+    if (linkName != null) 'linkName': linkName!,
+    if (visibility != null) 'visibility': visibility!,
+  };
 }
 
 /// Information of navigation behavior.
@@ -1523,19 +1568,15 @@ class NavigationInfo {
   /// show an interstitial page.
   core.bool? enableForcedRedirect;
 
-  NavigationInfo({
-    this.enableForcedRedirect,
-  });
+  NavigationInfo({this.enableForcedRedirect});
 
   NavigationInfo.fromJson(core.Map json_)
-      : this(
-          enableForcedRedirect: json_['enableForcedRedirect'] as core.bool?,
-        );
+    : this(enableForcedRedirect: json_['enableForcedRedirect'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enableForcedRedirect != null)
-          'enableForcedRedirect': enableForcedRedirect!,
-      };
+    if (enableForcedRedirect != null)
+      'enableForcedRedirect': enableForcedRedirect!,
+  };
 }
 
 /// Parameters for social meta tag params.
@@ -1564,17 +1605,17 @@ class SocialMetaTagInfo {
   });
 
   SocialMetaTagInfo.fromJson(core.Map json_)
-      : this(
-          socialDescription: json_['socialDescription'] as core.String?,
-          socialImageLink: json_['socialImageLink'] as core.String?,
-          socialTitle: json_['socialTitle'] as core.String?,
-        );
+    : this(
+        socialDescription: json_['socialDescription'] as core.String?,
+        socialImageLink: json_['socialImageLink'] as core.String?,
+        socialTitle: json_['socialTitle'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (socialDescription != null) 'socialDescription': socialDescription!,
-        if (socialImageLink != null) 'socialImageLink': socialImageLink!,
-        if (socialTitle != null) 'socialTitle': socialTitle!,
-      };
+    if (socialDescription != null) 'socialDescription': socialDescription!,
+    if (socialImageLink != null) 'socialImageLink': socialImageLink!,
+    if (socialTitle != null) 'socialTitle': socialTitle!,
+  };
 }
 
 /// Short Dynamic Link suffix.
@@ -1599,19 +1640,16 @@ class Suffix {
   /// short link creation
   core.String? option;
 
-  Suffix({
-    this.customSuffix,
-    this.option,
-  });
+  Suffix({this.customSuffix, this.option});
 
   Suffix.fromJson(core.Map json_)
-      : this(
-          customSuffix: json_['customSuffix'] as core.String?,
-          option: json_['option'] as core.String?,
-        );
+    : this(
+        customSuffix: json_['customSuffix'] as core.String?,
+        option: json_['option'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customSuffix != null) 'customSuffix': customSuffix!,
-        if (option != null) 'option': option!,
-      };
+    if (customSuffix != null) 'customSuffix': customSuffix!,
+    if (option != null) 'option': option!,
+  };
 }

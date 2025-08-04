@@ -51,11 +51,16 @@ class DatastreamApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  DatastreamApi(http.Client client,
-      {core.String rootUrl = 'https://datastream.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DatastreamApi(
+    http.Client client, {
+    core.String rootUrl = 'https://datastream.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -126,7 +131,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return FetchStaticIpsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets information about a location.
@@ -146,10 +152,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -219,7 +222,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -227,7 +231,7 @@ class ProjectsLocationsConnectionProfilesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConnectionProfilesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Use this method to create a connection profile in a project and location.
   ///
@@ -343,6 +347,7 @@ class ProjectsLocationsConnectionProfilesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -392,7 +397,8 @@ class ProjectsLocationsConnectionProfilesResource {
       queryParams: queryParams_,
     );
     return DiscoverConnectionProfileResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Use this method to get details about a connection profile.
@@ -429,7 +435,8 @@ class ProjectsLocationsConnectionProfilesResource {
       queryParams: queryParams_,
     );
     return ConnectionProfile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Use this method to list connection profiles created in a project and
@@ -488,7 +495,8 @@ class ProjectsLocationsConnectionProfilesResource {
       queryParams: queryParams_,
     );
     return ListConnectionProfilesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Use this method to update the parameters of a connection profile.
@@ -568,7 +576,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -642,10 +650,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -655,6 +660,7 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -681,10 +687,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -746,7 +749,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -757,7 +761,7 @@ class ProjectsLocationsPrivateConnectionsResource {
       ProjectsLocationsPrivateConnectionsRoutesResource(_requester);
 
   ProjectsLocationsPrivateConnectionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Use this method to create a private connectivity configuration.
   ///
@@ -880,6 +884,7 @@ class ProjectsLocationsPrivateConnectionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -920,7 +925,8 @@ class ProjectsLocationsPrivateConnectionsResource {
       queryParams: queryParams_,
     );
     return PrivateConnection.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Use this method to list private connectivity configurations in a project
@@ -980,7 +986,8 @@ class ProjectsLocationsPrivateConnectionsResource {
       queryParams: queryParams_,
     );
     return ListPrivateConnectionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -988,7 +995,7 @@ class ProjectsLocationsPrivateConnectionsRoutesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPrivateConnectionsRoutesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Use this method to create a route for a private connectivity configuration
   /// in a project and location.
@@ -1095,6 +1102,7 @@ class ProjectsLocationsPrivateConnectionsRoutesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1118,10 +1126,7 @@ class ProjectsLocationsPrivateConnectionsRoutesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Route> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Route> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1192,7 +1197,8 @@ class ProjectsLocationsPrivateConnectionsRoutesResource {
       queryParams: queryParams_,
     );
     return ListRoutesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1203,7 +1209,7 @@ class ProjectsLocationsStreamsResource {
       ProjectsLocationsStreamsObjectsResource(_requester);
 
   ProjectsLocationsStreamsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Use this method to create a stream.
   ///
@@ -1317,6 +1323,7 @@ class ProjectsLocationsStreamsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1340,10 +1347,7 @@ class ProjectsLocationsStreamsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Stream> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Stream> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1412,7 +1416,8 @@ class ProjectsLocationsStreamsResource {
       queryParams: queryParams_,
     );
     return ListStreamsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Use this method to update the configuration of a stream.
@@ -1535,7 +1540,7 @@ class ProjectsLocationsStreamsObjectsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsStreamsObjectsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Use this method to get details about a stream object.
   ///
@@ -1571,7 +1576,8 @@ class ProjectsLocationsStreamsObjectsResource {
       queryParams: queryParams_,
     );
     return StreamObject.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Use this method to list the objects of a specific stream.
@@ -1622,7 +1628,8 @@ class ProjectsLocationsStreamsObjectsResource {
       queryParams: queryParams_,
     );
     return ListStreamObjectsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Use this method to look up a stream object by its source object
@@ -1666,7 +1673,8 @@ class ProjectsLocationsStreamsObjectsResource {
       queryParams: queryParams_,
     );
     return StreamObject.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Use this method to start a backfill job for the specified stream object.
@@ -1709,7 +1717,8 @@ class ProjectsLocationsStreamsObjectsResource {
       queryParams: queryParams_,
     );
     return StartBackfillJobResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Use this method to stop a backfill job for the specified stream object.
@@ -1752,7 +1761,8 @@ class ProjectsLocationsStreamsObjectsResource {
       queryParams: queryParams_,
     );
     return StopBackfillJobResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1795,50 +1805,65 @@ class BackfillAllStrategy {
   });
 
   BackfillAllStrategy.fromJson(core.Map json_)
-      : this(
-          mongodbExcludedObjects: json_.containsKey('mongodbExcludedObjects')
-              ? MongodbCluster.fromJson(json_['mongodbExcludedObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          mysqlExcludedObjects: json_.containsKey('mysqlExcludedObjects')
-              ? MysqlRdbms.fromJson(json_['mysqlExcludedObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          oracleExcludedObjects: json_.containsKey('oracleExcludedObjects')
-              ? OracleRdbms.fromJson(json_['oracleExcludedObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          postgresqlExcludedObjects:
-              json_.containsKey('postgresqlExcludedObjects')
-                  ? PostgresqlRdbms.fromJson(json_['postgresqlExcludedObjects']
-                      as core.Map<core.String, core.dynamic>)
-                  : null,
-          salesforceExcludedObjects:
-              json_.containsKey('salesforceExcludedObjects')
-                  ? SalesforceOrg.fromJson(json_['salesforceExcludedObjects']
-                      as core.Map<core.String, core.dynamic>)
-                  : null,
-          sqlServerExcludedObjects:
-              json_.containsKey('sqlServerExcludedObjects')
-                  ? SqlServerRdbms.fromJson(json_['sqlServerExcludedObjects']
-                      as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        mongodbExcludedObjects:
+            json_.containsKey('mongodbExcludedObjects')
+                ? MongodbCluster.fromJson(
+                  json_['mongodbExcludedObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mysqlExcludedObjects:
+            json_.containsKey('mysqlExcludedObjects')
+                ? MysqlRdbms.fromJson(
+                  json_['mysqlExcludedObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        oracleExcludedObjects:
+            json_.containsKey('oracleExcludedObjects')
+                ? OracleRdbms.fromJson(
+                  json_['oracleExcludedObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        postgresqlExcludedObjects:
+            json_.containsKey('postgresqlExcludedObjects')
+                ? PostgresqlRdbms.fromJson(
+                  json_['postgresqlExcludedObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        salesforceExcludedObjects:
+            json_.containsKey('salesforceExcludedObjects')
+                ? SalesforceOrg.fromJson(
+                  json_['salesforceExcludedObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sqlServerExcludedObjects:
+            json_.containsKey('sqlServerExcludedObjects')
+                ? SqlServerRdbms.fromJson(
+                  json_['sqlServerExcludedObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mongodbExcludedObjects != null)
-          'mongodbExcludedObjects': mongodbExcludedObjects!,
-        if (mysqlExcludedObjects != null)
-          'mysqlExcludedObjects': mysqlExcludedObjects!,
-        if (oracleExcludedObjects != null)
-          'oracleExcludedObjects': oracleExcludedObjects!,
-        if (postgresqlExcludedObjects != null)
-          'postgresqlExcludedObjects': postgresqlExcludedObjects!,
-        if (salesforceExcludedObjects != null)
-          'salesforceExcludedObjects': salesforceExcludedObjects!,
-        if (sqlServerExcludedObjects != null)
-          'sqlServerExcludedObjects': sqlServerExcludedObjects!,
-      };
+    if (mongodbExcludedObjects != null)
+      'mongodbExcludedObjects': mongodbExcludedObjects!,
+    if (mysqlExcludedObjects != null)
+      'mysqlExcludedObjects': mysqlExcludedObjects!,
+    if (oracleExcludedObjects != null)
+      'oracleExcludedObjects': oracleExcludedObjects!,
+    if (postgresqlExcludedObjects != null)
+      'postgresqlExcludedObjects': postgresqlExcludedObjects!,
+    if (salesforceExcludedObjects != null)
+      'salesforceExcludedObjects': salesforceExcludedObjects!,
+    if (sqlServerExcludedObjects != null)
+      'sqlServerExcludedObjects': sqlServerExcludedObjects!,
+  };
 }
 
 /// Represents a backfill job on a specific stream object.
@@ -1894,24 +1919,28 @@ class BackfillJob {
   });
 
   BackfillJob.fromJson(core.Map json_)
-      : this(
-          errors: (json_['errors'] as core.List?)
-              ?.map((value) =>
-                  Error.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          lastEndTime: json_['lastEndTime'] as core.String?,
-          lastStartTime: json_['lastStartTime'] as core.String?,
-          state: json_['state'] as core.String?,
-          trigger: json_['trigger'] as core.String?,
-        );
+    : this(
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => Error.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        lastEndTime: json_['lastEndTime'] as core.String?,
+        lastStartTime: json_['lastStartTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        trigger: json_['trigger'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null) 'errors': errors!,
-        if (lastEndTime != null) 'lastEndTime': lastEndTime!,
-        if (lastStartTime != null) 'lastStartTime': lastStartTime!,
-        if (state != null) 'state': state!,
-        if (trigger != null) 'trigger': trigger!,
-      };
+    if (errors != null) 'errors': errors!,
+    if (lastEndTime != null) 'lastEndTime': lastEndTime!,
+    if (lastStartTime != null) 'lastStartTime': lastStartTime!,
+    if (state != null) 'state': state!,
+    if (trigger != null) 'trigger': trigger!,
+  };
 }
 
 /// Backfill strategy to disable automatic backfill for the Stream's objects.
@@ -1960,41 +1989,52 @@ class BigQueryDestinationConfig {
   });
 
   BigQueryDestinationConfig.fromJson(core.Map json_)
-      : this(
-          appendOnly: json_.containsKey('appendOnly')
-              ? AppendOnly.fromJson(
-                  json_['appendOnly'] as core.Map<core.String, core.dynamic>)
-              : null,
-          blmtConfig: json_.containsKey('blmtConfig')
-              ? BlmtConfig.fromJson(
-                  json_['blmtConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dataFreshness: json_['dataFreshness'] as core.String?,
-          merge: json_.containsKey('merge')
-              ? Merge.fromJson(
-                  json_['merge'] as core.Map<core.String, core.dynamic>)
-              : null,
-          singleTargetDataset: json_.containsKey('singleTargetDataset')
-              ? SingleTargetDataset.fromJson(json_['singleTargetDataset']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceHierarchyDatasets: json_.containsKey('sourceHierarchyDatasets')
-              ? SourceHierarchyDatasets.fromJson(
+    : this(
+        appendOnly:
+            json_.containsKey('appendOnly')
+                ? AppendOnly.fromJson(
+                  json_['appendOnly'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        blmtConfig:
+            json_.containsKey('blmtConfig')
+                ? BlmtConfig.fromJson(
+                  json_['blmtConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataFreshness: json_['dataFreshness'] as core.String?,
+        merge:
+            json_.containsKey('merge')
+                ? Merge.fromJson(
+                  json_['merge'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        singleTargetDataset:
+            json_.containsKey('singleTargetDataset')
+                ? SingleTargetDataset.fromJson(
+                  json_['singleTargetDataset']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceHierarchyDatasets:
+            json_.containsKey('sourceHierarchyDatasets')
+                ? SourceHierarchyDatasets.fromJson(
                   json_['sourceHierarchyDatasets']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appendOnly != null) 'appendOnly': appendOnly!,
-        if (blmtConfig != null) 'blmtConfig': blmtConfig!,
-        if (dataFreshness != null) 'dataFreshness': dataFreshness!,
-        if (merge != null) 'merge': merge!,
-        if (singleTargetDataset != null)
-          'singleTargetDataset': singleTargetDataset!,
-        if (sourceHierarchyDatasets != null)
-          'sourceHierarchyDatasets': sourceHierarchyDatasets!,
-      };
+    if (appendOnly != null) 'appendOnly': appendOnly!,
+    if (blmtConfig != null) 'blmtConfig': blmtConfig!,
+    if (dataFreshness != null) 'dataFreshness': dataFreshness!,
+    if (merge != null) 'merge': merge!,
+    if (singleTargetDataset != null)
+      'singleTargetDataset': singleTargetDataset!,
+    if (sourceHierarchyDatasets != null)
+      'sourceHierarchyDatasets': sourceHierarchyDatasets!,
+  };
 }
 
 /// BigQuery warehouse profile.
@@ -2008,29 +2048,31 @@ class BinaryLogParser {
   /// Use Oracle ASM.
   OracleAsmLogFileAccess? oracleAsmLogFileAccess;
 
-  BinaryLogParser({
-    this.logFileDirectories,
-    this.oracleAsmLogFileAccess,
-  });
+  BinaryLogParser({this.logFileDirectories, this.oracleAsmLogFileAccess});
 
   BinaryLogParser.fromJson(core.Map json_)
-      : this(
-          logFileDirectories: json_.containsKey('logFileDirectories')
-              ? LogFileDirectories.fromJson(json_['logFileDirectories']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          oracleAsmLogFileAccess: json_.containsKey('oracleAsmLogFileAccess')
-              ? OracleAsmLogFileAccess.fromJson(json_['oracleAsmLogFileAccess']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        logFileDirectories:
+            json_.containsKey('logFileDirectories')
+                ? LogFileDirectories.fromJson(
+                  json_['logFileDirectories']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        oracleAsmLogFileAccess:
+            json_.containsKey('oracleAsmLogFileAccess')
+                ? OracleAsmLogFileAccess.fromJson(
+                  json_['oracleAsmLogFileAccess']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (logFileDirectories != null)
-          'logFileDirectories': logFileDirectories!,
-        if (oracleAsmLogFileAccess != null)
-          'oracleAsmLogFileAccess': oracleAsmLogFileAccess!,
-      };
+    if (logFileDirectories != null) 'logFileDirectories': logFileDirectories!,
+    if (oracleAsmLogFileAccess != null)
+      'oracleAsmLogFileAccess': oracleAsmLogFileAccess!,
+  };
 }
 
 /// Use Binary log position based replication.
@@ -2078,21 +2120,21 @@ class BlmtConfig {
   });
 
   BlmtConfig.fromJson(core.Map json_)
-      : this(
-          bucket: json_['bucket'] as core.String?,
-          connectionName: json_['connectionName'] as core.String?,
-          fileFormat: json_['fileFormat'] as core.String?,
-          rootPath: json_['rootPath'] as core.String?,
-          tableFormat: json_['tableFormat'] as core.String?,
-        );
+    : this(
+        bucket: json_['bucket'] as core.String?,
+        connectionName: json_['connectionName'] as core.String?,
+        fileFormat: json_['fileFormat'] as core.String?,
+        rootPath: json_['rootPath'] as core.String?,
+        tableFormat: json_['tableFormat'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucket != null) 'bucket': bucket!,
-        if (connectionName != null) 'connectionName': connectionName!,
-        if (fileFormat != null) 'fileFormat': fileFormat!,
-        if (rootPath != null) 'rootPath': rootPath!,
-        if (tableFormat != null) 'tableFormat': tableFormat!,
-      };
+    if (bucket != null) 'bucket': bucket!,
+    if (connectionName != null) 'connectionName': connectionName!,
+    if (fileFormat != null) 'fileFormat': fileFormat!,
+    if (rootPath != null) 'rootPath': rootPath!,
+    if (tableFormat != null) 'tableFormat': tableFormat!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2122,32 +2164,38 @@ class CdcStrategy {
   });
 
   CdcStrategy.fromJson(core.Map json_)
-      : this(
-          mostRecentStartPosition: json_.containsKey('mostRecentStartPosition')
-              ? MostRecentStartPosition.fromJson(
+    : this(
+        mostRecentStartPosition:
+            json_.containsKey('mostRecentStartPosition')
+                ? MostRecentStartPosition.fromJson(
                   json_['mostRecentStartPosition']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          nextAvailableStartPosition:
-              json_.containsKey('nextAvailableStartPosition')
-                  ? NextAvailableStartPosition.fromJson(
-                      json_['nextAvailableStartPosition']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          specificStartPosition: json_.containsKey('specificStartPosition')
-              ? SpecificStartPosition.fromJson(json_['specificStartPosition']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nextAvailableStartPosition:
+            json_.containsKey('nextAvailableStartPosition')
+                ? NextAvailableStartPosition.fromJson(
+                  json_['nextAvailableStartPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        specificStartPosition:
+            json_.containsKey('specificStartPosition')
+                ? SpecificStartPosition.fromJson(
+                  json_['specificStartPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mostRecentStartPosition != null)
-          'mostRecentStartPosition': mostRecentStartPosition!,
-        if (nextAvailableStartPosition != null)
-          'nextAvailableStartPosition': nextAvailableStartPosition!,
-        if (specificStartPosition != null)
-          'specificStartPosition': specificStartPosition!,
-      };
+    if (mostRecentStartPosition != null)
+      'mostRecentStartPosition': mostRecentStartPosition!,
+    if (nextAvailableStartPosition != null)
+      'nextAvailableStartPosition': nextAvailableStartPosition!,
+    if (specificStartPosition != null)
+      'specificStartPosition': specificStartPosition!,
+  };
 }
 
 /// A set of reusable connection configurations to be used as a source or
@@ -2243,92 +2291,115 @@ class ConnectionProfile {
   });
 
   ConnectionProfile.fromJson(core.Map json_)
-      : this(
-          bigqueryProfile: json_.containsKey('bigqueryProfile')
-              ? BigQueryProfile.fromJson(json_['bigqueryProfile']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          forwardSshConnectivity: json_.containsKey('forwardSshConnectivity')
-              ? ForwardSshTunnelConnectivity.fromJson(
+    : this(
+        bigqueryProfile:
+            json_.containsKey('bigqueryProfile')
+                ? BigQueryProfile.fromJson(
+                  json_['bigqueryProfile']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        forwardSshConnectivity:
+            json_.containsKey('forwardSshConnectivity')
+                ? ForwardSshTunnelConnectivity.fromJson(
                   json_['forwardSshConnectivity']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          gcsProfile: json_.containsKey('gcsProfile')
-              ? GcsProfile.fromJson(
-                  json_['gcsProfile'] as core.Map<core.String, core.dynamic>)
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          mongodbProfile: json_.containsKey('mongodbProfile')
-              ? MongodbProfile.fromJson(json_['mongodbProfile']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          mysqlProfile: json_.containsKey('mysqlProfile')
-              ? MysqlProfile.fromJson(
-                  json_['mysqlProfile'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          oracleProfile: json_.containsKey('oracleProfile')
-              ? OracleProfile.fromJson(
-                  json_['oracleProfile'] as core.Map<core.String, core.dynamic>)
-              : null,
-          postgresqlProfile: json_.containsKey('postgresqlProfile')
-              ? PostgresqlProfile.fromJson(json_['postgresqlProfile']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          privateConnectivity: json_.containsKey('privateConnectivity')
-              ? PrivateConnectivity.fromJson(json_['privateConnectivity']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          salesforceProfile: json_.containsKey('salesforceProfile')
-              ? SalesforceProfile.fromJson(json_['salesforceProfile']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
-          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-          sqlServerProfile: json_.containsKey('sqlServerProfile')
-              ? SqlServerProfile.fromJson(json_['sqlServerProfile']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          staticServiceIpConnectivity:
-              json_.containsKey('staticServiceIpConnectivity')
-                  ? StaticServiceIpConnectivity.fromJson(
-                      json_['staticServiceIpConnectivity']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gcsProfile:
+            json_.containsKey('gcsProfile')
+                ? GcsProfile.fromJson(
+                  json_['gcsProfile'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        mongodbProfile:
+            json_.containsKey('mongodbProfile')
+                ? MongodbProfile.fromJson(
+                  json_['mongodbProfile']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mysqlProfile:
+            json_.containsKey('mysqlProfile')
+                ? MysqlProfile.fromJson(
+                  json_['mysqlProfile'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        oracleProfile:
+            json_.containsKey('oracleProfile')
+                ? OracleProfile.fromJson(
+                  json_['oracleProfile'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        postgresqlProfile:
+            json_.containsKey('postgresqlProfile')
+                ? PostgresqlProfile.fromJson(
+                  json_['postgresqlProfile']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        privateConnectivity:
+            json_.containsKey('privateConnectivity')
+                ? PrivateConnectivity.fromJson(
+                  json_['privateConnectivity']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        salesforceProfile:
+            json_.containsKey('salesforceProfile')
+                ? SalesforceProfile.fromJson(
+                  json_['salesforceProfile']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+        satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        sqlServerProfile:
+            json_.containsKey('sqlServerProfile')
+                ? SqlServerProfile.fromJson(
+                  json_['sqlServerProfile']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        staticServiceIpConnectivity:
+            json_.containsKey('staticServiceIpConnectivity')
+                ? StaticServiceIpConnectivity.fromJson(
+                  json_['staticServiceIpConnectivity']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigqueryProfile != null) 'bigqueryProfile': bigqueryProfile!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (forwardSshConnectivity != null)
-          'forwardSshConnectivity': forwardSshConnectivity!,
-        if (gcsProfile != null) 'gcsProfile': gcsProfile!,
-        if (labels != null) 'labels': labels!,
-        if (mongodbProfile != null) 'mongodbProfile': mongodbProfile!,
-        if (mysqlProfile != null) 'mysqlProfile': mysqlProfile!,
-        if (name != null) 'name': name!,
-        if (oracleProfile != null) 'oracleProfile': oracleProfile!,
-        if (postgresqlProfile != null) 'postgresqlProfile': postgresqlProfile!,
-        if (privateConnectivity != null)
-          'privateConnectivity': privateConnectivity!,
-        if (salesforceProfile != null) 'salesforceProfile': salesforceProfile!,
-        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-        if (sqlServerProfile != null) 'sqlServerProfile': sqlServerProfile!,
-        if (staticServiceIpConnectivity != null)
-          'staticServiceIpConnectivity': staticServiceIpConnectivity!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (bigqueryProfile != null) 'bigqueryProfile': bigqueryProfile!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (forwardSshConnectivity != null)
+      'forwardSshConnectivity': forwardSshConnectivity!,
+    if (gcsProfile != null) 'gcsProfile': gcsProfile!,
+    if (labels != null) 'labels': labels!,
+    if (mongodbProfile != null) 'mongodbProfile': mongodbProfile!,
+    if (mysqlProfile != null) 'mysqlProfile': mysqlProfile!,
+    if (name != null) 'name': name!,
+    if (oracleProfile != null) 'oracleProfile': oracleProfile!,
+    if (postgresqlProfile != null) 'postgresqlProfile': postgresqlProfile!,
+    if (privateConnectivity != null)
+      'privateConnectivity': privateConnectivity!,
+    if (salesforceProfile != null) 'salesforceProfile': salesforceProfile!,
+    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+    if (sqlServerProfile != null) 'sqlServerProfile': sqlServerProfile!,
+    if (staticServiceIpConnectivity != null)
+      'staticServiceIpConnectivity': staticServiceIpConnectivity!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Dataset template used for dynamic dataset creation.
@@ -2357,24 +2428,20 @@ class DatasetTemplate {
   /// Required.
   core.String? location;
 
-  DatasetTemplate({
-    this.datasetIdPrefix,
-    this.kmsKeyName,
-    this.location,
-  });
+  DatasetTemplate({this.datasetIdPrefix, this.kmsKeyName, this.location});
 
   DatasetTemplate.fromJson(core.Map json_)
-      : this(
-          datasetIdPrefix: json_['datasetIdPrefix'] as core.String?,
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-          location: json_['location'] as core.String?,
-        );
+    : this(
+        datasetIdPrefix: json_['datasetIdPrefix'] as core.String?,
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+        location: json_['location'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (datasetIdPrefix != null) 'datasetIdPrefix': datasetIdPrefix!,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-        if (location != null) 'location': location!,
-      };
+    if (datasetIdPrefix != null) 'datasetIdPrefix': datasetIdPrefix!,
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+    if (location != null) 'location': location!,
+  };
 }
 
 /// The configuration of the stream destination.
@@ -2400,29 +2467,33 @@ class DestinationConfig {
   });
 
   DestinationConfig.fromJson(core.Map json_)
-      : this(
-          bigqueryDestinationConfig:
-              json_.containsKey('bigqueryDestinationConfig')
-                  ? BigQueryDestinationConfig.fromJson(
-                      json_['bigqueryDestinationConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          destinationConnectionProfile:
-              json_['destinationConnectionProfile'] as core.String?,
-          gcsDestinationConfig: json_.containsKey('gcsDestinationConfig')
-              ? GcsDestinationConfig.fromJson(json_['gcsDestinationConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bigqueryDestinationConfig:
+            json_.containsKey('bigqueryDestinationConfig')
+                ? BigQueryDestinationConfig.fromJson(
+                  json_['bigqueryDestinationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        destinationConnectionProfile:
+            json_['destinationConnectionProfile'] as core.String?,
+        gcsDestinationConfig:
+            json_.containsKey('gcsDestinationConfig')
+                ? GcsDestinationConfig.fromJson(
+                  json_['gcsDestinationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigqueryDestinationConfig != null)
-          'bigqueryDestinationConfig': bigqueryDestinationConfig!,
-        if (destinationConnectionProfile != null)
-          'destinationConnectionProfile': destinationConnectionProfile!,
-        if (gcsDestinationConfig != null)
-          'gcsDestinationConfig': gcsDestinationConfig!,
-      };
+    if (bigqueryDestinationConfig != null)
+      'bigqueryDestinationConfig': bigqueryDestinationConfig!,
+    if (destinationConnectionProfile != null)
+      'destinationConnectionProfile': destinationConnectionProfile!,
+    if (gcsDestinationConfig != null)
+      'gcsDestinationConfig': gcsDestinationConfig!,
+  };
 }
 
 /// Request message for 'discover' ConnectionProfile request.
@@ -2472,53 +2543,71 @@ class DiscoverConnectionProfileRequest {
   });
 
   DiscoverConnectionProfileRequest.fromJson(core.Map json_)
-      : this(
-          connectionProfile: json_.containsKey('connectionProfile')
-              ? ConnectionProfile.fromJson(json_['connectionProfile']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          connectionProfileName: json_['connectionProfileName'] as core.String?,
-          fullHierarchy: json_['fullHierarchy'] as core.bool?,
-          hierarchyDepth: json_['hierarchyDepth'] as core.int?,
-          mongodbCluster: json_.containsKey('mongodbCluster')
-              ? MongodbCluster.fromJson(json_['mongodbCluster']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          mysqlRdbms: json_.containsKey('mysqlRdbms')
-              ? MysqlRdbms.fromJson(
-                  json_['mysqlRdbms'] as core.Map<core.String, core.dynamic>)
-              : null,
-          oracleRdbms: json_.containsKey('oracleRdbms')
-              ? OracleRdbms.fromJson(
-                  json_['oracleRdbms'] as core.Map<core.String, core.dynamic>)
-              : null,
-          postgresqlRdbms: json_.containsKey('postgresqlRdbms')
-              ? PostgresqlRdbms.fromJson(json_['postgresqlRdbms']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          salesforceOrg: json_.containsKey('salesforceOrg')
-              ? SalesforceOrg.fromJson(
-                  json_['salesforceOrg'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sqlServerRdbms: json_.containsKey('sqlServerRdbms')
-              ? SqlServerRdbms.fromJson(json_['sqlServerRdbms']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        connectionProfile:
+            json_.containsKey('connectionProfile')
+                ? ConnectionProfile.fromJson(
+                  json_['connectionProfile']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        connectionProfileName: json_['connectionProfileName'] as core.String?,
+        fullHierarchy: json_['fullHierarchy'] as core.bool?,
+        hierarchyDepth: json_['hierarchyDepth'] as core.int?,
+        mongodbCluster:
+            json_.containsKey('mongodbCluster')
+                ? MongodbCluster.fromJson(
+                  json_['mongodbCluster']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mysqlRdbms:
+            json_.containsKey('mysqlRdbms')
+                ? MysqlRdbms.fromJson(
+                  json_['mysqlRdbms'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        oracleRdbms:
+            json_.containsKey('oracleRdbms')
+                ? OracleRdbms.fromJson(
+                  json_['oracleRdbms'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        postgresqlRdbms:
+            json_.containsKey('postgresqlRdbms')
+                ? PostgresqlRdbms.fromJson(
+                  json_['postgresqlRdbms']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        salesforceOrg:
+            json_.containsKey('salesforceOrg')
+                ? SalesforceOrg.fromJson(
+                  json_['salesforceOrg'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sqlServerRdbms:
+            json_.containsKey('sqlServerRdbms')
+                ? SqlServerRdbms.fromJson(
+                  json_['sqlServerRdbms']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectionProfile != null) 'connectionProfile': connectionProfile!,
-        if (connectionProfileName != null)
-          'connectionProfileName': connectionProfileName!,
-        if (fullHierarchy != null) 'fullHierarchy': fullHierarchy!,
-        if (hierarchyDepth != null) 'hierarchyDepth': hierarchyDepth!,
-        if (mongodbCluster != null) 'mongodbCluster': mongodbCluster!,
-        if (mysqlRdbms != null) 'mysqlRdbms': mysqlRdbms!,
-        if (oracleRdbms != null) 'oracleRdbms': oracleRdbms!,
-        if (postgresqlRdbms != null) 'postgresqlRdbms': postgresqlRdbms!,
-        if (salesforceOrg != null) 'salesforceOrg': salesforceOrg!,
-        if (sqlServerRdbms != null) 'sqlServerRdbms': sqlServerRdbms!,
-      };
+    if (connectionProfile != null) 'connectionProfile': connectionProfile!,
+    if (connectionProfileName != null)
+      'connectionProfileName': connectionProfileName!,
+    if (fullHierarchy != null) 'fullHierarchy': fullHierarchy!,
+    if (hierarchyDepth != null) 'hierarchyDepth': hierarchyDepth!,
+    if (mongodbCluster != null) 'mongodbCluster': mongodbCluster!,
+    if (mysqlRdbms != null) 'mysqlRdbms': mysqlRdbms!,
+    if (oracleRdbms != null) 'oracleRdbms': oracleRdbms!,
+    if (postgresqlRdbms != null) 'postgresqlRdbms': postgresqlRdbms!,
+    if (salesforceOrg != null) 'salesforceOrg': salesforceOrg!,
+    if (sqlServerRdbms != null) 'sqlServerRdbms': sqlServerRdbms!,
+  };
 }
 
 /// Response from a discover request.
@@ -2551,41 +2640,56 @@ class DiscoverConnectionProfileResponse {
   });
 
   DiscoverConnectionProfileResponse.fromJson(core.Map json_)
-      : this(
-          mongodbCluster: json_.containsKey('mongodbCluster')
-              ? MongodbCluster.fromJson(json_['mongodbCluster']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          mysqlRdbms: json_.containsKey('mysqlRdbms')
-              ? MysqlRdbms.fromJson(
-                  json_['mysqlRdbms'] as core.Map<core.String, core.dynamic>)
-              : null,
-          oracleRdbms: json_.containsKey('oracleRdbms')
-              ? OracleRdbms.fromJson(
-                  json_['oracleRdbms'] as core.Map<core.String, core.dynamic>)
-              : null,
-          postgresqlRdbms: json_.containsKey('postgresqlRdbms')
-              ? PostgresqlRdbms.fromJson(json_['postgresqlRdbms']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          salesforceOrg: json_.containsKey('salesforceOrg')
-              ? SalesforceOrg.fromJson(
-                  json_['salesforceOrg'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sqlServerRdbms: json_.containsKey('sqlServerRdbms')
-              ? SqlServerRdbms.fromJson(json_['sqlServerRdbms']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        mongodbCluster:
+            json_.containsKey('mongodbCluster')
+                ? MongodbCluster.fromJson(
+                  json_['mongodbCluster']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mysqlRdbms:
+            json_.containsKey('mysqlRdbms')
+                ? MysqlRdbms.fromJson(
+                  json_['mysqlRdbms'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        oracleRdbms:
+            json_.containsKey('oracleRdbms')
+                ? OracleRdbms.fromJson(
+                  json_['oracleRdbms'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        postgresqlRdbms:
+            json_.containsKey('postgresqlRdbms')
+                ? PostgresqlRdbms.fromJson(
+                  json_['postgresqlRdbms']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        salesforceOrg:
+            json_.containsKey('salesforceOrg')
+                ? SalesforceOrg.fromJson(
+                  json_['salesforceOrg'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sqlServerRdbms:
+            json_.containsKey('sqlServerRdbms')
+                ? SqlServerRdbms.fromJson(
+                  json_['sqlServerRdbms']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mongodbCluster != null) 'mongodbCluster': mongodbCluster!,
-        if (mysqlRdbms != null) 'mysqlRdbms': mysqlRdbms!,
-        if (oracleRdbms != null) 'oracleRdbms': oracleRdbms!,
-        if (postgresqlRdbms != null) 'postgresqlRdbms': postgresqlRdbms!,
-        if (salesforceOrg != null) 'salesforceOrg': salesforceOrg!,
-        if (sqlServerRdbms != null) 'sqlServerRdbms': sqlServerRdbms!,
-      };
+    if (mongodbCluster != null) 'mongodbCluster': mongodbCluster!,
+    if (mysqlRdbms != null) 'mysqlRdbms': mysqlRdbms!,
+    if (oracleRdbms != null) 'oracleRdbms': oracleRdbms!,
+    if (postgresqlRdbms != null) 'postgresqlRdbms': postgresqlRdbms!,
+    if (salesforceOrg != null) 'salesforceOrg': salesforceOrg!,
+    if (sqlServerRdbms != null) 'sqlServerRdbms': sqlServerRdbms!,
+  };
 }
 
 /// Configuration to drop large object values.
@@ -2631,17 +2735,17 @@ class EncryptionAndServerValidation {
   });
 
   EncryptionAndServerValidation.fromJson(core.Map json_)
-      : this(
-          caCertificate: json_['caCertificate'] as core.String?,
-          serverCertificateHostname:
-              json_['serverCertificateHostname'] as core.String?,
-        );
+    : this(
+        caCertificate: json_['caCertificate'] as core.String?,
+        serverCertificateHostname:
+            json_['serverCertificateHostname'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caCertificate != null) 'caCertificate': caCertificate!,
-        if (serverCertificateHostname != null)
-          'serverCertificateHostname': serverCertificateHostname!,
-      };
+    if (caCertificate != null) 'caCertificate': caCertificate!,
+    if (serverCertificateHostname != null)
+      'serverCertificateHostname': serverCertificateHostname!,
+  };
 }
 
 /// Message to represent the option where encryption is not enforced.
@@ -2676,27 +2780,22 @@ class Error {
   });
 
   Error.fromJson(core.Map json_)
-      : this(
-          details:
-              (json_['details'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          errorTime: json_['errorTime'] as core.String?,
-          errorUuid: json_['errorUuid'] as core.String?,
-          message: json_['message'] as core.String?,
-          reason: json_['reason'] as core.String?,
-        );
+    : this(
+        details: (json_['details'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        errorTime: json_['errorTime'] as core.String?,
+        errorUuid: json_['errorUuid'] as core.String?,
+        message: json_['message'] as core.String?,
+        reason: json_['reason'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-        if (errorTime != null) 'errorTime': errorTime!,
-        if (errorUuid != null) 'errorUuid': errorUuid!,
-        if (message != null) 'message': message!,
-        if (reason != null) 'reason': reason!,
-      };
+    if (details != null) 'details': details!,
+    if (errorTime != null) 'errorTime': errorTime!,
+    if (errorUuid != null) 'errorUuid': errorUuid!,
+    if (message != null) 'message': message!,
+    if (reason != null) 'reason': reason!,
+  };
 }
 
 /// Response message for a 'FetchStaticIps' response.
@@ -2709,23 +2808,21 @@ class FetchStaticIpsResponse {
   /// list of static ips by account
   core.List<core.String>? staticIps;
 
-  FetchStaticIpsResponse({
-    this.nextPageToken,
-    this.staticIps,
-  });
+  FetchStaticIpsResponse({this.nextPageToken, this.staticIps});
 
   FetchStaticIpsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          staticIps: (json_['staticIps'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        staticIps:
+            (json_['staticIps'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (staticIps != null) 'staticIps': staticIps!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (staticIps != null) 'staticIps': staticIps!,
+  };
 }
 
 /// Forward SSH Tunnel connectivity.
@@ -2760,28 +2857,34 @@ class GcsDestinationConfig {
   });
 
   GcsDestinationConfig.fromJson(core.Map json_)
-      : this(
-          avroFileFormat: json_.containsKey('avroFileFormat')
-              ? AvroFileFormat.fromJson(json_['avroFileFormat']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          fileRotationInterval: json_['fileRotationInterval'] as core.String?,
-          fileRotationMb: json_['fileRotationMb'] as core.int?,
-          jsonFileFormat: json_.containsKey('jsonFileFormat')
-              ? JsonFileFormat.fromJson(json_['jsonFileFormat']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          path: json_['path'] as core.String?,
-        );
+    : this(
+        avroFileFormat:
+            json_.containsKey('avroFileFormat')
+                ? AvroFileFormat.fromJson(
+                  json_['avroFileFormat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fileRotationInterval: json_['fileRotationInterval'] as core.String?,
+        fileRotationMb: json_['fileRotationMb'] as core.int?,
+        jsonFileFormat:
+            json_.containsKey('jsonFileFormat')
+                ? JsonFileFormat.fromJson(
+                  json_['jsonFileFormat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        path: json_['path'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (avroFileFormat != null) 'avroFileFormat': avroFileFormat!,
-        if (fileRotationInterval != null)
-          'fileRotationInterval': fileRotationInterval!,
-        if (fileRotationMb != null) 'fileRotationMb': fileRotationMb!,
-        if (jsonFileFormat != null) 'jsonFileFormat': jsonFileFormat!,
-        if (path != null) 'path': path!,
-      };
+    if (avroFileFormat != null) 'avroFileFormat': avroFileFormat!,
+    if (fileRotationInterval != null)
+      'fileRotationInterval': fileRotationInterval!,
+    if (fileRotationMb != null) 'fileRotationMb': fileRotationMb!,
+    if (jsonFileFormat != null) 'jsonFileFormat': jsonFileFormat!,
+    if (path != null) 'path': path!,
+  };
 }
 
 /// Cloud Storage bucket profile.
@@ -2794,21 +2897,18 @@ class GcsProfile {
   /// The root path inside the Cloud Storage bucket.
   core.String? rootPath;
 
-  GcsProfile({
-    this.bucket,
-    this.rootPath,
-  });
+  GcsProfile({this.bucket, this.rootPath});
 
   GcsProfile.fromJson(core.Map json_)
-      : this(
-          bucket: json_['bucket'] as core.String?,
-          rootPath: json_['rootPath'] as core.String?,
-        );
+    : this(
+        bucket: json_['bucket'] as core.String?,
+        rootPath: json_['rootPath'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucket != null) 'bucket': bucket!,
-        if (rootPath != null) 'rootPath': rootPath!,
-      };
+    if (bucket != null) 'bucket': bucket!,
+    if (rootPath != null) 'rootPath': rootPath!,
+  };
 }
 
 /// Use GTID based replication.
@@ -2827,21 +2927,18 @@ class HostAddress {
   /// Optional.
   core.int? port;
 
-  HostAddress({
-    this.hostname,
-    this.port,
-  });
+  HostAddress({this.hostname, this.port});
 
   HostAddress.fromJson(core.Map json_)
-      : this(
-          hostname: json_['hostname'] as core.String?,
-          port: json_['port'] as core.int?,
-        );
+    : this(
+        hostname: json_['hostname'] as core.String?,
+        port: json_['port'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hostname != null) 'hostname': hostname!,
-        if (port != null) 'port': port!,
-      };
+    if (hostname != null) 'hostname': hostname!,
+    if (port != null) 'port': port!,
+  };
 }
 
 /// JSON file format configuration.
@@ -2860,21 +2957,18 @@ class JsonFileFormat {
   /// - "AVRO_SCHEMA_FILE" : Avro schema format.
   core.String? schemaFileFormat;
 
-  JsonFileFormat({
-    this.compression,
-    this.schemaFileFormat,
-  });
+  JsonFileFormat({this.compression, this.schemaFileFormat});
 
   JsonFileFormat.fromJson(core.Map json_)
-      : this(
-          compression: json_['compression'] as core.String?,
-          schemaFileFormat: json_['schemaFileFormat'] as core.String?,
-        );
+    : this(
+        compression: json_['compression'] as core.String?,
+        schemaFileFormat: json_['schemaFileFormat'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (compression != null) 'compression': compression!,
-        if (schemaFileFormat != null) 'schemaFileFormat': schemaFileFormat!,
-      };
+    if (compression != null) 'compression': compression!,
+    if (schemaFileFormat != null) 'schemaFileFormat': schemaFileFormat!,
+  };
 }
 
 /// Response message for listing connection profiles.
@@ -2897,23 +2991,27 @@ class ListConnectionProfilesResponse {
   });
 
   ListConnectionProfilesResponse.fromJson(core.Map json_)
-      : this(
-          connectionProfiles: (json_['connectionProfiles'] as core.List?)
-              ?.map((value) => ConnectionProfile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        connectionProfiles:
+            (json_['connectionProfiles'] as core.List?)
+                ?.map(
+                  (value) => ConnectionProfile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectionProfiles != null)
-          'connectionProfiles': connectionProfiles!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (connectionProfiles != null) 'connectionProfiles': connectionProfiles!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -2924,24 +3022,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -2952,24 +3051,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// Response containing a list of private connection configurations.
@@ -2992,23 +3092,27 @@ class ListPrivateConnectionsResponse {
   });
 
   ListPrivateConnectionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          privateConnections: (json_['privateConnections'] as core.List?)
-              ?.map((value) => PrivateConnection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        privateConnections:
+            (json_['privateConnections'] as core.List?)
+                ?.map(
+                  (value) => PrivateConnection.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (privateConnections != null)
-          'privateConnections': privateConnections!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (privateConnections != null) 'privateConnections': privateConnections!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Route list response.
@@ -3024,29 +3128,30 @@ class ListRoutesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListRoutesResponse({
-    this.nextPageToken,
-    this.routes,
-    this.unreachable,
-  });
+  ListRoutesResponse({this.nextPageToken, this.routes, this.unreachable});
 
   ListRoutesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          routes: (json_['routes'] as core.List?)
-              ?.map((value) =>
-                  Route.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        routes:
+            (json_['routes'] as core.List?)
+                ?.map(
+                  (value) => Route.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (routes != null) 'routes': routes!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (routes != null) 'routes': routes!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response containing the objects for a stream.
@@ -3057,24 +3162,25 @@ class ListStreamObjectsResponse {
   /// List of stream objects.
   core.List<StreamObject>? streamObjects;
 
-  ListStreamObjectsResponse({
-    this.nextPageToken,
-    this.streamObjects,
-  });
+  ListStreamObjectsResponse({this.nextPageToken, this.streamObjects});
 
   ListStreamObjectsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          streamObjects: (json_['streamObjects'] as core.List?)
-              ?.map((value) => StreamObject.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        streamObjects:
+            (json_['streamObjects'] as core.List?)
+                ?.map(
+                  (value) => StreamObject.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (streamObjects != null) 'streamObjects': streamObjects!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (streamObjects != null) 'streamObjects': streamObjects!,
+  };
 }
 
 /// Response message for listing streams.
@@ -3090,29 +3196,30 @@ class ListStreamsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListStreamsResponse({
-    this.nextPageToken,
-    this.streams,
-    this.unreachable,
-  });
+  ListStreamsResponse({this.nextPageToken, this.streams, this.unreachable});
 
   ListStreamsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          streams: (json_['streams'] as core.List?)
-              ?.map((value) =>
-                  Stream.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        streams:
+            (json_['streams'] as core.List?)
+                ?.map(
+                  (value) => Stream.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (streams != null) 'streams': streams!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (streams != null) 'streams': streams!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -3132,22 +3239,23 @@ class LookupStreamObjectRequest {
   /// Required.
   SourceObjectIdentifier? sourceObjectIdentifier;
 
-  LookupStreamObjectRequest({
-    this.sourceObjectIdentifier,
-  });
+  LookupStreamObjectRequest({this.sourceObjectIdentifier});
 
   LookupStreamObjectRequest.fromJson(core.Map json_)
-      : this(
-          sourceObjectIdentifier: json_.containsKey('sourceObjectIdentifier')
-              ? SourceObjectIdentifier.fromJson(json_['sourceObjectIdentifier']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        sourceObjectIdentifier:
+            json_.containsKey('sourceObjectIdentifier')
+                ? SourceObjectIdentifier.fromJson(
+                  json_['sourceObjectIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sourceObjectIdentifier != null)
-          'sourceObjectIdentifier': sourceObjectIdentifier!,
-      };
+    if (sourceObjectIdentifier != null)
+      'sourceObjectIdentifier': sourceObjectIdentifier!,
+  };
 }
 
 /// Merge mode defines that all changes to a table will be merged at the
@@ -3159,21 +3267,23 @@ class MongodbCluster {
   /// MongoDB databases in the cluster.
   core.List<MongodbDatabase>? databases;
 
-  MongodbCluster({
-    this.databases,
-  });
+  MongodbCluster({this.databases});
 
   MongodbCluster.fromJson(core.Map json_)
-      : this(
-          databases: (json_['databases'] as core.List?)
-              ?.map((value) => MongodbDatabase.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        databases:
+            (json_['databases'] as core.List?)
+                ?.map(
+                  (value) => MongodbDatabase.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (databases != null) 'databases': databases!,
-      };
+    if (databases != null) 'databases': databases!,
+  };
 }
 
 /// MongoDB Collection.
@@ -3184,24 +3294,25 @@ class MongodbCollection {
   /// Fields in the collection.
   core.List<MongodbField>? fields;
 
-  MongodbCollection({
-    this.collection,
-    this.fields,
-  });
+  MongodbCollection({this.collection, this.fields});
 
   MongodbCollection.fromJson(core.Map json_)
-      : this(
-          collection: json_['collection'] as core.String?,
-          fields: (json_['fields'] as core.List?)
-              ?.map((value) => MongodbField.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        collection: json_['collection'] as core.String?,
+        fields:
+            (json_['fields'] as core.List?)
+                ?.map(
+                  (value) => MongodbField.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (collection != null) 'collection': collection!,
-        if (fields != null) 'fields': fields!,
-      };
+    if (collection != null) 'collection': collection!,
+    if (fields != null) 'fields': fields!,
+  };
 }
 
 /// MongoDB Database.
@@ -3212,24 +3323,25 @@ class MongodbDatabase {
   /// Database name.
   core.String? database;
 
-  MongodbDatabase({
-    this.collections,
-    this.database,
-  });
+  MongodbDatabase({this.collections, this.database});
 
   MongodbDatabase.fromJson(core.Map json_)
-      : this(
-          collections: (json_['collections'] as core.List?)
-              ?.map((value) => MongodbCollection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          database: json_['database'] as core.String?,
-        );
+    : this(
+        collections:
+            (json_['collections'] as core.List?)
+                ?.map(
+                  (value) => MongodbCollection.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        database: json_['database'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (collections != null) 'collections': collections!,
-        if (database != null) 'database': database!,
-      };
+    if (collections != null) 'collections': collections!,
+    if (database != null) 'database': database!,
+  };
 }
 
 /// MongoDB Field.
@@ -3237,18 +3349,14 @@ class MongodbField {
   /// Field name.
   core.String? field;
 
-  MongodbField({
-    this.field,
-  });
+  MongodbField({this.field});
 
   MongodbField.fromJson(core.Map json_)
-      : this(
-          field: json_['field'] as core.String?,
-        );
+    : this(field: json_['field'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (field != null) 'field': field!,
-      };
+    if (field != null) 'field': field!,
+  };
 }
 
 /// MongoDB data source object identifier.
@@ -3263,21 +3371,18 @@ class MongodbObjectIdentifier {
   /// Required.
   core.String? database;
 
-  MongodbObjectIdentifier({
-    this.collection,
-    this.database,
-  });
+  MongodbObjectIdentifier({this.collection, this.database});
 
   MongodbObjectIdentifier.fromJson(core.Map json_)
-      : this(
-          collection: json_['collection'] as core.String?,
-          database: json_['database'] as core.String?,
-        );
+    : this(
+        collection: json_['collection'] as core.String?,
+        database: json_['database'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (collection != null) 'collection': collection!,
-        if (database != null) 'database': database!,
-      };
+    if (collection != null) 'collection': collection!,
+    if (database != null) 'database': database!,
+  };
 }
 
 /// MongoDB profile.
@@ -3343,45 +3448,55 @@ class MongodbProfile {
   });
 
   MongodbProfile.fromJson(core.Map json_)
-      : this(
-          hostAddresses: (json_['hostAddresses'] as core.List?)
-              ?.map((value) => HostAddress.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          password: json_['password'] as core.String?,
-          replicaSet: json_['replicaSet'] as core.String?,
-          secretManagerStoredPassword:
-              json_['secretManagerStoredPassword'] as core.String?,
-          srvConnectionFormat: json_.containsKey('srvConnectionFormat')
-              ? SrvConnectionFormat.fromJson(json_['srvConnectionFormat']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sslConfig: json_.containsKey('sslConfig')
-              ? MongodbSslConfig.fromJson(
-                  json_['sslConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          standardConnectionFormat:
-              json_.containsKey('standardConnectionFormat')
-                  ? StandardConnectionFormat.fromJson(
-                      json_['standardConnectionFormat']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        hostAddresses:
+            (json_['hostAddresses'] as core.List?)
+                ?.map(
+                  (value) => HostAddress.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        password: json_['password'] as core.String?,
+        replicaSet: json_['replicaSet'] as core.String?,
+        secretManagerStoredPassword:
+            json_['secretManagerStoredPassword'] as core.String?,
+        srvConnectionFormat:
+            json_.containsKey('srvConnectionFormat')
+                ? SrvConnectionFormat.fromJson(
+                  json_['srvConnectionFormat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sslConfig:
+            json_.containsKey('sslConfig')
+                ? MongodbSslConfig.fromJson(
+                  json_['sslConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        standardConnectionFormat:
+            json_.containsKey('standardConnectionFormat')
+                ? StandardConnectionFormat.fromJson(
+                  json_['standardConnectionFormat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hostAddresses != null) 'hostAddresses': hostAddresses!,
-        if (password != null) 'password': password!,
-        if (replicaSet != null) 'replicaSet': replicaSet!,
-        if (secretManagerStoredPassword != null)
-          'secretManagerStoredPassword': secretManagerStoredPassword!,
-        if (srvConnectionFormat != null)
-          'srvConnectionFormat': srvConnectionFormat!,
-        if (sslConfig != null) 'sslConfig': sslConfig!,
-        if (standardConnectionFormat != null)
-          'standardConnectionFormat': standardConnectionFormat!,
-        if (username != null) 'username': username!,
-      };
+    if (hostAddresses != null) 'hostAddresses': hostAddresses!,
+    if (password != null) 'password': password!,
+    if (replicaSet != null) 'replicaSet': replicaSet!,
+    if (secretManagerStoredPassword != null)
+      'secretManagerStoredPassword': secretManagerStoredPassword!,
+    if (srvConnectionFormat != null)
+      'srvConnectionFormat': srvConnectionFormat!,
+    if (sslConfig != null) 'sslConfig': sslConfig!,
+    if (standardConnectionFormat != null)
+      'standardConnectionFormat': standardConnectionFormat!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// MongoDB source configuration.
@@ -3407,25 +3522,31 @@ class MongodbSourceConfig {
   });
 
   MongodbSourceConfig.fromJson(core.Map json_)
-      : this(
-          excludeObjects: json_.containsKey('excludeObjects')
-              ? MongodbCluster.fromJson(json_['excludeObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          includeObjects: json_.containsKey('includeObjects')
-              ? MongodbCluster.fromJson(json_['includeObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          maxConcurrentBackfillTasks:
-              json_['maxConcurrentBackfillTasks'] as core.int?,
-        );
+    : this(
+        excludeObjects:
+            json_.containsKey('excludeObjects')
+                ? MongodbCluster.fromJson(
+                  json_['excludeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        includeObjects:
+            json_.containsKey('includeObjects')
+                ? MongodbCluster.fromJson(
+                  json_['includeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maxConcurrentBackfillTasks:
+            json_['maxConcurrentBackfillTasks'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (excludeObjects != null) 'excludeObjects': excludeObjects!,
-        if (includeObjects != null) 'includeObjects': includeObjects!,
-        if (maxConcurrentBackfillTasks != null)
-          'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
-      };
+    if (excludeObjects != null) 'excludeObjects': excludeObjects!,
+    if (includeObjects != null) 'includeObjects': includeObjects!,
+    if (maxConcurrentBackfillTasks != null)
+      'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
+  };
 }
 
 /// MongoDB SSL configuration information.
@@ -3492,28 +3613,28 @@ class MongodbSslConfig {
   });
 
   MongodbSslConfig.fromJson(core.Map json_)
-      : this(
-          caCertificate: json_['caCertificate'] as core.String?,
-          caCertificateSet: json_['caCertificateSet'] as core.bool?,
-          clientCertificate: json_['clientCertificate'] as core.String?,
-          clientCertificateSet: json_['clientCertificateSet'] as core.bool?,
-          clientKey: json_['clientKey'] as core.String?,
-          clientKeySet: json_['clientKeySet'] as core.bool?,
-          secretManagerStoredClientKey:
-              json_['secretManagerStoredClientKey'] as core.String?,
-        );
+    : this(
+        caCertificate: json_['caCertificate'] as core.String?,
+        caCertificateSet: json_['caCertificateSet'] as core.bool?,
+        clientCertificate: json_['clientCertificate'] as core.String?,
+        clientCertificateSet: json_['clientCertificateSet'] as core.bool?,
+        clientKey: json_['clientKey'] as core.String?,
+        clientKeySet: json_['clientKeySet'] as core.bool?,
+        secretManagerStoredClientKey:
+            json_['secretManagerStoredClientKey'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caCertificate != null) 'caCertificate': caCertificate!,
-        if (caCertificateSet != null) 'caCertificateSet': caCertificateSet!,
-        if (clientCertificate != null) 'clientCertificate': clientCertificate!,
-        if (clientCertificateSet != null)
-          'clientCertificateSet': clientCertificateSet!,
-        if (clientKey != null) 'clientKey': clientKey!,
-        if (clientKeySet != null) 'clientKeySet': clientKeySet!,
-        if (secretManagerStoredClientKey != null)
-          'secretManagerStoredClientKey': secretManagerStoredClientKey!,
-      };
+    if (caCertificate != null) 'caCertificate': caCertificate!,
+    if (caCertificateSet != null) 'caCertificateSet': caCertificateSet!,
+    if (clientCertificate != null) 'clientCertificate': clientCertificate!,
+    if (clientCertificateSet != null)
+      'clientCertificateSet': clientCertificateSet!,
+    if (clientKey != null) 'clientKey': clientKey!,
+    if (clientKeySet != null) 'clientKeySet': clientKeySet!,
+    if (secretManagerStoredClientKey != null)
+      'secretManagerStoredClientKey': secretManagerStoredClientKey!,
+  };
 }
 
 /// CDC strategy to start replicating from the most recent position in the
@@ -3565,29 +3686,29 @@ class MysqlColumn {
   });
 
   MysqlColumn.fromJson(core.Map json_)
-      : this(
-          collation: json_['collation'] as core.String?,
-          column: json_['column'] as core.String?,
-          dataType: json_['dataType'] as core.String?,
-          length: json_['length'] as core.int?,
-          nullable: json_['nullable'] as core.bool?,
-          ordinalPosition: json_['ordinalPosition'] as core.int?,
-          precision: json_['precision'] as core.int?,
-          primaryKey: json_['primaryKey'] as core.bool?,
-          scale: json_['scale'] as core.int?,
-        );
+    : this(
+        collation: json_['collation'] as core.String?,
+        column: json_['column'] as core.String?,
+        dataType: json_['dataType'] as core.String?,
+        length: json_['length'] as core.int?,
+        nullable: json_['nullable'] as core.bool?,
+        ordinalPosition: json_['ordinalPosition'] as core.int?,
+        precision: json_['precision'] as core.int?,
+        primaryKey: json_['primaryKey'] as core.bool?,
+        scale: json_['scale'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (collation != null) 'collation': collation!,
-        if (column != null) 'column': column!,
-        if (dataType != null) 'dataType': dataType!,
-        if (length != null) 'length': length!,
-        if (nullable != null) 'nullable': nullable!,
-        if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
-        if (precision != null) 'precision': precision!,
-        if (primaryKey != null) 'primaryKey': primaryKey!,
-        if (scale != null) 'scale': scale!,
-      };
+    if (collation != null) 'collation': collation!,
+    if (column != null) 'column': column!,
+    if (dataType != null) 'dataType': dataType!,
+    if (length != null) 'length': length!,
+    if (nullable != null) 'nullable': nullable!,
+    if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
+    if (precision != null) 'precision': precision!,
+    if (primaryKey != null) 'primaryKey': primaryKey!,
+    if (scale != null) 'scale': scale!,
+  };
 }
 
 /// MySQL database.
@@ -3598,24 +3719,25 @@ class MysqlDatabase {
   /// Tables in the database.
   core.List<MysqlTable>? mysqlTables;
 
-  MysqlDatabase({
-    this.database,
-    this.mysqlTables,
-  });
+  MysqlDatabase({this.database, this.mysqlTables});
 
   MysqlDatabase.fromJson(core.Map json_)
-      : this(
-          database: json_['database'] as core.String?,
-          mysqlTables: (json_['mysqlTables'] as core.List?)
-              ?.map((value) => MysqlTable.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        database: json_['database'] as core.String?,
+        mysqlTables:
+            (json_['mysqlTables'] as core.List?)
+                ?.map(
+                  (value) => MysqlTable.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (database != null) 'database': database!,
-        if (mysqlTables != null) 'mysqlTables': mysqlTables!,
-      };
+    if (database != null) 'database': database!,
+    if (mysqlTables != null) 'mysqlTables': mysqlTables!,
+  };
 }
 
 /// MySQL GTID position
@@ -3625,18 +3747,14 @@ class MysqlGtidPosition {
   /// Required.
   core.String? gtidSet;
 
-  MysqlGtidPosition({
-    this.gtidSet,
-  });
+  MysqlGtidPosition({this.gtidSet});
 
   MysqlGtidPosition.fromJson(core.Map json_)
-      : this(
-          gtidSet: json_['gtidSet'] as core.String?,
-        );
+    : this(gtidSet: json_['gtidSet'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gtidSet != null) 'gtidSet': gtidSet!,
-      };
+    if (gtidSet != null) 'gtidSet': gtidSet!,
+  };
 }
 
 /// MySQL log position
@@ -3653,21 +3771,18 @@ class MysqlLogPosition {
   /// Optional.
   core.int? logPosition;
 
-  MysqlLogPosition({
-    this.logFile,
-    this.logPosition,
-  });
+  MysqlLogPosition({this.logFile, this.logPosition});
 
   MysqlLogPosition.fromJson(core.Map json_)
-      : this(
-          logFile: json_['logFile'] as core.String?,
-          logPosition: json_['logPosition'] as core.int?,
-        );
+    : this(
+        logFile: json_['logFile'] as core.String?,
+        logPosition: json_['logPosition'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (logFile != null) 'logFile': logFile!,
-        if (logPosition != null) 'logPosition': logPosition!,
-      };
+    if (logFile != null) 'logFile': logFile!,
+    if (logPosition != null) 'logPosition': logPosition!,
+  };
 }
 
 /// Mysql data source object identifier.
@@ -3682,21 +3797,18 @@ class MysqlObjectIdentifier {
   /// Required.
   core.String? table;
 
-  MysqlObjectIdentifier({
-    this.database,
-    this.table,
-  });
+  MysqlObjectIdentifier({this.database, this.table});
 
   MysqlObjectIdentifier.fromJson(core.Map json_)
-      : this(
-          database: json_['database'] as core.String?,
-          table: json_['table'] as core.String?,
-        );
+    : this(
+        database: json_['database'] as core.String?,
+        table: json_['table'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (database != null) 'database': database!,
-        if (table != null) 'table': table!,
-      };
+    if (database != null) 'database': database!,
+    if (table != null) 'table': table!,
+  };
 }
 
 /// MySQL database profile.
@@ -3743,28 +3855,30 @@ class MysqlProfile {
   });
 
   MysqlProfile.fromJson(core.Map json_)
-      : this(
-          hostname: json_['hostname'] as core.String?,
-          password: json_['password'] as core.String?,
-          port: json_['port'] as core.int?,
-          secretManagerStoredPassword:
-              json_['secretManagerStoredPassword'] as core.String?,
-          sslConfig: json_.containsKey('sslConfig')
-              ? MysqlSslConfig.fromJson(
-                  json_['sslConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        hostname: json_['hostname'] as core.String?,
+        password: json_['password'] as core.String?,
+        port: json_['port'] as core.int?,
+        secretManagerStoredPassword:
+            json_['secretManagerStoredPassword'] as core.String?,
+        sslConfig:
+            json_.containsKey('sslConfig')
+                ? MysqlSslConfig.fromJson(
+                  json_['sslConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hostname != null) 'hostname': hostname!,
-        if (password != null) 'password': password!,
-        if (port != null) 'port': port!,
-        if (secretManagerStoredPassword != null)
-          'secretManagerStoredPassword': secretManagerStoredPassword!,
-        if (sslConfig != null) 'sslConfig': sslConfig!,
-        if (username != null) 'username': username!,
-      };
+    if (hostname != null) 'hostname': hostname!,
+    if (password != null) 'password': password!,
+    if (port != null) 'port': port!,
+    if (secretManagerStoredPassword != null)
+      'secretManagerStoredPassword': secretManagerStoredPassword!,
+    if (sslConfig != null) 'sslConfig': sslConfig!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// MySQL database structure
@@ -3772,21 +3886,23 @@ class MysqlRdbms {
   /// Mysql databases on the server
   core.List<MysqlDatabase>? mysqlDatabases;
 
-  MysqlRdbms({
-    this.mysqlDatabases,
-  });
+  MysqlRdbms({this.mysqlDatabases});
 
   MysqlRdbms.fromJson(core.Map json_)
-      : this(
-          mysqlDatabases: (json_['mysqlDatabases'] as core.List?)
-              ?.map((value) => MysqlDatabase.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        mysqlDatabases:
+            (json_['mysqlDatabases'] as core.List?)
+                ?.map(
+                  (value) => MysqlDatabase.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mysqlDatabases != null) 'mysqlDatabases': mysqlDatabases!,
-      };
+    if (mysqlDatabases != null) 'mysqlDatabases': mysqlDatabases!,
+  };
 }
 
 /// MySQL source configuration
@@ -3825,38 +3941,49 @@ class MysqlSourceConfig {
   });
 
   MysqlSourceConfig.fromJson(core.Map json_)
-      : this(
-          binaryLogPosition: json_.containsKey('binaryLogPosition')
-              ? BinaryLogPosition.fromJson(json_['binaryLogPosition']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          excludeObjects: json_.containsKey('excludeObjects')
-              ? MysqlRdbms.fromJson(json_['excludeObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          gtid: json_.containsKey('gtid')
-              ? Gtid.fromJson(
-                  json_['gtid'] as core.Map<core.String, core.dynamic>)
-              : null,
-          includeObjects: json_.containsKey('includeObjects')
-              ? MysqlRdbms.fromJson(json_['includeObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          maxConcurrentBackfillTasks:
-              json_['maxConcurrentBackfillTasks'] as core.int?,
-          maxConcurrentCdcTasks: json_['maxConcurrentCdcTasks'] as core.int?,
-        );
+    : this(
+        binaryLogPosition:
+            json_.containsKey('binaryLogPosition')
+                ? BinaryLogPosition.fromJson(
+                  json_['binaryLogPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        excludeObjects:
+            json_.containsKey('excludeObjects')
+                ? MysqlRdbms.fromJson(
+                  json_['excludeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gtid:
+            json_.containsKey('gtid')
+                ? Gtid.fromJson(
+                  json_['gtid'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        includeObjects:
+            json_.containsKey('includeObjects')
+                ? MysqlRdbms.fromJson(
+                  json_['includeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maxConcurrentBackfillTasks:
+            json_['maxConcurrentBackfillTasks'] as core.int?,
+        maxConcurrentCdcTasks: json_['maxConcurrentCdcTasks'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (binaryLogPosition != null) 'binaryLogPosition': binaryLogPosition!,
-        if (excludeObjects != null) 'excludeObjects': excludeObjects!,
-        if (gtid != null) 'gtid': gtid!,
-        if (includeObjects != null) 'includeObjects': includeObjects!,
-        if (maxConcurrentBackfillTasks != null)
-          'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
-        if (maxConcurrentCdcTasks != null)
-          'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
-      };
+    if (binaryLogPosition != null) 'binaryLogPosition': binaryLogPosition!,
+    if (excludeObjects != null) 'excludeObjects': excludeObjects!,
+    if (gtid != null) 'gtid': gtid!,
+    if (includeObjects != null) 'includeObjects': includeObjects!,
+    if (maxConcurrentBackfillTasks != null)
+      'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
+    if (maxConcurrentCdcTasks != null)
+      'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
+  };
 }
 
 /// MySQL SSL configuration information.
@@ -3910,24 +4037,24 @@ class MysqlSslConfig {
   });
 
   MysqlSslConfig.fromJson(core.Map json_)
-      : this(
-          caCertificate: json_['caCertificate'] as core.String?,
-          caCertificateSet: json_['caCertificateSet'] as core.bool?,
-          clientCertificate: json_['clientCertificate'] as core.String?,
-          clientCertificateSet: json_['clientCertificateSet'] as core.bool?,
-          clientKey: json_['clientKey'] as core.String?,
-          clientKeySet: json_['clientKeySet'] as core.bool?,
-        );
+    : this(
+        caCertificate: json_['caCertificate'] as core.String?,
+        caCertificateSet: json_['caCertificateSet'] as core.bool?,
+        clientCertificate: json_['clientCertificate'] as core.String?,
+        clientCertificateSet: json_['clientCertificateSet'] as core.bool?,
+        clientKey: json_['clientKey'] as core.String?,
+        clientKeySet: json_['clientKeySet'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caCertificate != null) 'caCertificate': caCertificate!,
-        if (caCertificateSet != null) 'caCertificateSet': caCertificateSet!,
-        if (clientCertificate != null) 'clientCertificate': clientCertificate!,
-        if (clientCertificateSet != null)
-          'clientCertificateSet': clientCertificateSet!,
-        if (clientKey != null) 'clientKey': clientKey!,
-        if (clientKeySet != null) 'clientKeySet': clientKeySet!,
-      };
+    if (caCertificate != null) 'caCertificate': caCertificate!,
+    if (caCertificateSet != null) 'caCertificateSet': caCertificateSet!,
+    if (clientCertificate != null) 'clientCertificate': clientCertificate!,
+    if (clientCertificateSet != null)
+      'clientCertificateSet': clientCertificateSet!,
+    if (clientKey != null) 'clientKey': clientKey!,
+    if (clientKeySet != null) 'clientKeySet': clientKeySet!,
+  };
 }
 
 /// MySQL table.
@@ -3941,24 +4068,25 @@ class MysqlTable {
   /// Table name.
   core.String? table;
 
-  MysqlTable({
-    this.mysqlColumns,
-    this.table,
-  });
+  MysqlTable({this.mysqlColumns, this.table});
 
   MysqlTable.fromJson(core.Map json_)
-      : this(
-          mysqlColumns: (json_['mysqlColumns'] as core.List?)
-              ?.map((value) => MysqlColumn.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          table: json_['table'] as core.String?,
-        );
+    : this(
+        mysqlColumns:
+            (json_['mysqlColumns'] as core.List?)
+                ?.map(
+                  (value) => MysqlColumn.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        table: json_['table'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mysqlColumns != null) 'mysqlColumns': mysqlColumns!,
-        if (table != null) 'table': table!,
-      };
+    if (mysqlColumns != null) 'mysqlColumns': mysqlColumns!,
+    if (table != null) 'table': table!,
+  };
 }
 
 /// CDC strategy to resume replication from the next available position in the
@@ -3994,19 +4122,19 @@ class Oauth2ClientCredentials {
   });
 
   Oauth2ClientCredentials.fromJson(core.Map json_)
-      : this(
-          clientId: json_['clientId'] as core.String?,
-          clientSecret: json_['clientSecret'] as core.String?,
-          secretManagerStoredClientSecret:
-              json_['secretManagerStoredClientSecret'] as core.String?,
-        );
+    : this(
+        clientId: json_['clientId'] as core.String?,
+        clientSecret: json_['clientSecret'] as core.String?,
+        secretManagerStoredClientSecret:
+            json_['secretManagerStoredClientSecret'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientId != null) 'clientId': clientId!,
-        if (clientSecret != null) 'clientSecret': clientSecret!,
-        if (secretManagerStoredClientSecret != null)
-          'secretManagerStoredClientSecret': secretManagerStoredClientSecret!,
-      };
+    if (clientId != null) 'clientId': clientId!,
+    if (clientSecret != null) 'clientSecret': clientSecret!,
+    if (secretManagerStoredClientSecret != null)
+      'secretManagerStoredClientSecret': secretManagerStoredClientSecret!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -4052,37 +4180,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Configuration for Oracle Automatic Storage Management (ASM) connection.
@@ -4144,40 +4270,38 @@ class OracleAsmConfig {
   });
 
   OracleAsmConfig.fromJson(core.Map json_)
-      : this(
-          asmService: json_['asmService'] as core.String?,
-          connectionAttributes: (json_['connectionAttributes']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          hostname: json_['hostname'] as core.String?,
-          oracleSslConfig: json_.containsKey('oracleSslConfig')
-              ? OracleSslConfig.fromJson(json_['oracleSslConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          password: json_['password'] as core.String?,
-          port: json_['port'] as core.int?,
-          secretManagerStoredPassword:
-              json_['secretManagerStoredPassword'] as core.String?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        asmService: json_['asmService'] as core.String?,
+        connectionAttributes: (json_['connectionAttributes']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        hostname: json_['hostname'] as core.String?,
+        oracleSslConfig:
+            json_.containsKey('oracleSslConfig')
+                ? OracleSslConfig.fromJson(
+                  json_['oracleSslConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        password: json_['password'] as core.String?,
+        port: json_['port'] as core.int?,
+        secretManagerStoredPassword:
+            json_['secretManagerStoredPassword'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (asmService != null) 'asmService': asmService!,
-        if (connectionAttributes != null)
-          'connectionAttributes': connectionAttributes!,
-        if (hostname != null) 'hostname': hostname!,
-        if (oracleSslConfig != null) 'oracleSslConfig': oracleSslConfig!,
-        if (password != null) 'password': password!,
-        if (port != null) 'port': port!,
-        if (secretManagerStoredPassword != null)
-          'secretManagerStoredPassword': secretManagerStoredPassword!,
-        if (username != null) 'username': username!,
-      };
+    if (asmService != null) 'asmService': asmService!,
+    if (connectionAttributes != null)
+      'connectionAttributes': connectionAttributes!,
+    if (hostname != null) 'hostname': hostname!,
+    if (oracleSslConfig != null) 'oracleSslConfig': oracleSslConfig!,
+    if (password != null) 'password': password!,
+    if (port != null) 'port': port!,
+    if (secretManagerStoredPassword != null)
+      'secretManagerStoredPassword': secretManagerStoredPassword!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// Configuration to use Oracle ASM to access the log files.
@@ -4225,29 +4349,29 @@ class OracleColumn {
   });
 
   OracleColumn.fromJson(core.Map json_)
-      : this(
-          column: json_['column'] as core.String?,
-          dataType: json_['dataType'] as core.String?,
-          encoding: json_['encoding'] as core.String?,
-          length: json_['length'] as core.int?,
-          nullable: json_['nullable'] as core.bool?,
-          ordinalPosition: json_['ordinalPosition'] as core.int?,
-          precision: json_['precision'] as core.int?,
-          primaryKey: json_['primaryKey'] as core.bool?,
-          scale: json_['scale'] as core.int?,
-        );
+    : this(
+        column: json_['column'] as core.String?,
+        dataType: json_['dataType'] as core.String?,
+        encoding: json_['encoding'] as core.String?,
+        length: json_['length'] as core.int?,
+        nullable: json_['nullable'] as core.bool?,
+        ordinalPosition: json_['ordinalPosition'] as core.int?,
+        precision: json_['precision'] as core.int?,
+        primaryKey: json_['primaryKey'] as core.bool?,
+        scale: json_['scale'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (column != null) 'column': column!,
-        if (dataType != null) 'dataType': dataType!,
-        if (encoding != null) 'encoding': encoding!,
-        if (length != null) 'length': length!,
-        if (nullable != null) 'nullable': nullable!,
-        if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
-        if (precision != null) 'precision': precision!,
-        if (primaryKey != null) 'primaryKey': primaryKey!,
-        if (scale != null) 'scale': scale!,
-      };
+    if (column != null) 'column': column!,
+    if (dataType != null) 'dataType': dataType!,
+    if (encoding != null) 'encoding': encoding!,
+    if (length != null) 'length': length!,
+    if (nullable != null) 'nullable': nullable!,
+    if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
+    if (precision != null) 'precision': precision!,
+    if (primaryKey != null) 'primaryKey': primaryKey!,
+    if (scale != null) 'scale': scale!,
+  };
 }
 
 /// Oracle data source object identifier.
@@ -4314,45 +4438,46 @@ class OracleProfile {
   });
 
   OracleProfile.fromJson(core.Map json_)
-      : this(
-          connectionAttributes: (json_['connectionAttributes']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          databaseService: json_['databaseService'] as core.String?,
-          hostname: json_['hostname'] as core.String?,
-          oracleAsmConfig: json_.containsKey('oracleAsmConfig')
-              ? OracleAsmConfig.fromJson(json_['oracleAsmConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          oracleSslConfig: json_.containsKey('oracleSslConfig')
-              ? OracleSslConfig.fromJson(json_['oracleSslConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          password: json_['password'] as core.String?,
-          port: json_['port'] as core.int?,
-          secretManagerStoredPassword:
-              json_['secretManagerStoredPassword'] as core.String?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        connectionAttributes: (json_['connectionAttributes']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        databaseService: json_['databaseService'] as core.String?,
+        hostname: json_['hostname'] as core.String?,
+        oracleAsmConfig:
+            json_.containsKey('oracleAsmConfig')
+                ? OracleAsmConfig.fromJson(
+                  json_['oracleAsmConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        oracleSslConfig:
+            json_.containsKey('oracleSslConfig')
+                ? OracleSslConfig.fromJson(
+                  json_['oracleSslConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        password: json_['password'] as core.String?,
+        port: json_['port'] as core.int?,
+        secretManagerStoredPassword:
+            json_['secretManagerStoredPassword'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectionAttributes != null)
-          'connectionAttributes': connectionAttributes!,
-        if (databaseService != null) 'databaseService': databaseService!,
-        if (hostname != null) 'hostname': hostname!,
-        if (oracleAsmConfig != null) 'oracleAsmConfig': oracleAsmConfig!,
-        if (oracleSslConfig != null) 'oracleSslConfig': oracleSslConfig!,
-        if (password != null) 'password': password!,
-        if (port != null) 'port': port!,
-        if (secretManagerStoredPassword != null)
-          'secretManagerStoredPassword': secretManagerStoredPassword!,
-        if (username != null) 'username': username!,
-      };
+    if (connectionAttributes != null)
+      'connectionAttributes': connectionAttributes!,
+    if (databaseService != null) 'databaseService': databaseService!,
+    if (hostname != null) 'hostname': hostname!,
+    if (oracleAsmConfig != null) 'oracleAsmConfig': oracleAsmConfig!,
+    if (oracleSslConfig != null) 'oracleSslConfig': oracleSslConfig!,
+    if (password != null) 'password': password!,
+    if (port != null) 'port': port!,
+    if (secretManagerStoredPassword != null)
+      'secretManagerStoredPassword': secretManagerStoredPassword!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// Oracle database structure.
@@ -4360,21 +4485,23 @@ class OracleRdbms {
   /// Oracle schemas/databases in the database server.
   core.List<OracleSchema>? oracleSchemas;
 
-  OracleRdbms({
-    this.oracleSchemas,
-  });
+  OracleRdbms({this.oracleSchemas});
 
   OracleRdbms.fromJson(core.Map json_)
-      : this(
-          oracleSchemas: (json_['oracleSchemas'] as core.List?)
-              ?.map((value) => OracleSchema.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        oracleSchemas:
+            (json_['oracleSchemas'] as core.List?)
+                ?.map(
+                  (value) => OracleSchema.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (oracleSchemas != null) 'oracleSchemas': oracleSchemas!,
-      };
+    if (oracleSchemas != null) 'oracleSchemas': oracleSchemas!,
+  };
 }
 
 /// Oracle schema.
@@ -4385,24 +4512,25 @@ class OracleSchema {
   /// Schema name.
   core.String? schema;
 
-  OracleSchema({
-    this.oracleTables,
-    this.schema,
-  });
+  OracleSchema({this.oracleTables, this.schema});
 
   OracleSchema.fromJson(core.Map json_)
-      : this(
-          oracleTables: (json_['oracleTables'] as core.List?)
-              ?.map((value) => OracleTable.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          schema: json_['schema'] as core.String?,
-        );
+    : this(
+        oracleTables:
+            (json_['oracleTables'] as core.List?)
+                ?.map(
+                  (value) => OracleTable.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        schema: json_['schema'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (oracleTables != null) 'oracleTables': oracleTables!,
-        if (schema != null) 'schema': schema!,
-      };
+    if (oracleTables != null) 'oracleTables': oracleTables!,
+    if (schema != null) 'schema': schema!,
+  };
 }
 
 /// Oracle SCN position
@@ -4412,18 +4540,14 @@ class OracleScnPosition {
   /// Required.
   core.String? scn;
 
-  OracleScnPosition({
-    this.scn,
-  });
+  OracleScnPosition({this.scn});
 
   OracleScnPosition.fromJson(core.Map json_)
-      : this(
-          scn: json_['scn'] as core.String?,
-        );
+    : this(scn: json_['scn'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (scn != null) 'scn': scn!,
-      };
+    if (scn != null) 'scn': scn!,
+  };
 }
 
 /// Oracle data source configuration
@@ -4470,49 +4594,65 @@ class OracleSourceConfig {
   });
 
   OracleSourceConfig.fromJson(core.Map json_)
-      : this(
-          binaryLogParser: json_.containsKey('binaryLogParser')
-              ? BinaryLogParser.fromJson(json_['binaryLogParser']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dropLargeObjects: json_.containsKey('dropLargeObjects')
-              ? DropLargeObjects.fromJson(json_['dropLargeObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          excludeObjects: json_.containsKey('excludeObjects')
-              ? OracleRdbms.fromJson(json_['excludeObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          includeObjects: json_.containsKey('includeObjects')
-              ? OracleRdbms.fromJson(json_['includeObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          logMiner: json_.containsKey('logMiner')
-              ? LogMiner.fromJson(
-                  json_['logMiner'] as core.Map<core.String, core.dynamic>)
-              : null,
-          maxConcurrentBackfillTasks:
-              json_['maxConcurrentBackfillTasks'] as core.int?,
-          maxConcurrentCdcTasks: json_['maxConcurrentCdcTasks'] as core.int?,
-          streamLargeObjects: json_.containsKey('streamLargeObjects')
-              ? StreamLargeObjects.fromJson(json_['streamLargeObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        binaryLogParser:
+            json_.containsKey('binaryLogParser')
+                ? BinaryLogParser.fromJson(
+                  json_['binaryLogParser']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dropLargeObjects:
+            json_.containsKey('dropLargeObjects')
+                ? DropLargeObjects.fromJson(
+                  json_['dropLargeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        excludeObjects:
+            json_.containsKey('excludeObjects')
+                ? OracleRdbms.fromJson(
+                  json_['excludeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        includeObjects:
+            json_.containsKey('includeObjects')
+                ? OracleRdbms.fromJson(
+                  json_['includeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        logMiner:
+            json_.containsKey('logMiner')
+                ? LogMiner.fromJson(
+                  json_['logMiner'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maxConcurrentBackfillTasks:
+            json_['maxConcurrentBackfillTasks'] as core.int?,
+        maxConcurrentCdcTasks: json_['maxConcurrentCdcTasks'] as core.int?,
+        streamLargeObjects:
+            json_.containsKey('streamLargeObjects')
+                ? StreamLargeObjects.fromJson(
+                  json_['streamLargeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (binaryLogParser != null) 'binaryLogParser': binaryLogParser!,
-        if (dropLargeObjects != null) 'dropLargeObjects': dropLargeObjects!,
-        if (excludeObjects != null) 'excludeObjects': excludeObjects!,
-        if (includeObjects != null) 'includeObjects': includeObjects!,
-        if (logMiner != null) 'logMiner': logMiner!,
-        if (maxConcurrentBackfillTasks != null)
-          'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
-        if (maxConcurrentCdcTasks != null)
-          'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
-        if (streamLargeObjects != null)
-          'streamLargeObjects': streamLargeObjects!,
-      };
+    if (binaryLogParser != null) 'binaryLogParser': binaryLogParser!,
+    if (dropLargeObjects != null) 'dropLargeObjects': dropLargeObjects!,
+    if (excludeObjects != null) 'excludeObjects': excludeObjects!,
+    if (includeObjects != null) 'includeObjects': includeObjects!,
+    if (logMiner != null) 'logMiner': logMiner!,
+    if (maxConcurrentBackfillTasks != null)
+      'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
+    if (maxConcurrentCdcTasks != null)
+      'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
+    if (streamLargeObjects != null) 'streamLargeObjects': streamLargeObjects!,
+  };
 }
 
 /// Oracle SSL configuration information.
@@ -4545,20 +4685,19 @@ class OracleSslConfig {
   });
 
   OracleSslConfig.fromJson(core.Map json_)
-      : this(
-          caCertificate: json_['caCertificate'] as core.String?,
-          caCertificateSet: json_['caCertificateSet'] as core.bool?,
-          serverCertificateDistinguishedName:
-              json_['serverCertificateDistinguishedName'] as core.String?,
-        );
+    : this(
+        caCertificate: json_['caCertificate'] as core.String?,
+        caCertificateSet: json_['caCertificateSet'] as core.bool?,
+        serverCertificateDistinguishedName:
+            json_['serverCertificateDistinguishedName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caCertificate != null) 'caCertificate': caCertificate!,
-        if (caCertificateSet != null) 'caCertificateSet': caCertificateSet!,
-        if (serverCertificateDistinguishedName != null)
-          'serverCertificateDistinguishedName':
-              serverCertificateDistinguishedName!,
-      };
+    if (caCertificate != null) 'caCertificate': caCertificate!,
+    if (caCertificateSet != null) 'caCertificateSet': caCertificateSet!,
+    if (serverCertificateDistinguishedName != null)
+      'serverCertificateDistinguishedName': serverCertificateDistinguishedName!,
+  };
 }
 
 /// Oracle table.
@@ -4572,24 +4711,25 @@ class OracleTable {
   /// Table name.
   core.String? table;
 
-  OracleTable({
-    this.oracleColumns,
-    this.table,
-  });
+  OracleTable({this.oracleColumns, this.table});
 
   OracleTable.fromJson(core.Map json_)
-      : this(
-          oracleColumns: (json_['oracleColumns'] as core.List?)
-              ?.map((value) => OracleColumn.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          table: json_['table'] as core.String?,
-        );
+    : this(
+        oracleColumns:
+            (json_['oracleColumns'] as core.List?)
+                ?.map(
+                  (value) => OracleColumn.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        table: json_['table'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (oracleColumns != null) 'oracleColumns': oracleColumns!,
-        if (table != null) 'table': table!,
-      };
+    if (oracleColumns != null) 'oracleColumns': oracleColumns!,
+    if (table != null) 'table': table!,
+  };
 }
 
 /// PostgreSQL Column.
@@ -4630,27 +4770,27 @@ class PostgresqlColumn {
   });
 
   PostgresqlColumn.fromJson(core.Map json_)
-      : this(
-          column: json_['column'] as core.String?,
-          dataType: json_['dataType'] as core.String?,
-          length: json_['length'] as core.int?,
-          nullable: json_['nullable'] as core.bool?,
-          ordinalPosition: json_['ordinalPosition'] as core.int?,
-          precision: json_['precision'] as core.int?,
-          primaryKey: json_['primaryKey'] as core.bool?,
-          scale: json_['scale'] as core.int?,
-        );
+    : this(
+        column: json_['column'] as core.String?,
+        dataType: json_['dataType'] as core.String?,
+        length: json_['length'] as core.int?,
+        nullable: json_['nullable'] as core.bool?,
+        ordinalPosition: json_['ordinalPosition'] as core.int?,
+        precision: json_['precision'] as core.int?,
+        primaryKey: json_['primaryKey'] as core.bool?,
+        scale: json_['scale'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (column != null) 'column': column!,
-        if (dataType != null) 'dataType': dataType!,
-        if (length != null) 'length': length!,
-        if (nullable != null) 'nullable': nullable!,
-        if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
-        if (precision != null) 'precision': precision!,
-        if (primaryKey != null) 'primaryKey': primaryKey!,
-        if (scale != null) 'scale': scale!,
-      };
+    if (column != null) 'column': column!,
+    if (dataType != null) 'dataType': dataType!,
+    if (length != null) 'length': length!,
+    if (nullable != null) 'nullable': nullable!,
+    if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
+    if (precision != null) 'precision': precision!,
+    if (primaryKey != null) 'primaryKey': primaryKey!,
+    if (scale != null) 'scale': scale!,
+  };
 }
 
 /// PostgreSQL data source object identifier.
@@ -4712,30 +4852,32 @@ class PostgresqlProfile {
   });
 
   PostgresqlProfile.fromJson(core.Map json_)
-      : this(
-          database: json_['database'] as core.String?,
-          hostname: json_['hostname'] as core.String?,
-          password: json_['password'] as core.String?,
-          port: json_['port'] as core.int?,
-          secretManagerStoredPassword:
-              json_['secretManagerStoredPassword'] as core.String?,
-          sslConfig: json_.containsKey('sslConfig')
-              ? PostgresqlSslConfig.fromJson(
-                  json_['sslConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        database: json_['database'] as core.String?,
+        hostname: json_['hostname'] as core.String?,
+        password: json_['password'] as core.String?,
+        port: json_['port'] as core.int?,
+        secretManagerStoredPassword:
+            json_['secretManagerStoredPassword'] as core.String?,
+        sslConfig:
+            json_.containsKey('sslConfig')
+                ? PostgresqlSslConfig.fromJson(
+                  json_['sslConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (database != null) 'database': database!,
-        if (hostname != null) 'hostname': hostname!,
-        if (password != null) 'password': password!,
-        if (port != null) 'port': port!,
-        if (secretManagerStoredPassword != null)
-          'secretManagerStoredPassword': secretManagerStoredPassword!,
-        if (sslConfig != null) 'sslConfig': sslConfig!,
-        if (username != null) 'username': username!,
-      };
+    if (database != null) 'database': database!,
+    if (hostname != null) 'hostname': hostname!,
+    if (password != null) 'password': password!,
+    if (port != null) 'port': port!,
+    if (secretManagerStoredPassword != null)
+      'secretManagerStoredPassword': secretManagerStoredPassword!,
+    if (sslConfig != null) 'sslConfig': sslConfig!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// PostgreSQL database structure.
@@ -4743,21 +4885,23 @@ class PostgresqlRdbms {
   /// PostgreSQL schemas in the database server.
   core.List<PostgresqlSchema>? postgresqlSchemas;
 
-  PostgresqlRdbms({
-    this.postgresqlSchemas,
-  });
+  PostgresqlRdbms({this.postgresqlSchemas});
 
   PostgresqlRdbms.fromJson(core.Map json_)
-      : this(
-          postgresqlSchemas: (json_['postgresqlSchemas'] as core.List?)
-              ?.map((value) => PostgresqlSchema.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        postgresqlSchemas:
+            (json_['postgresqlSchemas'] as core.List?)
+                ?.map(
+                  (value) => PostgresqlSchema.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (postgresqlSchemas != null) 'postgresqlSchemas': postgresqlSchemas!,
-      };
+    if (postgresqlSchemas != null) 'postgresqlSchemas': postgresqlSchemas!,
+  };
 }
 
 /// PostgreSQL schema.
@@ -4768,24 +4912,25 @@ class PostgresqlSchema {
   /// Schema name.
   core.String? schema;
 
-  PostgresqlSchema({
-    this.postgresqlTables,
-    this.schema,
-  });
+  PostgresqlSchema({this.postgresqlTables, this.schema});
 
   PostgresqlSchema.fromJson(core.Map json_)
-      : this(
-          postgresqlTables: (json_['postgresqlTables'] as core.List?)
-              ?.map((value) => PostgresqlTable.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          schema: json_['schema'] as core.String?,
-        );
+    : this(
+        postgresqlTables:
+            (json_['postgresqlTables'] as core.List?)
+                ?.map(
+                  (value) => PostgresqlTable.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        schema: json_['schema'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (postgresqlTables != null) 'postgresqlTables': postgresqlTables!,
-        if (schema != null) 'schema': schema!,
-      };
+    if (postgresqlTables != null) 'postgresqlTables': postgresqlTables!,
+    if (schema != null) 'schema': schema!,
+  };
 }
 
 /// PostgreSQL data source configuration
@@ -4823,29 +4968,35 @@ class PostgresqlSourceConfig {
   });
 
   PostgresqlSourceConfig.fromJson(core.Map json_)
-      : this(
-          excludeObjects: json_.containsKey('excludeObjects')
-              ? PostgresqlRdbms.fromJson(json_['excludeObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          includeObjects: json_.containsKey('includeObjects')
-              ? PostgresqlRdbms.fromJson(json_['includeObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          maxConcurrentBackfillTasks:
-              json_['maxConcurrentBackfillTasks'] as core.int?,
-          publication: json_['publication'] as core.String?,
-          replicationSlot: json_['replicationSlot'] as core.String?,
-        );
+    : this(
+        excludeObjects:
+            json_.containsKey('excludeObjects')
+                ? PostgresqlRdbms.fromJson(
+                  json_['excludeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        includeObjects:
+            json_.containsKey('includeObjects')
+                ? PostgresqlRdbms.fromJson(
+                  json_['includeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maxConcurrentBackfillTasks:
+            json_['maxConcurrentBackfillTasks'] as core.int?,
+        publication: json_['publication'] as core.String?,
+        replicationSlot: json_['replicationSlot'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (excludeObjects != null) 'excludeObjects': excludeObjects!,
-        if (includeObjects != null) 'includeObjects': includeObjects!,
-        if (maxConcurrentBackfillTasks != null)
-          'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
-        if (publication != null) 'publication': publication!,
-        if (replicationSlot != null) 'replicationSlot': replicationSlot!,
-      };
+    if (excludeObjects != null) 'excludeObjects': excludeObjects!,
+    if (includeObjects != null) 'includeObjects': includeObjects!,
+    if (maxConcurrentBackfillTasks != null)
+      'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
+    if (publication != null) 'publication': publication!,
+    if (replicationSlot != null) 'replicationSlot': replicationSlot!,
+  };
 }
 
 /// PostgreSQL SSL configuration information.
@@ -4865,25 +5016,28 @@ class PostgresqlSslConfig {
   });
 
   PostgresqlSslConfig.fromJson(core.Map json_)
-      : this(
-          serverAndClientVerification:
-              json_.containsKey('serverAndClientVerification')
-                  ? ServerAndClientVerification.fromJson(
-                      json_['serverAndClientVerification']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          serverVerification: json_.containsKey('serverVerification')
-              ? ServerVerification.fromJson(json_['serverVerification']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        serverAndClientVerification:
+            json_.containsKey('serverAndClientVerification')
+                ? ServerAndClientVerification.fromJson(
+                  json_['serverAndClientVerification']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serverVerification:
+            json_.containsKey('serverVerification')
+                ? ServerVerification.fromJson(
+                  json_['serverVerification']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (serverAndClientVerification != null)
-          'serverAndClientVerification': serverAndClientVerification!,
-        if (serverVerification != null)
-          'serverVerification': serverVerification!,
-      };
+    if (serverAndClientVerification != null)
+      'serverAndClientVerification': serverAndClientVerification!,
+    if (serverVerification != null) 'serverVerification': serverVerification!,
+  };
 }
 
 /// PostgreSQL table.
@@ -4897,24 +5051,25 @@ class PostgresqlTable {
   /// Table name.
   core.String? table;
 
-  PostgresqlTable({
-    this.postgresqlColumns,
-    this.table,
-  });
+  PostgresqlTable({this.postgresqlColumns, this.table});
 
   PostgresqlTable.fromJson(core.Map json_)
-      : this(
-          postgresqlColumns: (json_['postgresqlColumns'] as core.List?)
-              ?.map((value) => PostgresqlColumn.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          table: json_['table'] as core.String?,
-        );
+    : this(
+        postgresqlColumns:
+            (json_['postgresqlColumns'] as core.List?)
+                ?.map(
+                  (value) => PostgresqlColumn.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        table: json_['table'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (postgresqlColumns != null) 'postgresqlColumns': postgresqlColumns!,
-        if (table != null) 'table': table!,
-      };
+    if (postgresqlColumns != null) 'postgresqlColumns': postgresqlColumns!,
+    if (table != null) 'table': table!,
+  };
 }
 
 /// The PrivateConnection resource is used to establish private connectivity
@@ -4996,49 +5151,52 @@ class PrivateConnection {
   });
 
   PrivateConnection.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          error: json_.containsKey('error')
-              ? Error.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          pscInterfaceConfig: json_.containsKey('pscInterfaceConfig')
-              ? PscInterfaceConfig.fromJson(json_['pscInterfaceConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
-          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          vpcPeeringConfig: json_.containsKey('vpcPeeringConfig')
-              ? VpcPeeringConfig.fromJson(json_['vpcPeeringConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        error:
+            json_.containsKey('error')
+                ? Error.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        pscInterfaceConfig:
+            json_.containsKey('pscInterfaceConfig')
+                ? PscInterfaceConfig.fromJson(
+                  json_['pscInterfaceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+        satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        vpcPeeringConfig:
+            json_.containsKey('vpcPeeringConfig')
+                ? VpcPeeringConfig.fromJson(
+                  json_['vpcPeeringConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (error != null) 'error': error!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (pscInterfaceConfig != null)
-          'pscInterfaceConfig': pscInterfaceConfig!,
-        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (vpcPeeringConfig != null) 'vpcPeeringConfig': vpcPeeringConfig!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (error != null) 'error': error!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (pscInterfaceConfig != null) 'pscInterfaceConfig': pscInterfaceConfig!,
+    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (vpcPeeringConfig != null) 'vpcPeeringConfig': vpcPeeringConfig!,
+  };
 }
 
 /// Private Connectivity
@@ -5051,18 +5209,14 @@ class PrivateConnectivity {
   /// Required.
   core.String? privateConnection;
 
-  PrivateConnectivity({
-    this.privateConnection,
-  });
+  PrivateConnectivity({this.privateConnection});
 
   PrivateConnectivity.fromJson(core.Map json_)
-      : this(
-          privateConnection: json_['privateConnection'] as core.String?,
-        );
+    : this(privateConnection: json_['privateConnection'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (privateConnection != null) 'privateConnection': privateConnection!,
-      };
+    if (privateConnection != null) 'privateConnection': privateConnection!,
+  };
 }
 
 /// The PSC Interface configuration is used to create PSC Interface between
@@ -5076,18 +5230,14 @@ class PscInterfaceConfig {
   /// Required.
   core.String? networkAttachment;
 
-  PscInterfaceConfig({
-    this.networkAttachment,
-  });
+  PscInterfaceConfig({this.networkAttachment});
 
   PscInterfaceConfig.fromJson(core.Map json_)
-      : this(
-          networkAttachment: json_['networkAttachment'] as core.String?,
-        );
+    : this(networkAttachment: json_['networkAttachment'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (networkAttachment != null) 'networkAttachment': networkAttachment!,
-      };
+    if (networkAttachment != null) 'networkAttachment': networkAttachment!,
+  };
 }
 
 /// The route resource is the child of the private connection resource, used for
@@ -5137,32 +5287,27 @@ class Route {
   });
 
   Route.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          destinationAddress: json_['destinationAddress'] as core.String?,
-          destinationPort: json_['destinationPort'] as core.int?,
-          displayName: json_['displayName'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        destinationAddress: json_['destinationAddress'] as core.String?,
+        destinationPort: json_['destinationPort'] as core.int?,
+        displayName: json_['displayName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (destinationAddress != null)
-          'destinationAddress': destinationAddress!,
-        if (destinationPort != null) 'destinationPort': destinationPort!,
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (destinationAddress != null) 'destinationAddress': destinationAddress!,
+    if (destinationPort != null) 'destinationPort': destinationPort!,
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Request message for running a stream.
@@ -5179,24 +5324,23 @@ class RunStreamRequest {
   /// Optional.
   core.bool? force;
 
-  RunStreamRequest({
-    this.cdcStrategy,
-    this.force,
-  });
+  RunStreamRequest({this.cdcStrategy, this.force});
 
   RunStreamRequest.fromJson(core.Map json_)
-      : this(
-          cdcStrategy: json_.containsKey('cdcStrategy')
-              ? CdcStrategy.fromJson(
-                  json_['cdcStrategy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          force: json_['force'] as core.bool?,
-        );
+    : this(
+        cdcStrategy:
+            json_.containsKey('cdcStrategy')
+                ? CdcStrategy.fromJson(
+                  json_['cdcStrategy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        force: json_['force'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cdcStrategy != null) 'cdcStrategy': cdcStrategy!,
-        if (force != null) 'force': force!,
-      };
+    if (cdcStrategy != null) 'cdcStrategy': cdcStrategy!,
+    if (force != null) 'force': force!,
+  };
 }
 
 /// Salesforce field.
@@ -5210,24 +5354,20 @@ class SalesforceField {
   /// Indicates whether the field can accept nil values.
   core.bool? nillable;
 
-  SalesforceField({
-    this.dataType,
-    this.name,
-    this.nillable,
-  });
+  SalesforceField({this.dataType, this.name, this.nillable});
 
   SalesforceField.fromJson(core.Map json_)
-      : this(
-          dataType: json_['dataType'] as core.String?,
-          name: json_['name'] as core.String?,
-          nillable: json_['nillable'] as core.bool?,
-        );
+    : this(
+        dataType: json_['dataType'] as core.String?,
+        name: json_['name'] as core.String?,
+        nillable: json_['nillable'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataType != null) 'dataType': dataType!,
-        if (name != null) 'name': name!,
-        if (nillable != null) 'nillable': nillable!,
-      };
+    if (dataType != null) 'dataType': dataType!,
+    if (name != null) 'name': name!,
+    if (nillable != null) 'nillable': nillable!,
+  };
 }
 
 /// Salesforce object.
@@ -5241,24 +5381,25 @@ class SalesforceObject {
   /// Object name.
   core.String? objectName;
 
-  SalesforceObject({
-    this.fields,
-    this.objectName,
-  });
+  SalesforceObject({this.fields, this.objectName});
 
   SalesforceObject.fromJson(core.Map json_)
-      : this(
-          fields: (json_['fields'] as core.List?)
-              ?.map((value) => SalesforceField.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          objectName: json_['objectName'] as core.String?,
-        );
+    : this(
+        fields:
+            (json_['fields'] as core.List?)
+                ?.map(
+                  (value) => SalesforceField.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        objectName: json_['objectName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (objectName != null) 'objectName': objectName!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (objectName != null) 'objectName': objectName!,
+  };
 }
 
 /// Salesforce data source object identifier.
@@ -5268,18 +5409,14 @@ class SalesforceObjectIdentifier {
   /// Required.
   core.String? objectName;
 
-  SalesforceObjectIdentifier({
-    this.objectName,
-  });
+  SalesforceObjectIdentifier({this.objectName});
 
   SalesforceObjectIdentifier.fromJson(core.Map json_)
-      : this(
-          objectName: json_['objectName'] as core.String?,
-        );
+    : this(objectName: json_['objectName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectName != null) 'objectName': objectName!,
-      };
+    if (objectName != null) 'objectName': objectName!,
+  };
 }
 
 /// Salesforce organization structure.
@@ -5287,21 +5424,23 @@ class SalesforceOrg {
   /// Salesforce objects in the database server.
   core.List<SalesforceObject>? objects;
 
-  SalesforceOrg({
-    this.objects,
-  });
+  SalesforceOrg({this.objects});
 
   SalesforceOrg.fromJson(core.Map json_)
-      : this(
-          objects: (json_['objects'] as core.List?)
-              ?.map((value) => SalesforceObject.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        objects:
+            (json_['objects'] as core.List?)
+                ?.map(
+                  (value) => SalesforceObject.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objects != null) 'objects': objects!,
-      };
+    if (objects != null) 'objects': objects!,
+  };
 }
 
 /// Salesforce profile
@@ -5324,25 +5463,30 @@ class SalesforceProfile {
   });
 
   SalesforceProfile.fromJson(core.Map json_)
-      : this(
-          domain: json_['domain'] as core.String?,
-          oauth2ClientCredentials: json_.containsKey('oauth2ClientCredentials')
-              ? Oauth2ClientCredentials.fromJson(
+    : this(
+        domain: json_['domain'] as core.String?,
+        oauth2ClientCredentials:
+            json_.containsKey('oauth2ClientCredentials')
+                ? Oauth2ClientCredentials.fromJson(
                   json_['oauth2ClientCredentials']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          userCredentials: json_.containsKey('userCredentials')
-              ? UserCredentials.fromJson(json_['userCredentials']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userCredentials:
+            json_.containsKey('userCredentials')
+                ? UserCredentials.fromJson(
+                  json_['userCredentials']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domain != null) 'domain': domain!,
-        if (oauth2ClientCredentials != null)
-          'oauth2ClientCredentials': oauth2ClientCredentials!,
-        if (userCredentials != null) 'userCredentials': userCredentials!,
-      };
+    if (domain != null) 'domain': domain!,
+    if (oauth2ClientCredentials != null)
+      'oauth2ClientCredentials': oauth2ClientCredentials!,
+    if (userCredentials != null) 'userCredentials': userCredentials!,
+  };
 }
 
 /// Salesforce source configuration
@@ -5368,23 +5512,29 @@ class SalesforceSourceConfig {
   });
 
   SalesforceSourceConfig.fromJson(core.Map json_)
-      : this(
-          excludeObjects: json_.containsKey('excludeObjects')
-              ? SalesforceOrg.fromJson(json_['excludeObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          includeObjects: json_.containsKey('includeObjects')
-              ? SalesforceOrg.fromJson(json_['includeObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          pollingInterval: json_['pollingInterval'] as core.String?,
-        );
+    : this(
+        excludeObjects:
+            json_.containsKey('excludeObjects')
+                ? SalesforceOrg.fromJson(
+                  json_['excludeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        includeObjects:
+            json_.containsKey('includeObjects')
+                ? SalesforceOrg.fromJson(
+                  json_['includeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pollingInterval: json_['pollingInterval'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (excludeObjects != null) 'excludeObjects': excludeObjects!,
-        if (includeObjects != null) 'includeObjects': includeObjects!,
-        if (pollingInterval != null) 'pollingInterval': pollingInterval!,
-      };
+    if (excludeObjects != null) 'excludeObjects': excludeObjects!,
+    if (includeObjects != null) 'includeObjects': includeObjects!,
+    if (pollingInterval != null) 'pollingInterval': pollingInterval!,
+  };
 }
 
 /// Message represents the option where Datastream will enforce the encryption
@@ -5437,21 +5587,21 @@ class ServerAndClientVerification {
   });
 
   ServerAndClientVerification.fromJson(core.Map json_)
-      : this(
-          caCertificate: json_['caCertificate'] as core.String?,
-          clientCertificate: json_['clientCertificate'] as core.String?,
-          clientKey: json_['clientKey'] as core.String?,
-          serverCertificateHostname:
-              json_['serverCertificateHostname'] as core.String?,
-        );
+    : this(
+        caCertificate: json_['caCertificate'] as core.String?,
+        clientCertificate: json_['clientCertificate'] as core.String?,
+        clientKey: json_['clientKey'] as core.String?,
+        serverCertificateHostname:
+            json_['serverCertificateHostname'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caCertificate != null) 'caCertificate': caCertificate!,
-        if (clientCertificate != null) 'clientCertificate': clientCertificate!,
-        if (clientKey != null) 'clientKey': clientKey!,
-        if (serverCertificateHostname != null)
-          'serverCertificateHostname': serverCertificateHostname!,
-      };
+    if (caCertificate != null) 'caCertificate': caCertificate!,
+    if (clientCertificate != null) 'clientCertificate': clientCertificate!,
+    if (clientKey != null) 'clientKey': clientKey!,
+    if (serverCertificateHostname != null)
+      'serverCertificateHostname': serverCertificateHostname!,
+  };
 }
 
 /// Message represents the option where Datastream will enforce the encryption
@@ -5475,23 +5625,20 @@ class ServerVerification {
   /// Optional.
   core.String? serverCertificateHostname;
 
-  ServerVerification({
-    this.caCertificate,
-    this.serverCertificateHostname,
-  });
+  ServerVerification({this.caCertificate, this.serverCertificateHostname});
 
   ServerVerification.fromJson(core.Map json_)
-      : this(
-          caCertificate: json_['caCertificate'] as core.String?,
-          serverCertificateHostname:
-              json_['serverCertificateHostname'] as core.String?,
-        );
+    : this(
+        caCertificate: json_['caCertificate'] as core.String?,
+        serverCertificateHostname:
+            json_['serverCertificateHostname'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caCertificate != null) 'caCertificate': caCertificate!,
-        if (serverCertificateHostname != null)
-          'serverCertificateHostname': serverCertificateHostname!,
-      };
+    if (caCertificate != null) 'caCertificate': caCertificate!,
+    if (serverCertificateHostname != null)
+      'serverCertificateHostname': serverCertificateHostname!,
+  };
 }
 
 /// A single target dataset to which all data will be streamed.
@@ -5502,18 +5649,14 @@ class SingleTargetDataset {
   /// https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
   core.String? datasetId;
 
-  SingleTargetDataset({
-    this.datasetId,
-  });
+  SingleTargetDataset({this.datasetId});
 
   SingleTargetDataset.fromJson(core.Map json_)
-      : this(
-          datasetId: json_['datasetId'] as core.String?,
-        );
+    : this(datasetId: json_['datasetId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (datasetId != null) 'datasetId': datasetId!,
-      };
+    if (datasetId != null) 'datasetId': datasetId!,
+  };
 }
 
 /// The configuration of the stream source.
@@ -5555,50 +5698,67 @@ class SourceConfig {
   });
 
   SourceConfig.fromJson(core.Map json_)
-      : this(
-          mongodbSourceConfig: json_.containsKey('mongodbSourceConfig')
-              ? MongodbSourceConfig.fromJson(json_['mongodbSourceConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          mysqlSourceConfig: json_.containsKey('mysqlSourceConfig')
-              ? MysqlSourceConfig.fromJson(json_['mysqlSourceConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          oracleSourceConfig: json_.containsKey('oracleSourceConfig')
-              ? OracleSourceConfig.fromJson(json_['oracleSourceConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          postgresqlSourceConfig: json_.containsKey('postgresqlSourceConfig')
-              ? PostgresqlSourceConfig.fromJson(json_['postgresqlSourceConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          salesforceSourceConfig: json_.containsKey('salesforceSourceConfig')
-              ? SalesforceSourceConfig.fromJson(json_['salesforceSourceConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceConnectionProfile:
-              json_['sourceConnectionProfile'] as core.String?,
-          sqlServerSourceConfig: json_.containsKey('sqlServerSourceConfig')
-              ? SqlServerSourceConfig.fromJson(json_['sqlServerSourceConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        mongodbSourceConfig:
+            json_.containsKey('mongodbSourceConfig')
+                ? MongodbSourceConfig.fromJson(
+                  json_['mongodbSourceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mysqlSourceConfig:
+            json_.containsKey('mysqlSourceConfig')
+                ? MysqlSourceConfig.fromJson(
+                  json_['mysqlSourceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        oracleSourceConfig:
+            json_.containsKey('oracleSourceConfig')
+                ? OracleSourceConfig.fromJson(
+                  json_['oracleSourceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        postgresqlSourceConfig:
+            json_.containsKey('postgresqlSourceConfig')
+                ? PostgresqlSourceConfig.fromJson(
+                  json_['postgresqlSourceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        salesforceSourceConfig:
+            json_.containsKey('salesforceSourceConfig')
+                ? SalesforceSourceConfig.fromJson(
+                  json_['salesforceSourceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceConnectionProfile:
+            json_['sourceConnectionProfile'] as core.String?,
+        sqlServerSourceConfig:
+            json_.containsKey('sqlServerSourceConfig')
+                ? SqlServerSourceConfig.fromJson(
+                  json_['sqlServerSourceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mongodbSourceConfig != null)
-          'mongodbSourceConfig': mongodbSourceConfig!,
-        if (mysqlSourceConfig != null) 'mysqlSourceConfig': mysqlSourceConfig!,
-        if (oracleSourceConfig != null)
-          'oracleSourceConfig': oracleSourceConfig!,
-        if (postgresqlSourceConfig != null)
-          'postgresqlSourceConfig': postgresqlSourceConfig!,
-        if (salesforceSourceConfig != null)
-          'salesforceSourceConfig': salesforceSourceConfig!,
-        if (sourceConnectionProfile != null)
-          'sourceConnectionProfile': sourceConnectionProfile!,
-        if (sqlServerSourceConfig != null)
-          'sqlServerSourceConfig': sqlServerSourceConfig!,
-      };
+    if (mongodbSourceConfig != null)
+      'mongodbSourceConfig': mongodbSourceConfig!,
+    if (mysqlSourceConfig != null) 'mysqlSourceConfig': mysqlSourceConfig!,
+    if (oracleSourceConfig != null) 'oracleSourceConfig': oracleSourceConfig!,
+    if (postgresqlSourceConfig != null)
+      'postgresqlSourceConfig': postgresqlSourceConfig!,
+    if (salesforceSourceConfig != null)
+      'salesforceSourceConfig': salesforceSourceConfig!,
+    if (sourceConnectionProfile != null)
+      'sourceConnectionProfile': sourceConnectionProfile!,
+    if (sqlServerSourceConfig != null)
+      'sqlServerSourceConfig': sqlServerSourceConfig!,
+  };
 }
 
 /// Destination datasets are created so that hierarchy of the destination data
@@ -5614,24 +5774,24 @@ class SourceHierarchyDatasets {
   /// Optional.
   core.String? projectId;
 
-  SourceHierarchyDatasets({
-    this.datasetTemplate,
-    this.projectId,
-  });
+  SourceHierarchyDatasets({this.datasetTemplate, this.projectId});
 
   SourceHierarchyDatasets.fromJson(core.Map json_)
-      : this(
-          datasetTemplate: json_.containsKey('datasetTemplate')
-              ? DatasetTemplate.fromJson(json_['datasetTemplate']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          projectId: json_['projectId'] as core.String?,
-        );
+    : this(
+        datasetTemplate:
+            json_.containsKey('datasetTemplate')
+                ? DatasetTemplate.fromJson(
+                  json_['datasetTemplate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        projectId: json_['projectId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (datasetTemplate != null) 'datasetTemplate': datasetTemplate!,
-        if (projectId != null) 'projectId': projectId!,
-      };
+    if (datasetTemplate != null) 'datasetTemplate': datasetTemplate!,
+    if (projectId != null) 'projectId': projectId!,
+  };
 }
 
 /// Represents an identifier of an object in the data source.
@@ -5664,46 +5824,62 @@ class SourceObjectIdentifier {
   });
 
   SourceObjectIdentifier.fromJson(core.Map json_)
-      : this(
-          mongodbIdentifier: json_.containsKey('mongodbIdentifier')
-              ? MongodbObjectIdentifier.fromJson(json_['mongodbIdentifier']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          mysqlIdentifier: json_.containsKey('mysqlIdentifier')
-              ? MysqlObjectIdentifier.fromJson(json_['mysqlIdentifier']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          oracleIdentifier: json_.containsKey('oracleIdentifier')
-              ? OracleObjectIdentifier.fromJson(json_['oracleIdentifier']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          postgresqlIdentifier: json_.containsKey('postgresqlIdentifier')
-              ? PostgresqlObjectIdentifier.fromJson(
+    : this(
+        mongodbIdentifier:
+            json_.containsKey('mongodbIdentifier')
+                ? MongodbObjectIdentifier.fromJson(
+                  json_['mongodbIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mysqlIdentifier:
+            json_.containsKey('mysqlIdentifier')
+                ? MysqlObjectIdentifier.fromJson(
+                  json_['mysqlIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        oracleIdentifier:
+            json_.containsKey('oracleIdentifier')
+                ? OracleObjectIdentifier.fromJson(
+                  json_['oracleIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        postgresqlIdentifier:
+            json_.containsKey('postgresqlIdentifier')
+                ? PostgresqlObjectIdentifier.fromJson(
                   json_['postgresqlIdentifier']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          salesforceIdentifier: json_.containsKey('salesforceIdentifier')
-              ? SalesforceObjectIdentifier.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        salesforceIdentifier:
+            json_.containsKey('salesforceIdentifier')
+                ? SalesforceObjectIdentifier.fromJson(
                   json_['salesforceIdentifier']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          sqlServerIdentifier: json_.containsKey('sqlServerIdentifier')
-              ? SqlServerObjectIdentifier.fromJson(json_['sqlServerIdentifier']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sqlServerIdentifier:
+            json_.containsKey('sqlServerIdentifier')
+                ? SqlServerObjectIdentifier.fromJson(
+                  json_['sqlServerIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mongodbIdentifier != null) 'mongodbIdentifier': mongodbIdentifier!,
-        if (mysqlIdentifier != null) 'mysqlIdentifier': mysqlIdentifier!,
-        if (oracleIdentifier != null) 'oracleIdentifier': oracleIdentifier!,
-        if (postgresqlIdentifier != null)
-          'postgresqlIdentifier': postgresqlIdentifier!,
-        if (salesforceIdentifier != null)
-          'salesforceIdentifier': salesforceIdentifier!,
-        if (sqlServerIdentifier != null)
-          'sqlServerIdentifier': sqlServerIdentifier!,
-      };
+    if (mongodbIdentifier != null) 'mongodbIdentifier': mongodbIdentifier!,
+    if (mysqlIdentifier != null) 'mysqlIdentifier': mysqlIdentifier!,
+    if (oracleIdentifier != null) 'oracleIdentifier': oracleIdentifier!,
+    if (postgresqlIdentifier != null)
+      'postgresqlIdentifier': postgresqlIdentifier!,
+    if (salesforceIdentifier != null)
+      'salesforceIdentifier': salesforceIdentifier!,
+    if (sqlServerIdentifier != null)
+      'sqlServerIdentifier': sqlServerIdentifier!,
+  };
 }
 
 /// CDC strategy to start replicating from a specific position in the source.
@@ -5728,32 +5904,44 @@ class SpecificStartPosition {
   });
 
   SpecificStartPosition.fromJson(core.Map json_)
-      : this(
-          mysqlGtidPosition: json_.containsKey('mysqlGtidPosition')
-              ? MysqlGtidPosition.fromJson(json_['mysqlGtidPosition']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          mysqlLogPosition: json_.containsKey('mysqlLogPosition')
-              ? MysqlLogPosition.fromJson(json_['mysqlLogPosition']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          oracleScnPosition: json_.containsKey('oracleScnPosition')
-              ? OracleScnPosition.fromJson(json_['oracleScnPosition']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sqlServerLsnPosition: json_.containsKey('sqlServerLsnPosition')
-              ? SqlServerLsnPosition.fromJson(json_['sqlServerLsnPosition']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        mysqlGtidPosition:
+            json_.containsKey('mysqlGtidPosition')
+                ? MysqlGtidPosition.fromJson(
+                  json_['mysqlGtidPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mysqlLogPosition:
+            json_.containsKey('mysqlLogPosition')
+                ? MysqlLogPosition.fromJson(
+                  json_['mysqlLogPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        oracleScnPosition:
+            json_.containsKey('oracleScnPosition')
+                ? OracleScnPosition.fromJson(
+                  json_['oracleScnPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sqlServerLsnPosition:
+            json_.containsKey('sqlServerLsnPosition')
+                ? SqlServerLsnPosition.fromJson(
+                  json_['sqlServerLsnPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mysqlGtidPosition != null) 'mysqlGtidPosition': mysqlGtidPosition!,
-        if (mysqlLogPosition != null) 'mysqlLogPosition': mysqlLogPosition!,
-        if (oracleScnPosition != null) 'oracleScnPosition': oracleScnPosition!,
-        if (sqlServerLsnPosition != null)
-          'sqlServerLsnPosition': sqlServerLsnPosition!,
-      };
+    if (mysqlGtidPosition != null) 'mysqlGtidPosition': mysqlGtidPosition!,
+    if (mysqlLogPosition != null) 'mysqlLogPosition': mysqlLogPosition!,
+    if (oracleScnPosition != null) 'oracleScnPosition': oracleScnPosition!,
+    if (sqlServerLsnPosition != null)
+      'sqlServerLsnPosition': sqlServerLsnPosition!,
+  };
 }
 
 /// Configuration to use Change Tables CDC read method.
@@ -5797,27 +5985,27 @@ class SqlServerColumn {
   });
 
   SqlServerColumn.fromJson(core.Map json_)
-      : this(
-          column: json_['column'] as core.String?,
-          dataType: json_['dataType'] as core.String?,
-          length: json_['length'] as core.int?,
-          nullable: json_['nullable'] as core.bool?,
-          ordinalPosition: json_['ordinalPosition'] as core.int?,
-          precision: json_['precision'] as core.int?,
-          primaryKey: json_['primaryKey'] as core.bool?,
-          scale: json_['scale'] as core.int?,
-        );
+    : this(
+        column: json_['column'] as core.String?,
+        dataType: json_['dataType'] as core.String?,
+        length: json_['length'] as core.int?,
+        nullable: json_['nullable'] as core.bool?,
+        ordinalPosition: json_['ordinalPosition'] as core.int?,
+        precision: json_['precision'] as core.int?,
+        primaryKey: json_['primaryKey'] as core.bool?,
+        scale: json_['scale'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (column != null) 'column': column!,
-        if (dataType != null) 'dataType': dataType!,
-        if (length != null) 'length': length!,
-        if (nullable != null) 'nullable': nullable!,
-        if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
-        if (precision != null) 'precision': precision!,
-        if (primaryKey != null) 'primaryKey': primaryKey!,
-        if (scale != null) 'scale': scale!,
-      };
+    if (column != null) 'column': column!,
+    if (dataType != null) 'dataType': dataType!,
+    if (length != null) 'length': length!,
+    if (nullable != null) 'nullable': nullable!,
+    if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
+    if (precision != null) 'precision': precision!,
+    if (primaryKey != null) 'primaryKey': primaryKey!,
+    if (scale != null) 'scale': scale!,
+  };
 }
 
 /// SQL Server LSN position
@@ -5827,18 +6015,14 @@ class SqlServerLsnPosition {
   /// Required.
   core.String? lsn;
 
-  SqlServerLsnPosition({
-    this.lsn,
-  });
+  SqlServerLsnPosition({this.lsn});
 
   SqlServerLsnPosition.fromJson(core.Map json_)
-      : this(
-          lsn: json_['lsn'] as core.String?,
-        );
+    : this(lsn: json_['lsn'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lsn != null) 'lsn': lsn!,
-      };
+    if (lsn != null) 'lsn': lsn!,
+  };
 }
 
 /// SQLServer data source object identifier.
@@ -5895,30 +6079,32 @@ class SqlServerProfile {
   });
 
   SqlServerProfile.fromJson(core.Map json_)
-      : this(
-          database: json_['database'] as core.String?,
-          hostname: json_['hostname'] as core.String?,
-          password: json_['password'] as core.String?,
-          port: json_['port'] as core.int?,
-          secretManagerStoredPassword:
-              json_['secretManagerStoredPassword'] as core.String?,
-          sslConfig: json_.containsKey('sslConfig')
-              ? SqlServerSslConfig.fromJson(
-                  json_['sslConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        database: json_['database'] as core.String?,
+        hostname: json_['hostname'] as core.String?,
+        password: json_['password'] as core.String?,
+        port: json_['port'] as core.int?,
+        secretManagerStoredPassword:
+            json_['secretManagerStoredPassword'] as core.String?,
+        sslConfig:
+            json_.containsKey('sslConfig')
+                ? SqlServerSslConfig.fromJson(
+                  json_['sslConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (database != null) 'database': database!,
-        if (hostname != null) 'hostname': hostname!,
-        if (password != null) 'password': password!,
-        if (port != null) 'port': port!,
-        if (secretManagerStoredPassword != null)
-          'secretManagerStoredPassword': secretManagerStoredPassword!,
-        if (sslConfig != null) 'sslConfig': sslConfig!,
-        if (username != null) 'username': username!,
-      };
+    if (database != null) 'database': database!,
+    if (hostname != null) 'hostname': hostname!,
+    if (password != null) 'password': password!,
+    if (port != null) 'port': port!,
+    if (secretManagerStoredPassword != null)
+      'secretManagerStoredPassword': secretManagerStoredPassword!,
+    if (sslConfig != null) 'sslConfig': sslConfig!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// SQLServer database structure.
@@ -5926,21 +6112,23 @@ class SqlServerRdbms {
   /// SQLServer schemas in the database server.
   core.List<SqlServerSchema>? schemas;
 
-  SqlServerRdbms({
-    this.schemas,
-  });
+  SqlServerRdbms({this.schemas});
 
   SqlServerRdbms.fromJson(core.Map json_)
-      : this(
-          schemas: (json_['schemas'] as core.List?)
-              ?.map((value) => SqlServerSchema.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        schemas:
+            (json_['schemas'] as core.List?)
+                ?.map(
+                  (value) => SqlServerSchema.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (schemas != null) 'schemas': schemas!,
-      };
+    if (schemas != null) 'schemas': schemas!,
+  };
 }
 
 /// SQLServer schema.
@@ -5951,24 +6139,25 @@ class SqlServerSchema {
   /// Tables in the schema.
   core.List<SqlServerTable>? tables;
 
-  SqlServerSchema({
-    this.schema,
-    this.tables,
-  });
+  SqlServerSchema({this.schema, this.tables});
 
   SqlServerSchema.fromJson(core.Map json_)
-      : this(
-          schema: json_['schema'] as core.String?,
-          tables: (json_['tables'] as core.List?)
-              ?.map((value) => SqlServerTable.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        schema: json_['schema'] as core.String?,
+        tables:
+            (json_['tables'] as core.List?)
+                ?.map(
+                  (value) => SqlServerTable.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (schema != null) 'schema': schema!,
-        if (tables != null) 'tables': tables!,
-      };
+    if (schema != null) 'schema': schema!,
+    if (tables != null) 'tables': tables!,
+  };
 }
 
 /// SQLServer data source configuration
@@ -6001,38 +6190,49 @@ class SqlServerSourceConfig {
   });
 
   SqlServerSourceConfig.fromJson(core.Map json_)
-      : this(
-          changeTables: json_.containsKey('changeTables')
-              ? SqlServerChangeTables.fromJson(
-                  json_['changeTables'] as core.Map<core.String, core.dynamic>)
-              : null,
-          excludeObjects: json_.containsKey('excludeObjects')
-              ? SqlServerRdbms.fromJson(json_['excludeObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          includeObjects: json_.containsKey('includeObjects')
-              ? SqlServerRdbms.fromJson(json_['includeObjects']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          maxConcurrentBackfillTasks:
-              json_['maxConcurrentBackfillTasks'] as core.int?,
-          maxConcurrentCdcTasks: json_['maxConcurrentCdcTasks'] as core.int?,
-          transactionLogs: json_.containsKey('transactionLogs')
-              ? SqlServerTransactionLogs.fromJson(json_['transactionLogs']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        changeTables:
+            json_.containsKey('changeTables')
+                ? SqlServerChangeTables.fromJson(
+                  json_['changeTables'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        excludeObjects:
+            json_.containsKey('excludeObjects')
+                ? SqlServerRdbms.fromJson(
+                  json_['excludeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        includeObjects:
+            json_.containsKey('includeObjects')
+                ? SqlServerRdbms.fromJson(
+                  json_['includeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maxConcurrentBackfillTasks:
+            json_['maxConcurrentBackfillTasks'] as core.int?,
+        maxConcurrentCdcTasks: json_['maxConcurrentCdcTasks'] as core.int?,
+        transactionLogs:
+            json_.containsKey('transactionLogs')
+                ? SqlServerTransactionLogs.fromJson(
+                  json_['transactionLogs']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (changeTables != null) 'changeTables': changeTables!,
-        if (excludeObjects != null) 'excludeObjects': excludeObjects!,
-        if (includeObjects != null) 'includeObjects': includeObjects!,
-        if (maxConcurrentBackfillTasks != null)
-          'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
-        if (maxConcurrentCdcTasks != null)
-          'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
-        if (transactionLogs != null) 'transactionLogs': transactionLogs!,
-      };
+    if (changeTables != null) 'changeTables': changeTables!,
+    if (excludeObjects != null) 'excludeObjects': excludeObjects!,
+    if (includeObjects != null) 'includeObjects': includeObjects!,
+    if (maxConcurrentBackfillTasks != null)
+      'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
+    if (maxConcurrentCdcTasks != null)
+      'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
+    if (transactionLogs != null) 'transactionLogs': transactionLogs!,
+  };
 }
 
 /// SQL Server SSL configuration information.
@@ -6060,30 +6260,37 @@ class SqlServerSslConfig {
   });
 
   SqlServerSslConfig.fromJson(core.Map json_)
-      : this(
-          basicEncryption: json_.containsKey('basicEncryption')
-              ? BasicEncryption.fromJson(json_['basicEncryption']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          encryptionAndServerValidation:
-              json_.containsKey('encryptionAndServerValidation')
-                  ? EncryptionAndServerValidation.fromJson(
-                      json_['encryptionAndServerValidation']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          encryptionNotEnforced: json_.containsKey('encryptionNotEnforced')
-              ? EncryptionNotEnforced.fromJson(json_['encryptionNotEnforced']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        basicEncryption:
+            json_.containsKey('basicEncryption')
+                ? BasicEncryption.fromJson(
+                  json_['basicEncryption']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        encryptionAndServerValidation:
+            json_.containsKey('encryptionAndServerValidation')
+                ? EncryptionAndServerValidation.fromJson(
+                  json_['encryptionAndServerValidation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        encryptionNotEnforced:
+            json_.containsKey('encryptionNotEnforced')
+                ? EncryptionNotEnforced.fromJson(
+                  json_['encryptionNotEnforced']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (basicEncryption != null) 'basicEncryption': basicEncryption!,
-        if (encryptionAndServerValidation != null)
-          'encryptionAndServerValidation': encryptionAndServerValidation!,
-        if (encryptionNotEnforced != null)
-          'encryptionNotEnforced': encryptionNotEnforced!,
-      };
+    if (basicEncryption != null) 'basicEncryption': basicEncryption!,
+    if (encryptionAndServerValidation != null)
+      'encryptionAndServerValidation': encryptionAndServerValidation!,
+    if (encryptionNotEnforced != null)
+      'encryptionNotEnforced': encryptionNotEnforced!,
+  };
 }
 
 /// SQLServer table.
@@ -6097,24 +6304,25 @@ class SqlServerTable {
   /// Table name.
   core.String? table;
 
-  SqlServerTable({
-    this.columns,
-    this.table,
-  });
+  SqlServerTable({this.columns, this.table});
 
   SqlServerTable.fromJson(core.Map json_)
-      : this(
-          columns: (json_['columns'] as core.List?)
-              ?.map((value) => SqlServerColumn.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          table: json_['table'] as core.String?,
-        );
+    : this(
+        columns:
+            (json_['columns'] as core.List?)
+                ?.map(
+                  (value) => SqlServerColumn.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        table: json_['table'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columns != null) 'columns': columns!,
-        if (table != null) 'table': table!,
-      };
+    if (columns != null) 'columns': columns!,
+    if (table != null) 'table': table!,
+  };
 }
 
 /// Configuration to use Transaction Logs CDC read method.
@@ -6131,18 +6339,14 @@ class StandardConnectionFormat {
   /// Optional.
   core.bool? directConnection;
 
-  StandardConnectionFormat({
-    this.directConnection,
-  });
+  StandardConnectionFormat({this.directConnection});
 
   StandardConnectionFormat.fromJson(core.Map json_)
-      : this(
-          directConnection: json_['directConnection'] as core.bool?,
-        );
+    : this(directConnection: json_['directConnection'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (directConnection != null) 'directConnection': directConnection!,
-      };
+    if (directConnection != null) 'directConnection': directConnection!,
+  };
 }
 
 /// Request for manually initiating a backfill job for a specific stream object.
@@ -6154,21 +6358,21 @@ class StartBackfillJobResponse {
   /// The stream object resource a backfill job was started for.
   StreamObject? object;
 
-  StartBackfillJobResponse({
-    this.object,
-  });
+  StartBackfillJobResponse({this.object});
 
   StartBackfillJobResponse.fromJson(core.Map json_)
-      : this(
-          object: json_.containsKey('object')
-              ? StreamObject.fromJson(
-                  json_['object'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        object:
+            json_.containsKey('object')
+                ? StreamObject.fromJson(
+                  json_['object'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (object != null) 'object': object!,
-      };
+    if (object != null) 'object': object!,
+  };
 }
 
 /// Static IP address connectivity.
@@ -6196,21 +6400,21 @@ class StopBackfillJobResponse {
   /// The stream object resource the backfill job was stopped for.
   StreamObject? object;
 
-  StopBackfillJobResponse({
-    this.object,
-  });
+  StopBackfillJobResponse({this.object});
 
   StopBackfillJobResponse.fromJson(core.Map json_)
-      : this(
-          object: json_.containsKey('object')
-              ? StreamObject.fromJson(
-                  json_['object'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        object:
+            json_.containsKey('object')
+                ? StreamObject.fromJson(
+                  json_['object'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (object != null) 'object': object!,
-      };
+    if (object != null) 'object': object!,
+  };
 }
 
 /// A resource representing streaming data from a source to a destination.
@@ -6326,64 +6530,73 @@ class Stream {
   });
 
   Stream.fromJson(core.Map json_)
-      : this(
-          backfillAll: json_.containsKey('backfillAll')
-              ? BackfillAllStrategy.fromJson(
-                  json_['backfillAll'] as core.Map<core.String, core.dynamic>)
-              : null,
-          backfillNone: json_.containsKey('backfillNone')
-              ? BackfillNoneStrategy.fromJson(
-                  json_['backfillNone'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          customerManagedEncryptionKey:
-              json_['customerManagedEncryptionKey'] as core.String?,
-          destinationConfig: json_.containsKey('destinationConfig')
-              ? DestinationConfig.fromJson(json_['destinationConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          displayName: json_['displayName'] as core.String?,
-          errors: (json_['errors'] as core.List?)
-              ?.map((value) =>
-                  Error.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          lastRecoveryTime: json_['lastRecoveryTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
-          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-          sourceConfig: json_.containsKey('sourceConfig')
-              ? SourceConfig.fromJson(
-                  json_['sourceConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        backfillAll:
+            json_.containsKey('backfillAll')
+                ? BackfillAllStrategy.fromJson(
+                  json_['backfillAll'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        backfillNone:
+            json_.containsKey('backfillNone')
+                ? BackfillNoneStrategy.fromJson(
+                  json_['backfillNone'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        customerManagedEncryptionKey:
+            json_['customerManagedEncryptionKey'] as core.String?,
+        destinationConfig:
+            json_.containsKey('destinationConfig')
+                ? DestinationConfig.fromJson(
+                  json_['destinationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        displayName: json_['displayName'] as core.String?,
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => Error.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        lastRecoveryTime: json_['lastRecoveryTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+        satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        sourceConfig:
+            json_.containsKey('sourceConfig')
+                ? SourceConfig.fromJson(
+                  json_['sourceConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backfillAll != null) 'backfillAll': backfillAll!,
-        if (backfillNone != null) 'backfillNone': backfillNone!,
-        if (createTime != null) 'createTime': createTime!,
-        if (customerManagedEncryptionKey != null)
-          'customerManagedEncryptionKey': customerManagedEncryptionKey!,
-        if (destinationConfig != null) 'destinationConfig': destinationConfig!,
-        if (displayName != null) 'displayName': displayName!,
-        if (errors != null) 'errors': errors!,
-        if (labels != null) 'labels': labels!,
-        if (lastRecoveryTime != null) 'lastRecoveryTime': lastRecoveryTime!,
-        if (name != null) 'name': name!,
-        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-        if (sourceConfig != null) 'sourceConfig': sourceConfig!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (backfillAll != null) 'backfillAll': backfillAll!,
+    if (backfillNone != null) 'backfillNone': backfillNone!,
+    if (createTime != null) 'createTime': createTime!,
+    if (customerManagedEncryptionKey != null)
+      'customerManagedEncryptionKey': customerManagedEncryptionKey!,
+    if (destinationConfig != null) 'destinationConfig': destinationConfig!,
+    if (displayName != null) 'displayName': displayName!,
+    if (errors != null) 'errors': errors!,
+    if (labels != null) 'labels': labels!,
+    if (lastRecoveryTime != null) 'lastRecoveryTime': lastRecoveryTime!,
+    if (name != null) 'name': name!,
+    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+    if (sourceConfig != null) 'sourceConfig': sourceConfig!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Configuration to stream large object values.
@@ -6435,34 +6648,42 @@ class StreamObject {
   });
 
   StreamObject.fromJson(core.Map json_)
-      : this(
-          backfillJob: json_.containsKey('backfillJob')
-              ? BackfillJob.fromJson(
-                  json_['backfillJob'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          errors: (json_['errors'] as core.List?)
-              ?.map((value) =>
-                  Error.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          sourceObject: json_.containsKey('sourceObject')
-              ? SourceObjectIdentifier.fromJson(
-                  json_['sourceObject'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        backfillJob:
+            json_.containsKey('backfillJob')
+                ? BackfillJob.fromJson(
+                  json_['backfillJob'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => Error.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        sourceObject:
+            json_.containsKey('sourceObject')
+                ? SourceObjectIdentifier.fromJson(
+                  json_['sourceObject'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backfillJob != null) 'backfillJob': backfillJob!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (errors != null) 'errors': errors!,
-        if (name != null) 'name': name!,
-        if (sourceObject != null) 'sourceObject': sourceObject!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (backfillJob != null) 'backfillJob': backfillJob!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (errors != null) 'errors': errors!,
+    if (name != null) 'name': name!,
+    if (sourceObject != null) 'sourceObject': sourceObject!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Username-password credentials.
@@ -6511,25 +6732,25 @@ class UserCredentials {
   });
 
   UserCredentials.fromJson(core.Map json_)
-      : this(
-          password: json_['password'] as core.String?,
-          secretManagerStoredPassword:
-              json_['secretManagerStoredPassword'] as core.String?,
-          secretManagerStoredSecurityToken:
-              json_['secretManagerStoredSecurityToken'] as core.String?,
-          securityToken: json_['securityToken'] as core.String?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        password: json_['password'] as core.String?,
+        secretManagerStoredPassword:
+            json_['secretManagerStoredPassword'] as core.String?,
+        secretManagerStoredSecurityToken:
+            json_['secretManagerStoredSecurityToken'] as core.String?,
+        securityToken: json_['securityToken'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (password != null) 'password': password!,
-        if (secretManagerStoredPassword != null)
-          'secretManagerStoredPassword': secretManagerStoredPassword!,
-        if (secretManagerStoredSecurityToken != null)
-          'secretManagerStoredSecurityToken': secretManagerStoredSecurityToken!,
-        if (securityToken != null) 'securityToken': securityToken!,
-        if (username != null) 'username': username!,
-      };
+    if (password != null) 'password': password!,
+    if (secretManagerStoredPassword != null)
+      'secretManagerStoredPassword': secretManagerStoredPassword!,
+    if (secretManagerStoredSecurityToken != null)
+      'secretManagerStoredSecurityToken': secretManagerStoredSecurityToken!,
+    if (securityToken != null) 'securityToken': securityToken!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// The VPC Peering configuration is used to create VPC peering between
@@ -6549,19 +6770,16 @@ class VpcPeeringConfig {
   /// Required.
   core.String? vpc;
 
-  VpcPeeringConfig({
-    this.subnet,
-    this.vpc,
-  });
+  VpcPeeringConfig({this.subnet, this.vpc});
 
   VpcPeeringConfig.fromJson(core.Map json_)
-      : this(
-          subnet: json_['subnet'] as core.String?,
-          vpc: json_['vpc'] as core.String?,
-        );
+    : this(
+        subnet: json_['subnet'] as core.String?,
+        vpc: json_['vpc'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (subnet != null) 'subnet': subnet!,
-        if (vpc != null) 'vpc': vpc!,
-      };
+    if (subnet != null) 'subnet': subnet!,
+    if (vpc != null) 'vpc': vpc!,
+  };
 }

@@ -44,12 +44,17 @@ class SubscriptionLinkingApi {
 
   PublicationsResource get publications => PublicationsResource(_requester);
 
-  SubscriptionLinkingApi(http.Client client,
-      {core.String rootUrl =
-          'https://readerrevenuesubscriptionlinking.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  SubscriptionLinkingApi(
+    http.Client client, {
+    core.String rootUrl =
+        'https://readerrevenuesubscriptionlinking.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class PublicationsResource {
@@ -65,7 +70,7 @@ class PublicationsReadersResource {
   final commons.ApiRequester _requester;
 
   PublicationsReadersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Removes a publication reader, effectively severing the association with a
   /// Google user.
@@ -110,10 +115,12 @@ class PublicationsReadersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return DeleteReaderResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a reader of a publication.
@@ -136,10 +143,7 @@ class PublicationsReadersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Reader> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Reader> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -192,7 +196,8 @@ class PublicationsReadersResource {
       queryParams: queryParams_,
     );
     return ReaderEntitlements.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the reader entitlements for a publication reader.
@@ -244,7 +249,8 @@ class PublicationsReadersResource {
       queryParams: queryParams_,
     );
     return ReaderEntitlements.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -291,19 +297,19 @@ class Entitlement {
   });
 
   Entitlement.fromJson(core.Map json_)
-      : this(
-          detail: json_['detail'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-          productId: json_['productId'] as core.String?,
-          subscriptionToken: json_['subscriptionToken'] as core.String?,
-        );
+    : this(
+        detail: json_['detail'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        productId: json_['productId'] as core.String?,
+        subscriptionToken: json_['subscriptionToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detail != null) 'detail': detail!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (productId != null) 'productId': productId!,
-        if (subscriptionToken != null) 'subscriptionToken': subscriptionToken!,
-      };
+    if (detail != null) 'detail': detail!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (productId != null) 'productId': productId!,
+    if (subscriptionToken != null) 'subscriptionToken': subscriptionToken!,
+  };
 }
 
 /// A reader of a publication.
@@ -345,23 +351,23 @@ class Reader {
   });
 
   Reader.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          originatingPublicationId:
-              json_['originatingPublicationId'] as core.String?,
-          ppid: json_['ppid'] as core.String?,
-          publicationId: json_['publicationId'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        originatingPublicationId:
+            json_['originatingPublicationId'] as core.String?,
+        ppid: json_['ppid'] as core.String?,
+        publicationId: json_['publicationId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (originatingPublicationId != null)
-          'originatingPublicationId': originatingPublicationId!,
-        if (ppid != null) 'ppid': ppid!,
-        if (publicationId != null) 'publicationId': publicationId!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (originatingPublicationId != null)
+      'originatingPublicationId': originatingPublicationId!,
+    if (ppid != null) 'ppid': ppid!,
+    if (publicationId != null) 'publicationId': publicationId!,
+  };
 }
 
 /// A singleton containing all of a reader's entitlements for a publication.
@@ -374,22 +380,23 @@ class ReaderEntitlements {
   /// Output only.
   core.String? name;
 
-  ReaderEntitlements({
-    this.entitlements,
-    this.name,
-  });
+  ReaderEntitlements({this.entitlements, this.name});
 
   ReaderEntitlements.fromJson(core.Map json_)
-      : this(
-          entitlements: (json_['entitlements'] as core.List?)
-              ?.map((value) => Entitlement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        entitlements:
+            (json_['entitlements'] as core.List?)
+                ?.map(
+                  (value) => Entitlement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entitlements != null) 'entitlements': entitlements!,
-        if (name != null) 'name': name!,
-      };
+    if (entitlements != null) 'entitlements': entitlements!,
+    if (name != null) 'name': name!,
+  };
 }

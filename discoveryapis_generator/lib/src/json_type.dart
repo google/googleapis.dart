@@ -50,7 +50,8 @@ class MapJsonType extends JsonType {
   MapJsonType(super.imports, this.keyJsonType, this.valueJsonType);
 
   @override
-  String get declaration => '${imports.core.ref()}Map'
+  String get declaration =>
+      '${imports.core.ref()}Map'
       '<${keyJsonType.declaration}, ${valueJsonType.declaration}>';
 
   @override

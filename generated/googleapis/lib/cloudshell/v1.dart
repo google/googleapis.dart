@@ -52,11 +52,16 @@ class CloudShellApi {
   OperationsResource get operations => OperationsResource(_requester);
   UsersResource get users => UsersResource(_requester);
 
-  CloudShellApi(http.Client client,
-      {core.String rootUrl = 'https://cloudshell.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudShellApi(
+    http.Client client, {
+    core.String rootUrl = 'https://cloudshell.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class OperationsResource {
@@ -134,10 +139,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -147,6 +149,7 @@ class OperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -172,10 +175,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -237,7 +237,8 @@ class OperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -383,7 +384,8 @@ class UsersEnvironmentsResource {
       queryParams: queryParams_,
     );
     return Environment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Removes a public SSH key from an environment.
@@ -491,18 +493,14 @@ class AddPublicKeyRequest {
   /// \<format\> \<content\>, where \<content\> part is encoded with Base64.
   core.String? key;
 
-  AddPublicKeyRequest({
-    this.key,
-  });
+  AddPublicKeyRequest({this.key});
 
   AddPublicKeyRequest.fromJson(core.Map json_)
-      : this(
-          key: json_['key'] as core.String?,
-        );
+    : this(key: json_['key'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-      };
+    if (key != null) 'key': key!,
+  };
 }
 
 /// Request message for AuthorizeEnvironment.
@@ -526,17 +524,17 @@ class AuthorizeEnvironmentRequest {
   });
 
   AuthorizeEnvironmentRequest.fromJson(core.Map json_)
-      : this(
-          accessToken: json_['accessToken'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-          idToken: json_['idToken'] as core.String?,
-        );
+    : this(
+        accessToken: json_['accessToken'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        idToken: json_['idToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessToken != null) 'accessToken': accessToken!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (idToken != null) 'idToken': idToken!,
-      };
+    if (accessToken != null) 'accessToken': accessToken!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (idToken != null) 'idToken': idToken!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -639,31 +637,32 @@ class Environment {
   });
 
   Environment.fromJson(core.Map json_)
-      : this(
-          dockerImage: json_['dockerImage'] as core.String?,
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-          publicKeys: (json_['publicKeys'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          sshHost: json_['sshHost'] as core.String?,
-          sshPort: json_['sshPort'] as core.int?,
-          sshUsername: json_['sshUsername'] as core.String?,
-          state: json_['state'] as core.String?,
-          webHost: json_['webHost'] as core.String?,
-        );
+    : this(
+        dockerImage: json_['dockerImage'] as core.String?,
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        publicKeys:
+            (json_['publicKeys'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        sshHost: json_['sshHost'] as core.String?,
+        sshPort: json_['sshPort'] as core.int?,
+        sshUsername: json_['sshUsername'] as core.String?,
+        state: json_['state'] as core.String?,
+        webHost: json_['webHost'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dockerImage != null) 'dockerImage': dockerImage!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (publicKeys != null) 'publicKeys': publicKeys!,
-        if (sshHost != null) 'sshHost': sshHost!,
-        if (sshPort != null) 'sshPort': sshPort!,
-        if (sshUsername != null) 'sshUsername': sshUsername!,
-        if (state != null) 'state': state!,
-        if (webHost != null) 'webHost': webHost!,
-      };
+    if (dockerImage != null) 'dockerImage': dockerImage!,
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (publicKeys != null) 'publicKeys': publicKeys!,
+    if (sshHost != null) 'sshHost': sshHost!,
+    if (sshPort != null) 'sshPort': sshPort!,
+    if (sshUsername != null) 'sshUsername': sshUsername!,
+    if (state != null) 'state': state!,
+    if (webHost != null) 'webHost': webHost!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -674,24 +673,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -737,37 +737,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Request message for RemovePublicKey.
@@ -775,18 +773,14 @@ class RemovePublicKeyRequest {
   /// Key that should be removed from the environment.
   core.String? key;
 
-  RemovePublicKeyRequest({
-    this.key,
-  });
+  RemovePublicKeyRequest({this.key});
 
   RemovePublicKeyRequest.fromJson(core.Map json_)
-      : this(
-          key: json_['key'] as core.String?,
-        );
+    : this(key: json_['key'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-      };
+    if (key != null) 'key': key!,
+  };
 }
 
 /// Request message for StartEnvironment.
@@ -802,23 +796,21 @@ class StartEnvironmentRequest {
   /// Public keys that should be added to the environment before it is started.
   core.List<core.String>? publicKeys;
 
-  StartEnvironmentRequest({
-    this.accessToken,
-    this.publicKeys,
-  });
+  StartEnvironmentRequest({this.accessToken, this.publicKeys});
 
   StartEnvironmentRequest.fromJson(core.Map json_)
-      : this(
-          accessToken: json_['accessToken'] as core.String?,
-          publicKeys: (json_['publicKeys'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        accessToken: json_['accessToken'] as core.String?,
+        publicKeys:
+            (json_['publicKeys'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessToken != null) 'accessToken': accessToken!,
-        if (publicKeys != null) 'publicKeys': publicKeys!,
-      };
+    if (accessToken != null) 'accessToken': accessToken!,
+    if (publicKeys != null) 'publicKeys': publicKeys!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for

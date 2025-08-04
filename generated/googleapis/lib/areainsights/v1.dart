@@ -48,11 +48,16 @@ class AreaInsightsApi {
 
   V1Resource get v1 => V1Resource(_requester);
 
-  AreaInsightsApi(http.Client client,
-      {core.String rootUrl = 'https://areainsights.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  AreaInsightsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://areainsights.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class V1Resource {
@@ -104,7 +109,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return ComputeInsightsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -124,27 +130,25 @@ class Circle {
   /// Optional.
   core.int? radius;
 
-  Circle({
-    this.latLng,
-    this.place,
-    this.radius,
-  });
+  Circle({this.latLng, this.place, this.radius});
 
   Circle.fromJson(core.Map json_)
-      : this(
-          latLng: json_.containsKey('latLng')
-              ? LatLng.fromJson(
-                  json_['latLng'] as core.Map<core.String, core.dynamic>)
-              : null,
-          place: json_['place'] as core.String?,
-          radius: json_['radius'] as core.int?,
-        );
+    : this(
+        latLng:
+            json_.containsKey('latLng')
+                ? LatLng.fromJson(
+                  json_['latLng'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        place: json_['place'] as core.String?,
+        radius: json_['radius'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (latLng != null) 'latLng': latLng!,
-        if (place != null) 'place': place!,
-        if (radius != null) 'radius': radius!,
-      };
+    if (latLng != null) 'latLng': latLng!,
+    if (place != null) 'place': place!,
+    if (radius != null) 'radius': radius!,
+  };
 }
 
 /// Request for the ComputeInsights RPC.
@@ -161,26 +165,26 @@ class ComputeInsightsRequest {
   /// Required.
   core.List<core.String>? insights;
 
-  ComputeInsightsRequest({
-    this.filter,
-    this.insights,
-  });
+  ComputeInsightsRequest({this.filter, this.insights});
 
   ComputeInsightsRequest.fromJson(core.Map json_)
-      : this(
-          filter: json_.containsKey('filter')
-              ? Filter.fromJson(
-                  json_['filter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          insights: (json_['insights'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        filter:
+            json_.containsKey('filter')
+                ? Filter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insights:
+            (json_['insights'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (insights != null) 'insights': insights!,
-      };
+    if (filter != null) 'filter': filter!,
+    if (insights != null) 'insights': insights!,
+  };
 }
 
 /// Response for the ComputeInsights RPC.
@@ -191,24 +195,25 @@ class ComputeInsightsResponse {
   /// Result for Insights.INSIGHT_PLACES.
   core.List<PlaceInsight>? placeInsights;
 
-  ComputeInsightsResponse({
-    this.count,
-    this.placeInsights,
-  });
+  ComputeInsightsResponse({this.count, this.placeInsights});
 
   ComputeInsightsResponse.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.String?,
-          placeInsights: (json_['placeInsights'] as core.List?)
-              ?.map((value) => PlaceInsight.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        count: json_['count'] as core.String?,
+        placeInsights:
+            (json_['placeInsights'] as core.List?)
+                ?.map(
+                  (value) => PlaceInsight.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (placeInsights != null) 'placeInsights': placeInsights!,
-      };
+    if (count != null) 'count': count!,
+    if (placeInsights != null) 'placeInsights': placeInsights!,
+  };
 }
 
 /// Custom Area.
@@ -218,21 +223,21 @@ class CustomArea {
   /// Required.
   Polygon? polygon;
 
-  CustomArea({
-    this.polygon,
-  });
+  CustomArea({this.polygon});
 
   CustomArea.fromJson(core.Map json_)
-      : this(
-          polygon: json_.containsKey('polygon')
-              ? Polygon.fromJson(
-                  json_['polygon'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        polygon:
+            json_.containsKey('polygon')
+                ? Polygon.fromJson(
+                  json_['polygon'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (polygon != null) 'polygon': polygon!,
-      };
+    if (polygon != null) 'polygon': polygon!,
+  };
 }
 
 /// Filters for the ComputeInsights RPC.
@@ -282,34 +287,43 @@ class Filter {
   });
 
   Filter.fromJson(core.Map json_)
-      : this(
-          locationFilter: json_.containsKey('locationFilter')
-              ? LocationFilter.fromJson(json_['locationFilter']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          operatingStatus: (json_['operatingStatus'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          priceLevels: (json_['priceLevels'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          ratingFilter: json_.containsKey('ratingFilter')
-              ? RatingFilter.fromJson(
-                  json_['ratingFilter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          typeFilter: json_.containsKey('typeFilter')
-              ? TypeFilter.fromJson(
-                  json_['typeFilter'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        locationFilter:
+            json_.containsKey('locationFilter')
+                ? LocationFilter.fromJson(
+                  json_['locationFilter']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        operatingStatus:
+            (json_['operatingStatus'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        priceLevels:
+            (json_['priceLevels'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        ratingFilter:
+            json_.containsKey('ratingFilter')
+                ? RatingFilter.fromJson(
+                  json_['ratingFilter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        typeFilter:
+            json_.containsKey('typeFilter')
+                ? TypeFilter.fromJson(
+                  json_['typeFilter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locationFilter != null) 'locationFilter': locationFilter!,
-        if (operatingStatus != null) 'operatingStatus': operatingStatus!,
-        if (priceLevels != null) 'priceLevels': priceLevels!,
-        if (ratingFilter != null) 'ratingFilter': ratingFilter!,
-        if (typeFilter != null) 'typeFilter': typeFilter!,
-      };
+    if (locationFilter != null) 'locationFilter': locationFilter!,
+    if (operatingStatus != null) 'operatingStatus': operatingStatus!,
+    if (priceLevels != null) 'priceLevels': priceLevels!,
+    if (ratingFilter != null) 'ratingFilter': ratingFilter!,
+    if (typeFilter != null) 'typeFilter': typeFilter!,
+  };
 }
 
 /// An object that represents a latitude/longitude pair.
@@ -332,33 +346,35 @@ class LocationFilter {
   /// Area as region.
   Region? region;
 
-  LocationFilter({
-    this.circle,
-    this.customArea,
-    this.region,
-  });
+  LocationFilter({this.circle, this.customArea, this.region});
 
   LocationFilter.fromJson(core.Map json_)
-      : this(
-          circle: json_.containsKey('circle')
-              ? Circle.fromJson(
-                  json_['circle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          customArea: json_.containsKey('customArea')
-              ? CustomArea.fromJson(
-                  json_['customArea'] as core.Map<core.String, core.dynamic>)
-              : null,
-          region: json_.containsKey('region')
-              ? Region.fromJson(
-                  json_['region'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        circle:
+            json_.containsKey('circle')
+                ? Circle.fromJson(
+                  json_['circle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        customArea:
+            json_.containsKey('customArea')
+                ? CustomArea.fromJson(
+                  json_['customArea'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        region:
+            json_.containsKey('region')
+                ? Region.fromJson(
+                  json_['region'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (circle != null) 'circle': circle!,
-        if (customArea != null) 'customArea': customArea!,
-        if (region != null) 'region': region!,
-      };
+    if (circle != null) 'circle': circle!,
+    if (customArea != null) 'customArea': customArea!,
+    if (region != null) 'region': region!,
+  };
 }
 
 /// Holds information about a place
@@ -370,18 +386,14 @@ class PlaceInsight {
   /// [Places API](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places/get).
   core.String? place;
 
-  PlaceInsight({
-    this.place,
-  });
+  PlaceInsight({this.place});
 
   PlaceInsight.fromJson(core.Map json_)
-      : this(
-          place: json_['place'] as core.String?,
-        );
+    : this(place: json_['place'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (place != null) 'place': place!,
-      };
+    if (place != null) 'place': place!,
+  };
 }
 
 /// A polygon is represented by a series of connected coordinates in an
@@ -397,21 +409,23 @@ class Polygon {
   /// Optional.
   core.List<LatLng>? coordinates;
 
-  Polygon({
-    this.coordinates,
-  });
+  Polygon({this.coordinates});
 
   Polygon.fromJson(core.Map json_)
-      : this(
-          coordinates: (json_['coordinates'] as core.List?)
-              ?.map((value) =>
-                  LatLng.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        coordinates:
+            (json_['coordinates'] as core.List?)
+                ?.map(
+                  (value) => LatLng.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (coordinates != null) 'coordinates': coordinates!,
-      };
+    if (coordinates != null) 'coordinates': coordinates!,
+  };
 }
 
 /// Average user rating filters.
@@ -432,21 +446,18 @@ class RatingFilter {
   /// Optional.
   core.double? minRating;
 
-  RatingFilter({
-    this.maxRating,
-    this.minRating,
-  });
+  RatingFilter({this.maxRating, this.minRating});
 
   RatingFilter.fromJson(core.Map json_)
-      : this(
-          maxRating: (json_['maxRating'] as core.num?)?.toDouble(),
-          minRating: (json_['minRating'] as core.num?)?.toDouble(),
-        );
+    : this(
+        maxRating: (json_['maxRating'] as core.num?)?.toDouble(),
+        minRating: (json_['minRating'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxRating != null) 'maxRating': maxRating!,
-        if (minRating != null) 'minRating': minRating!,
-      };
+    if (maxRating != null) 'maxRating': maxRating!,
+    if (minRating != null) 'minRating': minRating!,
+  };
 }
 
 /// A region is a geographic boundary such as: cities, postal codes, counties,
@@ -462,18 +473,13 @@ class Region {
   /// `places/ChIJPV4oX_65j4ARVW8IJ6IJUYs`.
   core.String? place;
 
-  Region({
-    this.place,
-  });
+  Region({this.place});
 
-  Region.fromJson(core.Map json_)
-      : this(
-          place: json_['place'] as core.String?,
-        );
+  Region.fromJson(core.Map json_) : this(place: json_['place'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (place != null) 'place': place!,
-      };
+    if (place != null) 'place': place!,
+  };
 }
 
 /// Place type filters.
@@ -526,27 +532,31 @@ class TypeFilter {
   });
 
   TypeFilter.fromJson(core.Map json_)
-      : this(
-          excludedPrimaryTypes: (json_['excludedPrimaryTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          excludedTypes: (json_['excludedTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          includedPrimaryTypes: (json_['includedPrimaryTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          includedTypes: (json_['includedTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        excludedPrimaryTypes:
+            (json_['excludedPrimaryTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        excludedTypes:
+            (json_['excludedTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includedPrimaryTypes:
+            (json_['includedPrimaryTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includedTypes:
+            (json_['includedTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (excludedPrimaryTypes != null)
-          'excludedPrimaryTypes': excludedPrimaryTypes!,
-        if (excludedTypes != null) 'excludedTypes': excludedTypes!,
-        if (includedPrimaryTypes != null)
-          'includedPrimaryTypes': includedPrimaryTypes!,
-        if (includedTypes != null) 'includedTypes': includedTypes!,
-      };
+    if (excludedPrimaryTypes != null)
+      'excludedPrimaryTypes': excludedPrimaryTypes!,
+    if (excludedTypes != null) 'excludedTypes': excludedTypes!,
+    if (includedPrimaryTypes != null)
+      'includedPrimaryTypes': includedPrimaryTypes!,
+    if (includedTypes != null) 'includedTypes': includedTypes!,
+  };
 }

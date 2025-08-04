@@ -53,11 +53,16 @@ class ServiceControlApi {
 
   ServicesResource get services => ServicesResource(_requester);
 
-  ServiceControlApi(http.Client client,
-      {core.String rootUrl = 'https://servicecontrol.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ServiceControlApi(
+    http.Client client, {
+    core.String rootUrl = 'https://servicecontrol.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ServicesResource {
@@ -103,7 +108,8 @@ class ServicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/services/' +
+    final url_ =
+        'v1/services/' +
         commons.escapeVariable('$serviceName') +
         ':allocateQuota';
 
@@ -114,7 +120,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return AllocateQuotaResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Checks whether an operation on a service should be allowed to proceed
@@ -170,7 +177,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return CheckResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Reports operation results to Google Service Control, such as logs and
@@ -225,7 +233,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return ReportResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -239,20 +248,19 @@ class AllocateInfo {
   /// not populated for allocation quota checks.
   core.List<core.String>? unusedArguments;
 
-  AllocateInfo({
-    this.unusedArguments,
-  });
+  AllocateInfo({this.unusedArguments});
 
   AllocateInfo.fromJson(core.Map json_)
-      : this(
-          unusedArguments: (json_['unusedArguments'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        unusedArguments:
+            (json_['unusedArguments'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (unusedArguments != null) 'unusedArguments': unusedArguments!,
-      };
+    if (unusedArguments != null) 'unusedArguments': unusedArguments!,
+  };
 }
 
 /// Request message for the AllocateQuota method.
@@ -267,24 +275,24 @@ class AllocateQuotaRequest {
   /// used.
   core.String? serviceConfigId;
 
-  AllocateQuotaRequest({
-    this.allocateOperation,
-    this.serviceConfigId,
-  });
+  AllocateQuotaRequest({this.allocateOperation, this.serviceConfigId});
 
   AllocateQuotaRequest.fromJson(core.Map json_)
-      : this(
-          allocateOperation: json_.containsKey('allocateOperation')
-              ? QuotaOperation.fromJson(json_['allocateOperation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          serviceConfigId: json_['serviceConfigId'] as core.String?,
-        );
+    : this(
+        allocateOperation:
+            json_.containsKey('allocateOperation')
+                ? QuotaOperation.fromJson(
+                  json_['allocateOperation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serviceConfigId: json_['serviceConfigId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allocateOperation != null) 'allocateOperation': allocateOperation!,
-        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
-      };
+    if (allocateOperation != null) 'allocateOperation': allocateOperation!,
+    if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
+  };
 }
 
 /// Response message for the AllocateQuota method.
@@ -322,30 +330,40 @@ class AllocateQuotaResponse {
   });
 
   AllocateQuotaResponse.fromJson(core.Map json_)
-      : this(
-          allocateErrors: (json_['allocateErrors'] as core.List?)
-              ?.map((value) => QuotaError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          allocateInfo: json_.containsKey('allocateInfo')
-              ? AllocateInfo.fromJson(
-                  json_['allocateInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          operationId: json_['operationId'] as core.String?,
-          quotaMetrics: (json_['quotaMetrics'] as core.List?)
-              ?.map((value) => MetricValueSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          serviceConfigId: json_['serviceConfigId'] as core.String?,
-        );
+    : this(
+        allocateErrors:
+            (json_['allocateErrors'] as core.List?)
+                ?.map(
+                  (value) => QuotaError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        allocateInfo:
+            json_.containsKey('allocateInfo')
+                ? AllocateInfo.fromJson(
+                  json_['allocateInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        operationId: json_['operationId'] as core.String?,
+        quotaMetrics:
+            (json_['quotaMetrics'] as core.List?)
+                ?.map(
+                  (value) => MetricValueSet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        serviceConfigId: json_['serviceConfigId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allocateErrors != null) 'allocateErrors': allocateErrors!,
-        if (allocateInfo != null) 'allocateInfo': allocateInfo!,
-        if (operationId != null) 'operationId': operationId!,
-        if (quotaMetrics != null) 'quotaMetrics': quotaMetrics!,
-        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
-      };
+    if (allocateErrors != null) 'allocateErrors': allocateErrors!,
+    if (allocateInfo != null) 'allocateInfo': allocateInfo!,
+    if (operationId != null) 'operationId': operationId!,
+    if (quotaMetrics != null) 'quotaMetrics': quotaMetrics!,
+    if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
+  };
 }
 
 /// The allowed types for \[VALUE\] in a `[KEY]:[VALUE]` attribute.
@@ -359,27 +377,25 @@ class AttributeValue {
   /// A string up to 256 bytes long.
   TruncatableString? stringValue;
 
-  AttributeValue({
-    this.boolValue,
-    this.intValue,
-    this.stringValue,
-  });
+  AttributeValue({this.boolValue, this.intValue, this.stringValue});
 
   AttributeValue.fromJson(core.Map json_)
-      : this(
-          boolValue: json_['boolValue'] as core.bool?,
-          intValue: json_['intValue'] as core.String?,
-          stringValue: json_.containsKey('stringValue')
-              ? TruncatableString.fromJson(
-                  json_['stringValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        intValue: json_['intValue'] as core.String?,
+        stringValue:
+            json_.containsKey('stringValue')
+                ? TruncatableString.fromJson(
+                  json_['stringValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue!,
-        if (intValue != null) 'intValue': intValue!,
-        if (stringValue != null) 'stringValue': stringValue!,
-      };
+    if (boolValue != null) 'boolValue': boolValue!,
+    if (intValue != null) 'intValue': intValue!,
+    if (stringValue != null) 'stringValue': stringValue!,
+  };
 }
 
 /// A set of attributes, each in the format `[KEY]:[VALUE]`.
@@ -400,30 +416,28 @@ class Attributes {
   /// valid.
   core.int? droppedAttributesCount;
 
-  Attributes({
-    this.attributeMap,
-    this.droppedAttributesCount,
-  });
+  Attributes({this.attributeMap, this.droppedAttributesCount});
 
   Attributes.fromJson(core.Map json_)
-      : this(
-          attributeMap:
-              (json_['attributeMap'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              AttributeValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        attributeMap: (json_['attributeMap']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                AttributeValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          droppedAttributesCount: json_['droppedAttributesCount'] as core.int?,
-        );
+        droppedAttributesCount: json_['droppedAttributesCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributeMap != null) 'attributeMap': attributeMap!,
-        if (droppedAttributesCount != null)
-          'droppedAttributesCount': droppedAttributesCount!,
-      };
+    if (attributeMap != null) 'attributeMap': attributeMap!,
+    if (droppedAttributesCount != null)
+      'droppedAttributesCount': droppedAttributesCount!,
+  };
 }
 
 /// Defines the errors to be returned in
@@ -522,30 +536,27 @@ class CheckError {
   /// "project:" - "folder:" - "organization:"
   core.String? subject;
 
-  CheckError({
-    this.code,
-    this.detail,
-    this.status,
-    this.subject,
-  });
+  CheckError({this.code, this.detail, this.status, this.subject});
 
   CheckError.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          detail: json_['detail'] as core.String?,
-          status: json_.containsKey('status')
-              ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
-              : null,
-          subject: json_['subject'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        detail: json_['detail'] as core.String?,
+        status:
+            json_.containsKey('status')
+                ? Status.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        subject: json_['subject'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (detail != null) 'detail': detail!,
-        if (status != null) 'status': status!,
-        if (subject != null) 'subject': subject!,
-      };
+    if (code != null) 'code': code!,
+    if (detail != null) 'detail': detail!,
+    if (status != null) 'status': status!,
+    if (subject != null) 'subject': subject!,
+  };
 }
 
 /// Contains additional information about the check operation.
@@ -565,29 +576,28 @@ class CheckInfo {
   /// performance and allow better aggregation.
   core.List<core.String>? unusedArguments;
 
-  CheckInfo({
-    this.apiKeyUid,
-    this.consumerInfo,
-    this.unusedArguments,
-  });
+  CheckInfo({this.apiKeyUid, this.consumerInfo, this.unusedArguments});
 
   CheckInfo.fromJson(core.Map json_)
-      : this(
-          apiKeyUid: json_['apiKeyUid'] as core.String?,
-          consumerInfo: json_.containsKey('consumerInfo')
-              ? ConsumerInfo.fromJson(
-                  json_['consumerInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          unusedArguments: (json_['unusedArguments'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        apiKeyUid: json_['apiKeyUid'] as core.String?,
+        consumerInfo:
+            json_.containsKey('consumerInfo')
+                ? ConsumerInfo.fromJson(
+                  json_['consumerInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        unusedArguments:
+            (json_['unusedArguments'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (apiKeyUid != null) 'apiKeyUid': apiKeyUid!,
-        if (consumerInfo != null) 'consumerInfo': consumerInfo!,
-        if (unusedArguments != null) 'unusedArguments': unusedArguments!,
-      };
+    if (apiKeyUid != null) 'apiKeyUid': apiKeyUid!,
+    if (consumerInfo != null) 'consumerInfo': consumerInfo!,
+    if (unusedArguments != null) 'unusedArguments': unusedArguments!,
+  };
 }
 
 /// Request message for the Check method.
@@ -620,24 +630,26 @@ class CheckRequest {
   });
 
   CheckRequest.fromJson(core.Map json_)
-      : this(
-          operation: json_.containsKey('operation')
-              ? Operation.fromJson(
-                  json_['operation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          requestProjectSettings: json_['requestProjectSettings'] as core.bool?,
-          serviceConfigId: json_['serviceConfigId'] as core.String?,
-          skipActivationCheck: json_['skipActivationCheck'] as core.bool?,
-        );
+    : this(
+        operation:
+            json_.containsKey('operation')
+                ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requestProjectSettings: json_['requestProjectSettings'] as core.bool?,
+        serviceConfigId: json_['serviceConfigId'] as core.String?,
+        skipActivationCheck: json_['skipActivationCheck'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operation != null) 'operation': operation!,
-        if (requestProjectSettings != null)
-          'requestProjectSettings': requestProjectSettings!,
-        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
-        if (skipActivationCheck != null)
-          'skipActivationCheck': skipActivationCheck!,
-      };
+    if (operation != null) 'operation': operation!,
+    if (requestProjectSettings != null)
+      'requestProjectSettings': requestProjectSettings!,
+    if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
+    if (skipActivationCheck != null)
+      'skipActivationCheck': skipActivationCheck!,
+  };
 }
 
 /// Response message for the Check method.
@@ -676,32 +688,40 @@ class CheckResponse {
   });
 
   CheckResponse.fromJson(core.Map json_)
-      : this(
-          checkErrors: (json_['checkErrors'] as core.List?)
-              ?.map((value) => CheckError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          checkInfo: json_.containsKey('checkInfo')
-              ? CheckInfo.fromJson(
-                  json_['checkInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          operationId: json_['operationId'] as core.String?,
-          quotaInfo: json_.containsKey('quotaInfo')
-              ? QuotaInfo.fromJson(
-                  json_['quotaInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          serviceConfigId: json_['serviceConfigId'] as core.String?,
-          serviceRolloutId: json_['serviceRolloutId'] as core.String?,
-        );
+    : this(
+        checkErrors:
+            (json_['checkErrors'] as core.List?)
+                ?.map(
+                  (value) => CheckError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        checkInfo:
+            json_.containsKey('checkInfo')
+                ? CheckInfo.fromJson(
+                  json_['checkInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        operationId: json_['operationId'] as core.String?,
+        quotaInfo:
+            json_.containsKey('quotaInfo')
+                ? QuotaInfo.fromJson(
+                  json_['quotaInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serviceConfigId: json_['serviceConfigId'] as core.String?,
+        serviceRolloutId: json_['serviceRolloutId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (checkErrors != null) 'checkErrors': checkErrors!,
-        if (checkInfo != null) 'checkInfo': checkInfo!,
-        if (operationId != null) 'operationId': operationId!,
-        if (quotaInfo != null) 'quotaInfo': quotaInfo!,
-        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
-        if (serviceRolloutId != null) 'serviceRolloutId': serviceRolloutId!,
-      };
+    if (checkErrors != null) 'checkErrors': checkErrors!,
+    if (checkInfo != null) 'checkInfo': checkInfo!,
+    if (operationId != null) 'operationId': operationId!,
+    if (quotaInfo != null) 'quotaInfo': quotaInfo!,
+    if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
+    if (serviceRolloutId != null) 'serviceRolloutId': serviceRolloutId!,
+  };
 }
 
 /// `ConsumerInfo` provides information about the consumer.
@@ -732,24 +752,20 @@ class ConsumerInfo {
   /// PROJECT.
   core.String? type;
 
-  ConsumerInfo({
-    this.consumerNumber,
-    this.projectNumber,
-    this.type,
-  });
+  ConsumerInfo({this.consumerNumber, this.projectNumber, this.type});
 
   ConsumerInfo.fromJson(core.Map json_)
-      : this(
-          consumerNumber: json_['consumerNumber'] as core.String?,
-          projectNumber: json_['projectNumber'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        consumerNumber: json_['consumerNumber'] as core.String?,
+        projectNumber: json_['projectNumber'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consumerNumber != null) 'consumerNumber': consumerNumber!,
-        if (projectNumber != null) 'projectNumber': projectNumber!,
-        if (type != null) 'type': type!,
-      };
+    if (consumerNumber != null) 'consumerNumber': consumerNumber!,
+    if (projectNumber != null) 'projectNumber': projectNumber!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Distribution represents a frequency distribution of double-valued sample
@@ -827,48 +843,60 @@ class Distribution {
   });
 
   Distribution.fromJson(core.Map json_)
-      : this(
-          bucketCounts: (json_['bucketCounts'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          count: json_['count'] as core.String?,
-          exemplars: (json_['exemplars'] as core.List?)
-              ?.map((value) => Exemplar.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          explicitBuckets: json_.containsKey('explicitBuckets')
-              ? ExplicitBuckets.fromJson(json_['explicitBuckets']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          exponentialBuckets: json_.containsKey('exponentialBuckets')
-              ? ExponentialBuckets.fromJson(json_['exponentialBuckets']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          linearBuckets: json_.containsKey('linearBuckets')
-              ? LinearBuckets.fromJson(
-                  json_['linearBuckets'] as core.Map<core.String, core.dynamic>)
-              : null,
-          maximum: (json_['maximum'] as core.num?)?.toDouble(),
-          mean: (json_['mean'] as core.num?)?.toDouble(),
-          minimum: (json_['minimum'] as core.num?)?.toDouble(),
-          sumOfSquaredDeviation:
-              (json_['sumOfSquaredDeviation'] as core.num?)?.toDouble(),
-        );
+    : this(
+        bucketCounts:
+            (json_['bucketCounts'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        count: json_['count'] as core.String?,
+        exemplars:
+            (json_['exemplars'] as core.List?)
+                ?.map(
+                  (value) => Exemplar.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        explicitBuckets:
+            json_.containsKey('explicitBuckets')
+                ? ExplicitBuckets.fromJson(
+                  json_['explicitBuckets']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        exponentialBuckets:
+            json_.containsKey('exponentialBuckets')
+                ? ExponentialBuckets.fromJson(
+                  json_['exponentialBuckets']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        linearBuckets:
+            json_.containsKey('linearBuckets')
+                ? LinearBuckets.fromJson(
+                  json_['linearBuckets'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maximum: (json_['maximum'] as core.num?)?.toDouble(),
+        mean: (json_['mean'] as core.num?)?.toDouble(),
+        minimum: (json_['minimum'] as core.num?)?.toDouble(),
+        sumOfSquaredDeviation:
+            (json_['sumOfSquaredDeviation'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucketCounts != null) 'bucketCounts': bucketCounts!,
-        if (count != null) 'count': count!,
-        if (exemplars != null) 'exemplars': exemplars!,
-        if (explicitBuckets != null) 'explicitBuckets': explicitBuckets!,
-        if (exponentialBuckets != null)
-          'exponentialBuckets': exponentialBuckets!,
-        if (linearBuckets != null) 'linearBuckets': linearBuckets!,
-        if (maximum != null) 'maximum': maximum!,
-        if (mean != null) 'mean': mean!,
-        if (minimum != null) 'minimum': minimum!,
-        if (sumOfSquaredDeviation != null)
-          'sumOfSquaredDeviation': sumOfSquaredDeviation!,
-      };
+    if (bucketCounts != null) 'bucketCounts': bucketCounts!,
+    if (count != null) 'count': count!,
+    if (exemplars != null) 'exemplars': exemplars!,
+    if (explicitBuckets != null) 'explicitBuckets': explicitBuckets!,
+    if (exponentialBuckets != null) 'exponentialBuckets': exponentialBuckets!,
+    if (linearBuckets != null) 'linearBuckets': linearBuckets!,
+    if (maximum != null) 'maximum': maximum!,
+    if (mean != null) 'mean': mean!,
+    if (minimum != null) 'minimum': minimum!,
+    if (sumOfSquaredDeviation != null)
+      'sumOfSquaredDeviation': sumOfSquaredDeviation!,
+  };
 }
 
 /// Exemplars are example points that may be used to annotate aggregated
@@ -900,26 +928,23 @@ class Exemplar {
   /// This value determines to which bucket the exemplar belongs.
   core.double? value;
 
-  Exemplar({
-    this.attachments,
-    this.timestamp,
-    this.value,
-  });
+  Exemplar({this.attachments, this.timestamp, this.value});
 
   Exemplar.fromJson(core.Map json_)
-      : this(
-          attachments: (json_['attachments'] as core.List?)
-              ?.map((value) => value as core.Map<core.String, core.dynamic>)
-              .toList(),
-          timestamp: json_['timestamp'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
-        );
+    : this(
+        attachments:
+            (json_['attachments'] as core.List?)
+                ?.map((value) => value as core.Map<core.String, core.dynamic>)
+                .toList(),
+        timestamp: json_['timestamp'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachments != null) 'attachments': attachments!,
-        if (timestamp != null) 'timestamp': timestamp!,
-        if (value != null) 'value': value!,
-      };
+    if (attachments != null) 'attachments': attachments!,
+    if (timestamp != null) 'timestamp': timestamp!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Describing buckets with arbitrary user-provided width.
@@ -937,20 +962,19 @@ class ExplicitBuckets {
   /// bound\[i-1\] +inf
   core.List<core.double>? bounds;
 
-  ExplicitBuckets({
-    this.bounds,
-  });
+  ExplicitBuckets({this.bounds});
 
   ExplicitBuckets.fromJson(core.Map json_)
-      : this(
-          bounds: (json_['bounds'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-        );
+    : this(
+        bounds:
+            (json_['bounds'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bounds != null) 'bounds': bounds!,
-      };
+    if (bounds != null) 'bounds': bounds!,
+  };
 }
 
 /// Describing buckets with exponentially growing width.
@@ -975,24 +999,20 @@ class ExponentialBuckets {
   /// Must be \> 0.
   core.double? scale;
 
-  ExponentialBuckets({
-    this.growthFactor,
-    this.numFiniteBuckets,
-    this.scale,
-  });
+  ExponentialBuckets({this.growthFactor, this.numFiniteBuckets, this.scale});
 
   ExponentialBuckets.fromJson(core.Map json_)
-      : this(
-          growthFactor: (json_['growthFactor'] as core.num?)?.toDouble(),
-          numFiniteBuckets: json_['numFiniteBuckets'] as core.int?,
-          scale: (json_['scale'] as core.num?)?.toDouble(),
-        );
+    : this(
+        growthFactor: (json_['growthFactor'] as core.num?)?.toDouble(),
+        numFiniteBuckets: json_['numFiniteBuckets'] as core.int?,
+        scale: (json_['scale'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (growthFactor != null) 'growthFactor': growthFactor!,
-        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
-        if (scale != null) 'scale': scale!,
-      };
+    if (growthFactor != null) 'growthFactor': growthFactor!,
+    if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
+    if (scale != null) 'scale': scale!,
+  };
 }
 
 /// A common proto for logging HTTP requests.
@@ -1089,43 +1109,43 @@ class HttpRequest {
   });
 
   HttpRequest.fromJson(core.Map json_)
-      : this(
-          cacheFillBytes: json_['cacheFillBytes'] as core.String?,
-          cacheHit: json_['cacheHit'] as core.bool?,
-          cacheLookup: json_['cacheLookup'] as core.bool?,
-          cacheValidatedWithOriginServer:
-              json_['cacheValidatedWithOriginServer'] as core.bool?,
-          latency: json_['latency'] as core.String?,
-          protocol: json_['protocol'] as core.String?,
-          referer: json_['referer'] as core.String?,
-          remoteIp: json_['remoteIp'] as core.String?,
-          requestMethod: json_['requestMethod'] as core.String?,
-          requestSize: json_['requestSize'] as core.String?,
-          requestUrl: json_['requestUrl'] as core.String?,
-          responseSize: json_['responseSize'] as core.String?,
-          serverIp: json_['serverIp'] as core.String?,
-          status: json_['status'] as core.int?,
-          userAgent: json_['userAgent'] as core.String?,
-        );
+    : this(
+        cacheFillBytes: json_['cacheFillBytes'] as core.String?,
+        cacheHit: json_['cacheHit'] as core.bool?,
+        cacheLookup: json_['cacheLookup'] as core.bool?,
+        cacheValidatedWithOriginServer:
+            json_['cacheValidatedWithOriginServer'] as core.bool?,
+        latency: json_['latency'] as core.String?,
+        protocol: json_['protocol'] as core.String?,
+        referer: json_['referer'] as core.String?,
+        remoteIp: json_['remoteIp'] as core.String?,
+        requestMethod: json_['requestMethod'] as core.String?,
+        requestSize: json_['requestSize'] as core.String?,
+        requestUrl: json_['requestUrl'] as core.String?,
+        responseSize: json_['responseSize'] as core.String?,
+        serverIp: json_['serverIp'] as core.String?,
+        status: json_['status'] as core.int?,
+        userAgent: json_['userAgent'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cacheFillBytes != null) 'cacheFillBytes': cacheFillBytes!,
-        if (cacheHit != null) 'cacheHit': cacheHit!,
-        if (cacheLookup != null) 'cacheLookup': cacheLookup!,
-        if (cacheValidatedWithOriginServer != null)
-          'cacheValidatedWithOriginServer': cacheValidatedWithOriginServer!,
-        if (latency != null) 'latency': latency!,
-        if (protocol != null) 'protocol': protocol!,
-        if (referer != null) 'referer': referer!,
-        if (remoteIp != null) 'remoteIp': remoteIp!,
-        if (requestMethod != null) 'requestMethod': requestMethod!,
-        if (requestSize != null) 'requestSize': requestSize!,
-        if (requestUrl != null) 'requestUrl': requestUrl!,
-        if (responseSize != null) 'responseSize': responseSize!,
-        if (serverIp != null) 'serverIp': serverIp!,
-        if (status != null) 'status': status!,
-        if (userAgent != null) 'userAgent': userAgent!,
-      };
+    if (cacheFillBytes != null) 'cacheFillBytes': cacheFillBytes!,
+    if (cacheHit != null) 'cacheHit': cacheHit!,
+    if (cacheLookup != null) 'cacheLookup': cacheLookup!,
+    if (cacheValidatedWithOriginServer != null)
+      'cacheValidatedWithOriginServer': cacheValidatedWithOriginServer!,
+    if (latency != null) 'latency': latency!,
+    if (protocol != null) 'protocol': protocol!,
+    if (referer != null) 'referer': referer!,
+    if (remoteIp != null) 'remoteIp': remoteIp!,
+    if (requestMethod != null) 'requestMethod': requestMethod!,
+    if (requestSize != null) 'requestSize': requestSize!,
+    if (requestUrl != null) 'requestUrl': requestUrl!,
+    if (responseSize != null) 'responseSize': responseSize!,
+    if (serverIp != null) 'serverIp': serverIp!,
+    if (status != null) 'status': status!,
+    if (userAgent != null) 'userAgent': userAgent!,
+  };
 }
 
 /// Describing buckets with constant width.
@@ -1148,24 +1168,20 @@ class LinearBuckets {
   /// Must be strictly positive.
   core.double? width;
 
-  LinearBuckets({
-    this.numFiniteBuckets,
-    this.offset,
-    this.width,
-  });
+  LinearBuckets({this.numFiniteBuckets, this.offset, this.width});
 
   LinearBuckets.fromJson(core.Map json_)
-      : this(
-          numFiniteBuckets: json_['numFiniteBuckets'] as core.int?,
-          offset: (json_['offset'] as core.num?)?.toDouble(),
-          width: (json_['width'] as core.num?)?.toDouble(),
-        );
+    : this(
+        numFiniteBuckets: json_['numFiniteBuckets'] as core.int?,
+        offset: (json_['offset'] as core.num?)?.toDouble(),
+        width: (json_['width'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
-        if (offset != null) 'offset': offset!,
-        if (width != null) 'width': width!,
-      };
+    if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
+    if (offset != null) 'offset': offset!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// An individual log entry.
@@ -1270,54 +1286,59 @@ class LogEntry {
   });
 
   LogEntry.fromJson(core.Map json_)
-      : this(
-          httpRequest: json_.containsKey('httpRequest')
-              ? HttpRequest.fromJson(
-                  json_['httpRequest'] as core.Map<core.String, core.dynamic>)
-              : null,
-          insertId: json_['insertId'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          operation: json_.containsKey('operation')
-              ? LogEntryOperation.fromJson(
-                  json_['operation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          protoPayload: json_.containsKey('protoPayload')
-              ? json_['protoPayload'] as core.Map<core.String, core.dynamic>
-              : null,
-          severity: json_['severity'] as core.String?,
-          sourceLocation: json_.containsKey('sourceLocation')
-              ? LogEntrySourceLocation.fromJson(json_['sourceLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          structPayload: json_.containsKey('structPayload')
-              ? json_['structPayload'] as core.Map<core.String, core.dynamic>
-              : null,
-          textPayload: json_['textPayload'] as core.String?,
-          timestamp: json_['timestamp'] as core.String?,
-          trace: json_['trace'] as core.String?,
-        );
+    : this(
+        httpRequest:
+            json_.containsKey('httpRequest')
+                ? HttpRequest.fromJson(
+                  json_['httpRequest'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insertId: json_['insertId'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        operation:
+            json_.containsKey('operation')
+                ? LogEntryOperation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        protoPayload:
+            json_.containsKey('protoPayload')
+                ? json_['protoPayload'] as core.Map<core.String, core.dynamic>
+                : null,
+        severity: json_['severity'] as core.String?,
+        sourceLocation:
+            json_.containsKey('sourceLocation')
+                ? LogEntrySourceLocation.fromJson(
+                  json_['sourceLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        structPayload:
+            json_.containsKey('structPayload')
+                ? json_['structPayload'] as core.Map<core.String, core.dynamic>
+                : null,
+        textPayload: json_['textPayload'] as core.String?,
+        timestamp: json_['timestamp'] as core.String?,
+        trace: json_['trace'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (httpRequest != null) 'httpRequest': httpRequest!,
-        if (insertId != null) 'insertId': insertId!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (operation != null) 'operation': operation!,
-        if (protoPayload != null) 'protoPayload': protoPayload!,
-        if (severity != null) 'severity': severity!,
-        if (sourceLocation != null) 'sourceLocation': sourceLocation!,
-        if (structPayload != null) 'structPayload': structPayload!,
-        if (textPayload != null) 'textPayload': textPayload!,
-        if (timestamp != null) 'timestamp': timestamp!,
-        if (trace != null) 'trace': trace!,
-      };
+    if (httpRequest != null) 'httpRequest': httpRequest!,
+    if (insertId != null) 'insertId': insertId!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (operation != null) 'operation': operation!,
+    if (protoPayload != null) 'protoPayload': protoPayload!,
+    if (severity != null) 'severity': severity!,
+    if (sourceLocation != null) 'sourceLocation': sourceLocation!,
+    if (structPayload != null) 'structPayload': structPayload!,
+    if (textPayload != null) 'textPayload': textPayload!,
+    if (timestamp != null) 'timestamp': timestamp!,
+    if (trace != null) 'trace': trace!,
+  };
 }
 
 /// Additional information about a potentially long-running operation with which
@@ -1350,27 +1371,22 @@ class LogEntryOperation {
   /// Optional.
   core.String? producer;
 
-  LogEntryOperation({
-    this.first,
-    this.id,
-    this.last,
-    this.producer,
-  });
+  LogEntryOperation({this.first, this.id, this.last, this.producer});
 
   LogEntryOperation.fromJson(core.Map json_)
-      : this(
-          first: json_['first'] as core.bool?,
-          id: json_['id'] as core.String?,
-          last: json_['last'] as core.bool?,
-          producer: json_['producer'] as core.String?,
-        );
+    : this(
+        first: json_['first'] as core.bool?,
+        id: json_['id'] as core.String?,
+        last: json_['last'] as core.bool?,
+        producer: json_['producer'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (first != null) 'first': first!,
-        if (id != null) 'id': id!,
-        if (last != null) 'last': last!,
-        if (producer != null) 'producer': producer!,
-      };
+    if (first != null) 'first': first!,
+    if (id != null) 'id': id!,
+    if (last != null) 'last': last!,
+    if (producer != null) 'producer': producer!,
+  };
 }
 
 /// Additional information about the source code location that produced the log
@@ -1402,24 +1418,20 @@ class LogEntrySourceLocation {
   /// Optional.
   core.String? line;
 
-  LogEntrySourceLocation({
-    this.file,
-    this.function,
-    this.line,
-  });
+  LogEntrySourceLocation({this.file, this.function, this.line});
 
   LogEntrySourceLocation.fromJson(core.Map json_)
-      : this(
-          file: json_['file'] as core.String?,
-          function: json_['function'] as core.String?,
-          line: json_['line'] as core.String?,
-        );
+    : this(
+        file: json_['file'] as core.String?,
+        function: json_['function'] as core.String?,
+        line: json_['line'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (file != null) 'file': file!,
-        if (function != null) 'function': function!,
-        if (line != null) 'line': line!,
-      };
+    if (file != null) 'file': file!,
+    if (function != null) 'function': function!,
+    if (line != null) 'line': line!,
+  };
 }
 
 /// Represents a single metric value.
@@ -1478,41 +1490,42 @@ class MetricValue {
   });
 
   MetricValue.fromJson(core.Map json_)
-      : this(
-          boolValue: json_['boolValue'] as core.bool?,
-          distributionValue: json_.containsKey('distributionValue')
-              ? Distribution.fromJson(json_['distributionValue']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
-          endTime: json_['endTime'] as core.String?,
-          int64Value: json_['int64Value'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          moneyValue: json_.containsKey('moneyValue')
-              ? Money.fromJson(
-                  json_['moneyValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startTime: json_['startTime'] as core.String?,
-          stringValue: json_['stringValue'] as core.String?,
-        );
+    : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        distributionValue:
+            json_.containsKey('distributionValue')
+                ? Distribution.fromJson(
+                  json_['distributionValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+        endTime: json_['endTime'] as core.String?,
+        int64Value: json_['int64Value'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        moneyValue:
+            json_.containsKey('moneyValue')
+                ? Money.fromJson(
+                  json_['moneyValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startTime: json_['startTime'] as core.String?,
+        stringValue: json_['stringValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue!,
-        if (distributionValue != null) 'distributionValue': distributionValue!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
-        if (endTime != null) 'endTime': endTime!,
-        if (int64Value != null) 'int64Value': int64Value!,
-        if (labels != null) 'labels': labels!,
-        if (moneyValue != null) 'moneyValue': moneyValue!,
-        if (startTime != null) 'startTime': startTime!,
-        if (stringValue != null) 'stringValue': stringValue!,
-      };
+    if (boolValue != null) 'boolValue': boolValue!,
+    if (distributionValue != null) 'distributionValue': distributionValue!,
+    if (doubleValue != null) 'doubleValue': doubleValue!,
+    if (endTime != null) 'endTime': endTime!,
+    if (int64Value != null) 'int64Value': int64Value!,
+    if (labels != null) 'labels': labels!,
+    if (moneyValue != null) 'moneyValue': moneyValue!,
+    if (startTime != null) 'startTime': startTime!,
+    if (stringValue != null) 'stringValue': stringValue!,
+  };
 }
 
 /// Represents a set of metric values in the same metric.
@@ -1526,24 +1539,25 @@ class MetricValueSet {
   /// The values in this metric.
   core.List<MetricValue>? metricValues;
 
-  MetricValueSet({
-    this.metricName,
-    this.metricValues,
-  });
+  MetricValueSet({this.metricName, this.metricValues});
 
   MetricValueSet.fromJson(core.Map json_)
-      : this(
-          metricName: json_['metricName'] as core.String?,
-          metricValues: (json_['metricValues'] as core.List?)
-              ?.map((value) => MetricValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        metricName: json_['metricName'] as core.String?,
+        metricValues:
+            (json_['metricValues'] as core.List?)
+                ?.map(
+                  (value) => MetricValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metricName != null) 'metricName': metricName!,
-        if (metricValues != null) 'metricValues': metricValues!,
-      };
+    if (metricName != null) 'metricName': metricName!,
+    if (metricValues != null) 'metricValues': metricValues!,
+  };
 }
 
 /// Represents an amount of money with its currency type.
@@ -1675,65 +1689,75 @@ class Operation {
   });
 
   Operation.fromJson(core.Map json_)
-      : this(
-          consumerId: json_['consumerId'] as core.String?,
-          endTime: json_['endTime'] as core.String?,
-          importance: json_['importance'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          logEntries: (json_['logEntries'] as core.List?)
-              ?.map((value) => LogEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          metricValueSets: (json_['metricValueSets'] as core.List?)
-              ?.map((value) => MetricValueSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          operationId: json_['operationId'] as core.String?,
-          operationName: json_['operationName'] as core.String?,
-          quotaProperties: json_.containsKey('quotaProperties')
-              ? QuotaProperties.fromJson(json_['quotaProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          resources: (json_['resources'] as core.List?)
-              ?.map((value) => ResourceInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          startTime: json_['startTime'] as core.String?,
-          traceSpans: (json_['traceSpans'] as core.List?)
-              ?.map((value) => TraceSpan.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          userLabels:
-              (json_['userLabels'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        consumerId: json_['consumerId'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        importance: json_['importance'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        logEntries:
+            (json_['logEntries'] as core.List?)
+                ?.map(
+                  (value) => LogEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        metricValueSets:
+            (json_['metricValueSets'] as core.List?)
+                ?.map(
+                  (value) => MetricValueSet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        operationId: json_['operationId'] as core.String?,
+        operationName: json_['operationName'] as core.String?,
+        quotaProperties:
+            json_.containsKey('quotaProperties')
+                ? QuotaProperties.fromJson(
+                  json_['quotaProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resources:
+            (json_['resources'] as core.List?)
+                ?.map(
+                  (value) => ResourceInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        startTime: json_['startTime'] as core.String?,
+        traceSpans:
+            (json_['traceSpans'] as core.List?)
+                ?.map(
+                  (value) => TraceSpan.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        userLabels: (json_['userLabels']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consumerId != null) 'consumerId': consumerId!,
-        if (endTime != null) 'endTime': endTime!,
-        if (importance != null) 'importance': importance!,
-        if (labels != null) 'labels': labels!,
-        if (logEntries != null) 'logEntries': logEntries!,
-        if (metricValueSets != null) 'metricValueSets': metricValueSets!,
-        if (operationId != null) 'operationId': operationId!,
-        if (operationName != null) 'operationName': operationName!,
-        if (quotaProperties != null) 'quotaProperties': quotaProperties!,
-        if (resources != null) 'resources': resources!,
-        if (startTime != null) 'startTime': startTime!,
-        if (traceSpans != null) 'traceSpans': traceSpans!,
-        if (userLabels != null) 'userLabels': userLabels!,
-      };
+    if (consumerId != null) 'consumerId': consumerId!,
+    if (endTime != null) 'endTime': endTime!,
+    if (importance != null) 'importance': importance!,
+    if (labels != null) 'labels': labels!,
+    if (logEntries != null) 'logEntries': logEntries!,
+    if (metricValueSets != null) 'metricValueSets': metricValueSets!,
+    if (operationId != null) 'operationId': operationId!,
+    if (operationName != null) 'operationName': operationName!,
+    if (quotaProperties != null) 'quotaProperties': quotaProperties!,
+    if (resources != null) 'resources': resources!,
+    if (startTime != null) 'startTime': startTime!,
+    if (traceSpans != null) 'traceSpans': traceSpans!,
+    if (userLabels != null) 'userLabels': userLabels!,
+  };
 }
 
 /// Represents error information for QuotaOperation.
@@ -1783,30 +1807,27 @@ class QuotaError {
   /// "clientip:" or "project:".
   core.String? subject;
 
-  QuotaError({
-    this.code,
-    this.description,
-    this.status,
-    this.subject,
-  });
+  QuotaError({this.code, this.description, this.status, this.subject});
 
   QuotaError.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          description: json_['description'] as core.String?,
-          status: json_.containsKey('status')
-              ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
-              : null,
-          subject: json_['subject'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        description: json_['description'] as core.String?,
+        status:
+            json_.containsKey('status')
+                ? Status.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        subject: json_['subject'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (description != null) 'description': description!,
-        if (status != null) 'status': status!,
-        if (subject != null) 'subject': subject!,
-      };
+    if (code != null) 'code': code!,
+    if (description != null) 'description': description!,
+    if (status != null) 'status': status!,
+    if (subject != null) 'subject': subject!,
+  };
 }
 
 /// Contains the quota information for a quota check response.
@@ -1845,36 +1866,32 @@ class QuotaInfo {
   /// "serviceruntime.googleapis.com/quota/exceeded"
   core.List<MetricValueSet>? quotaMetrics;
 
-  QuotaInfo({
-    this.limitExceeded,
-    this.quotaConsumed,
-    this.quotaMetrics,
-  });
+  QuotaInfo({this.limitExceeded, this.quotaConsumed, this.quotaMetrics});
 
   QuotaInfo.fromJson(core.Map json_)
-      : this(
-          limitExceeded: (json_['limitExceeded'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          quotaConsumed:
-              (json_['quotaConsumed'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.int,
-            ),
-          ),
-          quotaMetrics: (json_['quotaMetrics'] as core.List?)
-              ?.map((value) => MetricValueSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        limitExceeded:
+            (json_['limitExceeded'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        quotaConsumed: (json_['quotaConsumed']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.int)),
+        quotaMetrics:
+            (json_['quotaMetrics'] as core.List?)
+                ?.map(
+                  (value) => MetricValueSet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (limitExceeded != null) 'limitExceeded': limitExceeded!,
-        if (quotaConsumed != null) 'quotaConsumed': quotaConsumed!,
-        if (quotaMetrics != null) 'quotaMetrics': quotaMetrics!,
-      };
+    if (limitExceeded != null) 'limitExceeded': limitExceeded!,
+    if (quotaConsumed != null) 'quotaConsumed': quotaConsumed!,
+    if (quotaMetrics != null) 'quotaMetrics': quotaMetrics!,
+  };
 }
 
 /// Represents information regarding a quota operation.
@@ -1958,32 +1975,32 @@ class QuotaOperation {
   });
 
   QuotaOperation.fromJson(core.Map json_)
-      : this(
-          consumerId: json_['consumerId'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          methodName: json_['methodName'] as core.String?,
-          operationId: json_['operationId'] as core.String?,
-          quotaMetrics: (json_['quotaMetrics'] as core.List?)
-              ?.map((value) => MetricValueSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          quotaMode: json_['quotaMode'] as core.String?,
-        );
+    : this(
+        consumerId: json_['consumerId'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        methodName: json_['methodName'] as core.String?,
+        operationId: json_['operationId'] as core.String?,
+        quotaMetrics:
+            (json_['quotaMetrics'] as core.List?)
+                ?.map(
+                  (value) => MetricValueSet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        quotaMode: json_['quotaMode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consumerId != null) 'consumerId': consumerId!,
-        if (labels != null) 'labels': labels!,
-        if (methodName != null) 'methodName': methodName!,
-        if (operationId != null) 'operationId': operationId!,
-        if (quotaMetrics != null) 'quotaMetrics': quotaMetrics!,
-        if (quotaMode != null) 'quotaMode': quotaMode!,
-      };
+    if (consumerId != null) 'consumerId': consumerId!,
+    if (labels != null) 'labels': labels!,
+    if (methodName != null) 'methodName': methodName!,
+    if (operationId != null) 'operationId': operationId!,
+    if (quotaMetrics != null) 'quotaMetrics': quotaMetrics!,
+    if (quotaMode != null) 'quotaMode': quotaMode!,
+  };
 }
 
 /// Represents the properties needed for quota operations.
@@ -2000,18 +2017,14 @@ class QuotaProperties {
   /// enough quota. No lock is placed on the checked tokens neither.
   core.String? quotaMode;
 
-  QuotaProperties({
-    this.quotaMode,
-  });
+  QuotaProperties({this.quotaMode});
 
   QuotaProperties.fromJson(core.Map json_)
-      : this(
-          quotaMode: json_['quotaMode'] as core.String?,
-        );
+    : this(quotaMode: json_['quotaMode'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (quotaMode != null) 'quotaMode': quotaMode!,
-      };
+    if (quotaMode != null) 'quotaMode': quotaMode!,
+  };
 }
 
 /// Represents the processing error of one Operation in the request.
@@ -2022,24 +2035,23 @@ class ReportError {
   /// Details of the error when processing the Operation.
   Status? status;
 
-  ReportError({
-    this.operationId,
-    this.status,
-  });
+  ReportError({this.operationId, this.status});
 
   ReportError.fromJson(core.Map json_)
-      : this(
-          operationId: json_['operationId'] as core.String?,
-          status: json_.containsKey('status')
-              ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        operationId: json_['operationId'] as core.String?,
+        status:
+            json_.containsKey('status')
+                ? Status.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operationId != null) 'operationId': operationId!,
-        if (status != null) 'status': status!,
-      };
+    if (operationId != null) 'operationId': operationId!,
+    if (status != null) 'status': status!,
+  };
 }
 
 /// Request message for the Report method.
@@ -2061,24 +2073,25 @@ class ReportRequest {
   /// used.
   core.String? serviceConfigId;
 
-  ReportRequest({
-    this.operations,
-    this.serviceConfigId,
-  });
+  ReportRequest({this.operations, this.serviceConfigId});
 
   ReportRequest.fromJson(core.Map json_)
-      : this(
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          serviceConfigId: json_['serviceConfigId'] as core.String?,
-        );
+    : this(
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        serviceConfigId: json_['serviceConfigId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operations != null) 'operations': operations!,
-        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
-      };
+    if (operations != null) 'operations': operations!,
+    if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
+  };
 }
 
 /// Response message for the Report method.
@@ -2111,20 +2124,24 @@ class ReportResponse {
   });
 
   ReportResponse.fromJson(core.Map json_)
-      : this(
-          reportErrors: (json_['reportErrors'] as core.List?)
-              ?.map((value) => ReportError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          serviceConfigId: json_['serviceConfigId'] as core.String?,
-          serviceRolloutId: json_['serviceRolloutId'] as core.String?,
-        );
+    : this(
+        reportErrors:
+            (json_['reportErrors'] as core.List?)
+                ?.map(
+                  (value) => ReportError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        serviceConfigId: json_['serviceConfigId'] as core.String?,
+        serviceRolloutId: json_['serviceRolloutId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (reportErrors != null) 'reportErrors': reportErrors!,
-        if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
-        if (serviceRolloutId != null) 'serviceRolloutId': serviceRolloutId!,
-      };
+    if (reportErrors != null) 'reportErrors': reportErrors!,
+    if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
+    if (serviceRolloutId != null) 'serviceRolloutId': serviceRolloutId!,
+  };
 }
 
 /// Describes a resource associated with this operation.
@@ -2158,19 +2175,19 @@ class ResourceInfo {
   });
 
   ResourceInfo.fromJson(core.Map json_)
-      : this(
-          permission: json_['permission'] as core.String?,
-          resourceContainer: json_['resourceContainer'] as core.String?,
-          resourceLocation: json_['resourceLocation'] as core.String?,
-          resourceName: json_['resourceName'] as core.String?,
-        );
+    : this(
+        permission: json_['permission'] as core.String?,
+        resourceContainer: json_['resourceContainer'] as core.String?,
+        resourceLocation: json_['resourceLocation'] as core.String?,
+        resourceName: json_['resourceName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (permission != null) 'permission': permission!,
-        if (resourceContainer != null) 'resourceContainer': resourceContainer!,
-        if (resourceLocation != null) 'resourceLocation': resourceLocation!,
-        if (resourceName != null) 'resourceName': resourceName!,
-      };
+    if (permission != null) 'permission': permission!,
+    if (resourceContainer != null) 'resourceContainer': resourceContainer!,
+    if (resourceLocation != null) 'resourceLocation': resourceLocation!,
+    if (resourceName != null) 'resourceName': resourceName!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2288,44 +2305,49 @@ class TraceSpan {
   });
 
   TraceSpan.fromJson(core.Map json_)
-      : this(
-          attributes: json_.containsKey('attributes')
-              ? Attributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          childSpanCount: json_['childSpanCount'] as core.int?,
-          displayName: json_.containsKey('displayName')
-              ? TruncatableString.fromJson(
-                  json_['displayName'] as core.Map<core.String, core.dynamic>)
-              : null,
-          endTime: json_['endTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          parentSpanId: json_['parentSpanId'] as core.String?,
-          sameProcessAsParentSpan:
-              json_['sameProcessAsParentSpan'] as core.bool?,
-          spanId: json_['spanId'] as core.String?,
-          spanKind: json_['spanKind'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-          status: json_.containsKey('status')
-              ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        attributes:
+            json_.containsKey('attributes')
+                ? Attributes.fromJson(
+                  json_['attributes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        childSpanCount: json_['childSpanCount'] as core.int?,
+        displayName:
+            json_.containsKey('displayName')
+                ? TruncatableString.fromJson(
+                  json_['displayName'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endTime: json_['endTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        parentSpanId: json_['parentSpanId'] as core.String?,
+        sameProcessAsParentSpan: json_['sameProcessAsParentSpan'] as core.bool?,
+        spanId: json_['spanId'] as core.String?,
+        spanKind: json_['spanKind'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        status:
+            json_.containsKey('status')
+                ? Status.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (childSpanCount != null) 'childSpanCount': childSpanCount!,
-        if (displayName != null) 'displayName': displayName!,
-        if (endTime != null) 'endTime': endTime!,
-        if (name != null) 'name': name!,
-        if (parentSpanId != null) 'parentSpanId': parentSpanId!,
-        if (sameProcessAsParentSpan != null)
-          'sameProcessAsParentSpan': sameProcessAsParentSpan!,
-        if (spanId != null) 'spanId': spanId!,
-        if (spanKind != null) 'spanKind': spanKind!,
-        if (startTime != null) 'startTime': startTime!,
-        if (status != null) 'status': status!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (childSpanCount != null) 'childSpanCount': childSpanCount!,
+    if (displayName != null) 'displayName': displayName!,
+    if (endTime != null) 'endTime': endTime!,
+    if (name != null) 'name': name!,
+    if (parentSpanId != null) 'parentSpanId': parentSpanId!,
+    if (sameProcessAsParentSpan != null)
+      'sameProcessAsParentSpan': sameProcessAsParentSpan!,
+    if (spanId != null) 'spanId': spanId!,
+    if (spanKind != null) 'spanKind': spanKind!,
+    if (startTime != null) 'startTime': startTime!,
+    if (status != null) 'status': status!,
+  };
 }
 
 /// Represents a string that might be shortened to a specified length.

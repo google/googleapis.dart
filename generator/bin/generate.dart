@@ -8,26 +8,30 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:googleapis_generator_dependency/googleapis_generator.dart';
 
-ArgParser _downloadCommandArgParser() => ArgParser()
-  ..addOption('output-dir',
+ArgParser _downloadCommandArgParser() =>
+    ArgParser()..addOption(
+      'output-dir',
       abbr: 'o',
       help: 'Output directory of discovery documents.',
-      defaultsTo: 'googleapis-discovery-documents');
+      defaultsTo: 'googleapis-discovery-documents',
+    );
 
-ArgParser _runConfigCommandArgParser() => ArgParser()
-  ..addCommand('download')
-  ..addCommand('generate')
-  ..addOption(
-    'config-file',
-    help: 'Configuration file describing package generation.',
-    defaultsTo: 'config.yaml',
-  )
-  ..addFlag('delete-existing', defaultsTo: true);
+ArgParser _runConfigCommandArgParser() =>
+    ArgParser()
+      ..addCommand('download')
+      ..addCommand('generate')
+      ..addOption(
+        'config-file',
+        help: 'Configuration file describing package generation.',
+        defaultsTo: 'config.yaml',
+      )
+      ..addFlag('delete-existing', defaultsTo: true);
 
-ArgParser _globalArgParser() => ArgParser()
-  ..addCommand('download', _downloadCommandArgParser())
-  ..addCommand('run_config', _runConfigCommandArgParser())
-  ..addFlag('help', abbr: 'h', help: 'Displays usage information.');
+ArgParser _globalArgParser() =>
+    ArgParser()
+      ..addCommand('download', _downloadCommandArgParser())
+      ..addCommand('run_config', _runConfigCommandArgParser())
+      ..addFlag('help', abbr: 'h', help: 'Displays usage information.');
 
 ArgResults _parseArguments(ArgParser parser, List<String> arguments) {
   try {
@@ -47,14 +51,18 @@ Never _dieWithUsage([String? message]) {
   print('  download');
   print('  run_config');
   print('');
-  print("The 'download' subcommand downloads all discovery documents. "
-      'It takes the following options:');
+  print(
+    "The 'download' subcommand downloads all discovery documents. "
+    'It takes the following options:',
+  );
   print('');
   print(_downloadCommandArgParser().usage);
   print('');
-  print("The 'run_config' subcommand downloads discovery documents and "
-      'generates one or more API packages based on a configuration file. '
-      'It takes the following options:');
+  print(
+    "The 'run_config' subcommand downloads discovery documents and "
+    'generates one or more API packages based on a configuration file. '
+    'It takes the following options:',
+  );
   print('');
   print(_runConfigCommandArgParser().usage);
   exit(1);
@@ -78,8 +86,10 @@ Future<void> main(List<String> arguments) async {
     case 'run_config':
       if (commandOptions.command == null ||
           !['download', 'generate'].contains(commandOptions.command!.name)) {
-        _dieWithUsage('The `run_config` command has only the two subcommands: '
-            '`download` and `generate`.');
+        _dieWithUsage(
+          'The `run_config` command has only the two subcommands: '
+          '`download` and `generate`.',
+        );
       }
 
       final configFile = commandOptions['config-file'] as String;
@@ -90,10 +100,7 @@ Future<void> main(List<String> arguments) async {
           await _applyDiffs(configFile);
           print('Done!');
         case 'generate':
-          generateFromConfiguration(
-            configFile,
-            deleteExisting,
-          );
+          generateFromConfiguration(configFile, deleteExisting);
           print('Done');
       }
   }
@@ -124,20 +131,19 @@ Future<void> _applyDiffs(String configFile) async {
       continue;
     }
     print('  Running `git apply -v ${entry.path}`');
-    final result = await Process.start(
-      'git',
-      ['apply', '-v', entry.path],
-      mode: ProcessStartMode.inheritStdio,
-    );
+    final result = await Process.start('git', [
+      'apply',
+      '-v',
+      entry.path,
+    ], mode: ProcessStartMode.inheritStdio);
 
     final exitCode = await result.exitCode;
     if (exitCode == 0) {
       print('    Success!');
     } else {
-      print([
-        'Failed!',
-        'Exit code: $exitCode',
-      ].map((e) => '      $e').join('\n'));
+      print(
+        ['Failed!', 'Exit code: $exitCode'].map((e) => '      $e').join('\n'),
+      );
     }
     print('\n\n');
   }

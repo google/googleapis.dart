@@ -7,15 +7,12 @@ final _markdownToEscape =
 
 String markdownEscape(String input) {
   for (var pattern in _markdownToEscape) {
-    input = input.replaceAllMapped(
-      pattern,
-      (match) {
-        final slashes = match[1]!;
-        final char = match[2];
+    input = input.replaceAllMapped(pattern, (match) {
+      final slashes = match[1]!;
+      final char = match[2];
 
-        return '$slashes${slashes.length.isEven ? '\\' : ''}$char';
-      },
-    );
+      return '$slashes${slashes.length.isEven ? '\\' : ''}$char';
+    });
   }
   return input;
 }
@@ -33,9 +30,8 @@ final _notEndOfSentence = RegExp(r'\.[a-zA-Z]\. ');
 final _validLinkRegexp = RegExp(
   r"([^ )]*\[[\w ,'\.\/]+\])" // leading non-space, then the bit in brackets
   r'[ ]?' // optional one space between, because discovery docs can be weird
-  r'(\(http[s]?://[^\)\s]+\)[^ ]*)' // the bit in parens,
+  r'(\(http[s]?://[^\)\s]+\)[^ ]*)', // the bit in parens,
   // plus an optional trailing non-space
-  ,
 );
 
 String? bracketClean(String? input) {
@@ -64,10 +60,10 @@ String? bracketClean(String? input) {
 
 /// Returns [input] with likely invalid markdown `[links]` removed.
 String _bracketClean(String input) => input.splitMapJoin(
-      _validLinkRegexp,
-      onMatch: (match) => '${match[1]}${match[2]}',
-      onNonMatch: markdownEscape,
-    );
+  _validLinkRegexp,
+  onMatch: (match) => '${match[1]}${match[2]}',
+  onNonMatch: markdownEscape,
+);
 
 /// Represents a comment of a dart element (e.g. class, method, ...)
 class Comment {
@@ -75,7 +71,7 @@ class Comment {
   final String rawComment;
 
   Comment(String? raw)
-      : rawComment = (raw != null && raw.isNotEmpty) ? raw.trimRight() : '';
+    : rawComment = (raw != null && raw.isNotEmpty) ? raw.trimRight() : '';
 
   factory Comment.header(String? raw, bool clean) {
     if (raw == null) return Comment(raw);
@@ -87,7 +83,8 @@ class Comment {
         // prefixes usually show up as `Prefix. Rest of thing...`
         // but sometimes they show up as `[Prefix] Rest of thing...`
         // So we cover both cases, but normalize to the first.
-        match = '$prefix. '.toLowerCase().matchAsPrefix(raw!.toLowerCase()) ??
+        match =
+            '$prefix. '.toLowerCase().matchAsPrefix(raw!.toLowerCase()) ??
             '[$prefix] '.toLowerCase().matchAsPrefix(raw.toLowerCase());
         if (match != null) {
           prefixes.add('$prefix. ');
@@ -109,10 +106,7 @@ class Comment {
     var start = 0;
     int endOfFirstSentence;
     for (;;) {
-      endOfFirstSentence = raw!.indexOf(
-        '. ',
-        start,
-      );
+      endOfFirstSentence = raw!.indexOf('. ', start);
       if (endOfFirstSentence < 0) {
         // No sentence end!
         break;
@@ -206,15 +200,19 @@ class Comment {
 List<String> urlSplit(String input) {
   final result = <String>[];
 
-  input.splitMapJoin(_validLinkRegexp, onMatch: (match) {
-    result.add(match[0]!);
-    // no-op - not using the result
-    return '';
-  }, onNonMatch: (value) {
-    result.addAll(value.split(' ').where((element) => element.isNotEmpty));
-    // no-op - not using the result
-    return '';
-  });
+  input.splitMapJoin(
+    _validLinkRegexp,
+    onMatch: (match) {
+      result.add(match[0]!);
+      // no-op - not using the result
+      return '';
+    },
+    onNonMatch: (value) {
+      result.addAll(value.split(' ').where((element) => element.isNotEmpty));
+      // no-op - not using the result
+      return '';
+    },
+  );
 
   return result;
 }

@@ -64,11 +64,16 @@ class TranslateApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  TranslateApi(http.Client client,
-      {core.String rootUrl = 'https://translation.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  TranslateApi(
+    http.Client client, {
+    core.String rootUrl = 'https://translation.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -124,7 +129,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return DetectLanguageResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of supported languages for translation.
@@ -183,7 +189,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return SupportedLanguages.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Romanize input text written in non-Latin scripts to Latin text.
@@ -229,7 +236,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return RomanizeTextResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Translates input text and returns translated text.
@@ -277,7 +285,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return TranslateTextResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -337,7 +346,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return AdaptiveMtTranslateResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Translates a large volume of document in asynchronous batch mode.
@@ -487,7 +497,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return DetectLanguageResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets information about a location.
@@ -507,10 +518,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -581,7 +589,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return SupportedLanguages.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -639,7 +648,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Romanize input text written in non-Latin scripts to Latin text.
@@ -685,7 +695,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return RomanizeTextResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Translates documents in synchronous mode.
@@ -732,7 +743,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return TranslateDocumentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Translates input text and returns translated text.
@@ -780,7 +792,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return TranslateTextResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -788,16 +801,16 @@ class ProjectsLocationsAdaptiveMtDatasetsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource
-      get adaptiveMtFiles =>
-          ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource(
-              _requester);
+  get adaptiveMtFiles =>
+      ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource(_requester);
   ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResource
-      get adaptiveMtSentences =>
-          ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResource(
-              _requester);
+  get adaptiveMtSentences =>
+      ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResource(
+        _requester,
+      );
 
   ProjectsLocationsAdaptiveMtDatasetsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an Adaptive MT dataset.
   ///
@@ -838,7 +851,8 @@ class ProjectsLocationsAdaptiveMtDatasetsResource {
       queryParams: queryParams_,
     );
     return AdaptiveMtDataset.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an Adaptive MT dataset, including all its entries and associated
@@ -861,10 +875,7 @@ class ProjectsLocationsAdaptiveMtDatasetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -874,6 +885,7 @@ class ProjectsLocationsAdaptiveMtDatasetsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -914,7 +926,8 @@ class ProjectsLocationsAdaptiveMtDatasetsResource {
       queryParams: queryParams_,
     );
     return AdaptiveMtDataset.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Imports an AdaptiveMtFile and adds all of its sentences into the
@@ -959,7 +972,8 @@ class ProjectsLocationsAdaptiveMtDatasetsResource {
       queryParams: queryParams_,
     );
     return ImportAdaptiveMtFileResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all Adaptive MT datasets for which the caller has read permission.
@@ -1016,7 +1030,8 @@ class ProjectsLocationsAdaptiveMtDatasetsResource {
       queryParams: queryParams_,
     );
     return ListAdaptiveMtDatasetsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1024,13 +1039,14 @@ class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesResource
-      get adaptiveMtSentences =>
-          ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesResource(
-              _requester);
+  get adaptiveMtSentences =>
+      ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesResource(
+        _requester,
+      );
 
   ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Deletes an AdaptiveMtFile along with its sentences.
   ///
@@ -1051,10 +1067,7 @@ class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1064,6 +1077,7 @@ class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1104,7 +1118,8 @@ class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource {
       queryParams: queryParams_,
     );
     return AdaptiveMtFile.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all AdaptiveMtFiles associated to an AdaptiveMtDataset.
@@ -1155,7 +1170,8 @@ class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResource {
       queryParams: queryParams_,
     );
     return ListAdaptiveMtFilesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1163,8 +1179,8 @@ class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesResou
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Lists all AdaptiveMtSentences under a given file/dataset.
   ///
@@ -1218,7 +1234,8 @@ class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesResou
       queryParams: queryParams_,
     );
     return ListAdaptiveMtSentencesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1226,8 +1243,8 @@ class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Lists all AdaptiveMtSentences under a given file/dataset.
   ///
@@ -1281,7 +1298,8 @@ class ProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResource {
       queryParams: queryParams_,
     );
     return ListAdaptiveMtSentencesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1292,7 +1310,7 @@ class ProjectsLocationsDatasetsResource {
       ProjectsLocationsDatasetsExamplesResource(_requester);
 
   ProjectsLocationsDatasetsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a Dataset.
   ///
@@ -1365,6 +1383,7 @@ class ProjectsLocationsDatasetsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1430,10 +1449,7 @@ class ProjectsLocationsDatasetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Dataset> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Dataset> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1535,7 +1551,8 @@ class ProjectsLocationsDatasetsResource {
       queryParams: queryParams_,
     );
     return ListDatasetsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1543,7 +1560,7 @@ class ProjectsLocationsDatasetsExamplesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDatasetsExamplesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists sentence pairs in the dataset.
   ///
@@ -1596,7 +1613,8 @@ class ProjectsLocationsDatasetsExamplesResource {
       queryParams: queryParams_,
     );
     return ListExamplesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1607,7 +1625,7 @@ class ProjectsLocationsGlossariesResource {
       ProjectsLocationsGlossariesGlossaryEntriesResource(_requester);
 
   ProjectsLocationsGlossariesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a glossary and returns the long-running operation.
   ///
@@ -1685,6 +1703,7 @@ class ProjectsLocationsGlossariesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1710,10 +1729,7 @@ class ProjectsLocationsGlossariesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Glossary> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Glossary> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1796,7 +1812,8 @@ class ProjectsLocationsGlossariesResource {
       queryParams: queryParams_,
     );
     return ListGlossariesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a glossary.
@@ -1855,8 +1872,8 @@ class ProjectsLocationsGlossariesGlossaryEntriesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGlossariesGlossaryEntriesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a glossary entry.
   ///
@@ -1898,7 +1915,8 @@ class ProjectsLocationsGlossariesGlossaryEntriesResource {
       queryParams: queryParams_,
     );
     return GlossaryEntry.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a single entry from the glossary
@@ -1919,10 +1937,7 @@ class ProjectsLocationsGlossariesGlossaryEntriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1932,6 +1947,7 @@ class ProjectsLocationsGlossariesGlossaryEntriesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1971,7 +1987,8 @@ class ProjectsLocationsGlossariesGlossaryEntriesResource {
       queryParams: queryParams_,
     );
     return GlossaryEntry.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List the entries for the glossary.
@@ -2022,7 +2039,8 @@ class ProjectsLocationsGlossariesGlossaryEntriesResource {
       queryParams: queryParams_,
     );
     return ListGlossaryEntriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a glossary entry.
@@ -2065,7 +2083,8 @@ class ProjectsLocationsGlossariesGlossaryEntriesResource {
       queryParams: queryParams_,
     );
     return GlossaryEntry.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2073,7 +2092,7 @@ class ProjectsLocationsModelsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsModelsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a Model.
   ///
@@ -2147,6 +2166,7 @@ class ProjectsLocationsModelsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2170,10 +2190,7 @@ class ProjectsLocationsModelsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Model> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Model> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2238,7 +2255,8 @@ class ProjectsLocationsModelsResource {
       queryParams: queryParams_,
     );
     return ListModelsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2246,7 +2264,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -2320,10 +2338,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2333,6 +2348,7 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2359,10 +2375,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2424,7 +2437,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Waits until the specified long-running operation is done or reaches at
@@ -2522,27 +2536,25 @@ class AdaptiveMtDataset {
   });
 
   AdaptiveMtDataset.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          exampleCount: json_['exampleCount'] as core.int?,
-          name: json_['name'] as core.String?,
-          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
-          targetLanguageCode: json_['targetLanguageCode'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        exampleCount: json_['exampleCount'] as core.int?,
+        name: json_['name'] as core.String?,
+        sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+        targetLanguageCode: json_['targetLanguageCode'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (exampleCount != null) 'exampleCount': exampleCount!,
-        if (name != null) 'name': name!,
-        if (sourceLanguageCode != null)
-          'sourceLanguageCode': sourceLanguageCode!,
-        if (targetLanguageCode != null)
-          'targetLanguageCode': targetLanguageCode!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (exampleCount != null) 'exampleCount': exampleCount!,
+    if (name != null) 'name': name!,
+    if (sourceLanguageCode != null) 'sourceLanguageCode': sourceLanguageCode!,
+    if (targetLanguageCode != null) 'targetLanguageCode': targetLanguageCode!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// An AdaptiveMtFile.
@@ -2578,21 +2590,21 @@ class AdaptiveMtFile {
   });
 
   AdaptiveMtFile.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          entryCount: json_['entryCount'] as core.int?,
-          name: json_['name'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        entryCount: json_['entryCount'] as core.int?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (entryCount != null) 'entryCount': entryCount!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (entryCount != null) 'entryCount': entryCount!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// An AdaptiveMt sentence entry.
@@ -2632,21 +2644,21 @@ class AdaptiveMtSentence {
   });
 
   AdaptiveMtSentence.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          sourceSentence: json_['sourceSentence'] as core.String?,
-          targetSentence: json_['targetSentence'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        sourceSentence: json_['sourceSentence'] as core.String?,
+        targetSentence: json_['targetSentence'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (sourceSentence != null) 'sourceSentence': sourceSentence!,
-        if (targetSentence != null) 'targetSentence': targetSentence!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (sourceSentence != null) 'sourceSentence': sourceSentence!,
+    if (targetSentence != null) 'targetSentence': targetSentence!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The request for sending an AdaptiveMt translation query.
@@ -2682,29 +2694,35 @@ class AdaptiveMtTranslateRequest {
   });
 
   AdaptiveMtTranslateRequest.fromJson(core.Map json_)
-      : this(
-          content: (json_['content'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          dataset: json_['dataset'] as core.String?,
-          glossaryConfig: json_.containsKey('glossaryConfig')
-              ? GlossaryConfig.fromJson(json_['glossaryConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          referenceSentenceConfig: json_.containsKey('referenceSentenceConfig')
-              ? ReferenceSentenceConfig.fromJson(
+    : this(
+        content:
+            (json_['content'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        dataset: json_['dataset'] as core.String?,
+        glossaryConfig:
+            json_.containsKey('glossaryConfig')
+                ? GlossaryConfig.fromJson(
+                  json_['glossaryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        referenceSentenceConfig:
+            json_.containsKey('referenceSentenceConfig')
+                ? ReferenceSentenceConfig.fromJson(
                   json_['referenceSentenceConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (dataset != null) 'dataset': dataset!,
-        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
-        if (referenceSentenceConfig != null)
-          'referenceSentenceConfig': referenceSentenceConfig!,
-      };
+    if (content != null) 'content': content!,
+    if (dataset != null) 'dataset': dataset!,
+    if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
+    if (referenceSentenceConfig != null)
+      'referenceSentenceConfig': referenceSentenceConfig!,
+  };
 }
 
 /// An AdaptiveMtTranslate response.
@@ -2731,24 +2749,32 @@ class AdaptiveMtTranslateResponse {
   });
 
   AdaptiveMtTranslateResponse.fromJson(core.Map json_)
-      : this(
-          glossaryTranslations: (json_['glossaryTranslations'] as core.List?)
-              ?.map((value) => AdaptiveMtTranslation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          languageCode: json_['languageCode'] as core.String?,
-          translations: (json_['translations'] as core.List?)
-              ?.map((value) => AdaptiveMtTranslation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        glossaryTranslations:
+            (json_['glossaryTranslations'] as core.List?)
+                ?.map(
+                  (value) => AdaptiveMtTranslation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        languageCode: json_['languageCode'] as core.String?,
+        translations:
+            (json_['translations'] as core.List?)
+                ?.map(
+                  (value) => AdaptiveMtTranslation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (glossaryTranslations != null)
-          'glossaryTranslations': glossaryTranslations!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (translations != null) 'translations': translations!,
-      };
+    if (glossaryTranslations != null)
+      'glossaryTranslations': glossaryTranslations!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (translations != null) 'translations': translations!,
+  };
 }
 
 /// An AdaptiveMt translation.
@@ -2758,18 +2784,14 @@ class AdaptiveMtTranslation {
   /// Output only.
   core.String? translatedText;
 
-  AdaptiveMtTranslation({
-    this.translatedText,
-  });
+  AdaptiveMtTranslation({this.translatedText});
 
   AdaptiveMtTranslation.fromJson(core.Map json_)
-      : this(
-          translatedText: json_['translatedText'] as core.String?,
-        );
+    : this(translatedText: json_['translatedText'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (translatedText != null) 'translatedText': translatedText!,
-      };
+    if (translatedText != null) 'translatedText': translatedText!,
+  };
 }
 
 /// Input configuration for BatchTranslateDocument request.
@@ -2791,21 +2813,21 @@ class BatchDocumentInputConfig {
   /// pages. The max file size to support for all input documents is 1GB.
   GcsSource? gcsSource;
 
-  BatchDocumentInputConfig({
-    this.gcsSource,
-  });
+  BatchDocumentInputConfig({this.gcsSource});
 
   BatchDocumentInputConfig.fromJson(core.Map json_)
-      : this(
-          gcsSource: json_.containsKey('gcsSource')
-              ? GcsSource.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        gcsSource:
+            json_.containsKey('gcsSource')
+                ? GcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-      };
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+  };
 }
 
 /// Output configuration for BatchTranslateDocument request.
@@ -2848,21 +2870,22 @@ class BatchDocumentOutputConfig {
   /// output is a txt file containing error details.
   GcsDestination? gcsDestination;
 
-  BatchDocumentOutputConfig({
-    this.gcsDestination,
-  });
+  BatchDocumentOutputConfig({this.gcsDestination});
 
   BatchDocumentOutputConfig.fromJson(core.Map json_)
-      : this(
-          gcsDestination: json_.containsKey('gcsDestination')
-              ? GcsDestination.fromJson(json_['gcsDestination']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        gcsDestination:
+            json_.containsKey('gcsDestination')
+                ? GcsDestination.fromJson(
+                  json_['gcsDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
-      };
+    if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+  };
 }
 
 /// The BatchTranslateDocument request.
@@ -2970,67 +2993,64 @@ class BatchTranslateDocumentRequest {
   });
 
   BatchTranslateDocumentRequest.fromJson(core.Map json_)
-      : this(
-          customizedAttribution: json_['customizedAttribution'] as core.String?,
-          enableRotationCorrection:
-              json_['enableRotationCorrection'] as core.bool?,
-          enableShadowRemovalNativePdf:
-              json_['enableShadowRemovalNativePdf'] as core.bool?,
-          formatConversions: (json_['formatConversions']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
+    : this(
+        customizedAttribution: json_['customizedAttribution'] as core.String?,
+        enableRotationCorrection:
+            json_['enableRotationCorrection'] as core.bool?,
+        enableShadowRemovalNativePdf:
+            json_['enableShadowRemovalNativePdf'] as core.bool?,
+        formatConversions: (json_['formatConversions']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        glossaries:
+            (json_['glossaries'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                TranslateTextGlossaryConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          glossaries:
-              (json_['glossaries'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              TranslateTextGlossaryConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
-            ),
-          ),
-          inputConfigs: (json_['inputConfigs'] as core.List?)
-              ?.map((value) => BatchDocumentInputConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          models:
-              (json_['models'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          outputConfig: json_.containsKey('outputConfig')
-              ? BatchDocumentOutputConfig.fromJson(
-                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
-          targetLanguageCodes: (json_['targetLanguageCodes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+        inputConfigs:
+            (json_['inputConfigs'] as core.List?)
+                ?.map(
+                  (value) => BatchDocumentInputConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        models: (json_['models'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        outputConfig:
+            json_.containsKey('outputConfig')
+                ? BatchDocumentOutputConfig.fromJson(
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+        targetLanguageCodes:
+            (json_['targetLanguageCodes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customizedAttribution != null)
-          'customizedAttribution': customizedAttribution!,
-        if (enableRotationCorrection != null)
-          'enableRotationCorrection': enableRotationCorrection!,
-        if (enableShadowRemovalNativePdf != null)
-          'enableShadowRemovalNativePdf': enableShadowRemovalNativePdf!,
-        if (formatConversions != null) 'formatConversions': formatConversions!,
-        if (glossaries != null) 'glossaries': glossaries!,
-        if (inputConfigs != null) 'inputConfigs': inputConfigs!,
-        if (models != null) 'models': models!,
-        if (outputConfig != null) 'outputConfig': outputConfig!,
-        if (sourceLanguageCode != null)
-          'sourceLanguageCode': sourceLanguageCode!,
-        if (targetLanguageCodes != null)
-          'targetLanguageCodes': targetLanguageCodes!,
-      };
+    if (customizedAttribution != null)
+      'customizedAttribution': customizedAttribution!,
+    if (enableRotationCorrection != null)
+      'enableRotationCorrection': enableRotationCorrection!,
+    if (enableShadowRemovalNativePdf != null)
+      'enableShadowRemovalNativePdf': enableShadowRemovalNativePdf!,
+    if (formatConversions != null) 'formatConversions': formatConversions!,
+    if (glossaries != null) 'glossaries': glossaries!,
+    if (inputConfigs != null) 'inputConfigs': inputConfigs!,
+    if (models != null) 'models': models!,
+    if (outputConfig != null) 'outputConfig': outputConfig!,
+    if (sourceLanguageCode != null) 'sourceLanguageCode': sourceLanguageCode!,
+    if (targetLanguageCodes != null)
+      'targetLanguageCodes': targetLanguageCodes!,
+  };
 }
 
 /// The batch translation request.
@@ -3106,55 +3126,53 @@ class BatchTranslateTextRequest {
   });
 
   BatchTranslateTextRequest.fromJson(core.Map json_)
-      : this(
-          glossaries:
-              (json_['glossaries'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              TranslateTextGlossaryConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        glossaries:
+            (json_['glossaries'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                TranslateTextGlossaryConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          inputConfigs: (json_['inputConfigs'] as core.List?)
-              ?.map((value) => InputConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          models:
-              (json_['models'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          outputConfig: json_.containsKey('outputConfig')
-              ? OutputConfig.fromJson(
-                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
-          targetLanguageCodes: (json_['targetLanguageCodes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+        inputConfigs:
+            (json_['inputConfigs'] as core.List?)
+                ?.map(
+                  (value) => InputConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        models: (json_['models'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        outputConfig:
+            json_.containsKey('outputConfig')
+                ? OutputConfig.fromJson(
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+        targetLanguageCodes:
+            (json_['targetLanguageCodes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (glossaries != null) 'glossaries': glossaries!,
-        if (inputConfigs != null) 'inputConfigs': inputConfigs!,
-        if (labels != null) 'labels': labels!,
-        if (models != null) 'models': models!,
-        if (outputConfig != null) 'outputConfig': outputConfig!,
-        if (sourceLanguageCode != null)
-          'sourceLanguageCode': sourceLanguageCode!,
-        if (targetLanguageCodes != null)
-          'targetLanguageCodes': targetLanguageCodes!,
-      };
+    if (glossaries != null) 'glossaries': glossaries!,
+    if (inputConfigs != null) 'inputConfigs': inputConfigs!,
+    if (labels != null) 'labels': labels!,
+    if (models != null) 'models': models!,
+    if (outputConfig != null) 'outputConfig': outputConfig!,
+    if (sourceLanguageCode != null) 'sourceLanguageCode': sourceLanguageCode!,
+    if (targetLanguageCodes != null)
+      'targetLanguageCodes': targetLanguageCodes!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -3223,34 +3241,32 @@ class Dataset {
   });
 
   Dataset.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          exampleCount: json_['exampleCount'] as core.int?,
-          name: json_['name'] as core.String?,
-          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
-          targetLanguageCode: json_['targetLanguageCode'] as core.String?,
-          testExampleCount: json_['testExampleCount'] as core.int?,
-          trainExampleCount: json_['trainExampleCount'] as core.int?,
-          updateTime: json_['updateTime'] as core.String?,
-          validateExampleCount: json_['validateExampleCount'] as core.int?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        exampleCount: json_['exampleCount'] as core.int?,
+        name: json_['name'] as core.String?,
+        sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+        targetLanguageCode: json_['targetLanguageCode'] as core.String?,
+        testExampleCount: json_['testExampleCount'] as core.int?,
+        trainExampleCount: json_['trainExampleCount'] as core.int?,
+        updateTime: json_['updateTime'] as core.String?,
+        validateExampleCount: json_['validateExampleCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (exampleCount != null) 'exampleCount': exampleCount!,
-        if (name != null) 'name': name!,
-        if (sourceLanguageCode != null)
-          'sourceLanguageCode': sourceLanguageCode!,
-        if (targetLanguageCode != null)
-          'targetLanguageCode': targetLanguageCode!,
-        if (testExampleCount != null) 'testExampleCount': testExampleCount!,
-        if (trainExampleCount != null) 'trainExampleCount': trainExampleCount!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (validateExampleCount != null)
-          'validateExampleCount': validateExampleCount!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (exampleCount != null) 'exampleCount': exampleCount!,
+    if (name != null) 'name': name!,
+    if (sourceLanguageCode != null) 'sourceLanguageCode': sourceLanguageCode!,
+    if (targetLanguageCode != null) 'targetLanguageCode': targetLanguageCode!,
+    if (testExampleCount != null) 'testExampleCount': testExampleCount!,
+    if (trainExampleCount != null) 'trainExampleCount': trainExampleCount!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (validateExampleCount != null)
+      'validateExampleCount': validateExampleCount!,
+  };
 }
 
 /// Input configuration for datasets.
@@ -3258,21 +3274,23 @@ class DatasetInputConfig {
   /// Files containing the sentence pairs to be imported to the dataset.
   core.List<InputFile>? inputFiles;
 
-  DatasetInputConfig({
-    this.inputFiles,
-  });
+  DatasetInputConfig({this.inputFiles});
 
   DatasetInputConfig.fromJson(core.Map json_)
-      : this(
-          inputFiles: (json_['inputFiles'] as core.List?)
-              ?.map((value) => InputFile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        inputFiles:
+            (json_['inputFiles'] as core.List?)
+                ?.map(
+                  (value) => InputFile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inputFiles != null) 'inputFiles': inputFiles!,
-      };
+    if (inputFiles != null) 'inputFiles': inputFiles!,
+  };
 }
 
 /// Output configuration for datasets.
@@ -3280,21 +3298,22 @@ class DatasetOutputConfig {
   /// Google Cloud Storage destination to write the output.
   GcsOutputDestination? gcsDestination;
 
-  DatasetOutputConfig({
-    this.gcsDestination,
-  });
+  DatasetOutputConfig({this.gcsDestination});
 
   DatasetOutputConfig.fromJson(core.Map json_)
-      : this(
-          gcsDestination: json_.containsKey('gcsDestination')
-              ? GcsOutputDestination.fromJson(json_['gcsDestination']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        gcsDestination:
+            json_.containsKey('gcsDestination')
+                ? GcsOutputDestination.fromJson(
+                  json_['gcsDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
-      };
+    if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+  };
 }
 
 /// The request message for language detection.
@@ -3332,33 +3351,24 @@ class DetectLanguageRequest {
   /// Optional.
   core.String? model;
 
-  DetectLanguageRequest({
-    this.content,
-    this.labels,
-    this.mimeType,
-    this.model,
-  });
+  DetectLanguageRequest({this.content, this.labels, this.mimeType, this.model});
 
   DetectLanguageRequest.fromJson(core.Map json_)
-      : this(
-          content: json_['content'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          mimeType: json_['mimeType'] as core.String?,
-          model: json_['model'] as core.String?,
-        );
+    : this(
+        content: json_['content'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        mimeType: json_['mimeType'] as core.String?,
+        model: json_['model'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (labels != null) 'labels': labels!,
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (model != null) 'model': model!,
-      };
+    if (content != null) 'content': content!,
+    if (labels != null) 'labels': labels!,
+    if (mimeType != null) 'mimeType': mimeType!,
+    if (model != null) 'model': model!,
+  };
 }
 
 /// The response message for language detection.
@@ -3368,21 +3378,23 @@ class DetectLanguageResponse {
   /// For each request, the Translation API will always return only one result.
   core.List<DetectedLanguage>? languages;
 
-  DetectLanguageResponse({
-    this.languages,
-  });
+  DetectLanguageResponse({this.languages});
 
   DetectLanguageResponse.fromJson(core.Map json_)
-      : this(
-          languages: (json_['languages'] as core.List?)
-              ?.map((value) => DetectedLanguage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        languages:
+            (json_['languages'] as core.List?)
+                ?.map(
+                  (value) => DetectedLanguage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (languages != null) 'languages': languages!,
-      };
+    if (languages != null) 'languages': languages!,
+  };
 }
 
 /// The response message for language detection.
@@ -3394,21 +3406,18 @@ class DetectedLanguage {
   /// automatically.
   core.String? languageCode;
 
-  DetectedLanguage({
-    this.confidence,
-    this.languageCode,
-  });
+  DetectedLanguage({this.confidence, this.languageCode});
 
   DetectedLanguage.fromJson(core.Map json_)
-      : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
-          languageCode: json_['languageCode'] as core.String?,
-        );
+    : this(
+        confidence: (json_['confidence'] as core.num?)?.toDouble(),
+        languageCode: json_['languageCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (languageCode != null) 'languageCode': languageCode!,
-      };
+    if (confidence != null) 'confidence': confidence!,
+    if (languageCode != null) 'languageCode': languageCode!,
+  };
 }
 
 /// A document translation request input config.
@@ -3418,8 +3427,10 @@ class DocumentInputConfig {
   core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
   set contentAsBytes(core.List<core.int> bytes_) {
-    content =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    content = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Google Cloud Storage location.
@@ -3439,27 +3450,25 @@ class DocumentInputConfig {
   /// - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
   core.String? mimeType;
 
-  DocumentInputConfig({
-    this.content,
-    this.gcsSource,
-    this.mimeType,
-  });
+  DocumentInputConfig({this.content, this.gcsSource, this.mimeType});
 
   DocumentInputConfig.fromJson(core.Map json_)
-      : this(
-          content: json_['content'] as core.String?,
-          gcsSource: json_.containsKey('gcsSource')
-              ? GcsSource.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          mimeType: json_['mimeType'] as core.String?,
-        );
+    : this(
+        content: json_['content'] as core.String?,
+        gcsSource:
+            json_.containsKey('gcsSource')
+                ? GcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mimeType: json_['mimeType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-        if (mimeType != null) 'mimeType': mimeType!,
-      };
+    if (content != null) 'content': content!,
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+    if (mimeType != null) 'mimeType': mimeType!,
+  };
 }
 
 /// A document translation request output config.
@@ -3511,24 +3520,24 @@ class DocumentOutputConfig {
   /// Optional.
   core.String? mimeType;
 
-  DocumentOutputConfig({
-    this.gcsDestination,
-    this.mimeType,
-  });
+  DocumentOutputConfig({this.gcsDestination, this.mimeType});
 
   DocumentOutputConfig.fromJson(core.Map json_)
-      : this(
-          gcsDestination: json_.containsKey('gcsDestination')
-              ? GcsDestination.fromJson(json_['gcsDestination']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          mimeType: json_['mimeType'] as core.String?,
-        );
+    : this(
+        gcsDestination:
+            json_.containsKey('gcsDestination')
+                ? GcsDestination.fromJson(
+                  json_['gcsDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mimeType: json_['mimeType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
-        if (mimeType != null) 'mimeType': mimeType!,
-      };
+    if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+    if (mimeType != null) 'mimeType': mimeType!,
+  };
 }
 
 /// A translated document message.
@@ -3557,20 +3566,21 @@ class DocumentTranslation {
   });
 
   DocumentTranslation.fromJson(core.Map json_)
-      : this(
-          byteStreamOutputs: (json_['byteStreamOutputs'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          detectedLanguageCode: json_['detectedLanguageCode'] as core.String?,
-          mimeType: json_['mimeType'] as core.String?,
-        );
+    : this(
+        byteStreamOutputs:
+            (json_['byteStreamOutputs'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        detectedLanguageCode: json_['detectedLanguageCode'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (byteStreamOutputs != null) 'byteStreamOutputs': byteStreamOutputs!,
-        if (detectedLanguageCode != null)
-          'detectedLanguageCode': detectedLanguageCode!,
-        if (mimeType != null) 'mimeType': mimeType!,
-      };
+    if (byteStreamOutputs != null) 'byteStreamOutputs': byteStreamOutputs!,
+    if (detectedLanguageCode != null)
+      'detectedLanguageCode': detectedLanguageCode!,
+    if (mimeType != null) 'mimeType': mimeType!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3602,27 +3612,22 @@ class Example {
   /// Output only.
   core.String? usage;
 
-  Example({
-    this.name,
-    this.sourceText,
-    this.targetText,
-    this.usage,
-  });
+  Example({this.name, this.sourceText, this.targetText, this.usage});
 
   Example.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          sourceText: json_['sourceText'] as core.String?,
-          targetText: json_['targetText'] as core.String?,
-          usage: json_['usage'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        sourceText: json_['sourceText'] as core.String?,
+        targetText: json_['targetText'] as core.String?,
+        usage: json_['usage'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (sourceText != null) 'sourceText': sourceText!,
-        if (targetText != null) 'targetText': targetText!,
-        if (usage != null) 'usage': usage!,
-      };
+    if (name != null) 'name': name!,
+    if (sourceText != null) 'sourceText': sourceText!,
+    if (targetText != null) 'targetText': targetText!,
+    if (usage != null) 'usage': usage!,
+  };
 }
 
 /// Request message for ExportData.
@@ -3632,21 +3637,21 @@ class ExportDataRequest {
   /// Required.
   DatasetOutputConfig? outputConfig;
 
-  ExportDataRequest({
-    this.outputConfig,
-  });
+  ExportDataRequest({this.outputConfig});
 
   ExportDataRequest.fromJson(core.Map json_)
-      : this(
-          outputConfig: json_.containsKey('outputConfig')
-              ? DatasetOutputConfig.fromJson(
-                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        outputConfig:
+            json_.containsKey('outputConfig')
+                ? DatasetOutputConfig.fromJson(
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (outputConfig != null) 'outputConfig': outputConfig!,
-      };
+    if (outputConfig != null) 'outputConfig': outputConfig!,
+  };
 }
 
 /// An inlined file.
@@ -3658,8 +3663,10 @@ class FileInputSource {
   core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
   set contentAsBytes(core.List<core.int> bytes_) {
-    content =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    content = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The file's display name.
@@ -3672,24 +3679,20 @@ class FileInputSource {
   /// Required.
   core.String? mimeType;
 
-  FileInputSource({
-    this.content,
-    this.displayName,
-    this.mimeType,
-  });
+  FileInputSource({this.content, this.displayName, this.mimeType});
 
   FileInputSource.fromJson(core.Map json_)
-      : this(
-          content: json_['content'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          mimeType: json_['mimeType'] as core.String?,
-        );
+    : this(
+        content: json_['content'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (displayName != null) 'displayName': displayName!,
-        if (mimeType != null) 'mimeType': mimeType!,
-      };
+    if (content != null) 'content': content!,
+    if (displayName != null) 'displayName': displayName!,
+    if (mimeType != null) 'mimeType': mimeType!,
+  };
 }
 
 /// The Google Cloud Storage location for the output content.
@@ -3704,18 +3707,14 @@ class GcsDestination {
   /// Required.
   core.String? outputUriPrefix;
 
-  GcsDestination({
-    this.outputUriPrefix,
-  });
+  GcsDestination({this.outputUriPrefix});
 
   GcsDestination.fromJson(core.Map json_)
-      : this(
-          outputUriPrefix: json_['outputUriPrefix'] as core.String?,
-        );
+    : this(outputUriPrefix: json_['outputUriPrefix'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
-      };
+    if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
+  };
 }
 
 /// The Google Cloud Storage location for the input content.
@@ -3732,18 +3731,14 @@ class GcsOutputDestination {
   /// Required.
   core.String? outputUriPrefix;
 
-  GcsOutputDestination({
-    this.outputUriPrefix,
-  });
+  GcsOutputDestination({this.outputUriPrefix});
 
   GcsOutputDestination.fromJson(core.Map json_)
-      : this(
-          outputUriPrefix: json_['outputUriPrefix'] as core.String?,
-        );
+    : this(outputUriPrefix: json_['outputUriPrefix'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
-      };
+    if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
+  };
 }
 
 /// The Google Cloud Storage location for the input content.
@@ -3804,36 +3799,43 @@ class Glossary {
   });
 
   Glossary.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          endTime: json_['endTime'] as core.String?,
-          entryCount: json_['entryCount'] as core.int?,
-          inputConfig: json_.containsKey('inputConfig')
-              ? GlossaryInputConfig.fromJson(
-                  json_['inputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          languageCodesSet: json_.containsKey('languageCodesSet')
-              ? LanguageCodesSet.fromJson(json_['languageCodesSet']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          languagePair: json_.containsKey('languagePair')
-              ? LanguageCodePair.fromJson(
-                  json_['languagePair'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          submitTime: json_['submitTime'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        entryCount: json_['entryCount'] as core.int?,
+        inputConfig:
+            json_.containsKey('inputConfig')
+                ? GlossaryInputConfig.fromJson(
+                  json_['inputConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        languageCodesSet:
+            json_.containsKey('languageCodesSet')
+                ? LanguageCodesSet.fromJson(
+                  json_['languageCodesSet']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        languagePair:
+            json_.containsKey('languagePair')
+                ? LanguageCodePair.fromJson(
+                  json_['languagePair'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        submitTime: json_['submitTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (endTime != null) 'endTime': endTime!,
-        if (entryCount != null) 'entryCount': entryCount!,
-        if (inputConfig != null) 'inputConfig': inputConfig!,
-        if (languageCodesSet != null) 'languageCodesSet': languageCodesSet!,
-        if (languagePair != null) 'languagePair': languagePair!,
-        if (name != null) 'name': name!,
-        if (submitTime != null) 'submitTime': submitTime!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (endTime != null) 'endTime': endTime!,
+    if (entryCount != null) 'entryCount': entryCount!,
+    if (inputConfig != null) 'inputConfig': inputConfig!,
+    if (languageCodesSet != null) 'languageCodesSet': languageCodesSet!,
+    if (languagePair != null) 'languagePair': languagePair!,
+    if (name != null) 'name': name!,
+    if (submitTime != null) 'submitTime': submitTime!,
+  };
 }
 
 /// Configures which glossary is used for a specific target language and defines
@@ -3857,33 +3859,32 @@ class GlossaryEntry {
   /// Used for an equivalent term sets glossary.
   GlossaryTermsSet? termsSet;
 
-  GlossaryEntry({
-    this.description,
-    this.name,
-    this.termsPair,
-    this.termsSet,
-  });
+  GlossaryEntry({this.description, this.name, this.termsPair, this.termsSet});
 
   GlossaryEntry.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          name: json_['name'] as core.String?,
-          termsPair: json_.containsKey('termsPair')
-              ? GlossaryTermsPair.fromJson(
-                  json_['termsPair'] as core.Map<core.String, core.dynamic>)
-              : null,
-          termsSet: json_.containsKey('termsSet')
-              ? GlossaryTermsSet.fromJson(
-                  json_['termsSet'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        name: json_['name'] as core.String?,
+        termsPair:
+            json_.containsKey('termsPair')
+                ? GlossaryTermsPair.fromJson(
+                  json_['termsPair'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        termsSet:
+            json_.containsKey('termsSet')
+                ? GlossaryTermsSet.fromJson(
+                  json_['termsSet'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (name != null) 'name': name!,
-        if (termsPair != null) 'termsPair': termsPair!,
-        if (termsSet != null) 'termsSet': termsSet!,
-      };
+    if (description != null) 'description': description!,
+    if (name != null) 'name': name!,
+    if (termsPair != null) 'termsPair': termsPair!,
+    if (termsSet != null) 'termsSet': termsSet!,
+  };
 }
 
 /// Input configuration for glossaries.
@@ -3906,21 +3907,21 @@ class GlossaryInputConfig {
   /// Required.
   GcsSource? gcsSource;
 
-  GlossaryInputConfig({
-    this.gcsSource,
-  });
+  GlossaryInputConfig({this.gcsSource});
 
   GlossaryInputConfig.fromJson(core.Map json_)
-      : this(
-          gcsSource: json_.containsKey('gcsSource')
-              ? GcsSource.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        gcsSource:
+            json_.containsKey('gcsSource')
+                ? GcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-      };
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+  };
 }
 
 /// Represents a single glossary term
@@ -3931,21 +3932,18 @@ class GlossaryTerm {
   /// The text for the glossary term.
   core.String? text;
 
-  GlossaryTerm({
-    this.languageCode,
-    this.text,
-  });
+  GlossaryTerm({this.languageCode, this.text});
 
   GlossaryTerm.fromJson(core.Map json_)
-      : this(
-          languageCode: json_['languageCode'] as core.String?,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        languageCode: json_['languageCode'] as core.String?,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (text != null) 'text': text!,
-      };
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// Represents a single entry for an unidirectional glossary.
@@ -3956,27 +3954,28 @@ class GlossaryTermsPair {
   /// The term that will replace the match source term.
   GlossaryTerm? targetTerm;
 
-  GlossaryTermsPair({
-    this.sourceTerm,
-    this.targetTerm,
-  });
+  GlossaryTermsPair({this.sourceTerm, this.targetTerm});
 
   GlossaryTermsPair.fromJson(core.Map json_)
-      : this(
-          sourceTerm: json_.containsKey('sourceTerm')
-              ? GlossaryTerm.fromJson(
-                  json_['sourceTerm'] as core.Map<core.String, core.dynamic>)
-              : null,
-          targetTerm: json_.containsKey('targetTerm')
-              ? GlossaryTerm.fromJson(
-                  json_['targetTerm'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        sourceTerm:
+            json_.containsKey('sourceTerm')
+                ? GlossaryTerm.fromJson(
+                  json_['sourceTerm'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        targetTerm:
+            json_.containsKey('targetTerm')
+                ? GlossaryTerm.fromJson(
+                  json_['targetTerm'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sourceTerm != null) 'sourceTerm': sourceTerm!,
-        if (targetTerm != null) 'targetTerm': targetTerm!,
-      };
+    if (sourceTerm != null) 'sourceTerm': sourceTerm!,
+    if (targetTerm != null) 'targetTerm': targetTerm!,
+  };
 }
 
 /// Represents a single entry for an equivalent term set glossary.
@@ -3988,21 +3987,23 @@ class GlossaryTermsSet {
   /// terms.
   core.List<GlossaryTerm>? terms;
 
-  GlossaryTermsSet({
-    this.terms,
-  });
+  GlossaryTermsSet({this.terms});
 
   GlossaryTermsSet.fromJson(core.Map json_)
-      : this(
-          terms: (json_['terms'] as core.List?)
-              ?.map((value) => GlossaryTerm.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        terms:
+            (json_['terms'] as core.List?)
+                ?.map(
+                  (value) => GlossaryTerm.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (terms != null) 'terms': terms!,
-      };
+    if (terms != null) 'terms': terms!,
+  };
 }
 
 /// The request for importing an AdaptiveMt file along with its sentences.
@@ -4013,27 +4014,30 @@ class ImportAdaptiveMtFileRequest {
   /// Google Cloud Storage file source.
   GcsInputSource? gcsInputSource;
 
-  ImportAdaptiveMtFileRequest({
-    this.fileInputSource,
-    this.gcsInputSource,
-  });
+  ImportAdaptiveMtFileRequest({this.fileInputSource, this.gcsInputSource});
 
   ImportAdaptiveMtFileRequest.fromJson(core.Map json_)
-      : this(
-          fileInputSource: json_.containsKey('fileInputSource')
-              ? FileInputSource.fromJson(json_['fileInputSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          gcsInputSource: json_.containsKey('gcsInputSource')
-              ? GcsInputSource.fromJson(json_['gcsInputSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fileInputSource:
+            json_.containsKey('fileInputSource')
+                ? FileInputSource.fromJson(
+                  json_['fileInputSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gcsInputSource:
+            json_.containsKey('gcsInputSource')
+                ? GcsInputSource.fromJson(
+                  json_['gcsInputSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileInputSource != null) 'fileInputSource': fileInputSource!,
-        if (gcsInputSource != null) 'gcsInputSource': gcsInputSource!,
-      };
+    if (fileInputSource != null) 'fileInputSource': fileInputSource!,
+    if (gcsInputSource != null) 'gcsInputSource': gcsInputSource!,
+  };
 }
 
 /// The response for importing an AdaptiveMtFile
@@ -4043,21 +4047,22 @@ class ImportAdaptiveMtFileResponse {
   /// Output only.
   AdaptiveMtFile? adaptiveMtFile;
 
-  ImportAdaptiveMtFileResponse({
-    this.adaptiveMtFile,
-  });
+  ImportAdaptiveMtFileResponse({this.adaptiveMtFile});
 
   ImportAdaptiveMtFileResponse.fromJson(core.Map json_)
-      : this(
-          adaptiveMtFile: json_.containsKey('adaptiveMtFile')
-              ? AdaptiveMtFile.fromJson(json_['adaptiveMtFile']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        adaptiveMtFile:
+            json_.containsKey('adaptiveMtFile')
+                ? AdaptiveMtFile.fromJson(
+                  json_['adaptiveMtFile']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adaptiveMtFile != null) 'adaptiveMtFile': adaptiveMtFile!,
-      };
+    if (adaptiveMtFile != null) 'adaptiveMtFile': adaptiveMtFile!,
+  };
 }
 
 /// Request message for ImportData.
@@ -4067,21 +4072,21 @@ class ImportDataRequest {
   /// Required.
   DatasetInputConfig? inputConfig;
 
-  ImportDataRequest({
-    this.inputConfig,
-  });
+  ImportDataRequest({this.inputConfig});
 
   ImportDataRequest.fromJson(core.Map json_)
-      : this(
-          inputConfig: json_.containsKey('inputConfig')
-              ? DatasetInputConfig.fromJson(
-                  json_['inputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        inputConfig:
+            json_.containsKey('inputConfig')
+                ? DatasetInputConfig.fromJson(
+                  json_['inputConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inputConfig != null) 'inputConfig': inputConfig!,
-      };
+    if (inputConfig != null) 'inputConfig': inputConfig!,
+  };
 }
 
 /// Input configuration for BatchTranslateText request.
@@ -4113,24 +4118,23 @@ class InputConfig {
   /// Optional.
   core.String? mimeType;
 
-  InputConfig({
-    this.gcsSource,
-    this.mimeType,
-  });
+  InputConfig({this.gcsSource, this.mimeType});
 
   InputConfig.fromJson(core.Map json_)
-      : this(
-          gcsSource: json_.containsKey('gcsSource')
-              ? GcsSource.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          mimeType: json_['mimeType'] as core.String?,
-        );
+    : this(
+        gcsSource:
+            json_.containsKey('gcsSource')
+                ? GcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mimeType: json_['mimeType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-        if (mimeType != null) 'mimeType': mimeType!,
-      };
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+    if (mimeType != null) 'mimeType': mimeType!,
+  };
 }
 
 /// An input file.
@@ -4146,24 +4150,23 @@ class InputFile {
   /// Optional.
   core.String? usage;
 
-  InputFile({
-    this.gcsSource,
-    this.usage,
-  });
+  InputFile({this.gcsSource, this.usage});
 
   InputFile.fromJson(core.Map json_)
-      : this(
-          gcsSource: json_.containsKey('gcsSource')
-              ? GcsInputSource.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          usage: json_['usage'] as core.String?,
-        );
+    : this(
+        gcsSource:
+            json_.containsKey('gcsSource')
+                ? GcsInputSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        usage: json_['usage'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-        if (usage != null) 'usage': usage!,
-      };
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+    if (usage != null) 'usage': usage!,
+  };
 }
 
 /// Used with unidirectional glossaries.
@@ -4182,23 +4185,18 @@ class LanguageCodePair {
   /// Required.
   core.String? targetLanguageCode;
 
-  LanguageCodePair({
-    this.sourceLanguageCode,
-    this.targetLanguageCode,
-  });
+  LanguageCodePair({this.sourceLanguageCode, this.targetLanguageCode});
 
   LanguageCodePair.fromJson(core.Map json_)
-      : this(
-          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
-          targetLanguageCode: json_['targetLanguageCode'] as core.String?,
-        );
+    : this(
+        sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+        targetLanguageCode: json_['targetLanguageCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sourceLanguageCode != null)
-          'sourceLanguageCode': sourceLanguageCode!,
-        if (targetLanguageCode != null)
-          'targetLanguageCode': targetLanguageCode!,
-      };
+    if (sourceLanguageCode != null) 'sourceLanguageCode': sourceLanguageCode!,
+    if (targetLanguageCode != null) 'targetLanguageCode': targetLanguageCode!,
+  };
 }
 
 /// Used with equivalent term set glossaries.
@@ -4209,20 +4207,19 @@ class LanguageCodesSet {
   /// to be an exact match for GlossaryTerm.language_code.
   core.List<core.String>? languageCodes;
 
-  LanguageCodesSet({
-    this.languageCodes,
-  });
+  LanguageCodesSet({this.languageCodes});
 
   LanguageCodesSet.fromJson(core.Map json_)
-      : this(
-          languageCodes: (json_['languageCodes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        languageCodes:
+            (json_['languageCodes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (languageCodes != null) 'languageCodes': languageCodes!,
-      };
+    if (languageCodes != null) 'languageCodes': languageCodes!,
+  };
 }
 
 /// A list of AdaptiveMtDatasets.
@@ -4241,25 +4238,25 @@ class ListAdaptiveMtDatasetsResponse {
   /// Optional.
   core.String? nextPageToken;
 
-  ListAdaptiveMtDatasetsResponse({
-    this.adaptiveMtDatasets,
-    this.nextPageToken,
-  });
+  ListAdaptiveMtDatasetsResponse({this.adaptiveMtDatasets, this.nextPageToken});
 
   ListAdaptiveMtDatasetsResponse.fromJson(core.Map json_)
-      : this(
-          adaptiveMtDatasets: (json_['adaptiveMtDatasets'] as core.List?)
-              ?.map((value) => AdaptiveMtDataset.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        adaptiveMtDatasets:
+            (json_['adaptiveMtDatasets'] as core.List?)
+                ?.map(
+                  (value) => AdaptiveMtDataset.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adaptiveMtDatasets != null)
-          'adaptiveMtDatasets': adaptiveMtDatasets!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (adaptiveMtDatasets != null) 'adaptiveMtDatasets': adaptiveMtDatasets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response for listing all AdaptiveMt files under a given dataset.
@@ -4278,24 +4275,25 @@ class ListAdaptiveMtFilesResponse {
   /// Optional.
   core.String? nextPageToken;
 
-  ListAdaptiveMtFilesResponse({
-    this.adaptiveMtFiles,
-    this.nextPageToken,
-  });
+  ListAdaptiveMtFilesResponse({this.adaptiveMtFiles, this.nextPageToken});
 
   ListAdaptiveMtFilesResponse.fromJson(core.Map json_)
-      : this(
-          adaptiveMtFiles: (json_['adaptiveMtFiles'] as core.List?)
-              ?.map((value) => AdaptiveMtFile.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        adaptiveMtFiles:
+            (json_['adaptiveMtFiles'] as core.List?)
+                ?.map(
+                  (value) => AdaptiveMtFile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adaptiveMtFiles != null) 'adaptiveMtFiles': adaptiveMtFiles!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (adaptiveMtFiles != null) 'adaptiveMtFiles': adaptiveMtFiles!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// List AdaptiveMt sentences response.
@@ -4316,19 +4314,23 @@ class ListAdaptiveMtSentencesResponse {
   });
 
   ListAdaptiveMtSentencesResponse.fromJson(core.Map json_)
-      : this(
-          adaptiveMtSentences: (json_['adaptiveMtSentences'] as core.List?)
-              ?.map((value) => AdaptiveMtSentence.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        adaptiveMtSentences:
+            (json_['adaptiveMtSentences'] as core.List?)
+                ?.map(
+                  (value) => AdaptiveMtSentence.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adaptiveMtSentences != null)
-          'adaptiveMtSentences': adaptiveMtSentences!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (adaptiveMtSentences != null)
+      'adaptiveMtSentences': adaptiveMtSentences!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListDatasets.
@@ -4342,24 +4344,25 @@ class ListDatasetsResponse {
   /// obtain the corresponding page.
   core.String? nextPageToken;
 
-  ListDatasetsResponse({
-    this.datasets,
-    this.nextPageToken,
-  });
+  ListDatasetsResponse({this.datasets, this.nextPageToken});
 
   ListDatasetsResponse.fromJson(core.Map json_)
-      : this(
-          datasets: (json_['datasets'] as core.List?)
-              ?.map((value) => Dataset.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        datasets:
+            (json_['datasets'] as core.List?)
+                ?.map(
+                  (value) => Dataset.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (datasets != null) 'datasets': datasets!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (datasets != null) 'datasets': datasets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListExamples.
@@ -4373,24 +4376,25 @@ class ListExamplesResponse {
   /// obtain the corresponding page.
   core.String? nextPageToken;
 
-  ListExamplesResponse({
-    this.examples,
-    this.nextPageToken,
-  });
+  ListExamplesResponse({this.examples, this.nextPageToken});
 
   ListExamplesResponse.fromJson(core.Map json_)
-      : this(
-          examples: (json_['examples'] as core.List?)
-              ?.map((value) => Example.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        examples:
+            (json_['examples'] as core.List?)
+                ?.map(
+                  (value) => Example.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (examples != null) 'examples': examples!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (examples != null) 'examples': examples!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListGlossaries.
@@ -4405,24 +4409,25 @@ class ListGlossariesResponse {
   /// results.
   core.String? nextPageToken;
 
-  ListGlossariesResponse({
-    this.glossaries,
-    this.nextPageToken,
-  });
+  ListGlossariesResponse({this.glossaries, this.nextPageToken});
 
   ListGlossariesResponse.fromJson(core.Map json_)
-      : this(
-          glossaries: (json_['glossaries'] as core.List?)
-              ?.map((value) => Glossary.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        glossaries:
+            (json_['glossaries'] as core.List?)
+                ?.map(
+                  (value) => Glossary.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (glossaries != null) 'glossaries': glossaries!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (glossaries != null) 'glossaries': glossaries!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListGlossaryEntries
@@ -4440,24 +4445,25 @@ class ListGlossaryEntriesResponse {
   /// Optional.
   core.String? nextPageToken;
 
-  ListGlossaryEntriesResponse({
-    this.glossaryEntries,
-    this.nextPageToken,
-  });
+  ListGlossaryEntriesResponse({this.glossaryEntries, this.nextPageToken});
 
   ListGlossaryEntriesResponse.fromJson(core.Map json_)
-      : this(
-          glossaryEntries: (json_['glossaryEntries'] as core.List?)
-              ?.map((value) => GlossaryEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        glossaryEntries:
+            (json_['glossaryEntries'] as core.List?)
+                ?.map(
+                  (value) => GlossaryEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (glossaryEntries != null) 'glossaryEntries': glossaryEntries!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (glossaryEntries != null) 'glossaryEntries': glossaryEntries!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -4468,24 +4474,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListModels.
@@ -4499,24 +4506,25 @@ class ListModelsResponse {
   /// the corresponding page.
   core.String? nextPageToken;
 
-  ListModelsResponse({
-    this.models,
-    this.nextPageToken,
-  });
+  ListModelsResponse({this.models, this.nextPageToken});
 
   ListModelsResponse.fromJson(core.Map json_)
-      : this(
-          models: (json_['models'] as core.List?)
-              ?.map((value) =>
-                  Model.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        models:
+            (json_['models'] as core.List?)
+                ?.map(
+                  (value) => Model.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (models != null) 'models': models!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (models != null) 'models': models!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -4527,24 +4535,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -4616,34 +4625,32 @@ class Model {
   });
 
   Model.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          dataset: json_['dataset'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
-          targetLanguageCode: json_['targetLanguageCode'] as core.String?,
-          testExampleCount: json_['testExampleCount'] as core.int?,
-          trainExampleCount: json_['trainExampleCount'] as core.int?,
-          updateTime: json_['updateTime'] as core.String?,
-          validateExampleCount: json_['validateExampleCount'] as core.int?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        dataset: json_['dataset'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+        targetLanguageCode: json_['targetLanguageCode'] as core.String?,
+        testExampleCount: json_['testExampleCount'] as core.int?,
+        trainExampleCount: json_['trainExampleCount'] as core.int?,
+        updateTime: json_['updateTime'] as core.String?,
+        validateExampleCount: json_['validateExampleCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (dataset != null) 'dataset': dataset!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (sourceLanguageCode != null)
-          'sourceLanguageCode': sourceLanguageCode!,
-        if (targetLanguageCode != null)
-          'targetLanguageCode': targetLanguageCode!,
-        if (testExampleCount != null) 'testExampleCount': testExampleCount!,
-        if (trainExampleCount != null) 'trainExampleCount': trainExampleCount!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (validateExampleCount != null)
-          'validateExampleCount': validateExampleCount!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (dataset != null) 'dataset': dataset!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (sourceLanguageCode != null) 'sourceLanguageCode': sourceLanguageCode!,
+    if (targetLanguageCode != null) 'targetLanguageCode': targetLanguageCode!,
+    if (testExampleCount != null) 'testExampleCount': testExampleCount!,
+    if (trainExampleCount != null) 'trainExampleCount': trainExampleCount!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (validateExampleCount != null)
+      'validateExampleCount': validateExampleCount!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -4689,37 +4696,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Output configuration for BatchTranslateText request.
@@ -4775,21 +4780,22 @@ class OutputConfig {
   /// format of `gs://translation_test/a_b_c_'trg'_glossary_errors.[extension]`
   GcsDestination? gcsDestination;
 
-  OutputConfig({
-    this.gcsDestination,
-  });
+  OutputConfig({this.gcsDestination});
 
   OutputConfig.fromJson(core.Map json_)
-      : this(
-          gcsDestination: json_.containsKey('gcsDestination')
-              ? GcsDestination.fromJson(json_['gcsDestination']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        gcsDestination:
+            json_.containsKey('gcsDestination')
+                ? GcsDestination.fromJson(
+                  json_['gcsDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsDestination != null) 'gcsDestination': gcsDestination!,
-      };
+    if (gcsDestination != null) 'gcsDestination': gcsDestination!,
+  };
 }
 
 /// Message of caller-provided reference configuration.
@@ -4814,24 +4820,25 @@ class ReferenceSentenceConfig {
   });
 
   ReferenceSentenceConfig.fromJson(core.Map json_)
-      : this(
-          referenceSentencePairLists:
-              (json_['referenceSentencePairLists'] as core.List?)
-                  ?.map((value) => ReferenceSentencePairList.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
-          targetLanguageCode: json_['targetLanguageCode'] as core.String?,
-        );
+    : this(
+        referenceSentencePairLists:
+            (json_['referenceSentencePairLists'] as core.List?)
+                ?.map(
+                  (value) => ReferenceSentencePairList.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+        targetLanguageCode: json_['targetLanguageCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (referenceSentencePairLists != null)
-          'referenceSentencePairLists': referenceSentencePairLists!,
-        if (sourceLanguageCode != null)
-          'sourceLanguageCode': sourceLanguageCode!,
-        if (targetLanguageCode != null)
-          'targetLanguageCode': targetLanguageCode!,
-      };
+    if (referenceSentencePairLists != null)
+      'referenceSentencePairLists': referenceSentencePairLists!,
+    if (sourceLanguageCode != null) 'sourceLanguageCode': sourceLanguageCode!,
+    if (targetLanguageCode != null) 'targetLanguageCode': targetLanguageCode!,
+  };
 }
 
 /// A pair of sentences used as reference in source and target languages.
@@ -4842,21 +4849,18 @@ class ReferenceSentencePair {
   /// Target sentence in the sentence pair.
   core.String? targetSentence;
 
-  ReferenceSentencePair({
-    this.sourceSentence,
-    this.targetSentence,
-  });
+  ReferenceSentencePair({this.sourceSentence, this.targetSentence});
 
   ReferenceSentencePair.fromJson(core.Map json_)
-      : this(
-          sourceSentence: json_['sourceSentence'] as core.String?,
-          targetSentence: json_['targetSentence'] as core.String?,
-        );
+    : this(
+        sourceSentence: json_['sourceSentence'] as core.String?,
+        targetSentence: json_['targetSentence'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sourceSentence != null) 'sourceSentence': sourceSentence!,
-        if (targetSentence != null) 'targetSentence': targetSentence!,
-      };
+    if (sourceSentence != null) 'sourceSentence': sourceSentence!,
+    if (targetSentence != null) 'targetSentence': targetSentence!,
+  };
 }
 
 /// A list of reference sentence pairs.
@@ -4864,23 +4868,24 @@ class ReferenceSentencePairList {
   /// Reference sentence pairs.
   core.List<ReferenceSentencePair>? referenceSentencePairs;
 
-  ReferenceSentencePairList({
-    this.referenceSentencePairs,
-  });
+  ReferenceSentencePairList({this.referenceSentencePairs});
 
   ReferenceSentencePairList.fromJson(core.Map json_)
-      : this(
-          referenceSentencePairs:
-              (json_['referenceSentencePairs'] as core.List?)
-                  ?.map((value) => ReferenceSentencePair.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+    : this(
+        referenceSentencePairs:
+            (json_['referenceSentencePairs'] as core.List?)
+                ?.map(
+                  (value) => ReferenceSentencePair.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (referenceSentencePairs != null)
-          'referenceSentencePairs': referenceSentencePairs!,
-      };
+    if (referenceSentencePairs != null)
+      'referenceSentencePairs': referenceSentencePairs!,
+  };
 }
 
 /// A single romanization response.
@@ -4899,22 +4904,19 @@ class Romanization {
   /// the response.
   core.String? romanizedText;
 
-  Romanization({
-    this.detectedLanguageCode,
-    this.romanizedText,
-  });
+  Romanization({this.detectedLanguageCode, this.romanizedText});
 
   Romanization.fromJson(core.Map json_)
-      : this(
-          detectedLanguageCode: json_['detectedLanguageCode'] as core.String?,
-          romanizedText: json_['romanizedText'] as core.String?,
-        );
+    : this(
+        detectedLanguageCode: json_['detectedLanguageCode'] as core.String?,
+        romanizedText: json_['romanizedText'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedLanguageCode != null)
-          'detectedLanguageCode': detectedLanguageCode!,
-        if (romanizedText != null) 'romanizedText': romanizedText!,
-      };
+    if (detectedLanguageCode != null)
+      'detectedLanguageCode': detectedLanguageCode!,
+    if (romanizedText != null) 'romanizedText': romanizedText!,
+  };
 }
 
 /// The request message for synchronous romanization.
@@ -4934,24 +4936,21 @@ class RomanizeTextRequest {
   /// Optional.
   core.String? sourceLanguageCode;
 
-  RomanizeTextRequest({
-    this.contents,
-    this.sourceLanguageCode,
-  });
+  RomanizeTextRequest({this.contents, this.sourceLanguageCode});
 
   RomanizeTextRequest.fromJson(core.Map json_)
-      : this(
-          contents: (json_['contents'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
-        );
+    : this(
+        contents:
+            (json_['contents'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contents != null) 'contents': contents!,
-        if (sourceLanguageCode != null)
-          'sourceLanguageCode': sourceLanguageCode!,
-      };
+    if (contents != null) 'contents': contents!,
+    if (sourceLanguageCode != null) 'sourceLanguageCode': sourceLanguageCode!,
+  };
 }
 
 /// The response message for synchronous romanization.
@@ -4961,21 +4960,23 @@ class RomanizeTextResponse {
   /// This field has the same length as `contents`.
   core.List<Romanization>? romanizations;
 
-  RomanizeTextResponse({
-    this.romanizations,
-  });
+  RomanizeTextResponse({this.romanizations});
 
   RomanizeTextResponse.fromJson(core.Map json_)
-      : this(
-          romanizations: (json_['romanizations'] as core.List?)
-              ?.map((value) => Romanization.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        romanizations:
+            (json_['romanizations'] as core.List?)
+                ?.map(
+                  (value) => Romanization.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (romanizations != null) 'romanizations': romanizations!,
-      };
+    if (romanizations != null) 'romanizations': romanizations!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -5015,19 +5016,19 @@ class SupportedLanguage {
   });
 
   SupportedLanguage.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          languageCode: json_['languageCode'] as core.String?,
-          supportSource: json_['supportSource'] as core.bool?,
-          supportTarget: json_['supportTarget'] as core.bool?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        supportSource: json_['supportSource'] as core.bool?,
+        supportTarget: json_['supportTarget'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (supportSource != null) 'supportSource': supportSource!,
-        if (supportTarget != null) 'supportTarget': supportTarget!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (supportSource != null) 'supportSource': supportSource!,
+    if (supportTarget != null) 'supportTarget': supportTarget!,
+  };
 }
 
 /// The response message for discovering supported languages.
@@ -5038,21 +5039,23 @@ class SupportedLanguages {
   /// supports.
   core.List<SupportedLanguage>? languages;
 
-  SupportedLanguages({
-    this.languages,
-  });
+  SupportedLanguages({this.languages});
 
   SupportedLanguages.fromJson(core.Map json_)
-      : this(
-          languages: (json_['languages'] as core.List?)
-              ?.map((value) => SupportedLanguage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        languages:
+            (json_['languages'] as core.List?)
+                ?.map(
+                  (value) => SupportedLanguage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (languages != null) 'languages': languages!,
-      };
+    if (languages != null) 'languages': languages!,
+  };
 }
 
 /// A document translation request.
@@ -5168,59 +5171,62 @@ class TranslateDocumentRequest {
   });
 
   TranslateDocumentRequest.fromJson(core.Map json_)
-      : this(
-          customizedAttribution: json_['customizedAttribution'] as core.String?,
-          documentInputConfig: json_.containsKey('documentInputConfig')
-              ? DocumentInputConfig.fromJson(json_['documentInputConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          documentOutputConfig: json_.containsKey('documentOutputConfig')
-              ? DocumentOutputConfig.fromJson(json_['documentOutputConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          enableRotationCorrection:
-              json_['enableRotationCorrection'] as core.bool?,
-          enableShadowRemovalNativePdf:
-              json_['enableShadowRemovalNativePdf'] as core.bool?,
-          glossaryConfig: json_.containsKey('glossaryConfig')
-              ? TranslateTextGlossaryConfig.fromJson(json_['glossaryConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          isTranslateNativePdfOnly:
-              json_['isTranslateNativePdfOnly'] as core.bool?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          model: json_['model'] as core.String?,
-          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
-          targetLanguageCode: json_['targetLanguageCode'] as core.String?,
-        );
+    : this(
+        customizedAttribution: json_['customizedAttribution'] as core.String?,
+        documentInputConfig:
+            json_.containsKey('documentInputConfig')
+                ? DocumentInputConfig.fromJson(
+                  json_['documentInputConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        documentOutputConfig:
+            json_.containsKey('documentOutputConfig')
+                ? DocumentOutputConfig.fromJson(
+                  json_['documentOutputConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        enableRotationCorrection:
+            json_['enableRotationCorrection'] as core.bool?,
+        enableShadowRemovalNativePdf:
+            json_['enableShadowRemovalNativePdf'] as core.bool?,
+        glossaryConfig:
+            json_.containsKey('glossaryConfig')
+                ? TranslateTextGlossaryConfig.fromJson(
+                  json_['glossaryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        isTranslateNativePdfOnly:
+            json_['isTranslateNativePdfOnly'] as core.bool?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        model: json_['model'] as core.String?,
+        sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+        targetLanguageCode: json_['targetLanguageCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customizedAttribution != null)
-          'customizedAttribution': customizedAttribution!,
-        if (documentInputConfig != null)
-          'documentInputConfig': documentInputConfig!,
-        if (documentOutputConfig != null)
-          'documentOutputConfig': documentOutputConfig!,
-        if (enableRotationCorrection != null)
-          'enableRotationCorrection': enableRotationCorrection!,
-        if (enableShadowRemovalNativePdf != null)
-          'enableShadowRemovalNativePdf': enableShadowRemovalNativePdf!,
-        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
-        if (isTranslateNativePdfOnly != null)
-          'isTranslateNativePdfOnly': isTranslateNativePdfOnly!,
-        if (labels != null) 'labels': labels!,
-        if (model != null) 'model': model!,
-        if (sourceLanguageCode != null)
-          'sourceLanguageCode': sourceLanguageCode!,
-        if (targetLanguageCode != null)
-          'targetLanguageCode': targetLanguageCode!,
-      };
+    if (customizedAttribution != null)
+      'customizedAttribution': customizedAttribution!,
+    if (documentInputConfig != null)
+      'documentInputConfig': documentInputConfig!,
+    if (documentOutputConfig != null)
+      'documentOutputConfig': documentOutputConfig!,
+    if (enableRotationCorrection != null)
+      'enableRotationCorrection': enableRotationCorrection!,
+    if (enableShadowRemovalNativePdf != null)
+      'enableShadowRemovalNativePdf': enableShadowRemovalNativePdf!,
+    if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
+    if (isTranslateNativePdfOnly != null)
+      'isTranslateNativePdfOnly': isTranslateNativePdfOnly!,
+    if (labels != null) 'labels': labels!,
+    if (model != null) 'model': model!,
+    if (sourceLanguageCode != null) 'sourceLanguageCode': sourceLanguageCode!,
+    if (targetLanguageCode != null) 'targetLanguageCode': targetLanguageCode!,
+  };
 }
 
 /// A translated document response message.
@@ -5255,32 +5261,39 @@ class TranslateDocumentResponse {
   });
 
   TranslateDocumentResponse.fromJson(core.Map json_)
-      : this(
-          documentTranslation: json_.containsKey('documentTranslation')
-              ? DocumentTranslation.fromJson(json_['documentTranslation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          glossaryConfig: json_.containsKey('glossaryConfig')
-              ? TranslateTextGlossaryConfig.fromJson(json_['glossaryConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          glossaryDocumentTranslation:
-              json_.containsKey('glossaryDocumentTranslation')
-                  ? DocumentTranslation.fromJson(
-                      json_['glossaryDocumentTranslation']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          model: json_['model'] as core.String?,
-        );
+    : this(
+        documentTranslation:
+            json_.containsKey('documentTranslation')
+                ? DocumentTranslation.fromJson(
+                  json_['documentTranslation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        glossaryConfig:
+            json_.containsKey('glossaryConfig')
+                ? TranslateTextGlossaryConfig.fromJson(
+                  json_['glossaryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        glossaryDocumentTranslation:
+            json_.containsKey('glossaryDocumentTranslation')
+                ? DocumentTranslation.fromJson(
+                  json_['glossaryDocumentTranslation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        model: json_['model'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (documentTranslation != null)
-          'documentTranslation': documentTranslation!,
-        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
-        if (glossaryDocumentTranslation != null)
-          'glossaryDocumentTranslation': glossaryDocumentTranslation!,
-        if (model != null) 'model': model!,
-      };
+    if (documentTranslation != null)
+      'documentTranslation': documentTranslation!,
+    if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
+    if (glossaryDocumentTranslation != null)
+      'glossaryDocumentTranslation': glossaryDocumentTranslation!,
+    if (model != null) 'model': model!,
+  };
 }
 
 /// Configures which glossary is used for a specific target language and defines
@@ -5373,44 +5386,45 @@ class TranslateTextRequest {
   });
 
   TranslateTextRequest.fromJson(core.Map json_)
-      : this(
-          contents: (json_['contents'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          glossaryConfig: json_.containsKey('glossaryConfig')
-              ? TranslateTextGlossaryConfig.fromJson(json_['glossaryConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          mimeType: json_['mimeType'] as core.String?,
-          model: json_['model'] as core.String?,
-          sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
-          targetLanguageCode: json_['targetLanguageCode'] as core.String?,
-          transliterationConfig: json_.containsKey('transliterationConfig')
-              ? TransliterationConfig.fromJson(json_['transliterationConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        contents:
+            (json_['contents'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        glossaryConfig:
+            json_.containsKey('glossaryConfig')
+                ? TranslateTextGlossaryConfig.fromJson(
+                  json_['glossaryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        mimeType: json_['mimeType'] as core.String?,
+        model: json_['model'] as core.String?,
+        sourceLanguageCode: json_['sourceLanguageCode'] as core.String?,
+        targetLanguageCode: json_['targetLanguageCode'] as core.String?,
+        transliterationConfig:
+            json_.containsKey('transliterationConfig')
+                ? TransliterationConfig.fromJson(
+                  json_['transliterationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contents != null) 'contents': contents!,
-        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
-        if (labels != null) 'labels': labels!,
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (model != null) 'model': model!,
-        if (sourceLanguageCode != null)
-          'sourceLanguageCode': sourceLanguageCode!,
-        if (targetLanguageCode != null)
-          'targetLanguageCode': targetLanguageCode!,
-        if (transliterationConfig != null)
-          'transliterationConfig': transliterationConfig!,
-      };
+    if (contents != null) 'contents': contents!,
+    if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
+    if (labels != null) 'labels': labels!,
+    if (mimeType != null) 'mimeType': mimeType!,
+    if (model != null) 'model': model!,
+    if (sourceLanguageCode != null) 'sourceLanguageCode': sourceLanguageCode!,
+    if (targetLanguageCode != null) 'targetLanguageCode': targetLanguageCode!,
+    if (transliterationConfig != null)
+      'transliterationConfig': transliterationConfig!,
+  };
 }
 
 class TranslateTextResponse {
@@ -5425,28 +5439,33 @@ class TranslateTextResponse {
   /// This field has the same length as `contents`.
   core.List<Translation>? translations;
 
-  TranslateTextResponse({
-    this.glossaryTranslations,
-    this.translations,
-  });
+  TranslateTextResponse({this.glossaryTranslations, this.translations});
 
   TranslateTextResponse.fromJson(core.Map json_)
-      : this(
-          glossaryTranslations: (json_['glossaryTranslations'] as core.List?)
-              ?.map((value) => Translation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          translations: (json_['translations'] as core.List?)
-              ?.map((value) => Translation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        glossaryTranslations:
+            (json_['glossaryTranslations'] as core.List?)
+                ?.map(
+                  (value) => Translation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        translations:
+            (json_['translations'] as core.List?)
+                ?.map(
+                  (value) => Translation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (glossaryTranslations != null)
-          'glossaryTranslations': glossaryTranslations!,
-        if (translations != null) 'translations': translations!,
-      };
+    if (glossaryTranslations != null)
+      'glossaryTranslations': glossaryTranslations!,
+    if (translations != null) 'translations': translations!,
+  };
 }
 
 /// A single translation response.
@@ -5485,23 +5504,26 @@ class Translation {
   });
 
   Translation.fromJson(core.Map json_)
-      : this(
-          detectedLanguageCode: json_['detectedLanguageCode'] as core.String?,
-          glossaryConfig: json_.containsKey('glossaryConfig')
-              ? TranslateTextGlossaryConfig.fromJson(json_['glossaryConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          model: json_['model'] as core.String?,
-          translatedText: json_['translatedText'] as core.String?,
-        );
+    : this(
+        detectedLanguageCode: json_['detectedLanguageCode'] as core.String?,
+        glossaryConfig:
+            json_.containsKey('glossaryConfig')
+                ? TranslateTextGlossaryConfig.fromJson(
+                  json_['glossaryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        model: json_['model'] as core.String?,
+        translatedText: json_['translatedText'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectedLanguageCode != null)
-          'detectedLanguageCode': detectedLanguageCode!,
-        if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
-        if (model != null) 'model': model!,
-        if (translatedText != null) 'translatedText': translatedText!,
-      };
+    if (detectedLanguageCode != null)
+      'detectedLanguageCode': detectedLanguageCode!,
+    if (glossaryConfig != null) 'glossaryConfig': glossaryConfig!,
+    if (model != null) 'model': model!,
+    if (translatedText != null) 'translatedText': translatedText!,
+  };
 }
 
 /// Configures transliteration feature on top of translation.
@@ -5510,19 +5532,15 @@ class TransliterationConfig {
   /// language.
   core.bool? enableTransliteration;
 
-  TransliterationConfig({
-    this.enableTransliteration,
-  });
+  TransliterationConfig({this.enableTransliteration});
 
   TransliterationConfig.fromJson(core.Map json_)
-      : this(
-          enableTransliteration: json_['enableTransliteration'] as core.bool?,
-        );
+    : this(enableTransliteration: json_['enableTransliteration'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enableTransliteration != null)
-          'enableTransliteration': enableTransliteration!,
-      };
+    if (enableTransliteration != null)
+      'enableTransliteration': enableTransliteration!,
+  };
 }
 
 /// The request message for Operations.WaitOperation.

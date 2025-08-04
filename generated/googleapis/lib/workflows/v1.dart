@@ -54,11 +54,16 @@ class WorkflowsApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  WorkflowsApi(http.Client client,
-      {core.String rootUrl = 'https://workflows.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  WorkflowsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://workflows.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -97,10 +102,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -170,7 +172,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -178,7 +181,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes a long-running operation.
   ///
@@ -202,10 +205,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -215,6 +215,7 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -241,10 +242,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -306,7 +304,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -314,7 +313,7 @@ class ProjectsLocationsWorkflowsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsWorkflowsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new workflow.
   ///
@@ -404,6 +403,7 @@ class ProjectsLocationsWorkflowsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -519,7 +519,8 @@ class ProjectsLocationsWorkflowsResource {
       queryParams: queryParams_,
     );
     return ListWorkflowsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists revisions for a given workflow.
@@ -568,7 +569,8 @@ class ProjectsLocationsWorkflowsResource {
       queryParams: queryParams_,
     );
     return ListWorkflowRevisionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing workflow.
@@ -641,24 +643,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -669,24 +672,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// Response for the ListWorkflowRevisions method.
@@ -699,24 +703,25 @@ class ListWorkflowRevisionsResponse {
   /// The revisions of the workflow, ordered in reverse chronological order.
   core.List<Workflow>? workflows;
 
-  ListWorkflowRevisionsResponse({
-    this.nextPageToken,
-    this.workflows,
-  });
+  ListWorkflowRevisionsResponse({this.nextPageToken, this.workflows});
 
   ListWorkflowRevisionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          workflows: (json_['workflows'] as core.List?)
-              ?.map((value) => Workflow.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        workflows:
+            (json_['workflows'] as core.List?)
+                ?.map(
+                  (value) => Workflow.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (workflows != null) 'workflows': workflows!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (workflows != null) 'workflows': workflows!,
+  };
 }
 
 /// Response for the ListWorkflows method.
@@ -732,29 +737,30 @@ class ListWorkflowsResponse {
   /// The workflows that match the request.
   core.List<Workflow>? workflows;
 
-  ListWorkflowsResponse({
-    this.nextPageToken,
-    this.unreachable,
-    this.workflows,
-  });
+  ListWorkflowsResponse({this.nextPageToken, this.unreachable, this.workflows});
 
   ListWorkflowsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          workflows: (json_['workflows'] as core.List?)
-              ?.map((value) => Workflow.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        workflows:
+            (json_['workflows'] as core.List?)
+                ?.map(
+                  (value) => Workflow.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-        if (workflows != null) 'workflows': workflows!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+    if (workflows != null) 'workflows': workflows!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -803,37 +809,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Describes an error related to the current state of the workflow.
@@ -1033,75 +1037,65 @@ class Workflow {
   });
 
   Workflow.fromJson(core.Map json_)
-      : this(
-          allKmsKeys: (json_['allKmsKeys'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          allKmsKeysVersions: (json_['allKmsKeysVersions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          callLogLevel: json_['callLogLevel'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          cryptoKeyName: json_['cryptoKeyName'] as core.String?,
-          cryptoKeyVersion: json_['cryptoKeyVersion'] as core.String?,
-          description: json_['description'] as core.String?,
-          executionHistoryLevel: json_['executionHistoryLevel'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          revisionCreateTime: json_['revisionCreateTime'] as core.String?,
-          revisionId: json_['revisionId'] as core.String?,
-          serviceAccount: json_['serviceAccount'] as core.String?,
-          sourceContents: json_['sourceContents'] as core.String?,
-          state: json_['state'] as core.String?,
-          stateError: json_.containsKey('stateError')
-              ? StateError.fromJson(
-                  json_['stateError'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          updateTime: json_['updateTime'] as core.String?,
-          userEnvVars:
-              (json_['userEnvVars'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        allKmsKeys:
+            (json_['allKmsKeys'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        allKmsKeysVersions:
+            (json_['allKmsKeysVersions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        callLogLevel: json_['callLogLevel'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        cryptoKeyName: json_['cryptoKeyName'] as core.String?,
+        cryptoKeyVersion: json_['cryptoKeyVersion'] as core.String?,
+        description: json_['description'] as core.String?,
+        executionHistoryLevel: json_['executionHistoryLevel'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        revisionCreateTime: json_['revisionCreateTime'] as core.String?,
+        revisionId: json_['revisionId'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        sourceContents: json_['sourceContents'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateError:
+            json_.containsKey('stateError')
+                ? StateError.fromJson(
+                  json_['stateError'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        updateTime: json_['updateTime'] as core.String?,
+        userEnvVars: (json_['userEnvVars']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allKmsKeys != null) 'allKmsKeys': allKmsKeys!,
-        if (allKmsKeysVersions != null)
-          'allKmsKeysVersions': allKmsKeysVersions!,
-        if (callLogLevel != null) 'callLogLevel': callLogLevel!,
-        if (createTime != null) 'createTime': createTime!,
-        if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
-        if (cryptoKeyVersion != null) 'cryptoKeyVersion': cryptoKeyVersion!,
-        if (description != null) 'description': description!,
-        if (executionHistoryLevel != null)
-          'executionHistoryLevel': executionHistoryLevel!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (revisionCreateTime != null)
-          'revisionCreateTime': revisionCreateTime!,
-        if (revisionId != null) 'revisionId': revisionId!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (sourceContents != null) 'sourceContents': sourceContents!,
-        if (state != null) 'state': state!,
-        if (stateError != null) 'stateError': stateError!,
-        if (tags != null) 'tags': tags!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (userEnvVars != null) 'userEnvVars': userEnvVars!,
-      };
+    if (allKmsKeys != null) 'allKmsKeys': allKmsKeys!,
+    if (allKmsKeysVersions != null) 'allKmsKeysVersions': allKmsKeysVersions!,
+    if (callLogLevel != null) 'callLogLevel': callLogLevel!,
+    if (createTime != null) 'createTime': createTime!,
+    if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
+    if (cryptoKeyVersion != null) 'cryptoKeyVersion': cryptoKeyVersion!,
+    if (description != null) 'description': description!,
+    if (executionHistoryLevel != null)
+      'executionHistoryLevel': executionHistoryLevel!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (revisionCreateTime != null) 'revisionCreateTime': revisionCreateTime!,
+    if (revisionId != null) 'revisionId': revisionId!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (sourceContents != null) 'sourceContents': sourceContents!,
+    if (state != null) 'state': state!,
+    if (stateError != null) 'stateError': stateError!,
+    if (tags != null) 'tags': tags!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (userEnvVars != null) 'userEnvVars': userEnvVars!,
+  };
 }

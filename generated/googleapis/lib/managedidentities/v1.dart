@@ -59,11 +59,16 @@ class ManagedServiceForMicrosoftActiveDirectoryConsumerApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ManagedServiceForMicrosoftActiveDirectoryConsumerApi(http.Client client,
-      {core.String rootUrl = 'https://managedidentities.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ManagedServiceForMicrosoftActiveDirectoryConsumerApi(
+    http.Client client, {
+    core.String rootUrl = 'https://managedidentities.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -100,10 +105,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -167,7 +169,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -182,7 +185,7 @@ class ProjectsLocationsGlobalResource {
       ProjectsLocationsGlobalPeeringsResource(_requester);
 
   ProjectsLocationsGlobalResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class ProjectsLocationsGlobalDomainsResource {
@@ -194,7 +197,7 @@ class ProjectsLocationsGlobalDomainsResource {
       ProjectsLocationsGlobalDomainsSqlIntegrationsResource(_requester);
 
   ProjectsLocationsGlobalDomainsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Adds an AD trust to a domain.
   ///
@@ -280,7 +283,8 @@ class ProjectsLocationsGlobalDomainsResource {
       queryParams: queryParams_,
     );
     return CheckMigrationPermissionResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a Microsoft AD domain.
@@ -366,6 +370,7 @@ class ProjectsLocationsGlobalDomainsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -496,7 +501,8 @@ class ProjectsLocationsGlobalDomainsResource {
       queryParams: queryParams_,
     );
     return DomainJoinMachineResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Enable Domain Migration
@@ -602,10 +608,7 @@ class ProjectsLocationsGlobalDomainsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Domain> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Domain> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -712,7 +715,8 @@ class ProjectsLocationsGlobalDomainsResource {
       queryParams: queryParams_,
     );
     return LDAPSSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists domains in a project.
@@ -773,7 +777,8 @@ class ProjectsLocationsGlobalDomainsResource {
       queryParams: queryParams_,
     );
     return ListDomainsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the metadata and configuration of a domain.
@@ -908,7 +913,8 @@ class ProjectsLocationsGlobalDomainsResource {
       queryParams: queryParams_,
     );
     return ResetAdminPasswordResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// RestoreDomain restores domain backup mentioned in the RestoreDomainRequest
@@ -1048,7 +1054,8 @@ class ProjectsLocationsGlobalDomainsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Patches a single ldaps settings.
@@ -1148,7 +1155,7 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGlobalDomainsBackupsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a Backup for a domain.
   ///
@@ -1232,6 +1239,7 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1256,10 +1264,7 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Backup> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Backup> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1388,7 +1393,8 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
       queryParams: queryParams_,
     );
     return ListBackupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the labels for specified Backup.
@@ -1534,7 +1540,8 @@ class ProjectsLocationsGlobalDomainsBackupsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1542,8 +1549,8 @@ class ProjectsLocationsGlobalDomainsSqlIntegrationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGlobalDomainsSqlIntegrationsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets details of a single sqlIntegration.
   ///
@@ -1580,7 +1587,8 @@ class ProjectsLocationsGlobalDomainsSqlIntegrationsResource {
       queryParams: queryParams_,
     );
     return SqlIntegration.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists SqlIntegrations in a given domain.
@@ -1641,7 +1649,8 @@ class ProjectsLocationsGlobalDomainsSqlIntegrationsResource {
       queryParams: queryParams_,
     );
     return ListSqlIntegrationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1649,7 +1658,7 @@ class ProjectsLocationsGlobalOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGlobalOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -1723,10 +1732,7 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1736,6 +1742,7 @@ class ProjectsLocationsGlobalOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1762,10 +1769,7 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1827,7 +1831,8 @@ class ProjectsLocationsGlobalOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1835,7 +1840,7 @@ class ProjectsLocationsGlobalPeeringsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGlobalPeeringsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a Peering for Managed AD instance.
   ///
@@ -1916,6 +1921,7 @@ class ProjectsLocationsGlobalPeeringsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1940,10 +1946,7 @@ class ProjectsLocationsGlobalPeeringsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Peering> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Peering> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2073,7 +2076,8 @@ class ProjectsLocationsGlobalPeeringsResource {
       queryParams: queryParams_,
     );
     return ListPeeringsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the labels for specified Peering.
@@ -2220,7 +2224,8 @@ class ProjectsLocationsGlobalPeeringsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2231,21 +2236,21 @@ class AttachTrustRequest {
   /// Required.
   Trust? trust;
 
-  AttachTrustRequest({
-    this.trust,
-  });
+  AttachTrustRequest({this.trust});
 
   AttachTrustRequest.fromJson(core.Map json_)
-      : this(
-          trust: json_.containsKey('trust')
-              ? Trust.fromJson(
-                  json_['trust'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        trust:
+            json_.containsKey('trust')
+                ? Trust.fromJson(
+                  json_['trust'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (trust != null) 'trust': trust!,
-      };
+    if (trust != null) 'trust': trust!,
+  };
 }
 
 /// Represents a Managed Microsoft Identities backup.
@@ -2308,31 +2313,27 @@ class Backup {
   });
 
   Backup.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          statusMessage: json_['statusMessage'] as core.String?,
-          type: json_['type'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        statusMessage: json_['statusMessage'] as core.String?,
+        type: json_['type'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (statusMessage != null) 'statusMessage': statusMessage!,
-        if (type != null) 'type': type!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (statusMessage != null) 'statusMessage': statusMessage!,
+    if (type != null) 'type': type!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -2415,29 +2416,28 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -2469,29 +2469,31 @@ class Certificate {
   });
 
   Certificate.fromJson(core.Map json_)
-      : this(
-          expireTime: json_['expireTime'] as core.String?,
-          issuingCertificate: json_.containsKey('issuingCertificate')
-              ? Certificate.fromJson(json_['issuingCertificate']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          subject: json_['subject'] as core.String?,
-          subjectAlternativeName:
-              (json_['subjectAlternativeName'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          thumbprint: json_['thumbprint'] as core.String?,
-        );
+    : this(
+        expireTime: json_['expireTime'] as core.String?,
+        issuingCertificate:
+            json_.containsKey('issuingCertificate')
+                ? Certificate.fromJson(
+                  json_['issuingCertificate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        subject: json_['subject'] as core.String?,
+        subjectAlternativeName:
+            (json_['subjectAlternativeName'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        thumbprint: json_['thumbprint'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (issuingCertificate != null)
-          'issuingCertificate': issuingCertificate!,
-        if (subject != null) 'subject': subject!,
-        if (subjectAlternativeName != null)
-          'subjectAlternativeName': subjectAlternativeName!,
-        if (thumbprint != null) 'thumbprint': thumbprint!,
-      };
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (issuingCertificate != null) 'issuingCertificate': issuingCertificate!,
+    if (subject != null) 'subject': subject!,
+    if (subjectAlternativeName != null)
+      'subjectAlternativeName': subjectAlternativeName!,
+    if (thumbprint != null) 'thumbprint': thumbprint!,
+  };
 }
 
 /// CheckMigrationPermissionRequest is the request message for
@@ -2512,24 +2514,25 @@ class CheckMigrationPermissionResponse {
   /// - "NEEDS_MAINTENANCE" : Domain Migration is not in valid state.
   core.String? state;
 
-  CheckMigrationPermissionResponse({
-    this.onpremDomains,
-    this.state,
-  });
+  CheckMigrationPermissionResponse({this.onpremDomains, this.state});
 
   CheckMigrationPermissionResponse.fromJson(core.Map json_)
-      : this(
-          onpremDomains: (json_['onpremDomains'] as core.List?)
-              ?.map((value) => OnPremDomainSIDDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        onpremDomains:
+            (json_['onpremDomains'] as core.List?)
+                ?.map(
+                  (value) => OnPremDomainSIDDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (onpremDomains != null) 'onpremDomains': onpremDomains!,
-        if (state != null) 'state': state!,
-      };
+    if (onpremDomains != null) 'onpremDomains': onpremDomains!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Request message for DetachTrust
@@ -2539,21 +2542,21 @@ class DetachTrustRequest {
   /// Required.
   Trust? trust;
 
-  DetachTrustRequest({
-    this.trust,
-  });
+  DetachTrustRequest({this.trust});
 
   DetachTrustRequest.fromJson(core.Map json_)
-      : this(
-          trust: json_.containsKey('trust')
-              ? Trust.fromJson(
-                  json_['trust'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        trust:
+            json_.containsKey('trust')
+                ? Trust.fromJson(
+                  json_['trust'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (trust != null) 'trust': trust!,
-      };
+    if (trust != null) 'trust': trust!,
+  };
 }
 
 /// DisableMigrationRequest is the request message for DisableMigration method.
@@ -2684,51 +2687,52 @@ class Domain {
   });
 
   Domain.fromJson(core.Map json_)
-      : this(
-          admin: json_['admin'] as core.String?,
-          auditLogsEnabled: json_['auditLogsEnabled'] as core.bool?,
-          authorizedNetworks: (json_['authorizedNetworks'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          createTime: json_['createTime'] as core.String?,
-          fqdn: json_['fqdn'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          reservedIpRange: json_['reservedIpRange'] as core.String?,
-          state: json_['state'] as core.String?,
-          statusMessage: json_['statusMessage'] as core.String?,
-          trusts: (json_['trusts'] as core.List?)
-              ?.map((value) =>
-                  Trust.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        admin: json_['admin'] as core.String?,
+        auditLogsEnabled: json_['auditLogsEnabled'] as core.bool?,
+        authorizedNetworks:
+            (json_['authorizedNetworks'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        fqdn: json_['fqdn'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        reservedIpRange: json_['reservedIpRange'] as core.String?,
+        state: json_['state'] as core.String?,
+        statusMessage: json_['statusMessage'] as core.String?,
+        trusts:
+            (json_['trusts'] as core.List?)
+                ?.map(
+                  (value) => Trust.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (admin != null) 'admin': admin!,
-        if (auditLogsEnabled != null) 'auditLogsEnabled': auditLogsEnabled!,
-        if (authorizedNetworks != null)
-          'authorizedNetworks': authorizedNetworks!,
-        if (createTime != null) 'createTime': createTime!,
-        if (fqdn != null) 'fqdn': fqdn!,
-        if (labels != null) 'labels': labels!,
-        if (locations != null) 'locations': locations!,
-        if (name != null) 'name': name!,
-        if (reservedIpRange != null) 'reservedIpRange': reservedIpRange!,
-        if (state != null) 'state': state!,
-        if (statusMessage != null) 'statusMessage': statusMessage!,
-        if (trusts != null) 'trusts': trusts!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (admin != null) 'admin': admin!,
+    if (auditLogsEnabled != null) 'auditLogsEnabled': auditLogsEnabled!,
+    if (authorizedNetworks != null) 'authorizedNetworks': authorizedNetworks!,
+    if (createTime != null) 'createTime': createTime!,
+    if (fqdn != null) 'fqdn': fqdn!,
+    if (labels != null) 'labels': labels!,
+    if (locations != null) 'locations': locations!,
+    if (name != null) 'name': name!,
+    if (reservedIpRange != null) 'reservedIpRange': reservedIpRange!,
+    if (state != null) 'state': state!,
+    if (statusMessage != null) 'statusMessage': statusMessage!,
+    if (trusts != null) 'trusts': trusts!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// DomainJoinMachineRequest is the request message for DomainJoinMachine method
@@ -2752,24 +2756,20 @@ class DomainJoinMachineRequest {
   /// Required.
   core.String? vmIdToken;
 
-  DomainJoinMachineRequest({
-    this.force,
-    this.ouName,
-    this.vmIdToken,
-  });
+  DomainJoinMachineRequest({this.force, this.ouName, this.vmIdToken});
 
   DomainJoinMachineRequest.fromJson(core.Map json_)
-      : this(
-          force: json_['force'] as core.bool?,
-          ouName: json_['ouName'] as core.String?,
-          vmIdToken: json_['vmIdToken'] as core.String?,
-        );
+    : this(
+        force: json_['force'] as core.bool?,
+        ouName: json_['ouName'] as core.String?,
+        vmIdToken: json_['vmIdToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (force != null) 'force': force!,
-        if (ouName != null) 'ouName': ouName!,
-        if (vmIdToken != null) 'vmIdToken': vmIdToken!,
-      };
+    if (force != null) 'force': force!,
+    if (ouName != null) 'ouName': ouName!,
+    if (vmIdToken != null) 'vmIdToken': vmIdToken!,
+  };
 }
 
 /// DomainJoinMachineResponse is the response message for DomainJoinMachine
@@ -2778,18 +2778,14 @@ class DomainJoinMachineResponse {
   /// Offline domain join blob as the response
   core.String? domainJoinBlob;
 
-  DomainJoinMachineResponse({
-    this.domainJoinBlob,
-  });
+  DomainJoinMachineResponse({this.domainJoinBlob});
 
   DomainJoinMachineResponse.fromJson(core.Map json_)
-      : this(
-          domainJoinBlob: json_['domainJoinBlob'] as core.String?,
-        );
+    : this(domainJoinBlob: json_['domainJoinBlob'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domainJoinBlob != null) 'domainJoinBlob': domainJoinBlob!,
-      };
+    if (domainJoinBlob != null) 'domainJoinBlob': domainJoinBlob!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2807,21 +2803,23 @@ class EnableMigrationRequest {
   /// Required.
   core.List<OnPremDomainDetails>? migratingDomains;
 
-  EnableMigrationRequest({
-    this.migratingDomains,
-  });
+  EnableMigrationRequest({this.migratingDomains});
 
   EnableMigrationRequest.fromJson(core.Map json_)
-      : this(
-          migratingDomains: (json_['migratingDomains'] as core.List?)
-              ?.map((value) => OnPremDomainDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        migratingDomains:
+            (json_['migratingDomains'] as core.List?)
+                ?.map(
+                  (value) => OnPremDomainDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (migratingDomains != null) 'migratingDomains': migratingDomains!,
-      };
+    if (migratingDomains != null) 'migratingDomains': migratingDomains!,
+  };
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2857,8 +2855,10 @@ class ExtendSchemaRequest {
       convert.base64.decode(fileContents!);
 
   set fileContentsAsBytes(core.List<core.int> bytes_) {
-    fileContents =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    fileContents = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// File stored in Cloud Storage bucket and represented in the form
@@ -2866,24 +2866,20 @@ class ExtendSchemaRequest {
   /// should be in the same project as the domain.
   core.String? gcsPath;
 
-  ExtendSchemaRequest({
-    this.description,
-    this.fileContents,
-    this.gcsPath,
-  });
+  ExtendSchemaRequest({this.description, this.fileContents, this.gcsPath});
 
   ExtendSchemaRequest.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          fileContents: json_['fileContents'] as core.String?,
-          gcsPath: json_['gcsPath'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        fileContents: json_['fileContents'] as core.String?,
+        gcsPath: json_['gcsPath'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (fileContents != null) 'fileContents': fileContents!,
-        if (gcsPath != null) 'gcsPath': gcsPath!,
-      };
+    if (description != null) 'description': description!,
+    if (fileContents != null) 'fileContents': fileContents!,
+    if (gcsPath != null) 'gcsPath': gcsPath!,
+  };
 }
 
 /// LDAPSSettings represents the ldaps settings for domain resource.
@@ -2930,8 +2926,10 @@ class LDAPSSettings {
       convert.base64.decode(certificatePfx!);
 
   set certificatePfxAsBytes(core.List<core.int> bytes_) {
-    certificatePfx =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    certificatePfx = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The resource name of the LDAPS settings.
@@ -2964,27 +2962,29 @@ class LDAPSSettings {
   });
 
   LDAPSSettings.fromJson(core.Map json_)
-      : this(
-          certificate: json_.containsKey('certificate')
-              ? Certificate.fromJson(
-                  json_['certificate'] as core.Map<core.String, core.dynamic>)
-              : null,
-          certificatePassword: json_['certificatePassword'] as core.String?,
-          certificatePfx: json_['certificatePfx'] as core.String?,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        certificate:
+            json_.containsKey('certificate')
+                ? Certificate.fromJson(
+                  json_['certificate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        certificatePassword: json_['certificatePassword'] as core.String?,
+        certificatePfx: json_['certificatePfx'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certificate != null) 'certificate': certificate!,
-        if (certificatePassword != null)
-          'certificatePassword': certificatePassword!,
-        if (certificatePfx != null) 'certificatePfx': certificatePfx!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (certificate != null) 'certificate': certificate!,
+    if (certificatePassword != null)
+      'certificatePassword': certificatePassword!,
+    if (certificatePfx != null) 'certificatePfx': certificatePfx!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// ListBackupsResponse is the response message for ListBackups method.
@@ -2999,29 +2999,30 @@ class ListBackupsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListBackupsResponse({
-    this.backups,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListBackupsResponse({this.backups, this.nextPageToken, this.unreachable});
 
   ListBackupsResponse.fromJson(core.Map json_)
-      : this(
-          backups: (json_['backups'] as core.List?)
-              ?.map((value) =>
-                  Backup.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        backups:
+            (json_['backups'] as core.List?)
+                ?.map(
+                  (value) => Backup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backups != null) 'backups': backups!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (backups != null) 'backups': backups!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response message for ListDomains
@@ -3036,29 +3037,30 @@ class ListDomainsResponse {
   /// A list of locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListDomainsResponse({
-    this.domains,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListDomainsResponse({this.domains, this.nextPageToken, this.unreachable});
 
   ListDomainsResponse.fromJson(core.Map json_)
-      : this(
-          domains: (json_['domains'] as core.List?)
-              ?.map((value) =>
-                  Domain.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        domains:
+            (json_['domains'] as core.List?)
+                ?.map(
+                  (value) => Domain.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domains != null) 'domains': domains!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (domains != null) 'domains': domains!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -3069,24 +3071,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -3097,24 +3100,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// ListPeeringsResponse is the response message for ListPeerings method.
@@ -3129,29 +3133,30 @@ class ListPeeringsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListPeeringsResponse({
-    this.nextPageToken,
-    this.peerings,
-    this.unreachable,
-  });
+  ListPeeringsResponse({this.nextPageToken, this.peerings, this.unreachable});
 
   ListPeeringsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          peerings: (json_['peerings'] as core.List?)
-              ?.map((value) => Peering.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        peerings:
+            (json_['peerings'] as core.List?)
+                ?.map(
+                  (value) => Peering.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (peerings != null) 'peerings': peerings!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (peerings != null) 'peerings': peerings!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// ListSqlIntegrationsResponse is the response message for ListSqlIntegrations
@@ -3174,22 +3179,27 @@ class ListSqlIntegrationsResponse {
   });
 
   ListSqlIntegrationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          sqlIntegrations: (json_['sqlIntegrations'] as core.List?)
-              ?.map((value) => SqlIntegration.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        sqlIntegrations:
+            (json_['sqlIntegrations'] as core.List?)
+                ?.map(
+                  (value) => SqlIntegration.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (sqlIntegrations != null) 'sqlIntegrations': sqlIntegrations!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (sqlIntegrations != null) 'sqlIntegrations': sqlIntegrations!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -3208,22 +3218,19 @@ class OnPremDomainDetails {
   /// Required.
   core.String? domainName;
 
-  OnPremDomainDetails({
-    this.disableSidFiltering,
-    this.domainName,
-  });
+  OnPremDomainDetails({this.disableSidFiltering, this.domainName});
 
   OnPremDomainDetails.fromJson(core.Map json_)
-      : this(
-          disableSidFiltering: json_['disableSidFiltering'] as core.bool?,
-          domainName: json_['domainName'] as core.String?,
-        );
+    : this(
+        disableSidFiltering: json_['disableSidFiltering'] as core.bool?,
+        domainName: json_['domainName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disableSidFiltering != null)
-          'disableSidFiltering': disableSidFiltering!,
-        if (domainName != null) 'domainName': domainName!,
-      };
+    if (disableSidFiltering != null)
+      'disableSidFiltering': disableSidFiltering!,
+    if (domainName != null) 'domainName': domainName!,
+  };
 }
 
 /// OnPremDomainDetails is the message which contains details of on-prem domain
@@ -3240,21 +3247,18 @@ class OnPremDomainSIDDetails {
   /// - "DISABLED" : SID Filtering is Disabled.
   core.String? sidFilteringState;
 
-  OnPremDomainSIDDetails({
-    this.name,
-    this.sidFilteringState,
-  });
+  OnPremDomainSIDDetails({this.name, this.sidFilteringState});
 
   OnPremDomainSIDDetails.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          sidFilteringState: json_['sidFilteringState'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        sidFilteringState: json_['sidFilteringState'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (sidFilteringState != null) 'sidFilteringState': sidFilteringState!,
-      };
+    if (name != null) 'name': name!,
+    if (sidFilteringState != null) 'sidFilteringState': sidFilteringState!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -3300,37 +3304,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Represents a Managed Service for Microsoft Active Directory Peering.
@@ -3404,33 +3406,29 @@ class Peering {
   });
 
   Peering.fromJson(core.Map json_)
-      : this(
-          authorizedNetwork: json_['authorizedNetwork'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          domainResource: json_['domainResource'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          statusMessage: json_['statusMessage'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        authorizedNetwork: json_['authorizedNetwork'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        domainResource: json_['domainResource'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        statusMessage: json_['statusMessage'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
-        if (createTime != null) 'createTime': createTime!,
-        if (domainResource != null) 'domainResource': domainResource!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (statusMessage != null) 'statusMessage': statusMessage!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
+    if (createTime != null) 'createTime': createTime!,
+    if (domainResource != null) 'domainResource': domainResource!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (statusMessage != null) 'statusMessage': statusMessage!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -3493,8 +3491,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -3516,27 +3516,27 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Request message for ReconfigureTrust
@@ -3553,24 +3553,22 @@ class ReconfigureTrustRequest {
   /// Required.
   core.String? targetDomainName;
 
-  ReconfigureTrustRequest({
-    this.targetDnsIpAddresses,
-    this.targetDomainName,
-  });
+  ReconfigureTrustRequest({this.targetDnsIpAddresses, this.targetDomainName});
 
   ReconfigureTrustRequest.fromJson(core.Map json_)
-      : this(
-          targetDnsIpAddresses: (json_['targetDnsIpAddresses'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          targetDomainName: json_['targetDomainName'] as core.String?,
-        );
+    : this(
+        targetDnsIpAddresses:
+            (json_['targetDnsIpAddresses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        targetDomainName: json_['targetDomainName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (targetDnsIpAddresses != null)
-          'targetDnsIpAddresses': targetDnsIpAddresses!,
-        if (targetDomainName != null) 'targetDomainName': targetDomainName!,
-      };
+    if (targetDnsIpAddresses != null)
+      'targetDnsIpAddresses': targetDnsIpAddresses!,
+    if (targetDomainName != null) 'targetDomainName': targetDomainName!,
+  };
 }
 
 /// Request message for ResetAdminPassword
@@ -3583,18 +3581,14 @@ class ResetAdminPasswordResponse {
   /// See admin for more information.
   core.String? password;
 
-  ResetAdminPasswordResponse({
-    this.password,
-  });
+  ResetAdminPasswordResponse({this.password});
 
   ResetAdminPasswordResponse.fromJson(core.Map json_)
-      : this(
-          password: json_['password'] as core.String?,
-        );
+    : this(password: json_['password'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (password != null) 'password': password!,
-      };
+    if (password != null) 'password': password!,
+  };
 }
 
 /// RestoreDomainRequest is the request received by RestoreDomain rpc
@@ -3604,18 +3598,14 @@ class RestoreDomainRequest {
   /// Required.
   core.String? backupId;
 
-  RestoreDomainRequest({
-    this.backupId,
-  });
+  RestoreDomainRequest({this.backupId});
 
   RestoreDomainRequest.fromJson(core.Map json_)
-      : this(
-          backupId: json_['backupId'] as core.String?,
-        );
+    : this(backupId: json_['backupId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backupId != null) 'backupId': backupId!,
-      };
+    if (backupId != null) 'backupId': backupId!,
+  };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -3627,21 +3617,21 @@ class SetIamPolicyRequest {
   /// reject them.
   Policy? policy;
 
-  SetIamPolicyRequest({
-    this.policy,
-  });
+  SetIamPolicyRequest({this.policy});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-      };
+    if (policy != null) 'policy': policy!,
+  };
 }
 
 /// Represents the SQL instance integrated with Managed AD.
@@ -3682,21 +3672,21 @@ class SqlIntegration {
   });
 
   SqlIntegration.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          sqlInstance: json_['sqlInstance'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        sqlInstance: json_['sqlInstance'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (sqlInstance != null) 'sqlInstance': sqlInstance!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (sqlInstance != null) 'sqlInstance': sqlInstance!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3815,41 +3805,40 @@ class Trust {
   });
 
   Trust.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          lastTrustHeartbeatTime:
-              json_['lastTrustHeartbeatTime'] as core.String?,
-          selectiveAuthentication:
-              json_['selectiveAuthentication'] as core.bool?,
-          state: json_['state'] as core.String?,
-          stateDescription: json_['stateDescription'] as core.String?,
-          targetDnsIpAddresses: (json_['targetDnsIpAddresses'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          targetDomainName: json_['targetDomainName'] as core.String?,
-          trustDirection: json_['trustDirection'] as core.String?,
-          trustHandshakeSecret: json_['trustHandshakeSecret'] as core.String?,
-          trustType: json_['trustType'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        lastTrustHeartbeatTime: json_['lastTrustHeartbeatTime'] as core.String?,
+        selectiveAuthentication: json_['selectiveAuthentication'] as core.bool?,
+        state: json_['state'] as core.String?,
+        stateDescription: json_['stateDescription'] as core.String?,
+        targetDnsIpAddresses:
+            (json_['targetDnsIpAddresses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        targetDomainName: json_['targetDomainName'] as core.String?,
+        trustDirection: json_['trustDirection'] as core.String?,
+        trustHandshakeSecret: json_['trustHandshakeSecret'] as core.String?,
+        trustType: json_['trustType'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (lastTrustHeartbeatTime != null)
-          'lastTrustHeartbeatTime': lastTrustHeartbeatTime!,
-        if (selectiveAuthentication != null)
-          'selectiveAuthentication': selectiveAuthentication!,
-        if (state != null) 'state': state!,
-        if (stateDescription != null) 'stateDescription': stateDescription!,
-        if (targetDnsIpAddresses != null)
-          'targetDnsIpAddresses': targetDnsIpAddresses!,
-        if (targetDomainName != null) 'targetDomainName': targetDomainName!,
-        if (trustDirection != null) 'trustDirection': trustDirection!,
-        if (trustHandshakeSecret != null)
-          'trustHandshakeSecret': trustHandshakeSecret!,
-        if (trustType != null) 'trustType': trustType!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (lastTrustHeartbeatTime != null)
+      'lastTrustHeartbeatTime': lastTrustHeartbeatTime!,
+    if (selectiveAuthentication != null)
+      'selectiveAuthentication': selectiveAuthentication!,
+    if (state != null) 'state': state!,
+    if (stateDescription != null) 'stateDescription': stateDescription!,
+    if (targetDnsIpAddresses != null)
+      'targetDnsIpAddresses': targetDnsIpAddresses!,
+    if (targetDomainName != null) 'targetDomainName': targetDomainName!,
+    if (trustDirection != null) 'trustDirection': trustDirection!,
+    if (trustHandshakeSecret != null)
+      'trustHandshakeSecret': trustHandshakeSecret!,
+    if (trustType != null) 'trustType': trustType!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Request message for ValidateTrust
@@ -3859,19 +3848,19 @@ class ValidateTrustRequest {
   /// Required.
   Trust? trust;
 
-  ValidateTrustRequest({
-    this.trust,
-  });
+  ValidateTrustRequest({this.trust});
 
   ValidateTrustRequest.fromJson(core.Map json_)
-      : this(
-          trust: json_.containsKey('trust')
-              ? Trust.fromJson(
-                  json_['trust'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        trust:
+            json_.containsKey('trust')
+                ? Trust.fromJson(
+                  json_['trust'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (trust != null) 'trust': trust!,
-      };
+    if (trust != null) 'trust': trust!,
+  };
 }

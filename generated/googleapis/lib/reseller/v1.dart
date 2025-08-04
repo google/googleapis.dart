@@ -56,11 +56,16 @@ class ResellerApi {
       ResellernotifyResource_1(_requester);
   SubscriptionsResource get subscriptions => SubscriptionsResource(_requester);
 
-  ResellerApi(http.Client client,
-      {core.String rootUrl = 'https://reseller.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ResellerApi(
+    http.Client client, {
+    core.String rootUrl = 'https://reseller.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class CustomersResource {
@@ -310,7 +315,8 @@ class ResellernotifyResource_1 {
       queryParams: queryParams_,
     );
     return ResellernotifyGetwatchdetailsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Registers a Reseller for receiving notifications.
@@ -345,10 +351,12 @@ class ResellernotifyResource_1 {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return ResellernotifyResource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Unregisters a Reseller for receiving notifications.
@@ -383,10 +391,12 @@ class ResellernotifyResource_1 {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return ResellernotifyResource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -435,7 +445,8 @@ class SubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/reseller/v1/customers/' +
+    final url_ =
+        'apps/reseller/v1/customers/' +
         commons.escapeVariable('$customerId') +
         '/subscriptions/' +
         commons.escapeVariable('$subscriptionId') +
@@ -444,10 +455,12 @@ class SubscriptionsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a subscription plan.
@@ -496,7 +509,8 @@ class SubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/reseller/v1/customers/' +
+    final url_ =
+        'apps/reseller/v1/customers/' +
         commons.escapeVariable('$customerId') +
         '/subscriptions/' +
         commons.escapeVariable('$subscriptionId') +
@@ -509,7 +523,8 @@ class SubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a user license's renewal settings.
@@ -556,7 +571,8 @@ class SubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/reseller/v1/customers/' +
+    final url_ =
+        'apps/reseller/v1/customers/' +
         commons.escapeVariable('$customerId') +
         '/subscriptions/' +
         commons.escapeVariable('$subscriptionId') +
@@ -569,7 +585,8 @@ class SubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a subscription's user license settings.
@@ -616,7 +633,8 @@ class SubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/reseller/v1/customers/' +
+    final url_ =
+        'apps/reseller/v1/customers/' +
         commons.escapeVariable('$customerId') +
         '/subscriptions/' +
         commons.escapeVariable('$subscriptionId') +
@@ -629,7 +647,8 @@ class SubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Cancels, suspends, or transfers a subscription to direct.
@@ -680,7 +699,8 @@ class SubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/reseller/v1/customers/' +
+    final url_ =
+        'apps/reseller/v1/customers/' +
         commons.escapeVariable('$customerId') +
         '/subscriptions/' +
         commons.escapeVariable('$subscriptionId');
@@ -688,7 +708,9 @@ class SubscriptionsResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -735,7 +757,8 @@ class SubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/reseller/v1/customers/' +
+    final url_ =
+        'apps/reseller/v1/customers/' +
         commons.escapeVariable('$customerId') +
         '/subscriptions/' +
         commons.escapeVariable('$subscriptionId');
@@ -746,7 +769,8 @@ class SubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates or transfer a subscription.
@@ -822,7 +846,8 @@ class SubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/reseller/v1/customers/' +
+    final url_ =
+        'apps/reseller/v1/customers/' +
         commons.escapeVariable('$customerId') +
         '/subscriptions';
 
@@ -833,7 +858,8 @@ class SubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists of subscriptions managed by the reseller.
@@ -911,7 +937,8 @@ class SubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscriptions.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Immediately move a 30-day free trial subscription to a paid service
@@ -955,7 +982,8 @@ class SubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/reseller/v1/customers/' +
+    final url_ =
+        'apps/reseller/v1/customers/' +
         commons.escapeVariable('$customerId') +
         '/subscriptions/' +
         commons.escapeVariable('$subscriptionId') +
@@ -964,10 +992,12 @@ class SubscriptionsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Suspends an active subscription.
@@ -1017,7 +1047,8 @@ class SubscriptionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'apps/reseller/v1/customers/' +
+    final url_ =
+        'apps/reseller/v1/customers/' +
         commons.escapeVariable('$customerId') +
         '/subscriptions/' +
         commons.escapeVariable('$subscriptionId') +
@@ -1026,10 +1057,12 @@ class SubscriptionsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1093,31 +1126,31 @@ class Address {
   });
 
   Address.fromJson(core.Map json_)
-      : this(
-          addressLine1: json_['addressLine1'] as core.String?,
-          addressLine2: json_['addressLine2'] as core.String?,
-          addressLine3: json_['addressLine3'] as core.String?,
-          contactName: json_['contactName'] as core.String?,
-          countryCode: json_['countryCode'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          locality: json_['locality'] as core.String?,
-          organizationName: json_['organizationName'] as core.String?,
-          postalCode: json_['postalCode'] as core.String?,
-          region: json_['region'] as core.String?,
-        );
+    : this(
+        addressLine1: json_['addressLine1'] as core.String?,
+        addressLine2: json_['addressLine2'] as core.String?,
+        addressLine3: json_['addressLine3'] as core.String?,
+        contactName: json_['contactName'] as core.String?,
+        countryCode: json_['countryCode'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        locality: json_['locality'] as core.String?,
+        organizationName: json_['organizationName'] as core.String?,
+        postalCode: json_['postalCode'] as core.String?,
+        region: json_['region'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addressLine1 != null) 'addressLine1': addressLine1!,
-        if (addressLine2 != null) 'addressLine2': addressLine2!,
-        if (addressLine3 != null) 'addressLine3': addressLine3!,
-        if (contactName != null) 'contactName': contactName!,
-        if (countryCode != null) 'countryCode': countryCode!,
-        if (kind != null) 'kind': kind!,
-        if (locality != null) 'locality': locality!,
-        if (organizationName != null) 'organizationName': organizationName!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (region != null) 'region': region!,
-      };
+    if (addressLine1 != null) 'addressLine1': addressLine1!,
+    if (addressLine2 != null) 'addressLine2': addressLine2!,
+    if (addressLine3 != null) 'addressLine3': addressLine3!,
+    if (contactName != null) 'contactName': contactName!,
+    if (countryCode != null) 'countryCode': countryCode!,
+    if (kind != null) 'kind': kind!,
+    if (locality != null) 'locality': locality!,
+    if (organizationName != null) 'organizationName': organizationName!,
+    if (postalCode != null) 'postalCode': postalCode!,
+    if (region != null) 'region': region!,
+  };
 }
 
 /// JSON template for the ChangePlan rpc request.
@@ -1172,24 +1205,26 @@ class ChangePlanRequest {
   });
 
   ChangePlanRequest.fromJson(core.Map json_)
-      : this(
-          dealCode: json_['dealCode'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          planName: json_['planName'] as core.String?,
-          purchaseOrderId: json_['purchaseOrderId'] as core.String?,
-          seats: json_.containsKey('seats')
-              ? Seats.fromJson(
-                  json_['seats'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dealCode: json_['dealCode'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        planName: json_['planName'] as core.String?,
+        purchaseOrderId: json_['purchaseOrderId'] as core.String?,
+        seats:
+            json_.containsKey('seats')
+                ? Seats.fromJson(
+                  json_['seats'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dealCode != null) 'dealCode': dealCode!,
-        if (kind != null) 'kind': kind!,
-        if (planName != null) 'planName': planName!,
-        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
-        if (seats != null) 'seats': seats!,
-      };
+    if (dealCode != null) 'dealCode': dealCode!,
+    if (kind != null) 'kind': kind!,
+    if (planName != null) 'planName': planName!,
+    if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
+    if (seats != null) 'seats': seats!,
+  };
 }
 
 /// When a Google customer's account is registered with a reseller, the
@@ -1276,38 +1311,42 @@ class Customer {
   });
 
   Customer.fromJson(core.Map json_)
-      : this(
-          alternateEmail: json_['alternateEmail'] as core.String?,
-          customerDomain: json_['customerDomain'] as core.String?,
-          customerDomainVerified: json_['customerDomainVerified'] as core.bool?,
-          customerId: json_['customerId'] as core.String?,
-          customerType: json_['customerType'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          phoneNumber: json_['phoneNumber'] as core.String?,
-          postalAddress: json_.containsKey('postalAddress')
-              ? Address.fromJson(
-                  json_['postalAddress'] as core.Map<core.String, core.dynamic>)
-              : null,
-          primaryAdmin: json_.containsKey('primaryAdmin')
-              ? PrimaryAdmin.fromJson(
-                  json_['primaryAdmin'] as core.Map<core.String, core.dynamic>)
-              : null,
-          resourceUiUrl: json_['resourceUiUrl'] as core.String?,
-        );
+    : this(
+        alternateEmail: json_['alternateEmail'] as core.String?,
+        customerDomain: json_['customerDomain'] as core.String?,
+        customerDomainVerified: json_['customerDomainVerified'] as core.bool?,
+        customerId: json_['customerId'] as core.String?,
+        customerType: json_['customerType'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        postalAddress:
+            json_.containsKey('postalAddress')
+                ? Address.fromJson(
+                  json_['postalAddress'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        primaryAdmin:
+            json_.containsKey('primaryAdmin')
+                ? PrimaryAdmin.fromJson(
+                  json_['primaryAdmin'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resourceUiUrl: json_['resourceUiUrl'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternateEmail != null) 'alternateEmail': alternateEmail!,
-        if (customerDomain != null) 'customerDomain': customerDomain!,
-        if (customerDomainVerified != null)
-          'customerDomainVerified': customerDomainVerified!,
-        if (customerId != null) 'customerId': customerId!,
-        if (customerType != null) 'customerType': customerType!,
-        if (kind != null) 'kind': kind!,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-        if (postalAddress != null) 'postalAddress': postalAddress!,
-        if (primaryAdmin != null) 'primaryAdmin': primaryAdmin!,
-        if (resourceUiUrl != null) 'resourceUiUrl': resourceUiUrl!,
-      };
+    if (alternateEmail != null) 'alternateEmail': alternateEmail!,
+    if (customerDomain != null) 'customerDomain': customerDomain!,
+    if (customerDomainVerified != null)
+      'customerDomainVerified': customerDomainVerified!,
+    if (customerId != null) 'customerId': customerId!,
+    if (customerType != null) 'customerType': customerType!,
+    if (kind != null) 'kind': kind!,
+    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+    if (postalAddress != null) 'postalAddress': postalAddress!,
+    if (primaryAdmin != null) 'primaryAdmin': primaryAdmin!,
+    if (resourceUiUrl != null) 'resourceUiUrl': resourceUiUrl!,
+  };
 }
 
 /// JSON template for primary admin in case of TEAM customers
@@ -1320,18 +1359,14 @@ class PrimaryAdmin {
   /// the administrative needs of the customer.
   core.String? primaryEmail;
 
-  PrimaryAdmin({
-    this.primaryEmail,
-  });
+  PrimaryAdmin({this.primaryEmail});
 
   PrimaryAdmin.fromJson(core.Map json_)
-      : this(
-          primaryEmail: json_['primaryEmail'] as core.String?,
-        );
+    : this(primaryEmail: json_['primaryEmail'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (primaryEmail != null) 'primaryEmail': primaryEmail!,
-      };
+    if (primaryEmail != null) 'primaryEmail': primaryEmail!,
+  };
 }
 
 /// JSON template for a subscription renewal settings.
@@ -1348,21 +1383,18 @@ class RenewalSettings {
   /// property.
   core.String? renewalType;
 
-  RenewalSettings({
-    this.kind,
-    this.renewalType,
-  });
+  RenewalSettings({this.kind, this.renewalType});
 
   RenewalSettings.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          renewalType: json_['renewalType'] as core.String?,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        renewalType: json_['renewalType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (renewalType != null) 'renewalType': renewalType!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (renewalType != null) 'renewalType': renewalType!,
+  };
 }
 
 /// JSON template for resellernotify getwatchdetails response.
@@ -1379,19 +1411,19 @@ class ResellernotifyGetwatchdetailsResponse {
   });
 
   ResellernotifyGetwatchdetailsResponse.fromJson(core.Map json_)
-      : this(
-          serviceAccountEmailAddresses:
-              (json_['serviceAccountEmailAddresses'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          topicName: json_['topicName'] as core.String?,
-        );
+    : this(
+        serviceAccountEmailAddresses:
+            (json_['serviceAccountEmailAddresses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        topicName: json_['topicName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (serviceAccountEmailAddresses != null)
-          'serviceAccountEmailAddresses': serviceAccountEmailAddresses!,
-        if (topicName != null) 'topicName': topicName!,
-      };
+    if (serviceAccountEmailAddresses != null)
+      'serviceAccountEmailAddresses': serviceAccountEmailAddresses!,
+    if (topicName != null) 'topicName': topicName!,
+  };
 }
 
 /// JSON template for resellernotify response.
@@ -1399,18 +1431,14 @@ class ResellernotifyResource {
   /// Topic name of the PubSub
   core.String? topicName;
 
-  ResellernotifyResource({
-    this.topicName,
-  });
+  ResellernotifyResource({this.topicName});
 
   ResellernotifyResource.fromJson(core.Map json_)
-      : this(
-          topicName: json_['topicName'] as core.String?,
-        );
+    : this(topicName: json_['topicName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (topicName != null) 'topicName': topicName!,
-      };
+    if (topicName != null) 'topicName': topicName!,
+  };
 }
 
 /// JSON template for subscription seats.
@@ -1457,21 +1485,21 @@ class Seats {
   });
 
   Seats.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          licensedNumberOfSeats: json_['licensedNumberOfSeats'] as core.int?,
-          maximumNumberOfSeats: json_['maximumNumberOfSeats'] as core.int?,
-          numberOfSeats: json_['numberOfSeats'] as core.int?,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        licensedNumberOfSeats: json_['licensedNumberOfSeats'] as core.int?,
+        maximumNumberOfSeats: json_['maximumNumberOfSeats'] as core.int?,
+        numberOfSeats: json_['numberOfSeats'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (licensedNumberOfSeats != null)
-          'licensedNumberOfSeats': licensedNumberOfSeats!,
-        if (maximumNumberOfSeats != null)
-          'maximumNumberOfSeats': maximumNumberOfSeats!,
-        if (numberOfSeats != null) 'numberOfSeats': numberOfSeats!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (licensedNumberOfSeats != null)
+      'licensedNumberOfSeats': licensedNumberOfSeats!,
+    if (maximumNumberOfSeats != null)
+      'maximumNumberOfSeats': maximumNumberOfSeats!,
+    if (numberOfSeats != null) 'numberOfSeats': numberOfSeats!,
+  };
 }
 
 /// In this version of the API, annual commitment plan's interval is one year.
@@ -1491,21 +1519,18 @@ class SubscriptionPlanCommitmentInterval {
   /// See an example Epoch converter.
   core.String? startTime;
 
-  SubscriptionPlanCommitmentInterval({
-    this.endTime,
-    this.startTime,
-  });
+  SubscriptionPlanCommitmentInterval({this.endTime, this.startTime});
 
   SubscriptionPlanCommitmentInterval.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// The `plan` property is required.
@@ -1550,22 +1575,23 @@ class SubscriptionPlan {
   });
 
   SubscriptionPlan.fromJson(core.Map json_)
-      : this(
-          commitmentInterval: json_.containsKey('commitmentInterval')
-              ? SubscriptionPlanCommitmentInterval.fromJson(
+    : this(
+        commitmentInterval:
+            json_.containsKey('commitmentInterval')
+                ? SubscriptionPlanCommitmentInterval.fromJson(
                   json_['commitmentInterval']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          isCommitmentPlan: json_['isCommitmentPlan'] as core.bool?,
-          planName: json_['planName'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        isCommitmentPlan: json_['isCommitmentPlan'] as core.bool?,
+        planName: json_['planName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commitmentInterval != null)
-          'commitmentInterval': commitmentInterval!,
-        if (isCommitmentPlan != null) 'isCommitmentPlan': isCommitmentPlan!,
-        if (planName != null) 'planName': planName!,
-      };
+    if (commitmentInterval != null) 'commitmentInterval': commitmentInterval!,
+    if (isCommitmentPlan != null) 'isCommitmentPlan': isCommitmentPlan!,
+    if (planName != null) 'planName': planName!,
+  };
 }
 
 /// Read-only transfer related information for the subscription.
@@ -1599,22 +1625,21 @@ class SubscriptionTransferInfo {
   });
 
   SubscriptionTransferInfo.fromJson(core.Map json_)
-      : this(
-          currentLegacySkuId: json_['currentLegacySkuId'] as core.String?,
-          minimumTransferableSeats:
-              json_['minimumTransferableSeats'] as core.int?,
-          transferabilityExpirationTime:
-              json_['transferabilityExpirationTime'] as core.String?,
-        );
+    : this(
+        currentLegacySkuId: json_['currentLegacySkuId'] as core.String?,
+        minimumTransferableSeats:
+            json_['minimumTransferableSeats'] as core.int?,
+        transferabilityExpirationTime:
+            json_['transferabilityExpirationTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentLegacySkuId != null)
-          'currentLegacySkuId': currentLegacySkuId!,
-        if (minimumTransferableSeats != null)
-          'minimumTransferableSeats': minimumTransferableSeats!,
-        if (transferabilityExpirationTime != null)
-          'transferabilityExpirationTime': transferabilityExpirationTime!,
-      };
+    if (currentLegacySkuId != null) 'currentLegacySkuId': currentLegacySkuId!,
+    if (minimumTransferableSeats != null)
+      'minimumTransferableSeats': minimumTransferableSeats!,
+    if (transferabilityExpirationTime != null)
+      'transferabilityExpirationTime': transferabilityExpirationTime!,
+  };
 }
 
 /// The G Suite annual commitment and flexible payment plans can be in a 30-day
@@ -1634,21 +1659,18 @@ class SubscriptionTrialSettings {
   /// Epoch converter.
   core.String? trialEndTime;
 
-  SubscriptionTrialSettings({
-    this.isInTrial,
-    this.trialEndTime,
-  });
+  SubscriptionTrialSettings({this.isInTrial, this.trialEndTime});
 
   SubscriptionTrialSettings.fromJson(core.Map json_)
-      : this(
-          isInTrial: json_['isInTrial'] as core.bool?,
-          trialEndTime: json_['trialEndTime'] as core.String?,
-        );
+    : this(
+        isInTrial: json_['isInTrial'] as core.bool?,
+        trialEndTime: json_['trialEndTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (isInTrial != null) 'isInTrial': isInTrial!,
-        if (trialEndTime != null) 'trialEndTime': trialEndTime!,
-      };
+    if (isInTrial != null) 'isInTrial': isInTrial!,
+    if (trialEndTime != null) 'trialEndTime': trialEndTime!,
+  };
 }
 
 /// JSON template for a subscription.
@@ -1794,64 +1816,76 @@ class Subscription {
   });
 
   Subscription.fromJson(core.Map json_)
-      : this(
-          billingMethod: json_['billingMethod'] as core.String?,
-          creationTime: json_['creationTime'] as core.String?,
-          customerDomain: json_['customerDomain'] as core.String?,
-          customerId: json_['customerId'] as core.String?,
-          dealCode: json_['dealCode'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          plan: json_.containsKey('plan')
-              ? SubscriptionPlan.fromJson(
-                  json_['plan'] as core.Map<core.String, core.dynamic>)
-              : null,
-          purchaseOrderId: json_['purchaseOrderId'] as core.String?,
-          renewalSettings: json_.containsKey('renewalSettings')
-              ? RenewalSettings.fromJson(json_['renewalSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          resourceUiUrl: json_['resourceUiUrl'] as core.String?,
-          seats: json_.containsKey('seats')
-              ? Seats.fromJson(
-                  json_['seats'] as core.Map<core.String, core.dynamic>)
-              : null,
-          skuId: json_['skuId'] as core.String?,
-          skuName: json_['skuName'] as core.String?,
-          status: json_['status'] as core.String?,
-          subscriptionId: json_['subscriptionId'] as core.String?,
-          suspensionReasons: (json_['suspensionReasons'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          transferInfo: json_.containsKey('transferInfo')
-              ? SubscriptionTransferInfo.fromJson(
-                  json_['transferInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          trialSettings: json_.containsKey('trialSettings')
-              ? SubscriptionTrialSettings.fromJson(
-                  json_['trialSettings'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        billingMethod: json_['billingMethod'] as core.String?,
+        creationTime: json_['creationTime'] as core.String?,
+        customerDomain: json_['customerDomain'] as core.String?,
+        customerId: json_['customerId'] as core.String?,
+        dealCode: json_['dealCode'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        plan:
+            json_.containsKey('plan')
+                ? SubscriptionPlan.fromJson(
+                  json_['plan'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        purchaseOrderId: json_['purchaseOrderId'] as core.String?,
+        renewalSettings:
+            json_.containsKey('renewalSettings')
+                ? RenewalSettings.fromJson(
+                  json_['renewalSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resourceUiUrl: json_['resourceUiUrl'] as core.String?,
+        seats:
+            json_.containsKey('seats')
+                ? Seats.fromJson(
+                  json_['seats'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        skuId: json_['skuId'] as core.String?,
+        skuName: json_['skuName'] as core.String?,
+        status: json_['status'] as core.String?,
+        subscriptionId: json_['subscriptionId'] as core.String?,
+        suspensionReasons:
+            (json_['suspensionReasons'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        transferInfo:
+            json_.containsKey('transferInfo')
+                ? SubscriptionTransferInfo.fromJson(
+                  json_['transferInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        trialSettings:
+            json_.containsKey('trialSettings')
+                ? SubscriptionTrialSettings.fromJson(
+                  json_['trialSettings'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (billingMethod != null) 'billingMethod': billingMethod!,
-        if (creationTime != null) 'creationTime': creationTime!,
-        if (customerDomain != null) 'customerDomain': customerDomain!,
-        if (customerId != null) 'customerId': customerId!,
-        if (dealCode != null) 'dealCode': dealCode!,
-        if (kind != null) 'kind': kind!,
-        if (plan != null) 'plan': plan!,
-        if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
-        if (renewalSettings != null) 'renewalSettings': renewalSettings!,
-        if (resourceUiUrl != null) 'resourceUiUrl': resourceUiUrl!,
-        if (seats != null) 'seats': seats!,
-        if (skuId != null) 'skuId': skuId!,
-        if (skuName != null) 'skuName': skuName!,
-        if (status != null) 'status': status!,
-        if (subscriptionId != null) 'subscriptionId': subscriptionId!,
-        if (suspensionReasons != null) 'suspensionReasons': suspensionReasons!,
-        if (transferInfo != null) 'transferInfo': transferInfo!,
-        if (trialSettings != null) 'trialSettings': trialSettings!,
-      };
+    if (billingMethod != null) 'billingMethod': billingMethod!,
+    if (creationTime != null) 'creationTime': creationTime!,
+    if (customerDomain != null) 'customerDomain': customerDomain!,
+    if (customerId != null) 'customerId': customerId!,
+    if (dealCode != null) 'dealCode': dealCode!,
+    if (kind != null) 'kind': kind!,
+    if (plan != null) 'plan': plan!,
+    if (purchaseOrderId != null) 'purchaseOrderId': purchaseOrderId!,
+    if (renewalSettings != null) 'renewalSettings': renewalSettings!,
+    if (resourceUiUrl != null) 'resourceUiUrl': resourceUiUrl!,
+    if (seats != null) 'seats': seats!,
+    if (skuId != null) 'skuId': skuId!,
+    if (skuName != null) 'skuName': skuName!,
+    if (status != null) 'status': status!,
+    if (subscriptionId != null) 'subscriptionId': subscriptionId!,
+    if (suspensionReasons != null) 'suspensionReasons': suspensionReasons!,
+    if (transferInfo != null) 'transferInfo': transferInfo!,
+    if (trialSettings != null) 'trialSettings': trialSettings!,
+  };
 }
 
 /// A subscription manages the relationship of a Google customer's payment plan
@@ -1875,25 +1909,25 @@ class Subscriptions {
   /// The subscriptions in this page of results.
   core.List<Subscription>? subscriptions;
 
-  Subscriptions({
-    this.kind,
-    this.nextPageToken,
-    this.subscriptions,
-  });
+  Subscriptions({this.kind, this.nextPageToken, this.subscriptions});
 
   Subscriptions.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          subscriptions: (json_['subscriptions'] as core.List?)
-              ?.map((value) => Subscription.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        subscriptions:
+            (json_['subscriptions'] as core.List?)
+                ?.map(
+                  (value) => Subscription.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (subscriptions != null) 'subscriptions': subscriptions!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (subscriptions != null) 'subscriptions': subscriptions!,
+  };
 }

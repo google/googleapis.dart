@@ -8,5 +8,7 @@ final googleOauth2TokenEndpoint = Uri.https('oauth2.googleapis.com', 'token');
 
 /// authorization_endpoint
 /// via https://accounts.google.com/.well-known/openid-configuration
-final googleOauth2AuthorizationEndpoint =
-    Uri.https('accounts.google.com', 'o/oauth2/v2/auth');
+final googleOauth2AuthorizationEndpoint = Uri.https(
+  'accounts.google.com',
+  'o/oauth2/v2/auth',
+);

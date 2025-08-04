@@ -38,8 +38,10 @@ void main() {
 
       test('close-several-times', () {
         final mock = mockClient(_defaultResponseHandler);
-        final delegate =
-            DelegatingClientImpl(mock, closeUnderlyingClient: true);
+        final delegate = DelegatingClientImpl(
+          mock,
+          closeUnderlyingClient: true,
+        );
         delegate.close();
         expect(delegate.close, throwsA(isStateError));
       });
@@ -101,7 +103,9 @@ void main() {
       test('with-query-string', () {
         final mock = mockClient((Request request) {
           expect(
-              '${request.url}', equals('http://localhost/abc?x&$keyEncoded'));
+            '${request.url}',
+            equals('http://localhost/abc?x&$keyEncoded'),
+          );
           return responseF();
         });
 
@@ -111,12 +115,15 @@ void main() {
       });
 
       test('with-existing-key', () {
-        final mock =
-            mockClient(expectAsync1(_defaultResponseHandler, count: 0));
+        final mock = mockClient(
+          expectAsync1(_defaultResponseHandler, count: 0),
+        );
 
         final client = ApiKeyClient(mock, key);
-        expect(client.send(request('http://localhost/abc?key=a')),
-            throwsArgumentError);
+        expect(
+          client.send(request('http://localhost/abc?key=a')),
+          throwsArgumentError,
+        );
         client.close();
       });
     });

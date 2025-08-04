@@ -32,8 +32,10 @@ void main() {
       expect(template.parts.first.templateVar, equals('My_var123'));
 
       expect(() => template.stringExpression({}), throwsA(isArgumentError));
-      expect(template.stringExpression({'My_var123': id('abc')}),
-          equals("commons.escapeVariable('\$abc')"));
+      expect(
+        template.stringExpression({'My_var123': id('abc')}),
+        equals("commons.escapeVariable('\$abc')"),
+      );
     });
 
     test('path-variable-expr', () {
@@ -44,10 +46,13 @@ void main() {
 
       expect(() => template.stringExpression({}), throwsA(isArgumentError));
       expect(
-          template.stringExpression({'myvar': id('abc')}),
-          equals("'/' + (abc).map((item) => "
-              'commons.escapeVariable(item))'
-              ".join('/')"));
+        template.stringExpression({'myvar': id('abc')}),
+        equals(
+          "'/' + (abc).map((item) => "
+          'commons.escapeVariable(item))'
+          ".join('/')",
+        ),
+      );
     });
 
     test('reserved-expansion-expr', () {
@@ -84,14 +89,22 @@ void main() {
     });
 
     test('invalid-variablename', () {
-      expect(() => UriTemplate.parse(imports, '{foobar'),
-          throwsA(isArgumentError));
-      expect(() => UriTemplate.parse(imports, '{1foobar}'),
-          throwsA(isArgumentError));
       expect(
-          () => UriTemplate.parse(imports, '{/abc}'), throwsA(isArgumentError));
-      expect(() => UriTemplate.parse(imports, '{+abc*}'),
-          throwsA(isArgumentError));
+        () => UriTemplate.parse(imports, '{foobar'),
+        throwsA(isArgumentError),
+      );
+      expect(
+        () => UriTemplate.parse(imports, '{1foobar}'),
+        throwsA(isArgumentError),
+      );
+      expect(
+        () => UriTemplate.parse(imports, '{/abc}'),
+        throwsA(isArgumentError),
+      );
+      expect(
+        () => UriTemplate.parse(imports, '{+abc*}'),
+        throwsA(isArgumentError),
+      );
     });
   });
 }

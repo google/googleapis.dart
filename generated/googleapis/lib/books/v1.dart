@@ -83,11 +83,16 @@ class BooksApi {
   SeriesResource get series => SeriesResource(_requester);
   VolumesResource get volumes => VolumesResource(_requester);
 
-  BooksApi(http.Client client,
-      {core.String rootUrl = 'https://books.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  BooksApi(
+    http.Client client, {
+    core.String rootUrl = 'https://books.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class BookshelvesResource {
@@ -129,7 +134,8 @@ class BookshelvesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/users/' +
+    final url_ =
+        'books/v1/users/' +
         commons.escapeVariable('$userId') +
         '/bookshelves/' +
         commons.escapeVariable('$shelf');
@@ -179,7 +185,8 @@ class BookshelvesResource {
       queryParams: queryParams_,
     );
     return Bookshelves.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -232,7 +239,8 @@ class BookshelvesVolumesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/users/' +
+    final url_ =
+        'books/v1/users/' +
         commons.escapeVariable('$userId') +
         '/bookshelves/' +
         commons.escapeVariable('$shelf') +
@@ -297,10 +305,12 @@ class CloudloadingResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return BooksCloudloadingResource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Remove the book and its contents
@@ -333,6 +343,7 @@ class CloudloadingResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -372,7 +383,8 @@ class CloudloadingResource {
       queryParams: queryParams_,
     );
     return BooksCloudloadingResource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -455,7 +467,8 @@ class FamilysharingResource {
       queryParams: queryParams_,
     );
     return FamilyInfo.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Initiates sharing of the content with the user's family.
@@ -498,6 +511,7 @@ class FamilysharingResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -544,6 +558,7 @@ class FamilysharingResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -595,7 +610,8 @@ class LayersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/volumes/' +
+    final url_ =
+        'books/v1/volumes/' +
         commons.escapeVariable('$volumeId') +
         '/layersummary/' +
         commons.escapeVariable('$summaryId');
@@ -606,7 +622,8 @@ class LayersResource {
       queryParams: queryParams_,
     );
     return Layersummary.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List the layer summaries for a volume.
@@ -650,7 +667,8 @@ class LayersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/volumes/' +
+    final url_ =
+        'books/v1/volumes/' +
         commons.escapeVariable('$volumeId') +
         '/layersummary';
 
@@ -660,7 +678,8 @@ class LayersResource {
       queryParams: queryParams_,
     );
     return Layersummaries.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -668,7 +687,7 @@ class LayersAnnotationDataResource {
   final commons.ApiRequester _requester;
 
   LayersAnnotationDataResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the annotation data.
   ///
@@ -734,7 +753,8 @@ class LayersAnnotationDataResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/volumes/' +
+    final url_ =
+        'books/v1/volumes/' +
         commons.escapeVariable('$volumeId') +
         '/layers/' +
         commons.escapeVariable('$layerId') +
@@ -747,7 +767,8 @@ class LayersAnnotationDataResource {
       queryParams: queryParams_,
     );
     return DictionaryAnnotationdata.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the annotation data for a volume and layer.
@@ -828,7 +849,8 @@ class LayersAnnotationDataResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/volumes/' +
+    final url_ =
+        'books/v1/volumes/' +
         commons.escapeVariable('$volumeId') +
         '/layers/' +
         commons.escapeVariable('$layerId') +
@@ -840,7 +862,8 @@ class LayersAnnotationDataResource {
       queryParams: queryParams_,
     );
     return Annotationsdata.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -848,7 +871,7 @@ class LayersVolumeAnnotationsResource {
   final commons.ApiRequester _requester;
 
   LayersVolumeAnnotationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the volume annotation.
   ///
@@ -889,7 +912,8 @@ class LayersVolumeAnnotationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/volumes/' +
+    final url_ =
+        'books/v1/volumes/' +
         commons.escapeVariable('$volumeId') +
         '/layers/' +
         commons.escapeVariable('$layerId') +
@@ -902,7 +926,8 @@ class LayersVolumeAnnotationsResource {
       queryParams: queryParams_,
     );
     return Volumeannotation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the volume annotations for a volume and layer.
@@ -991,7 +1016,8 @@ class LayersVolumeAnnotationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/volumes/' +
+    final url_ =
+        'books/v1/volumes/' +
         commons.escapeVariable('$volumeId') +
         '/layers/' +
         commons.escapeVariable('$layerId');
@@ -1002,7 +1028,8 @@ class LayersVolumeAnnotationsResource {
       queryParams: queryParams_,
     );
     return Volumeannotations.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1045,7 +1072,8 @@ class MyconfigResource {
       queryParams: queryParams_,
     );
     return Usersettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Release downloaded content access restriction.
@@ -1094,10 +1122,12 @@ class MyconfigResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return DownloadAccesses.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Request concurrent and download access restrictions.
@@ -1157,10 +1187,12 @@ class MyconfigResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return RequestAccessData.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Request downloaded content access for specified volumes on the My eBooks
@@ -1226,6 +1258,7 @@ class MyconfigResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Volumes.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1269,7 +1302,8 @@ class MyconfigResource {
       queryParams: queryParams_,
     );
     return Usersettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1290,7 +1324,7 @@ class MylibraryAnnotationsResource {
   final commons.ApiRequester _requester;
 
   MylibraryAnnotationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes an annotation.
   ///
@@ -1320,12 +1354,14 @@ class MylibraryAnnotationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/mylibrary/annotations/' +
+    final url_ =
+        'books/v1/mylibrary/annotations/' +
         commons.escapeVariable('$annotationId');
 
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1383,7 +1419,8 @@ class MylibraryAnnotationsResource {
       queryParams: queryParams_,
     );
     return Annotation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a list of annotations, possibly filtered.
@@ -1459,7 +1496,8 @@ class MylibraryAnnotationsResource {
       queryParams: queryParams_,
     );
     return Annotations.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the summary of specified layers.
@@ -1503,10 +1541,12 @@ class MylibraryAnnotationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return AnnotationsSummary.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing annotation.
@@ -1541,7 +1581,8 @@ class MylibraryAnnotationsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/mylibrary/annotations/' +
+    final url_ =
+        'books/v1/mylibrary/annotations/' +
         commons.escapeVariable('$annotationId');
 
     final response_ = await _requester.request(
@@ -1551,7 +1592,8 @@ class MylibraryAnnotationsResource {
       queryParams: queryParams_,
     );
     return Annotation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1562,7 +1604,7 @@ class MylibraryBookshelvesResource {
       MylibraryBookshelvesVolumesResource(_requester);
 
   MylibraryBookshelvesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Adds a volume to a bookshelf.
   ///
@@ -1605,13 +1647,15 @@ class MylibraryBookshelvesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/mylibrary/bookshelves/' +
+    final url_ =
+        'books/v1/mylibrary/bookshelves/' +
         commons.escapeVariable('$shelf') +
         '/addVolume';
 
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1645,13 +1689,15 @@ class MylibraryBookshelvesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/mylibrary/bookshelves/' +
+    final url_ =
+        'books/v1/mylibrary/bookshelves/' +
         commons.escapeVariable('$shelf') +
         '/clearVolumes';
 
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1730,7 +1776,8 @@ class MylibraryBookshelvesResource {
       queryParams: queryParams_,
     );
     return Bookshelves.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Moves a volume within a bookshelf.
@@ -1771,13 +1818,15 @@ class MylibraryBookshelvesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/mylibrary/bookshelves/' +
+    final url_ =
+        'books/v1/mylibrary/bookshelves/' +
         commons.escapeVariable('$shelf') +
         '/moveVolume';
 
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1822,13 +1871,15 @@ class MylibraryBookshelvesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/mylibrary/bookshelves/' +
+    final url_ =
+        'books/v1/mylibrary/bookshelves/' +
         commons.escapeVariable('$shelf') +
         '/removeVolume';
 
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1839,7 +1890,7 @@ class MylibraryBookshelvesVolumesResource {
   final commons.ApiRequester _requester;
 
   MylibraryBookshelvesVolumesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets volume information for volumes on a bookshelf.
   ///
@@ -1898,7 +1949,8 @@ class MylibraryBookshelvesVolumesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/mylibrary/bookshelves/' +
+    final url_ =
+        'books/v1/mylibrary/bookshelves/' +
         commons.escapeVariable('$shelf') +
         '/volumes';
 
@@ -1915,7 +1967,7 @@ class MylibraryReadingpositionsResource {
   final commons.ApiRequester _requester;
 
   MylibraryReadingpositionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Retrieves my reading position information for a volume.
   ///
@@ -1950,7 +2002,8 @@ class MylibraryReadingpositionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/mylibrary/readingpositions/' +
+    final url_ =
+        'books/v1/mylibrary/readingpositions/' +
         commons.escapeVariable('$volumeId');
 
     final response_ = await _requester.request(
@@ -1959,7 +2012,8 @@ class MylibraryReadingpositionsResource {
       queryParams: queryParams_,
     );
     return ReadingPosition.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets my reading position information for a volume.
@@ -2020,13 +2074,15 @@ class MylibraryReadingpositionsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/mylibrary/readingpositions/' +
+    final url_ =
+        'books/v1/mylibrary/readingpositions/' +
         commons.escapeVariable('$volumeId') +
         '/setPosition';
 
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2080,7 +2136,8 @@ class NotificationResource {
       queryParams: queryParams_,
     );
     return Notification.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2239,7 +2296,8 @@ class PersonalizedstreamResource {
       queryParams: queryParams_,
     );
     return Discoveryclusters.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2306,6 +2364,7 @@ class PromoofferResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2365,6 +2424,7 @@ class PromoofferResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2520,7 +2580,8 @@ class SeriesMembershipResource {
       queryParams: queryParams_,
     );
     return Seriesmembership.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2784,7 +2845,8 @@ class VolumesAssociatedResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'books/v1/volumes/' +
+    final url_ =
+        'books/v1/volumes/' +
         commons.escapeVariable('$volumeId') +
         '/associated';
 
@@ -2969,10 +3031,12 @@ class VolumesRecommendedResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return BooksVolumesRecommendedRateResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2980,7 +3044,7 @@ class VolumesUseruploadedResource {
   final commons.ApiRequester _requester;
 
   VolumesUseruploadedResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Return a list of books uploaded by the current user.
   ///
@@ -3068,33 +3132,41 @@ class AnnotationClientVersionRanges {
   });
 
   AnnotationClientVersionRanges.fromJson(core.Map json_)
-      : this(
-          cfiRange: json_.containsKey('cfiRange')
-              ? BooksAnnotationsRange.fromJson(
-                  json_['cfiRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          contentVersion: json_['contentVersion'] as core.String?,
-          gbImageRange: json_.containsKey('gbImageRange')
-              ? BooksAnnotationsRange.fromJson(
-                  json_['gbImageRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gbTextRange: json_.containsKey('gbTextRange')
-              ? BooksAnnotationsRange.fromJson(
-                  json_['gbTextRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          imageCfiRange: json_.containsKey('imageCfiRange')
-              ? BooksAnnotationsRange.fromJson(
-                  json_['imageCfiRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        cfiRange:
+            json_.containsKey('cfiRange')
+                ? BooksAnnotationsRange.fromJson(
+                  json_['cfiRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        contentVersion: json_['contentVersion'] as core.String?,
+        gbImageRange:
+            json_.containsKey('gbImageRange')
+                ? BooksAnnotationsRange.fromJson(
+                  json_['gbImageRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gbTextRange:
+            json_.containsKey('gbTextRange')
+                ? BooksAnnotationsRange.fromJson(
+                  json_['gbTextRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        imageCfiRange:
+            json_.containsKey('imageCfiRange')
+                ? BooksAnnotationsRange.fromJson(
+                  json_['imageCfiRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cfiRange != null) 'cfiRange': cfiRange!,
-        if (contentVersion != null) 'contentVersion': contentVersion!,
-        if (gbImageRange != null) 'gbImageRange': gbImageRange!,
-        if (gbTextRange != null) 'gbTextRange': gbTextRange!,
-        if (imageCfiRange != null) 'imageCfiRange': imageCfiRange!,
-      };
+    if (cfiRange != null) 'cfiRange': cfiRange!,
+    if (contentVersion != null) 'contentVersion': contentVersion!,
+    if (gbImageRange != null) 'gbImageRange': gbImageRange!,
+    if (gbTextRange != null) 'gbTextRange': gbTextRange!,
+    if (imageCfiRange != null) 'imageCfiRange': imageCfiRange!,
+  };
 }
 
 /// Selection ranges for the most recent content version.
@@ -3123,33 +3195,41 @@ class AnnotationCurrentVersionRanges {
   });
 
   AnnotationCurrentVersionRanges.fromJson(core.Map json_)
-      : this(
-          cfiRange: json_.containsKey('cfiRange')
-              ? BooksAnnotationsRange.fromJson(
-                  json_['cfiRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          contentVersion: json_['contentVersion'] as core.String?,
-          gbImageRange: json_.containsKey('gbImageRange')
-              ? BooksAnnotationsRange.fromJson(
-                  json_['gbImageRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gbTextRange: json_.containsKey('gbTextRange')
-              ? BooksAnnotationsRange.fromJson(
-                  json_['gbTextRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          imageCfiRange: json_.containsKey('imageCfiRange')
-              ? BooksAnnotationsRange.fromJson(
-                  json_['imageCfiRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        cfiRange:
+            json_.containsKey('cfiRange')
+                ? BooksAnnotationsRange.fromJson(
+                  json_['cfiRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        contentVersion: json_['contentVersion'] as core.String?,
+        gbImageRange:
+            json_.containsKey('gbImageRange')
+                ? BooksAnnotationsRange.fromJson(
+                  json_['gbImageRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gbTextRange:
+            json_.containsKey('gbTextRange')
+                ? BooksAnnotationsRange.fromJson(
+                  json_['gbTextRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        imageCfiRange:
+            json_.containsKey('imageCfiRange')
+                ? BooksAnnotationsRange.fromJson(
+                  json_['imageCfiRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cfiRange != null) 'cfiRange': cfiRange!,
-        if (contentVersion != null) 'contentVersion': contentVersion!,
-        if (gbImageRange != null) 'gbImageRange': gbImageRange!,
-        if (gbTextRange != null) 'gbTextRange': gbTextRange!,
-        if (imageCfiRange != null) 'imageCfiRange': imageCfiRange!,
-      };
+    if (cfiRange != null) 'cfiRange': cfiRange!,
+    if (contentVersion != null) 'contentVersion': contentVersion!,
+    if (gbImageRange != null) 'gbImageRange': gbImageRange!,
+    if (gbTextRange != null) 'gbTextRange': gbTextRange!,
+    if (imageCfiRange != null) 'imageCfiRange': imageCfiRange!,
+  };
 }
 
 class AnnotationLayerSummary {
@@ -3172,20 +3252,19 @@ class AnnotationLayerSummary {
   });
 
   AnnotationLayerSummary.fromJson(core.Map json_)
-      : this(
-          allowedCharacterCount: json_['allowedCharacterCount'] as core.int?,
-          limitType: json_['limitType'] as core.String?,
-          remainingCharacterCount:
-              json_['remainingCharacterCount'] as core.int?,
-        );
+    : this(
+        allowedCharacterCount: json_['allowedCharacterCount'] as core.int?,
+        limitType: json_['limitType'] as core.String?,
+        remainingCharacterCount: json_['remainingCharacterCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedCharacterCount != null)
-          'allowedCharacterCount': allowedCharacterCount!,
-        if (limitType != null) 'limitType': limitType!,
-        if (remainingCharacterCount != null)
-          'remainingCharacterCount': remainingCharacterCount!,
-      };
+    if (allowedCharacterCount != null)
+      'allowedCharacterCount': allowedCharacterCount!,
+    if (limitType != null) 'limitType': limitType!,
+    if (remainingCharacterCount != null)
+      'remainingCharacterCount': remainingCharacterCount!,
+  };
 }
 
 class Annotation {
@@ -3265,61 +3344,67 @@ class Annotation {
   });
 
   Annotation.fromJson(core.Map json_)
-      : this(
-          afterSelectedText: json_['afterSelectedText'] as core.String?,
-          beforeSelectedText: json_['beforeSelectedText'] as core.String?,
-          clientVersionRanges: json_.containsKey('clientVersionRanges')
-              ? AnnotationClientVersionRanges.fromJson(
+    : this(
+        afterSelectedText: json_['afterSelectedText'] as core.String?,
+        beforeSelectedText: json_['beforeSelectedText'] as core.String?,
+        clientVersionRanges:
+            json_.containsKey('clientVersionRanges')
+                ? AnnotationClientVersionRanges.fromJson(
                   json_['clientVersionRanges']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          created: json_['created'] as core.String?,
-          currentVersionRanges: json_.containsKey('currentVersionRanges')
-              ? AnnotationCurrentVersionRanges.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        created: json_['created'] as core.String?,
+        currentVersionRanges:
+            json_.containsKey('currentVersionRanges')
+                ? AnnotationCurrentVersionRanges.fromJson(
                   json_['currentVersionRanges']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          data: json_['data'] as core.String?,
-          deleted: json_['deleted'] as core.bool?,
-          highlightStyle: json_['highlightStyle'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          layerId: json_['layerId'] as core.String?,
-          layerSummary: json_.containsKey('layerSummary')
-              ? AnnotationLayerSummary.fromJson(
-                  json_['layerSummary'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pageIds: (json_['pageIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          selectedText: json_['selectedText'] as core.String?,
-          selfLink: json_['selfLink'] as core.String?,
-          updated: json_['updated'] as core.String?,
-          volumeId: json_['volumeId'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        data: json_['data'] as core.String?,
+        deleted: json_['deleted'] as core.bool?,
+        highlightStyle: json_['highlightStyle'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        layerId: json_['layerId'] as core.String?,
+        layerSummary:
+            json_.containsKey('layerSummary')
+                ? AnnotationLayerSummary.fromJson(
+                  json_['layerSummary'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pageIds:
+            (json_['pageIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        selectedText: json_['selectedText'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        updated: json_['updated'] as core.String?,
+        volumeId: json_['volumeId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (afterSelectedText != null) 'afterSelectedText': afterSelectedText!,
-        if (beforeSelectedText != null)
-          'beforeSelectedText': beforeSelectedText!,
-        if (clientVersionRanges != null)
-          'clientVersionRanges': clientVersionRanges!,
-        if (created != null) 'created': created!,
-        if (currentVersionRanges != null)
-          'currentVersionRanges': currentVersionRanges!,
-        if (data != null) 'data': data!,
-        if (deleted != null) 'deleted': deleted!,
-        if (highlightStyle != null) 'highlightStyle': highlightStyle!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (layerId != null) 'layerId': layerId!,
-        if (layerSummary != null) 'layerSummary': layerSummary!,
-        if (pageIds != null) 'pageIds': pageIds!,
-        if (selectedText != null) 'selectedText': selectedText!,
-        if (selfLink != null) 'selfLink': selfLink!,
-        if (updated != null) 'updated': updated!,
-        if (volumeId != null) 'volumeId': volumeId!,
-      };
+    if (afterSelectedText != null) 'afterSelectedText': afterSelectedText!,
+    if (beforeSelectedText != null) 'beforeSelectedText': beforeSelectedText!,
+    if (clientVersionRanges != null)
+      'clientVersionRanges': clientVersionRanges!,
+    if (created != null) 'created': created!,
+    if (currentVersionRanges != null)
+      'currentVersionRanges': currentVersionRanges!,
+    if (data != null) 'data': data!,
+    if (deleted != null) 'deleted': deleted!,
+    if (highlightStyle != null) 'highlightStyle': highlightStyle!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (layerId != null) 'layerId': layerId!,
+    if (layerSummary != null) 'layerSummary': layerSummary!,
+    if (pageIds != null) 'pageIds': pageIds!,
+    if (selectedText != null) 'selectedText': selectedText!,
+    if (selfLink != null) 'selfLink': selfLink!,
+    if (updated != null) 'updated': updated!,
+    if (volumeId != null) 'volumeId': volumeId!,
+  };
 }
 
 class Annotations {
@@ -3340,30 +3425,29 @@ class Annotations {
   /// results have been paginated.
   core.int? totalItems;
 
-  Annotations({
-    this.items,
-    this.kind,
-    this.nextPageToken,
-    this.totalItems,
-  });
+  Annotations({this.items, this.kind, this.nextPageToken, this.totalItems});
 
   Annotations.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => Annotation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          totalItems: json_['totalItems'] as core.int?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Annotation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        totalItems: json_['totalItems'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (totalItems != null) 'totalItems': totalItems!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (totalItems != null) 'totalItems': totalItems!,
+  };
 }
 
 class AnnotationsSummaryLayers {
@@ -3382,48 +3466,48 @@ class AnnotationsSummaryLayers {
   });
 
   AnnotationsSummaryLayers.fromJson(core.Map json_)
-      : this(
-          allowedCharacterCount: json_['allowedCharacterCount'] as core.int?,
-          layerId: json_['layerId'] as core.String?,
-          limitType: json_['limitType'] as core.String?,
-          remainingCharacterCount:
-              json_['remainingCharacterCount'] as core.int?,
-          updated: json_['updated'] as core.String?,
-        );
+    : this(
+        allowedCharacterCount: json_['allowedCharacterCount'] as core.int?,
+        layerId: json_['layerId'] as core.String?,
+        limitType: json_['limitType'] as core.String?,
+        remainingCharacterCount: json_['remainingCharacterCount'] as core.int?,
+        updated: json_['updated'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedCharacterCount != null)
-          'allowedCharacterCount': allowedCharacterCount!,
-        if (layerId != null) 'layerId': layerId!,
-        if (limitType != null) 'limitType': limitType!,
-        if (remainingCharacterCount != null)
-          'remainingCharacterCount': remainingCharacterCount!,
-        if (updated != null) 'updated': updated!,
-      };
+    if (allowedCharacterCount != null)
+      'allowedCharacterCount': allowedCharacterCount!,
+    if (layerId != null) 'layerId': layerId!,
+    if (limitType != null) 'limitType': limitType!,
+    if (remainingCharacterCount != null)
+      'remainingCharacterCount': remainingCharacterCount!,
+    if (updated != null) 'updated': updated!,
+  };
 }
 
 class AnnotationsSummary {
   core.String? kind;
   core.List<AnnotationsSummaryLayers>? layers;
 
-  AnnotationsSummary({
-    this.kind,
-    this.layers,
-  });
+  AnnotationsSummary({this.kind, this.layers});
 
   AnnotationsSummary.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          layers: (json_['layers'] as core.List?)
-              ?.map((value) => AnnotationsSummaryLayers.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        layers:
+            (json_['layers'] as core.List?)
+                ?.map(
+                  (value) => AnnotationsSummaryLayers.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (layers != null) 'layers': layers!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (layers != null) 'layers': layers!,
+  };
 }
 
 class Annotationsdata {
@@ -3441,30 +3525,29 @@ class Annotationsdata {
   /// The total number of volume annotations found.
   core.int? totalItems;
 
-  Annotationsdata({
-    this.items,
-    this.kind,
-    this.nextPageToken,
-    this.totalItems,
-  });
+  Annotationsdata({this.items, this.kind, this.nextPageToken, this.totalItems});
 
   Annotationsdata.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => GeoAnnotationdata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          totalItems: json_['totalItems'] as core.int?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => GeoAnnotationdata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        totalItems: json_['totalItems'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (totalItems != null) 'totalItems': totalItems!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (totalItems != null) 'totalItems': totalItems!,
+  };
 }
 
 class BooksAnnotationsRange {
@@ -3488,19 +3571,19 @@ class BooksAnnotationsRange {
   });
 
   BooksAnnotationsRange.fromJson(core.Map json_)
-      : this(
-          endOffset: json_['endOffset'] as core.String?,
-          endPosition: json_['endPosition'] as core.String?,
-          startOffset: json_['startOffset'] as core.String?,
-          startPosition: json_['startPosition'] as core.String?,
-        );
+    : this(
+        endOffset: json_['endOffset'] as core.String?,
+        endPosition: json_['endPosition'] as core.String?,
+        startOffset: json_['startOffset'] as core.String?,
+        startPosition: json_['startPosition'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endOffset != null) 'endOffset': endOffset!,
-        if (endPosition != null) 'endPosition': endPosition!,
-        if (startOffset != null) 'startOffset': startOffset!,
-        if (startPosition != null) 'startPosition': startPosition!,
-      };
+    if (endOffset != null) 'endOffset': endOffset!,
+    if (endPosition != null) 'endPosition': endPosition!,
+    if (startOffset != null) 'startOffset': startOffset!,
+    if (startPosition != null) 'startPosition': startPosition!,
+  };
 }
 
 class BooksCloudloadingResource {
@@ -3517,36 +3600,32 @@ class BooksCloudloadingResource {
   });
 
   BooksCloudloadingResource.fromJson(core.Map json_)
-      : this(
-          author: json_['author'] as core.String?,
-          processingState: json_['processingState'] as core.String?,
-          title: json_['title'] as core.String?,
-          volumeId: json_['volumeId'] as core.String?,
-        );
+    : this(
+        author: json_['author'] as core.String?,
+        processingState: json_['processingState'] as core.String?,
+        title: json_['title'] as core.String?,
+        volumeId: json_['volumeId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (author != null) 'author': author!,
-        if (processingState != null) 'processingState': processingState!,
-        if (title != null) 'title': title!,
-        if (volumeId != null) 'volumeId': volumeId!,
-      };
+    if (author != null) 'author': author!,
+    if (processingState != null) 'processingState': processingState!,
+    if (title != null) 'title': title!,
+    if (volumeId != null) 'volumeId': volumeId!,
+  };
 }
 
 class BooksVolumesRecommendedRateResponse {
   core.String? consistencyToken;
 
-  BooksVolumesRecommendedRateResponse({
-    this.consistencyToken,
-  });
+  BooksVolumesRecommendedRateResponse({this.consistencyToken});
 
   BooksVolumesRecommendedRateResponse.fromJson(core.Map json_)
-      : this(
-          consistencyToken: json_['consistency_token'] as core.String?,
-        );
+    : this(consistencyToken: json_['consistency_token'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consistencyToken != null) 'consistency_token': consistencyToken!,
-      };
+    if (consistencyToken != null) 'consistency_token': consistencyToken!,
+  };
 }
 
 class Bookshelf {
@@ -3597,32 +3676,31 @@ class Bookshelf {
   });
 
   Bookshelf.fromJson(core.Map json_)
-      : this(
-          access: json_['access'] as core.String?,
-          created: json_['created'] as core.String?,
-          description: json_['description'] as core.String?,
-          id: json_['id'] as core.int?,
-          kind: json_['kind'] as core.String?,
-          selfLink: json_['selfLink'] as core.String?,
-          title: json_['title'] as core.String?,
-          updated: json_['updated'] as core.String?,
-          volumeCount: json_['volumeCount'] as core.int?,
-          volumesLastUpdated: json_['volumesLastUpdated'] as core.String?,
-        );
+    : this(
+        access: json_['access'] as core.String?,
+        created: json_['created'] as core.String?,
+        description: json_['description'] as core.String?,
+        id: json_['id'] as core.int?,
+        kind: json_['kind'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        title: json_['title'] as core.String?,
+        updated: json_['updated'] as core.String?,
+        volumeCount: json_['volumeCount'] as core.int?,
+        volumesLastUpdated: json_['volumesLastUpdated'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (access != null) 'access': access!,
-        if (created != null) 'created': created!,
-        if (description != null) 'description': description!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (selfLink != null) 'selfLink': selfLink!,
-        if (title != null) 'title': title!,
-        if (updated != null) 'updated': updated!,
-        if (volumeCount != null) 'volumeCount': volumeCount!,
-        if (volumesLastUpdated != null)
-          'volumesLastUpdated': volumesLastUpdated!,
-      };
+    if (access != null) 'access': access!,
+    if (created != null) 'created': created!,
+    if (description != null) 'description': description!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (selfLink != null) 'selfLink': selfLink!,
+    if (title != null) 'title': title!,
+    if (updated != null) 'updated': updated!,
+    if (volumeCount != null) 'volumeCount': volumeCount!,
+    if (volumesLastUpdated != null) 'volumesLastUpdated': volumesLastUpdated!,
+  };
 }
 
 class Bookshelves {
@@ -3632,24 +3710,25 @@ class Bookshelves {
   /// Resource type.
   core.String? kind;
 
-  Bookshelves({
-    this.items,
-    this.kind,
-  });
+  Bookshelves({this.items, this.kind});
 
   Bookshelves.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => Bookshelf.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Bookshelf.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 class CategoryItems {
@@ -3657,24 +3736,20 @@ class CategoryItems {
   core.String? categoryId;
   core.String? name;
 
-  CategoryItems({
-    this.badgeUrl,
-    this.categoryId,
-    this.name,
-  });
+  CategoryItems({this.badgeUrl, this.categoryId, this.name});
 
   CategoryItems.fromJson(core.Map json_)
-      : this(
-          badgeUrl: json_['badgeUrl'] as core.String?,
-          categoryId: json_['categoryId'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        badgeUrl: json_['badgeUrl'] as core.String?,
+        categoryId: json_['categoryId'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (badgeUrl != null) 'badgeUrl': badgeUrl!,
-        if (categoryId != null) 'categoryId': categoryId!,
-        if (name != null) 'name': name!,
-      };
+    if (badgeUrl != null) 'badgeUrl': badgeUrl!,
+    if (categoryId != null) 'categoryId': categoryId!,
+    if (name != null) 'name': name!,
+  };
 }
 
 class Category {
@@ -3684,24 +3759,25 @@ class Category {
   /// Resource type.
   core.String? kind;
 
-  Category({
-    this.items,
-    this.kind,
-  });
+  Category({this.items, this.kind});
 
   Category.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => CategoryItems.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => CategoryItems.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 class ConcurrentAccessRestriction {
@@ -3757,34 +3833,34 @@ class ConcurrentAccessRestriction {
   });
 
   ConcurrentAccessRestriction.fromJson(core.Map json_)
-      : this(
-          deviceAllowed: json_['deviceAllowed'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          maxConcurrentDevices: json_['maxConcurrentDevices'] as core.int?,
-          message: json_['message'] as core.String?,
-          nonce: json_['nonce'] as core.String?,
-          reasonCode: json_['reasonCode'] as core.String?,
-          restricted: json_['restricted'] as core.bool?,
-          signature: json_['signature'] as core.String?,
-          source: json_['source'] as core.String?,
-          timeWindowSeconds: json_['timeWindowSeconds'] as core.int?,
-          volumeId: json_['volumeId'] as core.String?,
-        );
+    : this(
+        deviceAllowed: json_['deviceAllowed'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        maxConcurrentDevices: json_['maxConcurrentDevices'] as core.int?,
+        message: json_['message'] as core.String?,
+        nonce: json_['nonce'] as core.String?,
+        reasonCode: json_['reasonCode'] as core.String?,
+        restricted: json_['restricted'] as core.bool?,
+        signature: json_['signature'] as core.String?,
+        source: json_['source'] as core.String?,
+        timeWindowSeconds: json_['timeWindowSeconds'] as core.int?,
+        volumeId: json_['volumeId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceAllowed != null) 'deviceAllowed': deviceAllowed!,
-        if (kind != null) 'kind': kind!,
-        if (maxConcurrentDevices != null)
-          'maxConcurrentDevices': maxConcurrentDevices!,
-        if (message != null) 'message': message!,
-        if (nonce != null) 'nonce': nonce!,
-        if (reasonCode != null) 'reasonCode': reasonCode!,
-        if (restricted != null) 'restricted': restricted!,
-        if (signature != null) 'signature': signature!,
-        if (source != null) 'source': source!,
-        if (timeWindowSeconds != null) 'timeWindowSeconds': timeWindowSeconds!,
-        if (volumeId != null) 'volumeId': volumeId!,
-      };
+    if (deviceAllowed != null) 'deviceAllowed': deviceAllowed!,
+    if (kind != null) 'kind': kind!,
+    if (maxConcurrentDevices != null)
+      'maxConcurrentDevices': maxConcurrentDevices!,
+    if (message != null) 'message': message!,
+    if (nonce != null) 'nonce': nonce!,
+    if (reasonCode != null) 'reasonCode': reasonCode!,
+    if (restricted != null) 'restricted': restricted!,
+    if (signature != null) 'signature': signature!,
+    if (source != null) 'source': source!,
+    if (timeWindowSeconds != null) 'timeWindowSeconds': timeWindowSeconds!,
+    if (volumeId != null) 'volumeId': volumeId!,
+  };
 }
 
 class DictionaryAnnotationdata {
@@ -3803,8 +3879,10 @@ class DictionaryAnnotationdata {
       convert.base64.decode(encodedData!);
 
   set encodedDataAsBytes(core.List<core.int> bytes_) {
-    encodedData =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    encodedData = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Unique id for this annotation data.
@@ -3846,32 +3924,34 @@ class DictionaryAnnotationdata {
   });
 
   DictionaryAnnotationdata.fromJson(core.Map json_)
-      : this(
-          annotationType: json_['annotationType'] as core.String?,
-          data: json_.containsKey('data')
-              ? Dictlayerdata.fromJson(
-                  json_['data'] as core.Map<core.String, core.dynamic>)
-              : null,
-          encodedData: json_['encodedData'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          layerId: json_['layerId'] as core.String?,
-          selfLink: json_['selfLink'] as core.String?,
-          updated: json_['updated'] as core.String?,
-          volumeId: json_['volumeId'] as core.String?,
-        );
+    : this(
+        annotationType: json_['annotationType'] as core.String?,
+        data:
+            json_.containsKey('data')
+                ? Dictlayerdata.fromJson(
+                  json_['data'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        encodedData: json_['encodedData'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        layerId: json_['layerId'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        updated: json_['updated'] as core.String?,
+        volumeId: json_['volumeId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationType != null) 'annotationType': annotationType!,
-        if (data != null) 'data': data!,
-        if (encodedData != null) 'encodedData': encodedData!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (layerId != null) 'layerId': layerId!,
-        if (selfLink != null) 'selfLink': selfLink!,
-        if (updated != null) 'updated': updated!,
-        if (volumeId != null) 'volumeId': volumeId!,
-      };
+    if (annotationType != null) 'annotationType': annotationType!,
+    if (data != null) 'data': data!,
+    if (encodedData != null) 'encodedData': encodedData!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (layerId != null) 'layerId': layerId!,
+    if (selfLink != null) 'selfLink': selfLink!,
+    if (updated != null) 'updated': updated!,
+    if (volumeId != null) 'volumeId': volumeId!,
+  };
 }
 
 class DictlayerdataCommon {
@@ -3879,18 +3959,14 @@ class DictlayerdataCommon {
   /// this entity on Google search.
   core.String? title;
 
-  DictlayerdataCommon({
-    this.title,
-  });
+  DictlayerdataCommon({this.title});
 
   DictlayerdataCommon.fromJson(core.Map json_)
-      : this(
-          title: json_['title'] as core.String?,
-        );
+    : this(title: json_['title'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (title != null) 'title': title!,
-      };
+    if (title != null) 'title': title!,
+  };
 }
 
 /// The source, url and attribution for this dictionary data.
@@ -3898,132 +3974,118 @@ class DictlayerdataDictSource {
   core.String? attribution;
   core.String? url;
 
-  DictlayerdataDictSource({
-    this.attribution,
-    this.url,
-  });
+  DictlayerdataDictSource({this.attribution, this.url});
 
   DictlayerdataDictSource.fromJson(core.Map json_)
-      : this(
-          attribution: json_['attribution'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        attribution: json_['attribution'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attribution != null) 'attribution': attribution!,
-        if (url != null) 'url': url!,
-      };
+    if (attribution != null) 'attribution': attribution!,
+    if (url != null) 'url': url!,
+  };
 }
 
 class DictlayerdataDictWordsDerivativesSource {
   core.String? attribution;
   core.String? url;
 
-  DictlayerdataDictWordsDerivativesSource({
-    this.attribution,
-    this.url,
-  });
+  DictlayerdataDictWordsDerivativesSource({this.attribution, this.url});
 
   DictlayerdataDictWordsDerivativesSource.fromJson(core.Map json_)
-      : this(
-          attribution: json_['attribution'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        attribution: json_['attribution'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attribution != null) 'attribution': attribution!,
-        if (url != null) 'url': url!,
-      };
+    if (attribution != null) 'attribution': attribution!,
+    if (url != null) 'url': url!,
+  };
 }
 
 class DictlayerdataDictWordsDerivatives {
   DictlayerdataDictWordsDerivativesSource? source;
   core.String? text;
 
-  DictlayerdataDictWordsDerivatives({
-    this.source,
-    this.text,
-  });
+  DictlayerdataDictWordsDerivatives({this.source, this.text});
 
   DictlayerdataDictWordsDerivatives.fromJson(core.Map json_)
-      : this(
-          source: json_.containsKey('source')
-              ? DictlayerdataDictWordsDerivativesSource.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        source:
+            json_.containsKey('source')
+                ? DictlayerdataDictWordsDerivativesSource.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (source != null) 'source': source!,
-        if (text != null) 'text': text!,
-      };
+    if (source != null) 'source': source!,
+    if (text != null) 'text': text!,
+  };
 }
 
 class DictlayerdataDictWordsExamplesSource {
   core.String? attribution;
   core.String? url;
 
-  DictlayerdataDictWordsExamplesSource({
-    this.attribution,
-    this.url,
-  });
+  DictlayerdataDictWordsExamplesSource({this.attribution, this.url});
 
   DictlayerdataDictWordsExamplesSource.fromJson(core.Map json_)
-      : this(
-          attribution: json_['attribution'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        attribution: json_['attribution'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attribution != null) 'attribution': attribution!,
-        if (url != null) 'url': url!,
-      };
+    if (attribution != null) 'attribution': attribution!,
+    if (url != null) 'url': url!,
+  };
 }
 
 class DictlayerdataDictWordsExamples {
   DictlayerdataDictWordsExamplesSource? source;
   core.String? text;
 
-  DictlayerdataDictWordsExamples({
-    this.source,
-    this.text,
-  });
+  DictlayerdataDictWordsExamples({this.source, this.text});
 
   DictlayerdataDictWordsExamples.fromJson(core.Map json_)
-      : this(
-          source: json_.containsKey('source')
-              ? DictlayerdataDictWordsExamplesSource.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        source:
+            json_.containsKey('source')
+                ? DictlayerdataDictWordsExamplesSource.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (source != null) 'source': source!,
-        if (text != null) 'text': text!,
-      };
+    if (source != null) 'source': source!,
+    if (text != null) 'text': text!,
+  };
 }
 
 class DictlayerdataDictWordsSensesConjugations {
   core.String? type;
   core.String? value;
 
-  DictlayerdataDictWordsSensesConjugations({
-    this.type,
-    this.value,
-  });
+  DictlayerdataDictWordsSensesConjugations({this.type, this.value});
 
   DictlayerdataDictWordsSensesConjugations.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        type: json_['type'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-        if (value != null) 'value': value!,
-      };
+    if (type != null) 'type': type!,
+    if (value != null) 'value': value!,
+  };
 }
 
 class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
@@ -4036,130 +4098,123 @@ class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
   });
 
   DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(core.Map json_)
-      : this(
-          attribution: json_['attribution'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        attribution: json_['attribution'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attribution != null) 'attribution': attribution!,
-        if (url != null) 'url': url!,
-      };
+    if (attribution != null) 'attribution': attribution!,
+    if (url != null) 'url': url!,
+  };
 }
 
 class DictlayerdataDictWordsSensesDefinitionsExamples {
   DictlayerdataDictWordsSensesDefinitionsExamplesSource? source;
   core.String? text;
 
-  DictlayerdataDictWordsSensesDefinitionsExamples({
-    this.source,
-    this.text,
-  });
+  DictlayerdataDictWordsSensesDefinitionsExamples({this.source, this.text});
 
   DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(core.Map json_)
-      : this(
-          source: json_.containsKey('source')
-              ? DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        source:
+            json_.containsKey('source')
+                ? DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (source != null) 'source': source!,
-        if (text != null) 'text': text!,
-      };
+    if (source != null) 'source': source!,
+    if (text != null) 'text': text!,
+  };
 }
 
 class DictlayerdataDictWordsSensesDefinitions {
   core.String? definition;
   core.List<DictlayerdataDictWordsSensesDefinitionsExamples>? examples;
 
-  DictlayerdataDictWordsSensesDefinitions({
-    this.definition,
-    this.examples,
-  });
+  DictlayerdataDictWordsSensesDefinitions({this.definition, this.examples});
 
   DictlayerdataDictWordsSensesDefinitions.fromJson(core.Map json_)
-      : this(
-          definition: json_['definition'] as core.String?,
-          examples: (json_['examples'] as core.List?)
-              ?.map((value) =>
-                  DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        definition: json_['definition'] as core.String?,
+        examples:
+            (json_['examples'] as core.List?)
+                ?.map(
+                  (value) =>
+                      DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (definition != null) 'definition': definition!,
-        if (examples != null) 'examples': examples!,
-      };
+    if (definition != null) 'definition': definition!,
+    if (examples != null) 'examples': examples!,
+  };
 }
 
 class DictlayerdataDictWordsSensesSource {
   core.String? attribution;
   core.String? url;
 
-  DictlayerdataDictWordsSensesSource({
-    this.attribution,
-    this.url,
-  });
+  DictlayerdataDictWordsSensesSource({this.attribution, this.url});
 
   DictlayerdataDictWordsSensesSource.fromJson(core.Map json_)
-      : this(
-          attribution: json_['attribution'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        attribution: json_['attribution'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attribution != null) 'attribution': attribution!,
-        if (url != null) 'url': url!,
-      };
+    if (attribution != null) 'attribution': attribution!,
+    if (url != null) 'url': url!,
+  };
 }
 
 class DictlayerdataDictWordsSensesSynonymsSource {
   core.String? attribution;
   core.String? url;
 
-  DictlayerdataDictWordsSensesSynonymsSource({
-    this.attribution,
-    this.url,
-  });
+  DictlayerdataDictWordsSensesSynonymsSource({this.attribution, this.url});
 
   DictlayerdataDictWordsSensesSynonymsSource.fromJson(core.Map json_)
-      : this(
-          attribution: json_['attribution'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        attribution: json_['attribution'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attribution != null) 'attribution': attribution!,
-        if (url != null) 'url': url!,
-      };
+    if (attribution != null) 'attribution': attribution!,
+    if (url != null) 'url': url!,
+  };
 }
 
 class DictlayerdataDictWordsSensesSynonyms {
   DictlayerdataDictWordsSensesSynonymsSource? source;
   core.String? text;
 
-  DictlayerdataDictWordsSensesSynonyms({
-    this.source,
-    this.text,
-  });
+  DictlayerdataDictWordsSensesSynonyms({this.source, this.text});
 
   DictlayerdataDictWordsSensesSynonyms.fromJson(core.Map json_)
-      : this(
-          source: json_.containsKey('source')
-              ? DictlayerdataDictWordsSensesSynonymsSource.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        source:
+            json_.containsKey('source')
+                ? DictlayerdataDictWordsSensesSynonymsSource.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (source != null) 'source': source!,
-        if (text != null) 'text': text!,
-      };
+    if (source != null) 'source': source!,
+    if (text != null) 'text': text!,
+  };
 }
 
 class DictlayerdataDictWordsSenses {
@@ -4184,40 +4239,53 @@ class DictlayerdataDictWordsSenses {
   });
 
   DictlayerdataDictWordsSenses.fromJson(core.Map json_)
-      : this(
-          conjugations: (json_['conjugations'] as core.List?)
-              ?.map((value) =>
-                  DictlayerdataDictWordsSensesConjugations.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          definitions: (json_['definitions'] as core.List?)
-              ?.map((value) => DictlayerdataDictWordsSensesDefinitions.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          partOfSpeech: json_['partOfSpeech'] as core.String?,
-          pronunciation: json_['pronunciation'] as core.String?,
-          pronunciationUrl: json_['pronunciationUrl'] as core.String?,
-          source: json_.containsKey('source')
-              ? DictlayerdataDictWordsSensesSource.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          syllabification: json_['syllabification'] as core.String?,
-          synonyms: (json_['synonyms'] as core.List?)
-              ?.map((value) => DictlayerdataDictWordsSensesSynonyms.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        conjugations:
+            (json_['conjugations'] as core.List?)
+                ?.map(
+                  (value) => DictlayerdataDictWordsSensesConjugations.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        definitions:
+            (json_['definitions'] as core.List?)
+                ?.map(
+                  (value) => DictlayerdataDictWordsSensesDefinitions.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        partOfSpeech: json_['partOfSpeech'] as core.String?,
+        pronunciation: json_['pronunciation'] as core.String?,
+        pronunciationUrl: json_['pronunciationUrl'] as core.String?,
+        source:
+            json_.containsKey('source')
+                ? DictlayerdataDictWordsSensesSource.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        syllabification: json_['syllabification'] as core.String?,
+        synonyms:
+            (json_['synonyms'] as core.List?)
+                ?.map(
+                  (value) => DictlayerdataDictWordsSensesSynonyms.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conjugations != null) 'conjugations': conjugations!,
-        if (definitions != null) 'definitions': definitions!,
-        if (partOfSpeech != null) 'partOfSpeech': partOfSpeech!,
-        if (pronunciation != null) 'pronunciation': pronunciation!,
-        if (pronunciationUrl != null) 'pronunciationUrl': pronunciationUrl!,
-        if (source != null) 'source': source!,
-        if (syllabification != null) 'syllabification': syllabification!,
-        if (synonyms != null) 'synonyms': synonyms!,
-      };
+    if (conjugations != null) 'conjugations': conjugations!,
+    if (definitions != null) 'definitions': definitions!,
+    if (partOfSpeech != null) 'partOfSpeech': partOfSpeech!,
+    if (pronunciation != null) 'pronunciation': pronunciation!,
+    if (pronunciationUrl != null) 'pronunciationUrl': pronunciationUrl!,
+    if (source != null) 'source': source!,
+    if (syllabification != null) 'syllabification': syllabification!,
+    if (synonyms != null) 'synonyms': synonyms!,
+  };
 }
 
 /// The words with different meanings but not related words, e.g. "go" (game)
@@ -4226,21 +4294,18 @@ class DictlayerdataDictWordsSource {
   core.String? attribution;
   core.String? url;
 
-  DictlayerdataDictWordsSource({
-    this.attribution,
-    this.url,
-  });
+  DictlayerdataDictWordsSource({this.attribution, this.url});
 
   DictlayerdataDictWordsSource.fromJson(core.Map json_)
-      : this(
-          attribution: json_['attribution'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        attribution: json_['attribution'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attribution != null) 'attribution': attribution!,
-        if (url != null) 'url': url!,
-      };
+    if (attribution != null) 'attribution': attribution!,
+    if (url != null) 'url': url!,
+  };
 }
 
 class DictlayerdataDictWords {
@@ -4260,31 +4325,45 @@ class DictlayerdataDictWords {
   });
 
   DictlayerdataDictWords.fromJson(core.Map json_)
-      : this(
-          derivatives: (json_['derivatives'] as core.List?)
-              ?.map((value) => DictlayerdataDictWordsDerivatives.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          examples: (json_['examples'] as core.List?)
-              ?.map((value) => DictlayerdataDictWordsExamples.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          senses: (json_['senses'] as core.List?)
-              ?.map((value) => DictlayerdataDictWordsSenses.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          source: json_.containsKey('source')
-              ? DictlayerdataDictWordsSource.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        derivatives:
+            (json_['derivatives'] as core.List?)
+                ?.map(
+                  (value) => DictlayerdataDictWordsDerivatives.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        examples:
+            (json_['examples'] as core.List?)
+                ?.map(
+                  (value) => DictlayerdataDictWordsExamples.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        senses:
+            (json_['senses'] as core.List?)
+                ?.map(
+                  (value) => DictlayerdataDictWordsSenses.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        source:
+            json_.containsKey('source')
+                ? DictlayerdataDictWordsSource.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (derivatives != null) 'derivatives': derivatives!,
-        if (examples != null) 'examples': examples!,
-        if (senses != null) 'senses': senses!,
-        if (source != null) 'source': source!,
-      };
+    if (derivatives != null) 'derivatives': derivatives!,
+    if (examples != null) 'examples': examples!,
+    if (senses != null) 'senses': senses!,
+    if (source != null) 'source': source!,
+  };
 }
 
 class DictlayerdataDict {
@@ -4292,27 +4371,30 @@ class DictlayerdataDict {
   DictlayerdataDictSource? source;
   core.List<DictlayerdataDictWords>? words;
 
-  DictlayerdataDict({
-    this.source,
-    this.words,
-  });
+  DictlayerdataDict({this.source, this.words});
 
   DictlayerdataDict.fromJson(core.Map json_)
-      : this(
-          source: json_.containsKey('source')
-              ? DictlayerdataDictSource.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          words: (json_['words'] as core.List?)
-              ?.map((value) => DictlayerdataDictWords.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        source:
+            json_.containsKey('source')
+                ? DictlayerdataDictSource.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        words:
+            (json_['words'] as core.List?)
+                ?.map(
+                  (value) => DictlayerdataDictWords.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (source != null) 'source': source!,
-        if (words != null) 'words': words!,
-      };
+    if (source != null) 'source': source!,
+    if (words != null) 'words': words!,
+  };
 }
 
 class Dictlayerdata {
@@ -4320,30 +4402,30 @@ class Dictlayerdata {
   DictlayerdataDict? dict;
   core.String? kind;
 
-  Dictlayerdata({
-    this.common,
-    this.dict,
-    this.kind,
-  });
+  Dictlayerdata({this.common, this.dict, this.kind});
 
   Dictlayerdata.fromJson(core.Map json_)
-      : this(
-          common: json_.containsKey('common')
-              ? DictlayerdataCommon.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dict: json_.containsKey('dict')
-              ? DictlayerdataDict.fromJson(
-                  json_['dict'] as core.Map<core.String, core.dynamic>)
-              : null,
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        common:
+            json_.containsKey('common')
+                ? DictlayerdataCommon.fromJson(
+                  json_['common'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dict:
+            json_.containsKey('dict')
+                ? DictlayerdataDict.fromJson(
+                  json_['dict'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (common != null) 'common': common!,
-        if (dict != null) 'dict': dict!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (common != null) 'common': common!,
+    if (dict != null) 'dict': dict!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 class DiscoveryclustersClustersBannerWithContentContainer {
@@ -4364,28 +4446,28 @@ class DiscoveryclustersClustersBannerWithContentContainer {
   });
 
   DiscoveryclustersClustersBannerWithContentContainer.fromJson(core.Map json_)
-      : this(
-          fillColorArgb: json_['fillColorArgb'] as core.String?,
-          imageUrl: json_['imageUrl'] as core.String?,
-          maskColorArgb: json_['maskColorArgb'] as core.String?,
-          moreButtonText: json_['moreButtonText'] as core.String?,
-          moreButtonUrl: json_['moreButtonUrl'] as core.String?,
-          textColorArgb: json_['textColorArgb'] as core.String?,
-        );
+    : this(
+        fillColorArgb: json_['fillColorArgb'] as core.String?,
+        imageUrl: json_['imageUrl'] as core.String?,
+        maskColorArgb: json_['maskColorArgb'] as core.String?,
+        moreButtonText: json_['moreButtonText'] as core.String?,
+        moreButtonUrl: json_['moreButtonUrl'] as core.String?,
+        textColorArgb: json_['textColorArgb'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fillColorArgb != null) 'fillColorArgb': fillColorArgb!,
-        if (imageUrl != null) 'imageUrl': imageUrl!,
-        if (maskColorArgb != null) 'maskColorArgb': maskColorArgb!,
-        if (moreButtonText != null) 'moreButtonText': moreButtonText!,
-        if (moreButtonUrl != null) 'moreButtonUrl': moreButtonUrl!,
-        if (textColorArgb != null) 'textColorArgb': textColorArgb!,
-      };
+    if (fillColorArgb != null) 'fillColorArgb': fillColorArgb!,
+    if (imageUrl != null) 'imageUrl': imageUrl!,
+    if (maskColorArgb != null) 'maskColorArgb': maskColorArgb!,
+    if (moreButtonText != null) 'moreButtonText': moreButtonText!,
+    if (moreButtonUrl != null) 'moreButtonUrl': moreButtonUrl!,
+    if (textColorArgb != null) 'textColorArgb': textColorArgb!,
+  };
 }
 
 class DiscoveryclustersClusters {
   DiscoveryclustersClustersBannerWithContentContainer?
-      bannerWithContentContainer;
+  bannerWithContentContainer;
   core.String? subTitle;
   core.String? title;
   core.int? totalVolumes;
@@ -4402,32 +4484,37 @@ class DiscoveryclustersClusters {
   });
 
   DiscoveryclustersClusters.fromJson(core.Map json_)
-      : this(
-          bannerWithContentContainer: json_
-                  .containsKey('banner_with_content_container')
-              ? DiscoveryclustersClustersBannerWithContentContainer.fromJson(
+    : this(
+        bannerWithContentContainer:
+            json_.containsKey('banner_with_content_container')
+                ? DiscoveryclustersClustersBannerWithContentContainer.fromJson(
                   json_['banner_with_content_container']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          subTitle: json_['subTitle'] as core.String?,
-          title: json_['title'] as core.String?,
-          totalVolumes: json_['totalVolumes'] as core.int?,
-          uid: json_['uid'] as core.String?,
-          volumes: (json_['volumes'] as core.List?)
-              ?.map((value) =>
-                  Volume.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        subTitle: json_['subTitle'] as core.String?,
+        title: json_['title'] as core.String?,
+        totalVolumes: json_['totalVolumes'] as core.int?,
+        uid: json_['uid'] as core.String?,
+        volumes:
+            (json_['volumes'] as core.List?)
+                ?.map(
+                  (value) => Volume.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bannerWithContentContainer != null)
-          'banner_with_content_container': bannerWithContentContainer!,
-        if (subTitle != null) 'subTitle': subTitle!,
-        if (title != null) 'title': title!,
-        if (totalVolumes != null) 'totalVolumes': totalVolumes!,
-        if (uid != null) 'uid': uid!,
-        if (volumes != null) 'volumes': volumes!,
-      };
+    if (bannerWithContentContainer != null)
+      'banner_with_content_container': bannerWithContentContainer!,
+    if (subTitle != null) 'subTitle': subTitle!,
+    if (title != null) 'title': title!,
+    if (totalVolumes != null) 'totalVolumes': totalVolumes!,
+    if (uid != null) 'uid': uid!,
+    if (volumes != null) 'volumes': volumes!,
+  };
 }
 
 class Discoveryclusters {
@@ -4437,27 +4524,27 @@ class Discoveryclusters {
   core.String? kind;
   core.int? totalClusters;
 
-  Discoveryclusters({
-    this.clusters,
-    this.kind,
-    this.totalClusters,
-  });
+  Discoveryclusters({this.clusters, this.kind, this.totalClusters});
 
   Discoveryclusters.fromJson(core.Map json_)
-      : this(
-          clusters: (json_['clusters'] as core.List?)
-              ?.map((value) => DiscoveryclustersClusters.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          totalClusters: json_['totalClusters'] as core.int?,
-        );
+    : this(
+        clusters:
+            (json_['clusters'] as core.List?)
+                ?.map(
+                  (value) => DiscoveryclustersClusters.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        totalClusters: json_['totalClusters'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusters != null) 'clusters': clusters!,
-        if (kind != null) 'kind': kind!,
-        if (totalClusters != null) 'totalClusters': totalClusters!,
-      };
+    if (clusters != null) 'clusters': clusters!,
+    if (kind != null) 'kind': kind!,
+    if (totalClusters != null) 'totalClusters': totalClusters!,
+  };
 }
 
 class DownloadAccessRestriction {
@@ -4523,36 +4610,35 @@ class DownloadAccessRestriction {
   });
 
   DownloadAccessRestriction.fromJson(core.Map json_)
-      : this(
-          deviceAllowed: json_['deviceAllowed'] as core.bool?,
-          downloadsAcquired: json_['downloadsAcquired'] as core.int?,
-          justAcquired: json_['justAcquired'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          maxDownloadDevices: json_['maxDownloadDevices'] as core.int?,
-          message: json_['message'] as core.String?,
-          nonce: json_['nonce'] as core.String?,
-          reasonCode: json_['reasonCode'] as core.String?,
-          restricted: json_['restricted'] as core.bool?,
-          signature: json_['signature'] as core.String?,
-          source: json_['source'] as core.String?,
-          volumeId: json_['volumeId'] as core.String?,
-        );
+    : this(
+        deviceAllowed: json_['deviceAllowed'] as core.bool?,
+        downloadsAcquired: json_['downloadsAcquired'] as core.int?,
+        justAcquired: json_['justAcquired'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        maxDownloadDevices: json_['maxDownloadDevices'] as core.int?,
+        message: json_['message'] as core.String?,
+        nonce: json_['nonce'] as core.String?,
+        reasonCode: json_['reasonCode'] as core.String?,
+        restricted: json_['restricted'] as core.bool?,
+        signature: json_['signature'] as core.String?,
+        source: json_['source'] as core.String?,
+        volumeId: json_['volumeId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceAllowed != null) 'deviceAllowed': deviceAllowed!,
-        if (downloadsAcquired != null) 'downloadsAcquired': downloadsAcquired!,
-        if (justAcquired != null) 'justAcquired': justAcquired!,
-        if (kind != null) 'kind': kind!,
-        if (maxDownloadDevices != null)
-          'maxDownloadDevices': maxDownloadDevices!,
-        if (message != null) 'message': message!,
-        if (nonce != null) 'nonce': nonce!,
-        if (reasonCode != null) 'reasonCode': reasonCode!,
-        if (restricted != null) 'restricted': restricted!,
-        if (signature != null) 'signature': signature!,
-        if (source != null) 'source': source!,
-        if (volumeId != null) 'volumeId': volumeId!,
-      };
+    if (deviceAllowed != null) 'deviceAllowed': deviceAllowed!,
+    if (downloadsAcquired != null) 'downloadsAcquired': downloadsAcquired!,
+    if (justAcquired != null) 'justAcquired': justAcquired!,
+    if (kind != null) 'kind': kind!,
+    if (maxDownloadDevices != null) 'maxDownloadDevices': maxDownloadDevices!,
+    if (message != null) 'message': message!,
+    if (nonce != null) 'nonce': nonce!,
+    if (reasonCode != null) 'reasonCode': reasonCode!,
+    if (restricted != null) 'restricted': restricted!,
+    if (signature != null) 'signature': signature!,
+    if (source != null) 'source': source!,
+    if (volumeId != null) 'volumeId': volumeId!,
+  };
 }
 
 class DownloadAccesses {
@@ -4562,25 +4648,25 @@ class DownloadAccesses {
   /// Resource type.
   core.String? kind;
 
-  DownloadAccesses({
-    this.downloadAccessList,
-    this.kind,
-  });
+  DownloadAccesses({this.downloadAccessList, this.kind});
 
   DownloadAccesses.fromJson(core.Map json_)
-      : this(
-          downloadAccessList: (json_['downloadAccessList'] as core.List?)
-              ?.map((value) => DownloadAccessRestriction.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        downloadAccessList:
+            (json_['downloadAccessList'] as core.List?)
+                ?.map(
+                  (value) => DownloadAccessRestriction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (downloadAccessList != null)
-          'downloadAccessList': downloadAccessList!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (downloadAccessList != null) 'downloadAccessList': downloadAccessList!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -4615,22 +4701,22 @@ class FamilyInfoMembership {
   });
 
   FamilyInfoMembership.fromJson(core.Map json_)
-      : this(
-          acquirePermission: json_['acquirePermission'] as core.String?,
-          ageGroup: json_['ageGroup'] as core.String?,
-          allowedMaturityRating: json_['allowedMaturityRating'] as core.String?,
-          isInFamily: json_['isInFamily'] as core.bool?,
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        acquirePermission: json_['acquirePermission'] as core.String?,
+        ageGroup: json_['ageGroup'] as core.String?,
+        allowedMaturityRating: json_['allowedMaturityRating'] as core.String?,
+        isInFamily: json_['isInFamily'] as core.bool?,
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acquirePermission != null) 'acquirePermission': acquirePermission!,
-        if (ageGroup != null) 'ageGroup': ageGroup!,
-        if (allowedMaturityRating != null)
-          'allowedMaturityRating': allowedMaturityRating!,
-        if (isInFamily != null) 'isInFamily': isInFamily!,
-        if (role != null) 'role': role!,
-      };
+    if (acquirePermission != null) 'acquirePermission': acquirePermission!,
+    if (ageGroup != null) 'ageGroup': ageGroup!,
+    if (allowedMaturityRating != null)
+      'allowedMaturityRating': allowedMaturityRating!,
+    if (isInFamily != null) 'isInFamily': isInFamily!,
+    if (role != null) 'role': role!,
+  };
 }
 
 class FamilyInfo {
@@ -4640,24 +4726,23 @@ class FamilyInfo {
   /// Family membership info of the user that made the request.
   FamilyInfoMembership? membership;
 
-  FamilyInfo({
-    this.kind,
-    this.membership,
-  });
+  FamilyInfo({this.kind, this.membership});
 
   FamilyInfo.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          membership: json_.containsKey('membership')
-              ? FamilyInfoMembership.fromJson(
-                  json_['membership'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        membership:
+            json_.containsKey('membership')
+                ? FamilyInfoMembership.fromJson(
+                  json_['membership'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (membership != null) 'membership': membership!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (membership != null) 'membership': membership!,
+  };
 }
 
 class GeoAnnotationdata {
@@ -4676,8 +4761,10 @@ class GeoAnnotationdata {
       convert.base64.decode(encodedData!);
 
   set encodedDataAsBytes(core.List<core.int> bytes_) {
-    encodedData =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    encodedData = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Unique id for this annotation data.
@@ -4719,32 +4806,34 @@ class GeoAnnotationdata {
   });
 
   GeoAnnotationdata.fromJson(core.Map json_)
-      : this(
-          annotationType: json_['annotationType'] as core.String?,
-          data: json_.containsKey('data')
-              ? Geolayerdata.fromJson(
-                  json_['data'] as core.Map<core.String, core.dynamic>)
-              : null,
-          encodedData: json_['encodedData'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          layerId: json_['layerId'] as core.String?,
-          selfLink: json_['selfLink'] as core.String?,
-          updated: json_['updated'] as core.String?,
-          volumeId: json_['volumeId'] as core.String?,
-        );
+    : this(
+        annotationType: json_['annotationType'] as core.String?,
+        data:
+            json_.containsKey('data')
+                ? Geolayerdata.fromJson(
+                  json_['data'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        encodedData: json_['encodedData'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        layerId: json_['layerId'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        updated: json_['updated'] as core.String?,
+        volumeId: json_['volumeId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationType != null) 'annotationType': annotationType!,
-        if (data != null) 'data': data!,
-        if (encodedData != null) 'encodedData': encodedData!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (layerId != null) 'layerId': layerId!,
-        if (selfLink != null) 'selfLink': selfLink!,
-        if (updated != null) 'updated': updated!,
-        if (volumeId != null) 'volumeId': volumeId!,
-      };
+    if (annotationType != null) 'annotationType': annotationType!,
+    if (data != null) 'data': data!,
+    if (encodedData != null) 'encodedData': encodedData!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (layerId != null) 'layerId': layerId!,
+    if (selfLink != null) 'selfLink': selfLink!,
+    if (updated != null) 'updated': updated!,
+    if (volumeId != null) 'volumeId': volumeId!,
+  };
 }
 
 class GeolayerdataCommon {
@@ -4775,63 +4864,57 @@ class GeolayerdataCommon {
   });
 
   GeolayerdataCommon.fromJson(core.Map json_)
-      : this(
-          lang: json_['lang'] as core.String?,
-          previewImageUrl: json_['previewImageUrl'] as core.String?,
-          snippet: json_['snippet'] as core.String?,
-          snippetUrl: json_['snippetUrl'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        lang: json_['lang'] as core.String?,
+        previewImageUrl: json_['previewImageUrl'] as core.String?,
+        snippet: json_['snippet'] as core.String?,
+        snippetUrl: json_['snippetUrl'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lang != null) 'lang': lang!,
-        if (previewImageUrl != null) 'previewImageUrl': previewImageUrl!,
-        if (snippet != null) 'snippet': snippet!,
-        if (snippetUrl != null) 'snippetUrl': snippetUrl!,
-        if (title != null) 'title': title!,
-      };
+    if (lang != null) 'lang': lang!,
+    if (previewImageUrl != null) 'previewImageUrl': previewImageUrl!,
+    if (snippet != null) 'snippet': snippet!,
+    if (snippetUrl != null) 'snippetUrl': snippetUrl!,
+    if (title != null) 'title': title!,
+  };
 }
 
 class GeolayerdataGeoViewportHi {
   core.double? latitude;
   core.double? longitude;
 
-  GeolayerdataGeoViewportHi({
-    this.latitude,
-    this.longitude,
-  });
+  GeolayerdataGeoViewportHi({this.latitude, this.longitude});
 
   GeolayerdataGeoViewportHi.fromJson(core.Map json_)
-      : this(
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
-        );
+    : this(
+        latitude: (json_['latitude'] as core.num?)?.toDouble(),
+        longitude: (json_['longitude'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-      };
+    if (latitude != null) 'latitude': latitude!,
+    if (longitude != null) 'longitude': longitude!,
+  };
 }
 
 class GeolayerdataGeoViewportLo {
   core.double? latitude;
   core.double? longitude;
 
-  GeolayerdataGeoViewportLo({
-    this.latitude,
-    this.longitude,
-  });
+  GeolayerdataGeoViewportLo({this.latitude, this.longitude});
 
   GeolayerdataGeoViewportLo.fromJson(core.Map json_)
-      : this(
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
-        );
+    : this(
+        latitude: (json_['latitude'] as core.num?)?.toDouble(),
+        longitude: (json_['longitude'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-      };
+    if (latitude != null) 'latitude': latitude!,
+    if (longitude != null) 'longitude': longitude!,
+  };
 }
 
 /// The viewport for showing this location.
@@ -4841,27 +4924,28 @@ class GeolayerdataGeoViewport {
   GeolayerdataGeoViewportHi? hi;
   GeolayerdataGeoViewportLo? lo;
 
-  GeolayerdataGeoViewport({
-    this.hi,
-    this.lo,
-  });
+  GeolayerdataGeoViewport({this.hi, this.lo});
 
   GeolayerdataGeoViewport.fromJson(core.Map json_)
-      : this(
-          hi: json_.containsKey('hi')
-              ? GeolayerdataGeoViewportHi.fromJson(
-                  json_['hi'] as core.Map<core.String, core.dynamic>)
-              : null,
-          lo: json_.containsKey('lo')
-              ? GeolayerdataGeoViewportLo.fromJson(
-                  json_['lo'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        hi:
+            json_.containsKey('hi')
+                ? GeolayerdataGeoViewportHi.fromJson(
+                  json_['hi'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lo:
+            json_.containsKey('lo')
+                ? GeolayerdataGeoViewportLo.fromJson(
+                  json_['lo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hi != null) 'hi': hi!,
-        if (lo != null) 'lo': lo!,
-      };
+    if (hi != null) 'hi': hi!,
+    if (lo != null) 'lo': lo!,
+  };
 }
 
 class GeolayerdataGeo {
@@ -4912,32 +4996,35 @@ class GeolayerdataGeo {
   });
 
   GeolayerdataGeo.fromJson(core.Map json_)
-      : this(
-          boundary: (json_['boundary'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          cachePolicy: json_['cachePolicy'] as core.String?,
-          countryCode: json_['countryCode'] as core.String?,
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
-          mapType: json_['mapType'] as core.String?,
-          viewport: json_.containsKey('viewport')
-              ? GeolayerdataGeoViewport.fromJson(
-                  json_['viewport'] as core.Map<core.String, core.dynamic>)
-              : null,
-          zoom: json_['zoom'] as core.int?,
-        );
+    : this(
+        boundary:
+            (json_['boundary'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        cachePolicy: json_['cachePolicy'] as core.String?,
+        countryCode: json_['countryCode'] as core.String?,
+        latitude: (json_['latitude'] as core.num?)?.toDouble(),
+        longitude: (json_['longitude'] as core.num?)?.toDouble(),
+        mapType: json_['mapType'] as core.String?,
+        viewport:
+            json_.containsKey('viewport')
+                ? GeolayerdataGeoViewport.fromJson(
+                  json_['viewport'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        zoom: json_['zoom'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boundary != null) 'boundary': boundary!,
-        if (cachePolicy != null) 'cachePolicy': cachePolicy!,
-        if (countryCode != null) 'countryCode': countryCode!,
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-        if (mapType != null) 'mapType': mapType!,
-        if (viewport != null) 'viewport': viewport!,
-        if (zoom != null) 'zoom': zoom!,
-      };
+    if (boundary != null) 'boundary': boundary!,
+    if (cachePolicy != null) 'cachePolicy': cachePolicy!,
+    if (countryCode != null) 'countryCode': countryCode!,
+    if (latitude != null) 'latitude': latitude!,
+    if (longitude != null) 'longitude': longitude!,
+    if (mapType != null) 'mapType': mapType!,
+    if (viewport != null) 'viewport': viewport!,
+    if (zoom != null) 'zoom': zoom!,
+  };
 }
 
 class Geolayerdata {
@@ -4945,30 +5032,30 @@ class Geolayerdata {
   GeolayerdataGeo? geo;
   core.String? kind;
 
-  Geolayerdata({
-    this.common,
-    this.geo,
-    this.kind,
-  });
+  Geolayerdata({this.common, this.geo, this.kind});
 
   Geolayerdata.fromJson(core.Map json_)
-      : this(
-          common: json_.containsKey('common')
-              ? GeolayerdataCommon.fromJson(
-                  json_['common'] as core.Map<core.String, core.dynamic>)
-              : null,
-          geo: json_.containsKey('geo')
-              ? GeolayerdataGeo.fromJson(
-                  json_['geo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        common:
+            json_.containsKey('common')
+                ? GeolayerdataCommon.fromJson(
+                  json_['common'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        geo:
+            json_.containsKey('geo')
+                ? GeolayerdataGeo.fromJson(
+                  json_['geo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (common != null) 'common': common!,
-        if (geo != null) 'geo': geo!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (common != null) 'common': common!,
+    if (geo != null) 'geo': geo!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 class Layersummaries {
@@ -4981,27 +5068,27 @@ class Layersummaries {
   /// The total number of layer summaries found.
   core.int? totalItems;
 
-  Layersummaries({
-    this.items,
-    this.kind,
-    this.totalItems,
-  });
+  Layersummaries({this.items, this.kind, this.totalItems});
 
   Layersummaries.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => Layersummary.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          totalItems: json_['totalItems'] as core.int?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Layersummary.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        totalItems: json_['totalItems'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (totalItems != null) 'totalItems': totalItems!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (totalItems != null) 'totalItems': totalItems!,
+  };
 }
 
 class Layersummary {
@@ -5067,42 +5154,43 @@ class Layersummary {
   });
 
   Layersummary.fromJson(core.Map json_)
-      : this(
-          annotationCount: json_['annotationCount'] as core.int?,
-          annotationTypes: (json_['annotationTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          annotationsDataLink: json_['annotationsDataLink'] as core.String?,
-          annotationsLink: json_['annotationsLink'] as core.String?,
-          contentVersion: json_['contentVersion'] as core.String?,
-          dataCount: json_['dataCount'] as core.int?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          layerId: json_['layerId'] as core.String?,
-          selfLink: json_['selfLink'] as core.String?,
-          updated: json_['updated'] as core.String?,
-          volumeAnnotationsVersion:
-              json_['volumeAnnotationsVersion'] as core.String?,
-          volumeId: json_['volumeId'] as core.String?,
-        );
+    : this(
+        annotationCount: json_['annotationCount'] as core.int?,
+        annotationTypes:
+            (json_['annotationTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        annotationsDataLink: json_['annotationsDataLink'] as core.String?,
+        annotationsLink: json_['annotationsLink'] as core.String?,
+        contentVersion: json_['contentVersion'] as core.String?,
+        dataCount: json_['dataCount'] as core.int?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        layerId: json_['layerId'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        updated: json_['updated'] as core.String?,
+        volumeAnnotationsVersion:
+            json_['volumeAnnotationsVersion'] as core.String?,
+        volumeId: json_['volumeId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationCount != null) 'annotationCount': annotationCount!,
-        if (annotationTypes != null) 'annotationTypes': annotationTypes!,
-        if (annotationsDataLink != null)
-          'annotationsDataLink': annotationsDataLink!,
-        if (annotationsLink != null) 'annotationsLink': annotationsLink!,
-        if (contentVersion != null) 'contentVersion': contentVersion!,
-        if (dataCount != null) 'dataCount': dataCount!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (layerId != null) 'layerId': layerId!,
-        if (selfLink != null) 'selfLink': selfLink!,
-        if (updated != null) 'updated': updated!,
-        if (volumeAnnotationsVersion != null)
-          'volumeAnnotationsVersion': volumeAnnotationsVersion!,
-        if (volumeId != null) 'volumeId': volumeId!,
-      };
+    if (annotationCount != null) 'annotationCount': annotationCount!,
+    if (annotationTypes != null) 'annotationTypes': annotationTypes!,
+    if (annotationsDataLink != null)
+      'annotationsDataLink': annotationsDataLink!,
+    if (annotationsLink != null) 'annotationsLink': annotationsLink!,
+    if (contentVersion != null) 'contentVersion': contentVersion!,
+    if (dataCount != null) 'dataCount': dataCount!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (layerId != null) 'layerId': layerId!,
+    if (selfLink != null) 'selfLink': selfLink!,
+    if (updated != null) 'updated': updated!,
+    if (volumeAnnotationsVersion != null)
+      'volumeAnnotationsVersion': volumeAnnotationsVersion!,
+    if (volumeId != null) 'volumeId': volumeId!,
+  };
 }
 
 class MetadataItems {
@@ -5121,21 +5209,21 @@ class MetadataItems {
   });
 
   MetadataItems.fromJson(core.Map json_)
-      : this(
-          downloadUrl: json_['download_url'] as core.String?,
-          encryptedKey: json_['encrypted_key'] as core.String?,
-          language: json_['language'] as core.String?,
-          size: json_['size'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        downloadUrl: json_['download_url'] as core.String?,
+        encryptedKey: json_['encrypted_key'] as core.String?,
+        language: json_['language'] as core.String?,
+        size: json_['size'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (downloadUrl != null) 'download_url': downloadUrl!,
-        if (encryptedKey != null) 'encrypted_key': encryptedKey!,
-        if (language != null) 'language': language!,
-        if (size != null) 'size': size!,
-        if (version != null) 'version': version!,
-      };
+    if (downloadUrl != null) 'download_url': downloadUrl!,
+    if (encryptedKey != null) 'encrypted_key': encryptedKey!,
+    if (language != null) 'language': language!,
+    if (size != null) 'size': size!,
+    if (version != null) 'version': version!,
+  };
 }
 
 class Metadata {
@@ -5145,24 +5233,25 @@ class Metadata {
   /// Resource type.
   core.String? kind;
 
-  Metadata({
-    this.items,
-    this.kind,
-  });
+  Metadata({this.items, this.kind});
 
   Metadata.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => MetadataItems.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => MetadataItems.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 class Notification {
@@ -5207,48 +5296,49 @@ class Notification {
   });
 
   Notification.fromJson(core.Map json_)
-      : this(
-          body: json_['body'] as core.String?,
-          crmExperimentIds: (json_['crmExperimentIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          docId: json_['doc_id'] as core.String?,
-          docType: json_['doc_type'] as core.String?,
-          dontShowNotification: json_['dont_show_notification'] as core.bool?,
-          iconUrl: json_['iconUrl'] as core.String?,
-          isDocumentMature: json_['is_document_mature'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          notificationGroup: json_['notificationGroup'] as core.String?,
-          notificationType: json_['notification_type'] as core.String?,
-          pcampaignId: json_['pcampaign_id'] as core.String?,
-          reason: json_['reason'] as core.String?,
-          showNotificationSettingsAction:
-              json_['show_notification_settings_action'] as core.bool?,
-          targetUrl: json_['targetUrl'] as core.String?,
-          timeToExpireMs: json_['timeToExpireMs'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        body: json_['body'] as core.String?,
+        crmExperimentIds:
+            (json_['crmExperimentIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        docId: json_['doc_id'] as core.String?,
+        docType: json_['doc_type'] as core.String?,
+        dontShowNotification: json_['dont_show_notification'] as core.bool?,
+        iconUrl: json_['iconUrl'] as core.String?,
+        isDocumentMature: json_['is_document_mature'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        notificationGroup: json_['notificationGroup'] as core.String?,
+        notificationType: json_['notification_type'] as core.String?,
+        pcampaignId: json_['pcampaign_id'] as core.String?,
+        reason: json_['reason'] as core.String?,
+        showNotificationSettingsAction:
+            json_['show_notification_settings_action'] as core.bool?,
+        targetUrl: json_['targetUrl'] as core.String?,
+        timeToExpireMs: json_['timeToExpireMs'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-        if (crmExperimentIds != null) 'crmExperimentIds': crmExperimentIds!,
-        if (docId != null) 'doc_id': docId!,
-        if (docType != null) 'doc_type': docType!,
-        if (dontShowNotification != null)
-          'dont_show_notification': dontShowNotification!,
-        if (iconUrl != null) 'iconUrl': iconUrl!,
-        if (isDocumentMature != null) 'is_document_mature': isDocumentMature!,
-        if (kind != null) 'kind': kind!,
-        if (notificationGroup != null) 'notificationGroup': notificationGroup!,
-        if (notificationType != null) 'notification_type': notificationType!,
-        if (pcampaignId != null) 'pcampaign_id': pcampaignId!,
-        if (reason != null) 'reason': reason!,
-        if (showNotificationSettingsAction != null)
-          'show_notification_settings_action': showNotificationSettingsAction!,
-        if (targetUrl != null) 'targetUrl': targetUrl!,
-        if (timeToExpireMs != null) 'timeToExpireMs': timeToExpireMs!,
-        if (title != null) 'title': title!,
-      };
+    if (body != null) 'body': body!,
+    if (crmExperimentIds != null) 'crmExperimentIds': crmExperimentIds!,
+    if (docId != null) 'doc_id': docId!,
+    if (docType != null) 'doc_type': docType!,
+    if (dontShowNotification != null)
+      'dont_show_notification': dontShowNotification!,
+    if (iconUrl != null) 'iconUrl': iconUrl!,
+    if (isDocumentMature != null) 'is_document_mature': isDocumentMature!,
+    if (kind != null) 'kind': kind!,
+    if (notificationGroup != null) 'notificationGroup': notificationGroup!,
+    if (notificationType != null) 'notification_type': notificationType!,
+    if (pcampaignId != null) 'pcampaign_id': pcampaignId!,
+    if (reason != null) 'reason': reason!,
+    if (showNotificationSettingsAction != null)
+      'show_notification_settings_action': showNotificationSettingsAction!,
+    if (targetUrl != null) 'targetUrl': targetUrl!,
+    if (timeToExpireMs != null) 'timeToExpireMs': timeToExpireMs!,
+    if (title != null) 'title': title!,
+  };
 }
 
 class OffersItemsItems {
@@ -5269,24 +5359,24 @@ class OffersItemsItems {
   });
 
   OffersItemsItems.fromJson(core.Map json_)
-      : this(
-          author: json_['author'] as core.String?,
-          canonicalVolumeLink: json_['canonicalVolumeLink'] as core.String?,
-          coverUrl: json_['coverUrl'] as core.String?,
-          description: json_['description'] as core.String?,
-          title: json_['title'] as core.String?,
-          volumeId: json_['volumeId'] as core.String?,
-        );
+    : this(
+        author: json_['author'] as core.String?,
+        canonicalVolumeLink: json_['canonicalVolumeLink'] as core.String?,
+        coverUrl: json_['coverUrl'] as core.String?,
+        description: json_['description'] as core.String?,
+        title: json_['title'] as core.String?,
+        volumeId: json_['volumeId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (author != null) 'author': author!,
-        if (canonicalVolumeLink != null)
-          'canonicalVolumeLink': canonicalVolumeLink!,
-        if (coverUrl != null) 'coverUrl': coverUrl!,
-        if (description != null) 'description': description!,
-        if (title != null) 'title': title!,
-        if (volumeId != null) 'volumeId': volumeId!,
-      };
+    if (author != null) 'author': author!,
+    if (canonicalVolumeLink != null)
+      'canonicalVolumeLink': canonicalVolumeLink!,
+    if (coverUrl != null) 'coverUrl': coverUrl!,
+    if (description != null) 'description': description!,
+    if (title != null) 'title': title!,
+    if (volumeId != null) 'volumeId': volumeId!,
+  };
 }
 
 class OffersItems {
@@ -5295,30 +5385,29 @@ class OffersItems {
   core.String? id;
   core.List<OffersItemsItems>? items;
 
-  OffersItems({
-    this.artUrl,
-    this.gservicesKey,
-    this.id,
-    this.items,
-  });
+  OffersItems({this.artUrl, this.gservicesKey, this.id, this.items});
 
   OffersItems.fromJson(core.Map json_)
-      : this(
-          artUrl: json_['artUrl'] as core.String?,
-          gservicesKey: json_['gservicesKey'] as core.String?,
-          id: json_['id'] as core.String?,
-          items: (json_['items'] as core.List?)
-              ?.map((value) => OffersItemsItems.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        artUrl: json_['artUrl'] as core.String?,
+        gservicesKey: json_['gservicesKey'] as core.String?,
+        id: json_['id'] as core.String?,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => OffersItemsItems.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (artUrl != null) 'artUrl': artUrl!,
-        if (gservicesKey != null) 'gservicesKey': gservicesKey!,
-        if (id != null) 'id': id!,
-        if (items != null) 'items': items!,
-      };
+    if (artUrl != null) 'artUrl': artUrl!,
+    if (gservicesKey != null) 'gservicesKey': gservicesKey!,
+    if (id != null) 'id': id!,
+    if (items != null) 'items': items!,
+  };
 }
 
 class Offers {
@@ -5328,24 +5417,25 @@ class Offers {
   /// Resource type.
   core.String? kind;
 
-  Offers({
-    this.items,
-    this.kind,
-  });
+  Offers({this.items, this.kind});
 
   Offers.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => OffersItems.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => OffersItems.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 class ReadingPosition {
@@ -5382,25 +5472,25 @@ class ReadingPosition {
   });
 
   ReadingPosition.fromJson(core.Map json_)
-      : this(
-          epubCfiPosition: json_['epubCfiPosition'] as core.String?,
-          gbImagePosition: json_['gbImagePosition'] as core.String?,
-          gbTextPosition: json_['gbTextPosition'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          pdfPosition: json_['pdfPosition'] as core.String?,
-          updated: json_['updated'] as core.String?,
-          volumeId: json_['volumeId'] as core.String?,
-        );
+    : this(
+        epubCfiPosition: json_['epubCfiPosition'] as core.String?,
+        gbImagePosition: json_['gbImagePosition'] as core.String?,
+        gbTextPosition: json_['gbTextPosition'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        pdfPosition: json_['pdfPosition'] as core.String?,
+        updated: json_['updated'] as core.String?,
+        volumeId: json_['volumeId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (epubCfiPosition != null) 'epubCfiPosition': epubCfiPosition!,
-        if (gbImagePosition != null) 'gbImagePosition': gbImagePosition!,
-        if (gbTextPosition != null) 'gbTextPosition': gbTextPosition!,
-        if (kind != null) 'kind': kind!,
-        if (pdfPosition != null) 'pdfPosition': pdfPosition!,
-        if (updated != null) 'updated': updated!,
-        if (volumeId != null) 'volumeId': volumeId!,
-      };
+    if (epubCfiPosition != null) 'epubCfiPosition': epubCfiPosition!,
+    if (gbImagePosition != null) 'gbImagePosition': gbImagePosition!,
+    if (gbTextPosition != null) 'gbTextPosition': gbTextPosition!,
+    if (kind != null) 'kind': kind!,
+    if (pdfPosition != null) 'pdfPosition': pdfPosition!,
+    if (updated != null) 'updated': updated!,
+    if (volumeId != null) 'volumeId': volumeId!,
+  };
 }
 
 class RequestAccessData {
@@ -5413,30 +5503,32 @@ class RequestAccessData {
   /// Resource type.
   core.String? kind;
 
-  RequestAccessData({
-    this.concurrentAccess,
-    this.downloadAccess,
-    this.kind,
-  });
+  RequestAccessData({this.concurrentAccess, this.downloadAccess, this.kind});
 
   RequestAccessData.fromJson(core.Map json_)
-      : this(
-          concurrentAccess: json_.containsKey('concurrentAccess')
-              ? ConcurrentAccessRestriction.fromJson(json_['concurrentAccess']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          downloadAccess: json_.containsKey('downloadAccess')
-              ? DownloadAccessRestriction.fromJson(json_['downloadAccess']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        concurrentAccess:
+            json_.containsKey('concurrentAccess')
+                ? ConcurrentAccessRestriction.fromJson(
+                  json_['concurrentAccess']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        downloadAccess:
+            json_.containsKey('downloadAccess')
+                ? DownloadAccessRestriction.fromJson(
+                  json_['downloadAccess']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (concurrentAccess != null) 'concurrentAccess': concurrentAccess!,
-        if (downloadAccess != null) 'downloadAccess': downloadAccess!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (concurrentAccess != null) 'concurrentAccess': concurrentAccess!,
+    if (downloadAccess != null) 'downloadAccess': downloadAccess!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 /// Author of this review.
@@ -5444,18 +5536,14 @@ class ReviewAuthor {
   /// Name of this person.
   core.String? displayName;
 
-  ReviewAuthor({
-    this.displayName,
-  });
+  ReviewAuthor({this.displayName});
 
   ReviewAuthor.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-        );
+    : this(displayName: json_['displayName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+  };
 }
 
 /// Information regarding the source of this review, when the review is not from
@@ -5470,24 +5558,20 @@ class ReviewSource {
   /// URL of the source of the review.
   core.String? url;
 
-  ReviewSource({
-    this.description,
-    this.extraDescription,
-    this.url,
-  });
+  ReviewSource({this.description, this.extraDescription, this.url});
 
   ReviewSource.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          extraDescription: json_['extraDescription'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        extraDescription: json_['extraDescription'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (extraDescription != null) 'extraDescription': extraDescription!,
-        if (url != null) 'url': url!,
-      };
+    if (description != null) 'description': description!,
+    if (extraDescription != null) 'extraDescription': extraDescription!,
+    if (url != null) 'url': url!,
+  };
 }
 
 class Review {
@@ -5540,37 +5624,41 @@ class Review {
   });
 
   Review.fromJson(core.Map json_)
-      : this(
-          author: json_.containsKey('author')
-              ? ReviewAuthor.fromJson(
-                  json_['author'] as core.Map<core.String, core.dynamic>)
-              : null,
-          content: json_['content'] as core.String?,
-          date: json_['date'] as core.String?,
-          fullTextUrl: json_['fullTextUrl'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          rating: json_['rating'] as core.String?,
-          source: json_.containsKey('source')
-              ? ReviewSource.fromJson(
-                  json_['source'] as core.Map<core.String, core.dynamic>)
-              : null,
-          title: json_['title'] as core.String?,
-          type: json_['type'] as core.String?,
-          volumeId: json_['volumeId'] as core.String?,
-        );
+    : this(
+        author:
+            json_.containsKey('author')
+                ? ReviewAuthor.fromJson(
+                  json_['author'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        content: json_['content'] as core.String?,
+        date: json_['date'] as core.String?,
+        fullTextUrl: json_['fullTextUrl'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        rating: json_['rating'] as core.String?,
+        source:
+            json_.containsKey('source')
+                ? ReviewSource.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title: json_['title'] as core.String?,
+        type: json_['type'] as core.String?,
+        volumeId: json_['volumeId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (author != null) 'author': author!,
-        if (content != null) 'content': content!,
-        if (date != null) 'date': date!,
-        if (fullTextUrl != null) 'fullTextUrl': fullTextUrl!,
-        if (kind != null) 'kind': kind!,
-        if (rating != null) 'rating': rating!,
-        if (source != null) 'source': source!,
-        if (title != null) 'title': title!,
-        if (type != null) 'type': type!,
-        if (volumeId != null) 'volumeId': volumeId!,
-      };
+    if (author != null) 'author': author!,
+    if (content != null) 'content': content!,
+    if (date != null) 'date': date!,
+    if (fullTextUrl != null) 'fullTextUrl': fullTextUrl!,
+    if (kind != null) 'kind': kind!,
+    if (rating != null) 'rating': rating!,
+    if (source != null) 'source': source!,
+    if (title != null) 'title': title!,
+    if (type != null) 'type': type!,
+    if (volumeId != null) 'volumeId': volumeId!,
+  };
 }
 
 class SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
@@ -5587,20 +5675,20 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
   });
 
   SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo.fromJson(
-      core.Map json_)
-      : this(
-          amountInMicros: (json_['amountInMicros'] as core.num?)?.toDouble(),
-          currencyCode: json_['currencyCode'] as core.String?,
-          releaseNumber: json_['releaseNumber'] as core.String?,
-          releaseTime: json_['releaseTime'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        amountInMicros: (json_['amountInMicros'] as core.num?)?.toDouble(),
+        currencyCode: json_['currencyCode'] as core.String?,
+        releaseNumber: json_['releaseNumber'] as core.String?,
+        releaseTime: json_['releaseTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amountInMicros != null) 'amountInMicros': amountInMicros!,
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (releaseNumber != null) 'releaseNumber': releaseNumber!,
-        if (releaseTime != null) 'releaseTime': releaseTime!,
-      };
+    if (amountInMicros != null) 'amountInMicros': amountInMicros!,
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+    if (releaseNumber != null) 'releaseNumber': releaseNumber!,
+    if (releaseTime != null) 'releaseTime': releaseTime!,
+  };
 }
 
 class SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo {
@@ -5617,26 +5705,26 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo {
   });
 
   SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo.fromJson(
-      core.Map json_)
-      : this(
-          amountInMicros: (json_['amountInMicros'] as core.num?)?.toDouble(),
-          currencyCode: json_['currencyCode'] as core.String?,
-          releaseNumber: json_['releaseNumber'] as core.String?,
-          releaseTime: json_['releaseTime'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        amountInMicros: (json_['amountInMicros'] as core.num?)?.toDouble(),
+        currencyCode: json_['currencyCode'] as core.String?,
+        releaseNumber: json_['releaseNumber'] as core.String?,
+        releaseTime: json_['releaseTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amountInMicros != null) 'amountInMicros': amountInMicros!,
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-        if (releaseNumber != null) 'releaseNumber': releaseNumber!,
-        if (releaseTime != null) 'releaseTime': releaseTime!,
-      };
+    if (amountInMicros != null) 'amountInMicros': amountInMicros!,
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+    if (releaseNumber != null) 'releaseNumber': releaseNumber!,
+    if (releaseTime != null) 'releaseTime': releaseTime!,
+  };
 }
 
 class SeriesSeriesSeriesSubscriptionReleaseInfo {
   core.String? cancelTime;
   SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo?
-      currentReleaseInfo;
+  currentReleaseInfo;
   SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo? nextReleaseInfo;
   core.String? seriesSubscriptionType;
 
@@ -5648,30 +5736,32 @@ class SeriesSeriesSeriesSubscriptionReleaseInfo {
   });
 
   SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(core.Map json_)
-      : this(
-          cancelTime: json_['cancelTime'] as core.String?,
-          currentReleaseInfo: json_.containsKey('currentReleaseInfo')
-              ? SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo
-                  .fromJson(json_['currentReleaseInfo']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          nextReleaseInfo: json_.containsKey('nextReleaseInfo')
-              ? SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo
-                  .fromJson(json_['nextReleaseInfo']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          seriesSubscriptionType:
-              json_['seriesSubscriptionType'] as core.String?,
-        );
+    : this(
+        cancelTime: json_['cancelTime'] as core.String?,
+        currentReleaseInfo:
+            json_.containsKey('currentReleaseInfo')
+                ? SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo.fromJson(
+                  json_['currentReleaseInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nextReleaseInfo:
+            json_.containsKey('nextReleaseInfo')
+                ? SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo.fromJson(
+                  json_['nextReleaseInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        seriesSubscriptionType: json_['seriesSubscriptionType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cancelTime != null) 'cancelTime': cancelTime!,
-        if (currentReleaseInfo != null)
-          'currentReleaseInfo': currentReleaseInfo!,
-        if (nextReleaseInfo != null) 'nextReleaseInfo': nextReleaseInfo!,
-        if (seriesSubscriptionType != null)
-          'seriesSubscriptionType': seriesSubscriptionType!,
-      };
+    if (cancelTime != null) 'cancelTime': cancelTime!,
+    if (currentReleaseInfo != null) 'currentReleaseInfo': currentReleaseInfo!,
+    if (nextReleaseInfo != null) 'nextReleaseInfo': nextReleaseInfo!,
+    if (seriesSubscriptionType != null)
+      'seriesSubscriptionType': seriesSubscriptionType!,
+  };
 }
 
 class SeriesSeries {
@@ -5700,39 +5790,39 @@ class SeriesSeries {
   });
 
   SeriesSeries.fromJson(core.Map json_)
-      : this(
-          bannerImageUrl: json_['bannerImageUrl'] as core.String?,
-          eligibleForSubscription:
-              json_['eligibleForSubscription'] as core.bool?,
-          imageUrl: json_['imageUrl'] as core.String?,
-          isComplete: json_['isComplete'] as core.bool?,
-          seriesFormatType: json_['seriesFormatType'] as core.String?,
-          seriesId: json_['seriesId'] as core.String?,
-          seriesSubscriptionReleaseInfo:
-              json_.containsKey('seriesSubscriptionReleaseInfo')
-                  ? SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(
-                      json_['seriesSubscriptionReleaseInfo']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          seriesType: json_['seriesType'] as core.String?,
-          subscriptionId: json_['subscriptionId'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        bannerImageUrl: json_['bannerImageUrl'] as core.String?,
+        eligibleForSubscription: json_['eligibleForSubscription'] as core.bool?,
+        imageUrl: json_['imageUrl'] as core.String?,
+        isComplete: json_['isComplete'] as core.bool?,
+        seriesFormatType: json_['seriesFormatType'] as core.String?,
+        seriesId: json_['seriesId'] as core.String?,
+        seriesSubscriptionReleaseInfo:
+            json_.containsKey('seriesSubscriptionReleaseInfo')
+                ? SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(
+                  json_['seriesSubscriptionReleaseInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        seriesType: json_['seriesType'] as core.String?,
+        subscriptionId: json_['subscriptionId'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bannerImageUrl != null) 'bannerImageUrl': bannerImageUrl!,
-        if (eligibleForSubscription != null)
-          'eligibleForSubscription': eligibleForSubscription!,
-        if (imageUrl != null) 'imageUrl': imageUrl!,
-        if (isComplete != null) 'isComplete': isComplete!,
-        if (seriesFormatType != null) 'seriesFormatType': seriesFormatType!,
-        if (seriesId != null) 'seriesId': seriesId!,
-        if (seriesSubscriptionReleaseInfo != null)
-          'seriesSubscriptionReleaseInfo': seriesSubscriptionReleaseInfo!,
-        if (seriesType != null) 'seriesType': seriesType!,
-        if (subscriptionId != null) 'subscriptionId': subscriptionId!,
-        if (title != null) 'title': title!,
-      };
+    if (bannerImageUrl != null) 'bannerImageUrl': bannerImageUrl!,
+    if (eligibleForSubscription != null)
+      'eligibleForSubscription': eligibleForSubscription!,
+    if (imageUrl != null) 'imageUrl': imageUrl!,
+    if (isComplete != null) 'isComplete': isComplete!,
+    if (seriesFormatType != null) 'seriesFormatType': seriesFormatType!,
+    if (seriesId != null) 'seriesId': seriesId!,
+    if (seriesSubscriptionReleaseInfo != null)
+      'seriesSubscriptionReleaseInfo': seriesSubscriptionReleaseInfo!,
+    if (seriesType != null) 'seriesType': seriesType!,
+    if (subscriptionId != null) 'subscriptionId': subscriptionId!,
+    if (title != null) 'title': title!,
+  };
 }
 
 class Series {
@@ -5740,24 +5830,25 @@ class Series {
   core.String? kind;
   core.List<SeriesSeries>? series;
 
-  Series({
-    this.kind,
-    this.series,
-  });
+  Series({this.kind, this.series});
 
   Series.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          series: (json_['series'] as core.List?)
-              ?.map((value) => SeriesSeries.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        series:
+            (json_['series'] as core.List?)
+                ?.map(
+                  (value) => SeriesSeries.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (series != null) 'series': series!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (series != null) 'series': series!,
+  };
 }
 
 class Seriesmembership {
@@ -5766,27 +5857,27 @@ class Seriesmembership {
   core.List<Volume>? member;
   core.String? nextPageToken;
 
-  Seriesmembership({
-    this.kind,
-    this.member,
-    this.nextPageToken,
-  });
+  Seriesmembership({this.kind, this.member, this.nextPageToken});
 
   Seriesmembership.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          member: (json_['member'] as core.List?)
-              ?.map((value) =>
-                  Volume.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        member:
+            (json_['member'] as core.List?)
+                ?.map(
+                  (value) => Volume.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (member != null) 'member': member!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (member != null) 'member': member!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// User settings in sub-objects, each for different purposes.
@@ -5794,106 +5885,83 @@ class UsersettingsNotesExport {
   core.String? folderName;
   core.bool? isEnabled;
 
-  UsersettingsNotesExport({
-    this.folderName,
-    this.isEnabled,
-  });
+  UsersettingsNotesExport({this.folderName, this.isEnabled});
 
   UsersettingsNotesExport.fromJson(core.Map json_)
-      : this(
-          folderName: json_['folderName'] as core.String?,
-          isEnabled: json_['isEnabled'] as core.bool?,
-        );
+    : this(
+        folderName: json_['folderName'] as core.String?,
+        isEnabled: json_['isEnabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (folderName != null) 'folderName': folderName!,
-        if (isEnabled != null) 'isEnabled': isEnabled!,
-      };
+    if (folderName != null) 'folderName': folderName!,
+    if (isEnabled != null) 'isEnabled': isEnabled!,
+  };
 }
 
 class UsersettingsNotificationMatchMyInterests {
   core.String? optedState;
 
-  UsersettingsNotificationMatchMyInterests({
-    this.optedState,
-  });
+  UsersettingsNotificationMatchMyInterests({this.optedState});
 
   UsersettingsNotificationMatchMyInterests.fromJson(core.Map json_)
-      : this(
-          optedState: json_['opted_state'] as core.String?,
-        );
+    : this(optedState: json_['opted_state'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (optedState != null) 'opted_state': optedState!,
-      };
+    if (optedState != null) 'opted_state': optedState!,
+  };
 }
 
 class UsersettingsNotificationMoreFromAuthors {
   core.String? optedState;
 
-  UsersettingsNotificationMoreFromAuthors({
-    this.optedState,
-  });
+  UsersettingsNotificationMoreFromAuthors({this.optedState});
 
   UsersettingsNotificationMoreFromAuthors.fromJson(core.Map json_)
-      : this(
-          optedState: json_['opted_state'] as core.String?,
-        );
+    : this(optedState: json_['opted_state'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (optedState != null) 'opted_state': optedState!,
-      };
+    if (optedState != null) 'opted_state': optedState!,
+  };
 }
 
 class UsersettingsNotificationMoreFromSeries {
   core.String? optedState;
 
-  UsersettingsNotificationMoreFromSeries({
-    this.optedState,
-  });
+  UsersettingsNotificationMoreFromSeries({this.optedState});
 
   UsersettingsNotificationMoreFromSeries.fromJson(core.Map json_)
-      : this(
-          optedState: json_['opted_state'] as core.String?,
-        );
+    : this(optedState: json_['opted_state'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (optedState != null) 'opted_state': optedState!,
-      };
+    if (optedState != null) 'opted_state': optedState!,
+  };
 }
 
 class UsersettingsNotificationPriceDrop {
   core.String? optedState;
 
-  UsersettingsNotificationPriceDrop({
-    this.optedState,
-  });
+  UsersettingsNotificationPriceDrop({this.optedState});
 
   UsersettingsNotificationPriceDrop.fromJson(core.Map json_)
-      : this(
-          optedState: json_['opted_state'] as core.String?,
-        );
+    : this(optedState: json_['opted_state'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (optedState != null) 'opted_state': optedState!,
-      };
+    if (optedState != null) 'opted_state': optedState!,
+  };
 }
 
 class UsersettingsNotificationRewardExpirations {
   core.String? optedState;
 
-  UsersettingsNotificationRewardExpirations({
-    this.optedState,
-  });
+  UsersettingsNotificationRewardExpirations({this.optedState});
 
   UsersettingsNotificationRewardExpirations.fromJson(core.Map json_)
-      : this(
-          optedState: json_['opted_state'] as core.String?,
-        );
+    : this(optedState: json_['opted_state'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (optedState != null) 'opted_state': optedState!,
-      };
+    if (optedState != null) 'opted_state': optedState!,
+  };
 }
 
 class UsersettingsNotification {
@@ -5912,40 +5980,50 @@ class UsersettingsNotification {
   });
 
   UsersettingsNotification.fromJson(core.Map json_)
-      : this(
-          matchMyInterests: json_.containsKey('matchMyInterests')
-              ? UsersettingsNotificationMatchMyInterests.fromJson(
+    : this(
+        matchMyInterests:
+            json_.containsKey('matchMyInterests')
+                ? UsersettingsNotificationMatchMyInterests.fromJson(
                   json_['matchMyInterests']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          moreFromAuthors: json_.containsKey('moreFromAuthors')
-              ? UsersettingsNotificationMoreFromAuthors.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        moreFromAuthors:
+            json_.containsKey('moreFromAuthors')
+                ? UsersettingsNotificationMoreFromAuthors.fromJson(
                   json_['moreFromAuthors']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          moreFromSeries: json_.containsKey('moreFromSeries')
-              ? UsersettingsNotificationMoreFromSeries.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        moreFromSeries:
+            json_.containsKey('moreFromSeries')
+                ? UsersettingsNotificationMoreFromSeries.fromJson(
                   json_['moreFromSeries']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          priceDrop: json_.containsKey('priceDrop')
-              ? UsersettingsNotificationPriceDrop.fromJson(
-                  json_['priceDrop'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rewardExpirations: json_.containsKey('rewardExpirations')
-              ? UsersettingsNotificationRewardExpirations.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        priceDrop:
+            json_.containsKey('priceDrop')
+                ? UsersettingsNotificationPriceDrop.fromJson(
+                  json_['priceDrop'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rewardExpirations:
+            json_.containsKey('rewardExpirations')
+                ? UsersettingsNotificationRewardExpirations.fromJson(
                   json_['rewardExpirations']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (matchMyInterests != null) 'matchMyInterests': matchMyInterests!,
-        if (moreFromAuthors != null) 'moreFromAuthors': moreFromAuthors!,
-        if (moreFromSeries != null) 'moreFromSeries': moreFromSeries!,
-        if (priceDrop != null) 'priceDrop': priceDrop!,
-        if (rewardExpirations != null) 'rewardExpirations': rewardExpirations!,
-      };
+    if (matchMyInterests != null) 'matchMyInterests': matchMyInterests!,
+    if (moreFromAuthors != null) 'moreFromAuthors': moreFromAuthors!,
+    if (moreFromSeries != null) 'moreFromSeries': moreFromSeries!,
+    if (priceDrop != null) 'priceDrop': priceDrop!,
+    if (rewardExpirations != null) 'rewardExpirations': rewardExpirations!,
+  };
 }
 
 class Usersettings {
@@ -5956,30 +6034,30 @@ class Usersettings {
   UsersettingsNotesExport? notesExport;
   UsersettingsNotification? notification;
 
-  Usersettings({
-    this.kind,
-    this.notesExport,
-    this.notification,
-  });
+  Usersettings({this.kind, this.notesExport, this.notification});
 
   Usersettings.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          notesExport: json_.containsKey('notesExport')
-              ? UsersettingsNotesExport.fromJson(
-                  json_['notesExport'] as core.Map<core.String, core.dynamic>)
-              : null,
-          notification: json_.containsKey('notification')
-              ? UsersettingsNotification.fromJson(
-                  json_['notification'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        notesExport:
+            json_.containsKey('notesExport')
+                ? UsersettingsNotesExport.fromJson(
+                  json_['notesExport'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        notification:
+            json_.containsKey('notification')
+                ? UsersettingsNotification.fromJson(
+                  json_['notification'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (notesExport != null) 'notesExport': notesExport!,
-        if (notification != null) 'notification': notification!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (notesExport != null) 'notesExport': notesExport!,
+    if (notification != null) 'notification': notification!,
+  };
 }
 
 /// Information about epub content.
@@ -6008,17 +6086,17 @@ class VolumeAccessInfoEpub {
   });
 
   VolumeAccessInfoEpub.fromJson(core.Map json_)
-      : this(
-          acsTokenLink: json_['acsTokenLink'] as core.String?,
-          downloadLink: json_['downloadLink'] as core.String?,
-          isAvailable: json_['isAvailable'] as core.bool?,
-        );
+    : this(
+        acsTokenLink: json_['acsTokenLink'] as core.String?,
+        downloadLink: json_['downloadLink'] as core.String?,
+        isAvailable: json_['isAvailable'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acsTokenLink != null) 'acsTokenLink': acsTokenLink!,
-        if (downloadLink != null) 'downloadLink': downloadLink!,
-        if (isAvailable != null) 'isAvailable': isAvailable!,
-      };
+    if (acsTokenLink != null) 'acsTokenLink': acsTokenLink!,
+    if (downloadLink != null) 'downloadLink': downloadLink!,
+    if (isAvailable != null) 'isAvailable': isAvailable!,
+  };
 }
 
 /// Information about pdf content.
@@ -6040,24 +6118,20 @@ class VolumeAccessInfoPdf {
   /// (In LITE projection.)
   core.bool? isAvailable;
 
-  VolumeAccessInfoPdf({
-    this.acsTokenLink,
-    this.downloadLink,
-    this.isAvailable,
-  });
+  VolumeAccessInfoPdf({this.acsTokenLink, this.downloadLink, this.isAvailable});
 
   VolumeAccessInfoPdf.fromJson(core.Map json_)
-      : this(
-          acsTokenLink: json_['acsTokenLink'] as core.String?,
-          downloadLink: json_['downloadLink'] as core.String?,
-          isAvailable: json_['isAvailable'] as core.bool?,
-        );
+    : this(
+        acsTokenLink: json_['acsTokenLink'] as core.String?,
+        downloadLink: json_['downloadLink'] as core.String?,
+        isAvailable: json_['isAvailable'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acsTokenLink != null) 'acsTokenLink': acsTokenLink!,
-        if (downloadLink != null) 'downloadLink': downloadLink!,
-        if (isAvailable != null) 'isAvailable': isAvailable!,
-      };
+    if (acsTokenLink != null) 'acsTokenLink': acsTokenLink!,
+    if (downloadLink != null) 'downloadLink': downloadLink!,
+    if (isAvailable != null) 'isAvailable': isAvailable!,
+  };
 }
 
 /// Any information about a volume related to reading or obtaining that volume
@@ -6152,55 +6226,61 @@ class VolumeAccessInfo {
   });
 
   VolumeAccessInfo.fromJson(core.Map json_)
-      : this(
-          accessViewStatus: json_['accessViewStatus'] as core.String?,
-          country: json_['country'] as core.String?,
-          downloadAccess: json_.containsKey('downloadAccess')
-              ? DownloadAccessRestriction.fromJson(json_['downloadAccess']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          driveImportedContentLink:
-              json_['driveImportedContentLink'] as core.String?,
-          embeddable: json_['embeddable'] as core.bool?,
-          epub: json_.containsKey('epub')
-              ? VolumeAccessInfoEpub.fromJson(
-                  json_['epub'] as core.Map<core.String, core.dynamic>)
-              : null,
-          explicitOfflineLicenseManagement:
-              json_['explicitOfflineLicenseManagement'] as core.bool?,
-          pdf: json_.containsKey('pdf')
-              ? VolumeAccessInfoPdf.fromJson(
-                  json_['pdf'] as core.Map<core.String, core.dynamic>)
-              : null,
-          publicDomain: json_['publicDomain'] as core.bool?,
-          quoteSharingAllowed: json_['quoteSharingAllowed'] as core.bool?,
-          textToSpeechPermission:
-              json_['textToSpeechPermission'] as core.String?,
-          viewOrderUrl: json_['viewOrderUrl'] as core.String?,
-          viewability: json_['viewability'] as core.String?,
-          webReaderLink: json_['webReaderLink'] as core.String?,
-        );
+    : this(
+        accessViewStatus: json_['accessViewStatus'] as core.String?,
+        country: json_['country'] as core.String?,
+        downloadAccess:
+            json_.containsKey('downloadAccess')
+                ? DownloadAccessRestriction.fromJson(
+                  json_['downloadAccess']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        driveImportedContentLink:
+            json_['driveImportedContentLink'] as core.String?,
+        embeddable: json_['embeddable'] as core.bool?,
+        epub:
+            json_.containsKey('epub')
+                ? VolumeAccessInfoEpub.fromJson(
+                  json_['epub'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        explicitOfflineLicenseManagement:
+            json_['explicitOfflineLicenseManagement'] as core.bool?,
+        pdf:
+            json_.containsKey('pdf')
+                ? VolumeAccessInfoPdf.fromJson(
+                  json_['pdf'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        publicDomain: json_['publicDomain'] as core.bool?,
+        quoteSharingAllowed: json_['quoteSharingAllowed'] as core.bool?,
+        textToSpeechPermission: json_['textToSpeechPermission'] as core.String?,
+        viewOrderUrl: json_['viewOrderUrl'] as core.String?,
+        viewability: json_['viewability'] as core.String?,
+        webReaderLink: json_['webReaderLink'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessViewStatus != null) 'accessViewStatus': accessViewStatus!,
-        if (country != null) 'country': country!,
-        if (downloadAccess != null) 'downloadAccess': downloadAccess!,
-        if (driveImportedContentLink != null)
-          'driveImportedContentLink': driveImportedContentLink!,
-        if (embeddable != null) 'embeddable': embeddable!,
-        if (epub != null) 'epub': epub!,
-        if (explicitOfflineLicenseManagement != null)
-          'explicitOfflineLicenseManagement': explicitOfflineLicenseManagement!,
-        if (pdf != null) 'pdf': pdf!,
-        if (publicDomain != null) 'publicDomain': publicDomain!,
-        if (quoteSharingAllowed != null)
-          'quoteSharingAllowed': quoteSharingAllowed!,
-        if (textToSpeechPermission != null)
-          'textToSpeechPermission': textToSpeechPermission!,
-        if (viewOrderUrl != null) 'viewOrderUrl': viewOrderUrl!,
-        if (viewability != null) 'viewability': viewability!,
-        if (webReaderLink != null) 'webReaderLink': webReaderLink!,
-      };
+    if (accessViewStatus != null) 'accessViewStatus': accessViewStatus!,
+    if (country != null) 'country': country!,
+    if (downloadAccess != null) 'downloadAccess': downloadAccess!,
+    if (driveImportedContentLink != null)
+      'driveImportedContentLink': driveImportedContentLink!,
+    if (embeddable != null) 'embeddable': embeddable!,
+    if (epub != null) 'epub': epub!,
+    if (explicitOfflineLicenseManagement != null)
+      'explicitOfflineLicenseManagement': explicitOfflineLicenseManagement!,
+    if (pdf != null) 'pdf': pdf!,
+    if (publicDomain != null) 'publicDomain': publicDomain!,
+    if (quoteSharingAllowed != null)
+      'quoteSharingAllowed': quoteSharingAllowed!,
+    if (textToSpeechPermission != null)
+      'textToSpeechPermission': textToSpeechPermission!,
+    if (viewOrderUrl != null) 'viewOrderUrl': viewOrderUrl!,
+    if (viewability != null) 'viewability': viewability!,
+    if (webReaderLink != null) 'webReaderLink': webReaderLink!,
+  };
 }
 
 class VolumeLayerInfoLayers {
@@ -6214,23 +6294,20 @@ class VolumeLayerInfoLayers {
   /// versioned separately.
   core.String? volumeAnnotationsVersion;
 
-  VolumeLayerInfoLayers({
-    this.layerId,
-    this.volumeAnnotationsVersion,
-  });
+  VolumeLayerInfoLayers({this.layerId, this.volumeAnnotationsVersion});
 
   VolumeLayerInfoLayers.fromJson(core.Map json_)
-      : this(
-          layerId: json_['layerId'] as core.String?,
-          volumeAnnotationsVersion:
-              json_['volumeAnnotationsVersion'] as core.String?,
-        );
+    : this(
+        layerId: json_['layerId'] as core.String?,
+        volumeAnnotationsVersion:
+            json_['volumeAnnotationsVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (layerId != null) 'layerId': layerId!,
-        if (volumeAnnotationsVersion != null)
-          'volumeAnnotationsVersion': volumeAnnotationsVersion!,
-      };
+    if (layerId != null) 'layerId': layerId!,
+    if (volumeAnnotationsVersion != null)
+      'volumeAnnotationsVersion': volumeAnnotationsVersion!,
+  };
 }
 
 /// What layers exist in this volume and high level information about them.
@@ -6238,21 +6315,23 @@ class VolumeLayerInfo {
   /// A layer should appear here if and only if the layer exists for this book.
   core.List<VolumeLayerInfoLayers>? layers;
 
-  VolumeLayerInfo({
-    this.layers,
-  });
+  VolumeLayerInfo({this.layers});
 
   VolumeLayerInfo.fromJson(core.Map json_)
-      : this(
-          layers: (json_['layers'] as core.List?)
-              ?.map((value) => VolumeLayerInfoLayers.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        layers:
+            (json_['layers'] as core.List?)
+                ?.map(
+                  (value) => VolumeLayerInfoLayers.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (layers != null) 'layers': layers!,
-      };
+    if (layers != null) 'layers': layers!,
+  };
 }
 
 /// Recommendation related information for this volume.
@@ -6260,18 +6339,14 @@ class VolumeRecommendedInfo {
   /// A text explaining why this volume is recommended.
   core.String? explanation;
 
-  VolumeRecommendedInfo({
-    this.explanation,
-  });
+  VolumeRecommendedInfo({this.explanation});
 
   VolumeRecommendedInfo.fromJson(core.Map json_)
-      : this(
-          explanation: json_['explanation'] as core.String?,
-        );
+    : this(explanation: json_['explanation'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (explanation != null) 'explanation': explanation!,
-      };
+    if (explanation != null) 'explanation': explanation!,
+  };
 }
 
 /// Suggested retail price.
@@ -6288,21 +6363,18 @@ class VolumeSaleInfoListPrice {
   /// (In LITE projection.)
   core.String? currencyCode;
 
-  VolumeSaleInfoListPrice({
-    this.amount,
-    this.currencyCode,
-  });
+  VolumeSaleInfoListPrice({this.amount, this.currencyCode});
 
   VolumeSaleInfoListPrice.fromJson(core.Map json_)
-      : this(
-          amount: (json_['amount'] as core.num?)?.toDouble(),
-          currencyCode: json_['currencyCode'] as core.String?,
-        );
+    : this(
+        amount: (json_['amount'] as core.num?)?.toDouble(),
+        currencyCode: json_['currencyCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!,
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-      };
+    if (amount != null) 'amount': amount!,
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+  };
 }
 
 /// Offer list (=undiscounted) price in Micros.
@@ -6310,21 +6382,18 @@ class VolumeSaleInfoOffersListPrice {
   core.double? amountInMicros;
   core.String? currencyCode;
 
-  VolumeSaleInfoOffersListPrice({
-    this.amountInMicros,
-    this.currencyCode,
-  });
+  VolumeSaleInfoOffersListPrice({this.amountInMicros, this.currencyCode});
 
   VolumeSaleInfoOffersListPrice.fromJson(core.Map json_)
-      : this(
-          amountInMicros: (json_['amountInMicros'] as core.num?)?.toDouble(),
-          currencyCode: json_['currencyCode'] as core.String?,
-        );
+    : this(
+        amountInMicros: (json_['amountInMicros'] as core.num?)?.toDouble(),
+        currencyCode: json_['currencyCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amountInMicros != null) 'amountInMicros': amountInMicros!,
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-      };
+    if (amountInMicros != null) 'amountInMicros': amountInMicros!,
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+  };
 }
 
 /// The rental duration (for rental offers only).
@@ -6332,21 +6401,18 @@ class VolumeSaleInfoOffersRentalDuration {
   core.double? count;
   core.String? unit;
 
-  VolumeSaleInfoOffersRentalDuration({
-    this.count,
-    this.unit,
-  });
+  VolumeSaleInfoOffersRentalDuration({this.count, this.unit});
 
   VolumeSaleInfoOffersRentalDuration.fromJson(core.Map json_)
-      : this(
-          count: (json_['count'] as core.num?)?.toDouble(),
-          unit: json_['unit'] as core.String?,
-        );
+    : this(
+        count: (json_['count'] as core.num?)?.toDouble(),
+        unit: json_['unit'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (unit != null) 'unit': unit!,
-      };
+    if (count != null) 'count': count!,
+    if (unit != null) 'unit': unit!,
+  };
 }
 
 /// Offer retail (=discounted) price in Micros
@@ -6354,21 +6420,18 @@ class VolumeSaleInfoOffersRetailPrice {
   core.double? amountInMicros;
   core.String? currencyCode;
 
-  VolumeSaleInfoOffersRetailPrice({
-    this.amountInMicros,
-    this.currencyCode,
-  });
+  VolumeSaleInfoOffersRetailPrice({this.amountInMicros, this.currencyCode});
 
   VolumeSaleInfoOffersRetailPrice.fromJson(core.Map json_)
-      : this(
-          amountInMicros: (json_['amountInMicros'] as core.num?)?.toDouble(),
-          currencyCode: json_['currencyCode'] as core.String?,
-        );
+    : this(
+        amountInMicros: (json_['amountInMicros'] as core.num?)?.toDouble(),
+        currencyCode: json_['currencyCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amountInMicros != null) 'amountInMicros': amountInMicros!,
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-      };
+    if (amountInMicros != null) 'amountInMicros': amountInMicros!,
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+  };
 }
 
 class VolumeSaleInfoOffers {
@@ -6396,31 +6459,37 @@ class VolumeSaleInfoOffers {
   });
 
   VolumeSaleInfoOffers.fromJson(core.Map json_)
-      : this(
-          finskyOfferType: json_['finskyOfferType'] as core.int?,
-          giftable: json_['giftable'] as core.bool?,
-          listPrice: json_.containsKey('listPrice')
-              ? VolumeSaleInfoOffersListPrice.fromJson(
-                  json_['listPrice'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rentalDuration: json_.containsKey('rentalDuration')
-              ? VolumeSaleInfoOffersRentalDuration.fromJson(
+    : this(
+        finskyOfferType: json_['finskyOfferType'] as core.int?,
+        giftable: json_['giftable'] as core.bool?,
+        listPrice:
+            json_.containsKey('listPrice')
+                ? VolumeSaleInfoOffersListPrice.fromJson(
+                  json_['listPrice'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rentalDuration:
+            json_.containsKey('rentalDuration')
+                ? VolumeSaleInfoOffersRentalDuration.fromJson(
                   json_['rentalDuration']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          retailPrice: json_.containsKey('retailPrice')
-              ? VolumeSaleInfoOffersRetailPrice.fromJson(
-                  json_['retailPrice'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        retailPrice:
+            json_.containsKey('retailPrice')
+                ? VolumeSaleInfoOffersRetailPrice.fromJson(
+                  json_['retailPrice'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (finskyOfferType != null) 'finskyOfferType': finskyOfferType!,
-        if (giftable != null) 'giftable': giftable!,
-        if (listPrice != null) 'listPrice': listPrice!,
-        if (rentalDuration != null) 'rentalDuration': rentalDuration!,
-        if (retailPrice != null) 'retailPrice': retailPrice!,
-      };
+    if (finskyOfferType != null) 'finskyOfferType': finskyOfferType!,
+    if (giftable != null) 'giftable': giftable!,
+    if (listPrice != null) 'listPrice': listPrice!,
+    if (rentalDuration != null) 'rentalDuration': rentalDuration!,
+    if (retailPrice != null) 'retailPrice': retailPrice!,
+  };
 }
 
 /// The actual selling price of the book.
@@ -6438,21 +6507,18 @@ class VolumeSaleInfoRetailPrice {
   /// (In LITE projection.)
   core.String? currencyCode;
 
-  VolumeSaleInfoRetailPrice({
-    this.amount,
-    this.currencyCode,
-  });
+  VolumeSaleInfoRetailPrice({this.amount, this.currencyCode});
 
   VolumeSaleInfoRetailPrice.fromJson(core.Map json_)
-      : this(
-          amount: (json_['amount'] as core.num?)?.toDouble(),
-          currencyCode: json_['currencyCode'] as core.String?,
-        );
+    : this(
+        amount: (json_['amount'] as core.num?)?.toDouble(),
+        currencyCode: json_['currencyCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (amount != null) 'amount': amount!,
-        if (currencyCode != null) 'currencyCode': currencyCode!,
-      };
+    if (amount != null) 'amount': amount!,
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+  };
 }
 
 /// Any information about a volume related to the eBookstore and/or
@@ -6512,36 +6578,44 @@ class VolumeSaleInfo {
   });
 
   VolumeSaleInfo.fromJson(core.Map json_)
-      : this(
-          buyLink: json_['buyLink'] as core.String?,
-          country: json_['country'] as core.String?,
-          isEbook: json_['isEbook'] as core.bool?,
-          listPrice: json_.containsKey('listPrice')
-              ? VolumeSaleInfoListPrice.fromJson(
-                  json_['listPrice'] as core.Map<core.String, core.dynamic>)
-              : null,
-          offers: (json_['offers'] as core.List?)
-              ?.map((value) => VolumeSaleInfoOffers.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          onSaleDate: json_['onSaleDate'] as core.String?,
-          retailPrice: json_.containsKey('retailPrice')
-              ? VolumeSaleInfoRetailPrice.fromJson(
-                  json_['retailPrice'] as core.Map<core.String, core.dynamic>)
-              : null,
-          saleability: json_['saleability'] as core.String?,
-        );
+    : this(
+        buyLink: json_['buyLink'] as core.String?,
+        country: json_['country'] as core.String?,
+        isEbook: json_['isEbook'] as core.bool?,
+        listPrice:
+            json_.containsKey('listPrice')
+                ? VolumeSaleInfoListPrice.fromJson(
+                  json_['listPrice'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        offers:
+            (json_['offers'] as core.List?)
+                ?.map(
+                  (value) => VolumeSaleInfoOffers.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        onSaleDate: json_['onSaleDate'] as core.String?,
+        retailPrice:
+            json_.containsKey('retailPrice')
+                ? VolumeSaleInfoRetailPrice.fromJson(
+                  json_['retailPrice'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        saleability: json_['saleability'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buyLink != null) 'buyLink': buyLink!,
-        if (country != null) 'country': country!,
-        if (isEbook != null) 'isEbook': isEbook!,
-        if (listPrice != null) 'listPrice': listPrice!,
-        if (offers != null) 'offers': offers!,
-        if (onSaleDate != null) 'onSaleDate': onSaleDate!,
-        if (retailPrice != null) 'retailPrice': retailPrice!,
-        if (saleability != null) 'saleability': saleability!,
-      };
+    if (buyLink != null) 'buyLink': buyLink!,
+    if (country != null) 'country': country!,
+    if (isEbook != null) 'isEbook': isEbook!,
+    if (listPrice != null) 'listPrice': listPrice!,
+    if (offers != null) 'offers': offers!,
+    if (onSaleDate != null) 'onSaleDate': onSaleDate!,
+    if (retailPrice != null) 'retailPrice': retailPrice!,
+    if (saleability != null) 'saleability': saleability!,
+  };
 }
 
 /// Search result information related to this volume.
@@ -6549,18 +6623,14 @@ class VolumeSearchInfo {
   /// A text snippet containing the search query.
   core.String? textSnippet;
 
-  VolumeSearchInfo({
-    this.textSnippet,
-  });
+  VolumeSearchInfo({this.textSnippet});
 
   VolumeSearchInfo.fromJson(core.Map json_)
-      : this(
-          textSnippet: json_['textSnippet'] as core.String?,
-        );
+    : this(textSnippet: json_['textSnippet'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (textSnippet != null) 'textSnippet': textSnippet!,
-      };
+    if (textSnippet != null) 'textSnippet': textSnippet!,
+  };
 }
 
 /// Copy/Paste accounting information.
@@ -6578,22 +6648,21 @@ class VolumeUserInfoCopy {
   });
 
   VolumeUserInfoCopy.fromJson(core.Map json_)
-      : this(
-          allowedCharacterCount: json_['allowedCharacterCount'] as core.int?,
-          limitType: json_['limitType'] as core.String?,
-          remainingCharacterCount:
-              json_['remainingCharacterCount'] as core.int?,
-          updated: json_['updated'] as core.String?,
-        );
+    : this(
+        allowedCharacterCount: json_['allowedCharacterCount'] as core.int?,
+        limitType: json_['limitType'] as core.String?,
+        remainingCharacterCount: json_['remainingCharacterCount'] as core.int?,
+        updated: json_['updated'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedCharacterCount != null)
-          'allowedCharacterCount': allowedCharacterCount!,
-        if (limitType != null) 'limitType': limitType!,
-        if (remainingCharacterCount != null)
-          'remainingCharacterCount': remainingCharacterCount!,
-        if (updated != null) 'updated': updated!,
-      };
+    if (allowedCharacterCount != null)
+      'allowedCharacterCount': allowedCharacterCount!,
+    if (limitType != null) 'limitType': limitType!,
+    if (remainingCharacterCount != null)
+      'remainingCharacterCount': remainingCharacterCount!,
+    if (updated != null) 'updated': updated!,
+  };
 }
 
 /// Information on the ability to share with the family.
@@ -6618,18 +6687,18 @@ class VolumeUserInfoFamilySharing {
   });
 
   VolumeUserInfoFamilySharing.fromJson(core.Map json_)
-      : this(
-          familyRole: json_['familyRole'] as core.String?,
-          isSharingAllowed: json_['isSharingAllowed'] as core.bool?,
-          isSharingDisabledByFop: json_['isSharingDisabledByFop'] as core.bool?,
-        );
+    : this(
+        familyRole: json_['familyRole'] as core.String?,
+        isSharingAllowed: json_['isSharingAllowed'] as core.bool?,
+        isSharingDisabledByFop: json_['isSharingDisabledByFop'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (familyRole != null) 'familyRole': familyRole!,
-        if (isSharingAllowed != null) 'isSharingAllowed': isSharingAllowed!,
-        if (isSharingDisabledByFop != null)
-          'isSharingDisabledByFop': isSharingDisabledByFop!,
-      };
+    if (familyRole != null) 'familyRole': familyRole!,
+    if (isSharingAllowed != null) 'isSharingAllowed': isSharingAllowed!,
+    if (isSharingDisabledByFop != null)
+      'isSharingDisabledByFop': isSharingDisabledByFop!,
+  };
 }
 
 /// Period during this book is/was a valid rental.
@@ -6637,38 +6706,31 @@ class VolumeUserInfoRentalPeriod {
   core.String? endUtcSec;
   core.String? startUtcSec;
 
-  VolumeUserInfoRentalPeriod({
-    this.endUtcSec,
-    this.startUtcSec,
-  });
+  VolumeUserInfoRentalPeriod({this.endUtcSec, this.startUtcSec});
 
   VolumeUserInfoRentalPeriod.fromJson(core.Map json_)
-      : this(
-          endUtcSec: json_['endUtcSec'] as core.String?,
-          startUtcSec: json_['startUtcSec'] as core.String?,
-        );
+    : this(
+        endUtcSec: json_['endUtcSec'] as core.String?,
+        startUtcSec: json_['startUtcSec'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endUtcSec != null) 'endUtcSec': endUtcSec!,
-        if (startUtcSec != null) 'startUtcSec': startUtcSec!,
-      };
+    if (endUtcSec != null) 'endUtcSec': endUtcSec!,
+    if (startUtcSec != null) 'startUtcSec': startUtcSec!,
+  };
 }
 
 class VolumeUserInfoUserUploadedVolumeInfo {
   core.String? processingState;
 
-  VolumeUserInfoUserUploadedVolumeInfo({
-    this.processingState,
-  });
+  VolumeUserInfoUserUploadedVolumeInfo({this.processingState});
 
   VolumeUserInfoUserUploadedVolumeInfo.fromJson(core.Map json_)
-      : this(
-          processingState: json_['processingState'] as core.String?,
-        );
+    : this(processingState: json_['processingState'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (processingState != null) 'processingState': processingState!,
-      };
+    if (processingState != null) 'processingState': processingState!,
+  };
 }
 
 /// User specific information related to this volume.
@@ -6767,74 +6829,87 @@ class VolumeUserInfo {
   });
 
   VolumeUserInfo.fromJson(core.Map json_)
-      : this(
-          acquiredTime: json_['acquiredTime'] as core.String?,
-          acquisitionType: json_['acquisitionType'] as core.int?,
-          copy: json_.containsKey('copy')
-              ? VolumeUserInfoCopy.fromJson(
-                  json_['copy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          entitlementType: json_['entitlementType'] as core.int?,
-          familySharing: json_.containsKey('familySharing')
-              ? VolumeUserInfoFamilySharing.fromJson(
-                  json_['familySharing'] as core.Map<core.String, core.dynamic>)
-              : null,
-          isFamilySharedFromUser: json_['isFamilySharedFromUser'] as core.bool?,
-          isFamilySharedToUser: json_['isFamilySharedToUser'] as core.bool?,
-          isFamilySharingAllowed: json_['isFamilySharingAllowed'] as core.bool?,
-          isFamilySharingDisabledByFop:
-              json_['isFamilySharingDisabledByFop'] as core.bool?,
-          isInMyBooks: json_['isInMyBooks'] as core.bool?,
-          isPreordered: json_['isPreordered'] as core.bool?,
-          isPurchased: json_['isPurchased'] as core.bool?,
-          isUploaded: json_['isUploaded'] as core.bool?,
-          readingPosition: json_.containsKey('readingPosition')
-              ? ReadingPosition.fromJson(json_['readingPosition']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          rentalPeriod: json_.containsKey('rentalPeriod')
-              ? VolumeUserInfoRentalPeriod.fromJson(
-                  json_['rentalPeriod'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rentalState: json_['rentalState'] as core.String?,
-          review: json_.containsKey('review')
-              ? Review.fromJson(
-                  json_['review'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updated: json_['updated'] as core.String?,
-          userUploadedVolumeInfo: json_.containsKey('userUploadedVolumeInfo')
-              ? VolumeUserInfoUserUploadedVolumeInfo.fromJson(
+    : this(
+        acquiredTime: json_['acquiredTime'] as core.String?,
+        acquisitionType: json_['acquisitionType'] as core.int?,
+        copy:
+            json_.containsKey('copy')
+                ? VolumeUserInfoCopy.fromJson(
+                  json_['copy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        entitlementType: json_['entitlementType'] as core.int?,
+        familySharing:
+            json_.containsKey('familySharing')
+                ? VolumeUserInfoFamilySharing.fromJson(
+                  json_['familySharing'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        isFamilySharedFromUser: json_['isFamilySharedFromUser'] as core.bool?,
+        isFamilySharedToUser: json_['isFamilySharedToUser'] as core.bool?,
+        isFamilySharingAllowed: json_['isFamilySharingAllowed'] as core.bool?,
+        isFamilySharingDisabledByFop:
+            json_['isFamilySharingDisabledByFop'] as core.bool?,
+        isInMyBooks: json_['isInMyBooks'] as core.bool?,
+        isPreordered: json_['isPreordered'] as core.bool?,
+        isPurchased: json_['isPurchased'] as core.bool?,
+        isUploaded: json_['isUploaded'] as core.bool?,
+        readingPosition:
+            json_.containsKey('readingPosition')
+                ? ReadingPosition.fromJson(
+                  json_['readingPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rentalPeriod:
+            json_.containsKey('rentalPeriod')
+                ? VolumeUserInfoRentalPeriod.fromJson(
+                  json_['rentalPeriod'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rentalState: json_['rentalState'] as core.String?,
+        review:
+            json_.containsKey('review')
+                ? Review.fromJson(
+                  json_['review'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updated: json_['updated'] as core.String?,
+        userUploadedVolumeInfo:
+            json_.containsKey('userUploadedVolumeInfo')
+                ? VolumeUserInfoUserUploadedVolumeInfo.fromJson(
                   json_['userUploadedVolumeInfo']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acquiredTime != null) 'acquiredTime': acquiredTime!,
-        if (acquisitionType != null) 'acquisitionType': acquisitionType!,
-        if (copy != null) 'copy': copy!,
-        if (entitlementType != null) 'entitlementType': entitlementType!,
-        if (familySharing != null) 'familySharing': familySharing!,
-        if (isFamilySharedFromUser != null)
-          'isFamilySharedFromUser': isFamilySharedFromUser!,
-        if (isFamilySharedToUser != null)
-          'isFamilySharedToUser': isFamilySharedToUser!,
-        if (isFamilySharingAllowed != null)
-          'isFamilySharingAllowed': isFamilySharingAllowed!,
-        if (isFamilySharingDisabledByFop != null)
-          'isFamilySharingDisabledByFop': isFamilySharingDisabledByFop!,
-        if (isInMyBooks != null) 'isInMyBooks': isInMyBooks!,
-        if (isPreordered != null) 'isPreordered': isPreordered!,
-        if (isPurchased != null) 'isPurchased': isPurchased!,
-        if (isUploaded != null) 'isUploaded': isUploaded!,
-        if (readingPosition != null) 'readingPosition': readingPosition!,
-        if (rentalPeriod != null) 'rentalPeriod': rentalPeriod!,
-        if (rentalState != null) 'rentalState': rentalState!,
-        if (review != null) 'review': review!,
-        if (updated != null) 'updated': updated!,
-        if (userUploadedVolumeInfo != null)
-          'userUploadedVolumeInfo': userUploadedVolumeInfo!,
-      };
+    if (acquiredTime != null) 'acquiredTime': acquiredTime!,
+    if (acquisitionType != null) 'acquisitionType': acquisitionType!,
+    if (copy != null) 'copy': copy!,
+    if (entitlementType != null) 'entitlementType': entitlementType!,
+    if (familySharing != null) 'familySharing': familySharing!,
+    if (isFamilySharedFromUser != null)
+      'isFamilySharedFromUser': isFamilySharedFromUser!,
+    if (isFamilySharedToUser != null)
+      'isFamilySharedToUser': isFamilySharedToUser!,
+    if (isFamilySharingAllowed != null)
+      'isFamilySharingAllowed': isFamilySharingAllowed!,
+    if (isFamilySharingDisabledByFop != null)
+      'isFamilySharingDisabledByFop': isFamilySharingDisabledByFop!,
+    if (isInMyBooks != null) 'isInMyBooks': isInMyBooks!,
+    if (isPreordered != null) 'isPreordered': isPreordered!,
+    if (isPurchased != null) 'isPurchased': isPurchased!,
+    if (isUploaded != null) 'isUploaded': isUploaded!,
+    if (readingPosition != null) 'readingPosition': readingPosition!,
+    if (rentalPeriod != null) 'rentalPeriod': rentalPeriod!,
+    if (rentalState != null) 'rentalState': rentalState!,
+    if (review != null) 'review': review!,
+    if (updated != null) 'updated': updated!,
+    if (userUploadedVolumeInfo != null)
+      'userUploadedVolumeInfo': userUploadedVolumeInfo!,
+  };
 }
 
 /// Physical dimensions of this volume.
@@ -6848,24 +6923,20 @@ class VolumeVolumeInfoDimensions {
   /// Width of this volume (in cm).
   core.String? width;
 
-  VolumeVolumeInfoDimensions({
-    this.height,
-    this.thickness,
-    this.width,
-  });
+  VolumeVolumeInfoDimensions({this.height, this.thickness, this.width});
 
   VolumeVolumeInfoDimensions.fromJson(core.Map json_)
-      : this(
-          height: json_['height'] as core.String?,
-          thickness: json_['thickness'] as core.String?,
-          width: json_['width'] as core.String?,
-        );
+    : this(
+        height: json_['height'] as core.String?,
+        thickness: json_['thickness'] as core.String?,
+        width: json_['width'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!,
-        if (thickness != null) 'thickness': thickness!,
-        if (width != null) 'width': width!,
-      };
+    if (height != null) 'height': height!,
+    if (thickness != null) 'thickness': thickness!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// A list of image links for all the sizes that are available.
@@ -6912,23 +6983,23 @@ class VolumeVolumeInfoImageLinks {
   });
 
   VolumeVolumeInfoImageLinks.fromJson(core.Map json_)
-      : this(
-          extraLarge: json_['extraLarge'] as core.String?,
-          large: json_['large'] as core.String?,
-          medium: json_['medium'] as core.String?,
-          small: json_['small'] as core.String?,
-          smallThumbnail: json_['smallThumbnail'] as core.String?,
-          thumbnail: json_['thumbnail'] as core.String?,
-        );
+    : this(
+        extraLarge: json_['extraLarge'] as core.String?,
+        large: json_['large'] as core.String?,
+        medium: json_['medium'] as core.String?,
+        small: json_['small'] as core.String?,
+        smallThumbnail: json_['smallThumbnail'] as core.String?,
+        thumbnail: json_['thumbnail'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (extraLarge != null) 'extraLarge': extraLarge!,
-        if (large != null) 'large': large!,
-        if (medium != null) 'medium': medium!,
-        if (small != null) 'small': small!,
-        if (smallThumbnail != null) 'smallThumbnail': smallThumbnail!,
-        if (thumbnail != null) 'thumbnail': thumbnail!,
-      };
+    if (extraLarge != null) 'extraLarge': extraLarge!,
+    if (large != null) 'large': large!,
+    if (medium != null) 'medium': medium!,
+    if (small != null) 'small': small!,
+    if (smallThumbnail != null) 'smallThumbnail': smallThumbnail!,
+    if (thumbnail != null) 'thumbnail': thumbnail!,
+  };
 }
 
 class VolumeVolumeInfoIndustryIdentifiers {
@@ -6940,21 +7011,18 @@ class VolumeVolumeInfoIndustryIdentifiers {
   /// Possible values are ISBN_10, ISBN_13, ISSN and OTHER.
   core.String? type;
 
-  VolumeVolumeInfoIndustryIdentifiers({
-    this.identifier,
-    this.type,
-  });
+  VolumeVolumeInfoIndustryIdentifiers({this.identifier, this.type});
 
   VolumeVolumeInfoIndustryIdentifiers.fromJson(core.Map json_)
-      : this(
-          identifier: json_['identifier'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        identifier: json_['identifier'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (identifier != null) 'identifier': identifier!,
-        if (type != null) 'type': type!,
-      };
+    if (identifier != null) 'identifier': identifier!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A top-level summary of the panelization info in this volume.
@@ -6972,22 +7040,21 @@ class VolumeVolumeInfoPanelizationSummary {
   });
 
   VolumeVolumeInfoPanelizationSummary.fromJson(core.Map json_)
-      : this(
-          containsEpubBubbles: json_['containsEpubBubbles'] as core.bool?,
-          containsImageBubbles: json_['containsImageBubbles'] as core.bool?,
-          epubBubbleVersion: json_['epubBubbleVersion'] as core.String?,
-          imageBubbleVersion: json_['imageBubbleVersion'] as core.String?,
-        );
+    : this(
+        containsEpubBubbles: json_['containsEpubBubbles'] as core.bool?,
+        containsImageBubbles: json_['containsImageBubbles'] as core.bool?,
+        epubBubbleVersion: json_['epubBubbleVersion'] as core.String?,
+        imageBubbleVersion: json_['imageBubbleVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (containsEpubBubbles != null)
-          'containsEpubBubbles': containsEpubBubbles!,
-        if (containsImageBubbles != null)
-          'containsImageBubbles': containsImageBubbles!,
-        if (epubBubbleVersion != null) 'epubBubbleVersion': epubBubbleVersion!,
-        if (imageBubbleVersion != null)
-          'imageBubbleVersion': imageBubbleVersion!,
-      };
+    if (containsEpubBubbles != null)
+      'containsEpubBubbles': containsEpubBubbles!,
+    if (containsImageBubbles != null)
+      'containsImageBubbles': containsImageBubbles!,
+    if (epubBubbleVersion != null) 'epubBubbleVersion': epubBubbleVersion!,
+    if (imageBubbleVersion != null) 'imageBubbleVersion': imageBubbleVersion!,
+  };
 }
 
 /// The reading modes available for this volume.
@@ -6995,21 +7062,18 @@ class VolumeVolumeInfoReadingModes {
   core.bool? image;
   core.bool? text;
 
-  VolumeVolumeInfoReadingModes({
-    this.image,
-    this.text,
-  });
+  VolumeVolumeInfoReadingModes({this.image, this.text});
 
   VolumeVolumeInfoReadingModes.fromJson(core.Map json_)
-      : this(
-          image: json_['image'] as core.bool?,
-          text: json_['text'] as core.bool?,
-        );
+    : this(
+        image: json_['image'] as core.bool?,
+        text: json_['text'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (image != null) 'image': image!,
-        if (text != null) 'text': text!,
-      };
+    if (image != null) 'image': image!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// General volume information.
@@ -7156,93 +7220,109 @@ class VolumeVolumeInfo {
   });
 
   VolumeVolumeInfo.fromJson(core.Map json_)
-      : this(
-          allowAnonLogging: json_['allowAnonLogging'] as core.bool?,
-          authors: (json_['authors'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          averageRating: (json_['averageRating'] as core.num?)?.toDouble(),
-          canonicalVolumeLink: json_['canonicalVolumeLink'] as core.String?,
-          categories: (json_['categories'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          comicsContent: json_['comicsContent'] as core.bool?,
-          contentVersion: json_['contentVersion'] as core.String?,
-          description: json_['description'] as core.String?,
-          dimensions: json_.containsKey('dimensions')
-              ? VolumeVolumeInfoDimensions.fromJson(
-                  json_['dimensions'] as core.Map<core.String, core.dynamic>)
-              : null,
-          imageLinks: json_.containsKey('imageLinks')
-              ? VolumeVolumeInfoImageLinks.fromJson(
-                  json_['imageLinks'] as core.Map<core.String, core.dynamic>)
-              : null,
-          industryIdentifiers: (json_['industryIdentifiers'] as core.List?)
-              ?.map((value) => VolumeVolumeInfoIndustryIdentifiers.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          infoLink: json_['infoLink'] as core.String?,
-          language: json_['language'] as core.String?,
-          mainCategory: json_['mainCategory'] as core.String?,
-          maturityRating: json_['maturityRating'] as core.String?,
-          pageCount: json_['pageCount'] as core.int?,
-          panelizationSummary: json_.containsKey('panelizationSummary')
-              ? VolumeVolumeInfoPanelizationSummary.fromJson(
+    : this(
+        allowAnonLogging: json_['allowAnonLogging'] as core.bool?,
+        authors:
+            (json_['authors'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        averageRating: (json_['averageRating'] as core.num?)?.toDouble(),
+        canonicalVolumeLink: json_['canonicalVolumeLink'] as core.String?,
+        categories:
+            (json_['categories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        comicsContent: json_['comicsContent'] as core.bool?,
+        contentVersion: json_['contentVersion'] as core.String?,
+        description: json_['description'] as core.String?,
+        dimensions:
+            json_.containsKey('dimensions')
+                ? VolumeVolumeInfoDimensions.fromJson(
+                  json_['dimensions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        imageLinks:
+            json_.containsKey('imageLinks')
+                ? VolumeVolumeInfoImageLinks.fromJson(
+                  json_['imageLinks'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        industryIdentifiers:
+            (json_['industryIdentifiers'] as core.List?)
+                ?.map(
+                  (value) => VolumeVolumeInfoIndustryIdentifiers.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        infoLink: json_['infoLink'] as core.String?,
+        language: json_['language'] as core.String?,
+        mainCategory: json_['mainCategory'] as core.String?,
+        maturityRating: json_['maturityRating'] as core.String?,
+        pageCount: json_['pageCount'] as core.int?,
+        panelizationSummary:
+            json_.containsKey('panelizationSummary')
+                ? VolumeVolumeInfoPanelizationSummary.fromJson(
                   json_['panelizationSummary']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          previewLink: json_['previewLink'] as core.String?,
-          printType: json_['printType'] as core.String?,
-          printedPageCount: json_['printedPageCount'] as core.int?,
-          publishedDate: json_['publishedDate'] as core.String?,
-          publisher: json_['publisher'] as core.String?,
-          ratingsCount: json_['ratingsCount'] as core.int?,
-          readingModes: json_.containsKey('readingModes')
-              ? VolumeVolumeInfoReadingModes.fromJson(
-                  json_['readingModes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          samplePageCount: json_['samplePageCount'] as core.int?,
-          seriesInfo: json_.containsKey('seriesInfo')
-              ? Volumeseriesinfo.fromJson(
-                  json_['seriesInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          subtitle: json_['subtitle'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        previewLink: json_['previewLink'] as core.String?,
+        printType: json_['printType'] as core.String?,
+        printedPageCount: json_['printedPageCount'] as core.int?,
+        publishedDate: json_['publishedDate'] as core.String?,
+        publisher: json_['publisher'] as core.String?,
+        ratingsCount: json_['ratingsCount'] as core.int?,
+        readingModes:
+            json_.containsKey('readingModes')
+                ? VolumeVolumeInfoReadingModes.fromJson(
+                  json_['readingModes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        samplePageCount: json_['samplePageCount'] as core.int?,
+        seriesInfo:
+            json_.containsKey('seriesInfo')
+                ? Volumeseriesinfo.fromJson(
+                  json_['seriesInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        subtitle: json_['subtitle'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowAnonLogging != null) 'allowAnonLogging': allowAnonLogging!,
-        if (authors != null) 'authors': authors!,
-        if (averageRating != null) 'averageRating': averageRating!,
-        if (canonicalVolumeLink != null)
-          'canonicalVolumeLink': canonicalVolumeLink!,
-        if (categories != null) 'categories': categories!,
-        if (comicsContent != null) 'comicsContent': comicsContent!,
-        if (contentVersion != null) 'contentVersion': contentVersion!,
-        if (description != null) 'description': description!,
-        if (dimensions != null) 'dimensions': dimensions!,
-        if (imageLinks != null) 'imageLinks': imageLinks!,
-        if (industryIdentifiers != null)
-          'industryIdentifiers': industryIdentifiers!,
-        if (infoLink != null) 'infoLink': infoLink!,
-        if (language != null) 'language': language!,
-        if (mainCategory != null) 'mainCategory': mainCategory!,
-        if (maturityRating != null) 'maturityRating': maturityRating!,
-        if (pageCount != null) 'pageCount': pageCount!,
-        if (panelizationSummary != null)
-          'panelizationSummary': panelizationSummary!,
-        if (previewLink != null) 'previewLink': previewLink!,
-        if (printType != null) 'printType': printType!,
-        if (printedPageCount != null) 'printedPageCount': printedPageCount!,
-        if (publishedDate != null) 'publishedDate': publishedDate!,
-        if (publisher != null) 'publisher': publisher!,
-        if (ratingsCount != null) 'ratingsCount': ratingsCount!,
-        if (readingModes != null) 'readingModes': readingModes!,
-        if (samplePageCount != null) 'samplePageCount': samplePageCount!,
-        if (seriesInfo != null) 'seriesInfo': seriesInfo!,
-        if (subtitle != null) 'subtitle': subtitle!,
-        if (title != null) 'title': title!,
-      };
+    if (allowAnonLogging != null) 'allowAnonLogging': allowAnonLogging!,
+    if (authors != null) 'authors': authors!,
+    if (averageRating != null) 'averageRating': averageRating!,
+    if (canonicalVolumeLink != null)
+      'canonicalVolumeLink': canonicalVolumeLink!,
+    if (categories != null) 'categories': categories!,
+    if (comicsContent != null) 'comicsContent': comicsContent!,
+    if (contentVersion != null) 'contentVersion': contentVersion!,
+    if (description != null) 'description': description!,
+    if (dimensions != null) 'dimensions': dimensions!,
+    if (imageLinks != null) 'imageLinks': imageLinks!,
+    if (industryIdentifiers != null)
+      'industryIdentifiers': industryIdentifiers!,
+    if (infoLink != null) 'infoLink': infoLink!,
+    if (language != null) 'language': language!,
+    if (mainCategory != null) 'mainCategory': mainCategory!,
+    if (maturityRating != null) 'maturityRating': maturityRating!,
+    if (pageCount != null) 'pageCount': pageCount!,
+    if (panelizationSummary != null)
+      'panelizationSummary': panelizationSummary!,
+    if (previewLink != null) 'previewLink': previewLink!,
+    if (printType != null) 'printType': printType!,
+    if (printedPageCount != null) 'printedPageCount': printedPageCount!,
+    if (publishedDate != null) 'publishedDate': publishedDate!,
+    if (publisher != null) 'publisher': publisher!,
+    if (ratingsCount != null) 'ratingsCount': ratingsCount!,
+    if (readingModes != null) 'readingModes': readingModes!,
+    if (samplePageCount != null) 'samplePageCount': samplePageCount!,
+    if (seriesInfo != null) 'seriesInfo': seriesInfo!,
+    if (subtitle != null) 'subtitle': subtitle!,
+    if (title != null) 'title': title!,
+  };
 }
 
 class Volume {
@@ -7312,54 +7392,69 @@ class Volume {
   });
 
   Volume.fromJson(core.Map json_)
-      : this(
-          accessInfo: json_.containsKey('accessInfo')
-              ? VolumeAccessInfo.fromJson(
-                  json_['accessInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          etag: json_['etag'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          layerInfo: json_.containsKey('layerInfo')
-              ? VolumeLayerInfo.fromJson(
-                  json_['layerInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          recommendedInfo: json_.containsKey('recommendedInfo')
-              ? VolumeRecommendedInfo.fromJson(json_['recommendedInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          saleInfo: json_.containsKey('saleInfo')
-              ? VolumeSaleInfo.fromJson(
-                  json_['saleInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          searchInfo: json_.containsKey('searchInfo')
-              ? VolumeSearchInfo.fromJson(
-                  json_['searchInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          selfLink: json_['selfLink'] as core.String?,
-          userInfo: json_.containsKey('userInfo')
-              ? VolumeUserInfo.fromJson(
-                  json_['userInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          volumeInfo: json_.containsKey('volumeInfo')
-              ? VolumeVolumeInfo.fromJson(
-                  json_['volumeInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        accessInfo:
+            json_.containsKey('accessInfo')
+                ? VolumeAccessInfo.fromJson(
+                  json_['accessInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        layerInfo:
+            json_.containsKey('layerInfo')
+                ? VolumeLayerInfo.fromJson(
+                  json_['layerInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        recommendedInfo:
+            json_.containsKey('recommendedInfo')
+                ? VolumeRecommendedInfo.fromJson(
+                  json_['recommendedInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        saleInfo:
+            json_.containsKey('saleInfo')
+                ? VolumeSaleInfo.fromJson(
+                  json_['saleInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        searchInfo:
+            json_.containsKey('searchInfo')
+                ? VolumeSearchInfo.fromJson(
+                  json_['searchInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        selfLink: json_['selfLink'] as core.String?,
+        userInfo:
+            json_.containsKey('userInfo')
+                ? VolumeUserInfo.fromJson(
+                  json_['userInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        volumeInfo:
+            json_.containsKey('volumeInfo')
+                ? VolumeVolumeInfo.fromJson(
+                  json_['volumeInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessInfo != null) 'accessInfo': accessInfo!,
-        if (etag != null) 'etag': etag!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (layerInfo != null) 'layerInfo': layerInfo!,
-        if (recommendedInfo != null) 'recommendedInfo': recommendedInfo!,
-        if (saleInfo != null) 'saleInfo': saleInfo!,
-        if (searchInfo != null) 'searchInfo': searchInfo!,
-        if (selfLink != null) 'selfLink': selfLink!,
-        if (userInfo != null) 'userInfo': userInfo!,
-        if (volumeInfo != null) 'volumeInfo': volumeInfo!,
-      };
+    if (accessInfo != null) 'accessInfo': accessInfo!,
+    if (etag != null) 'etag': etag!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (layerInfo != null) 'layerInfo': layerInfo!,
+    if (recommendedInfo != null) 'recommendedInfo': recommendedInfo!,
+    if (saleInfo != null) 'saleInfo': saleInfo!,
+    if (searchInfo != null) 'searchInfo': searchInfo!,
+    if (selfLink != null) 'selfLink': selfLink!,
+    if (userInfo != null) 'userInfo': userInfo!,
+    if (volumeInfo != null) 'volumeInfo': volumeInfo!,
+  };
 }
 
 class Volume2 {
@@ -7370,27 +7465,27 @@ class Volume2 {
   core.String? kind;
   core.String? nextPageToken;
 
-  Volume2({
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  Volume2({this.items, this.kind, this.nextPageToken});
 
   Volume2.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Volume.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Volume.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The content ranges to identify the selected text.
@@ -7415,28 +7510,34 @@ class VolumeannotationContentRanges {
   });
 
   VolumeannotationContentRanges.fromJson(core.Map json_)
-      : this(
-          cfiRange: json_.containsKey('cfiRange')
-              ? BooksAnnotationsRange.fromJson(
-                  json_['cfiRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          contentVersion: json_['contentVersion'] as core.String?,
-          gbImageRange: json_.containsKey('gbImageRange')
-              ? BooksAnnotationsRange.fromJson(
-                  json_['gbImageRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gbTextRange: json_.containsKey('gbTextRange')
-              ? BooksAnnotationsRange.fromJson(
-                  json_['gbTextRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        cfiRange:
+            json_.containsKey('cfiRange')
+                ? BooksAnnotationsRange.fromJson(
+                  json_['cfiRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        contentVersion: json_['contentVersion'] as core.String?,
+        gbImageRange:
+            json_.containsKey('gbImageRange')
+                ? BooksAnnotationsRange.fromJson(
+                  json_['gbImageRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gbTextRange:
+            json_.containsKey('gbTextRange')
+                ? BooksAnnotationsRange.fromJson(
+                  json_['gbTextRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cfiRange != null) 'cfiRange': cfiRange!,
-        if (contentVersion != null) 'contentVersion': contentVersion!,
-        if (gbImageRange != null) 'gbImageRange': gbImageRange!,
-        if (gbTextRange != null) 'gbTextRange': gbTextRange!,
-      };
+    if (cfiRange != null) 'cfiRange': cfiRange!,
+    if (contentVersion != null) 'contentVersion': contentVersion!,
+    if (gbImageRange != null) 'gbImageRange': gbImageRange!,
+    if (gbTextRange != null) 'gbTextRange': gbTextRange!,
+  };
 }
 
 class Volumeannotation {
@@ -7502,45 +7603,47 @@ class Volumeannotation {
   });
 
   Volumeannotation.fromJson(core.Map json_)
-      : this(
-          annotationDataId: json_['annotationDataId'] as core.String?,
-          annotationDataLink: json_['annotationDataLink'] as core.String?,
-          annotationType: json_['annotationType'] as core.String?,
-          contentRanges: json_.containsKey('contentRanges')
-              ? VolumeannotationContentRanges.fromJson(
-                  json_['contentRanges'] as core.Map<core.String, core.dynamic>)
-              : null,
-          data: json_['data'] as core.String?,
-          deleted: json_['deleted'] as core.bool?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          layerId: json_['layerId'] as core.String?,
-          pageIds: (json_['pageIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          selectedText: json_['selectedText'] as core.String?,
-          selfLink: json_['selfLink'] as core.String?,
-          updated: json_['updated'] as core.String?,
-          volumeId: json_['volumeId'] as core.String?,
-        );
+    : this(
+        annotationDataId: json_['annotationDataId'] as core.String?,
+        annotationDataLink: json_['annotationDataLink'] as core.String?,
+        annotationType: json_['annotationType'] as core.String?,
+        contentRanges:
+            json_.containsKey('contentRanges')
+                ? VolumeannotationContentRanges.fromJson(
+                  json_['contentRanges'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        data: json_['data'] as core.String?,
+        deleted: json_['deleted'] as core.bool?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        layerId: json_['layerId'] as core.String?,
+        pageIds:
+            (json_['pageIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        selectedText: json_['selectedText'] as core.String?,
+        selfLink: json_['selfLink'] as core.String?,
+        updated: json_['updated'] as core.String?,
+        volumeId: json_['volumeId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotationDataId != null) 'annotationDataId': annotationDataId!,
-        if (annotationDataLink != null)
-          'annotationDataLink': annotationDataLink!,
-        if (annotationType != null) 'annotationType': annotationType!,
-        if (contentRanges != null) 'contentRanges': contentRanges!,
-        if (data != null) 'data': data!,
-        if (deleted != null) 'deleted': deleted!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (layerId != null) 'layerId': layerId!,
-        if (pageIds != null) 'pageIds': pageIds!,
-        if (selectedText != null) 'selectedText': selectedText!,
-        if (selfLink != null) 'selfLink': selfLink!,
-        if (updated != null) 'updated': updated!,
-        if (volumeId != null) 'volumeId': volumeId!,
-      };
+    if (annotationDataId != null) 'annotationDataId': annotationDataId!,
+    if (annotationDataLink != null) 'annotationDataLink': annotationDataLink!,
+    if (annotationType != null) 'annotationType': annotationType!,
+    if (contentRanges != null) 'contentRanges': contentRanges!,
+    if (data != null) 'data': data!,
+    if (deleted != null) 'deleted': deleted!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (layerId != null) 'layerId': layerId!,
+    if (pageIds != null) 'pageIds': pageIds!,
+    if (selectedText != null) 'selectedText': selectedText!,
+    if (selfLink != null) 'selfLink': selfLink!,
+    if (updated != null) 'updated': updated!,
+    if (volumeId != null) 'volumeId': volumeId!,
+  };
 }
 
 class Volumeannotations {
@@ -7575,24 +7678,28 @@ class Volumeannotations {
   });
 
   Volumeannotations.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => Volumeannotation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          totalItems: json_['totalItems'] as core.int?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Volumeannotation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        totalItems: json_['totalItems'] as core.int?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (totalItems != null) 'totalItems': totalItems!,
-        if (version != null) 'version': version!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (totalItems != null) 'totalItems': totalItems!,
+    if (version != null) 'version': version!,
+  };
 }
 
 class Volumes {
@@ -7608,27 +7715,27 @@ class Volumes {
   /// if results have been paginated.
   core.int? totalItems;
 
-  Volumes({
-    this.items,
-    this.kind,
-    this.totalItems,
-  });
+  Volumes({this.items, this.kind, this.totalItems});
 
   Volumes.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Volume.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          totalItems: json_['totalItems'] as core.int?,
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Volume.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        totalItems: json_['totalItems'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (totalItems != null) 'totalItems': totalItems!,
-      };
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (totalItems != null) 'totalItems': totalItems!,
+  };
 }
 
 class VolumeseriesinfoVolumeSeriesIssue {
@@ -7641,16 +7748,15 @@ class VolumeseriesinfoVolumeSeriesIssue {
   });
 
   VolumeseriesinfoVolumeSeriesIssue.fromJson(core.Map json_)
-      : this(
-          issueDisplayNumber: json_['issueDisplayNumber'] as core.String?,
-          issueOrderNumber: json_['issueOrderNumber'] as core.int?,
-        );
+    : this(
+        issueDisplayNumber: json_['issueDisplayNumber'] as core.String?,
+        issueOrderNumber: json_['issueOrderNumber'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issueDisplayNumber != null)
-          'issueDisplayNumber': issueDisplayNumber!,
-        if (issueOrderNumber != null) 'issueOrderNumber': issueOrderNumber!,
-      };
+    if (issueDisplayNumber != null) 'issueDisplayNumber': issueDisplayNumber!,
+    if (issueOrderNumber != null) 'issueOrderNumber': issueOrderNumber!,
+  };
 }
 
 class VolumeseriesinfoVolumeSeries {
@@ -7678,22 +7784,26 @@ class VolumeseriesinfoVolumeSeries {
   });
 
   VolumeseriesinfoVolumeSeries.fromJson(core.Map json_)
-      : this(
-          issue: (json_['issue'] as core.List?)
-              ?.map((value) => VolumeseriesinfoVolumeSeriesIssue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          orderNumber: json_['orderNumber'] as core.int?,
-          seriesBookType: json_['seriesBookType'] as core.String?,
-          seriesId: json_['seriesId'] as core.String?,
-        );
+    : this(
+        issue:
+            (json_['issue'] as core.List?)
+                ?.map(
+                  (value) => VolumeseriesinfoVolumeSeriesIssue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        orderNumber: json_['orderNumber'] as core.int?,
+        seriesBookType: json_['seriesBookType'] as core.String?,
+        seriesId: json_['seriesId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (issue != null) 'issue': issue!,
-        if (orderNumber != null) 'orderNumber': orderNumber!,
-        if (seriesBookType != null) 'seriesBookType': seriesBookType!,
-        if (seriesId != null) 'seriesId': seriesId!,
-      };
+    if (issue != null) 'issue': issue!,
+    if (orderNumber != null) 'orderNumber': orderNumber!,
+    if (seriesBookType != null) 'seriesBookType': seriesBookType!,
+    if (seriesId != null) 'seriesId': seriesId!,
+  };
 }
 
 class Volumeseriesinfo {
@@ -7718,21 +7828,25 @@ class Volumeseriesinfo {
   });
 
   Volumeseriesinfo.fromJson(core.Map json_)
-      : this(
-          bookDisplayNumber: json_['bookDisplayNumber'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          shortSeriesBookTitle: json_['shortSeriesBookTitle'] as core.String?,
-          volumeSeries: (json_['volumeSeries'] as core.List?)
-              ?.map((value) => VolumeseriesinfoVolumeSeries.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        bookDisplayNumber: json_['bookDisplayNumber'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        shortSeriesBookTitle: json_['shortSeriesBookTitle'] as core.String?,
+        volumeSeries:
+            (json_['volumeSeries'] as core.List?)
+                ?.map(
+                  (value) => VolumeseriesinfoVolumeSeries.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bookDisplayNumber != null) 'bookDisplayNumber': bookDisplayNumber!,
-        if (kind != null) 'kind': kind!,
-        if (shortSeriesBookTitle != null)
-          'shortSeriesBookTitle': shortSeriesBookTitle!,
-        if (volumeSeries != null) 'volumeSeries': volumeSeries!,
-      };
+    if (bookDisplayNumber != null) 'bookDisplayNumber': bookDisplayNumber!,
+    if (kind != null) 'kind': kind!,
+    if (shortSeriesBookTitle != null)
+      'shortSeriesBookTitle': shortSeriesBookTitle!,
+    if (volumeSeries != null) 'volumeSeries': volumeSeries!,
+  };
 }

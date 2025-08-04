@@ -6,13 +6,15 @@ import 'dart:io';
 
 import 'package:dart_style/dart_style.dart';
 import 'package:path/path.dart';
+import 'package:pub_semver/pub_semver.dart';
 
 final _cleanRegEx = RegExp(r'[^\w$]');
 String _cleanName(String name) => name.replaceAll(_cleanRegEx, '_');
 
-final _formatter = DartFormatter(
-  languageVersion: DartFormatter.latestShortStyleLanguageVersion,
-);
+final _formatter = DartFormatter(languageVersion: targetDartVersion);
+final targetDartVersion = Version(3, 7, 0);
+
+final targetDartVersionConstraint = '^$targetDartVersion';
 
 String formatSource(String source) => _formatter.format(source);
 
@@ -62,19 +64,24 @@ class GenerateResult {
   bool info = false;
 
   GenerateResult(
-      String this.apiName, String this.apiVersion, String this.packagePath)
-      : success = true,
-        message = null;
+    String this.apiName,
+    String this.apiVersion,
+    String this.packagePath,
+  ) : success = true,
+      message = null;
 
   GenerateResult.fromMessage(this.message)
-      : info = true,
-        apiName = null,
-        apiVersion = null,
-        packagePath = null;
+    : info = true,
+      apiName = null,
+      apiVersion = null,
+      packagePath = null;
 
-  GenerateResult.error(String this.apiName, String this.apiVersion,
-      String this.packagePath, String this.message)
-      : success = false;
+  GenerateResult.error(
+    String this.apiName,
+    String this.apiVersion,
+    String this.packagePath,
+    String this.message,
+  ) : success = false;
 
   String get shortName =>
       _cleanName('${apiName}_${apiVersion}_api').toLowerCase();

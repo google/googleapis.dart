@@ -219,11 +219,16 @@ class DirectoryApi {
   VerificationCodesResource get verificationCodes =>
       VerificationCodesResource(_requester);
 
-  DirectoryApi(http.Client client,
-      {core.String rootUrl = 'https://admin.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DirectoryApi(
+    http.Client client, {
+    core.String rootUrl = 'https://admin.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class AspsResource {
@@ -257,7 +262,8 @@ class AspsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/asps/' +
         commons.escapeVariable('$codeId');
@@ -265,7 +271,9 @@ class AspsResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -298,7 +306,8 @@ class AspsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/asps/' +
         commons.escapeVariable('$codeId');
@@ -328,15 +337,13 @@ class AspsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Asps> list(
-    core.String userKey, {
-    core.String? $fields,
-  }) async {
+  async.Future<Asps> list(core.String userKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/asps';
 
@@ -368,10 +375,7 @@ class ChannelsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> stop(
-    Channel request, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> stop(Channel request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -384,6 +388,7 @@ class ChannelsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -446,7 +451,8 @@ class ChromeosdevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/devices/chromeos/' +
         commons.escapeVariable('$resourceId') +
@@ -457,6 +463,7 @@ class ChromeosdevicesResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -504,7 +511,8 @@ class ChromeosdevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/devices/chromeos/' +
         commons.escapeVariable('$deviceId');
@@ -515,7 +523,8 @@ class ChromeosdevicesResource {
       queryParams: queryParams_,
     );
     return ChromeOsDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a paginated list of Chrome OS devices within an account.
@@ -606,7 +615,8 @@ class ChromeosdevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/devices/chromeos';
 
@@ -616,7 +626,8 @@ class ChromeosdevicesResource {
       queryParams: queryParams_,
     );
     return ChromeOsDevices.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Moves or inserts multiple Chrome OS devices to an organizational unit.
@@ -651,7 +662,8 @@ class ChromeosdevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/devices/chromeos/moveDevicesToOu';
 
@@ -660,6 +672,7 @@ class ChromeosdevicesResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -715,7 +728,8 @@ class ChromeosdevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/devices/chromeos/' +
         commons.escapeVariable('$deviceId');
@@ -727,7 +741,8 @@ class ChromeosdevicesResource {
       queryParams: queryParams_,
     );
     return ChromeOsDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a device's updatable properties, such as `annotatedUser`,
@@ -778,7 +793,8 @@ class ChromeosdevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/devices/chromeos/' +
         commons.escapeVariable('$deviceId');
@@ -790,7 +806,8 @@ class ChromeosdevicesResource {
       queryParams: queryParams_,
     );
     return ChromeOsDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -818,7 +835,7 @@ class CustomerDevicesChromeosResource {
       CustomerDevicesChromeosCommandsResource(_requester);
 
   CustomerDevicesChromeosResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Changes the status of a batch of ChromeOS devices.
   ///
@@ -851,7 +868,8 @@ class CustomerDevicesChromeosResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/devices/chromeos:batchChangeStatus';
 
@@ -862,7 +880,8 @@ class CustomerDevicesChromeosResource {
       queryParams: queryParams_,
     );
     return BatchChangeChromeOsDeviceStatusResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Issues a command for the device to execute.
@@ -896,7 +915,8 @@ class CustomerDevicesChromeosResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/devices/chromeos/' +
         commons.escapeVariable('$deviceId') +
@@ -909,7 +929,8 @@ class CustomerDevicesChromeosResource {
       queryParams: queryParams_,
     );
     return DirectoryChromeosdevicesIssueCommandResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -917,7 +938,7 @@ class CustomerDevicesChromeosCommandsResource {
   final commons.ApiRequester _requester;
 
   CustomerDevicesChromeosCommandsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets command data a specific command issued to the device.
   ///
@@ -949,7 +970,8 @@ class CustomerDevicesChromeosCommandsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/devices/chromeos/' +
         commons.escapeVariable('$deviceId') +
@@ -962,7 +984,8 @@ class CustomerDevicesChromeosCommandsResource {
       queryParams: queryParams_,
     );
     return DirectoryChromeosdevicesCommand.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -997,7 +1020,8 @@ class CustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customers/' +
+    final url_ =
+        'admin/directory/v1/customers/' +
         commons.escapeVariable('$customerKey');
 
     final response_ = await _requester.request(
@@ -1036,7 +1060,8 @@ class CustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customers/' +
+    final url_ =
+        'admin/directory/v1/customers/' +
         commons.escapeVariable('$customerKey');
 
     final response_ = await _requester.request(
@@ -1076,7 +1101,8 @@ class CustomersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customers/' +
+    final url_ =
+        'admin/directory/v1/customers/' +
         commons.escapeVariable('$customerKey');
 
     final response_ = await _requester.request(
@@ -1104,7 +1130,7 @@ class CustomersChromePrintServersResource {
   final commons.ApiRequester _requester;
 
   CustomersChromePrintServersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates multiple print servers.
   ///
@@ -1137,7 +1163,8 @@ class CustomersChromePrintServersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/' +
+    final url_ =
+        'admin/directory/v1/' +
         core.Uri.encodeFull('$parent') +
         '/chrome/printServers:batchCreatePrintServers';
 
@@ -1148,7 +1175,8 @@ class CustomersChromePrintServersResource {
       queryParams: queryParams_,
     );
     return BatchCreatePrintServersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes multiple print servers.
@@ -1183,7 +1211,8 @@ class CustomersChromePrintServersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/' +
+    final url_ =
+        'admin/directory/v1/' +
         core.Uri.encodeFull('$parent') +
         '/chrome/printServers:batchDeletePrintServers';
 
@@ -1194,7 +1223,8 @@ class CustomersChromePrintServersResource {
       queryParams: queryParams_,
     );
     return BatchDeletePrintServersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a print server.
@@ -1228,7 +1258,8 @@ class CustomersChromePrintServersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/' +
+    final url_ =
+        'admin/directory/v1/' +
         core.Uri.encodeFull('$parent') +
         '/chrome/printServers';
 
@@ -1239,7 +1270,8 @@ class CustomersChromePrintServersResource {
       queryParams: queryParams_,
     );
     return PrintServer.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a print server.
@@ -1260,10 +1292,7 @@ class CustomersChromePrintServersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1273,6 +1302,7 @@ class CustomersChromePrintServersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1313,7 +1343,8 @@ class CustomersChromePrintServersResource {
       queryParams: queryParams_,
     );
     return PrintServer.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists print server configurations.
@@ -1376,7 +1407,8 @@ class CustomersChromePrintServersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/' +
+    final url_ =
+        'admin/directory/v1/' +
         core.Uri.encodeFull('$parent') +
         '/chrome/printServers';
 
@@ -1386,7 +1418,8 @@ class CustomersChromePrintServersResource {
       queryParams: queryParams_,
     );
     return ListPrintServersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a print server's configuration.
@@ -1433,7 +1466,8 @@ class CustomersChromePrintServersResource {
       queryParams: queryParams_,
     );
     return PrintServer.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1441,7 +1475,7 @@ class CustomersChromePrintersResource {
   final commons.ApiRequester _requester;
 
   CustomersChromePrintersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates printers under given Organization Unit.
   ///
@@ -1473,7 +1507,8 @@ class CustomersChromePrintersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/' +
+    final url_ =
+        'admin/directory/v1/' +
         core.Uri.encodeFull('$parent') +
         '/chrome/printers:batchCreatePrinters';
 
@@ -1484,7 +1519,8 @@ class CustomersChromePrintersResource {
       queryParams: queryParams_,
     );
     return BatchCreatePrintersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes printers in batch.
@@ -1517,7 +1553,8 @@ class CustomersChromePrintersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/' +
+    final url_ =
+        'admin/directory/v1/' +
         core.Uri.encodeFull('$parent') +
         '/chrome/printers:batchDeletePrinters';
 
@@ -1528,7 +1565,8 @@ class CustomersChromePrintersResource {
       queryParams: queryParams_,
     );
     return BatchDeletePrintersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a printer under given Organization Unit.
@@ -1561,7 +1599,8 @@ class CustomersChromePrintersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/' +
+    final url_ =
+        'admin/directory/v1/' +
         core.Uri.encodeFull('$parent') +
         '/chrome/printers';
 
@@ -1592,10 +1631,7 @@ class CustomersChromePrintersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1605,6 +1641,7 @@ class CustomersChromePrintersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1628,10 +1665,7 @@ class CustomersChromePrintersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Printer> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Printer> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1703,7 +1737,8 @@ class CustomersChromePrintersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/' +
+    final url_ =
+        'admin/directory/v1/' +
         core.Uri.encodeFull('$parent') +
         '/chrome/printers';
 
@@ -1713,7 +1748,8 @@ class CustomersChromePrintersResource {
       queryParams: queryParams_,
     );
     return ListPrintersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the supported printer models.
@@ -1757,7 +1793,8 @@ class CustomersChromePrintersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/' +
+    final url_ =
+        'admin/directory/v1/' +
         core.Uri.encodeFull('$parent') +
         '/chrome/printers:listPrinterModels';
 
@@ -1767,7 +1804,8 @@ class CustomersChromePrintersResource {
       queryParams: queryParams_,
     );
     return ListPrinterModelsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a `Printer` resource.
@@ -1855,7 +1893,8 @@ class DomainAliasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/domainaliases/' +
         commons.escapeVariable('$domainAliasName');
@@ -1863,7 +1902,9 @@ class DomainAliasesResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -1902,7 +1943,8 @@ class DomainAliasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/domainaliases/' +
         commons.escapeVariable('$domainAliasName');
@@ -1913,7 +1955,8 @@ class DomainAliasesResource {
       queryParams: queryParams_,
     );
     return DomainAlias.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Inserts a domain alias of the customer.
@@ -1944,7 +1987,8 @@ class DomainAliasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/domainaliases';
 
@@ -1955,7 +1999,8 @@ class DomainAliasesResource {
       queryParams: queryParams_,
     );
     return DomainAlias.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the domain aliases of the customer.
@@ -1994,7 +2039,8 @@ class DomainAliasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/domainaliases';
 
@@ -2004,7 +2050,8 @@ class DomainAliasesResource {
       queryParams: queryParams_,
     );
     return DomainAliases.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2038,7 +2085,8 @@ class DomainsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/domains/' +
         commons.escapeVariable('$domainName');
@@ -2046,7 +2094,9 @@ class DomainsResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -2085,7 +2135,8 @@ class DomainsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/domains/' +
         commons.escapeVariable('$domainName');
@@ -2126,7 +2177,8 @@ class DomainsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/domains';
 
@@ -2170,7 +2222,8 @@ class DomainsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/domains';
 
@@ -2219,7 +2272,9 @@ class GroupsResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -2241,10 +2296,7 @@ class GroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> get(
-    core.String groupKey, {
-    core.String? $fields,
-  }) async {
+  async.Future<Group> get(core.String groupKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2276,10 +2328,7 @@ class GroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> insert(
-    Group request, {
-    core.String? $fields,
-  }) async {
+  async.Future<Group> insert(Group request, {core.String? $fields}) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
@@ -2497,7 +2546,8 @@ class GroupsAliasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/groups/' +
+    final url_ =
+        'admin/directory/v1/groups/' +
         commons.escapeVariable('$groupKey') +
         '/aliases/' +
         commons.escapeVariable('$alias');
@@ -2505,7 +2555,9 @@ class GroupsAliasesResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -2539,7 +2591,8 @@ class GroupsAliasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/groups/' +
+    final url_ =
+        'admin/directory/v1/groups/' +
         commons.escapeVariable('$groupKey') +
         '/aliases';
 
@@ -2577,7 +2630,8 @@ class GroupsAliasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/groups/' +
+    final url_ =
+        'admin/directory/v1/groups/' +
         commons.escapeVariable('$groupKey') +
         '/aliases';
 
@@ -2623,7 +2677,8 @@ class MembersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/groups/' +
+    final url_ =
+        'admin/directory/v1/groups/' +
         commons.escapeVariable('$groupKey') +
         '/members/' +
         commons.escapeVariable('$memberKey');
@@ -2631,7 +2686,9 @@ class MembersResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -2666,7 +2723,8 @@ class MembersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/groups/' +
+    final url_ =
+        'admin/directory/v1/groups/' +
         commons.escapeVariable('$groupKey') +
         '/members/' +
         commons.escapeVariable('$memberKey');
@@ -2715,7 +2773,8 @@ class MembersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/groups/' +
+    final url_ =
+        'admin/directory/v1/groups/' +
         commons.escapeVariable('$groupKey') +
         '/hasMember/' +
         commons.escapeVariable('$memberKey');
@@ -2726,7 +2785,8 @@ class MembersResource {
       queryParams: queryParams_,
     );
     return MembersHasMember.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds a user to the specified group.
@@ -2758,7 +2818,8 @@ class MembersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/groups/' +
+    final url_ =
+        'admin/directory/v1/groups/' +
         commons.escapeVariable('$groupKey') +
         '/members';
 
@@ -2819,7 +2880,8 @@ class MembersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/groups/' +
+    final url_ =
+        'admin/directory/v1/groups/' +
         commons.escapeVariable('$groupKey') +
         '/members';
 
@@ -2868,7 +2930,8 @@ class MembersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/groups/' +
+    final url_ =
+        'admin/directory/v1/groups/' +
         commons.escapeVariable('$groupKey') +
         '/members/' +
         commons.escapeVariable('$memberKey');
@@ -2916,7 +2979,8 @@ class MembersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/groups/' +
+    final url_ =
+        'admin/directory/v1/groups/' +
         commons.escapeVariable('$groupKey') +
         '/members/' +
         commons.escapeVariable('$memberKey');
@@ -2972,7 +3036,8 @@ class MobiledevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/devices/mobile/' +
         commons.escapeVariable('$resourceId') +
@@ -2983,6 +3048,7 @@ class MobiledevicesResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -3017,7 +3083,8 @@ class MobiledevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/devices/mobile/' +
         commons.escapeVariable('$resourceId');
@@ -3025,7 +3092,9 @@ class MobiledevicesResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -3070,7 +3139,8 @@ class MobiledevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/devices/mobile/' +
         commons.escapeVariable('$resourceId');
@@ -3081,7 +3151,8 @@ class MobiledevicesResource {
       queryParams: queryParams_,
     );
     return MobileDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a paginated list of all user-owned mobile devices for an
@@ -3164,7 +3235,8 @@ class MobiledevicesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/devices/mobile';
 
@@ -3174,7 +3246,8 @@ class MobiledevicesResource {
       queryParams: queryParams_,
     );
     return MobileDevices.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3214,7 +3287,8 @@ class OrgunitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/orgunits/' +
         core.Uri.encodeFull('$orgUnitPath');
@@ -3222,7 +3296,9 @@ class OrgunitsResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -3260,7 +3336,8 @@ class OrgunitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/orgunits/' +
         core.Uri.encodeFull('$orgUnitPath');
@@ -3305,7 +3382,8 @@ class OrgunitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/orgunits';
 
@@ -3361,7 +3439,8 @@ class OrgunitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/orgunits';
 
@@ -3413,7 +3492,8 @@ class OrgunitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/orgunits/' +
         core.Uri.encodeFull('$orgUnitPath');
@@ -3464,7 +3544,8 @@ class OrgunitsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/orgunits/' +
         core.Uri.encodeFull('$orgUnitPath');
@@ -3515,7 +3596,8 @@ class PrivilegesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/roles/ALL/privileges';
 
@@ -3525,7 +3607,8 @@ class PrivilegesResource {
       queryParams: queryParams_,
     );
     return Privileges.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3574,7 +3657,8 @@ class ResourcesBuildingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/buildings/' +
         commons.escapeVariable('$buildingId');
@@ -3582,7 +3666,9 @@ class ResourcesBuildingsResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -3616,7 +3702,8 @@ class ResourcesBuildingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/buildings/' +
         commons.escapeVariable('$buildingId');
@@ -3671,7 +3758,8 @@ class ResourcesBuildingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/buildings';
 
@@ -3719,7 +3807,8 @@ class ResourcesBuildingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/buildings';
 
@@ -3776,7 +3865,8 @@ class ResourcesBuildingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/buildings/' +
         commons.escapeVariable('$buildingId');
@@ -3835,7 +3925,8 @@ class ResourcesBuildingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/buildings/' +
         commons.escapeVariable('$buildingId');
@@ -3882,7 +3973,8 @@ class ResourcesCalendarsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/calendars/' +
         commons.escapeVariable('$calendarResourceId');
@@ -3890,7 +3982,9 @@ class ResourcesCalendarsResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -3924,7 +4018,8 @@ class ResourcesCalendarsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/calendars/' +
         commons.escapeVariable('$calendarResourceId');
@@ -3935,7 +4030,8 @@ class ResourcesCalendarsResource {
       queryParams: queryParams_,
     );
     return CalendarResource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Inserts a calendar resource.
@@ -3968,7 +4064,8 @@ class ResourcesCalendarsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/calendars';
 
@@ -3979,7 +4076,8 @@ class ResourcesCalendarsResource {
       queryParams: queryParams_,
     );
     return CalendarResource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a list of calendar resources for an account.
@@ -4040,7 +4138,8 @@ class ResourcesCalendarsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/calendars';
 
@@ -4050,7 +4149,8 @@ class ResourcesCalendarsResource {
       queryParams: queryParams_,
     );
     return CalendarResources.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Patches a calendar resource.
@@ -4086,7 +4186,8 @@ class ResourcesCalendarsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/calendars/' +
         commons.escapeVariable('$calendarResourceId');
@@ -4098,7 +4199,8 @@ class ResourcesCalendarsResource {
       queryParams: queryParams_,
     );
     return CalendarResource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a calendar resource.
@@ -4138,7 +4240,8 @@ class ResourcesCalendarsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/calendars/' +
         commons.escapeVariable('$calendarResourceId');
@@ -4150,7 +4253,8 @@ class ResourcesCalendarsResource {
       queryParams: queryParams_,
     );
     return CalendarResource.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4186,7 +4290,8 @@ class ResourcesFeaturesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/features/' +
         commons.escapeVariable('$featureKey');
@@ -4194,7 +4299,9 @@ class ResourcesFeaturesResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -4228,7 +4335,8 @@ class ResourcesFeaturesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/features/' +
         commons.escapeVariable('$featureKey');
@@ -4271,7 +4379,8 @@ class ResourcesFeaturesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/features';
 
@@ -4319,7 +4428,8 @@ class ResourcesFeaturesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/features';
 
@@ -4364,7 +4474,8 @@ class ResourcesFeaturesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/features/' +
         commons.escapeVariable('$featureKey');
@@ -4409,7 +4520,8 @@ class ResourcesFeaturesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/features/' +
         commons.escapeVariable('$oldName') +
@@ -4420,6 +4532,7 @@ class ResourcesFeaturesResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -4457,7 +4570,8 @@ class ResourcesFeaturesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/resources/features/' +
         commons.escapeVariable('$featureKey');
@@ -4502,7 +4616,8 @@ class RoleAssignmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/roleassignments/' +
         commons.escapeVariable('$roleAssignmentId');
@@ -4510,7 +4625,9 @@ class RoleAssignmentsResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -4549,7 +4666,8 @@ class RoleAssignmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/roleassignments/' +
         commons.escapeVariable('$roleAssignmentId');
@@ -4560,7 +4678,8 @@ class RoleAssignmentsResource {
       queryParams: queryParams_,
     );
     return RoleAssignment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a role assignment.
@@ -4591,7 +4710,8 @@ class RoleAssignmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/roleassignments';
 
@@ -4602,7 +4722,8 @@ class RoleAssignmentsResource {
       queryParams: queryParams_,
     );
     return RoleAssignment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves a paginated list of all roleAssignments.
@@ -4664,7 +4785,8 @@ class RoleAssignmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/roleassignments';
 
@@ -4674,7 +4796,8 @@ class RoleAssignmentsResource {
       queryParams: queryParams_,
     );
     return RoleAssignments.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4708,7 +4831,8 @@ class RolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/roles/' +
         commons.escapeVariable('$roleId');
@@ -4716,7 +4840,9 @@ class RolesResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -4755,7 +4881,8 @@ class RolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/roles/' +
         commons.escapeVariable('$roleId');
@@ -4796,7 +4923,8 @@ class RolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/roles';
 
@@ -4849,7 +4977,8 @@ class RolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/roles';
 
@@ -4892,7 +5021,8 @@ class RolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/roles/' +
         commons.escapeVariable('$roleId');
@@ -4937,7 +5067,8 @@ class RolesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customer') +
         '/roles/' +
         commons.escapeVariable('$roleId');
@@ -4982,7 +5113,8 @@ class SchemasResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/schemas/' +
         commons.escapeVariable('$schemaKey');
@@ -4990,7 +5122,9 @@ class SchemasResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -5029,7 +5163,8 @@ class SchemasResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/schemas/' +
         commons.escapeVariable('$schemaKey');
@@ -5070,7 +5205,8 @@ class SchemasResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/schemas';
 
@@ -5114,7 +5250,8 @@ class SchemasResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/schemas';
 
@@ -5157,7 +5294,8 @@ class SchemasResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/schemas/' +
         commons.escapeVariable('$schemaKey');
@@ -5202,7 +5340,8 @@ class SchemasResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/customer/' +
+    final url_ =
+        'admin/directory/v1/customer/' +
         commons.escapeVariable('$customerId') +
         '/schemas/' +
         commons.escapeVariable('$schemaKey');
@@ -5248,7 +5387,8 @@ class TokensResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/tokens/' +
         commons.escapeVariable('$clientId');
@@ -5256,7 +5396,9 @@ class TokensResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -5289,7 +5431,8 @@ class TokensResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/tokens/' +
         commons.escapeVariable('$clientId');
@@ -5320,15 +5463,13 @@ class TokensResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Tokens> list(
-    core.String userKey, {
-    core.String? $fields,
-  }) async {
+  async.Future<Tokens> list(core.String userKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/tokens';
 
@@ -5345,7 +5486,7 @@ class TwoStepVerificationResource {
   final commons.ApiRequester _requester;
 
   TwoStepVerificationResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Turns off 2-Step Verification for user.
   ///
@@ -5370,14 +5511,17 @@ class TwoStepVerificationResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/twoStepVerification/turnOff';
 
     await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -5406,10 +5550,7 @@ class UsersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> delete(
-    core.String userKey, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> delete(core.String userKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -5420,7 +5561,9 @@ class UsersResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -5692,7 +5835,8 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/makeAdmin';
 
@@ -5701,6 +5845,7 @@ class UsersResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -5781,14 +5926,17 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/signOut';
 
     await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -5819,7 +5967,8 @@ class UsersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/undelete';
 
@@ -5828,6 +5977,7 @@ class UsersResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -6032,7 +6182,8 @@ class UsersAliasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/aliases/' +
         commons.escapeVariable('$alias');
@@ -6040,7 +6191,9 @@ class UsersAliasesResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -6074,7 +6227,8 @@ class UsersAliasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/aliases';
 
@@ -6119,7 +6273,8 @@ class UsersAliasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/aliases';
 
@@ -6166,7 +6321,8 @@ class UsersAliasesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/aliases/watch';
 
@@ -6200,22 +6356,22 @@ class UsersPhotosResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> delete(
-    core.String userKey, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> delete(core.String userKey, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/photos/thumbnail';
 
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -6245,7 +6401,8 @@ class UsersPhotosResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/photos/thumbnail';
 
@@ -6289,7 +6446,8 @@ class UsersPhotosResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/photos/thumbnail';
 
@@ -6331,7 +6489,8 @@ class UsersPhotosResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/photos/thumbnail';
 
@@ -6372,14 +6531,17 @@ class VerificationCodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/verificationCodes/generate';
 
     await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -6406,14 +6568,17 @@ class VerificationCodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/verificationCodes/invalidate';
 
     await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -6444,7 +6609,8 @@ class VerificationCodesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'admin/directory/v1/users/' +
+    final url_ =
+        'admin/directory/v1/users/' +
         commons.escapeVariable('$userKey') +
         '/verificationCodes';
 
@@ -6454,7 +6620,8 @@ class VerificationCodesResource {
       queryParams: queryParams_,
     );
     return VerificationCodes.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -6466,30 +6633,24 @@ class Alias {
   core.String? kind;
   core.String? primaryEmail;
 
-  Alias({
-    this.alias,
-    this.etag,
-    this.id,
-    this.kind,
-    this.primaryEmail,
-  });
+  Alias({this.alias, this.etag, this.id, this.kind, this.primaryEmail});
 
   Alias.fromJson(core.Map json_)
-      : this(
-          alias: json_['alias'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          primaryEmail: json_['primaryEmail'] as core.String?,
-        );
+    : this(
+        alias: json_['alias'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        primaryEmail: json_['primaryEmail'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alias != null) 'alias': alias!,
-        if (etag != null) 'etag': etag!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (primaryEmail != null) 'primaryEmail': primaryEmail!,
-      };
+    if (alias != null) 'alias': alias!,
+    if (etag != null) 'etag': etag!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (primaryEmail != null) 'primaryEmail': primaryEmail!,
+  };
 }
 
 /// JSON response template to list aliases in Directory API.
@@ -6502,26 +6663,21 @@ class Aliases {
   core.String? etag;
   core.String? kind;
 
-  Aliases({
-    this.aliases,
-    this.etag,
-    this.kind,
-  });
+  Aliases({this.aliases, this.etag, this.kind});
 
   Aliases.fromJson(core.Map json_)
-      : this(
-          aliases: json_.containsKey('aliases')
-              ? json_['aliases'] as core.List
-              : null,
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        aliases:
+            json_.containsKey('aliases') ? json_['aliases'] as core.List : null,
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aliases != null) 'aliases': aliases!,
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (aliases != null) 'aliases': aliases!,
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 /// An application-specific password (ASP) is used with applications that do not
@@ -6572,25 +6728,25 @@ class Asp {
   });
 
   Asp.fromJson(core.Map json_)
-      : this(
-          codeId: json_['codeId'] as core.int?,
-          creationTime: json_['creationTime'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          lastTimeUsed: json_['lastTimeUsed'] as core.String?,
-          name: json_['name'] as core.String?,
-          userKey: json_['userKey'] as core.String?,
-        );
+    : this(
+        codeId: json_['codeId'] as core.int?,
+        creationTime: json_['creationTime'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        lastTimeUsed: json_['lastTimeUsed'] as core.String?,
+        name: json_['name'] as core.String?,
+        userKey: json_['userKey'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (codeId != null) 'codeId': codeId!,
-        if (creationTime != null) 'creationTime': creationTime!,
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (lastTimeUsed != null) 'lastTimeUsed': lastTimeUsed!,
-        if (name != null) 'name': name!,
-        if (userKey != null) 'userKey': userKey!,
-      };
+    if (codeId != null) 'codeId': codeId!,
+    if (creationTime != null) 'creationTime': creationTime!,
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (lastTimeUsed != null) 'lastTimeUsed': lastTimeUsed!,
+    if (name != null) 'name': name!,
+    if (userKey != null) 'userKey': userKey!,
+  };
 }
 
 class Asps {
@@ -6605,27 +6761,27 @@ class Asps {
   /// This is always `admin#directory#aspList`.
   core.String? kind;
 
-  Asps({
-    this.etag,
-    this.items,
-    this.kind,
-  });
+  Asps({this.etag, this.items, this.kind});
 
   Asps.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Asp.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Asp.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 /// Auxiliary message about issues with printers or settings.
@@ -6649,24 +6805,20 @@ class AuxiliaryMessage {
   /// - "SEVERITY_ERROR" : Message of severity: error.
   core.String? severity;
 
-  AuxiliaryMessage({
-    this.auxiliaryMessage,
-    this.fieldMask,
-    this.severity,
-  });
+  AuxiliaryMessage({this.auxiliaryMessage, this.fieldMask, this.severity});
 
   AuxiliaryMessage.fromJson(core.Map json_)
-      : this(
-          auxiliaryMessage: json_['auxiliaryMessage'] as core.String?,
-          fieldMask: json_['fieldMask'] as core.String?,
-          severity: json_['severity'] as core.String?,
-        );
+    : this(
+        auxiliaryMessage: json_['auxiliaryMessage'] as core.String?,
+        fieldMask: json_['fieldMask'] as core.String?,
+        severity: json_['severity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auxiliaryMessage != null) 'auxiliaryMessage': auxiliaryMessage!,
-        if (fieldMask != null) 'fieldMask': fieldMask!,
-        if (severity != null) 'severity': severity!,
-      };
+    if (auxiliaryMessage != null) 'auxiliaryMessage': auxiliaryMessage!,
+    if (fieldMask != null) 'fieldMask': fieldMask!,
+    if (severity != null) 'severity': severity!,
+  };
 }
 
 /// Information about the device's backlights.
@@ -6688,24 +6840,20 @@ class BacklightInfo {
   /// Output only.
   core.String? path;
 
-  BacklightInfo({
-    this.brightness,
-    this.maxBrightness,
-    this.path,
-  });
+  BacklightInfo({this.brightness, this.maxBrightness, this.path});
 
   BacklightInfo.fromJson(core.Map json_)
-      : this(
-          brightness: json_['brightness'] as core.int?,
-          maxBrightness: json_['maxBrightness'] as core.int?,
-          path: json_['path'] as core.String?,
-        );
+    : this(
+        brightness: json_['brightness'] as core.int?,
+        maxBrightness: json_['maxBrightness'] as core.int?,
+        path: json_['path'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (brightness != null) 'brightness': brightness!,
-        if (maxBrightness != null) 'maxBrightness': maxBrightness!,
-        if (path != null) 'path': path!,
-      };
+    if (brightness != null) 'brightness': brightness!,
+    if (maxBrightness != null) 'maxBrightness': maxBrightness!,
+    if (path != null) 'path': path!,
+  };
 }
 
 /// A request for changing the status of a batch of ChromeOS devices.
@@ -6786,47 +6934,50 @@ class BatchChangeChromeOsDeviceStatusRequest {
   });
 
   BatchChangeChromeOsDeviceStatusRequest.fromJson(core.Map json_)
-      : this(
-          changeChromeOsDeviceStatusAction:
-              json_['changeChromeOsDeviceStatusAction'] as core.String?,
-          deprovisionReason: json_['deprovisionReason'] as core.String?,
-          deviceIds: (json_['deviceIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        changeChromeOsDeviceStatusAction:
+            json_['changeChromeOsDeviceStatusAction'] as core.String?,
+        deprovisionReason: json_['deprovisionReason'] as core.String?,
+        deviceIds:
+            (json_['deviceIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (changeChromeOsDeviceStatusAction != null)
-          'changeChromeOsDeviceStatusAction': changeChromeOsDeviceStatusAction!,
-        if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,
-        if (deviceIds != null) 'deviceIds': deviceIds!,
-      };
+    if (changeChromeOsDeviceStatusAction != null)
+      'changeChromeOsDeviceStatusAction': changeChromeOsDeviceStatusAction!,
+    if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,
+    if (deviceIds != null) 'deviceIds': deviceIds!,
+  };
 }
 
 /// The response of changing the status of a batch of ChromeOS devices.
 class BatchChangeChromeOsDeviceStatusResponse {
   /// The results for each of the ChromeOS devices provided in the request.
   core.List<ChangeChromeOsDeviceStatusResult>?
-      changeChromeOsDeviceStatusResults;
+  changeChromeOsDeviceStatusResults;
 
   BatchChangeChromeOsDeviceStatusResponse({
     this.changeChromeOsDeviceStatusResults,
   });
 
   BatchChangeChromeOsDeviceStatusResponse.fromJson(core.Map json_)
-      : this(
-          changeChromeOsDeviceStatusResults:
-              (json_['changeChromeOsDeviceStatusResults'] as core.List?)
-                  ?.map((value) => ChangeChromeOsDeviceStatusResult.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+    : this(
+        changeChromeOsDeviceStatusResults:
+            (json_['changeChromeOsDeviceStatusResults'] as core.List?)
+                ?.map(
+                  (value) => ChangeChromeOsDeviceStatusResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (changeChromeOsDeviceStatusResults != null)
-          'changeChromeOsDeviceStatusResults':
-              changeChromeOsDeviceStatusResults!,
-      };
+    if (changeChromeOsDeviceStatusResults != null)
+      'changeChromeOsDeviceStatusResults': changeChromeOsDeviceStatusResults!,
+  };
 }
 
 /// Request to add multiple new print servers in a batch.
@@ -6836,21 +6987,23 @@ class BatchCreatePrintServersRequest {
   /// Required.
   core.List<CreatePrintServerRequest>? requests;
 
-  BatchCreatePrintServersRequest({
-    this.requests,
-  });
+  BatchCreatePrintServersRequest({this.requests});
 
   BatchCreatePrintServersRequest.fromJson(core.Map json_)
-      : this(
-          requests: (json_['requests'] as core.List?)
-              ?.map((value) => CreatePrintServerRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        requests:
+            (json_['requests'] as core.List?)
+                ?.map(
+                  (value) => CreatePrintServerRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null) 'requests': requests!,
-      };
+    if (requests != null) 'requests': requests!,
+  };
 }
 
 class BatchCreatePrintServersResponse {
@@ -6862,27 +7015,32 @@ class BatchCreatePrintServersResponse {
   /// A list of successfully created print servers with their IDs populated.
   core.List<PrintServer>? printServers;
 
-  BatchCreatePrintServersResponse({
-    this.failures,
-    this.printServers,
-  });
+  BatchCreatePrintServersResponse({this.failures, this.printServers});
 
   BatchCreatePrintServersResponse.fromJson(core.Map json_)
-      : this(
-          failures: (json_['failures'] as core.List?)
-              ?.map((value) => PrintServerFailureInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          printServers: (json_['printServers'] as core.List?)
-              ?.map((value) => PrintServer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        failures:
+            (json_['failures'] as core.List?)
+                ?.map(
+                  (value) => PrintServerFailureInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        printServers:
+            (json_['printServers'] as core.List?)
+                ?.map(
+                  (value) => PrintServer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (failures != null) 'failures': failures!,
-        if (printServers != null) 'printServers': printServers!,
-      };
+    if (failures != null) 'failures': failures!,
+    if (printServers != null) 'printServers': printServers!,
+  };
 }
 
 /// Request for adding new printers in batch.
@@ -6892,21 +7050,23 @@ class BatchCreatePrintersRequest {
   /// Max 50 at a time.
   core.List<CreatePrinterRequest>? requests;
 
-  BatchCreatePrintersRequest({
-    this.requests,
-  });
+  BatchCreatePrintersRequest({this.requests});
 
   BatchCreatePrintersRequest.fromJson(core.Map json_)
-      : this(
-          requests: (json_['requests'] as core.List?)
-              ?.map((value) => CreatePrinterRequest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        requests:
+            (json_['requests'] as core.List?)
+                ?.map(
+                  (value) => CreatePrinterRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null) 'requests': requests!,
-      };
+    if (requests != null) 'requests': requests!,
+  };
 }
 
 /// Response for adding new printers in batch.
@@ -6919,27 +7079,32 @@ class BatchCreatePrintersResponse {
   /// A list of successfully created printers with their IDs populated.
   core.List<Printer>? printers;
 
-  BatchCreatePrintersResponse({
-    this.failures,
-    this.printers,
-  });
+  BatchCreatePrintersResponse({this.failures, this.printers});
 
   BatchCreatePrintersResponse.fromJson(core.Map json_)
-      : this(
-          failures: (json_['failures'] as core.List?)
-              ?.map((value) => FailureInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          printers: (json_['printers'] as core.List?)
-              ?.map((value) => Printer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        failures:
+            (json_['failures'] as core.List?)
+                ?.map(
+                  (value) => FailureInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        printers:
+            (json_['printers'] as core.List?)
+                ?.map(
+                  (value) => Printer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (failures != null) 'failures': failures!,
-        if (printers != null) 'printers': printers!,
-      };
+    if (failures != null) 'failures': failures!,
+    if (printers != null) 'printers': printers!,
+  };
 }
 
 /// Request to delete multiple existing print servers in a batch.
@@ -6947,20 +7112,19 @@ class BatchDeletePrintServersRequest {
   /// A list of print server IDs that should be deleted (max `100` per batch).
   core.List<core.String>? printServerIds;
 
-  BatchDeletePrintServersRequest({
-    this.printServerIds,
-  });
+  BatchDeletePrintServersRequest({this.printServerIds});
 
   BatchDeletePrintServersRequest.fromJson(core.Map json_)
-      : this(
-          printServerIds: (json_['printServerIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        printServerIds:
+            (json_['printServerIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (printServerIds != null) 'printServerIds': printServerIds!,
-      };
+    if (printServerIds != null) 'printServerIds': printServerIds!,
+  };
 }
 
 class BatchDeletePrintServersResponse {
@@ -6976,21 +7140,25 @@ class BatchDeletePrintServersResponse {
   });
 
   BatchDeletePrintServersResponse.fromJson(core.Map json_)
-      : this(
-          failedPrintServers: (json_['failedPrintServers'] as core.List?)
-              ?.map((value) => PrintServerFailureInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          printServerIds: (json_['printServerIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        failedPrintServers:
+            (json_['failedPrintServers'] as core.List?)
+                ?.map(
+                  (value) => PrintServerFailureInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        printServerIds:
+            (json_['printServerIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (failedPrintServers != null)
-          'failedPrintServers': failedPrintServers!,
-        if (printServerIds != null) 'printServerIds': printServerIds!,
-      };
+    if (failedPrintServers != null) 'failedPrintServers': failedPrintServers!,
+    if (printServerIds != null) 'printServerIds': printServerIds!,
+  };
 }
 
 /// Request for deleting existing printers in batch.
@@ -7000,20 +7168,19 @@ class BatchDeletePrintersRequest {
   /// Max 100 at a time.
   core.List<core.String>? printerIds;
 
-  BatchDeletePrintersRequest({
-    this.printerIds,
-  });
+  BatchDeletePrintersRequest({this.printerIds});
 
   BatchDeletePrintersRequest.fromJson(core.Map json_)
-      : this(
-          printerIds: (json_['printerIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        printerIds:
+            (json_['printerIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (printerIds != null) 'printerIds': printerIds!,
-      };
+    if (printerIds != null) 'printerIds': printerIds!,
+  };
 }
 
 /// Response for deleting existing printers in batch.
@@ -7024,26 +7191,28 @@ class BatchDeletePrintersResponse {
   /// A list of Printer.id that were successfully deleted.
   core.List<core.String>? printerIds;
 
-  BatchDeletePrintersResponse({
-    this.failedPrinters,
-    this.printerIds,
-  });
+  BatchDeletePrintersResponse({this.failedPrinters, this.printerIds});
 
   BatchDeletePrintersResponse.fromJson(core.Map json_)
-      : this(
-          failedPrinters: (json_['failedPrinters'] as core.List?)
-              ?.map((value) => FailureInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          printerIds: (json_['printerIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        failedPrinters:
+            (json_['failedPrinters'] as core.List?)
+                ?.map(
+                  (value) => FailureInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        printerIds:
+            (json_['printerIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (failedPrinters != null) 'failedPrinters': failedPrinters!,
-        if (printerIds != null) 'printerIds': printerIds!,
-      };
+    if (failedPrinters != null) 'failedPrinters': failedPrinters!,
+    if (printerIds != null) 'printerIds': printerIds!,
+  };
 }
 
 /// Public API: Resources.buildings
@@ -7100,35 +7269,40 @@ class Building {
   });
 
   Building.fromJson(core.Map json_)
-      : this(
-          address: json_.containsKey('address')
-              ? BuildingAddress.fromJson(
-                  json_['address'] as core.Map<core.String, core.dynamic>)
-              : null,
-          buildingId: json_['buildingId'] as core.String?,
-          buildingName: json_['buildingName'] as core.String?,
-          coordinates: json_.containsKey('coordinates')
-              ? BuildingCoordinates.fromJson(
-                  json_['coordinates'] as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          etags: json_['etags'] as core.String?,
-          floorNames: (json_['floorNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        address:
+            json_.containsKey('address')
+                ? BuildingAddress.fromJson(
+                  json_['address'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        buildingId: json_['buildingId'] as core.String?,
+        buildingName: json_['buildingName'] as core.String?,
+        coordinates:
+            json_.containsKey('coordinates')
+                ? BuildingCoordinates.fromJson(
+                  json_['coordinates'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        etags: json_['etags'] as core.String?,
+        floorNames:
+            (json_['floorNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (buildingId != null) 'buildingId': buildingId!,
-        if (buildingName != null) 'buildingName': buildingName!,
-        if (coordinates != null) 'coordinates': coordinates!,
-        if (description != null) 'description': description!,
-        if (etags != null) 'etags': etags!,
-        if (floorNames != null) 'floorNames': floorNames!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (address != null) 'address': address!,
+    if (buildingId != null) 'buildingId': buildingId!,
+    if (buildingName != null) 'buildingName': buildingName!,
+    if (coordinates != null) 'coordinates': coordinates!,
+    if (description != null) 'description': description!,
+    if (etags != null) 'etags': etags!,
+    if (floorNames != null) 'floorNames': floorNames!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 /// Public API: Resources.buildings
@@ -7182,28 +7356,28 @@ class BuildingAddress {
   });
 
   BuildingAddress.fromJson(core.Map json_)
-      : this(
-          addressLines: (json_['addressLines'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          administrativeArea: json_['administrativeArea'] as core.String?,
-          languageCode: json_['languageCode'] as core.String?,
-          locality: json_['locality'] as core.String?,
-          postalCode: json_['postalCode'] as core.String?,
-          regionCode: json_['regionCode'] as core.String?,
-          sublocality: json_['sublocality'] as core.String?,
-        );
+    : this(
+        addressLines:
+            (json_['addressLines'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        administrativeArea: json_['administrativeArea'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        locality: json_['locality'] as core.String?,
+        postalCode: json_['postalCode'] as core.String?,
+        regionCode: json_['regionCode'] as core.String?,
+        sublocality: json_['sublocality'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addressLines != null) 'addressLines': addressLines!,
-        if (administrativeArea != null)
-          'administrativeArea': administrativeArea!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (locality != null) 'locality': locality!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (sublocality != null) 'sublocality': sublocality!,
-      };
+    if (addressLines != null) 'addressLines': addressLines!,
+    if (administrativeArea != null) 'administrativeArea': administrativeArea!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (locality != null) 'locality': locality!,
+    if (postalCode != null) 'postalCode': postalCode!,
+    if (regionCode != null) 'regionCode': regionCode!,
+    if (sublocality != null) 'sublocality': sublocality!,
+  };
 }
 
 /// Public API: Resources.buildings
@@ -7214,21 +7388,18 @@ class BuildingCoordinates {
   /// Longitude in decimal degrees.
   core.double? longitude;
 
-  BuildingCoordinates({
-    this.latitude,
-    this.longitude,
-  });
+  BuildingCoordinates({this.latitude, this.longitude});
 
   BuildingCoordinates.fromJson(core.Map json_)
-      : this(
-          latitude: (json_['latitude'] as core.num?)?.toDouble(),
-          longitude: (json_['longitude'] as core.num?)?.toDouble(),
-        );
+    : this(
+        latitude: (json_['latitude'] as core.num?)?.toDouble(),
+        longitude: (json_['longitude'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (latitude != null) 'latitude': latitude!,
-        if (longitude != null) 'longitude': longitude!,
-      };
+    if (latitude != null) 'latitude': latitude!,
+    if (longitude != null) 'longitude': longitude!,
+  };
 }
 
 /// Public API: Resources.buildings
@@ -7248,30 +7419,29 @@ class Buildings {
   /// results.
   core.String? nextPageToken;
 
-  Buildings({
-    this.buildings,
-    this.etag,
-    this.kind,
-    this.nextPageToken,
-  });
+  Buildings({this.buildings, this.etag, this.kind, this.nextPageToken});
 
   Buildings.fromJson(core.Map json_)
-      : this(
-          buildings: (json_['buildings'] as core.List?)
-              ?.map((value) => Building.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        buildings:
+            (json_['buildings'] as core.List?)
+                ?.map(
+                  (value) => Building.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buildings != null) 'buildings': buildings!,
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (buildings != null) 'buildings': buildings!,
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Represents a data capacity with some amount of current usage in bytes.
@@ -7286,21 +7456,18 @@ class ByteUsage {
   /// Output only.
   core.String? usedBytes;
 
-  ByteUsage({
-    this.capacityBytes,
-    this.usedBytes,
-  });
+  ByteUsage({this.capacityBytes, this.usedBytes});
 
   ByteUsage.fromJson(core.Map json_)
-      : this(
-          capacityBytes: json_['capacityBytes'] as core.String?,
-          usedBytes: json_['usedBytes'] as core.String?,
-        );
+    : this(
+        capacityBytes: json_['capacityBytes'] as core.String?,
+        usedBytes: json_['usedBytes'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (capacityBytes != null) 'capacityBytes': capacityBytes!,
-        if (usedBytes != null) 'usedBytes': usedBytes!,
-      };
+    if (capacityBytes != null) 'capacityBytes': capacityBytes!,
+    if (usedBytes != null) 'usedBytes': usedBytes!,
+  };
 }
 
 /// Public API: Resources.calendars
@@ -7384,45 +7551,44 @@ class CalendarResource {
   });
 
   CalendarResource.fromJson(core.Map json_)
-      : this(
-          buildingId: json_['buildingId'] as core.String?,
-          capacity: json_['capacity'] as core.int?,
-          etags: json_['etags'] as core.String?,
-          featureInstances: json_['featureInstances'],
-          floorName: json_['floorName'] as core.String?,
-          floorSection: json_['floorSection'] as core.String?,
-          generatedResourceName: json_['generatedResourceName'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          resourceCategory: json_['resourceCategory'] as core.String?,
-          resourceDescription: json_['resourceDescription'] as core.String?,
-          resourceEmail: json_['resourceEmail'] as core.String?,
-          resourceId: json_['resourceId'] as core.String?,
-          resourceName: json_['resourceName'] as core.String?,
-          resourceType: json_['resourceType'] as core.String?,
-          userVisibleDescription:
-              json_['userVisibleDescription'] as core.String?,
-        );
+    : this(
+        buildingId: json_['buildingId'] as core.String?,
+        capacity: json_['capacity'] as core.int?,
+        etags: json_['etags'] as core.String?,
+        featureInstances: json_['featureInstances'],
+        floorName: json_['floorName'] as core.String?,
+        floorSection: json_['floorSection'] as core.String?,
+        generatedResourceName: json_['generatedResourceName'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        resourceCategory: json_['resourceCategory'] as core.String?,
+        resourceDescription: json_['resourceDescription'] as core.String?,
+        resourceEmail: json_['resourceEmail'] as core.String?,
+        resourceId: json_['resourceId'] as core.String?,
+        resourceName: json_['resourceName'] as core.String?,
+        resourceType: json_['resourceType'] as core.String?,
+        userVisibleDescription: json_['userVisibleDescription'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buildingId != null) 'buildingId': buildingId!,
-        if (capacity != null) 'capacity': capacity!,
-        if (etags != null) 'etags': etags!,
-        if (featureInstances != null) 'featureInstances': featureInstances!,
-        if (floorName != null) 'floorName': floorName!,
-        if (floorSection != null) 'floorSection': floorSection!,
-        if (generatedResourceName != null)
-          'generatedResourceName': generatedResourceName!,
-        if (kind != null) 'kind': kind!,
-        if (resourceCategory != null) 'resourceCategory': resourceCategory!,
-        if (resourceDescription != null)
-          'resourceDescription': resourceDescription!,
-        if (resourceEmail != null) 'resourceEmail': resourceEmail!,
-        if (resourceId != null) 'resourceId': resourceId!,
-        if (resourceName != null) 'resourceName': resourceName!,
-        if (resourceType != null) 'resourceType': resourceType!,
-        if (userVisibleDescription != null)
-          'userVisibleDescription': userVisibleDescription!,
-      };
+    if (buildingId != null) 'buildingId': buildingId!,
+    if (capacity != null) 'capacity': capacity!,
+    if (etags != null) 'etags': etags!,
+    if (featureInstances != null) 'featureInstances': featureInstances!,
+    if (floorName != null) 'floorName': floorName!,
+    if (floorSection != null) 'floorSection': floorSection!,
+    if (generatedResourceName != null)
+      'generatedResourceName': generatedResourceName!,
+    if (kind != null) 'kind': kind!,
+    if (resourceCategory != null) 'resourceCategory': resourceCategory!,
+    if (resourceDescription != null)
+      'resourceDescription': resourceDescription!,
+    if (resourceEmail != null) 'resourceEmail': resourceEmail!,
+    if (resourceId != null) 'resourceId': resourceId!,
+    if (resourceName != null) 'resourceName': resourceName!,
+    if (resourceType != null) 'resourceType': resourceType!,
+    if (userVisibleDescription != null)
+      'userVisibleDescription': userVisibleDescription!,
+  };
 }
 
 /// Public API: Resources.calendars
@@ -7445,30 +7611,29 @@ class CalendarResources {
   /// results.
   core.String? nextPageToken;
 
-  CalendarResources({
-    this.etag,
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  CalendarResources({this.etag, this.items, this.kind, this.nextPageToken});
 
   CalendarResources.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          items: (json_['items'] as core.List?)
-              ?.map((value) => CalendarResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => CalendarResource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The result of a single ChromeOS device for a Change state operation.
@@ -7482,30 +7647,30 @@ class ChangeChromeOsDeviceStatusResult {
   /// The device could change its status successfully.
   ChangeChromeOsDeviceStatusSucceeded? response;
 
-  ChangeChromeOsDeviceStatusResult({
-    this.deviceId,
-    this.error,
-    this.response,
-  });
+  ChangeChromeOsDeviceStatusResult({this.deviceId, this.error, this.response});
 
   ChangeChromeOsDeviceStatusResult.fromJson(core.Map json_)
-      : this(
-          deviceId: json_['deviceId'] as core.String?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          response: json_.containsKey('response')
-              ? ChangeChromeOsDeviceStatusSucceeded.fromJson(
-                  json_['response'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        deviceId: json_['deviceId'] as core.String?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        response:
+            json_.containsKey('response')
+                ? ChangeChromeOsDeviceStatusSucceeded.fromJson(
+                  json_['response'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceId != null) 'deviceId': deviceId!,
-        if (error != null) 'error': error!,
-        if (response != null) 'response': response!,
-      };
+    if (deviceId != null) 'deviceId': deviceId!,
+    if (error != null) 'error': error!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Response for a successful ChromeOS device status change.
@@ -7572,37 +7737,33 @@ class Channel {
   });
 
   Channel.fromJson(core.Map json_)
-      : this(
-          address: json_['address'] as core.String?,
-          expiration: json_['expiration'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          params:
-              (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          payload: json_['payload'] as core.bool?,
-          resourceId: json_['resourceId'] as core.String?,
-          resourceUri: json_['resourceUri'] as core.String?,
-          token: json_['token'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        address: json_['address'] as core.String?,
+        expiration: json_['expiration'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        params: (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        payload: json_['payload'] as core.bool?,
+        resourceId: json_['resourceId'] as core.String?,
+        resourceUri: json_['resourceUri'] as core.String?,
+        token: json_['token'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (address != null) 'address': address!,
-        if (expiration != null) 'expiration': expiration!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (params != null) 'params': params!,
-        if (payload != null) 'payload': payload!,
-        if (resourceId != null) 'resourceId': resourceId!,
-        if (resourceUri != null) 'resourceUri': resourceUri!,
-        if (token != null) 'token': token!,
-        if (type != null) 'type': type!,
-      };
+    if (address != null) 'address': address!,
+    if (expiration != null) 'expiration': expiration!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (params != null) 'params': params!,
+    if (payload != null) 'payload': payload!,
+    if (resourceId != null) 'resourceId': resourceId!,
+    if (resourceUri != null) 'resourceUri': resourceUri!,
+    if (token != null) 'token': token!,
+    if (type != null) 'type': type!,
+  };
 }
 
 class ChromeOsDeviceActiveTimeRanges {
@@ -7612,25 +7773,23 @@ class ChromeOsDeviceActiveTimeRanges {
   /// Date of usage
   core.DateTime? date;
 
-  ChromeOsDeviceActiveTimeRanges({
-    this.activeTime,
-    this.date,
-  });
+  ChromeOsDeviceActiveTimeRanges({this.activeTime, this.date});
 
   ChromeOsDeviceActiveTimeRanges.fromJson(core.Map json_)
-      : this(
-          activeTime: json_['activeTime'] as core.int?,
-          date: json_.containsKey('date')
-              ? core.DateTime.parse(json_['date'] as core.String)
-              : null,
-        );
+    : this(
+        activeTime: json_['activeTime'] as core.int?,
+        date:
+            json_.containsKey('date')
+                ? core.DateTime.parse(json_['date'] as core.String)
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activeTime != null) 'activeTime': activeTime!,
-        if (date != null)
-          'date':
-              "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}",
-      };
+    if (activeTime != null) 'activeTime': activeTime!,
+    if (date != null)
+      'date':
+          "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}",
+  };
 }
 
 /// Status of a single C-state.
@@ -7650,15 +7809,15 @@ class ChromeOsDeviceCpuInfoLogicalCpusCStates {
   });
 
   ChromeOsDeviceCpuInfoLogicalCpusCStates.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          sessionDuration: json_['sessionDuration'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        sessionDuration: json_['sessionDuration'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (sessionDuration != null) 'sessionDuration': sessionDuration!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (sessionDuration != null) 'sessionDuration': sessionDuration!,
+  };
 }
 
 /// Status of a single logical CPU.
@@ -7685,25 +7844,29 @@ class ChromeOsDeviceCpuInfoLogicalCpus {
   });
 
   ChromeOsDeviceCpuInfoLogicalCpus.fromJson(core.Map json_)
-      : this(
-          cStates: (json_['cStates'] as core.List?)
-              ?.map((value) => ChromeOsDeviceCpuInfoLogicalCpusCStates.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          currentScalingFrequencyKhz:
-              json_['currentScalingFrequencyKhz'] as core.int?,
-          idleDuration: json_['idleDuration'] as core.String?,
-          maxScalingFrequencyKhz: json_['maxScalingFrequencyKhz'] as core.int?,
-        );
+    : this(
+        cStates:
+            (json_['cStates'] as core.List?)
+                ?.map(
+                  (value) => ChromeOsDeviceCpuInfoLogicalCpusCStates.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        currentScalingFrequencyKhz:
+            json_['currentScalingFrequencyKhz'] as core.int?,
+        idleDuration: json_['idleDuration'] as core.String?,
+        maxScalingFrequencyKhz: json_['maxScalingFrequencyKhz'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cStates != null) 'cStates': cStates!,
-        if (currentScalingFrequencyKhz != null)
-          'currentScalingFrequencyKhz': currentScalingFrequencyKhz!,
-        if (idleDuration != null) 'idleDuration': idleDuration!,
-        if (maxScalingFrequencyKhz != null)
-          'maxScalingFrequencyKhz': maxScalingFrequencyKhz!,
-      };
+    if (cStates != null) 'cStates': cStates!,
+    if (currentScalingFrequencyKhz != null)
+      'currentScalingFrequencyKhz': currentScalingFrequencyKhz!,
+    if (idleDuration != null) 'idleDuration': idleDuration!,
+    if (maxScalingFrequencyKhz != null)
+      'maxScalingFrequencyKhz': maxScalingFrequencyKhz!,
+  };
 }
 
 /// CPU specs for a CPU.
@@ -7728,22 +7891,26 @@ class ChromeOsDeviceCpuInfo {
   });
 
   ChromeOsDeviceCpuInfo.fromJson(core.Map json_)
-      : this(
-          architecture: json_['architecture'] as core.String?,
-          logicalCpus: (json_['logicalCpus'] as core.List?)
-              ?.map((value) => ChromeOsDeviceCpuInfoLogicalCpus.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          maxClockSpeedKhz: json_['maxClockSpeedKhz'] as core.int?,
-          model: json_['model'] as core.String?,
-        );
+    : this(
+        architecture: json_['architecture'] as core.String?,
+        logicalCpus:
+            (json_['logicalCpus'] as core.List?)
+                ?.map(
+                  (value) => ChromeOsDeviceCpuInfoLogicalCpus.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        maxClockSpeedKhz: json_['maxClockSpeedKhz'] as core.int?,
+        model: json_['model'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (architecture != null) 'architecture': architecture!,
-        if (logicalCpus != null) 'logicalCpus': logicalCpus!,
-        if (maxClockSpeedKhz != null) 'maxClockSpeedKhz': maxClockSpeedKhz!,
-        if (model != null) 'model': model!,
-      };
+    if (architecture != null) 'architecture': architecture!,
+    if (logicalCpus != null) 'logicalCpus': logicalCpus!,
+    if (maxClockSpeedKhz != null) 'maxClockSpeedKhz': maxClockSpeedKhz!,
+    if (model != null) 'model': model!,
+  };
 }
 
 class ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo {
@@ -7759,21 +7926,21 @@ class ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo {
   });
 
   ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(core.Map json_)
-      : this(
-          label: json_['label'] as core.String?,
-          temperature: json_['temperature'] as core.int?,
-        );
+    : this(
+        label: json_['label'] as core.String?,
+        temperature: json_['temperature'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (label != null) 'label': label!,
-        if (temperature != null) 'temperature': temperature!,
-      };
+    if (label != null) 'label': label!,
+    if (temperature != null) 'temperature': temperature!,
+  };
 }
 
 class ChromeOsDeviceCpuStatusReports {
   /// A list of CPU temperature samples.
   core.List<ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo>?
-      cpuTemperatureInfo;
+  cpuTemperatureInfo;
   core.List<core.int>? cpuUtilizationPercentageInfo;
 
   /// Date and time the report was received.
@@ -7786,29 +7953,32 @@ class ChromeOsDeviceCpuStatusReports {
   });
 
   ChromeOsDeviceCpuStatusReports.fromJson(core.Map json_)
-      : this(
-          cpuTemperatureInfo: (json_['cpuTemperatureInfo'] as core.List?)
-              ?.map((value) =>
-                  ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          cpuUtilizationPercentageInfo:
-              (json_['cpuUtilizationPercentageInfo'] as core.List?)
-                  ?.map((value) => value as core.int)
-                  .toList(),
-          reportTime: json_.containsKey('reportTime')
-              ? core.DateTime.parse(json_['reportTime'] as core.String)
-              : null,
-        );
+    : this(
+        cpuTemperatureInfo:
+            (json_['cpuTemperatureInfo'] as core.List?)
+                ?.map(
+                  (value) =>
+                      ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        cpuUtilizationPercentageInfo:
+            (json_['cpuUtilizationPercentageInfo'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        reportTime:
+            json_.containsKey('reportTime')
+                ? core.DateTime.parse(json_['reportTime'] as core.String)
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cpuTemperatureInfo != null)
-          'cpuTemperatureInfo': cpuTemperatureInfo!,
-        if (cpuUtilizationPercentageInfo != null)
-          'cpuUtilizationPercentageInfo': cpuUtilizationPercentageInfo!,
-        if (reportTime != null)
-          'reportTime': reportTime!.toUtc().toIso8601String(),
-      };
+    if (cpuTemperatureInfo != null) 'cpuTemperatureInfo': cpuTemperatureInfo!,
+    if (cpuUtilizationPercentageInfo != null)
+      'cpuUtilizationPercentageInfo': cpuUtilizationPercentageInfo!,
+    if (reportTime != null) 'reportTime': reportTime!.toUtc().toIso8601String(),
+  };
 }
 
 class ChromeOsDeviceDeviceFiles {
@@ -7832,22 +8002,22 @@ class ChromeOsDeviceDeviceFiles {
   });
 
   ChromeOsDeviceDeviceFiles.fromJson(core.Map json_)
-      : this(
-          createTime: json_.containsKey('createTime')
-              ? core.DateTime.parse(json_['createTime'] as core.String)
-              : null,
-          downloadUrl: json_['downloadUrl'] as core.String?,
-          name: json_['name'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        createTime:
+            json_.containsKey('createTime')
+                ? core.DateTime.parse(json_['createTime'] as core.String)
+                : null,
+        downloadUrl: json_['downloadUrl'] as core.String?,
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null)
-          'createTime': createTime!.toUtc().toIso8601String(),
-        if (downloadUrl != null) 'downloadUrl': downloadUrl!,
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-      };
+    if (createTime != null) 'createTime': createTime!.toUtc().toIso8601String(),
+    if (downloadUrl != null) 'downloadUrl': downloadUrl!,
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+  };
 }
 
 class ChromeOsDeviceDiskVolumeReportsVolumeInfo {
@@ -7867,39 +8037,40 @@ class ChromeOsDeviceDiskVolumeReportsVolumeInfo {
   });
 
   ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(core.Map json_)
-      : this(
-          storageFree: json_['storageFree'] as core.String?,
-          storageTotal: json_['storageTotal'] as core.String?,
-          volumeId: json_['volumeId'] as core.String?,
-        );
+    : this(
+        storageFree: json_['storageFree'] as core.String?,
+        storageTotal: json_['storageTotal'] as core.String?,
+        volumeId: json_['volumeId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (storageFree != null) 'storageFree': storageFree!,
-        if (storageTotal != null) 'storageTotal': storageTotal!,
-        if (volumeId != null) 'volumeId': volumeId!,
-      };
+    if (storageFree != null) 'storageFree': storageFree!,
+    if (storageTotal != null) 'storageTotal': storageTotal!,
+    if (volumeId != null) 'volumeId': volumeId!,
+  };
 }
 
 class ChromeOsDeviceDiskVolumeReports {
   /// Disk volumes
   core.List<ChromeOsDeviceDiskVolumeReportsVolumeInfo>? volumeInfo;
 
-  ChromeOsDeviceDiskVolumeReports({
-    this.volumeInfo,
-  });
+  ChromeOsDeviceDiskVolumeReports({this.volumeInfo});
 
   ChromeOsDeviceDiskVolumeReports.fromJson(core.Map json_)
-      : this(
-          volumeInfo: (json_['volumeInfo'] as core.List?)
-              ?.map((value) =>
-                  ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        volumeInfo:
+            (json_['volumeInfo'] as core.List?)
+                ?.map(
+                  (value) => ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (volumeInfo != null) 'volumeInfo': volumeInfo!,
-      };
+    if (volumeInfo != null) 'volumeInfo': volumeInfo!,
+  };
 }
 
 /// Information for an ip address.
@@ -7910,21 +8081,18 @@ class ChromeOsDeviceLastKnownNetwork {
   /// The WAN IP address.
   core.String? wanIpAddress;
 
-  ChromeOsDeviceLastKnownNetwork({
-    this.ipAddress,
-    this.wanIpAddress,
-  });
+  ChromeOsDeviceLastKnownNetwork({this.ipAddress, this.wanIpAddress});
 
   ChromeOsDeviceLastKnownNetwork.fromJson(core.Map json_)
-      : this(
-          ipAddress: json_['ipAddress'] as core.String?,
-          wanIpAddress: json_['wanIpAddress'] as core.String?,
-        );
+    : this(
+        ipAddress: json_['ipAddress'] as core.String?,
+        wanIpAddress: json_['wanIpAddress'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ipAddress != null) 'ipAddress': ipAddress!,
-        if (wanIpAddress != null) 'wanIpAddress': wanIpAddress!,
-      };
+    if (ipAddress != null) 'ipAddress': ipAddress!,
+    if (wanIpAddress != null) 'wanIpAddress': wanIpAddress!,
+  };
 }
 
 /// A list of recent device users, in descending order, by last login time.
@@ -7937,21 +8105,18 @@ class ChromeOsDeviceRecentUsers {
   /// The type of the user.
   core.String? type;
 
-  ChromeOsDeviceRecentUsers({
-    this.email,
-    this.type,
-  });
+  ChromeOsDeviceRecentUsers({this.email, this.type});
 
   ChromeOsDeviceRecentUsers.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        email: json_['email'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (type != null) 'type': type!,
-      };
+    if (email != null) 'email': email!,
+    if (type != null) 'type': type!,
+  };
 }
 
 class ChromeOsDeviceScreenshotFiles {
@@ -7975,22 +8140,22 @@ class ChromeOsDeviceScreenshotFiles {
   });
 
   ChromeOsDeviceScreenshotFiles.fromJson(core.Map json_)
-      : this(
-          createTime: json_.containsKey('createTime')
-              ? core.DateTime.parse(json_['createTime'] as core.String)
-              : null,
-          downloadUrl: json_['downloadUrl'] as core.String?,
-          name: json_['name'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        createTime:
+            json_.containsKey('createTime')
+                ? core.DateTime.parse(json_['createTime'] as core.String)
+                : null,
+        downloadUrl: json_['downloadUrl'] as core.String?,
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null)
-          'createTime': createTime!.toUtc().toIso8601String(),
-        if (downloadUrl != null) 'downloadUrl': downloadUrl!,
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-      };
+    if (createTime != null) 'createTime': createTime!.toUtc().toIso8601String(),
+    if (downloadUrl != null) 'downloadUrl': downloadUrl!,
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+  };
 }
 
 class ChromeOsDeviceSystemRamFreeReports {
@@ -7998,26 +8163,24 @@ class ChromeOsDeviceSystemRamFreeReports {
   core.DateTime? reportTime;
   core.List<core.String>? systemRamFreeInfo;
 
-  ChromeOsDeviceSystemRamFreeReports({
-    this.reportTime,
-    this.systemRamFreeInfo,
-  });
+  ChromeOsDeviceSystemRamFreeReports({this.reportTime, this.systemRamFreeInfo});
 
   ChromeOsDeviceSystemRamFreeReports.fromJson(core.Map json_)
-      : this(
-          reportTime: json_.containsKey('reportTime')
-              ? core.DateTime.parse(json_['reportTime'] as core.String)
-              : null,
-          systemRamFreeInfo: (json_['systemRamFreeInfo'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        reportTime:
+            json_.containsKey('reportTime')
+                ? core.DateTime.parse(json_['reportTime'] as core.String)
+                : null,
+        systemRamFreeInfo:
+            (json_['systemRamFreeInfo'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (reportTime != null)
-          'reportTime': reportTime!.toUtc().toIso8601String(),
-        if (systemRamFreeInfo != null) 'systemRamFreeInfo': systemRamFreeInfo!,
-      };
+    if (reportTime != null) 'reportTime': reportTime!.toUtc().toIso8601String(),
+    if (systemRamFreeInfo != null) 'systemRamFreeInfo': systemRamFreeInfo!,
+  };
 }
 
 /// Trusted Platform Module (TPM) (Read-only)
@@ -8055,23 +8218,23 @@ class ChromeOsDeviceTpmVersionInfo {
   });
 
   ChromeOsDeviceTpmVersionInfo.fromJson(core.Map json_)
-      : this(
-          family: json_['family'] as core.String?,
-          firmwareVersion: json_['firmwareVersion'] as core.String?,
-          manufacturer: json_['manufacturer'] as core.String?,
-          specLevel: json_['specLevel'] as core.String?,
-          tpmModel: json_['tpmModel'] as core.String?,
-          vendorSpecific: json_['vendorSpecific'] as core.String?,
-        );
+    : this(
+        family: json_['family'] as core.String?,
+        firmwareVersion: json_['firmwareVersion'] as core.String?,
+        manufacturer: json_['manufacturer'] as core.String?,
+        specLevel: json_['specLevel'] as core.String?,
+        tpmModel: json_['tpmModel'] as core.String?,
+        vendorSpecific: json_['vendorSpecific'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (family != null) 'family': family!,
-        if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
-        if (manufacturer != null) 'manufacturer': manufacturer!,
-        if (specLevel != null) 'specLevel': specLevel!,
-        if (tpmModel != null) 'tpmModel': tpmModel!,
-        if (vendorSpecific != null) 'vendorSpecific': vendorSpecific!,
-      };
+    if (family != null) 'family': family!,
+    if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
+    if (manufacturer != null) 'manufacturer': manufacturer!,
+    if (specLevel != null) 'specLevel': specLevel!,
+    if (tpmModel != null) 'tpmModel': tpmModel!,
+    if (vendorSpecific != null) 'vendorSpecific': vendorSpecific!,
+  };
 }
 
 /// Google Chrome devices run on the
@@ -8440,176 +8603,232 @@ class ChromeOsDevice {
   });
 
   ChromeOsDevice.fromJson(core.Map json_)
-      : this(
-          activeTimeRanges: (json_['activeTimeRanges'] as core.List?)
-              ?.map((value) => ChromeOsDeviceActiveTimeRanges.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          annotatedAssetId: json_['annotatedAssetId'] as core.String?,
-          annotatedLocation: json_['annotatedLocation'] as core.String?,
-          annotatedUser: json_['annotatedUser'] as core.String?,
-          autoUpdateExpiration: json_['autoUpdateExpiration'] as core.String?,
-          autoUpdateThrough: json_['autoUpdateThrough'] as core.String?,
-          backlightInfo: (json_['backlightInfo'] as core.List?)
-              ?.map((value) => BacklightInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          bootMode: json_['bootMode'] as core.String?,
-          chromeOsType: json_['chromeOsType'] as core.String?,
-          cpuInfo: (json_['cpuInfo'] as core.List?)
-              ?.map((value) => ChromeOsDeviceCpuInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          cpuStatusReports: (json_['cpuStatusReports'] as core.List?)
-              ?.map((value) => ChromeOsDeviceCpuStatusReports.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          deprovisionReason: json_['deprovisionReason'] as core.String?,
-          deviceFiles: (json_['deviceFiles'] as core.List?)
-              ?.map((value) => ChromeOsDeviceDeviceFiles.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          deviceId: json_['deviceId'] as core.String?,
-          deviceLicenseType: json_['deviceLicenseType'] as core.String?,
-          diskSpaceUsage: json_.containsKey('diskSpaceUsage')
-              ? ByteUsage.fromJson(json_['diskSpaceUsage']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          diskVolumeReports: (json_['diskVolumeReports'] as core.List?)
-              ?.map((value) => ChromeOsDeviceDiskVolumeReports.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          dockMacAddress: json_['dockMacAddress'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          ethernetMacAddress: json_['ethernetMacAddress'] as core.String?,
-          ethernetMacAddress0: json_['ethernetMacAddress0'] as core.String?,
-          extendedSupportEligible:
-              json_['extendedSupportEligible'] as core.bool?,
-          extendedSupportEnabled: json_['extendedSupportEnabled'] as core.bool?,
-          extendedSupportStart: json_['extendedSupportStart'] as core.String?,
-          fanInfo: (json_['fanInfo'] as core.List?)
-              ?.map((value) => FanInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          firmwareVersion: json_['firmwareVersion'] as core.String?,
-          firstEnrollmentTime: json_['firstEnrollmentTime'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          lastDeprovisionTimestamp:
-              json_['lastDeprovisionTimestamp'] as core.String?,
-          lastEnrollmentTime: json_.containsKey('lastEnrollmentTime')
-              ? core.DateTime.parse(json_['lastEnrollmentTime'] as core.String)
-              : null,
-          lastKnownNetwork: (json_['lastKnownNetwork'] as core.List?)
-              ?.map((value) => ChromeOsDeviceLastKnownNetwork.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          lastSync: json_.containsKey('lastSync')
-              ? core.DateTime.parse(json_['lastSync'] as core.String)
-              : null,
-          macAddress: json_['macAddress'] as core.String?,
-          manufactureDate: json_['manufactureDate'] as core.String?,
-          meid: json_['meid'] as core.String?,
-          model: json_['model'] as core.String?,
-          notes: json_['notes'] as core.String?,
-          orderNumber: json_['orderNumber'] as core.String?,
-          orgUnitId: json_['orgUnitId'] as core.String?,
-          orgUnitPath: json_['orgUnitPath'] as core.String?,
-          osUpdateStatus: json_.containsKey('osUpdateStatus')
-              ? OsUpdateStatus.fromJson(json_['osUpdateStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          osVersion: json_['osVersion'] as core.String?,
-          platformVersion: json_['platformVersion'] as core.String?,
-          recentUsers: (json_['recentUsers'] as core.List?)
-              ?.map((value) => ChromeOsDeviceRecentUsers.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          screenshotFiles: (json_['screenshotFiles'] as core.List?)
-              ?.map((value) => ChromeOsDeviceScreenshotFiles.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          serialNumber: json_['serialNumber'] as core.String?,
-          status: json_['status'] as core.String?,
-          supportEndDate: json_.containsKey('supportEndDate')
-              ? core.DateTime.parse(json_['supportEndDate'] as core.String)
-              : null,
-          systemRamFreeReports: (json_['systemRamFreeReports'] as core.List?)
-              ?.map((value) => ChromeOsDeviceSystemRamFreeReports.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          systemRamTotal: json_['systemRamTotal'] as core.String?,
-          tpmVersionInfo: json_.containsKey('tpmVersionInfo')
-              ? ChromeOsDeviceTpmVersionInfo.fromJson(json_['tpmVersionInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          willAutoRenew: json_['willAutoRenew'] as core.bool?,
-        );
+    : this(
+        activeTimeRanges:
+            (json_['activeTimeRanges'] as core.List?)
+                ?.map(
+                  (value) => ChromeOsDeviceActiveTimeRanges.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        annotatedAssetId: json_['annotatedAssetId'] as core.String?,
+        annotatedLocation: json_['annotatedLocation'] as core.String?,
+        annotatedUser: json_['annotatedUser'] as core.String?,
+        autoUpdateExpiration: json_['autoUpdateExpiration'] as core.String?,
+        autoUpdateThrough: json_['autoUpdateThrough'] as core.String?,
+        backlightInfo:
+            (json_['backlightInfo'] as core.List?)
+                ?.map(
+                  (value) => BacklightInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bootMode: json_['bootMode'] as core.String?,
+        chromeOsType: json_['chromeOsType'] as core.String?,
+        cpuInfo:
+            (json_['cpuInfo'] as core.List?)
+                ?.map(
+                  (value) => ChromeOsDeviceCpuInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        cpuStatusReports:
+            (json_['cpuStatusReports'] as core.List?)
+                ?.map(
+                  (value) => ChromeOsDeviceCpuStatusReports.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        deprovisionReason: json_['deprovisionReason'] as core.String?,
+        deviceFiles:
+            (json_['deviceFiles'] as core.List?)
+                ?.map(
+                  (value) => ChromeOsDeviceDeviceFiles.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        deviceId: json_['deviceId'] as core.String?,
+        deviceLicenseType: json_['deviceLicenseType'] as core.String?,
+        diskSpaceUsage:
+            json_.containsKey('diskSpaceUsage')
+                ? ByteUsage.fromJson(
+                  json_['diskSpaceUsage']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        diskVolumeReports:
+            (json_['diskVolumeReports'] as core.List?)
+                ?.map(
+                  (value) => ChromeOsDeviceDiskVolumeReports.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        dockMacAddress: json_['dockMacAddress'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        ethernetMacAddress: json_['ethernetMacAddress'] as core.String?,
+        ethernetMacAddress0: json_['ethernetMacAddress0'] as core.String?,
+        extendedSupportEligible: json_['extendedSupportEligible'] as core.bool?,
+        extendedSupportEnabled: json_['extendedSupportEnabled'] as core.bool?,
+        extendedSupportStart: json_['extendedSupportStart'] as core.String?,
+        fanInfo:
+            (json_['fanInfo'] as core.List?)
+                ?.map(
+                  (value) => FanInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        firmwareVersion: json_['firmwareVersion'] as core.String?,
+        firstEnrollmentTime: json_['firstEnrollmentTime'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        lastDeprovisionTimestamp:
+            json_['lastDeprovisionTimestamp'] as core.String?,
+        lastEnrollmentTime:
+            json_.containsKey('lastEnrollmentTime')
+                ? core.DateTime.parse(
+                  json_['lastEnrollmentTime'] as core.String,
+                )
+                : null,
+        lastKnownNetwork:
+            (json_['lastKnownNetwork'] as core.List?)
+                ?.map(
+                  (value) => ChromeOsDeviceLastKnownNetwork.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        lastSync:
+            json_.containsKey('lastSync')
+                ? core.DateTime.parse(json_['lastSync'] as core.String)
+                : null,
+        macAddress: json_['macAddress'] as core.String?,
+        manufactureDate: json_['manufactureDate'] as core.String?,
+        meid: json_['meid'] as core.String?,
+        model: json_['model'] as core.String?,
+        notes: json_['notes'] as core.String?,
+        orderNumber: json_['orderNumber'] as core.String?,
+        orgUnitId: json_['orgUnitId'] as core.String?,
+        orgUnitPath: json_['orgUnitPath'] as core.String?,
+        osUpdateStatus:
+            json_.containsKey('osUpdateStatus')
+                ? OsUpdateStatus.fromJson(
+                  json_['osUpdateStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        osVersion: json_['osVersion'] as core.String?,
+        platformVersion: json_['platformVersion'] as core.String?,
+        recentUsers:
+            (json_['recentUsers'] as core.List?)
+                ?.map(
+                  (value) => ChromeOsDeviceRecentUsers.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        screenshotFiles:
+            (json_['screenshotFiles'] as core.List?)
+                ?.map(
+                  (value) => ChromeOsDeviceScreenshotFiles.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        serialNumber: json_['serialNumber'] as core.String?,
+        status: json_['status'] as core.String?,
+        supportEndDate:
+            json_.containsKey('supportEndDate')
+                ? core.DateTime.parse(json_['supportEndDate'] as core.String)
+                : null,
+        systemRamFreeReports:
+            (json_['systemRamFreeReports'] as core.List?)
+                ?.map(
+                  (value) => ChromeOsDeviceSystemRamFreeReports.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        systemRamTotal: json_['systemRamTotal'] as core.String?,
+        tpmVersionInfo:
+            json_.containsKey('tpmVersionInfo')
+                ? ChromeOsDeviceTpmVersionInfo.fromJson(
+                  json_['tpmVersionInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        willAutoRenew: json_['willAutoRenew'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activeTimeRanges != null) 'activeTimeRanges': activeTimeRanges!,
-        if (annotatedAssetId != null) 'annotatedAssetId': annotatedAssetId!,
-        if (annotatedLocation != null) 'annotatedLocation': annotatedLocation!,
-        if (annotatedUser != null) 'annotatedUser': annotatedUser!,
-        if (autoUpdateExpiration != null)
-          'autoUpdateExpiration': autoUpdateExpiration!,
-        if (autoUpdateThrough != null) 'autoUpdateThrough': autoUpdateThrough!,
-        if (backlightInfo != null) 'backlightInfo': backlightInfo!,
-        if (bootMode != null) 'bootMode': bootMode!,
-        if (chromeOsType != null) 'chromeOsType': chromeOsType!,
-        if (cpuInfo != null) 'cpuInfo': cpuInfo!,
-        if (cpuStatusReports != null) 'cpuStatusReports': cpuStatusReports!,
-        if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,
-        if (deviceFiles != null) 'deviceFiles': deviceFiles!,
-        if (deviceId != null) 'deviceId': deviceId!,
-        if (deviceLicenseType != null) 'deviceLicenseType': deviceLicenseType!,
-        if (diskSpaceUsage != null) 'diskSpaceUsage': diskSpaceUsage!,
-        if (diskVolumeReports != null) 'diskVolumeReports': diskVolumeReports!,
-        if (dockMacAddress != null) 'dockMacAddress': dockMacAddress!,
-        if (etag != null) 'etag': etag!,
-        if (ethernetMacAddress != null)
-          'ethernetMacAddress': ethernetMacAddress!,
-        if (ethernetMacAddress0 != null)
-          'ethernetMacAddress0': ethernetMacAddress0!,
-        if (extendedSupportEligible != null)
-          'extendedSupportEligible': extendedSupportEligible!,
-        if (extendedSupportEnabled != null)
-          'extendedSupportEnabled': extendedSupportEnabled!,
-        if (extendedSupportStart != null)
-          'extendedSupportStart': extendedSupportStart!,
-        if (fanInfo != null) 'fanInfo': fanInfo!,
-        if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
-        if (firstEnrollmentTime != null)
-          'firstEnrollmentTime': firstEnrollmentTime!,
-        if (kind != null) 'kind': kind!,
-        if (lastDeprovisionTimestamp != null)
-          'lastDeprovisionTimestamp': lastDeprovisionTimestamp!,
-        if (lastEnrollmentTime != null)
-          'lastEnrollmentTime': lastEnrollmentTime!.toUtc().toIso8601String(),
-        if (lastKnownNetwork != null) 'lastKnownNetwork': lastKnownNetwork!,
-        if (lastSync != null) 'lastSync': lastSync!.toUtc().toIso8601String(),
-        if (macAddress != null) 'macAddress': macAddress!,
-        if (manufactureDate != null) 'manufactureDate': manufactureDate!,
-        if (meid != null) 'meid': meid!,
-        if (model != null) 'model': model!,
-        if (notes != null) 'notes': notes!,
-        if (orderNumber != null) 'orderNumber': orderNumber!,
-        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
-        if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
-        if (osUpdateStatus != null) 'osUpdateStatus': osUpdateStatus!,
-        if (osVersion != null) 'osVersion': osVersion!,
-        if (platformVersion != null) 'platformVersion': platformVersion!,
-        if (recentUsers != null) 'recentUsers': recentUsers!,
-        if (screenshotFiles != null) 'screenshotFiles': screenshotFiles!,
-        if (serialNumber != null) 'serialNumber': serialNumber!,
-        if (status != null) 'status': status!,
-        if (supportEndDate != null)
-          'supportEndDate': supportEndDate!.toUtc().toIso8601String(),
-        if (systemRamFreeReports != null)
-          'systemRamFreeReports': systemRamFreeReports!,
-        if (systemRamTotal != null) 'systemRamTotal': systemRamTotal!,
-        if (tpmVersionInfo != null) 'tpmVersionInfo': tpmVersionInfo!,
-        if (willAutoRenew != null) 'willAutoRenew': willAutoRenew!,
-      };
+    if (activeTimeRanges != null) 'activeTimeRanges': activeTimeRanges!,
+    if (annotatedAssetId != null) 'annotatedAssetId': annotatedAssetId!,
+    if (annotatedLocation != null) 'annotatedLocation': annotatedLocation!,
+    if (annotatedUser != null) 'annotatedUser': annotatedUser!,
+    if (autoUpdateExpiration != null)
+      'autoUpdateExpiration': autoUpdateExpiration!,
+    if (autoUpdateThrough != null) 'autoUpdateThrough': autoUpdateThrough!,
+    if (backlightInfo != null) 'backlightInfo': backlightInfo!,
+    if (bootMode != null) 'bootMode': bootMode!,
+    if (chromeOsType != null) 'chromeOsType': chromeOsType!,
+    if (cpuInfo != null) 'cpuInfo': cpuInfo!,
+    if (cpuStatusReports != null) 'cpuStatusReports': cpuStatusReports!,
+    if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,
+    if (deviceFiles != null) 'deviceFiles': deviceFiles!,
+    if (deviceId != null) 'deviceId': deviceId!,
+    if (deviceLicenseType != null) 'deviceLicenseType': deviceLicenseType!,
+    if (diskSpaceUsage != null) 'diskSpaceUsage': diskSpaceUsage!,
+    if (diskVolumeReports != null) 'diskVolumeReports': diskVolumeReports!,
+    if (dockMacAddress != null) 'dockMacAddress': dockMacAddress!,
+    if (etag != null) 'etag': etag!,
+    if (ethernetMacAddress != null) 'ethernetMacAddress': ethernetMacAddress!,
+    if (ethernetMacAddress0 != null)
+      'ethernetMacAddress0': ethernetMacAddress0!,
+    if (extendedSupportEligible != null)
+      'extendedSupportEligible': extendedSupportEligible!,
+    if (extendedSupportEnabled != null)
+      'extendedSupportEnabled': extendedSupportEnabled!,
+    if (extendedSupportStart != null)
+      'extendedSupportStart': extendedSupportStart!,
+    if (fanInfo != null) 'fanInfo': fanInfo!,
+    if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
+    if (firstEnrollmentTime != null)
+      'firstEnrollmentTime': firstEnrollmentTime!,
+    if (kind != null) 'kind': kind!,
+    if (lastDeprovisionTimestamp != null)
+      'lastDeprovisionTimestamp': lastDeprovisionTimestamp!,
+    if (lastEnrollmentTime != null)
+      'lastEnrollmentTime': lastEnrollmentTime!.toUtc().toIso8601String(),
+    if (lastKnownNetwork != null) 'lastKnownNetwork': lastKnownNetwork!,
+    if (lastSync != null) 'lastSync': lastSync!.toUtc().toIso8601String(),
+    if (macAddress != null) 'macAddress': macAddress!,
+    if (manufactureDate != null) 'manufactureDate': manufactureDate!,
+    if (meid != null) 'meid': meid!,
+    if (model != null) 'model': model!,
+    if (notes != null) 'notes': notes!,
+    if (orderNumber != null) 'orderNumber': orderNumber!,
+    if (orgUnitId != null) 'orgUnitId': orgUnitId!,
+    if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
+    if (osUpdateStatus != null) 'osUpdateStatus': osUpdateStatus!,
+    if (osVersion != null) 'osVersion': osVersion!,
+    if (platformVersion != null) 'platformVersion': platformVersion!,
+    if (recentUsers != null) 'recentUsers': recentUsers!,
+    if (screenshotFiles != null) 'screenshotFiles': screenshotFiles!,
+    if (serialNumber != null) 'serialNumber': serialNumber!,
+    if (status != null) 'status': status!,
+    if (supportEndDate != null)
+      'supportEndDate': supportEndDate!.toUtc().toIso8601String(),
+    if (systemRamFreeReports != null)
+      'systemRamFreeReports': systemRamFreeReports!,
+    if (systemRamTotal != null) 'systemRamTotal': systemRamTotal!,
+    if (tpmVersionInfo != null) 'tpmVersionInfo': tpmVersionInfo!,
+    if (willAutoRenew != null) 'willAutoRenew': willAutoRenew!,
+  };
 }
 
 /// Data about an update to the status of a Chrome OS device.
@@ -8624,21 +8843,18 @@ class ChromeOsDeviceAction {
   /// licenses for perpetual subscription customers.
   core.String? deprovisionReason;
 
-  ChromeOsDeviceAction({
-    this.action,
-    this.deprovisionReason,
-  });
+  ChromeOsDeviceAction({this.action, this.deprovisionReason});
 
   ChromeOsDeviceAction.fromJson(core.Map json_)
-      : this(
-          action: json_['action'] as core.String?,
-          deprovisionReason: json_['deprovisionReason'] as core.String?,
-        );
+    : this(
+        action: json_['action'] as core.String?,
+        deprovisionReason: json_['deprovisionReason'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,
-      };
+    if (action != null) 'action': action!,
+    if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,
+  };
 }
 
 class ChromeOsDevices {
@@ -8665,42 +8881,45 @@ class ChromeOsDevices {
   });
 
   ChromeOsDevices.fromJson(core.Map json_)
-      : this(
-          chromeosdevices: (json_['chromeosdevices'] as core.List?)
-              ?.map((value) => ChromeOsDevice.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        chromeosdevices:
+            (json_['chromeosdevices'] as core.List?)
+                ?.map(
+                  (value) => ChromeOsDevice.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chromeosdevices != null) 'chromeosdevices': chromeosdevices!,
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (chromeosdevices != null) 'chromeosdevices': chromeosdevices!,
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 class ChromeOsMoveDevicesToOu {
   /// Chrome OS devices to be moved to OU
   core.List<core.String>? deviceIds;
 
-  ChromeOsMoveDevicesToOu({
-    this.deviceIds,
-  });
+  ChromeOsMoveDevicesToOu({this.deviceIds});
 
   ChromeOsMoveDevicesToOu.fromJson(core.Map json_)
-      : this(
-          deviceIds: (json_['deviceIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        deviceIds:
+            (json_['deviceIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deviceIds != null) 'deviceIds': deviceIds!,
-      };
+    if (deviceIds != null) 'deviceIds': deviceIds!,
+  };
 }
 
 /// Request for adding a new print server.
@@ -8724,24 +8943,23 @@ class CreatePrintServerRequest {
   /// Required.
   PrintServer? printServer;
 
-  CreatePrintServerRequest({
-    this.parent,
-    this.printServer,
-  });
+  CreatePrintServerRequest({this.parent, this.printServer});
 
   CreatePrintServerRequest.fromJson(core.Map json_)
-      : this(
-          parent: json_['parent'] as core.String?,
-          printServer: json_.containsKey('printServer')
-              ? PrintServer.fromJson(
-                  json_['printServer'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        parent: json_['parent'] as core.String?,
+        printServer:
+            json_.containsKey('printServer')
+                ? PrintServer.fromJson(
+                  json_['printServer'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parent != null) 'parent': parent!,
-        if (printServer != null) 'printServer': printServer!,
-      };
+    if (parent != null) 'parent': parent!,
+    if (printServer != null) 'printServer': printServer!,
+  };
 }
 
 /// Request for adding a new printer.
@@ -8762,24 +8980,23 @@ class CreatePrinterRequest {
   /// Required.
   Printer? printer;
 
-  CreatePrinterRequest({
-    this.parent,
-    this.printer,
-  });
+  CreatePrinterRequest({this.parent, this.printer});
 
   CreatePrinterRequest.fromJson(core.Map json_)
-      : this(
-          parent: json_['parent'] as core.String?,
-          printer: json_.containsKey('printer')
-              ? Printer.fromJson(
-                  json_['printer'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        parent: json_['parent'] as core.String?,
+        printer:
+            json_.containsKey('printer')
+                ? Printer.fromJson(
+                  json_['printer'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parent != null) 'parent': parent!,
-        if (printer != null) 'printer': printer!,
-      };
+    if (parent != null) 'parent': parent!,
+    if (printer != null) 'printer': printer!,
+  };
 }
 
 class Customer {
@@ -8838,37 +9055,40 @@ class Customer {
   });
 
   Customer.fromJson(core.Map json_)
-      : this(
-          alternateEmail: json_['alternateEmail'] as core.String?,
-          customerCreationTime: json_.containsKey('customerCreationTime')
-              ? core.DateTime.parse(
-                  json_['customerCreationTime'] as core.String)
-              : null,
-          customerDomain: json_['customerDomain'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          language: json_['language'] as core.String?,
-          phoneNumber: json_['phoneNumber'] as core.String?,
-          postalAddress: json_.containsKey('postalAddress')
-              ? CustomerPostalAddress.fromJson(
-                  json_['postalAddress'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        alternateEmail: json_['alternateEmail'] as core.String?,
+        customerCreationTime:
+            json_.containsKey('customerCreationTime')
+                ? core.DateTime.parse(
+                  json_['customerCreationTime'] as core.String,
+                )
+                : null,
+        customerDomain: json_['customerDomain'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        language: json_['language'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+        postalAddress:
+            json_.containsKey('postalAddress')
+                ? CustomerPostalAddress.fromJson(
+                  json_['postalAddress'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternateEmail != null) 'alternateEmail': alternateEmail!,
-        if (customerCreationTime != null)
-          'customerCreationTime':
-              customerCreationTime!.toUtc().toIso8601String(),
-        if (customerDomain != null) 'customerDomain': customerDomain!,
-        if (etag != null) 'etag': etag!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (language != null) 'language': language!,
-        if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-        if (postalAddress != null) 'postalAddress': postalAddress!,
-      };
+    if (alternateEmail != null) 'alternateEmail': alternateEmail!,
+    if (customerCreationTime != null)
+      'customerCreationTime': customerCreationTime!.toUtc().toIso8601String(),
+    if (customerDomain != null) 'customerDomain': customerDomain!,
+    if (etag != null) 'etag': etag!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (language != null) 'language': language!,
+    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
+    if (postalAddress != null) 'postalAddress': postalAddress!,
+  };
 }
 
 class CustomerPostalAddress {
@@ -8925,29 +9145,29 @@ class CustomerPostalAddress {
   });
 
   CustomerPostalAddress.fromJson(core.Map json_)
-      : this(
-          addressLine1: json_['addressLine1'] as core.String?,
-          addressLine2: json_['addressLine2'] as core.String?,
-          addressLine3: json_['addressLine3'] as core.String?,
-          contactName: json_['contactName'] as core.String?,
-          countryCode: json_['countryCode'] as core.String?,
-          locality: json_['locality'] as core.String?,
-          organizationName: json_['organizationName'] as core.String?,
-          postalCode: json_['postalCode'] as core.String?,
-          region: json_['region'] as core.String?,
-        );
+    : this(
+        addressLine1: json_['addressLine1'] as core.String?,
+        addressLine2: json_['addressLine2'] as core.String?,
+        addressLine3: json_['addressLine3'] as core.String?,
+        contactName: json_['contactName'] as core.String?,
+        countryCode: json_['countryCode'] as core.String?,
+        locality: json_['locality'] as core.String?,
+        organizationName: json_['organizationName'] as core.String?,
+        postalCode: json_['postalCode'] as core.String?,
+        region: json_['region'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addressLine1 != null) 'addressLine1': addressLine1!,
-        if (addressLine2 != null) 'addressLine2': addressLine2!,
-        if (addressLine3 != null) 'addressLine3': addressLine3!,
-        if (contactName != null) 'contactName': contactName!,
-        if (countryCode != null) 'countryCode': countryCode!,
-        if (locality != null) 'locality': locality!,
-        if (organizationName != null) 'organizationName': organizationName!,
-        if (postalCode != null) 'postalCode': postalCode!,
-        if (region != null) 'region': region!,
-      };
+    if (addressLine1 != null) 'addressLine1': addressLine1!,
+    if (addressLine2 != null) 'addressLine2': addressLine2!,
+    if (addressLine3 != null) 'addressLine3': addressLine3!,
+    if (contactName != null) 'contactName': contactName!,
+    if (countryCode != null) 'countryCode': countryCode!,
+    if (locality != null) 'locality': locality!,
+    if (organizationName != null) 'organizationName': organizationName!,
+    if (postalCode != null) 'postalCode': postalCode!,
+    if (region != null) 'region': region!,
+  };
 }
 
 /// Information regarding a command that was issued to a device.
@@ -9028,28 +9248,30 @@ class DirectoryChromeosdevicesCommand {
   });
 
   DirectoryChromeosdevicesCommand.fromJson(core.Map json_)
-      : this(
-          commandExpireTime: json_['commandExpireTime'] as core.String?,
-          commandId: json_['commandId'] as core.String?,
-          commandResult: json_.containsKey('commandResult')
-              ? DirectoryChromeosdevicesCommandResult.fromJson(
-                  json_['commandResult'] as core.Map<core.String, core.dynamic>)
-              : null,
-          issueTime: json_['issueTime'] as core.String?,
-          payload: json_['payload'] as core.String?,
-          state: json_['state'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        commandExpireTime: json_['commandExpireTime'] as core.String?,
+        commandId: json_['commandId'] as core.String?,
+        commandResult:
+            json_.containsKey('commandResult')
+                ? DirectoryChromeosdevicesCommandResult.fromJson(
+                  json_['commandResult'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        issueTime: json_['issueTime'] as core.String?,
+        payload: json_['payload'] as core.String?,
+        state: json_['state'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commandExpireTime != null) 'commandExpireTime': commandExpireTime!,
-        if (commandId != null) 'commandId': commandId!,
-        if (commandResult != null) 'commandResult': commandResult!,
-        if (issueTime != null) 'issueTime': issueTime!,
-        if (payload != null) 'payload': payload!,
-        if (state != null) 'state': state!,
-        if (type != null) 'type': type!,
-      };
+    if (commandExpireTime != null) 'commandExpireTime': commandExpireTime!,
+    if (commandId != null) 'commandId': commandId!,
+    if (commandResult != null) 'commandResult': commandResult!,
+    if (issueTime != null) 'issueTime': issueTime!,
+    if (payload != null) 'payload': payload!,
+    if (state != null) 'state': state!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// The result of executing a command.
@@ -9093,20 +9315,20 @@ class DirectoryChromeosdevicesCommandResult {
   });
 
   DirectoryChromeosdevicesCommandResult.fromJson(core.Map json_)
-      : this(
-          commandResultPayload: json_['commandResultPayload'] as core.String?,
-          errorMessage: json_['errorMessage'] as core.String?,
-          executeTime: json_['executeTime'] as core.String?,
-          result: json_['result'] as core.String?,
-        );
+    : this(
+        commandResultPayload: json_['commandResultPayload'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        executeTime: json_['executeTime'] as core.String?,
+        result: json_['result'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commandResultPayload != null)
-          'commandResultPayload': commandResultPayload!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (executeTime != null) 'executeTime': executeTime!,
-        if (result != null) 'result': result!,
-      };
+    if (commandResultPayload != null)
+      'commandResultPayload': commandResultPayload!,
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+    if (executeTime != null) 'executeTime': executeTime!,
+    if (result != null) 'result': result!,
+  };
 }
 
 /// A request for issuing a command.
@@ -9183,21 +9405,18 @@ class DirectoryChromeosdevicesIssueCommandRequest {
   /// [help article](https://support.google.com/chrome/a?p=remote-log).
   core.String? payload;
 
-  DirectoryChromeosdevicesIssueCommandRequest({
-    this.commandType,
-    this.payload,
-  });
+  DirectoryChromeosdevicesIssueCommandRequest({this.commandType, this.payload});
 
   DirectoryChromeosdevicesIssueCommandRequest.fromJson(core.Map json_)
-      : this(
-          commandType: json_['commandType'] as core.String?,
-          payload: json_['payload'] as core.String?,
-        );
+    : this(
+        commandType: json_['commandType'] as core.String?,
+        payload: json_['payload'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commandType != null) 'commandType': commandType!,
-        if (payload != null) 'payload': payload!,
-      };
+    if (commandType != null) 'commandType': commandType!,
+    if (payload != null) 'payload': payload!,
+  };
 }
 
 /// A response for issuing a command.
@@ -9205,18 +9424,14 @@ class DirectoryChromeosdevicesIssueCommandResponse {
   /// The unique ID of the issued command, used to retrieve the command status.
   core.String? commandId;
 
-  DirectoryChromeosdevicesIssueCommandResponse({
-    this.commandId,
-  });
+  DirectoryChromeosdevicesIssueCommandResponse({this.commandId});
 
   DirectoryChromeosdevicesIssueCommandResponse.fromJson(core.Map json_)
-      : this(
-          commandId: json_['commandId'] as core.String?,
-        );
+    : this(commandId: json_['commandId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commandId != null) 'commandId': commandId!,
-      };
+    if (commandId != null) 'commandId': commandId!,
+  };
 }
 
 class DomainAlias {
@@ -9254,23 +9469,23 @@ class DomainAlias {
   });
 
   DomainAlias.fromJson(core.Map json_)
-      : this(
-          creationTime: json_['creationTime'] as core.String?,
-          domainAliasName: json_['domainAliasName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          parentDomainName: json_['parentDomainName'] as core.String?,
-          verified: json_['verified'] as core.bool?,
-        );
+    : this(
+        creationTime: json_['creationTime'] as core.String?,
+        domainAliasName: json_['domainAliasName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        parentDomainName: json_['parentDomainName'] as core.String?,
+        verified: json_['verified'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime!,
-        if (domainAliasName != null) 'domainAliasName': domainAliasName!,
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (parentDomainName != null) 'parentDomainName': parentDomainName!,
-        if (verified != null) 'verified': verified!,
-      };
+    if (creationTime != null) 'creationTime': creationTime!,
+    if (domainAliasName != null) 'domainAliasName': domainAliasName!,
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (parentDomainName != null) 'parentDomainName': parentDomainName!,
+    if (verified != null) 'verified': verified!,
+  };
 }
 
 class DomainAliases {
@@ -9283,27 +9498,27 @@ class DomainAliases {
   /// Kind of resource this is.
   core.String? kind;
 
-  DomainAliases({
-    this.domainAliases,
-    this.etag,
-    this.kind,
-  });
+  DomainAliases({this.domainAliases, this.etag, this.kind});
 
   DomainAliases.fromJson(core.Map json_)
-      : this(
-          domainAliases: (json_['domainAliases'] as core.List?)
-              ?.map((value) => DomainAlias.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        domainAliases:
+            (json_['domainAliases'] as core.List?)
+                ?.map(
+                  (value) => DomainAlias.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domainAliases != null) 'domainAliases': domainAliases!,
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (domainAliases != null) 'domainAliases': domainAliases!,
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 class Domains {
@@ -9346,28 +9561,32 @@ class Domains {
   });
 
   Domains.fromJson(core.Map json_)
-      : this(
-          creationTime: json_['creationTime'] as core.String?,
-          domainAliases: (json_['domainAliases'] as core.List?)
-              ?.map((value) => DomainAlias.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          domainName: json_['domainName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          isPrimary: json_['isPrimary'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          verified: json_['verified'] as core.bool?,
-        );
+    : this(
+        creationTime: json_['creationTime'] as core.String?,
+        domainAliases:
+            (json_['domainAliases'] as core.List?)
+                ?.map(
+                  (value) => DomainAlias.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        domainName: json_['domainName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        isPrimary: json_['isPrimary'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        verified: json_['verified'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (creationTime != null) 'creationTime': creationTime!,
-        if (domainAliases != null) 'domainAliases': domainAliases!,
-        if (domainName != null) 'domainName': domainName!,
-        if (etag != null) 'etag': etag!,
-        if (isPrimary != null) 'isPrimary': isPrimary!,
-        if (kind != null) 'kind': kind!,
-        if (verified != null) 'verified': verified!,
-      };
+    if (creationTime != null) 'creationTime': creationTime!,
+    if (domainAliases != null) 'domainAliases': domainAliases!,
+    if (domainName != null) 'domainName': domainName!,
+    if (etag != null) 'etag': etag!,
+    if (isPrimary != null) 'isPrimary': isPrimary!,
+    if (kind != null) 'kind': kind!,
+    if (verified != null) 'verified': verified!,
+  };
 }
 
 class Domains2 {
@@ -9380,27 +9599,27 @@ class Domains2 {
   /// Kind of resource this is.
   core.String? kind;
 
-  Domains2({
-    this.domains,
-    this.etag,
-    this.kind,
-  });
+  Domains2({this.domains, this.etag, this.kind});
 
   Domains2.fromJson(core.Map json_)
-      : this(
-          domains: (json_['domains'] as core.List?)
-              ?.map((value) => Domains.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        domains:
+            (json_['domains'] as core.List?)
+                ?.map(
+                  (value) => Domains.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domains != null) 'domains': domains!,
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (domains != null) 'domains': domains!,
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -9513,22 +9732,24 @@ class FailureInfo {
   });
 
   FailureInfo.fromJson(core.Map json_)
-      : this(
-          errorCode: json_['errorCode'] as core.String?,
-          errorMessage: json_['errorMessage'] as core.String?,
-          printer: json_.containsKey('printer')
-              ? Printer.fromJson(
-                  json_['printer'] as core.Map<core.String, core.dynamic>)
-              : null,
-          printerId: json_['printerId'] as core.String?,
-        );
+    : this(
+        errorCode: json_['errorCode'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        printer:
+            json_.containsKey('printer')
+                ? Printer.fromJson(
+                  json_['printer'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        printerId: json_['printerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (printer != null) 'printer': printer!,
-        if (printerId != null) 'printerId': printerId!,
-      };
+    if (errorCode != null) 'errorCode': errorCode!,
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+    if (printer != null) 'printer': printer!,
+    if (printerId != null) 'printerId': printerId!,
+  };
 }
 
 /// Information about the device's fan.
@@ -9538,18 +9759,14 @@ class FanInfo {
   /// Output only.
   core.int? speedRpm;
 
-  FanInfo({
-    this.speedRpm,
-  });
+  FanInfo({this.speedRpm});
 
   FanInfo.fromJson(core.Map json_)
-      : this(
-          speedRpm: json_['speedRpm'] as core.int?,
-        );
+    : this(speedRpm: json_['speedRpm'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (speedRpm != null) 'speedRpm': speedRpm!,
-      };
+    if (speedRpm != null) 'speedRpm': speedRpm!,
+  };
 }
 
 /// JSON template for Feature object in Directory API.
@@ -9563,42 +9780,34 @@ class Feature {
   /// The name of the feature.
   core.String? name;
 
-  Feature({
-    this.etags,
-    this.kind,
-    this.name,
-  });
+  Feature({this.etags, this.kind, this.name});
 
   Feature.fromJson(core.Map json_)
-      : this(
-          etags: json_['etags'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        etags: json_['etags'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etags != null) 'etags': etags!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-      };
+    if (etags != null) 'etags': etags!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+  };
 }
 
 class FeatureRename {
   /// New name of the feature.
   core.String? newName;
 
-  FeatureRename({
-    this.newName,
-  });
+  FeatureRename({this.newName});
 
   FeatureRename.fromJson(core.Map json_)
-      : this(
-          newName: json_['newName'] as core.String?,
-        );
+    : this(newName: json_['newName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (newName != null) 'newName': newName!,
-      };
+    if (newName != null) 'newName': newName!,
+  };
 }
 
 /// Public API: Resources.features
@@ -9618,30 +9827,29 @@ class Features {
   /// results.
   core.String? nextPageToken;
 
-  Features({
-    this.etag,
-    this.features,
-    this.kind,
-    this.nextPageToken,
-  });
+  Features({this.etag, this.features, this.kind, this.nextPageToken});
 
   Features.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          features: (json_['features'] as core.List?)
-              ?.map((value) => Feature.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        features:
+            (json_['features'] as core.List?)
+                ?.map(
+                  (value) => Feature.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (features != null) 'features': features!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (features != null) 'features': features!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Google Groups provide your users the ability to send messages to groups of
@@ -9733,37 +9941,37 @@ class Group {
   });
 
   Group.fromJson(core.Map json_)
-      : this(
-          adminCreated: json_['adminCreated'] as core.bool?,
-          aliases: (json_['aliases'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          description: json_['description'] as core.String?,
-          directMembersCount: json_['directMembersCount'] as core.String?,
-          email: json_['email'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          name: json_['name'] as core.String?,
-          nonEditableAliases: (json_['nonEditableAliases'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        adminCreated: json_['adminCreated'] as core.bool?,
+        aliases:
+            (json_['aliases'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        description: json_['description'] as core.String?,
+        directMembersCount: json_['directMembersCount'] as core.String?,
+        email: json_['email'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        nonEditableAliases:
+            (json_['nonEditableAliases'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adminCreated != null) 'adminCreated': adminCreated!,
-        if (aliases != null) 'aliases': aliases!,
-        if (description != null) 'description': description!,
-        if (directMembersCount != null)
-          'directMembersCount': directMembersCount!,
-        if (email != null) 'email': email!,
-        if (etag != null) 'etag': etag!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (nonEditableAliases != null)
-          'nonEditableAliases': nonEditableAliases!,
-      };
+    if (adminCreated != null) 'adminCreated': adminCreated!,
+    if (aliases != null) 'aliases': aliases!,
+    if (description != null) 'description': description!,
+    if (directMembersCount != null) 'directMembersCount': directMembersCount!,
+    if (email != null) 'email': email!,
+    if (etag != null) 'etag': etag!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (nonEditableAliases != null) 'nonEditableAliases': nonEditableAliases!,
+  };
 }
 
 class Groups {
@@ -9779,30 +9987,29 @@ class Groups {
   /// Token used to access next page of this result.
   core.String? nextPageToken;
 
-  Groups({
-    this.etag,
-    this.groups,
-    this.kind,
-    this.nextPageToken,
-  });
+  Groups({this.etag, this.groups, this.kind, this.nextPageToken});
 
   Groups.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          groups: (json_['groups'] as core.List?)
-              ?.map((value) =>
-                  Group.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        groups:
+            (json_['groups'] as core.List?)
+                ?.map(
+                  (value) => Group.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (groups != null) 'groups': groups!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (groups != null) 'groups': groups!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 class ListPrintServersResponse {
@@ -9815,24 +10022,25 @@ class ListPrintServersResponse {
   /// List of print servers.
   core.List<PrintServer>? printServers;
 
-  ListPrintServersResponse({
-    this.nextPageToken,
-    this.printServers,
-  });
+  ListPrintServersResponse({this.nextPageToken, this.printServers});
 
   ListPrintServersResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          printServers: (json_['printServers'] as core.List?)
-              ?.map((value) => PrintServer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        printServers:
+            (json_['printServers'] as core.List?)
+                ?.map(
+                  (value) => PrintServer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (printServers != null) 'printServers': printServers!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (printServers != null) 'printServers': printServers!,
+  };
 }
 
 /// Response for listing allowed printer models.
@@ -9847,24 +10055,25 @@ class ListPrinterModelsResponse {
   /// Some printers may be added or removed over time.
   core.List<PrinterModel>? printerModels;
 
-  ListPrinterModelsResponse({
-    this.nextPageToken,
-    this.printerModels,
-  });
+  ListPrinterModelsResponse({this.nextPageToken, this.printerModels});
 
   ListPrinterModelsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          printerModels: (json_['printerModels'] as core.List?)
-              ?.map((value) => PrinterModel.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        printerModels:
+            (json_['printerModels'] as core.List?)
+                ?.map(
+                  (value) => PrinterModel.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (printerModels != null) 'printerModels': printerModels!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (printerModels != null) 'printerModels': printerModels!,
+  };
 }
 
 /// Response for listing printers.
@@ -9881,24 +10090,25 @@ class ListPrintersResponse {
   /// then all printers will be returned.
   core.List<Printer>? printers;
 
-  ListPrintersResponse({
-    this.nextPageToken,
-    this.printers,
-  });
+  ListPrintersResponse({this.nextPageToken, this.printers});
 
   ListPrintersResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          printers: (json_['printers'] as core.List?)
-              ?.map((value) => Printer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        printers:
+            (json_['printers'] as core.List?)
+                ?.map(
+                  (value) => Printer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (printers != null) 'printers': printers!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (printers != null) 'printers': printers!,
+  };
 }
 
 /// A Google Groups member can be a user or another group.
@@ -9959,27 +10169,27 @@ class Member {
   });
 
   Member.fromJson(core.Map json_)
-      : this(
-          deliverySettings: json_['delivery_settings'] as core.String?,
-          email: json_['email'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          role: json_['role'] as core.String?,
-          status: json_['status'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        deliverySettings: json_['delivery_settings'] as core.String?,
+        email: json_['email'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        role: json_['role'] as core.String?,
+        status: json_['status'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deliverySettings != null) 'delivery_settings': deliverySettings!,
-        if (email != null) 'email': email!,
-        if (etag != null) 'etag': etag!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (role != null) 'role': role!,
-        if (status != null) 'status': status!,
-        if (type != null) 'type': type!,
-      };
+    if (deliverySettings != null) 'delivery_settings': deliverySettings!,
+    if (email != null) 'email': email!,
+    if (etag != null) 'etag': etag!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (role != null) 'role': role!,
+    if (status != null) 'status': status!,
+    if (type != null) 'type': type!,
+  };
 }
 
 class Members {
@@ -9995,30 +10205,29 @@ class Members {
   /// Token used to access next page of this result.
   core.String? nextPageToken;
 
-  Members({
-    this.etag,
-    this.kind,
-    this.members,
-    this.nextPageToken,
-  });
+  Members({this.etag, this.kind, this.members, this.nextPageToken});
 
   Members.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          members: (json_['members'] as core.List?)
-              ?.map((value) =>
-                  Member.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        members:
+            (json_['members'] as core.List?)
+                ?.map(
+                  (value) => Member.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (members != null) 'members': members!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (members != null) 'members': members!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// JSON template for Has Member response in Directory API.
@@ -10030,18 +10239,14 @@ class MembersHasMember {
   /// Output only.
   core.bool? isMember;
 
-  MembersHasMember({
-    this.isMember,
-  });
+  MembersHasMember({this.isMember});
 
   MembersHasMember.fromJson(core.Map json_)
-      : this(
-          isMember: json_['isMember'] as core.bool?,
-        );
+    : this(isMember: json_['isMember'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (isMember != null) 'isMember': isMember!,
-      };
+    if (isMember != null) 'isMember': isMember!,
+  };
 }
 
 class MobileDeviceApplications {
@@ -10083,23 +10288,24 @@ class MobileDeviceApplications {
   });
 
   MobileDeviceApplications.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          packageName: json_['packageName'] as core.String?,
-          permission: (json_['permission'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          versionCode: json_['versionCode'] as core.int?,
-          versionName: json_['versionName'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        packageName: json_['packageName'] as core.String?,
+        permission:
+            (json_['permission'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        versionCode: json_['versionCode'] as core.int?,
+        versionName: json_['versionName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (packageName != null) 'packageName': packageName!,
-        if (permission != null) 'permission': permission!,
-        if (versionCode != null) 'versionCode': versionCode!,
-        if (versionName != null) 'versionName': versionName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (packageName != null) 'packageName': packageName!,
+    if (permission != null) 'permission': permission!,
+    if (versionCode != null) 'versionCode': versionCode!,
+    if (versionName != null) 'versionName': versionName!,
+  };
 }
 
 /// Google Workspace Mobile Management includes Android,
@@ -10318,132 +10524,135 @@ class MobileDevice {
   });
 
   MobileDevice.fromJson(core.Map json_)
-      : this(
-          adbStatus: json_['adbStatus'] as core.bool?,
-          applications: (json_['applications'] as core.List?)
-              ?.map((value) => MobileDeviceApplications.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          basebandVersion: json_['basebandVersion'] as core.String?,
-          bootloaderVersion: json_['bootloaderVersion'] as core.String?,
-          brand: json_['brand'] as core.String?,
-          buildNumber: json_['buildNumber'] as core.String?,
-          defaultLanguage: json_['defaultLanguage'] as core.String?,
-          developerOptionsStatus: json_['developerOptionsStatus'] as core.bool?,
-          deviceCompromisedStatus:
-              json_['deviceCompromisedStatus'] as core.String?,
-          deviceId: json_['deviceId'] as core.String?,
-          devicePasswordStatus: json_['devicePasswordStatus'] as core.String?,
-          email: (json_['email'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          encryptionStatus: json_['encryptionStatus'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          firstSync: json_.containsKey('firstSync')
-              ? core.DateTime.parse(json_['firstSync'] as core.String)
-              : null,
-          hardware: json_['hardware'] as core.String?,
-          hardwareId: json_['hardwareId'] as core.String?,
-          imei: json_['imei'] as core.String?,
-          kernelVersion: json_['kernelVersion'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          lastSync: json_.containsKey('lastSync')
-              ? core.DateTime.parse(json_['lastSync'] as core.String)
-              : null,
-          managedAccountIsOnOwnerProfile:
-              json_['managedAccountIsOnOwnerProfile'] as core.bool?,
-          manufacturer: json_['manufacturer'] as core.String?,
-          meid: json_['meid'] as core.String?,
-          model: json_['model'] as core.String?,
-          name: (json_['name'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          networkOperator: json_['networkOperator'] as core.String?,
-          os: json_['os'] as core.String?,
-          otherAccountsInfo: (json_['otherAccountsInfo'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          privilege: json_['privilege'] as core.String?,
-          releaseVersion: json_['releaseVersion'] as core.String?,
-          resourceId: json_['resourceId'] as core.String?,
-          securityPatchLevel: json_['securityPatchLevel'] as core.String?,
-          serialNumber: json_['serialNumber'] as core.String?,
-          status: json_['status'] as core.String?,
-          supportsWorkProfile: json_['supportsWorkProfile'] as core.bool?,
-          type: json_['type'] as core.String?,
-          unknownSourcesStatus: json_['unknownSourcesStatus'] as core.bool?,
-          userAgent: json_['userAgent'] as core.String?,
-          wifiMacAddress: json_['wifiMacAddress'] as core.String?,
-        );
+    : this(
+        adbStatus: json_['adbStatus'] as core.bool?,
+        applications:
+            (json_['applications'] as core.List?)
+                ?.map(
+                  (value) => MobileDeviceApplications.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        basebandVersion: json_['basebandVersion'] as core.String?,
+        bootloaderVersion: json_['bootloaderVersion'] as core.String?,
+        brand: json_['brand'] as core.String?,
+        buildNumber: json_['buildNumber'] as core.String?,
+        defaultLanguage: json_['defaultLanguage'] as core.String?,
+        developerOptionsStatus: json_['developerOptionsStatus'] as core.bool?,
+        deviceCompromisedStatus:
+            json_['deviceCompromisedStatus'] as core.String?,
+        deviceId: json_['deviceId'] as core.String?,
+        devicePasswordStatus: json_['devicePasswordStatus'] as core.String?,
+        email:
+            (json_['email'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        encryptionStatus: json_['encryptionStatus'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        firstSync:
+            json_.containsKey('firstSync')
+                ? core.DateTime.parse(json_['firstSync'] as core.String)
+                : null,
+        hardware: json_['hardware'] as core.String?,
+        hardwareId: json_['hardwareId'] as core.String?,
+        imei: json_['imei'] as core.String?,
+        kernelVersion: json_['kernelVersion'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        lastSync:
+            json_.containsKey('lastSync')
+                ? core.DateTime.parse(json_['lastSync'] as core.String)
+                : null,
+        managedAccountIsOnOwnerProfile:
+            json_['managedAccountIsOnOwnerProfile'] as core.bool?,
+        manufacturer: json_['manufacturer'] as core.String?,
+        meid: json_['meid'] as core.String?,
+        model: json_['model'] as core.String?,
+        name:
+            (json_['name'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        networkOperator: json_['networkOperator'] as core.String?,
+        os: json_['os'] as core.String?,
+        otherAccountsInfo:
+            (json_['otherAccountsInfo'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        privilege: json_['privilege'] as core.String?,
+        releaseVersion: json_['releaseVersion'] as core.String?,
+        resourceId: json_['resourceId'] as core.String?,
+        securityPatchLevel: json_['securityPatchLevel'] as core.String?,
+        serialNumber: json_['serialNumber'] as core.String?,
+        status: json_['status'] as core.String?,
+        supportsWorkProfile: json_['supportsWorkProfile'] as core.bool?,
+        type: json_['type'] as core.String?,
+        unknownSourcesStatus: json_['unknownSourcesStatus'] as core.bool?,
+        userAgent: json_['userAgent'] as core.String?,
+        wifiMacAddress: json_['wifiMacAddress'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adbStatus != null) 'adbStatus': adbStatus!,
-        if (applications != null) 'applications': applications!,
-        if (basebandVersion != null) 'basebandVersion': basebandVersion!,
-        if (bootloaderVersion != null) 'bootloaderVersion': bootloaderVersion!,
-        if (brand != null) 'brand': brand!,
-        if (buildNumber != null) 'buildNumber': buildNumber!,
-        if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
-        if (developerOptionsStatus != null)
-          'developerOptionsStatus': developerOptionsStatus!,
-        if (deviceCompromisedStatus != null)
-          'deviceCompromisedStatus': deviceCompromisedStatus!,
-        if (deviceId != null) 'deviceId': deviceId!,
-        if (devicePasswordStatus != null)
-          'devicePasswordStatus': devicePasswordStatus!,
-        if (email != null) 'email': email!,
-        if (encryptionStatus != null) 'encryptionStatus': encryptionStatus!,
-        if (etag != null) 'etag': etag!,
-        if (firstSync != null)
-          'firstSync': firstSync!.toUtc().toIso8601String(),
-        if (hardware != null) 'hardware': hardware!,
-        if (hardwareId != null) 'hardwareId': hardwareId!,
-        if (imei != null) 'imei': imei!,
-        if (kernelVersion != null) 'kernelVersion': kernelVersion!,
-        if (kind != null) 'kind': kind!,
-        if (lastSync != null) 'lastSync': lastSync!.toUtc().toIso8601String(),
-        if (managedAccountIsOnOwnerProfile != null)
-          'managedAccountIsOnOwnerProfile': managedAccountIsOnOwnerProfile!,
-        if (manufacturer != null) 'manufacturer': manufacturer!,
-        if (meid != null) 'meid': meid!,
-        if (model != null) 'model': model!,
-        if (name != null) 'name': name!,
-        if (networkOperator != null) 'networkOperator': networkOperator!,
-        if (os != null) 'os': os!,
-        if (otherAccountsInfo != null) 'otherAccountsInfo': otherAccountsInfo!,
-        if (privilege != null) 'privilege': privilege!,
-        if (releaseVersion != null) 'releaseVersion': releaseVersion!,
-        if (resourceId != null) 'resourceId': resourceId!,
-        if (securityPatchLevel != null)
-          'securityPatchLevel': securityPatchLevel!,
-        if (serialNumber != null) 'serialNumber': serialNumber!,
-        if (status != null) 'status': status!,
-        if (supportsWorkProfile != null)
-          'supportsWorkProfile': supportsWorkProfile!,
-        if (type != null) 'type': type!,
-        if (unknownSourcesStatus != null)
-          'unknownSourcesStatus': unknownSourcesStatus!,
-        if (userAgent != null) 'userAgent': userAgent!,
-        if (wifiMacAddress != null) 'wifiMacAddress': wifiMacAddress!,
-      };
+    if (adbStatus != null) 'adbStatus': adbStatus!,
+    if (applications != null) 'applications': applications!,
+    if (basebandVersion != null) 'basebandVersion': basebandVersion!,
+    if (bootloaderVersion != null) 'bootloaderVersion': bootloaderVersion!,
+    if (brand != null) 'brand': brand!,
+    if (buildNumber != null) 'buildNumber': buildNumber!,
+    if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
+    if (developerOptionsStatus != null)
+      'developerOptionsStatus': developerOptionsStatus!,
+    if (deviceCompromisedStatus != null)
+      'deviceCompromisedStatus': deviceCompromisedStatus!,
+    if (deviceId != null) 'deviceId': deviceId!,
+    if (devicePasswordStatus != null)
+      'devicePasswordStatus': devicePasswordStatus!,
+    if (email != null) 'email': email!,
+    if (encryptionStatus != null) 'encryptionStatus': encryptionStatus!,
+    if (etag != null) 'etag': etag!,
+    if (firstSync != null) 'firstSync': firstSync!.toUtc().toIso8601String(),
+    if (hardware != null) 'hardware': hardware!,
+    if (hardwareId != null) 'hardwareId': hardwareId!,
+    if (imei != null) 'imei': imei!,
+    if (kernelVersion != null) 'kernelVersion': kernelVersion!,
+    if (kind != null) 'kind': kind!,
+    if (lastSync != null) 'lastSync': lastSync!.toUtc().toIso8601String(),
+    if (managedAccountIsOnOwnerProfile != null)
+      'managedAccountIsOnOwnerProfile': managedAccountIsOnOwnerProfile!,
+    if (manufacturer != null) 'manufacturer': manufacturer!,
+    if (meid != null) 'meid': meid!,
+    if (model != null) 'model': model!,
+    if (name != null) 'name': name!,
+    if (networkOperator != null) 'networkOperator': networkOperator!,
+    if (os != null) 'os': os!,
+    if (otherAccountsInfo != null) 'otherAccountsInfo': otherAccountsInfo!,
+    if (privilege != null) 'privilege': privilege!,
+    if (releaseVersion != null) 'releaseVersion': releaseVersion!,
+    if (resourceId != null) 'resourceId': resourceId!,
+    if (securityPatchLevel != null) 'securityPatchLevel': securityPatchLevel!,
+    if (serialNumber != null) 'serialNumber': serialNumber!,
+    if (status != null) 'status': status!,
+    if (supportsWorkProfile != null)
+      'supportsWorkProfile': supportsWorkProfile!,
+    if (type != null) 'type': type!,
+    if (unknownSourcesStatus != null)
+      'unknownSourcesStatus': unknownSourcesStatus!,
+    if (userAgent != null) 'userAgent': userAgent!,
+    if (wifiMacAddress != null) 'wifiMacAddress': wifiMacAddress!,
+  };
 }
 
 class MobileDeviceAction {
   /// The action to be performed on the device.
   core.String? action;
 
-  MobileDeviceAction({
-    this.action,
-  });
+  MobileDeviceAction({this.action});
 
   MobileDeviceAction.fromJson(core.Map json_)
-      : this(
-          action: json_['action'] as core.String?,
-        );
+    : this(action: json_['action'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-      };
+    if (action != null) 'action': action!,
+  };
 }
 
 class MobileDevices {
@@ -10459,30 +10668,29 @@ class MobileDevices {
   /// Token used to access next page of this result.
   core.String? nextPageToken;
 
-  MobileDevices({
-    this.etag,
-    this.kind,
-    this.mobiledevices,
-    this.nextPageToken,
-  });
+  MobileDevices({this.etag, this.kind, this.mobiledevices, this.nextPageToken});
 
   MobileDevices.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          mobiledevices: (json_['mobiledevices'] as core.List?)
-              ?.map((value) => MobileDevice.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        mobiledevices:
+            (json_['mobiledevices'] as core.List?)
+                ?.map(
+                  (value) => MobileDevice.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (mobiledevices != null) 'mobiledevices': mobiledevices!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (mobiledevices != null) 'mobiledevices': mobiledevices!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Managing your account's organizational units allows you to configure your
@@ -10559,29 +10767,29 @@ class OrgUnit {
   });
 
   OrgUnit.fromJson(core.Map json_)
-      : this(
-          blockInheritance: json_['blockInheritance'] as core.bool?,
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          name: json_['name'] as core.String?,
-          orgUnitId: json_['orgUnitId'] as core.String?,
-          orgUnitPath: json_['orgUnitPath'] as core.String?,
-          parentOrgUnitId: json_['parentOrgUnitId'] as core.String?,
-          parentOrgUnitPath: json_['parentOrgUnitPath'] as core.String?,
-        );
+    : this(
+        blockInheritance: json_['blockInheritance'] as core.bool?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        orgUnitId: json_['orgUnitId'] as core.String?,
+        orgUnitPath: json_['orgUnitPath'] as core.String?,
+        parentOrgUnitId: json_['parentOrgUnitId'] as core.String?,
+        parentOrgUnitPath: json_['parentOrgUnitPath'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (blockInheritance != null) 'blockInheritance': blockInheritance!,
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (name != null) 'name': name!,
-        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
-        if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
-        if (parentOrgUnitId != null) 'parentOrgUnitId': parentOrgUnitId!,
-        if (parentOrgUnitPath != null) 'parentOrgUnitPath': parentOrgUnitPath!,
-      };
+    if (blockInheritance != null) 'blockInheritance': blockInheritance!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (orgUnitId != null) 'orgUnitId': orgUnitId!,
+    if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
+    if (parentOrgUnitId != null) 'parentOrgUnitId': parentOrgUnitId!,
+    if (parentOrgUnitPath != null) 'parentOrgUnitPath': parentOrgUnitPath!,
+  };
 }
 
 class OrgUnits {
@@ -10596,27 +10804,27 @@ class OrgUnits {
   /// A list of organizational unit objects.
   core.List<OrgUnit>? organizationUnits;
 
-  OrgUnits({
-    this.etag,
-    this.kind,
-    this.organizationUnits,
-  });
+  OrgUnits({this.etag, this.kind, this.organizationUnits});
 
   OrgUnits.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          organizationUnits: (json_['organizationUnits'] as core.List?)
-              ?.map((value) => OrgUnit.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        organizationUnits:
+            (json_['organizationUnits'] as core.List?)
+                ?.map(
+                  (value) => OrgUnit.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (organizationUnits != null) 'organizationUnits': organizationUnits!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (organizationUnits != null) 'organizationUnits': organizationUnits!,
+  };
 }
 
 /// Contains information regarding the current OS update status.
@@ -10662,24 +10870,24 @@ class OsUpdateStatus {
   });
 
   OsUpdateStatus.fromJson(core.Map json_)
-      : this(
-          rebootTime: json_['rebootTime'] as core.String?,
-          state: json_['state'] as core.String?,
-          targetKioskAppVersion: json_['targetKioskAppVersion'] as core.String?,
-          targetOsVersion: json_['targetOsVersion'] as core.String?,
-          updateCheckTime: json_['updateCheckTime'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        rebootTime: json_['rebootTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        targetKioskAppVersion: json_['targetKioskAppVersion'] as core.String?,
+        targetOsVersion: json_['targetOsVersion'] as core.String?,
+        updateCheckTime: json_['updateCheckTime'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rebootTime != null) 'rebootTime': rebootTime!,
-        if (state != null) 'state': state!,
-        if (targetKioskAppVersion != null)
-          'targetKioskAppVersion': targetKioskAppVersion!,
-        if (targetOsVersion != null) 'targetOsVersion': targetOsVersion!,
-        if (updateCheckTime != null) 'updateCheckTime': updateCheckTime!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (rebootTime != null) 'rebootTime': rebootTime!,
+    if (state != null) 'state': state!,
+    if (targetKioskAppVersion != null)
+      'targetKioskAppVersion': targetKioskAppVersion!,
+    if (targetOsVersion != null) 'targetOsVersion': targetOsVersion!,
+    if (updateCheckTime != null) 'updateCheckTime': updateCheckTime!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Configuration for a print server.
@@ -10736,25 +10944,25 @@ class PrintServer {
   });
 
   PrintServer.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-          orgUnitId: json_['orgUnitId'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        orgUnitId: json_['orgUnitId'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (orgUnitId != null) 'orgUnitId': orgUnitId!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Info about failures
@@ -10859,22 +11067,24 @@ class PrintServerFailureInfo {
   });
 
   PrintServerFailureInfo.fromJson(core.Map json_)
-      : this(
-          errorCode: json_['errorCode'] as core.String?,
-          errorMessage: json_['errorMessage'] as core.String?,
-          printServer: json_.containsKey('printServer')
-              ? PrintServer.fromJson(
-                  json_['printServer'] as core.Map<core.String, core.dynamic>)
-              : null,
-          printServerId: json_['printServerId'] as core.String?,
-        );
+    : this(
+        errorCode: json_['errorCode'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        printServer:
+            json_.containsKey('printServer')
+                ? PrintServer.fromJson(
+                  json_['printServer'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        printServerId: json_['printServerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorCode != null) 'errorCode': errorCode!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (printServer != null) 'printServer': printServer!,
-        if (printServerId != null) 'printServerId': printServerId!,
-      };
+    if (errorCode != null) 'errorCode': errorCode!,
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+    if (printServer != null) 'printServer': printServer!,
+    if (printServerId != null) 'printServerId': printServerId!,
+  };
 }
 
 /// Printer configuration.
@@ -10946,35 +11156,39 @@ class Printer {
   });
 
   Printer.fromJson(core.Map json_)
-      : this(
-          auxiliaryMessages: (json_['auxiliaryMessages'] as core.List?)
-              ?.map((value) => AuxiliaryMessage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          id: json_['id'] as core.String?,
-          makeAndModel: json_['makeAndModel'] as core.String?,
-          name: json_['name'] as core.String?,
-          orgUnitId: json_['orgUnitId'] as core.String?,
-          uri: json_['uri'] as core.String?,
-          useDriverlessConfig: json_['useDriverlessConfig'] as core.bool?,
-        );
+    : this(
+        auxiliaryMessages:
+            (json_['auxiliaryMessages'] as core.List?)
+                ?.map(
+                  (value) => AuxiliaryMessage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        id: json_['id'] as core.String?,
+        makeAndModel: json_['makeAndModel'] as core.String?,
+        name: json_['name'] as core.String?,
+        orgUnitId: json_['orgUnitId'] as core.String?,
+        uri: json_['uri'] as core.String?,
+        useDriverlessConfig: json_['useDriverlessConfig'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auxiliaryMessages != null) 'auxiliaryMessages': auxiliaryMessages!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (id != null) 'id': id!,
-        if (makeAndModel != null) 'makeAndModel': makeAndModel!,
-        if (name != null) 'name': name!,
-        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
-        if (uri != null) 'uri': uri!,
-        if (useDriverlessConfig != null)
-          'useDriverlessConfig': useDriverlessConfig!,
-      };
+    if (auxiliaryMessages != null) 'auxiliaryMessages': auxiliaryMessages!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (id != null) 'id': id!,
+    if (makeAndModel != null) 'makeAndModel': makeAndModel!,
+    if (name != null) 'name': name!,
+    if (orgUnitId != null) 'orgUnitId': orgUnitId!,
+    if (uri != null) 'uri': uri!,
+    if (useDriverlessConfig != null)
+      'useDriverlessConfig': useDriverlessConfig!,
+  };
 }
 
 /// Printer manufacturer and model
@@ -10994,24 +11208,20 @@ class PrinterModel {
   /// eq. "Brother"
   core.String? manufacturer;
 
-  PrinterModel({
-    this.displayName,
-    this.makeAndModel,
-    this.manufacturer,
-  });
+  PrinterModel({this.displayName, this.makeAndModel, this.manufacturer});
 
   PrinterModel.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          makeAndModel: json_['makeAndModel'] as core.String?,
-          manufacturer: json_['manufacturer'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        makeAndModel: json_['makeAndModel'] as core.String?,
+        manufacturer: json_['manufacturer'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (makeAndModel != null) 'makeAndModel': makeAndModel!,
-        if (manufacturer != null) 'manufacturer': manufacturer!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (makeAndModel != null) 'makeAndModel': makeAndModel!,
+    if (manufacturer != null) 'manufacturer': manufacturer!,
+  };
 }
 
 class Privilege {
@@ -11055,28 +11265,32 @@ class Privilege {
   });
 
   Privilege.fromJson(core.Map json_)
-      : this(
-          childPrivileges: (json_['childPrivileges'] as core.List?)
-              ?.map((value) => Privilege.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          isOuScopable: json_['isOuScopable'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          privilegeName: json_['privilegeName'] as core.String?,
-          serviceId: json_['serviceId'] as core.String?,
-          serviceName: json_['serviceName'] as core.String?,
-        );
+    : this(
+        childPrivileges:
+            (json_['childPrivileges'] as core.List?)
+                ?.map(
+                  (value) => Privilege.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        isOuScopable: json_['isOuScopable'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        privilegeName: json_['privilegeName'] as core.String?,
+        serviceId: json_['serviceId'] as core.String?,
+        serviceName: json_['serviceName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (childPrivileges != null) 'childPrivileges': childPrivileges!,
-        if (etag != null) 'etag': etag!,
-        if (isOuScopable != null) 'isOuScopable': isOuScopable!,
-        if (kind != null) 'kind': kind!,
-        if (privilegeName != null) 'privilegeName': privilegeName!,
-        if (serviceId != null) 'serviceId': serviceId!,
-        if (serviceName != null) 'serviceName': serviceName!,
-      };
+    if (childPrivileges != null) 'childPrivileges': childPrivileges!,
+    if (etag != null) 'etag': etag!,
+    if (isOuScopable != null) 'isOuScopable': isOuScopable!,
+    if (kind != null) 'kind': kind!,
+    if (privilegeName != null) 'privilegeName': privilegeName!,
+    if (serviceId != null) 'serviceId': serviceId!,
+    if (serviceName != null) 'serviceName': serviceName!,
+  };
 }
 
 class Privileges {
@@ -11091,27 +11305,27 @@ class Privileges {
   /// This is always `admin#directory#privileges`.
   core.String? kind;
 
-  Privileges({
-    this.etag,
-    this.items,
-    this.kind,
-  });
+  Privileges({this.etag, this.items, this.kind});
 
   Privileges.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          items: (json_['items'] as core.List?)
-              ?.map((value) => Privilege.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Privilege.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 class RoleRolePrivileges {
@@ -11124,21 +11338,18 @@ class RoleRolePrivileges {
   /// \[`Privileges.list()`\](https://developers.google.com/workspace/admin/directory/v1/reference/privileges/list).
   core.String? serviceId;
 
-  RoleRolePrivileges({
-    this.privilegeName,
-    this.serviceId,
-  });
+  RoleRolePrivileges({this.privilegeName, this.serviceId});
 
   RoleRolePrivileges.fromJson(core.Map json_)
-      : this(
-          privilegeName: json_['privilegeName'] as core.String?,
-          serviceId: json_['serviceId'] as core.String?,
-        );
+    : this(
+        privilegeName: json_['privilegeName'] as core.String?,
+        serviceId: json_['serviceId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (privilegeName != null) 'privilegeName': privilegeName!,
-        if (serviceId != null) 'serviceId': serviceId!,
-      };
+    if (privilegeName != null) 'privilegeName': privilegeName!,
+    if (serviceId != null) 'serviceId': serviceId!,
+  };
 }
 
 class Role {
@@ -11180,30 +11391,34 @@ class Role {
   });
 
   Role.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          isSuperAdminRole: json_['isSuperAdminRole'] as core.bool?,
-          isSystemRole: json_['isSystemRole'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          roleDescription: json_['roleDescription'] as core.String?,
-          roleId: json_['roleId'] as core.String?,
-          roleName: json_['roleName'] as core.String?,
-          rolePrivileges: (json_['rolePrivileges'] as core.List?)
-              ?.map((value) => RoleRolePrivileges.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        isSuperAdminRole: json_['isSuperAdminRole'] as core.bool?,
+        isSystemRole: json_['isSystemRole'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        roleDescription: json_['roleDescription'] as core.String?,
+        roleId: json_['roleId'] as core.String?,
+        roleName: json_['roleName'] as core.String?,
+        rolePrivileges:
+            (json_['rolePrivileges'] as core.List?)
+                ?.map(
+                  (value) => RoleRolePrivileges.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (isSuperAdminRole != null) 'isSuperAdminRole': isSuperAdminRole!,
-        if (isSystemRole != null) 'isSystemRole': isSystemRole!,
-        if (kind != null) 'kind': kind!,
-        if (roleDescription != null) 'roleDescription': roleDescription!,
-        if (roleId != null) 'roleId': roleId!,
-        if (roleName != null) 'roleName': roleName!,
-        if (rolePrivileges != null) 'rolePrivileges': rolePrivileges!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (isSuperAdminRole != null) 'isSuperAdminRole': isSuperAdminRole!,
+    if (isSystemRole != null) 'isSystemRole': isSystemRole!,
+    if (kind != null) 'kind': kind!,
+    if (roleDescription != null) 'roleDescription': roleDescription!,
+    if (roleId != null) 'roleId': roleId!,
+    if (roleName != null) 'roleName': roleName!,
+    if (rolePrivileges != null) 'rolePrivileges': rolePrivileges!,
+  };
 }
 
 /// Defines an assignment of a role.
@@ -11288,29 +11503,29 @@ class RoleAssignment {
   });
 
   RoleAssignment.fromJson(core.Map json_)
-      : this(
-          assignedTo: json_['assignedTo'] as core.String?,
-          assigneeType: json_['assigneeType'] as core.String?,
-          condition: json_['condition'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          orgUnitId: json_['orgUnitId'] as core.String?,
-          roleAssignmentId: json_['roleAssignmentId'] as core.String?,
-          roleId: json_['roleId'] as core.String?,
-          scopeType: json_['scopeType'] as core.String?,
-        );
+    : this(
+        assignedTo: json_['assignedTo'] as core.String?,
+        assigneeType: json_['assigneeType'] as core.String?,
+        condition: json_['condition'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        orgUnitId: json_['orgUnitId'] as core.String?,
+        roleAssignmentId: json_['roleAssignmentId'] as core.String?,
+        roleId: json_['roleId'] as core.String?,
+        scopeType: json_['scopeType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignedTo != null) 'assignedTo': assignedTo!,
-        if (assigneeType != null) 'assigneeType': assigneeType!,
-        if (condition != null) 'condition': condition!,
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (orgUnitId != null) 'orgUnitId': orgUnitId!,
-        if (roleAssignmentId != null) 'roleAssignmentId': roleAssignmentId!,
-        if (roleId != null) 'roleId': roleId!,
-        if (scopeType != null) 'scopeType': scopeType!,
-      };
+    if (assignedTo != null) 'assignedTo': assignedTo!,
+    if (assigneeType != null) 'assigneeType': assigneeType!,
+    if (condition != null) 'condition': condition!,
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (orgUnitId != null) 'orgUnitId': orgUnitId!,
+    if (roleAssignmentId != null) 'roleAssignmentId': roleAssignmentId!,
+    if (roleId != null) 'roleId': roleId!,
+    if (scopeType != null) 'scopeType': scopeType!,
+  };
 }
 
 class RoleAssignments {
@@ -11326,30 +11541,29 @@ class RoleAssignments {
   core.String? kind;
   core.String? nextPageToken;
 
-  RoleAssignments({
-    this.etag,
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  RoleAssignments({this.etag, this.items, this.kind, this.nextPageToken});
 
   RoleAssignments.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          items: (json_['items'] as core.List?)
-              ?.map((value) => RoleAssignment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => RoleAssignment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 class Roles {
@@ -11365,30 +11579,29 @@ class Roles {
   core.String? kind;
   core.String? nextPageToken;
 
-  Roles({
-    this.etag,
-    this.items,
-    this.kind,
-    this.nextPageToken,
-  });
+  Roles({this.etag, this.items, this.kind, this.nextPageToken});
 
   Roles.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Role.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Role.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The type of API resource.
@@ -11426,26 +11639,30 @@ class Schema {
   });
 
   Schema.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          fields: (json_['fields'] as core.List?)
-              ?.map((value) => SchemaFieldSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-          schemaId: json_['schemaId'] as core.String?,
-          schemaName: json_['schemaName'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        fields:
+            (json_['fields'] as core.List?)
+                ?.map(
+                  (value) => SchemaFieldSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        schemaId: json_['schemaId'] as core.String?,
+        schemaName: json_['schemaName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (fields != null) 'fields': fields!,
-        if (kind != null) 'kind': kind!,
-        if (schemaId != null) 'schemaId': schemaId!,
-        if (schemaName != null) 'schemaName': schemaName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (fields != null) 'fields': fields!,
+    if (kind != null) 'kind': kind!,
+    if (schemaId != null) 'schemaId': schemaId!,
+    if (schemaName != null) 'schemaName': schemaName!,
+  };
 }
 
 /// Indexing spec for a numeric field.
@@ -11465,21 +11682,18 @@ class SchemaFieldSpecNumericIndexingSpec {
   /// range will still be indexed, but search may not be as performant.
   core.double? minValue;
 
-  SchemaFieldSpecNumericIndexingSpec({
-    this.maxValue,
-    this.minValue,
-  });
+  SchemaFieldSpecNumericIndexingSpec({this.maxValue, this.minValue});
 
   SchemaFieldSpecNumericIndexingSpec.fromJson(core.Map json_)
-      : this(
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
-        );
+    : this(
+        maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
+        minValue: (json_['minValue'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
-      };
+    if (maxValue != null) 'maxValue': maxValue!,
+    if (minValue != null) 'minValue': minValue!,
+  };
 }
 
 /// You can use schemas to add custom fields to user profiles.
@@ -11547,36 +11761,38 @@ class SchemaFieldSpec {
   });
 
   SchemaFieldSpec.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          fieldId: json_['fieldId'] as core.String?,
-          fieldName: json_['fieldName'] as core.String?,
-          fieldType: json_['fieldType'] as core.String?,
-          indexed: json_['indexed'] as core.bool?,
-          kind: json_['kind'] as core.String?,
-          multiValued: json_['multiValued'] as core.bool?,
-          numericIndexingSpec: json_.containsKey('numericIndexingSpec')
-              ? SchemaFieldSpecNumericIndexingSpec.fromJson(
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        fieldId: json_['fieldId'] as core.String?,
+        fieldName: json_['fieldName'] as core.String?,
+        fieldType: json_['fieldType'] as core.String?,
+        indexed: json_['indexed'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        multiValued: json_['multiValued'] as core.bool?,
+        numericIndexingSpec:
+            json_.containsKey('numericIndexingSpec')
+                ? SchemaFieldSpecNumericIndexingSpec.fromJson(
                   json_['numericIndexingSpec']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          readAccessType: json_['readAccessType'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        readAccessType: json_['readAccessType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (fieldId != null) 'fieldId': fieldId!,
-        if (fieldName != null) 'fieldName': fieldName!,
-        if (fieldType != null) 'fieldType': fieldType!,
-        if (indexed != null) 'indexed': indexed!,
-        if (kind != null) 'kind': kind!,
-        if (multiValued != null) 'multiValued': multiValued!,
-        if (numericIndexingSpec != null)
-          'numericIndexingSpec': numericIndexingSpec!,
-        if (readAccessType != null) 'readAccessType': readAccessType!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (fieldId != null) 'fieldId': fieldId!,
+    if (fieldName != null) 'fieldName': fieldName!,
+    if (fieldType != null) 'fieldType': fieldType!,
+    if (indexed != null) 'indexed': indexed!,
+    if (kind != null) 'kind': kind!,
+    if (multiValued != null) 'multiValued': multiValued!,
+    if (numericIndexingSpec != null)
+      'numericIndexingSpec': numericIndexingSpec!,
+    if (readAccessType != null) 'readAccessType': readAccessType!,
+  };
 }
 
 /// JSON response template for List Schema operation in Directory API.
@@ -11590,27 +11806,27 @@ class Schemas {
   /// A list of UserSchema objects.
   core.List<Schema>? schemas;
 
-  Schemas({
-    this.etag,
-    this.kind,
-    this.schemas,
-  });
+  Schemas({this.etag, this.kind, this.schemas});
 
   Schemas.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          schemas: (json_['schemas'] as core.List?)
-              ?.map((value) =>
-                  Schema.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        schemas:
+            (json_['schemas'] as core.List?)
+                ?.map(
+                  (value) => Schema.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (schemas != null) 'schemas': schemas!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (schemas != null) 'schemas': schemas!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -11667,29 +11883,30 @@ class Token {
   });
 
   Token.fromJson(core.Map json_)
-      : this(
-          anonymous: json_['anonymous'] as core.bool?,
-          clientId: json_['clientId'] as core.String?,
-          displayText: json_['displayText'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          nativeApp: json_['nativeApp'] as core.bool?,
-          scopes: (json_['scopes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          userKey: json_['userKey'] as core.String?,
-        );
+    : this(
+        anonymous: json_['anonymous'] as core.bool?,
+        clientId: json_['clientId'] as core.String?,
+        displayText: json_['displayText'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        nativeApp: json_['nativeApp'] as core.bool?,
+        scopes:
+            (json_['scopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        userKey: json_['userKey'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (anonymous != null) 'anonymous': anonymous!,
-        if (clientId != null) 'clientId': clientId!,
-        if (displayText != null) 'displayText': displayText!,
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (nativeApp != null) 'nativeApp': nativeApp!,
-        if (scopes != null) 'scopes': scopes!,
-        if (userKey != null) 'userKey': userKey!,
-      };
+    if (anonymous != null) 'anonymous': anonymous!,
+    if (clientId != null) 'clientId': clientId!,
+    if (displayText != null) 'displayText': displayText!,
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (nativeApp != null) 'nativeApp': nativeApp!,
+    if (scopes != null) 'scopes': scopes!,
+    if (userKey != null) 'userKey': userKey!,
+  };
 }
 
 /// JSON response template for List tokens operation in Directory API.
@@ -11705,27 +11922,27 @@ class Tokens {
   /// This is always `admin#directory#tokenList`.
   core.String? kind;
 
-  Tokens({
-    this.etag,
-    this.items,
-    this.kind,
-  });
+  Tokens({this.etag, this.items, this.kind});
 
   Tokens.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          items: (json_['items'] as core.List?)
-              ?.map((value) =>
-                  Token.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Token.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+  };
 }
 
 /// The Directory API allows you to create and manage your account's users, user
@@ -12103,132 +12320,137 @@ class User {
   });
 
   User.fromJson(core.Map json_)
-      : this(
-          addresses: json_['addresses'],
-          agreedToTerms: json_['agreedToTerms'] as core.bool?,
-          aliases: (json_['aliases'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          archived: json_['archived'] as core.bool?,
-          changePasswordAtNextLogin:
-              json_['changePasswordAtNextLogin'] as core.bool?,
-          creationTime: json_.containsKey('creationTime')
-              ? core.DateTime.parse(json_['creationTime'] as core.String)
-              : null,
-          customSchemas:
-              (json_['customSchemas'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.Map<core.String, core.dynamic>,
+    : this(
+        addresses: json_['addresses'],
+        agreedToTerms: json_['agreedToTerms'] as core.bool?,
+        aliases:
+            (json_['aliases'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        archived: json_['archived'] as core.bool?,
+        changePasswordAtNextLogin:
+            json_['changePasswordAtNextLogin'] as core.bool?,
+        creationTime:
+            json_.containsKey('creationTime')
+                ? core.DateTime.parse(json_['creationTime'] as core.String)
+                : null,
+        customSchemas: (json_['customSchemas']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
             ),
-          ),
-          customerId: json_['customerId'] as core.String?,
-          deletionTime: json_.containsKey('deletionTime')
-              ? core.DateTime.parse(json_['deletionTime'] as core.String)
-              : null,
-          emails: json_['emails'],
-          etag: json_['etag'] as core.String?,
-          externalIds: json_['externalIds'],
-          gender: json_['gender'],
-          hashFunction: json_['hashFunction'] as core.String?,
-          id: json_['id'] as core.String?,
-          ims: json_['ims'],
-          includeInGlobalAddressList:
-              json_['includeInGlobalAddressList'] as core.bool?,
-          ipWhitelisted: json_['ipWhitelisted'] as core.bool?,
-          isAdmin: json_['isAdmin'] as core.bool?,
-          isDelegatedAdmin: json_['isDelegatedAdmin'] as core.bool?,
-          isEnforcedIn2Sv: json_['isEnforcedIn2Sv'] as core.bool?,
-          isEnrolledIn2Sv: json_['isEnrolledIn2Sv'] as core.bool?,
-          isMailboxSetup: json_['isMailboxSetup'] as core.bool?,
-          keywords: json_['keywords'],
-          kind: json_['kind'] as core.String?,
-          languages: json_['languages'],
-          lastLoginTime: json_.containsKey('lastLoginTime')
-              ? core.DateTime.parse(json_['lastLoginTime'] as core.String)
-              : null,
-          locations: json_['locations'],
-          name: json_.containsKey('name')
-              ? UserName.fromJson(
-                  json_['name'] as core.Map<core.String, core.dynamic>)
-              : null,
-          nonEditableAliases: (json_['nonEditableAliases'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          notes: json_['notes'],
-          orgUnitPath: json_['orgUnitPath'] as core.String?,
-          organizations: json_['organizations'],
-          password: json_['password'] as core.String?,
-          phones: json_['phones'],
-          posixAccounts: json_['posixAccounts'],
-          primaryEmail: json_['primaryEmail'] as core.String?,
-          recoveryEmail: json_['recoveryEmail'] as core.String?,
-          recoveryPhone: json_['recoveryPhone'] as core.String?,
-          relations: json_['relations'],
-          sshPublicKeys: json_['sshPublicKeys'],
-          suspended: json_['suspended'] as core.bool?,
-          suspensionReason: json_['suspensionReason'] as core.String?,
-          thumbnailPhotoEtag: json_['thumbnailPhotoEtag'] as core.String?,
-          thumbnailPhotoUrl: json_['thumbnailPhotoUrl'] as core.String?,
-          websites: json_['websites'],
-        );
+        customerId: json_['customerId'] as core.String?,
+        deletionTime:
+            json_.containsKey('deletionTime')
+                ? core.DateTime.parse(json_['deletionTime'] as core.String)
+                : null,
+        emails: json_['emails'],
+        etag: json_['etag'] as core.String?,
+        externalIds: json_['externalIds'],
+        gender: json_['gender'],
+        hashFunction: json_['hashFunction'] as core.String?,
+        id: json_['id'] as core.String?,
+        ims: json_['ims'],
+        includeInGlobalAddressList:
+            json_['includeInGlobalAddressList'] as core.bool?,
+        ipWhitelisted: json_['ipWhitelisted'] as core.bool?,
+        isAdmin: json_['isAdmin'] as core.bool?,
+        isDelegatedAdmin: json_['isDelegatedAdmin'] as core.bool?,
+        isEnforcedIn2Sv: json_['isEnforcedIn2Sv'] as core.bool?,
+        isEnrolledIn2Sv: json_['isEnrolledIn2Sv'] as core.bool?,
+        isMailboxSetup: json_['isMailboxSetup'] as core.bool?,
+        keywords: json_['keywords'],
+        kind: json_['kind'] as core.String?,
+        languages: json_['languages'],
+        lastLoginTime:
+            json_.containsKey('lastLoginTime')
+                ? core.DateTime.parse(json_['lastLoginTime'] as core.String)
+                : null,
+        locations: json_['locations'],
+        name:
+            json_.containsKey('name')
+                ? UserName.fromJson(
+                  json_['name'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nonEditableAliases:
+            (json_['nonEditableAliases'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        notes: json_['notes'],
+        orgUnitPath: json_['orgUnitPath'] as core.String?,
+        organizations: json_['organizations'],
+        password: json_['password'] as core.String?,
+        phones: json_['phones'],
+        posixAccounts: json_['posixAccounts'],
+        primaryEmail: json_['primaryEmail'] as core.String?,
+        recoveryEmail: json_['recoveryEmail'] as core.String?,
+        recoveryPhone: json_['recoveryPhone'] as core.String?,
+        relations: json_['relations'],
+        sshPublicKeys: json_['sshPublicKeys'],
+        suspended: json_['suspended'] as core.bool?,
+        suspensionReason: json_['suspensionReason'] as core.String?,
+        thumbnailPhotoEtag: json_['thumbnailPhotoEtag'] as core.String?,
+        thumbnailPhotoUrl: json_['thumbnailPhotoUrl'] as core.String?,
+        websites: json_['websites'],
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addresses != null) 'addresses': addresses!,
-        if (agreedToTerms != null) 'agreedToTerms': agreedToTerms!,
-        if (aliases != null) 'aliases': aliases!,
-        if (archived != null) 'archived': archived!,
-        if (changePasswordAtNextLogin != null)
-          'changePasswordAtNextLogin': changePasswordAtNextLogin!,
-        if (creationTime != null)
-          'creationTime': creationTime!.toUtc().toIso8601String(),
-        if (customSchemas != null) 'customSchemas': customSchemas!,
-        if (customerId != null) 'customerId': customerId!,
-        if (deletionTime != null)
-          'deletionTime': deletionTime!.toUtc().toIso8601String(),
-        if (emails != null) 'emails': emails!,
-        if (etag != null) 'etag': etag!,
-        if (externalIds != null) 'externalIds': externalIds!,
-        if (gender != null) 'gender': gender!,
-        if (hashFunction != null) 'hashFunction': hashFunction!,
-        if (id != null) 'id': id!,
-        if (ims != null) 'ims': ims!,
-        if (includeInGlobalAddressList != null)
-          'includeInGlobalAddressList': includeInGlobalAddressList!,
-        if (ipWhitelisted != null) 'ipWhitelisted': ipWhitelisted!,
-        if (isAdmin != null) 'isAdmin': isAdmin!,
-        if (isDelegatedAdmin != null) 'isDelegatedAdmin': isDelegatedAdmin!,
-        if (isEnforcedIn2Sv != null) 'isEnforcedIn2Sv': isEnforcedIn2Sv!,
-        if (isEnrolledIn2Sv != null) 'isEnrolledIn2Sv': isEnrolledIn2Sv!,
-        if (isMailboxSetup != null) 'isMailboxSetup': isMailboxSetup!,
-        if (keywords != null) 'keywords': keywords!,
-        if (kind != null) 'kind': kind!,
-        if (languages != null) 'languages': languages!,
-        if (lastLoginTime != null)
-          'lastLoginTime': lastLoginTime!.toUtc().toIso8601String(),
-        if (locations != null) 'locations': locations!,
-        if (name != null) 'name': name!,
-        if (nonEditableAliases != null)
-          'nonEditableAliases': nonEditableAliases!,
-        if (notes != null) 'notes': notes!,
-        if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
-        if (organizations != null) 'organizations': organizations!,
-        if (password != null) 'password': password!,
-        if (phones != null) 'phones': phones!,
-        if (posixAccounts != null) 'posixAccounts': posixAccounts!,
-        if (primaryEmail != null) 'primaryEmail': primaryEmail!,
-        if (recoveryEmail != null) 'recoveryEmail': recoveryEmail!,
-        if (recoveryPhone != null) 'recoveryPhone': recoveryPhone!,
-        if (relations != null) 'relations': relations!,
-        if (sshPublicKeys != null) 'sshPublicKeys': sshPublicKeys!,
-        if (suspended != null) 'suspended': suspended!,
-        if (suspensionReason != null) 'suspensionReason': suspensionReason!,
-        if (thumbnailPhotoEtag != null)
-          'thumbnailPhotoEtag': thumbnailPhotoEtag!,
-        if (thumbnailPhotoUrl != null) 'thumbnailPhotoUrl': thumbnailPhotoUrl!,
-        if (websites != null) 'websites': websites!,
-      };
+    if (addresses != null) 'addresses': addresses!,
+    if (agreedToTerms != null) 'agreedToTerms': agreedToTerms!,
+    if (aliases != null) 'aliases': aliases!,
+    if (archived != null) 'archived': archived!,
+    if (changePasswordAtNextLogin != null)
+      'changePasswordAtNextLogin': changePasswordAtNextLogin!,
+    if (creationTime != null)
+      'creationTime': creationTime!.toUtc().toIso8601String(),
+    if (customSchemas != null) 'customSchemas': customSchemas!,
+    if (customerId != null) 'customerId': customerId!,
+    if (deletionTime != null)
+      'deletionTime': deletionTime!.toUtc().toIso8601String(),
+    if (emails != null) 'emails': emails!,
+    if (etag != null) 'etag': etag!,
+    if (externalIds != null) 'externalIds': externalIds!,
+    if (gender != null) 'gender': gender!,
+    if (hashFunction != null) 'hashFunction': hashFunction!,
+    if (id != null) 'id': id!,
+    if (ims != null) 'ims': ims!,
+    if (includeInGlobalAddressList != null)
+      'includeInGlobalAddressList': includeInGlobalAddressList!,
+    if (ipWhitelisted != null) 'ipWhitelisted': ipWhitelisted!,
+    if (isAdmin != null) 'isAdmin': isAdmin!,
+    if (isDelegatedAdmin != null) 'isDelegatedAdmin': isDelegatedAdmin!,
+    if (isEnforcedIn2Sv != null) 'isEnforcedIn2Sv': isEnforcedIn2Sv!,
+    if (isEnrolledIn2Sv != null) 'isEnrolledIn2Sv': isEnrolledIn2Sv!,
+    if (isMailboxSetup != null) 'isMailboxSetup': isMailboxSetup!,
+    if (keywords != null) 'keywords': keywords!,
+    if (kind != null) 'kind': kind!,
+    if (languages != null) 'languages': languages!,
+    if (lastLoginTime != null)
+      'lastLoginTime': lastLoginTime!.toUtc().toIso8601String(),
+    if (locations != null) 'locations': locations!,
+    if (name != null) 'name': name!,
+    if (nonEditableAliases != null) 'nonEditableAliases': nonEditableAliases!,
+    if (notes != null) 'notes': notes!,
+    if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
+    if (organizations != null) 'organizations': organizations!,
+    if (password != null) 'password': password!,
+    if (phones != null) 'phones': phones!,
+    if (posixAccounts != null) 'posixAccounts': posixAccounts!,
+    if (primaryEmail != null) 'primaryEmail': primaryEmail!,
+    if (recoveryEmail != null) 'recoveryEmail': recoveryEmail!,
+    if (recoveryPhone != null) 'recoveryPhone': recoveryPhone!,
+    if (relations != null) 'relations': relations!,
+    if (sshPublicKeys != null) 'sshPublicKeys': sshPublicKeys!,
+    if (suspended != null) 'suspended': suspended!,
+    if (suspensionReason != null) 'suspensionReason': suspensionReason!,
+    if (thumbnailPhotoEtag != null) 'thumbnailPhotoEtag': thumbnailPhotoEtag!,
+    if (thumbnailPhotoUrl != null) 'thumbnailPhotoUrl': thumbnailPhotoUrl!,
+    if (websites != null) 'websites': websites!,
+  };
 }
 
 /// JSON template for a set of custom properties (i.e. all fields in a
@@ -12239,18 +12461,14 @@ class UserMakeAdmin {
   /// Indicates the administrator status of the user.
   core.bool? status;
 
-  UserMakeAdmin({
-    this.status,
-  });
+  UserMakeAdmin({this.status});
 
   UserMakeAdmin.fromJson(core.Map json_)
-      : this(
-          status: json_['status'] as core.bool?,
-        );
+    : this(status: json_['status'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (status != null) 'status': status!,
-      };
+    if (status != null) 'status': status!,
+  };
 }
 
 class UserName {
@@ -12273,27 +12491,22 @@ class UserName {
   /// Required when creating a user account.
   core.String? givenName;
 
-  UserName({
-    this.displayName,
-    this.familyName,
-    this.fullName,
-    this.givenName,
-  });
+  UserName({this.displayName, this.familyName, this.fullName, this.givenName});
 
   UserName.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          familyName: json_['familyName'] as core.String?,
-          fullName: json_['fullName'] as core.String?,
-          givenName: json_['givenName'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        familyName: json_['familyName'] as core.String?,
+        fullName: json_['fullName'] as core.String?,
+        givenName: json_['givenName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (familyName != null) 'familyName': familyName!,
-        if (fullName != null) 'fullName': fullName!,
-        if (givenName != null) 'givenName': givenName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (familyName != null) 'familyName': familyName!,
+    if (fullName != null) 'fullName': fullName!,
+    if (givenName != null) 'givenName': givenName!,
+  };
 }
 
 class UserPhoto {
@@ -12332,8 +12545,10 @@ class UserPhoto {
   core.List<core.int> get photoDataAsBytes => convert.base64.decode(photoData!);
 
   set photoDataAsBytes(core.List<core.int> bytes_) {
-    photoData =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    photoData = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The user's primary email address.
@@ -12354,45 +12569,41 @@ class UserPhoto {
   });
 
   UserPhoto.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          height: json_['height'] as core.int?,
-          id: json_['id'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          mimeType: json_['mimeType'] as core.String?,
-          photoData: json_['photoData'] as core.String?,
-          primaryEmail: json_['primaryEmail'] as core.String?,
-          width: json_['width'] as core.int?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        height: json_['height'] as core.int?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+        photoData: json_['photoData'] as core.String?,
+        primaryEmail: json_['primaryEmail'] as core.String?,
+        width: json_['width'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (height != null) 'height': height!,
-        if (id != null) 'id': id!,
-        if (kind != null) 'kind': kind!,
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (photoData != null) 'photoData': photoData!,
-        if (primaryEmail != null) 'primaryEmail': primaryEmail!,
-        if (width != null) 'width': width!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (height != null) 'height': height!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (mimeType != null) 'mimeType': mimeType!,
+    if (photoData != null) 'photoData': photoData!,
+    if (primaryEmail != null) 'primaryEmail': primaryEmail!,
+    if (width != null) 'width': width!,
+  };
 }
 
 class UserUndelete {
   /// OrgUnit of User
   core.String? orgUnitPath;
 
-  UserUndelete({
-    this.orgUnitPath,
-  });
+  UserUndelete({this.orgUnitPath});
 
   UserUndelete.fromJson(core.Map json_)
-      : this(
-          orgUnitPath: json_['orgUnitPath'] as core.String?,
-        );
+    : this(orgUnitPath: json_['orgUnitPath'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
-      };
+    if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
+  };
 }
 
 class Users {
@@ -12422,24 +12633,28 @@ class Users {
   });
 
   Users.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          triggerEvent: json_['trigger_event'] as core.String?,
-          users: (json_['users'] as core.List?)
-              ?.map((value) =>
-                  User.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        triggerEvent: json_['trigger_event'] as core.String?,
+        users:
+            (json_['users'] as core.List?)
+                ?.map(
+                  (value) => User.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (triggerEvent != null) 'trigger_event': triggerEvent!,
-        if (users != null) 'users': users!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (triggerEvent != null) 'trigger_event': triggerEvent!,
+    if (users != null) 'users': users!,
+  };
 }
 
 /// The Directory API allows you to view, generate, and invalidate backup
@@ -12462,27 +12677,22 @@ class VerificationCode {
   /// result.
   core.String? verificationCode;
 
-  VerificationCode({
-    this.etag,
-    this.kind,
-    this.userId,
-    this.verificationCode,
-  });
+  VerificationCode({this.etag, this.kind, this.userId, this.verificationCode});
 
   VerificationCode.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          userId: json_['userId'] as core.String?,
-          verificationCode: json_['verificationCode'] as core.String?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        userId: json_['userId'] as core.String?,
+        verificationCode: json_['verificationCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (kind != null) 'kind': kind!,
-        if (userId != null) 'userId': userId!,
-        if (verificationCode != null) 'verificationCode': verificationCode!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (userId != null) 'userId': userId!,
+    if (verificationCode != null) 'verificationCode': verificationCode!,
+  };
 }
 
 /// JSON response template for list verification codes operation in Directory
@@ -12499,25 +12709,25 @@ class VerificationCodes {
   /// This is always `admin#directory#verificationCodesList`.
   core.String? kind;
 
-  VerificationCodes({
-    this.etag,
-    this.items,
-    this.kind,
-  });
+  VerificationCodes({this.etag, this.items, this.kind});
 
   VerificationCodes.fromJson(core.Map json_)
-      : this(
-          etag: json_['etag'] as core.String?,
-          items: (json_['items'] as core.List?)
-              ?.map((value) => VerificationCode.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kind: json_['kind'] as core.String?,
-        );
+    : this(
+        etag: json_['etag'] as core.String?,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => VerificationCode.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (etag != null) 'etag': etag!,
-        if (items != null) 'items': items!,
-        if (kind != null) 'kind': kind!,
-      };
+    if (etag != null) 'etag': etag!,
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+  };
 }

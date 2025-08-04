@@ -55,11 +55,16 @@ class PlaycustomappApi {
 
   AccountsResource get accounts => AccountsResource(_requester);
 
-  PlaycustomappApi(http.Client client,
-      {core.String rootUrl = 'https://playcustomapp.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  PlaycustomappApi(
+    http.Client client, {
+    core.String rootUrl = 'https://playcustomapp.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class AccountsResource {
@@ -114,15 +119,18 @@ class AccountsCustomAppsResource {
 
     core.String url_;
     if (uploadMedia == null) {
-      url_ = 'playcustomapp/v1/accounts/' +
+      url_ =
+          'playcustomapp/v1/accounts/' +
           commons.escapeVariable('$account') +
           '/customApps';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      url_ = '/resumable/upload/playcustomapp/v1/accounts/' +
+      url_ =
+          '/resumable/upload/playcustomapp/v1/accounts/' +
           commons.escapeVariable('$account') +
           '/customApps';
     } else {
-      url_ = '/upload/playcustomapp/v1/accounts/' +
+      url_ =
+          '/upload/playcustomapp/v1/accounts/' +
           commons.escapeVariable('$account') +
           '/customApps';
     }
@@ -172,22 +180,26 @@ class CustomApp {
   });
 
   CustomApp.fromJson(core.Map json_)
-      : this(
-          languageCode: json_['languageCode'] as core.String?,
-          organizations: (json_['organizations'] as core.List?)
-              ?.map((value) => Organization.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          packageName: json_['packageName'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        languageCode: json_['languageCode'] as core.String?,
+        organizations:
+            (json_['organizations'] as core.List?)
+                ?.map(
+                  (value) => Organization.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        packageName: json_['packageName'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (organizations != null) 'organizations': organizations!,
-        if (packageName != null) 'packageName': packageName!,
-        if (title != null) 'title': title!,
-      };
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (organizations != null) 'organizations': organizations!,
+    if (packageName != null) 'packageName': packageName!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Represents an organization that can access a custom app.
@@ -203,19 +215,16 @@ class Organization {
   /// Optional.
   core.String? organizationName;
 
-  Organization({
-    this.organizationId,
-    this.organizationName,
-  });
+  Organization({this.organizationId, this.organizationName});
 
   Organization.fromJson(core.Map json_)
-      : this(
-          organizationId: json_['organizationId'] as core.String?,
-          organizationName: json_['organizationName'] as core.String?,
-        );
+    : this(
+        organizationId: json_['organizationId'] as core.String?,
+        organizationName: json_['organizationName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (organizationId != null) 'organizationId': organizationId!,
-        if (organizationName != null) 'organizationName': organizationName!,
-      };
+    if (organizationId != null) 'organizationId': organizationId!,
+    if (organizationName != null) 'organizationName': organizationName!,
+  };
 }

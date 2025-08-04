@@ -27,7 +27,7 @@ abstract class DartSchemaType {
   bool _resolved = false;
 
   DartSchemaType(this.imports, this.className, {Comment? comment})
-      : comment = comment ?? Comment.empty;
+    : comment = comment ?? Comment.empty;
 
   DartSchemaType resolve(DartSchemaTypeDB db) {
     if (!_resolved) {

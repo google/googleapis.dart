@@ -11,11 +11,7 @@ class AuthenticationException implements Exception {
   /// about the error.
   final String? errorUri;
 
-  AuthenticationException(
-    this.error, {
-    this.errorDescription,
-    this.errorUri,
-  });
+  AuthenticationException(this.error, {this.errorDescription, this.errorUri});
 
   @override
   String toString() => 'AuthenticationException: $error';

@@ -55,11 +55,16 @@ class ConnectorsApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ConnectorsApi(http.Client client,
-      {core.String rootUrl = 'https://connectors.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ConnectorsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://connectors.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -89,7 +94,7 @@ class ProjectsLocationsConnectionsResource {
       ProjectsLocationsConnectionsEntityTypesResource(_requester);
 
   ProjectsLocationsConnectionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Reports readiness status of the connector.
   ///
@@ -128,7 +133,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return CheckReadinessResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Reports the status of the connection.
@@ -171,7 +177,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return CheckStatusResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// ExchangeAuthCode exchanges the OAuth authorization code (and other
@@ -214,7 +221,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return ExchangeAuthCodeResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Executes a SQL statement specified in the body of the request.
@@ -261,7 +269,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return ExecuteSqlQueryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// RefreshAccessToken exchanges the OAuth refresh token (and other necessary
@@ -304,7 +313,8 @@ class ProjectsLocationsConnectionsResource {
       queryParams: queryParams_,
     );
     return RefreshAccessTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -312,7 +322,7 @@ class ProjectsLocationsConnectionsActionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConnectionsActionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Executes an action with the name specified in the request.
   ///
@@ -357,7 +367,8 @@ class ProjectsLocationsConnectionsActionsResource {
       queryParams: queryParams_,
     );
     return ExecuteActionResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the schema of the given action.
@@ -461,7 +472,8 @@ class ProjectsLocationsConnectionsActionsResource {
       queryParams: queryParams_,
     );
     return ListActionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -472,7 +484,7 @@ class ProjectsLocationsConnectionsEntityTypesResource {
       ProjectsLocationsConnectionsEntityTypesEntitiesResource(_requester);
 
   ProjectsLocationsConnectionsEntityTypesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets metadata of given entity type
   ///
@@ -519,7 +531,8 @@ class ProjectsLocationsConnectionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return EntityType.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists metadata related to all entity types present in the external system.
@@ -577,7 +590,8 @@ class ProjectsLocationsConnectionsEntityTypesResource {
       queryParams: queryParams_,
     );
     return ListEntityTypesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -585,8 +599,8 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsConnectionsEntityTypesEntitiesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a new entity row of the specified entity type in the external
   /// system.
@@ -655,10 +669,7 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -668,6 +679,7 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -711,13 +723,15 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v2/' +
+    final url_ =
+        'v2/' +
         core.Uri.encodeFull('$entityType') +
         '/entities:deleteEntitiesWithConditions';
 
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -743,10 +757,7 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Entity> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Entity> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -831,7 +842,8 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
       queryParams: queryParams_,
     );
     return ListEntitiesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing entity row matching the entity type and entity id
@@ -913,7 +925,7 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UpdateEntitiesWithConditionsResponse>
-      updateEntitiesWithConditions(
+  updateEntitiesWithConditions(
     Entity request,
     core.String entityType, {
     core.String? conditions,
@@ -925,7 +937,8 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v2/' +
+    final url_ =
+        'v2/' +
         core.Uri.encodeFull('$entityType') +
         '/entities:updateEntitiesWithConditions';
 
@@ -936,7 +949,8 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
       queryParams: queryParams_,
     );
     return UpdateEntitiesWithConditionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -952,24 +966,20 @@ class AccessCredentials {
   /// OAuth refresh token.
   core.String? refreshToken;
 
-  AccessCredentials({
-    this.accessToken,
-    this.expiresIn,
-    this.refreshToken,
-  });
+  AccessCredentials({this.accessToken, this.expiresIn, this.refreshToken});
 
   AccessCredentials.fromJson(core.Map json_)
-      : this(
-          accessToken: json_['accessToken'] as core.String?,
-          expiresIn: json_['expiresIn'] as core.String?,
-          refreshToken: json_['refreshToken'] as core.String?,
-        );
+    : this(
+        accessToken: json_['accessToken'] as core.String?,
+        expiresIn: json_['expiresIn'] as core.String?,
+        refreshToken: json_['refreshToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessToken != null) 'accessToken': accessToken!,
-        if (expiresIn != null) 'expiresIn': expiresIn!,
-        if (refreshToken != null) 'refreshToken': refreshToken!,
-      };
+    if (accessToken != null) 'accessToken': accessToken!,
+    if (expiresIn != null) 'expiresIn': expiresIn!,
+    if (refreshToken != null) 'refreshToken': refreshToken!,
+  };
 }
 
 /// Action message contains metadata information about a single action present
@@ -1007,37 +1017,51 @@ class Action {
   });
 
   Action.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          inputJsonSchema: json_.containsKey('inputJsonSchema')
-              ? JsonSchema.fromJson(json_['inputJsonSchema']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          inputParameters: (json_['inputParameters'] as core.List?)
-              ?.map((value) => InputParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          resultJsonSchema: json_.containsKey('resultJsonSchema')
-              ? JsonSchema.fromJson(json_['resultJsonSchema']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          resultMetadata: (json_['resultMetadata'] as core.List?)
-              ?.map((value) => ResultMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        inputJsonSchema:
+            json_.containsKey('inputJsonSchema')
+                ? JsonSchema.fromJson(
+                  json_['inputJsonSchema']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        inputParameters:
+            (json_['inputParameters'] as core.List?)
+                ?.map(
+                  (value) => InputParameter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        resultJsonSchema:
+            json_.containsKey('resultJsonSchema')
+                ? JsonSchema.fromJson(
+                  json_['resultJsonSchema']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resultMetadata:
+            (json_['resultMetadata'] as core.List?)
+                ?.map(
+                  (value) => ResultMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (inputJsonSchema != null) 'inputJsonSchema': inputJsonSchema!,
-        if (inputParameters != null) 'inputParameters': inputParameters!,
-        if (name != null) 'name': name!,
-        if (resultJsonSchema != null) 'resultJsonSchema': resultJsonSchema!,
-        if (resultMetadata != null) 'resultMetadata': resultMetadata!,
-      };
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (inputJsonSchema != null) 'inputJsonSchema': inputJsonSchema!,
+    if (inputParameters != null) 'inputParameters': inputParameters!,
+    if (name != null) 'name': name!,
+    if (resultJsonSchema != null) 'resultJsonSchema': resultJsonSchema!,
+    if (resultMetadata != null) 'resultMetadata': resultMetadata!,
+  };
 }
 
 /// AuthCodeData contains the data the runtime plane will give the connector
@@ -1066,39 +1090,36 @@ class AuthCodeData {
   });
 
   AuthCodeData.fromJson(core.Map json_)
-      : this(
-          authCode: json_['authCode'] as core.String?,
-          pkceVerifier: json_['pkceVerifier'] as core.String?,
-          redirectUri: json_['redirectUri'] as core.String?,
-          scopes: (json_['scopes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        authCode: json_['authCode'] as core.String?,
+        pkceVerifier: json_['pkceVerifier'] as core.String?,
+        redirectUri: json_['redirectUri'] as core.String?,
+        scopes:
+            (json_['scopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authCode != null) 'authCode': authCode!,
-        if (pkceVerifier != null) 'pkceVerifier': pkceVerifier!,
-        if (redirectUri != null) 'redirectUri': redirectUri!,
-        if (scopes != null) 'scopes': scopes!,
-      };
+    if (authCode != null) 'authCode': authCode!,
+    if (pkceVerifier != null) 'pkceVerifier': pkceVerifier!,
+    if (redirectUri != null) 'redirectUri': redirectUri!,
+    if (scopes != null) 'scopes': scopes!,
+  };
 }
 
 /// Response containing status of the connector for readiness prober.
 class CheckReadinessResponse {
   core.String? status;
 
-  CheckReadinessResponse({
-    this.status,
-  });
+  CheckReadinessResponse({this.status});
 
   CheckReadinessResponse.fromJson(core.Map json_)
-      : this(
-          status: json_['status'] as core.String?,
-        );
+    : this(status: json_['status'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (status != null) 'status': status!,
-      };
+    if (status != null) 'status': status!,
+  };
 }
 
 /// The status of the connector.
@@ -1122,21 +1143,18 @@ class CheckStatusResponse {
   /// auth configuration not present, invalid auth credentials, etc.
   core.String? state;
 
-  CheckStatusResponse({
-    this.description,
-    this.state,
-  });
+  CheckStatusResponse({this.description, this.state});
 
   CheckStatusResponse.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (state != null) 'state': state!,
-      };
+    if (description != null) 'description': description!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1166,23 +1184,21 @@ class Entity {
   /// Output only.
   core.String? name;
 
-  Entity({
-    this.fields,
-    this.name,
-  });
+  Entity({this.fields, this.name});
 
   Entity.fromJson(core.Map json_)
-      : this(
-          fields: json_.containsKey('fields')
-              ? json_['fields'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        fields:
+            json_.containsKey('fields')
+                ? json_['fields'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (name != null) 'name': name!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// EntityType message contains metadata information about a single entity type
@@ -1198,35 +1214,37 @@ class EntityType {
   core.String? name;
   core.List<core.String>? operations;
 
-  EntityType({
-    this.fields,
-    this.jsonSchema,
-    this.name,
-    this.operations,
-  });
+  EntityType({this.fields, this.jsonSchema, this.name, this.operations});
 
   EntityType.fromJson(core.Map json_)
-      : this(
-          fields: (json_['fields'] as core.List?)
-              ?.map((value) =>
-                  Field.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          jsonSchema: json_.containsKey('jsonSchema')
-              ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        fields:
+            (json_['fields'] as core.List?)
+                ?.map(
+                  (value) => Field.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        jsonSchema:
+            json_.containsKey('jsonSchema')
+                ? JsonSchema.fromJson(
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (jsonSchema != null) 'jsonSchema': jsonSchema!,
-        if (name != null) 'name': name!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (jsonSchema != null) 'jsonSchema': jsonSchema!,
+    if (name != null) 'name': name!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// ExchangeAuthCodeRequest currently includes the auth code data.
@@ -1240,21 +1258,21 @@ class ExchangeAuthCodeRequest {
   /// Optional.
   AuthCodeData? authCodeData;
 
-  ExchangeAuthCodeRequest({
-    this.authCodeData,
-  });
+  ExchangeAuthCodeRequest({this.authCodeData});
 
   ExchangeAuthCodeRequest.fromJson(core.Map json_)
-      : this(
-          authCodeData: json_.containsKey('authCodeData')
-              ? AuthCodeData.fromJson(
-                  json_['authCodeData'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        authCodeData:
+            json_.containsKey('authCodeData')
+                ? AuthCodeData.fromJson(
+                  json_['authCodeData'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authCodeData != null) 'authCodeData': authCodeData!,
-      };
+    if (authCodeData != null) 'authCodeData': authCodeData!,
+  };
 }
 
 /// ExchangeAuthCodeResponse includes the returned access token and its
@@ -1262,21 +1280,22 @@ class ExchangeAuthCodeRequest {
 class ExchangeAuthCodeResponse {
   AccessCredentials? accessCredentials;
 
-  ExchangeAuthCodeResponse({
-    this.accessCredentials,
-  });
+  ExchangeAuthCodeResponse({this.accessCredentials});
 
   ExchangeAuthCodeResponse.fromJson(core.Map json_)
-      : this(
-          accessCredentials: json_.containsKey('accessCredentials')
-              ? AccessCredentials.fromJson(json_['accessCredentials']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        accessCredentials:
+            json_.containsKey('accessCredentials')
+                ? AccessCredentials.fromJson(
+                  json_['accessCredentials']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessCredentials != null) 'accessCredentials': accessCredentials!,
-      };
+    if (accessCredentials != null) 'accessCredentials': accessCredentials!,
+  };
 }
 
 /// Request message for ActionService.ExecuteAction
@@ -1289,20 +1308,19 @@ class ExecuteActionRequest {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? parameters;
 
-  ExecuteActionRequest({
-    this.parameters,
-  });
+  ExecuteActionRequest({this.parameters});
 
   ExecuteActionRequest.fromJson(core.Map json_)
-      : this(
-          parameters: json_.containsKey('parameters')
-              ? json_['parameters'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        parameters:
+            json_.containsKey('parameters')
+                ? json_['parameters'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parameters != null) 'parameters': parameters!,
-      };
+    if (parameters != null) 'parameters': parameters!,
+  };
 }
 
 /// Response message for ActionService.ExecuteAction
@@ -1319,20 +1337,19 @@ class ExecuteActionResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object?>>? results;
 
-  ExecuteActionResponse({
-    this.results,
-  });
+  ExecuteActionResponse({this.results});
 
   ExecuteActionResponse.fromJson(core.Map json_)
-      : this(
-          results: (json_['results'] as core.List?)
-              ?.map((value) => value as core.Map<core.String, core.dynamic>)
-              .toList(),
-        );
+    : this(
+        results:
+            (json_['results'] as core.List?)
+                ?.map((value) => value as core.Map<core.String, core.dynamic>)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (results != null) 'results': results!,
-      };
+    if (results != null) 'results': results!,
+  };
 }
 
 /// An execute sql query request containing the query and the connection to
@@ -1344,21 +1361,21 @@ class ExecuteSqlQueryRequest {
   /// Required.
   Query? query;
 
-  ExecuteSqlQueryRequest({
-    this.query,
-  });
+  ExecuteSqlQueryRequest({this.query});
 
   ExecuteSqlQueryRequest.fromJson(core.Map json_)
-      : this(
-          query: json_.containsKey('query')
-              ? Query.fromJson(
-                  json_['query'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        query:
+            json_.containsKey('query')
+                ? Query.fromJson(
+                  json_['query'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (query != null) 'query': query!,
-      };
+    if (query != null) 'query': query!,
+  };
 }
 
 /// A response returned by the connection after executing the sql query.
@@ -1375,20 +1392,19 @@ class ExecuteSqlQueryResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object?>>? results;
 
-  ExecuteSqlQueryResponse({
-    this.results,
-  });
+  ExecuteSqlQueryResponse({this.results});
 
   ExecuteSqlQueryResponse.fromJson(core.Map json_)
-      : this(
-          results: (json_['results'] as core.List?)
-              ?.map((value) => value as core.Map<core.String, core.dynamic>)
-              .toList(),
-        );
+    : this(
+        results:
+            (json_['results'] as core.List?)
+                ?.map((value) => value as core.Map<core.String, core.dynamic>)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (results != null) 'results': results!,
-      };
+    if (results != null) 'results': results!,
+  };
 }
 
 /// Message contains EntityType's Field metadata.
@@ -1490,38 +1506,43 @@ class Field {
   });
 
   Field.fromJson(core.Map json_)
-      : this(
-          additionalDetails: json_.containsKey('additionalDetails')
-              ? json_['additionalDetails']
-                  as core.Map<core.String, core.dynamic>
-              : null,
-          dataType: json_['dataType'] as core.String?,
-          defaultValue: json_['defaultValue'],
-          description: json_['description'] as core.String?,
-          jsonSchema: json_.containsKey('jsonSchema')
-              ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
-              : null,
-          key: json_['key'] as core.bool?,
-          name: json_['name'] as core.String?,
-          nullable: json_['nullable'] as core.bool?,
-          reference: json_.containsKey('reference')
-              ? Reference.fromJson(
-                  json_['reference'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        additionalDetails:
+            json_.containsKey('additionalDetails')
+                ? json_['additionalDetails']
+                    as core.Map<core.String, core.dynamic>
+                : null,
+        dataType: json_['dataType'] as core.String?,
+        defaultValue: json_['defaultValue'],
+        description: json_['description'] as core.String?,
+        jsonSchema:
+            json_.containsKey('jsonSchema')
+                ? JsonSchema.fromJson(
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        key: json_['key'] as core.bool?,
+        name: json_['name'] as core.String?,
+        nullable: json_['nullable'] as core.bool?,
+        reference:
+            json_.containsKey('reference')
+                ? Reference.fromJson(
+                  json_['reference'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalDetails != null) 'additionalDetails': additionalDetails!,
-        if (dataType != null) 'dataType': dataType!,
-        if (defaultValue != null) 'defaultValue': defaultValue!,
-        if (description != null) 'description': description!,
-        if (jsonSchema != null) 'jsonSchema': jsonSchema!,
-        if (key != null) 'key': key!,
-        if (name != null) 'name': name!,
-        if (nullable != null) 'nullable': nullable!,
-        if (reference != null) 'reference': reference!,
-      };
+    if (additionalDetails != null) 'additionalDetails': additionalDetails!,
+    if (dataType != null) 'dataType': dataType!,
+    if (defaultValue != null) 'defaultValue': defaultValue!,
+    if (description != null) 'description': description!,
+    if (jsonSchema != null) 'jsonSchema': jsonSchema!,
+    if (key != null) 'key': key!,
+    if (name != null) 'name': name!,
+    if (nullable != null) 'nullable': nullable!,
+    if (reference != null) 'reference': reference!,
+  };
 }
 
 /// Input Parameter message contains metadata about the parameters required for
@@ -1614,31 +1635,34 @@ class InputParameter {
   });
 
   InputParameter.fromJson(core.Map json_)
-      : this(
-          additionalDetails: json_.containsKey('additionalDetails')
-              ? json_['additionalDetails']
-                  as core.Map<core.String, core.dynamic>
-              : null,
-          dataType: json_['dataType'] as core.String?,
-          defaultValue: json_['defaultValue'],
-          description: json_['description'] as core.String?,
-          jsonSchema: json_.containsKey('jsonSchema')
-              ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          nullable: json_['nullable'] as core.bool?,
-        );
+    : this(
+        additionalDetails:
+            json_.containsKey('additionalDetails')
+                ? json_['additionalDetails']
+                    as core.Map<core.String, core.dynamic>
+                : null,
+        dataType: json_['dataType'] as core.String?,
+        defaultValue: json_['defaultValue'],
+        description: json_['description'] as core.String?,
+        jsonSchema:
+            json_.containsKey('jsonSchema')
+                ? JsonSchema.fromJson(
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        nullable: json_['nullable'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalDetails != null) 'additionalDetails': additionalDetails!,
-        if (dataType != null) 'dataType': dataType!,
-        if (defaultValue != null) 'defaultValue': defaultValue!,
-        if (description != null) 'description': description!,
-        if (jsonSchema != null) 'jsonSchema': jsonSchema!,
-        if (name != null) 'name': name!,
-        if (nullable != null) 'nullable': nullable!,
-      };
+    if (additionalDetails != null) 'additionalDetails': additionalDetails!,
+    if (dataType != null) 'dataType': dataType!,
+    if (defaultValue != null) 'defaultValue': defaultValue!,
+    if (description != null) 'description': description!,
+    if (jsonSchema != null) 'jsonSchema': jsonSchema!,
+    if (name != null) 'name': name!,
+    if (nullable != null) 'nullable': nullable!,
+  };
 }
 
 /// JsonSchema representation of schema metadata
@@ -1751,48 +1775,54 @@ class JsonSchema {
   });
 
   JsonSchema.fromJson(core.Map json_)
-      : this(
-          additionalDetails: json_.containsKey('additionalDetails')
-              ? json_['additionalDetails']
-                  as core.Map<core.String, core.dynamic>
-              : null,
-          default_: json_['default'],
-          description: json_['description'] as core.String?,
-          enum_: json_.containsKey('enum') ? json_['enum'] as core.List : null,
-          format: json_['format'] as core.String?,
-          items: json_.containsKey('items')
-              ? JsonSchema.fromJson(
-                  json_['items'] as core.Map<core.String, core.dynamic>)
-              : null,
-          jdbcType: json_['jdbcType'] as core.String?,
-          properties:
-              (json_['properties'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              JsonSchema.fromJson(value as core.Map<core.String, core.dynamic>),
+    : this(
+        additionalDetails:
+            json_.containsKey('additionalDetails')
+                ? json_['additionalDetails']
+                    as core.Map<core.String, core.dynamic>
+                : null,
+        default_: json_['default'],
+        description: json_['description'] as core.String?,
+        enum_: json_.containsKey('enum') ? json_['enum'] as core.List : null,
+        format: json_['format'] as core.String?,
+        items:
+            json_.containsKey('items')
+                ? JsonSchema.fromJson(
+                  json_['items'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        jdbcType: json_['jdbcType'] as core.String?,
+        properties:
+            (json_['properties'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                JsonSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          required: (json_['required'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          type: (json_['type'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+        required:
+            (json_['required'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        type:
+            (json_['type'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalDetails != null) 'additionalDetails': additionalDetails!,
-        if (default_ != null) 'default': default_!,
-        if (description != null) 'description': description!,
-        if (enum_ != null) 'enum': enum_!,
-        if (format != null) 'format': format!,
-        if (items != null) 'items': items!,
-        if (jdbcType != null) 'jdbcType': jdbcType!,
-        if (properties != null) 'properties': properties!,
-        if (required != null) 'required': required!,
-        if (type != null) 'type': type!,
-      };
+    if (additionalDetails != null) 'additionalDetails': additionalDetails!,
+    if (default_ != null) 'default': default_!,
+    if (description != null) 'description': description!,
+    if (enum_ != null) 'enum': enum_!,
+    if (format != null) 'format': format!,
+    if (items != null) 'items': items!,
+    if (jdbcType != null) 'jdbcType': jdbcType!,
+    if (properties != null) 'properties': properties!,
+    if (required != null) 'required': required!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Response message for ActionService.ListActions
@@ -1815,24 +1845,28 @@ class ListActionsResponse {
   });
 
   ListActionsResponse.fromJson(core.Map json_)
-      : this(
-          actions: (json_['actions'] as core.List?)
-              ?.map((value) =>
-                  Action.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unsupportedActionNames:
-              (json_['unsupportedActionNames'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-        );
+    : this(
+        actions:
+            (json_['actions'] as core.List?)
+                ?.map(
+                  (value) => Action.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unsupportedActionNames:
+            (json_['unsupportedActionNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actions != null) 'actions': actions!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unsupportedActionNames != null)
-          'unsupportedActionNames': unsupportedActionNames!,
-      };
+    if (actions != null) 'actions': actions!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unsupportedActionNames != null)
+      'unsupportedActionNames': unsupportedActionNames!,
+  };
 }
 
 /// Response message for EntityService.ListEntities
@@ -1843,24 +1877,25 @@ class ListEntitiesResponse {
   /// Next page token if more records are available.
   core.String? nextPageToken;
 
-  ListEntitiesResponse({
-    this.entities,
-    this.nextPageToken,
-  });
+  ListEntitiesResponse({this.entities, this.nextPageToken});
 
   ListEntitiesResponse.fromJson(core.Map json_)
-      : this(
-          entities: (json_['entities'] as core.List?)
-              ?.map((value) =>
-                  Entity.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        entities:
+            (json_['entities'] as core.List?)
+                ?.map(
+                  (value) => Entity.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entities != null) 'entities': entities!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (entities != null) 'entities': entities!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for EntityService.ListEntityTypes
@@ -1883,23 +1918,28 @@ class ListEntityTypesResponse {
   });
 
   ListEntityTypesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          types: (json_['types'] as core.List?)
-              ?.map((value) => EntityType.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unsupportedTypeNames: (json_['unsupportedTypeNames'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        types:
+            (json_['types'] as core.List?)
+                ?.map(
+                  (value) => EntityType.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unsupportedTypeNames:
+            (json_['unsupportedTypeNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (types != null) 'types': types!,
-        if (unsupportedTypeNames != null)
-          'unsupportedTypeNames': unsupportedTypeNames!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (types != null) 'types': types!,
+    if (unsupportedTypeNames != null)
+      'unsupportedTypeNames': unsupportedTypeNames!,
+  };
 }
 
 /// A wrapper around the SQL query statement.
@@ -1923,30 +1963,29 @@ class Query {
   /// Sets the number of seconds the driver will wait for a query to execute.
   core.String? timeout;
 
-  Query({
-    this.maxRows,
-    this.query,
-    this.queryParameters,
-    this.timeout,
-  });
+  Query({this.maxRows, this.query, this.queryParameters, this.timeout});
 
   Query.fromJson(core.Map json_)
-      : this(
-          maxRows: json_['maxRows'] as core.String?,
-          query: json_['query'] as core.String?,
-          queryParameters: (json_['queryParameters'] as core.List?)
-              ?.map((value) => QueryParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          timeout: json_['timeout'] as core.String?,
-        );
+    : this(
+        maxRows: json_['maxRows'] as core.String?,
+        query: json_['query'] as core.String?,
+        queryParameters:
+            (json_['queryParameters'] as core.List?)
+                ?.map(
+                  (value) => QueryParameter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        timeout: json_['timeout'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxRows != null) 'maxRows': maxRows!,
-        if (query != null) 'query': query!,
-        if (queryParameters != null) 'queryParameters': queryParameters!,
-        if (timeout != null) 'timeout': timeout!,
-      };
+    if (maxRows != null) 'maxRows': maxRows!,
+    if (query != null) 'query': query!,
+    if (queryParameters != null) 'queryParameters': queryParameters!,
+    if (timeout != null) 'timeout': timeout!,
+  };
 }
 
 /// Query parameter definition
@@ -2006,21 +2045,15 @@ class QueryParameter {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? value;
 
-  QueryParameter({
-    this.dataType,
-    this.value,
-  });
+  QueryParameter({this.dataType, this.value});
 
   QueryParameter.fromJson(core.Map json_)
-      : this(
-          dataType: json_['dataType'] as core.String?,
-          value: json_['value'],
-        );
+    : this(dataType: json_['dataType'] as core.String?, value: json_['value']);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataType != null) 'dataType': dataType!,
-        if (value != null) 'value': value!,
-      };
+    if (dataType != null) 'dataType': dataType!,
+    if (value != null) 'value': value!,
+  };
 }
 
 class Reference {
@@ -2030,21 +2063,18 @@ class Reference {
   /// Name of reference entity type.
   core.String? type;
 
-  Reference({
-    this.name,
-    this.type,
-  });
+  Reference({this.name, this.type});
 
   Reference.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-      };
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// RefreshAccessTokenRequest includes the refresh token.
@@ -2057,18 +2087,14 @@ class RefreshAccessTokenRequest {
   /// Optional.
   core.String? refreshToken;
 
-  RefreshAccessTokenRequest({
-    this.refreshToken,
-  });
+  RefreshAccessTokenRequest({this.refreshToken});
 
   RefreshAccessTokenRequest.fromJson(core.Map json_)
-      : this(
-          refreshToken: json_['refreshToken'] as core.String?,
-        );
+    : this(refreshToken: json_['refreshToken'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (refreshToken != null) 'refreshToken': refreshToken!,
-      };
+    if (refreshToken != null) 'refreshToken': refreshToken!,
+  };
 }
 
 /// RefreshAccessTokenResponse includes the returned access token and its
@@ -2076,21 +2102,22 @@ class RefreshAccessTokenRequest {
 class RefreshAccessTokenResponse {
   AccessCredentials? accessCredentials;
 
-  RefreshAccessTokenResponse({
-    this.accessCredentials,
-  });
+  RefreshAccessTokenResponse({this.accessCredentials});
 
   RefreshAccessTokenResponse.fromJson(core.Map json_)
-      : this(
-          accessCredentials: json_.containsKey('accessCredentials')
-              ? AccessCredentials.fromJson(json_['accessCredentials']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        accessCredentials:
+            json_.containsKey('accessCredentials')
+                ? AccessCredentials.fromJson(
+                  json_['accessCredentials']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessCredentials != null) 'accessCredentials': accessCredentials!,
-      };
+    if (accessCredentials != null) 'accessCredentials': accessCredentials!,
+  };
 }
 
 /// Result Metadata message contains metadata about the result returned after
@@ -2174,26 +2201,28 @@ class ResultMetadata {
   });
 
   ResultMetadata.fromJson(core.Map json_)
-      : this(
-          dataType: json_['dataType'] as core.String?,
-          defaultValue: json_['defaultValue'],
-          description: json_['description'] as core.String?,
-          jsonSchema: json_.containsKey('jsonSchema')
-              ? JsonSchema.fromJson(
-                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          nullable: json_['nullable'] as core.bool?,
-        );
+    : this(
+        dataType: json_['dataType'] as core.String?,
+        defaultValue: json_['defaultValue'],
+        description: json_['description'] as core.String?,
+        jsonSchema:
+            json_.containsKey('jsonSchema')
+                ? JsonSchema.fromJson(
+                  json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        nullable: json_['nullable'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataType != null) 'dataType': dataType!,
-        if (defaultValue != null) 'defaultValue': defaultValue!,
-        if (description != null) 'description': description!,
-        if (jsonSchema != null) 'jsonSchema': jsonSchema!,
-        if (name != null) 'name': name!,
-        if (nullable != null) 'nullable': nullable!,
-      };
+    if (dataType != null) 'dataType': dataType!,
+    if (defaultValue != null) 'defaultValue': defaultValue!,
+    if (description != null) 'description': description!,
+    if (jsonSchema != null) 'jsonSchema': jsonSchema!,
+    if (name != null) 'name': name!,
+    if (nullable != null) 'nullable': nullable!,
+  };
 }
 
 /// Response message for EntityService.UpdateEntitiesWithConditions
@@ -2204,18 +2233,17 @@ class UpdateEntitiesWithConditionsResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  UpdateEntitiesWithConditionsResponse({
-    this.response,
-  });
+  UpdateEntitiesWithConditionsResponse({this.response});
 
   UpdateEntitiesWithConditionsResponse.fromJson(core.Map json_)
-      : this(
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (response != null) 'response': response!,
-      };
+    if (response != null) 'response': response!,
+  };
 }

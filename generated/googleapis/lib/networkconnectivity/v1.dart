@@ -63,11 +63,16 @@ class NetworkconnectivityApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  NetworkconnectivityApi(http.Client client,
-      {core.String rootUrl = 'https://networkconnectivity.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  NetworkconnectivityApi(
+    http.Client client, {
+    core.String rootUrl = 'https://networkconnectivity.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -95,11 +100,11 @@ class ProjectsLocationsResource {
   ProjectsLocationsServiceConnectionMapsResource get serviceConnectionMaps =>
       ProjectsLocationsServiceConnectionMapsResource(_requester);
   ProjectsLocationsServiceConnectionPoliciesResource
-      get serviceConnectionPolicies =>
-          ProjectsLocationsServiceConnectionPoliciesResource(_requester);
+  get serviceConnectionPolicies =>
+      ProjectsLocationsServiceConnectionPoliciesResource(_requester);
   ProjectsLocationsServiceConnectionTokensResource
-      get serviceConnectionTokens =>
-          ProjectsLocationsServiceConnectionTokensResource(_requester);
+  get serviceConnectionTokens =>
+      ProjectsLocationsServiceConnectionTokensResource(_requester);
   ProjectsLocationsSpokesResource get spokes =>
       ProjectsLocationsSpokesResource(_requester);
 
@@ -122,10 +127,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -195,7 +197,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -208,7 +211,7 @@ class ProjectsLocationsGlobalResource {
       ProjectsLocationsGlobalPolicyBasedRoutesResource(_requester);
 
   ProjectsLocationsGlobalResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class ProjectsLocationsGlobalHubsResource {
@@ -220,7 +223,7 @@ class ProjectsLocationsGlobalHubsResource {
       ProjectsLocationsGlobalHubsRouteTablesResource(_requester);
 
   ProjectsLocationsGlobalHubsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Accepts a proposal to attach a Network Connectivity Center spoke to a hub.
   ///
@@ -261,7 +264,8 @@ class ProjectsLocationsGlobalHubsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Accepts a proposal to update a Network Connectivity Center spoke in a hub.
@@ -303,7 +307,8 @@ class ProjectsLocationsGlobalHubsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new Network Connectivity Center hub in the specified project.
@@ -363,7 +368,8 @@ class ProjectsLocationsGlobalHubsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a Network Connectivity Center hub.
@@ -412,10 +418,12 @@ class ProjectsLocationsGlobalHubsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details about a Network Connectivity Center hub.
@@ -436,10 +444,7 @@ class ProjectsLocationsGlobalHubsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Hub> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Hub> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -561,7 +566,8 @@ class ProjectsLocationsGlobalHubsResource {
       queryParams: queryParams_,
     );
     return ListHubsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the Network Connectivity Center spokes associated with a specified
@@ -640,7 +646,8 @@ class ProjectsLocationsGlobalHubsResource {
       queryParams: queryParams_,
     );
     return ListHubSpokesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the description and/or labels of a Network Connectivity Center
@@ -708,7 +715,8 @@ class ProjectsLocationsGlobalHubsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Query the Private Service Connect propagation status of a Network
@@ -787,7 +795,8 @@ class ProjectsLocationsGlobalHubsResource {
       queryParams: queryParams_,
     );
     return QueryHubStatusResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Rejects a Network Connectivity Center spoke from being attached to a hub.
@@ -833,7 +842,8 @@ class ProjectsLocationsGlobalHubsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Rejects a proposal to update a Network Connectivity Center spoke in a hub.
@@ -875,7 +885,8 @@ class ProjectsLocationsGlobalHubsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -973,7 +984,8 @@ class ProjectsLocationsGlobalHubsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -981,7 +993,7 @@ class ProjectsLocationsGlobalHubsGroupsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGlobalHubsGroupsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets details about a Network Connectivity Center group.
   ///
@@ -1001,10 +1013,7 @@ class ProjectsLocationsGlobalHubsGroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Group> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1126,7 +1135,8 @@ class ProjectsLocationsGlobalHubsGroupsResource {
       queryParams: queryParams_,
     );
     return ListGroupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a Network Connectivity Center group.
@@ -1193,7 +1203,8 @@ class ProjectsLocationsGlobalHubsGroupsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1291,7 +1302,8 @@ class ProjectsLocationsGlobalHubsGroupsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1302,7 +1314,7 @@ class ProjectsLocationsGlobalHubsRouteTablesResource {
       ProjectsLocationsGlobalHubsRouteTablesRoutesResource(_requester);
 
   ProjectsLocationsGlobalHubsRouteTablesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets details about a Network Connectivity Center route table.
   ///
@@ -1322,10 +1334,7 @@ class ProjectsLocationsGlobalHubsRouteTablesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RouteTable> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<RouteTable> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1338,7 +1347,8 @@ class ProjectsLocationsGlobalHubsRouteTablesResource {
       queryParams: queryParams_,
     );
     return RouteTable.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists route tables in a given hub.
@@ -1391,7 +1401,8 @@ class ProjectsLocationsGlobalHubsRouteTablesResource {
       queryParams: queryParams_,
     );
     return ListRouteTablesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1399,8 +1410,8 @@ class ProjectsLocationsGlobalHubsRouteTablesRoutesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGlobalHubsRouteTablesRoutesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets details about the specified route.
   ///
@@ -1420,10 +1431,7 @@ class ProjectsLocationsGlobalHubsRouteTablesRoutesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Route> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Route> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1488,7 +1496,8 @@ class ProjectsLocationsGlobalHubsRouteTablesRoutesResource {
       queryParams: queryParams_,
     );
     return ListRoutesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1496,7 +1505,7 @@ class ProjectsLocationsGlobalPolicyBasedRoutesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsGlobalPolicyBasedRoutesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new policy-based route in a given project and location.
   ///
@@ -1562,7 +1571,8 @@ class ProjectsLocationsGlobalPolicyBasedRoutesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a single policy-based route.
@@ -1610,10 +1620,12 @@ class ProjectsLocationsGlobalPolicyBasedRoutesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single policy-based route.
@@ -1650,7 +1662,8 @@ class ProjectsLocationsGlobalPolicyBasedRoutesResource {
       queryParams: queryParams_,
     );
     return PolicyBasedRoute.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -1761,7 +1774,8 @@ class ProjectsLocationsGlobalPolicyBasedRoutesResource {
       queryParams: queryParams_,
     );
     return ListPolicyBasedRoutesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1859,7 +1873,8 @@ class ProjectsLocationsGlobalPolicyBasedRoutesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1867,7 +1882,7 @@ class ProjectsLocationsInternalRangesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsInternalRangesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new internal range in a given project and location.
   ///
@@ -1927,7 +1942,8 @@ class ProjectsLocationsInternalRangesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a single internal range.
@@ -1975,10 +1991,12 @@ class ProjectsLocationsInternalRangesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single internal range.
@@ -2015,7 +2033,8 @@ class ProjectsLocationsInternalRangesResource {
       queryParams: queryParams_,
     );
     return InternalRange.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -2126,7 +2145,8 @@ class ProjectsLocationsInternalRangesResource {
       queryParams: queryParams_,
     );
     return ListInternalRangesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single internal range.
@@ -2192,7 +2212,8 @@ class ProjectsLocationsInternalRangesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2290,7 +2311,8 @@ class ProjectsLocationsInternalRangesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2298,7 +2320,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -2372,10 +2394,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2385,6 +2404,7 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2427,7 +2447,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -2477,7 +2498,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2485,7 +2507,7 @@ class ProjectsLocationsRegionalEndpointsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRegionalEndpointsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new RegionalEndpoint in a given project and location.
   ///
@@ -2545,7 +2567,8 @@ class ProjectsLocationsRegionalEndpointsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a single RegionalEndpoint.
@@ -2593,10 +2616,12 @@ class ProjectsLocationsRegionalEndpointsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single RegionalEndpoint.
@@ -2634,7 +2659,8 @@ class ProjectsLocationsRegionalEndpointsResource {
       queryParams: queryParams_,
     );
     return RegionalEndpoint.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists RegionalEndpoints in a given project and location.
@@ -2688,7 +2714,8 @@ class ProjectsLocationsRegionalEndpointsResource {
       queryParams: queryParams_,
     );
     return ListRegionalEndpointsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2696,7 +2723,7 @@ class ProjectsLocationsServiceClassesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsServiceClassesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes a single ServiceClass.
   ///
@@ -2749,10 +2776,12 @@ class ProjectsLocationsServiceClassesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single ServiceClass.
@@ -2789,7 +2818,8 @@ class ProjectsLocationsServiceClassesResource {
       queryParams: queryParams_,
     );
     return ServiceClass.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -2901,7 +2931,8 @@ class ProjectsLocationsServiceClassesResource {
       queryParams: queryParams_,
     );
     return ListServiceClassesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single ServiceClass.
@@ -2967,7 +2998,8 @@ class ProjectsLocationsServiceClassesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3065,7 +3097,8 @@ class ProjectsLocationsServiceClassesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3073,7 +3106,7 @@ class ProjectsLocationsServiceConnectionMapsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsServiceConnectionMapsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new ServiceConnectionMap in a given project and location.
   ///
@@ -3137,7 +3170,8 @@ class ProjectsLocationsServiceConnectionMapsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a single ServiceConnectionMap.
@@ -3191,10 +3225,12 @@ class ProjectsLocationsServiceConnectionMapsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single ServiceConnectionMap.
@@ -3231,7 +3267,8 @@ class ProjectsLocationsServiceConnectionMapsResource {
       queryParams: queryParams_,
     );
     return ServiceConnectionMap.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -3344,7 +3381,8 @@ class ProjectsLocationsServiceConnectionMapsResource {
       queryParams: queryParams_,
     );
     return ListServiceConnectionMapsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single ServiceConnectionMap.
@@ -3410,7 +3448,8 @@ class ProjectsLocationsServiceConnectionMapsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3508,7 +3547,8 @@ class ProjectsLocationsServiceConnectionMapsResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3516,8 +3556,8 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsServiceConnectionPoliciesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Creates a new ServiceConnectionPolicy in a given project and location.
   ///
@@ -3580,7 +3620,8 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a single ServiceConnectionPolicy.
@@ -3634,10 +3675,12 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single ServiceConnectionPolicy.
@@ -3674,7 +3717,8 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
       queryParams: queryParams_,
     );
     return ServiceConnectionPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -3787,7 +3831,8 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
       queryParams: queryParams_,
     );
     return ListServiceConnectionPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a single ServiceConnectionPolicy.
@@ -3853,7 +3898,8 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3951,7 +3997,8 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3959,7 +4006,7 @@ class ProjectsLocationsServiceConnectionTokensResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsServiceConnectionTokensResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new ServiceConnectionToken in a given project and location.
   ///
@@ -4023,7 +4070,8 @@ class ProjectsLocationsServiceConnectionTokensResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a single ServiceConnectionToken.
@@ -4077,10 +4125,12 @@ class ProjectsLocationsServiceConnectionTokensResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details of a single ServiceConnectionToken.
@@ -4117,7 +4167,8 @@ class ProjectsLocationsServiceConnectionTokensResource {
       queryParams: queryParams_,
     );
     return ServiceConnectionToken.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists ServiceConnectionTokens in a given project and location.
@@ -4173,7 +4224,8 @@ class ProjectsLocationsServiceConnectionTokensResource {
       queryParams: queryParams_,
     );
     return ListServiceConnectionTokensResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4181,7 +4233,7 @@ class ProjectsLocationsSpokesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsSpokesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a Network Connectivity Center spoke.
   ///
@@ -4240,7 +4292,8 @@ class ProjectsLocationsSpokesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a Network Connectivity Center spoke.
@@ -4289,10 +4342,12 @@ class ProjectsLocationsSpokesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details about a Network Connectivity Center spoke.
@@ -4313,10 +4368,7 @@ class ProjectsLocationsSpokesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Spoke> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Spoke> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4438,7 +4490,8 @@ class ProjectsLocationsSpokesResource {
       queryParams: queryParams_,
     );
     return ListSpokesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the parameters of a Network Connectivity Center spoke.
@@ -4505,7 +4558,8 @@ class ProjectsLocationsSpokesResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -4603,7 +4657,8 @@ class ProjectsLocationsSpokesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4631,21 +4686,18 @@ class AcceptHubSpokeRequest {
   /// Required.
   core.String? spokeUri;
 
-  AcceptHubSpokeRequest({
-    this.requestId,
-    this.spokeUri,
-  });
+  AcceptHubSpokeRequest({this.requestId, this.spokeUri});
 
   AcceptHubSpokeRequest.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-          spokeUri: json_['spokeUri'] as core.String?,
-        );
+    : this(
+        requestId: json_['requestId'] as core.String?,
+        spokeUri: json_['spokeUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-        if (spokeUri != null) 'spokeUri': spokeUri!,
-      };
+    if (requestId != null) 'requestId': requestId!,
+    if (spokeUri != null) 'spokeUri': spokeUri!,
+  };
 }
 
 /// The request for HubService.AcceptSpokeUpdate.
@@ -4677,24 +4729,20 @@ class AcceptSpokeUpdateRequest {
   /// Required.
   core.String? spokeUri;
 
-  AcceptSpokeUpdateRequest({
-    this.requestId,
-    this.spokeEtag,
-    this.spokeUri,
-  });
+  AcceptSpokeUpdateRequest({this.requestId, this.spokeEtag, this.spokeUri});
 
   AcceptSpokeUpdateRequest.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-          spokeEtag: json_['spokeEtag'] as core.String?,
-          spokeUri: json_['spokeUri'] as core.String?,
-        );
+    : this(
+        requestId: json_['requestId'] as core.String?,
+        spokeEtag: json_['spokeEtag'] as core.String?,
+        spokeUri: json_['spokeUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-        if (spokeEtag != null) 'spokeEtag': spokeEtag!,
-        if (spokeUri != null) 'spokeUri': spokeUri!,
-      };
+    if (requestId != null) 'requestId': requestId!,
+    if (spokeEtag != null) 'spokeEtag': spokeEtag!,
+    if (spokeUri != null) 'spokeUri': spokeUri!,
+  };
 }
 
 /// Range auto-allocation options, to be optionally used when CIDR block is not
@@ -4740,18 +4788,17 @@ class AllocationOptions {
   });
 
   AllocationOptions.fromJson(core.Map json_)
-      : this(
-          allocationStrategy: json_['allocationStrategy'] as core.String?,
-          firstAvailableRangesLookupSize:
-              json_['firstAvailableRangesLookupSize'] as core.int?,
-        );
+    : this(
+        allocationStrategy: json_['allocationStrategy'] as core.String?,
+        firstAvailableRangesLookupSize:
+            json_['firstAvailableRangesLookupSize'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allocationStrategy != null)
-          'allocationStrategy': allocationStrategy!,
-        if (firstAvailableRangesLookupSize != null)
-          'firstAvailableRangesLookupSize': firstAvailableRangesLookupSize!,
-      };
+    if (allocationStrategy != null) 'allocationStrategy': allocationStrategy!,
+    if (firstAvailableRangesLookupSize != null)
+      'firstAvailableRangesLookupSize': firstAvailableRangesLookupSize!,
+  };
 }
 
 /// Specifies the audit configuration for a service.
@@ -4781,24 +4828,25 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
-      : this(
-          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          service: json_['service'] as core.String?,
-        );
+    : this(
+        auditLogConfigs:
+            (json_['auditLogConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditLogConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        service: json_['service'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-        if (service != null) 'service': service!,
-      };
+    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+    if (service != null) 'service': service!,
+  };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -4826,21 +4874,19 @@ class AutoAccept {
   /// Optional.
   core.List<core.String>? autoAcceptProjects;
 
-  AutoAccept({
-    this.autoAcceptProjects,
-  });
+  AutoAccept({this.autoAcceptProjects});
 
   AutoAccept.fromJson(core.Map json_)
-      : this(
-          autoAcceptProjects: (json_['autoAcceptProjects'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        autoAcceptProjects:
+            (json_['autoAcceptProjects'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoAcceptProjects != null)
-          'autoAcceptProjects': autoAcceptProjects!,
-      };
+    if (autoAcceptProjects != null) 'autoAcceptProjects': autoAcceptProjects!,
+  };
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -4923,29 +4969,28 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// Allow the producer to specify which consumers can connect to it.
@@ -5037,49 +5082,38 @@ class ConsumerPscConfig {
   });
 
   ConsumerPscConfig.fromJson(core.Map json_)
-      : this(
-          consumerInstanceProject:
-              json_['consumerInstanceProject'] as core.String?,
-          disableGlobalAccess: json_['disableGlobalAccess'] as core.bool?,
-          ipVersion: json_['ipVersion'] as core.String?,
-          network: json_['network'] as core.String?,
-          producerInstanceId: json_['producerInstanceId'] as core.String?,
-          producerInstanceMetadata: (json_['producerInstanceMetadata']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          project: json_['project'] as core.String?,
-          serviceAttachmentIpAddressMap: (json_['serviceAttachmentIpAddressMap']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        consumerInstanceProject:
+            json_['consumerInstanceProject'] as core.String?,
+        disableGlobalAccess: json_['disableGlobalAccess'] as core.bool?,
+        ipVersion: json_['ipVersion'] as core.String?,
+        network: json_['network'] as core.String?,
+        producerInstanceId: json_['producerInstanceId'] as core.String?,
+        producerInstanceMetadata: (json_['producerInstanceMetadata']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        project: json_['project'] as core.String?,
+        serviceAttachmentIpAddressMap: (json_['serviceAttachmentIpAddressMap']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consumerInstanceProject != null)
-          'consumerInstanceProject': consumerInstanceProject!,
-        if (disableGlobalAccess != null)
-          'disableGlobalAccess': disableGlobalAccess!,
-        if (ipVersion != null) 'ipVersion': ipVersion!,
-        if (network != null) 'network': network!,
-        if (producerInstanceId != null)
-          'producerInstanceId': producerInstanceId!,
-        if (producerInstanceMetadata != null)
-          'producerInstanceMetadata': producerInstanceMetadata!,
-        if (project != null) 'project': project!,
-        if (serviceAttachmentIpAddressMap != null)
-          'serviceAttachmentIpAddressMap': serviceAttachmentIpAddressMap!,
-        if (state != null) 'state': state!,
-      };
+    if (consumerInstanceProject != null)
+      'consumerInstanceProject': consumerInstanceProject!,
+    if (disableGlobalAccess != null)
+      'disableGlobalAccess': disableGlobalAccess!,
+    if (ipVersion != null) 'ipVersion': ipVersion!,
+    if (network != null) 'network': network!,
+    if (producerInstanceId != null) 'producerInstanceId': producerInstanceId!,
+    if (producerInstanceMetadata != null)
+      'producerInstanceMetadata': producerInstanceMetadata!,
+    if (project != null) 'project': project!,
+    if (serviceAttachmentIpAddressMap != null)
+      'serviceAttachmentIpAddressMap': serviceAttachmentIpAddressMap!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// PSC connection details on consumer side.
@@ -5203,58 +5237,55 @@ class ConsumerPscConnection {
   });
 
   ConsumerPscConnection.fromJson(core.Map json_)
-      : this(
-          error: json_.containsKey('error')
-              ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          errorInfo: json_.containsKey('errorInfo')
-              ? GoogleRpcErrorInfo.fromJson(
-                  json_['errorInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          errorType: json_['errorType'] as core.String?,
-          forwardingRule: json_['forwardingRule'] as core.String?,
-          gceOperation: json_['gceOperation'] as core.String?,
-          ip: json_['ip'] as core.String?,
-          ipVersion: json_['ipVersion'] as core.String?,
-          network: json_['network'] as core.String?,
-          producerInstanceId: json_['producerInstanceId'] as core.String?,
-          producerInstanceMetadata: (json_['producerInstanceMetadata']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          project: json_['project'] as core.String?,
-          pscConnectionId: json_['pscConnectionId'] as core.String?,
-          selectedSubnetwork: json_['selectedSubnetwork'] as core.String?,
-          serviceAttachmentUri: json_['serviceAttachmentUri'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        errorInfo:
+            json_.containsKey('errorInfo')
+                ? GoogleRpcErrorInfo.fromJson(
+                  json_['errorInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        errorType: json_['errorType'] as core.String?,
+        forwardingRule: json_['forwardingRule'] as core.String?,
+        gceOperation: json_['gceOperation'] as core.String?,
+        ip: json_['ip'] as core.String?,
+        ipVersion: json_['ipVersion'] as core.String?,
+        network: json_['network'] as core.String?,
+        producerInstanceId: json_['producerInstanceId'] as core.String?,
+        producerInstanceMetadata: (json_['producerInstanceMetadata']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        project: json_['project'] as core.String?,
+        pscConnectionId: json_['pscConnectionId'] as core.String?,
+        selectedSubnetwork: json_['selectedSubnetwork'] as core.String?,
+        serviceAttachmentUri: json_['serviceAttachmentUri'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!,
-        if (errorInfo != null) 'errorInfo': errorInfo!,
-        if (errorType != null) 'errorType': errorType!,
-        if (forwardingRule != null) 'forwardingRule': forwardingRule!,
-        if (gceOperation != null) 'gceOperation': gceOperation!,
-        if (ip != null) 'ip': ip!,
-        if (ipVersion != null) 'ipVersion': ipVersion!,
-        if (network != null) 'network': network!,
-        if (producerInstanceId != null)
-          'producerInstanceId': producerInstanceId!,
-        if (producerInstanceMetadata != null)
-          'producerInstanceMetadata': producerInstanceMetadata!,
-        if (project != null) 'project': project!,
-        if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
-        if (selectedSubnetwork != null)
-          'selectedSubnetwork': selectedSubnetwork!,
-        if (serviceAttachmentUri != null)
-          'serviceAttachmentUri': serviceAttachmentUri!,
-        if (state != null) 'state': state!,
-      };
+    if (error != null) 'error': error!,
+    if (errorInfo != null) 'errorInfo': errorInfo!,
+    if (errorType != null) 'errorType': errorType!,
+    if (forwardingRule != null) 'forwardingRule': forwardingRule!,
+    if (gceOperation != null) 'gceOperation': gceOperation!,
+    if (ip != null) 'ip': ip!,
+    if (ipVersion != null) 'ipVersion': ipVersion!,
+    if (network != null) 'network': network!,
+    if (producerInstanceId != null) 'producerInstanceId': producerInstanceId!,
+    if (producerInstanceMetadata != null)
+      'producerInstanceMetadata': producerInstanceMetadata!,
+    if (project != null) 'project': project!,
+    if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
+    if (selectedSubnetwork != null) 'selectedSubnetwork': selectedSubnetwork!,
+    if (serviceAttachmentUri != null)
+      'serviceAttachmentUri': serviceAttachmentUri!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -5331,19 +5362,19 @@ class Filter {
   });
 
   Filter.fromJson(core.Map json_)
-      : this(
-          destRange: json_['destRange'] as core.String?,
-          ipProtocol: json_['ipProtocol'] as core.String?,
-          protocolVersion: json_['protocolVersion'] as core.String?,
-          srcRange: json_['srcRange'] as core.String?,
-        );
+    : this(
+        destRange: json_['destRange'] as core.String?,
+        ipProtocol: json_['ipProtocol'] as core.String?,
+        protocolVersion: json_['protocolVersion'] as core.String?,
+        srcRange: json_['srcRange'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (destRange != null) 'destRange': destRange!,
-        if (ipProtocol != null) 'ipProtocol': ipProtocol!,
-        if (protocolVersion != null) 'protocolVersion': protocolVersion!,
-        if (srcRange != null) 'srcRange': srcRange!,
-      };
+    if (destRange != null) 'destRange': destRange!,
+    if (ipProtocol != null) 'ipProtocol': ipProtocol!,
+    if (protocolVersion != null) 'protocolVersion': protocolVersion!,
+    if (srcRange != null) 'srcRange': srcRange!,
+  };
 }
 
 /// The request message for Operations.CancelOperation.
@@ -5363,18 +5394,22 @@ class GoogleLongrunningListOperationsResponse {
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => GoogleLongrunningOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -5429,28 +5464,32 @@ class GoogleLongrunningOperation {
   });
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Describes the cause of the error with structured details.
@@ -5492,30 +5531,21 @@ class GoogleRpcErrorInfo {
   /// which represents UPPER_SNAKE_CASE.
   core.String? reason;
 
-  GoogleRpcErrorInfo({
-    this.domain,
-    this.metadata,
-    this.reason,
-  });
+  GoogleRpcErrorInfo({this.domain, this.metadata, this.reason});
 
   GoogleRpcErrorInfo.fromJson(core.Map json_)
-      : this(
-          domain: json_['domain'] as core.String?,
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          reason: json_['reason'] as core.String?,
-        );
+    : this(
+        domain: json_['domain'] as core.String?,
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        reason: json_['reason'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (domain != null) 'domain': domain!,
-        if (metadata != null) 'metadata': metadata!,
-        if (reason != null) 'reason': reason!,
-      };
+    if (domain != null) 'domain': domain!,
+    if (metadata != null) 'metadata': metadata!,
+    if (reason != null) 'reason': reason!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -5614,38 +5644,36 @@ class Group {
   });
 
   Group.fromJson(core.Map json_)
-      : this(
-          autoAccept: json_.containsKey('autoAccept')
-              ? AutoAccept.fromJson(
-                  json_['autoAccept'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          routeTable: json_['routeTable'] as core.String?,
-          state: json_['state'] as core.String?,
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        autoAccept:
+            json_.containsKey('autoAccept')
+                ? AutoAccept.fromJson(
+                  json_['autoAccept'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        routeTable: json_['routeTable'] as core.String?,
+        state: json_['state'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoAccept != null) 'autoAccept': autoAccept!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (routeTable != null) 'routeTable': routeTable!,
-        if (state != null) 'state': state!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (autoAccept != null) 'autoAccept': autoAccept!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (routeTable != null) 'routeTable': routeTable!,
+    if (state != null) 'state': state!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A Network Connectivity Center hub is a global management resource to which
@@ -5799,51 +5827,54 @@ class Hub {
   });
 
   Hub.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          exportPsc: json_['exportPsc'] as core.bool?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          policyMode: json_['policyMode'] as core.String?,
-          presetTopology: json_['presetTopology'] as core.String?,
-          routeTables: (json_['routeTables'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          routingVpcs: (json_['routingVpcs'] as core.List?)
-              ?.map((value) => RoutingVPC.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          spokeSummary: json_.containsKey('spokeSummary')
-              ? SpokeSummary.fromJson(
-                  json_['spokeSummary'] as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          uniqueId: json_['uniqueId'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        exportPsc: json_['exportPsc'] as core.bool?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        policyMode: json_['policyMode'] as core.String?,
+        presetTopology: json_['presetTopology'] as core.String?,
+        routeTables:
+            (json_['routeTables'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        routingVpcs:
+            (json_['routingVpcs'] as core.List?)
+                ?.map(
+                  (value) => RoutingVPC.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        spokeSummary:
+            json_.containsKey('spokeSummary')
+                ? SpokeSummary.fromJson(
+                  json_['spokeSummary'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        uniqueId: json_['uniqueId'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (exportPsc != null) 'exportPsc': exportPsc!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (policyMode != null) 'policyMode': policyMode!,
-        if (presetTopology != null) 'presetTopology': presetTopology!,
-        if (routeTables != null) 'routeTables': routeTables!,
-        if (routingVpcs != null) 'routingVpcs': routingVpcs!,
-        if (spokeSummary != null) 'spokeSummary': spokeSummary!,
-        if (state != null) 'state': state!,
-        if (uniqueId != null) 'uniqueId': uniqueId!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (exportPsc != null) 'exportPsc': exportPsc!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (policyMode != null) 'policyMode': policyMode!,
+    if (presetTopology != null) 'presetTopology': presetTopology!,
+    if (routeTables != null) 'routeTables': routeTables!,
+    if (routingVpcs != null) 'routingVpcs': routingVpcs!,
+    if (spokeSummary != null) 'spokeSummary': spokeSummary!,
+    if (state != null) 'state': state!,
+    if (uniqueId != null) 'uniqueId': uniqueId!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A hub status entry represents the status of a set of propagated Private
@@ -5864,28 +5895,27 @@ class HubStatusEntry {
   /// The Private Service Connect propagation status.
   PscPropagationStatus? pscPropagationStatus;
 
-  HubStatusEntry({
-    this.count,
-    this.groupBy,
-    this.pscPropagationStatus,
-  });
+  HubStatusEntry({this.count, this.groupBy, this.pscPropagationStatus});
 
   HubStatusEntry.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.int?,
-          groupBy: json_['groupBy'] as core.String?,
-          pscPropagationStatus: json_.containsKey('pscPropagationStatus')
-              ? PscPropagationStatus.fromJson(json_['pscPropagationStatus']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        count: json_['count'] as core.int?,
+        groupBy: json_['groupBy'] as core.String?,
+        pscPropagationStatus:
+            json_.containsKey('pscPropagationStatus')
+                ? PscPropagationStatus.fromJson(
+                  json_['pscPropagationStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (groupBy != null) 'groupBy': groupBy!,
-        if (pscPropagationStatus != null)
-          'pscPropagationStatus': pscPropagationStatus!,
-      };
+    if (count != null) 'count': count!,
+    if (groupBy != null) 'groupBy': groupBy!,
+    if (pscPropagationStatus != null)
+      'pscPropagationStatus': pscPropagationStatus!,
+  };
 }
 
 /// InterconnectAttachment that this route applies to.
@@ -5898,18 +5928,14 @@ class InterconnectAttachment {
   /// Optional.
   core.String? region;
 
-  InterconnectAttachment({
-    this.region,
-  });
+  InterconnectAttachment({this.region});
 
   InterconnectAttachment.fromJson(core.Map json_)
-      : this(
-          region: json_['region'] as core.String?,
-        );
+    : this(region: json_['region'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (region != null) 'region': region!,
-      };
+    if (region != null) 'region': region!,
+  };
 }
 
 /// The internal range resource for IPAM operations within a VPC network.
@@ -6093,65 +6119,70 @@ class InternalRange {
   });
 
   InternalRange.fromJson(core.Map json_)
-      : this(
-          allocationOptions: json_.containsKey('allocationOptions')
-              ? AllocationOptions.fromJson(json_['allocationOptions']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          excludeCidrRanges: (json_['excludeCidrRanges'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          immutable: json_['immutable'] as core.bool?,
-          ipCidrRange: json_['ipCidrRange'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          migration: json_.containsKey('migration')
-              ? Migration.fromJson(
-                  json_['migration'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          network: json_['network'] as core.String?,
-          overlaps: (json_['overlaps'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          peering: json_['peering'] as core.String?,
-          prefixLength: json_['prefixLength'] as core.int?,
-          targetCidrRange: (json_['targetCidrRange'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-          usage: json_['usage'] as core.String?,
-          users: (json_['users'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        allocationOptions:
+            json_.containsKey('allocationOptions')
+                ? AllocationOptions.fromJson(
+                  json_['allocationOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        excludeCidrRanges:
+            (json_['excludeCidrRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        immutable: json_['immutable'] as core.bool?,
+        ipCidrRange: json_['ipCidrRange'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        migration:
+            json_.containsKey('migration')
+                ? Migration.fromJson(
+                  json_['migration'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        overlaps:
+            (json_['overlaps'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        peering: json_['peering'] as core.String?,
+        prefixLength: json_['prefixLength'] as core.int?,
+        targetCidrRange:
+            (json_['targetCidrRange'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+        usage: json_['usage'] as core.String?,
+        users:
+            (json_['users'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allocationOptions != null) 'allocationOptions': allocationOptions!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (excludeCidrRanges != null) 'excludeCidrRanges': excludeCidrRanges!,
-        if (immutable != null) 'immutable': immutable!,
-        if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
-        if (labels != null) 'labels': labels!,
-        if (migration != null) 'migration': migration!,
-        if (name != null) 'name': name!,
-        if (network != null) 'network': network!,
-        if (overlaps != null) 'overlaps': overlaps!,
-        if (peering != null) 'peering': peering!,
-        if (prefixLength != null) 'prefixLength': prefixLength!,
-        if (targetCidrRange != null) 'targetCidrRange': targetCidrRange!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (usage != null) 'usage': usage!,
-        if (users != null) 'users': users!,
-      };
+    if (allocationOptions != null) 'allocationOptions': allocationOptions!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (excludeCidrRanges != null) 'excludeCidrRanges': excludeCidrRanges!,
+    if (immutable != null) 'immutable': immutable!,
+    if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
+    if (labels != null) 'labels': labels!,
+    if (migration != null) 'migration': migration!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (overlaps != null) 'overlaps': overlaps!,
+    if (peering != null) 'peering': peering!,
+    if (prefixLength != null) 'prefixLength': prefixLength!,
+    if (targetCidrRange != null) 'targetCidrRange': targetCidrRange!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (usage != null) 'usage': usage!,
+    if (users != null) 'users': users!,
+  };
 }
 
 /// A collection of VLAN attachment resources.
@@ -6189,25 +6220,27 @@ class LinkedInterconnectAttachments {
   });
 
   LinkedInterconnectAttachments.fromJson(core.Map json_)
-      : this(
-          includeImportRanges: (json_['includeImportRanges'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
-          uris: (json_['uris'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          vpcNetwork: json_['vpcNetwork'] as core.String?,
-        );
+    : this(
+        includeImportRanges:
+            (json_['includeImportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
+        uris:
+            (json_['uris'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        vpcNetwork: json_['vpcNetwork'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (includeImportRanges != null)
-          'includeImportRanges': includeImportRanges!,
-        if (siteToSiteDataTransfer != null)
-          'siteToSiteDataTransfer': siteToSiteDataTransfer!,
-        if (uris != null) 'uris': uris!,
-        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
-      };
+    if (includeImportRanges != null)
+      'includeImportRanges': includeImportRanges!,
+    if (siteToSiteDataTransfer != null)
+      'siteToSiteDataTransfer': siteToSiteDataTransfer!,
+    if (uris != null) 'uris': uris!,
+    if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+  };
 }
 
 class LinkedProducerVpcNetwork {
@@ -6269,43 +6302,45 @@ class LinkedProducerVpcNetwork {
   });
 
   LinkedProducerVpcNetwork.fromJson(core.Map json_)
-      : this(
-          excludeExportRanges: (json_['excludeExportRanges'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          includeExportRanges: (json_['includeExportRanges'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          network: json_['network'] as core.String?,
-          peering: json_['peering'] as core.String?,
-          producerNetwork: json_['producerNetwork'] as core.String?,
-          proposedExcludeExportRanges:
-              (json_['proposedExcludeExportRanges'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          proposedIncludeExportRanges:
-              (json_['proposedIncludeExportRanges'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          serviceConsumerVpcSpoke:
-              json_['serviceConsumerVpcSpoke'] as core.String?,
-        );
+    : this(
+        excludeExportRanges:
+            (json_['excludeExportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includeExportRanges:
+            (json_['includeExportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        network: json_['network'] as core.String?,
+        peering: json_['peering'] as core.String?,
+        producerNetwork: json_['producerNetwork'] as core.String?,
+        proposedExcludeExportRanges:
+            (json_['proposedExcludeExportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        proposedIncludeExportRanges:
+            (json_['proposedIncludeExportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        serviceConsumerVpcSpoke:
+            json_['serviceConsumerVpcSpoke'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (excludeExportRanges != null)
-          'excludeExportRanges': excludeExportRanges!,
-        if (includeExportRanges != null)
-          'includeExportRanges': includeExportRanges!,
-        if (network != null) 'network': network!,
-        if (peering != null) 'peering': peering!,
-        if (producerNetwork != null) 'producerNetwork': producerNetwork!,
-        if (proposedExcludeExportRanges != null)
-          'proposedExcludeExportRanges': proposedExcludeExportRanges!,
-        if (proposedIncludeExportRanges != null)
-          'proposedIncludeExportRanges': proposedIncludeExportRanges!,
-        if (serviceConsumerVpcSpoke != null)
-          'serviceConsumerVpcSpoke': serviceConsumerVpcSpoke!,
-      };
+    if (excludeExportRanges != null)
+      'excludeExportRanges': excludeExportRanges!,
+    if (includeExportRanges != null)
+      'includeExportRanges': includeExportRanges!,
+    if (network != null) 'network': network!,
+    if (peering != null) 'peering': peering!,
+    if (producerNetwork != null) 'producerNetwork': producerNetwork!,
+    if (proposedExcludeExportRanges != null)
+      'proposedExcludeExportRanges': proposedExcludeExportRanges!,
+    if (proposedIncludeExportRanges != null)
+      'proposedIncludeExportRanges': proposedIncludeExportRanges!,
+    if (serviceConsumerVpcSpoke != null)
+      'serviceConsumerVpcSpoke': serviceConsumerVpcSpoke!,
+  };
 }
 
 /// A collection of router appliance instances.
@@ -6343,26 +6378,31 @@ class LinkedRouterApplianceInstances {
   });
 
   LinkedRouterApplianceInstances.fromJson(core.Map json_)
-      : this(
-          includeImportRanges: (json_['includeImportRanges'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          instances: (json_['instances'] as core.List?)
-              ?.map((value) => RouterApplianceInstance.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
-          vpcNetwork: json_['vpcNetwork'] as core.String?,
-        );
+    : this(
+        includeImportRanges:
+            (json_['includeImportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        instances:
+            (json_['instances'] as core.List?)
+                ?.map(
+                  (value) => RouterApplianceInstance.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
+        vpcNetwork: json_['vpcNetwork'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (includeImportRanges != null)
-          'includeImportRanges': includeImportRanges!,
-        if (instances != null) 'instances': instances!,
-        if (siteToSiteDataTransfer != null)
-          'siteToSiteDataTransfer': siteToSiteDataTransfer!,
-        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
-      };
+    if (includeImportRanges != null)
+      'includeImportRanges': includeImportRanges!,
+    if (instances != null) 'instances': instances!,
+    if (siteToSiteDataTransfer != null)
+      'siteToSiteDataTransfer': siteToSiteDataTransfer!,
+    if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+  };
 }
 
 /// An existing VPC network.
@@ -6416,39 +6456,42 @@ class LinkedVpcNetwork {
   });
 
   LinkedVpcNetwork.fromJson(core.Map json_)
-      : this(
-          excludeExportRanges: (json_['excludeExportRanges'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          includeExportRanges: (json_['includeExportRanges'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          producerVpcSpokes: (json_['producerVpcSpokes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          proposedExcludeExportRanges:
-              (json_['proposedExcludeExportRanges'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          proposedIncludeExportRanges:
-              (json_['proposedIncludeExportRanges'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        excludeExportRanges:
+            (json_['excludeExportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includeExportRanges:
+            (json_['includeExportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        producerVpcSpokes:
+            (json_['producerVpcSpokes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        proposedExcludeExportRanges:
+            (json_['proposedExcludeExportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        proposedIncludeExportRanges:
+            (json_['proposedIncludeExportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (excludeExportRanges != null)
-          'excludeExportRanges': excludeExportRanges!,
-        if (includeExportRanges != null)
-          'includeExportRanges': includeExportRanges!,
-        if (producerVpcSpokes != null) 'producerVpcSpokes': producerVpcSpokes!,
-        if (proposedExcludeExportRanges != null)
-          'proposedExcludeExportRanges': proposedExcludeExportRanges!,
-        if (proposedIncludeExportRanges != null)
-          'proposedIncludeExportRanges': proposedIncludeExportRanges!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (excludeExportRanges != null)
+      'excludeExportRanges': excludeExportRanges!,
+    if (includeExportRanges != null)
+      'includeExportRanges': includeExportRanges!,
+    if (producerVpcSpokes != null) 'producerVpcSpokes': producerVpcSpokes!,
+    if (proposedExcludeExportRanges != null)
+      'proposedExcludeExportRanges': proposedExcludeExportRanges!,
+    if (proposedIncludeExportRanges != null)
+      'proposedIncludeExportRanges': proposedIncludeExportRanges!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// A collection of Cloud VPN tunnel resources.
@@ -6487,25 +6530,27 @@ class LinkedVpnTunnels {
   });
 
   LinkedVpnTunnels.fromJson(core.Map json_)
-      : this(
-          includeImportRanges: (json_['includeImportRanges'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
-          uris: (json_['uris'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          vpcNetwork: json_['vpcNetwork'] as core.String?,
-        );
+    : this(
+        includeImportRanges:
+            (json_['includeImportRanges'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
+        uris:
+            (json_['uris'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        vpcNetwork: json_['vpcNetwork'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (includeImportRanges != null)
-          'includeImportRanges': includeImportRanges!,
-        if (siteToSiteDataTransfer != null)
-          'siteToSiteDataTransfer': siteToSiteDataTransfer!,
-        if (uris != null) 'uris': uris!,
-        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
-      };
+    if (includeImportRanges != null)
+      'includeImportRanges': includeImportRanges!,
+    if (siteToSiteDataTransfer != null)
+      'siteToSiteDataTransfer': siteToSiteDataTransfer!,
+    if (uris != null) 'uris': uris!,
+    if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+  };
 }
 
 /// Response for HubService.ListGroups method.
@@ -6522,29 +6567,30 @@ class ListGroupsResponse {
   /// Hubs that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListGroupsResponse({
-    this.groups,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListGroupsResponse({this.groups, this.nextPageToken, this.unreachable});
 
   ListGroupsResponse.fromJson(core.Map json_)
-      : this(
-          groups: (json_['groups'] as core.List?)
-              ?.map((value) =>
-                  Group.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        groups:
+            (json_['groups'] as core.List?)
+                ?.map(
+                  (value) => Group.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groups != null) 'groups': groups!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (groups != null) 'groups': groups!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response for HubService.ListHubSpokes.
@@ -6564,29 +6610,30 @@ class ListHubSpokesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListHubSpokesResponse({
-    this.nextPageToken,
-    this.spokes,
-    this.unreachable,
-  });
+  ListHubSpokesResponse({this.nextPageToken, this.spokes, this.unreachable});
 
   ListHubSpokesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          spokes: (json_['spokes'] as core.List?)
-              ?.map((value) =>
-                  Spoke.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        spokes:
+            (json_['spokes'] as core.List?)
+                ?.map(
+                  (value) => Spoke.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (spokes != null) 'spokes': spokes!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (spokes != null) 'spokes': spokes!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response for HubService.ListHubs method.
@@ -6603,29 +6650,30 @@ class ListHubsResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListHubsResponse({
-    this.hubs,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListHubsResponse({this.hubs, this.nextPageToken, this.unreachable});
 
   ListHubsResponse.fromJson(core.Map json_)
-      : this(
-          hubs: (json_['hubs'] as core.List?)
-              ?.map((value) =>
-                  Hub.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        hubs:
+            (json_['hubs'] as core.List?)
+                ?.map(
+                  (value) => Hub.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hubs != null) 'hubs': hubs!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (hubs != null) 'hubs': hubs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response for InternalRange.ListInternalRanges
@@ -6649,22 +6697,27 @@ class ListInternalRangesResponse {
   });
 
   ListInternalRangesResponse.fromJson(core.Map json_)
-      : this(
-          internalRanges: (json_['internalRanges'] as core.List?)
-              ?.map((value) => InternalRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        internalRanges:
+            (json_['internalRanges'] as core.List?)
+                ?.map(
+                  (value) => InternalRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (internalRanges != null) 'internalRanges': internalRanges!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (internalRanges != null) 'internalRanges': internalRanges!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -6675,24 +6728,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response for PolicyBasedRoutingService.ListPolicyBasedRoutes method.
@@ -6716,22 +6770,27 @@ class ListPolicyBasedRoutesResponse {
   });
 
   ListPolicyBasedRoutesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          policyBasedRoutes: (json_['policyBasedRoutes'] as core.List?)
-              ?.map((value) => PolicyBasedRoute.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        policyBasedRoutes:
+            (json_['policyBasedRoutes'] as core.List?)
+                ?.map(
+                  (value) => PolicyBasedRoute.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (policyBasedRoutes != null) 'policyBasedRoutes': policyBasedRoutes!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (policyBasedRoutes != null) 'policyBasedRoutes': policyBasedRoutes!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response for ListRegionalEndpoints.
@@ -6755,22 +6814,27 @@ class ListRegionalEndpointsResponse {
   });
 
   ListRegionalEndpointsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          regionalEndpoints: (json_['regionalEndpoints'] as core.List?)
-              ?.map((value) => RegionalEndpoint.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        regionalEndpoints:
+            (json_['regionalEndpoints'] as core.List?)
+                ?.map(
+                  (value) => RegionalEndpoint.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (regionalEndpoints != null) 'regionalEndpoints': regionalEndpoints!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (regionalEndpoints != null) 'regionalEndpoints': regionalEndpoints!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response for HubService.ListRouteTables method.
@@ -6794,22 +6858,27 @@ class ListRouteTablesResponse {
   });
 
   ListRouteTablesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          routeTables: (json_['routeTables'] as core.List?)
-              ?.map((value) => RouteTable.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        routeTables:
+            (json_['routeTables'] as core.List?)
+                ?.map(
+                  (value) => RouteTable.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (routeTables != null) 'routeTables': routeTables!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (routeTables != null) 'routeTables': routeTables!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response for HubService.ListRoutes method.
@@ -6826,29 +6895,30 @@ class ListRoutesResponse {
   /// RouteTables that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListRoutesResponse({
-    this.nextPageToken,
-    this.routes,
-    this.unreachable,
-  });
+  ListRoutesResponse({this.nextPageToken, this.routes, this.unreachable});
 
   ListRoutesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          routes: (json_['routes'] as core.List?)
-              ?.map((value) =>
-                  Route.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        routes:
+            (json_['routes'] as core.List?)
+                ?.map(
+                  (value) => Route.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (routes != null) 'routes': routes!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (routes != null) 'routes': routes!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response for ListServiceClasses.
@@ -6872,22 +6942,27 @@ class ListServiceClassesResponse {
   });
 
   ListServiceClassesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          serviceClasses: (json_['serviceClasses'] as core.List?)
-              ?.map((value) => ServiceClass.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        serviceClasses:
+            (json_['serviceClasses'] as core.List?)
+                ?.map(
+                  (value) => ServiceClass.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (serviceClasses != null) 'serviceClasses': serviceClasses!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (serviceClasses != null) 'serviceClasses': serviceClasses!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response for ListServiceConnectionMaps.
@@ -6911,23 +6986,28 @@ class ListServiceConnectionMapsResponse {
   });
 
   ListServiceConnectionMapsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          serviceConnectionMaps: (json_['serviceConnectionMaps'] as core.List?)
-              ?.map((value) => ServiceConnectionMap.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        serviceConnectionMaps:
+            (json_['serviceConnectionMaps'] as core.List?)
+                ?.map(
+                  (value) => ServiceConnectionMap.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (serviceConnectionMaps != null)
-          'serviceConnectionMaps': serviceConnectionMaps!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (serviceConnectionMaps != null)
+      'serviceConnectionMaps': serviceConnectionMaps!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response for ListServiceConnectionPolicies.
@@ -6951,24 +7031,28 @@ class ListServiceConnectionPoliciesResponse {
   });
 
   ListServiceConnectionPoliciesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          serviceConnectionPolicies:
-              (json_['serviceConnectionPolicies'] as core.List?)
-                  ?.map((value) => ServiceConnectionPolicy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        serviceConnectionPolicies:
+            (json_['serviceConnectionPolicies'] as core.List?)
+                ?.map(
+                  (value) => ServiceConnectionPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (serviceConnectionPolicies != null)
-          'serviceConnectionPolicies': serviceConnectionPolicies!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (serviceConnectionPolicies != null)
+      'serviceConnectionPolicies': serviceConnectionPolicies!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response for ListServiceConnectionTokens.
@@ -6992,24 +7076,28 @@ class ListServiceConnectionTokensResponse {
   });
 
   ListServiceConnectionTokensResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          serviceConnectionTokens:
-              (json_['serviceConnectionTokens'] as core.List?)
-                  ?.map((value) => ServiceConnectionToken.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        serviceConnectionTokens:
+            (json_['serviceConnectionTokens'] as core.List?)
+                ?.map(
+                  (value) => ServiceConnectionToken.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (serviceConnectionTokens != null)
-          'serviceConnectionTokens': serviceConnectionTokens!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (serviceConnectionTokens != null)
+      'serviceConnectionTokens': serviceConnectionTokens!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response for HubService.ListSpokes.
@@ -7026,29 +7114,30 @@ class ListSpokesResponse {
   /// Locations that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListSpokesResponse({
-    this.nextPageToken,
-    this.spokes,
-    this.unreachable,
-  });
+  ListSpokesResponse({this.nextPageToken, this.spokes, this.unreachable});
 
   ListSpokesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          spokes: (json_['spokes'] as core.List?)
-              ?.map((value) =>
-                  Spoke.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        spokes:
+            (json_['spokes'] as core.List?)
+                ?.map(
+                  (value) => Spoke.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (spokes != null) 'spokes': spokes!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (spokes != null) 'spokes': spokes!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -7074,21 +7163,18 @@ class Migration {
   /// Immutable.
   core.String? target;
 
-  Migration({
-    this.source,
-    this.target,
-  });
+  Migration({this.source, this.target});
 
   Migration.fromJson(core.Map json_)
-      : this(
-          source: json_['source'] as core.String?,
-          target: json_['target'] as core.String?,
-        );
+    : this(
+        source: json_['source'] as core.String?,
+        target: json_['target'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (source != null) 'source': source!,
-        if (target != null) 'target': target!,
-      };
+    if (source != null) 'source': source!,
+    if (target != null) 'target': target!,
+  };
 }
 
 /// A route next hop that leads to an interconnect attachment resource.
@@ -7113,18 +7199,18 @@ class NextHopInterconnectAttachment {
   });
 
   NextHopInterconnectAttachment.fromJson(core.Map json_)
-      : this(
-          siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
-          uri: json_['uri'] as core.String?,
-          vpcNetwork: json_['vpcNetwork'] as core.String?,
-        );
+    : this(
+        siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
+        uri: json_['uri'] as core.String?,
+        vpcNetwork: json_['vpcNetwork'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (siteToSiteDataTransfer != null)
-          'siteToSiteDataTransfer': siteToSiteDataTransfer!,
-        if (uri != null) 'uri': uri!,
-        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
-      };
+    if (siteToSiteDataTransfer != null)
+      'siteToSiteDataTransfer': siteToSiteDataTransfer!,
+    if (uri != null) 'uri': uri!,
+    if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+  };
 }
 
 /// A route next hop that leads to a Router appliance instance.
@@ -7149,18 +7235,18 @@ class NextHopRouterApplianceInstance {
   });
 
   NextHopRouterApplianceInstance.fromJson(core.Map json_)
-      : this(
-          siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
-          uri: json_['uri'] as core.String?,
-          vpcNetwork: json_['vpcNetwork'] as core.String?,
-        );
+    : this(
+        siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
+        uri: json_['uri'] as core.String?,
+        vpcNetwork: json_['vpcNetwork'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (siteToSiteDataTransfer != null)
-          'siteToSiteDataTransfer': siteToSiteDataTransfer!,
-        if (uri != null) 'uri': uri!,
-        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
-      };
+    if (siteToSiteDataTransfer != null)
+      'siteToSiteDataTransfer': siteToSiteDataTransfer!,
+    if (uri != null) 'uri': uri!,
+    if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+  };
 }
 
 /// A route next hop that leads to a spoke resource.
@@ -7178,22 +7264,19 @@ class NextHopSpoke {
   /// The URI of the spoke resource.
   core.String? uri;
 
-  NextHopSpoke({
-    this.siteToSiteDataTransfer,
-    this.uri,
-  });
+  NextHopSpoke({this.siteToSiteDataTransfer, this.uri});
 
   NextHopSpoke.fromJson(core.Map json_)
-      : this(
-          siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (siteToSiteDataTransfer != null)
-          'siteToSiteDataTransfer': siteToSiteDataTransfer!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (siteToSiteDataTransfer != null)
+      'siteToSiteDataTransfer': siteToSiteDataTransfer!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// A route next hop that leads to a VPN tunnel resource.
@@ -7211,43 +7294,35 @@ class NextHopVPNTunnel {
   /// The VPC network where this VPN tunnel is located.
   core.String? vpcNetwork;
 
-  NextHopVPNTunnel({
-    this.siteToSiteDataTransfer,
-    this.uri,
-    this.vpcNetwork,
-  });
+  NextHopVPNTunnel({this.siteToSiteDataTransfer, this.uri, this.vpcNetwork});
 
   NextHopVPNTunnel.fromJson(core.Map json_)
-      : this(
-          siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
-          uri: json_['uri'] as core.String?,
-          vpcNetwork: json_['vpcNetwork'] as core.String?,
-        );
+    : this(
+        siteToSiteDataTransfer: json_['siteToSiteDataTransfer'] as core.bool?,
+        uri: json_['uri'] as core.String?,
+        vpcNetwork: json_['vpcNetwork'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (siteToSiteDataTransfer != null)
-          'siteToSiteDataTransfer': siteToSiteDataTransfer!,
-        if (uri != null) 'uri': uri!,
-        if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
-      };
+    if (siteToSiteDataTransfer != null)
+      'siteToSiteDataTransfer': siteToSiteDataTransfer!,
+    if (uri != null) 'uri': uri!,
+    if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+  };
 }
 
 class NextHopVpcNetwork {
   /// The URI of the VPC network resource
   core.String? uri;
 
-  NextHopVpcNetwork({
-    this.uri,
-  });
+  NextHopVpcNetwork({this.uri});
 
   NextHopVpcNetwork.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+    : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -7313,8 +7388,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -7336,33 +7413,36 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        auditConfigs:
+            (json_['auditConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Policy-based routes route L4 network traffic based on not just destination
@@ -7487,61 +7567,68 @@ class PolicyBasedRoute {
   });
 
   PolicyBasedRoute.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          filter: json_.containsKey('filter')
-              ? Filter.fromJson(
-                  json_['filter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          interconnectAttachment: json_.containsKey('interconnectAttachment')
-              ? InterconnectAttachment.fromJson(json_['interconnectAttachment']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          kind: json_['kind'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          network: json_['network'] as core.String?,
-          nextHopIlbIp: json_['nextHopIlbIp'] as core.String?,
-          nextHopOtherRoutes: json_['nextHopOtherRoutes'] as core.String?,
-          priority: json_['priority'] as core.int?,
-          selfLink: json_['selfLink'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          virtualMachine: json_.containsKey('virtualMachine')
-              ? VirtualMachine.fromJson(json_['virtualMachine']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          warnings: (json_['warnings'] as core.List?)
-              ?.map((value) => Warnings.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        filter:
+            json_.containsKey('filter')
+                ? Filter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        interconnectAttachment:
+            json_.containsKey('interconnectAttachment')
+                ? InterconnectAttachment.fromJson(
+                  json_['interconnectAttachment']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kind: json_['kind'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        nextHopIlbIp: json_['nextHopIlbIp'] as core.String?,
+        nextHopOtherRoutes: json_['nextHopOtherRoutes'] as core.String?,
+        priority: json_['priority'] as core.int?,
+        selfLink: json_['selfLink'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        virtualMachine:
+            json_.containsKey('virtualMachine')
+                ? VirtualMachine.fromJson(
+                  json_['virtualMachine']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        warnings:
+            (json_['warnings'] as core.List?)
+                ?.map(
+                  (value) => Warnings.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (filter != null) 'filter': filter!,
-        if (interconnectAttachment != null)
-          'interconnectAttachment': interconnectAttachment!,
-        if (kind != null) 'kind': kind!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (network != null) 'network': network!,
-        if (nextHopIlbIp != null) 'nextHopIlbIp': nextHopIlbIp!,
-        if (nextHopOtherRoutes != null)
-          'nextHopOtherRoutes': nextHopOtherRoutes!,
-        if (priority != null) 'priority': priority!,
-        if (selfLink != null) 'selfLink': selfLink!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (virtualMachine != null) 'virtualMachine': virtualMachine!,
-        if (warnings != null) 'warnings': warnings!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (filter != null) 'filter': filter!,
+    if (interconnectAttachment != null)
+      'interconnectAttachment': interconnectAttachment!,
+    if (kind != null) 'kind': kind!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (nextHopIlbIp != null) 'nextHopIlbIp': nextHopIlbIp!,
+    if (nextHopOtherRoutes != null) 'nextHopOtherRoutes': nextHopOtherRoutes!,
+    if (priority != null) 'priority': priority!,
+    if (selfLink != null) 'selfLink': selfLink!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (virtualMachine != null) 'virtualMachine': virtualMachine!,
+    if (warnings != null) 'warnings': warnings!,
+  };
 }
 
 /// The PSC configurations on producer side.
@@ -7552,19 +7639,15 @@ class ProducerPscConfig {
   /// projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
   core.String? serviceAttachmentUri;
 
-  ProducerPscConfig({
-    this.serviceAttachmentUri,
-  });
+  ProducerPscConfig({this.serviceAttachmentUri});
 
   ProducerPscConfig.fromJson(core.Map json_)
-      : this(
-          serviceAttachmentUri: json_['serviceAttachmentUri'] as core.String?,
-        );
+    : this(serviceAttachmentUri: json_['serviceAttachmentUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (serviceAttachmentUri != null)
-          'serviceAttachmentUri': serviceAttachmentUri!,
-      };
+    if (serviceAttachmentUri != null)
+      'serviceAttachmentUri': serviceAttachmentUri!,
+  };
 }
 
 /// Configuration used for Private Service Connect connections.
@@ -7624,29 +7707,30 @@ class PscConfig {
   });
 
   PscConfig.fromJson(core.Map json_)
-      : this(
-          allowedGoogleProducersResourceHierarchyLevel:
-              (json_['allowedGoogleProducersResourceHierarchyLevel']
-                      as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          limit: json_['limit'] as core.String?,
-          producerInstanceLocation:
-              json_['producerInstanceLocation'] as core.String?,
-          subnetworks: (json_['subnetworks'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        allowedGoogleProducersResourceHierarchyLevel:
+            (json_['allowedGoogleProducersResourceHierarchyLevel']
+                    as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        limit: json_['limit'] as core.String?,
+        producerInstanceLocation:
+            json_['producerInstanceLocation'] as core.String?,
+        subnetworks:
+            (json_['subnetworks'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedGoogleProducersResourceHierarchyLevel != null)
-          'allowedGoogleProducersResourceHierarchyLevel':
-              allowedGoogleProducersResourceHierarchyLevel!,
-        if (limit != null) 'limit': limit!,
-        if (producerInstanceLocation != null)
-          'producerInstanceLocation': producerInstanceLocation!,
-        if (subnetworks != null) 'subnetworks': subnetworks!,
-      };
+    if (allowedGoogleProducersResourceHierarchyLevel != null)
+      'allowedGoogleProducersResourceHierarchyLevel':
+          allowedGoogleProducersResourceHierarchyLevel!,
+    if (limit != null) 'limit': limit!,
+    if (producerInstanceLocation != null)
+      'producerInstanceLocation': producerInstanceLocation!,
+    if (subnetworks != null) 'subnetworks': subnetworks!,
+  };
 }
 
 /// Information about a specific Private Service Connect connection.
@@ -7764,58 +7848,54 @@ class PscConnection {
   });
 
   PscConnection.fromJson(core.Map json_)
-      : this(
-          consumerAddress: json_['consumerAddress'] as core.String?,
-          consumerForwardingRule:
-              json_['consumerForwardingRule'] as core.String?,
-          consumerTargetProject: json_['consumerTargetProject'] as core.String?,
-          error: json_.containsKey('error')
-              ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          errorInfo: json_.containsKey('errorInfo')
-              ? GoogleRpcErrorInfo.fromJson(
-                  json_['errorInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          errorType: json_['errorType'] as core.String?,
-          gceOperation: json_['gceOperation'] as core.String?,
-          ipVersion: json_['ipVersion'] as core.String?,
-          producerInstanceId: json_['producerInstanceId'] as core.String?,
-          producerInstanceMetadata: (json_['producerInstanceMetadata']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          pscConnectionId: json_['pscConnectionId'] as core.String?,
-          selectedSubnetwork: json_['selectedSubnetwork'] as core.String?,
-          serviceClass: json_['serviceClass'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        consumerAddress: json_['consumerAddress'] as core.String?,
+        consumerForwardingRule: json_['consumerForwardingRule'] as core.String?,
+        consumerTargetProject: json_['consumerTargetProject'] as core.String?,
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        errorInfo:
+            json_.containsKey('errorInfo')
+                ? GoogleRpcErrorInfo.fromJson(
+                  json_['errorInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        errorType: json_['errorType'] as core.String?,
+        gceOperation: json_['gceOperation'] as core.String?,
+        ipVersion: json_['ipVersion'] as core.String?,
+        producerInstanceId: json_['producerInstanceId'] as core.String?,
+        producerInstanceMetadata: (json_['producerInstanceMetadata']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        pscConnectionId: json_['pscConnectionId'] as core.String?,
+        selectedSubnetwork: json_['selectedSubnetwork'] as core.String?,
+        serviceClass: json_['serviceClass'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consumerAddress != null) 'consumerAddress': consumerAddress!,
-        if (consumerForwardingRule != null)
-          'consumerForwardingRule': consumerForwardingRule!,
-        if (consumerTargetProject != null)
-          'consumerTargetProject': consumerTargetProject!,
-        if (error != null) 'error': error!,
-        if (errorInfo != null) 'errorInfo': errorInfo!,
-        if (errorType != null) 'errorType': errorType!,
-        if (gceOperation != null) 'gceOperation': gceOperation!,
-        if (ipVersion != null) 'ipVersion': ipVersion!,
-        if (producerInstanceId != null)
-          'producerInstanceId': producerInstanceId!,
-        if (producerInstanceMetadata != null)
-          'producerInstanceMetadata': producerInstanceMetadata!,
-        if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
-        if (selectedSubnetwork != null)
-          'selectedSubnetwork': selectedSubnetwork!,
-        if (serviceClass != null) 'serviceClass': serviceClass!,
-        if (state != null) 'state': state!,
-      };
+    if (consumerAddress != null) 'consumerAddress': consumerAddress!,
+    if (consumerForwardingRule != null)
+      'consumerForwardingRule': consumerForwardingRule!,
+    if (consumerTargetProject != null)
+      'consumerTargetProject': consumerTargetProject!,
+    if (error != null) 'error': error!,
+    if (errorInfo != null) 'errorInfo': errorInfo!,
+    if (errorType != null) 'errorType': errorType!,
+    if (gceOperation != null) 'gceOperation': gceOperation!,
+    if (ipVersion != null) 'ipVersion': ipVersion!,
+    if (producerInstanceId != null) 'producerInstanceId': producerInstanceId!,
+    if (producerInstanceMetadata != null)
+      'producerInstanceMetadata': producerInstanceMetadata!,
+    if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
+    if (selectedSubnetwork != null) 'selectedSubnetwork': selectedSubnetwork!,
+    if (serviceClass != null) 'serviceClass': serviceClass!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// The status of one or more propagated Private Service Connect connections in
@@ -7876,26 +7956,26 @@ class PscPropagationStatus {
   });
 
   PscPropagationStatus.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          message: json_['message'] as core.String?,
-          sourceForwardingRule: json_['sourceForwardingRule'] as core.String?,
-          sourceGroup: json_['sourceGroup'] as core.String?,
-          sourceSpoke: json_['sourceSpoke'] as core.String?,
-          targetGroup: json_['targetGroup'] as core.String?,
-          targetSpoke: json_['targetSpoke'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        message: json_['message'] as core.String?,
+        sourceForwardingRule: json_['sourceForwardingRule'] as core.String?,
+        sourceGroup: json_['sourceGroup'] as core.String?,
+        sourceSpoke: json_['sourceSpoke'] as core.String?,
+        targetGroup: json_['targetGroup'] as core.String?,
+        targetSpoke: json_['targetSpoke'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (message != null) 'message': message!,
-        if (sourceForwardingRule != null)
-          'sourceForwardingRule': sourceForwardingRule!,
-        if (sourceGroup != null) 'sourceGroup': sourceGroup!,
-        if (sourceSpoke != null) 'sourceSpoke': sourceSpoke!,
-        if (targetGroup != null) 'targetGroup': targetGroup!,
-        if (targetSpoke != null) 'targetSpoke': targetSpoke!,
-      };
+    if (code != null) 'code': code!,
+    if (message != null) 'message': message!,
+    if (sourceForwardingRule != null)
+      'sourceForwardingRule': sourceForwardingRule!,
+    if (sourceGroup != null) 'sourceGroup': sourceGroup!,
+    if (sourceSpoke != null) 'sourceSpoke': sourceSpoke!,
+    if (targetGroup != null) 'targetGroup': targetGroup!,
+    if (targetSpoke != null) 'targetSpoke': targetSpoke!,
+  };
 }
 
 /// The response for HubService.QueryHubStatus.
@@ -7909,24 +7989,25 @@ class QueryHubStatusResponse {
   /// request. If this value is empty, there are no more results.
   core.String? nextPageToken;
 
-  QueryHubStatusResponse({
-    this.hubStatusEntries,
-    this.nextPageToken,
-  });
+  QueryHubStatusResponse({this.hubStatusEntries, this.nextPageToken});
 
   QueryHubStatusResponse.fromJson(core.Map json_)
-      : this(
-          hubStatusEntries: (json_['hubStatusEntries'] as core.List?)
-              ?.map((value) => HubStatusEntry.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        hubStatusEntries:
+            (json_['hubStatusEntries'] as core.List?)
+                ?.map(
+                  (value) => HubStatusEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hubStatusEntries != null) 'hubStatusEntries': hubStatusEntries!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (hubStatusEntries != null) 'hubStatusEntries': hubStatusEntries!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The RegionalEndpoint resource.
@@ -8035,41 +8116,37 @@ class RegionalEndpoint {
   });
 
   RegionalEndpoint.fromJson(core.Map json_)
-      : this(
-          accessType: json_['accessType'] as core.String?,
-          address: json_['address'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          ipAddress: json_['ipAddress'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          network: json_['network'] as core.String?,
-          pscForwardingRule: json_['pscForwardingRule'] as core.String?,
-          subnetwork: json_['subnetwork'] as core.String?,
-          targetGoogleApi: json_['targetGoogleApi'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        accessType: json_['accessType'] as core.String?,
+        address: json_['address'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        ipAddress: json_['ipAddress'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        pscForwardingRule: json_['pscForwardingRule'] as core.String?,
+        subnetwork: json_['subnetwork'] as core.String?,
+        targetGoogleApi: json_['targetGoogleApi'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessType != null) 'accessType': accessType!,
-        if (address != null) 'address': address!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (ipAddress != null) 'ipAddress': ipAddress!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (network != null) 'network': network!,
-        if (pscForwardingRule != null) 'pscForwardingRule': pscForwardingRule!,
-        if (subnetwork != null) 'subnetwork': subnetwork!,
-        if (targetGoogleApi != null) 'targetGoogleApi': targetGoogleApi!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (accessType != null) 'accessType': accessType!,
+    if (address != null) 'address': address!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (ipAddress != null) 'ipAddress': ipAddress!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (pscForwardingRule != null) 'pscForwardingRule': pscForwardingRule!,
+    if (subnetwork != null) 'subnetwork': subnetwork!,
+    if (targetGoogleApi != null) 'targetGoogleApi': targetGoogleApi!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The request for HubService.RejectHubSpoke.
@@ -8101,24 +8178,20 @@ class RejectHubSpokeRequest {
   /// Required.
   core.String? spokeUri;
 
-  RejectHubSpokeRequest({
-    this.details,
-    this.requestId,
-    this.spokeUri,
-  });
+  RejectHubSpokeRequest({this.details, this.requestId, this.spokeUri});
 
   RejectHubSpokeRequest.fromJson(core.Map json_)
-      : this(
-          details: json_['details'] as core.String?,
-          requestId: json_['requestId'] as core.String?,
-          spokeUri: json_['spokeUri'] as core.String?,
-        );
+    : this(
+        details: json_['details'] as core.String?,
+        requestId: json_['requestId'] as core.String?,
+        spokeUri: json_['spokeUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-        if (requestId != null) 'requestId': requestId!,
-        if (spokeUri != null) 'spokeUri': spokeUri!,
-      };
+    if (details != null) 'details': details!,
+    if (requestId != null) 'requestId': requestId!,
+    if (spokeUri != null) 'spokeUri': spokeUri!,
+  };
 }
 
 /// The request for HubService.RejectSpokeUpdate.
@@ -8163,19 +8236,19 @@ class RejectSpokeUpdateRequest {
   });
 
   RejectSpokeUpdateRequest.fromJson(core.Map json_)
-      : this(
-          details: json_['details'] as core.String?,
-          requestId: json_['requestId'] as core.String?,
-          spokeEtag: json_['spokeEtag'] as core.String?,
-          spokeUri: json_['spokeUri'] as core.String?,
-        );
+    : this(
+        details: json_['details'] as core.String?,
+        requestId: json_['requestId'] as core.String?,
+        spokeEtag: json_['spokeEtag'] as core.String?,
+        spokeUri: json_['spokeUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-        if (requestId != null) 'requestId': requestId!,
-        if (spokeEtag != null) 'spokeEtag': spokeEtag!,
-        if (spokeUri != null) 'spokeUri': spokeUri!,
-      };
+    if (details != null) 'details': details!,
+    if (requestId != null) 'requestId': requestId!,
+    if (spokeEtag != null) 'spokeEtag': spokeEtag!,
+    if (spokeUri != null) 'spokeUri': spokeUri!,
+  };
 }
 
 /// A route defines a path from VM instances within a spoke to a specific
@@ -8327,72 +8400,78 @@ class Route {
   });
 
   Route.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          ipCidrRange: json_['ipCidrRange'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          location: json_['location'] as core.String?,
-          name: json_['name'] as core.String?,
-          nextHopInterconnectAttachment:
-              json_.containsKey('nextHopInterconnectAttachment')
-                  ? NextHopInterconnectAttachment.fromJson(
-                      json_['nextHopInterconnectAttachment']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          nextHopRouterApplianceInstance:
-              json_.containsKey('nextHopRouterApplianceInstance')
-                  ? NextHopRouterApplianceInstance.fromJson(
-                      json_['nextHopRouterApplianceInstance']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          nextHopSpoke: json_.containsKey('nextHopSpoke')
-              ? NextHopSpoke.fromJson(
-                  json_['nextHopSpoke'] as core.Map<core.String, core.dynamic>)
-              : null,
-          nextHopVpcNetwork: json_.containsKey('nextHopVpcNetwork')
-              ? NextHopVpcNetwork.fromJson(json_['nextHopVpcNetwork']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          nextHopVpnTunnel: json_.containsKey('nextHopVpnTunnel')
-              ? NextHopVPNTunnel.fromJson(json_['nextHopVpnTunnel']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          priority: json_['priority'] as core.String?,
-          spoke: json_['spoke'] as core.String?,
-          state: json_['state'] as core.String?,
-          type: json_['type'] as core.String?,
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        ipCidrRange: json_['ipCidrRange'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        location: json_['location'] as core.String?,
+        name: json_['name'] as core.String?,
+        nextHopInterconnectAttachment:
+            json_.containsKey('nextHopInterconnectAttachment')
+                ? NextHopInterconnectAttachment.fromJson(
+                  json_['nextHopInterconnectAttachment']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nextHopRouterApplianceInstance:
+            json_.containsKey('nextHopRouterApplianceInstance')
+                ? NextHopRouterApplianceInstance.fromJson(
+                  json_['nextHopRouterApplianceInstance']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nextHopSpoke:
+            json_.containsKey('nextHopSpoke')
+                ? NextHopSpoke.fromJson(
+                  json_['nextHopSpoke'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nextHopVpcNetwork:
+            json_.containsKey('nextHopVpcNetwork')
+                ? NextHopVpcNetwork.fromJson(
+                  json_['nextHopVpcNetwork']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        nextHopVpnTunnel:
+            json_.containsKey('nextHopVpnTunnel')
+                ? NextHopVPNTunnel.fromJson(
+                  json_['nextHopVpnTunnel']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        priority: json_['priority'] as core.String?,
+        spoke: json_['spoke'] as core.String?,
+        state: json_['state'] as core.String?,
+        type: json_['type'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
-        if (labels != null) 'labels': labels!,
-        if (location != null) 'location': location!,
-        if (name != null) 'name': name!,
-        if (nextHopInterconnectAttachment != null)
-          'nextHopInterconnectAttachment': nextHopInterconnectAttachment!,
-        if (nextHopRouterApplianceInstance != null)
-          'nextHopRouterApplianceInstance': nextHopRouterApplianceInstance!,
-        if (nextHopSpoke != null) 'nextHopSpoke': nextHopSpoke!,
-        if (nextHopVpcNetwork != null) 'nextHopVpcNetwork': nextHopVpcNetwork!,
-        if (nextHopVpnTunnel != null) 'nextHopVpnTunnel': nextHopVpnTunnel!,
-        if (priority != null) 'priority': priority!,
-        if (spoke != null) 'spoke': spoke!,
-        if (state != null) 'state': state!,
-        if (type != null) 'type': type!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
+    if (labels != null) 'labels': labels!,
+    if (location != null) 'location': location!,
+    if (name != null) 'name': name!,
+    if (nextHopInterconnectAttachment != null)
+      'nextHopInterconnectAttachment': nextHopInterconnectAttachment!,
+    if (nextHopRouterApplianceInstance != null)
+      'nextHopRouterApplianceInstance': nextHopRouterApplianceInstance!,
+    if (nextHopSpoke != null) 'nextHopSpoke': nextHopSpoke!,
+    if (nextHopVpcNetwork != null) 'nextHopVpcNetwork': nextHopVpcNetwork!,
+    if (nextHopVpnTunnel != null) 'nextHopVpnTunnel': nextHopVpnTunnel!,
+    if (priority != null) 'priority': priority!,
+    if (spoke != null) 'spoke': spoke!,
+    if (state != null) 'state': state!,
+    if (type != null) 'type': type!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 class RouteTable {
@@ -8462,31 +8541,27 @@ class RouteTable {
   });
 
   RouteTable.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// A router appliance instance is a Compute Engine virtual machine (VM)
@@ -8501,21 +8576,18 @@ class RouterApplianceInstance {
   /// The URI of the VM.
   core.String? virtualMachine;
 
-  RouterApplianceInstance({
-    this.ipAddress,
-    this.virtualMachine,
-  });
+  RouterApplianceInstance({this.ipAddress, this.virtualMachine});
 
   RouterApplianceInstance.fromJson(core.Map json_)
-      : this(
-          ipAddress: json_['ipAddress'] as core.String?,
-          virtualMachine: json_['virtualMachine'] as core.String?,
-        );
+    : this(
+        ipAddress: json_['ipAddress'] as core.String?,
+        virtualMachine: json_['virtualMachine'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ipAddress != null) 'ipAddress': ipAddress!,
-        if (virtualMachine != null) 'virtualMachine': virtualMachine!,
-      };
+    if (ipAddress != null) 'ipAddress': ipAddress!,
+    if (virtualMachine != null) 'virtualMachine': virtualMachine!,
+  };
 }
 
 /// RoutingVPC contains information about the VPC networks associated with the
@@ -8535,24 +8607,21 @@ class RoutingVPC {
   /// The URI of the VPC network.
   core.String? uri;
 
-  RoutingVPC({
-    this.requiredForNewSiteToSiteDataTransferSpokes,
-    this.uri,
-  });
+  RoutingVPC({this.requiredForNewSiteToSiteDataTransferSpokes, this.uri});
 
   RoutingVPC.fromJson(core.Map json_)
-      : this(
-          requiredForNewSiteToSiteDataTransferSpokes:
-              json_['requiredForNewSiteToSiteDataTransferSpokes'] as core.bool?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        requiredForNewSiteToSiteDataTransferSpokes:
+            json_['requiredForNewSiteToSiteDataTransferSpokes'] as core.bool?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requiredForNewSiteToSiteDataTransferSpokes != null)
-          'requiredForNewSiteToSiteDataTransferSpokes':
-              requiredForNewSiteToSiteDataTransferSpokes!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (requiredForNewSiteToSiteDataTransferSpokes != null)
+      'requiredForNewSiteToSiteDataTransferSpokes':
+          requiredForNewSiteToSiteDataTransferSpokes!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// The ServiceClass resource.
@@ -8607,31 +8676,27 @@ class ServiceClass {
   });
 
   ServiceClass.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          serviceClass: json_['serviceClass'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        serviceClass: json_['serviceClass'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (serviceClass != null) 'serviceClass': serviceClass!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (serviceClass != null) 'serviceClass': serviceClass!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The ServiceConnectionMap resource.
@@ -8722,56 +8787,61 @@ class ServiceConnectionMap {
   });
 
   ServiceConnectionMap.fromJson(core.Map json_)
-      : this(
-          consumerPscConfigs: (json_['consumerPscConfigs'] as core.List?)
-              ?.map((value) => ConsumerPscConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          consumerPscConnections:
-              (json_['consumerPscConnections'] as core.List?)
-                  ?.map((value) => ConsumerPscConnection.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          infrastructure: json_['infrastructure'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          producerPscConfigs: (json_['producerPscConfigs'] as core.List?)
-              ?.map((value) => ProducerPscConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          serviceClass: json_['serviceClass'] as core.String?,
-          serviceClassUri: json_['serviceClassUri'] as core.String?,
-          token: json_['token'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        consumerPscConfigs:
+            (json_['consumerPscConfigs'] as core.List?)
+                ?.map(
+                  (value) => ConsumerPscConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        consumerPscConnections:
+            (json_['consumerPscConnections'] as core.List?)
+                ?.map(
+                  (value) => ConsumerPscConnection.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        infrastructure: json_['infrastructure'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        producerPscConfigs:
+            (json_['producerPscConfigs'] as core.List?)
+                ?.map(
+                  (value) => ProducerPscConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        serviceClass: json_['serviceClass'] as core.String?,
+        serviceClassUri: json_['serviceClassUri'] as core.String?,
+        token: json_['token'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (consumerPscConfigs != null)
-          'consumerPscConfigs': consumerPscConfigs!,
-        if (consumerPscConnections != null)
-          'consumerPscConnections': consumerPscConnections!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (infrastructure != null) 'infrastructure': infrastructure!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (producerPscConfigs != null)
-          'producerPscConfigs': producerPscConfigs!,
-        if (serviceClass != null) 'serviceClass': serviceClass!,
-        if (serviceClassUri != null) 'serviceClassUri': serviceClassUri!,
-        if (token != null) 'token': token!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (consumerPscConfigs != null) 'consumerPscConfigs': consumerPscConfigs!,
+    if (consumerPscConnections != null)
+      'consumerPscConnections': consumerPscConnections!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (infrastructure != null) 'infrastructure': infrastructure!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (producerPscConfigs != null) 'producerPscConfigs': producerPscConfigs!,
+    if (serviceClass != null) 'serviceClass': serviceClass!,
+    if (serviceClassUri != null) 'serviceClassUri': serviceClassUri!,
+    if (token != null) 'token': token!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The ServiceConnectionPolicy resource.
@@ -8856,45 +8926,47 @@ class ServiceConnectionPolicy {
   });
 
   ServiceConnectionPolicy.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          infrastructure: json_['infrastructure'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          network: json_['network'] as core.String?,
-          pscConfig: json_.containsKey('pscConfig')
-              ? PscConfig.fromJson(
-                  json_['pscConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pscConnections: (json_['pscConnections'] as core.List?)
-              ?.map((value) => PscConnection.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          serviceClass: json_['serviceClass'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        infrastructure: json_['infrastructure'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        pscConfig:
+            json_.containsKey('pscConfig')
+                ? PscConfig.fromJson(
+                  json_['pscConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pscConnections:
+            (json_['pscConnections'] as core.List?)
+                ?.map(
+                  (value) => PscConnection.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        serviceClass: json_['serviceClass'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (infrastructure != null) 'infrastructure': infrastructure!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (network != null) 'network': network!,
-        if (pscConfig != null) 'pscConfig': pscConfig!,
-        if (pscConnections != null) 'pscConnections': pscConnections!,
-        if (serviceClass != null) 'serviceClass': serviceClass!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (infrastructure != null) 'infrastructure': infrastructure!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (pscConfig != null) 'pscConfig': pscConfig!,
+    if (pscConnections != null) 'pscConnections': pscConnections!,
+    if (serviceClass != null) 'serviceClass': serviceClass!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The ServiceConnectionToken resource.
@@ -8958,35 +9030,31 @@ class ServiceConnectionToken {
   });
 
   ServiceConnectionToken.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          network: json_['network'] as core.String?,
-          token: json_['token'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        token: json_['token'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (network != null) 'network': network!,
-        if (token != null) 'token': token!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (token != null) 'token': token!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -9004,24 +9072,23 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (policy != null) 'policy': policy!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// A Network Connectivity Center spoke represents one or more network
@@ -9176,84 +9243,93 @@ class Spoke {
   });
 
   Spoke.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          fieldPathsPendingUpdate:
-              (json_['fieldPathsPendingUpdate'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          group: json_['group'] as core.String?,
-          hub: json_['hub'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          linkedInterconnectAttachments:
-              json_.containsKey('linkedInterconnectAttachments')
-                  ? LinkedInterconnectAttachments.fromJson(
-                      json_['linkedInterconnectAttachments']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          linkedProducerVpcNetwork:
-              json_.containsKey('linkedProducerVpcNetwork')
-                  ? LinkedProducerVpcNetwork.fromJson(
-                      json_['linkedProducerVpcNetwork']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          linkedRouterApplianceInstances:
-              json_.containsKey('linkedRouterApplianceInstances')
-                  ? LinkedRouterApplianceInstances.fromJson(
-                      json_['linkedRouterApplianceInstances']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          linkedVpcNetwork: json_.containsKey('linkedVpcNetwork')
-              ? LinkedVpcNetwork.fromJson(json_['linkedVpcNetwork']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          linkedVpnTunnels: json_.containsKey('linkedVpnTunnels')
-              ? LinkedVpnTunnels.fromJson(json_['linkedVpnTunnels']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          reasons: (json_['reasons'] as core.List?)
-              ?.map((value) => StateReason.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          spokeType: json_['spokeType'] as core.String?,
-          state: json_['state'] as core.String?,
-          uniqueId: json_['uniqueId'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        fieldPathsPendingUpdate:
+            (json_['fieldPathsPendingUpdate'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        group: json_['group'] as core.String?,
+        hub: json_['hub'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        linkedInterconnectAttachments:
+            json_.containsKey('linkedInterconnectAttachments')
+                ? LinkedInterconnectAttachments.fromJson(
+                  json_['linkedInterconnectAttachments']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        linkedProducerVpcNetwork:
+            json_.containsKey('linkedProducerVpcNetwork')
+                ? LinkedProducerVpcNetwork.fromJson(
+                  json_['linkedProducerVpcNetwork']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        linkedRouterApplianceInstances:
+            json_.containsKey('linkedRouterApplianceInstances')
+                ? LinkedRouterApplianceInstances.fromJson(
+                  json_['linkedRouterApplianceInstances']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        linkedVpcNetwork:
+            json_.containsKey('linkedVpcNetwork')
+                ? LinkedVpcNetwork.fromJson(
+                  json_['linkedVpcNetwork']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        linkedVpnTunnels:
+            json_.containsKey('linkedVpnTunnels')
+                ? LinkedVpnTunnels.fromJson(
+                  json_['linkedVpnTunnels']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        reasons:
+            (json_['reasons'] as core.List?)
+                ?.map(
+                  (value) => StateReason.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        spokeType: json_['spokeType'] as core.String?,
+        state: json_['state'] as core.String?,
+        uniqueId: json_['uniqueId'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (fieldPathsPendingUpdate != null)
-          'fieldPathsPendingUpdate': fieldPathsPendingUpdate!,
-        if (group != null) 'group': group!,
-        if (hub != null) 'hub': hub!,
-        if (labels != null) 'labels': labels!,
-        if (linkedInterconnectAttachments != null)
-          'linkedInterconnectAttachments': linkedInterconnectAttachments!,
-        if (linkedProducerVpcNetwork != null)
-          'linkedProducerVpcNetwork': linkedProducerVpcNetwork!,
-        if (linkedRouterApplianceInstances != null)
-          'linkedRouterApplianceInstances': linkedRouterApplianceInstances!,
-        if (linkedVpcNetwork != null) 'linkedVpcNetwork': linkedVpcNetwork!,
-        if (linkedVpnTunnels != null) 'linkedVpnTunnels': linkedVpnTunnels!,
-        if (name != null) 'name': name!,
-        if (reasons != null) 'reasons': reasons!,
-        if (spokeType != null) 'spokeType': spokeType!,
-        if (state != null) 'state': state!,
-        if (uniqueId != null) 'uniqueId': uniqueId!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (fieldPathsPendingUpdate != null)
+      'fieldPathsPendingUpdate': fieldPathsPendingUpdate!,
+    if (group != null) 'group': group!,
+    if (hub != null) 'hub': hub!,
+    if (labels != null) 'labels': labels!,
+    if (linkedInterconnectAttachments != null)
+      'linkedInterconnectAttachments': linkedInterconnectAttachments!,
+    if (linkedProducerVpcNetwork != null)
+      'linkedProducerVpcNetwork': linkedProducerVpcNetwork!,
+    if (linkedRouterApplianceInstances != null)
+      'linkedRouterApplianceInstances': linkedRouterApplianceInstances!,
+    if (linkedVpcNetwork != null) 'linkedVpcNetwork': linkedVpcNetwork!,
+    if (linkedVpnTunnels != null) 'linkedVpnTunnels': linkedVpnTunnels!,
+    if (name != null) 'name': name!,
+    if (reasons != null) 'reasons': reasons!,
+    if (spokeType != null) 'spokeType': spokeType!,
+    if (state != null) 'state': state!,
+    if (uniqueId != null) 'uniqueId': uniqueId!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The number of spokes that are in a particular state and associated with a
@@ -9284,21 +9360,18 @@ class SpokeStateCount {
   /// contact support for help.
   core.String? state;
 
-  SpokeStateCount({
-    this.count,
-    this.state,
-  });
+  SpokeStateCount({this.count, this.state});
 
   SpokeStateCount.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        count: json_['count'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (state != null) 'state': state!,
-      };
+    if (count != null) 'count': count!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// The number of spokes in the hub that are inactive for this reason.
@@ -9327,21 +9400,18 @@ class SpokeStateReasonCount {
   /// accepting the spoke update.
   core.String? stateReasonCode;
 
-  SpokeStateReasonCount({
-    this.count,
-    this.stateReasonCode,
-  });
+  SpokeStateReasonCount({this.count, this.stateReasonCode});
 
   SpokeStateReasonCount.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.String?,
-          stateReasonCode: json_['stateReasonCode'] as core.String?,
-        );
+    : this(
+        count: json_['count'] as core.String?,
+        stateReasonCode: json_['stateReasonCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (stateReasonCode != null) 'stateReasonCode': stateReasonCode!,
-      };
+    if (count != null) 'count': count!,
+    if (stateReasonCode != null) 'stateReasonCode': stateReasonCode!,
+  };
 }
 
 /// Summarizes information about the spokes associated with a hub.
@@ -9375,28 +9445,39 @@ class SpokeSummary {
   });
 
   SpokeSummary.fromJson(core.Map json_)
-      : this(
-          spokeStateCounts: (json_['spokeStateCounts'] as core.List?)
-              ?.map((value) => SpokeStateCount.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          spokeStateReasonCounts:
-              (json_['spokeStateReasonCounts'] as core.List?)
-                  ?.map((value) => SpokeStateReasonCount.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          spokeTypeCounts: (json_['spokeTypeCounts'] as core.List?)
-              ?.map((value) => SpokeTypeCount.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        spokeStateCounts:
+            (json_['spokeStateCounts'] as core.List?)
+                ?.map(
+                  (value) => SpokeStateCount.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        spokeStateReasonCounts:
+            (json_['spokeStateReasonCounts'] as core.List?)
+                ?.map(
+                  (value) => SpokeStateReasonCount.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        spokeTypeCounts:
+            (json_['spokeTypeCounts'] as core.List?)
+                ?.map(
+                  (value) => SpokeTypeCount.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (spokeStateCounts != null) 'spokeStateCounts': spokeStateCounts!,
-        if (spokeStateReasonCounts != null)
-          'spokeStateReasonCounts': spokeStateReasonCounts!,
-        if (spokeTypeCounts != null) 'spokeTypeCounts': spokeTypeCounts!,
-      };
+    if (spokeStateCounts != null) 'spokeStateCounts': spokeStateCounts!,
+    if (spokeStateReasonCounts != null)
+      'spokeStateReasonCounts': spokeStateReasonCounts!,
+    if (spokeTypeCounts != null) 'spokeTypeCounts': spokeTypeCounts!,
+  };
 }
 
 /// The number of spokes of a given type that are associated with a specific
@@ -9422,21 +9503,18 @@ class SpokeTypeCount {
   /// network.
   core.String? spokeType;
 
-  SpokeTypeCount({
-    this.count,
-    this.spokeType,
-  });
+  SpokeTypeCount({this.count, this.spokeType});
 
   SpokeTypeCount.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.String?,
-          spokeType: json_['spokeType'] as core.String?,
-        );
+    : this(
+        count: json_['count'] as core.String?,
+        spokeType: json_['spokeType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (spokeType != null) 'spokeType': spokeType!,
-      };
+    if (count != null) 'count': count!,
+    if (spokeType != null) 'spokeType': spokeType!,
+  };
 }
 
 /// The reason a spoke is inactive.
@@ -9463,24 +9541,20 @@ class StateReason {
   /// Additional information provided by the user in the RejectSpoke call.
   core.String? userDetails;
 
-  StateReason({
-    this.code,
-    this.message,
-    this.userDetails,
-  });
+  StateReason({this.code, this.message, this.userDetails});
 
   StateReason.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          message: json_['message'] as core.String?,
-          userDetails: json_['userDetails'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        message: json_['message'] as core.String?,
+        userDetails: json_['userDetails'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (message != null) 'message': message!,
-        if (userDetails != null) 'userDetails': userDetails!,
-      };
+    if (code != null) 'code': code!,
+    if (message != null) 'message': message!,
+    if (userDetails != null) 'userDetails': userDetails!,
+  };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -9498,20 +9572,19 @@ class VirtualMachine {
   /// Optional.
   core.List<core.String>? tags;
 
-  VirtualMachine({
-    this.tags,
-  });
+  VirtualMachine({this.tags});
 
   VirtualMachine.fromJson(core.Map json_)
-      : this(
-          tags: (json_['tags'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        tags:
+            (json_['tags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tags != null) 'tags': tags!,
-      };
+    if (tags != null) 'tags': tags!,
+  };
 }
 
 /// Informational warning message.
@@ -9544,27 +9617,20 @@ class Warnings {
   /// Output only.
   core.String? warningMessage;
 
-  Warnings({
-    this.code,
-    this.data,
-    this.warningMessage,
-  });
+  Warnings({this.code, this.data, this.warningMessage});
 
   Warnings.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          data: (json_['data'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          warningMessage: json_['warningMessage'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        data: (json_['data'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        warningMessage: json_['warningMessage'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (data != null) 'data': data!,
-        if (warningMessage != null) 'warningMessage': warningMessage!,
-      };
+    if (code != null) 'code': code!,
+    if (data != null) 'data': data!,
+    if (warningMessage != null) 'warningMessage': warningMessage!,
+  };
 }

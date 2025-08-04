@@ -41,14 +41,17 @@ List<GenerateResult> generateAllLibraries(
   bool deleteExisting = true,
   required Set<String> skipTests,
 }) {
-  final apiDescriptions = Directory(inputDirectory)
-      .listSync()
-      .whereType<File>()
-      .where((fse) => fse.path.endsWith('.json'))
-      .map((entity) => RestDescription.fromJson(
-            json.decode(entity.readAsStringSync()) as Map,
-          ))
-      .toList();
+  final apiDescriptions =
+      Directory(inputDirectory)
+          .listSync()
+          .whereType<File>()
+          .where((fse) => fse.path.endsWith('.json'))
+          .map(
+            (entity) => RestDescription.fromJson(
+              json.decode(entity.readAsStringSync()) as Map,
+            ),
+          )
+          .toList();
   return generateApiPackage(
     apiDescriptions,
     outputDirectory,
@@ -69,10 +72,12 @@ List<GenerateResult> generateApiFiles(
       .listSync()
       .where((fse) => fse is File && fse.path.endsWith('.json'))
       .forEach((FileSystemEntity entity) {
-    final diPair =
-        DescriptionImportPair((entity as File).readAsStringSync(), null);
-    descriptions.add(diPair);
-  });
+        final diPair = DescriptionImportPair(
+          (entity as File).readAsStringSync(),
+          null,
+        );
+        descriptions.add(diPair);
+      });
   final clientFileGenerator = ApisFilesGenerator(
     descriptions,
     outputDirectory,

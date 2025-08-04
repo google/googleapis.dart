@@ -60,11 +60,16 @@ class DocsApi {
 
   DocumentsResource get documents => DocumentsResource(_requester);
 
-  DocsApi(http.Client client,
-      {core.String rootUrl = 'https://docs.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DocsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://docs.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class DocumentsResource {
@@ -114,7 +119,8 @@ class DocumentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v1/documents/' +
+    final url_ =
+        'v1/documents/' +
         commons.escapeVariable('$documentId') +
         ':batchUpdate';
 
@@ -125,7 +131,8 @@ class DocumentsResource {
       queryParams: queryParams_,
     );
     return BatchUpdateDocumentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a blank document using the title given in the request.
@@ -275,39 +282,44 @@ class AutoText {
   });
 
   AutoText.fromJson(core.Map json_)
-      : this(
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedTextStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          textStyle: json_.containsKey('textStyle')
-              ? TextStyle.fromJson(
-                  json_['textStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_['type'] as core.String?,
-        );
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-        if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges!,
-        if (textStyle != null) 'textStyle': textStyle!,
-        if (type != null) 'type': type!,
-      };
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+    if (suggestedTextStyleChanges != null)
+      'suggestedTextStyleChanges': suggestedTextStyleChanges!,
+    if (textStyle != null) 'textStyle': textStyle!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Represents the background of a document.
@@ -315,21 +327,21 @@ class Background {
   /// The background color.
   OptionalColor? color;
 
-  Background({
-    this.color,
-  });
+  Background({this.color});
 
   Background.fromJson(core.Map json_)
-      : this(
-          color: json_.containsKey('color')
-              ? OptionalColor.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        color:
+            json_.containsKey('color')
+                ? OptionalColor.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!,
-      };
+    if (color != null) 'color': color!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base Background have been
@@ -341,20 +353,18 @@ class BackgroundSuggestionState {
   /// suggestion.
   core.bool? backgroundColorSuggested;
 
-  BackgroundSuggestionState({
-    this.backgroundColorSuggested,
-  });
+  BackgroundSuggestionState({this.backgroundColorSuggested});
 
   BackgroundSuggestionState.fromJson(core.Map json_)
-      : this(
-          backgroundColorSuggested:
-              json_['backgroundColorSuggested'] as core.bool?,
-        );
+    : this(
+        backgroundColorSuggested:
+            json_['backgroundColorSuggested'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundColorSuggested != null)
-          'backgroundColorSuggested': backgroundColorSuggested!,
-      };
+    if (backgroundColorSuggested != null)
+      'backgroundColorSuggested': backgroundColorSuggested!,
+  };
 }
 
 /// Request message for BatchUpdateDocument.
@@ -365,27 +375,30 @@ class BatchUpdateDocumentRequest {
   /// Provides control over how write requests are executed.
   WriteControl? writeControl;
 
-  BatchUpdateDocumentRequest({
-    this.requests,
-    this.writeControl,
-  });
+  BatchUpdateDocumentRequest({this.requests, this.writeControl});
 
   BatchUpdateDocumentRequest.fromJson(core.Map json_)
-      : this(
-          requests: (json_['requests'] as core.List?)
-              ?.map((value) => Request.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          writeControl: json_.containsKey('writeControl')
-              ? WriteControl.fromJson(
-                  json_['writeControl'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        requests:
+            (json_['requests'] as core.List?)
+                ?.map(
+                  (value) => Request.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        writeControl:
+            json_.containsKey('writeControl')
+                ? WriteControl.fromJson(
+                  json_['writeControl'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requests != null) 'requests': requests!,
-        if (writeControl != null) 'writeControl': writeControl!,
-      };
+    if (requests != null) 'requests': requests!,
+    if (writeControl != null) 'writeControl': writeControl!,
+  };
 }
 
 /// Response message from a BatchUpdateDocument request.
@@ -409,23 +422,29 @@ class BatchUpdateDocumentResponse {
   });
 
   BatchUpdateDocumentResponse.fromJson(core.Map json_)
-      : this(
-          documentId: json_['documentId'] as core.String?,
-          replies: (json_['replies'] as core.List?)
-              ?.map((value) => Response.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          writeControl: json_.containsKey('writeControl')
-              ? WriteControl.fromJson(
-                  json_['writeControl'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        documentId: json_['documentId'] as core.String?,
+        replies:
+            (json_['replies'] as core.List?)
+                ?.map(
+                  (value) => Response.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        writeControl:
+            json_.containsKey('writeControl')
+                ? WriteControl.fromJson(
+                  json_['writeControl'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (documentId != null) 'documentId': documentId!,
-        if (replies != null) 'replies': replies!,
-        if (writeControl != null) 'writeControl': writeControl!,
-      };
+    if (documentId != null) 'documentId': documentId!,
+    if (replies != null) 'replies': replies!,
+    if (writeControl != null) 'writeControl': writeControl!,
+  };
 }
 
 /// The document body.
@@ -438,21 +457,23 @@ class Body {
   /// The indexes for the body's content begin at zero.
   core.List<StructuralElement>? content;
 
-  Body({
-    this.content,
-  });
+  Body({this.content});
 
   Body.fromJson(core.Map json_)
-      : this(
-          content: (json_['content'] as core.List?)
-              ?.map((value) => StructuralElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        content:
+            (json_['content'] as core.List?)
+                ?.map(
+                  (value) => StructuralElement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-      };
+    if (content != null) 'content': content!,
+  };
 }
 
 /// A reference to a bookmark in this document.
@@ -463,21 +484,18 @@ class BookmarkLink {
   /// The ID of the tab containing this bookmark.
   core.String? tabId;
 
-  BookmarkLink({
-    this.id,
-    this.tabId,
-  });
+  BookmarkLink({this.id, this.tabId});
 
   BookmarkLink.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          tabId: json_['tabId'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        tabId: json_['tabId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (tabId != null) 'tabId': tabId!,
-      };
+    if (id != null) 'id': id!,
+    if (tabId != null) 'tabId': tabId!,
+  };
 }
 
 /// Describes the bullet of a paragraph.
@@ -491,27 +509,25 @@ class Bullet {
   /// The paragraph-specific text style applied to this bullet.
   TextStyle? textStyle;
 
-  Bullet({
-    this.listId,
-    this.nestingLevel,
-    this.textStyle,
-  });
+  Bullet({this.listId, this.nestingLevel, this.textStyle});
 
   Bullet.fromJson(core.Map json_)
-      : this(
-          listId: json_['listId'] as core.String?,
-          nestingLevel: json_['nestingLevel'] as core.int?,
-          textStyle: json_.containsKey('textStyle')
-              ? TextStyle.fromJson(
-                  json_['textStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        listId: json_['listId'] as core.String?,
+        nestingLevel: json_['nestingLevel'] as core.int?,
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (listId != null) 'listId': listId!,
-        if (nestingLevel != null) 'nestingLevel': nestingLevel!,
-        if (textStyle != null) 'textStyle': textStyle!,
-      };
+    if (listId != null) 'listId': listId!,
+    if (nestingLevel != null) 'nestingLevel': nestingLevel!,
+    if (textStyle != null) 'textStyle': textStyle!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base Bullet have been
@@ -536,24 +552,25 @@ class BulletSuggestionState {
   });
 
   BulletSuggestionState.fromJson(core.Map json_)
-      : this(
-          listIdSuggested: json_['listIdSuggested'] as core.bool?,
-          nestingLevelSuggested: json_['nestingLevelSuggested'] as core.bool?,
-          textStyleSuggestionState:
-              json_.containsKey('textStyleSuggestionState')
-                  ? TextStyleSuggestionState.fromJson(
-                      json_['textStyleSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        listIdSuggested: json_['listIdSuggested'] as core.bool?,
+        nestingLevelSuggested: json_['nestingLevelSuggested'] as core.bool?,
+        textStyleSuggestionState:
+            json_.containsKey('textStyleSuggestionState')
+                ? TextStyleSuggestionState.fromJson(
+                  json_['textStyleSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (listIdSuggested != null) 'listIdSuggested': listIdSuggested!,
-        if (nestingLevelSuggested != null)
-          'nestingLevelSuggested': nestingLevelSuggested!,
-        if (textStyleSuggestionState != null)
-          'textStyleSuggestionState': textStyleSuggestionState!,
-      };
+    if (listIdSuggested != null) 'listIdSuggested': listIdSuggested!,
+    if (nestingLevelSuggested != null)
+      'nestingLevelSuggested': nestingLevelSuggested!,
+    if (textStyleSuggestionState != null)
+      'textStyleSuggestionState': textStyleSuggestionState!,
+  };
 }
 
 /// A solid color.
@@ -561,21 +578,21 @@ class Color {
   /// The RGB color value.
   RgbColor? rgbColor;
 
-  Color({
-    this.rgbColor,
-  });
+  Color({this.rgbColor});
 
   Color.fromJson(core.Map json_)
-      : this(
-          rgbColor: json_.containsKey('rgbColor')
-              ? RgbColor.fromJson(
-                  json_['rgbColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        rgbColor:
+            json_.containsKey('rgbColor')
+                ? RgbColor.fromJson(
+                  json_['rgbColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rgbColor != null) 'rgbColor': rgbColor!,
-      };
+    if (rgbColor != null) 'rgbColor': rgbColor!,
+  };
 }
 
 /// A ParagraphElement representing a column break.
@@ -613,37 +630,42 @@ class ColumnBreak {
   });
 
   ColumnBreak.fromJson(core.Map json_)
-      : this(
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedTextStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          textStyle: json_.containsKey('textStyle')
-              ? TextStyle.fromJson(
-                  json_['textStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-        if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges!,
-        if (textStyle != null) 'textStyle': textStyle!,
-      };
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+    if (suggestedTextStyleChanges != null)
+      'suggestedTextStyleChanges': suggestedTextStyleChanges!,
+    if (textStyle != null) 'textStyle': textStyle!,
+  };
 }
 
 /// Creates a Footer.
@@ -667,25 +689,25 @@ class CreateFooterRequest {
   /// - "DEFAULT" : A default header/footer.
   core.String? type;
 
-  CreateFooterRequest({
-    this.sectionBreakLocation,
-    this.type,
-  });
+  CreateFooterRequest({this.sectionBreakLocation, this.type});
 
   CreateFooterRequest.fromJson(core.Map json_)
-      : this(
-          sectionBreakLocation: json_.containsKey('sectionBreakLocation')
-              ? Location.fromJson(json_['sectionBreakLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        sectionBreakLocation:
+            json_.containsKey('sectionBreakLocation')
+                ? Location.fromJson(
+                  json_['sectionBreakLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sectionBreakLocation != null)
-          'sectionBreakLocation': sectionBreakLocation!,
-        if (type != null) 'type': type!,
-      };
+    if (sectionBreakLocation != null)
+      'sectionBreakLocation': sectionBreakLocation!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// The result of creating a footer.
@@ -693,18 +715,14 @@ class CreateFooterResponse {
   /// The ID of the created footer.
   core.String? footerId;
 
-  CreateFooterResponse({
-    this.footerId,
-  });
+  CreateFooterResponse({this.footerId});
 
   CreateFooterResponse.fromJson(core.Map json_)
-      : this(
-          footerId: json_['footerId'] as core.String?,
-        );
+    : this(footerId: json_['footerId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (footerId != null) 'footerId': footerId!,
-      };
+    if (footerId != null) 'footerId': footerId!,
+  };
 }
 
 /// Creates a Footnote segment and inserts a new FootnoteReference to it at the
@@ -730,28 +748,30 @@ class CreateFootnoteRequest {
   /// must be empty.
   Location? location;
 
-  CreateFootnoteRequest({
-    this.endOfSegmentLocation,
-    this.location,
-  });
+  CreateFootnoteRequest({this.endOfSegmentLocation, this.location});
 
   CreateFootnoteRequest.fromJson(core.Map json_)
-      : this(
-          endOfSegmentLocation: json_.containsKey('endOfSegmentLocation')
-              ? EndOfSegmentLocation.fromJson(json_['endOfSegmentLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          location: json_.containsKey('location')
-              ? Location.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        endOfSegmentLocation:
+            json_.containsKey('endOfSegmentLocation')
+                ? EndOfSegmentLocation.fromJson(
+                  json_['endOfSegmentLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location:
+            json_.containsKey('location')
+                ? Location.fromJson(
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endOfSegmentLocation != null)
-          'endOfSegmentLocation': endOfSegmentLocation!,
-        if (location != null) 'location': location!,
-      };
+    if (endOfSegmentLocation != null)
+      'endOfSegmentLocation': endOfSegmentLocation!,
+    if (location != null) 'location': location!,
+  };
 }
 
 /// The result of creating a footnote.
@@ -759,18 +779,14 @@ class CreateFootnoteResponse {
   /// The ID of the created footnote.
   core.String? footnoteId;
 
-  CreateFootnoteResponse({
-    this.footnoteId,
-  });
+  CreateFootnoteResponse({this.footnoteId});
 
   CreateFootnoteResponse.fromJson(core.Map json_)
-      : this(
-          footnoteId: json_['footnoteId'] as core.String?,
-        );
+    : this(footnoteId: json_['footnoteId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (footnoteId != null) 'footnoteId': footnoteId!,
-      };
+    if (footnoteId != null) 'footnoteId': footnoteId!,
+  };
 }
 
 /// Creates a Header.
@@ -794,25 +810,25 @@ class CreateHeaderRequest {
   /// - "DEFAULT" : A default header/footer.
   core.String? type;
 
-  CreateHeaderRequest({
-    this.sectionBreakLocation,
-    this.type,
-  });
+  CreateHeaderRequest({this.sectionBreakLocation, this.type});
 
   CreateHeaderRequest.fromJson(core.Map json_)
-      : this(
-          sectionBreakLocation: json_.containsKey('sectionBreakLocation')
-              ? Location.fromJson(json_['sectionBreakLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        sectionBreakLocation:
+            json_.containsKey('sectionBreakLocation')
+                ? Location.fromJson(
+                  json_['sectionBreakLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sectionBreakLocation != null)
-          'sectionBreakLocation': sectionBreakLocation!,
-        if (type != null) 'type': type!,
-      };
+    if (sectionBreakLocation != null)
+      'sectionBreakLocation': sectionBreakLocation!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// The result of creating a header.
@@ -820,18 +836,14 @@ class CreateHeaderResponse {
   /// The ID of the created header.
   core.String? headerId;
 
-  CreateHeaderResponse({
-    this.headerId,
-  });
+  CreateHeaderResponse({this.headerId});
 
   CreateHeaderResponse.fromJson(core.Map json_)
-      : this(
-          headerId: json_['headerId'] as core.String?,
-        );
+    : this(headerId: json_['headerId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (headerId != null) 'headerId': headerId!,
-      };
+    if (headerId != null) 'headerId': headerId!,
+  };
 }
 
 /// Creates a NamedRange referencing the given range.
@@ -845,24 +857,23 @@ class CreateNamedRangeRequest {
   /// The range to apply the name to.
   Range? range;
 
-  CreateNamedRangeRequest({
-    this.name,
-    this.range,
-  });
+  CreateNamedRangeRequest({this.name, this.range});
 
   CreateNamedRangeRequest.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          range: json_.containsKey('range')
-              ? Range.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        range:
+            json_.containsKey('range')
+                ? Range.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (range != null) 'range': range!,
-      };
+    if (name != null) 'name': name!,
+    if (range != null) 'range': range!,
+  };
 }
 
 /// The result of creating a named range.
@@ -870,18 +881,14 @@ class CreateNamedRangeResponse {
   /// The ID of the created named range.
   core.String? namedRangeId;
 
-  CreateNamedRangeResponse({
-    this.namedRangeId,
-  });
+  CreateNamedRangeResponse({this.namedRangeId});
 
   CreateNamedRangeResponse.fromJson(core.Map json_)
-      : this(
-          namedRangeId: json_['namedRangeId'] as core.String?,
-        );
+    : this(namedRangeId: json_['namedRangeId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
-      };
+    if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+  };
 }
 
 /// Creates bullets for all of the paragraphs that overlap with the given range.
@@ -941,24 +948,23 @@ class CreateParagraphBulletsRequest {
   /// The range to apply the bullet preset to.
   Range? range;
 
-  CreateParagraphBulletsRequest({
-    this.bulletPreset,
-    this.range,
-  });
+  CreateParagraphBulletsRequest({this.bulletPreset, this.range});
 
   CreateParagraphBulletsRequest.fromJson(core.Map json_)
-      : this(
-          bulletPreset: json_['bulletPreset'] as core.String?,
-          range: json_.containsKey('range')
-              ? Range.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bulletPreset: json_['bulletPreset'] as core.String?,
+        range:
+            json_.containsKey('range')
+                ? Range.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bulletPreset != null) 'bulletPreset': bulletPreset!,
-        if (range != null) 'range': range!,
-      };
+    if (bulletPreset != null) 'bulletPreset': bulletPreset!,
+    if (range != null) 'range': range!,
+  };
 }
 
 /// The crop properties of an image.
@@ -1006,21 +1012,21 @@ class CropProperties {
   });
 
   CropProperties.fromJson(core.Map json_)
-      : this(
-          angle: (json_['angle'] as core.num?)?.toDouble(),
-          offsetBottom: (json_['offsetBottom'] as core.num?)?.toDouble(),
-          offsetLeft: (json_['offsetLeft'] as core.num?)?.toDouble(),
-          offsetRight: (json_['offsetRight'] as core.num?)?.toDouble(),
-          offsetTop: (json_['offsetTop'] as core.num?)?.toDouble(),
-        );
+    : this(
+        angle: (json_['angle'] as core.num?)?.toDouble(),
+        offsetBottom: (json_['offsetBottom'] as core.num?)?.toDouble(),
+        offsetLeft: (json_['offsetLeft'] as core.num?)?.toDouble(),
+        offsetRight: (json_['offsetRight'] as core.num?)?.toDouble(),
+        offsetTop: (json_['offsetTop'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (angle != null) 'angle': angle!,
-        if (offsetBottom != null) 'offsetBottom': offsetBottom!,
-        if (offsetLeft != null) 'offsetLeft': offsetLeft!,
-        if (offsetRight != null) 'offsetRight': offsetRight!,
-        if (offsetTop != null) 'offsetTop': offsetTop!,
-      };
+    if (angle != null) 'angle': angle!,
+    if (offsetBottom != null) 'offsetBottom': offsetBottom!,
+    if (offsetLeft != null) 'offsetLeft': offsetLeft!,
+    if (offsetRight != null) 'offsetRight': offsetRight!,
+    if (offsetTop != null) 'offsetTop': offsetTop!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base CropProperties have
@@ -1052,25 +1058,24 @@ class CropPropertiesSuggestionState {
   });
 
   CropPropertiesSuggestionState.fromJson(core.Map json_)
-      : this(
-          angleSuggested: json_['angleSuggested'] as core.bool?,
-          offsetBottomSuggested: json_['offsetBottomSuggested'] as core.bool?,
-          offsetLeftSuggested: json_['offsetLeftSuggested'] as core.bool?,
-          offsetRightSuggested: json_['offsetRightSuggested'] as core.bool?,
-          offsetTopSuggested: json_['offsetTopSuggested'] as core.bool?,
-        );
+    : this(
+        angleSuggested: json_['angleSuggested'] as core.bool?,
+        offsetBottomSuggested: json_['offsetBottomSuggested'] as core.bool?,
+        offsetLeftSuggested: json_['offsetLeftSuggested'] as core.bool?,
+        offsetRightSuggested: json_['offsetRightSuggested'] as core.bool?,
+        offsetTopSuggested: json_['offsetTopSuggested'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (angleSuggested != null) 'angleSuggested': angleSuggested!,
-        if (offsetBottomSuggested != null)
-          'offsetBottomSuggested': offsetBottomSuggested!,
-        if (offsetLeftSuggested != null)
-          'offsetLeftSuggested': offsetLeftSuggested!,
-        if (offsetRightSuggested != null)
-          'offsetRightSuggested': offsetRightSuggested!,
-        if (offsetTopSuggested != null)
-          'offsetTopSuggested': offsetTopSuggested!,
-      };
+    if (angleSuggested != null) 'angleSuggested': angleSuggested!,
+    if (offsetBottomSuggested != null)
+      'offsetBottomSuggested': offsetBottomSuggested!,
+    if (offsetLeftSuggested != null)
+      'offsetLeftSuggested': offsetLeftSuggested!,
+    if (offsetRightSuggested != null)
+      'offsetRightSuggested': offsetRightSuggested!,
+    if (offsetTopSuggested != null) 'offsetTopSuggested': offsetTopSuggested!,
+  };
 }
 
 /// Deletes content from the document.
@@ -1091,21 +1096,21 @@ class DeleteContentRangeRequest {
   /// cell is allowed.
   Range? range;
 
-  DeleteContentRangeRequest({
-    this.range,
-  });
+  DeleteContentRangeRequest({this.range});
 
   DeleteContentRangeRequest.fromJson(core.Map json_)
-      : this(
-          range: json_.containsKey('range')
-              ? Range.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        range:
+            json_.containsKey('range')
+                ? Range.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (range != null) 'range': range!,
-      };
+    if (range != null) 'range': range!,
+  };
 }
 
 /// Deletes a Footer from the document.
@@ -1129,21 +1134,18 @@ class DeleteFooterRequest {
   /// document.
   core.String? tabId;
 
-  DeleteFooterRequest({
-    this.footerId,
-    this.tabId,
-  });
+  DeleteFooterRequest({this.footerId, this.tabId});
 
   DeleteFooterRequest.fromJson(core.Map json_)
-      : this(
-          footerId: json_['footerId'] as core.String?,
-          tabId: json_['tabId'] as core.String?,
-        );
+    : this(
+        footerId: json_['footerId'] as core.String?,
+        tabId: json_['tabId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (footerId != null) 'footerId': footerId!,
-        if (tabId != null) 'tabId': tabId!,
-      };
+    if (footerId != null) 'footerId': footerId!,
+    if (tabId != null) 'tabId': tabId!,
+  };
 }
 
 /// Deletes a Header from the document.
@@ -1167,21 +1169,18 @@ class DeleteHeaderRequest {
   /// document.
   core.String? tabId;
 
-  DeleteHeaderRequest({
-    this.headerId,
-    this.tabId,
-  });
+  DeleteHeaderRequest({this.headerId, this.tabId});
 
   DeleteHeaderRequest.fromJson(core.Map json_)
-      : this(
-          headerId: json_['headerId'] as core.String?,
-          tabId: json_['tabId'] as core.String?,
-        );
+    : this(
+        headerId: json_['headerId'] as core.String?,
+        tabId: json_['tabId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (headerId != null) 'headerId': headerId!,
-        if (tabId != null) 'tabId': tabId!,
-      };
+    if (headerId != null) 'headerId': headerId!,
+    if (tabId != null) 'tabId': tabId!,
+  };
 }
 
 /// Deletes a NamedRange.
@@ -1207,27 +1206,25 @@ class DeleteNamedRangeRequest {
   /// Optional.
   TabsCriteria? tabsCriteria;
 
-  DeleteNamedRangeRequest({
-    this.name,
-    this.namedRangeId,
-    this.tabsCriteria,
-  });
+  DeleteNamedRangeRequest({this.name, this.namedRangeId, this.tabsCriteria});
 
   DeleteNamedRangeRequest.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          namedRangeId: json_['namedRangeId'] as core.String?,
-          tabsCriteria: json_.containsKey('tabsCriteria')
-              ? TabsCriteria.fromJson(
-                  json_['tabsCriteria'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        namedRangeId: json_['namedRangeId'] as core.String?,
+        tabsCriteria:
+            json_.containsKey('tabsCriteria')
+                ? TabsCriteria.fromJson(
+                  json_['tabsCriteria'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
-        if (tabsCriteria != null) 'tabsCriteria': tabsCriteria!,
-      };
+    if (name != null) 'name': name!,
+    if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+    if (tabsCriteria != null) 'tabsCriteria': tabsCriteria!,
+  };
 }
 
 /// Deletes bullets from all of the paragraphs that overlap with the given
@@ -1239,21 +1236,21 @@ class DeleteParagraphBulletsRequest {
   /// The range to delete bullets from.
   Range? range;
 
-  DeleteParagraphBulletsRequest({
-    this.range,
-  });
+  DeleteParagraphBulletsRequest({this.range});
 
   DeleteParagraphBulletsRequest.fromJson(core.Map json_)
-      : this(
-          range: json_.containsKey('range')
-              ? Range.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        range:
+            json_.containsKey('range')
+                ? Range.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (range != null) 'range': range!,
-      };
+    if (range != null) 'range': range!,
+  };
 }
 
 /// Deletes a PositionedObject from the document.
@@ -1271,21 +1268,18 @@ class DeletePositionedObjectRequest {
   /// document.
   core.String? tabId;
 
-  DeletePositionedObjectRequest({
-    this.objectId,
-    this.tabId,
-  });
+  DeletePositionedObjectRequest({this.objectId, this.tabId});
 
   DeletePositionedObjectRequest.fromJson(core.Map json_)
-      : this(
-          objectId: json_['objectId'] as core.String?,
-          tabId: json_['tabId'] as core.String?,
-        );
+    : this(
+        objectId: json_['objectId'] as core.String?,
+        tabId: json_['tabId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectId != null) 'objectId': objectId!,
-        if (tabId != null) 'tabId': tabId!,
-      };
+    if (objectId != null) 'objectId': objectId!,
+    if (tabId != null) 'tabId': tabId!,
+  };
 }
 
 /// Deletes a column from a table.
@@ -1298,21 +1292,22 @@ class DeleteTableColumnRequest {
   /// deleted.
   TableCellLocation? tableCellLocation;
 
-  DeleteTableColumnRequest({
-    this.tableCellLocation,
-  });
+  DeleteTableColumnRequest({this.tableCellLocation});
 
   DeleteTableColumnRequest.fromJson(core.Map json_)
-      : this(
-          tableCellLocation: json_.containsKey('tableCellLocation')
-              ? TableCellLocation.fromJson(json_['tableCellLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        tableCellLocation:
+            json_.containsKey('tableCellLocation')
+                ? TableCellLocation.fromJson(
+                  json_['tableCellLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tableCellLocation != null) 'tableCellLocation': tableCellLocation!,
-      };
+    if (tableCellLocation != null) 'tableCellLocation': tableCellLocation!,
+  };
 }
 
 /// Deletes a row from a table.
@@ -1324,21 +1319,22 @@ class DeleteTableRowRequest {
   /// rows remain in the table after this deletion, the whole table is deleted.
   TableCellLocation? tableCellLocation;
 
-  DeleteTableRowRequest({
-    this.tableCellLocation,
-  });
+  DeleteTableRowRequest({this.tableCellLocation});
 
   DeleteTableRowRequest.fromJson(core.Map json_)
-      : this(
-          tableCellLocation: json_.containsKey('tableCellLocation')
-              ? TableCellLocation.fromJson(json_['tableCellLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        tableCellLocation:
+            json_.containsKey('tableCellLocation')
+                ? TableCellLocation.fromJson(
+                  json_['tableCellLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tableCellLocation != null) 'tableCellLocation': tableCellLocation!,
-      };
+    if (tableCellLocation != null) 'tableCellLocation': tableCellLocation!,
+  };
 }
 
 /// A magnitude in a single direction in the specified units.
@@ -1352,21 +1348,18 @@ class Dimension {
   /// - "PT" : A point, 1/72 of an inch.
   core.String? unit;
 
-  Dimension({
-    this.magnitude,
-    this.unit,
-  });
+  Dimension({this.magnitude, this.unit});
 
   Dimension.fromJson(core.Map json_)
-      : this(
-          magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
-          unit: json_['unit'] as core.String?,
-        );
+    : this(
+        magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
+        unit: json_['unit'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (magnitude != null) 'magnitude': magnitude!,
-        if (unit != null) 'unit': unit!,
-      };
+    if (magnitude != null) 'magnitude': magnitude!,
+    if (unit != null) 'unit': unit!,
+  };
 }
 
 /// A Google Docs document.
@@ -1571,123 +1564,137 @@ class Document {
   });
 
   Document.fromJson(core.Map json_)
-      : this(
-          body: json_.containsKey('body')
-              ? Body.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>)
-              : null,
-          documentId: json_['documentId'] as core.String?,
-          documentStyle: json_.containsKey('documentStyle')
-              ? DocumentStyle.fromJson(
-                  json_['documentStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          footers:
-              (json_['footers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              Footer.fromJson(value as core.Map<core.String, core.dynamic>),
+    : this(
+        body:
+            json_.containsKey('body')
+                ? Body.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        documentId: json_['documentId'] as core.String?,
+        documentStyle:
+            json_.containsKey('documentStyle')
+                ? DocumentStyle.fromJson(
+                  json_['documentStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        footers: (json_['footers'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                Footer.fromJson(value as core.Map<core.String, core.dynamic>),
+              ),
             ),
-          ),
-          footnotes:
-              (json_['footnotes'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              Footnote.fromJson(value as core.Map<core.String, core.dynamic>),
+        footnotes: (json_['footnotes'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                Footnote.fromJson(value as core.Map<core.String, core.dynamic>),
+              ),
             ),
-          ),
-          headers:
-              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              Header.fromJson(value as core.Map<core.String, core.dynamic>),
+        headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                Header.fromJson(value as core.Map<core.String, core.dynamic>),
+              ),
             ),
-          ),
-          inlineObjects:
-              (json_['inlineObjects'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              InlineObject.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        inlineObjects: (json_['inlineObjects']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                InlineObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
+        lists: (json_['lists'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            List.fromJson(value as core.Map<core.String, core.dynamic>),
           ),
-          lists: (json_['lists'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              List.fromJson(value as core.Map<core.String, core.dynamic>),
+        ),
+        namedRanges:
+            (json_['namedRanges'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                NamedRanges.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          namedRanges:
-              (json_['namedRanges'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              NamedRanges.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        namedStyles:
+            json_.containsKey('namedStyles')
+                ? NamedStyles.fromJson(
+                  json_['namedStyles'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        positionedObjects: (json_['positionedObjects']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                PositionedObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          namedStyles: json_.containsKey('namedStyles')
-              ? NamedStyles.fromJson(
-                  json_['namedStyles'] as core.Map<core.String, core.dynamic>)
-              : null,
-          positionedObjects: (json_['positionedObjects']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              PositionedObject.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        revisionId: json_['revisionId'] as core.String?,
+        suggestedDocumentStyleChanges: (json_['suggestedDocumentStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedDocumentStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          revisionId: json_['revisionId'] as core.String?,
-          suggestedDocumentStyleChanges: (json_['suggestedDocumentStyleChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedDocumentStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        suggestedNamedStylesChanges: (json_['suggestedNamedStylesChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedNamedStyles.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          suggestedNamedStylesChanges: (json_['suggestedNamedStylesChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedNamedStyles.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
-            ),
-          ),
-          suggestionsViewMode: json_['suggestionsViewMode'] as core.String?,
-          tabs: (json_['tabs'] as core.List?)
-              ?.map((value) =>
-                  Tab.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          title: json_['title'] as core.String?,
-        );
+        suggestionsViewMode: json_['suggestionsViewMode'] as core.String?,
+        tabs:
+            (json_['tabs'] as core.List?)
+                ?.map(
+                  (value) => Tab.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-        if (documentId != null) 'documentId': documentId!,
-        if (documentStyle != null) 'documentStyle': documentStyle!,
-        if (footers != null) 'footers': footers!,
-        if (footnotes != null) 'footnotes': footnotes!,
-        if (headers != null) 'headers': headers!,
-        if (inlineObjects != null) 'inlineObjects': inlineObjects!,
-        if (lists != null) 'lists': lists!,
-        if (namedRanges != null) 'namedRanges': namedRanges!,
-        if (namedStyles != null) 'namedStyles': namedStyles!,
-        if (positionedObjects != null) 'positionedObjects': positionedObjects!,
-        if (revisionId != null) 'revisionId': revisionId!,
-        if (suggestedDocumentStyleChanges != null)
-          'suggestedDocumentStyleChanges': suggestedDocumentStyleChanges!,
-        if (suggestedNamedStylesChanges != null)
-          'suggestedNamedStylesChanges': suggestedNamedStylesChanges!,
-        if (suggestionsViewMode != null)
-          'suggestionsViewMode': suggestionsViewMode!,
-        if (tabs != null) 'tabs': tabs!,
-        if (title != null) 'title': title!,
-      };
+    if (body != null) 'body': body!,
+    if (documentId != null) 'documentId': documentId!,
+    if (documentStyle != null) 'documentStyle': documentStyle!,
+    if (footers != null) 'footers': footers!,
+    if (footnotes != null) 'footnotes': footnotes!,
+    if (headers != null) 'headers': headers!,
+    if (inlineObjects != null) 'inlineObjects': inlineObjects!,
+    if (lists != null) 'lists': lists!,
+    if (namedRanges != null) 'namedRanges': namedRanges!,
+    if (namedStyles != null) 'namedStyles': namedStyles!,
+    if (positionedObjects != null) 'positionedObjects': positionedObjects!,
+    if (revisionId != null) 'revisionId': revisionId!,
+    if (suggestedDocumentStyleChanges != null)
+      'suggestedDocumentStyleChanges': suggestedDocumentStyleChanges!,
+    if (suggestedNamedStylesChanges != null)
+      'suggestedNamedStylesChanges': suggestedNamedStylesChanges!,
+    if (suggestionsViewMode != null)
+      'suggestionsViewMode': suggestionsViewMode!,
+    if (tabs != null) 'tabs': tabs!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// The style of the document.
@@ -1821,80 +1828,95 @@ class DocumentStyle {
   });
 
   DocumentStyle.fromJson(core.Map json_)
-      : this(
-          background: json_.containsKey('background')
-              ? Background.fromJson(
-                  json_['background'] as core.Map<core.String, core.dynamic>)
-              : null,
-          defaultFooterId: json_['defaultFooterId'] as core.String?,
-          defaultHeaderId: json_['defaultHeaderId'] as core.String?,
-          evenPageFooterId: json_['evenPageFooterId'] as core.String?,
-          evenPageHeaderId: json_['evenPageHeaderId'] as core.String?,
-          firstPageFooterId: json_['firstPageFooterId'] as core.String?,
-          firstPageHeaderId: json_['firstPageHeaderId'] as core.String?,
-          flipPageOrientation: json_['flipPageOrientation'] as core.bool?,
-          marginBottom: json_.containsKey('marginBottom')
-              ? Dimension.fromJson(
-                  json_['marginBottom'] as core.Map<core.String, core.dynamic>)
-              : null,
-          marginFooter: json_.containsKey('marginFooter')
-              ? Dimension.fromJson(
-                  json_['marginFooter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          marginHeader: json_.containsKey('marginHeader')
-              ? Dimension.fromJson(
-                  json_['marginHeader'] as core.Map<core.String, core.dynamic>)
-              : null,
-          marginLeft: json_.containsKey('marginLeft')
-              ? Dimension.fromJson(
-                  json_['marginLeft'] as core.Map<core.String, core.dynamic>)
-              : null,
-          marginRight: json_.containsKey('marginRight')
-              ? Dimension.fromJson(
-                  json_['marginRight'] as core.Map<core.String, core.dynamic>)
-              : null,
-          marginTop: json_.containsKey('marginTop')
-              ? Dimension.fromJson(
-                  json_['marginTop'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pageNumberStart: json_['pageNumberStart'] as core.int?,
-          pageSize: json_.containsKey('pageSize')
-              ? Size.fromJson(
-                  json_['pageSize'] as core.Map<core.String, core.dynamic>)
-              : null,
-          useCustomHeaderFooterMargins:
-              json_['useCustomHeaderFooterMargins'] as core.bool?,
-          useEvenPageHeaderFooter:
-              json_['useEvenPageHeaderFooter'] as core.bool?,
-          useFirstPageHeaderFooter:
-              json_['useFirstPageHeaderFooter'] as core.bool?,
-        );
+    : this(
+        background:
+            json_.containsKey('background')
+                ? Background.fromJson(
+                  json_['background'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        defaultFooterId: json_['defaultFooterId'] as core.String?,
+        defaultHeaderId: json_['defaultHeaderId'] as core.String?,
+        evenPageFooterId: json_['evenPageFooterId'] as core.String?,
+        evenPageHeaderId: json_['evenPageHeaderId'] as core.String?,
+        firstPageFooterId: json_['firstPageFooterId'] as core.String?,
+        firstPageHeaderId: json_['firstPageHeaderId'] as core.String?,
+        flipPageOrientation: json_['flipPageOrientation'] as core.bool?,
+        marginBottom:
+            json_.containsKey('marginBottom')
+                ? Dimension.fromJson(
+                  json_['marginBottom'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginFooter:
+            json_.containsKey('marginFooter')
+                ? Dimension.fromJson(
+                  json_['marginFooter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginHeader:
+            json_.containsKey('marginHeader')
+                ? Dimension.fromJson(
+                  json_['marginHeader'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginLeft:
+            json_.containsKey('marginLeft')
+                ? Dimension.fromJson(
+                  json_['marginLeft'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginRight:
+            json_.containsKey('marginRight')
+                ? Dimension.fromJson(
+                  json_['marginRight'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginTop:
+            json_.containsKey('marginTop')
+                ? Dimension.fromJson(
+                  json_['marginTop'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pageNumberStart: json_['pageNumberStart'] as core.int?,
+        pageSize:
+            json_.containsKey('pageSize')
+                ? Size.fromJson(
+                  json_['pageSize'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        useCustomHeaderFooterMargins:
+            json_['useCustomHeaderFooterMargins'] as core.bool?,
+        useEvenPageHeaderFooter: json_['useEvenPageHeaderFooter'] as core.bool?,
+        useFirstPageHeaderFooter:
+            json_['useFirstPageHeaderFooter'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (background != null) 'background': background!,
-        if (defaultFooterId != null) 'defaultFooterId': defaultFooterId!,
-        if (defaultHeaderId != null) 'defaultHeaderId': defaultHeaderId!,
-        if (evenPageFooterId != null) 'evenPageFooterId': evenPageFooterId!,
-        if (evenPageHeaderId != null) 'evenPageHeaderId': evenPageHeaderId!,
-        if (firstPageFooterId != null) 'firstPageFooterId': firstPageFooterId!,
-        if (firstPageHeaderId != null) 'firstPageHeaderId': firstPageHeaderId!,
-        if (flipPageOrientation != null)
-          'flipPageOrientation': flipPageOrientation!,
-        if (marginBottom != null) 'marginBottom': marginBottom!,
-        if (marginFooter != null) 'marginFooter': marginFooter!,
-        if (marginHeader != null) 'marginHeader': marginHeader!,
-        if (marginLeft != null) 'marginLeft': marginLeft!,
-        if (marginRight != null) 'marginRight': marginRight!,
-        if (marginTop != null) 'marginTop': marginTop!,
-        if (pageNumberStart != null) 'pageNumberStart': pageNumberStart!,
-        if (pageSize != null) 'pageSize': pageSize!,
-        if (useCustomHeaderFooterMargins != null)
-          'useCustomHeaderFooterMargins': useCustomHeaderFooterMargins!,
-        if (useEvenPageHeaderFooter != null)
-          'useEvenPageHeaderFooter': useEvenPageHeaderFooter!,
-        if (useFirstPageHeaderFooter != null)
-          'useFirstPageHeaderFooter': useFirstPageHeaderFooter!,
-      };
+    if (background != null) 'background': background!,
+    if (defaultFooterId != null) 'defaultFooterId': defaultFooterId!,
+    if (defaultHeaderId != null) 'defaultHeaderId': defaultHeaderId!,
+    if (evenPageFooterId != null) 'evenPageFooterId': evenPageFooterId!,
+    if (evenPageHeaderId != null) 'evenPageHeaderId': evenPageHeaderId!,
+    if (firstPageFooterId != null) 'firstPageFooterId': firstPageFooterId!,
+    if (firstPageHeaderId != null) 'firstPageHeaderId': firstPageHeaderId!,
+    if (flipPageOrientation != null)
+      'flipPageOrientation': flipPageOrientation!,
+    if (marginBottom != null) 'marginBottom': marginBottom!,
+    if (marginFooter != null) 'marginFooter': marginFooter!,
+    if (marginHeader != null) 'marginHeader': marginHeader!,
+    if (marginLeft != null) 'marginLeft': marginLeft!,
+    if (marginRight != null) 'marginRight': marginRight!,
+    if (marginTop != null) 'marginTop': marginTop!,
+    if (pageNumberStart != null) 'pageNumberStart': pageNumberStart!,
+    if (pageSize != null) 'pageSize': pageSize!,
+    if (useCustomHeaderFooterMargins != null)
+      'useCustomHeaderFooterMargins': useCustomHeaderFooterMargins!,
+    if (useEvenPageHeaderFooter != null)
+      'useEvenPageHeaderFooter': useEvenPageHeaderFooter!,
+    if (useFirstPageHeaderFooter != null)
+      'useFirstPageHeaderFooter': useFirstPageHeaderFooter!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base DocumentStyle have
@@ -1987,89 +2009,91 @@ class DocumentStyleSuggestionState {
   });
 
   DocumentStyleSuggestionState.fromJson(core.Map json_)
-      : this(
-          backgroundSuggestionState:
-              json_.containsKey('backgroundSuggestionState')
-                  ? BackgroundSuggestionState.fromJson(
-                      json_['backgroundSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          defaultFooterIdSuggested:
-              json_['defaultFooterIdSuggested'] as core.bool?,
-          defaultHeaderIdSuggested:
-              json_['defaultHeaderIdSuggested'] as core.bool?,
-          evenPageFooterIdSuggested:
-              json_['evenPageFooterIdSuggested'] as core.bool?,
-          evenPageHeaderIdSuggested:
-              json_['evenPageHeaderIdSuggested'] as core.bool?,
-          firstPageFooterIdSuggested:
-              json_['firstPageFooterIdSuggested'] as core.bool?,
-          firstPageHeaderIdSuggested:
-              json_['firstPageHeaderIdSuggested'] as core.bool?,
-          flipPageOrientationSuggested:
-              json_['flipPageOrientationSuggested'] as core.bool?,
-          marginBottomSuggested: json_['marginBottomSuggested'] as core.bool?,
-          marginFooterSuggested: json_['marginFooterSuggested'] as core.bool?,
-          marginHeaderSuggested: json_['marginHeaderSuggested'] as core.bool?,
-          marginLeftSuggested: json_['marginLeftSuggested'] as core.bool?,
-          marginRightSuggested: json_['marginRightSuggested'] as core.bool?,
-          marginTopSuggested: json_['marginTopSuggested'] as core.bool?,
-          pageNumberStartSuggested:
-              json_['pageNumberStartSuggested'] as core.bool?,
-          pageSizeSuggestionState: json_.containsKey('pageSizeSuggestionState')
-              ? SizeSuggestionState.fromJson(json_['pageSizeSuggestionState']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          useCustomHeaderFooterMarginsSuggested:
-              json_['useCustomHeaderFooterMarginsSuggested'] as core.bool?,
-          useEvenPageHeaderFooterSuggested:
-              json_['useEvenPageHeaderFooterSuggested'] as core.bool?,
-          useFirstPageHeaderFooterSuggested:
-              json_['useFirstPageHeaderFooterSuggested'] as core.bool?,
-        );
+    : this(
+        backgroundSuggestionState:
+            json_.containsKey('backgroundSuggestionState')
+                ? BackgroundSuggestionState.fromJson(
+                  json_['backgroundSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        defaultFooterIdSuggested:
+            json_['defaultFooterIdSuggested'] as core.bool?,
+        defaultHeaderIdSuggested:
+            json_['defaultHeaderIdSuggested'] as core.bool?,
+        evenPageFooterIdSuggested:
+            json_['evenPageFooterIdSuggested'] as core.bool?,
+        evenPageHeaderIdSuggested:
+            json_['evenPageHeaderIdSuggested'] as core.bool?,
+        firstPageFooterIdSuggested:
+            json_['firstPageFooterIdSuggested'] as core.bool?,
+        firstPageHeaderIdSuggested:
+            json_['firstPageHeaderIdSuggested'] as core.bool?,
+        flipPageOrientationSuggested:
+            json_['flipPageOrientationSuggested'] as core.bool?,
+        marginBottomSuggested: json_['marginBottomSuggested'] as core.bool?,
+        marginFooterSuggested: json_['marginFooterSuggested'] as core.bool?,
+        marginHeaderSuggested: json_['marginHeaderSuggested'] as core.bool?,
+        marginLeftSuggested: json_['marginLeftSuggested'] as core.bool?,
+        marginRightSuggested: json_['marginRightSuggested'] as core.bool?,
+        marginTopSuggested: json_['marginTopSuggested'] as core.bool?,
+        pageNumberStartSuggested:
+            json_['pageNumberStartSuggested'] as core.bool?,
+        pageSizeSuggestionState:
+            json_.containsKey('pageSizeSuggestionState')
+                ? SizeSuggestionState.fromJson(
+                  json_['pageSizeSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        useCustomHeaderFooterMarginsSuggested:
+            json_['useCustomHeaderFooterMarginsSuggested'] as core.bool?,
+        useEvenPageHeaderFooterSuggested:
+            json_['useEvenPageHeaderFooterSuggested'] as core.bool?,
+        useFirstPageHeaderFooterSuggested:
+            json_['useFirstPageHeaderFooterSuggested'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundSuggestionState != null)
-          'backgroundSuggestionState': backgroundSuggestionState!,
-        if (defaultFooterIdSuggested != null)
-          'defaultFooterIdSuggested': defaultFooterIdSuggested!,
-        if (defaultHeaderIdSuggested != null)
-          'defaultHeaderIdSuggested': defaultHeaderIdSuggested!,
-        if (evenPageFooterIdSuggested != null)
-          'evenPageFooterIdSuggested': evenPageFooterIdSuggested!,
-        if (evenPageHeaderIdSuggested != null)
-          'evenPageHeaderIdSuggested': evenPageHeaderIdSuggested!,
-        if (firstPageFooterIdSuggested != null)
-          'firstPageFooterIdSuggested': firstPageFooterIdSuggested!,
-        if (firstPageHeaderIdSuggested != null)
-          'firstPageHeaderIdSuggested': firstPageHeaderIdSuggested!,
-        if (flipPageOrientationSuggested != null)
-          'flipPageOrientationSuggested': flipPageOrientationSuggested!,
-        if (marginBottomSuggested != null)
-          'marginBottomSuggested': marginBottomSuggested!,
-        if (marginFooterSuggested != null)
-          'marginFooterSuggested': marginFooterSuggested!,
-        if (marginHeaderSuggested != null)
-          'marginHeaderSuggested': marginHeaderSuggested!,
-        if (marginLeftSuggested != null)
-          'marginLeftSuggested': marginLeftSuggested!,
-        if (marginRightSuggested != null)
-          'marginRightSuggested': marginRightSuggested!,
-        if (marginTopSuggested != null)
-          'marginTopSuggested': marginTopSuggested!,
-        if (pageNumberStartSuggested != null)
-          'pageNumberStartSuggested': pageNumberStartSuggested!,
-        if (pageSizeSuggestionState != null)
-          'pageSizeSuggestionState': pageSizeSuggestionState!,
-        if (useCustomHeaderFooterMarginsSuggested != null)
-          'useCustomHeaderFooterMarginsSuggested':
-              useCustomHeaderFooterMarginsSuggested!,
-        if (useEvenPageHeaderFooterSuggested != null)
-          'useEvenPageHeaderFooterSuggested': useEvenPageHeaderFooterSuggested!,
-        if (useFirstPageHeaderFooterSuggested != null)
-          'useFirstPageHeaderFooterSuggested':
-              useFirstPageHeaderFooterSuggested!,
-      };
+    if (backgroundSuggestionState != null)
+      'backgroundSuggestionState': backgroundSuggestionState!,
+    if (defaultFooterIdSuggested != null)
+      'defaultFooterIdSuggested': defaultFooterIdSuggested!,
+    if (defaultHeaderIdSuggested != null)
+      'defaultHeaderIdSuggested': defaultHeaderIdSuggested!,
+    if (evenPageFooterIdSuggested != null)
+      'evenPageFooterIdSuggested': evenPageFooterIdSuggested!,
+    if (evenPageHeaderIdSuggested != null)
+      'evenPageHeaderIdSuggested': evenPageHeaderIdSuggested!,
+    if (firstPageFooterIdSuggested != null)
+      'firstPageFooterIdSuggested': firstPageFooterIdSuggested!,
+    if (firstPageHeaderIdSuggested != null)
+      'firstPageHeaderIdSuggested': firstPageHeaderIdSuggested!,
+    if (flipPageOrientationSuggested != null)
+      'flipPageOrientationSuggested': flipPageOrientationSuggested!,
+    if (marginBottomSuggested != null)
+      'marginBottomSuggested': marginBottomSuggested!,
+    if (marginFooterSuggested != null)
+      'marginFooterSuggested': marginFooterSuggested!,
+    if (marginHeaderSuggested != null)
+      'marginHeaderSuggested': marginHeaderSuggested!,
+    if (marginLeftSuggested != null)
+      'marginLeftSuggested': marginLeftSuggested!,
+    if (marginRightSuggested != null)
+      'marginRightSuggested': marginRightSuggested!,
+    if (marginTopSuggested != null) 'marginTopSuggested': marginTopSuggested!,
+    if (pageNumberStartSuggested != null)
+      'pageNumberStartSuggested': pageNumberStartSuggested!,
+    if (pageSizeSuggestionState != null)
+      'pageSizeSuggestionState': pageSizeSuggestionState!,
+    if (useCustomHeaderFooterMarginsSuggested != null)
+      'useCustomHeaderFooterMarginsSuggested':
+          useCustomHeaderFooterMarginsSuggested!,
+    if (useEvenPageHeaderFooterSuggested != null)
+      'useEvenPageHeaderFooterSuggested': useEvenPageHeaderFooterSuggested!,
+    if (useFirstPageHeaderFooterSuggested != null)
+      'useFirstPageHeaderFooterSuggested': useFirstPageHeaderFooterSuggested!,
+  };
 }
 
 /// A tab with document contents.
@@ -2128,109 +2152,119 @@ class DocumentTab {
   });
 
   DocumentTab.fromJson(core.Map json_)
-      : this(
-          body: json_.containsKey('body')
-              ? Body.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>)
-              : null,
-          documentStyle: json_.containsKey('documentStyle')
-              ? DocumentStyle.fromJson(
-                  json_['documentStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          footers:
-              (json_['footers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              Footer.fromJson(value as core.Map<core.String, core.dynamic>),
+    : this(
+        body:
+            json_.containsKey('body')
+                ? Body.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        documentStyle:
+            json_.containsKey('documentStyle')
+                ? DocumentStyle.fromJson(
+                  json_['documentStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        footers: (json_['footers'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                Footer.fromJson(value as core.Map<core.String, core.dynamic>),
+              ),
             ),
-          ),
-          footnotes:
-              (json_['footnotes'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              Footnote.fromJson(value as core.Map<core.String, core.dynamic>),
+        footnotes: (json_['footnotes'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                Footnote.fromJson(value as core.Map<core.String, core.dynamic>),
+              ),
             ),
-          ),
-          headers:
-              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              Header.fromJson(value as core.Map<core.String, core.dynamic>),
+        headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                Header.fromJson(value as core.Map<core.String, core.dynamic>),
+              ),
             ),
-          ),
-          inlineObjects:
-              (json_['inlineObjects'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              InlineObject.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        inlineObjects: (json_['inlineObjects']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                InlineObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
+        lists: (json_['lists'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(
+            key,
+            List.fromJson(value as core.Map<core.String, core.dynamic>),
           ),
-          lists: (json_['lists'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              List.fromJson(value as core.Map<core.String, core.dynamic>),
+        ),
+        namedRanges:
+            (json_['namedRanges'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                NamedRanges.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          namedRanges:
-              (json_['namedRanges'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              NamedRanges.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        namedStyles:
+            json_.containsKey('namedStyles')
+                ? NamedStyles.fromJson(
+                  json_['namedStyles'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        positionedObjects: (json_['positionedObjects']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                PositionedObject.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          namedStyles: json_.containsKey('namedStyles')
-              ? NamedStyles.fromJson(
-                  json_['namedStyles'] as core.Map<core.String, core.dynamic>)
-              : null,
-          positionedObjects: (json_['positionedObjects']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              PositionedObject.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        suggestedDocumentStyleChanges: (json_['suggestedDocumentStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedDocumentStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          suggestedDocumentStyleChanges: (json_['suggestedDocumentStyleChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedDocumentStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        suggestedNamedStylesChanges: (json_['suggestedNamedStylesChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedNamedStyles.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          suggestedNamedStylesChanges: (json_['suggestedNamedStylesChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedNamedStyles.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
-            ),
-          ),
-        );
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-        if (documentStyle != null) 'documentStyle': documentStyle!,
-        if (footers != null) 'footers': footers!,
-        if (footnotes != null) 'footnotes': footnotes!,
-        if (headers != null) 'headers': headers!,
-        if (inlineObjects != null) 'inlineObjects': inlineObjects!,
-        if (lists != null) 'lists': lists!,
-        if (namedRanges != null) 'namedRanges': namedRanges!,
-        if (namedStyles != null) 'namedStyles': namedStyles!,
-        if (positionedObjects != null) 'positionedObjects': positionedObjects!,
-        if (suggestedDocumentStyleChanges != null)
-          'suggestedDocumentStyleChanges': suggestedDocumentStyleChanges!,
-        if (suggestedNamedStylesChanges != null)
-          'suggestedNamedStylesChanges': suggestedNamedStylesChanges!,
-      };
+    if (body != null) 'body': body!,
+    if (documentStyle != null) 'documentStyle': documentStyle!,
+    if (footers != null) 'footers': footers!,
+    if (footnotes != null) 'footnotes': footnotes!,
+    if (headers != null) 'headers': headers!,
+    if (inlineObjects != null) 'inlineObjects': inlineObjects!,
+    if (lists != null) 'lists': lists!,
+    if (namedRanges != null) 'namedRanges': namedRanges!,
+    if (namedStyles != null) 'namedStyles': namedStyles!,
+    if (positionedObjects != null) 'positionedObjects': positionedObjects!,
+    if (suggestedDocumentStyleChanges != null)
+      'suggestedDocumentStyleChanges': suggestedDocumentStyleChanges!,
+    if (suggestedNamedStylesChanges != null)
+      'suggestedNamedStylesChanges': suggestedNamedStylesChanges!,
+  };
 }
 
 /// The properties of an embedded drawing and used to differentiate the object
@@ -2304,65 +2338,85 @@ class EmbeddedObject {
   });
 
   EmbeddedObject.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          embeddedDrawingProperties:
-              json_.containsKey('embeddedDrawingProperties')
-                  ? EmbeddedDrawingProperties.fromJson(
-                      json_['embeddedDrawingProperties']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          embeddedObjectBorder: json_.containsKey('embeddedObjectBorder')
-              ? EmbeddedObjectBorder.fromJson(json_['embeddedObjectBorder']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          imageProperties: json_.containsKey('imageProperties')
-              ? ImageProperties.fromJson(json_['imageProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          linkedContentReference: json_.containsKey('linkedContentReference')
-              ? LinkedContentReference.fromJson(json_['linkedContentReference']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          marginBottom: json_.containsKey('marginBottom')
-              ? Dimension.fromJson(
-                  json_['marginBottom'] as core.Map<core.String, core.dynamic>)
-              : null,
-          marginLeft: json_.containsKey('marginLeft')
-              ? Dimension.fromJson(
-                  json_['marginLeft'] as core.Map<core.String, core.dynamic>)
-              : null,
-          marginRight: json_.containsKey('marginRight')
-              ? Dimension.fromJson(
-                  json_['marginRight'] as core.Map<core.String, core.dynamic>)
-              : null,
-          marginTop: json_.containsKey('marginTop')
-              ? Dimension.fromJson(
-                  json_['marginTop'] as core.Map<core.String, core.dynamic>)
-              : null,
-          size: json_.containsKey('size')
-              ? Size.fromJson(
-                  json_['size'] as core.Map<core.String, core.dynamic>)
-              : null,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        embeddedDrawingProperties:
+            json_.containsKey('embeddedDrawingProperties')
+                ? EmbeddedDrawingProperties.fromJson(
+                  json_['embeddedDrawingProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        embeddedObjectBorder:
+            json_.containsKey('embeddedObjectBorder')
+                ? EmbeddedObjectBorder.fromJson(
+                  json_['embeddedObjectBorder']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        imageProperties:
+            json_.containsKey('imageProperties')
+                ? ImageProperties.fromJson(
+                  json_['imageProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        linkedContentReference:
+            json_.containsKey('linkedContentReference')
+                ? LinkedContentReference.fromJson(
+                  json_['linkedContentReference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginBottom:
+            json_.containsKey('marginBottom')
+                ? Dimension.fromJson(
+                  json_['marginBottom'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginLeft:
+            json_.containsKey('marginLeft')
+                ? Dimension.fromJson(
+                  json_['marginLeft'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginRight:
+            json_.containsKey('marginRight')
+                ? Dimension.fromJson(
+                  json_['marginRight'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginTop:
+            json_.containsKey('marginTop')
+                ? Dimension.fromJson(
+                  json_['marginTop'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        size:
+            json_.containsKey('size')
+                ? Size.fromJson(
+                  json_['size'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (embeddedDrawingProperties != null)
-          'embeddedDrawingProperties': embeddedDrawingProperties!,
-        if (embeddedObjectBorder != null)
-          'embeddedObjectBorder': embeddedObjectBorder!,
-        if (imageProperties != null) 'imageProperties': imageProperties!,
-        if (linkedContentReference != null)
-          'linkedContentReference': linkedContentReference!,
-        if (marginBottom != null) 'marginBottom': marginBottom!,
-        if (marginLeft != null) 'marginLeft': marginLeft!,
-        if (marginRight != null) 'marginRight': marginRight!,
-        if (marginTop != null) 'marginTop': marginTop!,
-        if (size != null) 'size': size!,
-        if (title != null) 'title': title!,
-      };
+    if (description != null) 'description': description!,
+    if (embeddedDrawingProperties != null)
+      'embeddedDrawingProperties': embeddedDrawingProperties!,
+    if (embeddedObjectBorder != null)
+      'embeddedObjectBorder': embeddedObjectBorder!,
+    if (imageProperties != null) 'imageProperties': imageProperties!,
+    if (linkedContentReference != null)
+      'linkedContentReference': linkedContentReference!,
+    if (marginBottom != null) 'marginBottom': marginBottom!,
+    if (marginLeft != null) 'marginLeft': marginLeft!,
+    if (marginRight != null) 'marginRight': marginRight!,
+    if (marginTop != null) 'marginTop': marginTop!,
+    if (size != null) 'size': size!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// A border around an EmbeddedObject.
@@ -2401,25 +2455,29 @@ class EmbeddedObjectBorder {
   });
 
   EmbeddedObjectBorder.fromJson(core.Map json_)
-      : this(
-          color: json_.containsKey('color')
-              ? OptionalColor.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dashStyle: json_['dashStyle'] as core.String?,
-          propertyState: json_['propertyState'] as core.String?,
-          width: json_.containsKey('width')
-              ? Dimension.fromJson(
-                  json_['width'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        color:
+            json_.containsKey('color')
+                ? OptionalColor.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dashStyle: json_['dashStyle'] as core.String?,
+        propertyState: json_['propertyState'] as core.String?,
+        width:
+            json_.containsKey('width')
+                ? Dimension.fromJson(
+                  json_['width'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!,
-        if (dashStyle != null) 'dashStyle': dashStyle!,
-        if (propertyState != null) 'propertyState': propertyState!,
-        if (width != null) 'width': width!,
-      };
+    if (color != null) 'color': color!,
+    if (dashStyle != null) 'dashStyle': dashStyle!,
+    if (propertyState != null) 'propertyState': propertyState!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base EmbeddedObjectBorder
@@ -2447,21 +2505,20 @@ class EmbeddedObjectBorderSuggestionState {
   });
 
   EmbeddedObjectBorderSuggestionState.fromJson(core.Map json_)
-      : this(
-          colorSuggested: json_['colorSuggested'] as core.bool?,
-          dashStyleSuggested: json_['dashStyleSuggested'] as core.bool?,
-          propertyStateSuggested: json_['propertyStateSuggested'] as core.bool?,
-          widthSuggested: json_['widthSuggested'] as core.bool?,
-        );
+    : this(
+        colorSuggested: json_['colorSuggested'] as core.bool?,
+        dashStyleSuggested: json_['dashStyleSuggested'] as core.bool?,
+        propertyStateSuggested: json_['propertyStateSuggested'] as core.bool?,
+        widthSuggested: json_['widthSuggested'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (colorSuggested != null) 'colorSuggested': colorSuggested!,
-        if (dashStyleSuggested != null)
-          'dashStyleSuggested': dashStyleSuggested!,
-        if (propertyStateSuggested != null)
-          'propertyStateSuggested': propertyStateSuggested!,
-        if (widthSuggested != null) 'widthSuggested': widthSuggested!,
-      };
+    if (colorSuggested != null) 'colorSuggested': colorSuggested!,
+    if (dashStyleSuggested != null) 'dashStyleSuggested': dashStyleSuggested!,
+    if (propertyStateSuggested != null)
+      'propertyStateSuggested': propertyStateSuggested!,
+    if (widthSuggested != null) 'widthSuggested': widthSuggested!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base EmbeddedObject have
@@ -2475,7 +2532,7 @@ class EmbeddedObjectSuggestionState {
   /// A mask that indicates which of the fields in embedded_drawing_properties
   /// have been changed in this suggestion.
   EmbeddedDrawingPropertiesSuggestionState?
-      embeddedDrawingPropertiesSuggestionState;
+  embeddedDrawingPropertiesSuggestionState;
 
   /// A mask that indicates which of the fields in embedded_object_border have
   /// been changed in this suggestion.
@@ -2523,69 +2580,75 @@ class EmbeddedObjectSuggestionState {
   });
 
   EmbeddedObjectSuggestionState.fromJson(core.Map json_)
-      : this(
-          descriptionSuggested: json_['descriptionSuggested'] as core.bool?,
-          embeddedDrawingPropertiesSuggestionState:
-              json_.containsKey('embeddedDrawingPropertiesSuggestionState')
-                  ? EmbeddedDrawingPropertiesSuggestionState.fromJson(
-                      json_['embeddedDrawingPropertiesSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          embeddedObjectBorderSuggestionState:
-              json_.containsKey('embeddedObjectBorderSuggestionState')
-                  ? EmbeddedObjectBorderSuggestionState.fromJson(
-                      json_['embeddedObjectBorderSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          imagePropertiesSuggestionState:
-              json_.containsKey('imagePropertiesSuggestionState')
-                  ? ImagePropertiesSuggestionState.fromJson(
-                      json_['imagePropertiesSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          linkedContentReferenceSuggestionState:
-              json_.containsKey('linkedContentReferenceSuggestionState')
-                  ? LinkedContentReferenceSuggestionState.fromJson(
-                      json_['linkedContentReferenceSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          marginBottomSuggested: json_['marginBottomSuggested'] as core.bool?,
-          marginLeftSuggested: json_['marginLeftSuggested'] as core.bool?,
-          marginRightSuggested: json_['marginRightSuggested'] as core.bool?,
-          marginTopSuggested: json_['marginTopSuggested'] as core.bool?,
-          sizeSuggestionState: json_.containsKey('sizeSuggestionState')
-              ? SizeSuggestionState.fromJson(json_['sizeSuggestionState']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          titleSuggested: json_['titleSuggested'] as core.bool?,
-        );
+    : this(
+        descriptionSuggested: json_['descriptionSuggested'] as core.bool?,
+        embeddedDrawingPropertiesSuggestionState:
+            json_.containsKey('embeddedDrawingPropertiesSuggestionState')
+                ? EmbeddedDrawingPropertiesSuggestionState.fromJson(
+                  json_['embeddedDrawingPropertiesSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        embeddedObjectBorderSuggestionState:
+            json_.containsKey('embeddedObjectBorderSuggestionState')
+                ? EmbeddedObjectBorderSuggestionState.fromJson(
+                  json_['embeddedObjectBorderSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        imagePropertiesSuggestionState:
+            json_.containsKey('imagePropertiesSuggestionState')
+                ? ImagePropertiesSuggestionState.fromJson(
+                  json_['imagePropertiesSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        linkedContentReferenceSuggestionState:
+            json_.containsKey('linkedContentReferenceSuggestionState')
+                ? LinkedContentReferenceSuggestionState.fromJson(
+                  json_['linkedContentReferenceSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginBottomSuggested: json_['marginBottomSuggested'] as core.bool?,
+        marginLeftSuggested: json_['marginLeftSuggested'] as core.bool?,
+        marginRightSuggested: json_['marginRightSuggested'] as core.bool?,
+        marginTopSuggested: json_['marginTopSuggested'] as core.bool?,
+        sizeSuggestionState:
+            json_.containsKey('sizeSuggestionState')
+                ? SizeSuggestionState.fromJson(
+                  json_['sizeSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        titleSuggested: json_['titleSuggested'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (descriptionSuggested != null)
-          'descriptionSuggested': descriptionSuggested!,
-        if (embeddedDrawingPropertiesSuggestionState != null)
-          'embeddedDrawingPropertiesSuggestionState':
-              embeddedDrawingPropertiesSuggestionState!,
-        if (embeddedObjectBorderSuggestionState != null)
-          'embeddedObjectBorderSuggestionState':
-              embeddedObjectBorderSuggestionState!,
-        if (imagePropertiesSuggestionState != null)
-          'imagePropertiesSuggestionState': imagePropertiesSuggestionState!,
-        if (linkedContentReferenceSuggestionState != null)
-          'linkedContentReferenceSuggestionState':
-              linkedContentReferenceSuggestionState!,
-        if (marginBottomSuggested != null)
-          'marginBottomSuggested': marginBottomSuggested!,
-        if (marginLeftSuggested != null)
-          'marginLeftSuggested': marginLeftSuggested!,
-        if (marginRightSuggested != null)
-          'marginRightSuggested': marginRightSuggested!,
-        if (marginTopSuggested != null)
-          'marginTopSuggested': marginTopSuggested!,
-        if (sizeSuggestionState != null)
-          'sizeSuggestionState': sizeSuggestionState!,
-        if (titleSuggested != null) 'titleSuggested': titleSuggested!,
-      };
+    if (descriptionSuggested != null)
+      'descriptionSuggested': descriptionSuggested!,
+    if (embeddedDrawingPropertiesSuggestionState != null)
+      'embeddedDrawingPropertiesSuggestionState':
+          embeddedDrawingPropertiesSuggestionState!,
+    if (embeddedObjectBorderSuggestionState != null)
+      'embeddedObjectBorderSuggestionState':
+          embeddedObjectBorderSuggestionState!,
+    if (imagePropertiesSuggestionState != null)
+      'imagePropertiesSuggestionState': imagePropertiesSuggestionState!,
+    if (linkedContentReferenceSuggestionState != null)
+      'linkedContentReferenceSuggestionState':
+          linkedContentReferenceSuggestionState!,
+    if (marginBottomSuggested != null)
+      'marginBottomSuggested': marginBottomSuggested!,
+    if (marginLeftSuggested != null)
+      'marginLeftSuggested': marginLeftSuggested!,
+    if (marginRightSuggested != null)
+      'marginRightSuggested': marginRightSuggested!,
+    if (marginTopSuggested != null) 'marginTopSuggested': marginTopSuggested!,
+    if (sizeSuggestionState != null)
+      'sizeSuggestionState': sizeSuggestionState!,
+    if (titleSuggested != null) 'titleSuggested': titleSuggested!,
+  };
 }
 
 /// Location at the end of a body, header, footer or footnote.
@@ -2607,21 +2670,18 @@ class EndOfSegmentLocation {
   /// document.
   core.String? tabId;
 
-  EndOfSegmentLocation({
-    this.segmentId,
-    this.tabId,
-  });
+  EndOfSegmentLocation({this.segmentId, this.tabId});
 
   EndOfSegmentLocation.fromJson(core.Map json_)
-      : this(
-          segmentId: json_['segmentId'] as core.String?,
-          tabId: json_['tabId'] as core.String?,
-        );
+    : this(
+        segmentId: json_['segmentId'] as core.String?,
+        tabId: json_['tabId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segmentId != null) 'segmentId': segmentId!,
-        if (tabId != null) 'tabId': tabId!,
-      };
+    if (segmentId != null) 'segmentId': segmentId!,
+    if (tabId != null) 'tabId': tabId!,
+  };
 }
 
 /// A ParagraphElement representing an equation.
@@ -2637,27 +2697,26 @@ class Equation {
   /// change. If empty, then this is not a suggested insertion.
   core.List<core.String>? suggestedInsertionIds;
 
-  Equation({
-    this.suggestedDeletionIds,
-    this.suggestedInsertionIds,
-  });
+  Equation({this.suggestedDeletionIds, this.suggestedInsertionIds});
 
   Equation.fromJson(core.Map json_)
-      : this(
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-      };
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+  };
 }
 
 /// A document footer.
@@ -2670,24 +2729,25 @@ class Footer {
   /// The ID of the footer.
   core.String? footerId;
 
-  Footer({
-    this.content,
-    this.footerId,
-  });
+  Footer({this.content, this.footerId});
 
   Footer.fromJson(core.Map json_)
-      : this(
-          content: (json_['content'] as core.List?)
-              ?.map((value) => StructuralElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          footerId: json_['footerId'] as core.String?,
-        );
+    : this(
+        content:
+            (json_['content'] as core.List?)
+                ?.map(
+                  (value) => StructuralElement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        footerId: json_['footerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (footerId != null) 'footerId': footerId!,
-      };
+    if (content != null) 'content': content!,
+    if (footerId != null) 'footerId': footerId!,
+  };
 }
 
 /// A document footnote.
@@ -2700,24 +2760,25 @@ class Footnote {
   /// The ID of the footnote.
   core.String? footnoteId;
 
-  Footnote({
-    this.content,
-    this.footnoteId,
-  });
+  Footnote({this.content, this.footnoteId});
 
   Footnote.fromJson(core.Map json_)
-      : this(
-          content: (json_['content'] as core.List?)
-              ?.map((value) => StructuralElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          footnoteId: json_['footnoteId'] as core.String?,
-        );
+    : this(
+        content:
+            (json_['content'] as core.List?)
+                ?.map(
+                  (value) => StructuralElement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        footnoteId: json_['footnoteId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (footnoteId != null) 'footnoteId': footnoteId!,
-      };
+    if (content != null) 'content': content!,
+    if (footnoteId != null) 'footnoteId': footnoteId!,
+  };
 }
 
 /// A ParagraphElement representing a footnote reference.
@@ -2760,41 +2821,46 @@ class FootnoteReference {
   });
 
   FootnoteReference.fromJson(core.Map json_)
-      : this(
-          footnoteId: json_['footnoteId'] as core.String?,
-          footnoteNumber: json_['footnoteNumber'] as core.String?,
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedTextStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        footnoteId: json_['footnoteId'] as core.String?,
+        footnoteNumber: json_['footnoteNumber'] as core.String?,
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          textStyle: json_.containsKey('textStyle')
-              ? TextStyle.fromJson(
-                  json_['textStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (footnoteId != null) 'footnoteId': footnoteId!,
-        if (footnoteNumber != null) 'footnoteNumber': footnoteNumber!,
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-        if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges!,
-        if (textStyle != null) 'textStyle': textStyle!,
-      };
+    if (footnoteId != null) 'footnoteId': footnoteId!,
+    if (footnoteNumber != null) 'footnoteNumber': footnoteNumber!,
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+    if (suggestedTextStyleChanges != null)
+      'suggestedTextStyleChanges': suggestedTextStyleChanges!,
+    if (textStyle != null) 'textStyle': textStyle!,
+  };
 }
 
 /// A document header.
@@ -2807,24 +2873,25 @@ class Header {
   /// The ID of the header.
   core.String? headerId;
 
-  Header({
-    this.content,
-    this.headerId,
-  });
+  Header({this.content, this.headerId});
 
   Header.fromJson(core.Map json_)
-      : this(
-          content: (json_['content'] as core.List?)
-              ?.map((value) => StructuralElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          headerId: json_['headerId'] as core.String?,
-        );
+    : this(
+        content:
+            (json_['content'] as core.List?)
+                ?.map(
+                  (value) => StructuralElement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        headerId: json_['headerId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (headerId != null) 'headerId': headerId!,
-      };
+    if (content != null) 'content': content!,
+    if (headerId != null) 'headerId': headerId!,
+  };
 }
 
 /// A reference to a heading in this document.
@@ -2835,21 +2902,18 @@ class HeadingLink {
   /// The ID of the tab containing this heading.
   core.String? tabId;
 
-  HeadingLink({
-    this.id,
-    this.tabId,
-  });
+  HeadingLink({this.id, this.tabId});
 
   HeadingLink.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          tabId: json_['tabId'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        tabId: json_['tabId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (tabId != null) 'tabId': tabId!,
-      };
+    if (id != null) 'id': id!,
+    if (tabId != null) 'tabId': tabId!,
+  };
 }
 
 /// A ParagraphElement representing a horizontal line.
@@ -2884,37 +2948,42 @@ class HorizontalRule {
   });
 
   HorizontalRule.fromJson(core.Map json_)
-      : this(
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedTextStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          textStyle: json_.containsKey('textStyle')
-              ? TextStyle.fromJson(
-                  json_['textStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-        if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges!,
-        if (textStyle != null) 'textStyle': textStyle!,
-      };
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+    if (suggestedTextStyleChanges != null)
+      'suggestedTextStyleChanges': suggestedTextStyleChanges!,
+    if (textStyle != null) 'textStyle': textStyle!,
+  };
 }
 
 /// The properties of an image.
@@ -2966,28 +3035,31 @@ class ImageProperties {
   });
 
   ImageProperties.fromJson(core.Map json_)
-      : this(
-          angle: (json_['angle'] as core.num?)?.toDouble(),
-          brightness: (json_['brightness'] as core.num?)?.toDouble(),
-          contentUri: json_['contentUri'] as core.String?,
-          contrast: (json_['contrast'] as core.num?)?.toDouble(),
-          cropProperties: json_.containsKey('cropProperties')
-              ? CropProperties.fromJson(json_['cropProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sourceUri: json_['sourceUri'] as core.String?,
-          transparency: (json_['transparency'] as core.num?)?.toDouble(),
-        );
+    : this(
+        angle: (json_['angle'] as core.num?)?.toDouble(),
+        brightness: (json_['brightness'] as core.num?)?.toDouble(),
+        contentUri: json_['contentUri'] as core.String?,
+        contrast: (json_['contrast'] as core.num?)?.toDouble(),
+        cropProperties:
+            json_.containsKey('cropProperties')
+                ? CropProperties.fromJson(
+                  json_['cropProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceUri: json_['sourceUri'] as core.String?,
+        transparency: (json_['transparency'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (angle != null) 'angle': angle!,
-        if (brightness != null) 'brightness': brightness!,
-        if (contentUri != null) 'contentUri': contentUri!,
-        if (contrast != null) 'contrast': contrast!,
-        if (cropProperties != null) 'cropProperties': cropProperties!,
-        if (sourceUri != null) 'sourceUri': sourceUri!,
-        if (transparency != null) 'transparency': transparency!,
-      };
+    if (angle != null) 'angle': angle!,
+    if (brightness != null) 'brightness': brightness!,
+    if (contentUri != null) 'contentUri': contentUri!,
+    if (contrast != null) 'contrast': contrast!,
+    if (cropProperties != null) 'cropProperties': cropProperties!,
+    if (sourceUri != null) 'sourceUri': sourceUri!,
+    if (transparency != null) 'transparency': transparency!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base ImageProperties have
@@ -3028,35 +3100,35 @@ class ImagePropertiesSuggestionState {
   });
 
   ImagePropertiesSuggestionState.fromJson(core.Map json_)
-      : this(
-          angleSuggested: json_['angleSuggested'] as core.bool?,
-          brightnessSuggested: json_['brightnessSuggested'] as core.bool?,
-          contentUriSuggested: json_['contentUriSuggested'] as core.bool?,
-          contrastSuggested: json_['contrastSuggested'] as core.bool?,
-          cropPropertiesSuggestionState:
-              json_.containsKey('cropPropertiesSuggestionState')
-                  ? CropPropertiesSuggestionState.fromJson(
-                      json_['cropPropertiesSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          sourceUriSuggested: json_['sourceUriSuggested'] as core.bool?,
-          transparencySuggested: json_['transparencySuggested'] as core.bool?,
-        );
+    : this(
+        angleSuggested: json_['angleSuggested'] as core.bool?,
+        brightnessSuggested: json_['brightnessSuggested'] as core.bool?,
+        contentUriSuggested: json_['contentUriSuggested'] as core.bool?,
+        contrastSuggested: json_['contrastSuggested'] as core.bool?,
+        cropPropertiesSuggestionState:
+            json_.containsKey('cropPropertiesSuggestionState')
+                ? CropPropertiesSuggestionState.fromJson(
+                  json_['cropPropertiesSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sourceUriSuggested: json_['sourceUriSuggested'] as core.bool?,
+        transparencySuggested: json_['transparencySuggested'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (angleSuggested != null) 'angleSuggested': angleSuggested!,
-        if (brightnessSuggested != null)
-          'brightnessSuggested': brightnessSuggested!,
-        if (contentUriSuggested != null)
-          'contentUriSuggested': contentUriSuggested!,
-        if (contrastSuggested != null) 'contrastSuggested': contrastSuggested!,
-        if (cropPropertiesSuggestionState != null)
-          'cropPropertiesSuggestionState': cropPropertiesSuggestionState!,
-        if (sourceUriSuggested != null)
-          'sourceUriSuggested': sourceUriSuggested!,
-        if (transparencySuggested != null)
-          'transparencySuggested': transparencySuggested!,
-      };
+    if (angleSuggested != null) 'angleSuggested': angleSuggested!,
+    if (brightnessSuggested != null)
+      'brightnessSuggested': brightnessSuggested!,
+    if (contentUriSuggested != null)
+      'contentUriSuggested': contentUriSuggested!,
+    if (contrastSuggested != null) 'contrastSuggested': contrastSuggested!,
+    if (cropPropertiesSuggestionState != null)
+      'cropPropertiesSuggestionState': cropPropertiesSuggestionState!,
+    if (sourceUriSuggested != null) 'sourceUriSuggested': sourceUriSuggested!,
+    if (transparencySuggested != null)
+      'transparencySuggested': transparencySuggested!,
+  };
 }
 
 /// An object that appears inline with text.
@@ -3079,7 +3151,7 @@ class InlineObject {
   /// The suggested changes to the inline object properties, keyed by suggestion
   /// ID.
   core.Map<core.String, SuggestedInlineObjectProperties>?
-      suggestedInlineObjectPropertiesChanges;
+  suggestedInlineObjectPropertiesChanges;
 
   /// The suggested insertion ID.
   ///
@@ -3095,40 +3167,45 @@ class InlineObject {
   });
 
   InlineObject.fromJson(core.Map json_)
-      : this(
-          inlineObjectProperties: json_.containsKey('inlineObjectProperties')
-              ? InlineObjectProperties.fromJson(json_['inlineObjectProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          objectId: json_['objectId'] as core.String?,
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInlineObjectPropertiesChanges:
-              (json_['suggestedInlineObjectPropertiesChanges']
-                      as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedInlineObjectProperties.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
-            ),
-          ),
-          suggestedInsertionId: json_['suggestedInsertionId'] as core.String?,
-        );
+    : this(
+        inlineObjectProperties:
+            json_.containsKey('inlineObjectProperties')
+                ? InlineObjectProperties.fromJson(
+                  json_['inlineObjectProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        objectId: json_['objectId'] as core.String?,
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInlineObjectPropertiesChanges:
+            (json_['suggestedInlineObjectPropertiesChanges']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    SuggestedInlineObjectProperties.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        suggestedInsertionId: json_['suggestedInsertionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inlineObjectProperties != null)
-          'inlineObjectProperties': inlineObjectProperties!,
-        if (objectId != null) 'objectId': objectId!,
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInlineObjectPropertiesChanges != null)
-          'suggestedInlineObjectPropertiesChanges':
-              suggestedInlineObjectPropertiesChanges!,
-        if (suggestedInsertionId != null)
-          'suggestedInsertionId': suggestedInsertionId!,
-      };
+    if (inlineObjectProperties != null)
+      'inlineObjectProperties': inlineObjectProperties!,
+    if (objectId != null) 'objectId': objectId!,
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInlineObjectPropertiesChanges != null)
+      'suggestedInlineObjectPropertiesChanges':
+          suggestedInlineObjectPropertiesChanges!,
+    if (suggestedInsertionId != null)
+      'suggestedInsertionId': suggestedInsertionId!,
+  };
 }
 
 /// A ParagraphElement that contains an InlineObject.
@@ -3167,39 +3244,44 @@ class InlineObjectElement {
   });
 
   InlineObjectElement.fromJson(core.Map json_)
-      : this(
-          inlineObjectId: json_['inlineObjectId'] as core.String?,
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedTextStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        inlineObjectId: json_['inlineObjectId'] as core.String?,
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          textStyle: json_.containsKey('textStyle')
-              ? TextStyle.fromJson(
-                  json_['textStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inlineObjectId != null) 'inlineObjectId': inlineObjectId!,
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-        if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges!,
-        if (textStyle != null) 'textStyle': textStyle!,
-      };
+    if (inlineObjectId != null) 'inlineObjectId': inlineObjectId!,
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+    if (suggestedTextStyleChanges != null)
+      'suggestedTextStyleChanges': suggestedTextStyleChanges!,
+    if (textStyle != null) 'textStyle': textStyle!,
+  };
 }
 
 /// Properties of an InlineObject.
@@ -3207,21 +3289,22 @@ class InlineObjectProperties {
   /// The embedded object of this inline object.
   EmbeddedObject? embeddedObject;
 
-  InlineObjectProperties({
-    this.embeddedObject,
-  });
+  InlineObjectProperties({this.embeddedObject});
 
   InlineObjectProperties.fromJson(core.Map json_)
-      : this(
-          embeddedObject: json_.containsKey('embeddedObject')
-              ? EmbeddedObject.fromJson(json_['embeddedObject']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        embeddedObject:
+            json_.containsKey('embeddedObject')
+                ? EmbeddedObject.fromJson(
+                  json_['embeddedObject']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (embeddedObject != null) 'embeddedObject': embeddedObject!,
-      };
+    if (embeddedObject != null) 'embeddedObject': embeddedObject!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base InlineObjectProperties
@@ -3233,24 +3316,23 @@ class InlineObjectPropertiesSuggestionState {
   /// changed in this suggestion.
   EmbeddedObjectSuggestionState? embeddedObjectSuggestionState;
 
-  InlineObjectPropertiesSuggestionState({
-    this.embeddedObjectSuggestionState,
-  });
+  InlineObjectPropertiesSuggestionState({this.embeddedObjectSuggestionState});
 
   InlineObjectPropertiesSuggestionState.fromJson(core.Map json_)
-      : this(
-          embeddedObjectSuggestionState:
-              json_.containsKey('embeddedObjectSuggestionState')
-                  ? EmbeddedObjectSuggestionState.fromJson(
-                      json_['embeddedObjectSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        embeddedObjectSuggestionState:
+            json_.containsKey('embeddedObjectSuggestionState')
+                ? EmbeddedObjectSuggestionState.fromJson(
+                  json_['embeddedObjectSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (embeddedObjectSuggestionState != null)
-          'embeddedObjectSuggestionState': embeddedObjectSuggestionState!,
-      };
+    if (embeddedObjectSuggestionState != null)
+      'embeddedObjectSuggestionState': embeddedObjectSuggestionState!,
+  };
 }
 
 /// Inserts an InlineObject containing an image at the given location.
@@ -3297,29 +3379,36 @@ class InsertInlineImageRequest {
   });
 
   InsertInlineImageRequest.fromJson(core.Map json_)
-      : this(
-          endOfSegmentLocation: json_.containsKey('endOfSegmentLocation')
-              ? EndOfSegmentLocation.fromJson(json_['endOfSegmentLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          location: json_.containsKey('location')
-              ? Location.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
-              : null,
-          objectSize: json_.containsKey('objectSize')
-              ? Size.fromJson(
-                  json_['objectSize'] as core.Map<core.String, core.dynamic>)
-              : null,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        endOfSegmentLocation:
+            json_.containsKey('endOfSegmentLocation')
+                ? EndOfSegmentLocation.fromJson(
+                  json_['endOfSegmentLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location:
+            json_.containsKey('location')
+                ? Location.fromJson(
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        objectSize:
+            json_.containsKey('objectSize')
+                ? Size.fromJson(
+                  json_['objectSize'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endOfSegmentLocation != null)
-          'endOfSegmentLocation': endOfSegmentLocation!,
-        if (location != null) 'location': location!,
-        if (objectSize != null) 'objectSize': objectSize!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (endOfSegmentLocation != null)
+      'endOfSegmentLocation': endOfSegmentLocation!,
+    if (location != null) 'location': location!,
+    if (objectSize != null) 'objectSize': objectSize!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// The result of inserting an inline image.
@@ -3327,18 +3416,14 @@ class InsertInlineImageResponse {
   /// The ID of the created InlineObject.
   core.String? objectId;
 
-  InsertInlineImageResponse({
-    this.objectId,
-  });
+  InsertInlineImageResponse({this.objectId});
 
   InsertInlineImageResponse.fromJson(core.Map json_)
-      : this(
-          objectId: json_['objectId'] as core.String?,
-        );
+    : this(objectId: json_['objectId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectId != null) 'objectId': objectId!,
-      };
+    if (objectId != null) 'objectId': objectId!,
+  };
 }
 
 /// The result of inserting an embedded Google Sheets chart.
@@ -3346,18 +3431,14 @@ class InsertInlineSheetsChartResponse {
   /// The object ID of the inserted chart.
   core.String? objectId;
 
-  InsertInlineSheetsChartResponse({
-    this.objectId,
-  });
+  InsertInlineSheetsChartResponse({this.objectId});
 
   InsertInlineSheetsChartResponse.fromJson(core.Map json_)
-      : this(
-          objectId: json_['objectId'] as core.String?,
-        );
+    : this(objectId: json_['objectId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectId != null) 'objectId': objectId!,
-      };
+    if (objectId != null) 'objectId': objectId!,
+  };
 }
 
 /// Inserts a page break followed by a newline at the specified location.
@@ -3379,28 +3460,30 @@ class InsertPageBreakRequest {
   /// must be empty.
   Location? location;
 
-  InsertPageBreakRequest({
-    this.endOfSegmentLocation,
-    this.location,
-  });
+  InsertPageBreakRequest({this.endOfSegmentLocation, this.location});
 
   InsertPageBreakRequest.fromJson(core.Map json_)
-      : this(
-          endOfSegmentLocation: json_.containsKey('endOfSegmentLocation')
-              ? EndOfSegmentLocation.fromJson(json_['endOfSegmentLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          location: json_.containsKey('location')
-              ? Location.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        endOfSegmentLocation:
+            json_.containsKey('endOfSegmentLocation')
+                ? EndOfSegmentLocation.fromJson(
+                  json_['endOfSegmentLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location:
+            json_.containsKey('location')
+                ? Location.fromJson(
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endOfSegmentLocation != null)
-          'endOfSegmentLocation': endOfSegmentLocation!,
-        if (location != null) 'location': location!,
-      };
+    if (endOfSegmentLocation != null)
+      'endOfSegmentLocation': endOfSegmentLocation!,
+    if (location != null) 'location': location!,
+  };
 }
 
 /// Inserts a section break at the given location.
@@ -3439,24 +3522,29 @@ class InsertSectionBreakRequest {
   });
 
   InsertSectionBreakRequest.fromJson(core.Map json_)
-      : this(
-          endOfSegmentLocation: json_.containsKey('endOfSegmentLocation')
-              ? EndOfSegmentLocation.fromJson(json_['endOfSegmentLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          location: json_.containsKey('location')
-              ? Location.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sectionType: json_['sectionType'] as core.String?,
-        );
+    : this(
+        endOfSegmentLocation:
+            json_.containsKey('endOfSegmentLocation')
+                ? EndOfSegmentLocation.fromJson(
+                  json_['endOfSegmentLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location:
+            json_.containsKey('location')
+                ? Location.fromJson(
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sectionType: json_['sectionType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endOfSegmentLocation != null)
-          'endOfSegmentLocation': endOfSegmentLocation!,
-        if (location != null) 'location': location!,
-        if (sectionType != null) 'sectionType': sectionType!,
-      };
+    if (endOfSegmentLocation != null)
+      'endOfSegmentLocation': endOfSegmentLocation!,
+    if (location != null) 'location': location!,
+    if (sectionType != null) 'sectionType': sectionType!,
+  };
 }
 
 /// Inserts an empty column into a table.
@@ -3473,24 +3561,24 @@ class InsertTableColumnRequest {
   /// column will be inserted to the left (or right) of the merged cell.
   TableCellLocation? tableCellLocation;
 
-  InsertTableColumnRequest({
-    this.insertRight,
-    this.tableCellLocation,
-  });
+  InsertTableColumnRequest({this.insertRight, this.tableCellLocation});
 
   InsertTableColumnRequest.fromJson(core.Map json_)
-      : this(
-          insertRight: json_['insertRight'] as core.bool?,
-          tableCellLocation: json_.containsKey('tableCellLocation')
-              ? TableCellLocation.fromJson(json_['tableCellLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        insertRight: json_['insertRight'] as core.bool?,
+        tableCellLocation:
+            json_.containsKey('tableCellLocation')
+                ? TableCellLocation.fromJson(
+                  json_['tableCellLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (insertRight != null) 'insertRight': insertRight!,
-        if (tableCellLocation != null) 'tableCellLocation': tableCellLocation!,
-      };
+    if (insertRight != null) 'insertRight': insertRight!,
+    if (tableCellLocation != null) 'tableCellLocation': tableCellLocation!,
+  };
 }
 
 /// Inserts a table at the specified location.
@@ -3527,26 +3615,31 @@ class InsertTableRequest {
   });
 
   InsertTableRequest.fromJson(core.Map json_)
-      : this(
-          columns: json_['columns'] as core.int?,
-          endOfSegmentLocation: json_.containsKey('endOfSegmentLocation')
-              ? EndOfSegmentLocation.fromJson(json_['endOfSegmentLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          location: json_.containsKey('location')
-              ? Location.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rows: json_['rows'] as core.int?,
-        );
+    : this(
+        columns: json_['columns'] as core.int?,
+        endOfSegmentLocation:
+            json_.containsKey('endOfSegmentLocation')
+                ? EndOfSegmentLocation.fromJson(
+                  json_['endOfSegmentLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location:
+            json_.containsKey('location')
+                ? Location.fromJson(
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rows: json_['rows'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columns != null) 'columns': columns!,
-        if (endOfSegmentLocation != null)
-          'endOfSegmentLocation': endOfSegmentLocation!,
-        if (location != null) 'location': location!,
-        if (rows != null) 'rows': rows!,
-      };
+    if (columns != null) 'columns': columns!,
+    if (endOfSegmentLocation != null)
+      'endOfSegmentLocation': endOfSegmentLocation!,
+    if (location != null) 'location': location!,
+    if (rows != null) 'rows': rows!,
+  };
 }
 
 /// Inserts an empty row into a table.
@@ -3563,24 +3656,24 @@ class InsertTableRowRequest {
   /// inserted above (or below) the merged cell.
   TableCellLocation? tableCellLocation;
 
-  InsertTableRowRequest({
-    this.insertBelow,
-    this.tableCellLocation,
-  });
+  InsertTableRowRequest({this.insertBelow, this.tableCellLocation});
 
   InsertTableRowRequest.fromJson(core.Map json_)
-      : this(
-          insertBelow: json_['insertBelow'] as core.bool?,
-          tableCellLocation: json_.containsKey('tableCellLocation')
-              ? TableCellLocation.fromJson(json_['tableCellLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        insertBelow: json_['insertBelow'] as core.bool?,
+        tableCellLocation:
+            json_.containsKey('tableCellLocation')
+                ? TableCellLocation.fromJson(
+                  json_['tableCellLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (insertBelow != null) 'insertBelow': insertBelow!,
-        if (tableCellLocation != null) 'tableCellLocation': tableCellLocation!,
-      };
+    if (insertBelow != null) 'insertBelow': insertBelow!,
+    if (tableCellLocation != null) 'tableCellLocation': tableCellLocation!,
+  };
 }
 
 /// Inserts text at the specified location.
@@ -3610,31 +3703,32 @@ class InsertTextRequest {
   /// (U+E000-U+F8FF) will be stripped out of the inserted text.
   core.String? text;
 
-  InsertTextRequest({
-    this.endOfSegmentLocation,
-    this.location,
-    this.text,
-  });
+  InsertTextRequest({this.endOfSegmentLocation, this.location, this.text});
 
   InsertTextRequest.fromJson(core.Map json_)
-      : this(
-          endOfSegmentLocation: json_.containsKey('endOfSegmentLocation')
-              ? EndOfSegmentLocation.fromJson(json_['endOfSegmentLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          location: json_.containsKey('location')
-              ? Location.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        endOfSegmentLocation:
+            json_.containsKey('endOfSegmentLocation')
+                ? EndOfSegmentLocation.fromJson(
+                  json_['endOfSegmentLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location:
+            json_.containsKey('location')
+                ? Location.fromJson(
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endOfSegmentLocation != null)
-          'endOfSegmentLocation': endOfSegmentLocation!,
-        if (location != null) 'location': location!,
-        if (text != null) 'text': text!,
-      };
+    if (endOfSegmentLocation != null)
+      'endOfSegmentLocation': endOfSegmentLocation!,
+    if (location != null) 'location': location!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// A reference to another portion of a document or an external URL resource.
@@ -3694,29 +3788,33 @@ class Link {
   });
 
   Link.fromJson(core.Map json_)
-      : this(
-          bookmark: json_.containsKey('bookmark')
-              ? BookmarkLink.fromJson(
-                  json_['bookmark'] as core.Map<core.String, core.dynamic>)
-              : null,
-          bookmarkId: json_['bookmarkId'] as core.String?,
-          heading: json_.containsKey('heading')
-              ? HeadingLink.fromJson(
-                  json_['heading'] as core.Map<core.String, core.dynamic>)
-              : null,
-          headingId: json_['headingId'] as core.String?,
-          tabId: json_['tabId'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        bookmark:
+            json_.containsKey('bookmark')
+                ? BookmarkLink.fromJson(
+                  json_['bookmark'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bookmarkId: json_['bookmarkId'] as core.String?,
+        heading:
+            json_.containsKey('heading')
+                ? HeadingLink.fromJson(
+                  json_['heading'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        headingId: json_['headingId'] as core.String?,
+        tabId: json_['tabId'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bookmark != null) 'bookmark': bookmark!,
-        if (bookmarkId != null) 'bookmarkId': bookmarkId!,
-        if (heading != null) 'heading': heading!,
-        if (headingId != null) 'headingId': headingId!,
-        if (tabId != null) 'tabId': tabId!,
-        if (url != null) 'url': url!,
-      };
+    if (bookmark != null) 'bookmark': bookmark!,
+    if (bookmarkId != null) 'bookmarkId': bookmarkId!,
+    if (heading != null) 'heading': heading!,
+    if (headingId != null) 'headingId': headingId!,
+    if (tabId != null) 'tabId': tabId!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// A reference to the external linked source content.
@@ -3724,22 +3822,23 @@ class LinkedContentReference {
   /// A reference to the linked chart.
   SheetsChartReference? sheetsChartReference;
 
-  LinkedContentReference({
-    this.sheetsChartReference,
-  });
+  LinkedContentReference({this.sheetsChartReference});
 
   LinkedContentReference.fromJson(core.Map json_)
-      : this(
-          sheetsChartReference: json_.containsKey('sheetsChartReference')
-              ? SheetsChartReference.fromJson(json_['sheetsChartReference']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        sheetsChartReference:
+            json_.containsKey('sheetsChartReference')
+                ? SheetsChartReference.fromJson(
+                  json_['sheetsChartReference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sheetsChartReference != null)
-          'sheetsChartReference': sheetsChartReference!,
-      };
+    if (sheetsChartReference != null)
+      'sheetsChartReference': sheetsChartReference!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base LinkedContentReference
@@ -3756,20 +3855,21 @@ class LinkedContentReferenceSuggestionState {
   });
 
   LinkedContentReferenceSuggestionState.fromJson(core.Map json_)
-      : this(
-          sheetsChartReferenceSuggestionState:
-              json_.containsKey('sheetsChartReferenceSuggestionState')
-                  ? SheetsChartReferenceSuggestionState.fromJson(
-                      json_['sheetsChartReferenceSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        sheetsChartReferenceSuggestionState:
+            json_.containsKey('sheetsChartReferenceSuggestionState')
+                ? SheetsChartReferenceSuggestionState.fromJson(
+                  json_['sheetsChartReferenceSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sheetsChartReferenceSuggestionState != null)
-          'sheetsChartReferenceSuggestionState':
-              sheetsChartReferenceSuggestionState!,
-      };
+    if (sheetsChartReferenceSuggestionState != null)
+      'sheetsChartReferenceSuggestionState':
+          sheetsChartReferenceSuggestionState!,
+  };
 }
 
 /// A List represents the list attributes for a group of paragraphs that all
@@ -3793,7 +3893,7 @@ class List {
 
   /// The suggested changes to the list properties, keyed by suggestion ID.
   core.Map<core.String, SuggestedListProperties>?
-      suggestedListPropertiesChanges;
+  suggestedListPropertiesChanges;
 
   List({
     this.listProperties,
@@ -3803,36 +3903,40 @@ class List {
   });
 
   List.fromJson(core.Map json_)
-      : this(
-          listProperties: json_.containsKey('listProperties')
-              ? ListProperties.fromJson(json_['listProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionId: json_['suggestedInsertionId'] as core.String?,
-          suggestedListPropertiesChanges:
-              (json_['suggestedListPropertiesChanges']
-                      as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedListProperties.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        listProperties:
+            json_.containsKey('listProperties')
+                ? ListProperties.fromJson(
+                  json_['listProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionId: json_['suggestedInsertionId'] as core.String?,
+        suggestedListPropertiesChanges: (json_['suggestedListPropertiesChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedListProperties.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-        );
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (listProperties != null) 'listProperties': listProperties!,
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionId != null)
-          'suggestedInsertionId': suggestedInsertionId!,
-        if (suggestedListPropertiesChanges != null)
-          'suggestedListPropertiesChanges': suggestedListPropertiesChanges!,
-      };
+    if (listProperties != null) 'listProperties': listProperties!,
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionId != null)
+      'suggestedInsertionId': suggestedInsertionId!,
+    if (suggestedListPropertiesChanges != null)
+      'suggestedListPropertiesChanges': suggestedListPropertiesChanges!,
+  };
 }
 
 /// The properties of a list that describe the look and feel of bullets
@@ -3846,21 +3950,23 @@ class ListProperties {
   /// nested returned first.
   core.List<NestingLevel>? nestingLevels;
 
-  ListProperties({
-    this.nestingLevels,
-  });
+  ListProperties({this.nestingLevels});
 
   ListProperties.fromJson(core.Map json_)
-      : this(
-          nestingLevels: (json_['nestingLevels'] as core.List?)
-              ?.map((value) => NestingLevel.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nestingLevels:
+            (json_['nestingLevels'] as core.List?)
+                ?.map(
+                  (value) => NestingLevel.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nestingLevels != null) 'nestingLevels': nestingLevels!,
-      };
+    if (nestingLevels != null) 'nestingLevels': nestingLevels!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base ListProperties have
@@ -3875,23 +3981,24 @@ class ListPropertiesSuggestionState {
   /// nesting level with the least nested returned first.
   core.List<NestingLevelSuggestionState>? nestingLevelsSuggestionStates;
 
-  ListPropertiesSuggestionState({
-    this.nestingLevelsSuggestionStates,
-  });
+  ListPropertiesSuggestionState({this.nestingLevelsSuggestionStates});
 
   ListPropertiesSuggestionState.fromJson(core.Map json_)
-      : this(
-          nestingLevelsSuggestionStates:
-              (json_['nestingLevelsSuggestionStates'] as core.List?)
-                  ?.map((value) => NestingLevelSuggestionState.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+    : this(
+        nestingLevelsSuggestionStates:
+            (json_['nestingLevelsSuggestionStates'] as core.List?)
+                ?.map(
+                  (value) => NestingLevelSuggestionState.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nestingLevelsSuggestionStates != null)
-          'nestingLevelsSuggestionStates': nestingLevelsSuggestionStates!,
-      };
+    if (nestingLevelsSuggestionStates != null)
+      'nestingLevelsSuggestionStates': nestingLevelsSuggestionStates!,
+  };
 }
 
 /// A particular location in the document.
@@ -3917,24 +4024,20 @@ class Location {
   /// document.
   core.String? tabId;
 
-  Location({
-    this.index,
-    this.segmentId,
-    this.tabId,
-  });
+  Location({this.index, this.segmentId, this.tabId});
 
   Location.fromJson(core.Map json_)
-      : this(
-          index: json_['index'] as core.int?,
-          segmentId: json_['segmentId'] as core.String?,
-          tabId: json_['tabId'] as core.String?,
-        );
+    : this(
+        index: json_['index'] as core.int?,
+        segmentId: json_['segmentId'] as core.String?,
+        tabId: json_['tabId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (index != null) 'index': index!,
-        if (segmentId != null) 'segmentId': segmentId!,
-        if (tabId != null) 'tabId': tabId!,
-      };
+    if (index != null) 'index': index!,
+    if (segmentId != null) 'segmentId': segmentId!,
+    if (tabId != null) 'tabId': tabId!,
+  };
 }
 
 /// Merges cells in a Table.
@@ -3949,21 +4052,21 @@ class MergeTableCellsRequest {
   /// table is non-rectangular), a 400 bad request error is returned.
   TableRange? tableRange;
 
-  MergeTableCellsRequest({
-    this.tableRange,
-  });
+  MergeTableCellsRequest({this.tableRange});
 
   MergeTableCellsRequest.fromJson(core.Map json_)
-      : this(
-          tableRange: json_.containsKey('tableRange')
-              ? TableRange.fromJson(
-                  json_['tableRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        tableRange:
+            json_.containsKey('tableRange')
+                ? TableRange.fromJson(
+                  json_['tableRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tableRange != null) 'tableRange': tableRange!,
-      };
+    if (tableRange != null) 'tableRange': tableRange!,
+  };
 }
 
 /// A collection of Ranges with the same named range ID.
@@ -3986,27 +4089,27 @@ class NamedRange {
   /// The ranges that belong to this named range.
   core.List<Range>? ranges;
 
-  NamedRange({
-    this.name,
-    this.namedRangeId,
-    this.ranges,
-  });
+  NamedRange({this.name, this.namedRangeId, this.ranges});
 
   NamedRange.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          namedRangeId: json_['namedRangeId'] as core.String?,
-          ranges: (json_['ranges'] as core.List?)
-              ?.map((value) =>
-                  Range.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        namedRangeId: json_['namedRangeId'] as core.String?,
+        ranges:
+            (json_['ranges'] as core.List?)
+                ?.map(
+                  (value) => Range.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
-        if (ranges != null) 'ranges': ranges!,
-      };
+    if (name != null) 'name': name!,
+    if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+    if (ranges != null) 'ranges': ranges!,
+  };
 }
 
 /// A collection of all the NamedRanges in the document that share a given name.
@@ -4017,24 +4120,25 @@ class NamedRanges {
   /// The NamedRanges that share the same name.
   core.List<NamedRange>? namedRanges;
 
-  NamedRanges({
-    this.name,
-    this.namedRanges,
-  });
+  NamedRanges({this.name, this.namedRanges});
 
   NamedRanges.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          namedRanges: (json_['namedRanges'] as core.List?)
-              ?.map((value) => NamedRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        namedRanges:
+            (json_['namedRanges'] as core.List?)
+                ?.map(
+                  (value) => NamedRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (namedRanges != null) 'namedRanges': namedRanges!,
-      };
+    if (name != null) 'name': name!,
+    if (namedRanges != null) 'namedRanges': namedRanges!,
+  };
 }
 
 /// A named style.
@@ -4062,30 +4166,31 @@ class NamedStyle {
   /// The text style of this named style.
   TextStyle? textStyle;
 
-  NamedStyle({
-    this.namedStyleType,
-    this.paragraphStyle,
-    this.textStyle,
-  });
+  NamedStyle({this.namedStyleType, this.paragraphStyle, this.textStyle});
 
   NamedStyle.fromJson(core.Map json_)
-      : this(
-          namedStyleType: json_['namedStyleType'] as core.String?,
-          paragraphStyle: json_.containsKey('paragraphStyle')
-              ? ParagraphStyle.fromJson(json_['paragraphStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          textStyle: json_.containsKey('textStyle')
-              ? TextStyle.fromJson(
-                  json_['textStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        namedStyleType: json_['namedStyleType'] as core.String?,
+        paragraphStyle:
+            json_.containsKey('paragraphStyle')
+                ? ParagraphStyle.fromJson(
+                  json_['paragraphStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (namedStyleType != null) 'namedStyleType': namedStyleType!,
-        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle!,
-        if (textStyle != null) 'textStyle': textStyle!,
-      };
+    if (namedStyleType != null) 'namedStyleType': namedStyleType!,
+    if (paragraphStyle != null) 'paragraphStyle': paragraphStyle!,
+    if (textStyle != null) 'textStyle': textStyle!,
+  };
 }
 
 /// A suggestion state of a NamedStyle message.
@@ -4122,29 +4227,31 @@ class NamedStyleSuggestionState {
   });
 
   NamedStyleSuggestionState.fromJson(core.Map json_)
-      : this(
-          namedStyleType: json_['namedStyleType'] as core.String?,
-          paragraphStyleSuggestionState:
-              json_.containsKey('paragraphStyleSuggestionState')
-                  ? ParagraphStyleSuggestionState.fromJson(
-                      json_['paragraphStyleSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          textStyleSuggestionState:
-              json_.containsKey('textStyleSuggestionState')
-                  ? TextStyleSuggestionState.fromJson(
-                      json_['textStyleSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        namedStyleType: json_['namedStyleType'] as core.String?,
+        paragraphStyleSuggestionState:
+            json_.containsKey('paragraphStyleSuggestionState')
+                ? ParagraphStyleSuggestionState.fromJson(
+                  json_['paragraphStyleSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textStyleSuggestionState:
+            json_.containsKey('textStyleSuggestionState')
+                ? TextStyleSuggestionState.fromJson(
+                  json_['textStyleSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (namedStyleType != null) 'namedStyleType': namedStyleType!,
-        if (paragraphStyleSuggestionState != null)
-          'paragraphStyleSuggestionState': paragraphStyleSuggestionState!,
-        if (textStyleSuggestionState != null)
-          'textStyleSuggestionState': textStyleSuggestionState!,
-      };
+    if (namedStyleType != null) 'namedStyleType': namedStyleType!,
+    if (paragraphStyleSuggestionState != null)
+      'paragraphStyleSuggestionState': paragraphStyleSuggestionState!,
+    if (textStyleSuggestionState != null)
+      'textStyleSuggestionState': textStyleSuggestionState!,
+  };
 }
 
 /// The named styles.
@@ -4157,21 +4264,23 @@ class NamedStyles {
   /// There's an entry for each of the possible named style types.
   core.List<NamedStyle>? styles;
 
-  NamedStyles({
-    this.styles,
-  });
+  NamedStyles({this.styles});
 
   NamedStyles.fromJson(core.Map json_)
-      : this(
-          styles: (json_['styles'] as core.List?)
-              ?.map((value) => NamedStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        styles:
+            (json_['styles'] as core.List?)
+                ?.map(
+                  (value) => NamedStyle.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (styles != null) 'styles': styles!,
-      };
+    if (styles != null) 'styles': styles!,
+  };
 }
 
 /// The suggestion state of a NamedStyles message.
@@ -4183,23 +4292,24 @@ class NamedStylesSuggestionState {
   /// corresponding named style within the named styles suggestion.
   core.List<NamedStyleSuggestionState>? stylesSuggestionStates;
 
-  NamedStylesSuggestionState({
-    this.stylesSuggestionStates,
-  });
+  NamedStylesSuggestionState({this.stylesSuggestionStates});
 
   NamedStylesSuggestionState.fromJson(core.Map json_)
-      : this(
-          stylesSuggestionStates:
-              (json_['stylesSuggestionStates'] as core.List?)
-                  ?.map((value) => NamedStyleSuggestionState.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+    : this(
+        stylesSuggestionStates:
+            (json_['stylesSuggestionStates'] as core.List?)
+                ?.map(
+                  (value) => NamedStyleSuggestionState.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (stylesSuggestionStates != null)
-          'stylesSuggestionStates': stylesSuggestionStates!,
-      };
+    if (stylesSuggestionStates != null)
+      'stylesSuggestionStates': stylesSuggestionStates!,
+  };
 }
 
 /// Contains properties describing the look and feel of a list bullet at a given
@@ -4303,36 +4413,43 @@ class NestingLevel {
   });
 
   NestingLevel.fromJson(core.Map json_)
-      : this(
-          bulletAlignment: json_['bulletAlignment'] as core.String?,
-          glyphFormat: json_['glyphFormat'] as core.String?,
-          glyphSymbol: json_['glyphSymbol'] as core.String?,
-          glyphType: json_['glyphType'] as core.String?,
-          indentFirstLine: json_.containsKey('indentFirstLine')
-              ? Dimension.fromJson(json_['indentFirstLine']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          indentStart: json_.containsKey('indentStart')
-              ? Dimension.fromJson(
-                  json_['indentStart'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startNumber: json_['startNumber'] as core.int?,
-          textStyle: json_.containsKey('textStyle')
-              ? TextStyle.fromJson(
-                  json_['textStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bulletAlignment: json_['bulletAlignment'] as core.String?,
+        glyphFormat: json_['glyphFormat'] as core.String?,
+        glyphSymbol: json_['glyphSymbol'] as core.String?,
+        glyphType: json_['glyphType'] as core.String?,
+        indentFirstLine:
+            json_.containsKey('indentFirstLine')
+                ? Dimension.fromJson(
+                  json_['indentFirstLine']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        indentStart:
+            json_.containsKey('indentStart')
+                ? Dimension.fromJson(
+                  json_['indentStart'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startNumber: json_['startNumber'] as core.int?,
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bulletAlignment != null) 'bulletAlignment': bulletAlignment!,
-        if (glyphFormat != null) 'glyphFormat': glyphFormat!,
-        if (glyphSymbol != null) 'glyphSymbol': glyphSymbol!,
-        if (glyphType != null) 'glyphType': glyphType!,
-        if (indentFirstLine != null) 'indentFirstLine': indentFirstLine!,
-        if (indentStart != null) 'indentStart': indentStart!,
-        if (startNumber != null) 'startNumber': startNumber!,
-        if (textStyle != null) 'textStyle': textStyle!,
-      };
+    if (bulletAlignment != null) 'bulletAlignment': bulletAlignment!,
+    if (glyphFormat != null) 'glyphFormat': glyphFormat!,
+    if (glyphSymbol != null) 'glyphSymbol': glyphSymbol!,
+    if (glyphType != null) 'glyphType': glyphType!,
+    if (indentFirstLine != null) 'indentFirstLine': indentFirstLine!,
+    if (indentStart != null) 'indentStart': indentStart!,
+    if (startNumber != null) 'startNumber': startNumber!,
+    if (textStyle != null) 'textStyle': textStyle!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base NestingLevel have been
@@ -4377,42 +4494,42 @@ class NestingLevelSuggestionState {
   });
 
   NestingLevelSuggestionState.fromJson(core.Map json_)
-      : this(
-          bulletAlignmentSuggested:
-              json_['bulletAlignmentSuggested'] as core.bool?,
-          glyphFormatSuggested: json_['glyphFormatSuggested'] as core.bool?,
-          glyphSymbolSuggested: json_['glyphSymbolSuggested'] as core.bool?,
-          glyphTypeSuggested: json_['glyphTypeSuggested'] as core.bool?,
-          indentFirstLineSuggested:
-              json_['indentFirstLineSuggested'] as core.bool?,
-          indentStartSuggested: json_['indentStartSuggested'] as core.bool?,
-          startNumberSuggested: json_['startNumberSuggested'] as core.bool?,
-          textStyleSuggestionState:
-              json_.containsKey('textStyleSuggestionState')
-                  ? TextStyleSuggestionState.fromJson(
-                      json_['textStyleSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        bulletAlignmentSuggested:
+            json_['bulletAlignmentSuggested'] as core.bool?,
+        glyphFormatSuggested: json_['glyphFormatSuggested'] as core.bool?,
+        glyphSymbolSuggested: json_['glyphSymbolSuggested'] as core.bool?,
+        glyphTypeSuggested: json_['glyphTypeSuggested'] as core.bool?,
+        indentFirstLineSuggested:
+            json_['indentFirstLineSuggested'] as core.bool?,
+        indentStartSuggested: json_['indentStartSuggested'] as core.bool?,
+        startNumberSuggested: json_['startNumberSuggested'] as core.bool?,
+        textStyleSuggestionState:
+            json_.containsKey('textStyleSuggestionState')
+                ? TextStyleSuggestionState.fromJson(
+                  json_['textStyleSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bulletAlignmentSuggested != null)
-          'bulletAlignmentSuggested': bulletAlignmentSuggested!,
-        if (glyphFormatSuggested != null)
-          'glyphFormatSuggested': glyphFormatSuggested!,
-        if (glyphSymbolSuggested != null)
-          'glyphSymbolSuggested': glyphSymbolSuggested!,
-        if (glyphTypeSuggested != null)
-          'glyphTypeSuggested': glyphTypeSuggested!,
-        if (indentFirstLineSuggested != null)
-          'indentFirstLineSuggested': indentFirstLineSuggested!,
-        if (indentStartSuggested != null)
-          'indentStartSuggested': indentStartSuggested!,
-        if (startNumberSuggested != null)
-          'startNumberSuggested': startNumberSuggested!,
-        if (textStyleSuggestionState != null)
-          'textStyleSuggestionState': textStyleSuggestionState!,
-      };
+    if (bulletAlignmentSuggested != null)
+      'bulletAlignmentSuggested': bulletAlignmentSuggested!,
+    if (glyphFormatSuggested != null)
+      'glyphFormatSuggested': glyphFormatSuggested!,
+    if (glyphSymbolSuggested != null)
+      'glyphSymbolSuggested': glyphSymbolSuggested!,
+    if (glyphTypeSuggested != null) 'glyphTypeSuggested': glyphTypeSuggested!,
+    if (indentFirstLineSuggested != null)
+      'indentFirstLineSuggested': indentFirstLineSuggested!,
+    if (indentStartSuggested != null)
+      'indentStartSuggested': indentStartSuggested!,
+    if (startNumberSuggested != null)
+      'startNumberSuggested': startNumberSuggested!,
+    if (textStyleSuggestionState != null)
+      'textStyleSuggestionState': textStyleSuggestionState!,
+  };
 }
 
 /// A collection of object IDs.
@@ -4420,20 +4537,19 @@ class ObjectReferences {
   /// The object IDs.
   core.List<core.String>? objectIds;
 
-  ObjectReferences({
-    this.objectIds,
-  });
+  ObjectReferences({this.objectIds});
 
   ObjectReferences.fromJson(core.Map json_)
-      : this(
-          objectIds: (json_['objectIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        objectIds:
+            (json_['objectIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectIds != null) 'objectIds': objectIds!,
-      };
+    if (objectIds != null) 'objectIds': objectIds!,
+  };
 }
 
 /// A color that can either be fully opaque or fully transparent.
@@ -4443,21 +4559,21 @@ class OptionalColor {
   /// If unset, this represents a transparent color.
   Color? color;
 
-  OptionalColor({
-    this.color,
-  });
+  OptionalColor({this.color});
 
   OptionalColor.fromJson(core.Map json_)
-      : this(
-          color: json_.containsKey('color')
-              ? Color.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        color:
+            json_.containsKey('color')
+                ? Color.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!,
-      };
+    if (color != null) 'color': color!,
+  };
 }
 
 /// A ParagraphElement representing a page break.
@@ -4494,37 +4610,42 @@ class PageBreak {
   });
 
   PageBreak.fromJson(core.Map json_)
-      : this(
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedTextStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          textStyle: json_.containsKey('textStyle')
-              ? TextStyle.fromJson(
-                  json_['textStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-        if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges!,
-        if (textStyle != null) 'textStyle': textStyle!,
-      };
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+    if (suggestedTextStyleChanges != null)
+      'suggestedTextStyleChanges': suggestedTextStyleChanges!,
+    if (textStyle != null) 'textStyle': textStyle!,
+  };
 }
 
 /// A StructuralElement representing a paragraph.
@@ -4552,7 +4673,7 @@ class Paragraph {
   /// The suggested paragraph style changes to this paragraph, keyed by
   /// suggestion ID.
   core.Map<core.String, SuggestedParagraphStyle>?
-      suggestedParagraphStyleChanges;
+  suggestedParagraphStyleChanges;
 
   /// The IDs of the positioned objects suggested to be attached to this
   /// paragraph, keyed by suggestion ID.
@@ -4569,65 +4690,77 @@ class Paragraph {
   });
 
   Paragraph.fromJson(core.Map json_)
-      : this(
-          bullet: json_.containsKey('bullet')
-              ? Bullet.fromJson(
-                  json_['bullet'] as core.Map<core.String, core.dynamic>)
-              : null,
-          elements: (json_['elements'] as core.List?)
-              ?.map((value) => ParagraphElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          paragraphStyle: json_.containsKey('paragraphStyle')
-              ? ParagraphStyle.fromJson(json_['paragraphStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          positionedObjectIds: (json_['positionedObjectIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedBulletChanges: (json_['suggestedBulletChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedBullet.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        bullet:
+            json_.containsKey('bullet')
+                ? Bullet.fromJson(
+                  json_['bullet'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        elements:
+            (json_['elements'] as core.List?)
+                ?.map(
+                  (value) => ParagraphElement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        paragraphStyle:
+            json_.containsKey('paragraphStyle')
+                ? ParagraphStyle.fromJson(
+                  json_['paragraphStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        positionedObjectIds:
+            (json_['positionedObjectIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedBulletChanges: (json_['suggestedBulletChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedBullet.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          suggestedParagraphStyleChanges:
-              (json_['suggestedParagraphStyleChanges']
-                      as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedParagraphStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        suggestedParagraphStyleChanges: (json_['suggestedParagraphStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedParagraphStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          suggestedPositionedObjectIds: (json_['suggestedPositionedObjectIds']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              ObjectReferences.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+        suggestedPositionedObjectIds: (json_['suggestedPositionedObjectIds']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                ObjectReferences.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-        );
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bullet != null) 'bullet': bullet!,
-        if (elements != null) 'elements': elements!,
-        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle!,
-        if (positionedObjectIds != null)
-          'positionedObjectIds': positionedObjectIds!,
-        if (suggestedBulletChanges != null)
-          'suggestedBulletChanges': suggestedBulletChanges!,
-        if (suggestedParagraphStyleChanges != null)
-          'suggestedParagraphStyleChanges': suggestedParagraphStyleChanges!,
-        if (suggestedPositionedObjectIds != null)
-          'suggestedPositionedObjectIds': suggestedPositionedObjectIds!,
-      };
+    if (bullet != null) 'bullet': bullet!,
+    if (elements != null) 'elements': elements!,
+    if (paragraphStyle != null) 'paragraphStyle': paragraphStyle!,
+    if (positionedObjectIds != null)
+      'positionedObjectIds': positionedObjectIds!,
+    if (suggestedBulletChanges != null)
+      'suggestedBulletChanges': suggestedBulletChanges!,
+    if (suggestedParagraphStyleChanges != null)
+      'suggestedParagraphStyleChanges': suggestedParagraphStyleChanges!,
+    if (suggestedPositionedObjectIds != null)
+      'suggestedPositionedObjectIds': suggestedPositionedObjectIds!,
+  };
 }
 
 /// A border around a paragraph.
@@ -4652,36 +4785,37 @@ class ParagraphBorder {
   /// The width of the border.
   Dimension? width;
 
-  ParagraphBorder({
-    this.color,
-    this.dashStyle,
-    this.padding,
-    this.width,
-  });
+  ParagraphBorder({this.color, this.dashStyle, this.padding, this.width});
 
   ParagraphBorder.fromJson(core.Map json_)
-      : this(
-          color: json_.containsKey('color')
-              ? OptionalColor.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dashStyle: json_['dashStyle'] as core.String?,
-          padding: json_.containsKey('padding')
-              ? Dimension.fromJson(
-                  json_['padding'] as core.Map<core.String, core.dynamic>)
-              : null,
-          width: json_.containsKey('width')
-              ? Dimension.fromJson(
-                  json_['width'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        color:
+            json_.containsKey('color')
+                ? OptionalColor.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dashStyle: json_['dashStyle'] as core.String?,
+        padding:
+            json_.containsKey('padding')
+                ? Dimension.fromJson(
+                  json_['padding'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        width:
+            json_.containsKey('width')
+                ? Dimension.fromJson(
+                  json_['width'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!,
-        if (dashStyle != null) 'dashStyle': dashStyle!,
-        if (padding != null) 'padding': padding!,
-        if (width != null) 'width': width!,
-      };
+    if (color != null) 'color': color!,
+    if (dashStyle != null) 'dashStyle': dashStyle!,
+    if (padding != null) 'padding': padding!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// A ParagraphElement describes content within a Paragraph.
@@ -4741,66 +4875,89 @@ class ParagraphElement {
   });
 
   ParagraphElement.fromJson(core.Map json_)
-      : this(
-          autoText: json_.containsKey('autoText')
-              ? AutoText.fromJson(
-                  json_['autoText'] as core.Map<core.String, core.dynamic>)
-              : null,
-          columnBreak: json_.containsKey('columnBreak')
-              ? ColumnBreak.fromJson(
-                  json_['columnBreak'] as core.Map<core.String, core.dynamic>)
-              : null,
-          endIndex: json_['endIndex'] as core.int?,
-          equation: json_.containsKey('equation')
-              ? Equation.fromJson(
-                  json_['equation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          footnoteReference: json_.containsKey('footnoteReference')
-              ? FootnoteReference.fromJson(json_['footnoteReference']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          horizontalRule: json_.containsKey('horizontalRule')
-              ? HorizontalRule.fromJson(json_['horizontalRule']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          inlineObjectElement: json_.containsKey('inlineObjectElement')
-              ? InlineObjectElement.fromJson(json_['inlineObjectElement']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          pageBreak: json_.containsKey('pageBreak')
-              ? PageBreak.fromJson(
-                  json_['pageBreak'] as core.Map<core.String, core.dynamic>)
-              : null,
-          person: json_.containsKey('person')
-              ? Person.fromJson(
-                  json_['person'] as core.Map<core.String, core.dynamic>)
-              : null,
-          richLink: json_.containsKey('richLink')
-              ? RichLink.fromJson(
-                  json_['richLink'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startIndex: json_['startIndex'] as core.int?,
-          textRun: json_.containsKey('textRun')
-              ? TextRun.fromJson(
-                  json_['textRun'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        autoText:
+            json_.containsKey('autoText')
+                ? AutoText.fromJson(
+                  json_['autoText'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        columnBreak:
+            json_.containsKey('columnBreak')
+                ? ColumnBreak.fromJson(
+                  json_['columnBreak'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endIndex: json_['endIndex'] as core.int?,
+        equation:
+            json_.containsKey('equation')
+                ? Equation.fromJson(
+                  json_['equation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        footnoteReference:
+            json_.containsKey('footnoteReference')
+                ? FootnoteReference.fromJson(
+                  json_['footnoteReference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        horizontalRule:
+            json_.containsKey('horizontalRule')
+                ? HorizontalRule.fromJson(
+                  json_['horizontalRule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        inlineObjectElement:
+            json_.containsKey('inlineObjectElement')
+                ? InlineObjectElement.fromJson(
+                  json_['inlineObjectElement']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pageBreak:
+            json_.containsKey('pageBreak')
+                ? PageBreak.fromJson(
+                  json_['pageBreak'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        person:
+            json_.containsKey('person')
+                ? Person.fromJson(
+                  json_['person'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        richLink:
+            json_.containsKey('richLink')
+                ? RichLink.fromJson(
+                  json_['richLink'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startIndex: json_['startIndex'] as core.int?,
+        textRun:
+            json_.containsKey('textRun')
+                ? TextRun.fromJson(
+                  json_['textRun'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoText != null) 'autoText': autoText!,
-        if (columnBreak != null) 'columnBreak': columnBreak!,
-        if (endIndex != null) 'endIndex': endIndex!,
-        if (equation != null) 'equation': equation!,
-        if (footnoteReference != null) 'footnoteReference': footnoteReference!,
-        if (horizontalRule != null) 'horizontalRule': horizontalRule!,
-        if (inlineObjectElement != null)
-          'inlineObjectElement': inlineObjectElement!,
-        if (pageBreak != null) 'pageBreak': pageBreak!,
-        if (person != null) 'person': person!,
-        if (richLink != null) 'richLink': richLink!,
-        if (startIndex != null) 'startIndex': startIndex!,
-        if (textRun != null) 'textRun': textRun!,
-      };
+    if (autoText != null) 'autoText': autoText!,
+    if (columnBreak != null) 'columnBreak': columnBreak!,
+    if (endIndex != null) 'endIndex': endIndex!,
+    if (equation != null) 'equation': equation!,
+    if (footnoteReference != null) 'footnoteReference': footnoteReference!,
+    if (horizontalRule != null) 'horizontalRule': horizontalRule!,
+    if (inlineObjectElement != null)
+      'inlineObjectElement': inlineObjectElement!,
+    if (pageBreak != null) 'pageBreak': pageBreak!,
+    if (person != null) 'person': person!,
+    if (richLink != null) 'richLink': richLink!,
+    if (startIndex != null) 'startIndex': startIndex!,
+    if (textRun != null) 'textRun': textRun!,
+  };
 }
 
 /// Styles that apply to a whole paragraph.
@@ -5003,92 +5160,119 @@ class ParagraphStyle {
   });
 
   ParagraphStyle.fromJson(core.Map json_)
-      : this(
-          alignment: json_['alignment'] as core.String?,
-          avoidWidowAndOrphan: json_['avoidWidowAndOrphan'] as core.bool?,
-          borderBetween: json_.containsKey('borderBetween')
-              ? ParagraphBorder.fromJson(
-                  json_['borderBetween'] as core.Map<core.String, core.dynamic>)
-              : null,
-          borderBottom: json_.containsKey('borderBottom')
-              ? ParagraphBorder.fromJson(
-                  json_['borderBottom'] as core.Map<core.String, core.dynamic>)
-              : null,
-          borderLeft: json_.containsKey('borderLeft')
-              ? ParagraphBorder.fromJson(
-                  json_['borderLeft'] as core.Map<core.String, core.dynamic>)
-              : null,
-          borderRight: json_.containsKey('borderRight')
-              ? ParagraphBorder.fromJson(
-                  json_['borderRight'] as core.Map<core.String, core.dynamic>)
-              : null,
-          borderTop: json_.containsKey('borderTop')
-              ? ParagraphBorder.fromJson(
-                  json_['borderTop'] as core.Map<core.String, core.dynamic>)
-              : null,
-          direction: json_['direction'] as core.String?,
-          headingId: json_['headingId'] as core.String?,
-          indentEnd: json_.containsKey('indentEnd')
-              ? Dimension.fromJson(
-                  json_['indentEnd'] as core.Map<core.String, core.dynamic>)
-              : null,
-          indentFirstLine: json_.containsKey('indentFirstLine')
-              ? Dimension.fromJson(json_['indentFirstLine']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          indentStart: json_.containsKey('indentStart')
-              ? Dimension.fromJson(
-                  json_['indentStart'] as core.Map<core.String, core.dynamic>)
-              : null,
-          keepLinesTogether: json_['keepLinesTogether'] as core.bool?,
-          keepWithNext: json_['keepWithNext'] as core.bool?,
-          lineSpacing: (json_['lineSpacing'] as core.num?)?.toDouble(),
-          namedStyleType: json_['namedStyleType'] as core.String?,
-          pageBreakBefore: json_['pageBreakBefore'] as core.bool?,
-          shading: json_.containsKey('shading')
-              ? Shading.fromJson(
-                  json_['shading'] as core.Map<core.String, core.dynamic>)
-              : null,
-          spaceAbove: json_.containsKey('spaceAbove')
-              ? Dimension.fromJson(
-                  json_['spaceAbove'] as core.Map<core.String, core.dynamic>)
-              : null,
-          spaceBelow: json_.containsKey('spaceBelow')
-              ? Dimension.fromJson(
-                  json_['spaceBelow'] as core.Map<core.String, core.dynamic>)
-              : null,
-          spacingMode: json_['spacingMode'] as core.String?,
-          tabStops: (json_['tabStops'] as core.List?)
-              ?.map((value) => TabStop.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        alignment: json_['alignment'] as core.String?,
+        avoidWidowAndOrphan: json_['avoidWidowAndOrphan'] as core.bool?,
+        borderBetween:
+            json_.containsKey('borderBetween')
+                ? ParagraphBorder.fromJson(
+                  json_['borderBetween'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        borderBottom:
+            json_.containsKey('borderBottom')
+                ? ParagraphBorder.fromJson(
+                  json_['borderBottom'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        borderLeft:
+            json_.containsKey('borderLeft')
+                ? ParagraphBorder.fromJson(
+                  json_['borderLeft'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        borderRight:
+            json_.containsKey('borderRight')
+                ? ParagraphBorder.fromJson(
+                  json_['borderRight'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        borderTop:
+            json_.containsKey('borderTop')
+                ? ParagraphBorder.fromJson(
+                  json_['borderTop'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        direction: json_['direction'] as core.String?,
+        headingId: json_['headingId'] as core.String?,
+        indentEnd:
+            json_.containsKey('indentEnd')
+                ? Dimension.fromJson(
+                  json_['indentEnd'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        indentFirstLine:
+            json_.containsKey('indentFirstLine')
+                ? Dimension.fromJson(
+                  json_['indentFirstLine']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        indentStart:
+            json_.containsKey('indentStart')
+                ? Dimension.fromJson(
+                  json_['indentStart'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        keepLinesTogether: json_['keepLinesTogether'] as core.bool?,
+        keepWithNext: json_['keepWithNext'] as core.bool?,
+        lineSpacing: (json_['lineSpacing'] as core.num?)?.toDouble(),
+        namedStyleType: json_['namedStyleType'] as core.String?,
+        pageBreakBefore: json_['pageBreakBefore'] as core.bool?,
+        shading:
+            json_.containsKey('shading')
+                ? Shading.fromJson(
+                  json_['shading'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spaceAbove:
+            json_.containsKey('spaceAbove')
+                ? Dimension.fromJson(
+                  json_['spaceAbove'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spaceBelow:
+            json_.containsKey('spaceBelow')
+                ? Dimension.fromJson(
+                  json_['spaceBelow'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spacingMode: json_['spacingMode'] as core.String?,
+        tabStops:
+            (json_['tabStops'] as core.List?)
+                ?.map(
+                  (value) => TabStop.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alignment != null) 'alignment': alignment!,
-        if (avoidWidowAndOrphan != null)
-          'avoidWidowAndOrphan': avoidWidowAndOrphan!,
-        if (borderBetween != null) 'borderBetween': borderBetween!,
-        if (borderBottom != null) 'borderBottom': borderBottom!,
-        if (borderLeft != null) 'borderLeft': borderLeft!,
-        if (borderRight != null) 'borderRight': borderRight!,
-        if (borderTop != null) 'borderTop': borderTop!,
-        if (direction != null) 'direction': direction!,
-        if (headingId != null) 'headingId': headingId!,
-        if (indentEnd != null) 'indentEnd': indentEnd!,
-        if (indentFirstLine != null) 'indentFirstLine': indentFirstLine!,
-        if (indentStart != null) 'indentStart': indentStart!,
-        if (keepLinesTogether != null) 'keepLinesTogether': keepLinesTogether!,
-        if (keepWithNext != null) 'keepWithNext': keepWithNext!,
-        if (lineSpacing != null) 'lineSpacing': lineSpacing!,
-        if (namedStyleType != null) 'namedStyleType': namedStyleType!,
-        if (pageBreakBefore != null) 'pageBreakBefore': pageBreakBefore!,
-        if (shading != null) 'shading': shading!,
-        if (spaceAbove != null) 'spaceAbove': spaceAbove!,
-        if (spaceBelow != null) 'spaceBelow': spaceBelow!,
-        if (spacingMode != null) 'spacingMode': spacingMode!,
-        if (tabStops != null) 'tabStops': tabStops!,
-      };
+    if (alignment != null) 'alignment': alignment!,
+    if (avoidWidowAndOrphan != null)
+      'avoidWidowAndOrphan': avoidWidowAndOrphan!,
+    if (borderBetween != null) 'borderBetween': borderBetween!,
+    if (borderBottom != null) 'borderBottom': borderBottom!,
+    if (borderLeft != null) 'borderLeft': borderLeft!,
+    if (borderRight != null) 'borderRight': borderRight!,
+    if (borderTop != null) 'borderTop': borderTop!,
+    if (direction != null) 'direction': direction!,
+    if (headingId != null) 'headingId': headingId!,
+    if (indentEnd != null) 'indentEnd': indentEnd!,
+    if (indentFirstLine != null) 'indentFirstLine': indentFirstLine!,
+    if (indentStart != null) 'indentStart': indentStart!,
+    if (keepLinesTogether != null) 'keepLinesTogether': keepLinesTogether!,
+    if (keepWithNext != null) 'keepWithNext': keepWithNext!,
+    if (lineSpacing != null) 'lineSpacing': lineSpacing!,
+    if (namedStyleType != null) 'namedStyleType': namedStyleType!,
+    if (pageBreakBefore != null) 'pageBreakBefore': pageBreakBefore!,
+    if (shading != null) 'shading': shading!,
+    if (spaceAbove != null) 'spaceAbove': spaceAbove!,
+    if (spaceBelow != null) 'spaceBelow': spaceBelow!,
+    if (spacingMode != null) 'spacingMode': spacingMode!,
+    if (tabStops != null) 'tabStops': tabStops!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base ParagraphStyle have
@@ -5185,82 +5369,79 @@ class ParagraphStyleSuggestionState {
   });
 
   ParagraphStyleSuggestionState.fromJson(core.Map json_)
-      : this(
-          alignmentSuggested: json_['alignmentSuggested'] as core.bool?,
-          avoidWidowAndOrphanSuggested:
-              json_['avoidWidowAndOrphanSuggested'] as core.bool?,
-          borderBetweenSuggested: json_['borderBetweenSuggested'] as core.bool?,
-          borderBottomSuggested: json_['borderBottomSuggested'] as core.bool?,
-          borderLeftSuggested: json_['borderLeftSuggested'] as core.bool?,
-          borderRightSuggested: json_['borderRightSuggested'] as core.bool?,
-          borderTopSuggested: json_['borderTopSuggested'] as core.bool?,
-          directionSuggested: json_['directionSuggested'] as core.bool?,
-          headingIdSuggested: json_['headingIdSuggested'] as core.bool?,
-          indentEndSuggested: json_['indentEndSuggested'] as core.bool?,
-          indentFirstLineSuggested:
-              json_['indentFirstLineSuggested'] as core.bool?,
-          indentStartSuggested: json_['indentStartSuggested'] as core.bool?,
-          keepLinesTogetherSuggested:
-              json_['keepLinesTogetherSuggested'] as core.bool?,
-          keepWithNextSuggested: json_['keepWithNextSuggested'] as core.bool?,
-          lineSpacingSuggested: json_['lineSpacingSuggested'] as core.bool?,
-          namedStyleTypeSuggested:
-              json_['namedStyleTypeSuggested'] as core.bool?,
-          pageBreakBeforeSuggested:
-              json_['pageBreakBeforeSuggested'] as core.bool?,
-          shadingSuggestionState: json_.containsKey('shadingSuggestionState')
-              ? ShadingSuggestionState.fromJson(json_['shadingSuggestionState']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          spaceAboveSuggested: json_['spaceAboveSuggested'] as core.bool?,
-          spaceBelowSuggested: json_['spaceBelowSuggested'] as core.bool?,
-          spacingModeSuggested: json_['spacingModeSuggested'] as core.bool?,
-        );
+    : this(
+        alignmentSuggested: json_['alignmentSuggested'] as core.bool?,
+        avoidWidowAndOrphanSuggested:
+            json_['avoidWidowAndOrphanSuggested'] as core.bool?,
+        borderBetweenSuggested: json_['borderBetweenSuggested'] as core.bool?,
+        borderBottomSuggested: json_['borderBottomSuggested'] as core.bool?,
+        borderLeftSuggested: json_['borderLeftSuggested'] as core.bool?,
+        borderRightSuggested: json_['borderRightSuggested'] as core.bool?,
+        borderTopSuggested: json_['borderTopSuggested'] as core.bool?,
+        directionSuggested: json_['directionSuggested'] as core.bool?,
+        headingIdSuggested: json_['headingIdSuggested'] as core.bool?,
+        indentEndSuggested: json_['indentEndSuggested'] as core.bool?,
+        indentFirstLineSuggested:
+            json_['indentFirstLineSuggested'] as core.bool?,
+        indentStartSuggested: json_['indentStartSuggested'] as core.bool?,
+        keepLinesTogetherSuggested:
+            json_['keepLinesTogetherSuggested'] as core.bool?,
+        keepWithNextSuggested: json_['keepWithNextSuggested'] as core.bool?,
+        lineSpacingSuggested: json_['lineSpacingSuggested'] as core.bool?,
+        namedStyleTypeSuggested: json_['namedStyleTypeSuggested'] as core.bool?,
+        pageBreakBeforeSuggested:
+            json_['pageBreakBeforeSuggested'] as core.bool?,
+        shadingSuggestionState:
+            json_.containsKey('shadingSuggestionState')
+                ? ShadingSuggestionState.fromJson(
+                  json_['shadingSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spaceAboveSuggested: json_['spaceAboveSuggested'] as core.bool?,
+        spaceBelowSuggested: json_['spaceBelowSuggested'] as core.bool?,
+        spacingModeSuggested: json_['spacingModeSuggested'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alignmentSuggested != null)
-          'alignmentSuggested': alignmentSuggested!,
-        if (avoidWidowAndOrphanSuggested != null)
-          'avoidWidowAndOrphanSuggested': avoidWidowAndOrphanSuggested!,
-        if (borderBetweenSuggested != null)
-          'borderBetweenSuggested': borderBetweenSuggested!,
-        if (borderBottomSuggested != null)
-          'borderBottomSuggested': borderBottomSuggested!,
-        if (borderLeftSuggested != null)
-          'borderLeftSuggested': borderLeftSuggested!,
-        if (borderRightSuggested != null)
-          'borderRightSuggested': borderRightSuggested!,
-        if (borderTopSuggested != null)
-          'borderTopSuggested': borderTopSuggested!,
-        if (directionSuggested != null)
-          'directionSuggested': directionSuggested!,
-        if (headingIdSuggested != null)
-          'headingIdSuggested': headingIdSuggested!,
-        if (indentEndSuggested != null)
-          'indentEndSuggested': indentEndSuggested!,
-        if (indentFirstLineSuggested != null)
-          'indentFirstLineSuggested': indentFirstLineSuggested!,
-        if (indentStartSuggested != null)
-          'indentStartSuggested': indentStartSuggested!,
-        if (keepLinesTogetherSuggested != null)
-          'keepLinesTogetherSuggested': keepLinesTogetherSuggested!,
-        if (keepWithNextSuggested != null)
-          'keepWithNextSuggested': keepWithNextSuggested!,
-        if (lineSpacingSuggested != null)
-          'lineSpacingSuggested': lineSpacingSuggested!,
-        if (namedStyleTypeSuggested != null)
-          'namedStyleTypeSuggested': namedStyleTypeSuggested!,
-        if (pageBreakBeforeSuggested != null)
-          'pageBreakBeforeSuggested': pageBreakBeforeSuggested!,
-        if (shadingSuggestionState != null)
-          'shadingSuggestionState': shadingSuggestionState!,
-        if (spaceAboveSuggested != null)
-          'spaceAboveSuggested': spaceAboveSuggested!,
-        if (spaceBelowSuggested != null)
-          'spaceBelowSuggested': spaceBelowSuggested!,
-        if (spacingModeSuggested != null)
-          'spacingModeSuggested': spacingModeSuggested!,
-      };
+    if (alignmentSuggested != null) 'alignmentSuggested': alignmentSuggested!,
+    if (avoidWidowAndOrphanSuggested != null)
+      'avoidWidowAndOrphanSuggested': avoidWidowAndOrphanSuggested!,
+    if (borderBetweenSuggested != null)
+      'borderBetweenSuggested': borderBetweenSuggested!,
+    if (borderBottomSuggested != null)
+      'borderBottomSuggested': borderBottomSuggested!,
+    if (borderLeftSuggested != null)
+      'borderLeftSuggested': borderLeftSuggested!,
+    if (borderRightSuggested != null)
+      'borderRightSuggested': borderRightSuggested!,
+    if (borderTopSuggested != null) 'borderTopSuggested': borderTopSuggested!,
+    if (directionSuggested != null) 'directionSuggested': directionSuggested!,
+    if (headingIdSuggested != null) 'headingIdSuggested': headingIdSuggested!,
+    if (indentEndSuggested != null) 'indentEndSuggested': indentEndSuggested!,
+    if (indentFirstLineSuggested != null)
+      'indentFirstLineSuggested': indentFirstLineSuggested!,
+    if (indentStartSuggested != null)
+      'indentStartSuggested': indentStartSuggested!,
+    if (keepLinesTogetherSuggested != null)
+      'keepLinesTogetherSuggested': keepLinesTogetherSuggested!,
+    if (keepWithNextSuggested != null)
+      'keepWithNextSuggested': keepWithNextSuggested!,
+    if (lineSpacingSuggested != null)
+      'lineSpacingSuggested': lineSpacingSuggested!,
+    if (namedStyleTypeSuggested != null)
+      'namedStyleTypeSuggested': namedStyleTypeSuggested!,
+    if (pageBreakBeforeSuggested != null)
+      'pageBreakBeforeSuggested': pageBreakBeforeSuggested!,
+    if (shadingSuggestionState != null)
+      'shadingSuggestionState': shadingSuggestionState!,
+    if (spaceAboveSuggested != null)
+      'spaceAboveSuggested': spaceAboveSuggested!,
+    if (spaceBelowSuggested != null)
+      'spaceBelowSuggested': spaceBelowSuggested!,
+    if (spacingModeSuggested != null)
+      'spacingModeSuggested': spacingModeSuggested!,
+  };
 }
 
 /// A person or email address mentioned in a document.
@@ -5310,44 +5491,52 @@ class Person {
   });
 
   Person.fromJson(core.Map json_)
-      : this(
-          personId: json_['personId'] as core.String?,
-          personProperties: json_.containsKey('personProperties')
-              ? PersonProperties.fromJson(json_['personProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedTextStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        personId: json_['personId'] as core.String?,
+        personProperties:
+            json_.containsKey('personProperties')
+                ? PersonProperties.fromJson(
+                  json_['personProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          textStyle: json_.containsKey('textStyle')
-              ? TextStyle.fromJson(
-                  json_['textStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (personId != null) 'personId': personId!,
-        if (personProperties != null) 'personProperties': personProperties!,
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-        if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges!,
-        if (textStyle != null) 'textStyle': textStyle!,
-      };
+    if (personId != null) 'personId': personId!,
+    if (personProperties != null) 'personProperties': personProperties!,
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+    if (suggestedTextStyleChanges != null)
+      'suggestedTextStyleChanges': suggestedTextStyleChanges!,
+    if (textStyle != null) 'textStyle': textStyle!,
+  };
 }
 
 /// Properties specific to a linked Person.
@@ -5365,21 +5554,18 @@ class PersonProperties {
   /// Output only.
   core.String? name;
 
-  PersonProperties({
-    this.email,
-    this.name,
-  });
+  PersonProperties({this.email, this.name});
 
   PersonProperties.fromJson(core.Map json_)
-      : this(
-          email: json_['email'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        email: json_['email'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (email != null) 'email': email!,
-        if (name != null) 'name': name!,
-      };
+    if (email != null) 'email': email!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Updates the number of pinned table header rows in a table.
@@ -5397,20 +5583,22 @@ class PinTableHeaderRowsRequest {
   });
 
   PinTableHeaderRowsRequest.fromJson(core.Map json_)
-      : this(
-          pinnedHeaderRowsCount: json_['pinnedHeaderRowsCount'] as core.int?,
-          tableStartLocation: json_.containsKey('tableStartLocation')
-              ? Location.fromJson(json_['tableStartLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        pinnedHeaderRowsCount: json_['pinnedHeaderRowsCount'] as core.int?,
+        tableStartLocation:
+            json_.containsKey('tableStartLocation')
+                ? Location.fromJson(
+                  json_['tableStartLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pinnedHeaderRowsCount != null)
-          'pinnedHeaderRowsCount': pinnedHeaderRowsCount!,
-        if (tableStartLocation != null)
-          'tableStartLocation': tableStartLocation!,
-      };
+    if (pinnedHeaderRowsCount != null)
+      'pinnedHeaderRowsCount': pinnedHeaderRowsCount!,
+    if (tableStartLocation != null) 'tableStartLocation': tableStartLocation!,
+  };
 }
 
 /// An object that's tethered to a Paragraph and positioned relative to the
@@ -5437,7 +5625,7 @@ class PositionedObject {
   /// The suggested changes to the positioned object properties, keyed by
   /// suggestion ID.
   core.Map<core.String, SuggestedPositionedObjectProperties>?
-      suggestedPositionedObjectPropertiesChanges;
+  suggestedPositionedObjectPropertiesChanges;
 
   PositionedObject({
     this.objectId,
@@ -5448,42 +5636,45 @@ class PositionedObject {
   });
 
   PositionedObject.fromJson(core.Map json_)
-      : this(
-          objectId: json_['objectId'] as core.String?,
-          positionedObjectProperties:
-              json_.containsKey('positionedObjectProperties')
-                  ? PositionedObjectProperties.fromJson(
-                      json_['positionedObjectProperties']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionId: json_['suggestedInsertionId'] as core.String?,
-          suggestedPositionedObjectPropertiesChanges:
-              (json_['suggestedPositionedObjectPropertiesChanges']
-                      as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedPositionedObjectProperties.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
-            ),
-          ),
-        );
+    : this(
+        objectId: json_['objectId'] as core.String?,
+        positionedObjectProperties:
+            json_.containsKey('positionedObjectProperties')
+                ? PositionedObjectProperties.fromJson(
+                  json_['positionedObjectProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionId: json_['suggestedInsertionId'] as core.String?,
+        suggestedPositionedObjectPropertiesChanges:
+            (json_['suggestedPositionedObjectPropertiesChanges']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    SuggestedPositionedObjectProperties.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectId != null) 'objectId': objectId!,
-        if (positionedObjectProperties != null)
-          'positionedObjectProperties': positionedObjectProperties!,
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionId != null)
-          'suggestedInsertionId': suggestedInsertionId!,
-        if (suggestedPositionedObjectPropertiesChanges != null)
-          'suggestedPositionedObjectPropertiesChanges':
-              suggestedPositionedObjectPropertiesChanges!,
-      };
+    if (objectId != null) 'objectId': objectId!,
+    if (positionedObjectProperties != null)
+      'positionedObjectProperties': positionedObjectProperties!,
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionId != null)
+      'suggestedInsertionId': suggestedInsertionId!,
+    if (suggestedPositionedObjectPropertiesChanges != null)
+      'suggestedPositionedObjectPropertiesChanges':
+          suggestedPositionedObjectPropertiesChanges!,
+  };
 }
 
 /// The positioning of a PositionedObject.
@@ -5519,30 +5710,30 @@ class PositionedObjectPositioning {
   /// document and the document's styling.
   Dimension? topOffset;
 
-  PositionedObjectPositioning({
-    this.layout,
-    this.leftOffset,
-    this.topOffset,
-  });
+  PositionedObjectPositioning({this.layout, this.leftOffset, this.topOffset});
 
   PositionedObjectPositioning.fromJson(core.Map json_)
-      : this(
-          layout: json_['layout'] as core.String?,
-          leftOffset: json_.containsKey('leftOffset')
-              ? Dimension.fromJson(
-                  json_['leftOffset'] as core.Map<core.String, core.dynamic>)
-              : null,
-          topOffset: json_.containsKey('topOffset')
-              ? Dimension.fromJson(
-                  json_['topOffset'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        layout: json_['layout'] as core.String?,
+        leftOffset:
+            json_.containsKey('leftOffset')
+                ? Dimension.fromJson(
+                  json_['leftOffset'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        topOffset:
+            json_.containsKey('topOffset')
+                ? Dimension.fromJson(
+                  json_['topOffset'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (layout != null) 'layout': layout!,
-        if (leftOffset != null) 'leftOffset': leftOffset!,
-        if (topOffset != null) 'topOffset': topOffset!,
-      };
+    if (layout != null) 'layout': layout!,
+    if (leftOffset != null) 'leftOffset': leftOffset!,
+    if (topOffset != null) 'topOffset': topOffset!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base
@@ -5566,19 +5757,18 @@ class PositionedObjectPositioningSuggestionState {
   });
 
   PositionedObjectPositioningSuggestionState.fromJson(core.Map json_)
-      : this(
-          layoutSuggested: json_['layoutSuggested'] as core.bool?,
-          leftOffsetSuggested: json_['leftOffsetSuggested'] as core.bool?,
-          topOffsetSuggested: json_['topOffsetSuggested'] as core.bool?,
-        );
+    : this(
+        layoutSuggested: json_['layoutSuggested'] as core.bool?,
+        leftOffsetSuggested: json_['leftOffsetSuggested'] as core.bool?,
+        topOffsetSuggested: json_['topOffsetSuggested'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (layoutSuggested != null) 'layoutSuggested': layoutSuggested!,
-        if (leftOffsetSuggested != null)
-          'leftOffsetSuggested': leftOffsetSuggested!,
-        if (topOffsetSuggested != null)
-          'topOffsetSuggested': topOffsetSuggested!,
-      };
+    if (layoutSuggested != null) 'layoutSuggested': layoutSuggested!,
+    if (leftOffsetSuggested != null)
+      'leftOffsetSuggested': leftOffsetSuggested!,
+    if (topOffsetSuggested != null) 'topOffsetSuggested': topOffsetSuggested!,
+  };
 }
 
 /// Properties of a PositionedObject.
@@ -5590,27 +5780,29 @@ class PositionedObjectProperties {
   /// Paragraph that references this positioned object.
   PositionedObjectPositioning? positioning;
 
-  PositionedObjectProperties({
-    this.embeddedObject,
-    this.positioning,
-  });
+  PositionedObjectProperties({this.embeddedObject, this.positioning});
 
   PositionedObjectProperties.fromJson(core.Map json_)
-      : this(
-          embeddedObject: json_.containsKey('embeddedObject')
-              ? EmbeddedObject.fromJson(json_['embeddedObject']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          positioning: json_.containsKey('positioning')
-              ? PositionedObjectPositioning.fromJson(
-                  json_['positioning'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        embeddedObject:
+            json_.containsKey('embeddedObject')
+                ? EmbeddedObject.fromJson(
+                  json_['embeddedObject']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        positioning:
+            json_.containsKey('positioning')
+                ? PositionedObjectPositioning.fromJson(
+                  json_['positioning'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (embeddedObject != null) 'embeddedObject': embeddedObject!,
-        if (positioning != null) 'positioning': positioning!,
-      };
+    if (embeddedObject != null) 'embeddedObject': embeddedObject!,
+    if (positioning != null) 'positioning': positioning!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base
@@ -5632,27 +5824,29 @@ class PositionedObjectPropertiesSuggestionState {
   });
 
   PositionedObjectPropertiesSuggestionState.fromJson(core.Map json_)
-      : this(
-          embeddedObjectSuggestionState:
-              json_.containsKey('embeddedObjectSuggestionState')
-                  ? EmbeddedObjectSuggestionState.fromJson(
-                      json_['embeddedObjectSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          positioningSuggestionState:
-              json_.containsKey('positioningSuggestionState')
-                  ? PositionedObjectPositioningSuggestionState.fromJson(
-                      json_['positioningSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        embeddedObjectSuggestionState:
+            json_.containsKey('embeddedObjectSuggestionState')
+                ? EmbeddedObjectSuggestionState.fromJson(
+                  json_['embeddedObjectSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        positioningSuggestionState:
+            json_.containsKey('positioningSuggestionState')
+                ? PositionedObjectPositioningSuggestionState.fromJson(
+                  json_['positioningSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (embeddedObjectSuggestionState != null)
-          'embeddedObjectSuggestionState': embeddedObjectSuggestionState!,
-        if (positioningSuggestionState != null)
-          'positioningSuggestionState': positioningSuggestionState!,
-      };
+    if (embeddedObjectSuggestionState != null)
+      'embeddedObjectSuggestionState': embeddedObjectSuggestionState!,
+    if (positioningSuggestionState != null)
+      'positioningSuggestionState': positioningSuggestionState!,
+  };
 }
 
 /// Specifies a contiguous range of text.
@@ -5686,27 +5880,22 @@ class Range {
   /// document.
   core.String? tabId;
 
-  Range({
-    this.endIndex,
-    this.segmentId,
-    this.startIndex,
-    this.tabId,
-  });
+  Range({this.endIndex, this.segmentId, this.startIndex, this.tabId});
 
   Range.fromJson(core.Map json_)
-      : this(
-          endIndex: json_['endIndex'] as core.int?,
-          segmentId: json_['segmentId'] as core.String?,
-          startIndex: json_['startIndex'] as core.int?,
-          tabId: json_['tabId'] as core.String?,
-        );
+    : this(
+        endIndex: json_['endIndex'] as core.int?,
+        segmentId: json_['segmentId'] as core.String?,
+        startIndex: json_['startIndex'] as core.int?,
+        tabId: json_['tabId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endIndex != null) 'endIndex': endIndex!,
-        if (segmentId != null) 'segmentId': segmentId!,
-        if (startIndex != null) 'startIndex': startIndex!,
-        if (tabId != null) 'tabId': tabId!,
-      };
+    if (endIndex != null) 'endIndex': endIndex!,
+    if (segmentId != null) 'segmentId': segmentId!,
+    if (startIndex != null) 'startIndex': startIndex!,
+    if (tabId != null) 'tabId': tabId!,
+  };
 }
 
 /// Replaces all instances of text matching a criteria with replace text.
@@ -5735,23 +5924,27 @@ class ReplaceAllTextRequest {
   });
 
   ReplaceAllTextRequest.fromJson(core.Map json_)
-      : this(
-          containsText: json_.containsKey('containsText')
-              ? SubstringMatchCriteria.fromJson(
-                  json_['containsText'] as core.Map<core.String, core.dynamic>)
-              : null,
-          replaceText: json_['replaceText'] as core.String?,
-          tabsCriteria: json_.containsKey('tabsCriteria')
-              ? TabsCriteria.fromJson(
-                  json_['tabsCriteria'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        containsText:
+            json_.containsKey('containsText')
+                ? SubstringMatchCriteria.fromJson(
+                  json_['containsText'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        replaceText: json_['replaceText'] as core.String?,
+        tabsCriteria:
+            json_.containsKey('tabsCriteria')
+                ? TabsCriteria.fromJson(
+                  json_['tabsCriteria'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (containsText != null) 'containsText': containsText!,
-        if (replaceText != null) 'replaceText': replaceText!,
-        if (tabsCriteria != null) 'tabsCriteria': tabsCriteria!,
-      };
+    if (containsText != null) 'containsText': containsText!,
+    if (replaceText != null) 'replaceText': replaceText!,
+    if (tabsCriteria != null) 'tabsCriteria': tabsCriteria!,
+  };
 }
 
 /// The result of replacing text.
@@ -5804,20 +5997,19 @@ class ReplaceImageRequest {
   });
 
   ReplaceImageRequest.fromJson(core.Map json_)
-      : this(
-          imageObjectId: json_['imageObjectId'] as core.String?,
-          imageReplaceMethod: json_['imageReplaceMethod'] as core.String?,
-          tabId: json_['tabId'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        imageObjectId: json_['imageObjectId'] as core.String?,
+        imageReplaceMethod: json_['imageReplaceMethod'] as core.String?,
+        tabId: json_['tabId'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (imageObjectId != null) 'imageObjectId': imageObjectId!,
-        if (imageReplaceMethod != null)
-          'imageReplaceMethod': imageReplaceMethod!,
-        if (tabId != null) 'tabId': tabId!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (imageObjectId != null) 'imageObjectId': imageObjectId!,
+    if (imageReplaceMethod != null) 'imageReplaceMethod': imageReplaceMethod!,
+    if (tabId != null) 'tabId': tabId!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Replaces the contents of the specified NamedRange or NamedRanges with the
@@ -5864,22 +6056,24 @@ class ReplaceNamedRangeContentRequest {
   });
 
   ReplaceNamedRangeContentRequest.fromJson(core.Map json_)
-      : this(
-          namedRangeId: json_['namedRangeId'] as core.String?,
-          namedRangeName: json_['namedRangeName'] as core.String?,
-          tabsCriteria: json_.containsKey('tabsCriteria')
-              ? TabsCriteria.fromJson(
-                  json_['tabsCriteria'] as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        namedRangeId: json_['namedRangeId'] as core.String?,
+        namedRangeName: json_['namedRangeName'] as core.String?,
+        tabsCriteria:
+            json_.containsKey('tabsCriteria')
+                ? TabsCriteria.fromJson(
+                  json_['tabsCriteria'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (namedRangeId != null) 'namedRangeId': namedRangeId!,
-        if (namedRangeName != null) 'namedRangeName': namedRangeName!,
-        if (tabsCriteria != null) 'tabsCriteria': tabsCriteria!,
-        if (text != null) 'text': text!,
-      };
+    if (namedRangeId != null) 'namedRangeId': namedRangeId!,
+    if (namedRangeName != null) 'namedRangeName': namedRangeName!,
+    if (tabsCriteria != null) 'tabsCriteria': tabsCriteria!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// A single update to apply to a document.
@@ -6020,198 +6214,277 @@ class Request {
   });
 
   Request.fromJson(core.Map json_)
-      : this(
-          createFooter: json_.containsKey('createFooter')
-              ? CreateFooterRequest.fromJson(
-                  json_['createFooter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createFootnote: json_.containsKey('createFootnote')
-              ? CreateFootnoteRequest.fromJson(json_['createFootnote']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          createHeader: json_.containsKey('createHeader')
-              ? CreateHeaderRequest.fromJson(
-                  json_['createHeader'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createNamedRange: json_.containsKey('createNamedRange')
-              ? CreateNamedRangeRequest.fromJson(json_['createNamedRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          createParagraphBullets: json_.containsKey('createParagraphBullets')
-              ? CreateParagraphBulletsRequest.fromJson(
+    : this(
+        createFooter:
+            json_.containsKey('createFooter')
+                ? CreateFooterRequest.fromJson(
+                  json_['createFooter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createFootnote:
+            json_.containsKey('createFootnote')
+                ? CreateFootnoteRequest.fromJson(
+                  json_['createFootnote']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createHeader:
+            json_.containsKey('createHeader')
+                ? CreateHeaderRequest.fromJson(
+                  json_['createHeader'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createNamedRange:
+            json_.containsKey('createNamedRange')
+                ? CreateNamedRangeRequest.fromJson(
+                  json_['createNamedRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createParagraphBullets:
+            json_.containsKey('createParagraphBullets')
+                ? CreateParagraphBulletsRequest.fromJson(
                   json_['createParagraphBullets']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteContentRange: json_.containsKey('deleteContentRange')
-              ? DeleteContentRangeRequest.fromJson(json_['deleteContentRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteFooter: json_.containsKey('deleteFooter')
-              ? DeleteFooterRequest.fromJson(
-                  json_['deleteFooter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteHeader: json_.containsKey('deleteHeader')
-              ? DeleteHeaderRequest.fromJson(
-                  json_['deleteHeader'] as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteNamedRange: json_.containsKey('deleteNamedRange')
-              ? DeleteNamedRangeRequest.fromJson(json_['deleteNamedRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteParagraphBullets: json_.containsKey('deleteParagraphBullets')
-              ? DeleteParagraphBulletsRequest.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteContentRange:
+            json_.containsKey('deleteContentRange')
+                ? DeleteContentRangeRequest.fromJson(
+                  json_['deleteContentRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteFooter:
+            json_.containsKey('deleteFooter')
+                ? DeleteFooterRequest.fromJson(
+                  json_['deleteFooter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteHeader:
+            json_.containsKey('deleteHeader')
+                ? DeleteHeaderRequest.fromJson(
+                  json_['deleteHeader'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteNamedRange:
+            json_.containsKey('deleteNamedRange')
+                ? DeleteNamedRangeRequest.fromJson(
+                  json_['deleteNamedRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteParagraphBullets:
+            json_.containsKey('deleteParagraphBullets')
+                ? DeleteParagraphBulletsRequest.fromJson(
                   json_['deleteParagraphBullets']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          deletePositionedObject: json_.containsKey('deletePositionedObject')
-              ? DeletePositionedObjectRequest.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deletePositionedObject:
+            json_.containsKey('deletePositionedObject')
+                ? DeletePositionedObjectRequest.fromJson(
                   json_['deletePositionedObject']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteTableColumn: json_.containsKey('deleteTableColumn')
-              ? DeleteTableColumnRequest.fromJson(json_['deleteTableColumn']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          deleteTableRow: json_.containsKey('deleteTableRow')
-              ? DeleteTableRowRequest.fromJson(json_['deleteTableRow']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          insertInlineImage: json_.containsKey('insertInlineImage')
-              ? InsertInlineImageRequest.fromJson(json_['insertInlineImage']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          insertPageBreak: json_.containsKey('insertPageBreak')
-              ? InsertPageBreakRequest.fromJson(json_['insertPageBreak']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          insertSectionBreak: json_.containsKey('insertSectionBreak')
-              ? InsertSectionBreakRequest.fromJson(json_['insertSectionBreak']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          insertTable: json_.containsKey('insertTable')
-              ? InsertTableRequest.fromJson(
-                  json_['insertTable'] as core.Map<core.String, core.dynamic>)
-              : null,
-          insertTableColumn: json_.containsKey('insertTableColumn')
-              ? InsertTableColumnRequest.fromJson(json_['insertTableColumn']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          insertTableRow: json_.containsKey('insertTableRow')
-              ? InsertTableRowRequest.fromJson(json_['insertTableRow']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          insertText: json_.containsKey('insertText')
-              ? InsertTextRequest.fromJson(
-                  json_['insertText'] as core.Map<core.String, core.dynamic>)
-              : null,
-          mergeTableCells: json_.containsKey('mergeTableCells')
-              ? MergeTableCellsRequest.fromJson(json_['mergeTableCells']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          pinTableHeaderRows: json_.containsKey('pinTableHeaderRows')
-              ? PinTableHeaderRowsRequest.fromJson(json_['pinTableHeaderRows']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          replaceAllText: json_.containsKey('replaceAllText')
-              ? ReplaceAllTextRequest.fromJson(json_['replaceAllText']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          replaceImage: json_.containsKey('replaceImage')
-              ? ReplaceImageRequest.fromJson(
-                  json_['replaceImage'] as core.Map<core.String, core.dynamic>)
-              : null,
-          replaceNamedRangeContent:
-              json_.containsKey('replaceNamedRangeContent')
-                  ? ReplaceNamedRangeContentRequest.fromJson(
-                      json_['replaceNamedRangeContent']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          unmergeTableCells: json_.containsKey('unmergeTableCells')
-              ? UnmergeTableCellsRequest.fromJson(json_['unmergeTableCells']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateDocumentStyle: json_.containsKey('updateDocumentStyle')
-              ? UpdateDocumentStyleRequest.fromJson(json_['updateDocumentStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateParagraphStyle: json_.containsKey('updateParagraphStyle')
-              ? UpdateParagraphStyleRequest.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteTableColumn:
+            json_.containsKey('deleteTableColumn')
+                ? DeleteTableColumnRequest.fromJson(
+                  json_['deleteTableColumn']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deleteTableRow:
+            json_.containsKey('deleteTableRow')
+                ? DeleteTableRowRequest.fromJson(
+                  json_['deleteTableRow']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insertInlineImage:
+            json_.containsKey('insertInlineImage')
+                ? InsertInlineImageRequest.fromJson(
+                  json_['insertInlineImage']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insertPageBreak:
+            json_.containsKey('insertPageBreak')
+                ? InsertPageBreakRequest.fromJson(
+                  json_['insertPageBreak']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insertSectionBreak:
+            json_.containsKey('insertSectionBreak')
+                ? InsertSectionBreakRequest.fromJson(
+                  json_['insertSectionBreak']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insertTable:
+            json_.containsKey('insertTable')
+                ? InsertTableRequest.fromJson(
+                  json_['insertTable'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insertTableColumn:
+            json_.containsKey('insertTableColumn')
+                ? InsertTableColumnRequest.fromJson(
+                  json_['insertTableColumn']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insertTableRow:
+            json_.containsKey('insertTableRow')
+                ? InsertTableRowRequest.fromJson(
+                  json_['insertTableRow']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insertText:
+            json_.containsKey('insertText')
+                ? InsertTextRequest.fromJson(
+                  json_['insertText'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mergeTableCells:
+            json_.containsKey('mergeTableCells')
+                ? MergeTableCellsRequest.fromJson(
+                  json_['mergeTableCells']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pinTableHeaderRows:
+            json_.containsKey('pinTableHeaderRows')
+                ? PinTableHeaderRowsRequest.fromJson(
+                  json_['pinTableHeaderRows']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        replaceAllText:
+            json_.containsKey('replaceAllText')
+                ? ReplaceAllTextRequest.fromJson(
+                  json_['replaceAllText']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        replaceImage:
+            json_.containsKey('replaceImage')
+                ? ReplaceImageRequest.fromJson(
+                  json_['replaceImage'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        replaceNamedRangeContent:
+            json_.containsKey('replaceNamedRangeContent')
+                ? ReplaceNamedRangeContentRequest.fromJson(
+                  json_['replaceNamedRangeContent']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        unmergeTableCells:
+            json_.containsKey('unmergeTableCells')
+                ? UnmergeTableCellsRequest.fromJson(
+                  json_['unmergeTableCells']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateDocumentStyle:
+            json_.containsKey('updateDocumentStyle')
+                ? UpdateDocumentStyleRequest.fromJson(
+                  json_['updateDocumentStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateParagraphStyle:
+            json_.containsKey('updateParagraphStyle')
+                ? UpdateParagraphStyleRequest.fromJson(
                   json_['updateParagraphStyle']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateSectionStyle: json_.containsKey('updateSectionStyle')
-              ? UpdateSectionStyleRequest.fromJson(json_['updateSectionStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTableCellStyle: json_.containsKey('updateTableCellStyle')
-              ? UpdateTableCellStyleRequest.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateSectionStyle:
+            json_.containsKey('updateSectionStyle')
+                ? UpdateSectionStyleRequest.fromJson(
+                  json_['updateSectionStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTableCellStyle:
+            json_.containsKey('updateTableCellStyle')
+                ? UpdateTableCellStyleRequest.fromJson(
                   json_['updateTableCellStyle']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTableColumnProperties:
-              json_.containsKey('updateTableColumnProperties')
-                  ? UpdateTableColumnPropertiesRequest.fromJson(
-                      json_['updateTableColumnProperties']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          updateTableRowStyle: json_.containsKey('updateTableRowStyle')
-              ? UpdateTableRowStyleRequest.fromJson(json_['updateTableRowStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTextStyle: json_.containsKey('updateTextStyle')
-              ? UpdateTextStyleRequest.fromJson(json_['updateTextStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTableColumnProperties:
+            json_.containsKey('updateTableColumnProperties')
+                ? UpdateTableColumnPropertiesRequest.fromJson(
+                  json_['updateTableColumnProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTableRowStyle:
+            json_.containsKey('updateTableRowStyle')
+                ? UpdateTableRowStyleRequest.fromJson(
+                  json_['updateTableRowStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTextStyle:
+            json_.containsKey('updateTextStyle')
+                ? UpdateTextStyleRequest.fromJson(
+                  json_['updateTextStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createFooter != null) 'createFooter': createFooter!,
-        if (createFootnote != null) 'createFootnote': createFootnote!,
-        if (createHeader != null) 'createHeader': createHeader!,
-        if (createNamedRange != null) 'createNamedRange': createNamedRange!,
-        if (createParagraphBullets != null)
-          'createParagraphBullets': createParagraphBullets!,
-        if (deleteContentRange != null)
-          'deleteContentRange': deleteContentRange!,
-        if (deleteFooter != null) 'deleteFooter': deleteFooter!,
-        if (deleteHeader != null) 'deleteHeader': deleteHeader!,
-        if (deleteNamedRange != null) 'deleteNamedRange': deleteNamedRange!,
-        if (deleteParagraphBullets != null)
-          'deleteParagraphBullets': deleteParagraphBullets!,
-        if (deletePositionedObject != null)
-          'deletePositionedObject': deletePositionedObject!,
-        if (deleteTableColumn != null) 'deleteTableColumn': deleteTableColumn!,
-        if (deleteTableRow != null) 'deleteTableRow': deleteTableRow!,
-        if (insertInlineImage != null) 'insertInlineImage': insertInlineImage!,
-        if (insertPageBreak != null) 'insertPageBreak': insertPageBreak!,
-        if (insertSectionBreak != null)
-          'insertSectionBreak': insertSectionBreak!,
-        if (insertTable != null) 'insertTable': insertTable!,
-        if (insertTableColumn != null) 'insertTableColumn': insertTableColumn!,
-        if (insertTableRow != null) 'insertTableRow': insertTableRow!,
-        if (insertText != null) 'insertText': insertText!,
-        if (mergeTableCells != null) 'mergeTableCells': mergeTableCells!,
-        if (pinTableHeaderRows != null)
-          'pinTableHeaderRows': pinTableHeaderRows!,
-        if (replaceAllText != null) 'replaceAllText': replaceAllText!,
-        if (replaceImage != null) 'replaceImage': replaceImage!,
-        if (replaceNamedRangeContent != null)
-          'replaceNamedRangeContent': replaceNamedRangeContent!,
-        if (unmergeTableCells != null) 'unmergeTableCells': unmergeTableCells!,
-        if (updateDocumentStyle != null)
-          'updateDocumentStyle': updateDocumentStyle!,
-        if (updateParagraphStyle != null)
-          'updateParagraphStyle': updateParagraphStyle!,
-        if (updateSectionStyle != null)
-          'updateSectionStyle': updateSectionStyle!,
-        if (updateTableCellStyle != null)
-          'updateTableCellStyle': updateTableCellStyle!,
-        if (updateTableColumnProperties != null)
-          'updateTableColumnProperties': updateTableColumnProperties!,
-        if (updateTableRowStyle != null)
-          'updateTableRowStyle': updateTableRowStyle!,
-        if (updateTextStyle != null) 'updateTextStyle': updateTextStyle!,
-      };
+    if (createFooter != null) 'createFooter': createFooter!,
+    if (createFootnote != null) 'createFootnote': createFootnote!,
+    if (createHeader != null) 'createHeader': createHeader!,
+    if (createNamedRange != null) 'createNamedRange': createNamedRange!,
+    if (createParagraphBullets != null)
+      'createParagraphBullets': createParagraphBullets!,
+    if (deleteContentRange != null) 'deleteContentRange': deleteContentRange!,
+    if (deleteFooter != null) 'deleteFooter': deleteFooter!,
+    if (deleteHeader != null) 'deleteHeader': deleteHeader!,
+    if (deleteNamedRange != null) 'deleteNamedRange': deleteNamedRange!,
+    if (deleteParagraphBullets != null)
+      'deleteParagraphBullets': deleteParagraphBullets!,
+    if (deletePositionedObject != null)
+      'deletePositionedObject': deletePositionedObject!,
+    if (deleteTableColumn != null) 'deleteTableColumn': deleteTableColumn!,
+    if (deleteTableRow != null) 'deleteTableRow': deleteTableRow!,
+    if (insertInlineImage != null) 'insertInlineImage': insertInlineImage!,
+    if (insertPageBreak != null) 'insertPageBreak': insertPageBreak!,
+    if (insertSectionBreak != null) 'insertSectionBreak': insertSectionBreak!,
+    if (insertTable != null) 'insertTable': insertTable!,
+    if (insertTableColumn != null) 'insertTableColumn': insertTableColumn!,
+    if (insertTableRow != null) 'insertTableRow': insertTableRow!,
+    if (insertText != null) 'insertText': insertText!,
+    if (mergeTableCells != null) 'mergeTableCells': mergeTableCells!,
+    if (pinTableHeaderRows != null) 'pinTableHeaderRows': pinTableHeaderRows!,
+    if (replaceAllText != null) 'replaceAllText': replaceAllText!,
+    if (replaceImage != null) 'replaceImage': replaceImage!,
+    if (replaceNamedRangeContent != null)
+      'replaceNamedRangeContent': replaceNamedRangeContent!,
+    if (unmergeTableCells != null) 'unmergeTableCells': unmergeTableCells!,
+    if (updateDocumentStyle != null)
+      'updateDocumentStyle': updateDocumentStyle!,
+    if (updateParagraphStyle != null)
+      'updateParagraphStyle': updateParagraphStyle!,
+    if (updateSectionStyle != null) 'updateSectionStyle': updateSectionStyle!,
+    if (updateTableCellStyle != null)
+      'updateTableCellStyle': updateTableCellStyle!,
+    if (updateTableColumnProperties != null)
+      'updateTableColumnProperties': updateTableColumnProperties!,
+    if (updateTableRowStyle != null)
+      'updateTableRowStyle': updateTableRowStyle!,
+    if (updateTextStyle != null) 'updateTextStyle': updateTextStyle!,
+  };
 }
 
 /// A single response from an update.
@@ -6248,48 +6521,66 @@ class Response {
   });
 
   Response.fromJson(core.Map json_)
-      : this(
-          createFooter: json_.containsKey('createFooter')
-              ? CreateFooterResponse.fromJson(
-                  json_['createFooter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createFootnote: json_.containsKey('createFootnote')
-              ? CreateFootnoteResponse.fromJson(json_['createFootnote']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          createHeader: json_.containsKey('createHeader')
-              ? CreateHeaderResponse.fromJson(
-                  json_['createHeader'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createNamedRange: json_.containsKey('createNamedRange')
-              ? CreateNamedRangeResponse.fromJson(json_['createNamedRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          insertInlineImage: json_.containsKey('insertInlineImage')
-              ? InsertInlineImageResponse.fromJson(json_['insertInlineImage']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          insertInlineSheetsChart: json_.containsKey('insertInlineSheetsChart')
-              ? InsertInlineSheetsChartResponse.fromJson(
+    : this(
+        createFooter:
+            json_.containsKey('createFooter')
+                ? CreateFooterResponse.fromJson(
+                  json_['createFooter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createFootnote:
+            json_.containsKey('createFootnote')
+                ? CreateFootnoteResponse.fromJson(
+                  json_['createFootnote']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createHeader:
+            json_.containsKey('createHeader')
+                ? CreateHeaderResponse.fromJson(
+                  json_['createHeader'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createNamedRange:
+            json_.containsKey('createNamedRange')
+                ? CreateNamedRangeResponse.fromJson(
+                  json_['createNamedRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insertInlineImage:
+            json_.containsKey('insertInlineImage')
+                ? InsertInlineImageResponse.fromJson(
+                  json_['insertInlineImage']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insertInlineSheetsChart:
+            json_.containsKey('insertInlineSheetsChart')
+                ? InsertInlineSheetsChartResponse.fromJson(
                   json_['insertInlineSheetsChart']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          replaceAllText: json_.containsKey('replaceAllText')
-              ? ReplaceAllTextResponse.fromJson(json_['replaceAllText']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        replaceAllText:
+            json_.containsKey('replaceAllText')
+                ? ReplaceAllTextResponse.fromJson(
+                  json_['replaceAllText']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createFooter != null) 'createFooter': createFooter!,
-        if (createFootnote != null) 'createFootnote': createFootnote!,
-        if (createHeader != null) 'createHeader': createHeader!,
-        if (createNamedRange != null) 'createNamedRange': createNamedRange!,
-        if (insertInlineImage != null) 'insertInlineImage': insertInlineImage!,
-        if (insertInlineSheetsChart != null)
-          'insertInlineSheetsChart': insertInlineSheetsChart!,
-        if (replaceAllText != null) 'replaceAllText': replaceAllText!,
-      };
+    if (createFooter != null) 'createFooter': createFooter!,
+    if (createFootnote != null) 'createFootnote': createFootnote!,
+    if (createHeader != null) 'createHeader': createHeader!,
+    if (createNamedRange != null) 'createNamedRange': createNamedRange!,
+    if (insertInlineImage != null) 'insertInlineImage': insertInlineImage!,
+    if (insertInlineSheetsChart != null)
+      'insertInlineSheetsChart': insertInlineSheetsChart!,
+    if (replaceAllText != null) 'replaceAllText': replaceAllText!,
+  };
 }
 
 /// An RGB color.
@@ -6340,45 +6631,52 @@ class RichLink {
   });
 
   RichLink.fromJson(core.Map json_)
-      : this(
-          richLinkId: json_['richLinkId'] as core.String?,
-          richLinkProperties: json_.containsKey('richLinkProperties')
-              ? RichLinkProperties.fromJson(json_['richLinkProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedTextStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        richLinkId: json_['richLinkId'] as core.String?,
+        richLinkProperties:
+            json_.containsKey('richLinkProperties')
+                ? RichLinkProperties.fromJson(
+                  json_['richLinkProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          textStyle: json_.containsKey('textStyle')
-              ? TextStyle.fromJson(
-                  json_['textStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (richLinkId != null) 'richLinkId': richLinkId!,
-        if (richLinkProperties != null)
-          'richLinkProperties': richLinkProperties!,
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-        if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges!,
-        if (textStyle != null) 'textStyle': textStyle!,
-      };
+    if (richLinkId != null) 'richLinkId': richLinkId!,
+    if (richLinkProperties != null) 'richLinkProperties': richLinkProperties!,
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+    if (suggestedTextStyleChanges != null)
+      'suggestedTextStyleChanges': suggestedTextStyleChanges!,
+    if (textStyle != null) 'textStyle': textStyle!,
+  };
 }
 
 /// Properties specific to a RichLink.
@@ -6404,24 +6702,20 @@ class RichLinkProperties {
   /// Output only.
   core.String? uri;
 
-  RichLinkProperties({
-    this.mimeType,
-    this.title,
-    this.uri,
-  });
+  RichLinkProperties({this.mimeType, this.title, this.uri});
 
   RichLinkProperties.fromJson(core.Map json_)
-      : this(
-          mimeType: json_['mimeType'] as core.String?,
-          title: json_['title'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        mimeType: json_['mimeType'] as core.String?,
+        title: json_['title'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (title != null) 'title': title!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (mimeType != null) 'mimeType': mimeType!,
+    if (title != null) 'title': title!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// A StructuralElement representing a section break.
@@ -6452,26 +6746,30 @@ class SectionBreak {
   });
 
   SectionBreak.fromJson(core.Map json_)
-      : this(
-          sectionStyle: json_.containsKey('sectionStyle')
-              ? SectionStyle.fromJson(
-                  json_['sectionStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        sectionStyle:
+            json_.containsKey('sectionStyle')
+                ? SectionStyle.fromJson(
+                  json_['sectionStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sectionStyle != null) 'sectionStyle': sectionStyle!,
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-      };
+    if (sectionStyle != null) 'sectionStyle': sectionStyle!,
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+  };
 }
 
 /// Properties that apply to a section's column.
@@ -6484,27 +6782,28 @@ class SectionColumnProperties {
   /// Output only.
   Dimension? width;
 
-  SectionColumnProperties({
-    this.paddingEnd,
-    this.width,
-  });
+  SectionColumnProperties({this.paddingEnd, this.width});
 
   SectionColumnProperties.fromJson(core.Map json_)
-      : this(
-          paddingEnd: json_.containsKey('paddingEnd')
-              ? Dimension.fromJson(
-                  json_['paddingEnd'] as core.Map<core.String, core.dynamic>)
-              : null,
-          width: json_.containsKey('width')
-              ? Dimension.fromJson(
-                  json_['width'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        paddingEnd:
+            json_.containsKey('paddingEnd')
+                ? Dimension.fromJson(
+                  json_['paddingEnd'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        width:
+            json_.containsKey('width')
+                ? Dimension.fromJson(
+                  json_['width'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (paddingEnd != null) 'paddingEnd': paddingEnd!,
-        if (width != null) 'width': width!,
-      };
+    if (paddingEnd != null) 'paddingEnd': paddingEnd!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// The styling that applies to a section.
@@ -6710,74 +7009,90 @@ class SectionStyle {
   });
 
   SectionStyle.fromJson(core.Map json_)
-      : this(
-          columnProperties: (json_['columnProperties'] as core.List?)
-              ?.map((value) => SectionColumnProperties.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          columnSeparatorStyle: json_['columnSeparatorStyle'] as core.String?,
-          contentDirection: json_['contentDirection'] as core.String?,
-          defaultFooterId: json_['defaultFooterId'] as core.String?,
-          defaultHeaderId: json_['defaultHeaderId'] as core.String?,
-          evenPageFooterId: json_['evenPageFooterId'] as core.String?,
-          evenPageHeaderId: json_['evenPageHeaderId'] as core.String?,
-          firstPageFooterId: json_['firstPageFooterId'] as core.String?,
-          firstPageHeaderId: json_['firstPageHeaderId'] as core.String?,
-          flipPageOrientation: json_['flipPageOrientation'] as core.bool?,
-          marginBottom: json_.containsKey('marginBottom')
-              ? Dimension.fromJson(
-                  json_['marginBottom'] as core.Map<core.String, core.dynamic>)
-              : null,
-          marginFooter: json_.containsKey('marginFooter')
-              ? Dimension.fromJson(
-                  json_['marginFooter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          marginHeader: json_.containsKey('marginHeader')
-              ? Dimension.fromJson(
-                  json_['marginHeader'] as core.Map<core.String, core.dynamic>)
-              : null,
-          marginLeft: json_.containsKey('marginLeft')
-              ? Dimension.fromJson(
-                  json_['marginLeft'] as core.Map<core.String, core.dynamic>)
-              : null,
-          marginRight: json_.containsKey('marginRight')
-              ? Dimension.fromJson(
-                  json_['marginRight'] as core.Map<core.String, core.dynamic>)
-              : null,
-          marginTop: json_.containsKey('marginTop')
-              ? Dimension.fromJson(
-                  json_['marginTop'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pageNumberStart: json_['pageNumberStart'] as core.int?,
-          sectionType: json_['sectionType'] as core.String?,
-          useFirstPageHeaderFooter:
-              json_['useFirstPageHeaderFooter'] as core.bool?,
-        );
+    : this(
+        columnProperties:
+            (json_['columnProperties'] as core.List?)
+                ?.map(
+                  (value) => SectionColumnProperties.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        columnSeparatorStyle: json_['columnSeparatorStyle'] as core.String?,
+        contentDirection: json_['contentDirection'] as core.String?,
+        defaultFooterId: json_['defaultFooterId'] as core.String?,
+        defaultHeaderId: json_['defaultHeaderId'] as core.String?,
+        evenPageFooterId: json_['evenPageFooterId'] as core.String?,
+        evenPageHeaderId: json_['evenPageHeaderId'] as core.String?,
+        firstPageFooterId: json_['firstPageFooterId'] as core.String?,
+        firstPageHeaderId: json_['firstPageHeaderId'] as core.String?,
+        flipPageOrientation: json_['flipPageOrientation'] as core.bool?,
+        marginBottom:
+            json_.containsKey('marginBottom')
+                ? Dimension.fromJson(
+                  json_['marginBottom'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginFooter:
+            json_.containsKey('marginFooter')
+                ? Dimension.fromJson(
+                  json_['marginFooter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginHeader:
+            json_.containsKey('marginHeader')
+                ? Dimension.fromJson(
+                  json_['marginHeader'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginLeft:
+            json_.containsKey('marginLeft')
+                ? Dimension.fromJson(
+                  json_['marginLeft'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginRight:
+            json_.containsKey('marginRight')
+                ? Dimension.fromJson(
+                  json_['marginRight'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        marginTop:
+            json_.containsKey('marginTop')
+                ? Dimension.fromJson(
+                  json_['marginTop'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pageNumberStart: json_['pageNumberStart'] as core.int?,
+        sectionType: json_['sectionType'] as core.String?,
+        useFirstPageHeaderFooter:
+            json_['useFirstPageHeaderFooter'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnProperties != null) 'columnProperties': columnProperties!,
-        if (columnSeparatorStyle != null)
-          'columnSeparatorStyle': columnSeparatorStyle!,
-        if (contentDirection != null) 'contentDirection': contentDirection!,
-        if (defaultFooterId != null) 'defaultFooterId': defaultFooterId!,
-        if (defaultHeaderId != null) 'defaultHeaderId': defaultHeaderId!,
-        if (evenPageFooterId != null) 'evenPageFooterId': evenPageFooterId!,
-        if (evenPageHeaderId != null) 'evenPageHeaderId': evenPageHeaderId!,
-        if (firstPageFooterId != null) 'firstPageFooterId': firstPageFooterId!,
-        if (firstPageHeaderId != null) 'firstPageHeaderId': firstPageHeaderId!,
-        if (flipPageOrientation != null)
-          'flipPageOrientation': flipPageOrientation!,
-        if (marginBottom != null) 'marginBottom': marginBottom!,
-        if (marginFooter != null) 'marginFooter': marginFooter!,
-        if (marginHeader != null) 'marginHeader': marginHeader!,
-        if (marginLeft != null) 'marginLeft': marginLeft!,
-        if (marginRight != null) 'marginRight': marginRight!,
-        if (marginTop != null) 'marginTop': marginTop!,
-        if (pageNumberStart != null) 'pageNumberStart': pageNumberStart!,
-        if (sectionType != null) 'sectionType': sectionType!,
-        if (useFirstPageHeaderFooter != null)
-          'useFirstPageHeaderFooter': useFirstPageHeaderFooter!,
-      };
+    if (columnProperties != null) 'columnProperties': columnProperties!,
+    if (columnSeparatorStyle != null)
+      'columnSeparatorStyle': columnSeparatorStyle!,
+    if (contentDirection != null) 'contentDirection': contentDirection!,
+    if (defaultFooterId != null) 'defaultFooterId': defaultFooterId!,
+    if (defaultHeaderId != null) 'defaultHeaderId': defaultHeaderId!,
+    if (evenPageFooterId != null) 'evenPageFooterId': evenPageFooterId!,
+    if (evenPageHeaderId != null) 'evenPageHeaderId': evenPageHeaderId!,
+    if (firstPageFooterId != null) 'firstPageFooterId': firstPageFooterId!,
+    if (firstPageHeaderId != null) 'firstPageHeaderId': firstPageHeaderId!,
+    if (flipPageOrientation != null)
+      'flipPageOrientation': flipPageOrientation!,
+    if (marginBottom != null) 'marginBottom': marginBottom!,
+    if (marginFooter != null) 'marginFooter': marginFooter!,
+    if (marginHeader != null) 'marginHeader': marginHeader!,
+    if (marginLeft != null) 'marginLeft': marginLeft!,
+    if (marginRight != null) 'marginRight': marginRight!,
+    if (marginTop != null) 'marginTop': marginTop!,
+    if (pageNumberStart != null) 'pageNumberStart': pageNumberStart!,
+    if (sectionType != null) 'sectionType': sectionType!,
+    if (useFirstPageHeaderFooter != null)
+      'useFirstPageHeaderFooter': useFirstPageHeaderFooter!,
+  };
 }
 
 /// The shading of a paragraph.
@@ -6785,21 +7100,22 @@ class Shading {
   /// The background color of this paragraph shading.
   OptionalColor? backgroundColor;
 
-  Shading({
-    this.backgroundColor,
-  });
+  Shading({this.backgroundColor});
 
   Shading.fromJson(core.Map json_)
-      : this(
-          backgroundColor: json_.containsKey('backgroundColor')
-              ? OptionalColor.fromJson(json_['backgroundColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        backgroundColor:
+            json_.containsKey('backgroundColor')
+                ? OptionalColor.fromJson(
+                  json_['backgroundColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
-      };
+    if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base Shading have been
@@ -6810,20 +7126,18 @@ class ShadingSuggestionState {
   /// Indicates if there was a suggested change to the Shading.
   core.bool? backgroundColorSuggested;
 
-  ShadingSuggestionState({
-    this.backgroundColorSuggested,
-  });
+  ShadingSuggestionState({this.backgroundColorSuggested});
 
   ShadingSuggestionState.fromJson(core.Map json_)
-      : this(
-          backgroundColorSuggested:
-              json_['backgroundColorSuggested'] as core.bool?,
-        );
+    : this(
+        backgroundColorSuggested:
+            json_['backgroundColorSuggested'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundColorSuggested != null)
-          'backgroundColorSuggested': backgroundColorSuggested!,
-      };
+    if (backgroundColorSuggested != null)
+      'backgroundColorSuggested': backgroundColorSuggested!,
+  };
 }
 
 /// A reference to a linked chart embedded from Google Sheets.
@@ -6835,21 +7149,18 @@ class SheetsChartReference {
   /// The ID of the Google Sheets spreadsheet that contains the source chart.
   core.String? spreadsheetId;
 
-  SheetsChartReference({
-    this.chartId,
-    this.spreadsheetId,
-  });
+  SheetsChartReference({this.chartId, this.spreadsheetId});
 
   SheetsChartReference.fromJson(core.Map json_)
-      : this(
-          chartId: json_['chartId'] as core.int?,
-          spreadsheetId: json_['spreadsheetId'] as core.String?,
-        );
+    : this(
+        chartId: json_['chartId'] as core.int?,
+        spreadsheetId: json_['spreadsheetId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chartId != null) 'chartId': chartId!,
-        if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
-      };
+    if (chartId != null) 'chartId': chartId!,
+    if (spreadsheetId != null) 'spreadsheetId': spreadsheetId!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base SheetsChartReference
@@ -6869,16 +7180,16 @@ class SheetsChartReferenceSuggestionState {
   });
 
   SheetsChartReferenceSuggestionState.fromJson(core.Map json_)
-      : this(
-          chartIdSuggested: json_['chartIdSuggested'] as core.bool?,
-          spreadsheetIdSuggested: json_['spreadsheetIdSuggested'] as core.bool?,
-        );
+    : this(
+        chartIdSuggested: json_['chartIdSuggested'] as core.bool?,
+        spreadsheetIdSuggested: json_['spreadsheetIdSuggested'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chartIdSuggested != null) 'chartIdSuggested': chartIdSuggested!,
-        if (spreadsheetIdSuggested != null)
-          'spreadsheetIdSuggested': spreadsheetIdSuggested!,
-      };
+    if (chartIdSuggested != null) 'chartIdSuggested': chartIdSuggested!,
+    if (spreadsheetIdSuggested != null)
+      'spreadsheetIdSuggested': spreadsheetIdSuggested!,
+  };
 }
 
 /// A width and height.
@@ -6889,27 +7200,28 @@ class Size {
   /// The width of the object.
   Dimension? width;
 
-  Size({
-    this.height,
-    this.width,
-  });
+  Size({this.height, this.width});
 
   Size.fromJson(core.Map json_)
-      : this(
-          height: json_.containsKey('height')
-              ? Dimension.fromJson(
-                  json_['height'] as core.Map<core.String, core.dynamic>)
-              : null,
-          width: json_.containsKey('width')
-              ? Dimension.fromJson(
-                  json_['width'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        height:
+            json_.containsKey('height')
+                ? Dimension.fromJson(
+                  json_['height'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        width:
+            json_.containsKey('width')
+                ? Dimension.fromJson(
+                  json_['width'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (height != null) 'height': height!,
-        if (width != null) 'width': width!,
-      };
+    if (height != null) 'height': height!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base Size have been changed
@@ -6923,21 +7235,18 @@ class SizeSuggestionState {
   /// Indicates if there was a suggested change to width.
   core.bool? widthSuggested;
 
-  SizeSuggestionState({
-    this.heightSuggested,
-    this.widthSuggested,
-  });
+  SizeSuggestionState({this.heightSuggested, this.widthSuggested});
 
   SizeSuggestionState.fromJson(core.Map json_)
-      : this(
-          heightSuggested: json_['heightSuggested'] as core.bool?,
-          widthSuggested: json_['widthSuggested'] as core.bool?,
-        );
+    : this(
+        heightSuggested: json_['heightSuggested'] as core.bool?,
+        widthSuggested: json_['widthSuggested'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (heightSuggested != null) 'heightSuggested': heightSuggested!,
-        if (widthSuggested != null) 'widthSuggested': widthSuggested!,
-      };
+    if (heightSuggested != null) 'heightSuggested': heightSuggested!,
+    if (widthSuggested != null) 'widthSuggested': widthSuggested!,
+  };
 }
 
 /// A StructuralElement describes content that provides structure to the
@@ -6973,35 +7282,44 @@ class StructuralElement {
   });
 
   StructuralElement.fromJson(core.Map json_)
-      : this(
-          endIndex: json_['endIndex'] as core.int?,
-          paragraph: json_.containsKey('paragraph')
-              ? Paragraph.fromJson(
-                  json_['paragraph'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sectionBreak: json_.containsKey('sectionBreak')
-              ? SectionBreak.fromJson(
-                  json_['sectionBreak'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startIndex: json_['startIndex'] as core.int?,
-          table: json_.containsKey('table')
-              ? Table.fromJson(
-                  json_['table'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tableOfContents: json_.containsKey('tableOfContents')
-              ? TableOfContents.fromJson(json_['tableOfContents']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        endIndex: json_['endIndex'] as core.int?,
+        paragraph:
+            json_.containsKey('paragraph')
+                ? Paragraph.fromJson(
+                  json_['paragraph'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sectionBreak:
+            json_.containsKey('sectionBreak')
+                ? SectionBreak.fromJson(
+                  json_['sectionBreak'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startIndex: json_['startIndex'] as core.int?,
+        table:
+            json_.containsKey('table')
+                ? Table.fromJson(
+                  json_['table'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tableOfContents:
+            json_.containsKey('tableOfContents')
+                ? TableOfContents.fromJson(
+                  json_['tableOfContents']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endIndex != null) 'endIndex': endIndex!,
-        if (paragraph != null) 'paragraph': paragraph!,
-        if (sectionBreak != null) 'sectionBreak': sectionBreak!,
-        if (startIndex != null) 'startIndex': startIndex!,
-        if (table != null) 'table': table!,
-        if (tableOfContents != null) 'tableOfContents': tableOfContents!,
-      };
+    if (endIndex != null) 'endIndex': endIndex!,
+    if (paragraph != null) 'paragraph': paragraph!,
+    if (sectionBreak != null) 'sectionBreak': sectionBreak!,
+    if (startIndex != null) 'startIndex': startIndex!,
+    if (table != null) 'table': table!,
+    if (tableOfContents != null) 'tableOfContents': tableOfContents!,
+  };
 }
 
 /// A criteria that matches a specific string of text in the document.
@@ -7024,24 +7342,20 @@ class SubstringMatchCriteria {
   /// The text to search for in the document.
   core.String? text;
 
-  SubstringMatchCriteria({
-    this.matchCase,
-    this.searchByRegex,
-    this.text,
-  });
+  SubstringMatchCriteria({this.matchCase, this.searchByRegex, this.text});
 
   SubstringMatchCriteria.fromJson(core.Map json_)
-      : this(
-          matchCase: json_['matchCase'] as core.bool?,
-          searchByRegex: json_['searchByRegex'] as core.bool?,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        matchCase: json_['matchCase'] as core.bool?,
+        searchByRegex: json_['searchByRegex'] as core.bool?,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (matchCase != null) 'matchCase': matchCase!,
-        if (searchByRegex != null) 'searchByRegex': searchByRegex!,
-        if (text != null) 'text': text!,
-      };
+    if (matchCase != null) 'matchCase': matchCase!,
+    if (searchByRegex != null) 'searchByRegex': searchByRegex!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// A suggested change to a Bullet.
@@ -7056,28 +7370,30 @@ class SuggestedBullet {
   /// changed in this suggestion.
   BulletSuggestionState? bulletSuggestionState;
 
-  SuggestedBullet({
-    this.bullet,
-    this.bulletSuggestionState,
-  });
+  SuggestedBullet({this.bullet, this.bulletSuggestionState});
 
   SuggestedBullet.fromJson(core.Map json_)
-      : this(
-          bullet: json_.containsKey('bullet')
-              ? Bullet.fromJson(
-                  json_['bullet'] as core.Map<core.String, core.dynamic>)
-              : null,
-          bulletSuggestionState: json_.containsKey('bulletSuggestionState')
-              ? BulletSuggestionState.fromJson(json_['bulletSuggestionState']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bullet:
+            json_.containsKey('bullet')
+                ? Bullet.fromJson(
+                  json_['bullet'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bulletSuggestionState:
+            json_.containsKey('bulletSuggestionState')
+                ? BulletSuggestionState.fromJson(
+                  json_['bulletSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bullet != null) 'bullet': bullet!,
-        if (bulletSuggestionState != null)
-          'bulletSuggestionState': bulletSuggestionState!,
-      };
+    if (bullet != null) 'bullet': bullet!,
+    if (bulletSuggestionState != null)
+      'bulletSuggestionState': bulletSuggestionState!,
+  };
 }
 
 /// A suggested change to the DocumentStyle.
@@ -7098,24 +7414,27 @@ class SuggestedDocumentStyle {
   });
 
   SuggestedDocumentStyle.fromJson(core.Map json_)
-      : this(
-          documentStyle: json_.containsKey('documentStyle')
-              ? DocumentStyle.fromJson(
-                  json_['documentStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          documentStyleSuggestionState:
-              json_.containsKey('documentStyleSuggestionState')
-                  ? DocumentStyleSuggestionState.fromJson(
-                      json_['documentStyleSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        documentStyle:
+            json_.containsKey('documentStyle')
+                ? DocumentStyle.fromJson(
+                  json_['documentStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        documentStyleSuggestionState:
+            json_.containsKey('documentStyleSuggestionState')
+                ? DocumentStyleSuggestionState.fromJson(
+                  json_['documentStyleSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (documentStyle != null) 'documentStyle': documentStyle!,
-        if (documentStyleSuggestionState != null)
-          'documentStyleSuggestionState': documentStyleSuggestionState!,
-      };
+    if (documentStyle != null) 'documentStyle': documentStyle!,
+    if (documentStyleSuggestionState != null)
+      'documentStyleSuggestionState': documentStyleSuggestionState!,
+  };
 }
 
 /// A suggested change to InlineObjectProperties.
@@ -7137,26 +7456,30 @@ class SuggestedInlineObjectProperties {
   });
 
   SuggestedInlineObjectProperties.fromJson(core.Map json_)
-      : this(
-          inlineObjectProperties: json_.containsKey('inlineObjectProperties')
-              ? InlineObjectProperties.fromJson(json_['inlineObjectProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          inlineObjectPropertiesSuggestionState:
-              json_.containsKey('inlineObjectPropertiesSuggestionState')
-                  ? InlineObjectPropertiesSuggestionState.fromJson(
-                      json_['inlineObjectPropertiesSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        inlineObjectProperties:
+            json_.containsKey('inlineObjectProperties')
+                ? InlineObjectProperties.fromJson(
+                  json_['inlineObjectProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        inlineObjectPropertiesSuggestionState:
+            json_.containsKey('inlineObjectPropertiesSuggestionState')
+                ? InlineObjectPropertiesSuggestionState.fromJson(
+                  json_['inlineObjectPropertiesSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (inlineObjectProperties != null)
-          'inlineObjectProperties': inlineObjectProperties!,
-        if (inlineObjectPropertiesSuggestionState != null)
-          'inlineObjectPropertiesSuggestionState':
-              inlineObjectPropertiesSuggestionState!,
-      };
+    if (inlineObjectProperties != null)
+      'inlineObjectProperties': inlineObjectProperties!,
+    if (inlineObjectPropertiesSuggestionState != null)
+      'inlineObjectPropertiesSuggestionState':
+          inlineObjectPropertiesSuggestionState!,
+  };
 }
 
 /// A suggested change to ListProperties.
@@ -7177,24 +7500,28 @@ class SuggestedListProperties {
   });
 
   SuggestedListProperties.fromJson(core.Map json_)
-      : this(
-          listProperties: json_.containsKey('listProperties')
-              ? ListProperties.fromJson(json_['listProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          listPropertiesSuggestionState:
-              json_.containsKey('listPropertiesSuggestionState')
-                  ? ListPropertiesSuggestionState.fromJson(
-                      json_['listPropertiesSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        listProperties:
+            json_.containsKey('listProperties')
+                ? ListProperties.fromJson(
+                  json_['listProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        listPropertiesSuggestionState:
+            json_.containsKey('listPropertiesSuggestionState')
+                ? ListPropertiesSuggestionState.fromJson(
+                  json_['listPropertiesSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (listProperties != null) 'listProperties': listProperties!,
-        if (listPropertiesSuggestionState != null)
-          'listPropertiesSuggestionState': listPropertiesSuggestionState!,
-      };
+    if (listProperties != null) 'listProperties': listProperties!,
+    if (listPropertiesSuggestionState != null)
+      'listPropertiesSuggestionState': listPropertiesSuggestionState!,
+  };
 }
 
 /// A suggested change to the NamedStyles.
@@ -7209,30 +7536,30 @@ class SuggestedNamedStyles {
   /// been changed in this suggestion.
   NamedStylesSuggestionState? namedStylesSuggestionState;
 
-  SuggestedNamedStyles({
-    this.namedStyles,
-    this.namedStylesSuggestionState,
-  });
+  SuggestedNamedStyles({this.namedStyles, this.namedStylesSuggestionState});
 
   SuggestedNamedStyles.fromJson(core.Map json_)
-      : this(
-          namedStyles: json_.containsKey('namedStyles')
-              ? NamedStyles.fromJson(
-                  json_['namedStyles'] as core.Map<core.String, core.dynamic>)
-              : null,
-          namedStylesSuggestionState:
-              json_.containsKey('namedStylesSuggestionState')
-                  ? NamedStylesSuggestionState.fromJson(
-                      json_['namedStylesSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        namedStyles:
+            json_.containsKey('namedStyles')
+                ? NamedStyles.fromJson(
+                  json_['namedStyles'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        namedStylesSuggestionState:
+            json_.containsKey('namedStylesSuggestionState')
+                ? NamedStylesSuggestionState.fromJson(
+                  json_['namedStylesSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (namedStyles != null) 'namedStyles': namedStyles!,
-        if (namedStylesSuggestionState != null)
-          'namedStylesSuggestionState': namedStylesSuggestionState!,
-      };
+    if (namedStyles != null) 'namedStyles': namedStyles!,
+    if (namedStylesSuggestionState != null)
+      'namedStylesSuggestionState': namedStylesSuggestionState!,
+  };
 }
 
 /// A suggested change to a ParagraphStyle.
@@ -7253,24 +7580,28 @@ class SuggestedParagraphStyle {
   });
 
   SuggestedParagraphStyle.fromJson(core.Map json_)
-      : this(
-          paragraphStyle: json_.containsKey('paragraphStyle')
-              ? ParagraphStyle.fromJson(json_['paragraphStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          paragraphStyleSuggestionState:
-              json_.containsKey('paragraphStyleSuggestionState')
-                  ? ParagraphStyleSuggestionState.fromJson(
-                      json_['paragraphStyleSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        paragraphStyle:
+            json_.containsKey('paragraphStyle')
+                ? ParagraphStyle.fromJson(
+                  json_['paragraphStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        paragraphStyleSuggestionState:
+            json_.containsKey('paragraphStyleSuggestionState')
+                ? ParagraphStyleSuggestionState.fromJson(
+                  json_['paragraphStyleSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle!,
-        if (paragraphStyleSuggestionState != null)
-          'paragraphStyleSuggestionState': paragraphStyleSuggestionState!,
-      };
+    if (paragraphStyle != null) 'paragraphStyle': paragraphStyle!,
+    if (paragraphStyleSuggestionState != null)
+      'paragraphStyleSuggestionState': paragraphStyleSuggestionState!,
+  };
 }
 
 /// A suggested change to PositionedObjectProperties.
@@ -7286,7 +7617,7 @@ class SuggestedPositionedObjectProperties {
   /// A mask that indicates which of the fields on the base
   /// PositionedObjectProperties have been changed in this suggestion.
   PositionedObjectPropertiesSuggestionState?
-      positionedObjectPropertiesSuggestionState;
+  positionedObjectPropertiesSuggestionState;
 
   SuggestedPositionedObjectProperties({
     this.positionedObjectProperties,
@@ -7294,28 +7625,30 @@ class SuggestedPositionedObjectProperties {
   });
 
   SuggestedPositionedObjectProperties.fromJson(core.Map json_)
-      : this(
-          positionedObjectProperties:
-              json_.containsKey('positionedObjectProperties')
-                  ? PositionedObjectProperties.fromJson(
-                      json_['positionedObjectProperties']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          positionedObjectPropertiesSuggestionState:
-              json_.containsKey('positionedObjectPropertiesSuggestionState')
-                  ? PositionedObjectPropertiesSuggestionState.fromJson(
-                      json_['positionedObjectPropertiesSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        positionedObjectProperties:
+            json_.containsKey('positionedObjectProperties')
+                ? PositionedObjectProperties.fromJson(
+                  json_['positionedObjectProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        positionedObjectPropertiesSuggestionState:
+            json_.containsKey('positionedObjectPropertiesSuggestionState')
+                ? PositionedObjectPropertiesSuggestionState.fromJson(
+                  json_['positionedObjectPropertiesSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (positionedObjectProperties != null)
-          'positionedObjectProperties': positionedObjectProperties!,
-        if (positionedObjectPropertiesSuggestionState != null)
-          'positionedObjectPropertiesSuggestionState':
-              positionedObjectPropertiesSuggestionState!,
-      };
+    if (positionedObjectProperties != null)
+      'positionedObjectProperties': positionedObjectProperties!,
+    if (positionedObjectPropertiesSuggestionState != null)
+      'positionedObjectPropertiesSuggestionState':
+          positionedObjectPropertiesSuggestionState!,
+  };
 }
 
 /// A suggested change to a TableCellStyle.
@@ -7336,24 +7669,28 @@ class SuggestedTableCellStyle {
   });
 
   SuggestedTableCellStyle.fromJson(core.Map json_)
-      : this(
-          tableCellStyle: json_.containsKey('tableCellStyle')
-              ? TableCellStyle.fromJson(json_['tableCellStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          tableCellStyleSuggestionState:
-              json_.containsKey('tableCellStyleSuggestionState')
-                  ? TableCellStyleSuggestionState.fromJson(
-                      json_['tableCellStyleSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        tableCellStyle:
+            json_.containsKey('tableCellStyle')
+                ? TableCellStyle.fromJson(
+                  json_['tableCellStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tableCellStyleSuggestionState:
+            json_.containsKey('tableCellStyleSuggestionState')
+                ? TableCellStyleSuggestionState.fromJson(
+                  json_['tableCellStyleSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tableCellStyle != null) 'tableCellStyle': tableCellStyle!,
-        if (tableCellStyleSuggestionState != null)
-          'tableCellStyleSuggestionState': tableCellStyleSuggestionState!,
-      };
+    if (tableCellStyle != null) 'tableCellStyle': tableCellStyle!,
+    if (tableCellStyleSuggestionState != null)
+      'tableCellStyleSuggestionState': tableCellStyleSuggestionState!,
+  };
 }
 
 /// A suggested change to a TableRowStyle.
@@ -7374,24 +7711,27 @@ class SuggestedTableRowStyle {
   });
 
   SuggestedTableRowStyle.fromJson(core.Map json_)
-      : this(
-          tableRowStyle: json_.containsKey('tableRowStyle')
-              ? TableRowStyle.fromJson(
-                  json_['tableRowStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tableRowStyleSuggestionState:
-              json_.containsKey('tableRowStyleSuggestionState')
-                  ? TableRowStyleSuggestionState.fromJson(
-                      json_['tableRowStyleSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        tableRowStyle:
+            json_.containsKey('tableRowStyle')
+                ? TableRowStyle.fromJson(
+                  json_['tableRowStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tableRowStyleSuggestionState:
+            json_.containsKey('tableRowStyleSuggestionState')
+                ? TableRowStyleSuggestionState.fromJson(
+                  json_['tableRowStyleSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tableRowStyle != null) 'tableRowStyle': tableRowStyle!,
-        if (tableRowStyleSuggestionState != null)
-          'tableRowStyleSuggestionState': tableRowStyleSuggestionState!,
-      };
+    if (tableRowStyle != null) 'tableRowStyle': tableRowStyle!,
+    if (tableRowStyleSuggestionState != null)
+      'tableRowStyleSuggestionState': tableRowStyleSuggestionState!,
+  };
 }
 
 /// A suggested change to a TextStyle.
@@ -7406,30 +7746,30 @@ class SuggestedTextStyle {
   /// changed in this suggestion.
   TextStyleSuggestionState? textStyleSuggestionState;
 
-  SuggestedTextStyle({
-    this.textStyle,
-    this.textStyleSuggestionState,
-  });
+  SuggestedTextStyle({this.textStyle, this.textStyleSuggestionState});
 
   SuggestedTextStyle.fromJson(core.Map json_)
-      : this(
-          textStyle: json_.containsKey('textStyle')
-              ? TextStyle.fromJson(
-                  json_['textStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textStyleSuggestionState:
-              json_.containsKey('textStyleSuggestionState')
-                  ? TextStyleSuggestionState.fromJson(
-                      json_['textStyleSuggestionState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textStyleSuggestionState:
+            json_.containsKey('textStyleSuggestionState')
+                ? TextStyleSuggestionState.fromJson(
+                  json_['textStyleSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (textStyle != null) 'textStyle': textStyle!,
-        if (textStyleSuggestionState != null)
-          'textStyleSuggestionState': textStyleSuggestionState!,
-      };
+    if (textStyle != null) 'textStyle': textStyle!,
+    if (textStyleSuggestionState != null)
+      'textStyleSuggestionState': textStyleSuggestionState!,
+  };
 }
 
 /// A tab in a document.
@@ -7443,33 +7783,37 @@ class Tab {
   /// The properties of the tab, like ID and title.
   TabProperties? tabProperties;
 
-  Tab({
-    this.childTabs,
-    this.documentTab,
-    this.tabProperties,
-  });
+  Tab({this.childTabs, this.documentTab, this.tabProperties});
 
   Tab.fromJson(core.Map json_)
-      : this(
-          childTabs: (json_['childTabs'] as core.List?)
-              ?.map((value) =>
-                  Tab.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          documentTab: json_.containsKey('documentTab')
-              ? DocumentTab.fromJson(
-                  json_['documentTab'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tabProperties: json_.containsKey('tabProperties')
-              ? TabProperties.fromJson(
-                  json_['tabProperties'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        childTabs:
+            (json_['childTabs'] as core.List?)
+                ?.map(
+                  (value) => Tab.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        documentTab:
+            json_.containsKey('documentTab')
+                ? DocumentTab.fromJson(
+                  json_['documentTab'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tabProperties:
+            json_.containsKey('tabProperties')
+                ? TabProperties.fromJson(
+                  json_['tabProperties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (childTabs != null) 'childTabs': childTabs!,
-        if (documentTab != null) 'documentTab': documentTab!,
-        if (tabProperties != null) 'tabProperties': tabProperties!,
-      };
+    if (childTabs != null) 'childTabs': childTabs!,
+    if (documentTab != null) 'documentTab': documentTab!,
+    if (tabProperties != null) 'tabProperties': tabProperties!,
+  };
 }
 
 /// Properties of a tab.
@@ -7511,21 +7855,21 @@ class TabProperties {
   });
 
   TabProperties.fromJson(core.Map json_)
-      : this(
-          index: json_['index'] as core.int?,
-          nestingLevel: json_['nestingLevel'] as core.int?,
-          parentTabId: json_['parentTabId'] as core.String?,
-          tabId: json_['tabId'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        index: json_['index'] as core.int?,
+        nestingLevel: json_['nestingLevel'] as core.int?,
+        parentTabId: json_['parentTabId'] as core.String?,
+        tabId: json_['tabId'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (index != null) 'index': index!,
-        if (nestingLevel != null) 'nestingLevel': nestingLevel!,
-        if (parentTabId != null) 'parentTabId': parentTabId!,
-        if (tabId != null) 'tabId': tabId!,
-        if (title != null) 'title': title!,
-      };
+    if (index != null) 'index': index!,
+    if (nestingLevel != null) 'nestingLevel': nestingLevel!,
+    if (parentTabId != null) 'parentTabId': parentTabId!,
+    if (tabId != null) 'tabId': tabId!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// A tab stop within a paragraph.
@@ -7545,24 +7889,23 @@ class TabStop {
   /// The offset between this tab stop and the start margin.
   Dimension? offset;
 
-  TabStop({
-    this.alignment,
-    this.offset,
-  });
+  TabStop({this.alignment, this.offset});
 
   TabStop.fromJson(core.Map json_)
-      : this(
-          alignment: json_['alignment'] as core.String?,
-          offset: json_.containsKey('offset')
-              ? Dimension.fromJson(
-                  json_['offset'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        alignment: json_['alignment'] as core.String?,
+        offset:
+            json_.containsKey('offset')
+                ? Dimension.fromJson(
+                  json_['offset'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alignment != null) 'alignment': alignment!,
-        if (offset != null) 'offset': offset!,
-      };
+    if (alignment != null) 'alignment': alignment!,
+    if (offset != null) 'offset': offset!,
+  };
 }
 
 /// A StructuralElement representing a table.
@@ -7603,35 +7946,43 @@ class Table {
   });
 
   Table.fromJson(core.Map json_)
-      : this(
-          columns: json_['columns'] as core.int?,
-          rows: json_['rows'] as core.int?,
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          tableRows: (json_['tableRows'] as core.List?)
-              ?.map((value) => TableRow.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          tableStyle: json_.containsKey('tableStyle')
-              ? TableStyle.fromJson(
-                  json_['tableStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        columns: json_['columns'] as core.int?,
+        rows: json_['rows'] as core.int?,
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        tableRows:
+            (json_['tableRows'] as core.List?)
+                ?.map(
+                  (value) => TableRow.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        tableStyle:
+            json_.containsKey('tableStyle')
+                ? TableStyle.fromJson(
+                  json_['tableStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columns != null) 'columns': columns!,
-        if (rows != null) 'rows': rows!,
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-        if (tableRows != null) 'tableRows': tableRows!,
-        if (tableStyle != null) 'tableStyle': tableStyle!,
-      };
+    if (columns != null) 'columns': columns!,
+    if (rows != null) 'rows': rows!,
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+    if (tableRows != null) 'tableRows': tableRows!,
+    if (tableStyle != null) 'tableStyle': tableStyle!,
+  };
 }
 
 /// The contents and style of a cell in a Table.
@@ -7658,7 +8009,7 @@ class TableCell {
 
   /// The suggested changes to the table cell style, keyed by suggestion ID.
   core.Map<core.String, SuggestedTableCellStyle>?
-      suggestedTableCellStyleChanges;
+  suggestedTableCellStyleChanges;
 
   /// The style of the cell.
   TableCellStyle? tableCellStyle;
@@ -7674,47 +8025,56 @@ class TableCell {
   });
 
   TableCell.fromJson(core.Map json_)
-      : this(
-          content: (json_['content'] as core.List?)
-              ?.map((value) => StructuralElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          endIndex: json_['endIndex'] as core.int?,
-          startIndex: json_['startIndex'] as core.int?,
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedTableCellStyleChanges:
-              (json_['suggestedTableCellStyleChanges']
-                      as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedTableCellStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        content:
+            (json_['content'] as core.List?)
+                ?.map(
+                  (value) => StructuralElement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        endIndex: json_['endIndex'] as core.int?,
+        startIndex: json_['startIndex'] as core.int?,
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedTableCellStyleChanges: (json_['suggestedTableCellStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedTableCellStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          tableCellStyle: json_.containsKey('tableCellStyle')
-              ? TableCellStyle.fromJson(json_['tableCellStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        tableCellStyle:
+            json_.containsKey('tableCellStyle')
+                ? TableCellStyle.fromJson(
+                  json_['tableCellStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (endIndex != null) 'endIndex': endIndex!,
-        if (startIndex != null) 'startIndex': startIndex!,
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-        if (suggestedTableCellStyleChanges != null)
-          'suggestedTableCellStyleChanges': suggestedTableCellStyleChanges!,
-        if (tableCellStyle != null) 'tableCellStyle': tableCellStyle!,
-      };
+    if (content != null) 'content': content!,
+    if (endIndex != null) 'endIndex': endIndex!,
+    if (startIndex != null) 'startIndex': startIndex!,
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+    if (suggestedTableCellStyleChanges != null)
+      'suggestedTableCellStyleChanges': suggestedTableCellStyleChanges!,
+    if (tableCellStyle != null) 'tableCellStyle': tableCellStyle!,
+  };
 }
 
 /// A border around a table cell.
@@ -7741,30 +8101,30 @@ class TableCellBorder {
   /// The width of the border.
   Dimension? width;
 
-  TableCellBorder({
-    this.color,
-    this.dashStyle,
-    this.width,
-  });
+  TableCellBorder({this.color, this.dashStyle, this.width});
 
   TableCellBorder.fromJson(core.Map json_)
-      : this(
-          color: json_.containsKey('color')
-              ? OptionalColor.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dashStyle: json_['dashStyle'] as core.String?,
-          width: json_.containsKey('width')
-              ? Dimension.fromJson(
-                  json_['width'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        color:
+            json_.containsKey('color')
+                ? OptionalColor.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dashStyle: json_['dashStyle'] as core.String?,
+        width:
+            json_.containsKey('width')
+                ? Dimension.fromJson(
+                  json_['width'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!,
-        if (dashStyle != null) 'dashStyle': dashStyle!,
-        if (width != null) 'width': width!,
-      };
+    if (color != null) 'color': color!,
+    if (dashStyle != null) 'dashStyle': dashStyle!,
+    if (width != null) 'width': width!,
+  };
 }
 
 /// Location of a single cell within a table.
@@ -7782,28 +8142,26 @@ class TableCellLocation {
   /// The location where the table starts in the document.
   Location? tableStartLocation;
 
-  TableCellLocation({
-    this.columnIndex,
-    this.rowIndex,
-    this.tableStartLocation,
-  });
+  TableCellLocation({this.columnIndex, this.rowIndex, this.tableStartLocation});
 
   TableCellLocation.fromJson(core.Map json_)
-      : this(
-          columnIndex: json_['columnIndex'] as core.int?,
-          rowIndex: json_['rowIndex'] as core.int?,
-          tableStartLocation: json_.containsKey('tableStartLocation')
-              ? Location.fromJson(json_['tableStartLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        columnIndex: json_['columnIndex'] as core.int?,
+        rowIndex: json_['rowIndex'] as core.int?,
+        tableStartLocation:
+            json_.containsKey('tableStartLocation')
+                ? Location.fromJson(
+                  json_['tableStartLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnIndex != null) 'columnIndex': columnIndex!,
-        if (rowIndex != null) 'rowIndex': rowIndex!,
-        if (tableStartLocation != null)
-          'tableStartLocation': tableStartLocation!,
-      };
+    if (columnIndex != null) 'columnIndex': columnIndex!,
+    if (rowIndex != null) 'rowIndex': rowIndex!,
+    if (tableStartLocation != null) 'tableStartLocation': tableStartLocation!,
+  };
 }
 
 /// The style of a TableCell.
@@ -7880,62 +8238,81 @@ class TableCellStyle {
   });
 
   TableCellStyle.fromJson(core.Map json_)
-      : this(
-          backgroundColor: json_.containsKey('backgroundColor')
-              ? OptionalColor.fromJson(json_['backgroundColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          borderBottom: json_.containsKey('borderBottom')
-              ? TableCellBorder.fromJson(
-                  json_['borderBottom'] as core.Map<core.String, core.dynamic>)
-              : null,
-          borderLeft: json_.containsKey('borderLeft')
-              ? TableCellBorder.fromJson(
-                  json_['borderLeft'] as core.Map<core.String, core.dynamic>)
-              : null,
-          borderRight: json_.containsKey('borderRight')
-              ? TableCellBorder.fromJson(
-                  json_['borderRight'] as core.Map<core.String, core.dynamic>)
-              : null,
-          borderTop: json_.containsKey('borderTop')
-              ? TableCellBorder.fromJson(
-                  json_['borderTop'] as core.Map<core.String, core.dynamic>)
-              : null,
-          columnSpan: json_['columnSpan'] as core.int?,
-          contentAlignment: json_['contentAlignment'] as core.String?,
-          paddingBottom: json_.containsKey('paddingBottom')
-              ? Dimension.fromJson(
-                  json_['paddingBottom'] as core.Map<core.String, core.dynamic>)
-              : null,
-          paddingLeft: json_.containsKey('paddingLeft')
-              ? Dimension.fromJson(
-                  json_['paddingLeft'] as core.Map<core.String, core.dynamic>)
-              : null,
-          paddingRight: json_.containsKey('paddingRight')
-              ? Dimension.fromJson(
-                  json_['paddingRight'] as core.Map<core.String, core.dynamic>)
-              : null,
-          paddingTop: json_.containsKey('paddingTop')
-              ? Dimension.fromJson(
-                  json_['paddingTop'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rowSpan: json_['rowSpan'] as core.int?,
-        );
+    : this(
+        backgroundColor:
+            json_.containsKey('backgroundColor')
+                ? OptionalColor.fromJson(
+                  json_['backgroundColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        borderBottom:
+            json_.containsKey('borderBottom')
+                ? TableCellBorder.fromJson(
+                  json_['borderBottom'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        borderLeft:
+            json_.containsKey('borderLeft')
+                ? TableCellBorder.fromJson(
+                  json_['borderLeft'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        borderRight:
+            json_.containsKey('borderRight')
+                ? TableCellBorder.fromJson(
+                  json_['borderRight'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        borderTop:
+            json_.containsKey('borderTop')
+                ? TableCellBorder.fromJson(
+                  json_['borderTop'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        columnSpan: json_['columnSpan'] as core.int?,
+        contentAlignment: json_['contentAlignment'] as core.String?,
+        paddingBottom:
+            json_.containsKey('paddingBottom')
+                ? Dimension.fromJson(
+                  json_['paddingBottom'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        paddingLeft:
+            json_.containsKey('paddingLeft')
+                ? Dimension.fromJson(
+                  json_['paddingLeft'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        paddingRight:
+            json_.containsKey('paddingRight')
+                ? Dimension.fromJson(
+                  json_['paddingRight'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        paddingTop:
+            json_.containsKey('paddingTop')
+                ? Dimension.fromJson(
+                  json_['paddingTop'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rowSpan: json_['rowSpan'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
-        if (borderBottom != null) 'borderBottom': borderBottom!,
-        if (borderLeft != null) 'borderLeft': borderLeft!,
-        if (borderRight != null) 'borderRight': borderRight!,
-        if (borderTop != null) 'borderTop': borderTop!,
-        if (columnSpan != null) 'columnSpan': columnSpan!,
-        if (contentAlignment != null) 'contentAlignment': contentAlignment!,
-        if (paddingBottom != null) 'paddingBottom': paddingBottom!,
-        if (paddingLeft != null) 'paddingLeft': paddingLeft!,
-        if (paddingRight != null) 'paddingRight': paddingRight!,
-        if (paddingTop != null) 'paddingTop': paddingTop!,
-        if (rowSpan != null) 'rowSpan': rowSpan!,
-      };
+    if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+    if (borderBottom != null) 'borderBottom': borderBottom!,
+    if (borderLeft != null) 'borderLeft': borderLeft!,
+    if (borderRight != null) 'borderRight': borderRight!,
+    if (borderTop != null) 'borderTop': borderTop!,
+    if (columnSpan != null) 'columnSpan': columnSpan!,
+    if (contentAlignment != null) 'contentAlignment': contentAlignment!,
+    if (paddingBottom != null) 'paddingBottom': paddingBottom!,
+    if (paddingLeft != null) 'paddingLeft': paddingLeft!,
+    if (paddingRight != null) 'paddingRight': paddingRight!,
+    if (paddingTop != null) 'paddingTop': paddingTop!,
+    if (rowSpan != null) 'rowSpan': rowSpan!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base TableCellStyle have
@@ -7995,48 +8372,47 @@ class TableCellStyleSuggestionState {
   });
 
   TableCellStyleSuggestionState.fromJson(core.Map json_)
-      : this(
-          backgroundColorSuggested:
-              json_['backgroundColorSuggested'] as core.bool?,
-          borderBottomSuggested: json_['borderBottomSuggested'] as core.bool?,
-          borderLeftSuggested: json_['borderLeftSuggested'] as core.bool?,
-          borderRightSuggested: json_['borderRightSuggested'] as core.bool?,
-          borderTopSuggested: json_['borderTopSuggested'] as core.bool?,
-          columnSpanSuggested: json_['columnSpanSuggested'] as core.bool?,
-          contentAlignmentSuggested:
-              json_['contentAlignmentSuggested'] as core.bool?,
-          paddingBottomSuggested: json_['paddingBottomSuggested'] as core.bool?,
-          paddingLeftSuggested: json_['paddingLeftSuggested'] as core.bool?,
-          paddingRightSuggested: json_['paddingRightSuggested'] as core.bool?,
-          paddingTopSuggested: json_['paddingTopSuggested'] as core.bool?,
-          rowSpanSuggested: json_['rowSpanSuggested'] as core.bool?,
-        );
+    : this(
+        backgroundColorSuggested:
+            json_['backgroundColorSuggested'] as core.bool?,
+        borderBottomSuggested: json_['borderBottomSuggested'] as core.bool?,
+        borderLeftSuggested: json_['borderLeftSuggested'] as core.bool?,
+        borderRightSuggested: json_['borderRightSuggested'] as core.bool?,
+        borderTopSuggested: json_['borderTopSuggested'] as core.bool?,
+        columnSpanSuggested: json_['columnSpanSuggested'] as core.bool?,
+        contentAlignmentSuggested:
+            json_['contentAlignmentSuggested'] as core.bool?,
+        paddingBottomSuggested: json_['paddingBottomSuggested'] as core.bool?,
+        paddingLeftSuggested: json_['paddingLeftSuggested'] as core.bool?,
+        paddingRightSuggested: json_['paddingRightSuggested'] as core.bool?,
+        paddingTopSuggested: json_['paddingTopSuggested'] as core.bool?,
+        rowSpanSuggested: json_['rowSpanSuggested'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundColorSuggested != null)
-          'backgroundColorSuggested': backgroundColorSuggested!,
-        if (borderBottomSuggested != null)
-          'borderBottomSuggested': borderBottomSuggested!,
-        if (borderLeftSuggested != null)
-          'borderLeftSuggested': borderLeftSuggested!,
-        if (borderRightSuggested != null)
-          'borderRightSuggested': borderRightSuggested!,
-        if (borderTopSuggested != null)
-          'borderTopSuggested': borderTopSuggested!,
-        if (columnSpanSuggested != null)
-          'columnSpanSuggested': columnSpanSuggested!,
-        if (contentAlignmentSuggested != null)
-          'contentAlignmentSuggested': contentAlignmentSuggested!,
-        if (paddingBottomSuggested != null)
-          'paddingBottomSuggested': paddingBottomSuggested!,
-        if (paddingLeftSuggested != null)
-          'paddingLeftSuggested': paddingLeftSuggested!,
-        if (paddingRightSuggested != null)
-          'paddingRightSuggested': paddingRightSuggested!,
-        if (paddingTopSuggested != null)
-          'paddingTopSuggested': paddingTopSuggested!,
-        if (rowSpanSuggested != null) 'rowSpanSuggested': rowSpanSuggested!,
-      };
+    if (backgroundColorSuggested != null)
+      'backgroundColorSuggested': backgroundColorSuggested!,
+    if (borderBottomSuggested != null)
+      'borderBottomSuggested': borderBottomSuggested!,
+    if (borderLeftSuggested != null)
+      'borderLeftSuggested': borderLeftSuggested!,
+    if (borderRightSuggested != null)
+      'borderRightSuggested': borderRightSuggested!,
+    if (borderTopSuggested != null) 'borderTopSuggested': borderTopSuggested!,
+    if (columnSpanSuggested != null)
+      'columnSpanSuggested': columnSpanSuggested!,
+    if (contentAlignmentSuggested != null)
+      'contentAlignmentSuggested': contentAlignmentSuggested!,
+    if (paddingBottomSuggested != null)
+      'paddingBottomSuggested': paddingBottomSuggested!,
+    if (paddingLeftSuggested != null)
+      'paddingLeftSuggested': paddingLeftSuggested!,
+    if (paddingRightSuggested != null)
+      'paddingRightSuggested': paddingRightSuggested!,
+    if (paddingTopSuggested != null)
+      'paddingTopSuggested': paddingTopSuggested!,
+    if (rowSpanSuggested != null) 'rowSpanSuggested': rowSpanSuggested!,
+  };
 }
 
 /// The properties of a column in a table.
@@ -8057,24 +8433,23 @@ class TableColumnProperties {
   /// column's width.
   core.String? widthType;
 
-  TableColumnProperties({
-    this.width,
-    this.widthType,
-  });
+  TableColumnProperties({this.width, this.widthType});
 
   TableColumnProperties.fromJson(core.Map json_)
-      : this(
-          width: json_.containsKey('width')
-              ? Dimension.fromJson(
-                  json_['width'] as core.Map<core.String, core.dynamic>)
-              : null,
-          widthType: json_['widthType'] as core.String?,
-        );
+    : this(
+        width:
+            json_.containsKey('width')
+                ? Dimension.fromJson(
+                  json_['width'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        widthType: json_['widthType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (width != null) 'width': width!,
-        if (widthType != null) 'widthType': widthType!,
-      };
+    if (width != null) 'width': width!,
+    if (widthType != null) 'widthType': widthType!,
+  };
 }
 
 /// A StructuralElement representing a table of contents.
@@ -8100,26 +8475,32 @@ class TableOfContents {
   });
 
   TableOfContents.fromJson(core.Map json_)
-      : this(
-          content: (json_['content'] as core.List?)
-              ?.map((value) => StructuralElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        content:
+            (json_['content'] as core.List?)
+                ?.map(
+                  (value) => StructuralElement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-      };
+    if (content != null) 'content': content!,
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+  };
 }
 
 /// A table range represents a reference to a subset of a table.
@@ -8140,27 +8521,26 @@ class TableRange {
   /// The cell location where the table range starts.
   TableCellLocation? tableCellLocation;
 
-  TableRange({
-    this.columnSpan,
-    this.rowSpan,
-    this.tableCellLocation,
-  });
+  TableRange({this.columnSpan, this.rowSpan, this.tableCellLocation});
 
   TableRange.fromJson(core.Map json_)
-      : this(
-          columnSpan: json_['columnSpan'] as core.int?,
-          rowSpan: json_['rowSpan'] as core.int?,
-          tableCellLocation: json_.containsKey('tableCellLocation')
-              ? TableCellLocation.fromJson(json_['tableCellLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        columnSpan: json_['columnSpan'] as core.int?,
+        rowSpan: json_['rowSpan'] as core.int?,
+        tableCellLocation:
+            json_.containsKey('tableCellLocation')
+                ? TableCellLocation.fromJson(
+                  json_['tableCellLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnSpan != null) 'columnSpan': columnSpan!,
-        if (rowSpan != null) 'rowSpan': rowSpan!,
-        if (tableCellLocation != null) 'tableCellLocation': tableCellLocation!,
-      };
+    if (columnSpan != null) 'columnSpan': columnSpan!,
+    if (rowSpan != null) 'rowSpan': rowSpan!,
+    if (tableCellLocation != null) 'tableCellLocation': tableCellLocation!,
+  };
 }
 
 /// The contents and style of a row in a Table.
@@ -8205,46 +8585,55 @@ class TableRow {
   });
 
   TableRow.fromJson(core.Map json_)
-      : this(
-          endIndex: json_['endIndex'] as core.int?,
-          startIndex: json_['startIndex'] as core.int?,
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedTableRowStyleChanges: (json_['suggestedTableRowStyleChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedTableRowStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        endIndex: json_['endIndex'] as core.int?,
+        startIndex: json_['startIndex'] as core.int?,
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedTableRowStyleChanges: (json_['suggestedTableRowStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedTableRowStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          tableCells: (json_['tableCells'] as core.List?)
-              ?.map((value) => TableCell.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          tableRowStyle: json_.containsKey('tableRowStyle')
-              ? TableRowStyle.fromJson(
-                  json_['tableRowStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        tableCells:
+            (json_['tableCells'] as core.List?)
+                ?.map(
+                  (value) => TableCell.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        tableRowStyle:
+            json_.containsKey('tableRowStyle')
+                ? TableRowStyle.fromJson(
+                  json_['tableRowStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endIndex != null) 'endIndex': endIndex!,
-        if (startIndex != null) 'startIndex': startIndex!,
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-        if (suggestedTableRowStyleChanges != null)
-          'suggestedTableRowStyleChanges': suggestedTableRowStyleChanges!,
-        if (tableCells != null) 'tableCells': tableCells!,
-        if (tableRowStyle != null) 'tableRowStyle': tableRowStyle!,
-      };
+    if (endIndex != null) 'endIndex': endIndex!,
+    if (startIndex != null) 'startIndex': startIndex!,
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+    if (suggestedTableRowStyleChanges != null)
+      'suggestedTableRowStyleChanges': suggestedTableRowStyleChanges!,
+    if (tableCells != null) 'tableCells': tableCells!,
+    if (tableRowStyle != null) 'tableRowStyle': tableRowStyle!,
+  };
 }
 
 /// Styles that apply to a table row.
@@ -8262,27 +8651,25 @@ class TableRowStyle {
   /// Whether the row is a table header.
   core.bool? tableHeader;
 
-  TableRowStyle({
-    this.minRowHeight,
-    this.preventOverflow,
-    this.tableHeader,
-  });
+  TableRowStyle({this.minRowHeight, this.preventOverflow, this.tableHeader});
 
   TableRowStyle.fromJson(core.Map json_)
-      : this(
-          minRowHeight: json_.containsKey('minRowHeight')
-              ? Dimension.fromJson(
-                  json_['minRowHeight'] as core.Map<core.String, core.dynamic>)
-              : null,
-          preventOverflow: json_['preventOverflow'] as core.bool?,
-          tableHeader: json_['tableHeader'] as core.bool?,
-        );
+    : this(
+        minRowHeight:
+            json_.containsKey('minRowHeight')
+                ? Dimension.fromJson(
+                  json_['minRowHeight'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        preventOverflow: json_['preventOverflow'] as core.bool?,
+        tableHeader: json_['tableHeader'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (minRowHeight != null) 'minRowHeight': minRowHeight!,
-        if (preventOverflow != null) 'preventOverflow': preventOverflow!,
-        if (tableHeader != null) 'tableHeader': tableHeader!,
-      };
+    if (minRowHeight != null) 'minRowHeight': minRowHeight!,
+    if (preventOverflow != null) 'preventOverflow': preventOverflow!,
+    if (tableHeader != null) 'tableHeader': tableHeader!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base TableRowStyle have
@@ -8293,19 +8680,15 @@ class TableRowStyleSuggestionState {
   /// Indicates if there was a suggested change to min_row_height.
   core.bool? minRowHeightSuggested;
 
-  TableRowStyleSuggestionState({
-    this.minRowHeightSuggested,
-  });
+  TableRowStyleSuggestionState({this.minRowHeightSuggested});
 
   TableRowStyleSuggestionState.fromJson(core.Map json_)
-      : this(
-          minRowHeightSuggested: json_['minRowHeightSuggested'] as core.bool?,
-        );
+    : this(minRowHeightSuggested: json_['minRowHeightSuggested'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (minRowHeightSuggested != null)
-          'minRowHeightSuggested': minRowHeightSuggested!,
-      };
+    if (minRowHeightSuggested != null)
+      'minRowHeightSuggested': minRowHeightSuggested!,
+  };
 }
 
 /// Styles that apply to a table.
@@ -8317,22 +8700,24 @@ class TableStyle {
   /// table_row_style.
   core.List<TableColumnProperties>? tableColumnProperties;
 
-  TableStyle({
-    this.tableColumnProperties,
-  });
+  TableStyle({this.tableColumnProperties});
 
   TableStyle.fromJson(core.Map json_)
-      : this(
-          tableColumnProperties: (json_['tableColumnProperties'] as core.List?)
-              ?.map((value) => TableColumnProperties.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        tableColumnProperties:
+            (json_['tableColumnProperties'] as core.List?)
+                ?.map(
+                  (value) => TableColumnProperties.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tableColumnProperties != null)
-          'tableColumnProperties': tableColumnProperties!,
-      };
+    if (tableColumnProperties != null)
+      'tableColumnProperties': tableColumnProperties!,
+  };
 }
 
 /// A criteria that specifies in which tabs a request executes.
@@ -8340,20 +8725,19 @@ class TabsCriteria {
   /// The list of tab IDs in which the request executes.
   core.List<core.String>? tabIds;
 
-  TabsCriteria({
-    this.tabIds,
-  });
+  TabsCriteria({this.tabIds});
 
   TabsCriteria.fromJson(core.Map json_)
-      : this(
-          tabIds: (json_['tabIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        tabIds:
+            (json_['tabIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tabIds != null) 'tabIds': tabIds!,
-      };
+    if (tabIds != null) 'tabIds': tabIds!,
+  };
 }
 
 /// A ParagraphElement that represents a run of text that all has the same
@@ -8391,39 +8775,44 @@ class TextRun {
   });
 
   TextRun.fromJson(core.Map json_)
-      : this(
-          content: json_['content'] as core.String?,
-          suggestedDeletionIds: (json_['suggestedDeletionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedInsertionIds: (json_['suggestedInsertionIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              SuggestedTextStyle.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        content: json_['content'] as core.String?,
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          textStyle: json_.containsKey('textStyle')
-              ? TextStyle.fromJson(
-                  json_['textStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (suggestedDeletionIds != null)
-          'suggestedDeletionIds': suggestedDeletionIds!,
-        if (suggestedInsertionIds != null)
-          'suggestedInsertionIds': suggestedInsertionIds!,
-        if (suggestedTextStyleChanges != null)
-          'suggestedTextStyleChanges': suggestedTextStyleChanges!,
-        if (textStyle != null) 'textStyle': textStyle!,
-      };
+    if (content != null) 'content': content!,
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+    if (suggestedTextStyleChanges != null)
+      'suggestedTextStyleChanges': suggestedTextStyleChanges!,
+    if (textStyle != null) 'textStyle': textStyle!,
+  };
 }
 
 /// Represents the styling that can be applied to text.
@@ -8526,49 +8915,61 @@ class TextStyle {
   });
 
   TextStyle.fromJson(core.Map json_)
-      : this(
-          backgroundColor: json_.containsKey('backgroundColor')
-              ? OptionalColor.fromJson(json_['backgroundColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          baselineOffset: json_['baselineOffset'] as core.String?,
-          bold: json_['bold'] as core.bool?,
-          fontSize: json_.containsKey('fontSize')
-              ? Dimension.fromJson(
-                  json_['fontSize'] as core.Map<core.String, core.dynamic>)
-              : null,
-          foregroundColor: json_.containsKey('foregroundColor')
-              ? OptionalColor.fromJson(json_['foregroundColor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          italic: json_['italic'] as core.bool?,
-          link: json_.containsKey('link')
-              ? Link.fromJson(
-                  json_['link'] as core.Map<core.String, core.dynamic>)
-              : null,
-          smallCaps: json_['smallCaps'] as core.bool?,
-          strikethrough: json_['strikethrough'] as core.bool?,
-          underline: json_['underline'] as core.bool?,
-          weightedFontFamily: json_.containsKey('weightedFontFamily')
-              ? WeightedFontFamily.fromJson(json_['weightedFontFamily']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        backgroundColor:
+            json_.containsKey('backgroundColor')
+                ? OptionalColor.fromJson(
+                  json_['backgroundColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        baselineOffset: json_['baselineOffset'] as core.String?,
+        bold: json_['bold'] as core.bool?,
+        fontSize:
+            json_.containsKey('fontSize')
+                ? Dimension.fromJson(
+                  json_['fontSize'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        foregroundColor:
+            json_.containsKey('foregroundColor')
+                ? OptionalColor.fromJson(
+                  json_['foregroundColor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        italic: json_['italic'] as core.bool?,
+        link:
+            json_.containsKey('link')
+                ? Link.fromJson(
+                  json_['link'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        smallCaps: json_['smallCaps'] as core.bool?,
+        strikethrough: json_['strikethrough'] as core.bool?,
+        underline: json_['underline'] as core.bool?,
+        weightedFontFamily:
+            json_.containsKey('weightedFontFamily')
+                ? WeightedFontFamily.fromJson(
+                  json_['weightedFontFamily']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
-        if (baselineOffset != null) 'baselineOffset': baselineOffset!,
-        if (bold != null) 'bold': bold!,
-        if (fontSize != null) 'fontSize': fontSize!,
-        if (foregroundColor != null) 'foregroundColor': foregroundColor!,
-        if (italic != null) 'italic': italic!,
-        if (link != null) 'link': link!,
-        if (smallCaps != null) 'smallCaps': smallCaps!,
-        if (strikethrough != null) 'strikethrough': strikethrough!,
-        if (underline != null) 'underline': underline!,
-        if (weightedFontFamily != null)
-          'weightedFontFamily': weightedFontFamily!,
-      };
+    if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+    if (baselineOffset != null) 'baselineOffset': baselineOffset!,
+    if (bold != null) 'bold': bold!,
+    if (fontSize != null) 'fontSize': fontSize!,
+    if (foregroundColor != null) 'foregroundColor': foregroundColor!,
+    if (italic != null) 'italic': italic!,
+    if (link != null) 'link': link!,
+    if (smallCaps != null) 'smallCaps': smallCaps!,
+    if (strikethrough != null) 'strikethrough': strikethrough!,
+    if (underline != null) 'underline': underline!,
+    if (weightedFontFamily != null) 'weightedFontFamily': weightedFontFamily!,
+  };
 }
 
 /// A mask that indicates which of the fields on the base TextStyle have been
@@ -8624,44 +9025,41 @@ class TextStyleSuggestionState {
   });
 
   TextStyleSuggestionState.fromJson(core.Map json_)
-      : this(
-          backgroundColorSuggested:
-              json_['backgroundColorSuggested'] as core.bool?,
-          baselineOffsetSuggested:
-              json_['baselineOffsetSuggested'] as core.bool?,
-          boldSuggested: json_['boldSuggested'] as core.bool?,
-          fontSizeSuggested: json_['fontSizeSuggested'] as core.bool?,
-          foregroundColorSuggested:
-              json_['foregroundColorSuggested'] as core.bool?,
-          italicSuggested: json_['italicSuggested'] as core.bool?,
-          linkSuggested: json_['linkSuggested'] as core.bool?,
-          smallCapsSuggested: json_['smallCapsSuggested'] as core.bool?,
-          strikethroughSuggested: json_['strikethroughSuggested'] as core.bool?,
-          underlineSuggested: json_['underlineSuggested'] as core.bool?,
-          weightedFontFamilySuggested:
-              json_['weightedFontFamilySuggested'] as core.bool?,
-        );
+    : this(
+        backgroundColorSuggested:
+            json_['backgroundColorSuggested'] as core.bool?,
+        baselineOffsetSuggested: json_['baselineOffsetSuggested'] as core.bool?,
+        boldSuggested: json_['boldSuggested'] as core.bool?,
+        fontSizeSuggested: json_['fontSizeSuggested'] as core.bool?,
+        foregroundColorSuggested:
+            json_['foregroundColorSuggested'] as core.bool?,
+        italicSuggested: json_['italicSuggested'] as core.bool?,
+        linkSuggested: json_['linkSuggested'] as core.bool?,
+        smallCapsSuggested: json_['smallCapsSuggested'] as core.bool?,
+        strikethroughSuggested: json_['strikethroughSuggested'] as core.bool?,
+        underlineSuggested: json_['underlineSuggested'] as core.bool?,
+        weightedFontFamilySuggested:
+            json_['weightedFontFamilySuggested'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundColorSuggested != null)
-          'backgroundColorSuggested': backgroundColorSuggested!,
-        if (baselineOffsetSuggested != null)
-          'baselineOffsetSuggested': baselineOffsetSuggested!,
-        if (boldSuggested != null) 'boldSuggested': boldSuggested!,
-        if (fontSizeSuggested != null) 'fontSizeSuggested': fontSizeSuggested!,
-        if (foregroundColorSuggested != null)
-          'foregroundColorSuggested': foregroundColorSuggested!,
-        if (italicSuggested != null) 'italicSuggested': italicSuggested!,
-        if (linkSuggested != null) 'linkSuggested': linkSuggested!,
-        if (smallCapsSuggested != null)
-          'smallCapsSuggested': smallCapsSuggested!,
-        if (strikethroughSuggested != null)
-          'strikethroughSuggested': strikethroughSuggested!,
-        if (underlineSuggested != null)
-          'underlineSuggested': underlineSuggested!,
-        if (weightedFontFamilySuggested != null)
-          'weightedFontFamilySuggested': weightedFontFamilySuggested!,
-      };
+    if (backgroundColorSuggested != null)
+      'backgroundColorSuggested': backgroundColorSuggested!,
+    if (baselineOffsetSuggested != null)
+      'baselineOffsetSuggested': baselineOffsetSuggested!,
+    if (boldSuggested != null) 'boldSuggested': boldSuggested!,
+    if (fontSizeSuggested != null) 'fontSizeSuggested': fontSizeSuggested!,
+    if (foregroundColorSuggested != null)
+      'foregroundColorSuggested': foregroundColorSuggested!,
+    if (italicSuggested != null) 'italicSuggested': italicSuggested!,
+    if (linkSuggested != null) 'linkSuggested': linkSuggested!,
+    if (smallCapsSuggested != null) 'smallCapsSuggested': smallCapsSuggested!,
+    if (strikethroughSuggested != null)
+      'strikethroughSuggested': strikethroughSuggested!,
+    if (underlineSuggested != null) 'underlineSuggested': underlineSuggested!,
+    if (weightedFontFamilySuggested != null)
+      'weightedFontFamilySuggested': weightedFontFamilySuggested!,
+  };
 }
 
 /// Unmerges cells in a Table.
@@ -8676,21 +9074,21 @@ class UnmergeTableCellsRequest {
   /// is from left to right, and the upper-right otherwise.
   TableRange? tableRange;
 
-  UnmergeTableCellsRequest({
-    this.tableRange,
-  });
+  UnmergeTableCellsRequest({this.tableRange});
 
   UnmergeTableCellsRequest.fromJson(core.Map json_)
-      : this(
-          tableRange: json_.containsKey('tableRange')
-              ? TableRange.fromJson(
-                  json_['tableRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        tableRange:
+            json_.containsKey('tableRange')
+                ? TableRange.fromJson(
+                  json_['tableRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tableRange != null) 'tableRange': tableRange!,
-      };
+    if (tableRange != null) 'tableRange': tableRange!,
+  };
 }
 
 /// Updates the DocumentStyle.
@@ -8720,27 +9118,25 @@ class UpdateDocumentStyleRequest {
   /// the document.
   core.String? tabId;
 
-  UpdateDocumentStyleRequest({
-    this.documentStyle,
-    this.fields,
-    this.tabId,
-  });
+  UpdateDocumentStyleRequest({this.documentStyle, this.fields, this.tabId});
 
   UpdateDocumentStyleRequest.fromJson(core.Map json_)
-      : this(
-          documentStyle: json_.containsKey('documentStyle')
-              ? DocumentStyle.fromJson(
-                  json_['documentStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fields: json_['fields'] as core.String?,
-          tabId: json_['tabId'] as core.String?,
-        );
+    : this(
+        documentStyle:
+            json_.containsKey('documentStyle')
+                ? DocumentStyle.fromJson(
+                  json_['documentStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fields: json_['fields'] as core.String?,
+        tabId: json_['tabId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (documentStyle != null) 'documentStyle': documentStyle!,
-        if (fields != null) 'fields': fields!,
-        if (tabId != null) 'tabId': tabId!,
-      };
+    if (documentStyle != null) 'documentStyle': documentStyle!,
+    if (fields != null) 'fields': fields!,
+    if (tabId != null) 'tabId': tabId!,
+  };
 }
 
 /// Update the styling of all paragraphs that overlap with the given range.
@@ -8765,30 +9161,31 @@ class UpdateParagraphStyleRequest {
   /// The range overlapping the paragraphs to style.
   Range? range;
 
-  UpdateParagraphStyleRequest({
-    this.fields,
-    this.paragraphStyle,
-    this.range,
-  });
+  UpdateParagraphStyleRequest({this.fields, this.paragraphStyle, this.range});
 
   UpdateParagraphStyleRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          paragraphStyle: json_.containsKey('paragraphStyle')
-              ? ParagraphStyle.fromJson(json_['paragraphStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          range: json_.containsKey('range')
-              ? Range.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        paragraphStyle:
+            json_.containsKey('paragraphStyle')
+                ? ParagraphStyle.fromJson(
+                  json_['paragraphStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        range:
+            json_.containsKey('range')
+                ? Range.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (paragraphStyle != null) 'paragraphStyle': paragraphStyle!,
-        if (range != null) 'range': range!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (paragraphStyle != null) 'paragraphStyle': paragraphStyle!,
+    if (range != null) 'range': range!,
+  };
 }
 
 /// Updates the SectionStyle.
@@ -8814,30 +9211,30 @@ class UpdateSectionStyleRequest {
   /// more information.
   SectionStyle? sectionStyle;
 
-  UpdateSectionStyleRequest({
-    this.fields,
-    this.range,
-    this.sectionStyle,
-  });
+  UpdateSectionStyleRequest({this.fields, this.range, this.sectionStyle});
 
   UpdateSectionStyleRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          range: json_.containsKey('range')
-              ? Range.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sectionStyle: json_.containsKey('sectionStyle')
-              ? SectionStyle.fromJson(
-                  json_['sectionStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        range:
+            json_.containsKey('range')
+                ? Range.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sectionStyle:
+            json_.containsKey('sectionStyle')
+                ? SectionStyle.fromJson(
+                  json_['sectionStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (range != null) 'range': range!,
-        if (sectionStyle != null) 'sectionStyle': sectionStyle!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (range != null) 'range': range!,
+    if (sectionStyle != null) 'sectionStyle': sectionStyle!,
+  };
 }
 
 /// Updates the style of a range of table cells.
@@ -8879,29 +9276,36 @@ class UpdateTableCellStyleRequest {
   });
 
   UpdateTableCellStyleRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          tableCellStyle: json_.containsKey('tableCellStyle')
-              ? TableCellStyle.fromJson(json_['tableCellStyle']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          tableRange: json_.containsKey('tableRange')
-              ? TableRange.fromJson(
-                  json_['tableRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tableStartLocation: json_.containsKey('tableStartLocation')
-              ? Location.fromJson(json_['tableStartLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        tableCellStyle:
+            json_.containsKey('tableCellStyle')
+                ? TableCellStyle.fromJson(
+                  json_['tableCellStyle']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tableRange:
+            json_.containsKey('tableRange')
+                ? TableRange.fromJson(
+                  json_['tableRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tableStartLocation:
+            json_.containsKey('tableStartLocation')
+                ? Location.fromJson(
+                  json_['tableStartLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (tableCellStyle != null) 'tableCellStyle': tableCellStyle!,
-        if (tableRange != null) 'tableRange': tableRange!,
-        if (tableStartLocation != null)
-          'tableStartLocation': tableStartLocation!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (tableCellStyle != null) 'tableCellStyle': tableCellStyle!,
+    if (tableRange != null) 'tableRange': tableRange!,
+    if (tableStartLocation != null) 'tableStartLocation': tableStartLocation!,
+  };
 }
 
 /// Updates the TableColumnProperties of columns in a table.
@@ -8936,29 +9340,35 @@ class UpdateTableColumnPropertiesRequest {
   });
 
   UpdateTableColumnPropertiesRequest.fromJson(core.Map json_)
-      : this(
-          columnIndices: (json_['columnIndices'] as core.List?)
-              ?.map((value) => value as core.int)
-              .toList(),
-          fields: json_['fields'] as core.String?,
-          tableColumnProperties: json_.containsKey('tableColumnProperties')
-              ? TableColumnProperties.fromJson(json_['tableColumnProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          tableStartLocation: json_.containsKey('tableStartLocation')
-              ? Location.fromJson(json_['tableStartLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        columnIndices:
+            (json_['columnIndices'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        fields: json_['fields'] as core.String?,
+        tableColumnProperties:
+            json_.containsKey('tableColumnProperties')
+                ? TableColumnProperties.fromJson(
+                  json_['tableColumnProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tableStartLocation:
+            json_.containsKey('tableStartLocation')
+                ? Location.fromJson(
+                  json_['tableStartLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnIndices != null) 'columnIndices': columnIndices!,
-        if (fields != null) 'fields': fields!,
-        if (tableColumnProperties != null)
-          'tableColumnProperties': tableColumnProperties!,
-        if (tableStartLocation != null)
-          'tableStartLocation': tableStartLocation!,
-      };
+    if (columnIndices != null) 'columnIndices': columnIndices!,
+    if (fields != null) 'fields': fields!,
+    if (tableColumnProperties != null)
+      'tableColumnProperties': tableColumnProperties!,
+    if (tableStartLocation != null) 'tableStartLocation': tableStartLocation!,
+  };
 }
 
 /// Updates the TableRowStyle of rows in a table.
@@ -8990,28 +9400,33 @@ class UpdateTableRowStyleRequest {
   });
 
   UpdateTableRowStyleRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          rowIndices: (json_['rowIndices'] as core.List?)
-              ?.map((value) => value as core.int)
-              .toList(),
-          tableRowStyle: json_.containsKey('tableRowStyle')
-              ? TableRowStyle.fromJson(
-                  json_['tableRowStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tableStartLocation: json_.containsKey('tableStartLocation')
-              ? Location.fromJson(json_['tableStartLocation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        rowIndices:
+            (json_['rowIndices'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        tableRowStyle:
+            json_.containsKey('tableRowStyle')
+                ? TableRowStyle.fromJson(
+                  json_['tableRowStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tableStartLocation:
+            json_.containsKey('tableStartLocation')
+                ? Location.fromJson(
+                  json_['tableStartLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (rowIndices != null) 'rowIndices': rowIndices!,
-        if (tableRowStyle != null) 'tableRowStyle': tableRowStyle!,
-        if (tableStartLocation != null)
-          'tableStartLocation': tableStartLocation!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (rowIndices != null) 'rowIndices': rowIndices!,
+    if (tableRowStyle != null) 'tableRowStyle': tableRowStyle!,
+    if (tableStartLocation != null) 'tableStartLocation': tableStartLocation!,
+  };
 }
 
 /// Update the styling of text.
@@ -9041,30 +9456,30 @@ class UpdateTextStyleRequest {
   /// documentation of TextStyle for more information.
   TextStyle? textStyle;
 
-  UpdateTextStyleRequest({
-    this.fields,
-    this.range,
-    this.textStyle,
-  });
+  UpdateTextStyleRequest({this.fields, this.range, this.textStyle});
 
   UpdateTextStyleRequest.fromJson(core.Map json_)
-      : this(
-          fields: json_['fields'] as core.String?,
-          range: json_.containsKey('range')
-              ? Range.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textStyle: json_.containsKey('textStyle')
-              ? TextStyle.fromJson(
-                  json_['textStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        fields: json_['fields'] as core.String?,
+        range:
+            json_.containsKey('range')
+                ? Range.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fields != null) 'fields': fields!,
-        if (range != null) 'range': range!,
-        if (textStyle != null) 'textStyle': textStyle!,
-      };
+    if (fields != null) 'fields': fields!,
+    if (range != null) 'range': range!,
+    if (textStyle != null) 'textStyle': textStyle!,
+  };
 }
 
 /// Represents a font family and weight of text.
@@ -9094,21 +9509,18 @@ class WeightedFontFamily {
   /// weight.
   core.int? weight;
 
-  WeightedFontFamily({
-    this.fontFamily,
-    this.weight,
-  });
+  WeightedFontFamily({this.fontFamily, this.weight});
 
   WeightedFontFamily.fromJson(core.Map json_)
-      : this(
-          fontFamily: json_['fontFamily'] as core.String?,
-          weight: json_['weight'] as core.int?,
-        );
+    : this(
+        fontFamily: json_['fontFamily'] as core.String?,
+        weight: json_['weight'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fontFamily != null) 'fontFamily': fontFamily!,
-        if (weight != null) 'weight': weight!,
-      };
+    if (fontFamily != null) 'fontFamily': fontFamily!,
+    if (weight != null) 'weight': weight!,
+  };
 }
 
 /// Provides control over how write requests are executed.
@@ -9139,20 +9551,16 @@ class WriteControl {
   /// frequently edited documents this window might be shorter.
   core.String? targetRevisionId;
 
-  WriteControl({
-    this.requiredRevisionId,
-    this.targetRevisionId,
-  });
+  WriteControl({this.requiredRevisionId, this.targetRevisionId});
 
   WriteControl.fromJson(core.Map json_)
-      : this(
-          requiredRevisionId: json_['requiredRevisionId'] as core.String?,
-          targetRevisionId: json_['targetRevisionId'] as core.String?,
-        );
+    : this(
+        requiredRevisionId: json_['requiredRevisionId'] as core.String?,
+        targetRevisionId: json_['targetRevisionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requiredRevisionId != null)
-          'requiredRevisionId': requiredRevisionId!,
-        if (targetRevisionId != null) 'targetRevisionId': targetRevisionId!,
-      };
+    if (requiredRevisionId != null) 'requiredRevisionId': requiredRevisionId!,
+    if (targetRevisionId != null) 'targetRevisionId': targetRevisionId!,
+  };
 }

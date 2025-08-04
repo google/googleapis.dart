@@ -49,11 +49,16 @@ class GKEHubApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  GKEHubApi(http.Client client,
-      {core.String rootUrl = 'https://gkehub.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  GKEHubApi(
+    http.Client client, {
+    core.String rootUrl = 'https://gkehub.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -92,10 +97,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -165,7 +167,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -176,14 +179,14 @@ class ProjectsLocationsMembershipsResource {
       ProjectsLocationsMembershipsFeaturesResource(_requester);
 
   ProjectsLocationsMembershipsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 }
 
 class ProjectsLocationsMembershipsFeaturesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsMembershipsFeaturesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates membershipFeature under a given parent.
   ///
@@ -273,6 +276,7 @@ class ProjectsLocationsMembershipsFeaturesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -314,7 +318,8 @@ class ProjectsLocationsMembershipsFeaturesResource {
       queryParams: queryParams_,
     );
     return MembershipFeature.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists MembershipFeatures in a given project and location.
@@ -379,7 +384,8 @@ class ProjectsLocationsMembershipsFeaturesResource {
       queryParams: queryParams_,
     );
     return ListMembershipFeaturesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing MembershipFeature.
@@ -446,7 +452,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -519,10 +525,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -584,7 +587,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -593,24 +597,23 @@ class AppDevExperienceState {
   /// Status of subcomponent that detects configured Service Mesh resources.
   AppDevExperienceStatus? networkingInstallSucceeded;
 
-  AppDevExperienceState({
-    this.networkingInstallSucceeded,
-  });
+  AppDevExperienceState({this.networkingInstallSucceeded});
 
   AppDevExperienceState.fromJson(core.Map json_)
-      : this(
-          networkingInstallSucceeded:
-              json_.containsKey('networkingInstallSucceeded')
-                  ? AppDevExperienceStatus.fromJson(
-                      json_['networkingInstallSucceeded']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        networkingInstallSucceeded:
+            json_.containsKey('networkingInstallSucceeded')
+                ? AppDevExperienceStatus.fromJson(
+                  json_['networkingInstallSucceeded']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (networkingInstallSucceeded != null)
-          'networkingInstallSucceeded': networkingInstallSucceeded!,
-      };
+    if (networkingInstallSucceeded != null)
+      'networkingInstallSucceeded': networkingInstallSucceeded!,
+  };
 }
 
 /// Status specifies state for the subcomponent.
@@ -631,21 +634,18 @@ class CloudBuildSpec {
   /// Version of the cloud build software on the cluster.
   core.String? version;
 
-  CloudBuildSpec({
-    this.securityPolicy,
-    this.version,
-  });
+  CloudBuildSpec({this.securityPolicy, this.version});
 
   CloudBuildSpec.fromJson(core.Map json_)
-      : this(
-          securityPolicy: json_['securityPolicy'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        securityPolicy: json_['securityPolicy'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (securityPolicy != null) 'securityPolicy': securityPolicy!,
-        if (version != null) 'version': version!,
-      };
+    if (securityPolicy != null) 'securityPolicy': securityPolicy!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
@@ -656,21 +656,18 @@ class ClusterUpgradeGKEUpgrade {
   /// Version of the upgrade, e.g., "1.22.1-gke.100".
   core.String? version;
 
-  ClusterUpgradeGKEUpgrade({
-    this.name,
-    this.version,
-  });
+  ClusterUpgradeGKEUpgrade({this.name, this.version});
 
   ClusterUpgradeGKEUpgrade.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (version != null) 'version': version!,
-      };
+    if (name != null) 'name': name!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// IgnoredMembership represents a membership ignored by the feature.
@@ -687,27 +684,28 @@ class ClusterUpgradeMembershipGKEUpgradeState {
   /// Which upgrade to track the state.
   ClusterUpgradeGKEUpgrade? upgrade;
 
-  ClusterUpgradeMembershipGKEUpgradeState({
-    this.status,
-    this.upgrade,
-  });
+  ClusterUpgradeMembershipGKEUpgradeState({this.status, this.upgrade});
 
   ClusterUpgradeMembershipGKEUpgradeState.fromJson(core.Map json_)
-      : this(
-          status: json_.containsKey('status')
-              ? ClusterUpgradeUpgradeStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
-              : null,
-          upgrade: json_.containsKey('upgrade')
-              ? ClusterUpgradeGKEUpgrade.fromJson(
-                  json_['upgrade'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        status:
+            json_.containsKey('status')
+                ? ClusterUpgradeUpgradeStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        upgrade:
+            json_.containsKey('upgrade')
+                ? ClusterUpgradeGKEUpgrade.fromJson(
+                  json_['upgrade'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (status != null) 'status': status!,
-        if (upgrade != null) 'upgrade': upgrade!,
-      };
+    if (status != null) 'status': status!,
+    if (upgrade != null) 'upgrade': upgrade!,
+  };
 }
 
 /// Per-membership state for this feature.
@@ -721,27 +719,30 @@ class ClusterUpgradeState {
   /// Actual upgrade state against desired.
   core.List<ClusterUpgradeMembershipGKEUpgradeState>? upgrades;
 
-  ClusterUpgradeState({
-    this.ignored,
-    this.upgrades,
-  });
+  ClusterUpgradeState({this.ignored, this.upgrades});
 
   ClusterUpgradeState.fromJson(core.Map json_)
-      : this(
-          ignored: json_.containsKey('ignored')
-              ? ClusterUpgradeIgnoredMembership.fromJson(
-                  json_['ignored'] as core.Map<core.String, core.dynamic>)
-              : null,
-          upgrades: (json_['upgrades'] as core.List?)
-              ?.map((value) => ClusterUpgradeMembershipGKEUpgradeState.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        ignored:
+            json_.containsKey('ignored')
+                ? ClusterUpgradeIgnoredMembership.fromJson(
+                  json_['ignored'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        upgrades:
+            (json_['upgrades'] as core.List?)
+                ?.map(
+                  (value) => ClusterUpgradeMembershipGKEUpgradeState.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ignored != null) 'ignored': ignored!,
-        if (upgrades != null) 'upgrades': upgrades!,
-      };
+    if (ignored != null) 'ignored': ignored!,
+    if (upgrades != null) 'upgrades': upgrades!,
+  };
 }
 
 /// UpgradeStatus provides status information for each upgrade.
@@ -752,18 +753,14 @@ class ConfigManagementBinauthzConfig {
   /// Whether binauthz is enabled in this cluster.
   core.bool? enabled;
 
-  ConfigManagementBinauthzConfig({
-    this.enabled,
-  });
+  ConfigManagementBinauthzConfig({this.enabled});
 
   ConfigManagementBinauthzConfig.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-        );
+    : this(enabled: json_['enabled'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-      };
+    if (enabled != null) 'enabled': enabled!,
+  };
 }
 
 /// State for Binauthz.
@@ -781,24 +778,23 @@ class ConfigManagementBinauthzState {
   /// - "PENDING" : Deployment is installing or terminating
   core.String? webhook;
 
-  ConfigManagementBinauthzState({
-    this.version,
-    this.webhook,
-  });
+  ConfigManagementBinauthzState({this.version, this.webhook});
 
   ConfigManagementBinauthzState.fromJson(core.Map json_)
-      : this(
-          version: json_.containsKey('version')
-              ? ConfigManagementBinauthzVersion.fromJson(
-                  json_['version'] as core.Map<core.String, core.dynamic>)
-              : null,
-          webhook: json_['webhook'] as core.String?,
-        );
+    : this(
+        version:
+            json_.containsKey('version')
+                ? ConfigManagementBinauthzVersion.fromJson(
+                  json_['version'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        webhook: json_['webhook'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (version != null) 'version': version!,
-        if (webhook != null) 'webhook': webhook!,
-      };
+    if (version != null) 'version': version!,
+    if (webhook != null) 'webhook': webhook!,
+  };
 }
 
 /// The version of binauthz.
@@ -806,18 +802,14 @@ class ConfigManagementBinauthzVersion {
   /// The version of the binauthz webhook.
   core.String? webhookVersion;
 
-  ConfigManagementBinauthzVersion({
-    this.webhookVersion,
-  });
+  ConfigManagementBinauthzVersion({this.webhookVersion});
 
   ConfigManagementBinauthzVersion.fromJson(core.Map json_)
-      : this(
-          webhookVersion: json_['webhookVersion'] as core.String?,
-        );
+    : this(webhookVersion: json_['webhookVersion'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (webhookVersion != null) 'webhookVersion': webhookVersion!,
-      };
+    if (webhookVersion != null) 'webhookVersion': webhookVersion!,
+  };
 }
 
 /// Configuration for Config Sync
@@ -899,39 +891,47 @@ class ConfigManagementConfigSync {
   });
 
   ConfigManagementConfigSync.fromJson(core.Map json_)
-      : this(
-          deploymentOverrides: (json_['deploymentOverrides'] as core.List?)
-              ?.map((value) => ConfigManagementDeploymentOverride.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          enabled: json_['enabled'] as core.bool?,
-          git: json_.containsKey('git')
-              ? ConfigManagementGitConfig.fromJson(
-                  json_['git'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metricsGcpServiceAccountEmail:
-              json_['metricsGcpServiceAccountEmail'] as core.String?,
-          oci: json_.containsKey('oci')
-              ? ConfigManagementOciConfig.fromJson(
-                  json_['oci'] as core.Map<core.String, core.dynamic>)
-              : null,
-          preventDrift: json_['preventDrift'] as core.bool?,
-          sourceFormat: json_['sourceFormat'] as core.String?,
-          stopSyncing: json_['stopSyncing'] as core.bool?,
-        );
+    : this(
+        deploymentOverrides:
+            (json_['deploymentOverrides'] as core.List?)
+                ?.map(
+                  (value) => ConfigManagementDeploymentOverride.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        enabled: json_['enabled'] as core.bool?,
+        git:
+            json_.containsKey('git')
+                ? ConfigManagementGitConfig.fromJson(
+                  json_['git'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metricsGcpServiceAccountEmail:
+            json_['metricsGcpServiceAccountEmail'] as core.String?,
+        oci:
+            json_.containsKey('oci')
+                ? ConfigManagementOciConfig.fromJson(
+                  json_['oci'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        preventDrift: json_['preventDrift'] as core.bool?,
+        sourceFormat: json_['sourceFormat'] as core.String?,
+        stopSyncing: json_['stopSyncing'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deploymentOverrides != null)
-          'deploymentOverrides': deploymentOverrides!,
-        if (enabled != null) 'enabled': enabled!,
-        if (git != null) 'git': git!,
-        if (metricsGcpServiceAccountEmail != null)
-          'metricsGcpServiceAccountEmail': metricsGcpServiceAccountEmail!,
-        if (oci != null) 'oci': oci!,
-        if (preventDrift != null) 'preventDrift': preventDrift!,
-        if (sourceFormat != null) 'sourceFormat': sourceFormat!,
-        if (stopSyncing != null) 'stopSyncing': stopSyncing!,
-      };
+    if (deploymentOverrides != null)
+      'deploymentOverrides': deploymentOverrides!,
+    if (enabled != null) 'enabled': enabled!,
+    if (git != null) 'git': git!,
+    if (metricsGcpServiceAccountEmail != null)
+      'metricsGcpServiceAccountEmail': metricsGcpServiceAccountEmail!,
+    if (oci != null) 'oci': oci!,
+    if (preventDrift != null) 'preventDrift': preventDrift!,
+    if (sourceFormat != null) 'sourceFormat': sourceFormat!,
+    if (stopSyncing != null) 'stopSyncing': stopSyncing!,
+  };
 }
 
 /// The state of ConfigSync's deployment on a cluster.
@@ -1039,31 +1039,31 @@ class ConfigManagementConfigSyncDeploymentState {
   });
 
   ConfigManagementConfigSyncDeploymentState.fromJson(core.Map json_)
-      : this(
-          admissionWebhook: json_['admissionWebhook'] as core.String?,
-          gitSync: json_['gitSync'] as core.String?,
-          importer: json_['importer'] as core.String?,
-          monitor: json_['monitor'] as core.String?,
-          otelCollector: json_['otelCollector'] as core.String?,
-          reconcilerManager: json_['reconcilerManager'] as core.String?,
-          resourceGroupControllerManager:
-              json_['resourceGroupControllerManager'] as core.String?,
-          rootReconciler: json_['rootReconciler'] as core.String?,
-          syncer: json_['syncer'] as core.String?,
-        );
+    : this(
+        admissionWebhook: json_['admissionWebhook'] as core.String?,
+        gitSync: json_['gitSync'] as core.String?,
+        importer: json_['importer'] as core.String?,
+        monitor: json_['monitor'] as core.String?,
+        otelCollector: json_['otelCollector'] as core.String?,
+        reconcilerManager: json_['reconcilerManager'] as core.String?,
+        resourceGroupControllerManager:
+            json_['resourceGroupControllerManager'] as core.String?,
+        rootReconciler: json_['rootReconciler'] as core.String?,
+        syncer: json_['syncer'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (admissionWebhook != null) 'admissionWebhook': admissionWebhook!,
-        if (gitSync != null) 'gitSync': gitSync!,
-        if (importer != null) 'importer': importer!,
-        if (monitor != null) 'monitor': monitor!,
-        if (otelCollector != null) 'otelCollector': otelCollector!,
-        if (reconcilerManager != null) 'reconcilerManager': reconcilerManager!,
-        if (resourceGroupControllerManager != null)
-          'resourceGroupControllerManager': resourceGroupControllerManager!,
-        if (rootReconciler != null) 'rootReconciler': rootReconciler!,
-        if (syncer != null) 'syncer': syncer!,
-      };
+    if (admissionWebhook != null) 'admissionWebhook': admissionWebhook!,
+    if (gitSync != null) 'gitSync': gitSync!,
+    if (importer != null) 'importer': importer!,
+    if (monitor != null) 'monitor': monitor!,
+    if (otelCollector != null) 'otelCollector': otelCollector!,
+    if (reconcilerManager != null) 'reconcilerManager': reconcilerManager!,
+    if (resourceGroupControllerManager != null)
+      'resourceGroupControllerManager': resourceGroupControllerManager!,
+    if (rootReconciler != null) 'rootReconciler': rootReconciler!,
+    if (syncer != null) 'syncer': syncer!,
+  };
 }
 
 /// Errors pertaining to the installation of Config Sync
@@ -1160,44 +1160,54 @@ class ConfigManagementConfigSyncState {
   });
 
   ConfigManagementConfigSyncState.fromJson(core.Map json_)
-      : this(
-          clusterLevelStopSyncingState:
-              json_['clusterLevelStopSyncingState'] as core.String?,
-          crCount: json_['crCount'] as core.int?,
-          deploymentState: json_.containsKey('deploymentState')
-              ? ConfigManagementConfigSyncDeploymentState.fromJson(
+    : this(
+        clusterLevelStopSyncingState:
+            json_['clusterLevelStopSyncingState'] as core.String?,
+        crCount: json_['crCount'] as core.int?,
+        deploymentState:
+            json_.containsKey('deploymentState')
+                ? ConfigManagementConfigSyncDeploymentState.fromJson(
                   json_['deploymentState']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          errors: (json_['errors'] as core.List?)
-              ?.map((value) => ConfigManagementConfigSyncError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          reposyncCrd: json_['reposyncCrd'] as core.String?,
-          rootsyncCrd: json_['rootsyncCrd'] as core.String?,
-          state: json_['state'] as core.String?,
-          syncState: json_.containsKey('syncState')
-              ? ConfigManagementSyncState.fromJson(
-                  json_['syncState'] as core.Map<core.String, core.dynamic>)
-              : null,
-          version: json_.containsKey('version')
-              ? ConfigManagementConfigSyncVersion.fromJson(
-                  json_['version'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => ConfigManagementConfigSyncError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        reposyncCrd: json_['reposyncCrd'] as core.String?,
+        rootsyncCrd: json_['rootsyncCrd'] as core.String?,
+        state: json_['state'] as core.String?,
+        syncState:
+            json_.containsKey('syncState')
+                ? ConfigManagementSyncState.fromJson(
+                  json_['syncState'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        version:
+            json_.containsKey('version')
+                ? ConfigManagementConfigSyncVersion.fromJson(
+                  json_['version'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterLevelStopSyncingState != null)
-          'clusterLevelStopSyncingState': clusterLevelStopSyncingState!,
-        if (crCount != null) 'crCount': crCount!,
-        if (deploymentState != null) 'deploymentState': deploymentState!,
-        if (errors != null) 'errors': errors!,
-        if (reposyncCrd != null) 'reposyncCrd': reposyncCrd!,
-        if (rootsyncCrd != null) 'rootsyncCrd': rootsyncCrd!,
-        if (state != null) 'state': state!,
-        if (syncState != null) 'syncState': syncState!,
-        if (version != null) 'version': version!,
-      };
+    if (clusterLevelStopSyncingState != null)
+      'clusterLevelStopSyncingState': clusterLevelStopSyncingState!,
+    if (crCount != null) 'crCount': crCount!,
+    if (deploymentState != null) 'deploymentState': deploymentState!,
+    if (errors != null) 'errors': errors!,
+    if (reposyncCrd != null) 'reposyncCrd': reposyncCrd!,
+    if (rootsyncCrd != null) 'rootsyncCrd': rootsyncCrd!,
+    if (state != null) 'state': state!,
+    if (syncState != null) 'syncState': syncState!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Specific versioning information pertaining to ConfigSync's Pods.
@@ -1242,31 +1252,31 @@ class ConfigManagementConfigSyncVersion {
   });
 
   ConfigManagementConfigSyncVersion.fromJson(core.Map json_)
-      : this(
-          admissionWebhook: json_['admissionWebhook'] as core.String?,
-          gitSync: json_['gitSync'] as core.String?,
-          importer: json_['importer'] as core.String?,
-          monitor: json_['monitor'] as core.String?,
-          otelCollector: json_['otelCollector'] as core.String?,
-          reconcilerManager: json_['reconcilerManager'] as core.String?,
-          resourceGroupControllerManager:
-              json_['resourceGroupControllerManager'] as core.String?,
-          rootReconciler: json_['rootReconciler'] as core.String?,
-          syncer: json_['syncer'] as core.String?,
-        );
+    : this(
+        admissionWebhook: json_['admissionWebhook'] as core.String?,
+        gitSync: json_['gitSync'] as core.String?,
+        importer: json_['importer'] as core.String?,
+        monitor: json_['monitor'] as core.String?,
+        otelCollector: json_['otelCollector'] as core.String?,
+        reconcilerManager: json_['reconcilerManager'] as core.String?,
+        resourceGroupControllerManager:
+            json_['resourceGroupControllerManager'] as core.String?,
+        rootReconciler: json_['rootReconciler'] as core.String?,
+        syncer: json_['syncer'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (admissionWebhook != null) 'admissionWebhook': admissionWebhook!,
-        if (gitSync != null) 'gitSync': gitSync!,
-        if (importer != null) 'importer': importer!,
-        if (monitor != null) 'monitor': monitor!,
-        if (otelCollector != null) 'otelCollector': otelCollector!,
-        if (reconcilerManager != null) 'reconcilerManager': reconcilerManager!,
-        if (resourceGroupControllerManager != null)
-          'resourceGroupControllerManager': resourceGroupControllerManager!,
-        if (rootReconciler != null) 'rootReconciler': rootReconciler!,
-        if (syncer != null) 'syncer': syncer!,
-      };
+    if (admissionWebhook != null) 'admissionWebhook': admissionWebhook!,
+    if (gitSync != null) 'gitSync': gitSync!,
+    if (importer != null) 'importer': importer!,
+    if (monitor != null) 'monitor': monitor!,
+    if (otelCollector != null) 'otelCollector': otelCollector!,
+    if (reconcilerManager != null) 'reconcilerManager': reconcilerManager!,
+    if (resourceGroupControllerManager != null)
+      'resourceGroupControllerManager': resourceGroupControllerManager!,
+    if (rootReconciler != null) 'rootReconciler': rootReconciler!,
+    if (syncer != null) 'syncer': syncer!,
+  };
 }
 
 /// Configuration for a container override.
@@ -1296,21 +1306,25 @@ class ConfigManagementDeploymentOverride {
   });
 
   ConfigManagementDeploymentOverride.fromJson(core.Map json_)
-      : this(
-          containers: (json_['containers'] as core.List?)
-              ?.map((value) => ConfigManagementContainerOverride.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          deploymentName: json_['deploymentName'] as core.String?,
-          deploymentNamespace: json_['deploymentNamespace'] as core.String?,
-        );
+    : this(
+        containers:
+            (json_['containers'] as core.List?)
+                ?.map(
+                  (value) => ConfigManagementContainerOverride.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        deploymentName: json_['deploymentName'] as core.String?,
+        deploymentNamespace: json_['deploymentNamespace'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (containers != null) 'containers': containers!,
-        if (deploymentName != null) 'deploymentName': deploymentName!,
-        if (deploymentNamespace != null)
-          'deploymentNamespace': deploymentNamespace!,
-      };
+    if (containers != null) 'containers': containers!,
+    if (deploymentName != null) 'deploymentName': deploymentName!,
+    if (deploymentNamespace != null)
+      'deploymentNamespace': deploymentNamespace!,
+  };
 }
 
 /// Model for a config file in the git repo with an associated Sync error.
@@ -1335,22 +1349,24 @@ class ConfigManagementErrorResource {
   });
 
   ConfigManagementErrorResource.fromJson(core.Map json_)
-      : this(
-          resourceGvk: json_.containsKey('resourceGvk')
-              ? ConfigManagementGroupVersionKind.fromJson(
-                  json_['resourceGvk'] as core.Map<core.String, core.dynamic>)
-              : null,
-          resourceName: json_['resourceName'] as core.String?,
-          resourceNamespace: json_['resourceNamespace'] as core.String?,
-          sourcePath: json_['sourcePath'] as core.String?,
-        );
+    : this(
+        resourceGvk:
+            json_.containsKey('resourceGvk')
+                ? ConfigManagementGroupVersionKind.fromJson(
+                  json_['resourceGvk'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resourceName: json_['resourceName'] as core.String?,
+        resourceNamespace: json_['resourceNamespace'] as core.String?,
+        sourcePath: json_['sourcePath'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceGvk != null) 'resourceGvk': resourceGvk!,
-        if (resourceName != null) 'resourceName': resourceName!,
-        if (resourceNamespace != null) 'resourceNamespace': resourceNamespace!,
-        if (sourcePath != null) 'sourcePath': sourcePath!,
-      };
+    if (resourceGvk != null) 'resourceGvk': resourceGvk!,
+    if (resourceName != null) 'resourceName': resourceName!,
+    if (resourceNamespace != null) 'resourceNamespace': resourceNamespace!,
+    if (sourcePath != null) 'sourcePath': sourcePath!,
+  };
 }
 
 /// State of Policy Controller installation.
@@ -1392,20 +1408,19 @@ class ConfigManagementGatekeeperDeploymentState {
   });
 
   ConfigManagementGatekeeperDeploymentState.fromJson(core.Map json_)
-      : this(
-          gatekeeperAudit: json_['gatekeeperAudit'] as core.String?,
-          gatekeeperControllerManagerState:
-              json_['gatekeeperControllerManagerState'] as core.String?,
-          gatekeeperMutation: json_['gatekeeperMutation'] as core.String?,
-        );
+    : this(
+        gatekeeperAudit: json_['gatekeeperAudit'] as core.String?,
+        gatekeeperControllerManagerState:
+            json_['gatekeeperControllerManagerState'] as core.String?,
+        gatekeeperMutation: json_['gatekeeperMutation'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gatekeeperAudit != null) 'gatekeeperAudit': gatekeeperAudit!,
-        if (gatekeeperControllerManagerState != null)
-          'gatekeeperControllerManagerState': gatekeeperControllerManagerState!,
-        if (gatekeeperMutation != null)
-          'gatekeeperMutation': gatekeeperMutation!,
-      };
+    if (gatekeeperAudit != null) 'gatekeeperAudit': gatekeeperAudit!,
+    if (gatekeeperControllerManagerState != null)
+      'gatekeeperControllerManagerState': gatekeeperControllerManagerState!,
+    if (gatekeeperMutation != null) 'gatekeeperMutation': gatekeeperMutation!,
+  };
 }
 
 /// Git repo configuration for a single cluster.
@@ -1415,8 +1430,8 @@ typedef ConfigManagementGitConfig = $ConfigManagementGitConfig;
 typedef ConfigManagementGroupVersionKind = $ConfigManagementGroupVersionKind;
 
 /// Configuration for Hierarchy Controller.
-typedef ConfigManagementHierarchyControllerConfig
-    = $ConfigManagementHierarchyControllerConfig;
+typedef ConfigManagementHierarchyControllerConfig =
+    $ConfigManagementHierarchyControllerConfig;
 
 /// Deployment state for Hierarchy Controller
 class ConfigManagementHierarchyControllerDeploymentState {
@@ -1447,15 +1462,15 @@ class ConfigManagementHierarchyControllerDeploymentState {
   });
 
   ConfigManagementHierarchyControllerDeploymentState.fromJson(core.Map json_)
-      : this(
-          extension: json_['extension'] as core.String?,
-          hnc: json_['hnc'] as core.String?,
-        );
+    : this(
+        extension: json_['extension'] as core.String?,
+        hnc: json_['hnc'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (extension != null) 'extension': extension!,
-        if (hnc != null) 'hnc': hnc!,
-      };
+    if (extension != null) 'extension': extension!,
+    if (hnc != null) 'hnc': hnc!,
+  };
 }
 
 /// State for Hierarchy Controller.
@@ -1466,27 +1481,28 @@ class ConfigManagementHierarchyControllerState {
   /// The version for Hierarchy Controller.
   ConfigManagementHierarchyControllerVersion? version;
 
-  ConfigManagementHierarchyControllerState({
-    this.state,
-    this.version,
-  });
+  ConfigManagementHierarchyControllerState({this.state, this.version});
 
   ConfigManagementHierarchyControllerState.fromJson(core.Map json_)
-      : this(
-          state: json_.containsKey('state')
-              ? ConfigManagementHierarchyControllerDeploymentState.fromJson(
-                  json_['state'] as core.Map<core.String, core.dynamic>)
-              : null,
-          version: json_.containsKey('version')
-              ? ConfigManagementHierarchyControllerVersion.fromJson(
-                  json_['version'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        state:
+            json_.containsKey('state')
+                ? ConfigManagementHierarchyControllerDeploymentState.fromJson(
+                  json_['state'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        version:
+            json_.containsKey('version')
+                ? ConfigManagementHierarchyControllerVersion.fromJson(
+                  json_['version'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (state != null) 'state': state!,
-        if (version != null) 'version': version!,
-      };
+    if (state != null) 'state': state!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Version for Hierarchy Controller.
@@ -1497,21 +1513,18 @@ class ConfigManagementHierarchyControllerVersion {
   /// Version for open source HNC.
   core.String? hnc;
 
-  ConfigManagementHierarchyControllerVersion({
-    this.extension,
-    this.hnc,
-  });
+  ConfigManagementHierarchyControllerVersion({this.extension, this.hnc});
 
   ConfigManagementHierarchyControllerVersion.fromJson(core.Map json_)
-      : this(
-          extension: json_['extension'] as core.String?,
-          hnc: json_['hnc'] as core.String?,
-        );
+    : this(
+        extension: json_['extension'] as core.String?,
+        hnc: json_['hnc'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (extension != null) 'extension': extension!,
-        if (hnc != null) 'hnc': hnc!,
-      };
+    if (extension != null) 'extension': extension!,
+    if (hnc != null) 'hnc': hnc!,
+  };
 }
 
 /// Errors pertaining to the installation of ACM.
@@ -1519,18 +1532,14 @@ class ConfigManagementInstallError {
   /// A string representing the user facing error message.
   core.String? errorMessage;
 
-  ConfigManagementInstallError({
-    this.errorMessage,
-  });
+  ConfigManagementInstallError({this.errorMessage});
 
   ConfigManagementInstallError.fromJson(core.Map json_)
-      : this(
-          errorMessage: json_['errorMessage'] as core.String?,
-        );
+    : this(errorMessage: json_['errorMessage'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-      };
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+  };
 }
 
 /// OCI repo configuration for a single cluster.
@@ -1561,20 +1570,24 @@ class ConfigManagementOperatorState {
   });
 
   ConfigManagementOperatorState.fromJson(core.Map json_)
-      : this(
-          deploymentState: json_['deploymentState'] as core.String?,
-          errors: (json_['errors'] as core.List?)
-              ?.map((value) => ConfigManagementInstallError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        deploymentState: json_['deploymentState'] as core.String?,
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => ConfigManagementInstallError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deploymentState != null) 'deploymentState': deploymentState!,
-        if (errors != null) 'errors': errors!,
-        if (version != null) 'version': version!,
-      };
+    if (deploymentState != null) 'deploymentState': deploymentState!,
+    if (errors != null) 'errors': errors!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Configuration for Policy Controller
@@ -1631,45 +1644,47 @@ class ConfigManagementPolicyController {
   });
 
   ConfigManagementPolicyController.fromJson(core.Map json_)
-      : this(
-          auditIntervalSeconds: json_['auditIntervalSeconds'] as core.String?,
-          enabled: json_['enabled'] as core.bool?,
-          exemptableNamespaces: (json_['exemptableNamespaces'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          logDeniesEnabled: json_['logDeniesEnabled'] as core.bool?,
-          monitoring: json_.containsKey('monitoring')
-              ? ConfigManagementPolicyControllerMonitoring.fromJson(
-                  json_['monitoring'] as core.Map<core.String, core.dynamic>)
-              : null,
-          mutationEnabled: json_['mutationEnabled'] as core.bool?,
-          referentialRulesEnabled:
-              json_['referentialRulesEnabled'] as core.bool?,
-          templateLibraryInstalled:
-              json_['templateLibraryInstalled'] as core.bool?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        auditIntervalSeconds: json_['auditIntervalSeconds'] as core.String?,
+        enabled: json_['enabled'] as core.bool?,
+        exemptableNamespaces:
+            (json_['exemptableNamespaces'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        logDeniesEnabled: json_['logDeniesEnabled'] as core.bool?,
+        monitoring:
+            json_.containsKey('monitoring')
+                ? ConfigManagementPolicyControllerMonitoring.fromJson(
+                  json_['monitoring'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mutationEnabled: json_['mutationEnabled'] as core.bool?,
+        referentialRulesEnabled: json_['referentialRulesEnabled'] as core.bool?,
+        templateLibraryInstalled:
+            json_['templateLibraryInstalled'] as core.bool?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditIntervalSeconds != null)
-          'auditIntervalSeconds': auditIntervalSeconds!,
-        if (enabled != null) 'enabled': enabled!,
-        if (exemptableNamespaces != null)
-          'exemptableNamespaces': exemptableNamespaces!,
-        if (logDeniesEnabled != null) 'logDeniesEnabled': logDeniesEnabled!,
-        if (monitoring != null) 'monitoring': monitoring!,
-        if (mutationEnabled != null) 'mutationEnabled': mutationEnabled!,
-        if (referentialRulesEnabled != null)
-          'referentialRulesEnabled': referentialRulesEnabled!,
-        if (templateLibraryInstalled != null)
-          'templateLibraryInstalled': templateLibraryInstalled!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (auditIntervalSeconds != null)
+      'auditIntervalSeconds': auditIntervalSeconds!,
+    if (enabled != null) 'enabled': enabled!,
+    if (exemptableNamespaces != null)
+      'exemptableNamespaces': exemptableNamespaces!,
+    if (logDeniesEnabled != null) 'logDeniesEnabled': logDeniesEnabled!,
+    if (monitoring != null) 'monitoring': monitoring!,
+    if (mutationEnabled != null) 'mutationEnabled': mutationEnabled!,
+    if (referentialRulesEnabled != null)
+      'referentialRulesEnabled': referentialRulesEnabled!,
+    if (templateLibraryInstalled != null)
+      'templateLibraryInstalled': templateLibraryInstalled!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// State for the migration of PolicyController from ACM -\> PoCo Hub.
-typedef ConfigManagementPolicyControllerMigration
-    = $ConfigManagementPolicyControllerMigration;
+typedef ConfigManagementPolicyControllerMigration =
+    $ConfigManagementPolicyControllerMigration;
 
 /// PolicyControllerMonitoring specifies the backends Policy Controller should
 /// export metrics to.
@@ -1696,32 +1711,38 @@ class ConfigManagementPolicyControllerState {
   });
 
   ConfigManagementPolicyControllerState.fromJson(core.Map json_)
-      : this(
-          deploymentState: json_.containsKey('deploymentState')
-              ? ConfigManagementGatekeeperDeploymentState.fromJson(
+    : this(
+        deploymentState:
+            json_.containsKey('deploymentState')
+                ? ConfigManagementGatekeeperDeploymentState.fromJson(
                   json_['deploymentState']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          migration: json_.containsKey('migration')
-              ? ConfigManagementPolicyControllerMigration.fromJson(
-                  json_['migration'] as core.Map<core.String, core.dynamic>)
-              : null,
-          version: json_.containsKey('version')
-              ? ConfigManagementPolicyControllerVersion.fromJson(
-                  json_['version'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        migration:
+            json_.containsKey('migration')
+                ? ConfigManagementPolicyControllerMigration.fromJson(
+                  json_['migration'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        version:
+            json_.containsKey('version')
+                ? ConfigManagementPolicyControllerVersion.fromJson(
+                  json_['version'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deploymentState != null) 'deploymentState': deploymentState!,
-        if (migration != null) 'migration': migration!,
-        if (version != null) 'version': version!,
-      };
+    if (deploymentState != null) 'deploymentState': deploymentState!,
+    if (migration != null) 'migration': migration!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// The build version of Gatekeeper Policy Controller is using.
-typedef ConfigManagementPolicyControllerVersion
-    = $ConfigManagementPolicyControllerVersion;
+typedef ConfigManagementPolicyControllerVersion =
+    $ConfigManagementPolicyControllerVersion;
 
 /// **Anthos Config Management**: Configuration for a single cluster.
 ///
@@ -1804,40 +1825,48 @@ class ConfigManagementSpec {
   });
 
   ConfigManagementSpec.fromJson(core.Map json_)
-      : this(
-          binauthz: json_.containsKey('binauthz')
-              ? ConfigManagementBinauthzConfig.fromJson(
-                  json_['binauthz'] as core.Map<core.String, core.dynamic>)
-              : null,
-          cluster: json_['cluster'] as core.String?,
-          configSync: json_.containsKey('configSync')
-              ? ConfigManagementConfigSync.fromJson(
-                  json_['configSync'] as core.Map<core.String, core.dynamic>)
-              : null,
-          hierarchyController: json_.containsKey('hierarchyController')
-              ? ConfigManagementHierarchyControllerConfig.fromJson(
+    : this(
+        binauthz:
+            json_.containsKey('binauthz')
+                ? ConfigManagementBinauthzConfig.fromJson(
+                  json_['binauthz'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cluster: json_['cluster'] as core.String?,
+        configSync:
+            json_.containsKey('configSync')
+                ? ConfigManagementConfigSync.fromJson(
+                  json_['configSync'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hierarchyController:
+            json_.containsKey('hierarchyController')
+                ? ConfigManagementHierarchyControllerConfig.fromJson(
                   json_['hierarchyController']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          management: json_['management'] as core.String?,
-          policyController: json_.containsKey('policyController')
-              ? ConfigManagementPolicyController.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        management: json_['management'] as core.String?,
+        policyController:
+            json_.containsKey('policyController')
+                ? ConfigManagementPolicyController.fromJson(
                   json_['policyController']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          version: json_['version'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (binauthz != null) 'binauthz': binauthz!,
-        if (cluster != null) 'cluster': cluster!,
-        if (configSync != null) 'configSync': configSync!,
-        if (hierarchyController != null)
-          'hierarchyController': hierarchyController!,
-        if (management != null) 'management': management!,
-        if (policyController != null) 'policyController': policyController!,
-        if (version != null) 'version': version!,
-      };
+    if (binauthz != null) 'binauthz': binauthz!,
+    if (cluster != null) 'cluster': cluster!,
+    if (configSync != null) 'configSync': configSync!,
+    if (hierarchyController != null)
+      'hierarchyController': hierarchyController!,
+    if (management != null) 'management': management!,
+    if (policyController != null) 'policyController': policyController!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// **Anthos Config Management**: State for a single cluster.
@@ -1894,49 +1923,61 @@ class ConfigManagementState {
   });
 
   ConfigManagementState.fromJson(core.Map json_)
-      : this(
-          binauthzState: json_.containsKey('binauthzState')
-              ? ConfigManagementBinauthzState.fromJson(
-                  json_['binauthzState'] as core.Map<core.String, core.dynamic>)
-              : null,
-          clusterName: json_['clusterName'] as core.String?,
-          configSyncState: json_.containsKey('configSyncState')
-              ? ConfigManagementConfigSyncState.fromJson(
+    : this(
+        binauthzState:
+            json_.containsKey('binauthzState')
+                ? ConfigManagementBinauthzState.fromJson(
+                  json_['binauthzState'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        clusterName: json_['clusterName'] as core.String?,
+        configSyncState:
+            json_.containsKey('configSyncState')
+                ? ConfigManagementConfigSyncState.fromJson(
                   json_['configSyncState']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          hierarchyControllerState:
-              json_.containsKey('hierarchyControllerState')
-                  ? ConfigManagementHierarchyControllerState.fromJson(
-                      json_['hierarchyControllerState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          membershipSpec: json_.containsKey('membershipSpec')
-              ? ConfigManagementSpec.fromJson(json_['membershipSpec']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          operatorState: json_.containsKey('operatorState')
-              ? ConfigManagementOperatorState.fromJson(
-                  json_['operatorState'] as core.Map<core.String, core.dynamic>)
-              : null,
-          policyControllerState: json_.containsKey('policyControllerState')
-              ? ConfigManagementPolicyControllerState.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hierarchyControllerState:
+            json_.containsKey('hierarchyControllerState')
+                ? ConfigManagementHierarchyControllerState.fromJson(
+                  json_['hierarchyControllerState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        membershipSpec:
+            json_.containsKey('membershipSpec')
+                ? ConfigManagementSpec.fromJson(
+                  json_['membershipSpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        operatorState:
+            json_.containsKey('operatorState')
+                ? ConfigManagementOperatorState.fromJson(
+                  json_['operatorState'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        policyControllerState:
+            json_.containsKey('policyControllerState')
+                ? ConfigManagementPolicyControllerState.fromJson(
                   json_['policyControllerState']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (binauthzState != null) 'binauthzState': binauthzState!,
-        if (clusterName != null) 'clusterName': clusterName!,
-        if (configSyncState != null) 'configSyncState': configSyncState!,
-        if (hierarchyControllerState != null)
-          'hierarchyControllerState': hierarchyControllerState!,
-        if (membershipSpec != null) 'membershipSpec': membershipSpec!,
-        if (operatorState != null) 'operatorState': operatorState!,
-        if (policyControllerState != null)
-          'policyControllerState': policyControllerState!,
-      };
+    if (binauthzState != null) 'binauthzState': binauthzState!,
+    if (clusterName != null) 'clusterName': clusterName!,
+    if (configSyncState != null) 'configSyncState': configSyncState!,
+    if (hierarchyControllerState != null)
+      'hierarchyControllerState': hierarchyControllerState!,
+    if (membershipSpec != null) 'membershipSpec': membershipSpec!,
+    if (operatorState != null) 'operatorState': operatorState!,
+    if (policyControllerState != null)
+      'policyControllerState': policyControllerState!,
+  };
 }
 
 /// An ACM created error representing a problem syncing configurations.
@@ -1957,20 +1998,24 @@ class ConfigManagementSyncError {
   });
 
   ConfigManagementSyncError.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          errorMessage: json_['errorMessage'] as core.String?,
-          errorResources: (json_['errorResources'] as core.List?)
-              ?.map((value) => ConfigManagementErrorResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        errorResources:
+            (json_['errorResources'] as core.List?)
+                ?.map(
+                  (value) => ConfigManagementErrorResource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (errorResources != null) 'errorResources': errorResources!,
-      };
+    if (code != null) 'code': code!,
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+    if (errorResources != null) 'errorResources': errorResources!,
+  };
 }
 
 /// State indicating an ACM's progress syncing configurations to a cluster.
@@ -2026,28 +2071,32 @@ class ConfigManagementSyncState {
   });
 
   ConfigManagementSyncState.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          errors: (json_['errors'] as core.List?)
-              ?.map((value) => ConfigManagementSyncError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          importToken: json_['importToken'] as core.String?,
-          lastSync: json_['lastSync'] as core.String?,
-          lastSyncTime: json_['lastSyncTime'] as core.String?,
-          sourceToken: json_['sourceToken'] as core.String?,
-          syncToken: json_['syncToken'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => ConfigManagementSyncError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        importToken: json_['importToken'] as core.String?,
+        lastSync: json_['lastSync'] as core.String?,
+        lastSyncTime: json_['lastSyncTime'] as core.String?,
+        sourceToken: json_['sourceToken'] as core.String?,
+        syncToken: json_['syncToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (errors != null) 'errors': errors!,
-        if (importToken != null) 'importToken': importToken!,
-        if (lastSync != null) 'lastSync': lastSync!,
-        if (lastSyncTime != null) 'lastSyncTime': lastSyncTime!,
-        if (sourceToken != null) 'sourceToken': sourceToken!,
-        if (syncToken != null) 'syncToken': syncToken!,
-      };
+    if (code != null) 'code': code!,
+    if (errors != null) 'errors': errors!,
+    if (importToken != null) 'importToken': importToken!,
+    if (lastSync != null) 'lastSync': lastSync!,
+    if (lastSyncTime != null) 'lastSyncTime': lastSyncTime!,
+    if (sourceToken != null) 'sourceToken': sourceToken!,
+    if (syncToken != null) 'syncToken': syncToken!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -2099,55 +2148,74 @@ class FeatureSpec {
   });
 
   FeatureSpec.fromJson(core.Map json_)
-      : this(
-          cloudbuild: json_.containsKey('cloudbuild')
-              ? CloudBuildSpec.fromJson(
-                  json_['cloudbuild'] as core.Map<core.String, core.dynamic>)
-              : null,
-          configmanagement: json_.containsKey('configmanagement')
-              ? ConfigManagementSpec.fromJson(json_['configmanagement']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          identityservice: json_.containsKey('identityservice')
-              ? IdentityServiceSpec.fromJson(json_['identityservice']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          origin: json_.containsKey('origin')
-              ? Origin.fromJson(
-                  json_['origin'] as core.Map<core.String, core.dynamic>)
-              : null,
-          policycontroller: json_.containsKey('policycontroller')
-              ? PolicyControllerSpec.fromJson(json_['policycontroller']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          rbacrolebindingactuation:
-              json_.containsKey('rbacrolebindingactuation')
-                  ? RBACRoleBindingActuationSpec.fromJson(
-                      json_['rbacrolebindingactuation']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          servicemesh: json_.containsKey('servicemesh')
-              ? ServiceMeshSpec.fromJson(
-                  json_['servicemesh'] as core.Map<core.String, core.dynamic>)
-              : null,
-          workloadcertificate: json_.containsKey('workloadcertificate')
-              ? WorkloadCertificateSpec.fromJson(json_['workloadcertificate']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        cloudbuild:
+            json_.containsKey('cloudbuild')
+                ? CloudBuildSpec.fromJson(
+                  json_['cloudbuild'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        configmanagement:
+            json_.containsKey('configmanagement')
+                ? ConfigManagementSpec.fromJson(
+                  json_['configmanagement']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        identityservice:
+            json_.containsKey('identityservice')
+                ? IdentityServiceSpec.fromJson(
+                  json_['identityservice']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        origin:
+            json_.containsKey('origin')
+                ? Origin.fromJson(
+                  json_['origin'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        policycontroller:
+            json_.containsKey('policycontroller')
+                ? PolicyControllerSpec.fromJson(
+                  json_['policycontroller']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rbacrolebindingactuation:
+            json_.containsKey('rbacrolebindingactuation')
+                ? RBACRoleBindingActuationSpec.fromJson(
+                  json_['rbacrolebindingactuation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        servicemesh:
+            json_.containsKey('servicemesh')
+                ? ServiceMeshSpec.fromJson(
+                  json_['servicemesh'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        workloadcertificate:
+            json_.containsKey('workloadcertificate')
+                ? WorkloadCertificateSpec.fromJson(
+                  json_['workloadcertificate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudbuild != null) 'cloudbuild': cloudbuild!,
-        if (configmanagement != null) 'configmanagement': configmanagement!,
-        if (identityservice != null) 'identityservice': identityservice!,
-        if (origin != null) 'origin': origin!,
-        if (policycontroller != null) 'policycontroller': policycontroller!,
-        if (rbacrolebindingactuation != null)
-          'rbacrolebindingactuation': rbacrolebindingactuation!,
-        if (servicemesh != null) 'servicemesh': servicemesh!,
-        if (workloadcertificate != null)
-          'workloadcertificate': workloadcertificate!,
-      };
+    if (cloudbuild != null) 'cloudbuild': cloudbuild!,
+    if (configmanagement != null) 'configmanagement': configmanagement!,
+    if (identityservice != null) 'identityservice': identityservice!,
+    if (origin != null) 'origin': origin!,
+    if (policycontroller != null) 'policycontroller': policycontroller!,
+    if (rbacrolebindingactuation != null)
+      'rbacrolebindingactuation': rbacrolebindingactuation!,
+    if (servicemesh != null) 'servicemesh': servicemesh!,
+    if (workloadcertificate != null)
+      'workloadcertificate': workloadcertificate!,
+  };
 }
 
 /// FeatureState contains high-level state information and per-feature state
@@ -2193,59 +2261,81 @@ class FeatureState {
   });
 
   FeatureState.fromJson(core.Map json_)
-      : this(
-          appdevexperience: json_.containsKey('appdevexperience')
-              ? AppDevExperienceState.fromJson(json_['appdevexperience']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          clusterupgrade: json_.containsKey('clusterupgrade')
-              ? ClusterUpgradeState.fromJson(json_['clusterupgrade']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          configmanagement: json_.containsKey('configmanagement')
-              ? ConfigManagementState.fromJson(json_['configmanagement']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          identityservice: json_.containsKey('identityservice')
-              ? IdentityServiceState.fromJson(json_['identityservice']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          metering: json_.containsKey('metering')
-              ? MeteringState.fromJson(
-                  json_['metering'] as core.Map<core.String, core.dynamic>)
-              : null,
-          policycontroller: json_.containsKey('policycontroller')
-              ? PolicyControllerState.fromJson(json_['policycontroller']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          rbacrolebindingactuation:
-              json_.containsKey('rbacrolebindingactuation')
-                  ? RBACRoleBindingActuationState.fromJson(
-                      json_['rbacrolebindingactuation']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          servicemesh: json_.containsKey('servicemesh')
-              ? ServiceMeshState.fromJson(
-                  json_['servicemesh'] as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_.containsKey('state')
-              ? State.fromJson(
-                  json_['state'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        appdevexperience:
+            json_.containsKey('appdevexperience')
+                ? AppDevExperienceState.fromJson(
+                  json_['appdevexperience']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        clusterupgrade:
+            json_.containsKey('clusterupgrade')
+                ? ClusterUpgradeState.fromJson(
+                  json_['clusterupgrade']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        configmanagement:
+            json_.containsKey('configmanagement')
+                ? ConfigManagementState.fromJson(
+                  json_['configmanagement']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        identityservice:
+            json_.containsKey('identityservice')
+                ? IdentityServiceState.fromJson(
+                  json_['identityservice']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metering:
+            json_.containsKey('metering')
+                ? MeteringState.fromJson(
+                  json_['metering'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        policycontroller:
+            json_.containsKey('policycontroller')
+                ? PolicyControllerState.fromJson(
+                  json_['policycontroller']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rbacrolebindingactuation:
+            json_.containsKey('rbacrolebindingactuation')
+                ? RBACRoleBindingActuationState.fromJson(
+                  json_['rbacrolebindingactuation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        servicemesh:
+            json_.containsKey('servicemesh')
+                ? ServiceMeshState.fromJson(
+                  json_['servicemesh'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state:
+            json_.containsKey('state')
+                ? State.fromJson(
+                  json_['state'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appdevexperience != null) 'appdevexperience': appdevexperience!,
-        if (clusterupgrade != null) 'clusterupgrade': clusterupgrade!,
-        if (configmanagement != null) 'configmanagement': configmanagement!,
-        if (identityservice != null) 'identityservice': identityservice!,
-        if (metering != null) 'metering': metering!,
-        if (policycontroller != null) 'policycontroller': policycontroller!,
-        if (rbacrolebindingactuation != null)
-          'rbacrolebindingactuation': rbacrolebindingactuation!,
-        if (servicemesh != null) 'servicemesh': servicemesh!,
-        if (state != null) 'state': state!,
-      };
+    if (appdevexperience != null) 'appdevexperience': appdevexperience!,
+    if (clusterupgrade != null) 'clusterupgrade': clusterupgrade!,
+    if (configmanagement != null) 'configmanagement': configmanagement!,
+    if (identityservice != null) 'identityservice': identityservice!,
+    if (metering != null) 'metering': metering!,
+    if (policycontroller != null) 'policycontroller': policycontroller!,
+    if (rbacrolebindingactuation != null)
+      'rbacrolebindingactuation': rbacrolebindingactuation!,
+    if (servicemesh != null) 'servicemesh': servicemesh!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2294,48 +2384,58 @@ class IdentityServiceAuthMethod {
   });
 
   IdentityServiceAuthMethod.fromJson(core.Map json_)
-      : this(
-          azureadConfig: json_.containsKey('azureadConfig')
-              ? IdentityServiceAzureADConfig.fromJson(
-                  json_['azureadConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          googleConfig: json_.containsKey('googleConfig')
-              ? IdentityServiceGoogleConfig.fromJson(
-                  json_['googleConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          ldapConfig: json_.containsKey('ldapConfig')
-              ? IdentityServiceLdapConfig.fromJson(
-                  json_['ldapConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          oidcConfig: json_.containsKey('oidcConfig')
-              ? IdentityServiceOidcConfig.fromJson(
-                  json_['oidcConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          proxy: json_['proxy'] as core.String?,
-          samlConfig: json_.containsKey('samlConfig')
-              ? IdentityServiceSamlConfig.fromJson(
-                  json_['samlConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        azureadConfig:
+            json_.containsKey('azureadConfig')
+                ? IdentityServiceAzureADConfig.fromJson(
+                  json_['azureadConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        googleConfig:
+            json_.containsKey('googleConfig')
+                ? IdentityServiceGoogleConfig.fromJson(
+                  json_['googleConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        ldapConfig:
+            json_.containsKey('ldapConfig')
+                ? IdentityServiceLdapConfig.fromJson(
+                  json_['ldapConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        oidcConfig:
+            json_.containsKey('oidcConfig')
+                ? IdentityServiceOidcConfig.fromJson(
+                  json_['oidcConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        proxy: json_['proxy'] as core.String?,
+        samlConfig:
+            json_.containsKey('samlConfig')
+                ? IdentityServiceSamlConfig.fromJson(
+                  json_['samlConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (azureadConfig != null) 'azureadConfig': azureadConfig!,
-        if (googleConfig != null) 'googleConfig': googleConfig!,
-        if (ldapConfig != null) 'ldapConfig': ldapConfig!,
-        if (name != null) 'name': name!,
-        if (oidcConfig != null) 'oidcConfig': oidcConfig!,
-        if (proxy != null) 'proxy': proxy!,
-        if (samlConfig != null) 'samlConfig': samlConfig!,
-      };
+    if (azureadConfig != null) 'azureadConfig': azureadConfig!,
+    if (googleConfig != null) 'googleConfig': googleConfig!,
+    if (ldapConfig != null) 'ldapConfig': ldapConfig!,
+    if (name != null) 'name': name!,
+    if (oidcConfig != null) 'oidcConfig': oidcConfig!,
+    if (proxy != null) 'proxy': proxy!,
+    if (samlConfig != null) 'samlConfig': samlConfig!,
+  };
 }
 
 /// Configuration for the AzureAD Auth flow.
 typedef IdentityServiceAzureADConfig = $IdentityServiceAzureADConfig;
 
 /// Configuration options for the AIS diagnostic interface.
-typedef IdentityServiceDiagnosticInterface
-    = $IdentityServiceDiagnosticInterface;
+typedef IdentityServiceDiagnosticInterface =
+    $IdentityServiceDiagnosticInterface;
 
 /// Configuration for the Google Plugin Auth flow.
 typedef IdentityServiceGoogleConfig = $IdentityServiceGoogleConfig;
@@ -2358,20 +2458,22 @@ class IdentityServiceIdentityServiceOptions {
   });
 
   IdentityServiceIdentityServiceOptions.fromJson(core.Map json_)
-      : this(
-          diagnosticInterface: json_.containsKey('diagnosticInterface')
-              ? IdentityServiceDiagnosticInterface.fromJson(
+    : this(
+        diagnosticInterface:
+            json_.containsKey('diagnosticInterface')
+                ? IdentityServiceDiagnosticInterface.fromJson(
                   json_['diagnosticInterface']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          sessionDuration: json_['sessionDuration'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sessionDuration: json_['sessionDuration'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (diagnosticInterface != null)
-          'diagnosticInterface': diagnosticInterface!,
-        if (sessionDuration != null) 'sessionDuration': sessionDuration!,
-      };
+    if (diagnosticInterface != null)
+      'diagnosticInterface': diagnosticInterface!,
+    if (sessionDuration != null) 'sessionDuration': sessionDuration!,
+  };
 }
 
 /// Configuration for the LDAP Auth flow.
@@ -2409,32 +2511,40 @@ class IdentityServiceLdapConfig {
   });
 
   IdentityServiceLdapConfig.fromJson(core.Map json_)
-      : this(
-          group: json_.containsKey('group')
-              ? IdentityServiceGroupConfig.fromJson(
-                  json_['group'] as core.Map<core.String, core.dynamic>)
-              : null,
-          server: json_.containsKey('server')
-              ? IdentityServiceServerConfig.fromJson(
-                  json_['server'] as core.Map<core.String, core.dynamic>)
-              : null,
-          serviceAccount: json_.containsKey('serviceAccount')
-              ? IdentityServiceServiceAccountConfig.fromJson(
+    : this(
+        group:
+            json_.containsKey('group')
+                ? IdentityServiceGroupConfig.fromJson(
+                  json_['group'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        server:
+            json_.containsKey('server')
+                ? IdentityServiceServerConfig.fromJson(
+                  json_['server'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serviceAccount:
+            json_.containsKey('serviceAccount')
+                ? IdentityServiceServiceAccountConfig.fromJson(
                   json_['serviceAccount']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          user: json_.containsKey('user')
-              ? IdentityServiceUserConfig.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        user:
+            json_.containsKey('user')
+                ? IdentityServiceUserConfig.fromJson(
+                  json_['user'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (group != null) 'group': group!,
-        if (server != null) 'server': server!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (user != null) 'user': user!,
-      };
+    if (group != null) 'group': group!,
+    if (server != null) 'server': server!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (user != null) 'user': user!,
+  };
 }
 
 /// Configuration for OIDC Auth flow.
@@ -2455,28 +2565,28 @@ class IdentityServiceServiceAccountConfig {
   /// Credentials for basic auth.
   IdentityServiceSimpleBindCredentials? simpleBindCredentials;
 
-  IdentityServiceServiceAccountConfig({
-    this.simpleBindCredentials,
-  });
+  IdentityServiceServiceAccountConfig({this.simpleBindCredentials});
 
   IdentityServiceServiceAccountConfig.fromJson(core.Map json_)
-      : this(
-          simpleBindCredentials: json_.containsKey('simpleBindCredentials')
-              ? IdentityServiceSimpleBindCredentials.fromJson(
+    : this(
+        simpleBindCredentials:
+            json_.containsKey('simpleBindCredentials')
+                ? IdentityServiceSimpleBindCredentials.fromJson(
                   json_['simpleBindCredentials']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (simpleBindCredentials != null)
-          'simpleBindCredentials': simpleBindCredentials!,
-      };
+    if (simpleBindCredentials != null)
+      'simpleBindCredentials': simpleBindCredentials!,
+  };
 }
 
 /// The structure holds the LDAP simple binding credential.
-typedef IdentityServiceSimpleBindCredentials
-    = $IdentityServiceSimpleBindCredentials;
+typedef IdentityServiceSimpleBindCredentials =
+    $IdentityServiceSimpleBindCredentials;
 
 /// **IdentityService**: Configuration for a single membership.
 class IdentityServiceSpec {
@@ -2488,29 +2598,32 @@ class IdentityServiceSpec {
   /// Optional.
   IdentityServiceIdentityServiceOptions? identityServiceOptions;
 
-  IdentityServiceSpec({
-    this.authMethods,
-    this.identityServiceOptions,
-  });
+  IdentityServiceSpec({this.authMethods, this.identityServiceOptions});
 
   IdentityServiceSpec.fromJson(core.Map json_)
-      : this(
-          authMethods: (json_['authMethods'] as core.List?)
-              ?.map((value) => IdentityServiceAuthMethod.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          identityServiceOptions: json_.containsKey('identityServiceOptions')
-              ? IdentityServiceIdentityServiceOptions.fromJson(
+    : this(
+        authMethods:
+            (json_['authMethods'] as core.List?)
+                ?.map(
+                  (value) => IdentityServiceAuthMethod.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        identityServiceOptions:
+            json_.containsKey('identityServiceOptions')
+                ? IdentityServiceIdentityServiceOptions.fromJson(
                   json_['identityServiceOptions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authMethods != null) 'authMethods': authMethods!,
-        if (identityServiceOptions != null)
-          'identityServiceOptions': identityServiceOptions!,
-      };
+    if (authMethods != null) 'authMethods': authMethods!,
+    if (identityServiceOptions != null)
+      'identityServiceOptions': identityServiceOptions!,
+  };
 }
 
 /// **IdentityService**: State for a single membership, analyzed and reported by
@@ -2543,22 +2656,24 @@ class IdentityServiceState {
   });
 
   IdentityServiceState.fromJson(core.Map json_)
-      : this(
-          failureReason: json_['failureReason'] as core.String?,
-          installedVersion: json_['installedVersion'] as core.String?,
-          memberConfig: json_.containsKey('memberConfig')
-              ? IdentityServiceSpec.fromJson(
-                  json_['memberConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        failureReason: json_['failureReason'] as core.String?,
+        installedVersion: json_['installedVersion'] as core.String?,
+        memberConfig:
+            json_.containsKey('memberConfig')
+                ? IdentityServiceSpec.fromJson(
+                  json_['memberConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (failureReason != null) 'failureReason': failureReason!,
-        if (installedVersion != null) 'installedVersion': installedVersion!,
-        if (memberConfig != null) 'memberConfig': memberConfig!,
-        if (state != null) 'state': state!,
-      };
+    if (failureReason != null) 'failureReason': failureReason!,
+    if (installedVersion != null) 'installedVersion': installedVersion!,
+    if (memberConfig != null) 'memberConfig': memberConfig!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Defines where users exist in the LDAP directory.
@@ -2586,18 +2701,14 @@ class LifecycleState {
   /// the Hub Service.
   core.String? state;
 
-  LifecycleState({
-    this.state,
-  });
+  LifecycleState({this.state});
 
   LifecycleState.fromJson(core.Map json_)
-      : this(
-          state: json_['state'] as core.String?,
-        );
+    : this(state: json_['state'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (state != null) 'state': state!,
-      };
+    if (state != null) 'state': state!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -2608,24 +2719,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for the `GkeHubFeature.ListMembershipFeatures` method.
@@ -2650,23 +2762,27 @@ class ListMembershipFeaturesResponse {
   });
 
   ListMembershipFeaturesResponse.fromJson(core.Map json_)
-      : this(
-          membershipFeatures: (json_['membershipFeatures'] as core.List?)
-              ?.map((value) => MembershipFeature.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        membershipFeatures:
+            (json_['membershipFeatures'] as core.List?)
+                ?.map(
+                  (value) => MembershipFeature.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (membershipFeatures != null)
-          'membershipFeatures': membershipFeatures!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (membershipFeatures != null) 'membershipFeatures': membershipFeatures!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -2677,24 +2793,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -2757,42 +2874,45 @@ class MembershipFeature {
   });
 
   MembershipFeature.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          deleteTime: json_['deleteTime'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          lifecycleState: json_.containsKey('lifecycleState')
-              ? LifecycleState.fromJson(json_['lifecycleState']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          spec: json_.containsKey('spec')
-              ? FeatureSpec.fromJson(
-                  json_['spec'] as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_.containsKey('state')
-              ? FeatureState.fromJson(
-                  json_['state'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        lifecycleState:
+            json_.containsKey('lifecycleState')
+                ? LifecycleState.fromJson(
+                  json_['lifecycleState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        spec:
+            json_.containsKey('spec')
+                ? FeatureSpec.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state:
+            json_.containsKey('state')
+                ? FeatureState.fromJson(
+                  json_['state'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (labels != null) 'labels': labels!,
-        if (lifecycleState != null) 'lifecycleState': lifecycleState!,
-        if (name != null) 'name': name!,
-        if (spec != null) 'spec': spec!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (labels != null) 'labels': labels!,
+    if (lifecycleState != null) 'lifecycleState': lifecycleState!,
+    if (name != null) 'name': name!,
+    if (spec != null) 'spec': spec!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// **Metering**: State for a single membership, analyzed and reported by
@@ -2812,20 +2932,20 @@ class MeteringState {
   });
 
   MeteringState.fromJson(core.Map json_)
-      : this(
-          lastMeasurementTime: json_['lastMeasurementTime'] as core.String?,
-          preciseLastMeasuredClusterVcpuCapacity:
-              (json_['preciseLastMeasuredClusterVcpuCapacity'] as core.num?)
-                  ?.toDouble(),
-        );
+    : this(
+        lastMeasurementTime: json_['lastMeasurementTime'] as core.String?,
+        preciseLastMeasuredClusterVcpuCapacity:
+            (json_['preciseLastMeasuredClusterVcpuCapacity'] as core.num?)
+                ?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lastMeasurementTime != null)
-          'lastMeasurementTime': lastMeasurementTime!,
-        if (preciseLastMeasuredClusterVcpuCapacity != null)
-          'preciseLastMeasuredClusterVcpuCapacity':
-              preciseLastMeasuredClusterVcpuCapacity!,
-      };
+    if (lastMeasurementTime != null)
+      'lastMeasurementTime': lastMeasurementTime!,
+    if (preciseLastMeasuredClusterVcpuCapacity != null)
+      'preciseLastMeasuredClusterVcpuCapacity':
+          preciseLastMeasuredClusterVcpuCapacity!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2871,37 +2991,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Origin defines where this FeatureSpec originated from.
@@ -2915,18 +3033,13 @@ class Origin {
   /// - "USER" : Per-Feature spec was inherited from a user specification.
   core.String? type;
 
-  Origin({
-    this.type,
-  });
+  Origin({this.type});
 
-  Origin.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-        );
+  Origin.fromJson(core.Map json_) : this(type: json_['type'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-      };
+    if (type != null) 'type': type!,
+  };
 }
 
 /// BundleInstallSpec is the specification configuration for a single managed
@@ -2935,21 +3048,19 @@ class PolicyControllerBundleInstallSpec {
   /// the set of namespaces to be exempted from the bundle
   core.List<core.String>? exemptedNamespaces;
 
-  PolicyControllerBundleInstallSpec({
-    this.exemptedNamespaces,
-  });
+  PolicyControllerBundleInstallSpec({this.exemptedNamespaces});
 
   PolicyControllerBundleInstallSpec.fromJson(core.Map json_)
-      : this(
-          exemptedNamespaces: (json_['exemptedNamespaces'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        exemptedNamespaces:
+            (json_['exemptedNamespaces'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (exemptedNamespaces != null)
-          'exemptedNamespaces': exemptedNamespaces!,
-      };
+    if (exemptedNamespaces != null) 'exemptedNamespaces': exemptedNamespaces!,
+  };
 }
 
 /// Configuration for Policy Controller
@@ -2967,7 +3078,7 @@ class PolicyControllerHubConfig {
   /// Map of deployment configs to deployments (“admission”, “audit”,
   /// “mutation”).
   core.Map<core.String, PolicyControllerPolicyControllerDeploymentConfig>?
-      deploymentConfigs;
+  deploymentConfigs;
 
   /// The set of namespaces that are excluded from Policy Controller checks.
   ///
@@ -3021,53 +3132,58 @@ class PolicyControllerHubConfig {
   });
 
   PolicyControllerHubConfig.fromJson(core.Map json_)
-      : this(
-          auditIntervalSeconds: json_['auditIntervalSeconds'] as core.String?,
-          constraintViolationLimit:
-              json_['constraintViolationLimit'] as core.String?,
-          deploymentConfigs: (json_['deploymentConfigs']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              PolicyControllerPolicyControllerDeploymentConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        auditIntervalSeconds: json_['auditIntervalSeconds'] as core.String?,
+        constraintViolationLimit:
+            json_['constraintViolationLimit'] as core.String?,
+        deploymentConfigs: (json_['deploymentConfigs']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                PolicyControllerPolicyControllerDeploymentConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          exemptableNamespaces: (json_['exemptableNamespaces'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          installSpec: json_['installSpec'] as core.String?,
-          logDeniesEnabled: json_['logDeniesEnabled'] as core.bool?,
-          monitoring: json_.containsKey('monitoring')
-              ? PolicyControllerMonitoringConfig.fromJson(
-                  json_['monitoring'] as core.Map<core.String, core.dynamic>)
-              : null,
-          mutationEnabled: json_['mutationEnabled'] as core.bool?,
-          policyContent: json_.containsKey('policyContent')
-              ? PolicyControllerPolicyContentSpec.fromJson(
-                  json_['policyContent'] as core.Map<core.String, core.dynamic>)
-              : null,
-          referentialRulesEnabled:
-              json_['referentialRulesEnabled'] as core.bool?,
-        );
+        exemptableNamespaces:
+            (json_['exemptableNamespaces'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        installSpec: json_['installSpec'] as core.String?,
+        logDeniesEnabled: json_['logDeniesEnabled'] as core.bool?,
+        monitoring:
+            json_.containsKey('monitoring')
+                ? PolicyControllerMonitoringConfig.fromJson(
+                  json_['monitoring'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mutationEnabled: json_['mutationEnabled'] as core.bool?,
+        policyContent:
+            json_.containsKey('policyContent')
+                ? PolicyControllerPolicyContentSpec.fromJson(
+                  json_['policyContent'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        referentialRulesEnabled: json_['referentialRulesEnabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditIntervalSeconds != null)
-          'auditIntervalSeconds': auditIntervalSeconds!,
-        if (constraintViolationLimit != null)
-          'constraintViolationLimit': constraintViolationLimit!,
-        if (deploymentConfigs != null) 'deploymentConfigs': deploymentConfigs!,
-        if (exemptableNamespaces != null)
-          'exemptableNamespaces': exemptableNamespaces!,
-        if (installSpec != null) 'installSpec': installSpec!,
-        if (logDeniesEnabled != null) 'logDeniesEnabled': logDeniesEnabled!,
-        if (monitoring != null) 'monitoring': monitoring!,
-        if (mutationEnabled != null) 'mutationEnabled': mutationEnabled!,
-        if (policyContent != null) 'policyContent': policyContent!,
-        if (referentialRulesEnabled != null)
-          'referentialRulesEnabled': referentialRulesEnabled!,
-      };
+    if (auditIntervalSeconds != null)
+      'auditIntervalSeconds': auditIntervalSeconds!,
+    if (constraintViolationLimit != null)
+      'constraintViolationLimit': constraintViolationLimit!,
+    if (deploymentConfigs != null) 'deploymentConfigs': deploymentConfigs!,
+    if (exemptableNamespaces != null)
+      'exemptableNamespaces': exemptableNamespaces!,
+    if (installSpec != null) 'installSpec': installSpec!,
+    if (logDeniesEnabled != null) 'logDeniesEnabled': logDeniesEnabled!,
+    if (monitoring != null) 'monitoring': monitoring!,
+    if (mutationEnabled != null) 'mutationEnabled': mutationEnabled!,
+    if (policyContent != null) 'policyContent': policyContent!,
+    if (referentialRulesEnabled != null)
+      'referentialRulesEnabled': referentialRulesEnabled!,
+  };
 }
 
 /// MonitoringConfig specifies the backends Policy Controller should export
@@ -3124,21 +3240,18 @@ class PolicyControllerOnClusterState {
   /// objects. Changes to those objects will not be overwritten by PoCo Hub.
   core.String? state;
 
-  PolicyControllerOnClusterState({
-    this.details,
-    this.state,
-  });
+  PolicyControllerOnClusterState({this.details, this.state});
 
   PolicyControllerOnClusterState.fromJson(core.Map json_)
-      : this(
-          details: json_['details'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        details: json_['details'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-        if (state != null) 'state': state!,
-      };
+    if (details != null) 'details': details!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// PolicyContentSpec defines the user's desired content configuration on the
@@ -3153,32 +3266,32 @@ class PolicyControllerPolicyContentSpec {
   /// Configures the installation of the Template Library.
   PolicyControllerTemplateLibraryConfig? templateLibrary;
 
-  PolicyControllerPolicyContentSpec({
-    this.bundles,
-    this.templateLibrary,
-  });
+  PolicyControllerPolicyContentSpec({this.bundles, this.templateLibrary});
 
   PolicyControllerPolicyContentSpec.fromJson(core.Map json_)
-      : this(
-          bundles:
-              (json_['bundles'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              PolicyControllerBundleInstallSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        bundles: (json_['bundles'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                PolicyControllerBundleInstallSpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          templateLibrary: json_.containsKey('templateLibrary')
-              ? PolicyControllerTemplateLibraryConfig.fromJson(
+        templateLibrary:
+            json_.containsKey('templateLibrary')
+                ? PolicyControllerTemplateLibraryConfig.fromJson(
                   json_['templateLibrary']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bundles != null) 'bundles': bundles!,
-        if (templateLibrary != null) 'templateLibrary': templateLibrary!,
-      };
+    if (bundles != null) 'bundles': bundles!,
+    if (templateLibrary != null) 'templateLibrary': templateLibrary!,
+  };
 }
 
 /// The state of the policy controller policy content
@@ -3203,36 +3316,40 @@ class PolicyControllerPolicyContentState {
   });
 
   PolicyControllerPolicyContentState.fromJson(core.Map json_)
-      : this(
-          bundleStates:
-              (json_['bundleStates'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              PolicyControllerOnClusterState.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        bundleStates: (json_['bundleStates']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                PolicyControllerOnClusterState.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          referentialSyncConfigState:
-              json_.containsKey('referentialSyncConfigState')
-                  ? PolicyControllerOnClusterState.fromJson(
-                      json_['referentialSyncConfigState']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          templateLibraryState: json_.containsKey('templateLibraryState')
-              ? PolicyControllerOnClusterState.fromJson(
+        referentialSyncConfigState:
+            json_.containsKey('referentialSyncConfigState')
+                ? PolicyControllerOnClusterState.fromJson(
+                  json_['referentialSyncConfigState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        templateLibraryState:
+            json_.containsKey('templateLibraryState')
+                ? PolicyControllerOnClusterState.fromJson(
                   json_['templateLibraryState']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bundleStates != null) 'bundleStates': bundleStates!,
-        if (referentialSyncConfigState != null)
-          'referentialSyncConfigState': referentialSyncConfigState!,
-        if (templateLibraryState != null)
-          'templateLibraryState': templateLibraryState!,
-      };
+    if (bundleStates != null) 'bundleStates': bundleStates!,
+    if (referentialSyncConfigState != null)
+      'referentialSyncConfigState': referentialSyncConfigState!,
+    if (templateLibraryState != null)
+      'templateLibraryState': templateLibraryState!,
+  };
 }
 
 /// Deployment-specific configuration.
@@ -3272,29 +3389,34 @@ class PolicyControllerPolicyControllerDeploymentConfig {
   });
 
   PolicyControllerPolicyControllerDeploymentConfig.fromJson(core.Map json_)
-      : this(
-          containerResources: json_.containsKey('containerResources')
-              ? PolicyControllerResourceRequirements.fromJson(
+    : this(
+        containerResources:
+            json_.containsKey('containerResources')
+                ? PolicyControllerResourceRequirements.fromJson(
                   json_['containerResources']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          podAffinity: json_['podAffinity'] as core.String?,
-          podAntiAffinity: json_['podAntiAffinity'] as core.bool?,
-          podTolerations: (json_['podTolerations'] as core.List?)
-              ?.map((value) => PolicyControllerToleration.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          replicaCount: json_['replicaCount'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        podAffinity: json_['podAffinity'] as core.String?,
+        podAntiAffinity: json_['podAntiAffinity'] as core.bool?,
+        podTolerations:
+            (json_['podTolerations'] as core.List?)
+                ?.map(
+                  (value) => PolicyControllerToleration.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        replicaCount: json_['replicaCount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (containerResources != null)
-          'containerResources': containerResources!,
-        if (podAffinity != null) 'podAffinity': podAffinity!,
-        if (podAntiAffinity != null) 'podAntiAffinity': podAntiAffinity!,
-        if (podTolerations != null) 'podTolerations': podTolerations!,
-        if (replicaCount != null) 'replicaCount': replicaCount!,
-      };
+    if (containerResources != null) 'containerResources': containerResources!,
+    if (podAffinity != null) 'podAffinity': podAffinity!,
+    if (podAntiAffinity != null) 'podAntiAffinity': podAntiAffinity!,
+    if (podTolerations != null) 'podTolerations': podTolerations!,
+    if (replicaCount != null) 'replicaCount': replicaCount!,
+  };
 }
 
 /// ResourceList contains container resource requirements.
@@ -3310,27 +3432,28 @@ class PolicyControllerResourceRequirements {
   /// container by the kube-scheduler.
   PolicyControllerResourceList? requests;
 
-  PolicyControllerResourceRequirements({
-    this.limits,
-    this.requests,
-  });
+  PolicyControllerResourceRequirements({this.limits, this.requests});
 
   PolicyControllerResourceRequirements.fromJson(core.Map json_)
-      : this(
-          limits: json_.containsKey('limits')
-              ? PolicyControllerResourceList.fromJson(
-                  json_['limits'] as core.Map<core.String, core.dynamic>)
-              : null,
-          requests: json_.containsKey('requests')
-              ? PolicyControllerResourceList.fromJson(
-                  json_['requests'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        limits:
+            json_.containsKey('limits')
+                ? PolicyControllerResourceList.fromJson(
+                  json_['limits'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requests:
+            json_.containsKey('requests')
+                ? PolicyControllerResourceList.fromJson(
+                  json_['requests'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (limits != null) 'limits': limits!,
-        if (requests != null) 'requests': requests!,
-      };
+    if (limits != null) 'limits': limits!,
+    if (requests != null) 'requests': requests!,
+  };
 }
 
 /// **Policy Controller**: Configuration for a single cluster.
@@ -3343,27 +3466,25 @@ class PolicyControllerSpec {
   /// Version of Policy Controller installed.
   core.String? version;
 
-  PolicyControllerSpec({
-    this.policyControllerHubConfig,
-    this.version,
-  });
+  PolicyControllerSpec({this.policyControllerHubConfig, this.version});
 
   PolicyControllerSpec.fromJson(core.Map json_)
-      : this(
-          policyControllerHubConfig:
-              json_.containsKey('policyControllerHubConfig')
-                  ? PolicyControllerHubConfig.fromJson(
-                      json_['policyControllerHubConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        policyControllerHubConfig:
+            json_.containsKey('policyControllerHubConfig')
+                ? PolicyControllerHubConfig.fromJson(
+                  json_['policyControllerHubConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policyControllerHubConfig != null)
-          'policyControllerHubConfig': policyControllerHubConfig!,
-        if (version != null) 'version': version!,
-      };
+    if (policyControllerHubConfig != null)
+      'policyControllerHubConfig': policyControllerHubConfig!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// **Policy Controller**: State for a single cluster.
@@ -3426,35 +3547,37 @@ class PolicyControllerState {
   });
 
   PolicyControllerState.fromJson(core.Map json_)
-      : this(
-          componentStates:
-              (json_['componentStates'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              PolicyControllerOnClusterState.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        componentStates: (json_['componentStates']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                PolicyControllerOnClusterState.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          policyContentState: json_.containsKey('policyContentState')
-              ? PolicyControllerPolicyContentState.fromJson(
+        policyContentState:
+            json_.containsKey('policyContentState')
+                ? PolicyControllerPolicyContentState.fromJson(
                   json_['policyContentState']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (componentStates != null) 'componentStates': componentStates!,
-        if (policyContentState != null)
-          'policyContentState': policyContentState!,
-        if (state != null) 'state': state!,
-      };
+    if (componentStates != null) 'componentStates': componentStates!,
+    if (policyContentState != null) 'policyContentState': policyContentState!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// The config specifying which default library templates to install.
-typedef PolicyControllerTemplateLibraryConfig
-    = $PolicyControllerTemplateLibraryConfig;
+typedef PolicyControllerTemplateLibraryConfig =
+    $PolicyControllerTemplateLibraryConfig;
 
 /// Toleration of a node taint.
 typedef PolicyControllerToleration = $PolicyControllerToleration;
@@ -3486,17 +3609,17 @@ class RBACRoleBindingActuationRBACRoleBindingState {
   });
 
   RBACRoleBindingActuationRBACRoleBindingState.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (description != null) 'description': description!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// **RBAC RoleBinding Actuation**: The membership-specific input for
@@ -3512,29 +3635,28 @@ class RBACRoleBindingActuationState {
   ///
   /// Output only.
   core.Map<core.String, RBACRoleBindingActuationRBACRoleBindingState>?
-      rbacrolebindingStates;
+  rbacrolebindingStates;
 
-  RBACRoleBindingActuationState({
-    this.rbacrolebindingStates,
-  });
+  RBACRoleBindingActuationState({this.rbacrolebindingStates});
 
   RBACRoleBindingActuationState.fromJson(core.Map json_)
-      : this(
-          rbacrolebindingStates: (json_['rbacrolebindingStates']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              RBACRoleBindingActuationRBACRoleBindingState.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        rbacrolebindingStates: (json_['rbacrolebindingStates']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                RBACRoleBindingActuationRBACRoleBindingState.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-        );
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rbacrolebindingStates != null)
-          'rbacrolebindingStates': rbacrolebindingStates!,
-      };
+    if (rbacrolebindingStates != null)
+      'rbacrolebindingStates': rbacrolebindingStates!,
+  };
 }
 
 /// AnalysisMessage is a single message produced by an analyzer, and it used to
@@ -3572,26 +3694,30 @@ class ServiceMeshAnalysisMessage {
   });
 
   ServiceMeshAnalysisMessage.fromJson(core.Map json_)
-      : this(
-          args: json_.containsKey('args')
-              ? json_['args'] as core.Map<core.String, core.dynamic>
-              : null,
-          description: json_['description'] as core.String?,
-          messageBase: json_.containsKey('messageBase')
-              ? ServiceMeshAnalysisMessageBase.fromJson(
-                  json_['messageBase'] as core.Map<core.String, core.dynamic>)
-              : null,
-          resourcePaths: (json_['resourcePaths'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        args:
+            json_.containsKey('args')
+                ? json_['args'] as core.Map<core.String, core.dynamic>
+                : null,
+        description: json_['description'] as core.String?,
+        messageBase:
+            json_.containsKey('messageBase')
+                ? ServiceMeshAnalysisMessageBase.fromJson(
+                  json_['messageBase'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resourcePaths:
+            (json_['resourcePaths'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (args != null) 'args': args!,
-        if (description != null) 'description': description!,
-        if (messageBase != null) 'messageBase': messageBase!,
-        if (resourcePaths != null) 'resourcePaths': resourcePaths!,
-      };
+    if (args != null) 'args': args!,
+    if (description != null) 'description': description!,
+    if (messageBase != null) 'messageBase': messageBase!,
+    if (resourcePaths != null) 'resourcePaths': resourcePaths!,
+  };
 }
 
 /// AnalysisMessageBase describes some common information that is needed for all
@@ -3620,20 +3746,22 @@ class ServiceMeshAnalysisMessageBase {
   });
 
   ServiceMeshAnalysisMessageBase.fromJson(core.Map json_)
-      : this(
-          documentationUrl: json_['documentationUrl'] as core.String?,
-          level: json_['level'] as core.String?,
-          type: json_.containsKey('type')
-              ? ServiceMeshType.fromJson(
-                  json_['type'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        documentationUrl: json_['documentationUrl'] as core.String?,
+        level: json_['level'] as core.String?,
+        type:
+            json_.containsKey('type')
+                ? ServiceMeshType.fromJson(
+                  json_['type'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (documentationUrl != null) 'documentationUrl': documentationUrl!,
-        if (level != null) 'level': level!,
-        if (type != null) 'type': type!,
-      };
+    if (documentationUrl != null) 'documentationUrl': documentationUrl!,
+    if (level != null) 'level': level!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Condition being reported.
@@ -3681,20 +3809,24 @@ class ServiceMeshControlPlaneManagement {
   });
 
   ServiceMeshControlPlaneManagement.fromJson(core.Map json_)
-      : this(
-          details: (json_['details'] as core.List?)
-              ?.map((value) => ServiceMeshStatusDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          implementation: json_['implementation'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        details:
+            (json_['details'] as core.List?)
+                ?.map(
+                  (value) => ServiceMeshStatusDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        implementation: json_['implementation'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-        if (implementation != null) 'implementation': implementation!,
-        if (state != null) 'state': state!,
-      };
+    if (details != null) 'details': details!,
+    if (implementation != null) 'implementation': implementation!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Status of data plane management.
@@ -3722,24 +3854,25 @@ class ServiceMeshDataPlaneManagement {
   /// progress.
   core.String? state;
 
-  ServiceMeshDataPlaneManagement({
-    this.details,
-    this.state,
-  });
+  ServiceMeshDataPlaneManagement({this.details, this.state});
 
   ServiceMeshDataPlaneManagement.fromJson(core.Map json_)
-      : this(
-          details: (json_['details'] as core.List?)
-              ?.map((value) => ServiceMeshStatusDetails.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        details:
+            (json_['details'] as core.List?)
+                ?.map(
+                  (value) => ServiceMeshStatusDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (details != null) 'details': details!,
-        if (state != null) 'state': state!,
-      };
+    if (details != null) 'details': details!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// **Service Mesh**: Spec for a single Membership for the servicemesh feature
@@ -3804,19 +3937,19 @@ class ServiceMeshSpec {
   });
 
   ServiceMeshSpec.fromJson(core.Map json_)
-      : this(
-          configApi: json_['configApi'] as core.String?,
-          controlPlane: json_['controlPlane'] as core.String?,
-          defaultChannel: json_['defaultChannel'] as core.String?,
-          management: json_['management'] as core.String?,
-        );
+    : this(
+        configApi: json_['configApi'] as core.String?,
+        controlPlane: json_['controlPlane'] as core.String?,
+        defaultChannel: json_['defaultChannel'] as core.String?,
+        management: json_['management'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (configApi != null) 'configApi': configApi!,
-        if (controlPlane != null) 'controlPlane': controlPlane!,
-        if (defaultChannel != null) 'defaultChannel': defaultChannel!,
-        if (management != null) 'management': management!,
-      };
+    if (configApi != null) 'configApi': configApi!,
+    if (controlPlane != null) 'controlPlane': controlPlane!,
+    if (defaultChannel != null) 'defaultChannel': defaultChannel!,
+    if (management != null) 'management': management!,
+  };
 }
 
 /// **Service Mesh**: State for a single Membership, as analyzed by the Service
@@ -3857,37 +3990,49 @@ class ServiceMeshState {
   });
 
   ServiceMeshState.fromJson(core.Map json_)
-      : this(
-          analysisMessages: (json_['analysisMessages'] as core.List?)
-              ?.map((value) => ServiceMeshAnalysisMessage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          conditions: (json_['conditions'] as core.List?)
-              ?.map((value) => ServiceMeshCondition.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          configApiVersion: json_['configApiVersion'] as core.String?,
-          controlPlaneManagement: json_.containsKey('controlPlaneManagement')
-              ? ServiceMeshControlPlaneManagement.fromJson(
+    : this(
+        analysisMessages:
+            (json_['analysisMessages'] as core.List?)
+                ?.map(
+                  (value) => ServiceMeshAnalysisMessage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        conditions:
+            (json_['conditions'] as core.List?)
+                ?.map(
+                  (value) => ServiceMeshCondition.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        configApiVersion: json_['configApiVersion'] as core.String?,
+        controlPlaneManagement:
+            json_.containsKey('controlPlaneManagement')
+                ? ServiceMeshControlPlaneManagement.fromJson(
                   json_['controlPlaneManagement']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          dataPlaneManagement: json_.containsKey('dataPlaneManagement')
-              ? ServiceMeshDataPlaneManagement.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataPlaneManagement:
+            json_.containsKey('dataPlaneManagement')
+                ? ServiceMeshDataPlaneManagement.fromJson(
                   json_['dataPlaneManagement']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (analysisMessages != null) 'analysisMessages': analysisMessages!,
-        if (conditions != null) 'conditions': conditions!,
-        if (configApiVersion != null) 'configApiVersion': configApiVersion!,
-        if (controlPlaneManagement != null)
-          'controlPlaneManagement': controlPlaneManagement!,
-        if (dataPlaneManagement != null)
-          'dataPlaneManagement': dataPlaneManagement!,
-      };
+    if (analysisMessages != null) 'analysisMessages': analysisMessages!,
+    if (conditions != null) 'conditions': conditions!,
+    if (configApiVersion != null) 'configApiVersion': configApiVersion!,
+    if (controlPlaneManagement != null)
+      'controlPlaneManagement': controlPlaneManagement!,
+    if (dataPlaneManagement != null)
+      'dataPlaneManagement': dataPlaneManagement!,
+  };
 }
 
 /// Structured and human-readable details for a status.
@@ -3913,21 +4058,18 @@ class ServiceMeshType {
   /// open-source Istio.)
   core.String? displayName;
 
-  ServiceMeshType({
-    this.code,
-    this.displayName,
-  });
+  ServiceMeshType({this.code, this.displayName});
 
   ServiceMeshType.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (displayName != null) 'displayName': displayName!,
-      };
+    if (code != null) 'code': code!,
+    if (displayName != null) 'displayName': displayName!,
+  };
 }
 
 /// High-level state of a MembershipFeature.
@@ -3953,24 +4095,20 @@ class State {
   /// updated.
   core.String? updateTime;
 
-  State({
-    this.code,
-    this.description,
-    this.updateTime,
-  });
+  State({this.code, this.description, this.updateTime});
 
   State.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          description: json_['description'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        description: json_['description'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (description != null) 'description': description!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (code != null) 'code': code!,
+    if (description != null) 'description': description!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// **WorkloadCertificate**: The membership-specific input for
@@ -3984,17 +4122,15 @@ class WorkloadCertificateSpec {
   /// - "ENABLED" : Enable workload certificate feature.
   core.String? certificateManagement;
 
-  WorkloadCertificateSpec({
-    this.certificateManagement,
-  });
+  WorkloadCertificateSpec({this.certificateManagement});
 
   WorkloadCertificateSpec.fromJson(core.Map json_)
-      : this(
-          certificateManagement: json_['certificateManagement'] as core.String?,
-        );
+    : this(
+        certificateManagement: json_['certificateManagement'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (certificateManagement != null)
-          'certificateManagement': certificateManagement!,
-      };
+    if (certificateManagement != null)
+      'certificateManagement': certificateManagement!,
+  };
 }

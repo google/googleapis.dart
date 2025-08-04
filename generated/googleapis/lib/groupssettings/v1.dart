@@ -46,11 +46,16 @@ class GroupssettingsApi {
 
   GroupsResource get groups => GroupsResource(_requester);
 
-  GroupssettingsApi(http.Client client,
-      {core.String rootUrl = 'https://www.googleapis.com/',
-      core.String servicePath = 'groups/v1/groups/'})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  GroupssettingsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://www.googleapis.com/',
+    core.String servicePath = 'groups/v1/groups/',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class GroupsResource {
@@ -891,193 +896,183 @@ class Groups {
   });
 
   Groups.fromJson(core.Map json_)
-      : this(
-          allowExternalMembers: json_['allowExternalMembers'] as core.String?,
-          allowGoogleCommunication:
-              json_['allowGoogleCommunication'] as core.String?,
-          allowWebPosting: json_['allowWebPosting'] as core.String?,
-          archiveOnly: json_['archiveOnly'] as core.String?,
-          customFooterText: json_['customFooterText'] as core.String?,
-          customReplyTo: json_['customReplyTo'] as core.String?,
-          customRolesEnabledForSettingsToBeMerged:
-              json_['customRolesEnabledForSettingsToBeMerged'] as core.String?,
-          defaultMessageDenyNotificationText:
-              json_['defaultMessageDenyNotificationText'] as core.String?,
-          defaultSender: json_['default_sender'] as core.String?,
-          description: json_['description'] as core.String?,
-          email: json_['email'] as core.String?,
-          enableCollaborativeInbox:
-              json_['enableCollaborativeInbox'] as core.String?,
-          favoriteRepliesOnTop: json_['favoriteRepliesOnTop'] as core.String?,
-          includeCustomFooter: json_['includeCustomFooter'] as core.String?,
-          includeInGlobalAddressList:
-              json_['includeInGlobalAddressList'] as core.String?,
-          isArchived: json_['isArchived'] as core.String?,
-          kind: json_['kind'] as core.String?,
-          maxMessageBytes: json_['maxMessageBytes'] as core.int?,
-          membersCanPostAsTheGroup:
-              json_['membersCanPostAsTheGroup'] as core.String?,
-          messageDisplayFont: json_['messageDisplayFont'] as core.String?,
-          messageModerationLevel:
-              json_['messageModerationLevel'] as core.String?,
-          name: json_['name'] as core.String?,
-          primaryLanguage: json_['primaryLanguage'] as core.String?,
-          replyTo: json_['replyTo'] as core.String?,
-          sendMessageDenyNotification:
-              json_['sendMessageDenyNotification'] as core.String?,
-          showInGroupDirectory: json_['showInGroupDirectory'] as core.String?,
-          spamModerationLevel: json_['spamModerationLevel'] as core.String?,
-          whoCanAdd: json_['whoCanAdd'] as core.String?,
-          whoCanAddReferences: json_['whoCanAddReferences'] as core.String?,
-          whoCanApproveMembers: json_['whoCanApproveMembers'] as core.String?,
-          whoCanApproveMessages: json_['whoCanApproveMessages'] as core.String?,
-          whoCanAssignTopics: json_['whoCanAssignTopics'] as core.String?,
-          whoCanAssistContent: json_['whoCanAssistContent'] as core.String?,
-          whoCanBanUsers: json_['whoCanBanUsers'] as core.String?,
-          whoCanContactOwner: json_['whoCanContactOwner'] as core.String?,
-          whoCanDeleteAnyPost: json_['whoCanDeleteAnyPost'] as core.String?,
-          whoCanDeleteTopics: json_['whoCanDeleteTopics'] as core.String?,
-          whoCanDiscoverGroup: json_['whoCanDiscoverGroup'] as core.String?,
-          whoCanEnterFreeFormTags:
-              json_['whoCanEnterFreeFormTags'] as core.String?,
-          whoCanHideAbuse: json_['whoCanHideAbuse'] as core.String?,
-          whoCanInvite: json_['whoCanInvite'] as core.String?,
-          whoCanJoin: json_['whoCanJoin'] as core.String?,
-          whoCanLeaveGroup: json_['whoCanLeaveGroup'] as core.String?,
-          whoCanLockTopics: json_['whoCanLockTopics'] as core.String?,
-          whoCanMakeTopicsSticky:
-              json_['whoCanMakeTopicsSticky'] as core.String?,
-          whoCanMarkDuplicate: json_['whoCanMarkDuplicate'] as core.String?,
-          whoCanMarkFavoriteReplyOnAnyTopic:
-              json_['whoCanMarkFavoriteReplyOnAnyTopic'] as core.String?,
-          whoCanMarkFavoriteReplyOnOwnTopic:
-              json_['whoCanMarkFavoriteReplyOnOwnTopic'] as core.String?,
-          whoCanMarkNoResponseNeeded:
-              json_['whoCanMarkNoResponseNeeded'] as core.String?,
-          whoCanModerateContent: json_['whoCanModerateContent'] as core.String?,
-          whoCanModerateMembers: json_['whoCanModerateMembers'] as core.String?,
-          whoCanModifyMembers: json_['whoCanModifyMembers'] as core.String?,
-          whoCanModifyTagsAndCategories:
-              json_['whoCanModifyTagsAndCategories'] as core.String?,
-          whoCanMoveTopicsIn: json_['whoCanMoveTopicsIn'] as core.String?,
-          whoCanMoveTopicsOut: json_['whoCanMoveTopicsOut'] as core.String?,
-          whoCanPostAnnouncements:
-              json_['whoCanPostAnnouncements'] as core.String?,
-          whoCanPostMessage: json_['whoCanPostMessage'] as core.String?,
-          whoCanTakeTopics: json_['whoCanTakeTopics'] as core.String?,
-          whoCanUnassignTopic: json_['whoCanUnassignTopic'] as core.String?,
-          whoCanUnmarkFavoriteReplyOnAnyTopic:
-              json_['whoCanUnmarkFavoriteReplyOnAnyTopic'] as core.String?,
-          whoCanViewGroup: json_['whoCanViewGroup'] as core.String?,
-          whoCanViewMembership: json_['whoCanViewMembership'] as core.String?,
-        );
+    : this(
+        allowExternalMembers: json_['allowExternalMembers'] as core.String?,
+        allowGoogleCommunication:
+            json_['allowGoogleCommunication'] as core.String?,
+        allowWebPosting: json_['allowWebPosting'] as core.String?,
+        archiveOnly: json_['archiveOnly'] as core.String?,
+        customFooterText: json_['customFooterText'] as core.String?,
+        customReplyTo: json_['customReplyTo'] as core.String?,
+        customRolesEnabledForSettingsToBeMerged:
+            json_['customRolesEnabledForSettingsToBeMerged'] as core.String?,
+        defaultMessageDenyNotificationText:
+            json_['defaultMessageDenyNotificationText'] as core.String?,
+        defaultSender: json_['default_sender'] as core.String?,
+        description: json_['description'] as core.String?,
+        email: json_['email'] as core.String?,
+        enableCollaborativeInbox:
+            json_['enableCollaborativeInbox'] as core.String?,
+        favoriteRepliesOnTop: json_['favoriteRepliesOnTop'] as core.String?,
+        includeCustomFooter: json_['includeCustomFooter'] as core.String?,
+        includeInGlobalAddressList:
+            json_['includeInGlobalAddressList'] as core.String?,
+        isArchived: json_['isArchived'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        maxMessageBytes: json_['maxMessageBytes'] as core.int?,
+        membersCanPostAsTheGroup:
+            json_['membersCanPostAsTheGroup'] as core.String?,
+        messageDisplayFont: json_['messageDisplayFont'] as core.String?,
+        messageModerationLevel: json_['messageModerationLevel'] as core.String?,
+        name: json_['name'] as core.String?,
+        primaryLanguage: json_['primaryLanguage'] as core.String?,
+        replyTo: json_['replyTo'] as core.String?,
+        sendMessageDenyNotification:
+            json_['sendMessageDenyNotification'] as core.String?,
+        showInGroupDirectory: json_['showInGroupDirectory'] as core.String?,
+        spamModerationLevel: json_['spamModerationLevel'] as core.String?,
+        whoCanAdd: json_['whoCanAdd'] as core.String?,
+        whoCanAddReferences: json_['whoCanAddReferences'] as core.String?,
+        whoCanApproveMembers: json_['whoCanApproveMembers'] as core.String?,
+        whoCanApproveMessages: json_['whoCanApproveMessages'] as core.String?,
+        whoCanAssignTopics: json_['whoCanAssignTopics'] as core.String?,
+        whoCanAssistContent: json_['whoCanAssistContent'] as core.String?,
+        whoCanBanUsers: json_['whoCanBanUsers'] as core.String?,
+        whoCanContactOwner: json_['whoCanContactOwner'] as core.String?,
+        whoCanDeleteAnyPost: json_['whoCanDeleteAnyPost'] as core.String?,
+        whoCanDeleteTopics: json_['whoCanDeleteTopics'] as core.String?,
+        whoCanDiscoverGroup: json_['whoCanDiscoverGroup'] as core.String?,
+        whoCanEnterFreeFormTags:
+            json_['whoCanEnterFreeFormTags'] as core.String?,
+        whoCanHideAbuse: json_['whoCanHideAbuse'] as core.String?,
+        whoCanInvite: json_['whoCanInvite'] as core.String?,
+        whoCanJoin: json_['whoCanJoin'] as core.String?,
+        whoCanLeaveGroup: json_['whoCanLeaveGroup'] as core.String?,
+        whoCanLockTopics: json_['whoCanLockTopics'] as core.String?,
+        whoCanMakeTopicsSticky: json_['whoCanMakeTopicsSticky'] as core.String?,
+        whoCanMarkDuplicate: json_['whoCanMarkDuplicate'] as core.String?,
+        whoCanMarkFavoriteReplyOnAnyTopic:
+            json_['whoCanMarkFavoriteReplyOnAnyTopic'] as core.String?,
+        whoCanMarkFavoriteReplyOnOwnTopic:
+            json_['whoCanMarkFavoriteReplyOnOwnTopic'] as core.String?,
+        whoCanMarkNoResponseNeeded:
+            json_['whoCanMarkNoResponseNeeded'] as core.String?,
+        whoCanModerateContent: json_['whoCanModerateContent'] as core.String?,
+        whoCanModerateMembers: json_['whoCanModerateMembers'] as core.String?,
+        whoCanModifyMembers: json_['whoCanModifyMembers'] as core.String?,
+        whoCanModifyTagsAndCategories:
+            json_['whoCanModifyTagsAndCategories'] as core.String?,
+        whoCanMoveTopicsIn: json_['whoCanMoveTopicsIn'] as core.String?,
+        whoCanMoveTopicsOut: json_['whoCanMoveTopicsOut'] as core.String?,
+        whoCanPostAnnouncements:
+            json_['whoCanPostAnnouncements'] as core.String?,
+        whoCanPostMessage: json_['whoCanPostMessage'] as core.String?,
+        whoCanTakeTopics: json_['whoCanTakeTopics'] as core.String?,
+        whoCanUnassignTopic: json_['whoCanUnassignTopic'] as core.String?,
+        whoCanUnmarkFavoriteReplyOnAnyTopic:
+            json_['whoCanUnmarkFavoriteReplyOnAnyTopic'] as core.String?,
+        whoCanViewGroup: json_['whoCanViewGroup'] as core.String?,
+        whoCanViewMembership: json_['whoCanViewMembership'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowExternalMembers != null)
-          'allowExternalMembers': allowExternalMembers!,
-        if (allowGoogleCommunication != null)
-          'allowGoogleCommunication': allowGoogleCommunication!,
-        if (allowWebPosting != null) 'allowWebPosting': allowWebPosting!,
-        if (archiveOnly != null) 'archiveOnly': archiveOnly!,
-        if (customFooterText != null) 'customFooterText': customFooterText!,
-        if (customReplyTo != null) 'customReplyTo': customReplyTo!,
-        if (customRolesEnabledForSettingsToBeMerged != null)
-          'customRolesEnabledForSettingsToBeMerged':
-              customRolesEnabledForSettingsToBeMerged!,
-        if (defaultMessageDenyNotificationText != null)
-          'defaultMessageDenyNotificationText':
-              defaultMessageDenyNotificationText!,
-        if (defaultSender != null) 'default_sender': defaultSender!,
-        if (description != null) 'description': description!,
-        if (email != null) 'email': email!,
-        if (enableCollaborativeInbox != null)
-          'enableCollaborativeInbox': enableCollaborativeInbox!,
-        if (favoriteRepliesOnTop != null)
-          'favoriteRepliesOnTop': favoriteRepliesOnTop!,
-        if (includeCustomFooter != null)
-          'includeCustomFooter': includeCustomFooter!,
-        if (includeInGlobalAddressList != null)
-          'includeInGlobalAddressList': includeInGlobalAddressList!,
-        if (isArchived != null) 'isArchived': isArchived!,
-        if (kind != null) 'kind': kind!,
-        if (maxMessageBytes != null) 'maxMessageBytes': maxMessageBytes!,
-        if (membersCanPostAsTheGroup != null)
-          'membersCanPostAsTheGroup': membersCanPostAsTheGroup!,
-        if (messageDisplayFont != null)
-          'messageDisplayFont': messageDisplayFont!,
-        if (messageModerationLevel != null)
-          'messageModerationLevel': messageModerationLevel!,
-        if (name != null) 'name': name!,
-        if (primaryLanguage != null) 'primaryLanguage': primaryLanguage!,
-        if (replyTo != null) 'replyTo': replyTo!,
-        if (sendMessageDenyNotification != null)
-          'sendMessageDenyNotification': sendMessageDenyNotification!,
-        if (showInGroupDirectory != null)
-          'showInGroupDirectory': showInGroupDirectory!,
-        if (spamModerationLevel != null)
-          'spamModerationLevel': spamModerationLevel!,
-        if (whoCanAdd != null) 'whoCanAdd': whoCanAdd!,
-        if (whoCanAddReferences != null)
-          'whoCanAddReferences': whoCanAddReferences!,
-        if (whoCanApproveMembers != null)
-          'whoCanApproveMembers': whoCanApproveMembers!,
-        if (whoCanApproveMessages != null)
-          'whoCanApproveMessages': whoCanApproveMessages!,
-        if (whoCanAssignTopics != null)
-          'whoCanAssignTopics': whoCanAssignTopics!,
-        if (whoCanAssistContent != null)
-          'whoCanAssistContent': whoCanAssistContent!,
-        if (whoCanBanUsers != null) 'whoCanBanUsers': whoCanBanUsers!,
-        if (whoCanContactOwner != null)
-          'whoCanContactOwner': whoCanContactOwner!,
-        if (whoCanDeleteAnyPost != null)
-          'whoCanDeleteAnyPost': whoCanDeleteAnyPost!,
-        if (whoCanDeleteTopics != null)
-          'whoCanDeleteTopics': whoCanDeleteTopics!,
-        if (whoCanDiscoverGroup != null)
-          'whoCanDiscoverGroup': whoCanDiscoverGroup!,
-        if (whoCanEnterFreeFormTags != null)
-          'whoCanEnterFreeFormTags': whoCanEnterFreeFormTags!,
-        if (whoCanHideAbuse != null) 'whoCanHideAbuse': whoCanHideAbuse!,
-        if (whoCanInvite != null) 'whoCanInvite': whoCanInvite!,
-        if (whoCanJoin != null) 'whoCanJoin': whoCanJoin!,
-        if (whoCanLeaveGroup != null) 'whoCanLeaveGroup': whoCanLeaveGroup!,
-        if (whoCanLockTopics != null) 'whoCanLockTopics': whoCanLockTopics!,
-        if (whoCanMakeTopicsSticky != null)
-          'whoCanMakeTopicsSticky': whoCanMakeTopicsSticky!,
-        if (whoCanMarkDuplicate != null)
-          'whoCanMarkDuplicate': whoCanMarkDuplicate!,
-        if (whoCanMarkFavoriteReplyOnAnyTopic != null)
-          'whoCanMarkFavoriteReplyOnAnyTopic':
-              whoCanMarkFavoriteReplyOnAnyTopic!,
-        if (whoCanMarkFavoriteReplyOnOwnTopic != null)
-          'whoCanMarkFavoriteReplyOnOwnTopic':
-              whoCanMarkFavoriteReplyOnOwnTopic!,
-        if (whoCanMarkNoResponseNeeded != null)
-          'whoCanMarkNoResponseNeeded': whoCanMarkNoResponseNeeded!,
-        if (whoCanModerateContent != null)
-          'whoCanModerateContent': whoCanModerateContent!,
-        if (whoCanModerateMembers != null)
-          'whoCanModerateMembers': whoCanModerateMembers!,
-        if (whoCanModifyMembers != null)
-          'whoCanModifyMembers': whoCanModifyMembers!,
-        if (whoCanModifyTagsAndCategories != null)
-          'whoCanModifyTagsAndCategories': whoCanModifyTagsAndCategories!,
-        if (whoCanMoveTopicsIn != null)
-          'whoCanMoveTopicsIn': whoCanMoveTopicsIn!,
-        if (whoCanMoveTopicsOut != null)
-          'whoCanMoveTopicsOut': whoCanMoveTopicsOut!,
-        if (whoCanPostAnnouncements != null)
-          'whoCanPostAnnouncements': whoCanPostAnnouncements!,
-        if (whoCanPostMessage != null) 'whoCanPostMessage': whoCanPostMessage!,
-        if (whoCanTakeTopics != null) 'whoCanTakeTopics': whoCanTakeTopics!,
-        if (whoCanUnassignTopic != null)
-          'whoCanUnassignTopic': whoCanUnassignTopic!,
-        if (whoCanUnmarkFavoriteReplyOnAnyTopic != null)
-          'whoCanUnmarkFavoriteReplyOnAnyTopic':
-              whoCanUnmarkFavoriteReplyOnAnyTopic!,
-        if (whoCanViewGroup != null) 'whoCanViewGroup': whoCanViewGroup!,
-        if (whoCanViewMembership != null)
-          'whoCanViewMembership': whoCanViewMembership!,
-      };
+    if (allowExternalMembers != null)
+      'allowExternalMembers': allowExternalMembers!,
+    if (allowGoogleCommunication != null)
+      'allowGoogleCommunication': allowGoogleCommunication!,
+    if (allowWebPosting != null) 'allowWebPosting': allowWebPosting!,
+    if (archiveOnly != null) 'archiveOnly': archiveOnly!,
+    if (customFooterText != null) 'customFooterText': customFooterText!,
+    if (customReplyTo != null) 'customReplyTo': customReplyTo!,
+    if (customRolesEnabledForSettingsToBeMerged != null)
+      'customRolesEnabledForSettingsToBeMerged':
+          customRolesEnabledForSettingsToBeMerged!,
+    if (defaultMessageDenyNotificationText != null)
+      'defaultMessageDenyNotificationText': defaultMessageDenyNotificationText!,
+    if (defaultSender != null) 'default_sender': defaultSender!,
+    if (description != null) 'description': description!,
+    if (email != null) 'email': email!,
+    if (enableCollaborativeInbox != null)
+      'enableCollaborativeInbox': enableCollaborativeInbox!,
+    if (favoriteRepliesOnTop != null)
+      'favoriteRepliesOnTop': favoriteRepliesOnTop!,
+    if (includeCustomFooter != null)
+      'includeCustomFooter': includeCustomFooter!,
+    if (includeInGlobalAddressList != null)
+      'includeInGlobalAddressList': includeInGlobalAddressList!,
+    if (isArchived != null) 'isArchived': isArchived!,
+    if (kind != null) 'kind': kind!,
+    if (maxMessageBytes != null) 'maxMessageBytes': maxMessageBytes!,
+    if (membersCanPostAsTheGroup != null)
+      'membersCanPostAsTheGroup': membersCanPostAsTheGroup!,
+    if (messageDisplayFont != null) 'messageDisplayFont': messageDisplayFont!,
+    if (messageModerationLevel != null)
+      'messageModerationLevel': messageModerationLevel!,
+    if (name != null) 'name': name!,
+    if (primaryLanguage != null) 'primaryLanguage': primaryLanguage!,
+    if (replyTo != null) 'replyTo': replyTo!,
+    if (sendMessageDenyNotification != null)
+      'sendMessageDenyNotification': sendMessageDenyNotification!,
+    if (showInGroupDirectory != null)
+      'showInGroupDirectory': showInGroupDirectory!,
+    if (spamModerationLevel != null)
+      'spamModerationLevel': spamModerationLevel!,
+    if (whoCanAdd != null) 'whoCanAdd': whoCanAdd!,
+    if (whoCanAddReferences != null)
+      'whoCanAddReferences': whoCanAddReferences!,
+    if (whoCanApproveMembers != null)
+      'whoCanApproveMembers': whoCanApproveMembers!,
+    if (whoCanApproveMessages != null)
+      'whoCanApproveMessages': whoCanApproveMessages!,
+    if (whoCanAssignTopics != null) 'whoCanAssignTopics': whoCanAssignTopics!,
+    if (whoCanAssistContent != null)
+      'whoCanAssistContent': whoCanAssistContent!,
+    if (whoCanBanUsers != null) 'whoCanBanUsers': whoCanBanUsers!,
+    if (whoCanContactOwner != null) 'whoCanContactOwner': whoCanContactOwner!,
+    if (whoCanDeleteAnyPost != null)
+      'whoCanDeleteAnyPost': whoCanDeleteAnyPost!,
+    if (whoCanDeleteTopics != null) 'whoCanDeleteTopics': whoCanDeleteTopics!,
+    if (whoCanDiscoverGroup != null)
+      'whoCanDiscoverGroup': whoCanDiscoverGroup!,
+    if (whoCanEnterFreeFormTags != null)
+      'whoCanEnterFreeFormTags': whoCanEnterFreeFormTags!,
+    if (whoCanHideAbuse != null) 'whoCanHideAbuse': whoCanHideAbuse!,
+    if (whoCanInvite != null) 'whoCanInvite': whoCanInvite!,
+    if (whoCanJoin != null) 'whoCanJoin': whoCanJoin!,
+    if (whoCanLeaveGroup != null) 'whoCanLeaveGroup': whoCanLeaveGroup!,
+    if (whoCanLockTopics != null) 'whoCanLockTopics': whoCanLockTopics!,
+    if (whoCanMakeTopicsSticky != null)
+      'whoCanMakeTopicsSticky': whoCanMakeTopicsSticky!,
+    if (whoCanMarkDuplicate != null)
+      'whoCanMarkDuplicate': whoCanMarkDuplicate!,
+    if (whoCanMarkFavoriteReplyOnAnyTopic != null)
+      'whoCanMarkFavoriteReplyOnAnyTopic': whoCanMarkFavoriteReplyOnAnyTopic!,
+    if (whoCanMarkFavoriteReplyOnOwnTopic != null)
+      'whoCanMarkFavoriteReplyOnOwnTopic': whoCanMarkFavoriteReplyOnOwnTopic!,
+    if (whoCanMarkNoResponseNeeded != null)
+      'whoCanMarkNoResponseNeeded': whoCanMarkNoResponseNeeded!,
+    if (whoCanModerateContent != null)
+      'whoCanModerateContent': whoCanModerateContent!,
+    if (whoCanModerateMembers != null)
+      'whoCanModerateMembers': whoCanModerateMembers!,
+    if (whoCanModifyMembers != null)
+      'whoCanModifyMembers': whoCanModifyMembers!,
+    if (whoCanModifyTagsAndCategories != null)
+      'whoCanModifyTagsAndCategories': whoCanModifyTagsAndCategories!,
+    if (whoCanMoveTopicsIn != null) 'whoCanMoveTopicsIn': whoCanMoveTopicsIn!,
+    if (whoCanMoveTopicsOut != null)
+      'whoCanMoveTopicsOut': whoCanMoveTopicsOut!,
+    if (whoCanPostAnnouncements != null)
+      'whoCanPostAnnouncements': whoCanPostAnnouncements!,
+    if (whoCanPostMessage != null) 'whoCanPostMessage': whoCanPostMessage!,
+    if (whoCanTakeTopics != null) 'whoCanTakeTopics': whoCanTakeTopics!,
+    if (whoCanUnassignTopic != null)
+      'whoCanUnassignTopic': whoCanUnassignTopic!,
+    if (whoCanUnmarkFavoriteReplyOnAnyTopic != null)
+      'whoCanUnmarkFavoriteReplyOnAnyTopic':
+          whoCanUnmarkFavoriteReplyOnAnyTopic!,
+    if (whoCanViewGroup != null) 'whoCanViewGroup': whoCanViewGroup!,
+    if (whoCanViewMembership != null)
+      'whoCanViewMembership': whoCanViewMembership!,
+  };
 }

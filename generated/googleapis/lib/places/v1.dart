@@ -75,11 +75,16 @@ class PlacesApi {
 
   PlacesResource get places => PlacesResource(_requester);
 
-  PlacesApi(http.Client client,
-      {core.String rootUrl = 'https://places.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  PlacesApi(
+    http.Client client, {
+    core.String rootUrl = 'https://places.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class PlacesResource {
@@ -123,7 +128,8 @@ class PlacesResource {
       queryParams: queryParams_,
     );
     return GoogleMapsPlacesV1AutocompletePlacesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get the details of a place based on its resource name, which is a string
@@ -200,7 +206,8 @@ class PlacesResource {
       queryParams: queryParams_,
     );
     return GoogleMapsPlacesV1Place.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Search for places near locations.
@@ -237,7 +244,8 @@ class PlacesResource {
       queryParams: queryParams_,
     );
     return GoogleMapsPlacesV1SearchNearbyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Text query based place search.
@@ -274,7 +282,8 @@ class PlacesResource {
       queryParams: queryParams_,
     );
     return GoogleMapsPlacesV1SearchTextResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -355,7 +364,8 @@ class PlacesPhotosResource {
       queryParams: queryParams_,
     );
     return GoogleMapsPlacesV1PhotoMedia.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -388,27 +398,28 @@ class GoogleGeoTypeViewport {
   /// Required.
   GoogleTypeLatLng? low;
 
-  GoogleGeoTypeViewport({
-    this.high,
-    this.low,
-  });
+  GoogleGeoTypeViewport({this.high, this.low});
 
   GoogleGeoTypeViewport.fromJson(core.Map json_)
-      : this(
-          high: json_.containsKey('high')
-              ? GoogleTypeLatLng.fromJson(
-                  json_['high'] as core.Map<core.String, core.dynamic>)
-              : null,
-          low: json_.containsKey('low')
-              ? GoogleTypeLatLng.fromJson(
-                  json_['low'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        high:
+            json_.containsKey('high')
+                ? GoogleTypeLatLng.fromJson(
+                  json_['high'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        low:
+            json_.containsKey('low')
+                ? GoogleTypeLatLng.fromJson(
+                  json_['low'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (high != null) 'high': high!,
-        if (low != null) 'low': low!,
-      };
+    if (high != null) 'high': high!,
+    if (low != null) 'low': low!,
+  };
 }
 
 /// A relational description of a location.
@@ -426,28 +437,33 @@ class GoogleMapsPlacesV1AddressDescriptor {
   /// The most recognizable and nearby landmarks are ranked first.
   core.List<GoogleMapsPlacesV1AddressDescriptorLandmark>? landmarks;
 
-  GoogleMapsPlacesV1AddressDescriptor({
-    this.areas,
-    this.landmarks,
-  });
+  GoogleMapsPlacesV1AddressDescriptor({this.areas, this.landmarks});
 
   GoogleMapsPlacesV1AddressDescriptor.fromJson(core.Map json_)
-      : this(
-          areas: (json_['areas'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1AddressDescriptorArea.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          landmarks: (json_['landmarks'] as core.List?)
-              ?.map((value) =>
-                  GoogleMapsPlacesV1AddressDescriptorLandmark.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        areas:
+            (json_['areas'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1AddressDescriptorArea.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        landmarks:
+            (json_['landmarks'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleMapsPlacesV1AddressDescriptorLandmark.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (areas != null) 'areas': areas!,
-        if (landmarks != null) 'landmarks': landmarks!,
-      };
+    if (areas != null) 'areas': areas!,
+    if (landmarks != null) 'landmarks': landmarks!,
+  };
 }
 
 /// Area information and the area's relationship with the target location.
@@ -482,22 +498,24 @@ class GoogleMapsPlacesV1AddressDescriptorArea {
   });
 
   GoogleMapsPlacesV1AddressDescriptorArea.fromJson(core.Map json_)
-      : this(
-          containment: json_['containment'] as core.String?,
-          displayName: json_.containsKey('displayName')
-              ? GoogleTypeLocalizedText.fromJson(
-                  json_['displayName'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          placeId: json_['placeId'] as core.String?,
-        );
+    : this(
+        containment: json_['containment'] as core.String?,
+        displayName:
+            json_.containsKey('displayName')
+                ? GoogleTypeLocalizedText.fromJson(
+                  json_['displayName'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        placeId: json_['placeId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (containment != null) 'containment': containment!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (placeId != null) 'placeId': placeId!,
-      };
+    if (containment != null) 'containment': containment!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (placeId != null) 'placeId': placeId!,
+  };
 }
 
 /// Basic landmark information and the landmark's relationship with the target
@@ -563,35 +581,38 @@ class GoogleMapsPlacesV1AddressDescriptorLandmark {
   });
 
   GoogleMapsPlacesV1AddressDescriptorLandmark.fromJson(core.Map json_)
-      : this(
-          displayName: json_.containsKey('displayName')
-              ? GoogleTypeLocalizedText.fromJson(
-                  json_['displayName'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          placeId: json_['placeId'] as core.String?,
-          spatialRelationship: json_['spatialRelationship'] as core.String?,
-          straightLineDistanceMeters:
-              (json_['straightLineDistanceMeters'] as core.num?)?.toDouble(),
-          travelDistanceMeters:
-              (json_['travelDistanceMeters'] as core.num?)?.toDouble(),
-          types: (json_['types'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        displayName:
+            json_.containsKey('displayName')
+                ? GoogleTypeLocalizedText.fromJson(
+                  json_['displayName'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        placeId: json_['placeId'] as core.String?,
+        spatialRelationship: json_['spatialRelationship'] as core.String?,
+        straightLineDistanceMeters:
+            (json_['straightLineDistanceMeters'] as core.num?)?.toDouble(),
+        travelDistanceMeters:
+            (json_['travelDistanceMeters'] as core.num?)?.toDouble(),
+        types:
+            (json_['types'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (placeId != null) 'placeId': placeId!,
-        if (spatialRelationship != null)
-          'spatialRelationship': spatialRelationship!,
-        if (straightLineDistanceMeters != null)
-          'straightLineDistanceMeters': straightLineDistanceMeters!,
-        if (travelDistanceMeters != null)
-          'travelDistanceMeters': travelDistanceMeters!,
-        if (types != null) 'types': types!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (placeId != null) 'placeId': placeId!,
+    if (spatialRelationship != null)
+      'spatialRelationship': spatialRelationship!,
+    if (straightLineDistanceMeters != null)
+      'straightLineDistanceMeters': straightLineDistanceMeters!,
+    if (travelDistanceMeters != null)
+      'travelDistanceMeters': travelDistanceMeters!,
+    if (types != null) 'types': types!,
+  };
 }
 
 /// Information about the author of the UGC data.
@@ -684,7 +705,7 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
   ///
   /// Optional.
   GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction?
-      locationRestriction;
+  locationRestriction;
 
   /// The origin point from which to calculate geodesic distance to the
   /// destination (returned as `distance_meters`).
@@ -744,57 +765,63 @@ class GoogleMapsPlacesV1AutocompletePlacesRequest {
   });
 
   GoogleMapsPlacesV1AutocompletePlacesRequest.fromJson(core.Map json_)
-      : this(
-          includePureServiceAreaBusinesses:
-              json_['includePureServiceAreaBusinesses'] as core.bool?,
-          includeQueryPredictions:
-              json_['includeQueryPredictions'] as core.bool?,
-          includedPrimaryTypes: (json_['includedPrimaryTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          includedRegionCodes: (json_['includedRegionCodes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          input: json_['input'] as core.String?,
-          inputOffset: json_['inputOffset'] as core.int?,
-          languageCode: json_['languageCode'] as core.String?,
-          locationBias: json_.containsKey('locationBias')
-              ? GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias
-                  .fromJson(json_['locationBias']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          locationRestriction: json_.containsKey('locationRestriction')
-              ? GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction
-                  .fromJson(json_['locationRestriction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          origin: json_.containsKey('origin')
-              ? GoogleTypeLatLng.fromJson(
-                  json_['origin'] as core.Map<core.String, core.dynamic>)
-              : null,
-          regionCode: json_['regionCode'] as core.String?,
-          sessionToken: json_['sessionToken'] as core.String?,
-        );
+    : this(
+        includePureServiceAreaBusinesses:
+            json_['includePureServiceAreaBusinesses'] as core.bool?,
+        includeQueryPredictions: json_['includeQueryPredictions'] as core.bool?,
+        includedPrimaryTypes:
+            (json_['includedPrimaryTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includedRegionCodes:
+            (json_['includedRegionCodes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        input: json_['input'] as core.String?,
+        inputOffset: json_['inputOffset'] as core.int?,
+        languageCode: json_['languageCode'] as core.String?,
+        locationBias:
+            json_.containsKey('locationBias')
+                ? GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias.fromJson(
+                  json_['locationBias'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        locationRestriction:
+            json_.containsKey('locationRestriction')
+                ? GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction.fromJson(
+                  json_['locationRestriction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        origin:
+            json_.containsKey('origin')
+                ? GoogleTypeLatLng.fromJson(
+                  json_['origin'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        regionCode: json_['regionCode'] as core.String?,
+        sessionToken: json_['sessionToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (includePureServiceAreaBusinesses != null)
-          'includePureServiceAreaBusinesses': includePureServiceAreaBusinesses!,
-        if (includeQueryPredictions != null)
-          'includeQueryPredictions': includeQueryPredictions!,
-        if (includedPrimaryTypes != null)
-          'includedPrimaryTypes': includedPrimaryTypes!,
-        if (includedRegionCodes != null)
-          'includedRegionCodes': includedRegionCodes!,
-        if (input != null) 'input': input!,
-        if (inputOffset != null) 'inputOffset': inputOffset!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (locationBias != null) 'locationBias': locationBias!,
-        if (locationRestriction != null)
-          'locationRestriction': locationRestriction!,
-        if (origin != null) 'origin': origin!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (sessionToken != null) 'sessionToken': sessionToken!,
-      };
+    if (includePureServiceAreaBusinesses != null)
+      'includePureServiceAreaBusinesses': includePureServiceAreaBusinesses!,
+    if (includeQueryPredictions != null)
+      'includeQueryPredictions': includeQueryPredictions!,
+    if (includedPrimaryTypes != null)
+      'includedPrimaryTypes': includedPrimaryTypes!,
+    if (includedRegionCodes != null)
+      'includedRegionCodes': includedRegionCodes!,
+    if (input != null) 'input': input!,
+    if (inputOffset != null) 'inputOffset': inputOffset!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (locationBias != null) 'locationBias': locationBias!,
+    if (locationRestriction != null)
+      'locationRestriction': locationRestriction!,
+    if (origin != null) 'origin': origin!,
+    if (regionCode != null) 'regionCode': regionCode!,
+    if (sessionToken != null) 'sessionToken': sessionToken!,
+  };
 }
 
 /// The region to search.
@@ -813,22 +840,26 @@ class GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias {
   });
 
   GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias.fromJson(
-      core.Map json_)
-      : this(
-          circle: json_.containsKey('circle')
-              ? GoogleMapsPlacesV1Circle.fromJson(
-                  json_['circle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rectangle: json_.containsKey('rectangle')
-              ? GoogleGeoTypeViewport.fromJson(
-                  json_['rectangle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        circle:
+            json_.containsKey('circle')
+                ? GoogleMapsPlacesV1Circle.fromJson(
+                  json_['circle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rectangle:
+            json_.containsKey('rectangle')
+                ? GoogleGeoTypeViewport.fromJson(
+                  json_['rectangle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (circle != null) 'circle': circle!,
-        if (rectangle != null) 'rectangle': rectangle!,
-      };
+    if (circle != null) 'circle': circle!,
+    if (rectangle != null) 'rectangle': rectangle!,
+  };
 }
 
 /// The region to search.
@@ -847,57 +878,63 @@ class GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction {
   });
 
   GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction.fromJson(
-      core.Map json_)
-      : this(
-          circle: json_.containsKey('circle')
-              ? GoogleMapsPlacesV1Circle.fromJson(
-                  json_['circle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rectangle: json_.containsKey('rectangle')
-              ? GoogleGeoTypeViewport.fromJson(
-                  json_['rectangle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        circle:
+            json_.containsKey('circle')
+                ? GoogleMapsPlacesV1Circle.fromJson(
+                  json_['circle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rectangle:
+            json_.containsKey('rectangle')
+                ? GoogleGeoTypeViewport.fromJson(
+                  json_['rectangle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (circle != null) 'circle': circle!,
-        if (rectangle != null) 'rectangle': rectangle!,
-      };
+    if (circle != null) 'circle': circle!,
+    if (rectangle != null) 'rectangle': rectangle!,
+  };
 }
 
 /// Response proto for AutocompletePlaces.
 class GoogleMapsPlacesV1AutocompletePlacesResponse {
   /// Contains a list of suggestions, ordered in descending order of relevance.
   core.List<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion>?
-      suggestions;
+  suggestions;
 
-  GoogleMapsPlacesV1AutocompletePlacesResponse({
-    this.suggestions,
-  });
+  GoogleMapsPlacesV1AutocompletePlacesResponse({this.suggestions});
 
   GoogleMapsPlacesV1AutocompletePlacesResponse.fromJson(core.Map json_)
-      : this(
-          suggestions: (json_['suggestions'] as core.List?)
-              ?.map((value) =>
-                  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        suggestions:
+            (json_['suggestions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (suggestions != null) 'suggestions': suggestions!,
-      };
+    if (suggestions != null) 'suggestions': suggestions!,
+  };
 }
 
 /// An Autocomplete suggestion result.
 class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion {
   /// A prediction for a Place.
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction?
-      placePrediction;
+  placePrediction;
 
   /// A prediction for a query.
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction?
-      queryPrediction;
+  queryPrediction;
 
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion({
     this.placePrediction,
@@ -905,24 +942,28 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion {
   });
 
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion.fromJson(
-      core.Map json_)
-      : this(
-          placePrediction: json_.containsKey('placePrediction')
-              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction
-                  .fromJson(json_['placePrediction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          queryPrediction: json_.containsKey('queryPrediction')
-              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction
-                  .fromJson(json_['queryPrediction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        placePrediction:
+            json_.containsKey('placePrediction')
+                ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction.fromJson(
+                  json_['placePrediction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        queryPrediction:
+            json_.containsKey('queryPrediction')
+                ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction.fromJson(
+                  json_['queryPrediction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (placePrediction != null) 'placePrediction': placePrediction!,
-        if (queryPrediction != null) 'queryPrediction': queryPrediction!,
-      };
+    if (placePrediction != null) 'placePrediction': placePrediction!,
+    if (queryPrediction != null) 'queryPrediction': queryPrediction!,
+  };
 }
 
 /// Text representing a Place or query prediction.
@@ -938,7 +979,7 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText {
   /// transliterations). These values are Unicode character offsets of `text`.
   /// The ranges are guaranteed to be ordered in increasing offset values.
   core.List<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange>?
-      matches;
+  matches;
 
   /// Text that may be used as is or formatted with `matches`.
   core.String? text;
@@ -949,20 +990,24 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText {
   });
 
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText.fromJson(
-      core.Map json_)
-      : this(
-          matches: (json_['matches'] as core.List?)
-              ?.map((value) =>
-                  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          text: json_['text'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        matches:
+            (json_['matches'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (matches != null) 'matches': matches!,
-        if (text != null) 'text': text!,
-      };
+    if (matches != null) 'matches': matches!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// Prediction results for a Place Autocomplete prediction.
@@ -993,7 +1038,7 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction {
   /// represent a Place prediction. Users should not try to parse
   /// `structured_format` into `text` or vice versa.
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat?
-      structuredFormat;
+  structuredFormat;
 
   /// Contains the human-readable name for the returned result.
   ///
@@ -1026,34 +1071,38 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction {
   });
 
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction.fromJson(
-      core.Map json_)
-      : this(
-          distanceMeters: json_['distanceMeters'] as core.int?,
-          place: json_['place'] as core.String?,
-          placeId: json_['placeId'] as core.String?,
-          structuredFormat: json_.containsKey('structuredFormat')
-              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat
-                  .fromJson(json_['structuredFormat']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_.containsKey('text')
-              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText
-                  .fromJson(
-                      json_['text'] as core.Map<core.String, core.dynamic>)
-              : null,
-          types: (json_['types'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        distanceMeters: json_['distanceMeters'] as core.int?,
+        place: json_['place'] as core.String?,
+        placeId: json_['placeId'] as core.String?,
+        structuredFormat:
+            json_.containsKey('structuredFormat')
+                ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat.fromJson(
+                  json_['structuredFormat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text:
+            json_.containsKey('text')
+                ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText.fromJson(
+                  json_['text'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        types:
+            (json_['types'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (distanceMeters != null) 'distanceMeters': distanceMeters!,
-        if (place != null) 'place': place!,
-        if (placeId != null) 'placeId': placeId!,
-        if (structuredFormat != null) 'structuredFormat': structuredFormat!,
-        if (text != null) 'text': text!,
-        if (types != null) 'types': types!,
-      };
+    if (distanceMeters != null) 'distanceMeters': distanceMeters!,
+    if (place != null) 'place': place!,
+    if (placeId != null) 'placeId': placeId!,
+    if (structuredFormat != null) 'structuredFormat': structuredFormat!,
+    if (text != null) 'text': text!,
+    if (types != null) 'types': types!,
+  };
 }
 
 /// Prediction results for a Query Autocomplete prediction.
@@ -1068,7 +1117,7 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction {
   /// represent a query prediction. Users should not try to parse
   /// `structured_format` into `text` or vice versa.
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat?
-      structuredFormat;
+  structuredFormat;
 
   /// The predicted text.
   ///
@@ -1090,24 +1139,27 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction {
   });
 
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction.fromJson(
-      core.Map json_)
-      : this(
-          structuredFormat: json_.containsKey('structuredFormat')
-              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat
-                  .fromJson(json_['structuredFormat']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_.containsKey('text')
-              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText
-                  .fromJson(
-                      json_['text'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        structuredFormat:
+            json_.containsKey('structuredFormat')
+                ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat.fromJson(
+                  json_['structuredFormat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text:
+            json_.containsKey('text')
+                ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText.fromJson(
+                  json_['text'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (structuredFormat != null) 'structuredFormat': structuredFormat!,
-        if (text != null) 'text': text!,
-      };
+    if (structuredFormat != null) 'structuredFormat': structuredFormat!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// Identifies a substring within a given text.
@@ -1125,16 +1177,16 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange {
   });
 
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange.fromJson(
-      core.Map json_)
-      : this(
-          endOffset: json_['endOffset'] as core.int?,
-          startOffset: json_['startOffset'] as core.int?,
-        );
+    core.Map json_,
+  ) : this(
+        endOffset: json_['endOffset'] as core.int?,
+        startOffset: json_['startOffset'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endOffset != null) 'endOffset': endOffset!,
-        if (startOffset != null) 'startOffset': startOffset!,
-      };
+    if (endOffset != null) 'endOffset': endOffset!,
+    if (startOffset != null) 'startOffset': startOffset!,
+  };
 }
 
 /// Contains a breakdown of a Place or query prediction into main text and
@@ -1147,12 +1199,12 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange {
 class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat {
   /// Represents the name of the Place or query.
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText?
-      mainText;
+  mainText;
 
   /// Represents additional disambiguating features (such as a city or region)
   /// to further identify the Place or refine the query.
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText?
-      secondaryText;
+  secondaryText;
 
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat({
     this.mainText,
@@ -1160,24 +1212,26 @@ class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat {
   });
 
   GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat.fromJson(
-      core.Map json_)
-      : this(
-          mainText: json_.containsKey('mainText')
-              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText
-                  .fromJson(
-                      json_['mainText'] as core.Map<core.String, core.dynamic>)
-              : null,
-          secondaryText: json_.containsKey('secondaryText')
-              ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText
-                  .fromJson(json_['secondaryText']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        mainText:
+            json_.containsKey('mainText')
+                ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText.fromJson(
+                  json_['mainText'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        secondaryText:
+            json_.containsKey('secondaryText')
+                ? GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText.fromJson(
+                  json_['secondaryText'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mainText != null) 'mainText': mainText!,
-        if (secondaryText != null) 'secondaryText': secondaryText!,
-      };
+    if (mainText != null) 'mainText': mainText!,
+    if (secondaryText != null) 'secondaryText': secondaryText!,
+  };
 }
 
 /// Circle with a LatLng as center and radius.
@@ -1197,24 +1251,23 @@ class GoogleMapsPlacesV1Circle {
   /// Required.
   core.double? radius;
 
-  GoogleMapsPlacesV1Circle({
-    this.center,
-    this.radius,
-  });
+  GoogleMapsPlacesV1Circle({this.center, this.radius});
 
   GoogleMapsPlacesV1Circle.fromJson(core.Map json_)
-      : this(
-          center: json_.containsKey('center')
-              ? GoogleTypeLatLng.fromJson(
-                  json_['center'] as core.Map<core.String, core.dynamic>)
-              : null,
-          radius: (json_['radius'] as core.num?)?.toDouble(),
-        );
+    : this(
+        center:
+            json_.containsKey('center')
+                ? GoogleTypeLatLng.fromJson(
+                  json_['center'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        radius: (json_['radius'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (center != null) 'center': center!,
-        if (radius != null) 'radius': radius!,
-      };
+    if (center != null) 'center': center!,
+    if (radius != null) 'radius': radius!,
+  };
 }
 
 /// A block of content that can be served individually.
@@ -1227,26 +1280,26 @@ class GoogleMapsPlacesV1ContentBlock {
   /// This name can be used in other APIs that accept Place resource names.
   core.List<core.String>? referencedPlaces;
 
-  GoogleMapsPlacesV1ContentBlock({
-    this.content,
-    this.referencedPlaces,
-  });
+  GoogleMapsPlacesV1ContentBlock({this.content, this.referencedPlaces});
 
   GoogleMapsPlacesV1ContentBlock.fromJson(core.Map json_)
-      : this(
-          content: json_.containsKey('content')
-              ? GoogleTypeLocalizedText.fromJson(
-                  json_['content'] as core.Map<core.String, core.dynamic>)
-              : null,
-          referencedPlaces: (json_['referencedPlaces'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        content:
+            json_.containsKey('content')
+                ? GoogleTypeLocalizedText.fromJson(
+                  json_['content'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        referencedPlaces:
+            (json_['referencedPlaces'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (referencedPlaces != null) 'referencedPlaces': referencedPlaces!,
-      };
+    if (content != null) 'content': content!,
+    if (referencedPlaces != null) 'referencedPlaces': referencedPlaces!,
+  };
 }
 
 /// Experimental: See
@@ -1276,27 +1329,39 @@ class GoogleMapsPlacesV1ContextualContent {
   });
 
   GoogleMapsPlacesV1ContextualContent.fromJson(core.Map json_)
-      : this(
-          justifications: (json_['justifications'] as core.List?)
-              ?.map((value) =>
-                  GoogleMapsPlacesV1ContextualContentJustification.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          photos: (json_['photos'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1Photo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          reviews: (json_['reviews'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1Review.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        justifications:
+            (json_['justifications'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleMapsPlacesV1ContextualContentJustification.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        photos:
+            (json_['photos'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1Photo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        reviews:
+            (json_['reviews'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1Review.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (justifications != null) 'justifications': justifications!,
-        if (photos != null) 'photos': photos!,
-        if (reviews != null) 'reviews': reviews!,
-      };
+    if (justifications != null) 'justifications': justifications!,
+    if (photos != null) 'photos': photos!,
+    if (reviews != null) 'reviews': reviews!,
+  };
 }
 
 /// Experimental: See
@@ -1310,13 +1375,13 @@ class GoogleMapsPlacesV1ContextualContentJustification {
   /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
   /// for more details.
   GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification?
-      businessAvailabilityAttributesJustification;
+  businessAvailabilityAttributesJustification;
 
   /// Experimental: See
   /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative
   /// for more details.
   GoogleMapsPlacesV1ContextualContentJustificationReviewJustification?
-      reviewJustification;
+  reviewJustification;
 
   GoogleMapsPlacesV1ContextualContentJustification({
     this.businessAvailabilityAttributesJustification,
@@ -1324,27 +1389,30 @@ class GoogleMapsPlacesV1ContextualContentJustification {
   });
 
   GoogleMapsPlacesV1ContextualContentJustification.fromJson(core.Map json_)
-      : this(
-          businessAvailabilityAttributesJustification: json_
-                  .containsKey('businessAvailabilityAttributesJustification')
-              ? GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification
-                  .fromJson(json_['businessAvailabilityAttributesJustification']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          reviewJustification: json_.containsKey('reviewJustification')
-              ? GoogleMapsPlacesV1ContextualContentJustificationReviewJustification
-                  .fromJson(json_['reviewJustification']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        businessAvailabilityAttributesJustification:
+            json_.containsKey('businessAvailabilityAttributesJustification')
+                ? GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification.fromJson(
+                  json_['businessAvailabilityAttributesJustification']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reviewJustification:
+            json_.containsKey('reviewJustification')
+                ? GoogleMapsPlacesV1ContextualContentJustificationReviewJustification.fromJson(
+                  json_['reviewJustification']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (businessAvailabilityAttributesJustification != null)
-          'businessAvailabilityAttributesJustification':
-              businessAvailabilityAttributesJustification!,
-        if (reviewJustification != null)
-          'reviewJustification': reviewJustification!,
-      };
+    if (businessAvailabilityAttributesJustification != null)
+      'businessAvailabilityAttributesJustification':
+          businessAvailabilityAttributesJustification!,
+    if (reviewJustification != null)
+      'reviewJustification': reviewJustification!,
+  };
 }
 
 /// Experimental: See
@@ -1370,18 +1438,18 @@ class GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttrib
   });
 
   GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification.fromJson(
-      core.Map json_)
-      : this(
-          delivery: json_['delivery'] as core.bool?,
-          dineIn: json_['dineIn'] as core.bool?,
-          takeout: json_['takeout'] as core.bool?,
-        );
+    core.Map json_,
+  ) : this(
+        delivery: json_['delivery'] as core.bool?,
+        dineIn: json_['dineIn'] as core.bool?,
+        takeout: json_['takeout'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (delivery != null) 'delivery': delivery!,
-        if (dineIn != null) 'dineIn': dineIn!,
-        if (takeout != null) 'takeout': takeout!,
-      };
+    if (delivery != null) 'delivery': delivery!,
+    if (dineIn != null) 'dineIn': dineIn!,
+    if (takeout != null) 'takeout': takeout!,
+  };
 }
 
 /// Experimental: See
@@ -1394,7 +1462,7 @@ class GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttrib
 /// the search query.
 class GoogleMapsPlacesV1ContextualContentJustificationReviewJustification {
   GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText?
-      highlightedText;
+  highlightedText;
 
   /// The review that the highlighted text is generated from.
   GoogleMapsPlacesV1Review? review;
@@ -1405,23 +1473,27 @@ class GoogleMapsPlacesV1ContextualContentJustificationReviewJustification {
   });
 
   GoogleMapsPlacesV1ContextualContentJustificationReviewJustification.fromJson(
-      core.Map json_)
-      : this(
-          highlightedText: json_.containsKey('highlightedText')
-              ? GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText
-                  .fromJson(json_['highlightedText']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          review: json_.containsKey('review')
-              ? GoogleMapsPlacesV1Review.fromJson(
-                  json_['review'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        highlightedText:
+            json_.containsKey('highlightedText')
+                ? GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText.fromJson(
+                  json_['highlightedText']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        review:
+            json_.containsKey('review')
+                ? GoogleMapsPlacesV1Review.fromJson(
+                  json_['review'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (highlightedText != null) 'highlightedText': highlightedText!,
-        if (review != null) 'review': review!,
-      };
+    if (highlightedText != null) 'highlightedText': highlightedText!,
+    if (review != null) 'review': review!,
+  };
 }
 
 /// The text highlighted by the justification.
@@ -1432,8 +1504,9 @@ class GoogleMapsPlacesV1ContextualContentJustificationReviewJustification {
 class GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText {
   /// The list of the ranges of the highlighted text.
   core.List<
-          GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange>?
-      highlightedTextRanges;
+    GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange
+  >?
+  highlightedTextRanges;
   core.String? text;
 
   GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText({
@@ -1442,21 +1515,25 @@ class GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlig
   });
 
   GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText.fromJson(
-      core.Map json_)
-      : this(
-          highlightedTextRanges: (json_['highlightedTextRanges'] as core.List?)
-              ?.map((value) =>
-                  GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          text: json_['text'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        highlightedTextRanges:
+            (json_['highlightedTextRanges'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (highlightedTextRanges != null)
-          'highlightedTextRanges': highlightedTextRanges!,
-        if (text != null) 'text': text!,
-      };
+    if (highlightedTextRanges != null)
+      'highlightedTextRanges': highlightedTextRanges!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// The range of highlighted text.
@@ -1470,16 +1547,16 @@ class GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlig
   });
 
   GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange.fromJson(
-      core.Map json_)
-      : this(
-          endIndex: json_['endIndex'] as core.int?,
-          startIndex: json_['startIndex'] as core.int?,
-        );
+    core.Map json_,
+  ) : this(
+        endIndex: json_['endIndex'] as core.int?,
+        startIndex: json_['startIndex'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endIndex != null) 'endIndex': endIndex!,
-        if (startIndex != null) 'startIndex': startIndex!,
-      };
+    if (endIndex != null) 'endIndex': endIndex!,
+    if (startIndex != null) 'startIndex': startIndex!,
+  };
 }
 
 /// Information about the EV Charge Station hosted in Place.
@@ -1492,7 +1569,7 @@ class GoogleMapsPlacesV1EVChargeOptions {
   /// A list of EV charging connector aggregations that contain connectors of
   /// the same type and same charge rate.
   core.List<GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation>?
-      connectorAggregation;
+  connectorAggregation;
 
   /// Number of connectors at this station.
   ///
@@ -1507,20 +1584,24 @@ class GoogleMapsPlacesV1EVChargeOptions {
   });
 
   GoogleMapsPlacesV1EVChargeOptions.fromJson(core.Map json_)
-      : this(
-          connectorAggregation: (json_['connectorAggregation'] as core.List?)
-              ?.map((value) =>
-                  GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          connectorCount: json_['connectorCount'] as core.int?,
-        );
+    : this(
+        connectorAggregation:
+            (json_['connectorAggregation'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        connectorCount: json_['connectorCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectorAggregation != null)
-          'connectorAggregation': connectorAggregation!,
-        if (connectorCount != null) 'connectorCount': connectorCount!,
-      };
+    if (connectorAggregation != null)
+      'connectorAggregation': connectorAggregation!,
+    if (connectorCount != null) 'connectorCount': connectorCount!,
+  };
 }
 
 /// EV charging information grouped by \[type, max_charge_rate_kw\].
@@ -1579,25 +1660,25 @@ class GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation {
   });
 
   GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation.fromJson(core.Map json_)
-      : this(
-          availabilityLastUpdateTime:
-              json_['availabilityLastUpdateTime'] as core.String?,
-          availableCount: json_['availableCount'] as core.int?,
-          count: json_['count'] as core.int?,
-          maxChargeRateKw: (json_['maxChargeRateKw'] as core.num?)?.toDouble(),
-          outOfServiceCount: json_['outOfServiceCount'] as core.int?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        availabilityLastUpdateTime:
+            json_['availabilityLastUpdateTime'] as core.String?,
+        availableCount: json_['availableCount'] as core.int?,
+        count: json_['count'] as core.int?,
+        maxChargeRateKw: (json_['maxChargeRateKw'] as core.num?)?.toDouble(),
+        outOfServiceCount: json_['outOfServiceCount'] as core.int?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (availabilityLastUpdateTime != null)
-          'availabilityLastUpdateTime': availabilityLastUpdateTime!,
-        if (availableCount != null) 'availableCount': availableCount!,
-        if (count != null) 'count': count!,
-        if (maxChargeRateKw != null) 'maxChargeRateKw': maxChargeRateKw!,
-        if (outOfServiceCount != null) 'outOfServiceCount': outOfServiceCount!,
-        if (type != null) 'type': type!,
-      };
+    if (availabilityLastUpdateTime != null)
+      'availabilityLastUpdateTime': availabilityLastUpdateTime!,
+    if (availableCount != null) 'availableCount': availableCount!,
+    if (count != null) 'count': count!,
+    if (maxChargeRateKw != null) 'maxChargeRateKw': maxChargeRateKw!,
+    if (outOfServiceCount != null) 'outOfServiceCount': outOfServiceCount!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// The most recent information about fuel options in a gas station.
@@ -1609,21 +1690,23 @@ class GoogleMapsPlacesV1FuelOptions {
   /// There is one entry per fuel type this station has. Order is not important.
   core.List<GoogleMapsPlacesV1FuelOptionsFuelPrice>? fuelPrices;
 
-  GoogleMapsPlacesV1FuelOptions({
-    this.fuelPrices,
-  });
+  GoogleMapsPlacesV1FuelOptions({this.fuelPrices});
 
   GoogleMapsPlacesV1FuelOptions.fromJson(core.Map json_)
-      : this(
-          fuelPrices: (json_['fuelPrices'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1FuelOptionsFuelPrice.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        fuelPrices:
+            (json_['fuelPrices'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1FuelOptionsFuelPrice.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fuelPrices != null) 'fuelPrices': fuelPrices!,
-      };
+    if (fuelPrices != null) 'fuelPrices': fuelPrices!,
+  };
 }
 
 /// Fuel price information for a given type.
@@ -1666,20 +1749,22 @@ class GoogleMapsPlacesV1FuelOptionsFuelPrice {
   });
 
   GoogleMapsPlacesV1FuelOptionsFuelPrice.fromJson(core.Map json_)
-      : this(
-          price: json_.containsKey('price')
-              ? GoogleTypeMoney.fromJson(
-                  json_['price'] as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_['type'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        price:
+            json_.containsKey('price')
+                ? GoogleTypeMoney.fromJson(
+                  json_['price'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (price != null) 'price': price!,
-        if (type != null) 'type': type!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (price != null) 'price': price!,
+    if (type != null) 'type': type!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Information about a photo of a place.
@@ -1716,27 +1801,30 @@ class GoogleMapsPlacesV1Photo {
   });
 
   GoogleMapsPlacesV1Photo.fromJson(core.Map json_)
-      : this(
-          authorAttributions: (json_['authorAttributions'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1AuthorAttribution.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          flagContentUri: json_['flagContentUri'] as core.String?,
-          googleMapsUri: json_['googleMapsUri'] as core.String?,
-          heightPx: json_['heightPx'] as core.int?,
-          name: json_['name'] as core.String?,
-          widthPx: json_['widthPx'] as core.int?,
-        );
+    : this(
+        authorAttributions:
+            (json_['authorAttributions'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1AuthorAttribution.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        flagContentUri: json_['flagContentUri'] as core.String?,
+        googleMapsUri: json_['googleMapsUri'] as core.String?,
+        heightPx: json_['heightPx'] as core.int?,
+        name: json_['name'] as core.String?,
+        widthPx: json_['widthPx'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorAttributions != null)
-          'authorAttributions': authorAttributions!,
-        if (flagContentUri != null) 'flagContentUri': flagContentUri!,
-        if (googleMapsUri != null) 'googleMapsUri': googleMapsUri!,
-        if (heightPx != null) 'heightPx': heightPx!,
-        if (name != null) 'name': name!,
-        if (widthPx != null) 'widthPx': widthPx!,
-      };
+    if (authorAttributions != null) 'authorAttributions': authorAttributions!,
+    if (flagContentUri != null) 'flagContentUri': flagContentUri!,
+    if (googleMapsUri != null) 'googleMapsUri': googleMapsUri!,
+    if (heightPx != null) 'heightPx': heightPx!,
+    if (name != null) 'name': name!,
+    if (widthPx != null) 'widthPx': widthPx!,
+  };
 }
 
 /// A photo media from Places API.
@@ -1748,21 +1836,18 @@ class GoogleMapsPlacesV1PhotoMedia {
   /// A short-lived uri that can be used to render the photo.
   core.String? photoUri;
 
-  GoogleMapsPlacesV1PhotoMedia({
-    this.name,
-    this.photoUri,
-  });
+  GoogleMapsPlacesV1PhotoMedia({this.name, this.photoUri});
 
   GoogleMapsPlacesV1PhotoMedia.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          photoUri: json_['photoUri'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        photoUri: json_['photoUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (photoUri != null) 'photoUri': photoUri!,
-      };
+    if (name != null) 'name': name!,
+    if (photoUri != null) 'photoUri': photoUri!,
+  };
 }
 
 /// All the information representing a Place.
@@ -2178,277 +2263,353 @@ class GoogleMapsPlacesV1Place {
   });
 
   GoogleMapsPlacesV1Place.fromJson(core.Map json_)
-      : this(
-          accessibilityOptions: json_.containsKey('accessibilityOptions')
-              ? GoogleMapsPlacesV1PlaceAccessibilityOptions.fromJson(
+    : this(
+        accessibilityOptions:
+            json_.containsKey('accessibilityOptions')
+                ? GoogleMapsPlacesV1PlaceAccessibilityOptions.fromJson(
                   json_['accessibilityOptions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          addressComponents: (json_['addressComponents'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1PlaceAddressComponent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          addressDescriptor: json_.containsKey('addressDescriptor')
-              ? GoogleMapsPlacesV1AddressDescriptor.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        addressComponents:
+            (json_['addressComponents'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1PlaceAddressComponent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        addressDescriptor:
+            json_.containsKey('addressDescriptor')
+                ? GoogleMapsPlacesV1AddressDescriptor.fromJson(
                   json_['addressDescriptor']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          adrFormatAddress: json_['adrFormatAddress'] as core.String?,
-          allowsDogs: json_['allowsDogs'] as core.bool?,
-          attributions: (json_['attributions'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1PlaceAttribution.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          businessStatus: json_['businessStatus'] as core.String?,
-          containingPlaces: (json_['containingPlaces'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1PlaceContainingPlace.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          curbsidePickup: json_['curbsidePickup'] as core.bool?,
-          currentOpeningHours: json_.containsKey('currentOpeningHours')
-              ? GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        adrFormatAddress: json_['adrFormatAddress'] as core.String?,
+        allowsDogs: json_['allowsDogs'] as core.bool?,
+        attributions:
+            (json_['attributions'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1PlaceAttribution.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        businessStatus: json_['businessStatus'] as core.String?,
+        containingPlaces:
+            (json_['containingPlaces'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1PlaceContainingPlace.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        curbsidePickup: json_['curbsidePickup'] as core.bool?,
+        currentOpeningHours:
+            json_.containsKey('currentOpeningHours')
+                ? GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
                   json_['currentOpeningHours']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          currentSecondaryOpeningHours:
-              (json_['currentSecondaryOpeningHours'] as core.List?)
-                  ?.map((value) => GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          delivery: json_['delivery'] as core.bool?,
-          dineIn: json_['dineIn'] as core.bool?,
-          displayName: json_.containsKey('displayName')
-              ? GoogleTypeLocalizedText.fromJson(
-                  json_['displayName'] as core.Map<core.String, core.dynamic>)
-              : null,
-          editorialSummary: json_.containsKey('editorialSummary')
-              ? GoogleTypeLocalizedText.fromJson(json_['editorialSummary']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          evChargeAmenitySummary: json_.containsKey('evChargeAmenitySummary')
-              ? GoogleMapsPlacesV1PlaceEvChargeAmenitySummary.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        currentSecondaryOpeningHours:
+            (json_['currentSecondaryOpeningHours'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        delivery: json_['delivery'] as core.bool?,
+        dineIn: json_['dineIn'] as core.bool?,
+        displayName:
+            json_.containsKey('displayName')
+                ? GoogleTypeLocalizedText.fromJson(
+                  json_['displayName'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        editorialSummary:
+            json_.containsKey('editorialSummary')
+                ? GoogleTypeLocalizedText.fromJson(
+                  json_['editorialSummary']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        evChargeAmenitySummary:
+            json_.containsKey('evChargeAmenitySummary')
+                ? GoogleMapsPlacesV1PlaceEvChargeAmenitySummary.fromJson(
                   json_['evChargeAmenitySummary']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          evChargeOptions: json_.containsKey('evChargeOptions')
-              ? GoogleMapsPlacesV1EVChargeOptions.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        evChargeOptions:
+            json_.containsKey('evChargeOptions')
+                ? GoogleMapsPlacesV1EVChargeOptions.fromJson(
                   json_['evChargeOptions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          formattedAddress: json_['formattedAddress'] as core.String?,
-          fuelOptions: json_.containsKey('fuelOptions')
-              ? GoogleMapsPlacesV1FuelOptions.fromJson(
-                  json_['fuelOptions'] as core.Map<core.String, core.dynamic>)
-              : null,
-          generativeSummary: json_.containsKey('generativeSummary')
-              ? GoogleMapsPlacesV1PlaceGenerativeSummary.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        formattedAddress: json_['formattedAddress'] as core.String?,
+        fuelOptions:
+            json_.containsKey('fuelOptions')
+                ? GoogleMapsPlacesV1FuelOptions.fromJson(
+                  json_['fuelOptions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        generativeSummary:
+            json_.containsKey('generativeSummary')
+                ? GoogleMapsPlacesV1PlaceGenerativeSummary.fromJson(
                   json_['generativeSummary']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          goodForChildren: json_['goodForChildren'] as core.bool?,
-          goodForGroups: json_['goodForGroups'] as core.bool?,
-          goodForWatchingSports: json_['goodForWatchingSports'] as core.bool?,
-          googleMapsLinks: json_.containsKey('googleMapsLinks')
-              ? GoogleMapsPlacesV1PlaceGoogleMapsLinks.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        goodForChildren: json_['goodForChildren'] as core.bool?,
+        goodForGroups: json_['goodForGroups'] as core.bool?,
+        goodForWatchingSports: json_['goodForWatchingSports'] as core.bool?,
+        googleMapsLinks:
+            json_.containsKey('googleMapsLinks')
+                ? GoogleMapsPlacesV1PlaceGoogleMapsLinks.fromJson(
                   json_['googleMapsLinks']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          googleMapsUri: json_['googleMapsUri'] as core.String?,
-          iconBackgroundColor: json_['iconBackgroundColor'] as core.String?,
-          iconMaskBaseUri: json_['iconMaskBaseUri'] as core.String?,
-          id: json_['id'] as core.String?,
-          internationalPhoneNumber:
-              json_['internationalPhoneNumber'] as core.String?,
-          liveMusic: json_['liveMusic'] as core.bool?,
-          location: json_.containsKey('location')
-              ? GoogleTypeLatLng.fromJson(
-                  json_['location'] as core.Map<core.String, core.dynamic>)
-              : null,
-          menuForChildren: json_['menuForChildren'] as core.bool?,
-          name: json_['name'] as core.String?,
-          nationalPhoneNumber: json_['nationalPhoneNumber'] as core.String?,
-          neighborhoodSummary: json_.containsKey('neighborhoodSummary')
-              ? GoogleMapsPlacesV1PlaceNeighborhoodSummary.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        googleMapsUri: json_['googleMapsUri'] as core.String?,
+        iconBackgroundColor: json_['iconBackgroundColor'] as core.String?,
+        iconMaskBaseUri: json_['iconMaskBaseUri'] as core.String?,
+        id: json_['id'] as core.String?,
+        internationalPhoneNumber:
+            json_['internationalPhoneNumber'] as core.String?,
+        liveMusic: json_['liveMusic'] as core.bool?,
+        location:
+            json_.containsKey('location')
+                ? GoogleTypeLatLng.fromJson(
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        menuForChildren: json_['menuForChildren'] as core.bool?,
+        name: json_['name'] as core.String?,
+        nationalPhoneNumber: json_['nationalPhoneNumber'] as core.String?,
+        neighborhoodSummary:
+            json_.containsKey('neighborhoodSummary')
+                ? GoogleMapsPlacesV1PlaceNeighborhoodSummary.fromJson(
                   json_['neighborhoodSummary']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          outdoorSeating: json_['outdoorSeating'] as core.bool?,
-          parkingOptions: json_.containsKey('parkingOptions')
-              ? GoogleMapsPlacesV1PlaceParkingOptions.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        outdoorSeating: json_['outdoorSeating'] as core.bool?,
+        parkingOptions:
+            json_.containsKey('parkingOptions')
+                ? GoogleMapsPlacesV1PlaceParkingOptions.fromJson(
                   json_['parkingOptions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          paymentOptions: json_.containsKey('paymentOptions')
-              ? GoogleMapsPlacesV1PlacePaymentOptions.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        paymentOptions:
+            json_.containsKey('paymentOptions')
+                ? GoogleMapsPlacesV1PlacePaymentOptions.fromJson(
                   json_['paymentOptions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          photos: (json_['photos'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1Photo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          plusCode: json_.containsKey('plusCode')
-              ? GoogleMapsPlacesV1PlacePlusCode.fromJson(
-                  json_['plusCode'] as core.Map<core.String, core.dynamic>)
-              : null,
-          postalAddress: json_.containsKey('postalAddress')
-              ? GoogleTypePostalAddress.fromJson(
-                  json_['postalAddress'] as core.Map<core.String, core.dynamic>)
-              : null,
-          priceLevel: json_['priceLevel'] as core.String?,
-          priceRange: json_.containsKey('priceRange')
-              ? GoogleMapsPlacesV1PriceRange.fromJson(
-                  json_['priceRange'] as core.Map<core.String, core.dynamic>)
-              : null,
-          primaryType: json_['primaryType'] as core.String?,
-          primaryTypeDisplayName: json_.containsKey('primaryTypeDisplayName')
-              ? GoogleTypeLocalizedText.fromJson(json_['primaryTypeDisplayName']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          pureServiceAreaBusiness:
-              json_['pureServiceAreaBusiness'] as core.bool?,
-          rating: (json_['rating'] as core.num?)?.toDouble(),
-          regularOpeningHours: json_.containsKey('regularOpeningHours')
-              ? GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        photos:
+            (json_['photos'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1Photo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        plusCode:
+            json_.containsKey('plusCode')
+                ? GoogleMapsPlacesV1PlacePlusCode.fromJson(
+                  json_['plusCode'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        postalAddress:
+            json_.containsKey('postalAddress')
+                ? GoogleTypePostalAddress.fromJson(
+                  json_['postalAddress'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        priceLevel: json_['priceLevel'] as core.String?,
+        priceRange:
+            json_.containsKey('priceRange')
+                ? GoogleMapsPlacesV1PriceRange.fromJson(
+                  json_['priceRange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        primaryType: json_['primaryType'] as core.String?,
+        primaryTypeDisplayName:
+            json_.containsKey('primaryTypeDisplayName')
+                ? GoogleTypeLocalizedText.fromJson(
+                  json_['primaryTypeDisplayName']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pureServiceAreaBusiness: json_['pureServiceAreaBusiness'] as core.bool?,
+        rating: (json_['rating'] as core.num?)?.toDouble(),
+        regularOpeningHours:
+            json_.containsKey('regularOpeningHours')
+                ? GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
                   json_['regularOpeningHours']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          regularSecondaryOpeningHours:
-              (json_['regularSecondaryOpeningHours'] as core.List?)
-                  ?.map((value) => GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          reservable: json_['reservable'] as core.bool?,
-          restroom: json_['restroom'] as core.bool?,
-          reviewSummary: json_.containsKey('reviewSummary')
-              ? GoogleMapsPlacesV1PlaceReviewSummary.fromJson(
-                  json_['reviewSummary'] as core.Map<core.String, core.dynamic>)
-              : null,
-          reviews: (json_['reviews'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1Review.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          servesBeer: json_['servesBeer'] as core.bool?,
-          servesBreakfast: json_['servesBreakfast'] as core.bool?,
-          servesBrunch: json_['servesBrunch'] as core.bool?,
-          servesCocktails: json_['servesCocktails'] as core.bool?,
-          servesCoffee: json_['servesCoffee'] as core.bool?,
-          servesDessert: json_['servesDessert'] as core.bool?,
-          servesDinner: json_['servesDinner'] as core.bool?,
-          servesLunch: json_['servesLunch'] as core.bool?,
-          servesVegetarianFood: json_['servesVegetarianFood'] as core.bool?,
-          servesWine: json_['servesWine'] as core.bool?,
-          shortFormattedAddress: json_['shortFormattedAddress'] as core.String?,
-          subDestinations: (json_['subDestinations'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1PlaceSubDestination.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          takeout: json_['takeout'] as core.bool?,
-          timeZone: json_.containsKey('timeZone')
-              ? GoogleTypeTimeZone.fromJson(
-                  json_['timeZone'] as core.Map<core.String, core.dynamic>)
-              : null,
-          types: (json_['types'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          userRatingCount: json_['userRatingCount'] as core.int?,
-          utcOffsetMinutes: json_['utcOffsetMinutes'] as core.int?,
-          viewport: json_.containsKey('viewport')
-              ? GoogleGeoTypeViewport.fromJson(
-                  json_['viewport'] as core.Map<core.String, core.dynamic>)
-              : null,
-          websiteUri: json_['websiteUri'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        regularSecondaryOpeningHours:
+            (json_['regularSecondaryOpeningHours'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1PlaceOpeningHours.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        reservable: json_['reservable'] as core.bool?,
+        restroom: json_['restroom'] as core.bool?,
+        reviewSummary:
+            json_.containsKey('reviewSummary')
+                ? GoogleMapsPlacesV1PlaceReviewSummary.fromJson(
+                  json_['reviewSummary'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reviews:
+            (json_['reviews'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1Review.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        servesBeer: json_['servesBeer'] as core.bool?,
+        servesBreakfast: json_['servesBreakfast'] as core.bool?,
+        servesBrunch: json_['servesBrunch'] as core.bool?,
+        servesCocktails: json_['servesCocktails'] as core.bool?,
+        servesCoffee: json_['servesCoffee'] as core.bool?,
+        servesDessert: json_['servesDessert'] as core.bool?,
+        servesDinner: json_['servesDinner'] as core.bool?,
+        servesLunch: json_['servesLunch'] as core.bool?,
+        servesVegetarianFood: json_['servesVegetarianFood'] as core.bool?,
+        servesWine: json_['servesWine'] as core.bool?,
+        shortFormattedAddress: json_['shortFormattedAddress'] as core.String?,
+        subDestinations:
+            (json_['subDestinations'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1PlaceSubDestination.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        takeout: json_['takeout'] as core.bool?,
+        timeZone:
+            json_.containsKey('timeZone')
+                ? GoogleTypeTimeZone.fromJson(
+                  json_['timeZone'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        types:
+            (json_['types'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        userRatingCount: json_['userRatingCount'] as core.int?,
+        utcOffsetMinutes: json_['utcOffsetMinutes'] as core.int?,
+        viewport:
+            json_.containsKey('viewport')
+                ? GoogleGeoTypeViewport.fromJson(
+                  json_['viewport'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        websiteUri: json_['websiteUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessibilityOptions != null)
-          'accessibilityOptions': accessibilityOptions!,
-        if (addressComponents != null) 'addressComponents': addressComponents!,
-        if (addressDescriptor != null) 'addressDescriptor': addressDescriptor!,
-        if (adrFormatAddress != null) 'adrFormatAddress': adrFormatAddress!,
-        if (allowsDogs != null) 'allowsDogs': allowsDogs!,
-        if (attributions != null) 'attributions': attributions!,
-        if (businessStatus != null) 'businessStatus': businessStatus!,
-        if (containingPlaces != null) 'containingPlaces': containingPlaces!,
-        if (curbsidePickup != null) 'curbsidePickup': curbsidePickup!,
-        if (currentOpeningHours != null)
-          'currentOpeningHours': currentOpeningHours!,
-        if (currentSecondaryOpeningHours != null)
-          'currentSecondaryOpeningHours': currentSecondaryOpeningHours!,
-        if (delivery != null) 'delivery': delivery!,
-        if (dineIn != null) 'dineIn': dineIn!,
-        if (displayName != null) 'displayName': displayName!,
-        if (editorialSummary != null) 'editorialSummary': editorialSummary!,
-        if (evChargeAmenitySummary != null)
-          'evChargeAmenitySummary': evChargeAmenitySummary!,
-        if (evChargeOptions != null) 'evChargeOptions': evChargeOptions!,
-        if (formattedAddress != null) 'formattedAddress': formattedAddress!,
-        if (fuelOptions != null) 'fuelOptions': fuelOptions!,
-        if (generativeSummary != null) 'generativeSummary': generativeSummary!,
-        if (goodForChildren != null) 'goodForChildren': goodForChildren!,
-        if (goodForGroups != null) 'goodForGroups': goodForGroups!,
-        if (goodForWatchingSports != null)
-          'goodForWatchingSports': goodForWatchingSports!,
-        if (googleMapsLinks != null) 'googleMapsLinks': googleMapsLinks!,
-        if (googleMapsUri != null) 'googleMapsUri': googleMapsUri!,
-        if (iconBackgroundColor != null)
-          'iconBackgroundColor': iconBackgroundColor!,
-        if (iconMaskBaseUri != null) 'iconMaskBaseUri': iconMaskBaseUri!,
-        if (id != null) 'id': id!,
-        if (internationalPhoneNumber != null)
-          'internationalPhoneNumber': internationalPhoneNumber!,
-        if (liveMusic != null) 'liveMusic': liveMusic!,
-        if (location != null) 'location': location!,
-        if (menuForChildren != null) 'menuForChildren': menuForChildren!,
-        if (name != null) 'name': name!,
-        if (nationalPhoneNumber != null)
-          'nationalPhoneNumber': nationalPhoneNumber!,
-        if (neighborhoodSummary != null)
-          'neighborhoodSummary': neighborhoodSummary!,
-        if (outdoorSeating != null) 'outdoorSeating': outdoorSeating!,
-        if (parkingOptions != null) 'parkingOptions': parkingOptions!,
-        if (paymentOptions != null) 'paymentOptions': paymentOptions!,
-        if (photos != null) 'photos': photos!,
-        if (plusCode != null) 'plusCode': plusCode!,
-        if (postalAddress != null) 'postalAddress': postalAddress!,
-        if (priceLevel != null) 'priceLevel': priceLevel!,
-        if (priceRange != null) 'priceRange': priceRange!,
-        if (primaryType != null) 'primaryType': primaryType!,
-        if (primaryTypeDisplayName != null)
-          'primaryTypeDisplayName': primaryTypeDisplayName!,
-        if (pureServiceAreaBusiness != null)
-          'pureServiceAreaBusiness': pureServiceAreaBusiness!,
-        if (rating != null) 'rating': rating!,
-        if (regularOpeningHours != null)
-          'regularOpeningHours': regularOpeningHours!,
-        if (regularSecondaryOpeningHours != null)
-          'regularSecondaryOpeningHours': regularSecondaryOpeningHours!,
-        if (reservable != null) 'reservable': reservable!,
-        if (restroom != null) 'restroom': restroom!,
-        if (reviewSummary != null) 'reviewSummary': reviewSummary!,
-        if (reviews != null) 'reviews': reviews!,
-        if (servesBeer != null) 'servesBeer': servesBeer!,
-        if (servesBreakfast != null) 'servesBreakfast': servesBreakfast!,
-        if (servesBrunch != null) 'servesBrunch': servesBrunch!,
-        if (servesCocktails != null) 'servesCocktails': servesCocktails!,
-        if (servesCoffee != null) 'servesCoffee': servesCoffee!,
-        if (servesDessert != null) 'servesDessert': servesDessert!,
-        if (servesDinner != null) 'servesDinner': servesDinner!,
-        if (servesLunch != null) 'servesLunch': servesLunch!,
-        if (servesVegetarianFood != null)
-          'servesVegetarianFood': servesVegetarianFood!,
-        if (servesWine != null) 'servesWine': servesWine!,
-        if (shortFormattedAddress != null)
-          'shortFormattedAddress': shortFormattedAddress!,
-        if (subDestinations != null) 'subDestinations': subDestinations!,
-        if (takeout != null) 'takeout': takeout!,
-        if (timeZone != null) 'timeZone': timeZone!,
-        if (types != null) 'types': types!,
-        if (userRatingCount != null) 'userRatingCount': userRatingCount!,
-        if (utcOffsetMinutes != null) 'utcOffsetMinutes': utcOffsetMinutes!,
-        if (viewport != null) 'viewport': viewport!,
-        if (websiteUri != null) 'websiteUri': websiteUri!,
-      };
+    if (accessibilityOptions != null)
+      'accessibilityOptions': accessibilityOptions!,
+    if (addressComponents != null) 'addressComponents': addressComponents!,
+    if (addressDescriptor != null) 'addressDescriptor': addressDescriptor!,
+    if (adrFormatAddress != null) 'adrFormatAddress': adrFormatAddress!,
+    if (allowsDogs != null) 'allowsDogs': allowsDogs!,
+    if (attributions != null) 'attributions': attributions!,
+    if (businessStatus != null) 'businessStatus': businessStatus!,
+    if (containingPlaces != null) 'containingPlaces': containingPlaces!,
+    if (curbsidePickup != null) 'curbsidePickup': curbsidePickup!,
+    if (currentOpeningHours != null)
+      'currentOpeningHours': currentOpeningHours!,
+    if (currentSecondaryOpeningHours != null)
+      'currentSecondaryOpeningHours': currentSecondaryOpeningHours!,
+    if (delivery != null) 'delivery': delivery!,
+    if (dineIn != null) 'dineIn': dineIn!,
+    if (displayName != null) 'displayName': displayName!,
+    if (editorialSummary != null) 'editorialSummary': editorialSummary!,
+    if (evChargeAmenitySummary != null)
+      'evChargeAmenitySummary': evChargeAmenitySummary!,
+    if (evChargeOptions != null) 'evChargeOptions': evChargeOptions!,
+    if (formattedAddress != null) 'formattedAddress': formattedAddress!,
+    if (fuelOptions != null) 'fuelOptions': fuelOptions!,
+    if (generativeSummary != null) 'generativeSummary': generativeSummary!,
+    if (goodForChildren != null) 'goodForChildren': goodForChildren!,
+    if (goodForGroups != null) 'goodForGroups': goodForGroups!,
+    if (goodForWatchingSports != null)
+      'goodForWatchingSports': goodForWatchingSports!,
+    if (googleMapsLinks != null) 'googleMapsLinks': googleMapsLinks!,
+    if (googleMapsUri != null) 'googleMapsUri': googleMapsUri!,
+    if (iconBackgroundColor != null)
+      'iconBackgroundColor': iconBackgroundColor!,
+    if (iconMaskBaseUri != null) 'iconMaskBaseUri': iconMaskBaseUri!,
+    if (id != null) 'id': id!,
+    if (internationalPhoneNumber != null)
+      'internationalPhoneNumber': internationalPhoneNumber!,
+    if (liveMusic != null) 'liveMusic': liveMusic!,
+    if (location != null) 'location': location!,
+    if (menuForChildren != null) 'menuForChildren': menuForChildren!,
+    if (name != null) 'name': name!,
+    if (nationalPhoneNumber != null)
+      'nationalPhoneNumber': nationalPhoneNumber!,
+    if (neighborhoodSummary != null)
+      'neighborhoodSummary': neighborhoodSummary!,
+    if (outdoorSeating != null) 'outdoorSeating': outdoorSeating!,
+    if (parkingOptions != null) 'parkingOptions': parkingOptions!,
+    if (paymentOptions != null) 'paymentOptions': paymentOptions!,
+    if (photos != null) 'photos': photos!,
+    if (plusCode != null) 'plusCode': plusCode!,
+    if (postalAddress != null) 'postalAddress': postalAddress!,
+    if (priceLevel != null) 'priceLevel': priceLevel!,
+    if (priceRange != null) 'priceRange': priceRange!,
+    if (primaryType != null) 'primaryType': primaryType!,
+    if (primaryTypeDisplayName != null)
+      'primaryTypeDisplayName': primaryTypeDisplayName!,
+    if (pureServiceAreaBusiness != null)
+      'pureServiceAreaBusiness': pureServiceAreaBusiness!,
+    if (rating != null) 'rating': rating!,
+    if (regularOpeningHours != null)
+      'regularOpeningHours': regularOpeningHours!,
+    if (regularSecondaryOpeningHours != null)
+      'regularSecondaryOpeningHours': regularSecondaryOpeningHours!,
+    if (reservable != null) 'reservable': reservable!,
+    if (restroom != null) 'restroom': restroom!,
+    if (reviewSummary != null) 'reviewSummary': reviewSummary!,
+    if (reviews != null) 'reviews': reviews!,
+    if (servesBeer != null) 'servesBeer': servesBeer!,
+    if (servesBreakfast != null) 'servesBreakfast': servesBreakfast!,
+    if (servesBrunch != null) 'servesBrunch': servesBrunch!,
+    if (servesCocktails != null) 'servesCocktails': servesCocktails!,
+    if (servesCoffee != null) 'servesCoffee': servesCoffee!,
+    if (servesDessert != null) 'servesDessert': servesDessert!,
+    if (servesDinner != null) 'servesDinner': servesDinner!,
+    if (servesLunch != null) 'servesLunch': servesLunch!,
+    if (servesVegetarianFood != null)
+      'servesVegetarianFood': servesVegetarianFood!,
+    if (servesWine != null) 'servesWine': servesWine!,
+    if (shortFormattedAddress != null)
+      'shortFormattedAddress': shortFormattedAddress!,
+    if (subDestinations != null) 'subDestinations': subDestinations!,
+    if (takeout != null) 'takeout': takeout!,
+    if (timeZone != null) 'timeZone': timeZone!,
+    if (types != null) 'types': types!,
+    if (userRatingCount != null) 'userRatingCount': userRatingCount!,
+    if (utcOffsetMinutes != null) 'utcOffsetMinutes': utcOffsetMinutes!,
+    if (viewport != null) 'viewport': viewport!,
+    if (websiteUri != null) 'websiteUri': websiteUri!,
+  };
 }
 
 /// Information about the accessibility options a place offers.
@@ -2473,27 +2634,27 @@ class GoogleMapsPlacesV1PlaceAccessibilityOptions {
   });
 
   GoogleMapsPlacesV1PlaceAccessibilityOptions.fromJson(core.Map json_)
-      : this(
-          wheelchairAccessibleEntrance:
-              json_['wheelchairAccessibleEntrance'] as core.bool?,
-          wheelchairAccessibleParking:
-              json_['wheelchairAccessibleParking'] as core.bool?,
-          wheelchairAccessibleRestroom:
-              json_['wheelchairAccessibleRestroom'] as core.bool?,
-          wheelchairAccessibleSeating:
-              json_['wheelchairAccessibleSeating'] as core.bool?,
-        );
+    : this(
+        wheelchairAccessibleEntrance:
+            json_['wheelchairAccessibleEntrance'] as core.bool?,
+        wheelchairAccessibleParking:
+            json_['wheelchairAccessibleParking'] as core.bool?,
+        wheelchairAccessibleRestroom:
+            json_['wheelchairAccessibleRestroom'] as core.bool?,
+        wheelchairAccessibleSeating:
+            json_['wheelchairAccessibleSeating'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (wheelchairAccessibleEntrance != null)
-          'wheelchairAccessibleEntrance': wheelchairAccessibleEntrance!,
-        if (wheelchairAccessibleParking != null)
-          'wheelchairAccessibleParking': wheelchairAccessibleParking!,
-        if (wheelchairAccessibleRestroom != null)
-          'wheelchairAccessibleRestroom': wheelchairAccessibleRestroom!,
-        if (wheelchairAccessibleSeating != null)
-          'wheelchairAccessibleSeating': wheelchairAccessibleSeating!,
-      };
+    if (wheelchairAccessibleEntrance != null)
+      'wheelchairAccessibleEntrance': wheelchairAccessibleEntrance!,
+    if (wheelchairAccessibleParking != null)
+      'wheelchairAccessibleParking': wheelchairAccessibleParking!,
+    if (wheelchairAccessibleRestroom != null)
+      'wheelchairAccessibleRestroom': wheelchairAccessibleRestroom!,
+    if (wheelchairAccessibleSeating != null)
+      'wheelchairAccessibleSeating': wheelchairAccessibleSeating!,
+  };
 }
 
 /// The structured components that form the formatted address, if this
@@ -2525,21 +2686,22 @@ class GoogleMapsPlacesV1PlaceAddressComponent {
   });
 
   GoogleMapsPlacesV1PlaceAddressComponent.fromJson(core.Map json_)
-      : this(
-          languageCode: json_['languageCode'] as core.String?,
-          longText: json_['longText'] as core.String?,
-          shortText: json_['shortText'] as core.String?,
-          types: (json_['types'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        languageCode: json_['languageCode'] as core.String?,
+        longText: json_['longText'] as core.String?,
+        shortText: json_['shortText'] as core.String?,
+        types:
+            (json_['types'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (longText != null) 'longText': longText!,
-        if (shortText != null) 'shortText': shortText!,
-        if (types != null) 'types': types!,
-      };
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (longText != null) 'longText': longText!,
+    if (shortText != null) 'shortText': shortText!,
+    if (types != null) 'types': types!,
+  };
 }
 
 /// Information about data providers of this place.
@@ -2550,21 +2712,18 @@ class GoogleMapsPlacesV1PlaceAttribution {
   /// URI to the Place's data provider.
   core.String? providerUri;
 
-  GoogleMapsPlacesV1PlaceAttribution({
-    this.provider,
-    this.providerUri,
-  });
+  GoogleMapsPlacesV1PlaceAttribution({this.provider, this.providerUri});
 
   GoogleMapsPlacesV1PlaceAttribution.fromJson(core.Map json_)
-      : this(
-          provider: json_['provider'] as core.String?,
-          providerUri: json_['providerUri'] as core.String?,
-        );
+    : this(
+        provider: json_['provider'] as core.String?,
+        providerUri: json_['providerUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (provider != null) 'provider': provider!,
-        if (providerUri != null) 'providerUri': providerUri!,
-      };
+    if (provider != null) 'provider': provider!,
+    if (providerUri != null) 'providerUri': providerUri!,
+  };
 }
 
 /// Info about the place in which this place is located.
@@ -2575,21 +2734,18 @@ class GoogleMapsPlacesV1PlaceContainingPlace {
   /// The resource name of the place in which this place is located.
   core.String? name;
 
-  GoogleMapsPlacesV1PlaceContainingPlace({
-    this.id,
-    this.name,
-  });
+  GoogleMapsPlacesV1PlaceContainingPlace({this.id, this.name});
 
   GoogleMapsPlacesV1PlaceContainingPlace.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-      };
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// The summary of amenities near the EV charging station.
@@ -2631,38 +2787,49 @@ class GoogleMapsPlacesV1PlaceEvChargeAmenitySummary {
   });
 
   GoogleMapsPlacesV1PlaceEvChargeAmenitySummary.fromJson(core.Map json_)
-      : this(
-          coffee: json_.containsKey('coffee')
-              ? GoogleMapsPlacesV1ContentBlock.fromJson(
-                  json_['coffee'] as core.Map<core.String, core.dynamic>)
-              : null,
-          disclosureText: json_.containsKey('disclosureText')
-              ? GoogleTypeLocalizedText.fromJson(json_['disclosureText']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          flagContentUri: json_['flagContentUri'] as core.String?,
-          overview: json_.containsKey('overview')
-              ? GoogleMapsPlacesV1ContentBlock.fromJson(
-                  json_['overview'] as core.Map<core.String, core.dynamic>)
-              : null,
-          restaurant: json_.containsKey('restaurant')
-              ? GoogleMapsPlacesV1ContentBlock.fromJson(
-                  json_['restaurant'] as core.Map<core.String, core.dynamic>)
-              : null,
-          store: json_.containsKey('store')
-              ? GoogleMapsPlacesV1ContentBlock.fromJson(
-                  json_['store'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        coffee:
+            json_.containsKey('coffee')
+                ? GoogleMapsPlacesV1ContentBlock.fromJson(
+                  json_['coffee'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        disclosureText:
+            json_.containsKey('disclosureText')
+                ? GoogleTypeLocalizedText.fromJson(
+                  json_['disclosureText']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        flagContentUri: json_['flagContentUri'] as core.String?,
+        overview:
+            json_.containsKey('overview')
+                ? GoogleMapsPlacesV1ContentBlock.fromJson(
+                  json_['overview'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        restaurant:
+            json_.containsKey('restaurant')
+                ? GoogleMapsPlacesV1ContentBlock.fromJson(
+                  json_['restaurant'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        store:
+            json_.containsKey('store')
+                ? GoogleMapsPlacesV1ContentBlock.fromJson(
+                  json_['store'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (coffee != null) 'coffee': coffee!,
-        if (disclosureText != null) 'disclosureText': disclosureText!,
-        if (flagContentUri != null) 'flagContentUri': flagContentUri!,
-        if (overview != null) 'overview': overview!,
-        if (restaurant != null) 'restaurant': restaurant!,
-        if (store != null) 'store': store!,
-      };
+    if (coffee != null) 'coffee': coffee!,
+    if (disclosureText != null) 'disclosureText': disclosureText!,
+    if (flagContentUri != null) 'flagContentUri': flagContentUri!,
+    if (overview != null) 'overview': overview!,
+    if (restaurant != null) 'restaurant': restaurant!,
+    if (store != null) 'store': store!,
+  };
 }
 
 /// AI-generated summary of the place.
@@ -2686,25 +2853,29 @@ class GoogleMapsPlacesV1PlaceGenerativeSummary {
   });
 
   GoogleMapsPlacesV1PlaceGenerativeSummary.fromJson(core.Map json_)
-      : this(
-          disclosureText: json_.containsKey('disclosureText')
-              ? GoogleTypeLocalizedText.fromJson(json_['disclosureText']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          overview: json_.containsKey('overview')
-              ? GoogleTypeLocalizedText.fromJson(
-                  json_['overview'] as core.Map<core.String, core.dynamic>)
-              : null,
-          overviewFlagContentUri:
-              json_['overviewFlagContentUri'] as core.String?,
-        );
+    : this(
+        disclosureText:
+            json_.containsKey('disclosureText')
+                ? GoogleTypeLocalizedText.fromJson(
+                  json_['disclosureText']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        overview:
+            json_.containsKey('overview')
+                ? GoogleTypeLocalizedText.fromJson(
+                  json_['overview'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        overviewFlagContentUri: json_['overviewFlagContentUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disclosureText != null) 'disclosureText': disclosureText!,
-        if (overview != null) 'overview': overview!,
-        if (overviewFlagContentUri != null)
-          'overviewFlagContentUri': overviewFlagContentUri!,
-      };
+    if (disclosureText != null) 'disclosureText': disclosureText!,
+    if (overview != null) 'overview': overview!,
+    if (overviewFlagContentUri != null)
+      'overviewFlagContentUri': overviewFlagContentUri!,
+  };
 }
 
 /// Links to trigger different Google Maps actions.
@@ -2736,21 +2907,21 @@ class GoogleMapsPlacesV1PlaceGoogleMapsLinks {
   });
 
   GoogleMapsPlacesV1PlaceGoogleMapsLinks.fromJson(core.Map json_)
-      : this(
-          directionsUri: json_['directionsUri'] as core.String?,
-          photosUri: json_['photosUri'] as core.String?,
-          placeUri: json_['placeUri'] as core.String?,
-          reviewsUri: json_['reviewsUri'] as core.String?,
-          writeAReviewUri: json_['writeAReviewUri'] as core.String?,
-        );
+    : this(
+        directionsUri: json_['directionsUri'] as core.String?,
+        photosUri: json_['photosUri'] as core.String?,
+        placeUri: json_['placeUri'] as core.String?,
+        reviewsUri: json_['reviewsUri'] as core.String?,
+        writeAReviewUri: json_['writeAReviewUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (directionsUri != null) 'directionsUri': directionsUri!,
-        if (photosUri != null) 'photosUri': photosUri!,
-        if (placeUri != null) 'placeUri': placeUri!,
-        if (reviewsUri != null) 'reviewsUri': reviewsUri!,
-        if (writeAReviewUri != null) 'writeAReviewUri': writeAReviewUri!,
-      };
+    if (directionsUri != null) 'directionsUri': directionsUri!,
+    if (photosUri != null) 'photosUri': photosUri!,
+    if (placeUri != null) 'placeUri': placeUri!,
+    if (reviewsUri != null) 'reviewsUri': reviewsUri!,
+    if (writeAReviewUri != null) 'writeAReviewUri': writeAReviewUri!,
+  };
 }
 
 /// A summary of points of interest near the place.
@@ -2778,28 +2949,35 @@ class GoogleMapsPlacesV1PlaceNeighborhoodSummary {
   });
 
   GoogleMapsPlacesV1PlaceNeighborhoodSummary.fromJson(core.Map json_)
-      : this(
-          description: json_.containsKey('description')
-              ? GoogleMapsPlacesV1ContentBlock.fromJson(
-                  json_['description'] as core.Map<core.String, core.dynamic>)
-              : null,
-          disclosureText: json_.containsKey('disclosureText')
-              ? GoogleTypeLocalizedText.fromJson(json_['disclosureText']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          flagContentUri: json_['flagContentUri'] as core.String?,
-          overview: json_.containsKey('overview')
-              ? GoogleMapsPlacesV1ContentBlock.fromJson(
-                  json_['overview'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        description:
+            json_.containsKey('description')
+                ? GoogleMapsPlacesV1ContentBlock.fromJson(
+                  json_['description'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        disclosureText:
+            json_.containsKey('disclosureText')
+                ? GoogleTypeLocalizedText.fromJson(
+                  json_['disclosureText']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        flagContentUri: json_['flagContentUri'] as core.String?,
+        overview:
+            json_.containsKey('overview')
+                ? GoogleMapsPlacesV1ContentBlock.fromJson(
+                  json_['overview'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (disclosureText != null) 'disclosureText': disclosureText!,
-        if (flagContentUri != null) 'flagContentUri': flagContentUri!,
-        if (overview != null) 'overview': overview!,
-      };
+    if (description != null) 'description': description!,
+    if (disclosureText != null) 'disclosureText': disclosureText!,
+    if (flagContentUri != null) 'flagContentUri': flagContentUri!,
+    if (overview != null) 'overview': overview!,
+  };
 }
 
 /// Information about business hour of the place.
@@ -2890,37 +3068,44 @@ class GoogleMapsPlacesV1PlaceOpeningHours {
   });
 
   GoogleMapsPlacesV1PlaceOpeningHours.fromJson(core.Map json_)
-      : this(
-          nextCloseTime: json_['nextCloseTime'] as core.String?,
-          nextOpenTime: json_['nextOpenTime'] as core.String?,
-          openNow: json_['openNow'] as core.bool?,
-          periods: (json_['periods'] as core.List?)
-              ?.map((value) =>
-                  GoogleMapsPlacesV1PlaceOpeningHoursPeriod.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          secondaryHoursType: json_['secondaryHoursType'] as core.String?,
-          specialDays: (json_['specialDays'] as core.List?)
-              ?.map((value) =>
-                  GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          weekdayDescriptions: (json_['weekdayDescriptions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextCloseTime: json_['nextCloseTime'] as core.String?,
+        nextOpenTime: json_['nextOpenTime'] as core.String?,
+        openNow: json_['openNow'] as core.bool?,
+        periods:
+            (json_['periods'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1PlaceOpeningHoursPeriod.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        secondaryHoursType: json_['secondaryHoursType'] as core.String?,
+        specialDays:
+            (json_['specialDays'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        weekdayDescriptions:
+            (json_['weekdayDescriptions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextCloseTime != null) 'nextCloseTime': nextCloseTime!,
-        if (nextOpenTime != null) 'nextOpenTime': nextOpenTime!,
-        if (openNow != null) 'openNow': openNow!,
-        if (periods != null) 'periods': periods!,
-        if (secondaryHoursType != null)
-          'secondaryHoursType': secondaryHoursType!,
-        if (specialDays != null) 'specialDays': specialDays!,
-        if (weekdayDescriptions != null)
-          'weekdayDescriptions': weekdayDescriptions!,
-      };
+    if (nextCloseTime != null) 'nextCloseTime': nextCloseTime!,
+    if (nextOpenTime != null) 'nextOpenTime': nextOpenTime!,
+    if (openNow != null) 'openNow': openNow!,
+    if (periods != null) 'periods': periods!,
+    if (secondaryHoursType != null) 'secondaryHoursType': secondaryHoursType!,
+    if (specialDays != null) 'specialDays': specialDays!,
+    if (weekdayDescriptions != null)
+      'weekdayDescriptions': weekdayDescriptions!,
+  };
 }
 
 /// A period the place remains in open_now status.
@@ -2931,27 +3116,28 @@ class GoogleMapsPlacesV1PlaceOpeningHoursPeriod {
   /// The time that the place starts to be open.
   GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint? open;
 
-  GoogleMapsPlacesV1PlaceOpeningHoursPeriod({
-    this.close,
-    this.open,
-  });
+  GoogleMapsPlacesV1PlaceOpeningHoursPeriod({this.close, this.open});
 
   GoogleMapsPlacesV1PlaceOpeningHoursPeriod.fromJson(core.Map json_)
-      : this(
-          close: json_.containsKey('close')
-              ? GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint.fromJson(
-                  json_['close'] as core.Map<core.String, core.dynamic>)
-              : null,
-          open: json_.containsKey('open')
-              ? GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint.fromJson(
-                  json_['open'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        close:
+            json_.containsKey('close')
+                ? GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint.fromJson(
+                  json_['close'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        open:
+            json_.containsKey('open')
+                ? GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint.fromJson(
+                  json_['open'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (close != null) 'close': close!,
-        if (open != null) 'open': open!,
-      };
+    if (close != null) 'close': close!,
+    if (open != null) 'open': open!,
+  };
 }
 
 /// Status changing points.
@@ -2991,24 +3177,26 @@ class GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint {
   });
 
   GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint.fromJson(core.Map json_)
-      : this(
-          date: json_.containsKey('date')
-              ? GoogleTypeDate.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>)
-              : null,
-          day: json_['day'] as core.int?,
-          hour: json_['hour'] as core.int?,
-          minute: json_['minute'] as core.int?,
-          truncated: json_['truncated'] as core.bool?,
-        );
+    : this(
+        date:
+            json_.containsKey('date')
+                ? GoogleTypeDate.fromJson(
+                  json_['date'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        day: json_['day'] as core.int?,
+        hour: json_['hour'] as core.int?,
+        minute: json_['minute'] as core.int?,
+        truncated: json_['truncated'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (date != null) 'date': date!,
-        if (day != null) 'day': day!,
-        if (hour != null) 'hour': hour!,
-        if (minute != null) 'minute': minute!,
-        if (truncated != null) 'truncated': truncated!,
-      };
+    if (date != null) 'date': date!,
+    if (day != null) 'day': day!,
+    if (hour != null) 'hour': hour!,
+    if (minute != null) 'minute': minute!,
+    if (truncated != null) 'truncated': truncated!,
+  };
 }
 
 /// Structured information for special days that fall within the period that the
@@ -3020,21 +3208,21 @@ class GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay {
   /// The date of this special day.
   GoogleTypeDate? date;
 
-  GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay({
-    this.date,
-  });
+  GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay({this.date});
 
   GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay.fromJson(core.Map json_)
-      : this(
-          date: json_.containsKey('date')
-              ? GoogleTypeDate.fromJson(
-                  json_['date'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        date:
+            json_.containsKey('date')
+                ? GoogleTypeDate.fromJson(
+                  json_['date'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (date != null) 'date': date!,
-      };
+    if (date != null) 'date': date!,
+  };
 }
 
 /// Information about parking options for the place.
@@ -3073,25 +3261,25 @@ class GoogleMapsPlacesV1PlaceParkingOptions {
   });
 
   GoogleMapsPlacesV1PlaceParkingOptions.fromJson(core.Map json_)
-      : this(
-          freeGarageParking: json_['freeGarageParking'] as core.bool?,
-          freeParkingLot: json_['freeParkingLot'] as core.bool?,
-          freeStreetParking: json_['freeStreetParking'] as core.bool?,
-          paidGarageParking: json_['paidGarageParking'] as core.bool?,
-          paidParkingLot: json_['paidParkingLot'] as core.bool?,
-          paidStreetParking: json_['paidStreetParking'] as core.bool?,
-          valetParking: json_['valetParking'] as core.bool?,
-        );
+    : this(
+        freeGarageParking: json_['freeGarageParking'] as core.bool?,
+        freeParkingLot: json_['freeParkingLot'] as core.bool?,
+        freeStreetParking: json_['freeStreetParking'] as core.bool?,
+        paidGarageParking: json_['paidGarageParking'] as core.bool?,
+        paidParkingLot: json_['paidParkingLot'] as core.bool?,
+        paidStreetParking: json_['paidStreetParking'] as core.bool?,
+        valetParking: json_['valetParking'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (freeGarageParking != null) 'freeGarageParking': freeGarageParking!,
-        if (freeParkingLot != null) 'freeParkingLot': freeParkingLot!,
-        if (freeStreetParking != null) 'freeStreetParking': freeStreetParking!,
-        if (paidGarageParking != null) 'paidGarageParking': paidGarageParking!,
-        if (paidParkingLot != null) 'paidParkingLot': paidParkingLot!,
-        if (paidStreetParking != null) 'paidStreetParking': paidStreetParking!,
-        if (valetParking != null) 'valetParking': valetParking!,
-      };
+    if (freeGarageParking != null) 'freeGarageParking': freeGarageParking!,
+    if (freeParkingLot != null) 'freeParkingLot': freeParkingLot!,
+    if (freeStreetParking != null) 'freeStreetParking': freeStreetParking!,
+    if (paidGarageParking != null) 'paidGarageParking': paidGarageParking!,
+    if (paidParkingLot != null) 'paidParkingLot': paidParkingLot!,
+    if (paidStreetParking != null) 'paidStreetParking': paidStreetParking!,
+    if (valetParking != null) 'valetParking': valetParking!,
+  };
 }
 
 /// Payment options the place accepts.
@@ -3118,20 +3306,19 @@ class GoogleMapsPlacesV1PlacePaymentOptions {
   });
 
   GoogleMapsPlacesV1PlacePaymentOptions.fromJson(core.Map json_)
-      : this(
-          acceptsCashOnly: json_['acceptsCashOnly'] as core.bool?,
-          acceptsCreditCards: json_['acceptsCreditCards'] as core.bool?,
-          acceptsDebitCards: json_['acceptsDebitCards'] as core.bool?,
-          acceptsNfc: json_['acceptsNfc'] as core.bool?,
-        );
+    : this(
+        acceptsCashOnly: json_['acceptsCashOnly'] as core.bool?,
+        acceptsCreditCards: json_['acceptsCreditCards'] as core.bool?,
+        acceptsDebitCards: json_['acceptsDebitCards'] as core.bool?,
+        acceptsNfc: json_['acceptsNfc'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acceptsCashOnly != null) 'acceptsCashOnly': acceptsCashOnly!,
-        if (acceptsCreditCards != null)
-          'acceptsCreditCards': acceptsCreditCards!,
-        if (acceptsDebitCards != null) 'acceptsDebitCards': acceptsDebitCards!,
-        if (acceptsNfc != null) 'acceptsNfc': acceptsNfc!,
-      };
+    if (acceptsCashOnly != null) 'acceptsCashOnly': acceptsCashOnly!,
+    if (acceptsCreditCards != null) 'acceptsCreditCards': acceptsCreditCards!,
+    if (acceptsDebitCards != null) 'acceptsDebitCards': acceptsDebitCards!,
+    if (acceptsNfc != null) 'acceptsNfc': acceptsNfc!,
+  };
 }
 
 /// Plus code (http://plus.codes) is a location reference with two formats:
@@ -3164,25 +3351,30 @@ class GoogleMapsPlacesV1PlaceReviewSummary {
   });
 
   GoogleMapsPlacesV1PlaceReviewSummary.fromJson(core.Map json_)
-      : this(
-          disclosureText: json_.containsKey('disclosureText')
-              ? GoogleTypeLocalizedText.fromJson(json_['disclosureText']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          flagContentUri: json_['flagContentUri'] as core.String?,
-          reviewsUri: json_['reviewsUri'] as core.String?,
-          text: json_.containsKey('text')
-              ? GoogleTypeLocalizedText.fromJson(
-                  json_['text'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        disclosureText:
+            json_.containsKey('disclosureText')
+                ? GoogleTypeLocalizedText.fromJson(
+                  json_['disclosureText']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        flagContentUri: json_['flagContentUri'] as core.String?,
+        reviewsUri: json_['reviewsUri'] as core.String?,
+        text:
+            json_.containsKey('text')
+                ? GoogleTypeLocalizedText.fromJson(
+                  json_['text'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disclosureText != null) 'disclosureText': disclosureText!,
-        if (flagContentUri != null) 'flagContentUri': flagContentUri!,
-        if (reviewsUri != null) 'reviewsUri': reviewsUri!,
-        if (text != null) 'text': text!,
-      };
+    if (disclosureText != null) 'disclosureText': disclosureText!,
+    if (flagContentUri != null) 'flagContentUri': flagContentUri!,
+    if (reviewsUri != null) 'reviewsUri': reviewsUri!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// Sub-destinations are specific places associated with a main place.
@@ -3201,21 +3393,18 @@ class GoogleMapsPlacesV1PlaceSubDestination {
   /// The resource name of the sub-destination.
   core.String? name;
 
-  GoogleMapsPlacesV1PlaceSubDestination({
-    this.id,
-    this.name,
-  });
+  GoogleMapsPlacesV1PlaceSubDestination({this.id, this.name});
 
   GoogleMapsPlacesV1PlaceSubDestination.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-      };
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// A route polyline.
@@ -3237,18 +3426,14 @@ class GoogleMapsPlacesV1Polyline {
   /// tools.
   core.String? encodedPolyline;
 
-  GoogleMapsPlacesV1Polyline({
-    this.encodedPolyline,
-  });
+  GoogleMapsPlacesV1Polyline({this.encodedPolyline});
 
   GoogleMapsPlacesV1Polyline.fromJson(core.Map json_)
-      : this(
-          encodedPolyline: json_['encodedPolyline'] as core.String?,
-        );
+    : this(encodedPolyline: json_['encodedPolyline'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encodedPolyline != null) 'encodedPolyline': encodedPolyline!,
-      };
+    if (encodedPolyline != null) 'encodedPolyline': encodedPolyline!,
+  };
 }
 
 /// The price range associated with a Place.
@@ -3266,27 +3451,28 @@ class GoogleMapsPlacesV1PriceRange {
   /// Price should be at or above this amount.
   GoogleTypeMoney? startPrice;
 
-  GoogleMapsPlacesV1PriceRange({
-    this.endPrice,
-    this.startPrice,
-  });
+  GoogleMapsPlacesV1PriceRange({this.endPrice, this.startPrice});
 
   GoogleMapsPlacesV1PriceRange.fromJson(core.Map json_)
-      : this(
-          endPrice: json_.containsKey('endPrice')
-              ? GoogleTypeMoney.fromJson(
-                  json_['endPrice'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startPrice: json_.containsKey('startPrice')
-              ? GoogleTypeMoney.fromJson(
-                  json_['startPrice'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        endPrice:
+            json_.containsKey('endPrice')
+                ? GoogleTypeMoney.fromJson(
+                  json_['endPrice'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startPrice:
+            json_.containsKey('startPrice')
+                ? GoogleTypeMoney.fromJson(
+                  json_['startPrice'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endPrice != null) 'endPrice': endPrice!,
-        if (startPrice != null) 'startPrice': startPrice!,
-      };
+    if (endPrice != null) 'endPrice': endPrice!,
+    if (startPrice != null) 'startPrice': startPrice!,
+  };
 }
 
 /// Information about a review of a place.
@@ -3334,41 +3520,47 @@ class GoogleMapsPlacesV1Review {
   });
 
   GoogleMapsPlacesV1Review.fromJson(core.Map json_)
-      : this(
-          authorAttribution: json_.containsKey('authorAttribution')
-              ? GoogleMapsPlacesV1AuthorAttribution.fromJson(
+    : this(
+        authorAttribution:
+            json_.containsKey('authorAttribution')
+                ? GoogleMapsPlacesV1AuthorAttribution.fromJson(
                   json_['authorAttribution']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          flagContentUri: json_['flagContentUri'] as core.String?,
-          googleMapsUri: json_['googleMapsUri'] as core.String?,
-          name: json_['name'] as core.String?,
-          originalText: json_.containsKey('originalText')
-              ? GoogleTypeLocalizedText.fromJson(
-                  json_['originalText'] as core.Map<core.String, core.dynamic>)
-              : null,
-          publishTime: json_['publishTime'] as core.String?,
-          rating: (json_['rating'] as core.num?)?.toDouble(),
-          relativePublishTimeDescription:
-              json_['relativePublishTimeDescription'] as core.String?,
-          text: json_.containsKey('text')
-              ? GoogleTypeLocalizedText.fromJson(
-                  json_['text'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        flagContentUri: json_['flagContentUri'] as core.String?,
+        googleMapsUri: json_['googleMapsUri'] as core.String?,
+        name: json_['name'] as core.String?,
+        originalText:
+            json_.containsKey('originalText')
+                ? GoogleTypeLocalizedText.fromJson(
+                  json_['originalText'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        publishTime: json_['publishTime'] as core.String?,
+        rating: (json_['rating'] as core.num?)?.toDouble(),
+        relativePublishTimeDescription:
+            json_['relativePublishTimeDescription'] as core.String?,
+        text:
+            json_.containsKey('text')
+                ? GoogleTypeLocalizedText.fromJson(
+                  json_['text'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authorAttribution != null) 'authorAttribution': authorAttribution!,
-        if (flagContentUri != null) 'flagContentUri': flagContentUri!,
-        if (googleMapsUri != null) 'googleMapsUri': googleMapsUri!,
-        if (name != null) 'name': name!,
-        if (originalText != null) 'originalText': originalText!,
-        if (publishTime != null) 'publishTime': publishTime!,
-        if (rating != null) 'rating': rating!,
-        if (relativePublishTimeDescription != null)
-          'relativePublishTimeDescription': relativePublishTimeDescription!,
-        if (text != null) 'text': text!,
-      };
+    if (authorAttribution != null) 'authorAttribution': authorAttribution!,
+    if (flagContentUri != null) 'flagContentUri': flagContentUri!,
+    if (googleMapsUri != null) 'googleMapsUri': googleMapsUri!,
+    if (name != null) 'name': name!,
+    if (originalText != null) 'originalText': originalText!,
+    if (publishTime != null) 'publishTime': publishTime!,
+    if (rating != null) 'rating': rating!,
+    if (relativePublishTimeDescription != null)
+      'relativePublishTimeDescription': relativePublishTimeDescription!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// Encapsulates a set of optional conditions to satisfy when calculating the
@@ -3414,19 +3606,19 @@ class GoogleMapsPlacesV1RouteModifiers {
   });
 
   GoogleMapsPlacesV1RouteModifiers.fromJson(core.Map json_)
-      : this(
-          avoidFerries: json_['avoidFerries'] as core.bool?,
-          avoidHighways: json_['avoidHighways'] as core.bool?,
-          avoidIndoor: json_['avoidIndoor'] as core.bool?,
-          avoidTolls: json_['avoidTolls'] as core.bool?,
-        );
+    : this(
+        avoidFerries: json_['avoidFerries'] as core.bool?,
+        avoidHighways: json_['avoidHighways'] as core.bool?,
+        avoidIndoor: json_['avoidIndoor'] as core.bool?,
+        avoidTolls: json_['avoidTolls'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (avoidFerries != null) 'avoidFerries': avoidFerries!,
-        if (avoidHighways != null) 'avoidHighways': avoidHighways!,
-        if (avoidIndoor != null) 'avoidIndoor': avoidIndoor!,
-        if (avoidTolls != null) 'avoidTolls': avoidTolls!,
-      };
+    if (avoidFerries != null) 'avoidFerries': avoidFerries!,
+    if (avoidHighways != null) 'avoidHighways': avoidHighways!,
+    if (avoidIndoor != null) 'avoidIndoor': avoidIndoor!,
+    if (avoidTolls != null) 'avoidTolls': avoidTolls!,
+  };
 }
 
 /// Parameters to configure the routing calculations to the places in the
@@ -3501,26 +3693,30 @@ class GoogleMapsPlacesV1RoutingParameters {
   });
 
   GoogleMapsPlacesV1RoutingParameters.fromJson(core.Map json_)
-      : this(
-          origin: json_.containsKey('origin')
-              ? GoogleTypeLatLng.fromJson(
-                  json_['origin'] as core.Map<core.String, core.dynamic>)
-              : null,
-          routeModifiers: json_.containsKey('routeModifiers')
-              ? GoogleMapsPlacesV1RouteModifiers.fromJson(
+    : this(
+        origin:
+            json_.containsKey('origin')
+                ? GoogleTypeLatLng.fromJson(
+                  json_['origin'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        routeModifiers:
+            json_.containsKey('routeModifiers')
+                ? GoogleMapsPlacesV1RouteModifiers.fromJson(
                   json_['routeModifiers']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          routingPreference: json_['routingPreference'] as core.String?,
-          travelMode: json_['travelMode'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        routingPreference: json_['routingPreference'] as core.String?,
+        travelMode: json_['travelMode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (origin != null) 'origin': origin!,
-        if (routeModifiers != null) 'routeModifiers': routeModifiers!,
-        if (routingPreference != null) 'routingPreference': routingPreference!,
-        if (travelMode != null) 'travelMode': travelMode!,
-      };
+    if (origin != null) 'origin': origin!,
+    if (routeModifiers != null) 'routeModifiers': routeModifiers!,
+    if (routingPreference != null) 'routingPreference': routingPreference!,
+    if (travelMode != null) 'travelMode': travelMode!,
+  };
 }
 
 /// The duration and distance from the routing origin to a place in the
@@ -3550,24 +3746,25 @@ class GoogleMapsPlacesV1RoutingSummary {
   /// destination.
   core.List<GoogleMapsPlacesV1RoutingSummaryLeg>? legs;
 
-  GoogleMapsPlacesV1RoutingSummary({
-    this.directionsUri,
-    this.legs,
-  });
+  GoogleMapsPlacesV1RoutingSummary({this.directionsUri, this.legs});
 
   GoogleMapsPlacesV1RoutingSummary.fromJson(core.Map json_)
-      : this(
-          directionsUri: json_['directionsUri'] as core.String?,
-          legs: (json_['legs'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1RoutingSummaryLeg.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        directionsUri: json_['directionsUri'] as core.String?,
+        legs:
+            (json_['legs'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1RoutingSummaryLeg.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (directionsUri != null) 'directionsUri': directionsUri!,
-        if (legs != null) 'legs': legs!,
-      };
+    if (directionsUri != null) 'directionsUri': directionsUri!,
+    if (legs != null) 'legs': legs!,
+  };
 }
 
 /// A leg is a single portion of a journey from one location to another.
@@ -3578,21 +3775,18 @@ class GoogleMapsPlacesV1RoutingSummaryLeg {
   /// The time it takes to complete this leg of the trip.
   core.String? duration;
 
-  GoogleMapsPlacesV1RoutingSummaryLeg({
-    this.distanceMeters,
-    this.duration,
-  });
+  GoogleMapsPlacesV1RoutingSummaryLeg({this.distanceMeters, this.duration});
 
   GoogleMapsPlacesV1RoutingSummaryLeg.fromJson(core.Map json_)
-      : this(
-          distanceMeters: json_['distanceMeters'] as core.int?,
-          duration: json_['duration'] as core.String?,
-        );
+    : this(
+        distanceMeters: json_['distanceMeters'] as core.int?,
+        duration: json_['duration'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (distanceMeters != null) 'distanceMeters': distanceMeters!,
-        if (duration != null) 'duration': duration!,
-      };
+    if (distanceMeters != null) 'distanceMeters': distanceMeters!,
+    if (duration != null) 'duration': duration!,
+  };
 }
 
 /// Request proto for Search Nearby.
@@ -3719,50 +3913,58 @@ class GoogleMapsPlacesV1SearchNearbyRequest {
   });
 
   GoogleMapsPlacesV1SearchNearbyRequest.fromJson(core.Map json_)
-      : this(
-          excludedPrimaryTypes: (json_['excludedPrimaryTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          excludedTypes: (json_['excludedTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          includedPrimaryTypes: (json_['includedPrimaryTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          includedTypes: (json_['includedTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          languageCode: json_['languageCode'] as core.String?,
-          locationRestriction: json_.containsKey('locationRestriction')
-              ? GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction
-                  .fromJson(json_['locationRestriction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          maxResultCount: json_['maxResultCount'] as core.int?,
-          rankPreference: json_['rankPreference'] as core.String?,
-          regionCode: json_['regionCode'] as core.String?,
-          routingParameters: json_.containsKey('routingParameters')
-              ? GoogleMapsPlacesV1RoutingParameters.fromJson(
+    : this(
+        excludedPrimaryTypes:
+            (json_['excludedPrimaryTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        excludedTypes:
+            (json_['excludedTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includedPrimaryTypes:
+            (json_['includedPrimaryTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        includedTypes:
+            (json_['includedTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        languageCode: json_['languageCode'] as core.String?,
+        locationRestriction:
+            json_.containsKey('locationRestriction')
+                ? GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction.fromJson(
+                  json_['locationRestriction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maxResultCount: json_['maxResultCount'] as core.int?,
+        rankPreference: json_['rankPreference'] as core.String?,
+        regionCode: json_['regionCode'] as core.String?,
+        routingParameters:
+            json_.containsKey('routingParameters')
+                ? GoogleMapsPlacesV1RoutingParameters.fromJson(
                   json_['routingParameters']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (excludedPrimaryTypes != null)
-          'excludedPrimaryTypes': excludedPrimaryTypes!,
-        if (excludedTypes != null) 'excludedTypes': excludedTypes!,
-        if (includedPrimaryTypes != null)
-          'includedPrimaryTypes': includedPrimaryTypes!,
-        if (includedTypes != null) 'includedTypes': includedTypes!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (locationRestriction != null)
-          'locationRestriction': locationRestriction!,
-        if (maxResultCount != null) 'maxResultCount': maxResultCount!,
-        if (rankPreference != null) 'rankPreference': rankPreference!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (routingParameters != null) 'routingParameters': routingParameters!,
-      };
+    if (excludedPrimaryTypes != null)
+      'excludedPrimaryTypes': excludedPrimaryTypes!,
+    if (excludedTypes != null) 'excludedTypes': excludedTypes!,
+    if (includedPrimaryTypes != null)
+      'includedPrimaryTypes': includedPrimaryTypes!,
+    if (includedTypes != null) 'includedTypes': includedTypes!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (locationRestriction != null)
+      'locationRestriction': locationRestriction!,
+    if (maxResultCount != null) 'maxResultCount': maxResultCount!,
+    if (rankPreference != null) 'rankPreference': rankPreference!,
+    if (regionCode != null) 'regionCode': regionCode!,
+    if (routingParameters != null) 'routingParameters': routingParameters!,
+  };
 }
 
 /// The region to search.
@@ -3770,22 +3972,22 @@ class GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction {
   /// A circle defined by center point and radius.
   GoogleMapsPlacesV1Circle? circle;
 
-  GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction({
-    this.circle,
-  });
+  GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction({this.circle});
 
   GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction.fromJson(
-      core.Map json_)
-      : this(
-          circle: json_.containsKey('circle')
-              ? GoogleMapsPlacesV1Circle.fromJson(
-                  json_['circle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        circle:
+            json_.containsKey('circle')
+                ? GoogleMapsPlacesV1Circle.fromJson(
+                  json_['circle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (circle != null) 'circle': circle!,
-      };
+    if (circle != null) 'circle': circle!,
+  };
 }
 
 /// Response proto for Search Nearby.
@@ -3802,27 +4004,32 @@ class GoogleMapsPlacesV1SearchNearbyResponse {
   /// of places if requested.
   core.List<GoogleMapsPlacesV1RoutingSummary>? routingSummaries;
 
-  GoogleMapsPlacesV1SearchNearbyResponse({
-    this.places,
-    this.routingSummaries,
-  });
+  GoogleMapsPlacesV1SearchNearbyResponse({this.places, this.routingSummaries});
 
   GoogleMapsPlacesV1SearchNearbyResponse.fromJson(core.Map json_)
-      : this(
-          places: (json_['places'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1Place.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          routingSummaries: (json_['routingSummaries'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1RoutingSummary.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        places:
+            (json_['places'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1Place.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        routingSummaries:
+            (json_['routingSummaries'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1RoutingSummary.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (places != null) 'places': places!,
-        if (routingSummaries != null) 'routingSummaries': routingSummaries!,
-      };
+    if (places != null) 'places': places!,
+    if (routingSummaries != null) 'routingSummaries': routingSummaries!,
+  };
 }
 
 /// Request proto for SearchText.
@@ -3960,7 +4167,7 @@ class GoogleMapsPlacesV1SearchTextRequest {
   ///
   /// Optional.
   GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters?
-      searchAlongRouteParameters;
+  searchAlongRouteParameters;
 
   /// Used to set strict type filtering for included_type.
   ///
@@ -3995,73 +4202,83 @@ class GoogleMapsPlacesV1SearchTextRequest {
   });
 
   GoogleMapsPlacesV1SearchTextRequest.fromJson(core.Map json_)
-      : this(
-          evOptions: json_.containsKey('evOptions')
-              ? GoogleMapsPlacesV1SearchTextRequestEVOptions.fromJson(
-                  json_['evOptions'] as core.Map<core.String, core.dynamic>)
-              : null,
-          includePureServiceAreaBusinesses:
-              json_['includePureServiceAreaBusinesses'] as core.bool?,
-          includedType: json_['includedType'] as core.String?,
-          languageCode: json_['languageCode'] as core.String?,
-          locationBias: json_.containsKey('locationBias')
-              ? GoogleMapsPlacesV1SearchTextRequestLocationBias.fromJson(
-                  json_['locationBias'] as core.Map<core.String, core.dynamic>)
-              : null,
-          locationRestriction: json_.containsKey('locationRestriction')
-              ? GoogleMapsPlacesV1SearchTextRequestLocationRestriction.fromJson(
+    : this(
+        evOptions:
+            json_.containsKey('evOptions')
+                ? GoogleMapsPlacesV1SearchTextRequestEVOptions.fromJson(
+                  json_['evOptions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        includePureServiceAreaBusinesses:
+            json_['includePureServiceAreaBusinesses'] as core.bool?,
+        includedType: json_['includedType'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        locationBias:
+            json_.containsKey('locationBias')
+                ? GoogleMapsPlacesV1SearchTextRequestLocationBias.fromJson(
+                  json_['locationBias'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        locationRestriction:
+            json_.containsKey('locationRestriction')
+                ? GoogleMapsPlacesV1SearchTextRequestLocationRestriction.fromJson(
                   json_['locationRestriction']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          maxResultCount: json_['maxResultCount'] as core.int?,
-          minRating: (json_['minRating'] as core.num?)?.toDouble(),
-          openNow: json_['openNow'] as core.bool?,
-          pageSize: json_['pageSize'] as core.int?,
-          pageToken: json_['pageToken'] as core.String?,
-          priceLevels: (json_['priceLevels'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          rankPreference: json_['rankPreference'] as core.String?,
-          regionCode: json_['regionCode'] as core.String?,
-          routingParameters: json_.containsKey('routingParameters')
-              ? GoogleMapsPlacesV1RoutingParameters.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maxResultCount: json_['maxResultCount'] as core.int?,
+        minRating: (json_['minRating'] as core.num?)?.toDouble(),
+        openNow: json_['openNow'] as core.bool?,
+        pageSize: json_['pageSize'] as core.int?,
+        pageToken: json_['pageToken'] as core.String?,
+        priceLevels:
+            (json_['priceLevels'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        rankPreference: json_['rankPreference'] as core.String?,
+        regionCode: json_['regionCode'] as core.String?,
+        routingParameters:
+            json_.containsKey('routingParameters')
+                ? GoogleMapsPlacesV1RoutingParameters.fromJson(
                   json_['routingParameters']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          searchAlongRouteParameters: json_
-                  .containsKey('searchAlongRouteParameters')
-              ? GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters
-                  .fromJson(json_['searchAlongRouteParameters']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          strictTypeFiltering: json_['strictTypeFiltering'] as core.bool?,
-          textQuery: json_['textQuery'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        searchAlongRouteParameters:
+            json_.containsKey('searchAlongRouteParameters')
+                ? GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters.fromJson(
+                  json_['searchAlongRouteParameters']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        strictTypeFiltering: json_['strictTypeFiltering'] as core.bool?,
+        textQuery: json_['textQuery'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (evOptions != null) 'evOptions': evOptions!,
-        if (includePureServiceAreaBusinesses != null)
-          'includePureServiceAreaBusinesses': includePureServiceAreaBusinesses!,
-        if (includedType != null) 'includedType': includedType!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (locationBias != null) 'locationBias': locationBias!,
-        if (locationRestriction != null)
-          'locationRestriction': locationRestriction!,
-        if (maxResultCount != null) 'maxResultCount': maxResultCount!,
-        if (minRating != null) 'minRating': minRating!,
-        if (openNow != null) 'openNow': openNow!,
-        if (pageSize != null) 'pageSize': pageSize!,
-        if (pageToken != null) 'pageToken': pageToken!,
-        if (priceLevels != null) 'priceLevels': priceLevels!,
-        if (rankPreference != null) 'rankPreference': rankPreference!,
-        if (regionCode != null) 'regionCode': regionCode!,
-        if (routingParameters != null) 'routingParameters': routingParameters!,
-        if (searchAlongRouteParameters != null)
-          'searchAlongRouteParameters': searchAlongRouteParameters!,
-        if (strictTypeFiltering != null)
-          'strictTypeFiltering': strictTypeFiltering!,
-        if (textQuery != null) 'textQuery': textQuery!,
-      };
+    if (evOptions != null) 'evOptions': evOptions!,
+    if (includePureServiceAreaBusinesses != null)
+      'includePureServiceAreaBusinesses': includePureServiceAreaBusinesses!,
+    if (includedType != null) 'includedType': includedType!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (locationBias != null) 'locationBias': locationBias!,
+    if (locationRestriction != null)
+      'locationRestriction': locationRestriction!,
+    if (maxResultCount != null) 'maxResultCount': maxResultCount!,
+    if (minRating != null) 'minRating': minRating!,
+    if (openNow != null) 'openNow': openNow!,
+    if (pageSize != null) 'pageSize': pageSize!,
+    if (pageToken != null) 'pageToken': pageToken!,
+    if (priceLevels != null) 'priceLevels': priceLevels!,
+    if (rankPreference != null) 'rankPreference': rankPreference!,
+    if (regionCode != null) 'regionCode': regionCode!,
+    if (routingParameters != null) 'routingParameters': routingParameters!,
+    if (searchAlongRouteParameters != null)
+      'searchAlongRouteParameters': searchAlongRouteParameters!,
+    if (strictTypeFiltering != null)
+      'strictTypeFiltering': strictTypeFiltering!,
+    if (textQuery != null) 'textQuery': textQuery!,
+  };
 }
 
 /// Searchable EV options of a place search request.
@@ -4087,19 +4304,20 @@ class GoogleMapsPlacesV1SearchTextRequestEVOptions {
   });
 
   GoogleMapsPlacesV1SearchTextRequestEVOptions.fromJson(core.Map json_)
-      : this(
-          connectorTypes: (json_['connectorTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          minimumChargingRateKw:
-              (json_['minimumChargingRateKw'] as core.num?)?.toDouble(),
-        );
+    : this(
+        connectorTypes:
+            (json_['connectorTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        minimumChargingRateKw:
+            (json_['minimumChargingRateKw'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (connectorTypes != null) 'connectorTypes': connectorTypes!,
-        if (minimumChargingRateKw != null)
-          'minimumChargingRateKw': minimumChargingRateKw!,
-      };
+    if (connectorTypes != null) 'connectorTypes': connectorTypes!,
+    if (minimumChargingRateKw != null)
+      'minimumChargingRateKw': minimumChargingRateKw!,
+  };
 }
 
 /// The region to search.
@@ -4125,21 +4343,25 @@ class GoogleMapsPlacesV1SearchTextRequestLocationBias {
   });
 
   GoogleMapsPlacesV1SearchTextRequestLocationBias.fromJson(core.Map json_)
-      : this(
-          circle: json_.containsKey('circle')
-              ? GoogleMapsPlacesV1Circle.fromJson(
-                  json_['circle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          rectangle: json_.containsKey('rectangle')
-              ? GoogleGeoTypeViewport.fromJson(
-                  json_['rectangle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        circle:
+            json_.containsKey('circle')
+                ? GoogleMapsPlacesV1Circle.fromJson(
+                  json_['circle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rectangle:
+            json_.containsKey('rectangle')
+                ? GoogleGeoTypeViewport.fromJson(
+                  json_['rectangle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (circle != null) 'circle': circle!,
-        if (rectangle != null) 'rectangle': rectangle!,
-      };
+    if (circle != null) 'circle': circle!,
+    if (rectangle != null) 'rectangle': rectangle!,
+  };
 }
 
 /// The region to search.
@@ -4156,22 +4378,22 @@ class GoogleMapsPlacesV1SearchTextRequestLocationRestriction {
   /// range. A rectangle viewport cannot be wider than 180 degrees.
   GoogleGeoTypeViewport? rectangle;
 
-  GoogleMapsPlacesV1SearchTextRequestLocationRestriction({
-    this.rectangle,
-  });
+  GoogleMapsPlacesV1SearchTextRequestLocationRestriction({this.rectangle});
 
   GoogleMapsPlacesV1SearchTextRequestLocationRestriction.fromJson(
-      core.Map json_)
-      : this(
-          rectangle: json_.containsKey('rectangle')
-              ? GoogleGeoTypeViewport.fromJson(
-                  json_['rectangle'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        rectangle:
+            json_.containsKey('rectangle')
+                ? GoogleGeoTypeViewport.fromJson(
+                  json_['rectangle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (rectangle != null) 'rectangle': rectangle!,
-      };
+    if (rectangle != null) 'rectangle': rectangle!,
+  };
 }
 
 /// Specifies a precalculated polyline from the
@@ -4199,17 +4421,19 @@ class GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters {
   });
 
   GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters.fromJson(
-      core.Map json_)
-      : this(
-          polyline: json_.containsKey('polyline')
-              ? GoogleMapsPlacesV1Polyline.fromJson(
-                  json_['polyline'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    core.Map json_,
+  ) : this(
+        polyline:
+            json_.containsKey('polyline')
+                ? GoogleMapsPlacesV1Polyline.fromJson(
+                  json_['polyline'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (polyline != null) 'polyline': polyline!,
-      };
+    if (polyline != null) 'polyline': polyline!,
+  };
 }
 
 /// Response proto for SearchText.
@@ -4256,31 +4480,42 @@ class GoogleMapsPlacesV1SearchTextResponse {
   });
 
   GoogleMapsPlacesV1SearchTextResponse.fromJson(core.Map json_)
-      : this(
-          contextualContents: (json_['contextualContents'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1ContextualContent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          places: (json_['places'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1Place.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          routingSummaries: (json_['routingSummaries'] as core.List?)
-              ?.map((value) => GoogleMapsPlacesV1RoutingSummary.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          searchUri: json_['searchUri'] as core.String?,
-        );
+    : this(
+        contextualContents:
+            (json_['contextualContents'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1ContextualContent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        places:
+            (json_['places'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1Place.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        routingSummaries:
+            (json_['routingSummaries'] as core.List?)
+                ?.map(
+                  (value) => GoogleMapsPlacesV1RoutingSummary.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        searchUri: json_['searchUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (contextualContents != null)
-          'contextualContents': contextualContents!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (places != null) 'places': places!,
-        if (routingSummaries != null) 'routingSummaries': routingSummaries!,
-        if (searchUri != null) 'searchUri': searchUri!,
-      };
+    if (contextualContents != null) 'contextualContents': contextualContents!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (places != null) 'places': places!,
+    if (routingSummaries != null) 'routingSummaries': routingSummaries!,
+    if (searchUri != null) 'searchUri': searchUri!,
+  };
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.

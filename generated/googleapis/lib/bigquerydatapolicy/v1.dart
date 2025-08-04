@@ -55,11 +55,16 @@ class BigQueryDataPolicyServiceApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  BigQueryDataPolicyServiceApi(http.Client client,
-      {core.String rootUrl = 'https://bigquerydatapolicy.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  BigQueryDataPolicyServiceApi(
+    http.Client client, {
+    core.String rootUrl = 'https://bigquerydatapolicy.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -84,7 +89,7 @@ class ProjectsLocationsDataPoliciesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsDataPoliciesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new data policy under a project with the given `dataPolicyId`
   /// (used as the display name), policy tag, and data policy type.
@@ -127,7 +132,8 @@ class ProjectsLocationsDataPoliciesResource {
       queryParams: queryParams_,
     );
     return DataPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the data policy specified by its resource name.
@@ -167,6 +173,7 @@ class ProjectsLocationsDataPoliciesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -191,10 +198,7 @@ class ProjectsLocationsDataPoliciesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataPolicy> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<DataPolicy> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -207,7 +211,8 @@ class ProjectsLocationsDataPoliciesResource {
       queryParams: queryParams_,
     );
     return DataPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the IAM policy for the specified data policy.
@@ -307,7 +312,8 @@ class ProjectsLocationsDataPoliciesResource {
       queryParams: queryParams_,
     );
     return ListDataPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the metadata for an existing data policy.
@@ -366,7 +372,8 @@ class ProjectsLocationsDataPoliciesResource {
       queryParams: queryParams_,
     );
     return DataPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Renames the id (display name) of the specified data policy.
@@ -410,7 +417,8 @@ class ProjectsLocationsDataPoliciesResource {
       queryParams: queryParams_,
     );
     return DataPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the IAM policy for the specified data policy.
@@ -500,7 +508,8 @@ class ProjectsLocationsDataPoliciesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -531,24 +540,25 @@ class AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfig({this.auditLogConfigs, this.service});
 
   AuditConfig.fromJson(core.Map json_)
-      : this(
-          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          service: json_['service'] as core.String?,
-        );
+    : this(
+        auditLogConfigs:
+            (json_['auditLogConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditLogConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        service: json_['service'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-        if (service != null) 'service': service!,
-      };
+    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+    if (service != null) 'service': service!,
+  };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -639,29 +649,28 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// The data masking policy that is used to specify data masking rule.
@@ -704,22 +713,19 @@ class DataMaskingPolicy {
   /// `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
   core.String? routine;
 
-  DataMaskingPolicy({
-    this.predefinedExpression,
-    this.routine,
-  });
+  DataMaskingPolicy({this.predefinedExpression, this.routine});
 
   DataMaskingPolicy.fromJson(core.Map json_)
-      : this(
-          predefinedExpression: json_['predefinedExpression'] as core.String?,
-          routine: json_['routine'] as core.String?,
-        );
+    : this(
+        predefinedExpression: json_['predefinedExpression'] as core.String?,
+        routine: json_['routine'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (predefinedExpression != null)
-          'predefinedExpression': predefinedExpression!,
-        if (routine != null) 'routine': routine!,
-      };
+    if (predefinedExpression != null)
+      'predefinedExpression': predefinedExpression!,
+    if (routine != null) 'routine': routine!,
+  };
 }
 
 /// Represents the label-policy binding.
@@ -765,24 +771,27 @@ class DataPolicy {
   });
 
   DataPolicy.fromJson(core.Map json_)
-      : this(
-          dataMaskingPolicy: json_.containsKey('dataMaskingPolicy')
-              ? DataMaskingPolicy.fromJson(json_['dataMaskingPolicy']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          dataPolicyId: json_['dataPolicyId'] as core.String?,
-          dataPolicyType: json_['dataPolicyType'] as core.String?,
-          name: json_['name'] as core.String?,
-          policyTag: json_['policyTag'] as core.String?,
-        );
+    : this(
+        dataMaskingPolicy:
+            json_.containsKey('dataMaskingPolicy')
+                ? DataMaskingPolicy.fromJson(
+                  json_['dataMaskingPolicy']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataPolicyId: json_['dataPolicyId'] as core.String?,
+        dataPolicyType: json_['dataPolicyType'] as core.String?,
+        name: json_['name'] as core.String?,
+        policyTag: json_['policyTag'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataMaskingPolicy != null) 'dataMaskingPolicy': dataMaskingPolicy!,
-        if (dataPolicyId != null) 'dataPolicyId': dataPolicyId!,
-        if (dataPolicyType != null) 'dataPolicyType': dataPolicyType!,
-        if (name != null) 'name': name!,
-        if (policyTag != null) 'policyTag': policyTag!,
-      };
+    if (dataMaskingPolicy != null) 'dataMaskingPolicy': dataMaskingPolicy!,
+    if (dataPolicyId != null) 'dataPolicyId': dataPolicyId!,
+    if (dataPolicyType != null) 'dataPolicyType': dataPolicyType!,
+    if (name != null) 'name': name!,
+    if (policyTag != null) 'policyTag': policyTag!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -819,21 +828,21 @@ class GetIamPolicyRequest {
   /// `GetIamPolicy`.
   GetPolicyOptions? options;
 
-  GetIamPolicyRequest({
-    this.options,
-  });
+  GetIamPolicyRequest({this.options});
 
   GetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          options: json_.containsKey('options')
-              ? GetPolicyOptions.fromJson(
-                  json_['options'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        options:
+            json_.containsKey('options')
+                ? GetPolicyOptions.fromJson(
+                  json_['options'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (options != null) 'options': options!,
-      };
+    if (options != null) 'options': options!,
+  };
 }
 
 /// Encapsulates settings provided to GetIamPolicy.
@@ -848,24 +857,25 @@ class ListDataPoliciesResponse {
   /// more results.
   core.String? nextPageToken;
 
-  ListDataPoliciesResponse({
-    this.dataPolicies,
-    this.nextPageToken,
-  });
+  ListDataPoliciesResponse({this.dataPolicies, this.nextPageToken});
 
   ListDataPoliciesResponse.fromJson(core.Map json_)
-      : this(
-          dataPolicies: (json_['dataPolicies'] as core.List?)
-              ?.map((value) => DataPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        dataPolicies:
+            (json_['dataPolicies'] as core.List?)
+                ?.map(
+                  (value) => DataPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataPolicies != null) 'dataPolicies': dataPolicies!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (dataPolicies != null) 'dataPolicies': dataPolicies!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -931,8 +941,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -954,33 +966,36 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.auditConfigs,
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.auditConfigs, this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        auditConfigs:
+            (json_['auditConfigs'] as core.List?)
+                ?.map(
+                  (value) => AuditConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Request message for the RenameDataPolicy method.
@@ -990,18 +1005,14 @@ class RenameDataPolicyRequest {
   /// Required.
   core.String? newDataPolicyId;
 
-  RenameDataPolicyRequest({
-    this.newDataPolicyId,
-  });
+  RenameDataPolicyRequest({this.newDataPolicyId});
 
   RenameDataPolicyRequest.fromJson(core.Map json_)
-      : this(
-          newDataPolicyId: json_['newDataPolicyId'] as core.String?,
-        );
+    : this(newDataPolicyId: json_['newDataPolicyId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (newDataPolicyId != null) 'newDataPolicyId': newDataPolicyId!,
-      };
+    if (newDataPolicyId != null) 'newDataPolicyId': newDataPolicyId!,
+  };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -1019,24 +1030,23 @@ class SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  SetIamPolicyRequest({this.policy, this.updateMask});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (policy != null) 'policy': policy!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Request message for `TestIamPermissions` method.

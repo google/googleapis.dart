@@ -36,7 +36,8 @@ class JwtFlow extends BaseFlow {
 
   @override
   Future<AccessCredentials> run() async {
-    final timestamp = DateTime.now().toUtc().millisecondsSinceEpoch ~/ 1000 -
+    final timestamp =
+        DateTime.now().toUtc().millisecondsSinceEpoch ~/ 1000 -
         maxExpectedTimeDiffInSeconds;
 
     final jwtHeader = {'alg': 'RS256', 'typ': 'JWT'};
@@ -59,13 +60,10 @@ class JwtFlow extends BaseFlow {
     final jwt = '$jwtSignatureInput.${_base64url(signature)}';
 
     // https://developers.google.com/identity/protocols/oauth2/service-account#authorizingrequests
-    final response = await _client.oauthTokenRequest(
-      {
-        'grant_type': _uri,
-        'assertion': jwt,
-      },
-      authEndpoints: const GoogleAuthEndpoints(),
-    );
+    final response = await _client.oauthTokenRequest({
+      'grant_type': _uri,
+      'assertion': jwt,
+    }, authEndpoints: const GoogleAuthEndpoints());
     final accessToken = parseAccessToken(response);
     return AccessCredentials(accessToken, null, _scopes);
   }

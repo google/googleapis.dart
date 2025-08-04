@@ -34,9 +34,9 @@ class AccessCredentials {
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'accessToken': accessToken,
-        if (refreshToken != null) 'refreshToken': refreshToken,
-        'idToken': idToken,
-        'scopes': scopes,
-      };
+    'accessToken': accessToken,
+    if (refreshToken != null) 'refreshToken': refreshToken,
+    'idToken': idToken,
+    'scopes': scopes,
+  };
 }

@@ -123,11 +123,16 @@ class GmailApi {
 
   UsersResource get users => UsersResource(_requester);
 
-  GmailApi(http.Client client,
-      {core.String rootUrl = 'https://gmail.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  GmailApi(
+    http.Client client, {
+    core.String rootUrl = 'https://gmail.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class UsersResource {
@@ -193,10 +198,7 @@ class UsersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<void> stop(
-    core.String userId, {
-    core.String? $fields,
-  }) async {
+  async.Future<void> stop(core.String userId, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -207,7 +209,9 @@ class UsersResource {
     await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -251,7 +255,8 @@ class UsersResource {
       queryParams: queryParams_,
     );
     return WatchResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -301,11 +306,13 @@ class UsersDraftsResource {
     if (uploadMedia == null) {
       url_ = 'gmail/v1/users/' + commons.escapeVariable('$userId') + '/drafts';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      url_ = '/resumable/upload/gmail/v1/users/' +
+      url_ =
+          '/resumable/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts';
     } else {
-      url_ = '/upload/gmail/v1/users/' +
+      url_ =
+          '/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts';
     }
@@ -349,7 +356,8 @@ class UsersDraftsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/drafts/' +
         commons.escapeVariable('$id');
@@ -357,7 +365,9 @@ class UsersDraftsResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -405,7 +415,8 @@ class UsersDraftsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/drafts/' +
         commons.escapeVariable('$id');
@@ -473,7 +484,8 @@ class UsersDraftsResource {
       queryParams: queryParams_,
     );
     return ListDraftsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sends the specified, existing draft to the recipients in the `To`, `Cc`,
@@ -516,15 +528,18 @@ class UsersDraftsResource {
 
     core.String url_;
     if (uploadMedia == null) {
-      url_ = 'gmail/v1/users/' +
+      url_ =
+          'gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts/send';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      url_ = '/resumable/upload/gmail/v1/users/' +
+      url_ =
+          '/resumable/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts/send';
     } else {
-      url_ = '/upload/gmail/v1/users/' +
+      url_ =
+          '/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts/send';
     }
@@ -582,17 +597,20 @@ class UsersDraftsResource {
 
     core.String url_;
     if (uploadMedia == null) {
-      url_ = 'gmail/v1/users/' +
+      url_ =
+          'gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts/' +
           commons.escapeVariable('$id');
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      url_ = '/resumable/upload/gmail/v1/users/' +
+      url_ =
+          '/resumable/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts/' +
           commons.escapeVariable('$id');
     } else {
-      url_ = '/upload/gmail/v1/users/' +
+      url_ =
+          '/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/drafts/' +
           commons.escapeVariable('$id');
@@ -684,7 +702,8 @@ class UsersHistoryResource {
       queryParams: queryParams_,
     );
     return ListHistoryResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -761,7 +780,8 @@ class UsersLabelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/labels/' +
         commons.escapeVariable('$id');
@@ -769,7 +789,9 @@ class UsersLabelsResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -802,7 +824,8 @@ class UsersLabelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/labels/' +
         commons.escapeVariable('$id');
@@ -849,7 +872,8 @@ class UsersLabelsResource {
       queryParams: queryParams_,
     );
     return ListLabelsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Patch the specified label.
@@ -884,7 +908,8 @@ class UsersLabelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/labels/' +
         commons.escapeVariable('$id');
@@ -930,7 +955,8 @@ class UsersLabelsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/labels/' +
         commons.escapeVariable('$id');
@@ -983,7 +1009,8 @@ class UsersMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/batchDelete';
 
@@ -992,6 +1019,7 @@ class UsersMessagesResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -1023,7 +1051,8 @@ class UsersMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/batchModify';
 
@@ -1032,6 +1061,7 @@ class UsersMessagesResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -1064,7 +1094,8 @@ class UsersMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/' +
         commons.escapeVariable('$id');
@@ -1072,7 +1103,9 @@ class UsersMessagesResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -1127,7 +1160,8 @@ class UsersMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/' +
         commons.escapeVariable('$id');
@@ -1211,15 +1245,18 @@ class UsersMessagesResource {
 
     core.String url_;
     if (uploadMedia == null) {
-      url_ = 'gmail/v1/users/' +
+      url_ =
+          'gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages/import';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      url_ = '/resumable/upload/gmail/v1/users/' +
+      url_ =
+          '/resumable/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages/import';
     } else {
-      url_ = '/upload/gmail/v1/users/' +
+      url_ =
+          '/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages/import';
     }
@@ -1296,11 +1333,13 @@ class UsersMessagesResource {
       url_ =
           'gmail/v1/users/' + commons.escapeVariable('$userId') + '/messages';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      url_ = '/resumable/upload/gmail/v1/users/' +
+      url_ =
+          '/resumable/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages';
     } else {
-      url_ = '/upload/gmail/v1/users/' +
+      url_ =
+          '/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages';
     }
@@ -1382,7 +1421,8 @@ class UsersMessagesResource {
       queryParams: queryParams_,
     );
     return ListMessagesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Modifies the labels on the specified message.
@@ -1417,7 +1457,8 @@ class UsersMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/' +
         commons.escapeVariable('$id') +
@@ -1475,15 +1516,18 @@ class UsersMessagesResource {
 
     core.String url_;
     if (uploadMedia == null) {
-      url_ = 'gmail/v1/users/' +
+      url_ =
+          'gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages/send';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      url_ = '/resumable/upload/gmail/v1/users/' +
+      url_ =
+          '/resumable/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages/send';
     } else {
-      url_ = '/upload/gmail/v1/users/' +
+      url_ =
+          '/upload/gmail/v1/users/' +
           commons.escapeVariable('$userId') +
           '/messages/send';
     }
@@ -1527,7 +1571,8 @@ class UsersMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/' +
         commons.escapeVariable('$id') +
@@ -1536,6 +1581,7 @@ class UsersMessagesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1569,7 +1615,8 @@ class UsersMessagesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/' +
         commons.escapeVariable('$id') +
@@ -1578,6 +1625,7 @@ class UsersMessagesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1588,7 +1636,7 @@ class UsersMessagesAttachmentsResource {
   final commons.ApiRequester _requester;
 
   UsersMessagesAttachmentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the specified message attachment.
   ///
@@ -1621,7 +1669,8 @@ class UsersMessagesAttachmentsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/messages/' +
         commons.escapeVariable('$messageId') +
@@ -1634,7 +1683,8 @@ class UsersMessagesAttachmentsResource {
       queryParams: queryParams_,
     );
     return MessagePartBody.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1678,7 +1728,8 @@ class UsersSettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/autoForwarding';
 
@@ -1688,7 +1739,8 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return AutoForwarding.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets IMAP settings.
@@ -1716,7 +1768,8 @@ class UsersSettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/imap';
 
@@ -1726,7 +1779,8 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return ImapSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets language settings.
@@ -1754,7 +1808,8 @@ class UsersSettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/language';
 
@@ -1764,7 +1819,8 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return LanguageSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets POP settings.
@@ -1801,7 +1857,8 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return PopSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets vacation responder settings.
@@ -1829,7 +1886,8 @@ class UsersSettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/vacation';
 
@@ -1839,7 +1897,8 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return VacationSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the auto-forwarding setting for the specified account.
@@ -1875,7 +1934,8 @@ class UsersSettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/autoForwarding';
 
@@ -1886,7 +1946,8 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return AutoForwarding.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates IMAP settings.
@@ -1918,7 +1979,8 @@ class UsersSettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/imap';
 
@@ -1929,7 +1991,8 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return ImapSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates language settings.
@@ -1967,7 +2030,8 @@ class UsersSettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/language';
 
@@ -1978,7 +2042,8 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return LanguageSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates POP settings.
@@ -2020,7 +2085,8 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return PopSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates vacation responder settings.
@@ -2052,7 +2118,8 @@ class UsersSettingsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/vacation';
 
@@ -2063,7 +2130,8 @@ class UsersSettingsResource {
       queryParams: queryParams_,
     );
     return VacationSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2082,7 +2150,7 @@ class UsersSettingsCseIdentitiesResource {
   final commons.ApiRequester _requester;
 
   UsersSettingsCseIdentitiesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates and configures a client-side encryption identity that's authorized
   /// to send mail from the user account.
@@ -2127,7 +2195,8 @@ class UsersSettingsCseIdentitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/cse/identities';
 
@@ -2138,7 +2207,8 @@ class UsersSettingsCseIdentitiesResource {
       queryParams: queryParams_,
     );
     return CseIdentity.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a client-side encryption identity.
@@ -2182,7 +2252,8 @@ class UsersSettingsCseIdentitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/cse/identities/' +
         commons.escapeVariable('$cseEmailAddress');
@@ -2190,7 +2261,9 @@ class UsersSettingsCseIdentitiesResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -2235,7 +2308,8 @@ class UsersSettingsCseIdentitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/cse/identities/' +
         commons.escapeVariable('$cseEmailAddress');
@@ -2246,7 +2320,8 @@ class UsersSettingsCseIdentitiesResource {
       queryParams: queryParams_,
     );
     return CseIdentity.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the client-side encrypted identities for an authenticated user.
@@ -2296,7 +2371,8 @@ class UsersSettingsCseIdentitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/cse/identities';
 
@@ -2306,7 +2382,8 @@ class UsersSettingsCseIdentitiesResource {
       queryParams: queryParams_,
     );
     return ListCseIdentitiesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Associates a different key pair with an existing client-side encryption
@@ -2356,7 +2433,8 @@ class UsersSettingsCseIdentitiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/cse/identities/' +
         commons.escapeVariable('$emailAddress');
@@ -2368,7 +2446,8 @@ class UsersSettingsCseIdentitiesResource {
       queryParams: queryParams_,
     );
     return CseIdentity.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2376,7 +2455,7 @@ class UsersSettingsCseKeypairsResource {
   final commons.ApiRequester _requester;
 
   UsersSettingsCseKeypairsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates and uploads a client-side encryption S/MIME public key certificate
   /// chain and private key metadata for the authenticated user.
@@ -2419,7 +2498,8 @@ class UsersSettingsCseKeypairsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/cse/keypairs';
 
@@ -2430,7 +2510,8 @@ class UsersSettingsCseKeypairsResource {
       queryParams: queryParams_,
     );
     return CseKeyPair.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Turns off a client-side encryption key pair.
@@ -2480,7 +2561,8 @@ class UsersSettingsCseKeypairsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/cse/keypairs/' +
         commons.escapeVariable('$keyPairId') +
@@ -2493,7 +2575,8 @@ class UsersSettingsCseKeypairsResource {
       queryParams: queryParams_,
     );
     return CseKeyPair.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Turns on a client-side encryption key pair that was turned off.
@@ -2540,7 +2623,8 @@ class UsersSettingsCseKeypairsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/cse/keypairs/' +
         commons.escapeVariable('$keyPairId') +
@@ -2553,7 +2637,8 @@ class UsersSettingsCseKeypairsResource {
       queryParams: queryParams_,
     );
     return CseKeyPair.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Retrieves an existing client-side encryption key pair.
@@ -2595,7 +2680,8 @@ class UsersSettingsCseKeypairsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/cse/keypairs/' +
         commons.escapeVariable('$keyPairId');
@@ -2606,7 +2692,8 @@ class UsersSettingsCseKeypairsResource {
       queryParams: queryParams_,
     );
     return CseKeyPair.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists client-side encryption key pairs for an authenticated user.
@@ -2656,7 +2743,8 @@ class UsersSettingsCseKeypairsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/cse/keypairs';
 
@@ -2666,7 +2754,8 @@ class UsersSettingsCseKeypairsResource {
       queryParams: queryParams_,
     );
     return ListCseKeyPairsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a client-side encryption key pair permanently and immediately.
@@ -2715,7 +2804,8 @@ class UsersSettingsCseKeypairsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/cse/keypairs/' +
         commons.escapeVariable('$keyPairId') +
@@ -2726,6 +2816,7 @@ class UsersSettingsCseKeypairsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -2735,7 +2826,7 @@ class UsersSettingsDelegatesResource {
   final commons.ApiRequester _requester;
 
   UsersSettingsDelegatesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Adds a delegate with its verification status set directly to `accepted`,
   /// without sending any verification email.
@@ -2778,7 +2869,8 @@ class UsersSettingsDelegatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/delegates';
 
@@ -2823,7 +2915,8 @@ class UsersSettingsDelegatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/delegates/' +
         commons.escapeVariable('$delegateEmail');
@@ -2831,7 +2924,9 @@ class UsersSettingsDelegatesResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -2869,7 +2964,8 @@ class UsersSettingsDelegatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/delegates/' +
         commons.escapeVariable('$delegateEmail');
@@ -2910,7 +3006,8 @@ class UsersSettingsDelegatesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/delegates';
 
@@ -2920,7 +3017,8 @@ class UsersSettingsDelegatesResource {
       queryParams: queryParams_,
     );
     return ListDelegatesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2928,7 +3026,7 @@ class UsersSettingsFiltersResource {
   final commons.ApiRequester _requester;
 
   UsersSettingsFiltersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a filter.
   ///
@@ -2961,7 +3059,8 @@ class UsersSettingsFiltersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/filters';
 
@@ -3000,7 +3099,8 @@ class UsersSettingsFiltersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/filters/' +
         commons.escapeVariable('$id');
@@ -3008,7 +3108,9 @@ class UsersSettingsFiltersResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -3041,7 +3143,8 @@ class UsersSettingsFiltersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/filters/' +
         commons.escapeVariable('$id');
@@ -3079,7 +3182,8 @@ class UsersSettingsFiltersResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/filters';
 
@@ -3089,7 +3193,8 @@ class UsersSettingsFiltersResource {
       queryParams: queryParams_,
     );
     return ListFiltersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3097,7 +3202,7 @@ class UsersSettingsForwardingAddressesResource {
   final commons.ApiRequester _requester;
 
   UsersSettingsForwardingAddressesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a forwarding address.
   ///
@@ -3134,7 +3239,8 @@ class UsersSettingsForwardingAddressesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/forwardingAddresses';
 
@@ -3145,7 +3251,8 @@ class UsersSettingsForwardingAddressesResource {
       queryParams: queryParams_,
     );
     return ForwardingAddress.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes the specified forwarding address and revokes any verification that
@@ -3178,7 +3285,8 @@ class UsersSettingsForwardingAddressesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/forwardingAddresses/' +
         commons.escapeVariable('$forwardingEmail');
@@ -3186,7 +3294,9 @@ class UsersSettingsForwardingAddressesResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -3219,7 +3329,8 @@ class UsersSettingsForwardingAddressesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/forwardingAddresses/' +
         commons.escapeVariable('$forwardingEmail');
@@ -3230,7 +3341,8 @@ class UsersSettingsForwardingAddressesResource {
       queryParams: queryParams_,
     );
     return ForwardingAddress.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the forwarding addresses for the specified account.
@@ -3258,7 +3370,8 @@ class UsersSettingsForwardingAddressesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/forwardingAddresses';
 
@@ -3268,7 +3381,8 @@ class UsersSettingsForwardingAddressesResource {
       queryParams: queryParams_,
     );
     return ListForwardingAddressesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3279,7 +3393,7 @@ class UsersSettingsSendAsResource {
       UsersSettingsSendAsSmimeInfoResource(_requester);
 
   UsersSettingsSendAsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a custom "from" send-as alias.
   ///
@@ -3319,7 +3433,8 @@ class UsersSettingsSendAsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs';
 
@@ -3362,7 +3477,8 @@ class UsersSettingsSendAsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail');
@@ -3370,7 +3486,9 @@ class UsersSettingsSendAsResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -3406,7 +3524,8 @@ class UsersSettingsSendAsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail');
@@ -3447,7 +3566,8 @@ class UsersSettingsSendAsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs';
 
@@ -3457,7 +3577,8 @@ class UsersSettingsSendAsResource {
       queryParams: queryParams_,
     );
     return ListSendAsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Patch the specified send-as alias.
@@ -3492,7 +3613,8 @@ class UsersSettingsSendAsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail');
@@ -3543,7 +3665,8 @@ class UsersSettingsSendAsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail');
@@ -3586,7 +3709,8 @@ class UsersSettingsSendAsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail') +
@@ -3595,7 +3719,9 @@ class UsersSettingsSendAsResource {
     await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -3605,7 +3731,7 @@ class UsersSettingsSendAsSmimeInfoResource {
   final commons.ApiRequester _requester;
 
   UsersSettingsSendAsSmimeInfoResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes the specified S/MIME config for the specified send-as alias.
   ///
@@ -3637,7 +3763,8 @@ class UsersSettingsSendAsSmimeInfoResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail') +
@@ -3647,7 +3774,9 @@ class UsersSettingsSendAsSmimeInfoResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -3684,7 +3813,8 @@ class UsersSettingsSendAsSmimeInfoResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail') +
@@ -3734,7 +3864,8 @@ class UsersSettingsSendAsSmimeInfoResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail') +
@@ -3778,7 +3909,8 @@ class UsersSettingsSendAsSmimeInfoResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail') +
@@ -3790,7 +3922,8 @@ class UsersSettingsSendAsSmimeInfoResource {
       queryParams: queryParams_,
     );
     return ListSmimeInfoResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the default S/MIME config for the specified send-as alias.
@@ -3823,7 +3956,8 @@ class UsersSettingsSendAsSmimeInfoResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.escapeVariable('$sendAsEmail') +
@@ -3834,7 +3968,9 @@ class UsersSettingsSendAsSmimeInfoResource {
     await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -3874,7 +4010,8 @@ class UsersThreadsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/threads/' +
         commons.escapeVariable('$id');
@@ -3882,7 +4019,9 @@ class UsersThreadsResource {
     await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
+
       downloadOptions: null,
     );
   }
@@ -3931,7 +4070,8 @@ class UsersThreadsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/threads/' +
         commons.escapeVariable('$id');
@@ -4005,7 +4145,8 @@ class UsersThreadsResource {
       queryParams: queryParams_,
     );
     return ListThreadsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Modifies the labels applied to the thread.
@@ -4042,7 +4183,8 @@ class UsersThreadsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/threads/' +
         commons.escapeVariable('$id') +
@@ -4087,7 +4229,8 @@ class UsersThreadsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/threads/' +
         commons.escapeVariable('$id') +
@@ -4096,6 +4239,7 @@ class UsersThreadsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Thread.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4131,7 +4275,8 @@ class UsersThreadsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'gmail/v1/users/' +
+    final url_ =
+        'gmail/v1/users/' +
         commons.escapeVariable('$userId') +
         '/threads/' +
         commons.escapeVariable('$id') +
@@ -4140,6 +4285,7 @@ class UsersThreadsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return Thread.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4165,44 +4311,39 @@ class AutoForwarding {
   /// Whether all incoming mail is automatically forwarded to another address.
   core.bool? enabled;
 
-  AutoForwarding({
-    this.disposition,
-    this.emailAddress,
-    this.enabled,
-  });
+  AutoForwarding({this.disposition, this.emailAddress, this.enabled});
 
   AutoForwarding.fromJson(core.Map json_)
-      : this(
-          disposition: json_['disposition'] as core.String?,
-          emailAddress: json_['emailAddress'] as core.String?,
-          enabled: json_['enabled'] as core.bool?,
-        );
+    : this(
+        disposition: json_['disposition'] as core.String?,
+        emailAddress: json_['emailAddress'] as core.String?,
+        enabled: json_['enabled'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disposition != null) 'disposition': disposition!,
-        if (emailAddress != null) 'emailAddress': emailAddress!,
-        if (enabled != null) 'enabled': enabled!,
-      };
+    if (disposition != null) 'disposition': disposition!,
+    if (emailAddress != null) 'emailAddress': emailAddress!,
+    if (enabled != null) 'enabled': enabled!,
+  };
 }
 
 class BatchDeleteMessagesRequest {
   /// The IDs of the messages to delete.
   core.List<core.String>? ids;
 
-  BatchDeleteMessagesRequest({
-    this.ids,
-  });
+  BatchDeleteMessagesRequest({this.ids});
 
   BatchDeleteMessagesRequest.fromJson(core.Map json_)
-      : this(
-          ids: (json_['ids'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        ids:
+            (json_['ids'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ids != null) 'ids': ids!,
-      };
+    if (ids != null) 'ids': ids!,
+  };
 }
 
 class BatchModifyMessagesRequest {
@@ -4217,30 +4358,29 @@ class BatchModifyMessagesRequest {
   /// A list of label IDs to remove from messages.
   core.List<core.String>? removeLabelIds;
 
-  BatchModifyMessagesRequest({
-    this.addLabelIds,
-    this.ids,
-    this.removeLabelIds,
-  });
+  BatchModifyMessagesRequest({this.addLabelIds, this.ids, this.removeLabelIds});
 
   BatchModifyMessagesRequest.fromJson(core.Map json_)
-      : this(
-          addLabelIds: (json_['addLabelIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          ids: (json_['ids'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          removeLabelIds: (json_['removeLabelIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        addLabelIds:
+            (json_['addLabelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        ids:
+            (json_['ids'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        removeLabelIds:
+            (json_['removeLabelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addLabelIds != null) 'addLabelIds': addLabelIds!,
-        if (ids != null) 'ids': ids!,
-        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
-      };
+    if (addLabelIds != null) 'addLabelIds': addLabelIds!,
+    if (ids != null) 'ids': ids!,
+    if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
+  };
 }
 
 /// The client-side encryption (CSE) configuration for the email address of an
@@ -4279,21 +4419,24 @@ class CseIdentity {
   });
 
   CseIdentity.fromJson(core.Map json_)
-      : this(
-          emailAddress: json_['emailAddress'] as core.String?,
-          primaryKeyPairId: json_['primaryKeyPairId'] as core.String?,
-          signAndEncryptKeyPairs: json_.containsKey('signAndEncryptKeyPairs')
-              ? SignAndEncryptKeyPairs.fromJson(json_['signAndEncryptKeyPairs']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        emailAddress: json_['emailAddress'] as core.String?,
+        primaryKeyPairId: json_['primaryKeyPairId'] as core.String?,
+        signAndEncryptKeyPairs:
+            json_.containsKey('signAndEncryptKeyPairs')
+                ? SignAndEncryptKeyPairs.fromJson(
+                  json_['signAndEncryptKeyPairs']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (emailAddress != null) 'emailAddress': emailAddress!,
-        if (primaryKeyPairId != null) 'primaryKeyPairId': primaryKeyPairId!,
-        if (signAndEncryptKeyPairs != null)
-          'signAndEncryptKeyPairs': signAndEncryptKeyPairs!,
-      };
+    if (emailAddress != null) 'emailAddress': emailAddress!,
+    if (primaryKeyPairId != null) 'primaryKeyPairId': primaryKeyPairId!,
+    if (signAndEncryptKeyPairs != null)
+      'signAndEncryptKeyPairs': signAndEncryptKeyPairs!,
+  };
 }
 
 /// A client-side encryption S/MIME key pair, which is comprised of a public
@@ -4375,32 +4518,36 @@ class CseKeyPair {
   });
 
   CseKeyPair.fromJson(core.Map json_)
-      : this(
-          disableTime: json_['disableTime'] as core.String?,
-          enablementState: json_['enablementState'] as core.String?,
-          keyPairId: json_['keyPairId'] as core.String?,
-          pem: json_['pem'] as core.String?,
-          pkcs7: json_['pkcs7'] as core.String?,
-          privateKeyMetadata: (json_['privateKeyMetadata'] as core.List?)
-              ?.map((value) => CsePrivateKeyMetadata.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          subjectEmailAddresses: (json_['subjectEmailAddresses'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        disableTime: json_['disableTime'] as core.String?,
+        enablementState: json_['enablementState'] as core.String?,
+        keyPairId: json_['keyPairId'] as core.String?,
+        pem: json_['pem'] as core.String?,
+        pkcs7: json_['pkcs7'] as core.String?,
+        privateKeyMetadata:
+            (json_['privateKeyMetadata'] as core.List?)
+                ?.map(
+                  (value) => CsePrivateKeyMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        subjectEmailAddresses:
+            (json_['subjectEmailAddresses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disableTime != null) 'disableTime': disableTime!,
-        if (enablementState != null) 'enablementState': enablementState!,
-        if (keyPairId != null) 'keyPairId': keyPairId!,
-        if (pem != null) 'pem': pem!,
-        if (pkcs7 != null) 'pkcs7': pkcs7!,
-        if (privateKeyMetadata != null)
-          'privateKeyMetadata': privateKeyMetadata!,
-        if (subjectEmailAddresses != null)
-          'subjectEmailAddresses': subjectEmailAddresses!,
-      };
+    if (disableTime != null) 'disableTime': disableTime!,
+    if (enablementState != null) 'enablementState': enablementState!,
+    if (keyPairId != null) 'keyPairId': keyPairId!,
+    if (pem != null) 'pem': pem!,
+    if (pkcs7 != null) 'pkcs7': pkcs7!,
+    if (privateKeyMetadata != null) 'privateKeyMetadata': privateKeyMetadata!,
+    if (subjectEmailAddresses != null)
+      'subjectEmailAddresses': subjectEmailAddresses!,
+  };
 }
 
 /// Metadata for a private key instance.
@@ -4424,25 +4571,31 @@ class CsePrivateKeyMetadata {
   });
 
   CsePrivateKeyMetadata.fromJson(core.Map json_)
-      : this(
-          hardwareKeyMetadata: json_.containsKey('hardwareKeyMetadata')
-              ? HardwareKeyMetadata.fromJson(json_['hardwareKeyMetadata']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          kaclsKeyMetadata: json_.containsKey('kaclsKeyMetadata')
-              ? KaclsKeyMetadata.fromJson(json_['kaclsKeyMetadata']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          privateKeyMetadataId: json_['privateKeyMetadataId'] as core.String?,
-        );
+    : this(
+        hardwareKeyMetadata:
+            json_.containsKey('hardwareKeyMetadata')
+                ? HardwareKeyMetadata.fromJson(
+                  json_['hardwareKeyMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kaclsKeyMetadata:
+            json_.containsKey('kaclsKeyMetadata')
+                ? KaclsKeyMetadata.fromJson(
+                  json_['kaclsKeyMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        privateKeyMetadataId: json_['privateKeyMetadataId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (hardwareKeyMetadata != null)
-          'hardwareKeyMetadata': hardwareKeyMetadata!,
-        if (kaclsKeyMetadata != null) 'kaclsKeyMetadata': kaclsKeyMetadata!,
-        if (privateKeyMetadataId != null)
-          'privateKeyMetadataId': privateKeyMetadataId!,
-      };
+    if (hardwareKeyMetadata != null)
+      'hardwareKeyMetadata': hardwareKeyMetadata!,
+    if (kaclsKeyMetadata != null) 'kaclsKeyMetadata': kaclsKeyMetadata!,
+    if (privateKeyMetadataId != null)
+      'privateKeyMetadataId': privateKeyMetadataId!,
+  };
 }
 
 /// Settings for a delegate.
@@ -4469,22 +4622,18 @@ class Delegate {
   /// expired without verification.
   core.String? verificationStatus;
 
-  Delegate({
-    this.delegateEmail,
-    this.verificationStatus,
-  });
+  Delegate({this.delegateEmail, this.verificationStatus});
 
   Delegate.fromJson(core.Map json_)
-      : this(
-          delegateEmail: json_['delegateEmail'] as core.String?,
-          verificationStatus: json_['verificationStatus'] as core.String?,
-        );
+    : this(
+        delegateEmail: json_['delegateEmail'] as core.String?,
+        verificationStatus: json_['verificationStatus'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (delegateEmail != null) 'delegateEmail': delegateEmail!,
-        if (verificationStatus != null)
-          'verificationStatus': verificationStatus!,
-      };
+    if (delegateEmail != null) 'delegateEmail': delegateEmail!,
+    if (verificationStatus != null) 'verificationStatus': verificationStatus!,
+  };
 }
 
 /// Requests to turn off a client-side encryption key pair.
@@ -4498,24 +4647,23 @@ class Draft {
   /// The message content of the draft.
   Message? message;
 
-  Draft({
-    this.id,
-    this.message,
-  });
+  Draft({this.id, this.message});
 
   Draft.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          message: json_.containsKey('message')
-              ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        message:
+            json_.containsKey('message')
+                ? Message.fromJson(
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (message != null) 'message': message!,
-      };
+    if (id != null) 'id': id!,
+    if (message != null) 'message': message!,
+  };
 }
 
 /// Requests to turn on a client-side encryption key pair.
@@ -4534,30 +4682,30 @@ class Filter {
   /// The server assigned ID of the filter.
   core.String? id;
 
-  Filter({
-    this.action,
-    this.criteria,
-    this.id,
-  });
+  Filter({this.action, this.criteria, this.id});
 
   Filter.fromJson(core.Map json_)
-      : this(
-          action: json_.containsKey('action')
-              ? FilterAction.fromJson(
-                  json_['action'] as core.Map<core.String, core.dynamic>)
-              : null,
-          criteria: json_.containsKey('criteria')
-              ? FilterCriteria.fromJson(
-                  json_['criteria'] as core.Map<core.String, core.dynamic>)
-              : null,
-          id: json_['id'] as core.String?,
-        );
+    : this(
+        action:
+            json_.containsKey('action')
+                ? FilterAction.fromJson(
+                  json_['action'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        criteria:
+            json_.containsKey('criteria')
+                ? FilterCriteria.fromJson(
+                  json_['criteria'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        id: json_['id'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (criteria != null) 'criteria': criteria!,
-        if (id != null) 'id': id!,
-      };
+    if (action != null) 'action': action!,
+    if (criteria != null) 'criteria': criteria!,
+    if (id != null) 'id': id!,
+  };
 }
 
 /// A set of actions to perform on a message.
@@ -4571,28 +4719,26 @@ class FilterAction {
   /// List of labels to remove from the message.
   core.List<core.String>? removeLabelIds;
 
-  FilterAction({
-    this.addLabelIds,
-    this.forward,
-    this.removeLabelIds,
-  });
+  FilterAction({this.addLabelIds, this.forward, this.removeLabelIds});
 
   FilterAction.fromJson(core.Map json_)
-      : this(
-          addLabelIds: (json_['addLabelIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          forward: json_['forward'] as core.String?,
-          removeLabelIds: (json_['removeLabelIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        addLabelIds:
+            (json_['addLabelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        forward: json_['forward'] as core.String?,
+        removeLabelIds:
+            (json_['removeLabelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addLabelIds != null) 'addLabelIds': addLabelIds!,
-        if (forward != null) 'forward': forward!,
-        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
-      };
+    if (addLabelIds != null) 'addLabelIds': addLabelIds!,
+    if (forward != null) 'forward': forward!,
+    if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
+  };
 }
 
 /// Message matching criteria.
@@ -4655,29 +4801,29 @@ class FilterCriteria {
   });
 
   FilterCriteria.fromJson(core.Map json_)
-      : this(
-          excludeChats: json_['excludeChats'] as core.bool?,
-          from: json_['from'] as core.String?,
-          hasAttachment: json_['hasAttachment'] as core.bool?,
-          negatedQuery: json_['negatedQuery'] as core.String?,
-          query: json_['query'] as core.String?,
-          size: json_['size'] as core.int?,
-          sizeComparison: json_['sizeComparison'] as core.String?,
-          subject: json_['subject'] as core.String?,
-          to: json_['to'] as core.String?,
-        );
+    : this(
+        excludeChats: json_['excludeChats'] as core.bool?,
+        from: json_['from'] as core.String?,
+        hasAttachment: json_['hasAttachment'] as core.bool?,
+        negatedQuery: json_['negatedQuery'] as core.String?,
+        query: json_['query'] as core.String?,
+        size: json_['size'] as core.int?,
+        sizeComparison: json_['sizeComparison'] as core.String?,
+        subject: json_['subject'] as core.String?,
+        to: json_['to'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (excludeChats != null) 'excludeChats': excludeChats!,
-        if (from != null) 'from': from!,
-        if (hasAttachment != null) 'hasAttachment': hasAttachment!,
-        if (negatedQuery != null) 'negatedQuery': negatedQuery!,
-        if (query != null) 'query': query!,
-        if (size != null) 'size': size!,
-        if (sizeComparison != null) 'sizeComparison': sizeComparison!,
-        if (subject != null) 'subject': subject!,
-        if (to != null) 'to': to!,
-      };
+    if (excludeChats != null) 'excludeChats': excludeChats!,
+    if (from != null) 'from': from!,
+    if (hasAttachment != null) 'hasAttachment': hasAttachment!,
+    if (negatedQuery != null) 'negatedQuery': negatedQuery!,
+    if (query != null) 'query': query!,
+    if (size != null) 'size': size!,
+    if (sizeComparison != null) 'sizeComparison': sizeComparison!,
+    if (subject != null) 'subject': subject!,
+    if (to != null) 'to': to!,
+  };
 }
 
 /// Settings for a forwarding address.
@@ -4695,22 +4841,18 @@ class ForwardingAddress {
   /// - "pending" : The address is awaiting verification by the owner.
   core.String? verificationStatus;
 
-  ForwardingAddress({
-    this.forwardingEmail,
-    this.verificationStatus,
-  });
+  ForwardingAddress({this.forwardingEmail, this.verificationStatus});
 
   ForwardingAddress.fromJson(core.Map json_)
-      : this(
-          forwardingEmail: json_['forwardingEmail'] as core.String?,
-          verificationStatus: json_['verificationStatus'] as core.String?,
-        );
+    : this(
+        forwardingEmail: json_['forwardingEmail'] as core.String?,
+        verificationStatus: json_['verificationStatus'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (forwardingEmail != null) 'forwardingEmail': forwardingEmail!,
-        if (verificationStatus != null)
-          'verificationStatus': verificationStatus!,
-      };
+    if (forwardingEmail != null) 'forwardingEmail': forwardingEmail!,
+    if (verificationStatus != null) 'verificationStatus': verificationStatus!,
+  };
 }
 
 /// Metadata for hardware keys.
@@ -4724,18 +4866,14 @@ class HardwareKeyMetadata {
   /// Description about the hardware key.
   core.String? description;
 
-  HardwareKeyMetadata({
-    this.description,
-  });
+  HardwareKeyMetadata({this.description});
 
   HardwareKeyMetadata.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-        );
+    : this(description: json_['description'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-      };
+    if (description != null) 'description': description!,
+  };
 }
 
 /// A record of a change to the user's mailbox.
@@ -4774,38 +4912,58 @@ class History {
   });
 
   History.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          labelsAdded: (json_['labelsAdded'] as core.List?)
-              ?.map((value) => HistoryLabelAdded.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          labelsRemoved: (json_['labelsRemoved'] as core.List?)
-              ?.map((value) => HistoryLabelRemoved.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          messages: (json_['messages'] as core.List?)
-              ?.map((value) => Message.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          messagesAdded: (json_['messagesAdded'] as core.List?)
-              ?.map((value) => HistoryMessageAdded.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          messagesDeleted: (json_['messagesDeleted'] as core.List?)
-              ?.map((value) => HistoryMessageDeleted.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        labelsAdded:
+            (json_['labelsAdded'] as core.List?)
+                ?.map(
+                  (value) => HistoryLabelAdded.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        labelsRemoved:
+            (json_['labelsRemoved'] as core.List?)
+                ?.map(
+                  (value) => HistoryLabelRemoved.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        messages:
+            (json_['messages'] as core.List?)
+                ?.map(
+                  (value) => Message.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        messagesAdded:
+            (json_['messagesAdded'] as core.List?)
+                ?.map(
+                  (value) => HistoryMessageAdded.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        messagesDeleted:
+            (json_['messagesDeleted'] as core.List?)
+                ?.map(
+                  (value) => HistoryMessageDeleted.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (labelsAdded != null) 'labelsAdded': labelsAdded!,
-        if (labelsRemoved != null) 'labelsRemoved': labelsRemoved!,
-        if (messages != null) 'messages': messages!,
-        if (messagesAdded != null) 'messagesAdded': messagesAdded!,
-        if (messagesDeleted != null) 'messagesDeleted': messagesDeleted!,
-      };
+    if (id != null) 'id': id!,
+    if (labelsAdded != null) 'labelsAdded': labelsAdded!,
+    if (labelsRemoved != null) 'labelsRemoved': labelsRemoved!,
+    if (messages != null) 'messages': messages!,
+    if (messagesAdded != null) 'messagesAdded': messagesAdded!,
+    if (messagesDeleted != null) 'messagesDeleted': messagesDeleted!,
+  };
 }
 
 class HistoryLabelAdded {
@@ -4813,26 +4971,26 @@ class HistoryLabelAdded {
   core.List<core.String>? labelIds;
   Message? message;
 
-  HistoryLabelAdded({
-    this.labelIds,
-    this.message,
-  });
+  HistoryLabelAdded({this.labelIds, this.message});
 
   HistoryLabelAdded.fromJson(core.Map json_)
-      : this(
-          labelIds: (json_['labelIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          message: json_.containsKey('message')
-              ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        labelIds:
+            (json_['labelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        message:
+            json_.containsKey('message')
+                ? Message.fromJson(
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labelIds != null) 'labelIds': labelIds!,
-        if (message != null) 'message': message!,
-      };
+    if (labelIds != null) 'labelIds': labelIds!,
+    if (message != null) 'message': message!,
+  };
 }
 
 class HistoryLabelRemoved {
@@ -4840,66 +4998,66 @@ class HistoryLabelRemoved {
   core.List<core.String>? labelIds;
   Message? message;
 
-  HistoryLabelRemoved({
-    this.labelIds,
-    this.message,
-  });
+  HistoryLabelRemoved({this.labelIds, this.message});
 
   HistoryLabelRemoved.fromJson(core.Map json_)
-      : this(
-          labelIds: (json_['labelIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          message: json_.containsKey('message')
-              ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        labelIds:
+            (json_['labelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        message:
+            json_.containsKey('message')
+                ? Message.fromJson(
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labelIds != null) 'labelIds': labelIds!,
-        if (message != null) 'message': message!,
-      };
+    if (labelIds != null) 'labelIds': labelIds!,
+    if (message != null) 'message': message!,
+  };
 }
 
 class HistoryMessageAdded {
   Message? message;
 
-  HistoryMessageAdded({
-    this.message,
-  });
+  HistoryMessageAdded({this.message});
 
   HistoryMessageAdded.fromJson(core.Map json_)
-      : this(
-          message: json_.containsKey('message')
-              ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        message:
+            json_.containsKey('message')
+                ? Message.fromJson(
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!,
-      };
+    if (message != null) 'message': message!,
+  };
 }
 
 class HistoryMessageDeleted {
   Message? message;
 
-  HistoryMessageDeleted({
-    this.message,
-  });
+  HistoryMessageDeleted({this.message});
 
   HistoryMessageDeleted.fromJson(core.Map json_)
-      : this(
-          message: json_.containsKey('message')
-              ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        message:
+            json_.containsKey('message')
+                ? Message.fromJson(
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!,
-      };
+    if (message != null) 'message': message!,
+  };
 }
 
 /// IMAP settings for an account.
@@ -4939,19 +5097,19 @@ class ImapSettings {
   });
 
   ImapSettings.fromJson(core.Map json_)
-      : this(
-          autoExpunge: json_['autoExpunge'] as core.bool?,
-          enabled: json_['enabled'] as core.bool?,
-          expungeBehavior: json_['expungeBehavior'] as core.String?,
-          maxFolderSize: json_['maxFolderSize'] as core.int?,
-        );
+    : this(
+        autoExpunge: json_['autoExpunge'] as core.bool?,
+        enabled: json_['enabled'] as core.bool?,
+        expungeBehavior: json_['expungeBehavior'] as core.String?,
+        maxFolderSize: json_['maxFolderSize'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoExpunge != null) 'autoExpunge': autoExpunge!,
-        if (enabled != null) 'enabled': enabled!,
-        if (expungeBehavior != null) 'expungeBehavior': expungeBehavior!,
-        if (maxFolderSize != null) 'maxFolderSize': maxFolderSize!,
-      };
+    if (autoExpunge != null) 'autoExpunge': autoExpunge!,
+    if (enabled != null) 'enabled': enabled!,
+    if (expungeBehavior != null) 'expungeBehavior': expungeBehavior!,
+    if (maxFolderSize != null) 'maxFolderSize': maxFolderSize!,
+  };
 }
 
 /// Metadata for private keys managed by an external key access control list
@@ -4969,21 +5127,18 @@ class KaclsKeyMetadata {
   /// key.
   core.String? kaclsUri;
 
-  KaclsKeyMetadata({
-    this.kaclsData,
-    this.kaclsUri,
-  });
+  KaclsKeyMetadata({this.kaclsData, this.kaclsUri});
 
   KaclsKeyMetadata.fromJson(core.Map json_)
-      : this(
-          kaclsData: json_['kaclsData'] as core.String?,
-          kaclsUri: json_['kaclsUri'] as core.String?,
-        );
+    : this(
+        kaclsData: json_['kaclsData'] as core.String?,
+        kaclsUri: json_['kaclsUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kaclsData != null) 'kaclsData': kaclsData!,
-        if (kaclsUri != null) 'kaclsUri': kaclsUri!,
-      };
+    if (kaclsData != null) 'kaclsData': kaclsData!,
+    if (kaclsUri != null) 'kaclsUri': kaclsUri!,
+  };
 }
 
 /// Labels are used to categorize messages and threads within the user's
@@ -5058,36 +5213,38 @@ class Label {
   });
 
   Label.fromJson(core.Map json_)
-      : this(
-          color: json_.containsKey('color')
-              ? LabelColor.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-          id: json_['id'] as core.String?,
-          labelListVisibility: json_['labelListVisibility'] as core.String?,
-          messageListVisibility: json_['messageListVisibility'] as core.String?,
-          messagesTotal: json_['messagesTotal'] as core.int?,
-          messagesUnread: json_['messagesUnread'] as core.int?,
-          name: json_['name'] as core.String?,
-          threadsTotal: json_['threadsTotal'] as core.int?,
-          threadsUnread: json_['threadsUnread'] as core.int?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        color:
+            json_.containsKey('color')
+                ? LabelColor.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        id: json_['id'] as core.String?,
+        labelListVisibility: json_['labelListVisibility'] as core.String?,
+        messageListVisibility: json_['messageListVisibility'] as core.String?,
+        messagesTotal: json_['messagesTotal'] as core.int?,
+        messagesUnread: json_['messagesUnread'] as core.int?,
+        name: json_['name'] as core.String?,
+        threadsTotal: json_['threadsTotal'] as core.int?,
+        threadsUnread: json_['threadsUnread'] as core.int?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (color != null) 'color': color!,
-        if (id != null) 'id': id!,
-        if (labelListVisibility != null)
-          'labelListVisibility': labelListVisibility!,
-        if (messageListVisibility != null)
-          'messageListVisibility': messageListVisibility!,
-        if (messagesTotal != null) 'messagesTotal': messagesTotal!,
-        if (messagesUnread != null) 'messagesUnread': messagesUnread!,
-        if (name != null) 'name': name!,
-        if (threadsTotal != null) 'threadsTotal': threadsTotal!,
-        if (threadsUnread != null) 'threadsUnread': threadsUnread!,
-        if (type != null) 'type': type!,
-      };
+    if (color != null) 'color': color!,
+    if (id != null) 'id': id!,
+    if (labelListVisibility != null)
+      'labelListVisibility': labelListVisibility!,
+    if (messageListVisibility != null)
+      'messageListVisibility': messageListVisibility!,
+    if (messagesTotal != null) 'messagesTotal': messagesTotal!,
+    if (messagesUnread != null) 'messagesUnread': messagesUnread!,
+    if (name != null) 'name': name!,
+    if (threadsTotal != null) 'threadsTotal': threadsTotal!,
+    if (threadsUnread != null) 'threadsUnread': threadsUnread!,
+    if (type != null) 'type': type!,
+  };
 }
 
 class LabelColor {
@@ -5129,21 +5286,18 @@ class LabelColor {
   /// #cca6ac, #094228, #42d692, #16a765
   core.String? textColor;
 
-  LabelColor({
-    this.backgroundColor,
-    this.textColor,
-  });
+  LabelColor({this.backgroundColor, this.textColor});
 
   LabelColor.fromJson(core.Map json_)
-      : this(
-          backgroundColor: json_['backgroundColor'] as core.String?,
-          textColor: json_['textColor'] as core.String?,
-        );
+    : this(
+        backgroundColor: json_['backgroundColor'] as core.String?,
+        textColor: json_['textColor'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (backgroundColor != null) 'backgroundColor': backgroundColor!,
-        if (textColor != null) 'textColor': textColor!,
-      };
+    if (backgroundColor != null) 'backgroundColor': backgroundColor!,
+    if (textColor != null) 'textColor': textColor!,
+  };
 }
 
 /// Language settings for an account.
@@ -5166,18 +5320,14 @@ class LanguageSettings {
   /// supported variant (or a reasonable default).
   core.String? displayLanguage;
 
-  LanguageSettings({
-    this.displayLanguage,
-  });
+  LanguageSettings({this.displayLanguage});
 
   LanguageSettings.fromJson(core.Map json_)
-      : this(
-          displayLanguage: json_['displayLanguage'] as core.String?,
-        );
+    : this(displayLanguage: json_['displayLanguage'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayLanguage != null) 'displayLanguage': displayLanguage!,
-      };
+    if (displayLanguage != null) 'displayLanguage': displayLanguage!,
+  };
 }
 
 class ListCseIdentitiesResponse {
@@ -5191,24 +5341,25 @@ class ListCseIdentitiesResponse {
   /// pages remain.
   core.String? nextPageToken;
 
-  ListCseIdentitiesResponse({
-    this.cseIdentities,
-    this.nextPageToken,
-  });
+  ListCseIdentitiesResponse({this.cseIdentities, this.nextPageToken});
 
   ListCseIdentitiesResponse.fromJson(core.Map json_)
-      : this(
-          cseIdentities: (json_['cseIdentities'] as core.List?)
-              ?.map((value) => CseIdentity.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        cseIdentities:
+            (json_['cseIdentities'] as core.List?)
+                ?.map(
+                  (value) => CseIdentity.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cseIdentities != null) 'cseIdentities': cseIdentities!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (cseIdentities != null) 'cseIdentities': cseIdentities!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 class ListCseKeyPairsResponse {
@@ -5221,24 +5372,25 @@ class ListCseKeyPairsResponse {
   /// If this value is not returned, then no further pages remain.
   core.String? nextPageToken;
 
-  ListCseKeyPairsResponse({
-    this.cseKeyPairs,
-    this.nextPageToken,
-  });
+  ListCseKeyPairsResponse({this.cseKeyPairs, this.nextPageToken});
 
   ListCseKeyPairsResponse.fromJson(core.Map json_)
-      : this(
-          cseKeyPairs: (json_['cseKeyPairs'] as core.List?)
-              ?.map((value) => CseKeyPair.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        cseKeyPairs:
+            (json_['cseKeyPairs'] as core.List?)
+                ?.map(
+                  (value) => CseKeyPair.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cseKeyPairs != null) 'cseKeyPairs': cseKeyPairs!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (cseKeyPairs != null) 'cseKeyPairs': cseKeyPairs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response for the ListDelegates method.
@@ -5248,21 +5400,23 @@ class ListDelegatesResponse {
   /// If an account doesn't have delegates, this field doesn't appear.
   core.List<Delegate>? delegates;
 
-  ListDelegatesResponse({
-    this.delegates,
-  });
+  ListDelegatesResponse({this.delegates});
 
   ListDelegatesResponse.fromJson(core.Map json_)
-      : this(
-          delegates: (json_['delegates'] as core.List?)
-              ?.map((value) => Delegate.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        delegates:
+            (json_['delegates'] as core.List?)
+                ?.map(
+                  (value) => Delegate.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (delegates != null) 'delegates': delegates!,
-      };
+    if (delegates != null) 'delegates': delegates!,
+  };
 }
 
 class ListDraftsResponse {
@@ -5287,21 +5441,24 @@ class ListDraftsResponse {
   });
 
   ListDraftsResponse.fromJson(core.Map json_)
-      : this(
-          drafts: (json_['drafts'] as core.List?)
-              ?.map((value) =>
-                  Draft.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          resultSizeEstimate: json_['resultSizeEstimate'] as core.int?,
-        );
+    : this(
+        drafts:
+            (json_['drafts'] as core.List?)
+                ?.map(
+                  (value) => Draft.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        resultSizeEstimate: json_['resultSizeEstimate'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (drafts != null) 'drafts': drafts!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resultSizeEstimate != null)
-          'resultSizeEstimate': resultSizeEstimate!,
-      };
+    if (drafts != null) 'drafts': drafts!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (resultSizeEstimate != null) 'resultSizeEstimate': resultSizeEstimate!,
+  };
 }
 
 /// Response for the ListFilters method.
@@ -5309,21 +5466,23 @@ class ListFiltersResponse {
   /// List of a user's filters.
   core.List<Filter>? filter;
 
-  ListFiltersResponse({
-    this.filter,
-  });
+  ListFiltersResponse({this.filter});
 
   ListFiltersResponse.fromJson(core.Map json_)
-      : this(
-          filter: (json_['filter'] as core.List?)
-              ?.map((value) =>
-                  Filter.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        filter:
+            (json_['filter'] as core.List?)
+                ?.map(
+                  (value) => Filter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-      };
+    if (filter != null) 'filter': filter!,
+  };
 }
 
 /// Response for the ListForwardingAddresses method.
@@ -5331,22 +5490,24 @@ class ListForwardingAddressesResponse {
   /// List of addresses that may be used for forwarding.
   core.List<ForwardingAddress>? forwardingAddresses;
 
-  ListForwardingAddressesResponse({
-    this.forwardingAddresses,
-  });
+  ListForwardingAddressesResponse({this.forwardingAddresses});
 
   ListForwardingAddressesResponse.fromJson(core.Map json_)
-      : this(
-          forwardingAddresses: (json_['forwardingAddresses'] as core.List?)
-              ?.map((value) => ForwardingAddress.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        forwardingAddresses:
+            (json_['forwardingAddresses'] as core.List?)
+                ?.map(
+                  (value) => ForwardingAddress.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (forwardingAddresses != null)
-          'forwardingAddresses': forwardingAddresses!,
-      };
+    if (forwardingAddresses != null)
+      'forwardingAddresses': forwardingAddresses!,
+  };
 }
 
 class ListHistoryResponse {
@@ -5362,27 +5523,27 @@ class ListHistoryResponse {
   /// Page token to retrieve the next page of results in the list.
   core.String? nextPageToken;
 
-  ListHistoryResponse({
-    this.history,
-    this.historyId,
-    this.nextPageToken,
-  });
+  ListHistoryResponse({this.history, this.historyId, this.nextPageToken});
 
   ListHistoryResponse.fromJson(core.Map json_)
-      : this(
-          history: (json_['history'] as core.List?)
-              ?.map((value) => History.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          historyId: json_['historyId'] as core.String?,
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        history:
+            (json_['history'] as core.List?)
+                ?.map(
+                  (value) => History.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        historyId: json_['historyId'] as core.String?,
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (history != null) 'history': history!,
-        if (historyId != null) 'historyId': historyId!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (history != null) 'history': history!,
+    if (historyId != null) 'historyId': historyId!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 class ListLabelsResponse {
@@ -5394,21 +5555,23 @@ class ListLabelsResponse {
   /// method can fetch additional label details.
   core.List<Label>? labels;
 
-  ListLabelsResponse({
-    this.labels,
-  });
+  ListLabelsResponse({this.labels});
 
   ListLabelsResponse.fromJson(core.Map json_)
-      : this(
-          labels: (json_['labels'] as core.List?)
-              ?.map((value) =>
-                  Label.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        labels:
+            (json_['labels'] as core.List?)
+                ?.map(
+                  (value) => Label.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-      };
+    if (labels != null) 'labels': labels!,
+  };
 }
 
 class ListMessagesResponse {
@@ -5431,21 +5594,24 @@ class ListMessagesResponse {
   });
 
   ListMessagesResponse.fromJson(core.Map json_)
-      : this(
-          messages: (json_['messages'] as core.List?)
-              ?.map((value) => Message.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          resultSizeEstimate: json_['resultSizeEstimate'] as core.int?,
-        );
+    : this(
+        messages:
+            (json_['messages'] as core.List?)
+                ?.map(
+                  (value) => Message.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        resultSizeEstimate: json_['resultSizeEstimate'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (messages != null) 'messages': messages!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resultSizeEstimate != null)
-          'resultSizeEstimate': resultSizeEstimate!,
-      };
+    if (messages != null) 'messages': messages!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (resultSizeEstimate != null) 'resultSizeEstimate': resultSizeEstimate!,
+  };
 }
 
 /// Response for the ListSendAs method.
@@ -5453,42 +5619,46 @@ class ListSendAsResponse {
   /// List of send-as aliases.
   core.List<SendAs>? sendAs;
 
-  ListSendAsResponse({
-    this.sendAs,
-  });
+  ListSendAsResponse({this.sendAs});
 
   ListSendAsResponse.fromJson(core.Map json_)
-      : this(
-          sendAs: (json_['sendAs'] as core.List?)
-              ?.map((value) =>
-                  SendAs.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        sendAs:
+            (json_['sendAs'] as core.List?)
+                ?.map(
+                  (value) => SendAs.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sendAs != null) 'sendAs': sendAs!,
-      };
+    if (sendAs != null) 'sendAs': sendAs!,
+  };
 }
 
 class ListSmimeInfoResponse {
   /// List of SmimeInfo.
   core.List<SmimeInfo>? smimeInfo;
 
-  ListSmimeInfoResponse({
-    this.smimeInfo,
-  });
+  ListSmimeInfoResponse({this.smimeInfo});
 
   ListSmimeInfoResponse.fromJson(core.Map json_)
-      : this(
-          smimeInfo: (json_['smimeInfo'] as core.List?)
-              ?.map((value) => SmimeInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        smimeInfo:
+            (json_['smimeInfo'] as core.List?)
+                ?.map(
+                  (value) => SmimeInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (smimeInfo != null) 'smimeInfo': smimeInfo!,
-      };
+    if (smimeInfo != null) 'smimeInfo': smimeInfo!,
+  };
 }
 
 class ListThreadsResponse {
@@ -5513,21 +5683,24 @@ class ListThreadsResponse {
   });
 
   ListThreadsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          resultSizeEstimate: json_['resultSizeEstimate'] as core.int?,
-          threads: (json_['threads'] as core.List?)
-              ?.map((value) =>
-                  Thread.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        resultSizeEstimate: json_['resultSizeEstimate'] as core.int?,
+        threads:
+            (json_['threads'] as core.List?)
+                ?.map(
+                  (value) => Thread.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resultSizeEstimate != null)
-          'resultSizeEstimate': resultSizeEstimate!,
-        if (threads != null) 'threads': threads!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (resultSizeEstimate != null) 'resultSizeEstimate': resultSizeEstimate!,
+    if (threads != null) 'threads': threads!,
+  };
 }
 
 /// An email message.
@@ -5562,8 +5735,10 @@ class Message {
   core.List<core.int> get rawAsBytes => convert.base64.decode(raw!);
 
   set rawAsBytes(core.List<core.int> bytes_) {
-    raw =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    raw = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Estimated size in bytes of the message.
@@ -5595,34 +5770,37 @@ class Message {
   });
 
   Message.fromJson(core.Map json_)
-      : this(
-          historyId: json_['historyId'] as core.String?,
-          id: json_['id'] as core.String?,
-          internalDate: json_['internalDate'] as core.String?,
-          labelIds: (json_['labelIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          payload: json_.containsKey('payload')
-              ? MessagePart.fromJson(
-                  json_['payload'] as core.Map<core.String, core.dynamic>)
-              : null,
-          raw: json_['raw'] as core.String?,
-          sizeEstimate: json_['sizeEstimate'] as core.int?,
-          snippet: json_['snippet'] as core.String?,
-          threadId: json_['threadId'] as core.String?,
-        );
+    : this(
+        historyId: json_['historyId'] as core.String?,
+        id: json_['id'] as core.String?,
+        internalDate: json_['internalDate'] as core.String?,
+        labelIds:
+            (json_['labelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        payload:
+            json_.containsKey('payload')
+                ? MessagePart.fromJson(
+                  json_['payload'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        raw: json_['raw'] as core.String?,
+        sizeEstimate: json_['sizeEstimate'] as core.int?,
+        snippet: json_['snippet'] as core.String?,
+        threadId: json_['threadId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (historyId != null) 'historyId': historyId!,
-        if (id != null) 'id': id!,
-        if (internalDate != null) 'internalDate': internalDate!,
-        if (labelIds != null) 'labelIds': labelIds!,
-        if (payload != null) 'payload': payload!,
-        if (raw != null) 'raw': raw!,
-        if (sizeEstimate != null) 'sizeEstimate': sizeEstimate!,
-        if (snippet != null) 'snippet': snippet!,
-        if (threadId != null) 'threadId': threadId!,
-      };
+    if (historyId != null) 'historyId': historyId!,
+    if (id != null) 'id': id!,
+    if (internalDate != null) 'internalDate': internalDate!,
+    if (labelIds != null) 'labelIds': labelIds!,
+    if (payload != null) 'payload': payload!,
+    if (raw != null) 'raw': raw!,
+    if (sizeEstimate != null) 'sizeEstimate': sizeEstimate!,
+    if (snippet != null) 'snippet': snippet!,
+    if (threadId != null) 'threadId': threadId!,
+  };
 }
 
 /// A single MIME message part.
@@ -5666,32 +5844,42 @@ class MessagePart {
   });
 
   MessagePart.fromJson(core.Map json_)
-      : this(
-          body: json_.containsKey('body')
-              ? MessagePartBody.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>)
-              : null,
-          filename: json_['filename'] as core.String?,
-          headers: (json_['headers'] as core.List?)
-              ?.map((value) => MessagePartHeader.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          mimeType: json_['mimeType'] as core.String?,
-          partId: json_['partId'] as core.String?,
-          parts: (json_['parts'] as core.List?)
-              ?.map((value) => MessagePart.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        body:
+            json_.containsKey('body')
+                ? MessagePartBody.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filename: json_['filename'] as core.String?,
+        headers:
+            (json_['headers'] as core.List?)
+                ?.map(
+                  (value) => MessagePartHeader.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        mimeType: json_['mimeType'] as core.String?,
+        partId: json_['partId'] as core.String?,
+        parts:
+            (json_['parts'] as core.List?)
+                ?.map(
+                  (value) => MessagePart.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-        if (filename != null) 'filename': filename!,
-        if (headers != null) 'headers': headers!,
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (partId != null) 'partId': partId!,
-        if (parts != null) 'parts': parts!,
-      };
+    if (body != null) 'body': body!,
+    if (filename != null) 'filename': filename!,
+    if (headers != null) 'headers': headers!,
+    if (mimeType != null) 'mimeType': mimeType!,
+    if (partId != null) 'partId': partId!,
+    if (parts != null) 'parts': parts!,
+  };
 }
 
 /// The body of a single MIME message part.
@@ -5712,31 +5900,29 @@ class MessagePartBody {
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> bytes_) {
-    data =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Number of bytes for the message part data (encoding notwithstanding).
   core.int? size;
 
-  MessagePartBody({
-    this.attachmentId,
-    this.data,
-    this.size,
-  });
+  MessagePartBody({this.attachmentId, this.data, this.size});
 
   MessagePartBody.fromJson(core.Map json_)
-      : this(
-          attachmentId: json_['attachmentId'] as core.String?,
-          data: json_['data'] as core.String?,
-          size: json_['size'] as core.int?,
-        );
+    : this(
+        attachmentId: json_['attachmentId'] as core.String?,
+        data: json_['data'] as core.String?,
+        size: json_['size'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachmentId != null) 'attachmentId': attachmentId!,
-        if (data != null) 'data': data!,
-        if (size != null) 'size': size!,
-      };
+    if (attachmentId != null) 'attachmentId': attachmentId!,
+    if (data != null) 'data': data!,
+    if (size != null) 'size': size!,
+  };
 }
 
 class MessagePartHeader {
@@ -5750,21 +5936,18 @@ class MessagePartHeader {
   /// For example, `someuser@example.com`.
   core.String? value;
 
-  MessagePartHeader({
-    this.name,
-    this.value,
-  });
+  MessagePartHeader({this.name, this.value});
 
   MessagePartHeader.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
+    if (name != null) 'name': name!,
+    if (value != null) 'value': value!,
+  };
 }
 
 class ModifyMessageRequest {
@@ -5778,25 +5961,24 @@ class ModifyMessageRequest {
   /// You can remove up to 100 labels with each update.
   core.List<core.String>? removeLabelIds;
 
-  ModifyMessageRequest({
-    this.addLabelIds,
-    this.removeLabelIds,
-  });
+  ModifyMessageRequest({this.addLabelIds, this.removeLabelIds});
 
   ModifyMessageRequest.fromJson(core.Map json_)
-      : this(
-          addLabelIds: (json_['addLabelIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          removeLabelIds: (json_['removeLabelIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        addLabelIds:
+            (json_['addLabelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        removeLabelIds:
+            (json_['removeLabelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addLabelIds != null) 'addLabelIds': addLabelIds!,
-        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
-      };
+    if (addLabelIds != null) 'addLabelIds': addLabelIds!,
+    if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
+  };
 }
 
 class ModifyThreadRequest {
@@ -5810,25 +5992,24 @@ class ModifyThreadRequest {
   /// You can remove up to 100 labels with each update.
   core.List<core.String>? removeLabelIds;
 
-  ModifyThreadRequest({
-    this.addLabelIds,
-    this.removeLabelIds,
-  });
+  ModifyThreadRequest({this.addLabelIds, this.removeLabelIds});
 
   ModifyThreadRequest.fromJson(core.Map json_)
-      : this(
-          addLabelIds: (json_['addLabelIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          removeLabelIds: (json_['removeLabelIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        addLabelIds:
+            (json_['addLabelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        removeLabelIds:
+            (json_['removeLabelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (addLabelIds != null) 'addLabelIds': addLabelIds!,
-        if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
-      };
+    if (addLabelIds != null) 'addLabelIds': addLabelIds!,
+    if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
+  };
 }
 
 /// Request to obliterate a CSE key pair.
@@ -5856,21 +6037,18 @@ class PopSettings {
   /// - "markRead" : Leave the message in the `INBOX` and mark it as read.
   core.String? disposition;
 
-  PopSettings({
-    this.accessWindow,
-    this.disposition,
-  });
+  PopSettings({this.accessWindow, this.disposition});
 
   PopSettings.fromJson(core.Map json_)
-      : this(
-          accessWindow: json_['accessWindow'] as core.String?,
-          disposition: json_['disposition'] as core.String?,
-        );
+    : this(
+        accessWindow: json_['accessWindow'] as core.String?,
+        disposition: json_['disposition'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessWindow != null) 'accessWindow': accessWindow!,
-        if (disposition != null) 'disposition': disposition!,
-      };
+    if (accessWindow != null) 'accessWindow': accessWindow!,
+    if (disposition != null) 'disposition': disposition!,
+  };
 }
 
 /// Profile for a Gmail user.
@@ -5895,19 +6073,19 @@ class Profile {
   });
 
   Profile.fromJson(core.Map json_)
-      : this(
-          emailAddress: json_['emailAddress'] as core.String?,
-          historyId: json_['historyId'] as core.String?,
-          messagesTotal: json_['messagesTotal'] as core.int?,
-          threadsTotal: json_['threadsTotal'] as core.int?,
-        );
+    : this(
+        emailAddress: json_['emailAddress'] as core.String?,
+        historyId: json_['historyId'] as core.String?,
+        messagesTotal: json_['messagesTotal'] as core.int?,
+        threadsTotal: json_['threadsTotal'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (emailAddress != null) 'emailAddress': emailAddress!,
-        if (historyId != null) 'historyId': historyId!,
-        if (messagesTotal != null) 'messagesTotal': messagesTotal!,
-        if (threadsTotal != null) 'threadsTotal': threadsTotal!,
-      };
+    if (emailAddress != null) 'emailAddress': emailAddress!,
+    if (historyId != null) 'historyId': historyId!,
+    if (messagesTotal != null) 'messagesTotal': messagesTotal!,
+    if (threadsTotal != null) 'threadsTotal': threadsTotal!,
+  };
 }
 
 /// Settings associated with a send-as alias, which can be either the primary
@@ -5996,33 +6174,34 @@ class SendAs {
   });
 
   SendAs.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          isDefault: json_['isDefault'] as core.bool?,
-          isPrimary: json_['isPrimary'] as core.bool?,
-          replyToAddress: json_['replyToAddress'] as core.String?,
-          sendAsEmail: json_['sendAsEmail'] as core.String?,
-          signature: json_['signature'] as core.String?,
-          smtpMsa: json_.containsKey('smtpMsa')
-              ? SmtpMsa.fromJson(
-                  json_['smtpMsa'] as core.Map<core.String, core.dynamic>)
-              : null,
-          treatAsAlias: json_['treatAsAlias'] as core.bool?,
-          verificationStatus: json_['verificationStatus'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        isDefault: json_['isDefault'] as core.bool?,
+        isPrimary: json_['isPrimary'] as core.bool?,
+        replyToAddress: json_['replyToAddress'] as core.String?,
+        sendAsEmail: json_['sendAsEmail'] as core.String?,
+        signature: json_['signature'] as core.String?,
+        smtpMsa:
+            json_.containsKey('smtpMsa')
+                ? SmtpMsa.fromJson(
+                  json_['smtpMsa'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        treatAsAlias: json_['treatAsAlias'] as core.bool?,
+        verificationStatus: json_['verificationStatus'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (isDefault != null) 'isDefault': isDefault!,
-        if (isPrimary != null) 'isPrimary': isPrimary!,
-        if (replyToAddress != null) 'replyToAddress': replyToAddress!,
-        if (sendAsEmail != null) 'sendAsEmail': sendAsEmail!,
-        if (signature != null) 'signature': signature!,
-        if (smtpMsa != null) 'smtpMsa': smtpMsa!,
-        if (treatAsAlias != null) 'treatAsAlias': treatAsAlias!,
-        if (verificationStatus != null)
-          'verificationStatus': verificationStatus!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (isDefault != null) 'isDefault': isDefault!,
+    if (isPrimary != null) 'isPrimary': isPrimary!,
+    if (replyToAddress != null) 'replyToAddress': replyToAddress!,
+    if (sendAsEmail != null) 'sendAsEmail': sendAsEmail!,
+    if (signature != null) 'signature': signature!,
+    if (smtpMsa != null) 'smtpMsa': smtpMsa!,
+    if (treatAsAlias != null) 'treatAsAlias': treatAsAlias!,
+    if (verificationStatus != null) 'verificationStatus': verificationStatus!,
+  };
 }
 
 /// The configuration of a CSE identity that uses different key pairs for
@@ -6034,22 +6213,19 @@ class SignAndEncryptKeyPairs {
   /// The ID of the CseKeyPair that signs outgoing mail.
   core.String? signingKeyPairId;
 
-  SignAndEncryptKeyPairs({
-    this.encryptionKeyPairId,
-    this.signingKeyPairId,
-  });
+  SignAndEncryptKeyPairs({this.encryptionKeyPairId, this.signingKeyPairId});
 
   SignAndEncryptKeyPairs.fromJson(core.Map json_)
-      : this(
-          encryptionKeyPairId: json_['encryptionKeyPairId'] as core.String?,
-          signingKeyPairId: json_['signingKeyPairId'] as core.String?,
-        );
+    : this(
+        encryptionKeyPairId: json_['encryptionKeyPairId'] as core.String?,
+        signingKeyPairId: json_['signingKeyPairId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encryptionKeyPairId != null)
-          'encryptionKeyPairId': encryptionKeyPairId!,
-        if (signingKeyPairId != null) 'signingKeyPairId': signingKeyPairId!,
-      };
+    if (encryptionKeyPairId != null)
+      'encryptionKeyPairId': encryptionKeyPairId!,
+    if (signingKeyPairId != null) 'signingKeyPairId': signingKeyPairId!,
+  };
 }
 
 /// An S/MIME email config.
@@ -6087,8 +6263,10 @@ class SmimeInfo {
   core.List<core.int> get pkcs12AsBytes => convert.base64.decode(pkcs12!);
 
   set pkcs12AsBytes(core.List<core.int> bytes_) {
-    pkcs12 =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    pkcs12 = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   SmimeInfo({
@@ -6102,26 +6280,26 @@ class SmimeInfo {
   });
 
   SmimeInfo.fromJson(core.Map json_)
-      : this(
-          encryptedKeyPassword: json_['encryptedKeyPassword'] as core.String?,
-          expiration: json_['expiration'] as core.String?,
-          id: json_['id'] as core.String?,
-          isDefault: json_['isDefault'] as core.bool?,
-          issuerCn: json_['issuerCn'] as core.String?,
-          pem: json_['pem'] as core.String?,
-          pkcs12: json_['pkcs12'] as core.String?,
-        );
+    : this(
+        encryptedKeyPassword: json_['encryptedKeyPassword'] as core.String?,
+        expiration: json_['expiration'] as core.String?,
+        id: json_['id'] as core.String?,
+        isDefault: json_['isDefault'] as core.bool?,
+        issuerCn: json_['issuerCn'] as core.String?,
+        pem: json_['pem'] as core.String?,
+        pkcs12: json_['pkcs12'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (encryptedKeyPassword != null)
-          'encryptedKeyPassword': encryptedKeyPassword!,
-        if (expiration != null) 'expiration': expiration!,
-        if (id != null) 'id': id!,
-        if (isDefault != null) 'isDefault': isDefault!,
-        if (issuerCn != null) 'issuerCn': issuerCn!,
-        if (pem != null) 'pem': pem!,
-        if (pkcs12 != null) 'pkcs12': pkcs12!,
-      };
+    if (encryptedKeyPassword != null)
+      'encryptedKeyPassword': encryptedKeyPassword!,
+    if (expiration != null) 'expiration': expiration!,
+    if (id != null) 'id': id!,
+    if (isDefault != null) 'isDefault': isDefault!,
+    if (issuerCn != null) 'issuerCn': issuerCn!,
+    if (pem != null) 'pem': pem!,
+    if (pkcs12 != null) 'pkcs12': pkcs12!,
+  };
 }
 
 /// Configuration for communication with an SMTP service.
@@ -6170,21 +6348,21 @@ class SmtpMsa {
   });
 
   SmtpMsa.fromJson(core.Map json_)
-      : this(
-          host: json_['host'] as core.String?,
-          password: json_['password'] as core.String?,
-          port: json_['port'] as core.int?,
-          securityMode: json_['securityMode'] as core.String?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        host: json_['host'] as core.String?,
+        password: json_['password'] as core.String?,
+        port: json_['port'] as core.int?,
+        securityMode: json_['securityMode'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (host != null) 'host': host!,
-        if (password != null) 'password': password!,
-        if (port != null) 'port': port!,
-        if (securityMode != null) 'securityMode': securityMode!,
-        if (username != null) 'username': username!,
-      };
+    if (host != null) 'host': host!,
+    if (password != null) 'password': password!,
+    if (port != null) 'port': port!,
+    if (securityMode != null) 'securityMode': securityMode!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// A collection of messages representing a conversation.
@@ -6201,30 +6379,29 @@ class Thread {
   /// A short part of the message text.
   core.String? snippet;
 
-  Thread({
-    this.historyId,
-    this.id,
-    this.messages,
-    this.snippet,
-  });
+  Thread({this.historyId, this.id, this.messages, this.snippet});
 
   Thread.fromJson(core.Map json_)
-      : this(
-          historyId: json_['historyId'] as core.String?,
-          id: json_['id'] as core.String?,
-          messages: (json_['messages'] as core.List?)
-              ?.map((value) => Message.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          snippet: json_['snippet'] as core.String?,
-        );
+    : this(
+        historyId: json_['historyId'] as core.String?,
+        id: json_['id'] as core.String?,
+        messages:
+            (json_['messages'] as core.List?)
+                ?.map(
+                  (value) => Message.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        snippet: json_['snippet'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (historyId != null) 'historyId': historyId!,
-        if (id != null) 'id': id!,
-        if (messages != null) 'messages': messages!,
-        if (snippet != null) 'snippet': snippet!,
-      };
+    if (historyId != null) 'historyId': historyId!,
+    if (id != null) 'id': id!,
+    if (messages != null) 'messages': messages!,
+    if (snippet != null) 'snippet': snippet!,
+  };
 }
 
 /// Vacation auto-reply settings for an account.
@@ -6290,29 +6467,28 @@ class VacationSettings {
   });
 
   VacationSettings.fromJson(core.Map json_)
-      : this(
-          enableAutoReply: json_['enableAutoReply'] as core.bool?,
-          endTime: json_['endTime'] as core.String?,
-          responseBodyHtml: json_['responseBodyHtml'] as core.String?,
-          responseBodyPlainText: json_['responseBodyPlainText'] as core.String?,
-          responseSubject: json_['responseSubject'] as core.String?,
-          restrictToContacts: json_['restrictToContacts'] as core.bool?,
-          restrictToDomain: json_['restrictToDomain'] as core.bool?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        enableAutoReply: json_['enableAutoReply'] as core.bool?,
+        endTime: json_['endTime'] as core.String?,
+        responseBodyHtml: json_['responseBodyHtml'] as core.String?,
+        responseBodyPlainText: json_['responseBodyPlainText'] as core.String?,
+        responseSubject: json_['responseSubject'] as core.String?,
+        restrictToContacts: json_['restrictToContacts'] as core.bool?,
+        restrictToDomain: json_['restrictToDomain'] as core.bool?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enableAutoReply != null) 'enableAutoReply': enableAutoReply!,
-        if (endTime != null) 'endTime': endTime!,
-        if (responseBodyHtml != null) 'responseBodyHtml': responseBodyHtml!,
-        if (responseBodyPlainText != null)
-          'responseBodyPlainText': responseBodyPlainText!,
-        if (responseSubject != null) 'responseSubject': responseSubject!,
-        if (restrictToContacts != null)
-          'restrictToContacts': restrictToContacts!,
-        if (restrictToDomain != null) 'restrictToDomain': restrictToDomain!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (enableAutoReply != null) 'enableAutoReply': enableAutoReply!,
+    if (endTime != null) 'endTime': endTime!,
+    if (responseBodyHtml != null) 'responseBodyHtml': responseBodyHtml!,
+    if (responseBodyPlainText != null)
+      'responseBodyPlainText': responseBodyPlainText!,
+    if (responseSubject != null) 'responseSubject': responseSubject!,
+    if (restrictToContacts != null) 'restrictToContacts': restrictToContacts!,
+    if (restrictToDomain != null) 'restrictToDomain': restrictToDomain!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// Set up or update a new push notification watch on this user's mailbox.
@@ -6368,22 +6544,23 @@ class WatchRequest {
   });
 
   WatchRequest.fromJson(core.Map json_)
-      : this(
-          labelFilterAction: json_['labelFilterAction'] as core.String?,
-          labelFilterBehavior: json_['labelFilterBehavior'] as core.String?,
-          labelIds: (json_['labelIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          topicName: json_['topicName'] as core.String?,
-        );
+    : this(
+        labelFilterAction: json_['labelFilterAction'] as core.String?,
+        labelFilterBehavior: json_['labelFilterBehavior'] as core.String?,
+        labelIds:
+            (json_['labelIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        topicName: json_['topicName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labelFilterAction != null) 'labelFilterAction': labelFilterAction!,
-        if (labelFilterBehavior != null)
-          'labelFilterBehavior': labelFilterBehavior!,
-        if (labelIds != null) 'labelIds': labelIds!,
-        if (topicName != null) 'topicName': topicName!,
-      };
+    if (labelFilterAction != null) 'labelFilterAction': labelFilterAction!,
+    if (labelFilterBehavior != null)
+      'labelFilterBehavior': labelFilterBehavior!,
+    if (labelIds != null) 'labelIds': labelIds!,
+    if (topicName != null) 'topicName': topicName!,
+  };
 }
 
 /// Push notification watch response.
@@ -6397,19 +6574,16 @@ class WatchResponse {
   /// The ID of the mailbox's current history record.
   core.String? historyId;
 
-  WatchResponse({
-    this.expiration,
-    this.historyId,
-  });
+  WatchResponse({this.expiration, this.historyId});
 
   WatchResponse.fromJson(core.Map json_)
-      : this(
-          expiration: json_['expiration'] as core.String?,
-          historyId: json_['historyId'] as core.String?,
-        );
+    : this(
+        expiration: json_['expiration'] as core.String?,
+        historyId: json_['historyId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expiration != null) 'expiration': expiration!,
-        if (historyId != null) 'historyId': historyId!,
-      };
+    if (expiration != null) 'expiration': expiration!,
+    if (historyId != null) 'historyId': historyId!,
+  };
 }

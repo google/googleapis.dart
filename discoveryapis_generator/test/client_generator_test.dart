@@ -33,8 +33,11 @@ void main() {
       final pubspecFile = File(p.join(dataPath, 'pubspec.yaml'));
       pubspecFile.copySync(p.join(outputDir.path, 'pubspec.yaml'));
       // Generate the client stubs.
-      final results =
-          generateApiFiles(inputPath, outputDir.path, updatePubspec: true);
+      final results = generateApiFiles(
+        inputPath,
+        outputDir.path,
+        updatePubspec: true,
+      );
       expect(results.length, 2, reason: 'But got `$results`');
       expect(results[0].success, isTrue);
       expect(results[1].info, isTrue);
@@ -66,9 +69,7 @@ void main() {
         'ToyAgeRequest2',
         'Empty',
       };
-      final importMap = {
-        for (var item in importItems) item: importUri,
-      };
+      final importMap = {for (var item in importItems) item: importUri};
       final description =
           File(p.join(dataPath, 'rest', 'toyapi.json')).readAsStringSync();
       final diPair = DescriptionImportPair(description, importMap);
@@ -90,12 +91,10 @@ void main() {
     test('dataWrapper', () {
       final descriptionJson =
           File(p.join(dataPath, 'wrapapi.json')).readAsStringSync();
-      final description =
-          RestDescription.fromJson(jsonDecode(descriptionJson) as Map);
-      final generatedLib = DartApiLibrary.build(
-        description,
-        isPackage: false,
+      final description = RestDescription.fromJson(
+        jsonDecode(descriptionJson) as Map,
       );
+      final generatedLib = DartApiLibrary.build(description, isPackage: false);
 
       _expectFilesMatch(
         p.join(dataPath, 'wrapapi.dart'),
@@ -112,9 +111,6 @@ void _expectFilesMatch(String expectedFilePath, String actualValue) {
     expectedStubFile.writeAsStringSync(actualValue);
     fail('`$expectedFilePath` did not exist. Created!');
   } else {
-    expect(
-      actualValue,
-      expectedStubFile.readAsStringSync(),
-    );
+    expect(actualValue, expectedStubFile.readAsStringSync());
   }
 }

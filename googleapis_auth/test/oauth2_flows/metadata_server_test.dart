@@ -57,7 +57,8 @@ void main() {
 
   group('metadata-server-authorization-flow', () {
     test('successful', () async {
-      final flow = MetadataServerAuthorizationFlow(mockClient(
+      final flow = MetadataServerAuthorizationFlow(
+        mockClient(
           expectAsync1((request) {
             final url = request.url.toString();
             if (url == tokenUrl) {
@@ -68,7 +69,9 @@ void main() {
               fail('Invalid URL $url (expected: $tokenUrl or $scopesUrl).');
             }
           }, count: 2),
-          expectClose: false));
+          expectClose: false,
+        ),
+      );
 
       final credentials = await flow.run();
       expect(credentials.accessToken.data, equals('atok'));
@@ -79,7 +82,8 @@ void main() {
 
     test('invalid-server-response', () {
       var requestNr = 0;
-      final flow = MetadataServerAuthorizationFlow(mockClient(
+      final flow = MetadataServerAuthorizationFlow(
+        mockClient(
           expectAsync1((request) {
             if (requestNr++ == 0) {
               return invalidAccessToken(request);
@@ -87,13 +91,16 @@ void main() {
               return successfulScopes(request);
             }
           }, count: 2),
-          expectClose: false));
+          expectClose: false,
+        ),
+      );
       expect(flow.run(), throwsA(isServerRequestFailedException));
     });
 
     test('token-transport-error', () {
       var requestNr = 0;
-      final flow = MetadataServerAuthorizationFlow(mockClient(
+      final flow = MetadataServerAuthorizationFlow(
+        mockClient(
           expectAsync1((request) {
             if (requestNr++ == 0) {
               // Dart 3 change that can't be fixed while we support Dart 2.x
@@ -103,13 +110,16 @@ void main() {
               return successfulScopes(request);
             }
           }, count: 2),
-          expectClose: false));
+          expectClose: false,
+        ),
+      );
       expect(flow.run(), throwsA(isTransportException));
     });
 
     test('scopes-transport-error', () {
       var requestNr = 0;
-      final flow = MetadataServerAuthorizationFlow(mockClient(
+      final flow = MetadataServerAuthorizationFlow(
+        mockClient(
           expectAsync1((request) {
             if (requestNr++ == 0) {
               return successfulAccessToken(request);
@@ -119,7 +129,9 @@ void main() {
               return transportFailure.get(Uri.http('failure', ''));
             }
           }, count: 2),
-          expectClose: false));
+          expectClose: false,
+        ),
+      );
       expect(flow.run(), throwsA(isTransportException));
     });
   });

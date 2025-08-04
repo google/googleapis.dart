@@ -193,11 +193,16 @@ class HangoutsChatApi {
   SpacesResource get spaces => SpacesResource(_requester);
   UsersResource get users => UsersResource(_requester);
 
-  HangoutsChatApi(http.Client client,
-      {core.String rootUrl = 'https://chat.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  HangoutsChatApi(
+    http.Client client, {
+    core.String rootUrl = 'https://chat.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class CustomEmojisResource {
@@ -251,7 +256,8 @@ class CustomEmojisResource {
       queryParams: queryParams_,
     );
     return CustomEmoji.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a custom emoji.
@@ -290,10 +296,7 @@ class CustomEmojisResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -303,6 +306,7 @@ class CustomEmojisResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -357,7 +361,8 @@ class CustomEmojisResource {
       queryParams: queryParams_,
     );
     return CustomEmoji.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists custom emojis visible to the authenticated user.
@@ -427,7 +432,8 @@ class CustomEmojisResource {
       queryParams: queryParams_,
     );
     return ListCustomEmojisResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -479,6 +485,7 @@ class MediaResource {
       url_,
       'GET',
       queryParams: queryParams_,
+
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
@@ -543,11 +550,13 @@ class MediaResource {
     if (uploadMedia == null) {
       url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/attachments:upload';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      url_ = '/resumable/upload/v1/' +
+      url_ =
+          '/resumable/upload/v1/' +
           core.Uri.encodeFull('$parent') +
           '/attachments:upload';
     } else {
-      url_ = '/upload/v1/' +
+      url_ =
+          '/upload/v1/' +
           core.Uri.encodeFull('$parent') +
           '/attachments:upload';
     }
@@ -561,7 +570,8 @@ class MediaResource {
       uploadOptions: uploadOptions,
     );
     return UploadAttachmentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -623,7 +633,8 @@ class SpacesResource {
       queryParams: queryParams_,
     );
     return CompleteImportSpaceResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a space.
@@ -764,6 +775,7 @@ class SpacesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -978,7 +990,8 @@ class SpacesResource {
       queryParams: queryParams_,
     );
     return ListSpacesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a space.
@@ -1230,7 +1243,8 @@ class SpacesResource {
       queryParams: queryParams_,
     );
     return SearchSpacesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a space and adds specified users to it.
@@ -1400,7 +1414,8 @@ class SpacesMembersResource {
       queryParams: queryParams_,
     );
     return Membership.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a membership.
@@ -1483,10 +1498,12 @@ class SpacesMembersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Membership.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns details about a membership.
@@ -1560,7 +1577,8 @@ class SpacesMembersResource {
       queryParams: queryParams_,
     );
     return Membership.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists memberships in a space.
@@ -1687,7 +1705,8 @@ class SpacesMembersResource {
       queryParams: queryParams_,
     );
     return ListMembershipsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a membership.
@@ -1764,7 +1783,8 @@ class SpacesMembersResource {
       queryParams: queryParams_,
     );
     return Membership.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1956,6 +1976,7 @@ class SpacesMessagesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1996,10 +2017,7 @@ class SpacesMessagesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Message> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Message> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2112,7 +2130,8 @@ class SpacesMessagesResource {
       queryParams: queryParams_,
     );
     return ListMessagesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a message.
@@ -2288,7 +2307,7 @@ class SpacesMessagesAttachmentsResource {
   final commons.ApiRequester _requester;
 
   SpacesMessagesAttachmentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the metadata of a message attachment.
   ///
@@ -2319,10 +2338,7 @@ class SpacesMessagesAttachmentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Attachment> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Attachment> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2335,7 +2351,8 @@ class SpacesMessagesAttachmentsResource {
       queryParams: queryParams_,
     );
     return Attachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2343,7 +2360,7 @@ class SpacesMessagesReactionsResource {
   final commons.ApiRequester _requester;
 
   SpacesMessagesReactionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a reaction and adds it to a message.
   ///
@@ -2426,10 +2443,7 @@ class SpacesMessagesReactionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2439,6 +2453,7 @@ class SpacesMessagesReactionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2529,7 +2544,8 @@ class SpacesMessagesReactionsResource {
       queryParams: queryParams_,
     );
     return ListReactionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2578,10 +2594,7 @@ class SpacesSpaceEventsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SpaceEvent> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<SpaceEvent> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2594,7 +2607,8 @@ class SpacesSpaceEventsResource {
       queryParams: queryParams_,
     );
     return SpaceEvent.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists events from a Google Chat space.
@@ -2700,7 +2714,8 @@ class SpacesSpaceEventsResource {
       queryParams: queryParams_,
     );
     return ListSpaceEventsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2772,7 +2787,8 @@ class UsersSpacesResource {
       queryParams: queryParams_,
     );
     return SpaceReadState.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a user's read state within a space, used to identify read and
@@ -2835,7 +2851,8 @@ class UsersSpacesResource {
       queryParams: queryParams_,
     );
     return SpaceReadState.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2843,7 +2860,7 @@ class UsersSpacesSpaceNotificationSettingResource {
   final commons.ApiRequester _requester;
 
   UsersSpacesSpaceNotificationSettingResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the space notification setting.
   ///
@@ -2892,7 +2909,8 @@ class UsersSpacesSpaceNotificationSettingResource {
       queryParams: queryParams_,
     );
     return SpaceNotificationSetting.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the space notification setting.
@@ -2948,7 +2966,8 @@ class UsersSpacesSpaceNotificationSettingResource {
       queryParams: queryParams_,
     );
     return SpaceNotificationSetting.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3009,7 +3028,8 @@ class UsersSpacesThreadsResource {
       queryParams: queryParams_,
     );
     return ThreadReadState.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3059,21 +3079,18 @@ class AccessSettings {
   /// Optional.
   core.String? audience;
 
-  AccessSettings({
-    this.accessState,
-    this.audience,
-  });
+  AccessSettings({this.accessState, this.audience});
 
   AccessSettings.fromJson(core.Map json_)
-      : this(
-          accessState: json_['accessState'] as core.String?,
-          audience: json_['audience'] as core.String?,
-        );
+    : this(
+        accessState: json_['accessState'] as core.String?,
+        audience: json_['audience'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessState != null) 'accessState': accessState!,
-        if (audience != null) 'audience': audience!,
-      };
+    if (accessState != null) 'accessState': accessState!,
+    if (audience != null) 'audience': audience!,
+  };
 }
 
 /// One or more interactive widgets that appear at the bottom of a message.
@@ -3084,21 +3101,21 @@ class AccessoryWidget {
   /// A list of buttons.
   GoogleAppsCardV1ButtonList? buttonList;
 
-  AccessoryWidget({
-    this.buttonList,
-  });
+  AccessoryWidget({this.buttonList});
 
   AccessoryWidget.fromJson(core.Map json_)
-      : this(
-          buttonList: json_.containsKey('buttonList')
-              ? GoogleAppsCardV1ButtonList.fromJson(
-                  json_['buttonList'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        buttonList:
+            json_.containsKey('buttonList')
+                ? GoogleAppsCardV1ButtonList.fromJson(
+                  json_['buttonList'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttonList != null) 'buttonList': buttonList!,
-      };
+    if (buttonList != null) 'buttonList': buttonList!,
+  };
 }
 
 /// List of string parameters to supply when the action method is invoked.
@@ -3147,33 +3164,32 @@ class ActionResponse {
   /// response types.)
   core.String? url;
 
-  ActionResponse({
-    this.dialogAction,
-    this.type,
-    this.updatedWidget,
-    this.url,
-  });
+  ActionResponse({this.dialogAction, this.type, this.updatedWidget, this.url});
 
   ActionResponse.fromJson(core.Map json_)
-      : this(
-          dialogAction: json_.containsKey('dialogAction')
-              ? DialogAction.fromJson(
-                  json_['dialogAction'] as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_['type'] as core.String?,
-          updatedWidget: json_.containsKey('updatedWidget')
-              ? UpdatedWidget.fromJson(
-                  json_['updatedWidget'] as core.Map<core.String, core.dynamic>)
-              : null,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        dialogAction:
+            json_.containsKey('dialogAction')
+                ? DialogAction.fromJson(
+                  json_['dialogAction'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+        updatedWidget:
+            json_.containsKey('updatedWidget')
+                ? UpdatedWidget.fromJson(
+                  json_['updatedWidget'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dialogAction != null) 'dialogAction': dialogAction!,
-        if (type != null) 'type': type!,
-        if (updatedWidget != null) 'updatedWidget': updatedWidget!,
-        if (url != null) 'url': url!,
-      };
+    if (dialogAction != null) 'dialogAction': dialogAction!,
+    if (type != null) 'type': type!,
+    if (updatedWidget != null) 'updatedWidget': updatedWidget!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Represents the status for a request to either invoke or submit a
@@ -3267,21 +3283,18 @@ class ActionStatus {
   /// If unset, a generic message based on the `status_code` is sent.
   core.String? userFacingMessage;
 
-  ActionStatus({
-    this.statusCode,
-    this.userFacingMessage,
-  });
+  ActionStatus({this.statusCode, this.userFacingMessage});
 
   ActionStatus.fromJson(core.Map json_)
-      : this(
-          statusCode: json_['statusCode'] as core.String?,
-          userFacingMessage: json_['userFacingMessage'] as core.String?,
-        );
+    : this(
+        statusCode: json_['statusCode'] as core.String?,
+        userFacingMessage: json_['userFacingMessage'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (statusCode != null) 'statusCode': statusCode!,
-        if (userFacingMessage != null) 'userFacingMessage': userFacingMessage!,
-      };
+    if (statusCode != null) 'statusCode': statusCode!,
+    if (userFacingMessage != null) 'userFacingMessage': userFacingMessage!,
+  };
 }
 
 /// Annotations can be associated with the plain-text body of the message or
@@ -3341,38 +3354,48 @@ class Annotation {
   });
 
   Annotation.fromJson(core.Map json_)
-      : this(
-          customEmojiMetadata: json_.containsKey('customEmojiMetadata')
-              ? CustomEmojiMetadata.fromJson(json_['customEmojiMetadata']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          length: json_['length'] as core.int?,
-          richLinkMetadata: json_.containsKey('richLinkMetadata')
-              ? RichLinkMetadata.fromJson(json_['richLinkMetadata']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          slashCommand: json_.containsKey('slashCommand')
-              ? SlashCommandMetadata.fromJson(
-                  json_['slashCommand'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startIndex: json_['startIndex'] as core.int?,
-          type: json_['type'] as core.String?,
-          userMention: json_.containsKey('userMention')
-              ? UserMentionMetadata.fromJson(
-                  json_['userMention'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        customEmojiMetadata:
+            json_.containsKey('customEmojiMetadata')
+                ? CustomEmojiMetadata.fromJson(
+                  json_['customEmojiMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        length: json_['length'] as core.int?,
+        richLinkMetadata:
+            json_.containsKey('richLinkMetadata')
+                ? RichLinkMetadata.fromJson(
+                  json_['richLinkMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        slashCommand:
+            json_.containsKey('slashCommand')
+                ? SlashCommandMetadata.fromJson(
+                  json_['slashCommand'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startIndex: json_['startIndex'] as core.int?,
+        type: json_['type'] as core.String?,
+        userMention:
+            json_.containsKey('userMention')
+                ? UserMentionMetadata.fromJson(
+                  json_['userMention'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customEmojiMetadata != null)
-          'customEmojiMetadata': customEmojiMetadata!,
-        if (length != null) 'length': length!,
-        if (richLinkMetadata != null) 'richLinkMetadata': richLinkMetadata!,
-        if (slashCommand != null) 'slashCommand': slashCommand!,
-        if (startIndex != null) 'startIndex': startIndex!,
-        if (type != null) 'type': type!,
-        if (userMention != null) 'userMention': userMention!,
-      };
+    if (customEmojiMetadata != null)
+      'customEmojiMetadata': customEmojiMetadata!,
+    if (length != null) 'length': length!,
+    if (richLinkMetadata != null) 'richLinkMetadata': richLinkMetadata!,
+    if (slashCommand != null) 'slashCommand': slashCommand!,
+    if (startIndex != null) 'startIndex': startIndex!,
+    if (type != null) 'type': type!,
+    if (userMention != null) 'userMention': userMention!,
+  };
 }
 
 /// A GIF image that's specified by a URL.
@@ -3382,18 +3405,14 @@ class AttachedGif {
   /// Output only.
   core.String? uri;
 
-  AttachedGif({
-    this.uri,
-  });
+  AttachedGif({this.uri});
 
   AttachedGif.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+    : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// An attachment in Google Chat.
@@ -3466,33 +3485,38 @@ class Attachment {
   });
 
   Attachment.fromJson(core.Map json_)
-      : this(
-          attachmentDataRef: json_.containsKey('attachmentDataRef')
-              ? AttachmentDataRef.fromJson(json_['attachmentDataRef']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          contentName: json_['contentName'] as core.String?,
-          contentType: json_['contentType'] as core.String?,
-          downloadUri: json_['downloadUri'] as core.String?,
-          driveDataRef: json_.containsKey('driveDataRef')
-              ? DriveDataRef.fromJson(
-                  json_['driveDataRef'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          source: json_['source'] as core.String?,
-          thumbnailUri: json_['thumbnailUri'] as core.String?,
-        );
+    : this(
+        attachmentDataRef:
+            json_.containsKey('attachmentDataRef')
+                ? AttachmentDataRef.fromJson(
+                  json_['attachmentDataRef']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        contentName: json_['contentName'] as core.String?,
+        contentType: json_['contentType'] as core.String?,
+        downloadUri: json_['downloadUri'] as core.String?,
+        driveDataRef:
+            json_.containsKey('driveDataRef')
+                ? DriveDataRef.fromJson(
+                  json_['driveDataRef'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        source: json_['source'] as core.String?,
+        thumbnailUri: json_['thumbnailUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachmentDataRef != null) 'attachmentDataRef': attachmentDataRef!,
-        if (contentName != null) 'contentName': contentName!,
-        if (contentType != null) 'contentType': contentType!,
-        if (downloadUri != null) 'downloadUri': downloadUri!,
-        if (driveDataRef != null) 'driveDataRef': driveDataRef!,
-        if (name != null) 'name': name!,
-        if (source != null) 'source': source!,
-        if (thumbnailUri != null) 'thumbnailUri': thumbnailUri!,
-      };
+    if (attachmentDataRef != null) 'attachmentDataRef': attachmentDataRef!,
+    if (contentName != null) 'contentName': contentName!,
+    if (contentType != null) 'contentType': contentType!,
+    if (downloadUri != null) 'downloadUri': downloadUri!,
+    if (driveDataRef != null) 'driveDataRef': driveDataRef!,
+    if (name != null) 'name': name!,
+    if (source != null) 'source': source!,
+    if (thumbnailUri != null) 'thumbnailUri': thumbnailUri!,
+  };
 }
 
 /// A reference to the attachment data.
@@ -3512,22 +3536,19 @@ class AttachmentDataRef {
   /// Optional.
   core.String? resourceName;
 
-  AttachmentDataRef({
-    this.attachmentUploadToken,
-    this.resourceName,
-  });
+  AttachmentDataRef({this.attachmentUploadToken, this.resourceName});
 
   AttachmentDataRef.fromJson(core.Map json_)
-      : this(
-          attachmentUploadToken: json_['attachmentUploadToken'] as core.String?,
-          resourceName: json_['resourceName'] as core.String?,
-        );
+    : this(
+        attachmentUploadToken: json_['attachmentUploadToken'] as core.String?,
+        resourceName: json_['resourceName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachmentUploadToken != null)
-          'attachmentUploadToken': attachmentUploadToken!,
-        if (resourceName != null) 'resourceName': resourceName!,
-      };
+    if (attachmentUploadToken != null)
+      'attachmentUploadToken': attachmentUploadToken!,
+    if (resourceName != null) 'resourceName': resourceName!,
+  };
 }
 
 /// A button.
@@ -3540,27 +3561,28 @@ class Button {
   /// A button with text and `onclick` action.
   TextButton? textButton;
 
-  Button({
-    this.imageButton,
-    this.textButton,
-  });
+  Button({this.imageButton, this.textButton});
 
   Button.fromJson(core.Map json_)
-      : this(
-          imageButton: json_.containsKey('imageButton')
-              ? ImageButton.fromJson(
-                  json_['imageButton'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textButton: json_.containsKey('textButton')
-              ? TextButton.fromJson(
-                  json_['textButton'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        imageButton:
+            json_.containsKey('imageButton')
+                ? ImageButton.fromJson(
+                  json_['imageButton'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textButton:
+            json_.containsKey('textButton')
+                ? TextButton.fromJson(
+                  json_['textButton'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (imageButton != null) 'imageButton': imageButton!,
-        if (textButton != null) 'textButton': textButton!,
-      };
+    if (imageButton != null) 'imageButton': imageButton!,
+    if (textButton != null) 'textButton': textButton!,
+  };
 }
 
 /// Data for Calendar event links.
@@ -3575,21 +3597,18 @@ class CalendarEventLinkData {
   /// of the linked Calendar event.
   core.String? eventId;
 
-  CalendarEventLinkData({
-    this.calendarId,
-    this.eventId,
-  });
+  CalendarEventLinkData({this.calendarId, this.eventId});
 
   CalendarEventLinkData.fromJson(core.Map json_)
-      : this(
-          calendarId: json_['calendarId'] as core.String?,
-          eventId: json_['eventId'] as core.String?,
-        );
+    : this(
+        calendarId: json_['calendarId'] as core.String?,
+        eventId: json_['eventId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (calendarId != null) 'calendarId': calendarId!,
-        if (eventId != null) 'eventId': eventId!,
-      };
+    if (calendarId != null) 'calendarId': calendarId!,
+    if (eventId != null) 'eventId': eventId!,
+  };
 }
 
 /// A card is a UI element that can contain UI widgets such as text and images.
@@ -3608,36 +3627,41 @@ class Card {
   /// Sections are separated by a line divider.
   core.List<Section>? sections;
 
-  Card({
-    this.cardActions,
-    this.header,
-    this.name,
-    this.sections,
-  });
+  Card({this.cardActions, this.header, this.name, this.sections});
 
   Card.fromJson(core.Map json_)
-      : this(
-          cardActions: (json_['cardActions'] as core.List?)
-              ?.map((value) => CardAction.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          header: json_.containsKey('header')
-              ? CardHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          sections: (json_['sections'] as core.List?)
-              ?.map((value) => Section.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        cardActions:
+            (json_['cardActions'] as core.List?)
+                ?.map(
+                  (value) => CardAction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        header:
+            json_.containsKey('header')
+                ? CardHeader.fromJson(
+                  json_['header'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        sections:
+            (json_['sections'] as core.List?)
+                ?.map(
+                  (value) => Section.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cardActions != null) 'cardActions': cardActions!,
-        if (header != null) 'header': header!,
-        if (name != null) 'name': name!,
-        if (sections != null) 'sections': sections!,
-      };
+    if (cardActions != null) 'cardActions': cardActions!,
+    if (header != null) 'header': header!,
+    if (name != null) 'name': name!,
+    if (sections != null) 'sections': sections!,
+  };
 }
 
 /// A card action is the action associated with the card.
@@ -3651,24 +3675,23 @@ class CardAction {
   /// The onclick action for this action item.
   OnClick? onClick;
 
-  CardAction({
-    this.actionLabel,
-    this.onClick,
-  });
+  CardAction({this.actionLabel, this.onClick});
 
   CardAction.fromJson(core.Map json_)
-      : this(
-          actionLabel: json_['actionLabel'] as core.String?,
-          onClick: json_.containsKey('onClick')
-              ? OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        actionLabel: json_['actionLabel'] as core.String?,
+        onClick:
+            json_.containsKey('onClick')
+                ? OnClick.fromJson(
+                  json_['onClick'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionLabel != null) 'actionLabel': actionLabel!,
-        if (onClick != null) 'onClick': onClick!,
-      };
+    if (actionLabel != null) 'actionLabel': actionLabel!,
+    if (onClick != null) 'onClick': onClick!,
+  };
 }
 
 class CardHeader {
@@ -3692,27 +3715,22 @@ class CardHeader {
   /// lines.
   core.String? title;
 
-  CardHeader({
-    this.imageStyle,
-    this.imageUrl,
-    this.subtitle,
-    this.title,
-  });
+  CardHeader({this.imageStyle, this.imageUrl, this.subtitle, this.title});
 
   CardHeader.fromJson(core.Map json_)
-      : this(
-          imageStyle: json_['imageStyle'] as core.String?,
-          imageUrl: json_['imageUrl'] as core.String?,
-          subtitle: json_['subtitle'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        imageStyle: json_['imageStyle'] as core.String?,
+        imageUrl: json_['imageUrl'] as core.String?,
+        subtitle: json_['subtitle'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (imageStyle != null) 'imageStyle': imageStyle!,
-        if (imageUrl != null) 'imageUrl': imageUrl!,
-        if (subtitle != null) 'subtitle': subtitle!,
-        if (title != null) 'title': title!,
-      };
+    if (imageStyle != null) 'imageStyle': imageStyle!,
+    if (imageUrl != null) 'imageUrl': imageUrl!,
+    if (subtitle != null) 'subtitle': subtitle!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// A
@@ -3734,24 +3752,23 @@ class CardWithId {
   /// A unique identifier for a card in a message.
   core.String? cardId;
 
-  CardWithId({
-    this.card,
-    this.cardId,
-  });
+  CardWithId({this.card, this.cardId});
 
   CardWithId.fromJson(core.Map json_)
-      : this(
-          card: json_.containsKey('card')
-              ? GoogleAppsCardV1Card.fromJson(
-                  json_['card'] as core.Map<core.String, core.dynamic>)
-              : null,
-          cardId: json_['cardId'] as core.String?,
-        );
+    : this(
+        card:
+            json_.containsKey('card')
+                ? GoogleAppsCardV1Card.fromJson(
+                  json_['card'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cardId: json_['cardId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (card != null) 'card': card!,
-        if (cardId != null) 'cardId': cardId!,
-      };
+    if (card != null) 'card': card!,
+    if (cardId != null) 'cardId': cardId!,
+  };
 }
 
 /// For a `SelectionInput` widget that uses a multiselect menu, a data source
@@ -3764,21 +3781,22 @@ class ChatClientDataSourceMarkup {
   /// Google Chat spaces that the user is a member of.
   SpaceDataSource? spaceDataSource;
 
-  ChatClientDataSourceMarkup({
-    this.spaceDataSource,
-  });
+  ChatClientDataSourceMarkup({this.spaceDataSource});
 
   ChatClientDataSourceMarkup.fromJson(core.Map json_)
-      : this(
-          spaceDataSource: json_.containsKey('spaceDataSource')
-              ? SpaceDataSource.fromJson(json_['spaceDataSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        spaceDataSource:
+            json_.containsKey('spaceDataSource')
+                ? SpaceDataSource.fromJson(
+                  json_['spaceDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (spaceDataSource != null) 'spaceDataSource': spaceDataSource!,
-      };
+    if (spaceDataSource != null) 'spaceDataSource': spaceDataSource!,
+  };
 }
 
 /// Data for Chat space links.
@@ -3798,24 +3816,20 @@ class ChatSpaceLinkData {
   /// Format: `spaces/{space}/threads/{thread}`
   core.String? thread;
 
-  ChatSpaceLinkData({
-    this.message,
-    this.space,
-    this.thread,
-  });
+  ChatSpaceLinkData({this.message, this.space, this.thread});
 
   ChatSpaceLinkData.fromJson(core.Map json_)
-      : this(
-          message: json_['message'] as core.String?,
-          space: json_['space'] as core.String?,
-          thread: json_['thread'] as core.String?,
-        );
+    : this(
+        message: json_['message'] as core.String?,
+        space: json_['space'] as core.String?,
+        thread: json_['thread'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!,
-        if (space != null) 'space': space!,
-        if (thread != null) 'thread': thread!,
-      };
+    if (message != null) 'message': message!,
+    if (space != null) 'space': space!,
+    if (thread != null) 'thread': thread!,
+  };
 }
 
 /// Represents a color in the RGBA color space.
@@ -3877,21 +3891,21 @@ class CompleteImportSpaceResponse {
   /// The import mode space.
   Space? space;
 
-  CompleteImportSpaceResponse({
-    this.space,
-  });
+  CompleteImportSpaceResponse({this.space});
 
   CompleteImportSpaceResponse.fromJson(core.Map json_)
-      : this(
-          space: json_.containsKey('space')
-              ? Space.fromJson(
-                  json_['space'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        space:
+            json_.containsKey('space')
+                ? Space.fromJson(
+                  json_['space'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (space != null) 'space': space!,
-      };
+    if (space != null) 'space': space!,
+  };
 }
 
 /// Represents a
@@ -3944,24 +3958,26 @@ class CustomEmoji {
   });
 
   CustomEmoji.fromJson(core.Map json_)
-      : this(
-          emojiName: json_['emojiName'] as core.String?,
-          name: json_['name'] as core.String?,
-          payload: json_.containsKey('payload')
-              ? CustomEmojiPayload.fromJson(
-                  json_['payload'] as core.Map<core.String, core.dynamic>)
-              : null,
-          temporaryImageUri: json_['temporaryImageUri'] as core.String?,
-          uid: json_['uid'] as core.String?,
-        );
+    : this(
+        emojiName: json_['emojiName'] as core.String?,
+        name: json_['name'] as core.String?,
+        payload:
+            json_.containsKey('payload')
+                ? CustomEmojiPayload.fromJson(
+                  json_['payload'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        temporaryImageUri: json_['temporaryImageUri'] as core.String?,
+        uid: json_['uid'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (emojiName != null) 'emojiName': emojiName!,
-        if (name != null) 'name': name!,
-        if (payload != null) 'payload': payload!,
-        if (temporaryImageUri != null) 'temporaryImageUri': temporaryImageUri!,
-        if (uid != null) 'uid': uid!,
-      };
+    if (emojiName != null) 'emojiName': emojiName!,
+    if (name != null) 'name': name!,
+    if (payload != null) 'payload': payload!,
+    if (temporaryImageUri != null) 'temporaryImageUri': temporaryImageUri!,
+    if (uid != null) 'uid': uid!,
+  };
 }
 
 /// Annotation metadata for custom emoji.
@@ -3969,21 +3985,21 @@ class CustomEmojiMetadata {
   /// The custom emoji.
   CustomEmoji? customEmoji;
 
-  CustomEmojiMetadata({
-    this.customEmoji,
-  });
+  CustomEmojiMetadata({this.customEmoji});
 
   CustomEmojiMetadata.fromJson(core.Map json_)
-      : this(
-          customEmoji: json_.containsKey('customEmoji')
-              ? CustomEmoji.fromJson(
-                  json_['customEmoji'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        customEmoji:
+            json_.containsKey('customEmoji')
+                ? CustomEmoji.fromJson(
+                  json_['customEmoji'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customEmoji != null) 'customEmoji': customEmoji!,
-      };
+    if (customEmoji != null) 'customEmoji': customEmoji!,
+  };
 }
 
 /// Payload data for the custom emoji.
@@ -4000,8 +4016,10 @@ class CustomEmojiPayload {
       convert.base64.decode(fileContent!);
 
   set fileContentAsBytes(core.List<core.int> bytes_) {
-    fileContent =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    fileContent = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Input only.
@@ -4011,21 +4029,18 @@ class CustomEmojiPayload {
   /// Required.
   core.String? filename;
 
-  CustomEmojiPayload({
-    this.fileContent,
-    this.filename,
-  });
+  CustomEmojiPayload({this.fileContent, this.filename});
 
   CustomEmojiPayload.fromJson(core.Map json_)
-      : this(
-          fileContent: json_['fileContent'] as core.String?,
-          filename: json_['filename'] as core.String?,
-        );
+    : this(
+        fileContent: json_['fileContent'] as core.String?,
+        filename: json_['filename'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileContent != null) 'fileContent': fileContent!,
-        if (filename != null) 'filename': filename!,
-      };
+    if (fileContent != null) 'fileContent': fileContent!,
+    if (filename != null) 'filename': filename!,
+  };
 }
 
 /// Information about a deleted message.
@@ -4050,18 +4065,14 @@ class DeletionMetadata {
   /// delete messages sent by apps.
   core.String? deletionType;
 
-  DeletionMetadata({
-    this.deletionType,
-  });
+  DeletionMetadata({this.deletionType});
 
   DeletionMetadata.fromJson(core.Map json_)
-      : this(
-          deletionType: json_['deletionType'] as core.String?,
-        );
+    : this(deletionType: json_['deletionType'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deletionType != null) 'deletionType': deletionType!,
-      };
+    if (deletionType != null) 'deletionType': deletionType!,
+  };
 }
 
 /// Wrapper around the card body of the dialog.
@@ -4072,21 +4083,21 @@ class Dialog {
   /// support the following card entities: `DateTimePicker`, `OnChangeAction`.
   GoogleAppsCardV1Card? body;
 
-  Dialog({
-    this.body,
-  });
+  Dialog({this.body});
 
   Dialog.fromJson(core.Map json_)
-      : this(
-          body: json_.containsKey('body')
-              ? GoogleAppsCardV1Card.fromJson(
-                  json_['body'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        body:
+            json_.containsKey('body')
+                ? GoogleAppsCardV1Card.fromJson(
+                  json_['body'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (body != null) 'body': body!,
-      };
+    if (body != null) 'body': body!,
+  };
 }
 
 /// Contains a [dialog](https://developers.google.com/workspace/chat/dialogs)
@@ -4106,27 +4117,28 @@ class DialogAction {
   /// request.
   Dialog? dialog;
 
-  DialogAction({
-    this.actionStatus,
-    this.dialog,
-  });
+  DialogAction({this.actionStatus, this.dialog});
 
   DialogAction.fromJson(core.Map json_)
-      : this(
-          actionStatus: json_.containsKey('actionStatus')
-              ? ActionStatus.fromJson(
-                  json_['actionStatus'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dialog: json_.containsKey('dialog')
-              ? Dialog.fromJson(
-                  json_['dialog'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        actionStatus:
+            json_.containsKey('actionStatus')
+                ? ActionStatus.fromJson(
+                  json_['actionStatus'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dialog:
+            json_.containsKey('dialog')
+                ? Dialog.fromJson(
+                  json_['dialog'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionStatus != null) 'actionStatus': actionStatus!,
-        if (dialog != null) 'dialog': dialog!,
-      };
+    if (actionStatus != null) 'actionStatus': actionStatus!,
+    if (dialog != null) 'dialog': dialog!,
+  };
 }
 
 /// A reference to the data of a drive attachment.
@@ -4136,18 +4148,14 @@ class DriveDataRef {
   /// Use with the Drive API.
   core.String? driveFileId;
 
-  DriveDataRef({
-    this.driveFileId,
-  });
+  DriveDataRef({this.driveFileId});
 
   DriveDataRef.fromJson(core.Map json_)
-      : this(
-          driveFileId: json_['driveFileId'] as core.String?,
-        );
+    : this(driveFileId: json_['driveFileId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (driveFileId != null) 'driveFileId': driveFileId!,
-      };
+    if (driveFileId != null) 'driveFileId': driveFileId!,
+  };
 }
 
 /// Data for Google Drive links.
@@ -4160,24 +4168,23 @@ class DriveLinkData {
   /// The mime type of the linked Google Drive resource.
   core.String? mimeType;
 
-  DriveLinkData({
-    this.driveDataRef,
-    this.mimeType,
-  });
+  DriveLinkData({this.driveDataRef, this.mimeType});
 
   DriveLinkData.fromJson(core.Map json_)
-      : this(
-          driveDataRef: json_.containsKey('driveDataRef')
-              ? DriveDataRef.fromJson(
-                  json_['driveDataRef'] as core.Map<core.String, core.dynamic>)
-              : null,
-          mimeType: json_['mimeType'] as core.String?,
-        );
+    : this(
+        driveDataRef:
+            json_.containsKey('driveDataRef')
+                ? DriveDataRef.fromJson(
+                  json_['driveDataRef'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mimeType: json_['mimeType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (driveDataRef != null) 'driveDataRef': driveDataRef!,
-        if (mimeType != null) 'mimeType': mimeType!,
-      };
+    if (driveDataRef != null) 'driveDataRef': driveDataRef!,
+    if (mimeType != null) 'mimeType': mimeType!,
+  };
 }
 
 /// An emoji that is used as a reaction to a message.
@@ -4190,24 +4197,23 @@ class Emoji {
   /// Optional.
   core.String? unicode;
 
-  Emoji({
-    this.customEmoji,
-    this.unicode,
-  });
+  Emoji({this.customEmoji, this.unicode});
 
   Emoji.fromJson(core.Map json_)
-      : this(
-          customEmoji: json_.containsKey('customEmoji')
-              ? CustomEmoji.fromJson(
-                  json_['customEmoji'] as core.Map<core.String, core.dynamic>)
-              : null,
-          unicode: json_['unicode'] as core.String?,
-        );
+    : this(
+        customEmoji:
+            json_.containsKey('customEmoji')
+                ? CustomEmoji.fromJson(
+                  json_['customEmoji'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        unicode: json_['unicode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customEmoji != null) 'customEmoji': customEmoji!,
-        if (unicode != null) 'unicode': unicode!,
-      };
+    if (customEmoji != null) 'customEmoji': customEmoji!,
+    if (unicode != null) 'unicode': unicode!,
+  };
 }
 
 /// The number of people who reacted to a message with a specific emoji.
@@ -4222,24 +4228,23 @@ class EmojiReactionSummary {
   /// Output only.
   core.int? reactionCount;
 
-  EmojiReactionSummary({
-    this.emoji,
-    this.reactionCount,
-  });
+  EmojiReactionSummary({this.emoji, this.reactionCount});
 
   EmojiReactionSummary.fromJson(core.Map json_)
-      : this(
-          emoji: json_.containsKey('emoji')
-              ? Emoji.fromJson(
-                  json_['emoji'] as core.Map<core.String, core.dynamic>)
-              : null,
-          reactionCount: json_['reactionCount'] as core.int?,
-        );
+    : this(
+        emoji:
+            json_.containsKey('emoji')
+                ? Emoji.fromJson(
+                  json_['emoji'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reactionCount: json_['reactionCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (emoji != null) 'emoji': emoji!,
-        if (reactionCount != null) 'reactionCount': reactionCount!,
-      };
+    if (emoji != null) 'emoji': emoji!,
+    if (reactionCount != null) 'reactionCount': reactionCount!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -4265,24 +4270,25 @@ class FormAction {
   /// List of action parameters.
   core.List<ActionParameter>? parameters;
 
-  FormAction({
-    this.actionMethodName,
-    this.parameters,
-  });
+  FormAction({this.actionMethodName, this.parameters});
 
   FormAction.fromJson(core.Map json_)
-      : this(
-          actionMethodName: json_['actionMethodName'] as core.String?,
-          parameters: (json_['parameters'] as core.List?)
-              ?.map((value) => ActionParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        actionMethodName: json_['actionMethodName'] as core.String?,
+        parameters:
+            (json_['parameters'] as core.List?)
+                ?.map(
+                  (value) => ActionParameter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionMethodName != null) 'actionMethodName': actionMethodName!,
-        if (parameters != null) 'parameters': parameters!,
-      };
+    if (actionMethodName != null) 'actionMethodName': actionMethodName!,
+    if (parameters != null) 'parameters': parameters!,
+  };
 }
 
 /// An action that describes the behavior when the form is submitted.
@@ -4383,31 +4389,36 @@ class GoogleAppsCardV1Action {
   });
 
   GoogleAppsCardV1Action.fromJson(core.Map json_)
-      : this(
-          allWidgetsAreRequired: json_['allWidgetsAreRequired'] as core.bool?,
-          function: json_['function'] as core.String?,
-          interaction: json_['interaction'] as core.String?,
-          loadIndicator: json_['loadIndicator'] as core.String?,
-          parameters: (json_['parameters'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1ActionParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          persistValues: json_['persistValues'] as core.bool?,
-          requiredWidgets: (json_['requiredWidgets'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        allWidgetsAreRequired: json_['allWidgetsAreRequired'] as core.bool?,
+        function: json_['function'] as core.String?,
+        interaction: json_['interaction'] as core.String?,
+        loadIndicator: json_['loadIndicator'] as core.String?,
+        parameters:
+            (json_['parameters'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1ActionParameter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        persistValues: json_['persistValues'] as core.bool?,
+        requiredWidgets:
+            (json_['requiredWidgets'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allWidgetsAreRequired != null)
-          'allWidgetsAreRequired': allWidgetsAreRequired!,
-        if (function != null) 'function': function!,
-        if (interaction != null) 'interaction': interaction!,
-        if (loadIndicator != null) 'loadIndicator': loadIndicator!,
-        if (parameters != null) 'parameters': parameters!,
-        if (persistValues != null) 'persistValues': persistValues!,
-        if (requiredWidgets != null) 'requiredWidgets': requiredWidgets!,
-      };
+    if (allWidgetsAreRequired != null)
+      'allWidgetsAreRequired': allWidgetsAreRequired!,
+    if (function != null) 'function': function!,
+    if (interaction != null) 'interaction': interaction!,
+    if (loadIndicator != null) 'loadIndicator': loadIndicator!,
+    if (parameters != null) 'parameters': parameters!,
+    if (persistValues != null) 'persistValues': persistValues!,
+    if (requiredWidgets != null) 'requiredWidgets': requiredWidgets!,
+  };
 }
 
 /// List of string parameters to supply when the action method is invoked.
@@ -4448,27 +4459,25 @@ class GoogleAppsCardV1BorderStyle {
   /// - "STROKE" : Default value. Outline.
   core.String? type;
 
-  GoogleAppsCardV1BorderStyle({
-    this.cornerRadius,
-    this.strokeColor,
-    this.type,
-  });
+  GoogleAppsCardV1BorderStyle({this.cornerRadius, this.strokeColor, this.type});
 
   GoogleAppsCardV1BorderStyle.fromJson(core.Map json_)
-      : this(
-          cornerRadius: json_['cornerRadius'] as core.int?,
-          strokeColor: json_.containsKey('strokeColor')
-              ? Color.fromJson(
-                  json_['strokeColor'] as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        cornerRadius: json_['cornerRadius'] as core.int?,
+        strokeColor:
+            json_.containsKey('strokeColor')
+                ? Color.fromJson(
+                  json_['strokeColor'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cornerRadius != null) 'cornerRadius': cornerRadius!,
-        if (strokeColor != null) 'strokeColor': strokeColor!,
-        if (type != null) 'type': type!,
-      };
+    if (cornerRadius != null) 'cornerRadius': cornerRadius!,
+    if (strokeColor != null) 'strokeColor': strokeColor!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A text, icon, or text and icon button that users can click.
@@ -4556,34 +4565,40 @@ class GoogleAppsCardV1Button {
   });
 
   GoogleAppsCardV1Button.fromJson(core.Map json_)
-      : this(
-          altText: json_['altText'] as core.String?,
-          color: json_.containsKey('color')
-              ? Color.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-          disabled: json_['disabled'] as core.bool?,
-          icon: json_.containsKey('icon')
-              ? GoogleAppsCardV1Icon.fromJson(
-                  json_['icon'] as core.Map<core.String, core.dynamic>)
-              : null,
-          onClick: json_.containsKey('onClick')
-              ? GoogleAppsCardV1OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_['text'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        altText: json_['altText'] as core.String?,
+        color:
+            json_.containsKey('color')
+                ? Color.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        disabled: json_['disabled'] as core.bool?,
+        icon:
+            json_.containsKey('icon')
+                ? GoogleAppsCardV1Icon.fromJson(
+                  json_['icon'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        onClick:
+            json_.containsKey('onClick')
+                ? GoogleAppsCardV1OnClick.fromJson(
+                  json_['onClick'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text: json_['text'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (altText != null) 'altText': altText!,
-        if (color != null) 'color': color!,
-        if (disabled != null) 'disabled': disabled!,
-        if (icon != null) 'icon': icon!,
-        if (onClick != null) 'onClick': onClick!,
-        if (text != null) 'text': text!,
-        if (type != null) 'type': type!,
-      };
+    if (altText != null) 'altText': altText!,
+    if (color != null) 'color': color!,
+    if (disabled != null) 'disabled': disabled!,
+    if (icon != null) 'icon': icon!,
+    if (onClick != null) 'onClick': onClick!,
+    if (text != null) 'text': text!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A list of buttons layed out horizontally.
@@ -4596,21 +4611,23 @@ class GoogleAppsCardV1ButtonList {
   /// An array of buttons.
   core.List<GoogleAppsCardV1Button>? buttons;
 
-  GoogleAppsCardV1ButtonList({
-    this.buttons,
-  });
+  GoogleAppsCardV1ButtonList({this.buttons});
 
   GoogleAppsCardV1ButtonList.fromJson(core.Map json_)
-      : this(
-          buttons: (json_['buttons'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1Button.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        buttons:
+            (json_['buttons'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1Button.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttons != null) 'buttons': buttons!,
-      };
+    if (buttons != null) 'buttons': buttons!,
+  };
 }
 
 /// A card interface displayed in a Google Chat message or Google Workspace
@@ -4731,43 +4748,58 @@ class GoogleAppsCardV1Card {
   });
 
   GoogleAppsCardV1Card.fromJson(core.Map json_)
-      : this(
-          cardActions: (json_['cardActions'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1CardAction.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          displayStyle: json_['displayStyle'] as core.String?,
-          fixedFooter: json_.containsKey('fixedFooter')
-              ? GoogleAppsCardV1CardFixedFooter.fromJson(
-                  json_['fixedFooter'] as core.Map<core.String, core.dynamic>)
-              : null,
-          header: json_.containsKey('header')
-              ? GoogleAppsCardV1CardHeader.fromJson(
-                  json_['header'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          peekCardHeader: json_.containsKey('peekCardHeader')
-              ? GoogleAppsCardV1CardHeader.fromJson(json_['peekCardHeader']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sectionDividerStyle: json_['sectionDividerStyle'] as core.String?,
-          sections: (json_['sections'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1Section.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        cardActions:
+            (json_['cardActions'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1CardAction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        displayStyle: json_['displayStyle'] as core.String?,
+        fixedFooter:
+            json_.containsKey('fixedFooter')
+                ? GoogleAppsCardV1CardFixedFooter.fromJson(
+                  json_['fixedFooter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        header:
+            json_.containsKey('header')
+                ? GoogleAppsCardV1CardHeader.fromJson(
+                  json_['header'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        peekCardHeader:
+            json_.containsKey('peekCardHeader')
+                ? GoogleAppsCardV1CardHeader.fromJson(
+                  json_['peekCardHeader']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sectionDividerStyle: json_['sectionDividerStyle'] as core.String?,
+        sections:
+            (json_['sections'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1Section.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cardActions != null) 'cardActions': cardActions!,
-        if (displayStyle != null) 'displayStyle': displayStyle!,
-        if (fixedFooter != null) 'fixedFooter': fixedFooter!,
-        if (header != null) 'header': header!,
-        if (name != null) 'name': name!,
-        if (peekCardHeader != null) 'peekCardHeader': peekCardHeader!,
-        if (sectionDividerStyle != null)
-          'sectionDividerStyle': sectionDividerStyle!,
-        if (sections != null) 'sections': sections!,
-      };
+    if (cardActions != null) 'cardActions': cardActions!,
+    if (displayStyle != null) 'displayStyle': displayStyle!,
+    if (fixedFooter != null) 'fixedFooter': fixedFooter!,
+    if (header != null) 'header': header!,
+    if (name != null) 'name': name!,
+    if (peekCardHeader != null) 'peekCardHeader': peekCardHeader!,
+    if (sectionDividerStyle != null)
+      'sectionDividerStyle': sectionDividerStyle!,
+    if (sections != null) 'sections': sections!,
+  };
 }
 
 /// A card action is the action associated with the card.
@@ -4782,24 +4814,23 @@ class GoogleAppsCardV1CardAction {
   /// The `onClick` action for this action item.
   GoogleAppsCardV1OnClick? onClick;
 
-  GoogleAppsCardV1CardAction({
-    this.actionLabel,
-    this.onClick,
-  });
+  GoogleAppsCardV1CardAction({this.actionLabel, this.onClick});
 
   GoogleAppsCardV1CardAction.fromJson(core.Map json_)
-      : this(
-          actionLabel: json_['actionLabel'] as core.String?,
-          onClick: json_.containsKey('onClick')
-              ? GoogleAppsCardV1OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        actionLabel: json_['actionLabel'] as core.String?,
+        onClick:
+            json_.containsKey('onClick')
+                ? GoogleAppsCardV1OnClick.fromJson(
+                  json_['onClick'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (actionLabel != null) 'actionLabel': actionLabel!,
-        if (onClick != null) 'onClick': onClick!,
-      };
+    if (actionLabel != null) 'actionLabel': actionLabel!,
+    if (onClick != null) 'onClick': onClick!,
+  };
 }
 
 /// A persistent (sticky) footer that that appears at the bottom of the card.
@@ -4824,27 +4855,29 @@ class GoogleAppsCardV1CardFixedFooter {
   /// `secondaryButton` is set, you must also set `primaryButton`.
   GoogleAppsCardV1Button? secondaryButton;
 
-  GoogleAppsCardV1CardFixedFooter({
-    this.primaryButton,
-    this.secondaryButton,
-  });
+  GoogleAppsCardV1CardFixedFooter({this.primaryButton, this.secondaryButton});
 
   GoogleAppsCardV1CardFixedFooter.fromJson(core.Map json_)
-      : this(
-          primaryButton: json_.containsKey('primaryButton')
-              ? GoogleAppsCardV1Button.fromJson(
-                  json_['primaryButton'] as core.Map<core.String, core.dynamic>)
-              : null,
-          secondaryButton: json_.containsKey('secondaryButton')
-              ? GoogleAppsCardV1Button.fromJson(json_['secondaryButton']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        primaryButton:
+            json_.containsKey('primaryButton')
+                ? GoogleAppsCardV1Button.fromJson(
+                  json_['primaryButton'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        secondaryButton:
+            json_.containsKey('secondaryButton')
+                ? GoogleAppsCardV1Button.fromJson(
+                  json_['secondaryButton']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (primaryButton != null) 'primaryButton': primaryButton!,
-        if (secondaryButton != null) 'secondaryButton': secondaryButton!,
-      };
+    if (primaryButton != null) 'primaryButton': primaryButton!,
+    if (secondaryButton != null) 'secondaryButton': secondaryButton!,
+  };
 }
 
 /// Represents a card header.
@@ -4894,21 +4927,21 @@ class GoogleAppsCardV1CardHeader {
   });
 
   GoogleAppsCardV1CardHeader.fromJson(core.Map json_)
-      : this(
-          imageAltText: json_['imageAltText'] as core.String?,
-          imageType: json_['imageType'] as core.String?,
-          imageUrl: json_['imageUrl'] as core.String?,
-          subtitle: json_['subtitle'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        imageAltText: json_['imageAltText'] as core.String?,
+        imageType: json_['imageType'] as core.String?,
+        imageUrl: json_['imageUrl'] as core.String?,
+        subtitle: json_['subtitle'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (imageAltText != null) 'imageAltText': imageAltText!,
-        if (imageType != null) 'imageType': imageType!,
-        if (imageUrl != null) 'imageUrl': imageUrl!,
-        if (subtitle != null) 'subtitle': subtitle!,
-        if (title != null) 'title': title!,
-      };
+    if (imageAltText != null) 'imageAltText': imageAltText!,
+    if (imageType != null) 'imageType': imageType!,
+    if (imageUrl != null) 'imageUrl': imageUrl!,
+    if (subtitle != null) 'subtitle': subtitle!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// [Developer Preview](https://developers.google.com/workspace/preview): A
@@ -4926,21 +4959,23 @@ class GoogleAppsCardV1Carousel {
   /// A list of cards included in the carousel.
   core.List<GoogleAppsCardV1CarouselCard>? carouselCards;
 
-  GoogleAppsCardV1Carousel({
-    this.carouselCards,
-  });
+  GoogleAppsCardV1Carousel({this.carouselCards});
 
   GoogleAppsCardV1Carousel.fromJson(core.Map json_)
-      : this(
-          carouselCards: (json_['carouselCards'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1CarouselCard.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        carouselCards:
+            (json_['carouselCards'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1CarouselCard.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (carouselCards != null) 'carouselCards': carouselCards!,
-      };
+    if (carouselCards != null) 'carouselCards': carouselCards!,
+  };
 }
 
 /// [Developer Preview](https://developers.google.com/workspace/preview): A card
@@ -4958,27 +4993,32 @@ class GoogleAppsCardV1CarouselCard {
   /// The widgets are displayed in the order that they are specified.
   core.List<GoogleAppsCardV1NestedWidget>? widgets;
 
-  GoogleAppsCardV1CarouselCard({
-    this.footerWidgets,
-    this.widgets,
-  });
+  GoogleAppsCardV1CarouselCard({this.footerWidgets, this.widgets});
 
   GoogleAppsCardV1CarouselCard.fromJson(core.Map json_)
-      : this(
-          footerWidgets: (json_['footerWidgets'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1NestedWidget.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          widgets: (json_['widgets'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1NestedWidget.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        footerWidgets:
+            (json_['footerWidgets'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1NestedWidget.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        widgets:
+            (json_['widgets'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1NestedWidget.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (footerWidgets != null) 'footerWidgets': footerWidgets!,
-        if (widgets != null) 'widgets': widgets!,
-      };
+    if (footerWidgets != null) 'footerWidgets': footerWidgets!,
+    if (widgets != null) 'widgets': widgets!,
+  };
 }
 
 /// A text, icon, or text and icon chip that users can click.
@@ -5031,29 +5071,33 @@ class GoogleAppsCardV1Chip {
   });
 
   GoogleAppsCardV1Chip.fromJson(core.Map json_)
-      : this(
-          altText: json_['altText'] as core.String?,
-          disabled: json_['disabled'] as core.bool?,
-          enabled: json_['enabled'] as core.bool?,
-          icon: json_.containsKey('icon')
-              ? GoogleAppsCardV1Icon.fromJson(
-                  json_['icon'] as core.Map<core.String, core.dynamic>)
-              : null,
-          label: json_['label'] as core.String?,
-          onClick: json_.containsKey('onClick')
-              ? GoogleAppsCardV1OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        altText: json_['altText'] as core.String?,
+        disabled: json_['disabled'] as core.bool?,
+        enabled: json_['enabled'] as core.bool?,
+        icon:
+            json_.containsKey('icon')
+                ? GoogleAppsCardV1Icon.fromJson(
+                  json_['icon'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        label: json_['label'] as core.String?,
+        onClick:
+            json_.containsKey('onClick')
+                ? GoogleAppsCardV1OnClick.fromJson(
+                  json_['onClick'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (altText != null) 'altText': altText!,
-        if (disabled != null) 'disabled': disabled!,
-        if (enabled != null) 'enabled': enabled!,
-        if (icon != null) 'icon': icon!,
-        if (label != null) 'label': label!,
-        if (onClick != null) 'onClick': onClick!,
-      };
+    if (altText != null) 'altText': altText!,
+    if (disabled != null) 'disabled': disabled!,
+    if (enabled != null) 'enabled': enabled!,
+    if (icon != null) 'icon': icon!,
+    if (label != null) 'label': label!,
+    if (onClick != null) 'onClick': onClick!,
+  };
 }
 
 /// A list of chips layed out horizontally, which can either scroll horizontally
@@ -5074,24 +5118,25 @@ class GoogleAppsCardV1ChipList {
   /// fit in the available space.
   core.String? layout;
 
-  GoogleAppsCardV1ChipList({
-    this.chips,
-    this.layout,
-  });
+  GoogleAppsCardV1ChipList({this.chips, this.layout});
 
   GoogleAppsCardV1ChipList.fromJson(core.Map json_)
-      : this(
-          chips: (json_['chips'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1Chip.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          layout: json_['layout'] as core.String?,
-        );
+    : this(
+        chips:
+            (json_['chips'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1Chip.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        layout: json_['layout'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chips != null) 'chips': chips!,
-        if (layout != null) 'layout': layout!,
-      };
+    if (chips != null) 'chips': chips!,
+    if (layout != null) 'layout': layout!,
+  };
 }
 
 /// Represent an expand and collapse control.
@@ -5136,24 +5181,29 @@ class GoogleAppsCardV1CollapseControl {
   });
 
   GoogleAppsCardV1CollapseControl.fromJson(core.Map json_)
-      : this(
-          collapseButton: json_.containsKey('collapseButton')
-              ? GoogleAppsCardV1Button.fromJson(json_['collapseButton']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          expandButton: json_.containsKey('expandButton')
-              ? GoogleAppsCardV1Button.fromJson(
-                  json_['expandButton'] as core.Map<core.String, core.dynamic>)
-              : null,
-          horizontalAlignment: json_['horizontalAlignment'] as core.String?,
-        );
+    : this(
+        collapseButton:
+            json_.containsKey('collapseButton')
+                ? GoogleAppsCardV1Button.fromJson(
+                  json_['collapseButton']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        expandButton:
+            json_.containsKey('expandButton')
+                ? GoogleAppsCardV1Button.fromJson(
+                  json_['expandButton'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        horizontalAlignment: json_['horizontalAlignment'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (collapseButton != null) 'collapseButton': collapseButton!,
-        if (expandButton != null) 'expandButton': expandButton!,
-        if (horizontalAlignment != null)
-          'horizontalAlignment': horizontalAlignment!,
-      };
+    if (collapseButton != null) 'collapseButton': collapseButton!,
+    if (expandButton != null) 'expandButton': expandButton!,
+    if (horizontalAlignment != null)
+      'horizontalAlignment': horizontalAlignment!,
+  };
 }
 
 /// A column.
@@ -5204,24 +5254,28 @@ class GoogleAppsCardV1Column {
   });
 
   GoogleAppsCardV1Column.fromJson(core.Map json_)
-      : this(
-          horizontalAlignment: json_['horizontalAlignment'] as core.String?,
-          horizontalSizeStyle: json_['horizontalSizeStyle'] as core.String?,
-          verticalAlignment: json_['verticalAlignment'] as core.String?,
-          widgets: (json_['widgets'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1Widgets.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        horizontalAlignment: json_['horizontalAlignment'] as core.String?,
+        horizontalSizeStyle: json_['horizontalSizeStyle'] as core.String?,
+        verticalAlignment: json_['verticalAlignment'] as core.String?,
+        widgets:
+            (json_['widgets'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1Widgets.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (horizontalAlignment != null)
-          'horizontalAlignment': horizontalAlignment!,
-        if (horizontalSizeStyle != null)
-          'horizontalSizeStyle': horizontalSizeStyle!,
-        if (verticalAlignment != null) 'verticalAlignment': verticalAlignment!,
-        if (widgets != null) 'widgets': widgets!,
-      };
+    if (horizontalAlignment != null)
+      'horizontalAlignment': horizontalAlignment!,
+    if (horizontalSizeStyle != null)
+      'horizontalSizeStyle': horizontalSizeStyle!,
+    if (verticalAlignment != null) 'verticalAlignment': verticalAlignment!,
+    if (widgets != null) 'widgets': widgets!,
+  };
 }
 
 /// The `Columns` widget displays up to 2 columns in a card or dialog.
@@ -5251,21 +5305,23 @@ class GoogleAppsCardV1Columns {
   /// You can include up to 2 columns in a card or dialog.
   core.List<GoogleAppsCardV1Column>? columnItems;
 
-  GoogleAppsCardV1Columns({
-    this.columnItems,
-  });
+  GoogleAppsCardV1Columns({this.columnItems});
 
   GoogleAppsCardV1Columns.fromJson(core.Map json_)
-      : this(
-          columnItems: (json_['columnItems'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1Column.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        columnItems:
+            (json_['columnItems'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1Column.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnItems != null) 'columnItems': columnItems!,
-      };
+    if (columnItems != null) 'columnItems': columnItems!,
+  };
 }
 
 /// Lets users input a date, a time, or both a date and a time.
@@ -5332,27 +5388,29 @@ class GoogleAppsCardV1DateTimePicker {
   });
 
   GoogleAppsCardV1DateTimePicker.fromJson(core.Map json_)
-      : this(
-          label: json_['label'] as core.String?,
-          name: json_['name'] as core.String?,
-          onChangeAction: json_.containsKey('onChangeAction')
-              ? GoogleAppsCardV1Action.fromJson(json_['onChangeAction']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          timezoneOffsetDate: json_['timezoneOffsetDate'] as core.int?,
-          type: json_['type'] as core.String?,
-          valueMsEpoch: json_['valueMsEpoch'] as core.String?,
-        );
+    : this(
+        label: json_['label'] as core.String?,
+        name: json_['name'] as core.String?,
+        onChangeAction:
+            json_.containsKey('onChangeAction')
+                ? GoogleAppsCardV1Action.fromJson(
+                  json_['onChangeAction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        timezoneOffsetDate: json_['timezoneOffsetDate'] as core.int?,
+        type: json_['type'] as core.String?,
+        valueMsEpoch: json_['valueMsEpoch'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (label != null) 'label': label!,
-        if (name != null) 'name': name!,
-        if (onChangeAction != null) 'onChangeAction': onChangeAction!,
-        if (timezoneOffsetDate != null)
-          'timezoneOffsetDate': timezoneOffsetDate!,
-        if (type != null) 'type': type!,
-        if (valueMsEpoch != null) 'valueMsEpoch': valueMsEpoch!,
-      };
+    if (label != null) 'label': label!,
+    if (name != null) 'name': name!,
+    if (onChangeAction != null) 'onChangeAction': onChangeAction!,
+    if (timezoneOffsetDate != null) 'timezoneOffsetDate': timezoneOffsetDate!,
+    if (type != null) 'type': type!,
+    if (valueMsEpoch != null) 'valueMsEpoch': valueMsEpoch!,
+  };
 }
 
 /// A widget that displays text with optional decorations such as a label above
@@ -5434,49 +5492,61 @@ class GoogleAppsCardV1DecoratedText {
   });
 
   GoogleAppsCardV1DecoratedText.fromJson(core.Map json_)
-      : this(
-          bottomLabel: json_['bottomLabel'] as core.String?,
-          button: json_.containsKey('button')
-              ? GoogleAppsCardV1Button.fromJson(
-                  json_['button'] as core.Map<core.String, core.dynamic>)
-              : null,
-          endIcon: json_.containsKey('endIcon')
-              ? GoogleAppsCardV1Icon.fromJson(
-                  json_['endIcon'] as core.Map<core.String, core.dynamic>)
-              : null,
-          icon: json_.containsKey('icon')
-              ? GoogleAppsCardV1Icon.fromJson(
-                  json_['icon'] as core.Map<core.String, core.dynamic>)
-              : null,
-          onClick: json_.containsKey('onClick')
-              ? GoogleAppsCardV1OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startIcon: json_.containsKey('startIcon')
-              ? GoogleAppsCardV1Icon.fromJson(
-                  json_['startIcon'] as core.Map<core.String, core.dynamic>)
-              : null,
-          switchControl: json_.containsKey('switchControl')
-              ? GoogleAppsCardV1SwitchControl.fromJson(
-                  json_['switchControl'] as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_['text'] as core.String?,
-          topLabel: json_['topLabel'] as core.String?,
-          wrapText: json_['wrapText'] as core.bool?,
-        );
+    : this(
+        bottomLabel: json_['bottomLabel'] as core.String?,
+        button:
+            json_.containsKey('button')
+                ? GoogleAppsCardV1Button.fromJson(
+                  json_['button'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endIcon:
+            json_.containsKey('endIcon')
+                ? GoogleAppsCardV1Icon.fromJson(
+                  json_['endIcon'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        icon:
+            json_.containsKey('icon')
+                ? GoogleAppsCardV1Icon.fromJson(
+                  json_['icon'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        onClick:
+            json_.containsKey('onClick')
+                ? GoogleAppsCardV1OnClick.fromJson(
+                  json_['onClick'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startIcon:
+            json_.containsKey('startIcon')
+                ? GoogleAppsCardV1Icon.fromJson(
+                  json_['startIcon'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        switchControl:
+            json_.containsKey('switchControl')
+                ? GoogleAppsCardV1SwitchControl.fromJson(
+                  json_['switchControl'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text: json_['text'] as core.String?,
+        topLabel: json_['topLabel'] as core.String?,
+        wrapText: json_['wrapText'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bottomLabel != null) 'bottomLabel': bottomLabel!,
-        if (button != null) 'button': button!,
-        if (endIcon != null) 'endIcon': endIcon!,
-        if (icon != null) 'icon': icon!,
-        if (onClick != null) 'onClick': onClick!,
-        if (startIcon != null) 'startIcon': startIcon!,
-        if (switchControl != null) 'switchControl': switchControl!,
-        if (text != null) 'text': text!,
-        if (topLabel != null) 'topLabel': topLabel!,
-        if (wrapText != null) 'wrapText': wrapText!,
-      };
+    if (bottomLabel != null) 'bottomLabel': bottomLabel!,
+    if (button != null) 'button': button!,
+    if (endIcon != null) 'endIcon': endIcon!,
+    if (icon != null) 'icon': icon!,
+    if (onClick != null) 'onClick': onClick!,
+    if (startIcon != null) 'startIcon': startIcon!,
+    if (switchControl != null) 'switchControl': switchControl!,
+    if (text != null) 'text': text!,
+    if (topLabel != null) 'topLabel': topLabel!,
+    if (wrapText != null) 'wrapText': wrapText!,
+  };
 }
 
 /// Displays a divider between widgets as a horizontal line.
@@ -5536,30 +5606,38 @@ class GoogleAppsCardV1Grid {
   });
 
   GoogleAppsCardV1Grid.fromJson(core.Map json_)
-      : this(
-          borderStyle: json_.containsKey('borderStyle')
-              ? GoogleAppsCardV1BorderStyle.fromJson(
-                  json_['borderStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          columnCount: json_['columnCount'] as core.int?,
-          items: (json_['items'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1GridItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          onClick: json_.containsKey('onClick')
-              ? GoogleAppsCardV1OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>)
-              : null,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        borderStyle:
+            json_.containsKey('borderStyle')
+                ? GoogleAppsCardV1BorderStyle.fromJson(
+                  json_['borderStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        columnCount: json_['columnCount'] as core.int?,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1GridItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        onClick:
+            json_.containsKey('onClick')
+                ? GoogleAppsCardV1OnClick.fromJson(
+                  json_['onClick'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (borderStyle != null) 'borderStyle': borderStyle!,
-        if (columnCount != null) 'columnCount': columnCount!,
-        if (items != null) 'items': items!,
-        if (onClick != null) 'onClick': onClick!,
-        if (title != null) 'title': title!,
-      };
+    if (borderStyle != null) 'borderStyle': borderStyle!,
+    if (columnCount != null) 'columnCount': columnCount!,
+    if (items != null) 'items': items!,
+    if (onClick != null) 'onClick': onClick!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Represents an item in a grid layout.
@@ -5601,24 +5679,26 @@ class GoogleAppsCardV1GridItem {
   });
 
   GoogleAppsCardV1GridItem.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          image: json_.containsKey('image')
-              ? GoogleAppsCardV1ImageComponent.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
-              : null,
-          layout: json_['layout'] as core.String?,
-          subtitle: json_['subtitle'] as core.String?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        image:
+            json_.containsKey('image')
+                ? GoogleAppsCardV1ImageComponent.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        layout: json_['layout'] as core.String?,
+        subtitle: json_['subtitle'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (image != null) 'image': image!,
-        if (layout != null) 'layout': layout!,
-        if (subtitle != null) 'subtitle': subtitle!,
-        if (title != null) 'title': title!,
-      };
+    if (id != null) 'id': id!,
+    if (image != null) 'image': image!,
+    if (layout != null) 'layout': layout!,
+    if (subtitle != null) 'subtitle': subtitle!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// An icon displayed in a widget on a card.
@@ -5689,24 +5769,26 @@ class GoogleAppsCardV1Icon {
   });
 
   GoogleAppsCardV1Icon.fromJson(core.Map json_)
-      : this(
-          altText: json_['altText'] as core.String?,
-          iconUrl: json_['iconUrl'] as core.String?,
-          imageType: json_['imageType'] as core.String?,
-          knownIcon: json_['knownIcon'] as core.String?,
-          materialIcon: json_.containsKey('materialIcon')
-              ? GoogleAppsCardV1MaterialIcon.fromJson(
-                  json_['materialIcon'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        altText: json_['altText'] as core.String?,
+        iconUrl: json_['iconUrl'] as core.String?,
+        imageType: json_['imageType'] as core.String?,
+        knownIcon: json_['knownIcon'] as core.String?,
+        materialIcon:
+            json_.containsKey('materialIcon')
+                ? GoogleAppsCardV1MaterialIcon.fromJson(
+                  json_['materialIcon'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (altText != null) 'altText': altText!,
-        if (iconUrl != null) 'iconUrl': iconUrl!,
-        if (imageType != null) 'imageType': imageType!,
-        if (knownIcon != null) 'knownIcon': knownIcon!,
-        if (materialIcon != null) 'materialIcon': materialIcon!,
-      };
+    if (altText != null) 'altText': altText!,
+    if (iconUrl != null) 'iconUrl': iconUrl!,
+    if (imageType != null) 'imageType': imageType!,
+    if (knownIcon != null) 'knownIcon': knownIcon!,
+    if (materialIcon != null) 'materialIcon': materialIcon!,
+  };
 }
 
 /// An image that is specified by a URL and can have an `onClick` action.
@@ -5729,27 +5811,25 @@ class GoogleAppsCardV1Image {
   /// When a user clicks the image, the click triggers this action.
   GoogleAppsCardV1OnClick? onClick;
 
-  GoogleAppsCardV1Image({
-    this.altText,
-    this.imageUrl,
-    this.onClick,
-  });
+  GoogleAppsCardV1Image({this.altText, this.imageUrl, this.onClick});
 
   GoogleAppsCardV1Image.fromJson(core.Map json_)
-      : this(
-          altText: json_['altText'] as core.String?,
-          imageUrl: json_['imageUrl'] as core.String?,
-          onClick: json_.containsKey('onClick')
-              ? GoogleAppsCardV1OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        altText: json_['altText'] as core.String?,
+        imageUrl: json_['imageUrl'] as core.String?,
+        onClick:
+            json_.containsKey('onClick')
+                ? GoogleAppsCardV1OnClick.fromJson(
+                  json_['onClick'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (altText != null) 'altText': altText!,
-        if (imageUrl != null) 'imageUrl': imageUrl!,
-        if (onClick != null) 'onClick': onClick!,
-      };
+    if (altText != null) 'altText': altText!,
+    if (imageUrl != null) 'imageUrl': imageUrl!,
+    if (onClick != null) 'onClick': onClick!,
+  };
 }
 
 /// Represents an image.
@@ -5777,25 +5857,29 @@ class GoogleAppsCardV1ImageComponent {
   });
 
   GoogleAppsCardV1ImageComponent.fromJson(core.Map json_)
-      : this(
-          altText: json_['altText'] as core.String?,
-          borderStyle: json_.containsKey('borderStyle')
-              ? GoogleAppsCardV1BorderStyle.fromJson(
-                  json_['borderStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          cropStyle: json_.containsKey('cropStyle')
-              ? GoogleAppsCardV1ImageCropStyle.fromJson(
-                  json_['cropStyle'] as core.Map<core.String, core.dynamic>)
-              : null,
-          imageUri: json_['imageUri'] as core.String?,
-        );
+    : this(
+        altText: json_['altText'] as core.String?,
+        borderStyle:
+            json_.containsKey('borderStyle')
+                ? GoogleAppsCardV1BorderStyle.fromJson(
+                  json_['borderStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cropStyle:
+            json_.containsKey('cropStyle')
+                ? GoogleAppsCardV1ImageCropStyle.fromJson(
+                  json_['cropStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        imageUri: json_['imageUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (altText != null) 'altText': altText!,
-        if (borderStyle != null) 'borderStyle': borderStyle!,
-        if (cropStyle != null) 'cropStyle': cropStyle!,
-        if (imageUri != null) 'imageUri': imageUri!,
-      };
+    if (altText != null) 'altText': altText!,
+    if (borderStyle != null) 'borderStyle': borderStyle!,
+    if (cropStyle != null) 'cropStyle': cropStyle!,
+    if (imageUri != null) 'imageUri': imageUri!,
+  };
 }
 
 /// Represents the crop style applied to an image.
@@ -5821,21 +5905,18 @@ class GoogleAppsCardV1ImageCropStyle {
   /// - "RECTANGLE_4_3" : Applies a rectangular crop with a 4:3 aspect ratio.
   core.String? type;
 
-  GoogleAppsCardV1ImageCropStyle({
-    this.aspectRatio,
-    this.type,
-  });
+  GoogleAppsCardV1ImageCropStyle({this.aspectRatio, this.type});
 
   GoogleAppsCardV1ImageCropStyle.fromJson(core.Map json_)
-      : this(
-          aspectRatio: (json_['aspectRatio'] as core.num?)?.toDouble(),
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        aspectRatio: (json_['aspectRatio'] as core.num?)?.toDouble(),
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aspectRatio != null) 'aspectRatio': aspectRatio!,
-        if (type != null) 'type': type!,
-      };
+    if (aspectRatio != null) 'aspectRatio': aspectRatio!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A [Google Material Icon](https://fonts.google.com/icons), which includes
@@ -5881,27 +5962,22 @@ class GoogleAppsCardV1MaterialIcon {
   /// settings under **Customize**.
   core.int? weight;
 
-  GoogleAppsCardV1MaterialIcon({
-    this.fill,
-    this.grade,
-    this.name,
-    this.weight,
-  });
+  GoogleAppsCardV1MaterialIcon({this.fill, this.grade, this.name, this.weight});
 
   GoogleAppsCardV1MaterialIcon.fromJson(core.Map json_)
-      : this(
-          fill: json_['fill'] as core.bool?,
-          grade: json_['grade'] as core.int?,
-          name: json_['name'] as core.String?,
-          weight: json_['weight'] as core.int?,
-        );
+    : this(
+        fill: json_['fill'] as core.bool?,
+        grade: json_['grade'] as core.int?,
+        name: json_['name'] as core.String?,
+        weight: json_['weight'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fill != null) 'fill': fill!,
-        if (grade != null) 'grade': grade!,
-        if (name != null) 'name': name!,
-        if (weight != null) 'weight': weight!,
-      };
+    if (fill != null) 'fill': fill!,
+    if (grade != null) 'grade': grade!,
+    if (name != null) 'name': name!,
+    if (weight != null) 'weight': weight!,
+  };
 }
 
 /// [Developer Preview](https://developers.google.com/workspace/preview): A list
@@ -5926,26 +6002,32 @@ class GoogleAppsCardV1NestedWidget {
   });
 
   GoogleAppsCardV1NestedWidget.fromJson(core.Map json_)
-      : this(
-          buttonList: json_.containsKey('buttonList')
-              ? GoogleAppsCardV1ButtonList.fromJson(
-                  json_['buttonList'] as core.Map<core.String, core.dynamic>)
-              : null,
-          image: json_.containsKey('image')
-              ? GoogleAppsCardV1Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textParagraph: json_.containsKey('textParagraph')
-              ? GoogleAppsCardV1TextParagraph.fromJson(
-                  json_['textParagraph'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        buttonList:
+            json_.containsKey('buttonList')
+                ? GoogleAppsCardV1ButtonList.fromJson(
+                  json_['buttonList'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        image:
+            json_.containsKey('image')
+                ? GoogleAppsCardV1Image.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textParagraph:
+            json_.containsKey('textParagraph')
+                ? GoogleAppsCardV1TextParagraph.fromJson(
+                  json_['textParagraph'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttonList != null) 'buttonList': buttonList!,
-        if (image != null) 'image': image!,
-        if (textParagraph != null) 'textParagraph': textParagraph!,
-      };
+    if (buttonList != null) 'buttonList': buttonList!,
+    if (image != null) 'image': image!,
+    if (textParagraph != null) 'textParagraph': textParagraph!,
+  };
 }
 
 /// Represents how to respond when users click an interactive element on a card,
@@ -5986,37 +6068,48 @@ class GoogleAppsCardV1OnClick {
   });
 
   GoogleAppsCardV1OnClick.fromJson(core.Map json_)
-      : this(
-          action: json_.containsKey('action')
-              ? GoogleAppsCardV1Action.fromJson(
-                  json_['action'] as core.Map<core.String, core.dynamic>)
-              : null,
-          card: json_.containsKey('card')
-              ? GoogleAppsCardV1Card.fromJson(
-                  json_['card'] as core.Map<core.String, core.dynamic>)
-              : null,
-          openDynamicLinkAction: json_.containsKey('openDynamicLinkAction')
-              ? GoogleAppsCardV1Action.fromJson(json_['openDynamicLinkAction']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          openLink: json_.containsKey('openLink')
-              ? GoogleAppsCardV1OpenLink.fromJson(
-                  json_['openLink'] as core.Map<core.String, core.dynamic>)
-              : null,
-          overflowMenu: json_.containsKey('overflowMenu')
-              ? GoogleAppsCardV1OverflowMenu.fromJson(
-                  json_['overflowMenu'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        action:
+            json_.containsKey('action')
+                ? GoogleAppsCardV1Action.fromJson(
+                  json_['action'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        card:
+            json_.containsKey('card')
+                ? GoogleAppsCardV1Card.fromJson(
+                  json_['card'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        openDynamicLinkAction:
+            json_.containsKey('openDynamicLinkAction')
+                ? GoogleAppsCardV1Action.fromJson(
+                  json_['openDynamicLinkAction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        openLink:
+            json_.containsKey('openLink')
+                ? GoogleAppsCardV1OpenLink.fromJson(
+                  json_['openLink'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        overflowMenu:
+            json_.containsKey('overflowMenu')
+                ? GoogleAppsCardV1OverflowMenu.fromJson(
+                  json_['overflowMenu'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (card != null) 'card': card!,
-        if (openDynamicLinkAction != null)
-          'openDynamicLinkAction': openDynamicLinkAction!,
-        if (openLink != null) 'openLink': openLink!,
-        if (overflowMenu != null) 'overflowMenu': overflowMenu!,
-      };
+    if (action != null) 'action': action!,
+    if (card != null) 'card': card!,
+    if (openDynamicLinkAction != null)
+      'openDynamicLinkAction': openDynamicLinkAction!,
+    if (openLink != null) 'openLink': openLink!,
+    if (overflowMenu != null) 'overflowMenu': overflowMenu!,
+  };
 }
 
 /// Represents an `onClick` event that opens a hyperlink.
@@ -6051,24 +6144,20 @@ class GoogleAppsCardV1OpenLink {
   /// The URL to open.
   core.String? url;
 
-  GoogleAppsCardV1OpenLink({
-    this.onClose,
-    this.openAs,
-    this.url,
-  });
+  GoogleAppsCardV1OpenLink({this.onClose, this.openAs, this.url});
 
   GoogleAppsCardV1OpenLink.fromJson(core.Map json_)
-      : this(
-          onClose: json_['onClose'] as core.String?,
-          openAs: json_['openAs'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        onClose: json_['onClose'] as core.String?,
+        openAs: json_['openAs'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (onClose != null) 'onClose': onClose!,
-        if (openAs != null) 'openAs': openAs!,
-        if (url != null) 'url': url!,
-      };
+    if (onClose != null) 'onClose': onClose!,
+    if (openAs != null) 'openAs': openAs!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// A widget that presents a pop-up menu with one or more actions that users can
@@ -6085,21 +6174,23 @@ class GoogleAppsCardV1OverflowMenu {
   /// Required.
   core.List<GoogleAppsCardV1OverflowMenuItem>? items;
 
-  GoogleAppsCardV1OverflowMenu({
-    this.items,
-  });
+  GoogleAppsCardV1OverflowMenu({this.items});
 
   GoogleAppsCardV1OverflowMenu.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1OverflowMenuItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1OverflowMenuItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-      };
+    if (items != null) 'items': items!,
+  };
 }
 
 /// An option that users can invoke in an overflow menu.
@@ -6136,25 +6227,29 @@ class GoogleAppsCardV1OverflowMenuItem {
   });
 
   GoogleAppsCardV1OverflowMenuItem.fromJson(core.Map json_)
-      : this(
-          disabled: json_['disabled'] as core.bool?,
-          onClick: json_.containsKey('onClick')
-              ? GoogleAppsCardV1OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>)
-              : null,
-          startIcon: json_.containsKey('startIcon')
-              ? GoogleAppsCardV1Icon.fromJson(
-                  json_['startIcon'] as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        disabled: json_['disabled'] as core.bool?,
+        onClick:
+            json_.containsKey('onClick')
+                ? GoogleAppsCardV1OnClick.fromJson(
+                  json_['onClick'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startIcon:
+            json_.containsKey('startIcon')
+                ? GoogleAppsCardV1Icon.fromJson(
+                  json_['startIcon'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disabled != null) 'disabled': disabled!,
-        if (onClick != null) 'onClick': onClick!,
-        if (startIcon != null) 'startIcon': startIcon!,
-        if (text != null) 'text': text!,
-      };
+    if (disabled != null) 'disabled': disabled!,
+    if (onClick != null) 'onClick': onClick!,
+    if (startIcon != null) 'startIcon': startIcon!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// For a `SelectionInput` widget that uses a multiselect menu, a data source
@@ -6185,18 +6280,21 @@ class GoogleAppsCardV1PlatformDataSource {
   });
 
   GoogleAppsCardV1PlatformDataSource.fromJson(core.Map json_)
-      : this(
-          commonDataSource: json_['commonDataSource'] as core.String?,
-          hostAppDataSource: json_.containsKey('hostAppDataSource')
-              ? HostAppDataSourceMarkup.fromJson(json_['hostAppDataSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        commonDataSource: json_['commonDataSource'] as core.String?,
+        hostAppDataSource:
+            json_.containsKey('hostAppDataSource')
+                ? HostAppDataSourceMarkup.fromJson(
+                  json_['hostAppDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commonDataSource != null) 'commonDataSource': commonDataSource!,
-        if (hostAppDataSource != null) 'hostAppDataSource': hostAppDataSource!,
-      };
+    if (commonDataSource != null) 'commonDataSource': commonDataSource!,
+    if (hostAppDataSource != null) 'hostAppDataSource': hostAppDataSource!,
+  };
 }
 
 /// A section contains a collection of widgets that are rendered vertically in
@@ -6254,30 +6352,36 @@ class GoogleAppsCardV1Section {
   });
 
   GoogleAppsCardV1Section.fromJson(core.Map json_)
-      : this(
-          collapseControl: json_.containsKey('collapseControl')
-              ? GoogleAppsCardV1CollapseControl.fromJson(
+    : this(
+        collapseControl:
+            json_.containsKey('collapseControl')
+                ? GoogleAppsCardV1CollapseControl.fromJson(
                   json_['collapseControl']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          collapsible: json_['collapsible'] as core.bool?,
-          header: json_['header'] as core.String?,
-          uncollapsibleWidgetsCount:
-              json_['uncollapsibleWidgetsCount'] as core.int?,
-          widgets: (json_['widgets'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1Widget.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        collapsible: json_['collapsible'] as core.bool?,
+        header: json_['header'] as core.String?,
+        uncollapsibleWidgetsCount:
+            json_['uncollapsibleWidgetsCount'] as core.int?,
+        widgets:
+            (json_['widgets'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1Widget.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (collapseControl != null) 'collapseControl': collapseControl!,
-        if (collapsible != null) 'collapsible': collapsible!,
-        if (header != null) 'header': header!,
-        if (uncollapsibleWidgetsCount != null)
-          'uncollapsibleWidgetsCount': uncollapsibleWidgetsCount!,
-        if (widgets != null) 'widgets': widgets!,
-      };
+    if (collapseControl != null) 'collapseControl': collapseControl!,
+    if (collapsible != null) 'collapsible': collapsible!,
+    if (header != null) 'header': header!,
+    if (uncollapsibleWidgetsCount != null)
+      'uncollapsibleWidgetsCount': uncollapsibleWidgetsCount!,
+    if (widgets != null) 'widgets': widgets!,
+  };
 }
 
 /// A widget that creates one or more UI items that users can select.
@@ -6399,50 +6503,60 @@ class GoogleAppsCardV1SelectionInput {
   });
 
   GoogleAppsCardV1SelectionInput.fromJson(core.Map json_)
-      : this(
-          externalDataSource: json_.containsKey('externalDataSource')
-              ? GoogleAppsCardV1Action.fromJson(json_['externalDataSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          hintText: json_['hintText'] as core.String?,
-          items: (json_['items'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1SelectionItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          label: json_['label'] as core.String?,
-          multiSelectMaxSelectedItems:
-              json_['multiSelectMaxSelectedItems'] as core.int?,
-          multiSelectMinQueryLength:
-              json_['multiSelectMinQueryLength'] as core.int?,
-          name: json_['name'] as core.String?,
-          onChangeAction: json_.containsKey('onChangeAction')
-              ? GoogleAppsCardV1Action.fromJson(json_['onChangeAction']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          platformDataSource: json_.containsKey('platformDataSource')
-              ? GoogleAppsCardV1PlatformDataSource.fromJson(
+    : this(
+        externalDataSource:
+            json_.containsKey('externalDataSource')
+                ? GoogleAppsCardV1Action.fromJson(
+                  json_['externalDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hintText: json_['hintText'] as core.String?,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1SelectionItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        label: json_['label'] as core.String?,
+        multiSelectMaxSelectedItems:
+            json_['multiSelectMaxSelectedItems'] as core.int?,
+        multiSelectMinQueryLength:
+            json_['multiSelectMinQueryLength'] as core.int?,
+        name: json_['name'] as core.String?,
+        onChangeAction:
+            json_.containsKey('onChangeAction')
+                ? GoogleAppsCardV1Action.fromJson(
+                  json_['onChangeAction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        platformDataSource:
+            json_.containsKey('platformDataSource')
+                ? GoogleAppsCardV1PlatformDataSource.fromJson(
                   json_['platformDataSource']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          type: json_['type'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (externalDataSource != null)
-          'externalDataSource': externalDataSource!,
-        if (hintText != null) 'hintText': hintText!,
-        if (items != null) 'items': items!,
-        if (label != null) 'label': label!,
-        if (multiSelectMaxSelectedItems != null)
-          'multiSelectMaxSelectedItems': multiSelectMaxSelectedItems!,
-        if (multiSelectMinQueryLength != null)
-          'multiSelectMinQueryLength': multiSelectMinQueryLength!,
-        if (name != null) 'name': name!,
-        if (onChangeAction != null) 'onChangeAction': onChangeAction!,
-        if (platformDataSource != null)
-          'platformDataSource': platformDataSource!,
-        if (type != null) 'type': type!,
-      };
+    if (externalDataSource != null) 'externalDataSource': externalDataSource!,
+    if (hintText != null) 'hintText': hintText!,
+    if (items != null) 'items': items!,
+    if (label != null) 'label': label!,
+    if (multiSelectMaxSelectedItems != null)
+      'multiSelectMaxSelectedItems': multiSelectMaxSelectedItems!,
+    if (multiSelectMinQueryLength != null)
+      'multiSelectMinQueryLength': multiSelectMinQueryLength!,
+    if (name != null) 'name': name!,
+    if (onChangeAction != null) 'onChangeAction': onChangeAction!,
+    if (platformDataSource != null) 'platformDataSource': platformDataSource!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// An item that users can select in a selection input, such as a checkbox or
@@ -6481,21 +6595,21 @@ class GoogleAppsCardV1SelectionItem {
   });
 
   GoogleAppsCardV1SelectionItem.fromJson(core.Map json_)
-      : this(
-          bottomText: json_['bottomText'] as core.String?,
-          selected: json_['selected'] as core.bool?,
-          startIconUri: json_['startIconUri'] as core.String?,
-          text: json_['text'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        bottomText: json_['bottomText'] as core.String?,
+        selected: json_['selected'] as core.bool?,
+        startIconUri: json_['startIconUri'] as core.String?,
+        text: json_['text'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bottomText != null) 'bottomText': bottomText!,
-        if (selected != null) 'selected': selected!,
-        if (startIconUri != null) 'startIconUri': startIconUri!,
-        if (text != null) 'text': text!,
-        if (value != null) 'value': value!,
-      };
+    if (bottomText != null) 'bottomText': bottomText!,
+    if (selected != null) 'selected': selected!,
+    if (startIconUri != null) 'startIconUri': startIconUri!,
+    if (text != null) 'text': text!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// One suggested value that users can enter in a text input field.
@@ -6508,18 +6622,14 @@ class GoogleAppsCardV1SuggestionItem {
   /// This is equivalent to what users enter themselves.
   core.String? text;
 
-  GoogleAppsCardV1SuggestionItem({
-    this.text,
-  });
+  GoogleAppsCardV1SuggestionItem({this.text});
 
   GoogleAppsCardV1SuggestionItem.fromJson(core.Map json_)
-      : this(
-          text: json_['text'] as core.String?,
-        );
+    : this(text: json_['text'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (text != null) 'text': text!,
-      };
+    if (text != null) 'text': text!,
+  };
 }
 
 /// Suggested values that users can enter.
@@ -6540,21 +6650,23 @@ class GoogleAppsCardV1Suggestions {
   /// fields.
   core.List<GoogleAppsCardV1SuggestionItem>? items;
 
-  GoogleAppsCardV1Suggestions({
-    this.items,
-  });
+  GoogleAppsCardV1Suggestions({this.items});
 
   GoogleAppsCardV1Suggestions.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1SuggestionItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1SuggestionItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-      };
+    if (items != null) 'items': items!,
+  };
 }
 
 /// Either a toggle-style switch or a checkbox inside a `decoratedText` widget.
@@ -6601,24 +6713,27 @@ class GoogleAppsCardV1SwitchControl {
   });
 
   GoogleAppsCardV1SwitchControl.fromJson(core.Map json_)
-      : this(
-          controlType: json_['controlType'] as core.String?,
-          name: json_['name'] as core.String?,
-          onChangeAction: json_.containsKey('onChangeAction')
-              ? GoogleAppsCardV1Action.fromJson(json_['onChangeAction']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          selected: json_['selected'] as core.bool?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        controlType: json_['controlType'] as core.String?,
+        name: json_['name'] as core.String?,
+        onChangeAction:
+            json_.containsKey('onChangeAction')
+                ? GoogleAppsCardV1Action.fromJson(
+                  json_['onChangeAction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        selected: json_['selected'] as core.bool?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (controlType != null) 'controlType': controlType!,
-        if (name != null) 'name': name!,
-        if (onChangeAction != null) 'onChangeAction': onChangeAction!,
-        if (selected != null) 'selected': selected!,
-        if (value != null) 'value': value!,
-      };
+    if (controlType != null) 'controlType': controlType!,
+    if (name != null) 'name': name!,
+    if (onChangeAction != null) 'onChangeAction': onChangeAction!,
+    if (selected != null) 'selected': selected!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// A field in which users can enter text.
@@ -6734,45 +6849,54 @@ class GoogleAppsCardV1TextInput {
   });
 
   GoogleAppsCardV1TextInput.fromJson(core.Map json_)
-      : this(
-          autoCompleteAction: json_.containsKey('autoCompleteAction')
-              ? GoogleAppsCardV1Action.fromJson(json_['autoCompleteAction']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          hintText: json_['hintText'] as core.String?,
-          initialSuggestions: json_.containsKey('initialSuggestions')
-              ? GoogleAppsCardV1Suggestions.fromJson(json_['initialSuggestions']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          label: json_['label'] as core.String?,
-          name: json_['name'] as core.String?,
-          onChangeAction: json_.containsKey('onChangeAction')
-              ? GoogleAppsCardV1Action.fromJson(json_['onChangeAction']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          placeholderText: json_['placeholderText'] as core.String?,
-          type: json_['type'] as core.String?,
-          validation: json_.containsKey('validation')
-              ? GoogleAppsCardV1Validation.fromJson(
-                  json_['validation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        autoCompleteAction:
+            json_.containsKey('autoCompleteAction')
+                ? GoogleAppsCardV1Action.fromJson(
+                  json_['autoCompleteAction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hintText: json_['hintText'] as core.String?,
+        initialSuggestions:
+            json_.containsKey('initialSuggestions')
+                ? GoogleAppsCardV1Suggestions.fromJson(
+                  json_['initialSuggestions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        label: json_['label'] as core.String?,
+        name: json_['name'] as core.String?,
+        onChangeAction:
+            json_.containsKey('onChangeAction')
+                ? GoogleAppsCardV1Action.fromJson(
+                  json_['onChangeAction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        placeholderText: json_['placeholderText'] as core.String?,
+        type: json_['type'] as core.String?,
+        validation:
+            json_.containsKey('validation')
+                ? GoogleAppsCardV1Validation.fromJson(
+                  json_['validation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoCompleteAction != null)
-          'autoCompleteAction': autoCompleteAction!,
-        if (hintText != null) 'hintText': hintText!,
-        if (initialSuggestions != null)
-          'initialSuggestions': initialSuggestions!,
-        if (label != null) 'label': label!,
-        if (name != null) 'name': name!,
-        if (onChangeAction != null) 'onChangeAction': onChangeAction!,
-        if (placeholderText != null) 'placeholderText': placeholderText!,
-        if (type != null) 'type': type!,
-        if (validation != null) 'validation': validation!,
-        if (value != null) 'value': value!,
-      };
+    if (autoCompleteAction != null) 'autoCompleteAction': autoCompleteAction!,
+    if (hintText != null) 'hintText': hintText!,
+    if (initialSuggestions != null) 'initialSuggestions': initialSuggestions!,
+    if (label != null) 'label': label!,
+    if (name != null) 'name': name!,
+    if (onChangeAction != null) 'onChangeAction': onChangeAction!,
+    if (placeholderText != null) 'placeholderText': placeholderText!,
+    if (type != null) 'type': type!,
+    if (validation != null) 'validation': validation!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// A paragraph of text that supports formatting.
@@ -6798,21 +6922,18 @@ class GoogleAppsCardV1TextParagraph {
   /// The text that's shown in the widget.
   core.String? text;
 
-  GoogleAppsCardV1TextParagraph({
-    this.maxLines,
-    this.text,
-  });
+  GoogleAppsCardV1TextParagraph({this.maxLines, this.text});
 
   GoogleAppsCardV1TextParagraph.fromJson(core.Map json_)
-      : this(
-          maxLines: json_['maxLines'] as core.int?,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        maxLines: json_['maxLines'] as core.int?,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxLines != null) 'maxLines': maxLines!,
-        if (text != null) 'text': text!,
-      };
+    if (maxLines != null) 'maxLines': maxLines!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// Represents the necessary data for validating the widget it's attached to.
@@ -6840,21 +6961,18 @@ class GoogleAppsCardV1Validation {
   /// - "EMOJI_PICKER" : A emoji selected from system-provided emoji picker.
   core.String? inputType;
 
-  GoogleAppsCardV1Validation({
-    this.characterLimit,
-    this.inputType,
-  });
+  GoogleAppsCardV1Validation({this.characterLimit, this.inputType});
 
   GoogleAppsCardV1Validation.fromJson(core.Map json_)
-      : this(
-          characterLimit: json_['characterLimit'] as core.int?,
-          inputType: json_['inputType'] as core.String?,
-        );
+    : this(
+        characterLimit: json_['characterLimit'] as core.int?,
+        inputType: json_['inputType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (characterLimit != null) 'characterLimit': characterLimit!,
-        if (inputType != null) 'inputType': inputType!,
-      };
+    if (characterLimit != null) 'characterLimit': characterLimit!,
+    if (inputType != null) 'inputType': inputType!,
+  };
 }
 
 /// Each card is made up of widgets.
@@ -7011,74 +7129,100 @@ class GoogleAppsCardV1Widget {
   });
 
   GoogleAppsCardV1Widget.fromJson(core.Map json_)
-      : this(
-          buttonList: json_.containsKey('buttonList')
-              ? GoogleAppsCardV1ButtonList.fromJson(
-                  json_['buttonList'] as core.Map<core.String, core.dynamic>)
-              : null,
-          carousel: json_.containsKey('carousel')
-              ? GoogleAppsCardV1Carousel.fromJson(
-                  json_['carousel'] as core.Map<core.String, core.dynamic>)
-              : null,
-          chipList: json_.containsKey('chipList')
-              ? GoogleAppsCardV1ChipList.fromJson(
-                  json_['chipList'] as core.Map<core.String, core.dynamic>)
-              : null,
-          columns: json_.containsKey('columns')
-              ? GoogleAppsCardV1Columns.fromJson(
-                  json_['columns'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dateTimePicker: json_.containsKey('dateTimePicker')
-              ? GoogleAppsCardV1DateTimePicker.fromJson(json_['dateTimePicker']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          decoratedText: json_.containsKey('decoratedText')
-              ? GoogleAppsCardV1DecoratedText.fromJson(
-                  json_['decoratedText'] as core.Map<core.String, core.dynamic>)
-              : null,
-          divider: json_.containsKey('divider')
-              ? GoogleAppsCardV1Divider.fromJson(
-                  json_['divider'] as core.Map<core.String, core.dynamic>)
-              : null,
-          grid: json_.containsKey('grid')
-              ? GoogleAppsCardV1Grid.fromJson(
-                  json_['grid'] as core.Map<core.String, core.dynamic>)
-              : null,
-          horizontalAlignment: json_['horizontalAlignment'] as core.String?,
-          image: json_.containsKey('image')
-              ? GoogleAppsCardV1Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
-              : null,
-          selectionInput: json_.containsKey('selectionInput')
-              ? GoogleAppsCardV1SelectionInput.fromJson(json_['selectionInput']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          textInput: json_.containsKey('textInput')
-              ? GoogleAppsCardV1TextInput.fromJson(
-                  json_['textInput'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textParagraph: json_.containsKey('textParagraph')
-              ? GoogleAppsCardV1TextParagraph.fromJson(
-                  json_['textParagraph'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        buttonList:
+            json_.containsKey('buttonList')
+                ? GoogleAppsCardV1ButtonList.fromJson(
+                  json_['buttonList'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        carousel:
+            json_.containsKey('carousel')
+                ? GoogleAppsCardV1Carousel.fromJson(
+                  json_['carousel'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        chipList:
+            json_.containsKey('chipList')
+                ? GoogleAppsCardV1ChipList.fromJson(
+                  json_['chipList'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        columns:
+            json_.containsKey('columns')
+                ? GoogleAppsCardV1Columns.fromJson(
+                  json_['columns'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dateTimePicker:
+            json_.containsKey('dateTimePicker')
+                ? GoogleAppsCardV1DateTimePicker.fromJson(
+                  json_['dateTimePicker']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        decoratedText:
+            json_.containsKey('decoratedText')
+                ? GoogleAppsCardV1DecoratedText.fromJson(
+                  json_['decoratedText'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        divider:
+            json_.containsKey('divider')
+                ? GoogleAppsCardV1Divider.fromJson(
+                  json_['divider'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        grid:
+            json_.containsKey('grid')
+                ? GoogleAppsCardV1Grid.fromJson(
+                  json_['grid'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        horizontalAlignment: json_['horizontalAlignment'] as core.String?,
+        image:
+            json_.containsKey('image')
+                ? GoogleAppsCardV1Image.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        selectionInput:
+            json_.containsKey('selectionInput')
+                ? GoogleAppsCardV1SelectionInput.fromJson(
+                  json_['selectionInput']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textInput:
+            json_.containsKey('textInput')
+                ? GoogleAppsCardV1TextInput.fromJson(
+                  json_['textInput'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textParagraph:
+            json_.containsKey('textParagraph')
+                ? GoogleAppsCardV1TextParagraph.fromJson(
+                  json_['textParagraph'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttonList != null) 'buttonList': buttonList!,
-        if (carousel != null) 'carousel': carousel!,
-        if (chipList != null) 'chipList': chipList!,
-        if (columns != null) 'columns': columns!,
-        if (dateTimePicker != null) 'dateTimePicker': dateTimePicker!,
-        if (decoratedText != null) 'decoratedText': decoratedText!,
-        if (divider != null) 'divider': divider!,
-        if (grid != null) 'grid': grid!,
-        if (horizontalAlignment != null)
-          'horizontalAlignment': horizontalAlignment!,
-        if (image != null) 'image': image!,
-        if (selectionInput != null) 'selectionInput': selectionInput!,
-        if (textInput != null) 'textInput': textInput!,
-        if (textParagraph != null) 'textParagraph': textParagraph!,
-      };
+    if (buttonList != null) 'buttonList': buttonList!,
+    if (carousel != null) 'carousel': carousel!,
+    if (chipList != null) 'chipList': chipList!,
+    if (columns != null) 'columns': columns!,
+    if (dateTimePicker != null) 'dateTimePicker': dateTimePicker!,
+    if (decoratedText != null) 'decoratedText': decoratedText!,
+    if (divider != null) 'divider': divider!,
+    if (grid != null) 'grid': grid!,
+    if (horizontalAlignment != null)
+      'horizontalAlignment': horizontalAlignment!,
+    if (image != null) 'image': image!,
+    if (selectionInput != null) 'selectionInput': selectionInput!,
+    if (textInput != null) 'textInput': textInput!,
+    if (textParagraph != null) 'textParagraph': textParagraph!,
+  };
 }
 
 /// The supported widgets that you can include in a column.
@@ -7122,51 +7266,69 @@ class GoogleAppsCardV1Widgets {
   });
 
   GoogleAppsCardV1Widgets.fromJson(core.Map json_)
-      : this(
-          buttonList: json_.containsKey('buttonList')
-              ? GoogleAppsCardV1ButtonList.fromJson(
-                  json_['buttonList'] as core.Map<core.String, core.dynamic>)
-              : null,
-          chipList: json_.containsKey('chipList')
-              ? GoogleAppsCardV1ChipList.fromJson(
-                  json_['chipList'] as core.Map<core.String, core.dynamic>)
-              : null,
-          dateTimePicker: json_.containsKey('dateTimePicker')
-              ? GoogleAppsCardV1DateTimePicker.fromJson(json_['dateTimePicker']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          decoratedText: json_.containsKey('decoratedText')
-              ? GoogleAppsCardV1DecoratedText.fromJson(
-                  json_['decoratedText'] as core.Map<core.String, core.dynamic>)
-              : null,
-          image: json_.containsKey('image')
-              ? GoogleAppsCardV1Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
-              : null,
-          selectionInput: json_.containsKey('selectionInput')
-              ? GoogleAppsCardV1SelectionInput.fromJson(json_['selectionInput']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          textInput: json_.containsKey('textInput')
-              ? GoogleAppsCardV1TextInput.fromJson(
-                  json_['textInput'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textParagraph: json_.containsKey('textParagraph')
-              ? GoogleAppsCardV1TextParagraph.fromJson(
-                  json_['textParagraph'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        buttonList:
+            json_.containsKey('buttonList')
+                ? GoogleAppsCardV1ButtonList.fromJson(
+                  json_['buttonList'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        chipList:
+            json_.containsKey('chipList')
+                ? GoogleAppsCardV1ChipList.fromJson(
+                  json_['chipList'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dateTimePicker:
+            json_.containsKey('dateTimePicker')
+                ? GoogleAppsCardV1DateTimePicker.fromJson(
+                  json_['dateTimePicker']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        decoratedText:
+            json_.containsKey('decoratedText')
+                ? GoogleAppsCardV1DecoratedText.fromJson(
+                  json_['decoratedText'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        image:
+            json_.containsKey('image')
+                ? GoogleAppsCardV1Image.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        selectionInput:
+            json_.containsKey('selectionInput')
+                ? GoogleAppsCardV1SelectionInput.fromJson(
+                  json_['selectionInput']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textInput:
+            json_.containsKey('textInput')
+                ? GoogleAppsCardV1TextInput.fromJson(
+                  json_['textInput'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textParagraph:
+            json_.containsKey('textParagraph')
+                ? GoogleAppsCardV1TextParagraph.fromJson(
+                  json_['textParagraph'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttonList != null) 'buttonList': buttonList!,
-        if (chipList != null) 'chipList': chipList!,
-        if (dateTimePicker != null) 'dateTimePicker': dateTimePicker!,
-        if (decoratedText != null) 'decoratedText': decoratedText!,
-        if (image != null) 'image': image!,
-        if (selectionInput != null) 'selectionInput': selectionInput!,
-        if (textInput != null) 'textInput': textInput!,
-        if (textParagraph != null) 'textParagraph': textParagraph!,
-      };
+    if (buttonList != null) 'buttonList': buttonList!,
+    if (chipList != null) 'chipList': chipList!,
+    if (dateTimePicker != null) 'dateTimePicker': dateTimePicker!,
+    if (decoratedText != null) 'decoratedText': decoratedText!,
+    if (image != null) 'image': image!,
+    if (selectionInput != null) 'selectionInput': selectionInput!,
+    if (textInput != null) 'textInput': textInput!,
+    if (textParagraph != null) 'textParagraph': textParagraph!,
+  };
 }
 
 /// A Google Group in Google Chat.
@@ -7178,18 +7340,13 @@ class Group {
   /// in Cloud Identity Groups API. Format: groups/{group}
   core.String? name;
 
-  Group({
-    this.name,
-  });
+  Group({this.name});
 
-  Group.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-        );
+  Group.fromJson(core.Map json_) : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-      };
+    if (name != null) 'name': name!,
+  };
 }
 
 /// For a `SelectionInput` widget that uses a multiselect menu, a data source
@@ -7201,21 +7358,22 @@ class HostAppDataSourceMarkup {
   /// A data source from Google Chat.
   ChatClientDataSourceMarkup? chatDataSource;
 
-  HostAppDataSourceMarkup({
-    this.chatDataSource,
-  });
+  HostAppDataSourceMarkup({this.chatDataSource});
 
   HostAppDataSourceMarkup.fromJson(core.Map json_)
-      : this(
-          chatDataSource: json_.containsKey('chatDataSource')
-              ? ChatClientDataSourceMarkup.fromJson(json_['chatDataSource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        chatDataSource:
+            json_.containsKey('chatDataSource')
+                ? ChatClientDataSourceMarkup.fromJson(
+                  json_['chatDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (chatDataSource != null) 'chatDataSource': chatDataSource!,
-      };
+    if (chatDataSource != null) 'chatDataSource': chatDataSource!,
+  };
 }
 
 /// An image that's specified by a URL and can have an `onclick` action.
@@ -7233,27 +7391,25 @@ class Image {
   /// The `onclick` action.
   OnClick? onClick;
 
-  Image({
-    this.aspectRatio,
-    this.imageUrl,
-    this.onClick,
-  });
+  Image({this.aspectRatio, this.imageUrl, this.onClick});
 
   Image.fromJson(core.Map json_)
-      : this(
-          aspectRatio: (json_['aspectRatio'] as core.num?)?.toDouble(),
-          imageUrl: json_['imageUrl'] as core.String?,
-          onClick: json_.containsKey('onClick')
-              ? OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        aspectRatio: (json_['aspectRatio'] as core.num?)?.toDouble(),
+        imageUrl: json_['imageUrl'] as core.String?,
+        onClick:
+            json_.containsKey('onClick')
+                ? OnClick.fromJson(
+                  json_['onClick'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aspectRatio != null) 'aspectRatio': aspectRatio!,
-        if (imageUrl != null) 'imageUrl': imageUrl!,
-        if (onClick != null) 'onClick': onClick!,
-      };
+    if (aspectRatio != null) 'aspectRatio': aspectRatio!,
+    if (imageUrl != null) 'imageUrl': imageUrl!,
+    if (onClick != null) 'onClick': onClick!,
+  };
 }
 
 /// An image button with an `onclick` action.
@@ -7305,30 +7461,27 @@ class ImageButton {
   /// The `onclick` action.
   OnClick? onClick;
 
-  ImageButton({
-    this.icon,
-    this.iconUrl,
-    this.name,
-    this.onClick,
-  });
+  ImageButton({this.icon, this.iconUrl, this.name, this.onClick});
 
   ImageButton.fromJson(core.Map json_)
-      : this(
-          icon: json_['icon'] as core.String?,
-          iconUrl: json_['iconUrl'] as core.String?,
-          name: json_['name'] as core.String?,
-          onClick: json_.containsKey('onClick')
-              ? OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        icon: json_['icon'] as core.String?,
+        iconUrl: json_['iconUrl'] as core.String?,
+        name: json_['name'] as core.String?,
+        onClick:
+            json_.containsKey('onClick')
+                ? OnClick.fromJson(
+                  json_['onClick'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (icon != null) 'icon': icon!,
-        if (iconUrl != null) 'iconUrl': iconUrl!,
-        if (name != null) 'name': name!,
-        if (onClick != null) 'onClick': onClick!,
-      };
+    if (icon != null) 'icon': icon!,
+    if (iconUrl != null) 'iconUrl': iconUrl!,
+    if (name != null) 'name': name!,
+    if (onClick != null) 'onClick': onClick!,
+  };
 }
 
 /// A UI element contains a key (label) and a value (content).
@@ -7422,33 +7575,37 @@ class KeyValue {
   });
 
   KeyValue.fromJson(core.Map json_)
-      : this(
-          bottomLabel: json_['bottomLabel'] as core.String?,
-          button: json_.containsKey('button')
-              ? Button.fromJson(
-                  json_['button'] as core.Map<core.String, core.dynamic>)
-              : null,
-          content: json_['content'] as core.String?,
-          contentMultiline: json_['contentMultiline'] as core.bool?,
-          icon: json_['icon'] as core.String?,
-          iconUrl: json_['iconUrl'] as core.String?,
-          onClick: json_.containsKey('onClick')
-              ? OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>)
-              : null,
-          topLabel: json_['topLabel'] as core.String?,
-        );
+    : this(
+        bottomLabel: json_['bottomLabel'] as core.String?,
+        button:
+            json_.containsKey('button')
+                ? Button.fromJson(
+                  json_['button'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        content: json_['content'] as core.String?,
+        contentMultiline: json_['contentMultiline'] as core.bool?,
+        icon: json_['icon'] as core.String?,
+        iconUrl: json_['iconUrl'] as core.String?,
+        onClick:
+            json_.containsKey('onClick')
+                ? OnClick.fromJson(
+                  json_['onClick'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        topLabel: json_['topLabel'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bottomLabel != null) 'bottomLabel': bottomLabel!,
-        if (button != null) 'button': button!,
-        if (content != null) 'content': content!,
-        if (contentMultiline != null) 'contentMultiline': contentMultiline!,
-        if (icon != null) 'icon': icon!,
-        if (iconUrl != null) 'iconUrl': iconUrl!,
-        if (onClick != null) 'onClick': onClick!,
-        if (topLabel != null) 'topLabel': topLabel!,
-      };
+    if (bottomLabel != null) 'bottomLabel': bottomLabel!,
+    if (button != null) 'button': button!,
+    if (content != null) 'content': content!,
+    if (contentMultiline != null) 'contentMultiline': contentMultiline!,
+    if (icon != null) 'icon': icon!,
+    if (iconUrl != null) 'iconUrl': iconUrl!,
+    if (onClick != null) 'onClick': onClick!,
+    if (topLabel != null) 'topLabel': topLabel!,
+  };
 }
 
 /// A response to list custom emojis.
@@ -7464,24 +7621,25 @@ class ListCustomEmojisResponse {
   /// If empty, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListCustomEmojisResponse({
-    this.customEmojis,
-    this.nextPageToken,
-  });
+  ListCustomEmojisResponse({this.customEmojis, this.nextPageToken});
 
   ListCustomEmojisResponse.fromJson(core.Map json_)
-      : this(
-          customEmojis: (json_['customEmojis'] as core.List?)
-              ?.map((value) => CustomEmoji.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        customEmojis:
+            (json_['customEmojis'] as core.List?)
+                ?.map(
+                  (value) => CustomEmoji.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customEmojis != null) 'customEmojis': customEmojis!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (customEmojis != null) 'customEmojis': customEmojis!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response to list memberships of the space.
@@ -7497,24 +7655,25 @@ class ListMembershipsResponse {
   /// If empty, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListMembershipsResponse({
-    this.memberships,
-    this.nextPageToken,
-  });
+  ListMembershipsResponse({this.memberships, this.nextPageToken});
 
   ListMembershipsResponse.fromJson(core.Map json_)
-      : this(
-          memberships: (json_['memberships'] as core.List?)
-              ?.map((value) => Membership.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        memberships:
+            (json_['memberships'] as core.List?)
+                ?.map(
+                  (value) => Membership.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberships != null) 'memberships': memberships!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (memberships != null) 'memberships': memberships!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for listing messages.
@@ -7527,24 +7686,25 @@ class ListMessagesResponse {
   /// If empty, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListMessagesResponse({
-    this.messages,
-    this.nextPageToken,
-  });
+  ListMessagesResponse({this.messages, this.nextPageToken});
 
   ListMessagesResponse.fromJson(core.Map json_)
-      : this(
-          messages: (json_['messages'] as core.List?)
-              ?.map((value) => Message.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        messages:
+            (json_['messages'] as core.List?)
+                ?.map(
+                  (value) => Message.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (messages != null) 'messages': messages!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (messages != null) 'messages': messages!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response to a list reactions request.
@@ -7557,24 +7717,25 @@ class ListReactionsResponse {
   /// List of reactions in the requested (or first) page.
   core.List<Reaction>? reactions;
 
-  ListReactionsResponse({
-    this.nextPageToken,
-    this.reactions,
-  });
+  ListReactionsResponse({this.nextPageToken, this.reactions});
 
   ListReactionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          reactions: (json_['reactions'] as core.List?)
-              ?.map((value) => Reaction.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        reactions:
+            (json_['reactions'] as core.List?)
+                ?.map(
+                  (value) => Reaction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (reactions != null) 'reactions': reactions!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (reactions != null) 'reactions': reactions!,
+  };
 }
 
 /// Response message for listing space events.
@@ -7590,24 +7751,25 @@ class ListSpaceEventsResponse {
   /// for list requests.
   core.List<SpaceEvent>? spaceEvents;
 
-  ListSpaceEventsResponse({
-    this.nextPageToken,
-    this.spaceEvents,
-  });
+  ListSpaceEventsResponse({this.nextPageToken, this.spaceEvents});
 
   ListSpaceEventsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          spaceEvents: (json_['spaceEvents'] as core.List?)
-              ?.map((value) => SpaceEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        spaceEvents:
+            (json_['spaceEvents'] as core.List?)
+                ?.map(
+                  (value) => SpaceEvent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (spaceEvents != null) 'spaceEvents': spaceEvents!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (spaceEvents != null) 'spaceEvents': spaceEvents!,
+  };
 }
 
 /// The response for a list spaces request.
@@ -7623,24 +7785,25 @@ class ListSpacesResponse {
   /// for list requests.
   core.List<Space>? spaces;
 
-  ListSpacesResponse({
-    this.nextPageToken,
-    this.spaces,
-  });
+  ListSpacesResponse({this.nextPageToken, this.spaces});
 
   ListSpacesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          spaces: (json_['spaces'] as core.List?)
-              ?.map((value) =>
-                  Space.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        spaces:
+            (json_['spaces'] as core.List?)
+                ?.map(
+                  (value) => Space.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (spaces != null) 'spaces': spaces!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (spaces != null) 'spaces': spaces!,
+  };
 }
 
 /// A matched URL in a Chat message.
@@ -7653,18 +7816,13 @@ class MatchedUrl {
   /// Output only.
   core.String? url;
 
-  MatchedUrl({
-    this.url,
-  });
+  MatchedUrl({this.url});
 
-  MatchedUrl.fromJson(core.Map json_)
-      : this(
-          url: json_['url'] as core.String?,
-        );
+  MatchedUrl.fromJson(core.Map json_) : this(url: json_['url'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (url != null) 'url': url!,
-      };
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Media resource.
@@ -7696,24 +7854,20 @@ class MeetSpaceLinkData {
   /// - "HUDDLE" : The Meet space is a huddle.
   core.String? type;
 
-  MeetSpaceLinkData({
-    this.huddleStatus,
-    this.meetingCode,
-    this.type,
-  });
+  MeetSpaceLinkData({this.huddleStatus, this.meetingCode, this.type});
 
   MeetSpaceLinkData.fromJson(core.Map json_)
-      : this(
-          huddleStatus: json_['huddleStatus'] as core.String?,
-          meetingCode: json_['meetingCode'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        huddleStatus: json_['huddleStatus'] as core.String?,
+        meetingCode: json_['meetingCode'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (huddleStatus != null) 'huddleStatus': huddleStatus!,
-        if (meetingCode != null) 'meetingCode': meetingCode!,
-        if (type != null) 'type': type!,
-      };
+    if (huddleStatus != null) 'huddleStatus': huddleStatus!,
+    if (meetingCode != null) 'meetingCode': meetingCode!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Represents a membership relation in Google Chat, such as whether a user or
@@ -7803,31 +7957,35 @@ class Membership {
   });
 
   Membership.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          deleteTime: json_['deleteTime'] as core.String?,
-          groupMember: json_.containsKey('groupMember')
-              ? Group.fromJson(
-                  json_['groupMember'] as core.Map<core.String, core.dynamic>)
-              : null,
-          member: json_.containsKey('member')
-              ? User.fromJson(
-                  json_['member'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          role: json_['role'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        groupMember:
+            json_.containsKey('groupMember')
+                ? Group.fromJson(
+                  json_['groupMember'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        member:
+            json_.containsKey('member')
+                ? User.fromJson(
+                  json_['member'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        role: json_['role'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (groupMember != null) 'groupMember': groupMember!,
-        if (member != null) 'member': member!,
-        if (name != null) 'name': name!,
-        if (role != null) 'role': role!,
-        if (state != null) 'state': state!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (groupMember != null) 'groupMember': groupMember!,
+    if (member != null) 'member': member!,
+    if (name != null) 'name': name!,
+    if (role != null) 'role': role!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Event payload for multiple new memberships.
@@ -7837,21 +7995,23 @@ class MembershipBatchCreatedEventData {
   /// A list of new memberships.
   core.List<MembershipCreatedEventData>? memberships;
 
-  MembershipBatchCreatedEventData({
-    this.memberships,
-  });
+  MembershipBatchCreatedEventData({this.memberships});
 
   MembershipBatchCreatedEventData.fromJson(core.Map json_)
-      : this(
-          memberships: (json_['memberships'] as core.List?)
-              ?.map((value) => MembershipCreatedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        memberships:
+            (json_['memberships'] as core.List?)
+                ?.map(
+                  (value) => MembershipCreatedEventData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberships != null) 'memberships': memberships!,
-      };
+    if (memberships != null) 'memberships': memberships!,
+  };
 }
 
 /// Event payload for multiple deleted memberships.
@@ -7861,21 +8021,23 @@ class MembershipBatchDeletedEventData {
   /// A list of deleted memberships.
   core.List<MembershipDeletedEventData>? memberships;
 
-  MembershipBatchDeletedEventData({
-    this.memberships,
-  });
+  MembershipBatchDeletedEventData({this.memberships});
 
   MembershipBatchDeletedEventData.fromJson(core.Map json_)
-      : this(
-          memberships: (json_['memberships'] as core.List?)
-              ?.map((value) => MembershipDeletedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        memberships:
+            (json_['memberships'] as core.List?)
+                ?.map(
+                  (value) => MembershipDeletedEventData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberships != null) 'memberships': memberships!,
-      };
+    if (memberships != null) 'memberships': memberships!,
+  };
 }
 
 /// Event payload for multiple updated memberships.
@@ -7885,21 +8047,23 @@ class MembershipBatchUpdatedEventData {
   /// A list of updated memberships.
   core.List<MembershipUpdatedEventData>? memberships;
 
-  MembershipBatchUpdatedEventData({
-    this.memberships,
-  });
+  MembershipBatchUpdatedEventData({this.memberships});
 
   MembershipBatchUpdatedEventData.fromJson(core.Map json_)
-      : this(
-          memberships: (json_['memberships'] as core.List?)
-              ?.map((value) => MembershipUpdatedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        memberships:
+            (json_['memberships'] as core.List?)
+                ?.map(
+                  (value) => MembershipUpdatedEventData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberships != null) 'memberships': memberships!,
-      };
+    if (memberships != null) 'memberships': memberships!,
+  };
 }
 
 /// Represents the count of memberships of a space, grouped into categories.
@@ -7915,23 +8079,20 @@ class MembershipCount {
   /// Output only.
   core.int? joinedGroupCount;
 
-  MembershipCount({
-    this.joinedDirectHumanUserCount,
-    this.joinedGroupCount,
-  });
+  MembershipCount({this.joinedDirectHumanUserCount, this.joinedGroupCount});
 
   MembershipCount.fromJson(core.Map json_)
-      : this(
-          joinedDirectHumanUserCount:
-              json_['joinedDirectHumanUserCount'] as core.int?,
-          joinedGroupCount: json_['joinedGroupCount'] as core.int?,
-        );
+    : this(
+        joinedDirectHumanUserCount:
+            json_['joinedDirectHumanUserCount'] as core.int?,
+        joinedGroupCount: json_['joinedGroupCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (joinedDirectHumanUserCount != null)
-          'joinedDirectHumanUserCount': joinedDirectHumanUserCount!,
-        if (joinedGroupCount != null) 'joinedGroupCount': joinedGroupCount!,
-      };
+    if (joinedDirectHumanUserCount != null)
+      'joinedDirectHumanUserCount': joinedDirectHumanUserCount!,
+    if (joinedGroupCount != null) 'joinedGroupCount': joinedGroupCount!,
+  };
 }
 
 /// Event payload for a new membership.
@@ -7941,21 +8102,21 @@ class MembershipCreatedEventData {
   /// The new membership.
   Membership? membership;
 
-  MembershipCreatedEventData({
-    this.membership,
-  });
+  MembershipCreatedEventData({this.membership});
 
   MembershipCreatedEventData.fromJson(core.Map json_)
-      : this(
-          membership: json_.containsKey('membership')
-              ? Membership.fromJson(
-                  json_['membership'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        membership:
+            json_.containsKey('membership')
+                ? Membership.fromJson(
+                  json_['membership'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (membership != null) 'membership': membership!,
-      };
+    if (membership != null) 'membership': membership!,
+  };
 }
 
 /// Event payload for a deleted membership.
@@ -7967,21 +8128,21 @@ class MembershipDeletedEventData {
   /// Only the `name` and `state` fields are populated.
   Membership? membership;
 
-  MembershipDeletedEventData({
-    this.membership,
-  });
+  MembershipDeletedEventData({this.membership});
 
   MembershipDeletedEventData.fromJson(core.Map json_)
-      : this(
-          membership: json_.containsKey('membership')
-              ? Membership.fromJson(
-                  json_['membership'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        membership:
+            json_.containsKey('membership')
+                ? Membership.fromJson(
+                  json_['membership'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (membership != null) 'membership': membership!,
-      };
+    if (membership != null) 'membership': membership!,
+  };
 }
 
 /// Event payload for an updated membership.
@@ -7991,21 +8152,21 @@ class MembershipUpdatedEventData {
   /// The updated membership.
   Membership? membership;
 
-  MembershipUpdatedEventData({
-    this.membership,
-  });
+  MembershipUpdatedEventData({this.membership});
 
   MembershipUpdatedEventData.fromJson(core.Map json_)
-      : this(
-          membership: json_.containsKey('membership')
-              ? Membership.fromJson(
-                  json_['membership'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        membership:
+            json_.containsKey('membership')
+                ? Membership.fromJson(
+                  json_['membership'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (membership != null) 'membership': membership!,
-      };
+    if (membership != null) 'membership': membership!,
+  };
 }
 
 /// A message in a Google Chat space.
@@ -8274,117 +8435,166 @@ class Message {
   });
 
   Message.fromJson(core.Map json_)
-      : this(
-          accessoryWidgets: (json_['accessoryWidgets'] as core.List?)
-              ?.map((value) => AccessoryWidget.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          actionResponse: json_.containsKey('actionResponse')
-              ? ActionResponse.fromJson(json_['actionResponse']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          annotations: (json_['annotations'] as core.List?)
-              ?.map((value) => Annotation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          argumentText: json_['argumentText'] as core.String?,
-          attachedGifs: (json_['attachedGifs'] as core.List?)
-              ?.map((value) => AttachedGif.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          attachment: (json_['attachment'] as core.List?)
-              ?.map((value) => Attachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          cards: (json_['cards'] as core.List?)
-              ?.map((value) =>
-                  Card.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          cardsV2: (json_['cardsV2'] as core.List?)
-              ?.map((value) => CardWithId.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          clientAssignedMessageId:
-              json_['clientAssignedMessageId'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          deleteTime: json_['deleteTime'] as core.String?,
-          deletionMetadata: json_.containsKey('deletionMetadata')
-              ? DeletionMetadata.fromJson(json_['deletionMetadata']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          emojiReactionSummaries:
-              (json_['emojiReactionSummaries'] as core.List?)
-                  ?.map((value) => EmojiReactionSummary.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          fallbackText: json_['fallbackText'] as core.String?,
-          formattedText: json_['formattedText'] as core.String?,
-          lastUpdateTime: json_['lastUpdateTime'] as core.String?,
-          matchedUrl: json_.containsKey('matchedUrl')
-              ? MatchedUrl.fromJson(
-                  json_['matchedUrl'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          privateMessageViewer: json_.containsKey('privateMessageViewer')
-              ? User.fromJson(json_['privateMessageViewer']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          quotedMessageMetadata: json_.containsKey('quotedMessageMetadata')
-              ? QuotedMessageMetadata.fromJson(json_['quotedMessageMetadata']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          sender: json_.containsKey('sender')
-              ? User.fromJson(
-                  json_['sender'] as core.Map<core.String, core.dynamic>)
-              : null,
-          slashCommand: json_.containsKey('slashCommand')
-              ? SlashCommand.fromJson(
-                  json_['slashCommand'] as core.Map<core.String, core.dynamic>)
-              : null,
-          space: json_.containsKey('space')
-              ? Space.fromJson(
-                  json_['space'] as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_['text'] as core.String?,
-          thread: json_.containsKey('thread')
-              ? Thread.fromJson(
-                  json_['thread'] as core.Map<core.String, core.dynamic>)
-              : null,
-          threadReply: json_['threadReply'] as core.bool?,
-        );
+    : this(
+        accessoryWidgets:
+            (json_['accessoryWidgets'] as core.List?)
+                ?.map(
+                  (value) => AccessoryWidget.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        actionResponse:
+            json_.containsKey('actionResponse')
+                ? ActionResponse.fromJson(
+                  json_['actionResponse']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        annotations:
+            (json_['annotations'] as core.List?)
+                ?.map(
+                  (value) => Annotation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        argumentText: json_['argumentText'] as core.String?,
+        attachedGifs:
+            (json_['attachedGifs'] as core.List?)
+                ?.map(
+                  (value) => AttachedGif.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        attachment:
+            (json_['attachment'] as core.List?)
+                ?.map(
+                  (value) => Attachment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        cards:
+            (json_['cards'] as core.List?)
+                ?.map(
+                  (value) => Card.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        cardsV2:
+            (json_['cardsV2'] as core.List?)
+                ?.map(
+                  (value) => CardWithId.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        clientAssignedMessageId:
+            json_['clientAssignedMessageId'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        deletionMetadata:
+            json_.containsKey('deletionMetadata')
+                ? DeletionMetadata.fromJson(
+                  json_['deletionMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        emojiReactionSummaries:
+            (json_['emojiReactionSummaries'] as core.List?)
+                ?.map(
+                  (value) => EmojiReactionSummary.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        fallbackText: json_['fallbackText'] as core.String?,
+        formattedText: json_['formattedText'] as core.String?,
+        lastUpdateTime: json_['lastUpdateTime'] as core.String?,
+        matchedUrl:
+            json_.containsKey('matchedUrl')
+                ? MatchedUrl.fromJson(
+                  json_['matchedUrl'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        privateMessageViewer:
+            json_.containsKey('privateMessageViewer')
+                ? User.fromJson(
+                  json_['privateMessageViewer']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        quotedMessageMetadata:
+            json_.containsKey('quotedMessageMetadata')
+                ? QuotedMessageMetadata.fromJson(
+                  json_['quotedMessageMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sender:
+            json_.containsKey('sender')
+                ? User.fromJson(
+                  json_['sender'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        slashCommand:
+            json_.containsKey('slashCommand')
+                ? SlashCommand.fromJson(
+                  json_['slashCommand'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        space:
+            json_.containsKey('space')
+                ? Space.fromJson(
+                  json_['space'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text: json_['text'] as core.String?,
+        thread:
+            json_.containsKey('thread')
+                ? Thread.fromJson(
+                  json_['thread'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        threadReply: json_['threadReply'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessoryWidgets != null) 'accessoryWidgets': accessoryWidgets!,
-        if (actionResponse != null) 'actionResponse': actionResponse!,
-        if (annotations != null) 'annotations': annotations!,
-        if (argumentText != null) 'argumentText': argumentText!,
-        if (attachedGifs != null) 'attachedGifs': attachedGifs!,
-        if (attachment != null) 'attachment': attachment!,
-        if (cards != null) 'cards': cards!,
-        if (cardsV2 != null) 'cardsV2': cardsV2!,
-        if (clientAssignedMessageId != null)
-          'clientAssignedMessageId': clientAssignedMessageId!,
-        if (createTime != null) 'createTime': createTime!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (deletionMetadata != null) 'deletionMetadata': deletionMetadata!,
-        if (emojiReactionSummaries != null)
-          'emojiReactionSummaries': emojiReactionSummaries!,
-        if (fallbackText != null) 'fallbackText': fallbackText!,
-        if (formattedText != null) 'formattedText': formattedText!,
-        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
-        if (matchedUrl != null) 'matchedUrl': matchedUrl!,
-        if (name != null) 'name': name!,
-        if (privateMessageViewer != null)
-          'privateMessageViewer': privateMessageViewer!,
-        if (quotedMessageMetadata != null)
-          'quotedMessageMetadata': quotedMessageMetadata!,
-        if (sender != null) 'sender': sender!,
-        if (slashCommand != null) 'slashCommand': slashCommand!,
-        if (space != null) 'space': space!,
-        if (text != null) 'text': text!,
-        if (thread != null) 'thread': thread!,
-        if (threadReply != null) 'threadReply': threadReply!,
-      };
+    if (accessoryWidgets != null) 'accessoryWidgets': accessoryWidgets!,
+    if (actionResponse != null) 'actionResponse': actionResponse!,
+    if (annotations != null) 'annotations': annotations!,
+    if (argumentText != null) 'argumentText': argumentText!,
+    if (attachedGifs != null) 'attachedGifs': attachedGifs!,
+    if (attachment != null) 'attachment': attachment!,
+    if (cards != null) 'cards': cards!,
+    if (cardsV2 != null) 'cardsV2': cardsV2!,
+    if (clientAssignedMessageId != null)
+      'clientAssignedMessageId': clientAssignedMessageId!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (deletionMetadata != null) 'deletionMetadata': deletionMetadata!,
+    if (emojiReactionSummaries != null)
+      'emojiReactionSummaries': emojiReactionSummaries!,
+    if (fallbackText != null) 'fallbackText': fallbackText!,
+    if (formattedText != null) 'formattedText': formattedText!,
+    if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+    if (matchedUrl != null) 'matchedUrl': matchedUrl!,
+    if (name != null) 'name': name!,
+    if (privateMessageViewer != null)
+      'privateMessageViewer': privateMessageViewer!,
+    if (quotedMessageMetadata != null)
+      'quotedMessageMetadata': quotedMessageMetadata!,
+    if (sender != null) 'sender': sender!,
+    if (slashCommand != null) 'slashCommand': slashCommand!,
+    if (space != null) 'space': space!,
+    if (text != null) 'text': text!,
+    if (thread != null) 'thread': thread!,
+    if (threadReply != null) 'threadReply': threadReply!,
+  };
 }
 
 /// Event payload for multiple new messages.
@@ -8394,21 +8604,23 @@ class MessageBatchCreatedEventData {
   /// A list of new messages.
   core.List<MessageCreatedEventData>? messages;
 
-  MessageBatchCreatedEventData({
-    this.messages,
-  });
+  MessageBatchCreatedEventData({this.messages});
 
   MessageBatchCreatedEventData.fromJson(core.Map json_)
-      : this(
-          messages: (json_['messages'] as core.List?)
-              ?.map((value) => MessageCreatedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        messages:
+            (json_['messages'] as core.List?)
+                ?.map(
+                  (value) => MessageCreatedEventData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (messages != null) 'messages': messages!,
-      };
+    if (messages != null) 'messages': messages!,
+  };
 }
 
 /// Event payload for multiple deleted messages.
@@ -8418,21 +8630,23 @@ class MessageBatchDeletedEventData {
   /// A list of deleted messages.
   core.List<MessageDeletedEventData>? messages;
 
-  MessageBatchDeletedEventData({
-    this.messages,
-  });
+  MessageBatchDeletedEventData({this.messages});
 
   MessageBatchDeletedEventData.fromJson(core.Map json_)
-      : this(
-          messages: (json_['messages'] as core.List?)
-              ?.map((value) => MessageDeletedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        messages:
+            (json_['messages'] as core.List?)
+                ?.map(
+                  (value) => MessageDeletedEventData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (messages != null) 'messages': messages!,
-      };
+    if (messages != null) 'messages': messages!,
+  };
 }
 
 /// Event payload for multiple updated messages.
@@ -8442,21 +8656,23 @@ class MessageBatchUpdatedEventData {
   /// A list of updated messages.
   core.List<MessageUpdatedEventData>? messages;
 
-  MessageBatchUpdatedEventData({
-    this.messages,
-  });
+  MessageBatchUpdatedEventData({this.messages});
 
   MessageBatchUpdatedEventData.fromJson(core.Map json_)
-      : this(
-          messages: (json_['messages'] as core.List?)
-              ?.map((value) => MessageUpdatedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        messages:
+            (json_['messages'] as core.List?)
+                ?.map(
+                  (value) => MessageUpdatedEventData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (messages != null) 'messages': messages!,
-      };
+    if (messages != null) 'messages': messages!,
+  };
 }
 
 /// Event payload for a new message.
@@ -8466,21 +8682,21 @@ class MessageCreatedEventData {
   /// The new message.
   Message? message;
 
-  MessageCreatedEventData({
-    this.message,
-  });
+  MessageCreatedEventData({this.message});
 
   MessageCreatedEventData.fromJson(core.Map json_)
-      : this(
-          message: json_.containsKey('message')
-              ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        message:
+            json_.containsKey('message')
+                ? Message.fromJson(
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!,
-      };
+    if (message != null) 'message': message!,
+  };
 }
 
 /// Event payload for a deleted message.
@@ -8493,21 +8709,21 @@ class MessageDeletedEventData {
   /// are populated.
   Message? message;
 
-  MessageDeletedEventData({
-    this.message,
-  });
+  MessageDeletedEventData({this.message});
 
   MessageDeletedEventData.fromJson(core.Map json_)
-      : this(
-          message: json_.containsKey('message')
-              ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        message:
+            json_.containsKey('message')
+                ? Message.fromJson(
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!,
-      };
+    if (message != null) 'message': message!,
+  };
 }
 
 /// Event payload for an updated message.
@@ -8517,21 +8733,21 @@ class MessageUpdatedEventData {
   /// The updated message.
   Message? message;
 
-  MessageUpdatedEventData({
-    this.message,
-  });
+  MessageUpdatedEventData({this.message});
 
   MessageUpdatedEventData.fromJson(core.Map json_)
-      : this(
-          message: json_.containsKey('message')
-              ? Message.fromJson(
-                  json_['message'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        message:
+            json_.containsKey('message')
+                ? Message.fromJson(
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (message != null) 'message': message!,
-      };
+    if (message != null) 'message': message!,
+  };
 }
 
 /// An `onclick` action (for example, open a link).
@@ -8542,27 +8758,28 @@ class OnClick {
   /// This `onclick` action triggers an open link action if specified.
   OpenLink? openLink;
 
-  OnClick({
-    this.action,
-    this.openLink,
-  });
+  OnClick({this.action, this.openLink});
 
   OnClick.fromJson(core.Map json_)
-      : this(
-          action: json_.containsKey('action')
-              ? FormAction.fromJson(
-                  json_['action'] as core.Map<core.String, core.dynamic>)
-              : null,
-          openLink: json_.containsKey('openLink')
-              ? OpenLink.fromJson(
-                  json_['openLink'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        action:
+            json_.containsKey('action')
+                ? FormAction.fromJson(
+                  json_['action'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        openLink:
+            json_.containsKey('openLink')
+                ? OpenLink.fromJson(
+                  json_['openLink'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (openLink != null) 'openLink': openLink!,
-      };
+    if (action != null) 'action': action!,
+    if (openLink != null) 'openLink': openLink!,
+  };
 }
 
 /// A link that opens a new window.
@@ -8570,18 +8787,13 @@ class OpenLink {
   /// The URL to open.
   core.String? url;
 
-  OpenLink({
-    this.url,
-  });
+  OpenLink({this.url});
 
-  OpenLink.fromJson(core.Map json_)
-      : this(
-          url: json_['url'] as core.String?,
-        );
+  OpenLink.fromJson(core.Map json_) : this(url: json_['url'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (url != null) 'url': url!,
-      };
+    if (url != null) 'url': url!,
+  };
 }
 
 /// Represents a space permission setting.
@@ -8596,21 +8808,18 @@ class PermissionSetting {
   /// Optional.
   core.bool? membersAllowed;
 
-  PermissionSetting({
-    this.managersAllowed,
-    this.membersAllowed,
-  });
+  PermissionSetting({this.managersAllowed, this.membersAllowed});
 
   PermissionSetting.fromJson(core.Map json_)
-      : this(
-          managersAllowed: json_['managersAllowed'] as core.bool?,
-          membersAllowed: json_['membersAllowed'] as core.bool?,
-        );
+    : this(
+        managersAllowed: json_['managersAllowed'] as core.bool?,
+        membersAllowed: json_['membersAllowed'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (managersAllowed != null) 'managersAllowed': managersAllowed!,
-        if (membersAllowed != null) 'membersAllowed': membersAllowed!,
-      };
+    if (managersAllowed != null) 'managersAllowed': managersAllowed!,
+    if (membersAllowed != null) 'membersAllowed': membersAllowed!,
+  };
 }
 
 /// [Permission settings](https://support.google.com/chat/answer/13340792) that
@@ -8671,53 +8880,72 @@ class PermissionSettings {
   });
 
   PermissionSettings.fromJson(core.Map json_)
-      : this(
-          manageApps: json_.containsKey('manageApps')
-              ? PermissionSetting.fromJson(
-                  json_['manageApps'] as core.Map<core.String, core.dynamic>)
-              : null,
-          manageMembersAndGroups: json_.containsKey('manageMembersAndGroups')
-              ? PermissionSetting.fromJson(json_['manageMembersAndGroups']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          manageWebhooks: json_.containsKey('manageWebhooks')
-              ? PermissionSetting.fromJson(json_['manageWebhooks']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          modifySpaceDetails: json_.containsKey('modifySpaceDetails')
-              ? PermissionSetting.fromJson(json_['modifySpaceDetails']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          postMessages: json_.containsKey('postMessages')
-              ? PermissionSetting.fromJson(
-                  json_['postMessages'] as core.Map<core.String, core.dynamic>)
-              : null,
-          replyMessages: json_.containsKey('replyMessages')
-              ? PermissionSetting.fromJson(
-                  json_['replyMessages'] as core.Map<core.String, core.dynamic>)
-              : null,
-          toggleHistory: json_.containsKey('toggleHistory')
-              ? PermissionSetting.fromJson(
-                  json_['toggleHistory'] as core.Map<core.String, core.dynamic>)
-              : null,
-          useAtMentionAll: json_.containsKey('useAtMentionAll')
-              ? PermissionSetting.fromJson(json_['useAtMentionAll']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        manageApps:
+            json_.containsKey('manageApps')
+                ? PermissionSetting.fromJson(
+                  json_['manageApps'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        manageMembersAndGroups:
+            json_.containsKey('manageMembersAndGroups')
+                ? PermissionSetting.fromJson(
+                  json_['manageMembersAndGroups']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        manageWebhooks:
+            json_.containsKey('manageWebhooks')
+                ? PermissionSetting.fromJson(
+                  json_['manageWebhooks']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        modifySpaceDetails:
+            json_.containsKey('modifySpaceDetails')
+                ? PermissionSetting.fromJson(
+                  json_['modifySpaceDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        postMessages:
+            json_.containsKey('postMessages')
+                ? PermissionSetting.fromJson(
+                  json_['postMessages'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        replyMessages:
+            json_.containsKey('replyMessages')
+                ? PermissionSetting.fromJson(
+                  json_['replyMessages'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        toggleHistory:
+            json_.containsKey('toggleHistory')
+                ? PermissionSetting.fromJson(
+                  json_['toggleHistory'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        useAtMentionAll:
+            json_.containsKey('useAtMentionAll')
+                ? PermissionSetting.fromJson(
+                  json_['useAtMentionAll']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (manageApps != null) 'manageApps': manageApps!,
-        if (manageMembersAndGroups != null)
-          'manageMembersAndGroups': manageMembersAndGroups!,
-        if (manageWebhooks != null) 'manageWebhooks': manageWebhooks!,
-        if (modifySpaceDetails != null)
-          'modifySpaceDetails': modifySpaceDetails!,
-        if (postMessages != null) 'postMessages': postMessages!,
-        if (replyMessages != null) 'replyMessages': replyMessages!,
-        if (toggleHistory != null) 'toggleHistory': toggleHistory!,
-        if (useAtMentionAll != null) 'useAtMentionAll': useAtMentionAll!,
-      };
+    if (manageApps != null) 'manageApps': manageApps!,
+    if (manageMembersAndGroups != null)
+      'manageMembersAndGroups': manageMembersAndGroups!,
+    if (manageWebhooks != null) 'manageWebhooks': manageWebhooks!,
+    if (modifySpaceDetails != null) 'modifySpaceDetails': modifySpaceDetails!,
+    if (postMessages != null) 'postMessages': postMessages!,
+    if (replyMessages != null) 'replyMessages': replyMessages!,
+    if (toggleHistory != null) 'toggleHistory': toggleHistory!,
+    if (useAtMentionAll != null) 'useAtMentionAll': useAtMentionAll!,
+  };
 }
 
 /// Information about a quoted message.
@@ -8735,21 +8963,18 @@ class QuotedMessageMetadata {
   /// Required.
   core.String? name;
 
-  QuotedMessageMetadata({
-    this.lastUpdateTime,
-    this.name,
-  });
+  QuotedMessageMetadata({this.lastUpdateTime, this.name});
 
   QuotedMessageMetadata.fromJson(core.Map json_)
-      : this(
-          lastUpdateTime: json_['lastUpdateTime'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        lastUpdateTime: json_['lastUpdateTime'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
-        if (name != null) 'name': name!,
-      };
+    if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// A reaction to a message.
@@ -8770,30 +8995,30 @@ class Reaction {
   /// Output only.
   User? user;
 
-  Reaction({
-    this.emoji,
-    this.name,
-    this.user,
-  });
+  Reaction({this.emoji, this.name, this.user});
 
   Reaction.fromJson(core.Map json_)
-      : this(
-          emoji: json_.containsKey('emoji')
-              ? Emoji.fromJson(
-                  json_['emoji'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          user: json_.containsKey('user')
-              ? User.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        emoji:
+            json_.containsKey('emoji')
+                ? Emoji.fromJson(
+                  json_['emoji'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        user:
+            json_.containsKey('user')
+                ? User.fromJson(
+                  json_['user'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (emoji != null) 'emoji': emoji!,
-        if (name != null) 'name': name!,
-        if (user != null) 'user': user!,
-      };
+    if (emoji != null) 'emoji': emoji!,
+    if (name != null) 'name': name!,
+    if (user != null) 'user': user!,
+  };
 }
 
 /// Event payload for multiple new reactions.
@@ -8803,21 +9028,23 @@ class ReactionBatchCreatedEventData {
   /// A list of new reactions.
   core.List<ReactionCreatedEventData>? reactions;
 
-  ReactionBatchCreatedEventData({
-    this.reactions,
-  });
+  ReactionBatchCreatedEventData({this.reactions});
 
   ReactionBatchCreatedEventData.fromJson(core.Map json_)
-      : this(
-          reactions: (json_['reactions'] as core.List?)
-              ?.map((value) => ReactionCreatedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        reactions:
+            (json_['reactions'] as core.List?)
+                ?.map(
+                  (value) => ReactionCreatedEventData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (reactions != null) 'reactions': reactions!,
-      };
+    if (reactions != null) 'reactions': reactions!,
+  };
 }
 
 /// Event payload for multiple deleted reactions.
@@ -8827,21 +9054,23 @@ class ReactionBatchDeletedEventData {
   /// A list of deleted reactions.
   core.List<ReactionDeletedEventData>? reactions;
 
-  ReactionBatchDeletedEventData({
-    this.reactions,
-  });
+  ReactionBatchDeletedEventData({this.reactions});
 
   ReactionBatchDeletedEventData.fromJson(core.Map json_)
-      : this(
-          reactions: (json_['reactions'] as core.List?)
-              ?.map((value) => ReactionDeletedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        reactions:
+            (json_['reactions'] as core.List?)
+                ?.map(
+                  (value) => ReactionDeletedEventData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (reactions != null) 'reactions': reactions!,
-      };
+    if (reactions != null) 'reactions': reactions!,
+  };
 }
 
 /// Event payload for a new reaction.
@@ -8851,21 +9080,21 @@ class ReactionCreatedEventData {
   /// The new reaction.
   Reaction? reaction;
 
-  ReactionCreatedEventData({
-    this.reaction,
-  });
+  ReactionCreatedEventData({this.reaction});
 
   ReactionCreatedEventData.fromJson(core.Map json_)
-      : this(
-          reaction: json_.containsKey('reaction')
-              ? Reaction.fromJson(
-                  json_['reaction'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        reaction:
+            json_.containsKey('reaction')
+                ? Reaction.fromJson(
+                  json_['reaction'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (reaction != null) 'reaction': reaction!,
-      };
+    if (reaction != null) 'reaction': reaction!,
+  };
 }
 
 /// Event payload for a deleted reaction.
@@ -8875,21 +9104,21 @@ class ReactionDeletedEventData {
   /// The deleted reaction.
   Reaction? reaction;
 
-  ReactionDeletedEventData({
-    this.reaction,
-  });
+  ReactionDeletedEventData({this.reaction});
 
   ReactionDeletedEventData.fromJson(core.Map json_)
-      : this(
-          reaction: json_.containsKey('reaction')
-              ? Reaction.fromJson(
-                  json_['reaction'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        reaction:
+            json_.containsKey('reaction')
+                ? Reaction.fromJson(
+                  json_['reaction'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (reaction != null) 'reaction': reaction!,
-      };
+    if (reaction != null) 'reaction': reaction!,
+  };
 }
 
 /// A rich link to a resource.
@@ -8934,36 +9163,47 @@ class RichLinkMetadata {
   });
 
   RichLinkMetadata.fromJson(core.Map json_)
-      : this(
-          calendarEventLinkData: json_.containsKey('calendarEventLinkData')
-              ? CalendarEventLinkData.fromJson(json_['calendarEventLinkData']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          chatSpaceLinkData: json_.containsKey('chatSpaceLinkData')
-              ? ChatSpaceLinkData.fromJson(json_['chatSpaceLinkData']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          driveLinkData: json_.containsKey('driveLinkData')
-              ? DriveLinkData.fromJson(
-                  json_['driveLinkData'] as core.Map<core.String, core.dynamic>)
-              : null,
-          meetSpaceLinkData: json_.containsKey('meetSpaceLinkData')
-              ? MeetSpaceLinkData.fromJson(json_['meetSpaceLinkData']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          richLinkType: json_['richLinkType'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        calendarEventLinkData:
+            json_.containsKey('calendarEventLinkData')
+                ? CalendarEventLinkData.fromJson(
+                  json_['calendarEventLinkData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        chatSpaceLinkData:
+            json_.containsKey('chatSpaceLinkData')
+                ? ChatSpaceLinkData.fromJson(
+                  json_['chatSpaceLinkData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        driveLinkData:
+            json_.containsKey('driveLinkData')
+                ? DriveLinkData.fromJson(
+                  json_['driveLinkData'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        meetSpaceLinkData:
+            json_.containsKey('meetSpaceLinkData')
+                ? MeetSpaceLinkData.fromJson(
+                  json_['meetSpaceLinkData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        richLinkType: json_['richLinkType'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (calendarEventLinkData != null)
-          'calendarEventLinkData': calendarEventLinkData!,
-        if (chatSpaceLinkData != null) 'chatSpaceLinkData': chatSpaceLinkData!,
-        if (driveLinkData != null) 'driveLinkData': driveLinkData!,
-        if (meetSpaceLinkData != null) 'meetSpaceLinkData': meetSpaceLinkData!,
-        if (richLinkType != null) 'richLinkType': richLinkType!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (calendarEventLinkData != null)
+      'calendarEventLinkData': calendarEventLinkData!,
+    if (chatSpaceLinkData != null) 'chatSpaceLinkData': chatSpaceLinkData!,
+    if (driveLinkData != null) 'driveLinkData': driveLinkData!,
+    if (meetSpaceLinkData != null) 'meetSpaceLinkData': meetSpaceLinkData!,
+    if (richLinkType != null) 'richLinkType': richLinkType!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Response with a list of spaces corresponding to the search spaces request.
@@ -8981,27 +9221,27 @@ class SearchSpacesResponse {
   /// If the result is over 10,000 spaces, this value is an estimate.
   core.int? totalSize;
 
-  SearchSpacesResponse({
-    this.nextPageToken,
-    this.spaces,
-    this.totalSize,
-  });
+  SearchSpacesResponse({this.nextPageToken, this.spaces, this.totalSize});
 
   SearchSpacesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          spaces: (json_['spaces'] as core.List?)
-              ?.map((value) =>
-                  Space.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          totalSize: json_['totalSize'] as core.int?,
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        spaces:
+            (json_['spaces'] as core.List?)
+                ?.map(
+                  (value) => Space.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        totalSize: json_['totalSize'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (spaces != null) 'spaces': spaces!,
-        if (totalSize != null) 'totalSize': totalSize!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (spaces != null) 'spaces': spaces!,
+    if (totalSize != null) 'totalSize': totalSize!,
+  };
 }
 
 /// A section contains a collection of widgets that are rendered (vertically) in
@@ -9022,24 +9262,25 @@ class Section {
   /// A section must contain at least one widget.
   core.List<WidgetMarkup>? widgets;
 
-  Section({
-    this.header,
-    this.widgets,
-  });
+  Section({this.header, this.widgets});
 
   Section.fromJson(core.Map json_)
-      : this(
-          header: json_['header'] as core.String?,
-          widgets: (json_['widgets'] as core.List?)
-              ?.map((value) => WidgetMarkup.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        header: json_['header'] as core.String?,
+        widgets:
+            (json_['widgets'] as core.List?)
+                ?.map(
+                  (value) => WidgetMarkup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (header != null) 'header': header!,
-        if (widgets != null) 'widgets': widgets!,
-      };
+    if (header != null) 'header': header!,
+    if (widgets != null) 'widgets': widgets!,
+  };
 }
 
 /// List of widget autocomplete results.
@@ -9047,21 +9288,23 @@ class SelectionItems {
   /// An array of the SelectionItem objects.
   core.List<GoogleAppsCardV1SelectionItem>? items;
 
-  SelectionItems({
-    this.items,
-  });
+  SelectionItems({this.items});
 
   SelectionItems.fromJson(core.Map json_)
-      : this(
-          items: (json_['items'] as core.List?)
-              ?.map((value) => GoogleAppsCardV1SelectionItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1SelectionItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (items != null) 'items': items!,
-      };
+    if (items != null) 'items': items!,
+  };
 }
 
 /// Request to create a space and add specified users to it.
@@ -9120,30 +9363,32 @@ class SetUpSpaceRequest {
   /// Required.
   Space? space;
 
-  SetUpSpaceRequest({
-    this.memberships,
-    this.requestId,
-    this.space,
-  });
+  SetUpSpaceRequest({this.memberships, this.requestId, this.space});
 
   SetUpSpaceRequest.fromJson(core.Map json_)
-      : this(
-          memberships: (json_['memberships'] as core.List?)
-              ?.map((value) => Membership.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          requestId: json_['requestId'] as core.String?,
-          space: json_.containsKey('space')
-              ? Space.fromJson(
-                  json_['space'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        memberships:
+            (json_['memberships'] as core.List?)
+                ?.map(
+                  (value) => Membership.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        requestId: json_['requestId'] as core.String?,
+        space:
+            json_.containsKey('space')
+                ? Space.fromJson(
+                  json_['space'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (memberships != null) 'memberships': memberships!,
-        if (requestId != null) 'requestId': requestId!,
-        if (space != null) 'space': space!,
-      };
+    if (memberships != null) 'memberships': memberships!,
+    if (requestId != null) 'requestId': requestId!,
+    if (space != null) 'space': space!,
+  };
 }
 
 /// Metadata about a
@@ -9153,18 +9398,14 @@ class SlashCommand {
   /// The ID of the slash command.
   core.String? commandId;
 
-  SlashCommand({
-    this.commandId,
-  });
+  SlashCommand({this.commandId});
 
   SlashCommand.fromJson(core.Map json_)
-      : this(
-          commandId: json_['commandId'] as core.String?,
-        );
+    : this(commandId: json_['commandId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (commandId != null) 'commandId': commandId!,
-      };
+    if (commandId != null) 'commandId': commandId!,
+  };
 }
 
 /// Annotation metadata for slash commands (/).
@@ -9197,24 +9438,26 @@ class SlashCommandMetadata {
   });
 
   SlashCommandMetadata.fromJson(core.Map json_)
-      : this(
-          bot: json_.containsKey('bot')
-              ? User.fromJson(
-                  json_['bot'] as core.Map<core.String, core.dynamic>)
-              : null,
-          commandId: json_['commandId'] as core.String?,
-          commandName: json_['commandName'] as core.String?,
-          triggersDialog: json_['triggersDialog'] as core.bool?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        bot:
+            json_.containsKey('bot')
+                ? User.fromJson(
+                  json_['bot'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        commandId: json_['commandId'] as core.String?,
+        commandName: json_['commandName'] as core.String?,
+        triggersDialog: json_['triggersDialog'] as core.bool?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bot != null) 'bot': bot!,
-        if (commandId != null) 'commandId': commandId!,
-        if (commandName != null) 'commandName': commandName!,
-        if (triggersDialog != null) 'triggersDialog': triggersDialog!,
-        if (type != null) 'type': type!,
-      };
+    if (bot != null) 'bot': bot!,
+    if (commandId != null) 'commandId': commandId!,
+    if (commandName != null) 'commandName': commandName!,
+    if (triggersDialog != null) 'triggersDialog': triggersDialog!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A space in Google Chat.
@@ -9479,71 +9722,81 @@ class Space {
   });
 
   Space.fromJson(core.Map json_)
-      : this(
-          accessSettings: json_.containsKey('accessSettings')
-              ? AccessSettings.fromJson(json_['accessSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          adminInstalled: json_['adminInstalled'] as core.bool?,
-          createTime: json_['createTime'] as core.String?,
-          customer: json_['customer'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          externalUserAllowed: json_['externalUserAllowed'] as core.bool?,
-          importMode: json_['importMode'] as core.bool?,
-          importModeExpireTime: json_['importModeExpireTime'] as core.String?,
-          lastActiveTime: json_['lastActiveTime'] as core.String?,
-          membershipCount: json_.containsKey('membershipCount')
-              ? MembershipCount.fromJson(json_['membershipCount']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          permissionSettings: json_.containsKey('permissionSettings')
-              ? PermissionSettings.fromJson(json_['permissionSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          predefinedPermissionSettings:
-              json_['predefinedPermissionSettings'] as core.String?,
-          singleUserBotDm: json_['singleUserBotDm'] as core.bool?,
-          spaceDetails: json_.containsKey('spaceDetails')
-              ? SpaceDetails.fromJson(
-                  json_['spaceDetails'] as core.Map<core.String, core.dynamic>)
-              : null,
-          spaceHistoryState: json_['spaceHistoryState'] as core.String?,
-          spaceThreadingState: json_['spaceThreadingState'] as core.String?,
-          spaceType: json_['spaceType'] as core.String?,
-          spaceUri: json_['spaceUri'] as core.String?,
-          threaded: json_['threaded'] as core.bool?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        accessSettings:
+            json_.containsKey('accessSettings')
+                ? AccessSettings.fromJson(
+                  json_['accessSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        adminInstalled: json_['adminInstalled'] as core.bool?,
+        createTime: json_['createTime'] as core.String?,
+        customer: json_['customer'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        externalUserAllowed: json_['externalUserAllowed'] as core.bool?,
+        importMode: json_['importMode'] as core.bool?,
+        importModeExpireTime: json_['importModeExpireTime'] as core.String?,
+        lastActiveTime: json_['lastActiveTime'] as core.String?,
+        membershipCount:
+            json_.containsKey('membershipCount')
+                ? MembershipCount.fromJson(
+                  json_['membershipCount']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        permissionSettings:
+            json_.containsKey('permissionSettings')
+                ? PermissionSettings.fromJson(
+                  json_['permissionSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        predefinedPermissionSettings:
+            json_['predefinedPermissionSettings'] as core.String?,
+        singleUserBotDm: json_['singleUserBotDm'] as core.bool?,
+        spaceDetails:
+            json_.containsKey('spaceDetails')
+                ? SpaceDetails.fromJson(
+                  json_['spaceDetails'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spaceHistoryState: json_['spaceHistoryState'] as core.String?,
+        spaceThreadingState: json_['spaceThreadingState'] as core.String?,
+        spaceType: json_['spaceType'] as core.String?,
+        spaceUri: json_['spaceUri'] as core.String?,
+        threaded: json_['threaded'] as core.bool?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessSettings != null) 'accessSettings': accessSettings!,
-        if (adminInstalled != null) 'adminInstalled': adminInstalled!,
-        if (createTime != null) 'createTime': createTime!,
-        if (customer != null) 'customer': customer!,
-        if (displayName != null) 'displayName': displayName!,
-        if (externalUserAllowed != null)
-          'externalUserAllowed': externalUserAllowed!,
-        if (importMode != null) 'importMode': importMode!,
-        if (importModeExpireTime != null)
-          'importModeExpireTime': importModeExpireTime!,
-        if (lastActiveTime != null) 'lastActiveTime': lastActiveTime!,
-        if (membershipCount != null) 'membershipCount': membershipCount!,
-        if (name != null) 'name': name!,
-        if (permissionSettings != null)
-          'permissionSettings': permissionSettings!,
-        if (predefinedPermissionSettings != null)
-          'predefinedPermissionSettings': predefinedPermissionSettings!,
-        if (singleUserBotDm != null) 'singleUserBotDm': singleUserBotDm!,
-        if (spaceDetails != null) 'spaceDetails': spaceDetails!,
-        if (spaceHistoryState != null) 'spaceHistoryState': spaceHistoryState!,
-        if (spaceThreadingState != null)
-          'spaceThreadingState': spaceThreadingState!,
-        if (spaceType != null) 'spaceType': spaceType!,
-        if (spaceUri != null) 'spaceUri': spaceUri!,
-        if (threaded != null) 'threaded': threaded!,
-        if (type != null) 'type': type!,
-      };
+    if (accessSettings != null) 'accessSettings': accessSettings!,
+    if (adminInstalled != null) 'adminInstalled': adminInstalled!,
+    if (createTime != null) 'createTime': createTime!,
+    if (customer != null) 'customer': customer!,
+    if (displayName != null) 'displayName': displayName!,
+    if (externalUserAllowed != null)
+      'externalUserAllowed': externalUserAllowed!,
+    if (importMode != null) 'importMode': importMode!,
+    if (importModeExpireTime != null)
+      'importModeExpireTime': importModeExpireTime!,
+    if (lastActiveTime != null) 'lastActiveTime': lastActiveTime!,
+    if (membershipCount != null) 'membershipCount': membershipCount!,
+    if (name != null) 'name': name!,
+    if (permissionSettings != null) 'permissionSettings': permissionSettings!,
+    if (predefinedPermissionSettings != null)
+      'predefinedPermissionSettings': predefinedPermissionSettings!,
+    if (singleUserBotDm != null) 'singleUserBotDm': singleUserBotDm!,
+    if (spaceDetails != null) 'spaceDetails': spaceDetails!,
+    if (spaceHistoryState != null) 'spaceHistoryState': spaceHistoryState!,
+    if (spaceThreadingState != null)
+      'spaceThreadingState': spaceThreadingState!,
+    if (spaceType != null) 'spaceType': spaceType!,
+    if (spaceUri != null) 'spaceUri': spaceUri!,
+    if (threaded != null) 'threaded': threaded!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Event payload for multiple updates to a space.
@@ -9553,21 +9806,23 @@ class SpaceBatchUpdatedEventData {
   /// A list of updated spaces.
   core.List<SpaceUpdatedEventData>? spaces;
 
-  SpaceBatchUpdatedEventData({
-    this.spaces,
-  });
+  SpaceBatchUpdatedEventData({this.spaces});
 
   SpaceBatchUpdatedEventData.fromJson(core.Map json_)
-      : this(
-          spaces: (json_['spaces'] as core.List?)
-              ?.map((value) => SpaceUpdatedEventData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        spaces:
+            (json_['spaces'] as core.List?)
+                ?.map(
+                  (value) => SpaceUpdatedEventData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (spaces != null) 'spaces': spaces!,
-      };
+    if (spaces != null) 'spaces': spaces!,
+  };
 }
 
 /// A data source that populates Google Chat spaces as selection items for a
@@ -9580,19 +9835,15 @@ class SpaceDataSource {
   /// space as an item by default.
   core.bool? defaultToCurrentSpace;
 
-  SpaceDataSource({
-    this.defaultToCurrentSpace,
-  });
+  SpaceDataSource({this.defaultToCurrentSpace});
 
   SpaceDataSource.fromJson(core.Map json_)
-      : this(
-          defaultToCurrentSpace: json_['defaultToCurrentSpace'] as core.bool?,
-        );
+    : this(defaultToCurrentSpace: json_['defaultToCurrentSpace'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultToCurrentSpace != null)
-          'defaultToCurrentSpace': defaultToCurrentSpace!,
-      };
+    if (defaultToCurrentSpace != null)
+      'defaultToCurrentSpace': defaultToCurrentSpace!,
+  };
 }
 
 /// Details about the space including description and rules.
@@ -9612,21 +9863,18 @@ class SpaceDetails {
   /// Optional.
   core.String? guidelines;
 
-  SpaceDetails({
-    this.description,
-    this.guidelines,
-  });
+  SpaceDetails({this.description, this.guidelines});
 
   SpaceDetails.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          guidelines: json_['guidelines'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        guidelines: json_['guidelines'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (guidelines != null) 'guidelines': guidelines!,
-      };
+    if (description != null) 'description': description!,
+    if (guidelines != null) 'guidelines': guidelines!,
+  };
 }
 
 /// An event that represents a change or activity in a Google Chat space.
@@ -9792,156 +10040,179 @@ class SpaceEvent {
   });
 
   SpaceEvent.fromJson(core.Map json_)
-      : this(
-          eventTime: json_['eventTime'] as core.String?,
-          eventType: json_['eventType'] as core.String?,
-          membershipBatchCreatedEventData:
-              json_.containsKey('membershipBatchCreatedEventData')
-                  ? MembershipBatchCreatedEventData.fromJson(
-                      json_['membershipBatchCreatedEventData']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          membershipBatchDeletedEventData:
-              json_.containsKey('membershipBatchDeletedEventData')
-                  ? MembershipBatchDeletedEventData.fromJson(
-                      json_['membershipBatchDeletedEventData']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          membershipBatchUpdatedEventData:
-              json_.containsKey('membershipBatchUpdatedEventData')
-                  ? MembershipBatchUpdatedEventData.fromJson(
-                      json_['membershipBatchUpdatedEventData']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          membershipCreatedEventData:
-              json_.containsKey('membershipCreatedEventData')
-                  ? MembershipCreatedEventData.fromJson(
-                      json_['membershipCreatedEventData']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          membershipDeletedEventData:
-              json_.containsKey('membershipDeletedEventData')
-                  ? MembershipDeletedEventData.fromJson(
-                      json_['membershipDeletedEventData']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          membershipUpdatedEventData:
-              json_.containsKey('membershipUpdatedEventData')
-                  ? MembershipUpdatedEventData.fromJson(
-                      json_['membershipUpdatedEventData']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          messageBatchCreatedEventData:
-              json_.containsKey('messageBatchCreatedEventData')
-                  ? MessageBatchCreatedEventData.fromJson(
-                      json_['messageBatchCreatedEventData']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          messageBatchDeletedEventData:
-              json_.containsKey('messageBatchDeletedEventData')
-                  ? MessageBatchDeletedEventData.fromJson(
-                      json_['messageBatchDeletedEventData']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          messageBatchUpdatedEventData:
-              json_.containsKey('messageBatchUpdatedEventData')
-                  ? MessageBatchUpdatedEventData.fromJson(
-                      json_['messageBatchUpdatedEventData']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          messageCreatedEventData: json_.containsKey('messageCreatedEventData')
-              ? MessageCreatedEventData.fromJson(
+    : this(
+        eventTime: json_['eventTime'] as core.String?,
+        eventType: json_['eventType'] as core.String?,
+        membershipBatchCreatedEventData:
+            json_.containsKey('membershipBatchCreatedEventData')
+                ? MembershipBatchCreatedEventData.fromJson(
+                  json_['membershipBatchCreatedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        membershipBatchDeletedEventData:
+            json_.containsKey('membershipBatchDeletedEventData')
+                ? MembershipBatchDeletedEventData.fromJson(
+                  json_['membershipBatchDeletedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        membershipBatchUpdatedEventData:
+            json_.containsKey('membershipBatchUpdatedEventData')
+                ? MembershipBatchUpdatedEventData.fromJson(
+                  json_['membershipBatchUpdatedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        membershipCreatedEventData:
+            json_.containsKey('membershipCreatedEventData')
+                ? MembershipCreatedEventData.fromJson(
+                  json_['membershipCreatedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        membershipDeletedEventData:
+            json_.containsKey('membershipDeletedEventData')
+                ? MembershipDeletedEventData.fromJson(
+                  json_['membershipDeletedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        membershipUpdatedEventData:
+            json_.containsKey('membershipUpdatedEventData')
+                ? MembershipUpdatedEventData.fromJson(
+                  json_['membershipUpdatedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        messageBatchCreatedEventData:
+            json_.containsKey('messageBatchCreatedEventData')
+                ? MessageBatchCreatedEventData.fromJson(
+                  json_['messageBatchCreatedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        messageBatchDeletedEventData:
+            json_.containsKey('messageBatchDeletedEventData')
+                ? MessageBatchDeletedEventData.fromJson(
+                  json_['messageBatchDeletedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        messageBatchUpdatedEventData:
+            json_.containsKey('messageBatchUpdatedEventData')
+                ? MessageBatchUpdatedEventData.fromJson(
+                  json_['messageBatchUpdatedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        messageCreatedEventData:
+            json_.containsKey('messageCreatedEventData')
+                ? MessageCreatedEventData.fromJson(
                   json_['messageCreatedEventData']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          messageDeletedEventData: json_.containsKey('messageDeletedEventData')
-              ? MessageDeletedEventData.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        messageDeletedEventData:
+            json_.containsKey('messageDeletedEventData')
+                ? MessageDeletedEventData.fromJson(
                   json_['messageDeletedEventData']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          messageUpdatedEventData: json_.containsKey('messageUpdatedEventData')
-              ? MessageUpdatedEventData.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        messageUpdatedEventData:
+            json_.containsKey('messageUpdatedEventData')
+                ? MessageUpdatedEventData.fromJson(
                   json_['messageUpdatedEventData']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          reactionBatchCreatedEventData:
-              json_.containsKey('reactionBatchCreatedEventData')
-                  ? ReactionBatchCreatedEventData.fromJson(
-                      json_['reactionBatchCreatedEventData']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          reactionBatchDeletedEventData:
-              json_.containsKey('reactionBatchDeletedEventData')
-                  ? ReactionBatchDeletedEventData.fromJson(
-                      json_['reactionBatchDeletedEventData']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          reactionCreatedEventData:
-              json_.containsKey('reactionCreatedEventData')
-                  ? ReactionCreatedEventData.fromJson(
-                      json_['reactionCreatedEventData']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          reactionDeletedEventData:
-              json_.containsKey('reactionDeletedEventData')
-                  ? ReactionDeletedEventData.fromJson(
-                      json_['reactionDeletedEventData']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          spaceBatchUpdatedEventData:
-              json_.containsKey('spaceBatchUpdatedEventData')
-                  ? SpaceBatchUpdatedEventData.fromJson(
-                      json_['spaceBatchUpdatedEventData']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          spaceUpdatedEventData: json_.containsKey('spaceUpdatedEventData')
-              ? SpaceUpdatedEventData.fromJson(json_['spaceUpdatedEventData']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        reactionBatchCreatedEventData:
+            json_.containsKey('reactionBatchCreatedEventData')
+                ? ReactionBatchCreatedEventData.fromJson(
+                  json_['reactionBatchCreatedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reactionBatchDeletedEventData:
+            json_.containsKey('reactionBatchDeletedEventData')
+                ? ReactionBatchDeletedEventData.fromJson(
+                  json_['reactionBatchDeletedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reactionCreatedEventData:
+            json_.containsKey('reactionCreatedEventData')
+                ? ReactionCreatedEventData.fromJson(
+                  json_['reactionCreatedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reactionDeletedEventData:
+            json_.containsKey('reactionDeletedEventData')
+                ? ReactionDeletedEventData.fromJson(
+                  json_['reactionDeletedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spaceBatchUpdatedEventData:
+            json_.containsKey('spaceBatchUpdatedEventData')
+                ? SpaceBatchUpdatedEventData.fromJson(
+                  json_['spaceBatchUpdatedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spaceUpdatedEventData:
+            json_.containsKey('spaceUpdatedEventData')
+                ? SpaceUpdatedEventData.fromJson(
+                  json_['spaceUpdatedEventData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (eventTime != null) 'eventTime': eventTime!,
-        if (eventType != null) 'eventType': eventType!,
-        if (membershipBatchCreatedEventData != null)
-          'membershipBatchCreatedEventData': membershipBatchCreatedEventData!,
-        if (membershipBatchDeletedEventData != null)
-          'membershipBatchDeletedEventData': membershipBatchDeletedEventData!,
-        if (membershipBatchUpdatedEventData != null)
-          'membershipBatchUpdatedEventData': membershipBatchUpdatedEventData!,
-        if (membershipCreatedEventData != null)
-          'membershipCreatedEventData': membershipCreatedEventData!,
-        if (membershipDeletedEventData != null)
-          'membershipDeletedEventData': membershipDeletedEventData!,
-        if (membershipUpdatedEventData != null)
-          'membershipUpdatedEventData': membershipUpdatedEventData!,
-        if (messageBatchCreatedEventData != null)
-          'messageBatchCreatedEventData': messageBatchCreatedEventData!,
-        if (messageBatchDeletedEventData != null)
-          'messageBatchDeletedEventData': messageBatchDeletedEventData!,
-        if (messageBatchUpdatedEventData != null)
-          'messageBatchUpdatedEventData': messageBatchUpdatedEventData!,
-        if (messageCreatedEventData != null)
-          'messageCreatedEventData': messageCreatedEventData!,
-        if (messageDeletedEventData != null)
-          'messageDeletedEventData': messageDeletedEventData!,
-        if (messageUpdatedEventData != null)
-          'messageUpdatedEventData': messageUpdatedEventData!,
-        if (name != null) 'name': name!,
-        if (reactionBatchCreatedEventData != null)
-          'reactionBatchCreatedEventData': reactionBatchCreatedEventData!,
-        if (reactionBatchDeletedEventData != null)
-          'reactionBatchDeletedEventData': reactionBatchDeletedEventData!,
-        if (reactionCreatedEventData != null)
-          'reactionCreatedEventData': reactionCreatedEventData!,
-        if (reactionDeletedEventData != null)
-          'reactionDeletedEventData': reactionDeletedEventData!,
-        if (spaceBatchUpdatedEventData != null)
-          'spaceBatchUpdatedEventData': spaceBatchUpdatedEventData!,
-        if (spaceUpdatedEventData != null)
-          'spaceUpdatedEventData': spaceUpdatedEventData!,
-      };
+    if (eventTime != null) 'eventTime': eventTime!,
+    if (eventType != null) 'eventType': eventType!,
+    if (membershipBatchCreatedEventData != null)
+      'membershipBatchCreatedEventData': membershipBatchCreatedEventData!,
+    if (membershipBatchDeletedEventData != null)
+      'membershipBatchDeletedEventData': membershipBatchDeletedEventData!,
+    if (membershipBatchUpdatedEventData != null)
+      'membershipBatchUpdatedEventData': membershipBatchUpdatedEventData!,
+    if (membershipCreatedEventData != null)
+      'membershipCreatedEventData': membershipCreatedEventData!,
+    if (membershipDeletedEventData != null)
+      'membershipDeletedEventData': membershipDeletedEventData!,
+    if (membershipUpdatedEventData != null)
+      'membershipUpdatedEventData': membershipUpdatedEventData!,
+    if (messageBatchCreatedEventData != null)
+      'messageBatchCreatedEventData': messageBatchCreatedEventData!,
+    if (messageBatchDeletedEventData != null)
+      'messageBatchDeletedEventData': messageBatchDeletedEventData!,
+    if (messageBatchUpdatedEventData != null)
+      'messageBatchUpdatedEventData': messageBatchUpdatedEventData!,
+    if (messageCreatedEventData != null)
+      'messageCreatedEventData': messageCreatedEventData!,
+    if (messageDeletedEventData != null)
+      'messageDeletedEventData': messageDeletedEventData!,
+    if (messageUpdatedEventData != null)
+      'messageUpdatedEventData': messageUpdatedEventData!,
+    if (name != null) 'name': name!,
+    if (reactionBatchCreatedEventData != null)
+      'reactionBatchCreatedEventData': reactionBatchCreatedEventData!,
+    if (reactionBatchDeletedEventData != null)
+      'reactionBatchDeletedEventData': reactionBatchDeletedEventData!,
+    if (reactionCreatedEventData != null)
+      'reactionCreatedEventData': reactionCreatedEventData!,
+    if (reactionDeletedEventData != null)
+      'reactionDeletedEventData': reactionDeletedEventData!,
+    if (spaceBatchUpdatedEventData != null)
+      'spaceBatchUpdatedEventData': spaceBatchUpdatedEventData!,
+    if (spaceUpdatedEventData != null)
+      'spaceUpdatedEventData': spaceUpdatedEventData!,
+  };
 }
 
 /// The notification setting of a user in a space.
@@ -9982,18 +10253,18 @@ class SpaceNotificationSetting {
   });
 
   SpaceNotificationSetting.fromJson(core.Map json_)
-      : this(
-          muteSetting: json_['muteSetting'] as core.String?,
-          name: json_['name'] as core.String?,
-          notificationSetting: json_['notificationSetting'] as core.String?,
-        );
+    : this(
+        muteSetting: json_['muteSetting'] as core.String?,
+        name: json_['name'] as core.String?,
+        notificationSetting: json_['notificationSetting'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (muteSetting != null) 'muteSetting': muteSetting!,
-        if (name != null) 'name': name!,
-        if (notificationSetting != null)
-          'notificationSetting': notificationSetting!,
-      };
+    if (muteSetting != null) 'muteSetting': muteSetting!,
+    if (name != null) 'name': name!,
+    if (notificationSetting != null)
+      'notificationSetting': notificationSetting!,
+  };
 }
 
 /// A user's read state within a space, used to identify read and unread
@@ -10013,21 +10284,18 @@ class SpaceReadState {
   /// Format: `users/{user}/spaces/{space}/spaceReadState`
   core.String? name;
 
-  SpaceReadState({
-    this.lastReadTime,
-    this.name,
-  });
+  SpaceReadState({this.lastReadTime, this.name});
 
   SpaceReadState.fromJson(core.Map json_)
-      : this(
-          lastReadTime: json_['lastReadTime'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        lastReadTime: json_['lastReadTime'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lastReadTime != null) 'lastReadTime': lastReadTime!,
-        if (name != null) 'name': name!,
-      };
+    if (lastReadTime != null) 'lastReadTime': lastReadTime!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Event payload for an updated space.
@@ -10037,21 +10305,21 @@ class SpaceUpdatedEventData {
   /// The updated space.
   Space? space;
 
-  SpaceUpdatedEventData({
-    this.space,
-  });
+  SpaceUpdatedEventData({this.space});
 
   SpaceUpdatedEventData.fromJson(core.Map json_)
-      : this(
-          space: json_.containsKey('space')
-              ? Space.fromJson(
-                  json_['space'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        space:
+            json_.containsKey('space')
+                ? Space.fromJson(
+                  json_['space'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (space != null) 'space': space!,
-      };
+    if (space != null) 'space': space!,
+  };
 }
 
 /// A button with text and `onclick` action.
@@ -10062,24 +10330,23 @@ class TextButton {
   /// The text of the button.
   core.String? text;
 
-  TextButton({
-    this.onClick,
-    this.text,
-  });
+  TextButton({this.onClick, this.text});
 
   TextButton.fromJson(core.Map json_)
-      : this(
-          onClick: json_.containsKey('onClick')
-              ? OnClick.fromJson(
-                  json_['onClick'] as core.Map<core.String, core.dynamic>)
-              : null,
-          text: json_['text'] as core.String?,
-        );
+    : this(
+        onClick:
+            json_.containsKey('onClick')
+                ? OnClick.fromJson(
+                  json_['onClick'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        text: json_['text'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (onClick != null) 'onClick': onClick!,
-        if (text != null) 'text': text!,
-      };
+    if (onClick != null) 'onClick': onClick!,
+    if (text != null) 'text': text!,
+  };
 }
 
 /// A paragraph of text.
@@ -10091,18 +10358,14 @@ class TextButton {
 class TextParagraph {
   core.String? text;
 
-  TextParagraph({
-    this.text,
-  });
+  TextParagraph({this.text});
 
   TextParagraph.fromJson(core.Map json_)
-      : this(
-          text: json_['text'] as core.String?,
-        );
+    : this(text: json_['text'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (text != null) 'text': text!,
-      };
+    if (text != null) 'text': text!,
+  };
 }
 
 /// A thread in a Google Chat space.
@@ -10129,21 +10392,18 @@ class Thread {
   /// Optional.
   core.String? threadKey;
 
-  Thread({
-    this.name,
-    this.threadKey,
-  });
+  Thread({this.name, this.threadKey});
 
   Thread.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          threadKey: json_['threadKey'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        threadKey: json_['threadKey'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (threadKey != null) 'threadKey': threadKey!,
-      };
+    if (name != null) 'name': name!,
+    if (threadKey != null) 'threadKey': threadKey!,
+  };
 }
 
 /// A user's read state within a thread, used to identify read and unread
@@ -10160,21 +10420,18 @@ class ThreadReadState {
   /// Format: `users/{user}/spaces/{space}/threads/{thread}/threadReadState`
   core.String? name;
 
-  ThreadReadState({
-    this.lastReadTime,
-    this.name,
-  });
+  ThreadReadState({this.lastReadTime, this.name});
 
   ThreadReadState.fromJson(core.Map json_)
-      : this(
-          lastReadTime: json_['lastReadTime'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        lastReadTime: json_['lastReadTime'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (lastReadTime != null) 'lastReadTime': lastReadTime!,
-        if (name != null) 'name': name!,
-      };
+    if (lastReadTime != null) 'lastReadTime': lastReadTime!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// For `selectionInput` widgets, returns autocomplete suggestions for a
@@ -10189,24 +10446,23 @@ class UpdatedWidget {
   /// request.
   core.String? widget;
 
-  UpdatedWidget({
-    this.suggestions,
-    this.widget,
-  });
+  UpdatedWidget({this.suggestions, this.widget});
 
   UpdatedWidget.fromJson(core.Map json_)
-      : this(
-          suggestions: json_.containsKey('suggestions')
-              ? SelectionItems.fromJson(
-                  json_['suggestions'] as core.Map<core.String, core.dynamic>)
-              : null,
-          widget: json_['widget'] as core.String?,
-        );
+    : this(
+        suggestions:
+            json_.containsKey('suggestions')
+                ? SelectionItems.fromJson(
+                  json_['suggestions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        widget: json_['widget'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (suggestions != null) 'suggestions': suggestions!,
-        if (widget != null) 'widget': widget!,
-      };
+    if (suggestions != null) 'suggestions': suggestions!,
+    if (widget != null) 'widget': widget!,
+  };
 }
 
 /// Request to upload an attachment.
@@ -10216,18 +10472,14 @@ class UploadAttachmentRequest {
   /// Required.
   core.String? filename;
 
-  UploadAttachmentRequest({
-    this.filename,
-  });
+  UploadAttachmentRequest({this.filename});
 
   UploadAttachmentRequest.fromJson(core.Map json_)
-      : this(
-          filename: json_['filename'] as core.String?,
-        );
+    : this(filename: json_['filename'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filename != null) 'filename': filename!,
-      };
+    if (filename != null) 'filename': filename!,
+  };
 }
 
 /// Response of uploading an attachment.
@@ -10235,21 +10487,22 @@ class UploadAttachmentResponse {
   /// Reference to the uploaded attachment.
   AttachmentDataRef? attachmentDataRef;
 
-  UploadAttachmentResponse({
-    this.attachmentDataRef,
-  });
+  UploadAttachmentResponse({this.attachmentDataRef});
 
   UploadAttachmentResponse.fromJson(core.Map json_)
-      : this(
-          attachmentDataRef: json_.containsKey('attachmentDataRef')
-              ? AttachmentDataRef.fromJson(json_['attachmentDataRef']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        attachmentDataRef:
+            json_.containsKey('attachmentDataRef')
+                ? AttachmentDataRef.fromJson(
+                  json_['attachmentDataRef']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachmentDataRef != null) 'attachmentDataRef': attachmentDataRef!,
-      };
+    if (attachmentDataRef != null) 'attachmentDataRef': attachmentDataRef!,
+  };
 }
 
 /// A user in Google Chat.
@@ -10306,21 +10559,21 @@ class User {
   });
 
   User.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          domainId: json_['domainId'] as core.String?,
-          isAnonymous: json_['isAnonymous'] as core.bool?,
-          name: json_['name'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        domainId: json_['domainId'] as core.String?,
+        isAnonymous: json_['isAnonymous'] as core.bool?,
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (domainId != null) 'domainId': domainId!,
-        if (isAnonymous != null) 'isAnonymous': isAnonymous!,
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (domainId != null) 'domainId': domainId!,
+    if (isAnonymous != null) 'isAnonymous': isAnonymous!,
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Annotation metadata for user mentions (@).
@@ -10335,24 +10588,23 @@ class UserMentionMetadata {
   /// The user mentioned.
   User? user;
 
-  UserMentionMetadata({
-    this.type,
-    this.user,
-  });
+  UserMentionMetadata({this.type, this.user});
 
   UserMentionMetadata.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-          user: json_.containsKey('user')
-              ? User.fromJson(
-                  json_['user'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        type: json_['type'] as core.String?,
+        user:
+            json_.containsKey('user')
+                ? User.fromJson(
+                  json_['user'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-        if (user != null) 'user': user!,
-      };
+    if (type != null) 'type': type!,
+    if (user != null) 'user': user!,
+  };
 }
 
 /// A widget is a UI element that presents text and images.
@@ -10371,37 +10623,42 @@ class WidgetMarkup {
   /// Display a text paragraph in this widget.
   TextParagraph? textParagraph;
 
-  WidgetMarkup({
-    this.buttons,
-    this.image,
-    this.keyValue,
-    this.textParagraph,
-  });
+  WidgetMarkup({this.buttons, this.image, this.keyValue, this.textParagraph});
 
   WidgetMarkup.fromJson(core.Map json_)
-      : this(
-          buttons: (json_['buttons'] as core.List?)
-              ?.map((value) =>
-                  Button.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          image: json_.containsKey('image')
-              ? Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
-              : null,
-          keyValue: json_.containsKey('keyValue')
-              ? KeyValue.fromJson(
-                  json_['keyValue'] as core.Map<core.String, core.dynamic>)
-              : null,
-          textParagraph: json_.containsKey('textParagraph')
-              ? TextParagraph.fromJson(
-                  json_['textParagraph'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        buttons:
+            (json_['buttons'] as core.List?)
+                ?.map(
+                  (value) => Button.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        image:
+            json_.containsKey('image')
+                ? Image.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        keyValue:
+            json_.containsKey('keyValue')
+                ? KeyValue.fromJson(
+                  json_['keyValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textParagraph:
+            json_.containsKey('textParagraph')
+                ? TextParagraph.fromJson(
+                  json_['textParagraph'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buttons != null) 'buttons': buttons!,
-        if (image != null) 'image': image!,
-        if (keyValue != null) 'keyValue': keyValue!,
-        if (textParagraph != null) 'textParagraph': textParagraph!,
-      };
+    if (buttons != null) 'buttons': buttons!,
+    if (image != null) 'image': image!,
+    if (keyValue != null) 'keyValue': keyValue!,
+    if (textParagraph != null) 'textParagraph': textParagraph!,
+  };
 }

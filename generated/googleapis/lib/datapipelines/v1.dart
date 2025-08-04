@@ -53,11 +53,16 @@ class DatapipelinesApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  DatapipelinesApi(http.Client client,
-      {core.String rootUrl = 'https://datapipelines.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DatapipelinesApi(
+    http.Client client, {
+    core.String rootUrl = 'https://datapipelines.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -85,7 +90,7 @@ class ProjectsLocationsPipelinesResource {
       ProjectsLocationsPipelinesJobsResource(_requester);
 
   ProjectsLocationsPipelinesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a pipeline.
   ///
@@ -131,7 +136,8 @@ class ProjectsLocationsPipelinesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1Pipeline.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a pipeline.
@@ -168,10 +174,12 @@ class ProjectsLocationsPipelinesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Looks up a single pipeline.
@@ -212,7 +220,8 @@ class ProjectsLocationsPipelinesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1Pipeline.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists pipelines.
@@ -277,7 +286,8 @@ class ProjectsLocationsPipelinesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1ListPipelinesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a pipeline.
@@ -340,7 +350,8 @@ class ProjectsLocationsPipelinesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1Pipeline.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a job for the specified pipeline directly.
@@ -389,7 +400,8 @@ class ProjectsLocationsPipelinesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1RunPipelineResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Freezes pipeline execution permanently.
@@ -435,7 +447,8 @@ class ProjectsLocationsPipelinesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1Pipeline.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -443,7 +456,7 @@ class ProjectsLocationsPipelinesJobsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPipelinesJobsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists jobs for a given pipeline.
   ///
@@ -497,7 +510,8 @@ class ProjectsLocationsPipelinesJobsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDatapipelinesV1ListJobsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -531,27 +545,27 @@ class GoogleCloudDatapipelinesV1DataflowJobDetails {
   });
 
   GoogleCloudDatapipelinesV1DataflowJobDetails.fromJson(core.Map json_)
-      : this(
-          currentWorkers: json_['currentWorkers'] as core.int?,
-          resourceInfo:
-              (json_['resourceInfo'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              (value as core.num).toDouble(),
+    : this(
+        currentWorkers: json_['currentWorkers'] as core.int?,
+        resourceInfo: (json_['resourceInfo']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) =>
+                  core.MapEntry(key, (value as core.num).toDouble()),
             ),
-          ),
-          sdkVersion: json_.containsKey('sdkVersion')
-              ? GoogleCloudDatapipelinesV1SdkVersion.fromJson(
-                  json_['sdkVersion'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+        sdkVersion:
+            json_.containsKey('sdkVersion')
+                ? GoogleCloudDatapipelinesV1SdkVersion.fromJson(
+                  json_['sdkVersion'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (currentWorkers != null) 'currentWorkers': currentWorkers!,
-        if (resourceInfo != null) 'resourceInfo': resourceInfo!,
-        if (sdkVersion != null) 'sdkVersion': sdkVersion!,
-      };
+    if (currentWorkers != null) 'currentWorkers': currentWorkers!,
+    if (resourceInfo != null) 'resourceInfo': resourceInfo!,
+    if (sdkVersion != null) 'sdkVersion': sdkVersion!,
+  };
 }
 
 /// The environment values to be set at runtime for a Flex Template.
@@ -670,57 +684,53 @@ class GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
   });
 
   GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment.fromJson(
-      core.Map json_)
-      : this(
-          additionalExperiments: (json_['additionalExperiments'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          additionalUserLabels: (json_['additionalUserLabels']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          enableStreamingEngine: json_['enableStreamingEngine'] as core.bool?,
-          flexrsGoal: json_['flexrsGoal'] as core.String?,
-          ipConfiguration: json_['ipConfiguration'] as core.String?,
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-          machineType: json_['machineType'] as core.String?,
-          maxWorkers: json_['maxWorkers'] as core.int?,
-          network: json_['network'] as core.String?,
-          numWorkers: json_['numWorkers'] as core.int?,
-          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-          subnetwork: json_['subnetwork'] as core.String?,
-          tempLocation: json_['tempLocation'] as core.String?,
-          workerRegion: json_['workerRegion'] as core.String?,
-          workerZone: json_['workerZone'] as core.String?,
-          zone: json_['zone'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        additionalExperiments:
+            (json_['additionalExperiments'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        additionalUserLabels: (json_['additionalUserLabels']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        enableStreamingEngine: json_['enableStreamingEngine'] as core.bool?,
+        flexrsGoal: json_['flexrsGoal'] as core.String?,
+        ipConfiguration: json_['ipConfiguration'] as core.String?,
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+        machineType: json_['machineType'] as core.String?,
+        maxWorkers: json_['maxWorkers'] as core.int?,
+        network: json_['network'] as core.String?,
+        numWorkers: json_['numWorkers'] as core.int?,
+        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+        subnetwork: json_['subnetwork'] as core.String?,
+        tempLocation: json_['tempLocation'] as core.String?,
+        workerRegion: json_['workerRegion'] as core.String?,
+        workerZone: json_['workerZone'] as core.String?,
+        zone: json_['zone'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalExperiments != null)
-          'additionalExperiments': additionalExperiments!,
-        if (additionalUserLabels != null)
-          'additionalUserLabels': additionalUserLabels!,
-        if (enableStreamingEngine != null)
-          'enableStreamingEngine': enableStreamingEngine!,
-        if (flexrsGoal != null) 'flexrsGoal': flexrsGoal!,
-        if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-        if (machineType != null) 'machineType': machineType!,
-        if (maxWorkers != null) 'maxWorkers': maxWorkers!,
-        if (network != null) 'network': network!,
-        if (numWorkers != null) 'numWorkers': numWorkers!,
-        if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail!,
-        if (subnetwork != null) 'subnetwork': subnetwork!,
-        if (tempLocation != null) 'tempLocation': tempLocation!,
-        if (workerRegion != null) 'workerRegion': workerRegion!,
-        if (workerZone != null) 'workerZone': workerZone!,
-        if (zone != null) 'zone': zone!,
-      };
+    if (additionalExperiments != null)
+      'additionalExperiments': additionalExperiments!,
+    if (additionalUserLabels != null)
+      'additionalUserLabels': additionalUserLabels!,
+    if (enableStreamingEngine != null)
+      'enableStreamingEngine': enableStreamingEngine!,
+    if (flexrsGoal != null) 'flexrsGoal': flexrsGoal!,
+    if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+    if (machineType != null) 'machineType': machineType!,
+    if (maxWorkers != null) 'maxWorkers': maxWorkers!,
+    if (network != null) 'network': network!,
+    if (numWorkers != null) 'numWorkers': numWorkers!,
+    if (serviceAccountEmail != null)
+      'serviceAccountEmail': serviceAccountEmail!,
+    if (subnetwork != null) 'subnetwork': subnetwork!,
+    if (tempLocation != null) 'tempLocation': tempLocation!,
+    if (workerRegion != null) 'workerRegion': workerRegion!,
+    if (workerZone != null) 'workerZone': workerZone!,
+    if (zone != null) 'zone': zone!,
+  };
 }
 
 /// Definition of the job information maintained by the pipeline.
@@ -778,33 +788,36 @@ class GoogleCloudDatapipelinesV1Job {
   });
 
   GoogleCloudDatapipelinesV1Job.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          dataflowJobDetails: json_.containsKey('dataflowJobDetails')
-              ? GoogleCloudDatapipelinesV1DataflowJobDetails.fromJson(
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        dataflowJobDetails:
+            json_.containsKey('dataflowJobDetails')
+                ? GoogleCloudDatapipelinesV1DataflowJobDetails.fromJson(
                   json_['dataflowJobDetails']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          endTime: json_['endTime'] as core.String?,
-          id: json_['id'] as core.String?,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          status: json_.containsKey('status')
-              ? GoogleRpcStatus.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endTime: json_['endTime'] as core.String?,
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        status:
+            json_.containsKey('status')
+                ? GoogleRpcStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (dataflowJobDetails != null)
-          'dataflowJobDetails': dataflowJobDetails!,
-        if (endTime != null) 'endTime': endTime!,
-        if (id != null) 'id': id!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (status != null) 'status': status!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (dataflowJobDetails != null) 'dataflowJobDetails': dataflowJobDetails!,
+    if (endTime != null) 'endTime': endTime!,
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (status != null) 'status': status!,
+  };
 }
 
 /// Launch Flex Template parameter.
@@ -857,52 +870,38 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
   });
 
   GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter.fromJson(core.Map json_)
-      : this(
-          containerSpecGcsPath: json_['containerSpecGcsPath'] as core.String?,
-          environment: json_.containsKey('environment')
-              ? GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment
-                  .fromJson(json_['environment']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          jobName: json_['jobName'] as core.String?,
-          launchOptions:
-              (json_['launchOptions'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          parameters:
-              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          transformNameMappings: (json_['transformNameMappings']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          update: json_['update'] as core.bool?,
-        );
+    : this(
+        containerSpecGcsPath: json_['containerSpecGcsPath'] as core.String?,
+        environment:
+            json_.containsKey('environment')
+                ? GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment.fromJson(
+                  json_['environment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        jobName: json_['jobName'] as core.String?,
+        launchOptions: (json_['launchOptions']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        parameters: (json_['parameters']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        transformNameMappings: (json_['transformNameMappings']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        update: json_['update'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (containerSpecGcsPath != null)
-          'containerSpecGcsPath': containerSpecGcsPath!,
-        if (environment != null) 'environment': environment!,
-        if (jobName != null) 'jobName': jobName!,
-        if (launchOptions != null) 'launchOptions': launchOptions!,
-        if (parameters != null) 'parameters': parameters!,
-        if (transformNameMappings != null)
-          'transformNameMappings': transformNameMappings!,
-        if (update != null) 'update': update!,
-      };
+    if (containerSpecGcsPath != null)
+      'containerSpecGcsPath': containerSpecGcsPath!,
+    if (environment != null) 'environment': environment!,
+    if (jobName != null) 'jobName': jobName!,
+    if (launchOptions != null) 'launchOptions': launchOptions!,
+    if (parameters != null) 'parameters': parameters!,
+    if (transformNameMappings != null)
+      'transformNameMappings': transformNameMappings!,
+    if (update != null) 'update': update!,
+  };
 }
 
 /// A request to launch a Dataflow job from a Flex Template.
@@ -939,23 +938,25 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest {
   });
 
   GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest.fromJson(core.Map json_)
-      : this(
-          launchParameter: json_.containsKey('launchParameter')
-              ? GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter.fromJson(
+    : this(
+        launchParameter:
+            json_.containsKey('launchParameter')
+                ? GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter.fromJson(
                   json_['launchParameter']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          location: json_['location'] as core.String?,
-          projectId: json_['projectId'] as core.String?,
-          validateOnly: json_['validateOnly'] as core.bool?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location: json_['location'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (launchParameter != null) 'launchParameter': launchParameter!,
-        if (location != null) 'location': location!,
-        if (projectId != null) 'projectId': projectId!,
-        if (validateOnly != null) 'validateOnly': validateOnly!,
-      };
+    if (launchParameter != null) 'launchParameter': launchParameter!,
+    if (location != null) 'location': location!,
+    if (projectId != null) 'projectId': projectId!,
+    if (validateOnly != null) 'validateOnly': validateOnly!,
+  };
 }
 
 /// Parameters to provide to the template being launched.
@@ -990,39 +991,31 @@ class GoogleCloudDatapipelinesV1LaunchTemplateParameters {
   });
 
   GoogleCloudDatapipelinesV1LaunchTemplateParameters.fromJson(core.Map json_)
-      : this(
-          environment: json_.containsKey('environment')
-              ? GoogleCloudDatapipelinesV1RuntimeEnvironment.fromJson(
-                  json_['environment'] as core.Map<core.String, core.dynamic>)
-              : null,
-          jobName: json_['jobName'] as core.String?,
-          parameters:
-              (json_['parameters'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          transformNameMapping: (json_['transformNameMapping']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          update: json_['update'] as core.bool?,
-        );
+    : this(
+        environment:
+            json_.containsKey('environment')
+                ? GoogleCloudDatapipelinesV1RuntimeEnvironment.fromJson(
+                  json_['environment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        jobName: json_['jobName'] as core.String?,
+        parameters: (json_['parameters']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        transformNameMapping: (json_['transformNameMapping']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        update: json_['update'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (environment != null) 'environment': environment!,
-        if (jobName != null) 'jobName': jobName!,
-        if (parameters != null) 'parameters': parameters!,
-        if (transformNameMapping != null)
-          'transformNameMapping': transformNameMapping!,
-        if (update != null) 'update': update!,
-      };
+    if (environment != null) 'environment': environment!,
+    if (jobName != null) 'jobName': jobName!,
+    if (parameters != null) 'parameters': parameters!,
+    if (transformNameMapping != null)
+      'transformNameMapping': transformNameMapping!,
+    if (update != null) 'update': update!,
+  };
 }
 
 /// A request to launch a template.
@@ -1061,25 +1054,27 @@ class GoogleCloudDatapipelinesV1LaunchTemplateRequest {
   });
 
   GoogleCloudDatapipelinesV1LaunchTemplateRequest.fromJson(core.Map json_)
-      : this(
-          gcsPath: json_['gcsPath'] as core.String?,
-          launchParameters: json_.containsKey('launchParameters')
-              ? GoogleCloudDatapipelinesV1LaunchTemplateParameters.fromJson(
+    : this(
+        gcsPath: json_['gcsPath'] as core.String?,
+        launchParameters:
+            json_.containsKey('launchParameters')
+                ? GoogleCloudDatapipelinesV1LaunchTemplateParameters.fromJson(
                   json_['launchParameters']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          location: json_['location'] as core.String?,
-          projectId: json_['projectId'] as core.String?,
-          validateOnly: json_['validateOnly'] as core.bool?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location: json_['location'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsPath != null) 'gcsPath': gcsPath!,
-        if (launchParameters != null) 'launchParameters': launchParameters!,
-        if (location != null) 'location': location!,
-        if (projectId != null) 'projectId': projectId!,
-        if (validateOnly != null) 'validateOnly': validateOnly!,
-      };
+    if (gcsPath != null) 'gcsPath': gcsPath!,
+    if (launchParameters != null) 'launchParameters': launchParameters!,
+    if (location != null) 'location': location!,
+    if (projectId != null) 'projectId': projectId!,
+    if (validateOnly != null) 'validateOnly': validateOnly!,
+  };
 }
 
 /// Response message for ListJobs
@@ -1094,24 +1089,25 @@ class GoogleCloudDatapipelinesV1ListJobsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  GoogleCloudDatapipelinesV1ListJobsResponse({
-    this.jobs,
-    this.nextPageToken,
-  });
+  GoogleCloudDatapipelinesV1ListJobsResponse({this.jobs, this.nextPageToken});
 
   GoogleCloudDatapipelinesV1ListJobsResponse.fromJson(core.Map json_)
-      : this(
-          jobs: (json_['jobs'] as core.List?)
-              ?.map((value) => GoogleCloudDatapipelinesV1Job.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        jobs:
+            (json_['jobs'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudDatapipelinesV1Job.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (jobs != null) 'jobs': jobs!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (jobs != null) 'jobs': jobs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for ListPipelines.
@@ -1133,18 +1129,22 @@ class GoogleCloudDatapipelinesV1ListPipelinesResponse {
   });
 
   GoogleCloudDatapipelinesV1ListPipelinesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          pipelines: (json_['pipelines'] as core.List?)
-              ?.map((value) => GoogleCloudDatapipelinesV1Pipeline.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        pipelines:
+            (json_['pipelines'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudDatapipelinesV1Pipeline.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (pipelines != null) 'pipelines': pipelines!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (pipelines != null) 'pipelines': pipelines!,
+  };
 }
 
 /// The main pipeline entity and all the necessary metadata for launching and
@@ -1274,48 +1274,47 @@ class GoogleCloudDatapipelinesV1Pipeline {
   });
 
   GoogleCloudDatapipelinesV1Pipeline.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          jobCount: json_['jobCount'] as core.int?,
-          lastUpdateTime: json_['lastUpdateTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          pipelineSources:
-              (json_['pipelineSources'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          scheduleInfo: json_.containsKey('scheduleInfo')
-              ? GoogleCloudDatapipelinesV1ScheduleSpec.fromJson(
-                  json_['scheduleInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          schedulerServiceAccountEmail:
-              json_['schedulerServiceAccountEmail'] as core.String?,
-          state: json_['state'] as core.String?,
-          type: json_['type'] as core.String?,
-          workload: json_.containsKey('workload')
-              ? GoogleCloudDatapipelinesV1Workload.fromJson(
-                  json_['workload'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        jobCount: json_['jobCount'] as core.int?,
+        lastUpdateTime: json_['lastUpdateTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        pipelineSources: (json_['pipelineSources']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        scheduleInfo:
+            json_.containsKey('scheduleInfo')
+                ? GoogleCloudDatapipelinesV1ScheduleSpec.fromJson(
+                  json_['scheduleInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        schedulerServiceAccountEmail:
+            json_['schedulerServiceAccountEmail'] as core.String?,
+        state: json_['state'] as core.String?,
+        type: json_['type'] as core.String?,
+        workload:
+            json_.containsKey('workload')
+                ? GoogleCloudDatapipelinesV1Workload.fromJson(
+                  json_['workload'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (jobCount != null) 'jobCount': jobCount!,
-        if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
-        if (name != null) 'name': name!,
-        if (pipelineSources != null) 'pipelineSources': pipelineSources!,
-        if (scheduleInfo != null) 'scheduleInfo': scheduleInfo!,
-        if (schedulerServiceAccountEmail != null)
-          'schedulerServiceAccountEmail': schedulerServiceAccountEmail!,
-        if (state != null) 'state': state!,
-        if (type != null) 'type': type!,
-        if (workload != null) 'workload': workload!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (jobCount != null) 'jobCount': jobCount!,
+    if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
+    if (name != null) 'name': name!,
+    if (pipelineSources != null) 'pipelineSources': pipelineSources!,
+    if (scheduleInfo != null) 'scheduleInfo': scheduleInfo!,
+    if (schedulerServiceAccountEmail != null)
+      'schedulerServiceAccountEmail': schedulerServiceAccountEmail!,
+    if (state != null) 'state': state!,
+    if (type != null) 'type': type!,
+    if (workload != null) 'workload': workload!,
+  };
 }
 
 /// Request message for RunPipeline
@@ -1326,21 +1325,21 @@ class GoogleCloudDatapipelinesV1RunPipelineResponse {
   /// Job that was created as part of RunPipeline operation.
   GoogleCloudDatapipelinesV1Job? job;
 
-  GoogleCloudDatapipelinesV1RunPipelineResponse({
-    this.job,
-  });
+  GoogleCloudDatapipelinesV1RunPipelineResponse({this.job});
 
   GoogleCloudDatapipelinesV1RunPipelineResponse.fromJson(core.Map json_)
-      : this(
-          job: json_.containsKey('job')
-              ? GoogleCloudDatapipelinesV1Job.fromJson(
-                  json_['job'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        job:
+            json_.containsKey('job')
+                ? GoogleCloudDatapipelinesV1Job.fromJson(
+                  json_['job'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (job != null) 'job': job!,
-      };
+    if (job != null) 'job': job!,
+  };
 }
 
 /// The environment values to set at runtime.
@@ -1455,58 +1454,53 @@ class GoogleCloudDatapipelinesV1RuntimeEnvironment {
   });
 
   GoogleCloudDatapipelinesV1RuntimeEnvironment.fromJson(core.Map json_)
-      : this(
-          additionalExperiments: (json_['additionalExperiments'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          additionalUserLabels: (json_['additionalUserLabels']
-                  as core.Map<core.String, core.dynamic>?)
-              ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          bypassTempDirValidation:
-              json_['bypassTempDirValidation'] as core.bool?,
-          enableStreamingEngine: json_['enableStreamingEngine'] as core.bool?,
-          ipConfiguration: json_['ipConfiguration'] as core.String?,
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-          machineType: json_['machineType'] as core.String?,
-          maxWorkers: json_['maxWorkers'] as core.int?,
-          network: json_['network'] as core.String?,
-          numWorkers: json_['numWorkers'] as core.int?,
-          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-          subnetwork: json_['subnetwork'] as core.String?,
-          tempLocation: json_['tempLocation'] as core.String?,
-          workerRegion: json_['workerRegion'] as core.String?,
-          workerZone: json_['workerZone'] as core.String?,
-          zone: json_['zone'] as core.String?,
-        );
+    : this(
+        additionalExperiments:
+            (json_['additionalExperiments'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        additionalUserLabels: (json_['additionalUserLabels']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        bypassTempDirValidation: json_['bypassTempDirValidation'] as core.bool?,
+        enableStreamingEngine: json_['enableStreamingEngine'] as core.bool?,
+        ipConfiguration: json_['ipConfiguration'] as core.String?,
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+        machineType: json_['machineType'] as core.String?,
+        maxWorkers: json_['maxWorkers'] as core.int?,
+        network: json_['network'] as core.String?,
+        numWorkers: json_['numWorkers'] as core.int?,
+        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+        subnetwork: json_['subnetwork'] as core.String?,
+        tempLocation: json_['tempLocation'] as core.String?,
+        workerRegion: json_['workerRegion'] as core.String?,
+        workerZone: json_['workerZone'] as core.String?,
+        zone: json_['zone'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (additionalExperiments != null)
-          'additionalExperiments': additionalExperiments!,
-        if (additionalUserLabels != null)
-          'additionalUserLabels': additionalUserLabels!,
-        if (bypassTempDirValidation != null)
-          'bypassTempDirValidation': bypassTempDirValidation!,
-        if (enableStreamingEngine != null)
-          'enableStreamingEngine': enableStreamingEngine!,
-        if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-        if (machineType != null) 'machineType': machineType!,
-        if (maxWorkers != null) 'maxWorkers': maxWorkers!,
-        if (network != null) 'network': network!,
-        if (numWorkers != null) 'numWorkers': numWorkers!,
-        if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail!,
-        if (subnetwork != null) 'subnetwork': subnetwork!,
-        if (tempLocation != null) 'tempLocation': tempLocation!,
-        if (workerRegion != null) 'workerRegion': workerRegion!,
-        if (workerZone != null) 'workerZone': workerZone!,
-        if (zone != null) 'zone': zone!,
-      };
+    if (additionalExperiments != null)
+      'additionalExperiments': additionalExperiments!,
+    if (additionalUserLabels != null)
+      'additionalUserLabels': additionalUserLabels!,
+    if (bypassTempDirValidation != null)
+      'bypassTempDirValidation': bypassTempDirValidation!,
+    if (enableStreamingEngine != null)
+      'enableStreamingEngine': enableStreamingEngine!,
+    if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+    if (machineType != null) 'machineType': machineType!,
+    if (maxWorkers != null) 'maxWorkers': maxWorkers!,
+    if (network != null) 'network': network!,
+    if (numWorkers != null) 'numWorkers': numWorkers!,
+    if (serviceAccountEmail != null)
+      'serviceAccountEmail': serviceAccountEmail!,
+    if (subnetwork != null) 'subnetwork': subnetwork!,
+    if (tempLocation != null) 'tempLocation': tempLocation!,
+    if (workerRegion != null) 'workerRegion': workerRegion!,
+    if (workerZone != null) 'workerZone': workerZone!,
+    if (zone != null) 'zone': zone!,
+  };
 }
 
 /// Details of the schedule the pipeline runs on.
@@ -1534,17 +1528,17 @@ class GoogleCloudDatapipelinesV1ScheduleSpec {
   });
 
   GoogleCloudDatapipelinesV1ScheduleSpec.fromJson(core.Map json_)
-      : this(
-          nextJobTime: json_['nextJobTime'] as core.String?,
-          schedule: json_['schedule'] as core.String?,
-          timeZone: json_['timeZone'] as core.String?,
-        );
+    : this(
+        nextJobTime: json_['nextJobTime'] as core.String?,
+        schedule: json_['schedule'] as core.String?,
+        timeZone: json_['timeZone'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextJobTime != null) 'nextJobTime': nextJobTime!,
-        if (schedule != null) 'schedule': schedule!,
-        if (timeZone != null) 'timeZone': timeZone!,
-      };
+    if (nextJobTime != null) 'nextJobTime': nextJobTime!,
+    if (schedule != null) 'schedule': schedule!,
+    if (timeZone != null) 'timeZone': timeZone!,
+  };
 }
 
 /// The version of the SDK used to run the job.
@@ -1574,18 +1568,17 @@ class GoogleCloudDatapipelinesV1SdkVersion {
   });
 
   GoogleCloudDatapipelinesV1SdkVersion.fromJson(core.Map json_)
-      : this(
-          sdkSupportStatus: json_['sdkSupportStatus'] as core.String?,
-          version: json_['version'] as core.String?,
-          versionDisplayName: json_['versionDisplayName'] as core.String?,
-        );
+    : this(
+        sdkSupportStatus: json_['sdkSupportStatus'] as core.String?,
+        version: json_['version'] as core.String?,
+        versionDisplayName: json_['versionDisplayName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (sdkSupportStatus != null) 'sdkSupportStatus': sdkSupportStatus!,
-        if (version != null) 'version': version!,
-        if (versionDisplayName != null)
-          'versionDisplayName': versionDisplayName!,
-      };
+    if (sdkSupportStatus != null) 'sdkSupportStatus': sdkSupportStatus!,
+    if (version != null) 'version': version!,
+    if (versionDisplayName != null) 'versionDisplayName': versionDisplayName!,
+  };
 }
 
 /// Request message for StopPipeline.
@@ -1596,12 +1589,12 @@ class GoogleCloudDatapipelinesV1Workload {
   /// Template information and additional parameters needed to launch a Dataflow
   /// job using the flex launch API.
   GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest?
-      dataflowFlexTemplateRequest;
+  dataflowFlexTemplateRequest;
 
   /// Template information and additional parameters needed to launch a Dataflow
   /// job using the standard launch API.
   GoogleCloudDatapipelinesV1LaunchTemplateRequest?
-      dataflowLaunchTemplateRequest;
+  dataflowLaunchTemplateRequest;
 
   GoogleCloudDatapipelinesV1Workload({
     this.dataflowFlexTemplateRequest,
@@ -1609,27 +1602,29 @@ class GoogleCloudDatapipelinesV1Workload {
   });
 
   GoogleCloudDatapipelinesV1Workload.fromJson(core.Map json_)
-      : this(
-          dataflowFlexTemplateRequest: json_
-                  .containsKey('dataflowFlexTemplateRequest')
-              ? GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest.fromJson(
+    : this(
+        dataflowFlexTemplateRequest:
+            json_.containsKey('dataflowFlexTemplateRequest')
+                ? GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest.fromJson(
                   json_['dataflowFlexTemplateRequest']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          dataflowLaunchTemplateRequest:
-              json_.containsKey('dataflowLaunchTemplateRequest')
-                  ? GoogleCloudDatapipelinesV1LaunchTemplateRequest.fromJson(
-                      json_['dataflowLaunchTemplateRequest']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataflowLaunchTemplateRequest:
+            json_.containsKey('dataflowLaunchTemplateRequest')
+                ? GoogleCloudDatapipelinesV1LaunchTemplateRequest.fromJson(
+                  json_['dataflowLaunchTemplateRequest']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataflowFlexTemplateRequest != null)
-          'dataflowFlexTemplateRequest': dataflowFlexTemplateRequest!,
-        if (dataflowLaunchTemplateRequest != null)
-          'dataflowLaunchTemplateRequest': dataflowLaunchTemplateRequest!,
-      };
+    if (dataflowFlexTemplateRequest != null)
+      'dataflowFlexTemplateRequest': dataflowFlexTemplateRequest!,
+    if (dataflowLaunchTemplateRequest != null)
+      'dataflowLaunchTemplateRequest': dataflowLaunchTemplateRequest!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated

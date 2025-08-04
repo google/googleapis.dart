@@ -121,21 +121,19 @@ class DiscoveryPackagesConfiguration {
 
       writeDiscoveryDocuments(
         '$discoveryDocsDir/${entry.key}',
-        entry.value.apis.map(
-          (e) {
-            final allMatches =
-                allApis.where((element) => element.id == e).toList();
+        entry.value.apis.map((e) {
+          final allMatches =
+              allApis.where((element) => element.id == e).toList();
 
-            if (allMatches.length == 1) {
-              return allMatches.single;
-            }
+          if (allMatches.length == 1) {
+            return allMatches.single;
+          }
 
-            print(
-              'Looking 1 match for "$e" - instead found ${allMatches.length}',
-            );
-            return null;
-          },
-        ).whereType<RestDescription>(),
+          print(
+            'Looking 1 match for "$e" - instead found ${allMatches.length}',
+          );
+          return null;
+        }).whereType<RestDescription>(),
       );
     }
   }
@@ -156,7 +154,8 @@ class DiscoveryPackagesConfiguration {
     final dir = Directory(discoveryDocsDir);
     if (!dir.existsSync()) {
       throw Exception(
-          'Error: The given `$discoveryDocsDir` directory does not exist.');
+        'Error: The given `$discoveryDocsDir` directory does not exist.',
+      );
     }
 
     // Load discovery documents from disc & initialize this object.
@@ -185,20 +184,25 @@ class DiscoveryPackagesConfiguration {
         }
       }
 
-      File('$generatedApisDir/$name/README.md')
-          .writeAsStringSync(package.readme);
-      File('$generatedApisDir/$name/LICENSE')
-          .writeAsStringSync(package.license);
-      File('$generatedApisDir/$name/CHANGELOG.md')
-          .writeAsStringSync(package.changelog);
+      File(
+        '$generatedApisDir/$name/README.md',
+      ).writeAsStringSync(package.readme);
+      File(
+        '$generatedApisDir/$name/LICENSE',
+      ).writeAsStringSync(package.license);
+      File(
+        '$generatedApisDir/$name/CHANGELOG.md',
+      ).writeAsStringSync(package.changelog);
       if (package.monoPkg != null) {
-        File('$generatedApisDir/$name/mono_pkg.yaml')
-            .writeAsStringSync(package.monoPkg!);
+        File(
+          '$generatedApisDir/$name/mono_pkg.yaml',
+        ).writeAsStringSync(package.monoPkg!);
       }
       if (package.example != null) {
         Directory('$generatedApisDir/$name/example').createSync();
-        File('$generatedApisDir/$name/example/main.dart')
-            .writeAsStringSync(package.example!);
+        File(
+          '$generatedApisDir/$name/example/main.dart',
+        ).writeAsStringSync(package.example!);
       }
     }
   }
@@ -206,8 +210,11 @@ class DiscoveryPackagesConfiguration {
   /// Initializes the missingApis/excessApis/packages properties from a list
   /// of [RestDescription]s.
   void _initialize(List<RestDescription> allApis) {
-    packages =
-        _packagesFromYaml(yaml['packages'] as YamlList, configFile, allApis);
+    packages = _packagesFromYaml(
+      yaml['packages'] as YamlList,
+      configFile,
+      allApis,
+    );
     skipTests = _listFromYaml(yaml['skip_tests'] as YamlList?).toSet();
     final knownApis = _calculateKnownApis(
       packages,
@@ -365,7 +372,8 @@ package.
 
     // Generate package description.
     final apiDescriptions = <RestDescription?>[];
-    const description = 'Auto-generated client libraries for accessing Google '
+    const description =
+        'Auto-generated client libraries for accessing Google '
         'APIs described through the API discovery service.';
     for (var apiDescription in allApis) {
       if (apis.contains(apiDescription!.id)) {
@@ -414,11 +422,7 @@ package.
   static Set<String> _calculateKnownApis(
     Map<String, Package> packages,
     List<String> skippedApis,
-  ) =>
-      <String>{
-        ...skippedApis,
-        ...packages.values.expand((v) => v.apis),
-      };
+  ) => <String>{...skippedApis, ...packages.values.expand((v) => v.apis)};
 
   /// The missing APIs are the APIs returned from the Discovery Service
   /// but not mentioned in the configuration.
@@ -436,6 +440,5 @@ package.
   static Set<String> _calculateExcessApis(
     Iterable<String> knownApis,
     List<RestDescription> allApis,
-  ) =>
-      Set<String>.from(knownApis)..removeAll(allApis.map((e) => e.id));
+  ) => Set<String>.from(knownApis)..removeAll(allApis.map((e) => e.id));
 }

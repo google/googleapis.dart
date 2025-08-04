@@ -58,11 +58,16 @@ class DfareportingApi {
 
   MediaResource get media => MediaResource(_requester);
 
-  DfareportingApi(http.Client client,
-      {core.String rootUrl = 'https://dfareporting.googleapis.com/',
-      core.String servicePath = 'dfareporting/v3.5/'})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  DfareportingApi(
+    http.Client client, {
+    core.String rootUrl = 'https://dfareporting.googleapis.com/',
+    core.String servicePath = 'dfareporting/v3.5/',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class MediaResource {
@@ -108,13 +113,15 @@ class MediaResource {
 
     core.String url_;
     if (uploadMedia == null) {
-      url_ = 'userprofiles/' +
+      url_ =
+          'userprofiles/' +
           core.Uri.encodeFull('$profileId') +
           '/creativeAssets/' +
           core.Uri.encodeFull('$advertiserId') +
           '/creativeAssets';
     } else {
-      url_ = '/upload/dfareporting/v3.5/userprofiles/' +
+      url_ =
+          '/upload/dfareporting/v3.5/userprofiles/' +
           core.Uri.encodeFull('$profileId') +
           '/creativeAssets/' +
           core.Uri.encodeFull('$advertiserId') +
@@ -130,7 +137,8 @@ class MediaResource {
       uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return CreativeAssetMetadata.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -153,27 +161,26 @@ class ClickTag {
   /// of the creative asset's creativeAssetId.name field.
   core.String? name;
 
-  ClickTag({
-    this.clickThroughUrl,
-    this.eventName,
-    this.name,
-  });
+  ClickTag({this.clickThroughUrl, this.eventName, this.name});
 
   ClickTag.fromJson(core.Map json_)
-      : this(
-          clickThroughUrl: json_.containsKey('clickThroughUrl')
-              ? CreativeClickThroughUrl.fromJson(json_['clickThroughUrl']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          eventName: json_['eventName'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        clickThroughUrl:
+            json_.containsKey('clickThroughUrl')
+                ? CreativeClickThroughUrl.fromJson(
+                  json_['clickThroughUrl']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        eventName: json_['eventName'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clickThroughUrl != null) 'clickThroughUrl': clickThroughUrl!,
-        if (eventName != null) 'eventName': eventName!,
-        if (name != null) 'name': name!,
-      };
+    if (clickThroughUrl != null) 'clickThroughUrl': clickThroughUrl!,
+    if (eventName != null) 'eventName': eventName!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Creative Asset ID.
@@ -271,57 +278,81 @@ class CreativeAssetMetadata {
   });
 
   CreativeAssetMetadata.fromJson(core.Map json_)
-      : this(
-          assetIdentifier: json_.containsKey('assetIdentifier')
-              ? CreativeAssetId.fromJson(json_['assetIdentifier']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          clickTags: (json_['clickTags'] as core.List?)
-              ?.map((value) => ClickTag.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          counterCustomEvents: (json_['counterCustomEvents'] as core.List?)
-              ?.map((value) => CreativeCustomEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          detectedFeatures: (json_['detectedFeatures'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          exitCustomEvents: (json_['exitCustomEvents'] as core.List?)
-              ?.map((value) => CreativeCustomEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          id: json_['id'] as core.String?,
-          idDimensionValue: json_.containsKey('idDimensionValue')
-              ? DimensionValue.fromJson(json_['idDimensionValue']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          kind: json_['kind'] as core.String?,
-          richMedia: json_['richMedia'] as core.bool?,
-          timerCustomEvents: (json_['timerCustomEvents'] as core.List?)
-              ?.map((value) => CreativeCustomEvent.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          warnedValidationRules: (json_['warnedValidationRules'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        assetIdentifier:
+            json_.containsKey('assetIdentifier')
+                ? CreativeAssetId.fromJson(
+                  json_['assetIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        clickTags:
+            (json_['clickTags'] as core.List?)
+                ?.map(
+                  (value) => ClickTag.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        counterCustomEvents:
+            (json_['counterCustomEvents'] as core.List?)
+                ?.map(
+                  (value) => CreativeCustomEvent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        detectedFeatures:
+            (json_['detectedFeatures'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        exitCustomEvents:
+            (json_['exitCustomEvents'] as core.List?)
+                ?.map(
+                  (value) => CreativeCustomEvent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        id: json_['id'] as core.String?,
+        idDimensionValue:
+            json_.containsKey('idDimensionValue')
+                ? DimensionValue.fromJson(
+                  json_['idDimensionValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        kind: json_['kind'] as core.String?,
+        richMedia: json_['richMedia'] as core.bool?,
+        timerCustomEvents:
+            (json_['timerCustomEvents'] as core.List?)
+                ?.map(
+                  (value) => CreativeCustomEvent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        warnedValidationRules:
+            (json_['warnedValidationRules'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assetIdentifier != null) 'assetIdentifier': assetIdentifier!,
-        if (clickTags != null) 'clickTags': clickTags!,
-        if (counterCustomEvents != null)
-          'counterCustomEvents': counterCustomEvents!,
-        if (detectedFeatures != null) 'detectedFeatures': detectedFeatures!,
-        if (exitCustomEvents != null) 'exitCustomEvents': exitCustomEvents!,
-        if (id != null) 'id': id!,
-        if (idDimensionValue != null) 'idDimensionValue': idDimensionValue!,
-        if (kind != null) 'kind': kind!,
-        if (richMedia != null) 'richMedia': richMedia!,
-        if (timerCustomEvents != null) 'timerCustomEvents': timerCustomEvents!,
-        if (warnedValidationRules != null)
-          'warnedValidationRules': warnedValidationRules!,
-      };
+    if (assetIdentifier != null) 'assetIdentifier': assetIdentifier!,
+    if (clickTags != null) 'clickTags': clickTags!,
+    if (counterCustomEvents != null)
+      'counterCustomEvents': counterCustomEvents!,
+    if (detectedFeatures != null) 'detectedFeatures': detectedFeatures!,
+    if (exitCustomEvents != null) 'exitCustomEvents': exitCustomEvents!,
+    if (id != null) 'id': id!,
+    if (idDimensionValue != null) 'idDimensionValue': idDimensionValue!,
+    if (kind != null) 'kind': kind!,
+    if (richMedia != null) 'richMedia': richMedia!,
+    if (timerCustomEvents != null) 'timerCustomEvents': timerCustomEvents!,
+    if (warnedValidationRules != null)
+      'warnedValidationRules': warnedValidationRules!,
+  };
 }
 
 /// Click-through URL
@@ -404,45 +435,51 @@ class CreativeCustomEvent {
   });
 
   CreativeCustomEvent.fromJson(core.Map json_)
-      : this(
-          advertiserCustomEventId:
-              json_['advertiserCustomEventId'] as core.String?,
-          advertiserCustomEventName:
-              json_['advertiserCustomEventName'] as core.String?,
-          advertiserCustomEventType:
-              json_['advertiserCustomEventType'] as core.String?,
-          artworkLabel: json_['artworkLabel'] as core.String?,
-          artworkType: json_['artworkType'] as core.String?,
-          exitClickThroughUrl: json_.containsKey('exitClickThroughUrl')
-              ? CreativeClickThroughUrl.fromJson(json_['exitClickThroughUrl']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          id: json_['id'] as core.String?,
-          popupWindowProperties: json_.containsKey('popupWindowProperties')
-              ? PopupWindowProperties.fromJson(json_['popupWindowProperties']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          targetType: json_['targetType'] as core.String?,
-          videoReportingId: json_['videoReportingId'] as core.String?,
-        );
+    : this(
+        advertiserCustomEventId:
+            json_['advertiserCustomEventId'] as core.String?,
+        advertiserCustomEventName:
+            json_['advertiserCustomEventName'] as core.String?,
+        advertiserCustomEventType:
+            json_['advertiserCustomEventType'] as core.String?,
+        artworkLabel: json_['artworkLabel'] as core.String?,
+        artworkType: json_['artworkType'] as core.String?,
+        exitClickThroughUrl:
+            json_.containsKey('exitClickThroughUrl')
+                ? CreativeClickThroughUrl.fromJson(
+                  json_['exitClickThroughUrl']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        id: json_['id'] as core.String?,
+        popupWindowProperties:
+            json_.containsKey('popupWindowProperties')
+                ? PopupWindowProperties.fromJson(
+                  json_['popupWindowProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        targetType: json_['targetType'] as core.String?,
+        videoReportingId: json_['videoReportingId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (advertiserCustomEventId != null)
-          'advertiserCustomEventId': advertiserCustomEventId!,
-        if (advertiserCustomEventName != null)
-          'advertiserCustomEventName': advertiserCustomEventName!,
-        if (advertiserCustomEventType != null)
-          'advertiserCustomEventType': advertiserCustomEventType!,
-        if (artworkLabel != null) 'artworkLabel': artworkLabel!,
-        if (artworkType != null) 'artworkType': artworkType!,
-        if (exitClickThroughUrl != null)
-          'exitClickThroughUrl': exitClickThroughUrl!,
-        if (id != null) 'id': id!,
-        if (popupWindowProperties != null)
-          'popupWindowProperties': popupWindowProperties!,
-        if (targetType != null) 'targetType': targetType!,
-        if (videoReportingId != null) 'videoReportingId': videoReportingId!,
-      };
+    if (advertiserCustomEventId != null)
+      'advertiserCustomEventId': advertiserCustomEventId!,
+    if (advertiserCustomEventName != null)
+      'advertiserCustomEventName': advertiserCustomEventName!,
+    if (advertiserCustomEventType != null)
+      'advertiserCustomEventType': advertiserCustomEventType!,
+    if (artworkLabel != null) 'artworkLabel': artworkLabel!,
+    if (artworkType != null) 'artworkType': artworkType!,
+    if (exitClickThroughUrl != null)
+      'exitClickThroughUrl': exitClickThroughUrl!,
+    if (id != null) 'id': id!,
+    if (popupWindowProperties != null)
+      'popupWindowProperties': popupWindowProperties!,
+    if (targetType != null) 'targetType': targetType!,
+    if (videoReportingId != null) 'videoReportingId': videoReportingId!,
+  };
 }
 
 /// Represents a DimensionValue resource.
@@ -501,35 +538,39 @@ class PopupWindowProperties {
   });
 
   PopupWindowProperties.fromJson(core.Map json_)
-      : this(
-          dimension: json_.containsKey('dimension')
-              ? Size.fromJson(
-                  json_['dimension'] as core.Map<core.String, core.dynamic>)
-              : null,
-          offset: json_.containsKey('offset')
-              ? OffsetPosition.fromJson(
-                  json_['offset'] as core.Map<core.String, core.dynamic>)
-              : null,
-          positionType: json_['positionType'] as core.String?,
-          showAddressBar: json_['showAddressBar'] as core.bool?,
-          showMenuBar: json_['showMenuBar'] as core.bool?,
-          showScrollBar: json_['showScrollBar'] as core.bool?,
-          showStatusBar: json_['showStatusBar'] as core.bool?,
-          showToolBar: json_['showToolBar'] as core.bool?,
-          title: json_['title'] as core.String?,
-        );
+    : this(
+        dimension:
+            json_.containsKey('dimension')
+                ? Size.fromJson(
+                  json_['dimension'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        offset:
+            json_.containsKey('offset')
+                ? OffsetPosition.fromJson(
+                  json_['offset'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        positionType: json_['positionType'] as core.String?,
+        showAddressBar: json_['showAddressBar'] as core.bool?,
+        showMenuBar: json_['showMenuBar'] as core.bool?,
+        showScrollBar: json_['showScrollBar'] as core.bool?,
+        showStatusBar: json_['showStatusBar'] as core.bool?,
+        showToolBar: json_['showToolBar'] as core.bool?,
+        title: json_['title'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dimension != null) 'dimension': dimension!,
-        if (offset != null) 'offset': offset!,
-        if (positionType != null) 'positionType': positionType!,
-        if (showAddressBar != null) 'showAddressBar': showAddressBar!,
-        if (showMenuBar != null) 'showMenuBar': showMenuBar!,
-        if (showScrollBar != null) 'showScrollBar': showScrollBar!,
-        if (showStatusBar != null) 'showStatusBar': showStatusBar!,
-        if (showToolBar != null) 'showToolBar': showToolBar!,
-        if (title != null) 'title': title!,
-      };
+    if (dimension != null) 'dimension': dimension!,
+    if (offset != null) 'offset': offset!,
+    if (positionType != null) 'positionType': positionType!,
+    if (showAddressBar != null) 'showAddressBar': showAddressBar!,
+    if (showMenuBar != null) 'showMenuBar': showMenuBar!,
+    if (showScrollBar != null) 'showScrollBar': showScrollBar!,
+    if (showStatusBar != null) 'showStatusBar': showStatusBar!,
+    if (showToolBar != null) 'showToolBar': showToolBar!,
+    if (title != null) 'title': title!,
+  };
 }
 
 /// Represents the dimensions of ads, placements, creatives, or creative assets.

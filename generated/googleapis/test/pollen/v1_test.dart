@@ -43,22 +43,10 @@ api.Color buildColor() {
 void checkColor(api.Color o) {
   buildCounterColor++;
   if (buildCounterColor < 3) {
-    unittest.expect(
-      o.alpha!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.blue!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.green!,
-      unittest.equals(42.0),
-    );
-    unittest.expect(
-      o.red!,
-      unittest.equals(42.0),
-    );
+    unittest.expect(o.alpha!, unittest.equals(42.0));
+    unittest.expect(o.blue!, unittest.equals(42.0));
+    unittest.expect(o.green!, unittest.equals(42.0));
+    unittest.expect(o.red!, unittest.equals(42.0));
   }
   buildCounterColor--;
 }
@@ -79,26 +67,17 @@ api.Date buildDate() {
 void checkDate(api.Date o) {
   buildCounterDate++;
   if (buildCounterDate < 3) {
-    unittest.expect(
-      o.day!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.month!,
-      unittest.equals(42),
-    );
-    unittest.expect(
-      o.year!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.day!, unittest.equals(42));
+    unittest.expect(o.month!, unittest.equals(42));
+    unittest.expect(o.year!, unittest.equals(42));
   }
   buildCounterDate--;
 }
 
 core.List<api.PlantInfo> buildUnnamed0() => [
-      buildPlantInfo(),
-      buildPlantInfo(),
-    ];
+  buildPlantInfo(),
+  buildPlantInfo(),
+];
 
 void checkUnnamed0(core.List<api.PlantInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -107,9 +86,9 @@ void checkUnnamed0(core.List<api.PlantInfo> o) {
 }
 
 core.List<api.PollenTypeInfo> buildUnnamed1() => [
-      buildPollenTypeInfo(),
-      buildPollenTypeInfo(),
-    ];
+  buildPollenTypeInfo(),
+  buildPollenTypeInfo(),
+];
 
 void checkUnnamed1(core.List<api.PollenTypeInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -141,54 +120,36 @@ void checkDayInfo(api.DayInfo o) {
 }
 
 core.Map<core.String, core.Object?> buildUnnamed2() => {
-      'x': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-      'y': {
-        'list': [1, 2, 3],
-        'bool': true,
-        'string': 'foo'
-      },
-    };
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
 
 void checkUnnamed2(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(
-    casted1['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted1['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted1['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
   var casted2 = (o['y']!) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(
-    casted2['list'],
-    unittest.equals([1, 2, 3]),
-  );
-  unittest.expect(
-    casted2['bool'],
-    unittest.equals(true),
-  );
-  unittest.expect(
-    casted2['string'],
-    unittest.equals('foo'),
-  );
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.List<core.Map<core.String, core.Object?>> buildUnnamed3() => [
-      buildUnnamed2(),
-      buildUnnamed2(),
-    ];
+  buildUnnamed2(),
+  buildUnnamed2(),
+];
 
 void checkUnnamed3(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -212,14 +173,8 @@ api.HttpBody buildHttpBody() {
 void checkHttpBody(api.HttpBody o) {
   buildCounterHttpBody++;
   if (buildCounterHttpBody < 3) {
-    unittest.expect(
-      o.contentType!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.data!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.contentType!, unittest.equals('foo'));
+    unittest.expect(o.data!, unittest.equals('foo'));
     checkUnnamed3(o.extensions!);
   }
   buildCounterHttpBody--;
@@ -244,35 +199,17 @@ api.IndexInfo buildIndexInfo() {
 void checkIndexInfo(api.IndexInfo o) {
   buildCounterIndexInfo++;
   if (buildCounterIndexInfo < 3) {
-    unittest.expect(
-      o.category!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.code!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.category!, unittest.equals('foo'));
+    unittest.expect(o.code!, unittest.equals('foo'));
     checkColor(o.color!);
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.indexDescription!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.value!,
-      unittest.equals(42),
-    );
+    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.indexDescription!, unittest.equals('foo'));
+    unittest.expect(o.value!, unittest.equals(42));
   }
   buildCounterIndexInfo--;
 }
 
-core.List<api.DayInfo> buildUnnamed4() => [
-      buildDayInfo(),
-      buildDayInfo(),
-    ];
+core.List<api.DayInfo> buildUnnamed4() => [buildDayInfo(), buildDayInfo()];
 
 void checkUnnamed4(core.List<api.DayInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -297,14 +234,8 @@ void checkLookupForecastResponse(api.LookupForecastResponse o) {
   buildCounterLookupForecastResponse++;
   if (buildCounterLookupForecastResponse < 3) {
     checkUnnamed4(o.dailyInfo!);
-    unittest.expect(
-      o.nextPageToken!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.regionCode!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    unittest.expect(o.regionCode!, unittest.equals('foo'));
   }
   buildCounterLookupForecastResponse--;
 }
@@ -330,38 +261,14 @@ api.PlantDescription buildPlantDescription() {
 void checkPlantDescription(api.PlantDescription o) {
   buildCounterPlantDescription++;
   if (buildCounterPlantDescription < 3) {
-    unittest.expect(
-      o.crossReaction!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.family!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.picture!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.pictureCloseup!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.season!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.specialColors!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.specialShapes!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.crossReaction!, unittest.equals('foo'));
+    unittest.expect(o.family!, unittest.equals('foo'));
+    unittest.expect(o.picture!, unittest.equals('foo'));
+    unittest.expect(o.pictureCloseup!, unittest.equals('foo'));
+    unittest.expect(o.season!, unittest.equals('foo'));
+    unittest.expect(o.specialColors!, unittest.equals('foo'));
+    unittest.expect(o.specialShapes!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
   }
   buildCounterPlantDescription--;
 }
@@ -384,14 +291,8 @@ api.PlantInfo buildPlantInfo() {
 void checkPlantInfo(api.PlantInfo o) {
   buildCounterPlantInfo++;
   if (buildCounterPlantInfo < 3) {
-    unittest.expect(
-      o.code!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.code!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.inSeason!, unittest.isTrue);
     checkIndexInfo(o.indexInfo!);
     checkPlantDescription(o.plantDescription!);
@@ -399,21 +300,12 @@ void checkPlantInfo(api.PlantInfo o) {
   buildCounterPlantInfo--;
 }
 
-core.List<core.String> buildUnnamed5() => [
-      'foo',
-      'foo',
-    ];
+core.List<core.String> buildUnnamed5() => ['foo', 'foo'];
 
 void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterPollenTypeInfo = 0;
@@ -434,14 +326,8 @@ api.PollenTypeInfo buildPollenTypeInfo() {
 void checkPollenTypeInfo(api.PollenTypeInfo o) {
   buildCounterPollenTypeInfo++;
   if (buildCounterPollenTypeInfo < 3) {
-    unittest.expect(
-      o.code!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.displayName!,
-      unittest.equals('foo'),
-    );
+    unittest.expect(o.code!, unittest.equals('foo'));
+    unittest.expect(o.displayName!, unittest.equals('foo'));
     checkUnnamed5(o.healthRecommendations!);
     unittest.expect(o.inSeason!, unittest.isTrue);
     checkIndexInfo(o.indexInfo!);
@@ -454,8 +340,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildColor();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Color.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Color.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkColor(od);
     });
   });
@@ -464,8 +351,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildDate();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.Date.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDate(od);
     });
   });
@@ -474,8 +362,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildDayInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.DayInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.DayInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkDayInfo(od);
     });
   });
@@ -484,8 +373,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildHttpBody();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.HttpBody.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.HttpBody.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkHttpBody(od);
     });
   });
@@ -494,8 +384,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildIndexInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.IndexInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.IndexInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkIndexInfo(od);
     });
   });
@@ -505,7 +396,8 @@ void main() {
       final o = buildLookupForecastResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.LookupForecastResponse.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkLookupForecastResponse(od);
     });
   });
@@ -515,7 +407,8 @@ void main() {
       final o = buildPlantDescription();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PlantDescription.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPlantDescription(od);
     });
   });
@@ -524,8 +417,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       final o = buildPlantInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.PlantInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      final od = api.PlantInfo.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPlantInfo(od);
     });
   });
@@ -535,7 +429,8 @@ void main() {
       final o = buildPollenTypeInfo();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
       final od = api.PollenTypeInfo.fromJson(
-          oJson as core.Map<core.String, core.dynamic>);
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkPollenTypeInfo(od);
     });
   });
@@ -552,85 +447,87 @@ void main() {
       final arg_pageToken = 'foo';
       final arg_plantsDescription = true;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 18),
-          unittest.equals('v1/forecast:lookup'),
-        );
-        pathOffset += 18;
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 18),
+            unittest.equals('v1/forecast:lookup'),
+          );
+          pathOffset += 18;
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          core.int.parse(queryMap['days']!.first),
-          unittest.equals(arg_days),
-        );
-        unittest.expect(
-          queryMap['languageCode']!.first,
-          unittest.equals(arg_languageCode),
-        );
-        unittest.expect(
-          core.num.parse(queryMap['location.latitude']!.first),
-          unittest.equals(arg_location_latitude),
-        );
-        unittest.expect(
-          core.num.parse(queryMap['location.longitude']!.first),
-          unittest.equals(arg_location_longitude),
-        );
-        unittest.expect(
-          core.int.parse(queryMap['pageSize']!.first),
-          unittest.equals(arg_pageSize),
-        );
-        unittest.expect(
-          queryMap['pageToken']!.first,
-          unittest.equals(arg_pageToken),
-        );
-        unittest.expect(
-          queryMap['plantsDescription']!.first,
-          unittest.equals('$arg_plantsDescription'),
-        );
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            core.int.parse(queryMap['days']!.first),
+            unittest.equals(arg_days),
+          );
+          unittest.expect(
+            queryMap['languageCode']!.first,
+            unittest.equals(arg_languageCode),
+          );
+          unittest.expect(
+            core.num.parse(queryMap['location.latitude']!.first),
+            unittest.equals(arg_location_latitude),
+          );
+          unittest.expect(
+            core.num.parse(queryMap['location.longitude']!.first),
+            unittest.equals(arg_location_longitude),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['plantsDescription']!.first,
+            unittest.equals('$arg_plantsDescription'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildLookupForecastResponse());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildLookupForecastResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.lookup(
-          days: arg_days,
-          languageCode: arg_languageCode,
-          location_latitude: arg_location_latitude,
-          location_longitude: arg_location_longitude,
-          pageSize: arg_pageSize,
-          pageToken: arg_pageToken,
-          plantsDescription: arg_plantsDescription,
-          $fields: arg_$fields);
+        days: arg_days,
+        languageCode: arg_languageCode,
+        location_latitude: arg_location_latitude,
+        location_longitude: arg_location_longitude,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        plantsDescription: arg_plantsDescription,
+        $fields: arg_$fields,
+      );
       checkLookupForecastResponse(response as api.LookupForecastResponse);
     });
   });
@@ -644,99 +541,95 @@ void main() {
       final arg_x = 42;
       final arg_y = 42;
       final arg_$fields = 'foo';
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        final path = req.url.path;
-        var pathOffset = 0;
-        core.int index;
-        core.String subPart;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 12),
-          unittest.equals('v1/mapTypes/'),
-        );
-        pathOffset += 12;
-        index = path.indexOf('/heatmapTiles/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_mapType'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 14),
-          unittest.equals('/heatmapTiles/'),
-        );
-        pathOffset += 14;
-        index = path.indexOf('/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_zoom'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        index = path.indexOf('/', pathOffset);
-        unittest.expect(index >= 0, unittest.isTrue);
-        subPart =
-            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
-        pathOffset = index;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_x'),
-        );
-        unittest.expect(
-          path.substring(pathOffset, pathOffset + 1),
-          unittest.equals('/'),
-        );
-        pathOffset += 1;
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
-        pathOffset = path.length;
-        unittest.expect(
-          subPart,
-          unittest.equals('$arg_y'),
-        );
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 12),
+            unittest.equals('v1/mapTypes/'),
+          );
+          pathOffset += 12;
+          index = path.indexOf('/heatmapTiles/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_mapType'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 14),
+            unittest.equals('/heatmapTiles/'),
+          );
+          pathOffset += 14;
+          index = path.indexOf('/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_zoom'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          index = path.indexOf('/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_x'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+          pathOffset = path.length;
+          unittest.expect(subPart, unittest.equals('$arg_y'));
 
-        final query = req.url.query;
-        var queryOffset = 0;
-        final queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(core.String n, core.String v) =>
-            queryMap.putIfAbsent(n, () => []).add(v);
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
 
-        if (query.isNotEmpty) {
-          for (var part in query.split('&')) {
-            final keyValue = part.split('=');
-            addQueryParam(
-              core.Uri.decodeQueryComponent(keyValue[0]),
-              core.Uri.decodeQueryComponent(keyValue[1]),
-            );
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
           }
-        }
-        unittest.expect(
-          queryMap['fields']!.first,
-          unittest.equals(arg_$fields),
-        );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
 
-        final h = {
-          'content-type': 'application/json; charset=utf-8',
-        };
-        final resp = convert.json.encode(buildHttpBody());
-        return async.Future.value(stringResponse(200, h, resp));
-      }), true);
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildHttpBody());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
       final response = await res.lookupHeatmapTile(
-          arg_mapType, arg_zoom, arg_x, arg_y,
-          $fields: arg_$fields);
+        arg_mapType,
+        arg_zoom,
+        arg_x,
+        arg_y,
+        $fields: arg_$fields,
+      );
       checkHttpBody(response as api.HttpBody);
     });
   });

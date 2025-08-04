@@ -71,11 +71,16 @@ class SasportalApi {
   NodesResource get nodes => NodesResource(_requester);
   PoliciesResource get policies => PoliciesResource(_requester);
 
-  SasportalApi(http.Client client,
-      {core.String rootUrl = 'https://sasportal.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  SasportalApi(
+    http.Client client, {
+    core.String rootUrl = 'https://sasportal.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class CustomersResource {
@@ -121,7 +126,8 @@ class CustomersResource {
       queryParams: queryParams_,
     );
     return SasPortalCustomer.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of requested customers.
@@ -162,7 +168,8 @@ class CustomersResource {
       queryParams: queryParams_,
     );
     return SasPortalListCustomersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of SAS deployments associated with current GCP project.
@@ -182,9 +189,7 @@ class CustomersResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SasPortalListGcpProjectDeploymentsResponse>
-      listGcpProjectDeployments({
-    core.String? $fields,
-  }) async {
+  listGcpProjectDeployments({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -197,7 +202,8 @@ class CustomersResource {
       queryParams: queryParams_,
     );
     return SasPortalListGcpProjectDeploymentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a list of legacy organizations.
@@ -215,9 +221,7 @@ class CustomersResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SasPortalListLegacyOrganizationsResponse>
-      listLegacyOrganizations({
-    core.String? $fields,
-  }) async {
+  listLegacyOrganizations({core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -230,7 +234,8 @@ class CustomersResource {
       queryParams: queryParams_,
     );
     return SasPortalListLegacyOrganizationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Migrates a SAS organization to the cloud.
@@ -271,7 +276,8 @@ class CustomersResource {
       queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing customer.
@@ -316,7 +322,8 @@ class CustomersResource {
       queryParams: queryParams_,
     );
     return SasPortalCustomer.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a new SAS deployment through the GCP workflow.
@@ -355,7 +362,8 @@ class CustomersResource {
       queryParams: queryParams_,
     );
     return SasPortalProvisionDeploymentResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Setups the a GCP Project to receive SAS Analytics messages via GCP Pub/Sub
@@ -396,7 +404,8 @@ class CustomersResource {
       queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -407,7 +416,7 @@ class CustomersDeploymentsResource {
       CustomersDeploymentsDevicesResource(_requester);
 
   CustomersDeploymentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new deployment.
   ///
@@ -448,7 +457,8 @@ class CustomersDeploymentsResource {
       queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a deployment.
@@ -481,10 +491,12 @@ class CustomersDeploymentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a requested deployment.
@@ -520,7 +532,8 @@ class CustomersDeploymentsResource {
       queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists deployments.
@@ -572,7 +585,8 @@ class CustomersDeploymentsResource {
       queryParams: queryParams_,
     );
     return SasPortalListDeploymentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Moves a deployment under another node or customer.
@@ -613,7 +627,8 @@ class CustomersDeploymentsResource {
       queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing deployment.
@@ -658,7 +673,8 @@ class CustomersDeploymentsResource {
       queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -666,7 +682,7 @@ class CustomersDeploymentsDevicesResource {
   final commons.ApiRequester _requester;
 
   CustomersDeploymentsDevicesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a device under a node or customer.
   ///
@@ -706,7 +722,8 @@ class CustomersDeploymentsDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a signed device under a node or customer.
@@ -748,7 +765,8 @@ class CustomersDeploymentsDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists devices under a node or customer.
@@ -801,7 +819,8 @@ class CustomersDeploymentsDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalListDevicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -848,7 +867,8 @@ class CustomersDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a signed device under a node or customer.
@@ -890,7 +910,8 @@ class CustomersDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a device.
@@ -923,10 +944,12 @@ class CustomersDevicesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details about a device.
@@ -962,7 +985,8 @@ class CustomersDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists devices under a node or customer.
@@ -1015,7 +1039,8 @@ class CustomersDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalListDevicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Moves a device under another node or customer.
@@ -1056,7 +1081,8 @@ class CustomersDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a device.
@@ -1101,7 +1127,8 @@ class CustomersDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Signs a device.
@@ -1142,7 +1169,8 @@ class CustomersDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a signed device.
@@ -1183,7 +1211,8 @@ class CustomersDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1238,7 +1267,8 @@ class CustomersNodesResource {
       queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a node.
@@ -1271,10 +1301,12 @@ class CustomersNodesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a requested node.
@@ -1310,7 +1342,8 @@ class CustomersNodesResource {
       queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists nodes.
@@ -1361,7 +1394,8 @@ class CustomersNodesResource {
       queryParams: queryParams_,
     );
     return SasPortalListNodesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Moves a node under another node or customer.
@@ -1402,7 +1436,8 @@ class CustomersNodesResource {
       queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing node.
@@ -1447,7 +1482,8 @@ class CustomersNodesResource {
       queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1455,7 +1491,7 @@ class CustomersNodesDeploymentsResource {
   final commons.ApiRequester _requester;
 
   CustomersNodesDeploymentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new deployment.
   ///
@@ -1496,7 +1532,8 @@ class CustomersNodesDeploymentsResource {
       queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists deployments.
@@ -1548,7 +1585,8 @@ class CustomersNodesDeploymentsResource {
       queryParams: queryParams_,
     );
     return SasPortalListDeploymentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1556,7 +1594,7 @@ class CustomersNodesDevicesResource {
   final commons.ApiRequester _requester;
 
   CustomersNodesDevicesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a device under a node or customer.
   ///
@@ -1596,7 +1634,8 @@ class CustomersNodesDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a signed device under a node or customer.
@@ -1638,7 +1677,8 @@ class CustomersNodesDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists devices under a node or customer.
@@ -1691,7 +1731,8 @@ class CustomersNodesDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalListDevicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1699,7 +1740,7 @@ class CustomersNodesNodesResource {
   final commons.ApiRequester _requester;
 
   CustomersNodesNodesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new node.
   ///
@@ -1740,7 +1781,8 @@ class CustomersNodesNodesResource {
       queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists nodes.
@@ -1791,7 +1833,8 @@ class CustomersNodesNodesResource {
       queryParams: queryParams_,
     );
     return SasPortalListNodesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1836,7 +1879,8 @@ class DeploymentsResource {
       queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1875,10 +1919,12 @@ class DeploymentsDevicesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details about a device.
@@ -1914,7 +1960,8 @@ class DeploymentsDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Moves a device under another node or customer.
@@ -1955,7 +2002,8 @@ class DeploymentsDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a device.
@@ -2000,7 +2048,8 @@ class DeploymentsDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Signs a device.
@@ -2041,7 +2090,8 @@ class DeploymentsDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a signed device.
@@ -2082,7 +2132,8 @@ class DeploymentsDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2125,7 +2176,8 @@ class InstallerResource {
       queryParams: queryParams_,
     );
     return SasPortalGenerateSecretResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Validates the identity of a Certified Professional Installer (CPI).
@@ -2162,7 +2214,8 @@ class InstallerResource {
       queryParams: queryParams_,
     );
     return SasPortalValidateInstallerResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2209,7 +2262,8 @@ class NodesResource {
       queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2251,10 +2305,12 @@ class NodesDeploymentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a requested deployment.
@@ -2290,7 +2346,8 @@ class NodesDeploymentsResource {
       queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists deployments.
@@ -2342,7 +2399,8 @@ class NodesDeploymentsResource {
       queryParams: queryParams_,
     );
     return SasPortalListDeploymentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Moves a deployment under another node or customer.
@@ -2383,7 +2441,8 @@ class NodesDeploymentsResource {
       queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing deployment.
@@ -2428,7 +2487,8 @@ class NodesDeploymentsResource {
       queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2436,7 +2496,7 @@ class NodesDeploymentsDevicesResource {
   final commons.ApiRequester _requester;
 
   NodesDeploymentsDevicesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a device under a node or customer.
   ///
@@ -2476,7 +2536,8 @@ class NodesDeploymentsDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a signed device under a node or customer.
@@ -2518,7 +2579,8 @@ class NodesDeploymentsDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists devices under a node or customer.
@@ -2571,7 +2633,8 @@ class NodesDeploymentsDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalListDevicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2618,7 +2681,8 @@ class NodesDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a signed device under a node or customer.
@@ -2660,7 +2724,8 @@ class NodesDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a device.
@@ -2693,10 +2758,12 @@ class NodesDevicesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets details about a device.
@@ -2732,7 +2799,8 @@ class NodesDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists devices under a node or customer.
@@ -2785,7 +2853,8 @@ class NodesDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalListDevicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Moves a device under another node or customer.
@@ -2826,7 +2895,8 @@ class NodesDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a device.
@@ -2871,7 +2941,8 @@ class NodesDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Signs a device.
@@ -2912,7 +2983,8 @@ class NodesDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a signed device.
@@ -2953,7 +3025,8 @@ class NodesDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3007,7 +3080,8 @@ class NodesNodesResource {
       queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a node.
@@ -3040,10 +3114,12 @@ class NodesNodesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns a requested node.
@@ -3079,7 +3155,8 @@ class NodesNodesResource {
       queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists nodes.
@@ -3130,7 +3207,8 @@ class NodesNodesResource {
       queryParams: queryParams_,
     );
     return SasPortalListNodesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Moves a node under another node or customer.
@@ -3171,7 +3249,8 @@ class NodesNodesResource {
       queryParams: queryParams_,
     );
     return SasPortalOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing node.
@@ -3216,7 +3295,8 @@ class NodesNodesResource {
       queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3224,7 +3304,7 @@ class NodesNodesDeploymentsResource {
   final commons.ApiRequester _requester;
 
   NodesNodesDeploymentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new deployment.
   ///
@@ -3265,7 +3345,8 @@ class NodesNodesDeploymentsResource {
       queryParams: queryParams_,
     );
     return SasPortalDeployment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists deployments.
@@ -3317,7 +3398,8 @@ class NodesNodesDeploymentsResource {
       queryParams: queryParams_,
     );
     return SasPortalListDeploymentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3364,7 +3446,8 @@ class NodesNodesDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a signed device under a node or customer.
@@ -3406,7 +3489,8 @@ class NodesNodesDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalDevice.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists devices under a node or customer.
@@ -3459,7 +3543,8 @@ class NodesNodesDevicesResource {
       queryParams: queryParams_,
     );
     return SasPortalListDevicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3507,7 +3592,8 @@ class NodesNodesNodesResource {
       queryParams: queryParams_,
     );
     return SasPortalNode.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists nodes.
@@ -3558,7 +3644,8 @@ class NodesNodesNodesResource {
       queryParams: queryParams_,
     );
     return SasPortalListNodesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3604,7 +3691,8 @@ class PoliciesResource {
       queryParams: queryParams_,
     );
     return SasPortalPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3643,7 +3731,8 @@ class PoliciesResource {
       queryParams: queryParams_,
     );
     return SasPortalPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -3680,7 +3769,8 @@ class PoliciesResource {
       queryParams: queryParams_,
     );
     return SasPortalTestPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3695,29 +3785,29 @@ class SasPortalChannelWithScore {
   /// The channel score, normalized to be in the range \[0,100\].
   core.double? score;
 
-  SasPortalChannelWithScore({
-    this.frequencyRange,
-    this.score,
-  });
+  SasPortalChannelWithScore({this.frequencyRange, this.score});
 
   SasPortalChannelWithScore.fromJson(core.Map json_)
-      : this(
-          frequencyRange: json_.containsKey('frequencyRange')
-              ? SasPortalFrequencyRange.fromJson(json_['frequencyRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          score: (json_['score'] as core.num?)?.toDouble(),
-        );
+    : this(
+        frequencyRange:
+            json_.containsKey('frequencyRange')
+                ? SasPortalFrequencyRange.fromJson(
+                  json_['frequencyRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        score: (json_['score'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (frequencyRange != null) 'frequencyRange': frequencyRange!,
-        if (score != null) 'score': score!,
-      };
+    if (frequencyRange != null) 'frequencyRange': frequencyRange!,
+    if (score != null) 'score': score!,
+  };
 }
 
 /// Request for CreateSignedDevice.
-typedef SasPortalCreateSignedDeviceRequest
-    = $SasPortalCreateSignedDeviceRequest;
+typedef SasPortalCreateSignedDeviceRequest =
+    $SasPortalCreateSignedDeviceRequest;
 
 /// Entity representing a SAS customer.
 typedef SasPortalCustomer = $SasPortalCustomer;
@@ -3797,52 +3887,72 @@ class SasPortalDevice {
   });
 
   SasPortalDevice.fromJson(core.Map json_)
-      : this(
-          activeConfig: json_.containsKey('activeConfig')
-              ? SasPortalDeviceConfig.fromJson(
-                  json_['activeConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          currentChannels: (json_['currentChannels'] as core.List?)
-              ?.map((value) => SasPortalChannelWithScore.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          deviceMetadata: json_.containsKey('deviceMetadata')
-              ? SasPortalDeviceMetadata.fromJson(json_['deviceMetadata']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          displayName: json_['displayName'] as core.String?,
-          fccId: json_['fccId'] as core.String?,
-          grantRangeAllowlists: (json_['grantRangeAllowlists'] as core.List?)
-              ?.map((value) => SasPortalFrequencyRange.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          grants: (json_['grants'] as core.List?)
-              ?.map((value) => SasPortalDeviceGrant.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          preloadedConfig: json_.containsKey('preloadedConfig')
-              ? SasPortalDeviceConfig.fromJson(json_['preloadedConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          serialNumber: json_['serialNumber'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        activeConfig:
+            json_.containsKey('activeConfig')
+                ? SasPortalDeviceConfig.fromJson(
+                  json_['activeConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        currentChannels:
+            (json_['currentChannels'] as core.List?)
+                ?.map(
+                  (value) => SasPortalChannelWithScore.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        deviceMetadata:
+            json_.containsKey('deviceMetadata')
+                ? SasPortalDeviceMetadata.fromJson(
+                  json_['deviceMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        displayName: json_['displayName'] as core.String?,
+        fccId: json_['fccId'] as core.String?,
+        grantRangeAllowlists:
+            (json_['grantRangeAllowlists'] as core.List?)
+                ?.map(
+                  (value) => SasPortalFrequencyRange.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        grants:
+            (json_['grants'] as core.List?)
+                ?.map(
+                  (value) => SasPortalDeviceGrant.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        preloadedConfig:
+            json_.containsKey('preloadedConfig')
+                ? SasPortalDeviceConfig.fromJson(
+                  json_['preloadedConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serialNumber: json_['serialNumber'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (activeConfig != null) 'activeConfig': activeConfig!,
-        if (currentChannels != null) 'currentChannels': currentChannels!,
-        if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!,
-        if (displayName != null) 'displayName': displayName!,
-        if (fccId != null) 'fccId': fccId!,
-        if (grantRangeAllowlists != null)
-          'grantRangeAllowlists': grantRangeAllowlists!,
-        if (grants != null) 'grants': grants!,
-        if (name != null) 'name': name!,
-        if (preloadedConfig != null) 'preloadedConfig': preloadedConfig!,
-        if (serialNumber != null) 'serialNumber': serialNumber!,
-        if (state != null) 'state': state!,
-      };
+    if (activeConfig != null) 'activeConfig': activeConfig!,
+    if (currentChannels != null) 'currentChannels': currentChannels!,
+    if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!,
+    if (displayName != null) 'displayName': displayName!,
+    if (fccId != null) 'fccId': fccId!,
+    if (grantRangeAllowlists != null)
+      'grantRangeAllowlists': grantRangeAllowlists!,
+    if (grants != null) 'grants': grants!,
+    if (name != null) 'name': name!,
+    if (preloadedConfig != null) 'preloadedConfig': preloadedConfig!,
+    if (serialNumber != null) 'serialNumber': serialNumber!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Information about the device's air interface.
@@ -3906,45 +4016,51 @@ class SasPortalDeviceConfig {
   });
 
   SasPortalDeviceConfig.fromJson(core.Map json_)
-      : this(
-          airInterface: json_.containsKey('airInterface')
-              ? SasPortalDeviceAirInterface.fromJson(
-                  json_['airInterface'] as core.Map<core.String, core.dynamic>)
-              : null,
-          callSign: json_['callSign'] as core.String?,
-          category: json_['category'] as core.String?,
-          installationParams: json_.containsKey('installationParams')
-              ? SasPortalInstallationParams.fromJson(json_['installationParams']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          isSigned: json_['isSigned'] as core.bool?,
-          measurementCapabilities:
-              (json_['measurementCapabilities'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          model: json_.containsKey('model')
-              ? SasPortalDeviceModel.fromJson(
-                  json_['model'] as core.Map<core.String, core.dynamic>)
-              : null,
-          state: json_['state'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          userId: json_['userId'] as core.String?,
-        );
+    : this(
+        airInterface:
+            json_.containsKey('airInterface')
+                ? SasPortalDeviceAirInterface.fromJson(
+                  json_['airInterface'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        callSign: json_['callSign'] as core.String?,
+        category: json_['category'] as core.String?,
+        installationParams:
+            json_.containsKey('installationParams')
+                ? SasPortalInstallationParams.fromJson(
+                  json_['installationParams']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        isSigned: json_['isSigned'] as core.bool?,
+        measurementCapabilities:
+            (json_['measurementCapabilities'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        model:
+            json_.containsKey('model')
+                ? SasPortalDeviceModel.fromJson(
+                  json_['model'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        userId: json_['userId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (airInterface != null) 'airInterface': airInterface!,
-        if (callSign != null) 'callSign': callSign!,
-        if (category != null) 'category': category!,
-        if (installationParams != null)
-          'installationParams': installationParams!,
-        if (isSigned != null) 'isSigned': isSigned!,
-        if (measurementCapabilities != null)
-          'measurementCapabilities': measurementCapabilities!,
-        if (model != null) 'model': model!,
-        if (state != null) 'state': state!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (userId != null) 'userId': userId!,
-      };
+    if (airInterface != null) 'airInterface': airInterface!,
+    if (callSign != null) 'callSign': callSign!,
+    if (category != null) 'category': category!,
+    if (installationParams != null) 'installationParams': installationParams!,
+    if (isSigned != null) 'isSigned': isSigned!,
+    if (measurementCapabilities != null)
+      'measurementCapabilities': measurementCapabilities!,
+    if (model != null) 'model': model!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (userId != null) 'userId': userId!,
+  };
 }
 
 /// Device grant.
@@ -4010,39 +4126,47 @@ class SasPortalDeviceGrant {
   });
 
   SasPortalDeviceGrant.fromJson(core.Map json_)
-      : this(
-          channelType: json_['channelType'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-          frequencyRange: json_.containsKey('frequencyRange')
-              ? SasPortalFrequencyRange.fromJson(json_['frequencyRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          grantId: json_['grantId'] as core.String?,
-          lastHeartbeatTransmitExpireTime:
-              json_['lastHeartbeatTransmitExpireTime'] as core.String?,
-          maxEirp: (json_['maxEirp'] as core.num?)?.toDouble(),
-          moveList: (json_['moveList'] as core.List?)
-              ?.map((value) => SasPortalDpaMoveList.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          state: json_['state'] as core.String?,
-          suspensionReason: (json_['suspensionReason'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        channelType: json_['channelType'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        frequencyRange:
+            json_.containsKey('frequencyRange')
+                ? SasPortalFrequencyRange.fromJson(
+                  json_['frequencyRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        grantId: json_['grantId'] as core.String?,
+        lastHeartbeatTransmitExpireTime:
+            json_['lastHeartbeatTransmitExpireTime'] as core.String?,
+        maxEirp: (json_['maxEirp'] as core.num?)?.toDouble(),
+        moveList:
+            (json_['moveList'] as core.List?)
+                ?.map(
+                  (value) => SasPortalDpaMoveList.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        state: json_['state'] as core.String?,
+        suspensionReason:
+            (json_['suspensionReason'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (channelType != null) 'channelType': channelType!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (frequencyRange != null) 'frequencyRange': frequencyRange!,
-        if (grantId != null) 'grantId': grantId!,
-        if (lastHeartbeatTransmitExpireTime != null)
-          'lastHeartbeatTransmitExpireTime': lastHeartbeatTransmitExpireTime!,
-        if (maxEirp != null) 'maxEirp': maxEirp!,
-        if (moveList != null) 'moveList': moveList!,
-        if (state != null) 'state': state!,
-        if (suspensionReason != null) 'suspensionReason': suspensionReason!,
-      };
+    if (channelType != null) 'channelType': channelType!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (frequencyRange != null) 'frequencyRange': frequencyRange!,
+    if (grantId != null) 'grantId': grantId!,
+    if (lastHeartbeatTransmitExpireTime != null)
+      'lastHeartbeatTransmitExpireTime': lastHeartbeatTransmitExpireTime!,
+    if (maxEirp != null) 'maxEirp': maxEirp!,
+    if (moveList != null) 'moveList': moveList!,
+    if (state != null) 'state': state!,
+    if (suspensionReason != null) 'suspensionReason': suspensionReason!,
+  };
 }
 
 /// Device data overridable by both SAS Portal and registration requests.
@@ -4089,27 +4213,29 @@ class SasPortalDeviceMetadata {
   });
 
   SasPortalDeviceMetadata.fromJson(core.Map json_)
-      : this(
-          antennaModel: json_['antennaModel'] as core.String?,
-          commonChannelGroup: json_['commonChannelGroup'] as core.String?,
-          interferenceCoordinationGroup:
-              json_['interferenceCoordinationGroup'] as core.String?,
-          nrqzValidated: json_['nrqzValidated'] as core.bool?,
-          nrqzValidation: json_.containsKey('nrqzValidation')
-              ? SasPortalNrqzValidation.fromJson(json_['nrqzValidation']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        antennaModel: json_['antennaModel'] as core.String?,
+        commonChannelGroup: json_['commonChannelGroup'] as core.String?,
+        interferenceCoordinationGroup:
+            json_['interferenceCoordinationGroup'] as core.String?,
+        nrqzValidated: json_['nrqzValidated'] as core.bool?,
+        nrqzValidation:
+            json_.containsKey('nrqzValidation')
+                ? SasPortalNrqzValidation.fromJson(
+                  json_['nrqzValidation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (antennaModel != null) 'antennaModel': antennaModel!,
-        if (commonChannelGroup != null)
-          'commonChannelGroup': commonChannelGroup!,
-        if (interferenceCoordinationGroup != null)
-          'interferenceCoordinationGroup': interferenceCoordinationGroup!,
-        if (nrqzValidated != null) 'nrqzValidated': nrqzValidated!,
-        if (nrqzValidation != null) 'nrqzValidation': nrqzValidation!,
-      };
+    if (antennaModel != null) 'antennaModel': antennaModel!,
+    if (commonChannelGroup != null) 'commonChannelGroup': commonChannelGroup!,
+    if (interferenceCoordinationGroup != null)
+      'interferenceCoordinationGroup': interferenceCoordinationGroup!,
+    if (nrqzValidated != null) 'nrqzValidated': nrqzValidated!,
+    if (nrqzValidation != null) 'nrqzValidation': nrqzValidation!,
+  };
 }
 
 /// Information about the model of the device.
@@ -4123,24 +4249,24 @@ class SasPortalDpaMoveList {
   /// The frequency range that the move list affects.
   SasPortalFrequencyRange? frequencyRange;
 
-  SasPortalDpaMoveList({
-    this.dpaId,
-    this.frequencyRange,
-  });
+  SasPortalDpaMoveList({this.dpaId, this.frequencyRange});
 
   SasPortalDpaMoveList.fromJson(core.Map json_)
-      : this(
-          dpaId: json_['dpaId'] as core.String?,
-          frequencyRange: json_.containsKey('frequencyRange')
-              ? SasPortalFrequencyRange.fromJson(json_['frequencyRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dpaId: json_['dpaId'] as core.String?,
+        frequencyRange:
+            json_.containsKey('frequencyRange')
+                ? SasPortalFrequencyRange.fromJson(
+                  json_['frequencyRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dpaId != null) 'dpaId': dpaId!,
-        if (frequencyRange != null) 'frequencyRange': frequencyRange!,
-      };
+    if (dpaId != null) 'dpaId': dpaId!,
+    if (frequencyRange != null) 'frequencyRange': frequencyRange!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -4164,25 +4290,24 @@ class SasPortalGcpProjectDeployment {
   /// Whether SAS analytics has been enabled.
   core.bool? hasEnabledAnalytics;
 
-  SasPortalGcpProjectDeployment({
-    this.deployment,
-    this.hasEnabledAnalytics,
-  });
+  SasPortalGcpProjectDeployment({this.deployment, this.hasEnabledAnalytics});
 
   SasPortalGcpProjectDeployment.fromJson(core.Map json_)
-      : this(
-          deployment: json_.containsKey('deployment')
-              ? SasPortalDeployment.fromJson(
-                  json_['deployment'] as core.Map<core.String, core.dynamic>)
-              : null,
-          hasEnabledAnalytics: json_['hasEnabledAnalytics'] as core.bool?,
-        );
+    : this(
+        deployment:
+            json_.containsKey('deployment')
+                ? SasPortalDeployment.fromJson(
+                  json_['deployment'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hasEnabledAnalytics: json_['hasEnabledAnalytics'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deployment != null) 'deployment': deployment!,
-        if (hasEnabledAnalytics != null)
-          'hasEnabledAnalytics': hasEnabledAnalytics!,
-      };
+    if (deployment != null) 'deployment': deployment!,
+    if (hasEnabledAnalytics != null)
+      'hasEnabledAnalytics': hasEnabledAnalytics!,
+  };
 }
 
 /// Request for GenerateSecret.
@@ -4208,24 +4333,25 @@ class SasPortalListCustomersResponse {
   /// If the field is missing or empty, it means there are no more customers.
   core.String? nextPageToken;
 
-  SasPortalListCustomersResponse({
-    this.customers,
-    this.nextPageToken,
-  });
+  SasPortalListCustomersResponse({this.customers, this.nextPageToken});
 
   SasPortalListCustomersResponse.fromJson(core.Map json_)
-      : this(
-          customers: (json_['customers'] as core.List?)
-              ?.map((value) => SasPortalCustomer.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        customers:
+            (json_['customers'] as core.List?)
+                ?.map(
+                  (value) => SasPortalCustomer.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customers != null) 'customers': customers!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (customers != null) 'customers': customers!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response for ListDeployments.
@@ -4239,24 +4365,25 @@ class SasPortalListDeploymentsResponse {
   /// If the field is missing or empty, it means there are no more deployments.
   core.String? nextPageToken;
 
-  SasPortalListDeploymentsResponse({
-    this.deployments,
-    this.nextPageToken,
-  });
+  SasPortalListDeploymentsResponse({this.deployments, this.nextPageToken});
 
   SasPortalListDeploymentsResponse.fromJson(core.Map json_)
-      : this(
-          deployments: (json_['deployments'] as core.List?)
-              ?.map((value) => SasPortalDeployment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        deployments:
+            (json_['deployments'] as core.List?)
+                ?.map(
+                  (value) => SasPortalDeployment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deployments != null) 'deployments': deployments!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (deployments != null) 'deployments': deployments!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response for ListDevices.
@@ -4270,24 +4397,25 @@ class SasPortalListDevicesResponse {
   /// If the field is missing or empty, it means there is no more devices.
   core.String? nextPageToken;
 
-  SasPortalListDevicesResponse({
-    this.devices,
-    this.nextPageToken,
-  });
+  SasPortalListDevicesResponse({this.devices, this.nextPageToken});
 
   SasPortalListDevicesResponse.fromJson(core.Map json_)
-      : this(
-          devices: (json_['devices'] as core.List?)
-              ?.map((value) => SasPortalDevice.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        devices:
+            (json_['devices'] as core.List?)
+                ?.map(
+                  (value) => SasPortalDevice.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (devices != null) 'devices': devices!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (devices != null) 'devices': devices!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response for \[ListGcpProjectDeployments\].
@@ -4297,21 +4425,23 @@ class SasPortalListGcpProjectDeploymentsResponse {
   /// Optional.
   core.List<SasPortalGcpProjectDeployment>? deployments;
 
-  SasPortalListGcpProjectDeploymentsResponse({
-    this.deployments,
-  });
+  SasPortalListGcpProjectDeploymentsResponse({this.deployments});
 
   SasPortalListGcpProjectDeploymentsResponse.fromJson(core.Map json_)
-      : this(
-          deployments: (json_['deployments'] as core.List?)
-              ?.map((value) => SasPortalGcpProjectDeployment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        deployments:
+            (json_['deployments'] as core.List?)
+                ?.map(
+                  (value) => SasPortalGcpProjectDeployment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deployments != null) 'deployments': deployments!,
-      };
+    if (deployments != null) 'deployments': deployments!,
+  };
 }
 
 /// Response for \[ListLegacyOrganizations\].
@@ -4323,21 +4453,23 @@ class SasPortalListLegacyOrganizationsResponse {
   /// Optional.
   core.List<SasPortalOrganization>? organizations;
 
-  SasPortalListLegacyOrganizationsResponse({
-    this.organizations,
-  });
+  SasPortalListLegacyOrganizationsResponse({this.organizations});
 
   SasPortalListLegacyOrganizationsResponse.fromJson(core.Map json_)
-      : this(
-          organizations: (json_['organizations'] as core.List?)
-              ?.map((value) => SasPortalOrganization.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        organizations:
+            (json_['organizations'] as core.List?)
+                ?.map(
+                  (value) => SasPortalOrganization.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (organizations != null) 'organizations': organizations!,
-      };
+    if (organizations != null) 'organizations': organizations!,
+  };
 }
 
 /// Response for ListNodes.
@@ -4351,24 +4483,25 @@ class SasPortalListNodesResponse {
   /// The nodes that match the request.
   core.List<SasPortalNode>? nodes;
 
-  SasPortalListNodesResponse({
-    this.nextPageToken,
-    this.nodes,
-  });
+  SasPortalListNodesResponse({this.nextPageToken, this.nodes});
 
   SasPortalListNodesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          nodes: (json_['nodes'] as core.List?)
-              ?.map((value) => SasPortalNode.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        nodes:
+            (json_['nodes'] as core.List?)
+                ?.map(
+                  (value) => SasPortalNode.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (nodes != null) 'nodes': nodes!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (nodes != null) 'nodes': nodes!,
+  };
 }
 
 /// Request for \[MigrateOrganization\].
@@ -4377,8 +4510,8 @@ class SasPortalListNodesResponse {
 /// Project, Organization Info, and caller's GAIA ID should be retrieved from
 /// the RPC handler, and used to check authorization on SAS Portal organization
 /// and to create GCP Projects.
-typedef SasPortalMigrateOrganizationRequest
-    = $SasPortalMigrateOrganizationRequest;
+typedef SasPortalMigrateOrganizationRequest =
+    $SasPortalMigrateOrganizationRequest;
 
 /// Request for MoveDeployment.
 typedef SasPortalMoveDeploymentRequest = $SasPortalMoveDeploymentRequest;
@@ -4447,28 +4580,32 @@ class SasPortalOperation {
   });
 
   SasPortalOperation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? SasPortalStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? SasPortalStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Organization details.
@@ -4493,28 +4630,31 @@ class SasPortalPolicy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  SasPortalPolicy({
-    this.assignments,
-    this.etag,
-  });
+  SasPortalPolicy({this.assignments, this.etag});
 
   SasPortalPolicy.fromJson(core.Map json_)
-      : this(
-          assignments: (json_['assignments'] as core.List?)
-              ?.map((value) => SasPortalAssignment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-        );
+    : this(
+        assignments:
+            (json_['assignments'] as core.List?)
+                ?.map(
+                  (value) => SasPortalAssignment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (assignments != null) 'assignments': assignments!,
-        if (etag != null) 'etag': etag!,
-      };
+    if (assignments != null) 'assignments': assignments!,
+    if (etag != null) 'etag': etag!,
+  };
 }
 
 /// Request for \[ProvisionDeployment\].
@@ -4523,14 +4663,14 @@ class SasPortalPolicy {
 /// Project, Organization Info, and caller’s GAIA ID should be retrieved from
 /// the RPC handler, and used as inputs to create a new SAS organization (if not
 /// exists) and a new SAS deployment.
-typedef SasPortalProvisionDeploymentRequest
-    = $SasPortalProvisionDeploymentRequest;
+typedef SasPortalProvisionDeploymentRequest =
+    $SasPortalProvisionDeploymentRequest;
 
 /// Response for \[ProvisionDeployment\].
 ///
 /// \[spectrum.sas.portal.v1alpha1.Provisioning.ProvisionDeployment\].
-typedef SasPortalProvisionDeploymentResponse
-    = $SasPortalProvisionDeploymentResponse;
+typedef SasPortalProvisionDeploymentResponse =
+    $SasPortalProvisionDeploymentResponse;
 
 /// Request message for `SetPolicy` method.
 class SasPortalSetPolicyRequest {
@@ -4558,21 +4698,23 @@ class SasPortalSetPolicyRequest {
   });
 
   SasPortalSetPolicyRequest.fromJson(core.Map json_)
-      : this(
-          disableNotification: json_['disableNotification'] as core.bool?,
-          policy: json_.containsKey('policy')
-              ? SasPortalPolicy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          resource: json_['resource'] as core.String?,
-        );
+    : this(
+        disableNotification: json_['disableNotification'] as core.bool?,
+        policy:
+            json_.containsKey('policy')
+                ? SasPortalPolicy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resource: json_['resource'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (disableNotification != null)
-          'disableNotification': disableNotification!,
-        if (policy != null) 'policy': policy!,
-        if (resource != null) 'resource': resource!,
-      };
+    if (disableNotification != null)
+      'disableNotification': disableNotification!,
+    if (policy != null) 'policy': policy!,
+    if (resource != null) 'resource': resource!,
+  };
 }
 
 /// Request for the SetupSasAnalytics rpc.
@@ -4588,21 +4730,21 @@ class SasPortalSignDeviceRequest {
   /// Required.
   SasPortalDevice? device;
 
-  SasPortalSignDeviceRequest({
-    this.device,
-  });
+  SasPortalSignDeviceRequest({this.device});
 
   SasPortalSignDeviceRequest.fromJson(core.Map json_)
-      : this(
-          device: json_.containsKey('device')
-              ? SasPortalDevice.fromJson(
-                  json_['device'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        device:
+            json_.containsKey('device')
+                ? SasPortalDevice.fromJson(
+                  json_['device'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (device != null) 'device': device!,
-      };
+    if (device != null) 'device': device!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4621,8 +4763,8 @@ typedef SasPortalTestPermissionsRequest = $SasPortalTestPermissionsRequest;
 typedef SasPortalTestPermissionsResponse = $SasPortalTestPermissionsResponse;
 
 /// Request for UpdateSignedDevice.
-typedef SasPortalUpdateSignedDeviceRequest
-    = $SasPortalUpdateSignedDeviceRequest;
+typedef SasPortalUpdateSignedDeviceRequest =
+    $SasPortalUpdateSignedDeviceRequest;
 
 /// Request for ValidateInstaller.
 typedef SasPortalValidateInstallerRequest = $SasPortalValidateInstallerRequest;

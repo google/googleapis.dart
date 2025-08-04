@@ -84,18 +84,20 @@ class UriTemplate {
   ///
   /// The key in [identifiers] are template variable names and the values are
   /// the dart [Identifier]s which contain the dart value.
-  String stringExpression(Map<String?, Identifier> identifiers) =>
-      parts.map((Part part) {
+  String stringExpression(Map<String?, Identifier> identifiers) => parts
+      .map((Part part) {
         if (part.templateVar == null) {
           return part.stringExpression(null);
         }
         final identifier = identifiers[part.templateVar];
         if (identifier == null) {
           throw ArgumentError(
-              'Could not find entry ${part.templateVar} in identifier map.');
+            'Could not find entry ${part.templateVar} in identifier map.',
+          );
         }
         return part.stringExpression(identifier);
-      }).join(' + ');
+      })
+      .join(' + ');
 
   static UriTemplate parse(DartApiImports imports, String pattern) {
     final parts = <Part>[];
@@ -119,8 +121,10 @@ class UriTemplate {
 
       final close = pattern.indexOf('}', open);
       if (close < 0) {
-        throw ArgumentError('Invalid URI template pattern, '
-            "expected closing brace: '$pattern'");
+        throw ArgumentError(
+          'Invalid URI template pattern, '
+          "expected closing brace: '$pattern'",
+        );
       }
 
       // We extract the URI template expression and generate an expression
@@ -128,8 +132,10 @@ class UriTemplate {
       final templateExpression = pattern.substring(open + 1, close);
       if (templateExpression.startsWith('/') &&
           templateExpression.endsWith('*')) {
-        final variable =
-            templateExpression.substring(1, templateExpression.length - 1);
+        final variable = templateExpression.substring(
+          1,
+          templateExpression.length - 1,
+        );
         _ensureValidVariable(variable);
         parts.add(PathVariableExpression(imports, variable));
       } else if (templateExpression.startsWith('+')) {
@@ -155,13 +161,17 @@ class UriTemplate {
       final isNumber = 48 <= char && char <= 57;
       final isUnderscore = char == 0x5F;
       if (i == 0 && !isLetter) {
-        throw ArgumentError('Variables can only begin with an upper or '
-            'lowercase letter: "$name".');
+        throw ArgumentError(
+          'Variables can only begin with an upper or '
+          'lowercase letter: "$name".',
+        );
       }
       if (!isLetter && !isNumber && !isUnderscore) {
-        throw ArgumentError('Variables can only consist of uppercase '
-            'letters, lowercase letters, underscores and '
-            'numbers: "$name".');
+        throw ArgumentError(
+          'Variables can only consist of uppercase '
+          'letters, lowercase letters, underscores and '
+          'numbers: "$name".',
+        );
       }
     }
   }

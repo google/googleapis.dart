@@ -58,11 +58,16 @@ class ParameterManagerApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ParameterManagerApi(http.Client client,
-      {core.String rootUrl = 'https://parametermanager.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ParameterManagerApi(
+    http.Client client, {
+    core.String rootUrl = 'https://parametermanager.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -99,10 +104,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -172,7 +174,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -183,7 +186,7 @@ class ProjectsLocationsParametersResource {
       ProjectsLocationsParametersVersionsResource(_requester);
 
   ProjectsLocationsParametersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new Parameter in a given project and location.
   ///
@@ -290,6 +293,7 @@ class ProjectsLocationsParametersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -314,10 +318,7 @@ class ProjectsLocationsParametersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Parameter> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Parameter> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -384,7 +385,8 @@ class ProjectsLocationsParametersResource {
       queryParams: queryParams_,
     );
     return ListParametersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a single Parameter.
@@ -457,7 +459,7 @@ class ProjectsLocationsParametersVersionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsParametersVersionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new ParameterVersion in a given project, location, and
   /// parameter.
@@ -519,7 +521,8 @@ class ProjectsLocationsParametersVersionsResource {
       queryParams: queryParams_,
     );
     return ParameterVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a single ParameterVersion.
@@ -568,6 +571,7 @@ class ProjectsLocationsParametersVersionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -620,7 +624,8 @@ class ProjectsLocationsParametersVersionsResource {
       queryParams: queryParams_,
     );
     return ParameterVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists ParameterVersions in a given project, location, and parameter.
@@ -676,7 +681,8 @@ class ProjectsLocationsParametersVersionsResource {
       queryParams: queryParams_,
     );
     return ListParameterVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a single ParameterVersion.
@@ -743,7 +749,8 @@ class ProjectsLocationsParametersVersionsResource {
       queryParams: queryParams_,
     );
     return ParameterVersion.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets rendered version of a ParameterVersion.
@@ -780,7 +787,8 @@ class ProjectsLocationsParametersVersionsResource {
       queryParams: queryParams_,
     );
     return RenderParameterVersionResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -800,24 +808,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Message for response to listing ParameterVersions
@@ -840,22 +849,27 @@ class ListParameterVersionsResponse {
   });
 
   ListParameterVersionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          parameterVersions: (json_['parameterVersions'] as core.List?)
-              ?.map((value) => ParameterVersion.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        parameterVersions:
+            (json_['parameterVersions'] as core.List?)
+                ?.map(
+                  (value) => ParameterVersion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (parameterVersions != null) 'parameterVersions': parameterVersions!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (parameterVersions != null) 'parameterVersions': parameterVersions!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Message for response to listing Parameters
@@ -878,22 +892,27 @@ class ListParametersResponse {
   });
 
   ListParametersResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          parameters: (json_['parameters'] as core.List?)
-              ?.map((value) => Parameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        parameters:
+            (json_['parameters'] as core.List?)
+                ?.map(
+                  (value) => Parameter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (parameters != null) 'parameters': parameters!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (parameters != null) 'parameters': parameters!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -960,34 +979,32 @@ class Parameter {
   });
 
   Parameter.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          format: json_['format'] as core.String?,
-          kmsKey: json_['kmsKey'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          policyMember: json_.containsKey('policyMember')
-              ? ResourcePolicyMember.fromJson(
-                  json_['policyMember'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        format: json_['format'] as core.String?,
+        kmsKey: json_['kmsKey'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        policyMember:
+            json_.containsKey('policyMember')
+                ? ResourcePolicyMember.fromJson(
+                  json_['policyMember'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (format != null) 'format': format!,
-        if (kmsKey != null) 'kmsKey': kmsKey!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (policyMember != null) 'policyMember': policyMember!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (format != null) 'format': format!,
+    if (kmsKey != null) 'kmsKey': kmsKey!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (policyMember != null) 'policyMember': policyMember!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Message describing ParameterVersion resource
@@ -1045,26 +1062,28 @@ class ParameterVersion {
   });
 
   ParameterVersion.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          disabled: json_['disabled'] as core.bool?,
-          kmsKeyVersion: json_['kmsKeyVersion'] as core.String?,
-          name: json_['name'] as core.String?,
-          payload: json_.containsKey('payload')
-              ? ParameterVersionPayload.fromJson(
-                  json_['payload'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        disabled: json_['disabled'] as core.bool?,
+        kmsKeyVersion: json_['kmsKeyVersion'] as core.String?,
+        name: json_['name'] as core.String?,
+        payload:
+            json_.containsKey('payload')
+                ? ParameterVersionPayload.fromJson(
+                  json_['payload'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (disabled != null) 'disabled': disabled!,
-        if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
-        if (name != null) 'name': name!,
-        if (payload != null) 'payload': payload!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (disabled != null) 'disabled': disabled!,
+    if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion!,
+    if (name != null) 'name': name!,
+    if (payload != null) 'payload': payload!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Message for storing a ParameterVersion resource's payload data
@@ -1076,22 +1095,20 @@ class ParameterVersionPayload {
   core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
 
   set dataAsBytes(core.List<core.int> bytes_) {
-    data =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  ParameterVersionPayload({
-    this.data,
-  });
+  ParameterVersionPayload({this.data});
 
   ParameterVersionPayload.fromJson(core.Map json_)
-      : this(
-          data: json_['data'] as core.String?,
-        );
+    : this(data: json_['data'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (data != null) 'data': data!,
-      };
+    if (data != null) 'data': data!,
+  };
 }
 
 /// Message describing RenderParameterVersionResponse resource
@@ -1118,8 +1135,10 @@ class RenderParameterVersionResponse {
       convert.base64.decode(renderedPayload!);
 
   set renderedPayloadAsBytes(core.List<core.int> bytes_) {
-    renderedPayload =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    renderedPayload = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   RenderParameterVersionResponse({
@@ -1129,20 +1148,22 @@ class RenderParameterVersionResponse {
   });
 
   RenderParameterVersionResponse.fromJson(core.Map json_)
-      : this(
-          parameterVersion: json_['parameterVersion'] as core.String?,
-          payload: json_.containsKey('payload')
-              ? ParameterVersionPayload.fromJson(
-                  json_['payload'] as core.Map<core.String, core.dynamic>)
-              : null,
-          renderedPayload: json_['renderedPayload'] as core.String?,
-        );
+    : this(
+        parameterVersion: json_['parameterVersion'] as core.String?,
+        payload:
+            json_.containsKey('payload')
+                ? ParameterVersionPayload.fromJson(
+                  json_['payload'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        renderedPayload: json_['renderedPayload'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (parameterVersion != null) 'parameterVersion': parameterVersion!,
-        if (payload != null) 'payload': payload!,
-        if (renderedPayload != null) 'renderedPayload': renderedPayload!,
-      };
+    if (parameterVersion != null) 'parameterVersion': parameterVersion!,
+    if (payload != null) 'payload': payload!,
+    if (renderedPayload != null) 'renderedPayload': renderedPayload!,
+  };
 }
 
 /// Output-only policy member strings of a Google Cloud resource's built-in
@@ -1174,16 +1195,15 @@ class ResourcePolicyMember {
   });
 
   ResourcePolicyMember.fromJson(core.Map json_)
-      : this(
-          iamPolicyNamePrincipal:
-              json_['iamPolicyNamePrincipal'] as core.String?,
-          iamPolicyUidPrincipal: json_['iamPolicyUidPrincipal'] as core.String?,
-        );
+    : this(
+        iamPolicyNamePrincipal: json_['iamPolicyNamePrincipal'] as core.String?,
+        iamPolicyUidPrincipal: json_['iamPolicyUidPrincipal'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (iamPolicyNamePrincipal != null)
-          'iamPolicyNamePrincipal': iamPolicyNamePrincipal!,
-        if (iamPolicyUidPrincipal != null)
-          'iamPolicyUidPrincipal': iamPolicyUidPrincipal!,
-      };
+    if (iamPolicyNamePrincipal != null)
+      'iamPolicyNamePrincipal': iamPolicyNamePrincipal!,
+    if (iamPolicyUidPrincipal != null)
+      'iamPolicyUidPrincipal': iamPolicyUidPrincipal!,
+  };
 }

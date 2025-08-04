@@ -72,9 +72,10 @@ class _Server {
         case _redirectPath:
           final queryParams = request.url.queryParameters;
 
-          final entries = _cache
-              .where((element) => element.state == queryParams['state'])
-              .toSet();
+          final entries =
+              _cache
+                  .where((element) => element.state == queryParams['state'])
+                  .toSet();
 
           if (entries.length != 1) {
             throw StateError('Could not find an entry for this response!');

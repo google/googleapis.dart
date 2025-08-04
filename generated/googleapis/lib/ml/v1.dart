@@ -61,11 +61,16 @@ class CloudMachineLearningEngineApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  CloudMachineLearningEngineApi(http.Client client,
-      {core.String rootUrl = 'https://ml.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudMachineLearningEngineApi(
+    http.Client client, {
+    core.String rootUrl = 'https://ml.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -122,7 +127,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return GoogleApiHttpBody.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Get the service account information associated with your project.
@@ -162,7 +168,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1GetConfigResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Performs online prediction on the data in the request.
@@ -207,7 +214,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return GoogleApiHttpBody.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -254,7 +262,8 @@ class ProjectsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Creates a training or a batch prediction job.
@@ -295,7 +304,8 @@ class ProjectsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Job.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Describes a job.
@@ -331,7 +341,8 @@ class ProjectsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Job.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -388,7 +399,8 @@ class ProjectsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the jobs in the project.
@@ -450,7 +462,8 @@ class ProjectsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1ListJobsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a specific job resource.
@@ -506,7 +519,8 @@ class ProjectsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Job.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -553,7 +567,8 @@ class ProjectsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -603,7 +618,8 @@ class ProjectsJobsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -651,7 +667,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Location.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List all locations that provides at least one type of CMLE capability.
@@ -702,7 +719,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -710,7 +728,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
   ///
@@ -752,10 +770,12 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the latest state of a long-running operation.
@@ -795,7 +815,8 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -806,7 +827,7 @@ class ProjectsLocationsStudiesResource {
       ProjectsLocationsStudiesTrialsResource(_requester);
 
   ProjectsLocationsStudiesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a study.
   ///
@@ -852,7 +873,8 @@ class ProjectsLocationsStudiesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Study.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a study.
@@ -886,10 +908,12 @@ class ProjectsLocationsStudiesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a study.
@@ -926,7 +950,8 @@ class ProjectsLocationsStudiesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Study.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists all the studies in a region for an associated project.
@@ -963,7 +988,8 @@ class ProjectsLocationsStudiesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1ListStudiesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -971,7 +997,7 @@ class ProjectsLocationsStudiesTrialsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsStudiesTrialsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Adds a measurement of the objective metrics to a trial.
   ///
@@ -1015,7 +1041,8 @@ class ProjectsLocationsStudiesTrialsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Trial.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Checks whether a trial should stop or not.
@@ -1061,7 +1088,8 @@ class ProjectsLocationsStudiesTrialsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Marks a trial as complete.
@@ -1103,7 +1131,8 @@ class ProjectsLocationsStudiesTrialsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Trial.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds a user provided trial to a study.
@@ -1145,7 +1174,8 @@ class ProjectsLocationsStudiesTrialsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Trial.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a trial.
@@ -1179,10 +1209,12 @@ class ProjectsLocationsStudiesTrialsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets a trial.
@@ -1219,7 +1251,8 @@ class ProjectsLocationsStudiesTrialsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Trial.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the trials associated with a study.
@@ -1256,7 +1289,8 @@ class ProjectsLocationsStudiesTrialsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1ListTrialsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the pareto-optimal trials for multi-objective study or the optimal
@@ -1304,7 +1338,8 @@ class ProjectsLocationsStudiesTrialsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1ListOptimalTrialsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Stops a trial.
@@ -1346,7 +1381,8 @@ class ProjectsLocationsStudiesTrialsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Trial.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Adds one or more trials to a study, with parameter values suggested by AI
@@ -1393,7 +1429,8 @@ class ProjectsLocationsStudiesTrialsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1446,7 +1483,8 @@ class ProjectsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Model.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a model.
@@ -1482,10 +1520,12 @@ class ProjectsModelsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets information about a model, including its name, the description (if
@@ -1523,7 +1563,8 @@ class ProjectsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Model.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the access control policy for a resource.
@@ -1580,7 +1621,8 @@ class ProjectsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the models in a project.
@@ -1638,7 +1680,8 @@ class ProjectsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1ListModelsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a specific model resource.
@@ -1692,7 +1735,8 @@ class ProjectsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1739,7 +1783,8 @@ class ProjectsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1Policy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1789,7 +1834,8 @@ class ProjectsModelsResource {
       queryParams: queryParams_,
     );
     return GoogleIamV1TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1797,7 +1843,7 @@ class ProjectsModelsVersionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsModelsVersionsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new version of a model from a trained TensorFlow model.
   ///
@@ -1844,7 +1890,8 @@ class ProjectsModelsVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a model version.
@@ -1884,10 +1931,12 @@ class ProjectsModelsVersionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets information about a model version.
@@ -1928,7 +1977,8 @@ class ProjectsModelsVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Version.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets basic information about all the versions of a model.
@@ -1987,7 +2037,8 @@ class ProjectsModelsVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1ListVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the specified Version resource.
@@ -2044,7 +2095,8 @@ class ProjectsModelsVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Designates a version to be the default for the model.
@@ -2093,7 +2145,8 @@ class ProjectsModelsVersionsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudMlV1Version.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2141,10 +2194,12 @@ class ProjectsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the latest state of a long-running operation.
@@ -2183,7 +2238,8 @@ class ProjectsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -2233,7 +2289,8 @@ class ProjectsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2269,14 +2326,12 @@ class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig {
   });
 
   GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig.fromJson(
-      core.Map json_)
-      : this(
-          useElapsedTime: json_['useElapsedTime'] as core.bool?,
-        );
+    core.Map json_,
+  ) : this(useElapsedTime: json_['useElapsedTime'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (useElapsedTime != null) 'useElapsedTime': useElapsedTime!,
-      };
+    if (useElapsedTime != null) 'useElapsedTime': useElapsedTime!,
+  };
 }
 
 /// The median automated stopping rule stops a pending trial if the trial's best
@@ -2297,14 +2352,12 @@ class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig {
   });
 
   GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig.fromJson(
-      core.Map json_)
-      : this(
-          useElapsedTime: json_['useElapsedTime'] as core.bool?,
-        );
+    core.Map json_,
+  ) : this(useElapsedTime: json_['useElapsedTime'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (useElapsedTime != null) 'useElapsedTime': useElapsedTime!,
-      };
+    if (useElapsedTime != null) 'useElapsedTime': useElapsedTime!,
+  };
 }
 
 /// An observed value of a metric.
@@ -2321,16 +2374,16 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
   });
 
   GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
-      core.Map json_)
-      : this(
-          objectiveValue: (json_['objectiveValue'] as core.num?)?.toDouble(),
-          trainingStep: json_['trainingStep'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        objectiveValue: (json_['objectiveValue'] as core.num?)?.toDouble(),
+        trainingStep: json_['trainingStep'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (objectiveValue != null) 'objectiveValue': objectiveValue!,
-        if (trainingStep != null) 'trainingStep': trainingStep!,
-      };
+    if (objectiveValue != null) 'objectiveValue': objectiveValue!,
+    if (trainingStep != null) 'trainingStep': trainingStep!,
+  };
 }
 
 /// A message representing a metric in the measurement.
@@ -2345,21 +2398,18 @@ class GoogleCloudMlV1MeasurementMetric {
   /// Required.
   core.double? value;
 
-  GoogleCloudMlV1MeasurementMetric({
-    this.metric,
-    this.value,
-  });
+  GoogleCloudMlV1MeasurementMetric({this.metric, this.value});
 
   GoogleCloudMlV1MeasurementMetric.fromJson(core.Map json_)
-      : this(
-          metric: json_['metric'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
-        );
+    : this(
+        metric: json_['metric'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metric != null) 'metric': metric!,
-        if (value != null) 'value': value!,
-      };
+    if (metric != null) 'metric': metric!,
+    if (value != null) 'value': value!,
+  };
 }
 
 class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
@@ -2368,21 +2418,20 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
   /// The list of possible categories.
   core.List<core.String>? values;
 
-  GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec({
-    this.values,
-  });
+  GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec({this.values});
 
   GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromJson(
-      core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
@@ -2393,21 +2442,20 @@ class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
   /// 2.5, and 4.0. This list should not contain more than 1,000 values.
   core.List<core.double>? values;
 
-  GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec({
-    this.values,
-  });
+  GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec({this.values});
 
   GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromJson(
-      core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
@@ -2427,16 +2475,16 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
   });
 
   GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromJson(
-      core.Map json_)
-      : this(
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
-        );
+    core.Map json_,
+  ) : this(
+        maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
+        minValue: (json_['minValue'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
-      };
+    if (maxValue != null) 'maxValue': maxValue!,
+    if (minValue != null) 'minValue': minValue!,
+  };
 }
 
 class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
@@ -2456,16 +2504,16 @@ class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
   });
 
   GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromJson(
-      core.Map json_)
-      : this(
-          maxValue: json_['maxValue'] as core.String?,
-          minValue: json_['minValue'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        maxValue: json_['maxValue'] as core.String?,
+        minValue: json_['minValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
-      };
+    if (maxValue != null) 'maxValue': maxValue!,
+    if (minValue != null) 'minValue': minValue!,
+  };
 }
 
 /// Represents the spec to match categorical values from parent parameter.
@@ -2480,16 +2528,17 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec 
   });
 
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec.fromJson(
-      core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Represents the spec to match discrete values from parent parameter.
@@ -2504,16 +2553,17 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
   });
 
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec.fromJson(
-      core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Represents the spec to match integer values from parent parameter.
@@ -2528,16 +2578,17 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec {
   });
 
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec.fromJson(
-      core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    core.Map json_,
+  ) : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Represents a metric to optimize.
@@ -2556,28 +2607,25 @@ class GoogleCloudMlV1StudyConfigMetricSpec {
   /// Required.
   core.String? metric;
 
-  GoogleCloudMlV1StudyConfigMetricSpec({
-    this.goal,
-    this.metric,
-  });
+  GoogleCloudMlV1StudyConfigMetricSpec({this.goal, this.metric});
 
   GoogleCloudMlV1StudyConfigMetricSpec.fromJson(core.Map json_)
-      : this(
-          goal: json_['goal'] as core.String?,
-          metric: json_['metric'] as core.String?,
-        );
+    : this(
+        goal: json_['goal'] as core.String?,
+        metric: json_['metric'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (goal != null) 'goal': goal!,
-        if (metric != null) 'metric': metric!,
-      };
+    if (goal != null) 'goal': goal!,
+    if (metric != null) 'metric': metric!,
+  };
 }
 
 /// Represents a single parameter to optimize.
 class GoogleCloudMlV1StudyConfigParameterSpec {
   /// The value spec for a 'CATEGORICAL' parameter.
   GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec?
-      categoricalValueSpec;
+  categoricalValueSpec;
 
   /// A child node is active if the parameter's value matches the child node's
   /// matching_parent_values.
@@ -2600,11 +2648,11 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
   /// Required.
   core.String? parameter;
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec?
-      parentCategoricalValues;
+  parentCategoricalValues;
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec?
-      parentDiscreteValues;
+  parentDiscreteValues;
   GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec?
-      parentIntValues;
+  parentIntValues;
 
   /// How the parameter should be scaled.
   ///
@@ -2650,68 +2698,86 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
   });
 
   GoogleCloudMlV1StudyConfigParameterSpec.fromJson(core.Map json_)
-      : this(
-          categoricalValueSpec: json_.containsKey('categoricalValueSpec')
-              ? GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec
-                  .fromJson(json_['categoricalValueSpec']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          childParameterSpecs: (json_['childParameterSpecs'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1StudyConfigParameterSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          discreteValueSpec: json_.containsKey('discreteValueSpec')
-              ? GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec
-                  .fromJson(json_['discreteValueSpec']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          doubleValueSpec: json_.containsKey('doubleValueSpec')
-              ? GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromJson(
+    : this(
+        categoricalValueSpec:
+            json_.containsKey('categoricalValueSpec')
+                ? GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromJson(
+                  json_['categoricalValueSpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        childParameterSpecs:
+            (json_['childParameterSpecs'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1StudyConfigParameterSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        discreteValueSpec:
+            json_.containsKey('discreteValueSpec')
+                ? GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromJson(
+                  json_['discreteValueSpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        doubleValueSpec:
+            json_.containsKey('doubleValueSpec')
+                ? GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromJson(
                   json_['doubleValueSpec']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          integerValueSpec: json_.containsKey('integerValueSpec')
-              ? GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec
-                  .fromJson(json_['integerValueSpec']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          parameter: json_['parameter'] as core.String?,
-          parentCategoricalValues: json_.containsKey('parentCategoricalValues')
-              ? GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec
-                  .fromJson(json_['parentCategoricalValues']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          parentDiscreteValues: json_.containsKey('parentDiscreteValues')
-              ? GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec
-                  .fromJson(json_['parentDiscreteValues']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          parentIntValues: json_.containsKey('parentIntValues')
-              ? GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec
-                  .fromJson(json_['parentIntValues']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          scaleType: json_['scaleType'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        integerValueSpec:
+            json_.containsKey('integerValueSpec')
+                ? GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromJson(
+                  json_['integerValueSpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        parameter: json_['parameter'] as core.String?,
+        parentCategoricalValues:
+            json_.containsKey('parentCategoricalValues')
+                ? GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec.fromJson(
+                  json_['parentCategoricalValues']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        parentDiscreteValues:
+            json_.containsKey('parentDiscreteValues')
+                ? GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec.fromJson(
+                  json_['parentDiscreteValues']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        parentIntValues:
+            json_.containsKey('parentIntValues')
+                ? GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec.fromJson(
+                  json_['parentIntValues']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        scaleType: json_['scaleType'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categoricalValueSpec != null)
-          'categoricalValueSpec': categoricalValueSpec!,
-        if (childParameterSpecs != null)
-          'childParameterSpecs': childParameterSpecs!,
-        if (discreteValueSpec != null) 'discreteValueSpec': discreteValueSpec!,
-        if (doubleValueSpec != null) 'doubleValueSpec': doubleValueSpec!,
-        if (integerValueSpec != null) 'integerValueSpec': integerValueSpec!,
-        if (parameter != null) 'parameter': parameter!,
-        if (parentCategoricalValues != null)
-          'parentCategoricalValues': parentCategoricalValues!,
-        if (parentDiscreteValues != null)
-          'parentDiscreteValues': parentDiscreteValues!,
-        if (parentIntValues != null) 'parentIntValues': parentIntValues!,
-        if (scaleType != null) 'scaleType': scaleType!,
-        if (type != null) 'type': type!,
-      };
+    if (categoricalValueSpec != null)
+      'categoricalValueSpec': categoricalValueSpec!,
+    if (childParameterSpecs != null)
+      'childParameterSpecs': childParameterSpecs!,
+    if (discreteValueSpec != null) 'discreteValueSpec': discreteValueSpec!,
+    if (doubleValueSpec != null) 'doubleValueSpec': doubleValueSpec!,
+    if (integerValueSpec != null) 'integerValueSpec': integerValueSpec!,
+    if (parameter != null) 'parameter': parameter!,
+    if (parentCategoricalValues != null)
+      'parentCategoricalValues': parentCategoricalValues!,
+    if (parentDiscreteValues != null)
+      'parentDiscreteValues': parentDiscreteValues!,
+    if (parentIntValues != null) 'parentIntValues': parentIntValues!,
+    if (scaleType != null) 'scaleType': scaleType!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A message representing a parameter to be tuned.
@@ -2739,19 +2805,19 @@ class GoogleCloudMlV1TrialParameter {
   });
 
   GoogleCloudMlV1TrialParameter.fromJson(core.Map json_)
-      : this(
-          floatValue: (json_['floatValue'] as core.num?)?.toDouble(),
-          intValue: json_['intValue'] as core.String?,
-          parameter: json_['parameter'] as core.String?,
-          stringValue: json_['stringValue'] as core.String?,
-        );
+    : this(
+        floatValue: (json_['floatValue'] as core.num?)?.toDouble(),
+        intValue: json_['intValue'] as core.String?,
+        parameter: json_['parameter'] as core.String?,
+        stringValue: json_['stringValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (floatValue != null) 'floatValue': floatValue!,
-        if (intValue != null) 'intValue': intValue!,
-        if (parameter != null) 'parameter': parameter!,
-        if (stringValue != null) 'stringValue': stringValue!,
-      };
+    if (floatValue != null) 'floatValue': floatValue!,
+    if (intValue != null) 'intValue': intValue!,
+    if (parameter != null) 'parameter': parameter!,
+    if (stringValue != null) 'stringValue': stringValue!,
+  };
 }
 
 /// Represents a hardware accelerator request config.
@@ -2781,21 +2847,18 @@ class GoogleCloudMlV1AcceleratorConfig {
   /// - "TPU_V4_POD" : TPU v4 POD.
   core.String? type;
 
-  GoogleCloudMlV1AcceleratorConfig({
-    this.count,
-    this.type,
-  });
+  GoogleCloudMlV1AcceleratorConfig({this.count, this.type});
 
   GoogleCloudMlV1AcceleratorConfig.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        count: json_['count'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (type != null) 'type': type!,
-      };
+    if (count != null) 'count': count!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// The request message for the AddTrialMeasurement service method.
@@ -2805,21 +2868,21 @@ class GoogleCloudMlV1AddTrialMeasurementRequest {
   /// Required.
   GoogleCloudMlV1Measurement? measurement;
 
-  GoogleCloudMlV1AddTrialMeasurementRequest({
-    this.measurement,
-  });
+  GoogleCloudMlV1AddTrialMeasurementRequest({this.measurement});
 
   GoogleCloudMlV1AddTrialMeasurementRequest.fromJson(core.Map json_)
-      : this(
-          measurement: json_.containsKey('measurement')
-              ? GoogleCloudMlV1Measurement.fromJson(
-                  json_['measurement'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        measurement:
+            json_.containsKey('measurement')
+                ? GoogleCloudMlV1Measurement.fromJson(
+                  json_['measurement'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (measurement != null) 'measurement': measurement!,
-      };
+    if (measurement != null) 'measurement': measurement!,
+  };
 }
 
 /// Options for automatically scaling a model.
@@ -2862,27 +2925,27 @@ class GoogleCloudMlV1AutoScaling {
   /// Optional.
   core.int? minNodes;
 
-  GoogleCloudMlV1AutoScaling({
-    this.maxNodes,
-    this.metrics,
-    this.minNodes,
-  });
+  GoogleCloudMlV1AutoScaling({this.maxNodes, this.metrics, this.minNodes});
 
   GoogleCloudMlV1AutoScaling.fromJson(core.Map json_)
-      : this(
-          maxNodes: json_['maxNodes'] as core.int?,
-          metrics: (json_['metrics'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1MetricSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          minNodes: json_['minNodes'] as core.int?,
-        );
+    : this(
+        maxNodes: json_['maxNodes'] as core.int?,
+        metrics:
+            (json_['metrics'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1MetricSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        minNodes: json_['minNodes'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxNodes != null) 'maxNodes': maxNodes!,
-        if (metrics != null) 'metrics': metrics!,
-        if (minNodes != null) 'minNodes': minNodes!,
-      };
+    if (maxNodes != null) 'maxNodes': maxNodes!,
+    if (metrics != null) 'metrics': metrics!,
+    if (minNodes != null) 'minNodes': minNodes!,
+  };
 }
 
 /// Configuration for Automated Early Stopping of Trials.
@@ -2891,9 +2954,9 @@ class GoogleCloudMlV1AutoScaling {
 /// run.
 class GoogleCloudMlV1AutomatedStoppingConfig {
   GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig?
-      decayCurveStoppingConfig;
+  decayCurveStoppingConfig;
   GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig?
-      medianAutomatedStoppingConfig;
+  medianAutomatedStoppingConfig;
 
   GoogleCloudMlV1AutomatedStoppingConfig({
     this.decayCurveStoppingConfig,
@@ -2901,27 +2964,29 @@ class GoogleCloudMlV1AutomatedStoppingConfig {
   });
 
   GoogleCloudMlV1AutomatedStoppingConfig.fromJson(core.Map json_)
-      : this(
-          decayCurveStoppingConfig: json_
-                  .containsKey('decayCurveStoppingConfig')
-              ? GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig
-                  .fromJson(json_['decayCurveStoppingConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          medianAutomatedStoppingConfig: json_
-                  .containsKey('medianAutomatedStoppingConfig')
-              ? GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig
-                  .fromJson(json_['medianAutomatedStoppingConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        decayCurveStoppingConfig:
+            json_.containsKey('decayCurveStoppingConfig')
+                ? GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig.fromJson(
+                  json_['decayCurveStoppingConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        medianAutomatedStoppingConfig:
+            json_.containsKey('medianAutomatedStoppingConfig')
+                ? GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig.fromJson(
+                  json_['medianAutomatedStoppingConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (decayCurveStoppingConfig != null)
-          'decayCurveStoppingConfig': decayCurveStoppingConfig!,
-        if (medianAutomatedStoppingConfig != null)
-          'medianAutomatedStoppingConfig': medianAutomatedStoppingConfig!,
-      };
+    if (decayCurveStoppingConfig != null)
+      'decayCurveStoppingConfig': decayCurveStoppingConfig!,
+    if (medianAutomatedStoppingConfig != null)
+      'medianAutomatedStoppingConfig': medianAutomatedStoppingConfig!,
+  };
 }
 
 /// Represents output related to a built-in algorithm Job.
@@ -2949,19 +3014,19 @@ class GoogleCloudMlV1BuiltInAlgorithmOutput {
   });
 
   GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(core.Map json_)
-      : this(
-          framework: json_['framework'] as core.String?,
-          modelPath: json_['modelPath'] as core.String?,
-          pythonVersion: json_['pythonVersion'] as core.String?,
-          runtimeVersion: json_['runtimeVersion'] as core.String?,
-        );
+    : this(
+        framework: json_['framework'] as core.String?,
+        modelPath: json_['modelPath'] as core.String?,
+        pythonVersion: json_['pythonVersion'] as core.String?,
+        runtimeVersion: json_['runtimeVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (framework != null) 'framework': framework!,
-        if (modelPath != null) 'modelPath': modelPath!,
-        if (pythonVersion != null) 'pythonVersion': pythonVersion!,
-        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
-      };
+    if (framework != null) 'framework': framework!,
+    if (modelPath != null) 'modelPath': modelPath!,
+    if (pythonVersion != null) 'pythonVersion': pythonVersion!,
+    if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
+  };
 }
 
 /// Request message for the CancelJob method.
@@ -2979,24 +3044,22 @@ class GoogleCloudMlV1Capability {
   /// - "ONLINE_PREDICTION"
   core.String? type;
 
-  GoogleCloudMlV1Capability({
-    this.availableAccelerators,
-    this.type,
-  });
+  GoogleCloudMlV1Capability({this.availableAccelerators, this.type});
 
   GoogleCloudMlV1Capability.fromJson(core.Map json_)
-      : this(
-          availableAccelerators: (json_['availableAccelerators'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        availableAccelerators:
+            (json_['availableAccelerators'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (availableAccelerators != null)
-          'availableAccelerators': availableAccelerators!,
-        if (type != null) 'type': type!,
-      };
+    if (availableAccelerators != null)
+      'availableAccelerators': availableAccelerators!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// The request message for the CheckTrialEarlyStoppingState service method.
@@ -3031,38 +3094,37 @@ class GoogleCloudMlV1CompleteTrialRequest {
   });
 
   GoogleCloudMlV1CompleteTrialRequest.fromJson(core.Map json_)
-      : this(
-          finalMeasurement: json_.containsKey('finalMeasurement')
-              ? GoogleCloudMlV1Measurement.fromJson(json_['finalMeasurement']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          infeasibleReason: json_['infeasibleReason'] as core.String?,
-          trialInfeasible: json_['trialInfeasible'] as core.bool?,
-        );
+    : this(
+        finalMeasurement:
+            json_.containsKey('finalMeasurement')
+                ? GoogleCloudMlV1Measurement.fromJson(
+                  json_['finalMeasurement']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        infeasibleReason: json_['infeasibleReason'] as core.String?,
+        trialInfeasible: json_['trialInfeasible'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (finalMeasurement != null) 'finalMeasurement': finalMeasurement!,
-        if (infeasibleReason != null) 'infeasibleReason': infeasibleReason!,
-        if (trialInfeasible != null) 'trialInfeasible': trialInfeasible!,
-      };
+    if (finalMeasurement != null) 'finalMeasurement': finalMeasurement!,
+    if (infeasibleReason != null) 'infeasibleReason': infeasibleReason!,
+    if (trialInfeasible != null) 'trialInfeasible': trialInfeasible!,
+  };
 }
 
 class GoogleCloudMlV1Config {
   /// The service account Cloud ML uses to run on TPU node.
   core.String? tpuServiceAccount;
 
-  GoogleCloudMlV1Config({
-    this.tpuServiceAccount,
-  });
+  GoogleCloudMlV1Config({this.tpuServiceAccount});
 
   GoogleCloudMlV1Config.fromJson(core.Map json_)
-      : this(
-          tpuServiceAccount: json_['tpuServiceAccount'] as core.String?,
-        );
+    : this(tpuServiceAccount: json_['tpuServiceAccount'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (tpuServiceAccount != null) 'tpuServiceAccount': tpuServiceAccount!,
-      };
+    if (tpuServiceAccount != null) 'tpuServiceAccount': tpuServiceAccount!,
+  };
 }
 
 /// Represents a network port in a single container.
@@ -3075,18 +3137,14 @@ class GoogleCloudMlV1ContainerPort {
   /// This must be a valid port number: 0 \< PORT_NUMBER \< 65536.
   core.int? containerPort;
 
-  GoogleCloudMlV1ContainerPort({
-    this.containerPort,
-  });
+  GoogleCloudMlV1ContainerPort({this.containerPort});
 
   GoogleCloudMlV1ContainerPort.fromJson(core.Map json_)
-      : this(
-          containerPort: json_['containerPort'] as core.int?,
-        );
+    : this(containerPort: json_['containerPort'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (containerPort != null) 'containerPort': containerPort!,
-      };
+    if (containerPort != null) 'containerPort': containerPort!,
+  };
 }
 
 /// Specification of a custom container for serving predictions.
@@ -3229,31 +3287,41 @@ class GoogleCloudMlV1ContainerSpec {
   });
 
   GoogleCloudMlV1ContainerSpec.fromJson(core.Map json_)
-      : this(
-          args: (json_['args'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          command: (json_['command'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          env: (json_['env'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1EnvVar.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          image: json_['image'] as core.String?,
-          ports: (json_['ports'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1ContainerPort.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        args:
+            (json_['args'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        command:
+            (json_['command'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        env:
+            (json_['env'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1EnvVar.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        image: json_['image'] as core.String?,
+        ports:
+            (json_['ports'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1ContainerPort.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (args != null) 'args': args!,
-        if (command != null) 'command': command!,
-        if (env != null) 'env': env!,
-        if (image != null) 'image': image!,
-        if (ports != null) 'ports': ports!,
-      };
+    if (args != null) 'args': args!,
+    if (command != null) 'command': command!,
+    if (env != null) 'env': env!,
+    if (image != null) 'image': image!,
+    if (ports != null) 'ports': ports!,
+  };
 }
 
 /// Represents the config of disk options.
@@ -3267,21 +3335,18 @@ class GoogleCloudMlV1DiskConfig {
   /// "pd-standard" (Persistent Disk Hard Disk Drive).
   core.String? bootDiskType;
 
-  GoogleCloudMlV1DiskConfig({
-    this.bootDiskSizeGb,
-    this.bootDiskType,
-  });
+  GoogleCloudMlV1DiskConfig({this.bootDiskSizeGb, this.bootDiskType});
 
   GoogleCloudMlV1DiskConfig.fromJson(core.Map json_)
-      : this(
-          bootDiskSizeGb: json_['bootDiskSizeGb'] as core.int?,
-          bootDiskType: json_['bootDiskType'] as core.String?,
-        );
+    : this(
+        bootDiskSizeGb: json_['bootDiskSizeGb'] as core.int?,
+        bootDiskType: json_['bootDiskType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
-        if (bootDiskType != null) 'bootDiskType': bootDiskType!,
-      };
+    if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
+    if (bootDiskType != null) 'bootDiskType': bootDiskType!,
+  };
 }
 
 /// Represents a custom encryption key configuration that can be applied to a
@@ -3294,18 +3359,14 @@ class GoogleCloudMlV1EncryptionConfig {
   /// `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
   core.String? kmsKeyName;
 
-  GoogleCloudMlV1EncryptionConfig({
-    this.kmsKeyName,
-  });
+  GoogleCloudMlV1EncryptionConfig({this.kmsKeyName});
 
   GoogleCloudMlV1EncryptionConfig.fromJson(core.Map json_)
-      : this(
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-        );
+    : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-      };
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+  };
 }
 
 /// Represents an environment variable to be made available in a container.
@@ -3335,21 +3396,18 @@ class GoogleCloudMlV1EnvVar {
   /// `$$`; for example: $$(VARIABLE_NAME)
   core.String? value;
 
-  GoogleCloudMlV1EnvVar({
-    this.name,
-    this.value,
-  });
+  GoogleCloudMlV1EnvVar({this.name, this.value});
 
   GoogleCloudMlV1EnvVar.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (value != null) 'value': value!,
-      };
+    if (name != null) 'name': name!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Request for explanations to be issued against a trained model.
@@ -3359,21 +3417,21 @@ class GoogleCloudMlV1ExplainRequest {
   /// Required.
   GoogleApiHttpBody? httpBody;
 
-  GoogleCloudMlV1ExplainRequest({
-    this.httpBody,
-  });
+  GoogleCloudMlV1ExplainRequest({this.httpBody});
 
   GoogleCloudMlV1ExplainRequest.fromJson(core.Map json_)
-      : this(
-          httpBody: json_.containsKey('httpBody')
-              ? GoogleApiHttpBody.fromJson(
-                  json_['httpBody'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        httpBody:
+            json_.containsKey('httpBody')
+                ? GoogleApiHttpBody.fromJson(
+                  json_['httpBody'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (httpBody != null) 'httpBody': httpBody!,
-      };
+    if (httpBody != null) 'httpBody': httpBody!,
+  };
 }
 
 /// Message holding configuration options for explaining model predictions.
@@ -3409,32 +3467,37 @@ class GoogleCloudMlV1ExplanationConfig {
   });
 
   GoogleCloudMlV1ExplanationConfig.fromJson(core.Map json_)
-      : this(
-          integratedGradientsAttribution:
-              json_.containsKey('integratedGradientsAttribution')
-                  ? GoogleCloudMlV1IntegratedGradientsAttribution.fromJson(
-                      json_['integratedGradientsAttribution']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          sampledShapleyAttribution:
-              json_.containsKey('sampledShapleyAttribution')
-                  ? GoogleCloudMlV1SampledShapleyAttribution.fromJson(
-                      json_['sampledShapleyAttribution']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          xraiAttribution: json_.containsKey('xraiAttribution')
-              ? GoogleCloudMlV1XraiAttribution.fromJson(json_['xraiAttribution']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        integratedGradientsAttribution:
+            json_.containsKey('integratedGradientsAttribution')
+                ? GoogleCloudMlV1IntegratedGradientsAttribution.fromJson(
+                  json_['integratedGradientsAttribution']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sampledShapleyAttribution:
+            json_.containsKey('sampledShapleyAttribution')
+                ? GoogleCloudMlV1SampledShapleyAttribution.fromJson(
+                  json_['sampledShapleyAttribution']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        xraiAttribution:
+            json_.containsKey('xraiAttribution')
+                ? GoogleCloudMlV1XraiAttribution.fromJson(
+                  json_['xraiAttribution']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (integratedGradientsAttribution != null)
-          'integratedGradientsAttribution': integratedGradientsAttribution!,
-        if (sampledShapleyAttribution != null)
-          'sampledShapleyAttribution': sampledShapleyAttribution!,
-        if (xraiAttribution != null) 'xraiAttribution': xraiAttribution!,
-      };
+    if (integratedGradientsAttribution != null)
+      'integratedGradientsAttribution': integratedGradientsAttribution!,
+    if (sampledShapleyAttribution != null)
+      'sampledShapleyAttribution': sampledShapleyAttribution!,
+    if (xraiAttribution != null) 'xraiAttribution': xraiAttribution!,
+  };
 }
 
 /// Returns service account information associated with a project.
@@ -3454,21 +3517,23 @@ class GoogleCloudMlV1GetConfigResponse {
   });
 
   GoogleCloudMlV1GetConfigResponse.fromJson(core.Map json_)
-      : this(
-          config: json_.containsKey('config')
-              ? GoogleCloudMlV1Config.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
-              : null,
-          serviceAccount: json_['serviceAccount'] as core.String?,
-          serviceAccountProject: json_['serviceAccountProject'] as core.String?,
-        );
+    : this(
+        config:
+            json_.containsKey('config')
+                ? GoogleCloudMlV1Config.fromJson(
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        serviceAccountProject: json_['serviceAccountProject'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (serviceAccountProject != null)
-          'serviceAccountProject': serviceAccountProject!,
-      };
+    if (config != null) 'config': config!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (serviceAccountProject != null)
+      'serviceAccountProject': serviceAccountProject!,
+  };
 }
 
 /// Represents the result of a single hyperparameter tuning trial from a
@@ -3482,7 +3547,7 @@ class GoogleCloudMlV1HyperparameterOutput {
   ///
   /// This field is not currently populated.
   core.List<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>?
-      allMetrics;
+  allMetrics;
 
   /// Details related to built-in algorithms jobs.
   ///
@@ -3555,59 +3620,56 @@ class GoogleCloudMlV1HyperparameterOutput {
   });
 
   GoogleCloudMlV1HyperparameterOutput.fromJson(core.Map json_)
-      : this(
-          allMetrics: (json_['allMetrics'] as core.List?)
-              ?.map((value) =>
-                  GoogleCloudMlV1HyperparameterOutputHyperparameterMetric
-                      .fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          builtInAlgorithmOutput: json_.containsKey('builtInAlgorithmOutput')
-              ? GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(
+    : this(
+        allMetrics:
+            (json_['allMetrics'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        builtInAlgorithmOutput:
+            json_.containsKey('builtInAlgorithmOutput')
+                ? GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(
                   json_['builtInAlgorithmOutput']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          endTime: json_['endTime'] as core.String?,
-          finalMetric: json_.containsKey('finalMetric')
-              ? GoogleCloudMlV1HyperparameterOutputHyperparameterMetric
-                  .fromJson(json_['finalMetric']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          hyperparameters:
-              (json_['hyperparameters'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          isTrialStoppedEarly: json_['isTrialStoppedEarly'] as core.bool?,
-          startTime: json_['startTime'] as core.String?,
-          state: json_['state'] as core.String?,
-          trialId: json_['trialId'] as core.String?,
-          webAccessUris:
-              (json_['webAccessUris'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endTime: json_['endTime'] as core.String?,
+        finalMetric:
+            json_.containsKey('finalMetric')
+                ? GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
+                  json_['finalMetric'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hyperparameters: (json_['hyperparameters']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        isTrialStoppedEarly: json_['isTrialStoppedEarly'] as core.bool?,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        trialId: json_['trialId'] as core.String?,
+        webAccessUris: (json_['webAccessUris']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allMetrics != null) 'allMetrics': allMetrics!,
-        if (builtInAlgorithmOutput != null)
-          'builtInAlgorithmOutput': builtInAlgorithmOutput!,
-        if (endTime != null) 'endTime': endTime!,
-        if (finalMetric != null) 'finalMetric': finalMetric!,
-        if (hyperparameters != null) 'hyperparameters': hyperparameters!,
-        if (isTrialStoppedEarly != null)
-          'isTrialStoppedEarly': isTrialStoppedEarly!,
-        if (startTime != null) 'startTime': startTime!,
-        if (state != null) 'state': state!,
-        if (trialId != null) 'trialId': trialId!,
-        if (webAccessUris != null) 'webAccessUris': webAccessUris!,
-      };
+    if (allMetrics != null) 'allMetrics': allMetrics!,
+    if (builtInAlgorithmOutput != null)
+      'builtInAlgorithmOutput': builtInAlgorithmOutput!,
+    if (endTime != null) 'endTime': endTime!,
+    if (finalMetric != null) 'finalMetric': finalMetric!,
+    if (hyperparameters != null) 'hyperparameters': hyperparameters!,
+    if (isTrialStoppedEarly != null)
+      'isTrialStoppedEarly': isTrialStoppedEarly!,
+    if (startTime != null) 'startTime': startTime!,
+    if (state != null) 'state': state!,
+    if (trialId != null) 'trialId': trialId!,
+    if (webAccessUris != null) 'webAccessUris': webAccessUris!,
+  };
 }
 
 /// Represents a set of hyperparameters to optimize.
@@ -3710,37 +3772,41 @@ class GoogleCloudMlV1HyperparameterSpec {
   });
 
   GoogleCloudMlV1HyperparameterSpec.fromJson(core.Map json_)
-      : this(
-          algorithm: json_['algorithm'] as core.String?,
-          enableTrialEarlyStopping:
-              json_['enableTrialEarlyStopping'] as core.bool?,
-          goal: json_['goal'] as core.String?,
-          hyperparameterMetricTag:
-              json_['hyperparameterMetricTag'] as core.String?,
-          maxFailedTrials: json_['maxFailedTrials'] as core.int?,
-          maxParallelTrials: json_['maxParallelTrials'] as core.int?,
-          maxTrials: json_['maxTrials'] as core.int?,
-          params: (json_['params'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1ParameterSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          resumePreviousJobId: json_['resumePreviousJobId'] as core.String?,
-        );
+    : this(
+        algorithm: json_['algorithm'] as core.String?,
+        enableTrialEarlyStopping:
+            json_['enableTrialEarlyStopping'] as core.bool?,
+        goal: json_['goal'] as core.String?,
+        hyperparameterMetricTag:
+            json_['hyperparameterMetricTag'] as core.String?,
+        maxFailedTrials: json_['maxFailedTrials'] as core.int?,
+        maxParallelTrials: json_['maxParallelTrials'] as core.int?,
+        maxTrials: json_['maxTrials'] as core.int?,
+        params:
+            (json_['params'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1ParameterSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        resumePreviousJobId: json_['resumePreviousJobId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm!,
-        if (enableTrialEarlyStopping != null)
-          'enableTrialEarlyStopping': enableTrialEarlyStopping!,
-        if (goal != null) 'goal': goal!,
-        if (hyperparameterMetricTag != null)
-          'hyperparameterMetricTag': hyperparameterMetricTag!,
-        if (maxFailedTrials != null) 'maxFailedTrials': maxFailedTrials!,
-        if (maxParallelTrials != null) 'maxParallelTrials': maxParallelTrials!,
-        if (maxTrials != null) 'maxTrials': maxTrials!,
-        if (params != null) 'params': params!,
-        if (resumePreviousJobId != null)
-          'resumePreviousJobId': resumePreviousJobId!,
-      };
+    if (algorithm != null) 'algorithm': algorithm!,
+    if (enableTrialEarlyStopping != null)
+      'enableTrialEarlyStopping': enableTrialEarlyStopping!,
+    if (goal != null) 'goal': goal!,
+    if (hyperparameterMetricTag != null)
+      'hyperparameterMetricTag': hyperparameterMetricTag!,
+    if (maxFailedTrials != null) 'maxFailedTrials': maxFailedTrials!,
+    if (maxParallelTrials != null) 'maxParallelTrials': maxParallelTrials!,
+    if (maxTrials != null) 'maxTrials': maxTrials!,
+    if (params != null) 'params': params!,
+    if (resumePreviousJobId != null)
+      'resumePreviousJobId': resumePreviousJobId!,
+  };
 }
 
 /// Attributes credit by computing the Aumann-Shapley value taking advantage of
@@ -3778,8 +3844,10 @@ class GoogleCloudMlV1Job {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The user-specified id of the job.
@@ -3856,56 +3924,62 @@ class GoogleCloudMlV1Job {
   });
 
   GoogleCloudMlV1Job.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          endTime: json_['endTime'] as core.String?,
-          errorMessage: json_['errorMessage'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          jobId: json_['jobId'] as core.String?,
-          jobPosition: json_['jobPosition'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          predictionInput: json_.containsKey('predictionInput')
-              ? GoogleCloudMlV1PredictionInput.fromJson(json_['predictionInput']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          predictionOutput: json_.containsKey('predictionOutput')
-              ? GoogleCloudMlV1PredictionOutput.fromJson(
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        jobId: json_['jobId'] as core.String?,
+        jobPosition: json_['jobPosition'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        predictionInput:
+            json_.containsKey('predictionInput')
+                ? GoogleCloudMlV1PredictionInput.fromJson(
+                  json_['predictionInput']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        predictionOutput:
+            json_.containsKey('predictionOutput')
+                ? GoogleCloudMlV1PredictionOutput.fromJson(
                   json_['predictionOutput']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          startTime: json_['startTime'] as core.String?,
-          state: json_['state'] as core.String?,
-          trainingInput: json_.containsKey('trainingInput')
-              ? GoogleCloudMlV1TrainingInput.fromJson(
-                  json_['trainingInput'] as core.Map<core.String, core.dynamic>)
-              : null,
-          trainingOutput: json_.containsKey('trainingOutput')
-              ? GoogleCloudMlV1TrainingOutput.fromJson(json_['trainingOutput']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        trainingInput:
+            json_.containsKey('trainingInput')
+                ? GoogleCloudMlV1TrainingInput.fromJson(
+                  json_['trainingInput'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        trainingOutput:
+            json_.containsKey('trainingOutput')
+                ? GoogleCloudMlV1TrainingOutput.fromJson(
+                  json_['trainingOutput']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (etag != null) 'etag': etag!,
-        if (jobId != null) 'jobId': jobId!,
-        if (jobPosition != null) 'jobPosition': jobPosition!,
-        if (labels != null) 'labels': labels!,
-        if (predictionInput != null) 'predictionInput': predictionInput!,
-        if (predictionOutput != null) 'predictionOutput': predictionOutput!,
-        if (startTime != null) 'startTime': startTime!,
-        if (state != null) 'state': state!,
-        if (trainingInput != null) 'trainingInput': trainingInput!,
-        if (trainingOutput != null) 'trainingOutput': trainingOutput!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (endTime != null) 'endTime': endTime!,
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+    if (etag != null) 'etag': etag!,
+    if (jobId != null) 'jobId': jobId!,
+    if (jobPosition != null) 'jobPosition': jobPosition!,
+    if (labels != null) 'labels': labels!,
+    if (predictionInput != null) 'predictionInput': predictionInput!,
+    if (predictionOutput != null) 'predictionOutput': predictionOutput!,
+    if (startTime != null) 'startTime': startTime!,
+    if (state != null) 'state': state!,
+    if (trainingInput != null) 'trainingInput': trainingInput!,
+    if (trainingOutput != null) 'trainingOutput': trainingOutput!,
+  };
 }
 
 /// Response message for the ListJobs method.
@@ -3919,24 +3993,25 @@ class GoogleCloudMlV1ListJobsResponse {
   /// Optional.
   core.String? nextPageToken;
 
-  GoogleCloudMlV1ListJobsResponse({
-    this.jobs,
-    this.nextPageToken,
-  });
+  GoogleCloudMlV1ListJobsResponse({this.jobs, this.nextPageToken});
 
   GoogleCloudMlV1ListJobsResponse.fromJson(core.Map json_)
-      : this(
-          jobs: (json_['jobs'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1Job.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        jobs:
+            (json_['jobs'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1Job.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (jobs != null) 'jobs': jobs!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (jobs != null) 'jobs': jobs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 class GoogleCloudMlV1ListLocationsResponse {
@@ -3949,24 +4024,25 @@ class GoogleCloudMlV1ListLocationsResponse {
   /// Optional.
   core.String? nextPageToken;
 
-  GoogleCloudMlV1ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  GoogleCloudMlV1ListLocationsResponse({this.locations, this.nextPageToken});
 
   GoogleCloudMlV1ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for the ListModels method.
@@ -3980,24 +4056,25 @@ class GoogleCloudMlV1ListModelsResponse {
   /// Optional.
   core.String? nextPageToken;
 
-  GoogleCloudMlV1ListModelsResponse({
-    this.models,
-    this.nextPageToken,
-  });
+  GoogleCloudMlV1ListModelsResponse({this.models, this.nextPageToken});
 
   GoogleCloudMlV1ListModelsResponse.fromJson(core.Map json_)
-      : this(
-          models: (json_['models'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1Model.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        models:
+            (json_['models'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1Model.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (models != null) 'models': models!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (models != null) 'models': models!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The request message for the ListTrials service method.
@@ -4012,42 +4089,46 @@ class GoogleCloudMlV1ListOptimalTrialsResponse {
   /// https://en.wikipedia.org/wiki/Pareto_efficiency
   core.List<GoogleCloudMlV1Trial>? trials;
 
-  GoogleCloudMlV1ListOptimalTrialsResponse({
-    this.trials,
-  });
+  GoogleCloudMlV1ListOptimalTrialsResponse({this.trials});
 
   GoogleCloudMlV1ListOptimalTrialsResponse.fromJson(core.Map json_)
-      : this(
-          trials: (json_['trials'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1Trial.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        trials:
+            (json_['trials'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1Trial.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (trials != null) 'trials': trials!,
-      };
+    if (trials != null) 'trials': trials!,
+  };
 }
 
 class GoogleCloudMlV1ListStudiesResponse {
   /// The studies associated with the project.
   core.List<GoogleCloudMlV1Study>? studies;
 
-  GoogleCloudMlV1ListStudiesResponse({
-    this.studies,
-  });
+  GoogleCloudMlV1ListStudiesResponse({this.studies});
 
   GoogleCloudMlV1ListStudiesResponse.fromJson(core.Map json_)
-      : this(
-          studies: (json_['studies'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1Study.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        studies:
+            (json_['studies'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1Study.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (studies != null) 'studies': studies!,
-      };
+    if (studies != null) 'studies': studies!,
+  };
 }
 
 /// The response message for the ListTrials method.
@@ -4055,21 +4136,23 @@ class GoogleCloudMlV1ListTrialsResponse {
   /// The trials associated with the study.
   core.List<GoogleCloudMlV1Trial>? trials;
 
-  GoogleCloudMlV1ListTrialsResponse({
-    this.trials,
-  });
+  GoogleCloudMlV1ListTrialsResponse({this.trials});
 
   GoogleCloudMlV1ListTrialsResponse.fromJson(core.Map json_)
-      : this(
-          trials: (json_['trials'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1Trial.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        trials:
+            (json_['trials'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1Trial.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (trials != null) 'trials': trials!,
-      };
+    if (trials != null) 'trials': trials!,
+  };
 }
 
 /// Response message for the ListVersions method.
@@ -4083,24 +4166,25 @@ class GoogleCloudMlV1ListVersionsResponse {
   /// The list of versions.
   core.List<GoogleCloudMlV1Version>? versions;
 
-  GoogleCloudMlV1ListVersionsResponse({
-    this.nextPageToken,
-    this.versions,
-  });
+  GoogleCloudMlV1ListVersionsResponse({this.nextPageToken, this.versions});
 
   GoogleCloudMlV1ListVersionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          versions: (json_['versions'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1Version.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        versions:
+            (json_['versions'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1Version.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (versions != null) 'versions': versions!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (versions != null) 'versions': versions!,
+  };
 }
 
 class GoogleCloudMlV1Location {
@@ -4108,24 +4192,25 @@ class GoogleCloudMlV1Location {
   core.List<GoogleCloudMlV1Capability>? capabilities;
   core.String? name;
 
-  GoogleCloudMlV1Location({
-    this.capabilities,
-    this.name,
-  });
+  GoogleCloudMlV1Location({this.capabilities, this.name});
 
   GoogleCloudMlV1Location.fromJson(core.Map json_)
-      : this(
-          capabilities: (json_['capabilities'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1Capability.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        capabilities:
+            (json_['capabilities'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1Capability.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (capabilities != null) 'capabilities': capabilities!,
-        if (name != null) 'name': name!,
-      };
+    if (capabilities != null) 'capabilities': capabilities!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Options for manually scaling a model.
@@ -4138,18 +4223,14 @@ class GoogleCloudMlV1ManualScaling {
   /// performed.
   core.int? nodes;
 
-  GoogleCloudMlV1ManualScaling({
-    this.nodes,
-  });
+  GoogleCloudMlV1ManualScaling({this.nodes});
 
   GoogleCloudMlV1ManualScaling.fromJson(core.Map json_)
-      : this(
-          nodes: json_['nodes'] as core.int?,
-        );
+    : this(nodes: json_['nodes'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nodes != null) 'nodes': nodes!,
-      };
+    if (nodes != null) 'nodes': nodes!,
+  };
 }
 
 /// A message representing a measurement.
@@ -4167,27 +4248,27 @@ class GoogleCloudMlV1Measurement {
   /// Must be non-negative.
   core.String? stepCount;
 
-  GoogleCloudMlV1Measurement({
-    this.elapsedTime,
-    this.metrics,
-    this.stepCount,
-  });
+  GoogleCloudMlV1Measurement({this.elapsedTime, this.metrics, this.stepCount});
 
   GoogleCloudMlV1Measurement.fromJson(core.Map json_)
-      : this(
-          elapsedTime: json_['elapsedTime'] as core.String?,
-          metrics: (json_['metrics'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1MeasurementMetric.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          stepCount: json_['stepCount'] as core.String?,
-        );
+    : this(
+        elapsedTime: json_['elapsedTime'] as core.String?,
+        metrics:
+            (json_['metrics'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1MeasurementMetric.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        stepCount: json_['stepCount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (elapsedTime != null) 'elapsedTime': elapsedTime!,
-        if (metrics != null) 'metrics': metrics!,
-        if (stepCount != null) 'stepCount': stepCount!,
-      };
+    if (elapsedTime != null) 'elapsedTime': elapsedTime!,
+    if (metrics != null) 'metrics': metrics!,
+    if (stepCount != null) 'stepCount': stepCount!,
+  };
 }
 
 /// MetricSpec contains the specifications to use to calculate the desired nodes
@@ -4205,21 +4286,18 @@ class GoogleCloudMlV1MetricSpec {
   /// changes.
   core.int? target;
 
-  GoogleCloudMlV1MetricSpec({
-    this.name,
-    this.target,
-  });
+  GoogleCloudMlV1MetricSpec({this.name, this.target});
 
   GoogleCloudMlV1MetricSpec.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          target: json_['target'] as core.int?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        target: json_['target'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (target != null) 'target': target!,
-      };
+    if (name != null) 'name': name!,
+    if (target != null) 'target': target!,
+  };
 }
 
 /// Represents a machine learning solution.
@@ -4254,8 +4332,10 @@ class GoogleCloudMlV1Model {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// One or more labels that you can add, to organize your models.
@@ -4323,42 +4403,41 @@ class GoogleCloudMlV1Model {
   });
 
   GoogleCloudMlV1Model.fromJson(core.Map json_)
-      : this(
-          defaultVersion: json_.containsKey('defaultVersion')
-              ? GoogleCloudMlV1Version.fromJson(json_['defaultVersion']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-          onlinePredictionConsoleLogging:
-              json_['onlinePredictionConsoleLogging'] as core.bool?,
-          onlinePredictionLogging:
-              json_['onlinePredictionLogging'] as core.bool?,
-          regions: (json_['regions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        defaultVersion:
+            json_.containsKey('defaultVersion')
+                ? GoogleCloudMlV1Version.fromJson(
+                  json_['defaultVersion']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        onlinePredictionConsoleLogging:
+            json_['onlinePredictionConsoleLogging'] as core.bool?,
+        onlinePredictionLogging: json_['onlinePredictionLogging'] as core.bool?,
+        regions:
+            (json_['regions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (defaultVersion != null) 'defaultVersion': defaultVersion!,
-        if (description != null) 'description': description!,
-        if (etag != null) 'etag': etag!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-        if (onlinePredictionConsoleLogging != null)
-          'onlinePredictionConsoleLogging': onlinePredictionConsoleLogging!,
-        if (onlinePredictionLogging != null)
-          'onlinePredictionLogging': onlinePredictionLogging!,
-        if (regions != null) 'regions': regions!,
-      };
+    if (defaultVersion != null) 'defaultVersion': defaultVersion!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (onlinePredictionConsoleLogging != null)
+      'onlinePredictionConsoleLogging': onlinePredictionConsoleLogging!,
+    if (onlinePredictionLogging != null)
+      'onlinePredictionLogging': onlinePredictionLogging!,
+    if (regions != null) 'regions': regions!,
+  };
 }
 
 /// Represents a single hyperparameter to optimize.
@@ -4438,29 +4517,31 @@ class GoogleCloudMlV1ParameterSpec {
   });
 
   GoogleCloudMlV1ParameterSpec.fromJson(core.Map json_)
-      : this(
-          categoricalValues: (json_['categoricalValues'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          discreteValues: (json_['discreteValues'] as core.List?)
-              ?.map((value) => (value as core.num).toDouble())
-              .toList(),
-          maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
-          minValue: (json_['minValue'] as core.num?)?.toDouble(),
-          parameterName: json_['parameterName'] as core.String?,
-          scaleType: json_['scaleType'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        categoricalValues:
+            (json_['categoricalValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        discreteValues:
+            (json_['discreteValues'] as core.List?)
+                ?.map((value) => (value as core.num).toDouble())
+                .toList(),
+        maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
+        minValue: (json_['minValue'] as core.num?)?.toDouble(),
+        parameterName: json_['parameterName'] as core.String?,
+        scaleType: json_['scaleType'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (categoricalValues != null) 'categoricalValues': categoricalValues!,
-        if (discreteValues != null) 'discreteValues': discreteValues!,
-        if (maxValue != null) 'maxValue': maxValue!,
-        if (minValue != null) 'minValue': minValue!,
-        if (parameterName != null) 'parameterName': parameterName!,
-        if (scaleType != null) 'scaleType': scaleType!,
-        if (type != null) 'type': type!,
-      };
+    if (categoricalValues != null) 'categoricalValues': categoricalValues!,
+    if (discreteValues != null) 'discreteValues': discreteValues!,
+    if (maxValue != null) 'maxValue': maxValue!,
+    if (minValue != null) 'minValue': minValue!,
+    if (parameterName != null) 'parameterName': parameterName!,
+    if (scaleType != null) 'scaleType': scaleType!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Request for predictions to be issued against a trained model.
@@ -4472,21 +4553,21 @@ class GoogleCloudMlV1PredictRequest {
   /// your request.
   GoogleApiHttpBody? httpBody;
 
-  GoogleCloudMlV1PredictRequest({
-    this.httpBody,
-  });
+  GoogleCloudMlV1PredictRequest({this.httpBody});
 
   GoogleCloudMlV1PredictRequest.fromJson(core.Map json_)
-      : this(
-          httpBody: json_.containsKey('httpBody')
-              ? GoogleApiHttpBody.fromJson(
-                  json_['httpBody'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        httpBody:
+            json_.containsKey('httpBody')
+                ? GoogleApiHttpBody.fromJson(
+                  json_['httpBody'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (httpBody != null) 'httpBody': httpBody!,
-      };
+    if (httpBody != null) 'httpBody': httpBody!,
+  };
 }
 
 /// Represents input parameters for a prediction job.
@@ -4613,37 +4694,38 @@ class GoogleCloudMlV1PredictionInput {
   });
 
   GoogleCloudMlV1PredictionInput.fromJson(core.Map json_)
-      : this(
-          batchSize: json_['batchSize'] as core.String?,
-          dataFormat: json_['dataFormat'] as core.String?,
-          inputPaths: (json_['inputPaths'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          maxWorkerCount: json_['maxWorkerCount'] as core.String?,
-          modelName: json_['modelName'] as core.String?,
-          outputDataFormat: json_['outputDataFormat'] as core.String?,
-          outputPath: json_['outputPath'] as core.String?,
-          region: json_['region'] as core.String?,
-          runtimeVersion: json_['runtimeVersion'] as core.String?,
-          signatureName: json_['signatureName'] as core.String?,
-          uri: json_['uri'] as core.String?,
-          versionName: json_['versionName'] as core.String?,
-        );
+    : this(
+        batchSize: json_['batchSize'] as core.String?,
+        dataFormat: json_['dataFormat'] as core.String?,
+        inputPaths:
+            (json_['inputPaths'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        maxWorkerCount: json_['maxWorkerCount'] as core.String?,
+        modelName: json_['modelName'] as core.String?,
+        outputDataFormat: json_['outputDataFormat'] as core.String?,
+        outputPath: json_['outputPath'] as core.String?,
+        region: json_['region'] as core.String?,
+        runtimeVersion: json_['runtimeVersion'] as core.String?,
+        signatureName: json_['signatureName'] as core.String?,
+        uri: json_['uri'] as core.String?,
+        versionName: json_['versionName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (batchSize != null) 'batchSize': batchSize!,
-        if (dataFormat != null) 'dataFormat': dataFormat!,
-        if (inputPaths != null) 'inputPaths': inputPaths!,
-        if (maxWorkerCount != null) 'maxWorkerCount': maxWorkerCount!,
-        if (modelName != null) 'modelName': modelName!,
-        if (outputDataFormat != null) 'outputDataFormat': outputDataFormat!,
-        if (outputPath != null) 'outputPath': outputPath!,
-        if (region != null) 'region': region!,
-        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
-        if (signatureName != null) 'signatureName': signatureName!,
-        if (uri != null) 'uri': uri!,
-        if (versionName != null) 'versionName': versionName!,
-      };
+    if (batchSize != null) 'batchSize': batchSize!,
+    if (dataFormat != null) 'dataFormat': dataFormat!,
+    if (inputPaths != null) 'inputPaths': inputPaths!,
+    if (maxWorkerCount != null) 'maxWorkerCount': maxWorkerCount!,
+    if (modelName != null) 'modelName': modelName!,
+    if (outputDataFormat != null) 'outputDataFormat': outputDataFormat!,
+    if (outputPath != null) 'outputPath': outputPath!,
+    if (region != null) 'region': region!,
+    if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
+    if (signatureName != null) 'signatureName': signatureName!,
+    if (uri != null) 'uri': uri!,
+    if (versionName != null) 'versionName': versionName!,
+  };
 }
 
 /// Represents results of a prediction job.
@@ -4669,19 +4751,19 @@ class GoogleCloudMlV1PredictionOutput {
   });
 
   GoogleCloudMlV1PredictionOutput.fromJson(core.Map json_)
-      : this(
-          errorCount: json_['errorCount'] as core.String?,
-          nodeHours: (json_['nodeHours'] as core.num?)?.toDouble(),
-          outputPath: json_['outputPath'] as core.String?,
-          predictionCount: json_['predictionCount'] as core.String?,
-        );
+    : this(
+        errorCount: json_['errorCount'] as core.String?,
+        nodeHours: (json_['nodeHours'] as core.num?)?.toDouble(),
+        outputPath: json_['outputPath'] as core.String?,
+        predictionCount: json_['predictionCount'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errorCount != null) 'errorCount': errorCount!,
-        if (nodeHours != null) 'nodeHours': nodeHours!,
-        if (outputPath != null) 'outputPath': outputPath!,
-        if (predictionCount != null) 'predictionCount': predictionCount!,
-      };
+    if (errorCount != null) 'errorCount': errorCount!,
+    if (nodeHours != null) 'nodeHours': nodeHours!,
+    if (outputPath != null) 'outputPath': outputPath!,
+    if (predictionCount != null) 'predictionCount': predictionCount!,
+  };
 }
 
 /// Represents the configuration for a replica in a cluster.
@@ -4752,34 +4834,40 @@ class GoogleCloudMlV1ReplicaConfig {
   });
 
   GoogleCloudMlV1ReplicaConfig.fromJson(core.Map json_)
-      : this(
-          acceleratorConfig: json_.containsKey('acceleratorConfig')
-              ? GoogleCloudMlV1AcceleratorConfig.fromJson(
+    : this(
+        acceleratorConfig:
+            json_.containsKey('acceleratorConfig')
+                ? GoogleCloudMlV1AcceleratorConfig.fromJson(
                   json_['acceleratorConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          containerArgs: (json_['containerArgs'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          containerCommand: (json_['containerCommand'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          diskConfig: json_.containsKey('diskConfig')
-              ? GoogleCloudMlV1DiskConfig.fromJson(
-                  json_['diskConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          imageUri: json_['imageUri'] as core.String?,
-          tpuTfVersion: json_['tpuTfVersion'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        containerArgs:
+            (json_['containerArgs'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        containerCommand:
+            (json_['containerCommand'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        diskConfig:
+            json_.containsKey('diskConfig')
+                ? GoogleCloudMlV1DiskConfig.fromJson(
+                  json_['diskConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        imageUri: json_['imageUri'] as core.String?,
+        tpuTfVersion: json_['tpuTfVersion'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
-        if (containerArgs != null) 'containerArgs': containerArgs!,
-        if (containerCommand != null) 'containerCommand': containerCommand!,
-        if (diskConfig != null) 'diskConfig': diskConfig!,
-        if (imageUri != null) 'imageUri': imageUri!,
-        if (tpuTfVersion != null) 'tpuTfVersion': tpuTfVersion!,
-      };
+    if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
+    if (containerArgs != null) 'containerArgs': containerArgs!,
+    if (containerCommand != null) 'containerCommand': containerCommand!,
+    if (diskConfig != null) 'diskConfig': diskConfig!,
+    if (imageUri != null) 'imageUri': imageUri!,
+    if (tpuTfVersion != null) 'tpuTfVersion': tpuTfVersion!,
+  };
 }
 
 /// Configuration for logging request-response pairs to a BigQuery table.
@@ -4819,17 +4907,16 @@ class GoogleCloudMlV1RequestLoggingConfig {
   });
 
   GoogleCloudMlV1RequestLoggingConfig.fromJson(core.Map json_)
-      : this(
-          bigqueryTableName: json_['bigqueryTableName'] as core.String?,
-          samplingPercentage:
-              (json_['samplingPercentage'] as core.num?)?.toDouble(),
-        );
+    : this(
+        bigqueryTableName: json_['bigqueryTableName'] as core.String?,
+        samplingPercentage:
+            (json_['samplingPercentage'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bigqueryTableName != null) 'bigqueryTableName': bigqueryTableName!,
-        if (samplingPercentage != null)
-          'samplingPercentage': samplingPercentage!,
-      };
+    if (bigqueryTableName != null) 'bigqueryTableName': bigqueryTableName!,
+    if (samplingPercentage != null) 'samplingPercentage': samplingPercentage!,
+  };
 }
 
 /// Specifies HTTP paths served by a custom container.
@@ -4880,21 +4967,18 @@ class GoogleCloudMlV1RouteMap {
   /// projects.models.versions.create.
   core.String? predict;
 
-  GoogleCloudMlV1RouteMap({
-    this.health,
-    this.predict,
-  });
+  GoogleCloudMlV1RouteMap({this.health, this.predict});
 
   GoogleCloudMlV1RouteMap.fromJson(core.Map json_)
-      : this(
-          health: json_['health'] as core.String?,
-          predict: json_['predict'] as core.String?,
-        );
+    : this(
+        health: json_['health'] as core.String?,
+        predict: json_['predict'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (health != null) 'health': health!,
-        if (predict != null) 'predict': predict!,
-      };
+    if (health != null) 'health': health!,
+    if (predict != null) 'predict': predict!,
+  };
 }
 
 /// An attribution method that approximates Shapley values for features that
@@ -4907,18 +4991,14 @@ class GoogleCloudMlV1SampledShapleyAttribution {
   /// Shapley values.
   core.int? numPaths;
 
-  GoogleCloudMlV1SampledShapleyAttribution({
-    this.numPaths,
-  });
+  GoogleCloudMlV1SampledShapleyAttribution({this.numPaths});
 
   GoogleCloudMlV1SampledShapleyAttribution.fromJson(core.Map json_)
-      : this(
-          numPaths: json_['numPaths'] as core.int?,
-        );
+    : this(numPaths: json_['numPaths'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (numPaths != null) 'numPaths': numPaths!,
-      };
+    if (numPaths != null) 'numPaths': numPaths!,
+  };
 }
 
 /// All parameters related to scheduling of training jobs.
@@ -4983,17 +5063,17 @@ class GoogleCloudMlV1Scheduling {
   });
 
   GoogleCloudMlV1Scheduling.fromJson(core.Map json_)
-      : this(
-          maxRunningTime: json_['maxRunningTime'] as core.String?,
-          maxWaitTime: json_['maxWaitTime'] as core.String?,
-          priority: json_['priority'] as core.int?,
-        );
+    : this(
+        maxRunningTime: json_['maxRunningTime'] as core.String?,
+        maxWaitTime: json_['maxWaitTime'] as core.String?,
+        priority: json_['priority'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (maxRunningTime != null) 'maxRunningTime': maxRunningTime!,
-        if (maxWaitTime != null) 'maxWaitTime': maxWaitTime!,
-        if (priority != null) 'priority': priority!,
-      };
+    if (maxRunningTime != null) 'maxRunningTime': maxRunningTime!,
+    if (maxWaitTime != null) 'maxWaitTime': maxWaitTime!,
+    if (priority != null) 'priority': priority!,
+  };
 }
 
 /// Request message for the SetDefaultVersion request.
@@ -5044,24 +5124,26 @@ class GoogleCloudMlV1Study {
   });
 
   GoogleCloudMlV1Study.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          inactiveReason: json_['inactiveReason'] as core.String?,
-          name: json_['name'] as core.String?,
-          state: json_['state'] as core.String?,
-          studyConfig: json_.containsKey('studyConfig')
-              ? GoogleCloudMlV1StudyConfig.fromJson(
-                  json_['studyConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        inactiveReason: json_['inactiveReason'] as core.String?,
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        studyConfig:
+            json_.containsKey('studyConfig')
+                ? GoogleCloudMlV1StudyConfig.fromJson(
+                  json_['studyConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (inactiveReason != null) 'inactiveReason': inactiveReason!,
-        if (name != null) 'name': name!,
-        if (state != null) 'state': state!,
-        if (studyConfig != null) 'studyConfig': studyConfig!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (inactiveReason != null) 'inactiveReason': inactiveReason!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (studyConfig != null) 'studyConfig': studyConfig!,
+  };
 }
 
 /// Represents configuration of a study.
@@ -5096,30 +5178,40 @@ class GoogleCloudMlV1StudyConfig {
   });
 
   GoogleCloudMlV1StudyConfig.fromJson(core.Map json_)
-      : this(
-          algorithm: json_['algorithm'] as core.String?,
-          automatedStoppingConfig: json_.containsKey('automatedStoppingConfig')
-              ? GoogleCloudMlV1AutomatedStoppingConfig.fromJson(
+    : this(
+        algorithm: json_['algorithm'] as core.String?,
+        automatedStoppingConfig:
+            json_.containsKey('automatedStoppingConfig')
+                ? GoogleCloudMlV1AutomatedStoppingConfig.fromJson(
                   json_['automatedStoppingConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          metrics: (json_['metrics'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1StudyConfigMetricSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          parameters: (json_['parameters'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1StudyConfigParameterSpec.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metrics:
+            (json_['metrics'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1StudyConfigMetricSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        parameters:
+            (json_['parameters'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1StudyConfigParameterSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (algorithm != null) 'algorithm': algorithm!,
-        if (automatedStoppingConfig != null)
-          'automatedStoppingConfig': automatedStoppingConfig!,
-        if (metrics != null) 'metrics': metrics!,
-        if (parameters != null) 'parameters': parameters!,
-      };
+    if (algorithm != null) 'algorithm': algorithm!,
+    if (automatedStoppingConfig != null)
+      'automatedStoppingConfig': automatedStoppingConfig!,
+    if (metrics != null) 'metrics': metrics!,
+    if (parameters != null) 'parameters': parameters!,
+  };
 }
 
 /// The request message for the SuggestTrial service method.
@@ -5138,21 +5230,18 @@ class GoogleCloudMlV1SuggestTrialsRequest {
   /// Required.
   core.int? suggestionCount;
 
-  GoogleCloudMlV1SuggestTrialsRequest({
-    this.clientId,
-    this.suggestionCount,
-  });
+  GoogleCloudMlV1SuggestTrialsRequest({this.clientId, this.suggestionCount});
 
   GoogleCloudMlV1SuggestTrialsRequest.fromJson(core.Map json_)
-      : this(
-          clientId: json_['clientId'] as core.String?,
-          suggestionCount: json_['suggestionCount'] as core.int?,
-        );
+    : this(
+        clientId: json_['clientId'] as core.String?,
+        suggestionCount: json_['suggestionCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientId != null) 'clientId': clientId!,
-        if (suggestionCount != null) 'suggestionCount': suggestionCount!,
-      };
+    if (clientId != null) 'clientId': clientId!,
+    if (suggestionCount != null) 'suggestionCount': suggestionCount!,
+  };
 }
 
 /// Represents input parameters for a training job.
@@ -5505,95 +5594,111 @@ class GoogleCloudMlV1TrainingInput {
   });
 
   GoogleCloudMlV1TrainingInput.fromJson(core.Map json_)
-      : this(
-          args: (json_['args'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          enableWebAccess: json_['enableWebAccess'] as core.bool?,
-          encryptionConfig: json_.containsKey('encryptionConfig')
-              ? GoogleCloudMlV1EncryptionConfig.fromJson(
+    : this(
+        args:
+            (json_['args'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        enableWebAccess: json_['enableWebAccess'] as core.bool?,
+        encryptionConfig:
+            json_.containsKey('encryptionConfig')
+                ? GoogleCloudMlV1EncryptionConfig.fromJson(
                   json_['encryptionConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          evaluatorConfig: json_.containsKey('evaluatorConfig')
-              ? GoogleCloudMlV1ReplicaConfig.fromJson(json_['evaluatorConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          evaluatorCount: json_['evaluatorCount'] as core.String?,
-          evaluatorType: json_['evaluatorType'] as core.String?,
-          hyperparameters: json_.containsKey('hyperparameters')
-              ? GoogleCloudMlV1HyperparameterSpec.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        evaluatorConfig:
+            json_.containsKey('evaluatorConfig')
+                ? GoogleCloudMlV1ReplicaConfig.fromJson(
+                  json_['evaluatorConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        evaluatorCount: json_['evaluatorCount'] as core.String?,
+        evaluatorType: json_['evaluatorType'] as core.String?,
+        hyperparameters:
+            json_.containsKey('hyperparameters')
+                ? GoogleCloudMlV1HyperparameterSpec.fromJson(
                   json_['hyperparameters']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          jobDir: json_['jobDir'] as core.String?,
-          masterConfig: json_.containsKey('masterConfig')
-              ? GoogleCloudMlV1ReplicaConfig.fromJson(
-                  json_['masterConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          masterType: json_['masterType'] as core.String?,
-          network: json_['network'] as core.String?,
-          packageUris: (json_['packageUris'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          parameterServerConfig: json_.containsKey('parameterServerConfig')
-              ? GoogleCloudMlV1ReplicaConfig.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        jobDir: json_['jobDir'] as core.String?,
+        masterConfig:
+            json_.containsKey('masterConfig')
+                ? GoogleCloudMlV1ReplicaConfig.fromJson(
+                  json_['masterConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        masterType: json_['masterType'] as core.String?,
+        network: json_['network'] as core.String?,
+        packageUris:
+            (json_['packageUris'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        parameterServerConfig:
+            json_.containsKey('parameterServerConfig')
+                ? GoogleCloudMlV1ReplicaConfig.fromJson(
                   json_['parameterServerConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          parameterServerCount: json_['parameterServerCount'] as core.String?,
-          parameterServerType: json_['parameterServerType'] as core.String?,
-          pythonModule: json_['pythonModule'] as core.String?,
-          pythonVersion: json_['pythonVersion'] as core.String?,
-          region: json_['region'] as core.String?,
-          runtimeVersion: json_['runtimeVersion'] as core.String?,
-          scaleTier: json_['scaleTier'] as core.String?,
-          scheduling: json_.containsKey('scheduling')
-              ? GoogleCloudMlV1Scheduling.fromJson(
-                  json_['scheduling'] as core.Map<core.String, core.dynamic>)
-              : null,
-          serviceAccount: json_['serviceAccount'] as core.String?,
-          useChiefInTfConfig: json_['useChiefInTfConfig'] as core.bool?,
-          workerConfig: json_.containsKey('workerConfig')
-              ? GoogleCloudMlV1ReplicaConfig.fromJson(
-                  json_['workerConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          workerCount: json_['workerCount'] as core.String?,
-          workerType: json_['workerType'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        parameterServerCount: json_['parameterServerCount'] as core.String?,
+        parameterServerType: json_['parameterServerType'] as core.String?,
+        pythonModule: json_['pythonModule'] as core.String?,
+        pythonVersion: json_['pythonVersion'] as core.String?,
+        region: json_['region'] as core.String?,
+        runtimeVersion: json_['runtimeVersion'] as core.String?,
+        scaleTier: json_['scaleTier'] as core.String?,
+        scheduling:
+            json_.containsKey('scheduling')
+                ? GoogleCloudMlV1Scheduling.fromJson(
+                  json_['scheduling'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        useChiefInTfConfig: json_['useChiefInTfConfig'] as core.bool?,
+        workerConfig:
+            json_.containsKey('workerConfig')
+                ? GoogleCloudMlV1ReplicaConfig.fromJson(
+                  json_['workerConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        workerCount: json_['workerCount'] as core.String?,
+        workerType: json_['workerType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (args != null) 'args': args!,
-        if (enableWebAccess != null) 'enableWebAccess': enableWebAccess!,
-        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
-        if (evaluatorConfig != null) 'evaluatorConfig': evaluatorConfig!,
-        if (evaluatorCount != null) 'evaluatorCount': evaluatorCount!,
-        if (evaluatorType != null) 'evaluatorType': evaluatorType!,
-        if (hyperparameters != null) 'hyperparameters': hyperparameters!,
-        if (jobDir != null) 'jobDir': jobDir!,
-        if (masterConfig != null) 'masterConfig': masterConfig!,
-        if (masterType != null) 'masterType': masterType!,
-        if (network != null) 'network': network!,
-        if (packageUris != null) 'packageUris': packageUris!,
-        if (parameterServerConfig != null)
-          'parameterServerConfig': parameterServerConfig!,
-        if (parameterServerCount != null)
-          'parameterServerCount': parameterServerCount!,
-        if (parameterServerType != null)
-          'parameterServerType': parameterServerType!,
-        if (pythonModule != null) 'pythonModule': pythonModule!,
-        if (pythonVersion != null) 'pythonVersion': pythonVersion!,
-        if (region != null) 'region': region!,
-        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
-        if (scaleTier != null) 'scaleTier': scaleTier!,
-        if (scheduling != null) 'scheduling': scheduling!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (useChiefInTfConfig != null)
-          'useChiefInTfConfig': useChiefInTfConfig!,
-        if (workerConfig != null) 'workerConfig': workerConfig!,
-        if (workerCount != null) 'workerCount': workerCount!,
-        if (workerType != null) 'workerType': workerType!,
-      };
+    if (args != null) 'args': args!,
+    if (enableWebAccess != null) 'enableWebAccess': enableWebAccess!,
+    if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
+    if (evaluatorConfig != null) 'evaluatorConfig': evaluatorConfig!,
+    if (evaluatorCount != null) 'evaluatorCount': evaluatorCount!,
+    if (evaluatorType != null) 'evaluatorType': evaluatorType!,
+    if (hyperparameters != null) 'hyperparameters': hyperparameters!,
+    if (jobDir != null) 'jobDir': jobDir!,
+    if (masterConfig != null) 'masterConfig': masterConfig!,
+    if (masterType != null) 'masterType': masterType!,
+    if (network != null) 'network': network!,
+    if (packageUris != null) 'packageUris': packageUris!,
+    if (parameterServerConfig != null)
+      'parameterServerConfig': parameterServerConfig!,
+    if (parameterServerCount != null)
+      'parameterServerCount': parameterServerCount!,
+    if (parameterServerType != null)
+      'parameterServerType': parameterServerType!,
+    if (pythonModule != null) 'pythonModule': pythonModule!,
+    if (pythonVersion != null) 'pythonVersion': pythonVersion!,
+    if (region != null) 'region': region!,
+    if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
+    if (scaleTier != null) 'scaleTier': scaleTier!,
+    if (scheduling != null) 'scheduling': scheduling!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (useChiefInTfConfig != null) 'useChiefInTfConfig': useChiefInTfConfig!,
+    if (workerConfig != null) 'workerConfig': workerConfig!,
+    if (workerCount != null) 'workerCount': workerCount!,
+    if (workerType != null) 'workerType': workerType!,
+  };
 }
 
 /// Represents results of a training job.
@@ -5657,48 +5762,49 @@ class GoogleCloudMlV1TrainingOutput {
   });
 
   GoogleCloudMlV1TrainingOutput.fromJson(core.Map json_)
-      : this(
-          builtInAlgorithmOutput: json_.containsKey('builtInAlgorithmOutput')
-              ? GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(
+    : this(
+        builtInAlgorithmOutput:
+            json_.containsKey('builtInAlgorithmOutput')
+                ? GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(
                   json_['builtInAlgorithmOutput']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          completedTrialCount: json_['completedTrialCount'] as core.String?,
-          consumedMLUnits: (json_['consumedMLUnits'] as core.num?)?.toDouble(),
-          hyperparameterMetricTag:
-              json_['hyperparameterMetricTag'] as core.String?,
-          isBuiltInAlgorithmJob: json_['isBuiltInAlgorithmJob'] as core.bool?,
-          isHyperparameterTuningJob:
-              json_['isHyperparameterTuningJob'] as core.bool?,
-          trials: (json_['trials'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1HyperparameterOutput.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          webAccessUris:
-              (json_['webAccessUris'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        completedTrialCount: json_['completedTrialCount'] as core.String?,
+        consumedMLUnits: (json_['consumedMLUnits'] as core.num?)?.toDouble(),
+        hyperparameterMetricTag:
+            json_['hyperparameterMetricTag'] as core.String?,
+        isBuiltInAlgorithmJob: json_['isBuiltInAlgorithmJob'] as core.bool?,
+        isHyperparameterTuningJob:
+            json_['isHyperparameterTuningJob'] as core.bool?,
+        trials:
+            (json_['trials'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1HyperparameterOutput.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        webAccessUris: (json_['webAccessUris']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (builtInAlgorithmOutput != null)
-          'builtInAlgorithmOutput': builtInAlgorithmOutput!,
-        if (completedTrialCount != null)
-          'completedTrialCount': completedTrialCount!,
-        if (consumedMLUnits != null) 'consumedMLUnits': consumedMLUnits!,
-        if (hyperparameterMetricTag != null)
-          'hyperparameterMetricTag': hyperparameterMetricTag!,
-        if (isBuiltInAlgorithmJob != null)
-          'isBuiltInAlgorithmJob': isBuiltInAlgorithmJob!,
-        if (isHyperparameterTuningJob != null)
-          'isHyperparameterTuningJob': isHyperparameterTuningJob!,
-        if (trials != null) 'trials': trials!,
-        if (webAccessUris != null) 'webAccessUris': webAccessUris!,
-      };
+    if (builtInAlgorithmOutput != null)
+      'builtInAlgorithmOutput': builtInAlgorithmOutput!,
+    if (completedTrialCount != null)
+      'completedTrialCount': completedTrialCount!,
+    if (consumedMLUnits != null) 'consumedMLUnits': consumedMLUnits!,
+    if (hyperparameterMetricTag != null)
+      'hyperparameterMetricTag': hyperparameterMetricTag!,
+    if (isBuiltInAlgorithmJob != null)
+      'isBuiltInAlgorithmJob': isBuiltInAlgorithmJob!,
+    if (isHyperparameterTuningJob != null)
+      'isHyperparameterTuningJob': isHyperparameterTuningJob!,
+    if (trials != null) 'trials': trials!,
+    if (webAccessUris != null) 'webAccessUris': webAccessUris!,
+  };
 }
 
 /// A message representing a trial.
@@ -5773,40 +5879,51 @@ class GoogleCloudMlV1Trial {
   });
 
   GoogleCloudMlV1Trial.fromJson(core.Map json_)
-      : this(
-          clientId: json_['clientId'] as core.String?,
-          endTime: json_['endTime'] as core.String?,
-          finalMeasurement: json_.containsKey('finalMeasurement')
-              ? GoogleCloudMlV1Measurement.fromJson(json_['finalMeasurement']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          infeasibleReason: json_['infeasibleReason'] as core.String?,
-          measurements: (json_['measurements'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1Measurement.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          parameters: (json_['parameters'] as core.List?)
-              ?.map((value) => GoogleCloudMlV1TrialParameter.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          startTime: json_['startTime'] as core.String?,
-          state: json_['state'] as core.String?,
-          trialInfeasible: json_['trialInfeasible'] as core.bool?,
-        );
+    : this(
+        clientId: json_['clientId'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        finalMeasurement:
+            json_.containsKey('finalMeasurement')
+                ? GoogleCloudMlV1Measurement.fromJson(
+                  json_['finalMeasurement']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        infeasibleReason: json_['infeasibleReason'] as core.String?,
+        measurements:
+            (json_['measurements'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1Measurement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        parameters:
+            (json_['parameters'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudMlV1TrialParameter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        trialInfeasible: json_['trialInfeasible'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clientId != null) 'clientId': clientId!,
-        if (endTime != null) 'endTime': endTime!,
-        if (finalMeasurement != null) 'finalMeasurement': finalMeasurement!,
-        if (infeasibleReason != null) 'infeasibleReason': infeasibleReason!,
-        if (measurements != null) 'measurements': measurements!,
-        if (name != null) 'name': name!,
-        if (parameters != null) 'parameters': parameters!,
-        if (startTime != null) 'startTime': startTime!,
-        if (state != null) 'state': state!,
-        if (trialInfeasible != null) 'trialInfeasible': trialInfeasible!,
-      };
+    if (clientId != null) 'clientId': clientId!,
+    if (endTime != null) 'endTime': endTime!,
+    if (finalMeasurement != null) 'finalMeasurement': finalMeasurement!,
+    if (infeasibleReason != null) 'infeasibleReason': infeasibleReason!,
+    if (measurements != null) 'measurements': measurements!,
+    if (name != null) 'name': name!,
+    if (parameters != null) 'parameters': parameters!,
+    if (startTime != null) 'startTime': startTime!,
+    if (state != null) 'state': state!,
+    if (trialInfeasible != null) 'trialInfeasible': trialInfeasible!,
+  };
 }
 
 /// Represents a version of the model.
@@ -5886,8 +6003,10 @@ class GoogleCloudMlV1Version {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Configures explainability features on the model's version.
@@ -6134,97 +6253,108 @@ class GoogleCloudMlV1Version {
   });
 
   GoogleCloudMlV1Version.fromJson(core.Map json_)
-      : this(
-          acceleratorConfig: json_.containsKey('acceleratorConfig')
-              ? GoogleCloudMlV1AcceleratorConfig.fromJson(
+    : this(
+        acceleratorConfig:
+            json_.containsKey('acceleratorConfig')
+                ? GoogleCloudMlV1AcceleratorConfig.fromJson(
                   json_['acceleratorConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          autoScaling: json_.containsKey('autoScaling')
-              ? GoogleCloudMlV1AutoScaling.fromJson(
-                  json_['autoScaling'] as core.Map<core.String, core.dynamic>)
-              : null,
-          container: json_.containsKey('container')
-              ? GoogleCloudMlV1ContainerSpec.fromJson(
-                  json_['container'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          deploymentUri: json_['deploymentUri'] as core.String?,
-          description: json_['description'] as core.String?,
-          errorMessage: json_['errorMessage'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          explanationConfig: json_.containsKey('explanationConfig')
-              ? GoogleCloudMlV1ExplanationConfig.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        autoScaling:
+            json_.containsKey('autoScaling')
+                ? GoogleCloudMlV1AutoScaling.fromJson(
+                  json_['autoScaling'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        container:
+            json_.containsKey('container')
+                ? GoogleCloudMlV1ContainerSpec.fromJson(
+                  json_['container'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        deploymentUri: json_['deploymentUri'] as core.String?,
+        description: json_['description'] as core.String?,
+        errorMessage: json_['errorMessage'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        explanationConfig:
+            json_.containsKey('explanationConfig')
+                ? GoogleCloudMlV1ExplanationConfig.fromJson(
                   json_['explanationConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          framework: json_['framework'] as core.String?,
-          isDefault: json_['isDefault'] as core.bool?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          lastMigrationModelId: json_['lastMigrationModelId'] as core.String?,
-          lastMigrationTime: json_['lastMigrationTime'] as core.String?,
-          lastUseTime: json_['lastUseTime'] as core.String?,
-          machineType: json_['machineType'] as core.String?,
-          manualScaling: json_.containsKey('manualScaling')
-              ? GoogleCloudMlV1ManualScaling.fromJson(
-                  json_['manualScaling'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          packageUris: (json_['packageUris'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          predictionClass: json_['predictionClass'] as core.String?,
-          pythonVersion: json_['pythonVersion'] as core.String?,
-          requestLoggingConfig: json_.containsKey('requestLoggingConfig')
-              ? GoogleCloudMlV1RequestLoggingConfig.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        framework: json_['framework'] as core.String?,
+        isDefault: json_['isDefault'] as core.bool?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        lastMigrationModelId: json_['lastMigrationModelId'] as core.String?,
+        lastMigrationTime: json_['lastMigrationTime'] as core.String?,
+        lastUseTime: json_['lastUseTime'] as core.String?,
+        machineType: json_['machineType'] as core.String?,
+        manualScaling:
+            json_.containsKey('manualScaling')
+                ? GoogleCloudMlV1ManualScaling.fromJson(
+                  json_['manualScaling'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        packageUris:
+            (json_['packageUris'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        predictionClass: json_['predictionClass'] as core.String?,
+        pythonVersion: json_['pythonVersion'] as core.String?,
+        requestLoggingConfig:
+            json_.containsKey('requestLoggingConfig')
+                ? GoogleCloudMlV1RequestLoggingConfig.fromJson(
                   json_['requestLoggingConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          routes: json_.containsKey('routes')
-              ? GoogleCloudMlV1RouteMap.fromJson(
-                  json_['routes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          runtimeVersion: json_['runtimeVersion'] as core.String?,
-          serviceAccount: json_['serviceAccount'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        routes:
+            json_.containsKey('routes')
+                ? GoogleCloudMlV1RouteMap.fromJson(
+                  json_['routes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        runtimeVersion: json_['runtimeVersion'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
-        if (autoScaling != null) 'autoScaling': autoScaling!,
-        if (container != null) 'container': container!,
-        if (createTime != null) 'createTime': createTime!,
-        if (deploymentUri != null) 'deploymentUri': deploymentUri!,
-        if (description != null) 'description': description!,
-        if (errorMessage != null) 'errorMessage': errorMessage!,
-        if (etag != null) 'etag': etag!,
-        if (explanationConfig != null) 'explanationConfig': explanationConfig!,
-        if (framework != null) 'framework': framework!,
-        if (isDefault != null) 'isDefault': isDefault!,
-        if (labels != null) 'labels': labels!,
-        if (lastMigrationModelId != null)
-          'lastMigrationModelId': lastMigrationModelId!,
-        if (lastMigrationTime != null) 'lastMigrationTime': lastMigrationTime!,
-        if (lastUseTime != null) 'lastUseTime': lastUseTime!,
-        if (machineType != null) 'machineType': machineType!,
-        if (manualScaling != null) 'manualScaling': manualScaling!,
-        if (name != null) 'name': name!,
-        if (packageUris != null) 'packageUris': packageUris!,
-        if (predictionClass != null) 'predictionClass': predictionClass!,
-        if (pythonVersion != null) 'pythonVersion': pythonVersion!,
-        if (requestLoggingConfig != null)
-          'requestLoggingConfig': requestLoggingConfig!,
-        if (routes != null) 'routes': routes!,
-        if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
-        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
-        if (state != null) 'state': state!,
-      };
+    if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
+    if (autoScaling != null) 'autoScaling': autoScaling!,
+    if (container != null) 'container': container!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deploymentUri != null) 'deploymentUri': deploymentUri!,
+    if (description != null) 'description': description!,
+    if (errorMessage != null) 'errorMessage': errorMessage!,
+    if (etag != null) 'etag': etag!,
+    if (explanationConfig != null) 'explanationConfig': explanationConfig!,
+    if (framework != null) 'framework': framework!,
+    if (isDefault != null) 'isDefault': isDefault!,
+    if (labels != null) 'labels': labels!,
+    if (lastMigrationModelId != null)
+      'lastMigrationModelId': lastMigrationModelId!,
+    if (lastMigrationTime != null) 'lastMigrationTime': lastMigrationTime!,
+    if (lastUseTime != null) 'lastUseTime': lastUseTime!,
+    if (machineType != null) 'machineType': machineType!,
+    if (manualScaling != null) 'manualScaling': manualScaling!,
+    if (name != null) 'name': name!,
+    if (packageUris != null) 'packageUris': packageUris!,
+    if (predictionClass != null) 'predictionClass': predictionClass!,
+    if (pythonVersion != null) 'pythonVersion': pythonVersion!,
+    if (requestLoggingConfig != null)
+      'requestLoggingConfig': requestLoggingConfig!,
+    if (routes != null) 'routes': routes!,
+    if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Attributes credit by computing the XRAI taking advantage of the model's
@@ -6261,24 +6391,25 @@ class GoogleIamV1AuditConfig {
   /// `allServices` is a special value that covers all services.
   core.String? service;
 
-  GoogleIamV1AuditConfig({
-    this.auditLogConfigs,
-    this.service,
-  });
+  GoogleIamV1AuditConfig({this.auditLogConfigs, this.service});
 
   GoogleIamV1AuditConfig.fromJson(core.Map json_)
-      : this(
-          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
-              ?.map((value) => GoogleIamV1AuditLogConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          service: json_['service'] as core.String?,
-        );
+    : this(
+        auditLogConfigs:
+            (json_['auditLogConfigs'] as core.List?)
+                ?.map(
+                  (value) => GoogleIamV1AuditLogConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        service: json_['service'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
-        if (service != null) 'service': service!,
-      };
+    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+    if (service != null) 'service': service!,
+  };
 }
 
 /// Provides the configuration for logging a type of permissions.
@@ -6369,29 +6500,28 @@ class GoogleIamV1Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  GoogleIamV1Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  GoogleIamV1Binding({this.condition, this.members, this.role});
 
   GoogleIamV1Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? GoogleTypeExpr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? GoogleTypeExpr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -6457,8 +6587,10 @@ class GoogleIamV1Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -6488,25 +6620,33 @@ class GoogleIamV1Policy {
   });
 
   GoogleIamV1Policy.fromJson(core.Map json_)
-      : this(
-          auditConfigs: (json_['auditConfigs'] as core.List?)
-              ?.map((value) => GoogleIamV1AuditConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => GoogleIamV1Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        auditConfigs:
+            (json_['auditConfigs'] as core.List?)
+                ?.map(
+                  (value) => GoogleIamV1AuditConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => GoogleIamV1Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -6524,24 +6664,23 @@ class GoogleIamV1SetIamPolicyRequest {
   /// following default mask is used: `paths: "bindings, etag"`
   core.String? updateMask;
 
-  GoogleIamV1SetIamPolicyRequest({
-    this.policy,
-    this.updateMask,
-  });
+  GoogleIamV1SetIamPolicyRequest({this.policy, this.updateMask});
 
   GoogleIamV1SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? GoogleIamV1Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          updateMask: json_['updateMask'] as core.String?,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? GoogleIamV1Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-        if (updateMask != null) 'updateMask': updateMask!,
-      };
+    if (policy != null) 'policy': policy!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -6564,18 +6703,22 @@ class GoogleLongrunningListOperationsResponse {
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => GoogleLongrunningOperation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => GoogleLongrunningOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -6630,28 +6773,32 @@ class GoogleLongrunningOperation {
   });
 
   GoogleLongrunningOperation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? GoogleRpcStatus.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated

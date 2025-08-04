@@ -54,11 +54,16 @@ class TranscoderApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  TranscoderApi(http.Client client,
-      {core.String rootUrl = 'https://transcoder.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  TranscoderApi(
+    http.Client client, {
+    core.String rootUrl = 'https://transcoder.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -85,7 +90,7 @@ class ProjectsLocationsJobTemplatesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsJobTemplatesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a job template in the specified region.
   ///
@@ -133,7 +138,8 @@ class ProjectsLocationsJobTemplatesResource {
       queryParams: queryParams_,
     );
     return JobTemplate.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a job template.
@@ -173,6 +179,7 @@ class ProjectsLocationsJobTemplatesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -213,7 +220,8 @@ class ProjectsLocationsJobTemplatesResource {
       queryParams: queryParams_,
     );
     return JobTemplate.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists job templates in the specified region.
@@ -270,7 +278,8 @@ class ProjectsLocationsJobTemplatesResource {
       queryParams: queryParams_,
     );
     return ListJobTemplatesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -278,7 +287,7 @@ class ProjectsLocationsJobsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsJobsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a job in the specified region.
   ///
@@ -358,6 +367,7 @@ class ProjectsLocationsJobsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -382,10 +392,7 @@ class ProjectsLocationsJobsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Job> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Job> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -452,7 +459,8 @@ class ProjectsLocationsJobsResource {
       queryParams: queryParams_,
     );
     return ListJobsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -464,18 +472,14 @@ class AdBreak {
   /// The default is `0s`.
   core.String? startTimeOffset;
 
-  AdBreak({
-    this.startTimeOffset,
-  });
+  AdBreak({this.startTimeOffset});
 
   AdBreak.fromJson(core.Map json_)
-      : this(
-          startTimeOffset: json_['startTimeOffset'] as core.String?,
-        );
+    : this(startTimeOffset: json_['startTimeOffset'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
-      };
+    if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
+  };
 }
 
 /// Configuration for AES-128 encryption.
@@ -492,33 +496,36 @@ class Animation {
   /// Display static overlay object.
   AnimationStatic? animationStatic;
 
-  Animation({
-    this.animationEnd,
-    this.animationFade,
-    this.animationStatic,
-  });
+  Animation({this.animationEnd, this.animationFade, this.animationStatic});
 
   Animation.fromJson(core.Map json_)
-      : this(
-          animationEnd: json_.containsKey('animationEnd')
-              ? AnimationEnd.fromJson(
-                  json_['animationEnd'] as core.Map<core.String, core.dynamic>)
-              : null,
-          animationFade: json_.containsKey('animationFade')
-              ? AnimationFade.fromJson(
-                  json_['animationFade'] as core.Map<core.String, core.dynamic>)
-              : null,
-          animationStatic: json_.containsKey('animationStatic')
-              ? AnimationStatic.fromJson(json_['animationStatic']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        animationEnd:
+            json_.containsKey('animationEnd')
+                ? AnimationEnd.fromJson(
+                  json_['animationEnd'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        animationFade:
+            json_.containsKey('animationFade')
+                ? AnimationFade.fromJson(
+                  json_['animationFade'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        animationStatic:
+            json_.containsKey('animationStatic')
+                ? AnimationStatic.fromJson(
+                  json_['animationStatic']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (animationEnd != null) 'animationEnd': animationEnd!,
-        if (animationFade != null) 'animationFade': animationFade!,
-        if (animationStatic != null) 'animationStatic': animationStatic!,
-      };
+    if (animationEnd != null) 'animationEnd': animationEnd!,
+    if (animationFade != null) 'animationFade': animationFade!,
+    if (animationStatic != null) 'animationStatic': animationStatic!,
+  };
 }
 
 /// End previous overlay animation from the video.
@@ -531,18 +538,14 @@ class AnimationEnd {
   /// Default: 0
   core.String? startTimeOffset;
 
-  AnimationEnd({
-    this.startTimeOffset,
-  });
+  AnimationEnd({this.startTimeOffset});
 
   AnimationEnd.fromJson(core.Map json_)
-      : this(
-          startTimeOffset: json_['startTimeOffset'] as core.String?,
-        );
+    : this(startTimeOffset: json_['startTimeOffset'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
-      };
+    if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
+  };
 }
 
 /// Display overlay object with fade animation.
@@ -582,22 +585,24 @@ class AnimationFade {
   });
 
   AnimationFade.fromJson(core.Map json_)
-      : this(
-          endTimeOffset: json_['endTimeOffset'] as core.String?,
-          fadeType: json_['fadeType'] as core.String?,
-          startTimeOffset: json_['startTimeOffset'] as core.String?,
-          xy: json_.containsKey('xy')
-              ? NormalizedCoordinate.fromJson(
-                  json_['xy'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        endTimeOffset: json_['endTimeOffset'] as core.String?,
+        fadeType: json_['fadeType'] as core.String?,
+        startTimeOffset: json_['startTimeOffset'] as core.String?,
+        xy:
+            json_.containsKey('xy')
+                ? NormalizedCoordinate.fromJson(
+                  json_['xy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
-        if (fadeType != null) 'fadeType': fadeType!,
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
-        if (xy != null) 'xy': xy!,
-      };
+    if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
+    if (fadeType != null) 'fadeType': fadeType!,
+    if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
+    if (xy != null) 'xy': xy!,
+  };
 }
 
 /// Display static overlay object.
@@ -615,24 +620,23 @@ class AnimationStatic {
   /// output video.
   NormalizedCoordinate? xy;
 
-  AnimationStatic({
-    this.startTimeOffset,
-    this.xy,
-  });
+  AnimationStatic({this.startTimeOffset, this.xy});
 
   AnimationStatic.fromJson(core.Map json_)
-      : this(
-          startTimeOffset: json_['startTimeOffset'] as core.String?,
-          xy: json_.containsKey('xy')
-              ? NormalizedCoordinate.fromJson(
-                  json_['xy'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        startTimeOffset: json_['startTimeOffset'] as core.String?,
+        xy:
+            json_.containsKey('xy')
+                ? NormalizedCoordinate.fromJson(
+                  json_['xy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
-        if (xy != null) 'xy': xy!,
-      };
+    if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
+    if (xy != null) 'xy': xy!,
+  };
 }
 
 /// Audio preprocessing configuration.
@@ -658,24 +662,20 @@ class Audio {
   /// well as Amazon Echo * 0 disables normalization
   core.double? lufs;
 
-  Audio({
-    this.highBoost,
-    this.lowBoost,
-    this.lufs,
-  });
+  Audio({this.highBoost, this.lowBoost, this.lufs});
 
   Audio.fromJson(core.Map json_)
-      : this(
-          highBoost: json_['highBoost'] as core.bool?,
-          lowBoost: json_['lowBoost'] as core.bool?,
-          lufs: (json_['lufs'] as core.num?)?.toDouble(),
-        );
+    : this(
+        highBoost: json_['highBoost'] as core.bool?,
+        lowBoost: json_['lowBoost'] as core.bool?,
+        lufs: (json_['lufs'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (highBoost != null) 'highBoost': highBoost!,
-        if (lowBoost != null) 'lowBoost': lowBoost!,
-        if (lufs != null) 'lufs': lufs!,
-      };
+    if (highBoost != null) 'highBoost': highBoost!,
+    if (lowBoost != null) 'lowBoost': lowBoost!,
+    if (lufs != null) 'lufs': lufs!,
+  };
 }
 
 /// The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
@@ -722,23 +722,23 @@ class AudioMapping {
   });
 
   AudioMapping.fromJson(core.Map json_)
-      : this(
-          atomKey: json_['atomKey'] as core.String?,
-          gainDb: (json_['gainDb'] as core.num?)?.toDouble(),
-          inputChannel: json_['inputChannel'] as core.int?,
-          inputKey: json_['inputKey'] as core.String?,
-          inputTrack: json_['inputTrack'] as core.int?,
-          outputChannel: json_['outputChannel'] as core.int?,
-        );
+    : this(
+        atomKey: json_['atomKey'] as core.String?,
+        gainDb: (json_['gainDb'] as core.num?)?.toDouble(),
+        inputChannel: json_['inputChannel'] as core.int?,
+        inputKey: json_['inputKey'] as core.String?,
+        inputTrack: json_['inputTrack'] as core.int?,
+        outputChannel: json_['outputChannel'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (atomKey != null) 'atomKey': atomKey!,
-        if (gainDb != null) 'gainDb': gainDb!,
-        if (inputChannel != null) 'inputChannel': inputChannel!,
-        if (inputKey != null) 'inputKey': inputKey!,
-        if (inputTrack != null) 'inputTrack': inputTrack!,
-        if (outputChannel != null) 'outputChannel': outputChannel!,
-      };
+    if (atomKey != null) 'atomKey': atomKey!,
+    if (gainDb != null) 'gainDb': gainDb!,
+    if (inputChannel != null) 'inputChannel': inputChannel!,
+    if (inputKey != null) 'inputKey': inputKey!,
+    if (inputTrack != null) 'inputTrack': inputTrack!,
+    if (outputChannel != null) 'outputChannel': outputChannel!,
+  };
 }
 
 /// Audio stream resource.
@@ -803,32 +803,37 @@ class AudioStream {
   });
 
   AudioStream.fromJson(core.Map json_)
-      : this(
-          bitrateBps: json_['bitrateBps'] as core.int?,
-          channelCount: json_['channelCount'] as core.int?,
-          channelLayout: (json_['channelLayout'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          codec: json_['codec'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          languageCode: json_['languageCode'] as core.String?,
-          mapping: (json_['mapping'] as core.List?)
-              ?.map((value) => AudioMapping.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          sampleRateHertz: json_['sampleRateHertz'] as core.int?,
-        );
+    : this(
+        bitrateBps: json_['bitrateBps'] as core.int?,
+        channelCount: json_['channelCount'] as core.int?,
+        channelLayout:
+            (json_['channelLayout'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        codec: json_['codec'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        mapping:
+            (json_['mapping'] as core.List?)
+                ?.map(
+                  (value) => AudioMapping.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        sampleRateHertz: json_['sampleRateHertz'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bitrateBps != null) 'bitrateBps': bitrateBps!,
-        if (channelCount != null) 'channelCount': channelCount!,
-        if (channelLayout != null) 'channelLayout': channelLayout!,
-        if (codec != null) 'codec': codec!,
-        if (displayName != null) 'displayName': displayName!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (mapping != null) 'mapping': mapping!,
-        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
-      };
+    if (bitrateBps != null) 'bitrateBps': bitrateBps!,
+    if (channelCount != null) 'channelCount': channelCount!,
+    if (channelLayout != null) 'channelLayout': channelLayout!,
+    if (codec != null) 'codec': codec!,
+    if (displayName != null) 'displayName': displayName!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (mapping != null) 'mapping': mapping!,
+    if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
+  };
 }
 
 /// Bob Weaver Deinterlacing Filter Configuration.
@@ -852,25 +857,21 @@ class BwdifConfig {
   /// detection of field parity
   core.String? parity;
 
-  BwdifConfig({
-    this.deinterlaceAllFrames,
-    this.mode,
-    this.parity,
-  });
+  BwdifConfig({this.deinterlaceAllFrames, this.mode, this.parity});
 
   BwdifConfig.fromJson(core.Map json_)
-      : this(
-          deinterlaceAllFrames: json_['deinterlaceAllFrames'] as core.bool?,
-          mode: json_['mode'] as core.String?,
-          parity: json_['parity'] as core.String?,
-        );
+    : this(
+        deinterlaceAllFrames: json_['deinterlaceAllFrames'] as core.bool?,
+        mode: json_['mode'] as core.String?,
+        parity: json_['parity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deinterlaceAllFrames != null)
-          'deinterlaceAllFrames': deinterlaceAllFrames!,
-        if (mode != null) 'mode': mode!,
-        if (parity != null) 'parity': parity!,
-      };
+    if (deinterlaceAllFrames != null)
+      'deinterlaceAllFrames': deinterlaceAllFrames!,
+    if (mode != null) 'mode': mode!,
+    if (parity != null) 'parity': parity!,
+  };
 }
 
 /// Clearkey configuration.
@@ -898,24 +899,20 @@ class Color {
   /// maximum saturation. 0 is no change. The default is 0.
   core.double? saturation;
 
-  Color({
-    this.brightness,
-    this.contrast,
-    this.saturation,
-  });
+  Color({this.brightness, this.contrast, this.saturation});
 
   Color.fromJson(core.Map json_)
-      : this(
-          brightness: (json_['brightness'] as core.num?)?.toDouble(),
-          contrast: (json_['contrast'] as core.num?)?.toDouble(),
-          saturation: (json_['saturation'] as core.num?)?.toDouble(),
-        );
+    : this(
+        brightness: (json_['brightness'] as core.num?)?.toDouble(),
+        contrast: (json_['contrast'] as core.num?)?.toDouble(),
+        saturation: (json_['saturation'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (brightness != null) 'brightness': brightness!,
-        if (contrast != null) 'contrast': contrast!,
-        if (saturation != null) 'saturation': saturation!,
-      };
+    if (brightness != null) 'brightness': brightness!,
+    if (contrast != null) 'contrast': contrast!,
+    if (saturation != null) 'saturation': saturation!,
+  };
 }
 
 /// Video cropping configuration for the input video.
@@ -942,27 +939,22 @@ class Crop {
   /// The default is 0.
   core.int? topPixels;
 
-  Crop({
-    this.bottomPixels,
-    this.leftPixels,
-    this.rightPixels,
-    this.topPixels,
-  });
+  Crop({this.bottomPixels, this.leftPixels, this.rightPixels, this.topPixels});
 
   Crop.fromJson(core.Map json_)
-      : this(
-          bottomPixels: json_['bottomPixels'] as core.int?,
-          leftPixels: json_['leftPixels'] as core.int?,
-          rightPixels: json_['rightPixels'] as core.int?,
-          topPixels: json_['topPixels'] as core.int?,
-        );
+    : this(
+        bottomPixels: json_['bottomPixels'] as core.int?,
+        leftPixels: json_['leftPixels'] as core.int?,
+        rightPixels: json_['rightPixels'] as core.int?,
+        topPixels: json_['topPixels'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bottomPixels != null) 'bottomPixels': bottomPixels!,
-        if (leftPixels != null) 'leftPixels': leftPixels!,
-        if (rightPixels != null) 'rightPixels': rightPixels!,
-        if (topPixels != null) 'topPixels': topPixels!,
-      };
+    if (bottomPixels != null) 'bottomPixels': bottomPixels!,
+    if (leftPixels != null) 'leftPixels': leftPixels!,
+    if (rightPixels != null) 'rightPixels': rightPixels!,
+    if (topPixels != null) 'topPixels': topPixels!,
+  };
 }
 
 /// `DASH` manifest configuration.
@@ -982,20 +974,17 @@ class DashConfig {
   /// segment. For example: ```xml ... ```
   core.String? segmentReferenceScheme;
 
-  DashConfig({
-    this.segmentReferenceScheme,
-  });
+  DashConfig({this.segmentReferenceScheme});
 
   DashConfig.fromJson(core.Map json_)
-      : this(
-          segmentReferenceScheme:
-              json_['segmentReferenceScheme'] as core.String?,
-        );
+    : this(
+        segmentReferenceScheme: json_['segmentReferenceScheme'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (segmentReferenceScheme != null)
-          'segmentReferenceScheme': segmentReferenceScheme!,
-      };
+    if (segmentReferenceScheme != null)
+      'segmentReferenceScheme': segmentReferenceScheme!,
+  };
 }
 
 /// Deblock preprocessing configuration.
@@ -1013,21 +1002,18 @@ class Deblock {
   /// block removal. 0 is no deblocking. The default is 0.
   core.double? strength;
 
-  Deblock({
-    this.enabled,
-    this.strength,
-  });
+  Deblock({this.enabled, this.strength});
 
   Deblock.fromJson(core.Map json_)
-      : this(
-          enabled: json_['enabled'] as core.bool?,
-          strength: (json_['strength'] as core.num?)?.toDouble(),
-        );
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        strength: (json_['strength'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enabled != null) 'enabled': enabled!,
-        if (strength != null) 'strength': strength!,
-      };
+    if (enabled != null) 'enabled': enabled!,
+    if (strength != null) 'strength': strength!,
+  };
 }
 
 /// Deinterlace configuration for input video.
@@ -1038,27 +1024,28 @@ class Deinterlace {
   /// Specifies the Yet Another Deinterlacing Filter Configuration.
   YadifConfig? yadif;
 
-  Deinterlace({
-    this.bwdif,
-    this.yadif,
-  });
+  Deinterlace({this.bwdif, this.yadif});
 
   Deinterlace.fromJson(core.Map json_)
-      : this(
-          bwdif: json_.containsKey('bwdif')
-              ? BwdifConfig.fromJson(
-                  json_['bwdif'] as core.Map<core.String, core.dynamic>)
-              : null,
-          yadif: json_.containsKey('yadif')
-              ? YadifConfig.fromJson(
-                  json_['yadif'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        bwdif:
+            json_.containsKey('bwdif')
+                ? BwdifConfig.fromJson(
+                  json_['bwdif'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        yadif:
+            json_.containsKey('yadif')
+                ? YadifConfig.fromJson(
+                  json_['yadif'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bwdif != null) 'bwdif': bwdif!,
-        if (yadif != null) 'yadif': yadif!,
-      };
+    if (bwdif != null) 'bwdif': bwdif!,
+    if (yadif != null) 'yadif': yadif!,
+  };
 }
 
 /// Denoise preprocessing configuration.
@@ -1077,21 +1064,18 @@ class Denoise {
   /// `grain`
   core.String? tune;
 
-  Denoise({
-    this.strength,
-    this.tune,
-  });
+  Denoise({this.strength, this.tune});
 
   Denoise.fromJson(core.Map json_)
-      : this(
-          strength: (json_['strength'] as core.num?)?.toDouble(),
-          tune: json_['tune'] as core.String?,
-        );
+    : this(
+        strength: (json_['strength'] as core.num?)?.toDouble(),
+        tune: json_['tune'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (strength != null) 'strength': strength!,
-        if (tune != null) 'tune': tune!,
-      };
+    if (strength != null) 'strength': strength!,
+    if (tune != null) 'tune': tune!,
+  };
 }
 
 /// Defines configuration for DRM systems in use.
@@ -1108,39 +1092,42 @@ class DrmSystems {
   /// Widevine configuration.
   Widevine? widevine;
 
-  DrmSystems({
-    this.clearkey,
-    this.fairplay,
-    this.playready,
-    this.widevine,
-  });
+  DrmSystems({this.clearkey, this.fairplay, this.playready, this.widevine});
 
   DrmSystems.fromJson(core.Map json_)
-      : this(
-          clearkey: json_.containsKey('clearkey')
-              ? Clearkey.fromJson(
-                  json_['clearkey'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fairplay: json_.containsKey('fairplay')
-              ? Fairplay.fromJson(
-                  json_['fairplay'] as core.Map<core.String, core.dynamic>)
-              : null,
-          playready: json_.containsKey('playready')
-              ? Playready.fromJson(
-                  json_['playready'] as core.Map<core.String, core.dynamic>)
-              : null,
-          widevine: json_.containsKey('widevine')
-              ? Widevine.fromJson(
-                  json_['widevine'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        clearkey:
+            json_.containsKey('clearkey')
+                ? Clearkey.fromJson(
+                  json_['clearkey'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fairplay:
+            json_.containsKey('fairplay')
+                ? Fairplay.fromJson(
+                  json_['fairplay'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        playready:
+            json_.containsKey('playready')
+                ? Playready.fromJson(
+                  json_['playready'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        widevine:
+            json_.containsKey('widevine')
+                ? Widevine.fromJson(
+                  json_['widevine'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clearkey != null) 'clearkey': clearkey!,
-        if (fairplay != null) 'fairplay': fairplay!,
-        if (playready != null) 'playready': playready!,
-        if (widevine != null) 'widevine': widevine!,
-      };
+    if (clearkey != null) 'clearkey': clearkey!,
+    if (fairplay != null) 'fairplay': fairplay!,
+    if (playready != null) 'playready': playready!,
+    if (widevine != null) 'widevine': widevine!,
+  };
 }
 
 /// Edit atom.
@@ -1167,29 +1154,25 @@ class EditAtom {
   /// The default is `0s`.
   core.String? startTimeOffset;
 
-  EditAtom({
-    this.endTimeOffset,
-    this.inputs,
-    this.key,
-    this.startTimeOffset,
-  });
+  EditAtom({this.endTimeOffset, this.inputs, this.key, this.startTimeOffset});
 
   EditAtom.fromJson(core.Map json_)
-      : this(
-          endTimeOffset: json_['endTimeOffset'] as core.String?,
-          inputs: (json_['inputs'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          key: json_['key'] as core.String?,
-          startTimeOffset: json_['startTimeOffset'] as core.String?,
-        );
+    : this(
+        endTimeOffset: json_['endTimeOffset'] as core.String?,
+        inputs:
+            (json_['inputs'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        key: json_['key'] as core.String?,
+        startTimeOffset: json_['startTimeOffset'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
-        if (inputs != null) 'inputs': inputs!,
-        if (key != null) 'key': key!,
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
-      };
+    if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
+    if (inputs != null) 'inputs': inputs!,
+    if (key != null) 'key': key!,
+    if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
+  };
 }
 
 /// Encoding of an input file such as an audio, video, or text track.
@@ -1219,28 +1202,34 @@ class ElementaryStream {
   });
 
   ElementaryStream.fromJson(core.Map json_)
-      : this(
-          audioStream: json_.containsKey('audioStream')
-              ? AudioStream.fromJson(
-                  json_['audioStream'] as core.Map<core.String, core.dynamic>)
-              : null,
-          key: json_['key'] as core.String?,
-          textStream: json_.containsKey('textStream')
-              ? TextStream.fromJson(
-                  json_['textStream'] as core.Map<core.String, core.dynamic>)
-              : null,
-          videoStream: json_.containsKey('videoStream')
-              ? VideoStream.fromJson(
-                  json_['videoStream'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        audioStream:
+            json_.containsKey('audioStream')
+                ? AudioStream.fromJson(
+                  json_['audioStream'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        key: json_['key'] as core.String?,
+        textStream:
+            json_.containsKey('textStream')
+                ? TextStream.fromJson(
+                  json_['textStream'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        videoStream:
+            json_.containsKey('videoStream')
+                ? VideoStream.fromJson(
+                  json_['videoStream'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audioStream != null) 'audioStream': audioStream!,
-        if (key != null) 'key': key!,
-        if (textStream != null) 'textStream': textStream!,
-        if (videoStream != null) 'videoStream': videoStream!,
-      };
+    if (audioStream != null) 'audioStream': audioStream!,
+    if (key != null) 'key': key!,
+    if (textStream != null) 'textStream': textStream!,
+    if (videoStream != null) 'videoStream': videoStream!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1287,39 +1276,50 @@ class Encryption {
   });
 
   Encryption.fromJson(core.Map json_)
-      : this(
-          aes128: json_.containsKey('aes128')
-              ? Aes128Encryption.fromJson(
-                  json_['aes128'] as core.Map<core.String, core.dynamic>)
-              : null,
-          drmSystems: json_.containsKey('drmSystems')
-              ? DrmSystems.fromJson(
-                  json_['drmSystems'] as core.Map<core.String, core.dynamic>)
-              : null,
-          id: json_['id'] as core.String?,
-          mpegCenc: json_.containsKey('mpegCenc')
-              ? MpegCommonEncryption.fromJson(
-                  json_['mpegCenc'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sampleAes: json_.containsKey('sampleAes')
-              ? SampleAesEncryption.fromJson(
-                  json_['sampleAes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          secretManagerKeySource: json_.containsKey('secretManagerKeySource')
-              ? SecretManagerSource.fromJson(json_['secretManagerKeySource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        aes128:
+            json_.containsKey('aes128')
+                ? Aes128Encryption.fromJson(
+                  json_['aes128'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        drmSystems:
+            json_.containsKey('drmSystems')
+                ? DrmSystems.fromJson(
+                  json_['drmSystems'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        id: json_['id'] as core.String?,
+        mpegCenc:
+            json_.containsKey('mpegCenc')
+                ? MpegCommonEncryption.fromJson(
+                  json_['mpegCenc'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sampleAes:
+            json_.containsKey('sampleAes')
+                ? SampleAesEncryption.fromJson(
+                  json_['sampleAes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        secretManagerKeySource:
+            json_.containsKey('secretManagerKeySource')
+                ? SecretManagerSource.fromJson(
+                  json_['secretManagerKeySource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aes128 != null) 'aes128': aes128!,
-        if (drmSystems != null) 'drmSystems': drmSystems!,
-        if (id != null) 'id': id!,
-        if (mpegCenc != null) 'mpegCenc': mpegCenc!,
-        if (sampleAes != null) 'sampleAes': sampleAes!,
-        if (secretManagerKeySource != null)
-          'secretManagerKeySource': secretManagerKeySource!,
-      };
+    if (aes128 != null) 'aes128': aes128!,
+    if (drmSystems != null) 'drmSystems': drmSystems!,
+    if (id != null) 'id': id!,
+    if (mpegCenc != null) 'mpegCenc': mpegCenc!,
+    if (sampleAes != null) 'sampleAes': sampleAes!,
+    if (secretManagerKeySource != null)
+      'secretManagerKeySource': secretManagerKeySource!,
+  };
 }
 
 /// Fairplay configuration.
@@ -1335,18 +1335,14 @@ class Fmp4Config {
   /// Optional.
   core.String? codecTag;
 
-  Fmp4Config({
-    this.codecTag,
-  });
+  Fmp4Config({this.codecTag});
 
   Fmp4Config.fromJson(core.Map json_)
-      : this(
-          codecTag: json_['codecTag'] as core.String?,
-        );
+    : this(codecTag: json_['codecTag'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (codecTag != null) 'codecTag': codecTag!,
-      };
+    if (codecTag != null) 'codecTag': codecTag!,
+  };
 }
 
 /// H264 codec settings.
@@ -1548,65 +1544,69 @@ class H264CodecSettings {
   });
 
   H264CodecSettings.fromJson(core.Map json_)
-      : this(
-          allowOpenGop: json_['allowOpenGop'] as core.bool?,
-          aqStrength: (json_['aqStrength'] as core.num?)?.toDouble(),
-          bFrameCount: json_['bFrameCount'] as core.int?,
-          bPyramid: json_['bPyramid'] as core.bool?,
-          bitrateBps: json_['bitrateBps'] as core.int?,
-          crfLevel: json_['crfLevel'] as core.int?,
-          enableTwoPass: json_['enableTwoPass'] as core.bool?,
-          entropyCoder: json_['entropyCoder'] as core.String?,
-          frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
-          frameRateConversionStrategy:
-              json_['frameRateConversionStrategy'] as core.String?,
-          gopDuration: json_['gopDuration'] as core.String?,
-          gopFrameCount: json_['gopFrameCount'] as core.int?,
-          heightPixels: json_['heightPixels'] as core.int?,
-          hlg: json_.containsKey('hlg')
-              ? H264ColorFormatHLG.fromJson(
-                  json_['hlg'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pixelFormat: json_['pixelFormat'] as core.String?,
-          preset: json_['preset'] as core.String?,
-          profile: json_['profile'] as core.String?,
-          rateControlMode: json_['rateControlMode'] as core.String?,
-          sdr: json_.containsKey('sdr')
-              ? H264ColorFormatSDR.fromJson(
-                  json_['sdr'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tune: json_['tune'] as core.String?,
-          vbvFullnessBits: json_['vbvFullnessBits'] as core.int?,
-          vbvSizeBits: json_['vbvSizeBits'] as core.int?,
-          widthPixels: json_['widthPixels'] as core.int?,
-        );
+    : this(
+        allowOpenGop: json_['allowOpenGop'] as core.bool?,
+        aqStrength: (json_['aqStrength'] as core.num?)?.toDouble(),
+        bFrameCount: json_['bFrameCount'] as core.int?,
+        bPyramid: json_['bPyramid'] as core.bool?,
+        bitrateBps: json_['bitrateBps'] as core.int?,
+        crfLevel: json_['crfLevel'] as core.int?,
+        enableTwoPass: json_['enableTwoPass'] as core.bool?,
+        entropyCoder: json_['entropyCoder'] as core.String?,
+        frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
+        frameRateConversionStrategy:
+            json_['frameRateConversionStrategy'] as core.String?,
+        gopDuration: json_['gopDuration'] as core.String?,
+        gopFrameCount: json_['gopFrameCount'] as core.int?,
+        heightPixels: json_['heightPixels'] as core.int?,
+        hlg:
+            json_.containsKey('hlg')
+                ? H264ColorFormatHLG.fromJson(
+                  json_['hlg'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pixelFormat: json_['pixelFormat'] as core.String?,
+        preset: json_['preset'] as core.String?,
+        profile: json_['profile'] as core.String?,
+        rateControlMode: json_['rateControlMode'] as core.String?,
+        sdr:
+            json_.containsKey('sdr')
+                ? H264ColorFormatSDR.fromJson(
+                  json_['sdr'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tune: json_['tune'] as core.String?,
+        vbvFullnessBits: json_['vbvFullnessBits'] as core.int?,
+        vbvSizeBits: json_['vbvSizeBits'] as core.int?,
+        widthPixels: json_['widthPixels'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowOpenGop != null) 'allowOpenGop': allowOpenGop!,
-        if (aqStrength != null) 'aqStrength': aqStrength!,
-        if (bFrameCount != null) 'bFrameCount': bFrameCount!,
-        if (bPyramid != null) 'bPyramid': bPyramid!,
-        if (bitrateBps != null) 'bitrateBps': bitrateBps!,
-        if (crfLevel != null) 'crfLevel': crfLevel!,
-        if (enableTwoPass != null) 'enableTwoPass': enableTwoPass!,
-        if (entropyCoder != null) 'entropyCoder': entropyCoder!,
-        if (frameRate != null) 'frameRate': frameRate!,
-        if (frameRateConversionStrategy != null)
-          'frameRateConversionStrategy': frameRateConversionStrategy!,
-        if (gopDuration != null) 'gopDuration': gopDuration!,
-        if (gopFrameCount != null) 'gopFrameCount': gopFrameCount!,
-        if (heightPixels != null) 'heightPixels': heightPixels!,
-        if (hlg != null) 'hlg': hlg!,
-        if (pixelFormat != null) 'pixelFormat': pixelFormat!,
-        if (preset != null) 'preset': preset!,
-        if (profile != null) 'profile': profile!,
-        if (rateControlMode != null) 'rateControlMode': rateControlMode!,
-        if (sdr != null) 'sdr': sdr!,
-        if (tune != null) 'tune': tune!,
-        if (vbvFullnessBits != null) 'vbvFullnessBits': vbvFullnessBits!,
-        if (vbvSizeBits != null) 'vbvSizeBits': vbvSizeBits!,
-        if (widthPixels != null) 'widthPixels': widthPixels!,
-      };
+    if (allowOpenGop != null) 'allowOpenGop': allowOpenGop!,
+    if (aqStrength != null) 'aqStrength': aqStrength!,
+    if (bFrameCount != null) 'bFrameCount': bFrameCount!,
+    if (bPyramid != null) 'bPyramid': bPyramid!,
+    if (bitrateBps != null) 'bitrateBps': bitrateBps!,
+    if (crfLevel != null) 'crfLevel': crfLevel!,
+    if (enableTwoPass != null) 'enableTwoPass': enableTwoPass!,
+    if (entropyCoder != null) 'entropyCoder': entropyCoder!,
+    if (frameRate != null) 'frameRate': frameRate!,
+    if (frameRateConversionStrategy != null)
+      'frameRateConversionStrategy': frameRateConversionStrategy!,
+    if (gopDuration != null) 'gopDuration': gopDuration!,
+    if (gopFrameCount != null) 'gopFrameCount': gopFrameCount!,
+    if (heightPixels != null) 'heightPixels': heightPixels!,
+    if (hlg != null) 'hlg': hlg!,
+    if (pixelFormat != null) 'pixelFormat': pixelFormat!,
+    if (preset != null) 'preset': preset!,
+    if (profile != null) 'profile': profile!,
+    if (rateControlMode != null) 'rateControlMode': rateControlMode!,
+    if (sdr != null) 'sdr': sdr!,
+    if (tune != null) 'tune': tune!,
+    if (vbvFullnessBits != null) 'vbvFullnessBits': vbvFullnessBits!,
+    if (vbvSizeBits != null) 'vbvSizeBits': vbvSizeBits!,
+    if (widthPixels != null) 'widthPixels': widthPixels!,
+  };
 }
 
 /// Convert the input video to a Hybrid Log Gamma (HLG) video.
@@ -1818,68 +1818,74 @@ class H265CodecSettings {
   });
 
   H265CodecSettings.fromJson(core.Map json_)
-      : this(
-          allowOpenGop: json_['allowOpenGop'] as core.bool?,
-          aqStrength: (json_['aqStrength'] as core.num?)?.toDouble(),
-          bFrameCount: json_['bFrameCount'] as core.int?,
-          bPyramid: json_['bPyramid'] as core.bool?,
-          bitrateBps: json_['bitrateBps'] as core.int?,
-          crfLevel: json_['crfLevel'] as core.int?,
-          enableTwoPass: json_['enableTwoPass'] as core.bool?,
-          frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
-          frameRateConversionStrategy:
-              json_['frameRateConversionStrategy'] as core.String?,
-          gopDuration: json_['gopDuration'] as core.String?,
-          gopFrameCount: json_['gopFrameCount'] as core.int?,
-          hdr10: json_.containsKey('hdr10')
-              ? H265ColorFormatHDR10.fromJson(
-                  json_['hdr10'] as core.Map<core.String, core.dynamic>)
-              : null,
-          heightPixels: json_['heightPixels'] as core.int?,
-          hlg: json_.containsKey('hlg')
-              ? H265ColorFormatHLG.fromJson(
-                  json_['hlg'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pixelFormat: json_['pixelFormat'] as core.String?,
-          preset: json_['preset'] as core.String?,
-          profile: json_['profile'] as core.String?,
-          rateControlMode: json_['rateControlMode'] as core.String?,
-          sdr: json_.containsKey('sdr')
-              ? H265ColorFormatSDR.fromJson(
-                  json_['sdr'] as core.Map<core.String, core.dynamic>)
-              : null,
-          tune: json_['tune'] as core.String?,
-          vbvFullnessBits: json_['vbvFullnessBits'] as core.int?,
-          vbvSizeBits: json_['vbvSizeBits'] as core.int?,
-          widthPixels: json_['widthPixels'] as core.int?,
-        );
+    : this(
+        allowOpenGop: json_['allowOpenGop'] as core.bool?,
+        aqStrength: (json_['aqStrength'] as core.num?)?.toDouble(),
+        bFrameCount: json_['bFrameCount'] as core.int?,
+        bPyramid: json_['bPyramid'] as core.bool?,
+        bitrateBps: json_['bitrateBps'] as core.int?,
+        crfLevel: json_['crfLevel'] as core.int?,
+        enableTwoPass: json_['enableTwoPass'] as core.bool?,
+        frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
+        frameRateConversionStrategy:
+            json_['frameRateConversionStrategy'] as core.String?,
+        gopDuration: json_['gopDuration'] as core.String?,
+        gopFrameCount: json_['gopFrameCount'] as core.int?,
+        hdr10:
+            json_.containsKey('hdr10')
+                ? H265ColorFormatHDR10.fromJson(
+                  json_['hdr10'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        heightPixels: json_['heightPixels'] as core.int?,
+        hlg:
+            json_.containsKey('hlg')
+                ? H265ColorFormatHLG.fromJson(
+                  json_['hlg'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pixelFormat: json_['pixelFormat'] as core.String?,
+        preset: json_['preset'] as core.String?,
+        profile: json_['profile'] as core.String?,
+        rateControlMode: json_['rateControlMode'] as core.String?,
+        sdr:
+            json_.containsKey('sdr')
+                ? H265ColorFormatSDR.fromJson(
+                  json_['sdr'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tune: json_['tune'] as core.String?,
+        vbvFullnessBits: json_['vbvFullnessBits'] as core.int?,
+        vbvSizeBits: json_['vbvSizeBits'] as core.int?,
+        widthPixels: json_['widthPixels'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowOpenGop != null) 'allowOpenGop': allowOpenGop!,
-        if (aqStrength != null) 'aqStrength': aqStrength!,
-        if (bFrameCount != null) 'bFrameCount': bFrameCount!,
-        if (bPyramid != null) 'bPyramid': bPyramid!,
-        if (bitrateBps != null) 'bitrateBps': bitrateBps!,
-        if (crfLevel != null) 'crfLevel': crfLevel!,
-        if (enableTwoPass != null) 'enableTwoPass': enableTwoPass!,
-        if (frameRate != null) 'frameRate': frameRate!,
-        if (frameRateConversionStrategy != null)
-          'frameRateConversionStrategy': frameRateConversionStrategy!,
-        if (gopDuration != null) 'gopDuration': gopDuration!,
-        if (gopFrameCount != null) 'gopFrameCount': gopFrameCount!,
-        if (hdr10 != null) 'hdr10': hdr10!,
-        if (heightPixels != null) 'heightPixels': heightPixels!,
-        if (hlg != null) 'hlg': hlg!,
-        if (pixelFormat != null) 'pixelFormat': pixelFormat!,
-        if (preset != null) 'preset': preset!,
-        if (profile != null) 'profile': profile!,
-        if (rateControlMode != null) 'rateControlMode': rateControlMode!,
-        if (sdr != null) 'sdr': sdr!,
-        if (tune != null) 'tune': tune!,
-        if (vbvFullnessBits != null) 'vbvFullnessBits': vbvFullnessBits!,
-        if (vbvSizeBits != null) 'vbvSizeBits': vbvSizeBits!,
-        if (widthPixels != null) 'widthPixels': widthPixels!,
-      };
+    if (allowOpenGop != null) 'allowOpenGop': allowOpenGop!,
+    if (aqStrength != null) 'aqStrength': aqStrength!,
+    if (bFrameCount != null) 'bFrameCount': bFrameCount!,
+    if (bPyramid != null) 'bPyramid': bPyramid!,
+    if (bitrateBps != null) 'bitrateBps': bitrateBps!,
+    if (crfLevel != null) 'crfLevel': crfLevel!,
+    if (enableTwoPass != null) 'enableTwoPass': enableTwoPass!,
+    if (frameRate != null) 'frameRate': frameRate!,
+    if (frameRateConversionStrategy != null)
+      'frameRateConversionStrategy': frameRateConversionStrategy!,
+    if (gopDuration != null) 'gopDuration': gopDuration!,
+    if (gopFrameCount != null) 'gopFrameCount': gopFrameCount!,
+    if (hdr10 != null) 'hdr10': hdr10!,
+    if (heightPixels != null) 'heightPixels': heightPixels!,
+    if (hlg != null) 'hlg': hlg!,
+    if (pixelFormat != null) 'pixelFormat': pixelFormat!,
+    if (preset != null) 'preset': preset!,
+    if (profile != null) 'profile': profile!,
+    if (rateControlMode != null) 'rateControlMode': rateControlMode!,
+    if (sdr != null) 'sdr': sdr!,
+    if (tune != null) 'tune': tune!,
+    if (vbvFullnessBits != null) 'vbvFullnessBits': vbvFullnessBits!,
+    if (vbvSizeBits != null) 'vbvSizeBits': vbvSizeBits!,
+    if (widthPixels != null) 'widthPixels': widthPixels!,
+  };
 }
 
 /// Convert the input video to a High Dynamic Range 10 (HDR10) video.
@@ -1914,27 +1920,25 @@ class Image {
   /// Required.
   core.String? uri;
 
-  Image({
-    this.alpha,
-    this.resolution,
-    this.uri,
-  });
+  Image({this.alpha, this.resolution, this.uri});
 
   Image.fromJson(core.Map json_)
-      : this(
-          alpha: (json_['alpha'] as core.num?)?.toDouble(),
-          resolution: json_.containsKey('resolution')
-              ? NormalizedCoordinate.fromJson(
-                  json_['resolution'] as core.Map<core.String, core.dynamic>)
-              : null,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        alpha: (json_['alpha'] as core.num?)?.toDouble(),
+        resolution:
+            json_.containsKey('resolution')
+                ? NormalizedCoordinate.fromJson(
+                  json_['resolution'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alpha != null) 'alpha': alpha!,
-        if (resolution != null) 'resolution': resolution!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (alpha != null) 'alpha': alpha!,
+    if (resolution != null) 'resolution': resolution!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Input asset.
@@ -1960,34 +1964,34 @@ class Input {
   /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
   core.String? uri;
 
-  Input({
-    this.attributes,
-    this.key,
-    this.preprocessingConfig,
-    this.uri,
-  });
+  Input({this.attributes, this.key, this.preprocessingConfig, this.uri});
 
   Input.fromJson(core.Map json_)
-      : this(
-          attributes: json_.containsKey('attributes')
-              ? InputAttributes.fromJson(
-                  json_['attributes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          key: json_['key'] as core.String?,
-          preprocessingConfig: json_.containsKey('preprocessingConfig')
-              ? PreprocessingConfig.fromJson(json_['preprocessingConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        attributes:
+            json_.containsKey('attributes')
+                ? InputAttributes.fromJson(
+                  json_['attributes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        key: json_['key'] as core.String?,
+        preprocessingConfig:
+            json_.containsKey('preprocessingConfig')
+                ? PreprocessingConfig.fromJson(
+                  json_['preprocessingConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attributes != null) 'attributes': attributes!,
-        if (key != null) 'key': key!,
-        if (preprocessingConfig != null)
-          'preprocessingConfig': preprocessingConfig!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (attributes != null) 'attributes': attributes!,
+    if (key != null) 'key': key!,
+    if (preprocessingConfig != null)
+      'preprocessingConfig': preprocessingConfig!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Input attributes that provide additional information about the input asset.
@@ -1997,21 +2001,23 @@ class InputAttributes {
   /// Optional.
   core.List<TrackDefinition>? trackDefinitions;
 
-  InputAttributes({
-    this.trackDefinitions,
-  });
+  InputAttributes({this.trackDefinitions});
 
   InputAttributes.fromJson(core.Map json_)
-      : this(
-          trackDefinitions: (json_['trackDefinitions'] as core.List?)
-              ?.map((value) => TrackDefinition.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        trackDefinitions:
+            (json_['trackDefinitions'] as core.List?)
+                ?.map(
+                  (value) => TrackDefinition.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (trackDefinitions != null) 'trackDefinitions': trackDefinitions!,
-      };
+    if (trackDefinitions != null) 'trackDefinitions': trackDefinitions!,
+  };
 }
 
 /// Transcoding job resource.
@@ -2153,56 +2159,56 @@ class Job {
   });
 
   Job.fromJson(core.Map json_)
-      : this(
-          batchModePriority: json_['batchModePriority'] as core.int?,
-          config: json_.containsKey('config')
-              ? JobConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
-              : null,
-          createTime: json_['createTime'] as core.String?,
-          endTime: json_['endTime'] as core.String?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fillContentGaps: json_['fillContentGaps'] as core.bool?,
-          inputUri: json_['inputUri'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          mode: json_['mode'] as core.String?,
-          name: json_['name'] as core.String?,
-          optimization: json_['optimization'] as core.String?,
-          outputUri: json_['outputUri'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-          state: json_['state'] as core.String?,
-          templateId: json_['templateId'] as core.String?,
-          ttlAfterCompletionDays: json_['ttlAfterCompletionDays'] as core.int?,
-        );
+    : this(
+        batchModePriority: json_['batchModePriority'] as core.int?,
+        config:
+            json_.containsKey('config')
+                ? JobConfig.fromJson(
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fillContentGaps: json_['fillContentGaps'] as core.bool?,
+        inputUri: json_['inputUri'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        mode: json_['mode'] as core.String?,
+        name: json_['name'] as core.String?,
+        optimization: json_['optimization'] as core.String?,
+        outputUri: json_['outputUri'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+        templateId: json_['templateId'] as core.String?,
+        ttlAfterCompletionDays: json_['ttlAfterCompletionDays'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (batchModePriority != null) 'batchModePriority': batchModePriority!,
-        if (config != null) 'config': config!,
-        if (createTime != null) 'createTime': createTime!,
-        if (endTime != null) 'endTime': endTime!,
-        if (error != null) 'error': error!,
-        if (fillContentGaps != null) 'fillContentGaps': fillContentGaps!,
-        if (inputUri != null) 'inputUri': inputUri!,
-        if (labels != null) 'labels': labels!,
-        if (mode != null) 'mode': mode!,
-        if (name != null) 'name': name!,
-        if (optimization != null) 'optimization': optimization!,
-        if (outputUri != null) 'outputUri': outputUri!,
-        if (startTime != null) 'startTime': startTime!,
-        if (state != null) 'state': state!,
-        if (templateId != null) 'templateId': templateId!,
-        if (ttlAfterCompletionDays != null)
-          'ttlAfterCompletionDays': ttlAfterCompletionDays!,
-      };
+    if (batchModePriority != null) 'batchModePriority': batchModePriority!,
+    if (config != null) 'config': config!,
+    if (createTime != null) 'createTime': createTime!,
+    if (endTime != null) 'endTime': endTime!,
+    if (error != null) 'error': error!,
+    if (fillContentGaps != null) 'fillContentGaps': fillContentGaps!,
+    if (inputUri != null) 'inputUri': inputUri!,
+    if (labels != null) 'labels': labels!,
+    if (mode != null) 'mode': mode!,
+    if (name != null) 'name': name!,
+    if (optimization != null) 'optimization': optimization!,
+    if (outputUri != null) 'outputUri': outputUri!,
+    if (startTime != null) 'startTime': startTime!,
+    if (state != null) 'state': state!,
+    if (templateId != null) 'templateId': templateId!,
+    if (ttlAfterCompletionDays != null)
+      'ttlAfterCompletionDays': ttlAfterCompletionDays!,
+  };
 }
 
 /// Job configuration
@@ -2265,66 +2271,107 @@ class JobConfig {
   });
 
   JobConfig.fromJson(core.Map json_)
-      : this(
-          adBreaks: (json_['adBreaks'] as core.List?)
-              ?.map((value) => AdBreak.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          editList: (json_['editList'] as core.List?)
-              ?.map((value) => EditAtom.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          elementaryStreams: (json_['elementaryStreams'] as core.List?)
-              ?.map((value) => ElementaryStream.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          encryptions: (json_['encryptions'] as core.List?)
-              ?.map((value) => Encryption.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          inputs: (json_['inputs'] as core.List?)
-              ?.map((value) =>
-                  Input.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          manifests: (json_['manifests'] as core.List?)
-              ?.map((value) => Manifest.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          muxStreams: (json_['muxStreams'] as core.List?)
-              ?.map((value) => MuxStream.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          output: json_.containsKey('output')
-              ? Output.fromJson(
-                  json_['output'] as core.Map<core.String, core.dynamic>)
-              : null,
-          overlays: (json_['overlays'] as core.List?)
-              ?.map((value) => Overlay.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          pubsubDestination: json_.containsKey('pubsubDestination')
-              ? PubsubDestination.fromJson(json_['pubsubDestination']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          spriteSheets: (json_['spriteSheets'] as core.List?)
-              ?.map((value) => SpriteSheet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        adBreaks:
+            (json_['adBreaks'] as core.List?)
+                ?.map(
+                  (value) => AdBreak.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        editList:
+            (json_['editList'] as core.List?)
+                ?.map(
+                  (value) => EditAtom.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        elementaryStreams:
+            (json_['elementaryStreams'] as core.List?)
+                ?.map(
+                  (value) => ElementaryStream.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        encryptions:
+            (json_['encryptions'] as core.List?)
+                ?.map(
+                  (value) => Encryption.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        inputs:
+            (json_['inputs'] as core.List?)
+                ?.map(
+                  (value) => Input.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        manifests:
+            (json_['manifests'] as core.List?)
+                ?.map(
+                  (value) => Manifest.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        muxStreams:
+            (json_['muxStreams'] as core.List?)
+                ?.map(
+                  (value) => MuxStream.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        output:
+            json_.containsKey('output')
+                ? Output.fromJson(
+                  json_['output'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        overlays:
+            (json_['overlays'] as core.List?)
+                ?.map(
+                  (value) => Overlay.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        pubsubDestination:
+            json_.containsKey('pubsubDestination')
+                ? PubsubDestination.fromJson(
+                  json_['pubsubDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spriteSheets:
+            (json_['spriteSheets'] as core.List?)
+                ?.map(
+                  (value) => SpriteSheet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adBreaks != null) 'adBreaks': adBreaks!,
-        if (editList != null) 'editList': editList!,
-        if (elementaryStreams != null) 'elementaryStreams': elementaryStreams!,
-        if (encryptions != null) 'encryptions': encryptions!,
-        if (inputs != null) 'inputs': inputs!,
-        if (manifests != null) 'manifests': manifests!,
-        if (muxStreams != null) 'muxStreams': muxStreams!,
-        if (output != null) 'output': output!,
-        if (overlays != null) 'overlays': overlays!,
-        if (pubsubDestination != null) 'pubsubDestination': pubsubDestination!,
-        if (spriteSheets != null) 'spriteSheets': spriteSheets!,
-      };
+    if (adBreaks != null) 'adBreaks': adBreaks!,
+    if (editList != null) 'editList': editList!,
+    if (elementaryStreams != null) 'elementaryStreams': elementaryStreams!,
+    if (encryptions != null) 'encryptions': encryptions!,
+    if (inputs != null) 'inputs': inputs!,
+    if (manifests != null) 'manifests': manifests!,
+    if (muxStreams != null) 'muxStreams': muxStreams!,
+    if (output != null) 'output': output!,
+    if (overlays != null) 'overlays': overlays!,
+    if (pubsubDestination != null) 'pubsubDestination': pubsubDestination!,
+    if (spriteSheets != null) 'spriteSheets': spriteSheets!,
+  };
 }
 
 /// Transcoding job template resource.
@@ -2343,33 +2390,27 @@ class JobTemplate {
   /// `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
   core.String? name;
 
-  JobTemplate({
-    this.config,
-    this.labels,
-    this.name,
-  });
+  JobTemplate({this.config, this.labels, this.name});
 
   JobTemplate.fromJson(core.Map json_)
-      : this(
-          config: json_.containsKey('config')
-              ? JobConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
-              : null,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        config:
+            json_.containsKey('config')
+                ? JobConfig.fromJson(
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (config != null) 'config': config!,
-        if (labels != null) 'labels': labels!,
-        if (name != null) 'name': name!,
-      };
+    if (config != null) 'config': config!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Response message for `TranscoderService.ListJobTemplates`.
@@ -2390,22 +2431,27 @@ class ListJobTemplatesResponse {
   });
 
   ListJobTemplatesResponse.fromJson(core.Map json_)
-      : this(
-          jobTemplates: (json_['jobTemplates'] as core.List?)
-              ?.map((value) => JobTemplate.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        jobTemplates:
+            (json_['jobTemplates'] as core.List?)
+                ?.map(
+                  (value) => JobTemplate.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (jobTemplates != null) 'jobTemplates': jobTemplates!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (jobTemplates != null) 'jobTemplates': jobTemplates!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Response message for `TranscoderService.ListJobs`.
@@ -2419,29 +2465,30 @@ class ListJobsResponse {
   /// List of regions that could not be reached.
   core.List<core.String>? unreachable;
 
-  ListJobsResponse({
-    this.jobs,
-    this.nextPageToken,
-    this.unreachable,
-  });
+  ListJobsResponse({this.jobs, this.nextPageToken, this.unreachable});
 
   ListJobsResponse.fromJson(core.Map json_)
-      : this(
-          jobs: (json_['jobs'] as core.List?)
-              ?.map((value) =>
-                  Job.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        jobs:
+            (json_['jobs'] as core.List?)
+                ?.map(
+                  (value) => Job.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (jobs != null) 'jobs': jobs!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (jobs != null) 'jobs': jobs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// Manifest configuration.
@@ -2475,32 +2522,30 @@ class Manifest {
   /// is `.mpd`.
   core.String? type;
 
-  Manifest({
-    this.dash,
-    this.fileName,
-    this.muxStreams,
-    this.type,
-  });
+  Manifest({this.dash, this.fileName, this.muxStreams, this.type});
 
   Manifest.fromJson(core.Map json_)
-      : this(
-          dash: json_.containsKey('dash')
-              ? DashConfig.fromJson(
-                  json_['dash'] as core.Map<core.String, core.dynamic>)
-              : null,
-          fileName: json_['fileName'] as core.String?,
-          muxStreams: (json_['muxStreams'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        dash:
+            json_.containsKey('dash')
+                ? DashConfig.fromJson(
+                  json_['dash'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fileName: json_['fileName'] as core.String?,
+        muxStreams:
+            (json_['muxStreams'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dash != null) 'dash': dash!,
-        if (fileName != null) 'fileName': fileName!,
-        if (muxStreams != null) 'muxStreams': muxStreams!,
-        if (type != null) 'type': type!,
-      };
+    if (dash != null) 'dash': dash!,
+    if (fileName != null) 'fileName': fileName!,
+    if (muxStreams != null) 'muxStreams': muxStreams!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Configuration for MPEG Common Encryption (MPEG-CENC).
@@ -2512,18 +2557,14 @@ class MpegCommonEncryption {
   /// Required.
   core.String? scheme;
 
-  MpegCommonEncryption({
-    this.scheme,
-  });
+  MpegCommonEncryption({this.scheme});
 
   MpegCommonEncryption.fromJson(core.Map json_)
-      : this(
-          scheme: json_['scheme'] as core.String?,
-        );
+    : this(scheme: json_['scheme'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (scheme != null) 'scheme': scheme!,
-      };
+    if (scheme != null) 'scheme': scheme!,
+  };
 }
 
 /// Multiplexing settings for output stream.
@@ -2574,33 +2615,39 @@ class MuxStream {
   });
 
   MuxStream.fromJson(core.Map json_)
-      : this(
-          container: json_['container'] as core.String?,
-          elementaryStreams: (json_['elementaryStreams'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          encryptionId: json_['encryptionId'] as core.String?,
-          fileName: json_['fileName'] as core.String?,
-          fmp4: json_.containsKey('fmp4')
-              ? Fmp4Config.fromJson(
-                  json_['fmp4'] as core.Map<core.String, core.dynamic>)
-              : null,
-          key: json_['key'] as core.String?,
-          segmentSettings: json_.containsKey('segmentSettings')
-              ? SegmentSettings.fromJson(json_['segmentSettings']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        container: json_['container'] as core.String?,
+        elementaryStreams:
+            (json_['elementaryStreams'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        encryptionId: json_['encryptionId'] as core.String?,
+        fileName: json_['fileName'] as core.String?,
+        fmp4:
+            json_.containsKey('fmp4')
+                ? Fmp4Config.fromJson(
+                  json_['fmp4'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        key: json_['key'] as core.String?,
+        segmentSettings:
+            json_.containsKey('segmentSettings')
+                ? SegmentSettings.fromJson(
+                  json_['segmentSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (container != null) 'container': container!,
-        if (elementaryStreams != null) 'elementaryStreams': elementaryStreams!,
-        if (encryptionId != null) 'encryptionId': encryptionId!,
-        if (fileName != null) 'fileName': fileName!,
-        if (fmp4 != null) 'fmp4': fmp4!,
-        if (key != null) 'key': key!,
-        if (segmentSettings != null) 'segmentSettings': segmentSettings!,
-      };
+    if (container != null) 'container': container!,
+    if (elementaryStreams != null) 'elementaryStreams': elementaryStreams!,
+    if (encryptionId != null) 'encryptionId': encryptionId!,
+    if (fileName != null) 'fileName': fileName!,
+    if (fmp4 != null) 'fmp4': fmp4!,
+    if (key != null) 'key': key!,
+    if (segmentSettings != null) 'segmentSettings': segmentSettings!,
+  };
 }
 
 /// 2D normalized coordinates.
@@ -2613,21 +2660,18 @@ class NormalizedCoordinate {
   /// Normalized y coordinate.
   core.double? y;
 
-  NormalizedCoordinate({
-    this.x,
-    this.y,
-  });
+  NormalizedCoordinate({this.x, this.y});
 
   NormalizedCoordinate.fromJson(core.Map json_)
-      : this(
-          x: (json_['x'] as core.num?)?.toDouble(),
-          y: (json_['y'] as core.num?)?.toDouble(),
-        );
+    : this(
+        x: (json_['x'] as core.num?)?.toDouble(),
+        y: (json_['y'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (x != null) 'x': x!,
-        if (y != null) 'y': y!,
-      };
+    if (x != null) 'x': x!,
+    if (y != null) 'y': y!,
+  };
 }
 
 /// Location of output file(s) in a Cloud Storage bucket.
@@ -2640,18 +2684,13 @@ class Output {
   /// [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
   core.String? uri;
 
-  Output({
-    this.uri,
-  });
+  Output({this.uri});
 
-  Output.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+  Output.fromJson(core.Map json_) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Overlay configuration.
@@ -2664,27 +2703,30 @@ class Overlay {
   /// Image overlay.
   Image? image;
 
-  Overlay({
-    this.animations,
-    this.image,
-  });
+  Overlay({this.animations, this.image});
 
   Overlay.fromJson(core.Map json_)
-      : this(
-          animations: (json_['animations'] as core.List?)
-              ?.map((value) => Animation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          image: json_.containsKey('image')
-              ? Image.fromJson(
-                  json_['image'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        animations:
+            (json_['animations'] as core.List?)
+                ?.map(
+                  (value) => Animation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        image:
+            json_.containsKey('image')
+                ? Image.fromJson(
+                  json_['image'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (animations != null) 'animations': animations!,
-        if (image != null) 'image': image!,
-      };
+    if (animations != null) 'animations': animations!,
+    if (image != null) 'image': image!,
+  };
 }
 
 /// Pad filter configuration for the input video.
@@ -2712,27 +2754,22 @@ class Pad {
   /// The default is 0.
   core.int? topPixels;
 
-  Pad({
-    this.bottomPixels,
-    this.leftPixels,
-    this.rightPixels,
-    this.topPixels,
-  });
+  Pad({this.bottomPixels, this.leftPixels, this.rightPixels, this.topPixels});
 
   Pad.fromJson(core.Map json_)
-      : this(
-          bottomPixels: json_['bottomPixels'] as core.int?,
-          leftPixels: json_['leftPixels'] as core.int?,
-          rightPixels: json_['rightPixels'] as core.int?,
-          topPixels: json_['topPixels'] as core.int?,
-        );
+    : this(
+        bottomPixels: json_['bottomPixels'] as core.int?,
+        leftPixels: json_['leftPixels'] as core.int?,
+        rightPixels: json_['rightPixels'] as core.int?,
+        topPixels: json_['topPixels'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bottomPixels != null) 'bottomPixels': bottomPixels!,
-        if (leftPixels != null) 'leftPixels': leftPixels!,
-        if (rightPixels != null) 'rightPixels': rightPixels!,
-        if (topPixels != null) 'topPixels': topPixels!,
-      };
+    if (bottomPixels != null) 'bottomPixels': bottomPixels!,
+    if (leftPixels != null) 'leftPixels': leftPixels!,
+    if (rightPixels != null) 'rightPixels': rightPixels!,
+    if (topPixels != null) 'topPixels': topPixels!,
+  };
 }
 
 /// Playready configuration.
@@ -2772,46 +2809,60 @@ class PreprocessingConfig {
   });
 
   PreprocessingConfig.fromJson(core.Map json_)
-      : this(
-          audio: json_.containsKey('audio')
-              ? Audio.fromJson(
-                  json_['audio'] as core.Map<core.String, core.dynamic>)
-              : null,
-          color: json_.containsKey('color')
-              ? Color.fromJson(
-                  json_['color'] as core.Map<core.String, core.dynamic>)
-              : null,
-          crop: json_.containsKey('crop')
-              ? Crop.fromJson(
-                  json_['crop'] as core.Map<core.String, core.dynamic>)
-              : null,
-          deblock: json_.containsKey('deblock')
-              ? Deblock.fromJson(
-                  json_['deblock'] as core.Map<core.String, core.dynamic>)
-              : null,
-          deinterlace: json_.containsKey('deinterlace')
-              ? Deinterlace.fromJson(
-                  json_['deinterlace'] as core.Map<core.String, core.dynamic>)
-              : null,
-          denoise: json_.containsKey('denoise')
-              ? Denoise.fromJson(
-                  json_['denoise'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pad: json_.containsKey('pad')
-              ? Pad.fromJson(
-                  json_['pad'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        audio:
+            json_.containsKey('audio')
+                ? Audio.fromJson(
+                  json_['audio'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        color:
+            json_.containsKey('color')
+                ? Color.fromJson(
+                  json_['color'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        crop:
+            json_.containsKey('crop')
+                ? Crop.fromJson(
+                  json_['crop'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deblock:
+            json_.containsKey('deblock')
+                ? Deblock.fromJson(
+                  json_['deblock'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deinterlace:
+            json_.containsKey('deinterlace')
+                ? Deinterlace.fromJson(
+                  json_['deinterlace'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        denoise:
+            json_.containsKey('denoise')
+                ? Denoise.fromJson(
+                  json_['denoise'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pad:
+            json_.containsKey('pad')
+                ? Pad.fromJson(
+                  json_['pad'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audio != null) 'audio': audio!,
-        if (color != null) 'color': color!,
-        if (crop != null) 'crop': crop!,
-        if (deblock != null) 'deblock': deblock!,
-        if (deinterlace != null) 'deinterlace': deinterlace!,
-        if (denoise != null) 'denoise': denoise!,
-        if (pad != null) 'pad': pad!,
-      };
+    if (audio != null) 'audio': audio!,
+    if (color != null) 'color': color!,
+    if (crop != null) 'crop': crop!,
+    if (deblock != null) 'deblock': deblock!,
+    if (deinterlace != null) 'deinterlace': deinterlace!,
+    if (denoise != null) 'denoise': denoise!,
+    if (pad != null) 'pad': pad!,
+  };
 }
 
 /// A Pub/Sub destination.
@@ -2821,18 +2872,14 @@ class PubsubDestination {
   /// For example: `projects/{project}/topics/{topic}`.
   core.String? topic;
 
-  PubsubDestination({
-    this.topic,
-  });
+  PubsubDestination({this.topic});
 
   PubsubDestination.fromJson(core.Map json_)
-      : this(
-          topic: json_['topic'] as core.String?,
-        );
+    : this(topic: json_['topic'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (topic != null) 'topic': topic!,
-      };
+    if (topic != null) 'topic': topic!,
+  };
 }
 
 /// Configuration for SAMPLE-AES encryption.
@@ -2850,18 +2897,14 @@ class SecretManagerSource {
   /// Required.
   core.String? secretVersion;
 
-  SecretManagerSource({
-    this.secretVersion,
-  });
+  SecretManagerSource({this.secretVersion});
 
   SecretManagerSource.fromJson(core.Map json_)
-      : this(
-          secretVersion: json_['secretVersion'] as core.String?,
-        );
+    : this(secretVersion: json_['secretVersion'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (secretVersion != null) 'secretVersion': secretVersion!,
-      };
+    if (secretVersion != null) 'secretVersion': secretVersion!,
+  };
 }
 
 /// Segment settings for `ts`, `fmp4` and `vtt`.
@@ -2880,22 +2923,18 @@ class SegmentSettings {
   /// divisible by \[`gopDuration`\](#videostream).
   core.String? segmentDuration;
 
-  SegmentSettings({
-    this.individualSegments,
-    this.segmentDuration,
-  });
+  SegmentSettings({this.individualSegments, this.segmentDuration});
 
   SegmentSettings.fromJson(core.Map json_)
-      : this(
-          individualSegments: json_['individualSegments'] as core.bool?,
-          segmentDuration: json_['segmentDuration'] as core.String?,
-        );
+    : this(
+        individualSegments: json_['individualSegments'] as core.bool?,
+        segmentDuration: json_['segmentDuration'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (individualSegments != null)
-          'individualSegments': individualSegments!,
-        if (segmentDuration != null) 'segmentDuration': segmentDuration!,
-      };
+    if (individualSegments != null) 'individualSegments': individualSegments!,
+    if (segmentDuration != null) 'segmentDuration': segmentDuration!,
+  };
 }
 
 /// Sprite sheet configuration.
@@ -2996,34 +3035,33 @@ class SpriteSheet {
   });
 
   SpriteSheet.fromJson(core.Map json_)
-      : this(
-          columnCount: json_['columnCount'] as core.int?,
-          endTimeOffset: json_['endTimeOffset'] as core.String?,
-          filePrefix: json_['filePrefix'] as core.String?,
-          format: json_['format'] as core.String?,
-          interval: json_['interval'] as core.String?,
-          quality: json_['quality'] as core.int?,
-          rowCount: json_['rowCount'] as core.int?,
-          spriteHeightPixels: json_['spriteHeightPixels'] as core.int?,
-          spriteWidthPixels: json_['spriteWidthPixels'] as core.int?,
-          startTimeOffset: json_['startTimeOffset'] as core.String?,
-          totalCount: json_['totalCount'] as core.int?,
-        );
+    : this(
+        columnCount: json_['columnCount'] as core.int?,
+        endTimeOffset: json_['endTimeOffset'] as core.String?,
+        filePrefix: json_['filePrefix'] as core.String?,
+        format: json_['format'] as core.String?,
+        interval: json_['interval'] as core.String?,
+        quality: json_['quality'] as core.int?,
+        rowCount: json_['rowCount'] as core.int?,
+        spriteHeightPixels: json_['spriteHeightPixels'] as core.int?,
+        spriteWidthPixels: json_['spriteWidthPixels'] as core.int?,
+        startTimeOffset: json_['startTimeOffset'] as core.String?,
+        totalCount: json_['totalCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (columnCount != null) 'columnCount': columnCount!,
-        if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
-        if (filePrefix != null) 'filePrefix': filePrefix!,
-        if (format != null) 'format': format!,
-        if (interval != null) 'interval': interval!,
-        if (quality != null) 'quality': quality!,
-        if (rowCount != null) 'rowCount': rowCount!,
-        if (spriteHeightPixels != null)
-          'spriteHeightPixels': spriteHeightPixels!,
-        if (spriteWidthPixels != null) 'spriteWidthPixels': spriteWidthPixels!,
-        if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
-        if (totalCount != null) 'totalCount': totalCount!,
-      };
+    if (columnCount != null) 'columnCount': columnCount!,
+    if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
+    if (filePrefix != null) 'filePrefix': filePrefix!,
+    if (format != null) 'format': format!,
+    if (interval != null) 'interval': interval!,
+    if (quality != null) 'quality': quality!,
+    if (rowCount != null) 'rowCount': rowCount!,
+    if (spriteHeightPixels != null) 'spriteHeightPixels': spriteHeightPixels!,
+    if (spriteWidthPixels != null) 'spriteWidthPixels': spriteWidthPixels!,
+    if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
+    if (totalCount != null) 'totalCount': totalCount!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3053,24 +3091,20 @@ class TextMapping {
   /// Required.
   core.int? inputTrack;
 
-  TextMapping({
-    this.atomKey,
-    this.inputKey,
-    this.inputTrack,
-  });
+  TextMapping({this.atomKey, this.inputKey, this.inputTrack});
 
   TextMapping.fromJson(core.Map json_)
-      : this(
-          atomKey: json_['atomKey'] as core.String?,
-          inputKey: json_['inputKey'] as core.String?,
-          inputTrack: json_['inputTrack'] as core.int?,
-        );
+    : this(
+        atomKey: json_['atomKey'] as core.String?,
+        inputKey: json_['inputKey'] as core.String?,
+        inputTrack: json_['inputTrack'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (atomKey != null) 'atomKey': atomKey!,
-        if (inputKey != null) 'inputKey': inputKey!,
-        if (inputTrack != null) 'inputTrack': inputTrack!,
-      };
+    if (atomKey != null) 'atomKey': atomKey!,
+    if (inputKey != null) 'inputKey': inputKey!,
+    if (inputTrack != null) 'inputTrack': inputTrack!,
+  };
 }
 
 /// Encoding of a text stream.
@@ -3099,30 +3133,29 @@ class TextStream {
   /// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
   core.List<TextMapping>? mapping;
 
-  TextStream({
-    this.codec,
-    this.displayName,
-    this.languageCode,
-    this.mapping,
-  });
+  TextStream({this.codec, this.displayName, this.languageCode, this.mapping});
 
   TextStream.fromJson(core.Map json_)
-      : this(
-          codec: json_['codec'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          languageCode: json_['languageCode'] as core.String?,
-          mapping: (json_['mapping'] as core.List?)
-              ?.map((value) => TextMapping.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        codec: json_['codec'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        mapping:
+            (json_['mapping'] as core.List?)
+                ?.map(
+                  (value) => TextMapping.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (codec != null) 'codec': codec!,
-        if (displayName != null) 'displayName': displayName!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (mapping != null) 'mapping': mapping!,
-      };
+    if (codec != null) 'codec': codec!,
+    if (displayName != null) 'displayName': displayName!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (mapping != null) 'mapping': mapping!,
+  };
 }
 
 /// Track definition for the input asset.
@@ -3165,23 +3198,25 @@ class TrackDefinition {
   });
 
   TrackDefinition.fromJson(core.Map json_)
-      : this(
-          detectLanguages: json_['detectLanguages'] as core.bool?,
-          detectedLanguages: (json_['detectedLanguages'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          inputTrack: json_['inputTrack'] as core.int?,
-          languages: (json_['languages'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        detectLanguages: json_['detectLanguages'] as core.bool?,
+        detectedLanguages:
+            (json_['detectedLanguages'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        inputTrack: json_['inputTrack'] as core.int?,
+        languages:
+            (json_['languages'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (detectLanguages != null) 'detectLanguages': detectLanguages!,
-        if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
-        if (inputTrack != null) 'inputTrack': inputTrack!,
-        if (languages != null) 'languages': languages!,
-      };
+    if (detectLanguages != null) 'detectLanguages': detectLanguages!,
+    if (detectedLanguages != null) 'detectedLanguages': detectedLanguages!,
+    if (inputTrack != null) 'inputTrack': inputTrack!,
+    if (languages != null) 'languages': languages!,
+  };
 }
 
 /// Video stream resource.
@@ -3195,33 +3230,35 @@ class VideoStream {
   /// VP9 codec settings.
   Vp9CodecSettings? vp9;
 
-  VideoStream({
-    this.h264,
-    this.h265,
-    this.vp9,
-  });
+  VideoStream({this.h264, this.h265, this.vp9});
 
   VideoStream.fromJson(core.Map json_)
-      : this(
-          h264: json_.containsKey('h264')
-              ? H264CodecSettings.fromJson(
-                  json_['h264'] as core.Map<core.String, core.dynamic>)
-              : null,
-          h265: json_.containsKey('h265')
-              ? H265CodecSettings.fromJson(
-                  json_['h265'] as core.Map<core.String, core.dynamic>)
-              : null,
-          vp9: json_.containsKey('vp9')
-              ? Vp9CodecSettings.fromJson(
-                  json_['vp9'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        h264:
+            json_.containsKey('h264')
+                ? H264CodecSettings.fromJson(
+                  json_['h264'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        h265:
+            json_.containsKey('h265')
+                ? H265CodecSettings.fromJson(
+                  json_['h265'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        vp9:
+            json_.containsKey('vp9')
+                ? Vp9CodecSettings.fromJson(
+                  json_['vp9'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (h264 != null) 'h264': h264!,
-        if (h265 != null) 'h265': h265!,
-        if (vp9 != null) 'vp9': vp9!,
-      };
+    if (h264 != null) 'h264': h264!,
+    if (h265 != null) 'h265': h265!,
+    if (vp9 != null) 'vp9': vp9!,
+  };
 }
 
 /// VP9 codec settings.
@@ -3352,45 +3389,49 @@ class Vp9CodecSettings {
   });
 
   Vp9CodecSettings.fromJson(core.Map json_)
-      : this(
-          bitrateBps: json_['bitrateBps'] as core.int?,
-          crfLevel: json_['crfLevel'] as core.int?,
-          frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
-          frameRateConversionStrategy:
-              json_['frameRateConversionStrategy'] as core.String?,
-          gopDuration: json_['gopDuration'] as core.String?,
-          gopFrameCount: json_['gopFrameCount'] as core.int?,
-          heightPixels: json_['heightPixels'] as core.int?,
-          hlg: json_.containsKey('hlg')
-              ? Vp9ColorFormatHLG.fromJson(
-                  json_['hlg'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pixelFormat: json_['pixelFormat'] as core.String?,
-          profile: json_['profile'] as core.String?,
-          rateControlMode: json_['rateControlMode'] as core.String?,
-          sdr: json_.containsKey('sdr')
-              ? Vp9ColorFormatSDR.fromJson(
-                  json_['sdr'] as core.Map<core.String, core.dynamic>)
-              : null,
-          widthPixels: json_['widthPixels'] as core.int?,
-        );
+    : this(
+        bitrateBps: json_['bitrateBps'] as core.int?,
+        crfLevel: json_['crfLevel'] as core.int?,
+        frameRate: (json_['frameRate'] as core.num?)?.toDouble(),
+        frameRateConversionStrategy:
+            json_['frameRateConversionStrategy'] as core.String?,
+        gopDuration: json_['gopDuration'] as core.String?,
+        gopFrameCount: json_['gopFrameCount'] as core.int?,
+        heightPixels: json_['heightPixels'] as core.int?,
+        hlg:
+            json_.containsKey('hlg')
+                ? Vp9ColorFormatHLG.fromJson(
+                  json_['hlg'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pixelFormat: json_['pixelFormat'] as core.String?,
+        profile: json_['profile'] as core.String?,
+        rateControlMode: json_['rateControlMode'] as core.String?,
+        sdr:
+            json_.containsKey('sdr')
+                ? Vp9ColorFormatSDR.fromJson(
+                  json_['sdr'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        widthPixels: json_['widthPixels'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bitrateBps != null) 'bitrateBps': bitrateBps!,
-        if (crfLevel != null) 'crfLevel': crfLevel!,
-        if (frameRate != null) 'frameRate': frameRate!,
-        if (frameRateConversionStrategy != null)
-          'frameRateConversionStrategy': frameRateConversionStrategy!,
-        if (gopDuration != null) 'gopDuration': gopDuration!,
-        if (gopFrameCount != null) 'gopFrameCount': gopFrameCount!,
-        if (heightPixels != null) 'heightPixels': heightPixels!,
-        if (hlg != null) 'hlg': hlg!,
-        if (pixelFormat != null) 'pixelFormat': pixelFormat!,
-        if (profile != null) 'profile': profile!,
-        if (rateControlMode != null) 'rateControlMode': rateControlMode!,
-        if (sdr != null) 'sdr': sdr!,
-        if (widthPixels != null) 'widthPixels': widthPixels!,
-      };
+    if (bitrateBps != null) 'bitrateBps': bitrateBps!,
+    if (crfLevel != null) 'crfLevel': crfLevel!,
+    if (frameRate != null) 'frameRate': frameRate!,
+    if (frameRateConversionStrategy != null)
+      'frameRateConversionStrategy': frameRateConversionStrategy!,
+    if (gopDuration != null) 'gopDuration': gopDuration!,
+    if (gopFrameCount != null) 'gopFrameCount': gopFrameCount!,
+    if (heightPixels != null) 'heightPixels': heightPixels!,
+    if (hlg != null) 'hlg': hlg!,
+    if (pixelFormat != null) 'pixelFormat': pixelFormat!,
+    if (profile != null) 'profile': profile!,
+    if (rateControlMode != null) 'rateControlMode': rateControlMode!,
+    if (sdr != null) 'sdr': sdr!,
+    if (widthPixels != null) 'widthPixels': widthPixels!,
+  };
 }
 
 /// Convert the input video to a Hybrid Log Gamma (HLG) video.
@@ -3436,20 +3477,20 @@ class YadifConfig {
   });
 
   YadifConfig.fromJson(core.Map json_)
-      : this(
-          deinterlaceAllFrames: json_['deinterlaceAllFrames'] as core.bool?,
-          disableSpatialInterlacing:
-              json_['disableSpatialInterlacing'] as core.bool?,
-          mode: json_['mode'] as core.String?,
-          parity: json_['parity'] as core.String?,
-        );
+    : this(
+        deinterlaceAllFrames: json_['deinterlaceAllFrames'] as core.bool?,
+        disableSpatialInterlacing:
+            json_['disableSpatialInterlacing'] as core.bool?,
+        mode: json_['mode'] as core.String?,
+        parity: json_['parity'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (deinterlaceAllFrames != null)
-          'deinterlaceAllFrames': deinterlaceAllFrames!,
-        if (disableSpatialInterlacing != null)
-          'disableSpatialInterlacing': disableSpatialInterlacing!,
-        if (mode != null) 'mode': mode!,
-        if (parity != null) 'parity': parity!,
-      };
+    if (deinterlaceAllFrames != null)
+      'deinterlaceAllFrames': deinterlaceAllFrames!,
+    if (disableSpatialInterlacing != null)
+      'disableSpatialInterlacing': disableSpatialInterlacing!,
+    if (mode != null) 'mode': mode!,
+    if (parity != null) 'parity': parity!,
+  };
 }

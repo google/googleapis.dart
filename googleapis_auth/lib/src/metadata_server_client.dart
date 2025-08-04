@@ -23,8 +23,7 @@ import 'oauth2_flows/metadata_server.dart';
 /// Google Compute Engine VM with configured access to Google APIs.
 Future<AccessCredentials> obtainAccessCredentialsViaMetadataServer(
   Client client,
-) =>
-    MetadataServerAuthorizationFlow(client).run();
+) => MetadataServerAuthorizationFlow(client).run();
 
 /// Obtains oauth2 credentials and returns an authenticated HTTP client.
 ///
@@ -39,8 +38,7 @@ Future<AccessCredentials> obtainAccessCredentialsViaMetadataServer(
 /// {@macro googleapis_auth_not_close_the_baseClient}
 Future<AutoRefreshingAuthClient> clientViaMetadataServer({
   Client? baseClient,
-}) async =>
-    await clientFromFlow(
-      MetadataServerAuthorizationFlow.new,
-      baseClient: baseClient,
-    );
+}) async => await clientFromFlow(
+  MetadataServerAuthorizationFlow.new,
+  baseClient: baseClient,
+);

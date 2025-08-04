@@ -28,7 +28,7 @@ class RS256Signer {
     0x03,
     0x04,
     0x02,
-    0x01
+    0x01,
   ];
 
   final RSAPrivateKey _rsaKey;

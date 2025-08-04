@@ -39,10 +39,7 @@ class AuthorizationCodeGrantManualFlow
     // Prompt user and wait until they goes to URL and copy&pastes the auth code
     // in.
     final code = await userPrompt(
-      authenticationUri(
-        _redirectionUri,
-        codeVerifier: codeVerifier,
-      ).toString(),
+      authenticationUri(_redirectionUri, codeVerifier: codeVerifier).toString(),
     );
     // Use code to obtain credentials
     return obtainAccessCredentialsUsingCodeImpl(

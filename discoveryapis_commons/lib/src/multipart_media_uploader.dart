@@ -46,7 +46,8 @@ class MultipartMediaUploader {
 
     final headBytes = utf8.encode(bodyHead);
 
-    final totalLength = headBytes.length +
+    final totalLength =
+        headBytes.length +
         _lengthOfBase64Stream(_uploadMedia.length!) +
         bodyTail.length;
 
@@ -68,11 +69,15 @@ class MultipartMediaUploader {
     final headers = {
       ..._requestHeaders,
       'content-type': 'multipart/related; boundary="$_boundary"',
-      'content-length': '$totalLength'
+      'content-length': '$totalLength',
     };
     final bodyStream = bodyController.stream;
-    final request =
-        RequestImpl(_method, _uri, stream: bodyStream, headers: headers);
+    final request = RequestImpl(
+      _method,
+      _uri,
+      stream: bodyStream,
+      headers: headers,
+    );
     return _httpClient.send(request);
   }
 }

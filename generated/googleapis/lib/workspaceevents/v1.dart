@@ -124,11 +124,16 @@ class WorkspaceEventsApi {
   OperationsResource get operations => OperationsResource(_requester);
   SubscriptionsResource get subscriptions => SubscriptionsResource(_requester);
 
-  WorkspaceEventsApi(http.Client client,
-      {core.String rootUrl = 'https://workspaceevents.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  WorkspaceEventsApi(
+    http.Client client, {
+    core.String rootUrl = 'https://workspaceevents.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class OperationsResource {
@@ -156,10 +161,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -274,6 +276,7 @@ class SubscriptionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -316,7 +319,8 @@ class SubscriptionsResource {
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists Google Workspace subscriptions.
@@ -384,7 +388,8 @@ class SubscriptionsResource {
       queryParams: queryParams_,
     );
     return ListSubscriptionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates or renews a Google Workspace subscription.
@@ -504,24 +509,25 @@ class ListSubscriptionsResponse {
   /// List of subscriptions.
   core.List<Subscription>? subscriptions;
 
-  ListSubscriptionsResponse({
-    this.nextPageToken,
-    this.subscriptions,
-  });
+  ListSubscriptionsResponse({this.nextPageToken, this.subscriptions});
 
   ListSubscriptionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          subscriptions: (json_['subscriptions'] as core.List?)
-              ?.map((value) => Subscription.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        subscriptions:
+            (json_['subscriptions'] as core.List?)
+                ?.map(
+                  (value) => Subscription.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (subscriptions != null) 'subscriptions': subscriptions!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (subscriptions != null) 'subscriptions': subscriptions!,
+  };
 }
 
 /// The endpoint where the subscription delivers events.
@@ -542,18 +548,14 @@ class NotificationEndpoint {
   /// Immutable.
   core.String? pubsubTopic;
 
-  NotificationEndpoint({
-    this.pubsubTopic,
-  });
+  NotificationEndpoint({this.pubsubTopic});
 
   NotificationEndpoint.fromJson(core.Map json_)
-      : this(
-          pubsubTopic: json_['pubsubTopic'] as core.String?,
-        );
+    : this(pubsubTopic: json_['pubsubTopic'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
-      };
+    if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -599,37 +601,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Options about what data to include in the event payload.
@@ -659,21 +659,18 @@ class PayloadOptions {
   /// Optional.
   core.bool? includeResource;
 
-  PayloadOptions({
-    this.fieldMask,
-    this.includeResource,
-  });
+  PayloadOptions({this.fieldMask, this.includeResource});
 
   PayloadOptions.fromJson(core.Map json_)
-      : this(
-          fieldMask: json_['fieldMask'] as core.String?,
-          includeResource: json_['includeResource'] as core.bool?,
-        );
+    : this(
+        fieldMask: json_['fieldMask'] as core.String?,
+        includeResource: json_['includeResource'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fieldMask != null) 'fieldMask': fieldMask!,
-        if (includeResource != null) 'includeResource': includeResource!,
-      };
+    if (fieldMask != null) 'fieldMask': fieldMask!,
+    if (includeResource != null) 'includeResource': includeResource!,
+  };
 }
 
 /// The request message for SubscriptionsService.ReactivateSubscription.
@@ -851,48 +848,55 @@ class Subscription {
   });
 
   Subscription.fromJson(core.Map json_)
-      : this(
-          authority: json_['authority'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          eventTypes: (json_['eventTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          expireTime: json_['expireTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          notificationEndpoint: json_.containsKey('notificationEndpoint')
-              ? NotificationEndpoint.fromJson(json_['notificationEndpoint']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          payloadOptions: json_.containsKey('payloadOptions')
-              ? PayloadOptions.fromJson(json_['payloadOptions']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          reconciling: json_['reconciling'] as core.bool?,
-          state: json_['state'] as core.String?,
-          suspensionReason: json_['suspensionReason'] as core.String?,
-          targetResource: json_['targetResource'] as core.String?,
-          ttl: json_['ttl'] as core.String?,
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        authority: json_['authority'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        eventTypes:
+            (json_['eventTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        expireTime: json_['expireTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        notificationEndpoint:
+            json_.containsKey('notificationEndpoint')
+                ? NotificationEndpoint.fromJson(
+                  json_['notificationEndpoint']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        payloadOptions:
+            json_.containsKey('payloadOptions')
+                ? PayloadOptions.fromJson(
+                  json_['payloadOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        reconciling: json_['reconciling'] as core.bool?,
+        state: json_['state'] as core.String?,
+        suspensionReason: json_['suspensionReason'] as core.String?,
+        targetResource: json_['targetResource'] as core.String?,
+        ttl: json_['ttl'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (authority != null) 'authority': authority!,
-        if (createTime != null) 'createTime': createTime!,
-        if (etag != null) 'etag': etag!,
-        if (eventTypes != null) 'eventTypes': eventTypes!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (name != null) 'name': name!,
-        if (notificationEndpoint != null)
-          'notificationEndpoint': notificationEndpoint!,
-        if (payloadOptions != null) 'payloadOptions': payloadOptions!,
-        if (reconciling != null) 'reconciling': reconciling!,
-        if (state != null) 'state': state!,
-        if (suspensionReason != null) 'suspensionReason': suspensionReason!,
-        if (targetResource != null) 'targetResource': targetResource!,
-        if (ttl != null) 'ttl': ttl!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (authority != null) 'authority': authority!,
+    if (createTime != null) 'createTime': createTime!,
+    if (etag != null) 'etag': etag!,
+    if (eventTypes != null) 'eventTypes': eventTypes!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (name != null) 'name': name!,
+    if (notificationEndpoint != null)
+      'notificationEndpoint': notificationEndpoint!,
+    if (payloadOptions != null) 'payloadOptions': payloadOptions!,
+    if (reconciling != null) 'reconciling': reconciling!,
+    if (state != null) 'state': state!,
+    if (suspensionReason != null) 'suspensionReason': suspensionReason!,
+    if (targetResource != null) 'targetResource': targetResource!,
+    if (ttl != null) 'ttl': ttl!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }

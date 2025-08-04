@@ -55,11 +55,16 @@ class SpeechApi {
   ProjectsResource get projects => ProjectsResource(_requester);
   SpeechResource get speech => SpeechResource(_requester);
 
-  SpeechApi(http.Client client,
-      {core.String rootUrl = 'https://speech.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  SpeechApi(
+    http.Client client, {
+    core.String rootUrl = 'https://speech.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class OperationsResource {
@@ -87,10 +92,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -152,7 +154,8 @@ class OperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -180,7 +183,7 @@ class ProjectsLocationsCustomClassesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsCustomClassesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create a custom class.
   ///
@@ -227,7 +230,8 @@ class ProjectsLocationsCustomClassesResource {
       queryParams: queryParams_,
     );
     return CustomClass.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete a custom class.
@@ -255,10 +259,7 @@ class ProjectsLocationsCustomClassesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -268,6 +269,7 @@ class ProjectsLocationsCustomClassesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -308,7 +310,8 @@ class ProjectsLocationsCustomClassesResource {
       queryParams: queryParams_,
     );
     return CustomClass.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List custom classes.
@@ -365,7 +368,8 @@ class ProjectsLocationsCustomClassesResource {
       queryParams: queryParams_,
     );
     return ListCustomClassesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update a custom class.
@@ -411,7 +415,8 @@ class ProjectsLocationsCustomClassesResource {
       queryParams: queryParams_,
     );
     return CustomClass.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -419,7 +424,7 @@ class ProjectsLocationsPhraseSetsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsPhraseSetsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create a set of phrase hints.
   ///
@@ -490,10 +495,7 @@ class ProjectsLocationsPhraseSetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -503,6 +505,7 @@ class ProjectsLocationsPhraseSetsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -533,10 +536,7 @@ class ProjectsLocationsPhraseSetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PhraseSet> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<PhraseSet> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -604,7 +604,8 @@ class ProjectsLocationsPhraseSetsResource {
       queryParams: queryParams_,
     );
     return ListPhraseSetResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update a phrase set.
@@ -735,7 +736,8 @@ class SpeechResource {
       queryParams: queryParams_,
     );
     return RecognizeResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -744,20 +746,19 @@ class ABNFGrammar {
   /// strings that will end up concatenated.
   core.List<core.String>? abnfStrings;
 
-  ABNFGrammar({
-    this.abnfStrings,
-  });
+  ABNFGrammar({this.abnfStrings});
 
   ABNFGrammar.fromJson(core.Map json_)
-      : this(
-          abnfStrings: (json_['abnfStrings'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        abnfStrings:
+            (json_['abnfStrings'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (abnfStrings != null) 'abnfStrings': abnfStrings!,
-      };
+    if (abnfStrings != null) 'abnfStrings': abnfStrings!,
+  };
 }
 
 /// An item of the class.
@@ -765,18 +766,14 @@ class ClassItem {
   /// The class item's value.
   core.String? value;
 
-  ClassItem({
-    this.value,
-  });
+  ClassItem({this.value});
 
   ClassItem.fromJson(core.Map json_)
-      : this(
-          value: json_['value'] as core.String?,
-        );
+    : this(value: json_['value'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (value != null) 'value': value!,
-      };
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Message sent by the client for the `CreateCustomClass` method.
@@ -796,24 +793,23 @@ class CreateCustomClassRequest {
   /// Required.
   core.String? customClassId;
 
-  CreateCustomClassRequest({
-    this.customClass,
-    this.customClassId,
-  });
+  CreateCustomClassRequest({this.customClass, this.customClassId});
 
   CreateCustomClassRequest.fromJson(core.Map json_)
-      : this(
-          customClass: json_.containsKey('customClass')
-              ? CustomClass.fromJson(
-                  json_['customClass'] as core.Map<core.String, core.dynamic>)
-              : null,
-          customClassId: json_['customClassId'] as core.String?,
-        );
+    : this(
+        customClass:
+            json_.containsKey('customClass')
+                ? CustomClass.fromJson(
+                  json_['customClass'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        customClassId: json_['customClassId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customClass != null) 'customClass': customClass!,
-        if (customClassId != null) 'customClassId': customClassId!,
-      };
+    if (customClass != null) 'customClass': customClass!,
+    if (customClassId != null) 'customClassId': customClassId!,
+  };
 }
 
 /// Message sent by the client for the `CreatePhraseSet` method.
@@ -833,24 +829,23 @@ class CreatePhraseSetRequest {
   /// Required.
   core.String? phraseSetId;
 
-  CreatePhraseSetRequest({
-    this.phraseSet,
-    this.phraseSetId,
-  });
+  CreatePhraseSetRequest({this.phraseSet, this.phraseSetId});
 
   CreatePhraseSetRequest.fromJson(core.Map json_)
-      : this(
-          phraseSet: json_.containsKey('phraseSet')
-              ? PhraseSet.fromJson(
-                  json_['phraseSet'] as core.Map<core.String, core.dynamic>)
-              : null,
-          phraseSetId: json_['phraseSetId'] as core.String?,
-        );
+    : this(
+        phraseSet:
+            json_.containsKey('phraseSet')
+                ? PhraseSet.fromJson(
+                  json_['phraseSet'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        phraseSetId: json_['phraseSetId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (phraseSet != null) 'phraseSet': phraseSet!,
-        if (phraseSetId != null) 'phraseSetId': phraseSetId!,
-      };
+    if (phraseSet != null) 'phraseSet': phraseSet!,
+    if (phraseSetId != null) 'phraseSetId': phraseSetId!,
+  };
 }
 
 /// A set of words or phrases that represents a common concept likely to appear
@@ -972,47 +967,46 @@ class CustomClass {
   });
 
   CustomClass.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          customClassId: json_['customClassId'] as core.String?,
-          deleteTime: json_['deleteTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-          items: (json_['items'] as core.List?)
-              ?.map((value) => ClassItem.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-          kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?,
-          name: json_['name'] as core.String?,
-          reconciling: json_['reconciling'] as core.bool?,
-          state: json_['state'] as core.String?,
-          uid: json_['uid'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        customClassId: json_['customClassId'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => ClassItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+        kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?,
+        name: json_['name'] as core.String?,
+        reconciling: json_['reconciling'] as core.bool?,
+        state: json_['state'] as core.String?,
+        uid: json_['uid'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (customClassId != null) 'customClassId': customClassId!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (items != null) 'items': items!,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
-        if (name != null) 'name': name!,
-        if (reconciling != null) 'reconciling': reconciling!,
-        if (state != null) 'state': state!,
-        if (uid != null) 'uid': uid!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (customClassId != null) 'customClassId': customClassId!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (items != null) 'items': items!,
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+    if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
+    if (name != null) 'name': name!,
+    if (reconciling != null) 'reconciling': reconciling!,
+    if (state != null) 'state': state!,
+    if (uid != null) 'uid': uid!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1038,24 +1032,20 @@ class Entry {
   /// Max length is 100 characters.
   core.String? search;
 
-  Entry({
-    this.caseSensitive,
-    this.replace,
-    this.search,
-  });
+  Entry({this.caseSensitive, this.replace, this.search});
 
   Entry.fromJson(core.Map json_)
-      : this(
-          caseSensitive: json_['caseSensitive'] as core.bool?,
-          replace: json_['replace'] as core.String?,
-          search: json_['search'] as core.String?,
-        );
+    : this(
+        caseSensitive: json_['caseSensitive'] as core.bool?,
+        replace: json_['replace'] as core.String?,
+        search: json_['search'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (caseSensitive != null) 'caseSensitive': caseSensitive!,
-        if (replace != null) 'replace': replace!,
-        if (search != null) 'search': search!,
-      };
+    if (caseSensitive != null) 'caseSensitive': caseSensitive!,
+    if (replace != null) 'replace': replace!,
+    if (search != null) 'search': search!,
+  };
 }
 
 /// Message returned to the client by the `ListCustomClasses` method.
@@ -1068,24 +1058,25 @@ class ListCustomClassesResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
-  ListCustomClassesResponse({
-    this.customClasses,
-    this.nextPageToken,
-  });
+  ListCustomClassesResponse({this.customClasses, this.nextPageToken});
 
   ListCustomClassesResponse.fromJson(core.Map json_)
-      : this(
-          customClasses: (json_['customClasses'] as core.List?)
-              ?.map((value) => CustomClass.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        customClasses:
+            (json_['customClasses'] as core.List?)
+                ?.map(
+                  (value) => CustomClass.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customClasses != null) 'customClasses': customClasses!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (customClasses != null) 'customClasses': customClasses!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Operations.ListOperations.
@@ -1096,24 +1087,25 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
+  ListOperationsResponse({this.nextPageToken, this.operations});
 
   ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
 }
 
 /// Message returned to the client by the `ListPhraseSet` method.
@@ -1126,24 +1118,25 @@ class ListPhraseSetResponse {
   /// The phrase set.
   core.List<PhraseSet>? phraseSets;
 
-  ListPhraseSetResponse({
-    this.nextPageToken,
-    this.phraseSets,
-  });
+  ListPhraseSetResponse({this.nextPageToken, this.phraseSets});
 
   ListPhraseSetResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          phraseSets: (json_['phraseSets'] as core.List?)
-              ?.map((value) => PhraseSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        phraseSets:
+            (json_['phraseSets'] as core.List?)
+                ?.map(
+                  (value) => PhraseSet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (phraseSets != null) 'phraseSets': phraseSets!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (phraseSets != null) 'phraseSets': phraseSets!,
+  };
 }
 
 /// The top-level message sent by the client for the `LongRunningRecognize`
@@ -1165,33 +1158,35 @@ class LongRunningRecognizeRequest {
   /// Optional.
   TranscriptOutputConfig? outputConfig;
 
-  LongRunningRecognizeRequest({
-    this.audio,
-    this.config,
-    this.outputConfig,
-  });
+  LongRunningRecognizeRequest({this.audio, this.config, this.outputConfig});
 
   LongRunningRecognizeRequest.fromJson(core.Map json_)
-      : this(
-          audio: json_.containsKey('audio')
-              ? RecognitionAudio.fromJson(
-                  json_['audio'] as core.Map<core.String, core.dynamic>)
-              : null,
-          config: json_.containsKey('config')
-              ? RecognitionConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
-              : null,
-          outputConfig: json_.containsKey('outputConfig')
-              ? TranscriptOutputConfig.fromJson(
-                  json_['outputConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        audio:
+            json_.containsKey('audio')
+                ? RecognitionAudio.fromJson(
+                  json_['audio'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        config:
+            json_.containsKey('config')
+                ? RecognitionConfig.fromJson(
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        outputConfig:
+            json_.containsKey('outputConfig')
+                ? TranscriptOutputConfig.fromJson(
+                  json_['outputConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audio != null) 'audio': audio!,
-        if (config != null) 'config': config!,
-        if (outputConfig != null) 'outputConfig': outputConfig!,
-      };
+    if (audio != null) 'audio': audio!,
+    if (config != null) 'config': config!,
+    if (outputConfig != null) 'outputConfig': outputConfig!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -1237,37 +1232,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// A phrases containing words and phrase "hints" so that the speech recognition
@@ -1311,21 +1304,18 @@ class Phrase {
   /// The phrase itself.
   core.String? value;
 
-  Phrase({
-    this.boost,
-    this.value,
-  });
+  Phrase({this.boost, this.value});
 
   Phrase.fromJson(core.Map json_)
-      : this(
-          boost: (json_['boost'] as core.num?)?.toDouble(),
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        boost: (json_['boost'] as core.num?)?.toDouble(),
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boost != null) 'boost': boost!,
-        if (value != null) 'value': value!,
-      };
+    if (boost != null) 'boost': boost!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Provides "hints" to the speech recognizer to favor specific words and
@@ -1451,47 +1441,46 @@ class PhraseSet {
   });
 
   PhraseSet.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          boost: (json_['boost'] as core.num?)?.toDouble(),
-          deleteTime: json_['deleteTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-          kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?,
-          name: json_['name'] as core.String?,
-          phrases: (json_['phrases'] as core.List?)
-              ?.map((value) =>
-                  Phrase.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          reconciling: json_['reconciling'] as core.bool?,
-          state: json_['state'] as core.String?,
-          uid: json_['uid'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        boost: (json_['boost'] as core.num?)?.toDouble(),
+        deleteTime: json_['deleteTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+        kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?,
+        name: json_['name'] as core.String?,
+        phrases:
+            (json_['phrases'] as core.List?)
+                ?.map(
+                  (value) => Phrase.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        reconciling: json_['reconciling'] as core.bool?,
+        state: json_['state'] as core.String?,
+        uid: json_['uid'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (boost != null) 'boost': boost!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (expireTime != null) 'expireTime': expireTime!,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-        if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
-        if (name != null) 'name': name!,
-        if (phrases != null) 'phrases': phrases!,
-        if (reconciling != null) 'reconciling': reconciling!,
-        if (state != null) 'state': state!,
-        if (uid != null) 'uid': uid!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (boost != null) 'boost': boost!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+    if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
+    if (name != null) 'name': name!,
+    if (phrases != null) 'phrases': phrases!,
+    if (reconciling != null) 'reconciling': reconciling!,
+    if (state != null) 'state': state!,
+    if (uid != null) 'uid': uid!,
+  };
 }
 
 /// Contains audio data in the encoding specified in the `RecognitionConfig`.
@@ -1508,8 +1497,10 @@ class RecognitionAudio {
   core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
   set contentAsBytes(core.List<core.int> bytes_) {
-    content =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    content = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// URI that points to a file that contains audio data bytes as specified in
@@ -1522,21 +1513,18 @@ class RecognitionAudio {
   /// [Request URIs](https://cloud.google.com/storage/docs/reference-uris).
   core.String? uri;
 
-  RecognitionAudio({
-    this.content,
-    this.uri,
-  });
+  RecognitionAudio({this.content, this.uri});
 
   RecognitionAudio.fromJson(core.Map json_)
-      : this(
-          content: json_['content'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        content: json_['content'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (content != null) 'content': content!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Provides information to the recognizer that specifies how to process the
@@ -1789,82 +1777,93 @@ class RecognitionConfig {
   });
 
   RecognitionConfig.fromJson(core.Map json_)
-      : this(
-          adaptation: json_.containsKey('adaptation')
-              ? SpeechAdaptation.fromJson(
-                  json_['adaptation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          alternativeLanguageCodes:
-              (json_['alternativeLanguageCodes'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          audioChannelCount: json_['audioChannelCount'] as core.int?,
-          diarizationConfig: json_.containsKey('diarizationConfig')
-              ? SpeakerDiarizationConfig.fromJson(json_['diarizationConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          enableAutomaticPunctuation:
-              json_['enableAutomaticPunctuation'] as core.bool?,
-          enableSeparateRecognitionPerChannel:
-              json_['enableSeparateRecognitionPerChannel'] as core.bool?,
-          enableSpokenEmojis: json_['enableSpokenEmojis'] as core.bool?,
-          enableSpokenPunctuation:
-              json_['enableSpokenPunctuation'] as core.bool?,
-          enableWordConfidence: json_['enableWordConfidence'] as core.bool?,
-          enableWordTimeOffsets: json_['enableWordTimeOffsets'] as core.bool?,
-          encoding: json_['encoding'] as core.String?,
-          languageCode: json_['languageCode'] as core.String?,
-          maxAlternatives: json_['maxAlternatives'] as core.int?,
-          metadata: json_.containsKey('metadata')
-              ? RecognitionMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>)
-              : null,
-          model: json_['model'] as core.String?,
-          profanityFilter: json_['profanityFilter'] as core.bool?,
-          sampleRateHertz: json_['sampleRateHertz'] as core.int?,
-          speechContexts: (json_['speechContexts'] as core.List?)
-              ?.map((value) => SpeechContext.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          transcriptNormalization: json_.containsKey('transcriptNormalization')
-              ? TranscriptNormalization.fromJson(
+    : this(
+        adaptation:
+            json_.containsKey('adaptation')
+                ? SpeechAdaptation.fromJson(
+                  json_['adaptation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        alternativeLanguageCodes:
+            (json_['alternativeLanguageCodes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        audioChannelCount: json_['audioChannelCount'] as core.int?,
+        diarizationConfig:
+            json_.containsKey('diarizationConfig')
+                ? SpeakerDiarizationConfig.fromJson(
+                  json_['diarizationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        enableAutomaticPunctuation:
+            json_['enableAutomaticPunctuation'] as core.bool?,
+        enableSeparateRecognitionPerChannel:
+            json_['enableSeparateRecognitionPerChannel'] as core.bool?,
+        enableSpokenEmojis: json_['enableSpokenEmojis'] as core.bool?,
+        enableSpokenPunctuation: json_['enableSpokenPunctuation'] as core.bool?,
+        enableWordConfidence: json_['enableWordConfidence'] as core.bool?,
+        enableWordTimeOffsets: json_['enableWordTimeOffsets'] as core.bool?,
+        encoding: json_['encoding'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        maxAlternatives: json_['maxAlternatives'] as core.int?,
+        metadata:
+            json_.containsKey('metadata')
+                ? RecognitionMetadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        model: json_['model'] as core.String?,
+        profanityFilter: json_['profanityFilter'] as core.bool?,
+        sampleRateHertz: json_['sampleRateHertz'] as core.int?,
+        speechContexts:
+            (json_['speechContexts'] as core.List?)
+                ?.map(
+                  (value) => SpeechContext.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        transcriptNormalization:
+            json_.containsKey('transcriptNormalization')
+                ? TranscriptNormalization.fromJson(
                   json_['transcriptNormalization']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          useEnhanced: json_['useEnhanced'] as core.bool?,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        useEnhanced: json_['useEnhanced'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adaptation != null) 'adaptation': adaptation!,
-        if (alternativeLanguageCodes != null)
-          'alternativeLanguageCodes': alternativeLanguageCodes!,
-        if (audioChannelCount != null) 'audioChannelCount': audioChannelCount!,
-        if (diarizationConfig != null) 'diarizationConfig': diarizationConfig!,
-        if (enableAutomaticPunctuation != null)
-          'enableAutomaticPunctuation': enableAutomaticPunctuation!,
-        if (enableSeparateRecognitionPerChannel != null)
-          'enableSeparateRecognitionPerChannel':
-              enableSeparateRecognitionPerChannel!,
-        if (enableSpokenEmojis != null)
-          'enableSpokenEmojis': enableSpokenEmojis!,
-        if (enableSpokenPunctuation != null)
-          'enableSpokenPunctuation': enableSpokenPunctuation!,
-        if (enableWordConfidence != null)
-          'enableWordConfidence': enableWordConfidence!,
-        if (enableWordTimeOffsets != null)
-          'enableWordTimeOffsets': enableWordTimeOffsets!,
-        if (encoding != null) 'encoding': encoding!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (maxAlternatives != null) 'maxAlternatives': maxAlternatives!,
-        if (metadata != null) 'metadata': metadata!,
-        if (model != null) 'model': model!,
-        if (profanityFilter != null) 'profanityFilter': profanityFilter!,
-        if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
-        if (speechContexts != null) 'speechContexts': speechContexts!,
-        if (transcriptNormalization != null)
-          'transcriptNormalization': transcriptNormalization!,
-        if (useEnhanced != null) 'useEnhanced': useEnhanced!,
-      };
+    if (adaptation != null) 'adaptation': adaptation!,
+    if (alternativeLanguageCodes != null)
+      'alternativeLanguageCodes': alternativeLanguageCodes!,
+    if (audioChannelCount != null) 'audioChannelCount': audioChannelCount!,
+    if (diarizationConfig != null) 'diarizationConfig': diarizationConfig!,
+    if (enableAutomaticPunctuation != null)
+      'enableAutomaticPunctuation': enableAutomaticPunctuation!,
+    if (enableSeparateRecognitionPerChannel != null)
+      'enableSeparateRecognitionPerChannel':
+          enableSeparateRecognitionPerChannel!,
+    if (enableSpokenEmojis != null) 'enableSpokenEmojis': enableSpokenEmojis!,
+    if (enableSpokenPunctuation != null)
+      'enableSpokenPunctuation': enableSpokenPunctuation!,
+    if (enableWordConfidence != null)
+      'enableWordConfidence': enableWordConfidence!,
+    if (enableWordTimeOffsets != null)
+      'enableWordTimeOffsets': enableWordTimeOffsets!,
+    if (encoding != null) 'encoding': encoding!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (maxAlternatives != null) 'maxAlternatives': maxAlternatives!,
+    if (metadata != null) 'metadata': metadata!,
+    if (model != null) 'model': model!,
+    if (profanityFilter != null) 'profanityFilter': profanityFilter!,
+    if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
+    if (speechContexts != null) 'speechContexts': speechContexts!,
+    if (transcriptNormalization != null)
+      'transcriptNormalization': transcriptNormalization!,
+    if (useEnhanced != null) 'useEnhanced': useEnhanced!,
+  };
 }
 
 /// Description of audio data to be recognized.
@@ -1958,32 +1957,31 @@ class RecognitionMetadata {
   });
 
   RecognitionMetadata.fromJson(core.Map json_)
-      : this(
-          audioTopic: json_['audioTopic'] as core.String?,
-          industryNaicsCodeOfAudio:
-              json_['industryNaicsCodeOfAudio'] as core.int?,
-          interactionType: json_['interactionType'] as core.String?,
-          microphoneDistance: json_['microphoneDistance'] as core.String?,
-          originalMediaType: json_['originalMediaType'] as core.String?,
-          originalMimeType: json_['originalMimeType'] as core.String?,
-          recordingDeviceName: json_['recordingDeviceName'] as core.String?,
-          recordingDeviceType: json_['recordingDeviceType'] as core.String?,
-        );
+    : this(
+        audioTopic: json_['audioTopic'] as core.String?,
+        industryNaicsCodeOfAudio:
+            json_['industryNaicsCodeOfAudio'] as core.int?,
+        interactionType: json_['interactionType'] as core.String?,
+        microphoneDistance: json_['microphoneDistance'] as core.String?,
+        originalMediaType: json_['originalMediaType'] as core.String?,
+        originalMimeType: json_['originalMimeType'] as core.String?,
+        recordingDeviceName: json_['recordingDeviceName'] as core.String?,
+        recordingDeviceType: json_['recordingDeviceType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audioTopic != null) 'audioTopic': audioTopic!,
-        if (industryNaicsCodeOfAudio != null)
-          'industryNaicsCodeOfAudio': industryNaicsCodeOfAudio!,
-        if (interactionType != null) 'interactionType': interactionType!,
-        if (microphoneDistance != null)
-          'microphoneDistance': microphoneDistance!,
-        if (originalMediaType != null) 'originalMediaType': originalMediaType!,
-        if (originalMimeType != null) 'originalMimeType': originalMimeType!,
-        if (recordingDeviceName != null)
-          'recordingDeviceName': recordingDeviceName!,
-        if (recordingDeviceType != null)
-          'recordingDeviceType': recordingDeviceType!,
-      };
+    if (audioTopic != null) 'audioTopic': audioTopic!,
+    if (industryNaicsCodeOfAudio != null)
+      'industryNaicsCodeOfAudio': industryNaicsCodeOfAudio!,
+    if (interactionType != null) 'interactionType': interactionType!,
+    if (microphoneDistance != null) 'microphoneDistance': microphoneDistance!,
+    if (originalMediaType != null) 'originalMediaType': originalMediaType!,
+    if (originalMimeType != null) 'originalMimeType': originalMimeType!,
+    if (recordingDeviceName != null)
+      'recordingDeviceName': recordingDeviceName!,
+    if (recordingDeviceType != null)
+      'recordingDeviceType': recordingDeviceType!,
+  };
 }
 
 /// The top-level message sent by the client for the `Recognize` method.
@@ -1999,27 +1997,28 @@ class RecognizeRequest {
   /// Required.
   RecognitionConfig? config;
 
-  RecognizeRequest({
-    this.audio,
-    this.config,
-  });
+  RecognizeRequest({this.audio, this.config});
 
   RecognizeRequest.fromJson(core.Map json_)
-      : this(
-          audio: json_.containsKey('audio')
-              ? RecognitionAudio.fromJson(
-                  json_['audio'] as core.Map<core.String, core.dynamic>)
-              : null,
-          config: json_.containsKey('config')
-              ? RecognitionConfig.fromJson(
-                  json_['config'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        audio:
+            json_.containsKey('audio')
+                ? RecognitionAudio.fromJson(
+                  json_['audio'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        config:
+            json_.containsKey('config')
+                ? RecognitionConfig.fromJson(
+                  json_['config'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audio != null) 'audio': audio!,
-        if (config != null) 'config': config!,
-      };
+    if (audio != null) 'audio': audio!,
+    if (config != null) 'config': config!,
+  };
 }
 
 /// The only message returned to the client by the `Recognize` method.
@@ -2055,28 +2054,35 @@ class RecognizeResponse {
   });
 
   RecognizeResponse.fromJson(core.Map json_)
-      : this(
-          requestId: json_['requestId'] as core.String?,
-          results: (json_['results'] as core.List?)
-              ?.map((value) => SpeechRecognitionResult.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          speechAdaptationInfo: json_.containsKey('speechAdaptationInfo')
-              ? SpeechAdaptationInfo.fromJson(json_['speechAdaptationInfo']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          totalBilledTime: json_['totalBilledTime'] as core.String?,
-          usingLegacyModels: json_['usingLegacyModels'] as core.bool?,
-        );
+    : this(
+        requestId: json_['requestId'] as core.String?,
+        results:
+            (json_['results'] as core.List?)
+                ?.map(
+                  (value) => SpeechRecognitionResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        speechAdaptationInfo:
+            json_.containsKey('speechAdaptationInfo')
+                ? SpeechAdaptationInfo.fromJson(
+                  json_['speechAdaptationInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        totalBilledTime: json_['totalBilledTime'] as core.String?,
+        usingLegacyModels: json_['usingLegacyModels'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (requestId != null) 'requestId': requestId!,
-        if (results != null) 'results': results!,
-        if (speechAdaptationInfo != null)
-          'speechAdaptationInfo': speechAdaptationInfo!,
-        if (totalBilledTime != null) 'totalBilledTime': totalBilledTime!,
-        if (usingLegacyModels != null) 'usingLegacyModels': usingLegacyModels!,
-      };
+    if (requestId != null) 'requestId': requestId!,
+    if (results != null) 'results': results!,
+    if (speechAdaptationInfo != null)
+      'speechAdaptationInfo': speechAdaptationInfo!,
+    if (totalBilledTime != null) 'totalBilledTime': totalBilledTime!,
+    if (usingLegacyModels != null) 'usingLegacyModels': usingLegacyModels!,
+  };
 }
 
 /// Config to enable speaker diarization.
@@ -2116,21 +2122,21 @@ class SpeakerDiarizationConfig {
   });
 
   SpeakerDiarizationConfig.fromJson(core.Map json_)
-      : this(
-          enableSpeakerDiarization:
-              json_['enableSpeakerDiarization'] as core.bool?,
-          maxSpeakerCount: json_['maxSpeakerCount'] as core.int?,
-          minSpeakerCount: json_['minSpeakerCount'] as core.int?,
-          speakerTag: json_['speakerTag'] as core.int?,
-        );
+    : this(
+        enableSpeakerDiarization:
+            json_['enableSpeakerDiarization'] as core.bool?,
+        maxSpeakerCount: json_['maxSpeakerCount'] as core.int?,
+        minSpeakerCount: json_['minSpeakerCount'] as core.int?,
+        speakerTag: json_['speakerTag'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enableSpeakerDiarization != null)
-          'enableSpeakerDiarization': enableSpeakerDiarization!,
-        if (maxSpeakerCount != null) 'maxSpeakerCount': maxSpeakerCount!,
-        if (minSpeakerCount != null) 'minSpeakerCount': minSpeakerCount!,
-        if (speakerTag != null) 'speakerTag': speakerTag!,
-      };
+    if (enableSpeakerDiarization != null)
+      'enableSpeakerDiarization': enableSpeakerDiarization!,
+    if (maxSpeakerCount != null) 'maxSpeakerCount': maxSpeakerCount!,
+    if (minSpeakerCount != null) 'minSpeakerCount': minSpeakerCount!,
+    if (speakerTag != null) 'speakerTag': speakerTag!,
+  };
 }
 
 /// Speech adaptation configuration.
@@ -2165,31 +2171,42 @@ class SpeechAdaptation {
   });
 
   SpeechAdaptation.fromJson(core.Map json_)
-      : this(
-          abnfGrammar: json_.containsKey('abnfGrammar')
-              ? ABNFGrammar.fromJson(
-                  json_['abnfGrammar'] as core.Map<core.String, core.dynamic>)
-              : null,
-          customClasses: (json_['customClasses'] as core.List?)
-              ?.map((value) => CustomClass.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          phraseSetReferences: (json_['phraseSetReferences'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          phraseSets: (json_['phraseSets'] as core.List?)
-              ?.map((value) => PhraseSet.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        abnfGrammar:
+            json_.containsKey('abnfGrammar')
+                ? ABNFGrammar.fromJson(
+                  json_['abnfGrammar'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        customClasses:
+            (json_['customClasses'] as core.List?)
+                ?.map(
+                  (value) => CustomClass.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        phraseSetReferences:
+            (json_['phraseSetReferences'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        phraseSets:
+            (json_['phraseSets'] as core.List?)
+                ?.map(
+                  (value) => PhraseSet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (abnfGrammar != null) 'abnfGrammar': abnfGrammar!,
-        if (customClasses != null) 'customClasses': customClasses!,
-        if (phraseSetReferences != null)
-          'phraseSetReferences': phraseSetReferences!,
-        if (phraseSets != null) 'phraseSets': phraseSets!,
-      };
+    if (abnfGrammar != null) 'abnfGrammar': abnfGrammar!,
+    if (customClasses != null) 'customClasses': customClasses!,
+    if (phraseSetReferences != null)
+      'phraseSetReferences': phraseSetReferences!,
+    if (phraseSets != null) 'phraseSets': phraseSets!,
+  };
 }
 
 /// Information on speech adaptation use in results
@@ -2203,21 +2220,18 @@ class SpeechAdaptationInfo {
   /// request timed out.
   core.String? timeoutMessage;
 
-  SpeechAdaptationInfo({
-    this.adaptationTimeout,
-    this.timeoutMessage,
-  });
+  SpeechAdaptationInfo({this.adaptationTimeout, this.timeoutMessage});
 
   SpeechAdaptationInfo.fromJson(core.Map json_)
-      : this(
-          adaptationTimeout: json_['adaptationTimeout'] as core.bool?,
-          timeoutMessage: json_['timeoutMessage'] as core.String?,
-        );
+    : this(
+        adaptationTimeout: json_['adaptationTimeout'] as core.bool?,
+        timeoutMessage: json_['timeoutMessage'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (adaptationTimeout != null) 'adaptationTimeout': adaptationTimeout!,
-        if (timeoutMessage != null) 'timeoutMessage': timeoutMessage!,
-      };
+    if (adaptationTimeout != null) 'adaptationTimeout': adaptationTimeout!,
+    if (timeoutMessage != null) 'timeoutMessage': timeoutMessage!,
+  };
 }
 
 /// Provides "hints" to the speech recognizer to favor specific words and
@@ -2250,23 +2264,21 @@ class SpeechContext {
   /// months.
   core.List<core.String>? phrases;
 
-  SpeechContext({
-    this.boost,
-    this.phrases,
-  });
+  SpeechContext({this.boost, this.phrases});
 
   SpeechContext.fromJson(core.Map json_)
-      : this(
-          boost: (json_['boost'] as core.num?)?.toDouble(),
-          phrases: (json_['phrases'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        boost: (json_['boost'] as core.num?)?.toDouble(),
+        phrases:
+            (json_['phrases'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boost != null) 'boost': boost!,
-        if (phrases != null) 'phrases': phrases!,
-      };
+    if (boost != null) 'boost': boost!,
+    if (phrases != null) 'phrases': phrases!,
+  };
 }
 
 /// Alternative hypotheses (a.k.a. n-best list).
@@ -2294,27 +2306,27 @@ class SpeechRecognitionAlternative {
   /// words from the beginning of the audio.
   core.List<WordInfo>? words;
 
-  SpeechRecognitionAlternative({
-    this.confidence,
-    this.transcript,
-    this.words,
-  });
+  SpeechRecognitionAlternative({this.confidence, this.transcript, this.words});
 
   SpeechRecognitionAlternative.fromJson(core.Map json_)
-      : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
-          transcript: json_['transcript'] as core.String?,
-          words: (json_['words'] as core.List?)
-              ?.map((value) => WordInfo.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        confidence: (json_['confidence'] as core.num?)?.toDouble(),
+        transcript: json_['transcript'] as core.String?,
+        words:
+            (json_['words'] as core.List?)
+                ?.map(
+                  (value) => WordInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (transcript != null) 'transcript': transcript!,
-        if (words != null) 'words': words!,
-      };
+    if (confidence != null) 'confidence': confidence!,
+    if (transcript != null) 'transcript': transcript!,
+    if (words != null) 'words': words!,
+  };
 }
 
 /// A speech recognition result corresponding to a portion of the audio.
@@ -2353,22 +2365,26 @@ class SpeechRecognitionResult {
   });
 
   SpeechRecognitionResult.fromJson(core.Map json_)
-      : this(
-          alternatives: (json_['alternatives'] as core.List?)
-              ?.map((value) => SpeechRecognitionAlternative.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          channelTag: json_['channelTag'] as core.int?,
-          languageCode: json_['languageCode'] as core.String?,
-          resultEndTime: json_['resultEndTime'] as core.String?,
-        );
+    : this(
+        alternatives:
+            (json_['alternatives'] as core.List?)
+                ?.map(
+                  (value) => SpeechRecognitionAlternative.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        channelTag: json_['channelTag'] as core.int?,
+        languageCode: json_['languageCode'] as core.String?,
+        resultEndTime: json_['resultEndTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alternatives != null) 'alternatives': alternatives!,
-        if (channelTag != null) 'channelTag': channelTag!,
-        if (languageCode != null) 'languageCode': languageCode!,
-        if (resultEndTime != null) 'resultEndTime': resultEndTime!,
-      };
+    if (alternatives != null) 'alternatives': alternatives!,
+    if (channelTag != null) 'channelTag': channelTag!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (resultEndTime != null) 'resultEndTime': resultEndTime!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -2395,21 +2411,23 @@ class TranscriptNormalization {
   /// before it. At most 100 entries.
   core.List<Entry>? entries;
 
-  TranscriptNormalization({
-    this.entries,
-  });
+  TranscriptNormalization({this.entries});
 
   TranscriptNormalization.fromJson(core.Map json_)
-      : this(
-          entries: (json_['entries'] as core.List?)
-              ?.map((value) =>
-                  Entry.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        entries:
+            (json_['entries'] as core.List?)
+                ?.map(
+                  (value) => Entry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (entries != null) 'entries': entries!,
-      };
+    if (entries != null) 'entries': entries!,
+  };
 }
 
 /// Specifies an optional destination for the recognition results.
@@ -2420,18 +2438,14 @@ class TranscriptOutputConfig {
   /// bucket must already exist.
   core.String? gcsUri;
 
-  TranscriptOutputConfig({
-    this.gcsUri,
-  });
+  TranscriptOutputConfig({this.gcsUri});
 
   TranscriptOutputConfig.fromJson(core.Map json_)
-      : this(
-          gcsUri: json_['gcsUri'] as core.String?,
-        );
+    : this(gcsUri: json_['gcsUri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsUri != null) 'gcsUri': gcsUri!,
-      };
+    if (gcsUri != null) 'gcsUri': gcsUri!,
+  };
 }
 
 /// Word-specific information for recognized words.
@@ -2499,21 +2513,21 @@ class WordInfo {
   });
 
   WordInfo.fromJson(core.Map json_)
-      : this(
-          confidence: (json_['confidence'] as core.num?)?.toDouble(),
-          endTime: json_['endTime'] as core.String?,
-          speakerLabel: json_['speakerLabel'] as core.String?,
-          speakerTag: json_['speakerTag'] as core.int?,
-          startTime: json_['startTime'] as core.String?,
-          word: json_['word'] as core.String?,
-        );
+    : this(
+        confidence: (json_['confidence'] as core.num?)?.toDouble(),
+        endTime: json_['endTime'] as core.String?,
+        speakerLabel: json_['speakerLabel'] as core.String?,
+        speakerTag: json_['speakerTag'] as core.int?,
+        startTime: json_['startTime'] as core.String?,
+        word: json_['word'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (confidence != null) 'confidence': confidence!,
-        if (endTime != null) 'endTime': endTime!,
-        if (speakerLabel != null) 'speakerLabel': speakerLabel!,
-        if (speakerTag != null) 'speakerTag': speakerTag!,
-        if (startTime != null) 'startTime': startTime!,
-        if (word != null) 'word': word!,
-      };
+    if (confidence != null) 'confidence': confidence!,
+    if (endTime != null) 'endTime': endTime!,
+    if (speakerLabel != null) 'speakerLabel': speakerLabel!,
+    if (speakerTag != null) 'speakerTag': speakerTag!,
+    if (startTime != null) 'startTime': startTime!,
+    if (word != null) 'word': word!,
+  };
 }

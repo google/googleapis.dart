@@ -55,11 +55,16 @@ class GroupsMigrationApi {
 
   ArchiveResource get archive => ArchiveResource(_requester);
 
-  GroupsMigrationApi(http.Client client,
-      {core.String rootUrl = 'https://groupsmigration.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  GroupsMigrationApi(
+    http.Client client, {
+    core.String rootUrl = 'https://groupsmigration.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ArchiveResource {
@@ -99,7 +104,8 @@ class ArchiveResource {
       url_ =
           'groups/v1/groups/' + commons.escapeVariable('$groupId') + '/archive';
     } else {
-      url_ = '/upload/groups/v1/groups/' +
+      url_ =
+          '/upload/groups/v1/groups/' +
           commons.escapeVariable('$groupId') +
           '/archive';
     }
@@ -107,6 +113,7 @@ class ArchiveResource {
     final response_ = await _requester.request(
       url_,
       'POST',
+
       queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: commons.UploadOptions.defaultOptions,
@@ -123,19 +130,16 @@ class Groups {
   /// The status of the insert request.
   core.String? responseCode;
 
-  Groups({
-    this.kind,
-    this.responseCode,
-  });
+  Groups({this.kind, this.responseCode});
 
   Groups.fromJson(core.Map json_)
-      : this(
-          kind: json_['kind'] as core.String?,
-          responseCode: json_['responseCode'] as core.String?,
-        );
+    : this(
+        kind: json_['kind'] as core.String?,
+        responseCode: json_['responseCode'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (kind != null) 'kind': kind!,
-        if (responseCode != null) 'responseCode': responseCode!,
-      };
+    if (kind != null) 'kind': kind!,
+    if (responseCode != null) 'responseCode': responseCode!,
+  };
 }

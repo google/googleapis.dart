@@ -58,11 +58,16 @@ class ApiKeysServiceApi {
   OperationsResource get operations => OperationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ApiKeysServiceApi(http.Client client,
-      {core.String rootUrl = 'https://apikeys.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ApiKeysServiceApi(
+    http.Client client, {
+    core.String rootUrl = 'https://apikeys.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class KeysResource {
@@ -108,7 +113,8 @@ class KeysResource {
       queryParams: queryParams_,
     );
     return V2LookupKeyResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -137,10 +143,7 @@ class OperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -178,7 +181,7 @@ class ProjectsLocationsKeysResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsKeysResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new API key.
   ///
@@ -272,6 +275,7 @@ class ProjectsLocationsKeysResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -299,10 +303,7 @@ class ProjectsLocationsKeysResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<V2Key> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<V2Key> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -354,7 +355,8 @@ class ProjectsLocationsKeysResource {
       queryParams: queryParams_,
     );
     return V2GetKeyStringResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the API keys owned by a project.
@@ -408,7 +410,8 @@ class ProjectsLocationsKeysResource {
       queryParams: queryParams_,
     );
     return V2ListKeysResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Patches the modifiable fields of an API key.
@@ -558,37 +561,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -612,21 +613,18 @@ class V2AndroidApplication {
   /// DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
   core.String? sha1Fingerprint;
 
-  V2AndroidApplication({
-    this.packageName,
-    this.sha1Fingerprint,
-  });
+  V2AndroidApplication({this.packageName, this.sha1Fingerprint});
 
   V2AndroidApplication.fromJson(core.Map json_)
-      : this(
-          packageName: json_['packageName'] as core.String?,
-          sha1Fingerprint: json_['sha1Fingerprint'] as core.String?,
-        );
+    : this(
+        packageName: json_['packageName'] as core.String?,
+        sha1Fingerprint: json_['sha1Fingerprint'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (packageName != null) 'packageName': packageName!,
-        if (sha1Fingerprint != null) 'sha1Fingerprint': sha1Fingerprint!,
-      };
+    if (packageName != null) 'packageName': packageName!,
+    if (sha1Fingerprint != null) 'sha1Fingerprint': sha1Fingerprint!,
+  };
 }
 
 /// The Android apps that are allowed to use the key.
@@ -635,22 +633,24 @@ class V2AndroidKeyRestrictions {
   /// this key.
   core.List<V2AndroidApplication>? allowedApplications;
 
-  V2AndroidKeyRestrictions({
-    this.allowedApplications,
-  });
+  V2AndroidKeyRestrictions({this.allowedApplications});
 
   V2AndroidKeyRestrictions.fromJson(core.Map json_)
-      : this(
-          allowedApplications: (json_['allowedApplications'] as core.List?)
-              ?.map((value) => V2AndroidApplication.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        allowedApplications:
+            (json_['allowedApplications'] as core.List?)
+                ?.map(
+                  (value) => V2AndroidApplication.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedApplications != null)
-          'allowedApplications': allowedApplications!,
-      };
+    if (allowedApplications != null)
+      'allowedApplications': allowedApplications!,
+  };
 }
 
 /// A restriction for a specific service and optionally one or multiple specific
@@ -676,23 +676,21 @@ class V2ApiTarget {
   /// get a list of services that are enabled in the project.
   core.String? service;
 
-  V2ApiTarget({
-    this.methods,
-    this.service,
-  });
+  V2ApiTarget({this.methods, this.service});
 
   V2ApiTarget.fromJson(core.Map json_)
-      : this(
-          methods: (json_['methods'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          service: json_['service'] as core.String?,
-        );
+    : this(
+        methods:
+            (json_['methods'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        service: json_['service'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (methods != null) 'methods': methods!,
-        if (service != null) 'service': service!,
-      };
+    if (methods != null) 'methods': methods!,
+    if (service != null) 'service': service!,
+  };
 }
 
 /// The HTTP referrers (websites) that are allowed to use the key.
@@ -701,20 +699,19 @@ class V2BrowserKeyRestrictions {
   /// make API calls with this key.
   core.List<core.String>? allowedReferrers;
 
-  V2BrowserKeyRestrictions({
-    this.allowedReferrers,
-  });
+  V2BrowserKeyRestrictions({this.allowedReferrers});
 
   V2BrowserKeyRestrictions.fromJson(core.Map json_)
-      : this(
-          allowedReferrers: (json_['allowedReferrers'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        allowedReferrers:
+            (json_['allowedReferrers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedReferrers != null) 'allowedReferrers': allowedReferrers!,
-      };
+    if (allowedReferrers != null) 'allowedReferrers': allowedReferrers!,
+  };
 }
 
 /// Response message for `GetKeyString` method.
@@ -722,18 +719,14 @@ class V2GetKeyStringResponse {
   /// An encrypted and signed value of the key.
   core.String? keyString;
 
-  V2GetKeyStringResponse({
-    this.keyString,
-  });
+  V2GetKeyStringResponse({this.keyString});
 
   V2GetKeyStringResponse.fromJson(core.Map json_)
-      : this(
-          keyString: json_['keyString'] as core.String?,
-        );
+    : this(keyString: json_['keyString'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keyString != null) 'keyString': keyString!,
-      };
+    if (keyString != null) 'keyString': keyString!,
+  };
 }
 
 /// The iOS apps that are allowed to use the key.
@@ -741,20 +734,19 @@ class V2IosKeyRestrictions {
   /// A list of bundle IDs that are allowed when making API calls with this key.
   core.List<core.String>? allowedBundleIds;
 
-  V2IosKeyRestrictions({
-    this.allowedBundleIds,
-  });
+  V2IosKeyRestrictions({this.allowedBundleIds});
 
   V2IosKeyRestrictions.fromJson(core.Map json_)
-      : this(
-          allowedBundleIds: (json_['allowedBundleIds'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        allowedBundleIds:
+            (json_['allowedBundleIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedBundleIds != null) 'allowedBundleIds': allowedBundleIds!,
-      };
+    if (allowedBundleIds != null) 'allowedBundleIds': allowedBundleIds!,
+  };
 }
 
 /// The representation of a key managed by the API Keys API.
@@ -843,44 +835,41 @@ class V2Key {
   });
 
   V2Key.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          deleteTime: json_['deleteTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          etag: json_['etag'] as core.String?,
-          keyString: json_['keyString'] as core.String?,
-          name: json_['name'] as core.String?,
-          restrictions: json_.containsKey('restrictions')
-              ? V2Restrictions.fromJson(
-                  json_['restrictions'] as core.Map<core.String, core.dynamic>)
-              : null,
-          serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-          uid: json_['uid'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        createTime: json_['createTime'] as core.String?,
+        deleteTime: json_['deleteTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        keyString: json_['keyString'] as core.String?,
+        name: json_['name'] as core.String?,
+        restrictions:
+            json_.containsKey('restrictions')
+                ? V2Restrictions.fromJson(
+                  json_['restrictions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (createTime != null) 'createTime': createTime!,
-        if (deleteTime != null) 'deleteTime': deleteTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (etag != null) 'etag': etag!,
-        if (keyString != null) 'keyString': keyString!,
-        if (name != null) 'name': name!,
-        if (restrictions != null) 'restrictions': restrictions!,
-        if (serviceAccountEmail != null)
-          'serviceAccountEmail': serviceAccountEmail!,
-        if (uid != null) 'uid': uid!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteTime != null) 'deleteTime': deleteTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (keyString != null) 'keyString': keyString!,
+    if (name != null) 'name': name!,
+    if (restrictions != null) 'restrictions': restrictions!,
+    if (serviceAccountEmail != null)
+      'serviceAccountEmail': serviceAccountEmail!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Response message for `ListKeys` method.
@@ -891,24 +880,25 @@ class V2ListKeysResponse {
   /// The pagination token for the next page of results.
   core.String? nextPageToken;
 
-  V2ListKeysResponse({
-    this.keys,
-    this.nextPageToken,
-  });
+  V2ListKeysResponse({this.keys, this.nextPageToken});
 
   V2ListKeysResponse.fromJson(core.Map json_)
-      : this(
-          keys: (json_['keys'] as core.List?)
-              ?.map((value) =>
-                  V2Key.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        keys:
+            (json_['keys'] as core.List?)
+                ?.map(
+                  (value) => V2Key.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keys != null) 'keys': keys!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (keys != null) 'keys': keys!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for `LookupKey` method.
@@ -921,21 +911,18 @@ class V2LookupKeyResponse {
   /// The project that owns the key with the value specified in the request.
   core.String? parent;
 
-  V2LookupKeyResponse({
-    this.name,
-    this.parent,
-  });
+  V2LookupKeyResponse({this.name, this.parent});
 
   V2LookupKeyResponse.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          parent: json_['parent'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        parent: json_['parent'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (parent != null) 'parent': parent!,
-      };
+    if (name != null) 'name': name!,
+    if (parent != null) 'parent': parent!,
+  };
 }
 
 /// Describes the restrictions on the key.
@@ -968,42 +955,55 @@ class V2Restrictions {
   });
 
   V2Restrictions.fromJson(core.Map json_)
-      : this(
-          androidKeyRestrictions: json_.containsKey('androidKeyRestrictions')
-              ? V2AndroidKeyRestrictions.fromJson(
+    : this(
+        androidKeyRestrictions:
+            json_.containsKey('androidKeyRestrictions')
+                ? V2AndroidKeyRestrictions.fromJson(
                   json_['androidKeyRestrictions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          apiTargets: (json_['apiTargets'] as core.List?)
-              ?.map((value) => V2ApiTarget.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          browserKeyRestrictions: json_.containsKey('browserKeyRestrictions')
-              ? V2BrowserKeyRestrictions.fromJson(
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        apiTargets:
+            (json_['apiTargets'] as core.List?)
+                ?.map(
+                  (value) => V2ApiTarget.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        browserKeyRestrictions:
+            json_.containsKey('browserKeyRestrictions')
+                ? V2BrowserKeyRestrictions.fromJson(
                   json_['browserKeyRestrictions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          iosKeyRestrictions: json_.containsKey('iosKeyRestrictions')
-              ? V2IosKeyRestrictions.fromJson(json_['iosKeyRestrictions']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          serverKeyRestrictions: json_.containsKey('serverKeyRestrictions')
-              ? V2ServerKeyRestrictions.fromJson(json_['serverKeyRestrictions']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        iosKeyRestrictions:
+            json_.containsKey('iosKeyRestrictions')
+                ? V2IosKeyRestrictions.fromJson(
+                  json_['iosKeyRestrictions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serverKeyRestrictions:
+            json_.containsKey('serverKeyRestrictions')
+                ? V2ServerKeyRestrictions.fromJson(
+                  json_['serverKeyRestrictions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (androidKeyRestrictions != null)
-          'androidKeyRestrictions': androidKeyRestrictions!,
-        if (apiTargets != null) 'apiTargets': apiTargets!,
-        if (browserKeyRestrictions != null)
-          'browserKeyRestrictions': browserKeyRestrictions!,
-        if (iosKeyRestrictions != null)
-          'iosKeyRestrictions': iosKeyRestrictions!,
-        if (serverKeyRestrictions != null)
-          'serverKeyRestrictions': serverKeyRestrictions!,
-      };
+    if (androidKeyRestrictions != null)
+      'androidKeyRestrictions': androidKeyRestrictions!,
+    if (apiTargets != null) 'apiTargets': apiTargets!,
+    if (browserKeyRestrictions != null)
+      'browserKeyRestrictions': browserKeyRestrictions!,
+    if (iosKeyRestrictions != null) 'iosKeyRestrictions': iosKeyRestrictions!,
+    if (serverKeyRestrictions != null)
+      'serverKeyRestrictions': serverKeyRestrictions!,
+  };
 }
 
 /// The IP addresses of callers that are allowed to use the key.
@@ -1012,20 +1012,19 @@ class V2ServerKeyRestrictions {
   /// this key.
   core.List<core.String>? allowedIps;
 
-  V2ServerKeyRestrictions({
-    this.allowedIps,
-  });
+  V2ServerKeyRestrictions({this.allowedIps});
 
   V2ServerKeyRestrictions.fromJson(core.Map json_)
-      : this(
-          allowedIps: (json_['allowedIps'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        allowedIps:
+            (json_['allowedIps'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowedIps != null) 'allowedIps': allowedIps!,
-      };
+    if (allowedIps != null) 'allowedIps': allowedIps!,
+  };
 }
 
 /// Request message for `UndeleteKey` method.

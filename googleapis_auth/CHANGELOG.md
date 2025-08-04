@@ -1,3 +1,7 @@
+## 2.0.1-wip
+
+- Require `sdk: ^3.7.0`
+
 ## 2.0.0
 
 - Removed deprecated `RefreshFailedException`.

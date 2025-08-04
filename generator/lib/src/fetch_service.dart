@@ -26,9 +26,7 @@ class FetchService extends FetchCore {
         );
 
         if (result.statusCode != 200) {
-          throw StateError(
-            'Not a 200 – ${result.statusCode}\n${result.body}',
-          );
+          throw StateError('Not a 200 – ${result.statusCode}\n${result.body}');
         }
 
         final description = RestDescription.fromJson(
@@ -41,14 +39,12 @@ class FetchService extends FetchCore {
         return description;
       } catch (e, stack) {
         print(
-          ansi.red.wrap(
-            '''
+          ansi.red.wrap('''
 ${item.discoveryRestUrl}
 Failed to retrieve document for "${item.name}:${item.version}" -> Ignoring!
 $e
 $stack
-''',
-          ),
+'''),
         );
         return null;
       }
@@ -63,9 +59,11 @@ $stack
         var count = 0;
         return await pool
             .forEach(list, (DirectoryListItems item) async {
-              print(ansi.darkGray.wrap(
-                'Requesting ${++count} of ${list.length} - ${item.id}',
-              ));
+              print(
+                ansi.darkGray.wrap(
+                  'Requesting ${++count} of ${list.length} - ${item.id}',
+                ),
+              );
 
               RestDescription? description;
               for (var i = 1; i <= 10; i++) {
@@ -77,8 +75,9 @@ $stack
                 final existingRevision = existingRevisions![description?.id!];
                 if (existingRevision != null &&
                     existingRevision != description!.revision) {
-                  final compare =
-                      existingRevision.compareTo(description.revision!);
+                  final compare = existingRevision.compareTo(
+                    description.revision!,
+                  );
 
                   if (compare.isNegative) {
                     print(

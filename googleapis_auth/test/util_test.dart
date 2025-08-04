@@ -30,11 +30,7 @@ void main() {
               'message',
               contains('The response was not valid UTF-8.'),
             )
-            .having(
-              (p0) => p0.responseContent,
-              'responseContent',
-              body,
-            ),
+            .having((p0) => p0.responseContent, 'responseContent', body),
       ),
     );
   });
@@ -55,11 +51,7 @@ void main() {
               'message',
               contains('Could not decode the response as JSON.'),
             )
-            .having(
-              (p0) => p0.responseContent,
-              'responseContent',
-              body,
-            ),
+            .having((p0) => p0.responseContent, 'responseContent', body),
       ),
     );
   });
@@ -81,11 +73,7 @@ void main() {
               'message',
               'The returned JSON response was not a Map.',
             )
-            .having(
-              (p0) => p0.responseContent,
-              'responseContent',
-              body,
-            ),
+            .having((p0) => p0.responseContent, 'responseContent', body),
       ),
     );
   });

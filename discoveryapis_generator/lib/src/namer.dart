@@ -29,8 +29,10 @@ class Identifier {
   /// Seals this [Identifier] and gives it the name [name].
   void sealWithName(String? name) {
     if (_sealed) {
-      throw StateError('This Identifier(preferredName: $preferredName) '
-          'has already been sealed.');
+      throw StateError(
+        'This Identifier(preferredName: $preferredName) '
+        'has already been sealed.',
+      );
     }
     _name = name;
     _sealed = true;
@@ -50,8 +52,10 @@ class Identifier {
   @override
   String toString() {
     if (!_sealed) {
-      throw StateError('This Identifier(preferredName: $preferredName) '
-          'has not been sealed yet.');
+      throw StateError(
+        'This Identifier(preferredName: $preferredName) '
+        'has not been sealed yet.',
+      );
     }
     return _name ?? '** NOT DEFINED **';
   }
@@ -75,8 +79,13 @@ class Scope {
     bool removeUnderscores = true,
     bool global = false,
   }) {
-    final identifier = Identifier(Scope.toValidIdentifier(preferredName,
-        removeUnderscores: removeUnderscores, global: global));
+    final identifier = Identifier(
+      Scope.toValidIdentifier(
+        preferredName,
+        removeUnderscores: removeUnderscores,
+        global: global,
+      ),
+    );
     identifiers.add(identifier);
     return identifier;
   }
@@ -98,15 +107,21 @@ class Scope {
   }) {
     // Replace all abc_xyz with abcXyz.
     if (removeUnderscores) {
-      preferredName =
-          Scope.capitalizeAtChar(preferredName!, '_', keepEnding: true);
+      preferredName = Scope.capitalizeAtChar(
+        preferredName!,
+        '_',
+        keepEnding: true,
+      );
     }
 
     preferredName = preferredName!.replaceAllMapped(
-        _dashStringRegExp, (match) => match[1]!.toUpperCase());
+      _dashStringRegExp,
+      (match) => match[1]!.toUpperCase(),
+    );
 
-    preferredName =
-        preferredName.replaceAll('-', '_').replaceAll(_nonAscii, '_');
+    preferredName = preferredName
+        .replaceAll('-', '_')
+        .replaceAll(_nonAscii, '_');
 
     if (preferredName.startsWith(_startsWithDigit)) {
       preferredName = 'D$preferredName';
@@ -287,8 +302,9 @@ class ApiLibraryNamer {
       name = '$parent$name';
     }
 
-    return _libraryScope
-        .newIdentifier('${Scope.capitalize(name)}$_resourceApiName');
+    return _libraryScope.newIdentifier(
+      '${Scope.capitalize(name)}$_resourceApiName',
+    );
   }
 
   String schemaClassName(String name, {String? parent}) {

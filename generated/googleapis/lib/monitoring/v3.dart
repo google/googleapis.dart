@@ -82,11 +82,16 @@ class MonitoringApi {
   UptimeCheckIpsResource get uptimeCheckIps =>
       UptimeCheckIpsResource(_requester);
 
-  MonitoringApi(http.Client client,
-      {core.String rootUrl = 'https://monitoring.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  MonitoringApi(
+    http.Client client, {
+    core.String rootUrl = 'https://monitoring.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class FoldersResource {
@@ -602,18 +607,18 @@ class FoldersTimeSeriesResource {
       if (pageToken != null) 'pageToken': [pageToken],
       if (secondaryAggregation_alignmentPeriod != null)
         'secondaryAggregation.alignmentPeriod': [
-          secondaryAggregation_alignmentPeriod
+          secondaryAggregation_alignmentPeriod,
         ],
       if (secondaryAggregation_crossSeriesReducer != null)
         'secondaryAggregation.crossSeriesReducer': [
-          secondaryAggregation_crossSeriesReducer
+          secondaryAggregation_crossSeriesReducer,
         ],
       if (secondaryAggregation_groupByFields != null)
         'secondaryAggregation.groupByFields':
             secondaryAggregation_groupByFields,
       if (secondaryAggregation_perSeriesAligner != null)
         'secondaryAggregation.perSeriesAligner': [
-          secondaryAggregation_perSeriesAligner
+          secondaryAggregation_perSeriesAligner,
         ],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -627,7 +632,8 @@ class FoldersTimeSeriesResource {
       queryParams: queryParams_,
     );
     return ListTimeSeriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -644,7 +650,7 @@ class OrganizationsTimeSeriesResource {
   final commons.ApiRequester _requester;
 
   OrganizationsTimeSeriesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists time series that match a filter.
   ///
@@ -1145,18 +1151,18 @@ class OrganizationsTimeSeriesResource {
       if (pageToken != null) 'pageToken': [pageToken],
       if (secondaryAggregation_alignmentPeriod != null)
         'secondaryAggregation.alignmentPeriod': [
-          secondaryAggregation_alignmentPeriod
+          secondaryAggregation_alignmentPeriod,
         ],
       if (secondaryAggregation_crossSeriesReducer != null)
         'secondaryAggregation.crossSeriesReducer': [
-          secondaryAggregation_crossSeriesReducer
+          secondaryAggregation_crossSeriesReducer,
         ],
       if (secondaryAggregation_groupByFields != null)
         'secondaryAggregation.groupByFields':
             secondaryAggregation_groupByFields,
       if (secondaryAggregation_perSeriesAligner != null)
         'secondaryAggregation.perSeriesAligner': [
-          secondaryAggregation_perSeriesAligner
+          secondaryAggregation_perSeriesAligner,
         ],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -1170,7 +1176,8 @@ class OrganizationsTimeSeriesResource {
       queryParams: queryParams_,
     );
     return ListTimeSeriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1185,11 +1192,11 @@ class ProjectsResource {
   ProjectsMetricDescriptorsResource get metricDescriptors =>
       ProjectsMetricDescriptorsResource(_requester);
   ProjectsMonitoredResourceDescriptorsResource
-      get monitoredResourceDescriptors =>
-          ProjectsMonitoredResourceDescriptorsResource(_requester);
+  get monitoredResourceDescriptors =>
+      ProjectsMonitoredResourceDescriptorsResource(_requester);
   ProjectsNotificationChannelDescriptorsResource
-      get notificationChannelDescriptors =>
-          ProjectsNotificationChannelDescriptorsResource(_requester);
+  get notificationChannelDescriptors =>
+      ProjectsNotificationChannelDescriptorsResource(_requester);
   ProjectsNotificationChannelsResource get notificationChannels =>
       ProjectsNotificationChannelsResource(_requester);
   ProjectsSnoozesResource get snoozes => ProjectsSnoozesResource(_requester);
@@ -1205,7 +1212,7 @@ class ProjectsAlertPoliciesResource {
   final commons.ApiRequester _requester;
 
   ProjectsAlertPoliciesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new alerting policy.Design your application to single-thread API
   /// calls that modify the state of alerting policies in a single project.
@@ -1259,7 +1266,8 @@ class ProjectsAlertPoliciesResource {
       queryParams: queryParams_,
     );
     return AlertPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an alerting policy.Design your application to single-thread API
@@ -1285,10 +1293,7 @@ class ProjectsAlertPoliciesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1298,6 +1303,7 @@ class ProjectsAlertPoliciesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1337,7 +1343,8 @@ class ProjectsAlertPoliciesResource {
       queryParams: queryParams_,
     );
     return AlertPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the existing alerting policies for the workspace.
@@ -1406,7 +1413,8 @@ class ProjectsAlertPoliciesResource {
       queryParams: queryParams_,
     );
     return ListAlertPoliciesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an alerting policy.
@@ -1479,7 +1487,8 @@ class ProjectsAlertPoliciesResource {
       queryParams: queryParams_,
     );
     return AlertPolicy.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1487,7 +1496,7 @@ class ProjectsCollectdTimeSeriesResource {
   final commons.ApiRequester _requester;
 
   ProjectsCollectdTimeSeriesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Cloud Monitoring Agent only: Creates a new time series.This method is only
   /// for use by the Cloud Monitoring Agent.
@@ -1532,7 +1541,8 @@ class ProjectsCollectdTimeSeriesResource {
       queryParams: queryParams_,
     );
     return CreateCollectdTimeSeriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1628,6 +1638,7 @@ class ProjectsGroupsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1651,10 +1662,7 @@ class ProjectsGroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Group> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1741,7 +1749,8 @@ class ProjectsGroupsResource {
       queryParams: queryParams_,
     );
     return ListGroupsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an existing group.
@@ -1800,7 +1809,7 @@ class ProjectsGroupsMembersResource {
   final commons.ApiRequester _requester;
 
   ProjectsGroupsMembersResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Lists the monitored resources that are members of a group.
   ///
@@ -1868,7 +1877,8 @@ class ProjectsGroupsMembersResource {
       queryParams: queryParams_,
     );
     return ListGroupMembersResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1876,7 +1886,7 @@ class ProjectsMetricDescriptorsResource {
   final commons.ApiRequester _requester;
 
   ProjectsMetricDescriptorsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new metric descriptor.
   ///
@@ -1924,7 +1934,8 @@ class ProjectsMetricDescriptorsResource {
       queryParams: queryParams_,
     );
     return MetricDescriptor.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a metric descriptor.
@@ -1950,10 +1961,7 @@ class ProjectsMetricDescriptorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1963,6 +1971,7 @@ class ProjectsMetricDescriptorsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2005,7 +2014,8 @@ class ProjectsMetricDescriptorsResource {
       queryParams: queryParams_,
     );
     return MetricDescriptor.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists metric descriptors that match a filter.
@@ -2080,7 +2090,8 @@ class ProjectsMetricDescriptorsResource {
       queryParams: queryParams_,
     );
     return ListMetricDescriptorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2088,7 +2099,7 @@ class ProjectsMonitoredResourceDescriptorsResource {
   final commons.ApiRequester _requester;
 
   ProjectsMonitoredResourceDescriptorsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets a single monitored resource descriptor.
   ///
@@ -2127,7 +2138,8 @@ class ProjectsMonitoredResourceDescriptorsResource {
       queryParams: queryParams_,
     );
     return MonitoredResourceDescriptor.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists monitored resource descriptors that match a filter.
@@ -2187,7 +2199,8 @@ class ProjectsMonitoredResourceDescriptorsResource {
       queryParams: queryParams_,
     );
     return ListMonitoredResourceDescriptorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2195,7 +2208,7 @@ class ProjectsNotificationChannelDescriptorsResource {
   final commons.ApiRequester _requester;
 
   ProjectsNotificationChannelDescriptorsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets a single channel descriptor.
   ///
@@ -2236,7 +2249,8 @@ class ProjectsNotificationChannelDescriptorsResource {
       queryParams: queryParams_,
     );
     return NotificationChannelDescriptor.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the descriptors for supported channel types.
@@ -2285,7 +2299,8 @@ class ProjectsNotificationChannelDescriptorsResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    final url_ = 'v3/' +
+    final url_ =
+        'v3/' +
         core.Uri.encodeFull('$name') +
         '/notificationChannelDescriptors';
 
@@ -2295,7 +2310,8 @@ class ProjectsNotificationChannelDescriptorsResource {
       queryParams: queryParams_,
     );
     return ListNotificationChannelDescriptorsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2303,7 +2319,7 @@ class ProjectsNotificationChannelsResource {
   final commons.ApiRequester _requester;
 
   ProjectsNotificationChannelsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new notification channel, representing a single notification
   /// endpoint such as an email address, SMS number, or PagerDuty service.Design
@@ -2355,7 +2371,8 @@ class ProjectsNotificationChannelsResource {
       queryParams: queryParams_,
     );
     return NotificationChannel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a notification channel.Design your application to single-thread
@@ -2402,6 +2419,7 @@ class ProjectsNotificationChannelsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2448,7 +2466,8 @@ class ProjectsNotificationChannelsResource {
       queryParams: queryParams_,
     );
     return NotificationChannel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Requests a verification code for an already verified channel that can then
@@ -2493,7 +2512,7 @@ class ProjectsNotificationChannelsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetNotificationChannelVerificationCodeResponse>
-      getVerificationCode(
+  getVerificationCode(
     GetNotificationChannelVerificationCodeRequest request,
     core.String name, {
     core.String? $fields,
@@ -2512,7 +2531,8 @@ class ProjectsNotificationChannelsResource {
       queryParams: queryParams_,
     );
     return GetNotificationChannelVerificationCodeResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the notification channels that have been created for the project.
@@ -2583,7 +2603,8 @@ class ProjectsNotificationChannelsResource {
       queryParams: queryParams_,
     );
     return ListNotificationChannelsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a notification channel.
@@ -2637,7 +2658,8 @@ class ProjectsNotificationChannelsResource {
       queryParams: queryParams_,
     );
     return NotificationChannel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Causes a verification code to be delivered to the channel.
@@ -2724,7 +2746,8 @@ class ProjectsNotificationChannelsResource {
       queryParams: queryParams_,
     );
     return NotificationChannel.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2796,10 +2819,7 @@ class ProjectsSnoozesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Snooze> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Snooze> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2873,7 +2893,8 @@ class ProjectsSnoozesResource {
       queryParams: queryParams_,
     );
     return ListSnoozesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a Snooze, identified by its name, with the parameters in the given
@@ -3537,18 +3558,18 @@ class ProjectsTimeSeriesResource {
       if (pageToken != null) 'pageToken': [pageToken],
       if (secondaryAggregation_alignmentPeriod != null)
         'secondaryAggregation.alignmentPeriod': [
-          secondaryAggregation_alignmentPeriod
+          secondaryAggregation_alignmentPeriod,
         ],
       if (secondaryAggregation_crossSeriesReducer != null)
         'secondaryAggregation.crossSeriesReducer': [
-          secondaryAggregation_crossSeriesReducer
+          secondaryAggregation_crossSeriesReducer,
         ],
       if (secondaryAggregation_groupByFields != null)
         'secondaryAggregation.groupByFields':
             secondaryAggregation_groupByFields,
       if (secondaryAggregation_perSeriesAligner != null)
         'secondaryAggregation.perSeriesAligner': [
-          secondaryAggregation_perSeriesAligner
+          secondaryAggregation_perSeriesAligner,
         ],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
@@ -3562,7 +3583,8 @@ class ProjectsTimeSeriesResource {
       queryParams: queryParams_,
     );
     return ListTimeSeriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Queries time series by using Monitoring Query Language (MQL).
@@ -3612,7 +3634,8 @@ class ProjectsTimeSeriesResource {
       queryParams: queryParams_,
     );
     return QueryTimeSeriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3620,7 +3643,7 @@ class ProjectsUptimeCheckConfigsResource {
   final commons.ApiRequester _requester;
 
   ProjectsUptimeCheckConfigsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a new Uptime check configuration.
   ///
@@ -3662,7 +3685,8 @@ class ProjectsUptimeCheckConfigsResource {
       queryParams: queryParams_,
     );
     return UptimeCheckConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes an Uptime check configuration.
@@ -3688,10 +3712,7 @@ class ProjectsUptimeCheckConfigsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3701,6 +3722,7 @@ class ProjectsUptimeCheckConfigsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3741,7 +3763,8 @@ class ProjectsUptimeCheckConfigsResource {
       queryParams: queryParams_,
     );
     return UptimeCheckConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists the existing valid Uptime check configurations for the project
@@ -3802,7 +3825,8 @@ class ProjectsUptimeCheckConfigsResource {
       queryParams: queryParams_,
     );
     return ListUptimeCheckConfigsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates an Uptime check configuration.
@@ -3860,7 +3884,8 @@ class ProjectsUptimeCheckConfigsResource {
       queryParams: queryParams_,
     );
     return UptimeCheckConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3938,10 +3963,7 @@ class ServicesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3951,6 +3973,7 @@ class ServicesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3974,10 +3997,7 @@ class ServicesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Service> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Service> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4060,7 +4080,8 @@ class ServicesResource {
       queryParams: queryParams_,
     );
     return ListServicesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update this Service.
@@ -4114,7 +4135,7 @@ class ServicesServiceLevelObjectivesResource {
   final commons.ApiRequester _requester;
 
   ServicesServiceLevelObjectivesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Create a ServiceLevelObjective for the given Service.
   ///
@@ -4163,7 +4184,8 @@ class ServicesServiceLevelObjectivesResource {
       queryParams: queryParams_,
     );
     return ServiceLevelObjective.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Delete the given ServiceLevelObjective.
@@ -4186,10 +4208,7 @@ class ServicesServiceLevelObjectivesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -4199,6 +4218,7 @@ class ServicesServiceLevelObjectivesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4256,7 +4276,8 @@ class ServicesServiceLevelObjectivesResource {
       queryParams: queryParams_,
     );
     return ServiceLevelObjective.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// List the ServiceLevelObjectives for the given Service.
@@ -4328,7 +4349,8 @@ class ServicesServiceLevelObjectivesResource {
       queryParams: queryParams_,
     );
     return ListServiceLevelObjectivesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Update the given ServiceLevelObjective.
@@ -4377,7 +4399,8 @@ class ServicesServiceLevelObjectivesResource {
       queryParams: queryParams_,
     );
     return ServiceLevelObjective.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4429,7 +4452,8 @@ class UptimeCheckIpsResource {
       queryParams: queryParams_,
     );
     return ListUptimeCheckIpsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -4674,22 +4698,22 @@ class Aggregation {
   });
 
   Aggregation.fromJson(core.Map json_)
-      : this(
-          alignmentPeriod: json_['alignmentPeriod'] as core.String?,
-          crossSeriesReducer: json_['crossSeriesReducer'] as core.String?,
-          groupByFields: (json_['groupByFields'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          perSeriesAligner: json_['perSeriesAligner'] as core.String?,
-        );
+    : this(
+        alignmentPeriod: json_['alignmentPeriod'] as core.String?,
+        crossSeriesReducer: json_['crossSeriesReducer'] as core.String?,
+        groupByFields:
+            (json_['groupByFields'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        perSeriesAligner: json_['perSeriesAligner'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alignmentPeriod != null) 'alignmentPeriod': alignmentPeriod!,
-        if (crossSeriesReducer != null)
-          'crossSeriesReducer': crossSeriesReducer!,
-        if (groupByFields != null) 'groupByFields': groupByFields!,
-        if (perSeriesAligner != null) 'perSeriesAligner': perSeriesAligner!,
-      };
+    if (alignmentPeriod != null) 'alignmentPeriod': alignmentPeriod!,
+    if (crossSeriesReducer != null) 'crossSeriesReducer': crossSeriesReducer!,
+    if (groupByFields != null) 'groupByFields': groupByFields!,
+    if (perSeriesAligner != null) 'perSeriesAligner': perSeriesAligner!,
+  };
 }
 
 /// A description of the conditions under which some aspect of your system is
@@ -4846,65 +4870,77 @@ class AlertPolicy {
   });
 
   AlertPolicy.fromJson(core.Map json_)
-      : this(
-          alertStrategy: json_.containsKey('alertStrategy')
-              ? AlertStrategy.fromJson(
-                  json_['alertStrategy'] as core.Map<core.String, core.dynamic>)
-              : null,
-          combiner: json_['combiner'] as core.String?,
-          conditions: (json_['conditions'] as core.List?)
-              ?.map((value) => Condition.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          creationRecord: json_.containsKey('creationRecord')
-              ? MutationRecord.fromJson(json_['creationRecord']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          displayName: json_['displayName'] as core.String?,
-          documentation: json_.containsKey('documentation')
-              ? Documentation.fromJson(
-                  json_['documentation'] as core.Map<core.String, core.dynamic>)
-              : null,
-          enabled: json_['enabled'] as core.bool?,
-          mutationRecord: json_.containsKey('mutationRecord')
-              ? MutationRecord.fromJson(json_['mutationRecord']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          notificationChannels: (json_['notificationChannels'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          severity: json_['severity'] as core.String?,
-          userLabels:
-              (json_['userLabels'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          validity: json_.containsKey('validity')
-              ? Status.fromJson(
-                  json_['validity'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        alertStrategy:
+            json_.containsKey('alertStrategy')
+                ? AlertStrategy.fromJson(
+                  json_['alertStrategy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        combiner: json_['combiner'] as core.String?,
+        conditions:
+            (json_['conditions'] as core.List?)
+                ?.map(
+                  (value) => Condition.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        creationRecord:
+            json_.containsKey('creationRecord')
+                ? MutationRecord.fromJson(
+                  json_['creationRecord']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        displayName: json_['displayName'] as core.String?,
+        documentation:
+            json_.containsKey('documentation')
+                ? Documentation.fromJson(
+                  json_['documentation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        enabled: json_['enabled'] as core.bool?,
+        mutationRecord:
+            json_.containsKey('mutationRecord')
+                ? MutationRecord.fromJson(
+                  json_['mutationRecord']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        notificationChannels:
+            (json_['notificationChannels'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        severity: json_['severity'] as core.String?,
+        userLabels: (json_['userLabels']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        validity:
+            json_.containsKey('validity')
+                ? Status.fromJson(
+                  json_['validity'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alertStrategy != null) 'alertStrategy': alertStrategy!,
-        if (combiner != null) 'combiner': combiner!,
-        if (conditions != null) 'conditions': conditions!,
-        if (creationRecord != null) 'creationRecord': creationRecord!,
-        if (displayName != null) 'displayName': displayName!,
-        if (documentation != null) 'documentation': documentation!,
-        if (enabled != null) 'enabled': enabled!,
-        if (mutationRecord != null) 'mutationRecord': mutationRecord!,
-        if (name != null) 'name': name!,
-        if (notificationChannels != null)
-          'notificationChannels': notificationChannels!,
-        if (severity != null) 'severity': severity!,
-        if (userLabels != null) 'userLabels': userLabels!,
-        if (validity != null) 'validity': validity!,
-      };
+    if (alertStrategy != null) 'alertStrategy': alertStrategy!,
+    if (combiner != null) 'combiner': combiner!,
+    if (conditions != null) 'conditions': conditions!,
+    if (creationRecord != null) 'creationRecord': creationRecord!,
+    if (displayName != null) 'displayName': displayName!,
+    if (documentation != null) 'documentation': documentation!,
+    if (enabled != null) 'enabled': enabled!,
+    if (mutationRecord != null) 'mutationRecord': mutationRecord!,
+    if (name != null) 'name': name!,
+    if (notificationChannels != null)
+      'notificationChannels': notificationChannels!,
+    if (severity != null) 'severity': severity!,
+    if (userLabels != null) 'userLabels': userLabels!,
+    if (validity != null) 'validity': validity!,
+  };
 }
 
 /// Control over how the notification channels in notification_channels are
@@ -4936,31 +4972,38 @@ class AlertStrategy {
   });
 
   AlertStrategy.fromJson(core.Map json_)
-      : this(
-          autoClose: json_['autoClose'] as core.String?,
-          notificationChannelStrategy:
-              (json_['notificationChannelStrategy'] as core.List?)
-                  ?.map((value) => NotificationChannelStrategy.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          notificationPrompts: (json_['notificationPrompts'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          notificationRateLimit: json_.containsKey('notificationRateLimit')
-              ? NotificationRateLimit.fromJson(json_['notificationRateLimit']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        autoClose: json_['autoClose'] as core.String?,
+        notificationChannelStrategy:
+            (json_['notificationChannelStrategy'] as core.List?)
+                ?.map(
+                  (value) => NotificationChannelStrategy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        notificationPrompts:
+            (json_['notificationPrompts'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        notificationRateLimit:
+            json_.containsKey('notificationRateLimit')
+                ? NotificationRateLimit.fromJson(
+                  json_['notificationRateLimit']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (autoClose != null) 'autoClose': autoClose!,
-        if (notificationChannelStrategy != null)
-          'notificationChannelStrategy': notificationChannelStrategy!,
-        if (notificationPrompts != null)
-          'notificationPrompts': notificationPrompts!,
-        if (notificationRateLimit != null)
-          'notificationRateLimit': notificationRateLimit!,
-      };
+    if (autoClose != null) 'autoClose': autoClose!,
+    if (notificationChannelStrategy != null)
+      'notificationChannelStrategy': notificationChannelStrategy!,
+    if (notificationPrompts != null)
+      'notificationPrompts': notificationPrompts!,
+    if (notificationRateLimit != null)
+      'notificationRateLimit': notificationRateLimit!,
+  };
 }
 
 /// App Engine service.
@@ -4973,18 +5016,14 @@ class AppEngine {
   /// resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app).
   core.String? moduleId;
 
-  AppEngine({
-    this.moduleId,
-  });
+  AppEngine({this.moduleId});
 
   AppEngine.fromJson(core.Map json_)
-      : this(
-          moduleId: json_['moduleId'] as core.String?,
-        );
+    : this(moduleId: json_['moduleId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (moduleId != null) 'moduleId': moduleId!,
-      };
+    if (moduleId != null) 'moduleId': moduleId!,
+  };
 }
 
 /// Future parameters for the availability SLI.
@@ -5002,21 +5041,18 @@ class BasicAuthentication {
   /// The username to use when authenticating with the HTTP server.
   core.String? username;
 
-  BasicAuthentication({
-    this.password,
-    this.username,
-  });
+  BasicAuthentication({this.password, this.username});
 
   BasicAuthentication.fromJson(core.Map json_)
-      : this(
-          password: json_['password'] as core.String?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        password: json_['password'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (password != null) 'password': password!,
-        if (username != null) 'username': username!,
-      };
+    if (password != null) 'password': password!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// A well-known service type, defined by its service type and service labels.
@@ -5038,28 +5074,20 @@ class BasicService {
   /// (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli).
   core.String? serviceType;
 
-  BasicService({
-    this.serviceLabels,
-    this.serviceType,
-  });
+  BasicService({this.serviceLabels, this.serviceType});
 
   BasicService.fromJson(core.Map json_)
-      : this(
-          serviceLabels:
-              (json_['serviceLabels'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          serviceType: json_['serviceType'] as core.String?,
-        );
+    : this(
+        serviceLabels: (json_['serviceLabels']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        serviceType: json_['serviceType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (serviceLabels != null) 'serviceLabels': serviceLabels!,
-        if (serviceType != null) 'serviceType': serviceType!,
-      };
+    if (serviceLabels != null) 'serviceLabels': serviceLabels!,
+    if (serviceType != null) 'serviceType': serviceType!,
+  };
 }
 
 /// An SLI measuring performance on a well-known service type.
@@ -5110,33 +5138,40 @@ class BasicSli {
   });
 
   BasicSli.fromJson(core.Map json_)
-      : this(
-          availability: json_.containsKey('availability')
-              ? AvailabilityCriteria.fromJson(
-                  json_['availability'] as core.Map<core.String, core.dynamic>)
-              : null,
-          latency: json_.containsKey('latency')
-              ? LatencyCriteria.fromJson(
-                  json_['latency'] as core.Map<core.String, core.dynamic>)
-              : null,
-          location: (json_['location'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          method: (json_['method'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          version: (json_['version'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        availability:
+            json_.containsKey('availability')
+                ? AvailabilityCriteria.fromJson(
+                  json_['availability'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        latency:
+            json_.containsKey('latency')
+                ? LatencyCriteria.fromJson(
+                  json_['latency'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location:
+            (json_['location'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        method:
+            (json_['method'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        version:
+            (json_['version'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (availability != null) 'availability': availability!,
-        if (latency != null) 'latency': latency!,
-        if (location != null) 'location': location!,
-        if (method != null) 'method': method!,
-        if (version != null) 'version': version!,
-      };
+    if (availability != null) 'availability': availability!,
+    if (latency != null) 'latency': latency!,
+    if (location != null) 'location': location!,
+    if (method != null) 'method': method!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// A test that uses an alerting result in a boolean column produced by the SQL
@@ -5149,18 +5184,14 @@ class BooleanTest {
   /// Required.
   core.String? column;
 
-  BooleanTest({
-    this.column,
-  });
+  BooleanTest({this.column});
 
   BooleanTest.fromJson(core.Map json_)
-      : this(
-          column: json_['column'] as core.String?,
-        );
+    : this(column: json_['column'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (column != null) 'column': column!,
-      };
+    if (column != null) 'column': column!,
+  };
 }
 
 /// BucketOptions describes the bucket boundaries used to create a histogram for
@@ -5195,27 +5226,34 @@ class BucketOptions {
   });
 
   BucketOptions.fromJson(core.Map json_)
-      : this(
-          explicitBuckets: json_.containsKey('explicitBuckets')
-              ? Explicit.fromJson(json_['explicitBuckets']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          exponentialBuckets: json_.containsKey('exponentialBuckets')
-              ? Exponential.fromJson(json_['exponentialBuckets']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          linearBuckets: json_.containsKey('linearBuckets')
-              ? Linear.fromJson(
-                  json_['linearBuckets'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        explicitBuckets:
+            json_.containsKey('explicitBuckets')
+                ? Explicit.fromJson(
+                  json_['explicitBuckets']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        exponentialBuckets:
+            json_.containsKey('exponentialBuckets')
+                ? Exponential.fromJson(
+                  json_['exponentialBuckets']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        linearBuckets:
+            json_.containsKey('linearBuckets')
+                ? Linear.fromJson(
+                  json_['linearBuckets'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (explicitBuckets != null) 'explicitBuckets': explicitBuckets!,
-        if (exponentialBuckets != null)
-          'exponentialBuckets': exponentialBuckets!,
-        if (linearBuckets != null) 'linearBuckets': linearBuckets!,
-      };
+    if (explicitBuckets != null) 'explicitBuckets': explicitBuckets!,
+    if (exponentialBuckets != null) 'exponentialBuckets': exponentialBuckets!,
+    if (linearBuckets != null) 'linearBuckets': linearBuckets!,
+  };
 }
 
 /// Cloud Endpoints service.
@@ -5228,18 +5266,14 @@ class CloudEndpoints {
   /// (https://cloud.google.com/monitoring/api/resources#tag_api).
   core.String? service;
 
-  CloudEndpoints({
-    this.service,
-  });
+  CloudEndpoints({this.service});
 
   CloudEndpoints.fromJson(core.Map json_)
-      : this(
-          service: json_['service'] as core.String?,
-        );
+    : this(service: json_['service'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (service != null) 'service': service!,
-      };
+    if (service != null) 'service': service!,
+  };
 }
 
 /// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
@@ -5258,24 +5292,24 @@ class CloudFunctionV2Target {
   /// Required.
   core.String? name;
 
-  CloudFunctionV2Target({
-    this.cloudRunRevision,
-    this.name,
-  });
+  CloudFunctionV2Target({this.cloudRunRevision, this.name});
 
   CloudFunctionV2Target.fromJson(core.Map json_)
-      : this(
-          cloudRunRevision: json_.containsKey('cloudRunRevision')
-              ? MonitoredResource.fromJson(json_['cloudRunRevision']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        cloudRunRevision:
+            json_.containsKey('cloudRunRevision')
+                ? MonitoredResource.fromJson(
+                  json_['cloudRunRevision']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudRunRevision != null) 'cloudRunRevision': cloudRunRevision!,
-        if (name != null) 'name': name!,
-      };
+    if (cloudRunRevision != null) 'cloudRunRevision': cloudRunRevision!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Cloud Run service.
@@ -5296,21 +5330,18 @@ class CloudRun {
   /// (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
   core.String? serviceName;
 
-  CloudRun({
-    this.location,
-    this.serviceName,
-  });
+  CloudRun({this.location, this.serviceName});
 
   CloudRun.fromJson(core.Map json_)
-      : this(
-          location: json_['location'] as core.String?,
-          serviceName: json_['serviceName'] as core.String?,
-        );
+    : this(
+        location: json_['location'] as core.String?,
+        serviceName: json_['serviceName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (location != null) 'location': location!,
-        if (serviceName != null) 'serviceName': serviceName!,
-      };
+    if (location != null) 'location': location!,
+    if (serviceName != null) 'serviceName': serviceName!,
+  };
 }
 
 /// Istio service scoped to a single Kubernetes cluster.
@@ -5348,19 +5379,19 @@ class ClusterIstio {
   });
 
   ClusterIstio.fromJson(core.Map json_)
-      : this(
-          clusterName: json_['clusterName'] as core.String?,
-          location: json_['location'] as core.String?,
-          serviceName: json_['serviceName'] as core.String?,
-          serviceNamespace: json_['serviceNamespace'] as core.String?,
-        );
+    : this(
+        clusterName: json_['clusterName'] as core.String?,
+        location: json_['location'] as core.String?,
+        serviceName: json_['serviceName'] as core.String?,
+        serviceNamespace: json_['serviceNamespace'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterName != null) 'clusterName': clusterName!,
-        if (location != null) 'location': location!,
-        if (serviceName != null) 'serviceName': serviceName!,
-        if (serviceNamespace != null) 'serviceNamespace': serviceNamespace!,
-      };
+    if (clusterName != null) 'clusterName': clusterName!,
+    if (location != null) 'location': location!,
+    if (serviceName != null) 'serviceName': serviceName!,
+    if (serviceNamespace != null) 'serviceNamespace': serviceNamespace!,
+  };
 }
 
 /// A collection of data points sent from a collectd-based plugin.
@@ -5413,36 +5444,42 @@ class CollectdPayload {
   });
 
   CollectdPayload.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          metadata:
-              (json_['metadata'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              TypedValue.fromJson(value as core.Map<core.String, core.dynamic>),
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                TypedValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          plugin: json_['plugin'] as core.String?,
-          pluginInstance: json_['pluginInstance'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-          type: json_['type'] as core.String?,
-          typeInstance: json_['typeInstance'] as core.String?,
-          values: (json_['values'] as core.List?)
-              ?.map((value) => CollectdValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+        plugin: json_['plugin'] as core.String?,
+        pluginInstance: json_['pluginInstance'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        type: json_['type'] as core.String?,
+        typeInstance: json_['typeInstance'] as core.String?,
+        values:
+            (json_['values'] as core.List?)
+                ?.map(
+                  (value) => CollectdValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (metadata != null) 'metadata': metadata!,
-        if (plugin != null) 'plugin': plugin!,
-        if (pluginInstance != null) 'pluginInstance': pluginInstance!,
-        if (startTime != null) 'startTime': startTime!,
-        if (type != null) 'type': type!,
-        if (typeInstance != null) 'typeInstance': typeInstance!,
-        if (values != null) 'values': values!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (metadata != null) 'metadata': metadata!,
+    if (plugin != null) 'plugin': plugin!,
+    if (pluginInstance != null) 'pluginInstance': pluginInstance!,
+    if (startTime != null) 'startTime': startTime!,
+    if (type != null) 'type': type!,
+    if (typeInstance != null) 'typeInstance': typeInstance!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// Describes the error status for payloads that were not written.
@@ -5461,30 +5498,32 @@ class CollectdPayloadError {
   /// partial value errors.
   core.List<CollectdValueError>? valueErrors;
 
-  CollectdPayloadError({
-    this.error,
-    this.index,
-    this.valueErrors,
-  });
+  CollectdPayloadError({this.error, this.index, this.valueErrors});
 
   CollectdPayloadError.fromJson(core.Map json_)
-      : this(
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          index: json_['index'] as core.int?,
-          valueErrors: (json_['valueErrors'] as core.List?)
-              ?.map((value) => CollectdValueError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        index: json_['index'] as core.int?,
+        valueErrors:
+            (json_['valueErrors'] as core.List?)
+                ?.map(
+                  (value) => CollectdValueError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!,
-        if (index != null) 'index': index!,
-        if (valueErrors != null) 'valueErrors': valueErrors!,
-      };
+    if (error != null) 'error': error!,
+    if (index != null) 'index': index!,
+    if (valueErrors != null) 'valueErrors': valueErrors!,
+  };
 }
 
 /// A single data point from a collectd-based plugin.
@@ -5512,27 +5551,25 @@ class CollectdValue {
   /// The measurement value.
   TypedValue? value;
 
-  CollectdValue({
-    this.dataSourceName,
-    this.dataSourceType,
-    this.value,
-  });
+  CollectdValue({this.dataSourceName, this.dataSourceType, this.value});
 
   CollectdValue.fromJson(core.Map json_)
-      : this(
-          dataSourceName: json_['dataSourceName'] as core.String?,
-          dataSourceType: json_['dataSourceType'] as core.String?,
-          value: json_.containsKey('value')
-              ? TypedValue.fromJson(
-                  json_['value'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        dataSourceName: json_['dataSourceName'] as core.String?,
+        dataSourceType: json_['dataSourceType'] as core.String?,
+        value:
+            json_.containsKey('value')
+                ? TypedValue.fromJson(
+                  json_['value'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dataSourceName != null) 'dataSourceName': dataSourceName!,
-        if (dataSourceType != null) 'dataSourceType': dataSourceType!,
-        if (value != null) 'value': value!,
-      };
+    if (dataSourceName != null) 'dataSourceName': dataSourceName!,
+    if (dataSourceType != null) 'dataSourceType': dataSourceType!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Describes the error status for values that were not written.
@@ -5544,24 +5581,23 @@ class CollectdValueError {
   /// CreateCollectdTimeSeriesRequest.collectd_payloads.
   core.int? index;
 
-  CollectdValueError({
-    this.error,
-    this.index,
-  });
+  CollectdValueError({this.error, this.index});
 
   CollectdValueError.fromJson(core.Map json_)
-      : this(
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          index: json_['index'] as core.int?,
-        );
+    : this(
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        index: json_['index'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (error != null) 'error': error!,
-        if (index != null) 'index': index!,
-      };
+    if (error != null) 'error': error!,
+    if (index != null) 'index': index!,
+  };
 }
 
 /// A condition is a true/false test that determines when an alerting policy
@@ -5627,53 +5663,65 @@ class Condition {
   });
 
   Condition.fromJson(core.Map json_)
-      : this(
-          conditionAbsent: json_.containsKey('conditionAbsent')
-              ? MetricAbsence.fromJson(json_['conditionAbsent']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          conditionMatchedLog: json_.containsKey('conditionMatchedLog')
-              ? LogMatch.fromJson(json_['conditionMatchedLog']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          conditionMonitoringQueryLanguage:
-              json_.containsKey('conditionMonitoringQueryLanguage')
-                  ? MonitoringQueryLanguageCondition.fromJson(
-                      json_['conditionMonitoringQueryLanguage']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          conditionPrometheusQueryLanguage:
-              json_.containsKey('conditionPrometheusQueryLanguage')
-                  ? PrometheusQueryLanguageCondition.fromJson(
-                      json_['conditionPrometheusQueryLanguage']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          conditionSql: json_.containsKey('conditionSql')
-              ? SqlCondition.fromJson(
-                  json_['conditionSql'] as core.Map<core.String, core.dynamic>)
-              : null,
-          conditionThreshold: json_.containsKey('conditionThreshold')
-              ? MetricThreshold.fromJson(json_['conditionThreshold']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        conditionAbsent:
+            json_.containsKey('conditionAbsent')
+                ? MetricAbsence.fromJson(
+                  json_['conditionAbsent']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conditionMatchedLog:
+            json_.containsKey('conditionMatchedLog')
+                ? LogMatch.fromJson(
+                  json_['conditionMatchedLog']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conditionMonitoringQueryLanguage:
+            json_.containsKey('conditionMonitoringQueryLanguage')
+                ? MonitoringQueryLanguageCondition.fromJson(
+                  json_['conditionMonitoringQueryLanguage']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conditionPrometheusQueryLanguage:
+            json_.containsKey('conditionPrometheusQueryLanguage')
+                ? PrometheusQueryLanguageCondition.fromJson(
+                  json_['conditionPrometheusQueryLanguage']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conditionSql:
+            json_.containsKey('conditionSql')
+                ? SqlCondition.fromJson(
+                  json_['conditionSql'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conditionThreshold:
+            json_.containsKey('conditionThreshold')
+                ? MetricThreshold.fromJson(
+                  json_['conditionThreshold']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (conditionAbsent != null) 'conditionAbsent': conditionAbsent!,
-        if (conditionMatchedLog != null)
-          'conditionMatchedLog': conditionMatchedLog!,
-        if (conditionMonitoringQueryLanguage != null)
-          'conditionMonitoringQueryLanguage': conditionMonitoringQueryLanguage!,
-        if (conditionPrometheusQueryLanguage != null)
-          'conditionPrometheusQueryLanguage': conditionPrometheusQueryLanguage!,
-        if (conditionSql != null) 'conditionSql': conditionSql!,
-        if (conditionThreshold != null)
-          'conditionThreshold': conditionThreshold!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-      };
+    if (conditionAbsent != null) 'conditionAbsent': conditionAbsent!,
+    if (conditionMatchedLog != null)
+      'conditionMatchedLog': conditionMatchedLog!,
+    if (conditionMonitoringQueryLanguage != null)
+      'conditionMonitoringQueryLanguage': conditionMonitoringQueryLanguage!,
+    if (conditionPrometheusQueryLanguage != null)
+      'conditionPrometheusQueryLanguage': conditionPrometheusQueryLanguage!,
+    if (conditionSql != null) 'conditionSql': conditionSql!,
+    if (conditionThreshold != null) 'conditionThreshold': conditionThreshold!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// Used to perform content matching.
@@ -5721,27 +5769,26 @@ class ContentMatcher {
   /// match as specified. JSONPath is only supported for HTTP/HTTPS checks.
   core.String? matcher;
 
-  ContentMatcher({
-    this.content,
-    this.jsonPathMatcher,
-    this.matcher,
-  });
+  ContentMatcher({this.content, this.jsonPathMatcher, this.matcher});
 
   ContentMatcher.fromJson(core.Map json_)
-      : this(
-          content: json_['content'] as core.String?,
-          jsonPathMatcher: json_.containsKey('jsonPathMatcher')
-              ? JsonPathMatcher.fromJson(json_['jsonPathMatcher']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          matcher: json_['matcher'] as core.String?,
-        );
+    : this(
+        content: json_['content'] as core.String?,
+        jsonPathMatcher:
+            json_.containsKey('jsonPathMatcher')
+                ? JsonPathMatcher.fromJson(
+                  json_['jsonPathMatcher']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        matcher: json_['matcher'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (jsonPathMatcher != null) 'jsonPathMatcher': jsonPathMatcher!,
-        if (matcher != null) 'matcher': matcher!,
-      };
+    if (content != null) 'content': content!,
+    if (jsonPathMatcher != null) 'jsonPathMatcher': jsonPathMatcher!,
+    if (matcher != null) 'matcher': matcher!,
+  };
 }
 
 /// The CreateCollectdTimeSeries request.
@@ -5768,23 +5815,29 @@ class CreateCollectdTimeSeriesRequest {
   });
 
   CreateCollectdTimeSeriesRequest.fromJson(core.Map json_)
-      : this(
-          collectdPayloads: (json_['collectdPayloads'] as core.List?)
-              ?.map((value) => CollectdPayload.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          collectdVersion: json_['collectdVersion'] as core.String?,
-          resource: json_.containsKey('resource')
-              ? MonitoredResource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        collectdPayloads:
+            (json_['collectdPayloads'] as core.List?)
+                ?.map(
+                  (value) => CollectdPayload.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        collectdVersion: json_['collectdVersion'] as core.String?,
+        resource:
+            json_.containsKey('resource')
+                ? MonitoredResource.fromJson(
+                  json_['resource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (collectdPayloads != null) 'collectdPayloads': collectdPayloads!,
-        if (collectdVersion != null) 'collectdVersion': collectdVersion!,
-        if (resource != null) 'resource': resource!,
-      };
+    if (collectdPayloads != null) 'collectdPayloads': collectdPayloads!,
+    if (collectdVersion != null) 'collectdVersion': collectdVersion!,
+    if (resource != null) 'resource': resource!,
+  };
 }
 
 /// The CreateCollectdTimeSeries response.
@@ -5804,27 +5857,30 @@ class CreateCollectdTimeSeriesResponse {
   /// log errors on any non-empty response.
   CreateTimeSeriesSummary? summary;
 
-  CreateCollectdTimeSeriesResponse({
-    this.payloadErrors,
-    this.summary,
-  });
+  CreateCollectdTimeSeriesResponse({this.payloadErrors, this.summary});
 
   CreateCollectdTimeSeriesResponse.fromJson(core.Map json_)
-      : this(
-          payloadErrors: (json_['payloadErrors'] as core.List?)
-              ?.map((value) => CollectdPayloadError.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          summary: json_.containsKey('summary')
-              ? CreateTimeSeriesSummary.fromJson(
-                  json_['summary'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        payloadErrors:
+            (json_['payloadErrors'] as core.List?)
+                ?.map(
+                  (value) => CollectdPayloadError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        summary:
+            json_.containsKey('summary')
+                ? CreateTimeSeriesSummary.fromJson(
+                  json_['summary'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (payloadErrors != null) 'payloadErrors': payloadErrors!,
-        if (summary != null) 'summary': summary!,
-      };
+    if (payloadErrors != null) 'payloadErrors': payloadErrors!,
+    if (summary != null) 'summary': summary!,
+  };
 }
 
 /// The CreateTimeSeries request.
@@ -5840,21 +5896,23 @@ class CreateTimeSeriesRequest {
   /// Required.
   core.List<TimeSeries>? timeSeries;
 
-  CreateTimeSeriesRequest({
-    this.timeSeries,
-  });
+  CreateTimeSeriesRequest({this.timeSeries});
 
   CreateTimeSeriesRequest.fromJson(core.Map json_)
-      : this(
-          timeSeries: (json_['timeSeries'] as core.List?)
-              ?.map((value) => TimeSeries.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        timeSeries:
+            (json_['timeSeries'] as core.List?)
+                ?.map(
+                  (value) => TimeSeries.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (timeSeries != null) 'timeSeries': timeSeries!,
-      };
+    if (timeSeries != null) 'timeSeries': timeSeries!,
+  };
 }
 
 /// Summary of the result of a failed request to write data to a time series.
@@ -5877,20 +5935,24 @@ class CreateTimeSeriesSummary {
   });
 
   CreateTimeSeriesSummary.fromJson(core.Map json_)
-      : this(
-          errors: (json_['errors'] as core.List?)
-              ?.map((value) =>
-                  Error.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          successPointCount: json_['successPointCount'] as core.int?,
-          totalPointCount: json_['totalPointCount'] as core.int?,
-        );
+    : this(
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => Error.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        successPointCount: json_['successPointCount'] as core.int?,
+        totalPointCount: json_['totalPointCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (errors != null) 'errors': errors!,
-        if (successPointCount != null) 'successPointCount': successPointCount!,
-        if (totalPointCount != null) 'totalPointCount': totalPointCount!,
-      };
+    if (errors != null) 'errors': errors!,
+    if (successPointCount != null) 'successPointCount': successPointCount!,
+    if (totalPointCount != null) 'totalPointCount': totalPointCount!,
+  };
 }
 
 /// Criteria specific to the AlertPolicys that this Snooze applies to.
@@ -5929,23 +5991,21 @@ class Criteria {
   /// same time.
   core.List<core.String>? policies;
 
-  Criteria({
-    this.filter,
-    this.policies,
-  });
+  Criteria({this.filter, this.policies});
 
   Criteria.fromJson(core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-          policies: (json_['policies'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        filter: json_['filter'] as core.String?,
+        policies:
+            (json_['policies'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (policies != null) 'policies': policies!,
-      };
+    if (filter != null) 'filter': filter!,
+    if (policies != null) 'policies': policies!,
+  };
 }
 
 /// Use a custom service to designate a service that you want to monitor when
@@ -5970,24 +6030,23 @@ class Daily {
   /// Required.
   core.int? periodicity;
 
-  Daily({
-    this.executionTime,
-    this.periodicity,
-  });
+  Daily({this.executionTime, this.periodicity});
 
   Daily.fromJson(core.Map json_)
-      : this(
-          executionTime: json_.containsKey('executionTime')
-              ? TimeOfDay.fromJson(
-                  json_['executionTime'] as core.Map<core.String, core.dynamic>)
-              : null,
-          periodicity: json_['periodicity'] as core.int?,
-        );
+    : this(
+        executionTime:
+            json_.containsKey('executionTime')
+                ? TimeOfDay.fromJson(
+                  json_['executionTime'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        periodicity: json_['periodicity'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (executionTime != null) 'executionTime': executionTime!,
-        if (periodicity != null) 'periodicity': periodicity!,
-      };
+    if (executionTime != null) 'executionTime': executionTime!,
+    if (periodicity != null) 'periodicity': periodicity!,
+  };
 }
 
 /// Distribution contains summary statistics for a population of values.
@@ -6060,38 +6119,47 @@ class Distribution {
   });
 
   Distribution.fromJson(core.Map json_)
-      : this(
-          bucketCounts: (json_['bucketCounts'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          bucketOptions: json_.containsKey('bucketOptions')
-              ? BucketOptions.fromJson(
-                  json_['bucketOptions'] as core.Map<core.String, core.dynamic>)
-              : null,
-          count: json_['count'] as core.String?,
-          exemplars: (json_['exemplars'] as core.List?)
-              ?.map((value) => Exemplar.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          mean: (json_['mean'] as core.num?)?.toDouble(),
-          range: json_.containsKey('range')
-              ? Range.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          sumOfSquaredDeviation:
-              (json_['sumOfSquaredDeviation'] as core.num?)?.toDouble(),
-        );
+    : this(
+        bucketCounts:
+            (json_['bucketCounts'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        bucketOptions:
+            json_.containsKey('bucketOptions')
+                ? BucketOptions.fromJson(
+                  json_['bucketOptions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        count: json_['count'] as core.String?,
+        exemplars:
+            (json_['exemplars'] as core.List?)
+                ?.map(
+                  (value) => Exemplar.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        mean: (json_['mean'] as core.num?)?.toDouble(),
+        range:
+            json_.containsKey('range')
+                ? Range.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sumOfSquaredDeviation:
+            (json_['sumOfSquaredDeviation'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bucketCounts != null) 'bucketCounts': bucketCounts!,
-        if (bucketOptions != null) 'bucketOptions': bucketOptions!,
-        if (count != null) 'count': count!,
-        if (exemplars != null) 'exemplars': exemplars!,
-        if (mean != null) 'mean': mean!,
-        if (range != null) 'range': range!,
-        if (sumOfSquaredDeviation != null)
-          'sumOfSquaredDeviation': sumOfSquaredDeviation!,
-      };
+    if (bucketCounts != null) 'bucketCounts': bucketCounts!,
+    if (bucketOptions != null) 'bucketOptions': bucketOptions!,
+    if (count != null) 'count': count!,
+    if (exemplars != null) 'exemplars': exemplars!,
+    if (mean != null) 'mean': mean!,
+    if (range != null) 'range': range!,
+    if (sumOfSquaredDeviation != null)
+      'sumOfSquaredDeviation': sumOfSquaredDeviation!,
+  };
 }
 
 /// A DistributionCut defines a TimeSeries and thresholds used for measuring
@@ -6113,25 +6181,23 @@ class DistributionCut {
   /// an infinite value.
   GoogleMonitoringV3Range? range;
 
-  DistributionCut({
-    this.distributionFilter,
-    this.range,
-  });
+  DistributionCut({this.distributionFilter, this.range});
 
   DistributionCut.fromJson(core.Map json_)
-      : this(
-          distributionFilter: json_['distributionFilter'] as core.String?,
-          range: json_.containsKey('range')
-              ? GoogleMonitoringV3Range.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        distributionFilter: json_['distributionFilter'] as core.String?,
+        range:
+            json_.containsKey('range')
+                ? GoogleMonitoringV3Range.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (distributionFilter != null)
-          'distributionFilter': distributionFilter!,
-        if (range != null) 'range': range!,
-      };
+    if (distributionFilter != null) 'distributionFilter': distributionFilter!,
+    if (range != null) 'range': range!,
+  };
 }
 
 /// Documentation that is included in the notifications and incidents pertaining
@@ -6174,30 +6240,29 @@ class Documentation {
   /// Optional.
   core.String? subject;
 
-  Documentation({
-    this.content,
-    this.links,
-    this.mimeType,
-    this.subject,
-  });
+  Documentation({this.content, this.links, this.mimeType, this.subject});
 
   Documentation.fromJson(core.Map json_)
-      : this(
-          content: json_['content'] as core.String?,
-          links: (json_['links'] as core.List?)
-              ?.map((value) =>
-                  Link.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          mimeType: json_['mimeType'] as core.String?,
-          subject: json_['subject'] as core.String?,
-        );
+    : this(
+        content: json_['content'] as core.String?,
+        links:
+            (json_['links'] as core.List?)
+                ?.map(
+                  (value) => Link.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        mimeType: json_['mimeType'] as core.String?,
+        subject: json_['subject'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (content != null) 'content': content!,
-        if (links != null) 'links': links!,
-        if (mimeType != null) 'mimeType': mimeType!,
-        if (subject != null) 'subject': subject!,
-      };
+    if (content != null) 'content': content!,
+    if (links != null) 'links': links!,
+    if (mimeType != null) 'mimeType': mimeType!,
+    if (subject != null) 'subject': subject!,
+  };
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -6216,24 +6281,23 @@ class Error {
   /// The status of the requested write operation.
   Status? status;
 
-  Error({
-    this.pointCount,
-    this.status,
-  });
+  Error({this.pointCount, this.status});
 
   Error.fromJson(core.Map json_)
-      : this(
-          pointCount: json_['pointCount'] as core.int?,
-          status: json_.containsKey('status')
-              ? Status.fromJson(
-                  json_['status'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        pointCount: json_['pointCount'] as core.int?,
+        status:
+            json_.containsKey('status')
+                ? Status.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pointCount != null) 'pointCount': pointCount!,
-        if (status != null) 'status': status!,
-      };
+    if (pointCount != null) 'pointCount': pointCount!,
+    if (status != null) 'status': status!,
+  };
 }
 
 /// Exemplars are example points that may be used to annotate aggregated
@@ -6265,26 +6329,23 @@ class Exemplar {
   /// This value determines to which bucket the exemplar belongs.
   core.double? value;
 
-  Exemplar({
-    this.attachments,
-    this.timestamp,
-    this.value,
-  });
+  Exemplar({this.attachments, this.timestamp, this.value});
 
   Exemplar.fromJson(core.Map json_)
-      : this(
-          attachments: (json_['attachments'] as core.List?)
-              ?.map((value) => value as core.Map<core.String, core.dynamic>)
-              .toList(),
-          timestamp: json_['timestamp'] as core.String?,
-          value: (json_['value'] as core.num?)?.toDouble(),
-        );
+    : this(
+        attachments:
+            (json_['attachments'] as core.List?)
+                ?.map((value) => value as core.Map<core.String, core.dynamic>)
+                .toList(),
+        timestamp: json_['timestamp'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachments != null) 'attachments': attachments!,
-        if (timestamp != null) 'timestamp': timestamp!,
-        if (value != null) 'value': value!,
-      };
+    if (attachments != null) 'attachments': attachments!,
+    if (timestamp != null) 'timestamp': timestamp!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1
@@ -6321,18 +6382,14 @@ class ForecastOptions {
   /// Required.
   core.String? forecastHorizon;
 
-  ForecastOptions({
-    this.forecastHorizon,
-  });
+  ForecastOptions({this.forecastHorizon});
 
   ForecastOptions.fromJson(core.Map json_)
-      : this(
-          forecastHorizon: json_['forecastHorizon'] as core.String?,
-        );
+    : this(forecastHorizon: json_['forecastHorizon'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (forecastHorizon != null) 'forecastHorizon': forecastHorizon!,
-      };
+    if (forecastHorizon != null) 'forecastHorizon': forecastHorizon!,
+  };
 }
 
 /// The GetNotificationChannelVerificationCode request.
@@ -6350,18 +6407,14 @@ class GetNotificationChannelVerificationCodeRequest {
   /// permitted).
   core.String? expireTime;
 
-  GetNotificationChannelVerificationCodeRequest({
-    this.expireTime,
-  });
+  GetNotificationChannelVerificationCodeRequest({this.expireTime});
 
   GetNotificationChannelVerificationCodeRequest.fromJson(core.Map json_)
-      : this(
-          expireTime: json_['expireTime'] as core.String?,
-        );
+    : this(expireTime: json_['expireTime'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (expireTime != null) 'expireTime': expireTime!,
-      };
+    if (expireTime != null) 'expireTime': expireTime!,
+  };
 }
 
 /// The GetNotificationChannelVerificationCode request.
@@ -6378,21 +6431,18 @@ class GetNotificationChannelVerificationCodeResponse {
   /// requested expiration in the request and the max permitted expiration.
   core.String? expireTime;
 
-  GetNotificationChannelVerificationCodeResponse({
-    this.code,
-    this.expireTime,
-  });
+  GetNotificationChannelVerificationCodeResponse({this.code, this.expireTime});
 
   GetNotificationChannelVerificationCodeResponse.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-          expireTime: json_['expireTime'] as core.String?,
-        );
+    : this(
+        code: json_['code'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-        if (expireTime != null) 'expireTime': expireTime!,
-      };
+    if (code != null) 'code': code!,
+    if (expireTime != null) 'expireTime': expireTime!,
+  };
 }
 
 /// GKE Namespace.
@@ -6428,19 +6478,19 @@ class GkeNamespace {
   });
 
   GkeNamespace.fromJson(core.Map json_)
-      : this(
-          clusterName: json_['clusterName'] as core.String?,
-          location: json_['location'] as core.String?,
-          namespaceName: json_['namespaceName'] as core.String?,
-          projectId: json_['projectId'] as core.String?,
-        );
+    : this(
+        clusterName: json_['clusterName'] as core.String?,
+        location: json_['location'] as core.String?,
+        namespaceName: json_['namespaceName'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterName != null) 'clusterName': clusterName!,
-        if (location != null) 'location': location!,
-        if (namespaceName != null) 'namespaceName': namespaceName!,
-        if (projectId != null) 'projectId': projectId!,
-      };
+    if (clusterName != null) 'clusterName': clusterName!,
+    if (location != null) 'location': location!,
+    if (namespaceName != null) 'namespaceName': namespaceName!,
+    if (projectId != null) 'projectId': projectId!,
+  };
 }
 
 /// GKE Service.
@@ -6481,21 +6531,21 @@ class GkeService {
   });
 
   GkeService.fromJson(core.Map json_)
-      : this(
-          clusterName: json_['clusterName'] as core.String?,
-          location: json_['location'] as core.String?,
-          namespaceName: json_['namespaceName'] as core.String?,
-          projectId: json_['projectId'] as core.String?,
-          serviceName: json_['serviceName'] as core.String?,
-        );
+    : this(
+        clusterName: json_['clusterName'] as core.String?,
+        location: json_['location'] as core.String?,
+        namespaceName: json_['namespaceName'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+        serviceName: json_['serviceName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterName != null) 'clusterName': clusterName!,
-        if (location != null) 'location': location!,
-        if (namespaceName != null) 'namespaceName': namespaceName!,
-        if (projectId != null) 'projectId': projectId!,
-        if (serviceName != null) 'serviceName': serviceName!,
-      };
+    if (clusterName != null) 'clusterName': clusterName!,
+    if (location != null) 'location': location!,
+    if (namespaceName != null) 'namespaceName': namespaceName!,
+    if (projectId != null) 'projectId': projectId!,
+    if (serviceName != null) 'serviceName': serviceName!,
+  };
 }
 
 /// A GKE Workload (Deployment, StatefulSet, etc).
@@ -6538,27 +6588,25 @@ class GkeWorkload {
   });
 
   GkeWorkload.fromJson(core.Map json_)
-      : this(
-          clusterName: json_['clusterName'] as core.String?,
-          location: json_['location'] as core.String?,
-          namespaceName: json_['namespaceName'] as core.String?,
-          projectId: json_['projectId'] as core.String?,
-          topLevelControllerName:
-              json_['topLevelControllerName'] as core.String?,
-          topLevelControllerType:
-              json_['topLevelControllerType'] as core.String?,
-        );
+    : this(
+        clusterName: json_['clusterName'] as core.String?,
+        location: json_['location'] as core.String?,
+        namespaceName: json_['namespaceName'] as core.String?,
+        projectId: json_['projectId'] as core.String?,
+        topLevelControllerName: json_['topLevelControllerName'] as core.String?,
+        topLevelControllerType: json_['topLevelControllerType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (clusterName != null) 'clusterName': clusterName!,
-        if (location != null) 'location': location!,
-        if (namespaceName != null) 'namespaceName': namespaceName!,
-        if (projectId != null) 'projectId': projectId!,
-        if (topLevelControllerName != null)
-          'topLevelControllerName': topLevelControllerName!,
-        if (topLevelControllerType != null)
-          'topLevelControllerType': topLevelControllerType!,
-      };
+    if (clusterName != null) 'clusterName': clusterName!,
+    if (location != null) 'location': location!,
+    if (namespaceName != null) 'namespaceName': namespaceName!,
+    if (projectId != null) 'projectId': projectId!,
+    if (topLevelControllerName != null)
+      'topLevelControllerName': topLevelControllerName!,
+    if (topLevelControllerType != null)
+      'topLevelControllerType': topLevelControllerType!,
+  };
 }
 
 /// Range of numerical values within min and max.
@@ -6569,21 +6617,18 @@ class GoogleMonitoringV3Range {
   /// Range minimum.
   core.double? min;
 
-  GoogleMonitoringV3Range({
-    this.max,
-    this.min,
-  });
+  GoogleMonitoringV3Range({this.max, this.min});
 
   GoogleMonitoringV3Range.fromJson(core.Map json_)
-      : this(
-          max: (json_['max'] as core.num?)?.toDouble(),
-          min: (json_['min'] as core.num?)?.toDouble(),
-        );
+    : this(
+        max: (json_['max'] as core.num?)?.toDouble(),
+        min: (json_['min'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (max != null) 'max': max!,
-        if (min != null) 'min': min!,
-      };
+    if (max != null) 'max': max!,
+    if (min != null) 'min': min!,
+  };
 }
 
 /// The description of a dynamic collection of monitored resources.
@@ -6646,21 +6691,21 @@ class Group {
   });
 
   Group.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          isCluster: json_['isCluster'] as core.bool?,
-          name: json_['name'] as core.String?,
-          parentName: json_['parentName'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        isCluster: json_['isCluster'] as core.bool?,
+        name: json_['name'] as core.String?,
+        parentName: json_['parentName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (filter != null) 'filter': filter!,
-        if (isCluster != null) 'isCluster': isCluster!,
-        if (name != null) 'name': name!,
-        if (parentName != null) 'parentName': parentName!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (filter != null) 'filter': filter!,
+    if (isCluster != null) 'isCluster': isCluster!,
+    if (name != null) 'name': name!,
+    if (parentName != null) 'parentName': parentName!,
+  };
 }
 
 /// Used to schedule the query to run every so many hours.
@@ -6681,21 +6726,18 @@ class Hourly {
   /// Required.
   core.int? periodicity;
 
-  Hourly({
-    this.minuteOffset,
-    this.periodicity,
-  });
+  Hourly({this.minuteOffset, this.periodicity});
 
   Hourly.fromJson(core.Map json_)
-      : this(
-          minuteOffset: json_['minuteOffset'] as core.int?,
-          periodicity: json_['periodicity'] as core.int?,
-        );
+    : this(
+        minuteOffset: json_['minuteOffset'] as core.int?,
+        periodicity: json_['periodicity'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (minuteOffset != null) 'minuteOffset': minuteOffset!,
-        if (periodicity != null) 'periodicity': periodicity!,
-      };
+    if (minuteOffset != null) 'minuteOffset': minuteOffset!,
+    if (periodicity != null) 'periodicity': periodicity!,
+  };
 }
 
 /// Information involved in an HTTP/HTTPS Uptime check request.
@@ -6725,8 +6767,10 @@ class HttpCheck {
   core.List<core.int> get bodyAsBytes => convert.base64.decode(body!);
 
   set bodyAsBytes(core.List<core.int> bytes_) {
-    body =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    body = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// The content type header to use for the check.
@@ -6835,62 +6879,65 @@ class HttpCheck {
   });
 
   HttpCheck.fromJson(core.Map json_)
-      : this(
-          acceptedResponseStatusCodes:
-              (json_['acceptedResponseStatusCodes'] as core.List?)
-                  ?.map((value) => ResponseStatusCode.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          authInfo: json_.containsKey('authInfo')
-              ? BasicAuthentication.fromJson(
-                  json_['authInfo'] as core.Map<core.String, core.dynamic>)
-              : null,
-          body: json_['body'] as core.String?,
-          contentType: json_['contentType'] as core.String?,
-          customContentType: json_['customContentType'] as core.String?,
-          headers:
-              (json_['headers'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          maskHeaders: json_['maskHeaders'] as core.bool?,
-          path: json_['path'] as core.String?,
-          pingConfig: json_.containsKey('pingConfig')
-              ? PingConfig.fromJson(
-                  json_['pingConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          port: json_['port'] as core.int?,
-          requestMethod: json_['requestMethod'] as core.String?,
-          serviceAgentAuthentication:
-              json_.containsKey('serviceAgentAuthentication')
-                  ? ServiceAgentAuthentication.fromJson(
-                      json_['serviceAgentAuthentication']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-          useSsl: json_['useSsl'] as core.bool?,
-          validateSsl: json_['validateSsl'] as core.bool?,
-        );
+    : this(
+        acceptedResponseStatusCodes:
+            (json_['acceptedResponseStatusCodes'] as core.List?)
+                ?.map(
+                  (value) => ResponseStatusCode.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        authInfo:
+            json_.containsKey('authInfo')
+                ? BasicAuthentication.fromJson(
+                  json_['authInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        body: json_['body'] as core.String?,
+        contentType: json_['contentType'] as core.String?,
+        customContentType: json_['customContentType'] as core.String?,
+        headers: (json_['headers'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        maskHeaders: json_['maskHeaders'] as core.bool?,
+        path: json_['path'] as core.String?,
+        pingConfig:
+            json_.containsKey('pingConfig')
+                ? PingConfig.fromJson(
+                  json_['pingConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        port: json_['port'] as core.int?,
+        requestMethod: json_['requestMethod'] as core.String?,
+        serviceAgentAuthentication:
+            json_.containsKey('serviceAgentAuthentication')
+                ? ServiceAgentAuthentication.fromJson(
+                  json_['serviceAgentAuthentication']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        useSsl: json_['useSsl'] as core.bool?,
+        validateSsl: json_['validateSsl'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (acceptedResponseStatusCodes != null)
-          'acceptedResponseStatusCodes': acceptedResponseStatusCodes!,
-        if (authInfo != null) 'authInfo': authInfo!,
-        if (body != null) 'body': body!,
-        if (contentType != null) 'contentType': contentType!,
-        if (customContentType != null) 'customContentType': customContentType!,
-        if (headers != null) 'headers': headers!,
-        if (maskHeaders != null) 'maskHeaders': maskHeaders!,
-        if (path != null) 'path': path!,
-        if (pingConfig != null) 'pingConfig': pingConfig!,
-        if (port != null) 'port': port!,
-        if (requestMethod != null) 'requestMethod': requestMethod!,
-        if (serviceAgentAuthentication != null)
-          'serviceAgentAuthentication': serviceAgentAuthentication!,
-        if (useSsl != null) 'useSsl': useSsl!,
-        if (validateSsl != null) 'validateSsl': validateSsl!,
-      };
+    if (acceptedResponseStatusCodes != null)
+      'acceptedResponseStatusCodes': acceptedResponseStatusCodes!,
+    if (authInfo != null) 'authInfo': authInfo!,
+    if (body != null) 'body': body!,
+    if (contentType != null) 'contentType': contentType!,
+    if (customContentType != null) 'customContentType': customContentType!,
+    if (headers != null) 'headers': headers!,
+    if (maskHeaders != null) 'maskHeaders': maskHeaders!,
+    if (path != null) 'path': path!,
+    if (pingConfig != null) 'pingConfig': pingConfig!,
+    if (port != null) 'port': port!,
+    if (requestMethod != null) 'requestMethod': requestMethod!,
+    if (serviceAgentAuthentication != null)
+      'serviceAgentAuthentication': serviceAgentAuthentication!,
+    if (useSsl != null) 'useSsl': useSsl!,
+    if (validateSsl != null) 'validateSsl': validateSsl!,
+  };
 }
 
 /// An internal checker allows Uptime checks to run on private/internal GCP
@@ -6953,23 +7000,23 @@ class InternalChecker {
   });
 
   InternalChecker.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          gcpZone: json_['gcpZone'] as core.String?,
-          name: json_['name'] as core.String?,
-          network: json_['network'] as core.String?,
-          peerProjectId: json_['peerProjectId'] as core.String?,
-          state: json_['state'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        gcpZone: json_['gcpZone'] as core.String?,
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        peerProjectId: json_['peerProjectId'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (gcpZone != null) 'gcpZone': gcpZone!,
-        if (name != null) 'name': name!,
-        if (network != null) 'network': network!,
-        if (peerProjectId != null) 'peerProjectId': peerProjectId!,
-        if (state != null) 'state': state!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (gcpZone != null) 'gcpZone': gcpZone!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (peerProjectId != null) 'peerProjectId': peerProjectId!,
+    if (state != null) 'state': state!,
+  };
 }
 
 /// Canonical service scoped to an Istio mesh.
@@ -7003,19 +7050,19 @@ class IstioCanonicalService {
   });
 
   IstioCanonicalService.fromJson(core.Map json_)
-      : this(
-          canonicalService: json_['canonicalService'] as core.String?,
-          canonicalServiceNamespace:
-              json_['canonicalServiceNamespace'] as core.String?,
-          meshUid: json_['meshUid'] as core.String?,
-        );
+    : this(
+        canonicalService: json_['canonicalService'] as core.String?,
+        canonicalServiceNamespace:
+            json_['canonicalServiceNamespace'] as core.String?,
+        meshUid: json_['meshUid'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (canonicalService != null) 'canonicalService': canonicalService!,
-        if (canonicalServiceNamespace != null)
-          'canonicalServiceNamespace': canonicalServiceNamespace!,
-        if (meshUid != null) 'meshUid': meshUid!,
-      };
+    if (canonicalService != null) 'canonicalService': canonicalService!,
+    if (canonicalServiceNamespace != null)
+      'canonicalServiceNamespace': canonicalServiceNamespace!,
+    if (meshUid != null) 'meshUid': meshUid!,
+  };
 }
 
 /// Information needed to perform a JSONPath content match.
@@ -7040,21 +7087,18 @@ class JsonPathMatcher {
   /// ContentMatcher::content to match against.
   core.String? jsonPath;
 
-  JsonPathMatcher({
-    this.jsonMatcher,
-    this.jsonPath,
-  });
+  JsonPathMatcher({this.jsonMatcher, this.jsonPath});
 
   JsonPathMatcher.fromJson(core.Map json_)
-      : this(
-          jsonMatcher: json_['jsonMatcher'] as core.String?,
-          jsonPath: json_['jsonPath'] as core.String?,
-        );
+    : this(
+        jsonMatcher: json_['jsonMatcher'] as core.String?,
+        jsonPath: json_['jsonPath'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (jsonMatcher != null) 'jsonMatcher': jsonMatcher!,
-        if (jsonPath != null) 'jsonPath': jsonPath!,
-      };
+    if (jsonMatcher != null) 'jsonMatcher': jsonMatcher!,
+    if (jsonPath != null) 'jsonPath': jsonPath!,
+  };
 }
 
 /// A description of a label.
@@ -7078,24 +7122,20 @@ class LabelDescriptor {
   /// - "INT64" : A 64-bit signed integer.
   core.String? valueType;
 
-  LabelDescriptor({
-    this.description,
-    this.key,
-    this.valueType,
-  });
+  LabelDescriptor({this.description, this.key, this.valueType});
 
   LabelDescriptor.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          key: json_['key'] as core.String?,
-          valueType: json_['valueType'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        key: json_['key'] as core.String?,
+        valueType: json_['valueType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (key != null) 'key': key!,
-        if (valueType != null) 'valueType': valueType!,
-      };
+    if (description != null) 'description': description!,
+    if (key != null) 'key': key!,
+    if (valueType != null) 'valueType': valueType!,
+  };
 }
 
 /// A label value.
@@ -7109,24 +7149,20 @@ class LabelValue {
   /// A string label value.
   core.String? stringValue;
 
-  LabelValue({
-    this.boolValue,
-    this.int64Value,
-    this.stringValue,
-  });
+  LabelValue({this.boolValue, this.int64Value, this.stringValue});
 
   LabelValue.fromJson(core.Map json_)
-      : this(
-          boolValue: json_['boolValue'] as core.bool?,
-          int64Value: json_['int64Value'] as core.String?,
-          stringValue: json_['stringValue'] as core.String?,
-        );
+    : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        int64Value: json_['int64Value'] as core.String?,
+        stringValue: json_['stringValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue!,
-        if (int64Value != null) 'int64Value': int64Value!,
-        if (stringValue != null) 'stringValue': stringValue!,
-      };
+    if (boolValue != null) 'boolValue': boolValue!,
+    if (int64Value != null) 'int64Value': int64Value!,
+    if (stringValue != null) 'stringValue': stringValue!,
+  };
 }
 
 /// Parameters for a latency threshold SLI.
@@ -7135,18 +7171,14 @@ class LatencyCriteria {
   /// that return in no more than threshold.
   core.String? threshold;
 
-  LatencyCriteria({
-    this.threshold,
-  });
+  LatencyCriteria({this.threshold});
 
   LatencyCriteria.fromJson(core.Map json_)
-      : this(
-          threshold: json_['threshold'] as core.String?,
-        );
+    : this(threshold: json_['threshold'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (threshold != null) 'threshold': threshold!,
-      };
+    if (threshold != null) 'threshold': threshold!,
+  };
 }
 
 /// Specifies a linear sequence of buckets that all have the same width (except
@@ -7174,21 +7206,18 @@ class Link {
   /// "https://my_domain.com/playbook?name=${resource.name}"
   core.String? url;
 
-  Link({
-    this.displayName,
-    this.url,
-  });
+  Link({this.displayName, this.url});
 
   Link.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (url != null) 'url': url!,
-      };
+    if (displayName != null) 'displayName': displayName!,
+    if (url != null) 'url': url!,
+  };
 }
 
 /// The protocol for the ListAlertPolicies response.
@@ -7216,20 +7245,24 @@ class ListAlertPoliciesResponse {
   });
 
   ListAlertPoliciesResponse.fromJson(core.Map json_)
-      : this(
-          alertPolicies: (json_['alertPolicies'] as core.List?)
-              ?.map((value) => AlertPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          totalSize: json_['totalSize'] as core.int?,
-        );
+    : this(
+        alertPolicies:
+            (json_['alertPolicies'] as core.List?)
+                ?.map(
+                  (value) => AlertPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        totalSize: json_['totalSize'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alertPolicies != null) 'alertPolicies': alertPolicies!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (totalSize != null) 'totalSize': totalSize!,
-      };
+    if (alertPolicies != null) 'alertPolicies': alertPolicies!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (totalSize != null) 'totalSize': totalSize!,
+  };
 }
 
 /// The ListGroupMembers response.
@@ -7247,27 +7280,27 @@ class ListGroupMembersResponse {
   /// The total number of elements matching this request.
   core.int? totalSize;
 
-  ListGroupMembersResponse({
-    this.members,
-    this.nextPageToken,
-    this.totalSize,
-  });
+  ListGroupMembersResponse({this.members, this.nextPageToken, this.totalSize});
 
   ListGroupMembersResponse.fromJson(core.Map json_)
-      : this(
-          members: (json_['members'] as core.List?)
-              ?.map((value) => MonitoredResource.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          totalSize: json_['totalSize'] as core.int?,
-        );
+    : this(
+        members:
+            (json_['members'] as core.List?)
+                ?.map(
+                  (value) => MonitoredResource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        totalSize: json_['totalSize'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (members != null) 'members': members!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (totalSize != null) 'totalSize': totalSize!,
-      };
+    if (members != null) 'members': members!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (totalSize != null) 'totalSize': totalSize!,
+  };
 }
 
 /// The ListGroups response.
@@ -7282,24 +7315,25 @@ class ListGroupsResponse {
   /// call to this method.
   core.String? nextPageToken;
 
-  ListGroupsResponse({
-    this.group,
-    this.nextPageToken,
-  });
+  ListGroupsResponse({this.group, this.nextPageToken});
 
   ListGroupsResponse.fromJson(core.Map json_)
-      : this(
-          group: (json_['group'] as core.List?)
-              ?.map((value) =>
-                  Group.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        group:
+            (json_['group'] as core.List?)
+                ?.map(
+                  (value) => Group.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (group != null) 'group': group!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (group != null) 'group': group!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The ListMetricDescriptors response.
@@ -7315,24 +7349,25 @@ class ListMetricDescriptorsResponse {
   /// call to this method.
   core.String? nextPageToken;
 
-  ListMetricDescriptorsResponse({
-    this.metricDescriptors,
-    this.nextPageToken,
-  });
+  ListMetricDescriptorsResponse({this.metricDescriptors, this.nextPageToken});
 
   ListMetricDescriptorsResponse.fromJson(core.Map json_)
-      : this(
-          metricDescriptors: (json_['metricDescriptors'] as core.List?)
-              ?.map((value) => MetricDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        metricDescriptors:
+            (json_['metricDescriptors'] as core.List?)
+                ?.map(
+                  (value) => MetricDescriptor.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (metricDescriptors != null) 'metricDescriptors': metricDescriptors!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (metricDescriptors != null) 'metricDescriptors': metricDescriptors!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The ListMonitoredResourceDescriptors response.
@@ -7354,19 +7389,23 @@ class ListMonitoredResourceDescriptorsResponse {
   });
 
   ListMonitoredResourceDescriptorsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          resourceDescriptors: (json_['resourceDescriptors'] as core.List?)
-              ?.map((value) => MonitoredResourceDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        resourceDescriptors:
+            (json_['resourceDescriptors'] as core.List?)
+                ?.map(
+                  (value) => MonitoredResourceDescriptor.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (resourceDescriptors != null)
-          'resourceDescriptors': resourceDescriptors!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (resourceDescriptors != null)
+      'resourceDescriptors': resourceDescriptors!,
+  };
 }
 
 /// The ListNotificationChannelDescriptors response.
@@ -7388,19 +7427,22 @@ class ListNotificationChannelDescriptorsResponse {
   });
 
   ListNotificationChannelDescriptorsResponse.fromJson(core.Map json_)
-      : this(
-          channelDescriptors: (json_['channelDescriptors'] as core.List?)
-              ?.map((value) => NotificationChannelDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        channelDescriptors:
+            (json_['channelDescriptors'] as core.List?)
+                ?.map(
+                  (value) => NotificationChannelDescriptor.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (channelDescriptors != null)
-          'channelDescriptors': channelDescriptors!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (channelDescriptors != null) 'channelDescriptors': channelDescriptors!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The ListNotificationChannels response.
@@ -7428,21 +7470,25 @@ class ListNotificationChannelsResponse {
   });
 
   ListNotificationChannelsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          notificationChannels: (json_['notificationChannels'] as core.List?)
-              ?.map((value) => NotificationChannel.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          totalSize: json_['totalSize'] as core.int?,
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        notificationChannels:
+            (json_['notificationChannels'] as core.List?)
+                ?.map(
+                  (value) => NotificationChannel.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        totalSize: json_['totalSize'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (notificationChannels != null)
-          'notificationChannels': notificationChannels!,
-        if (totalSize != null) 'totalSize': totalSize!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (notificationChannels != null)
+      'notificationChannels': notificationChannels!,
+    if (totalSize != null) 'totalSize': totalSize!,
+  };
 }
 
 /// The ListServiceLevelObjectives response.
@@ -7463,20 +7509,23 @@ class ListServiceLevelObjectivesResponse {
   });
 
   ListServiceLevelObjectivesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          serviceLevelObjectives:
-              (json_['serviceLevelObjectives'] as core.List?)
-                  ?.map((value) => ServiceLevelObjective.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        serviceLevelObjectives:
+            (json_['serviceLevelObjectives'] as core.List?)
+                ?.map(
+                  (value) => ServiceLevelObjective.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (serviceLevelObjectives != null)
-          'serviceLevelObjectives': serviceLevelObjectives!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (serviceLevelObjectives != null)
+      'serviceLevelObjectives': serviceLevelObjectives!,
+  };
 }
 
 /// The ListServices response.
@@ -7491,24 +7540,25 @@ class ListServicesResponse {
   /// The Services matching the specified filter.
   core.List<Service>? services;
 
-  ListServicesResponse({
-    this.nextPageToken,
-    this.services,
-  });
+  ListServicesResponse({this.nextPageToken, this.services});
 
   ListServicesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          services: (json_['services'] as core.List?)
-              ?.map((value) => Service.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        services:
+            (json_['services'] as core.List?)
+                ?.map(
+                  (value) => Service.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (services != null) 'services': services!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (services != null) 'services': services!,
+  };
 }
 
 /// The results of a successful ListSnoozes call, containing the matching
@@ -7523,24 +7573,25 @@ class ListSnoozesResponse {
   /// Snoozes matching this list call.
   core.List<Snooze>? snoozes;
 
-  ListSnoozesResponse({
-    this.nextPageToken,
-    this.snoozes,
-  });
+  ListSnoozesResponse({this.nextPageToken, this.snoozes});
 
   ListSnoozesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          snoozes: (json_['snoozes'] as core.List?)
-              ?.map((value) =>
-                  Snooze.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        snoozes:
+            (json_['snoozes'] as core.List?)
+                ?.map(
+                  (value) => Snooze.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (snoozes != null) 'snoozes': snoozes!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (snoozes != null) 'snoozes': snoozes!,
+  };
 }
 
 /// The ListTimeSeries response.
@@ -7580,29 +7631,38 @@ class ListTimeSeriesResponse {
   });
 
   ListTimeSeriesResponse.fromJson(core.Map json_)
-      : this(
-          executionErrors: (json_['executionErrors'] as core.List?)
-              ?.map((value) =>
-                  Status.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          timeSeries: (json_['timeSeries'] as core.List?)
-              ?.map((value) => TimeSeries.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          unit: json_['unit'] as core.String?,
-          unreachable: (json_['unreachable'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        executionErrors:
+            (json_['executionErrors'] as core.List?)
+                ?.map(
+                  (value) => Status.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        timeSeries:
+            (json_['timeSeries'] as core.List?)
+                ?.map(
+                  (value) => TimeSeries.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unit: json_['unit'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (executionErrors != null) 'executionErrors': executionErrors!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (timeSeries != null) 'timeSeries': timeSeries!,
-        if (unit != null) 'unit': unit!,
-        if (unreachable != null) 'unreachable': unreachable!,
-      };
+    if (executionErrors != null) 'executionErrors': executionErrors!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (timeSeries != null) 'timeSeries': timeSeries!,
+    if (unit != null) 'unit': unit!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
 }
 
 /// The protocol for the ListUptimeCheckConfigs response.
@@ -7630,21 +7690,24 @@ class ListUptimeCheckConfigsResponse {
   });
 
   ListUptimeCheckConfigsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          totalSize: json_['totalSize'] as core.int?,
-          uptimeCheckConfigs: (json_['uptimeCheckConfigs'] as core.List?)
-              ?.map((value) => UptimeCheckConfig.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        totalSize: json_['totalSize'] as core.int?,
+        uptimeCheckConfigs:
+            (json_['uptimeCheckConfigs'] as core.List?)
+                ?.map(
+                  (value) => UptimeCheckConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (totalSize != null) 'totalSize': totalSize!,
-        if (uptimeCheckConfigs != null)
-          'uptimeCheckConfigs': uptimeCheckConfigs!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (totalSize != null) 'totalSize': totalSize!,
+    if (uptimeCheckConfigs != null) 'uptimeCheckConfigs': uptimeCheckConfigs!,
+  };
 }
 
 /// The protocol for the ListUptimeCheckIps response.
@@ -7662,24 +7725,25 @@ class ListUptimeCheckIpsResponse {
   /// checkers run from.
   core.List<UptimeCheckIp>? uptimeCheckIps;
 
-  ListUptimeCheckIpsResponse({
-    this.nextPageToken,
-    this.uptimeCheckIps,
-  });
+  ListUptimeCheckIpsResponse({this.nextPageToken, this.uptimeCheckIps});
 
   ListUptimeCheckIpsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          uptimeCheckIps: (json_['uptimeCheckIps'] as core.List?)
-              ?.map((value) => UptimeCheckIp.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        uptimeCheckIps:
+            (json_['uptimeCheckIps'] as core.List?)
+                ?.map(
+                  (value) => UptimeCheckIp.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (uptimeCheckIps != null) 'uptimeCheckIps': uptimeCheckIps!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (uptimeCheckIps != null) 'uptimeCheckIps': uptimeCheckIps!,
+  };
 }
 
 /// A condition type that checks whether a log message in the scoping project
@@ -7712,28 +7776,20 @@ class LogMatch {
   /// Optional.
   core.Map<core.String, core.String>? labelExtractors;
 
-  LogMatch({
-    this.filter,
-    this.labelExtractors,
-  });
+  LogMatch({this.filter, this.labelExtractors});
 
   LogMatch.fromJson(core.Map json_)
-      : this(
-          filter: json_['filter'] as core.String?,
-          labelExtractors:
-              (json_['labelExtractors'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        filter: json_['filter'] as core.String?,
+        labelExtractors: (json_['labelExtractors']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filter != null) 'filter': filter!,
-        if (labelExtractors != null) 'labelExtractors': labelExtractors!,
-      };
+    if (filter != null) 'filter': filter!,
+    if (labelExtractors != null) 'labelExtractors': labelExtractors!,
+  };
 }
 
 /// Istio service scoped to an Istio mesh.
@@ -7757,24 +7813,20 @@ class MeshIstio {
   /// metrics.
   core.String? serviceNamespace;
 
-  MeshIstio({
-    this.meshUid,
-    this.serviceName,
-    this.serviceNamespace,
-  });
+  MeshIstio({this.meshUid, this.serviceName, this.serviceNamespace});
 
   MeshIstio.fromJson(core.Map json_)
-      : this(
-          meshUid: json_['meshUid'] as core.String?,
-          serviceName: json_['serviceName'] as core.String?,
-          serviceNamespace: json_['serviceNamespace'] as core.String?,
-        );
+    : this(
+        meshUid: json_['meshUid'] as core.String?,
+        serviceName: json_['serviceName'] as core.String?,
+        serviceNamespace: json_['serviceNamespace'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (meshUid != null) 'meshUid': meshUid!,
-        if (serviceName != null) 'serviceName': serviceName!,
-        if (serviceNamespace != null) 'serviceNamespace': serviceNamespace!,
-      };
+    if (meshUid != null) 'meshUid': meshUid!,
+    if (serviceName != null) 'serviceName': serviceName!,
+    if (serviceNamespace != null) 'serviceNamespace': serviceNamespace!,
+  };
 }
 
 /// A specific metric, identified by specifying values for all of the labels of
@@ -7790,27 +7842,20 @@ class Metric {
   /// For example, custom.googleapis.com/invoice/paid/amount.
   core.String? type;
 
-  Metric({
-    this.labels,
-    this.type,
-  });
+  Metric({this.labels, this.type});
 
   Metric.fromJson(core.Map json_)
-      : this(
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-        if (type != null) 'type': type!,
-      };
+    if (labels != null) 'labels': labels!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A condition type that checks that monitored resources are reporting data.
@@ -7865,33 +7910,34 @@ class MetricAbsence {
   /// aggregations.
   Trigger? trigger;
 
-  MetricAbsence({
-    this.aggregations,
-    this.duration,
-    this.filter,
-    this.trigger,
-  });
+  MetricAbsence({this.aggregations, this.duration, this.filter, this.trigger});
 
   MetricAbsence.fromJson(core.Map json_)
-      : this(
-          aggregations: (json_['aggregations'] as core.List?)
-              ?.map((value) => Aggregation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          duration: json_['duration'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          trigger: json_.containsKey('trigger')
-              ? Trigger.fromJson(
-                  json_['trigger'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        aggregations:
+            (json_['aggregations'] as core.List?)
+                ?.map(
+                  (value) => Aggregation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        duration: json_['duration'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        trigger:
+            json_.containsKey('trigger')
+                ? Trigger.fromJson(
+                  json_['trigger'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aggregations != null) 'aggregations': aggregations!,
-        if (duration != null) 'duration': duration!,
-        if (filter != null) 'filter': filter!,
-        if (trigger != null) 'trigger': trigger!,
-      };
+    if (aggregations != null) 'aggregations': aggregations!,
+    if (duration != null) 'duration': duration!,
+    if (filter != null) 'filter': filter!,
+    if (trigger != null) 'trigger': trigger!,
+  };
 }
 
 /// Defines a metric type and its schema.
@@ -8074,43 +8120,49 @@ class MetricDescriptor {
   });
 
   MetricDescriptor.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          labels: (json_['labels'] as core.List?)
-              ?.map((value) => LabelDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          launchStage: json_['launchStage'] as core.String?,
-          metadata: json_.containsKey('metadata')
-              ? MetricDescriptorMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metricKind: json_['metricKind'] as core.String?,
-          monitoredResourceTypes:
-              (json_['monitoredResourceTypes'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          name: json_['name'] as core.String?,
-          type: json_['type'] as core.String?,
-          unit: json_['unit'] as core.String?,
-          valueType: json_['valueType'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        labels:
+            (json_['labels'] as core.List?)
+                ?.map(
+                  (value) => LabelDescriptor.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        launchStage: json_['launchStage'] as core.String?,
+        metadata:
+            json_.containsKey('metadata')
+                ? MetricDescriptorMetadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metricKind: json_['metricKind'] as core.String?,
+        monitoredResourceTypes:
+            (json_['monitoredResourceTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+        unit: json_['unit'] as core.String?,
+        valueType: json_['valueType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (launchStage != null) 'launchStage': launchStage!,
-        if (metadata != null) 'metadata': metadata!,
-        if (metricKind != null) 'metricKind': metricKind!,
-        if (monitoredResourceTypes != null)
-          'monitoredResourceTypes': monitoredResourceTypes!,
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-        if (unit != null) 'unit': unit!,
-        if (valueType != null) 'valueType': valueType!,
-      };
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (launchStage != null) 'launchStage': launchStage!,
+    if (metadata != null) 'metadata': metadata!,
+    if (metricKind != null) 'metricKind': metricKind!,
+    if (monitoredResourceTypes != null)
+      'monitoredResourceTypes': monitoredResourceTypes!,
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+    if (unit != null) 'unit': unit!,
+    if (valueType != null) 'valueType': valueType!,
+  };
 }
 
 /// Additional annotations that can be used to guide the usage of a metric.
@@ -8130,24 +8182,23 @@ class MetricRange {
   /// specifying the TimeSeries to use for evaluating window quality.
   core.String? timeSeries;
 
-  MetricRange({
-    this.range,
-    this.timeSeries,
-  });
+  MetricRange({this.range, this.timeSeries});
 
   MetricRange.fromJson(core.Map json_)
-      : this(
-          range: json_.containsKey('range')
-              ? GoogleMonitoringV3Range.fromJson(
-                  json_['range'] as core.Map<core.String, core.dynamic>)
-              : null,
-          timeSeries: json_['timeSeries'] as core.String?,
-        );
+    : this(
+        range:
+            json_.containsKey('range')
+                ? GoogleMonitoringV3Range.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        timeSeries: json_['timeSeries'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (range != null) 'range': range!,
-        if (timeSeries != null) 'timeSeries': timeSeries!,
-      };
+    if (range != null) 'range': range!,
+    if (timeSeries != null) 'timeSeries': timeSeries!,
+  };
 }
 
 /// A condition type that compares a collection of time series against a
@@ -8286,46 +8337,58 @@ class MetricThreshold {
   });
 
   MetricThreshold.fromJson(core.Map json_)
-      : this(
-          aggregations: (json_['aggregations'] as core.List?)
-              ?.map((value) => Aggregation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          comparison: json_['comparison'] as core.String?,
-          denominatorAggregations:
-              (json_['denominatorAggregations'] as core.List?)
-                  ?.map((value) => Aggregation.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-                  .toList(),
-          denominatorFilter: json_['denominatorFilter'] as core.String?,
-          duration: json_['duration'] as core.String?,
-          evaluationMissingData: json_['evaluationMissingData'] as core.String?,
-          filter: json_['filter'] as core.String?,
-          forecastOptions: json_.containsKey('forecastOptions')
-              ? ForecastOptions.fromJson(json_['forecastOptions']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          thresholdValue: (json_['thresholdValue'] as core.num?)?.toDouble(),
-          trigger: json_.containsKey('trigger')
-              ? Trigger.fromJson(
-                  json_['trigger'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        aggregations:
+            (json_['aggregations'] as core.List?)
+                ?.map(
+                  (value) => Aggregation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        comparison: json_['comparison'] as core.String?,
+        denominatorAggregations:
+            (json_['denominatorAggregations'] as core.List?)
+                ?.map(
+                  (value) => Aggregation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        denominatorFilter: json_['denominatorFilter'] as core.String?,
+        duration: json_['duration'] as core.String?,
+        evaluationMissingData: json_['evaluationMissingData'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        forecastOptions:
+            json_.containsKey('forecastOptions')
+                ? ForecastOptions.fromJson(
+                  json_['forecastOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        thresholdValue: (json_['thresholdValue'] as core.num?)?.toDouble(),
+        trigger:
+            json_.containsKey('trigger')
+                ? Trigger.fromJson(
+                  json_['trigger'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aggregations != null) 'aggregations': aggregations!,
-        if (comparison != null) 'comparison': comparison!,
-        if (denominatorAggregations != null)
-          'denominatorAggregations': denominatorAggregations!,
-        if (denominatorFilter != null) 'denominatorFilter': denominatorFilter!,
-        if (duration != null) 'duration': duration!,
-        if (evaluationMissingData != null)
-          'evaluationMissingData': evaluationMissingData!,
-        if (filter != null) 'filter': filter!,
-        if (forecastOptions != null) 'forecastOptions': forecastOptions!,
-        if (thresholdValue != null) 'thresholdValue': thresholdValue!,
-        if (trigger != null) 'trigger': trigger!,
-      };
+    if (aggregations != null) 'aggregations': aggregations!,
+    if (comparison != null) 'comparison': comparison!,
+    if (denominatorAggregations != null)
+      'denominatorAggregations': denominatorAggregations!,
+    if (denominatorFilter != null) 'denominatorFilter': denominatorFilter!,
+    if (duration != null) 'duration': duration!,
+    if (evaluationMissingData != null)
+      'evaluationMissingData': evaluationMissingData!,
+    if (filter != null) 'filter': filter!,
+    if (forecastOptions != null) 'forecastOptions': forecastOptions!,
+    if (thresholdValue != null) 'thresholdValue': thresholdValue!,
+    if (trigger != null) 'trigger': trigger!,
+  };
 }
 
 /// Used to schedule the query to run every so many minutes.
@@ -8338,18 +8401,14 @@ class Minutes {
   /// Required.
   core.int? periodicity;
 
-  Minutes({
-    this.periodicity,
-  });
+  Minutes({this.periodicity});
 
   Minutes.fromJson(core.Map json_)
-      : this(
-          periodicity: json_['periodicity'] as core.int?,
-        );
+    : this(periodicity: json_['periodicity'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (periodicity != null) 'periodicity': periodicity!,
-      };
+    if (periodicity != null) 'periodicity': periodicity!,
+  };
 }
 
 /// An object representing a resource that can be used for monitoring, logging,
@@ -8385,27 +8444,20 @@ class MonitoredResource {
   /// Required.
   core.String? type;
 
-  MonitoredResource({
-    this.labels,
-    this.type,
-  });
+  MonitoredResource({this.labels, this.type});
 
   MonitoredResource.fromJson(core.Map json_)
-      : this(
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-        if (type != null) 'type': type!,
-      };
+    if (labels != null) 'labels': labels!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// An object that describes the schema of a MonitoredResource object using a
@@ -8509,26 +8561,30 @@ class MonitoredResourceDescriptor {
   });
 
   MonitoredResourceDescriptor.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          labels: (json_['labels'] as core.List?)
-              ?.map((value) => LabelDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          launchStage: json_['launchStage'] as core.String?,
-          name: json_['name'] as core.String?,
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        labels:
+            (json_['labels'] as core.List?)
+                ?.map(
+                  (value) => LabelDescriptor.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        launchStage: json_['launchStage'] as core.String?,
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (launchStage != null) 'launchStage': launchStage!,
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-      };
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (launchStage != null) 'launchStage': launchStage!,
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Auxiliary metadata for a MonitoredResource object.
@@ -8590,23 +8646,25 @@ class MonitoringQueryLanguageCondition {
   });
 
   MonitoringQueryLanguageCondition.fromJson(core.Map json_)
-      : this(
-          duration: json_['duration'] as core.String?,
-          evaluationMissingData: json_['evaluationMissingData'] as core.String?,
-          query: json_['query'] as core.String?,
-          trigger: json_.containsKey('trigger')
-              ? Trigger.fromJson(
-                  json_['trigger'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        duration: json_['duration'] as core.String?,
+        evaluationMissingData: json_['evaluationMissingData'] as core.String?,
+        query: json_['query'] as core.String?,
+        trigger:
+            json_.containsKey('trigger')
+                ? Trigger.fromJson(
+                  json_['trigger'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (evaluationMissingData != null)
-          'evaluationMissingData': evaluationMissingData!,
-        if (query != null) 'query': query!,
-        if (trigger != null) 'trigger': trigger!,
-      };
+    if (duration != null) 'duration': duration!,
+    if (evaluationMissingData != null)
+      'evaluationMissingData': evaluationMissingData!,
+    if (query != null) 'query': query!,
+    if (trigger != null) 'trigger': trigger!,
+  };
 }
 
 /// Describes a change made to a configuration.
@@ -8617,21 +8675,18 @@ class MutationRecord {
   /// The email address of the user making the change.
   core.String? mutatedBy;
 
-  MutationRecord({
-    this.mutateTime,
-    this.mutatedBy,
-  });
+  MutationRecord({this.mutateTime, this.mutatedBy});
 
   MutationRecord.fromJson(core.Map json_)
-      : this(
-          mutateTime: json_['mutateTime'] as core.String?,
-          mutatedBy: json_['mutatedBy'] as core.String?,
-        );
+    : this(
+        mutateTime: json_['mutateTime'] as core.String?,
+        mutatedBy: json_['mutatedBy'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mutateTime != null) 'mutateTime': mutateTime!,
-        if (mutatedBy != null) 'mutatedBy': mutatedBy!,
-      };
+    if (mutateTime != null) 'mutateTime': mutateTime!,
+    if (mutatedBy != null) 'mutatedBy': mutatedBy!,
+  };
 }
 
 /// A NotificationChannel is a medium through which an alert is delivered when a
@@ -8742,51 +8797,48 @@ class NotificationChannel {
   });
 
   NotificationChannel.fromJson(core.Map json_)
-      : this(
-          creationRecord: json_.containsKey('creationRecord')
-              ? MutationRecord.fromJson(json_['creationRecord']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          enabled: json_['enabled'] as core.bool?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          mutationRecords: (json_['mutationRecords'] as core.List?)
-              ?.map((value) => MutationRecord.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          type: json_['type'] as core.String?,
-          userLabels:
-              (json_['userLabels'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          verificationStatus: json_['verificationStatus'] as core.String?,
-        );
+    : this(
+        creationRecord:
+            json_.containsKey('creationRecord')
+                ? MutationRecord.fromJson(
+                  json_['creationRecord']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        enabled: json_['enabled'] as core.bool?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        mutationRecords:
+            (json_['mutationRecords'] as core.List?)
+                ?.map(
+                  (value) => MutationRecord.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+        userLabels: (json_['userLabels']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        verificationStatus: json_['verificationStatus'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (creationRecord != null) 'creationRecord': creationRecord!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (enabled != null) 'enabled': enabled!,
-        if (labels != null) 'labels': labels!,
-        if (mutationRecords != null) 'mutationRecords': mutationRecords!,
-        if (name != null) 'name': name!,
-        if (type != null) 'type': type!,
-        if (userLabels != null) 'userLabels': userLabels!,
-        if (verificationStatus != null)
-          'verificationStatus': verificationStatus!,
-      };
+    if (creationRecord != null) 'creationRecord': creationRecord!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (enabled != null) 'enabled': enabled!,
+    if (labels != null) 'labels': labels!,
+    if (mutationRecords != null) 'mutationRecords': mutationRecords!,
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+    if (userLabels != null) 'userLabels': userLabels!,
+    if (verificationStatus != null) 'verificationStatus': verificationStatus!,
+  };
 }
 
 /// A description of a notification channel.
@@ -8878,30 +8930,35 @@ class NotificationChannelDescriptor {
   });
 
   NotificationChannelDescriptor.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          labels: (json_['labels'] as core.List?)
-              ?.map((value) => LabelDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          launchStage: json_['launchStage'] as core.String?,
-          name: json_['name'] as core.String?,
-          supportedTiers: (json_['supportedTiers'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          type: json_['type'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        labels:
+            (json_['labels'] as core.List?)
+                ?.map(
+                  (value) => LabelDescriptor.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        launchStage: json_['launchStage'] as core.String?,
+        name: json_['name'] as core.String?,
+        supportedTiers:
+            (json_['supportedTiers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        type: json_['type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (labels != null) 'labels': labels!,
-        if (launchStage != null) 'launchStage': launchStage!,
-        if (name != null) 'name': name!,
-        if (supportedTiers != null) 'supportedTiers': supportedTiers!,
-        if (type != null) 'type': type!,
-      };
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (labels != null) 'labels': labels!,
+    if (launchStage != null) 'launchStage': launchStage!,
+    if (name != null) 'name': name!,
+    if (supportedTiers != null) 'supportedTiers': supportedTiers!,
+    if (type != null) 'type': type!,
+  };
 }
 
 /// Control over how the notification channels in notification_channels are
@@ -8925,19 +8982,19 @@ class NotificationChannelStrategy {
   });
 
   NotificationChannelStrategy.fromJson(core.Map json_)
-      : this(
-          notificationChannelNames:
-              (json_['notificationChannelNames'] as core.List?)
-                  ?.map((value) => value as core.String)
-                  .toList(),
-          renotifyInterval: json_['renotifyInterval'] as core.String?,
-        );
+    : this(
+        notificationChannelNames:
+            (json_['notificationChannelNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        renotifyInterval: json_['renotifyInterval'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (notificationChannelNames != null)
-          'notificationChannelNames': notificationChannelNames!,
-        if (renotifyInterval != null) 'renotifyInterval': renotifyInterval!,
-      };
+    if (notificationChannelNames != null)
+      'notificationChannelNames': notificationChannelNames!,
+    if (renotifyInterval != null) 'renotifyInterval': renotifyInterval!,
+  };
 }
 
 /// Control over the rate of notifications sent to this alerting policy's
@@ -8946,18 +9003,14 @@ class NotificationRateLimit {
   /// Not more than one notification per period.
   core.String? period;
 
-  NotificationRateLimit({
-    this.period,
-  });
+  NotificationRateLimit({this.period});
 
   NotificationRateLimit.fromJson(core.Map json_)
-      : this(
-          period: json_['period'] as core.String?,
-        );
+    : this(period: json_['period'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (period != null) 'period': period!,
-      };
+    if (period != null) 'period': period!,
+  };
 }
 
 /// A PerformanceThreshold is used when each window is good when that window has
@@ -8979,24 +9032,29 @@ class PerformanceThreshold {
   });
 
   PerformanceThreshold.fromJson(core.Map json_)
-      : this(
-          basicSliPerformance: json_.containsKey('basicSliPerformance')
-              ? BasicSli.fromJson(json_['basicSliPerformance']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          performance: json_.containsKey('performance')
-              ? RequestBasedSli.fromJson(
-                  json_['performance'] as core.Map<core.String, core.dynamic>)
-              : null,
-          threshold: (json_['threshold'] as core.num?)?.toDouble(),
-        );
+    : this(
+        basicSliPerformance:
+            json_.containsKey('basicSliPerformance')
+                ? BasicSli.fromJson(
+                  json_['basicSliPerformance']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        performance:
+            json_.containsKey('performance')
+                ? RequestBasedSli.fromJson(
+                  json_['performance'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        threshold: (json_['threshold'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (basicSliPerformance != null)
-          'basicSliPerformance': basicSliPerformance!,
-        if (performance != null) 'performance': performance!,
-        if (threshold != null) 'threshold': threshold!,
-      };
+    if (basicSliPerformance != null)
+      'basicSliPerformance': basicSliPerformance!,
+    if (performance != null) 'performance': performance!,
+    if (threshold != null) 'threshold': threshold!,
+  };
 }
 
 /// Information involved in sending ICMP pings alongside public HTTP/TCP checks.
@@ -9008,18 +9066,14 @@ class PingConfig {
   /// A maximum of 3 ICMP pings is currently supported.
   core.int? pingsCount;
 
-  PingConfig({
-    this.pingsCount,
-  });
+  PingConfig({this.pingsCount});
 
   PingConfig.fromJson(core.Map json_)
-      : this(
-          pingsCount: json_['pingsCount'] as core.int?,
-        );
+    : this(pingsCount: json_['pingsCount'] as core.int?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pingsCount != null) 'pingsCount': pingsCount!,
-      };
+    if (pingsCount != null) 'pingsCount': pingsCount!,
+  };
 }
 
 /// A single data point in a time series.
@@ -9039,27 +9093,28 @@ class Point {
   /// The value of the data point.
   TypedValue? value;
 
-  Point({
-    this.interval,
-    this.value,
-  });
+  Point({this.interval, this.value});
 
   Point.fromJson(core.Map json_)
-      : this(
-          interval: json_.containsKey('interval')
-              ? TimeInterval.fromJson(
-                  json_['interval'] as core.Map<core.String, core.dynamic>)
-              : null,
-          value: json_.containsKey('value')
-              ? TypedValue.fromJson(
-                  json_['value'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        interval:
+            json_.containsKey('interval')
+                ? TimeInterval.fromJson(
+                  json_['interval'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        value:
+            json_.containsKey('value')
+                ? TypedValue.fromJson(
+                  json_['value'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (interval != null) 'interval': interval!,
-        if (value != null) 'value': value!,
-      };
+    if (interval != null) 'interval': interval!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// A point's value columns and time interval.
@@ -9074,27 +9129,30 @@ class PointData {
   /// The values that make up the point.
   core.List<TypedValue>? values;
 
-  PointData({
-    this.timeInterval,
-    this.values,
-  });
+  PointData({this.timeInterval, this.values});
 
   PointData.fromJson(core.Map json_)
-      : this(
-          timeInterval: json_.containsKey('timeInterval')
-              ? TimeInterval.fromJson(
-                  json_['timeInterval'] as core.Map<core.String, core.dynamic>)
-              : null,
-          values: (json_['values'] as core.List?)
-              ?.map((value) => TypedValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        timeInterval:
+            json_.containsKey('timeInterval')
+                ? TimeInterval.fromJson(
+                  json_['timeInterval'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        values:
+            (json_['values'] as core.List?)
+                ?.map(
+                  (value) => TypedValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (timeInterval != null) 'timeInterval': timeInterval!,
-        if (values != null) 'values': values!,
-      };
+    if (timeInterval != null) 'timeInterval': timeInterval!,
+    if (values != null) 'values': values!,
+  };
 }
 
 /// A condition type that allows alerting policies to be defined using
@@ -9214,34 +9272,28 @@ class PrometheusQueryLanguageCondition {
   });
 
   PrometheusQueryLanguageCondition.fromJson(core.Map json_)
-      : this(
-          alertRule: json_['alertRule'] as core.String?,
-          disableMetricValidation:
-              json_['disableMetricValidation'] as core.bool?,
-          duration: json_['duration'] as core.String?,
-          evaluationInterval: json_['evaluationInterval'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          query: json_['query'] as core.String?,
-          ruleGroup: json_['ruleGroup'] as core.String?,
-        );
+    : this(
+        alertRule: json_['alertRule'] as core.String?,
+        disableMetricValidation: json_['disableMetricValidation'] as core.bool?,
+        duration: json_['duration'] as core.String?,
+        evaluationInterval: json_['evaluationInterval'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        query: json_['query'] as core.String?,
+        ruleGroup: json_['ruleGroup'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (alertRule != null) 'alertRule': alertRule!,
-        if (disableMetricValidation != null)
-          'disableMetricValidation': disableMetricValidation!,
-        if (duration != null) 'duration': duration!,
-        if (evaluationInterval != null)
-          'evaluationInterval': evaluationInterval!,
-        if (labels != null) 'labels': labels!,
-        if (query != null) 'query': query!,
-        if (ruleGroup != null) 'ruleGroup': ruleGroup!,
-      };
+    if (alertRule != null) 'alertRule': alertRule!,
+    if (disableMetricValidation != null)
+      'disableMetricValidation': disableMetricValidation!,
+    if (duration != null) 'duration': duration!,
+    if (evaluationInterval != null) 'evaluationInterval': evaluationInterval!,
+    if (labels != null) 'labels': labels!,
+    if (query != null) 'query': query!,
+    if (ruleGroup != null) 'ruleGroup': ruleGroup!,
+  };
 }
 
 /// The QueryTimeSeries request.
@@ -9269,24 +9321,20 @@ class QueryTimeSeriesRequest {
   /// Required.
   core.String? query;
 
-  QueryTimeSeriesRequest({
-    this.pageSize,
-    this.pageToken,
-    this.query,
-  });
+  QueryTimeSeriesRequest({this.pageSize, this.pageToken, this.query});
 
   QueryTimeSeriesRequest.fromJson(core.Map json_)
-      : this(
-          pageSize: json_['pageSize'] as core.int?,
-          pageToken: json_['pageToken'] as core.String?,
-          query: json_['query'] as core.String?,
-        );
+    : this(
+        pageSize: json_['pageSize'] as core.int?,
+        pageToken: json_['pageToken'] as core.String?,
+        query: json_['query'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pageSize != null) 'pageSize': pageSize!,
-        if (pageToken != null) 'pageToken': pageToken!,
-        if (query != null) 'query': query!,
-      };
+    if (pageSize != null) 'pageSize': pageSize!,
+    if (pageToken != null) 'pageToken': pageToken!,
+    if (query != null) 'query': query!,
+  };
 }
 
 /// The QueryTimeSeries response.
@@ -9322,29 +9370,40 @@ class QueryTimeSeriesResponse {
   });
 
   QueryTimeSeriesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          partialErrors: (json_['partialErrors'] as core.List?)
-              ?.map((value) =>
-                  Status.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          timeSeriesData: (json_['timeSeriesData'] as core.List?)
-              ?.map((value) => TimeSeriesData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          timeSeriesDescriptor: json_.containsKey('timeSeriesDescriptor')
-              ? TimeSeriesDescriptor.fromJson(json_['timeSeriesDescriptor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        partialErrors:
+            (json_['partialErrors'] as core.List?)
+                ?.map(
+                  (value) => Status.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        timeSeriesData:
+            (json_['timeSeriesData'] as core.List?)
+                ?.map(
+                  (value) => TimeSeriesData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        timeSeriesDescriptor:
+            json_.containsKey('timeSeriesDescriptor')
+                ? TimeSeriesDescriptor.fromJson(
+                  json_['timeSeriesDescriptor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (partialErrors != null) 'partialErrors': partialErrors!,
-        if (timeSeriesData != null) 'timeSeriesData': timeSeriesData!,
-        if (timeSeriesDescriptor != null)
-          'timeSeriesDescriptor': timeSeriesDescriptor!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (partialErrors != null) 'partialErrors': partialErrors!,
+    if (timeSeriesData != null) 'timeSeriesData': timeSeriesData!,
+    if (timeSeriesDescriptor != null)
+      'timeSeriesDescriptor': timeSeriesDescriptor!,
+  };
 }
 
 /// The range of the population values.
@@ -9355,21 +9414,18 @@ class Range {
   /// The minimum of the population values.
   core.double? min;
 
-  Range({
-    this.max,
-    this.min,
-  });
+  Range({this.max, this.min});
 
   Range.fromJson(core.Map json_)
-      : this(
-          max: (json_['max'] as core.num?)?.toDouble(),
-          min: (json_['min'] as core.num?)?.toDouble(),
-        );
+    : this(
+        max: (json_['max'] as core.num?)?.toDouble(),
+        min: (json_['min'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (max != null) 'max': max!,
-        if (min != null) 'min': min!,
-      };
+    if (max != null) 'max': max!,
+    if (min != null) 'min': min!,
+  };
 }
 
 /// Service Level Indicators for which atomic units of service are counted
@@ -9386,27 +9442,30 @@ class RequestBasedSli {
   /// is computed from two TimeSeries.
   TimeSeriesRatio? goodTotalRatio;
 
-  RequestBasedSli({
-    this.distributionCut,
-    this.goodTotalRatio,
-  });
+  RequestBasedSli({this.distributionCut, this.goodTotalRatio});
 
   RequestBasedSli.fromJson(core.Map json_)
-      : this(
-          distributionCut: json_.containsKey('distributionCut')
-              ? DistributionCut.fromJson(json_['distributionCut']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          goodTotalRatio: json_.containsKey('goodTotalRatio')
-              ? TimeSeriesRatio.fromJson(json_['goodTotalRatio']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        distributionCut:
+            json_.containsKey('distributionCut')
+                ? DistributionCut.fromJson(
+                  json_['distributionCut']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        goodTotalRatio:
+            json_.containsKey('goodTotalRatio')
+                ? TimeSeriesRatio.fromJson(
+                  json_['goodTotalRatio']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (distributionCut != null) 'distributionCut': distributionCut!,
-        if (goodTotalRatio != null) 'goodTotalRatio': goodTotalRatio!,
-      };
+    if (distributionCut != null) 'distributionCut': distributionCut!,
+    if (goodTotalRatio != null) 'goodTotalRatio': goodTotalRatio!,
+  };
 }
 
 /// The resource submessage for group checks.
@@ -9428,21 +9487,18 @@ class ResourceGroup {
   /// - "AWS_ELB_LOAD_BALANCER" : A group of Amazon ELB load balancers.
   core.String? resourceType;
 
-  ResourceGroup({
-    this.groupId,
-    this.resourceType,
-  });
+  ResourceGroup({this.groupId, this.resourceType});
 
   ResourceGroup.fromJson(core.Map json_)
-      : this(
-          groupId: json_['groupId'] as core.String?,
-          resourceType: json_['resourceType'] as core.String?,
-        );
+    : this(
+        groupId: json_['groupId'] as core.String?,
+        resourceType: json_['resourceType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (groupId != null) 'groupId': groupId!,
-        if (resourceType != null) 'resourceType': resourceType!,
-      };
+    if (groupId != null) 'groupId': groupId!,
+    if (resourceType != null) 'resourceType': resourceType!,
+  };
 }
 
 /// A status to accept.
@@ -9463,21 +9519,18 @@ class ResponseStatusCode {
   /// A status code to accept.
   core.int? statusValue;
 
-  ResponseStatusCode({
-    this.statusClass,
-    this.statusValue,
-  });
+  ResponseStatusCode({this.statusClass, this.statusValue});
 
   ResponseStatusCode.fromJson(core.Map json_)
-      : this(
-          statusClass: json_['statusClass'] as core.String?,
-          statusValue: json_['statusValue'] as core.int?,
-        );
+    : this(
+        statusClass: json_['statusClass'] as core.String?,
+        statusValue: json_['statusValue'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (statusClass != null) 'statusClass': statusClass!,
-        if (statusValue != null) 'statusValue': statusValue!,
-      };
+    if (statusClass != null) 'statusClass': statusClass!,
+    if (statusValue != null) 'statusValue': statusValue!,
+  };
 }
 
 /// A test that checks if the number of rows in the result set violates some
@@ -9508,21 +9561,18 @@ class RowCountTest {
   /// Required.
   core.String? threshold;
 
-  RowCountTest({
-    this.comparison,
-    this.threshold,
-  });
+  RowCountTest({this.comparison, this.threshold});
 
   RowCountTest.fromJson(core.Map json_)
-      : this(
-          comparison: json_['comparison'] as core.String?,
-          threshold: json_['threshold'] as core.String?,
-        );
+    : this(
+        comparison: json_['comparison'] as core.String?,
+        threshold: json_['threshold'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (comparison != null) 'comparison': comparison!,
-        if (threshold != null) 'threshold': threshold!,
-      };
+    if (comparison != null) 'comparison': comparison!,
+    if (threshold != null) 'threshold': threshold!,
+  };
 }
 
 /// The SendNotificationChannelVerificationCode request.
@@ -9615,85 +9665,106 @@ class Service {
   });
 
   Service.fromJson(core.Map json_)
-      : this(
-          appEngine: json_.containsKey('appEngine')
-              ? AppEngine.fromJson(
-                  json_['appEngine'] as core.Map<core.String, core.dynamic>)
-              : null,
-          basicService: json_.containsKey('basicService')
-              ? BasicService.fromJson(
-                  json_['basicService'] as core.Map<core.String, core.dynamic>)
-              : null,
-          cloudEndpoints: json_.containsKey('cloudEndpoints')
-              ? CloudEndpoints.fromJson(json_['cloudEndpoints']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          cloudRun: json_.containsKey('cloudRun')
-              ? CloudRun.fromJson(
-                  json_['cloudRun'] as core.Map<core.String, core.dynamic>)
-              : null,
-          clusterIstio: json_.containsKey('clusterIstio')
-              ? ClusterIstio.fromJson(
-                  json_['clusterIstio'] as core.Map<core.String, core.dynamic>)
-              : null,
-          custom: json_.containsKey('custom')
-              ? Custom.fromJson(
-                  json_['custom'] as core.Map<core.String, core.dynamic>)
-              : null,
-          displayName: json_['displayName'] as core.String?,
-          gkeNamespace: json_.containsKey('gkeNamespace')
-              ? GkeNamespace.fromJson(
-                  json_['gkeNamespace'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gkeService: json_.containsKey('gkeService')
-              ? GkeService.fromJson(
-                  json_['gkeService'] as core.Map<core.String, core.dynamic>)
-              : null,
-          gkeWorkload: json_.containsKey('gkeWorkload')
-              ? GkeWorkload.fromJson(
-                  json_['gkeWorkload'] as core.Map<core.String, core.dynamic>)
-              : null,
-          istioCanonicalService: json_.containsKey('istioCanonicalService')
-              ? IstioCanonicalService.fromJson(json_['istioCanonicalService']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          meshIstio: json_.containsKey('meshIstio')
-              ? MeshIstio.fromJson(
-                  json_['meshIstio'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          telemetry: json_.containsKey('telemetry')
-              ? Telemetry.fromJson(
-                  json_['telemetry'] as core.Map<core.String, core.dynamic>)
-              : null,
-          userLabels:
-              (json_['userLabels'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        appEngine:
+            json_.containsKey('appEngine')
+                ? AppEngine.fromJson(
+                  json_['appEngine'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        basicService:
+            json_.containsKey('basicService')
+                ? BasicService.fromJson(
+                  json_['basicService'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cloudEndpoints:
+            json_.containsKey('cloudEndpoints')
+                ? CloudEndpoints.fromJson(
+                  json_['cloudEndpoints']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cloudRun:
+            json_.containsKey('cloudRun')
+                ? CloudRun.fromJson(
+                  json_['cloudRun'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        clusterIstio:
+            json_.containsKey('clusterIstio')
+                ? ClusterIstio.fromJson(
+                  json_['clusterIstio'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        custom:
+            json_.containsKey('custom')
+                ? Custom.fromJson(
+                  json_['custom'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        displayName: json_['displayName'] as core.String?,
+        gkeNamespace:
+            json_.containsKey('gkeNamespace')
+                ? GkeNamespace.fromJson(
+                  json_['gkeNamespace'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gkeService:
+            json_.containsKey('gkeService')
+                ? GkeService.fromJson(
+                  json_['gkeService'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gkeWorkload:
+            json_.containsKey('gkeWorkload')
+                ? GkeWorkload.fromJson(
+                  json_['gkeWorkload'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        istioCanonicalService:
+            json_.containsKey('istioCanonicalService')
+                ? IstioCanonicalService.fromJson(
+                  json_['istioCanonicalService']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        meshIstio:
+            json_.containsKey('meshIstio')
+                ? MeshIstio.fromJson(
+                  json_['meshIstio'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        telemetry:
+            json_.containsKey('telemetry')
+                ? Telemetry.fromJson(
+                  json_['telemetry'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userLabels: (json_['userLabels']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (appEngine != null) 'appEngine': appEngine!,
-        if (basicService != null) 'basicService': basicService!,
-        if (cloudEndpoints != null) 'cloudEndpoints': cloudEndpoints!,
-        if (cloudRun != null) 'cloudRun': cloudRun!,
-        if (clusterIstio != null) 'clusterIstio': clusterIstio!,
-        if (custom != null) 'custom': custom!,
-        if (displayName != null) 'displayName': displayName!,
-        if (gkeNamespace != null) 'gkeNamespace': gkeNamespace!,
-        if (gkeService != null) 'gkeService': gkeService!,
-        if (gkeWorkload != null) 'gkeWorkload': gkeWorkload!,
-        if (istioCanonicalService != null)
-          'istioCanonicalService': istioCanonicalService!,
-        if (meshIstio != null) 'meshIstio': meshIstio!,
-        if (name != null) 'name': name!,
-        if (telemetry != null) 'telemetry': telemetry!,
-        if (userLabels != null) 'userLabels': userLabels!,
-      };
+    if (appEngine != null) 'appEngine': appEngine!,
+    if (basicService != null) 'basicService': basicService!,
+    if (cloudEndpoints != null) 'cloudEndpoints': cloudEndpoints!,
+    if (cloudRun != null) 'cloudRun': cloudRun!,
+    if (clusterIstio != null) 'clusterIstio': clusterIstio!,
+    if (custom != null) 'custom': custom!,
+    if (displayName != null) 'displayName': displayName!,
+    if (gkeNamespace != null) 'gkeNamespace': gkeNamespace!,
+    if (gkeService != null) 'gkeService': gkeService!,
+    if (gkeWorkload != null) 'gkeWorkload': gkeWorkload!,
+    if (istioCanonicalService != null)
+      'istioCanonicalService': istioCanonicalService!,
+    if (meshIstio != null) 'meshIstio': meshIstio!,
+    if (name != null) 'name': name!,
+    if (telemetry != null) 'telemetry': telemetry!,
+    if (userLabels != null) 'userLabels': userLabels!,
+  };
 }
 
 /// Contains information needed for generating either an OpenID Connect token
@@ -9710,18 +9781,14 @@ class ServiceAgentAuthentication {
   /// - "OIDC_TOKEN" : OIDC Authentication
   core.String? type;
 
-  ServiceAgentAuthentication({
-    this.type,
-  });
+  ServiceAgentAuthentication({this.type});
 
   ServiceAgentAuthentication.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-        );
+    : this(type: json_['type'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-      };
+    if (type != null) 'type': type!,
+  };
 }
 
 /// A Service-Level Indicator (SLI) describes the "performance" of a service.
@@ -9748,33 +9815,35 @@ class ServiceLevelIndicator {
   /// Windows-based SLIs
   WindowsBasedSli? windowsBased;
 
-  ServiceLevelIndicator({
-    this.basicSli,
-    this.requestBased,
-    this.windowsBased,
-  });
+  ServiceLevelIndicator({this.basicSli, this.requestBased, this.windowsBased});
 
   ServiceLevelIndicator.fromJson(core.Map json_)
-      : this(
-          basicSli: json_.containsKey('basicSli')
-              ? BasicSli.fromJson(
-                  json_['basicSli'] as core.Map<core.String, core.dynamic>)
-              : null,
-          requestBased: json_.containsKey('requestBased')
-              ? RequestBasedSli.fromJson(
-                  json_['requestBased'] as core.Map<core.String, core.dynamic>)
-              : null,
-          windowsBased: json_.containsKey('windowsBased')
-              ? WindowsBasedSli.fromJson(
-                  json_['windowsBased'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        basicSli:
+            json_.containsKey('basicSli')
+                ? BasicSli.fromJson(
+                  json_['basicSli'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requestBased:
+            json_.containsKey('requestBased')
+                ? RequestBasedSli.fromJson(
+                  json_['requestBased'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        windowsBased:
+            json_.containsKey('windowsBased')
+                ? WindowsBasedSli.fromJson(
+                  json_['windowsBased'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (basicSli != null) 'basicSli': basicSli!,
-        if (requestBased != null) 'requestBased': requestBased!,
-        if (windowsBased != null) 'windowsBased': windowsBased!,
-      };
+    if (basicSli != null) 'basicSli': basicSli!,
+    if (requestBased != null) 'requestBased': requestBased!,
+    if (windowsBased != null) 'windowsBased': windowsBased!,
+  };
 }
 
 /// A Service-Level Objective (SLO) describes a level of desired good service.
@@ -9849,36 +9918,34 @@ class ServiceLevelObjective {
   });
 
   ServiceLevelObjective.fromJson(core.Map json_)
-      : this(
-          calendarPeriod: json_['calendarPeriod'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          goal: (json_['goal'] as core.num?)?.toDouble(),
-          name: json_['name'] as core.String?,
-          rollingPeriod: json_['rollingPeriod'] as core.String?,
-          serviceLevelIndicator: json_.containsKey('serviceLevelIndicator')
-              ? ServiceLevelIndicator.fromJson(json_['serviceLevelIndicator']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          userLabels:
-              (json_['userLabels'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        calendarPeriod: json_['calendarPeriod'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        goal: (json_['goal'] as core.num?)?.toDouble(),
+        name: json_['name'] as core.String?,
+        rollingPeriod: json_['rollingPeriod'] as core.String?,
+        serviceLevelIndicator:
+            json_.containsKey('serviceLevelIndicator')
+                ? ServiceLevelIndicator.fromJson(
+                  json_['serviceLevelIndicator']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userLabels: (json_['userLabels']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (calendarPeriod != null) 'calendarPeriod': calendarPeriod!,
-        if (displayName != null) 'displayName': displayName!,
-        if (goal != null) 'goal': goal!,
-        if (name != null) 'name': name!,
-        if (rollingPeriod != null) 'rollingPeriod': rollingPeriod!,
-        if (serviceLevelIndicator != null)
-          'serviceLevelIndicator': serviceLevelIndicator!,
-        if (userLabels != null) 'userLabels': userLabels!,
-      };
+    if (calendarPeriod != null) 'calendarPeriod': calendarPeriod!,
+    if (displayName != null) 'displayName': displayName!,
+    if (goal != null) 'goal': goal!,
+    if (name != null) 'name': name!,
+    if (rollingPeriod != null) 'rollingPeriod': rollingPeriod!,
+    if (serviceLevelIndicator != null)
+      'serviceLevelIndicator': serviceLevelIndicator!,
+    if (userLabels != null) 'userLabels': userLabels!,
+  };
 }
 
 /// A Snooze will prevent any alerts from being opened, and close any that are
@@ -9921,33 +9988,32 @@ class Snooze {
   /// Required.
   core.String? name;
 
-  Snooze({
-    this.criteria,
-    this.displayName,
-    this.interval,
-    this.name,
-  });
+  Snooze({this.criteria, this.displayName, this.interval, this.name});
 
   Snooze.fromJson(core.Map json_)
-      : this(
-          criteria: json_.containsKey('criteria')
-              ? Criteria.fromJson(
-                  json_['criteria'] as core.Map<core.String, core.dynamic>)
-              : null,
-          displayName: json_['displayName'] as core.String?,
-          interval: json_.containsKey('interval')
-              ? TimeInterval.fromJson(
-                  json_['interval'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-        );
+    : this(
+        criteria:
+            json_.containsKey('criteria')
+                ? Criteria.fromJson(
+                  json_['criteria'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        displayName: json_['displayName'] as core.String?,
+        interval:
+            json_.containsKey('interval')
+                ? TimeInterval.fromJson(
+                  json_['interval'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (criteria != null) 'criteria': criteria!,
-        if (displayName != null) 'displayName': displayName!,
-        if (interval != null) 'interval': interval!,
-        if (name != null) 'name': name!,
-      };
+    if (criteria != null) 'criteria': criteria!,
+    if (displayName != null) 'displayName': displayName!,
+    if (interval != null) 'interval': interval!,
+    if (name != null) 'name': name!,
+  };
 }
 
 /// A condition that allows alerting policies to be defined using GoogleSQL.
@@ -9993,38 +10059,48 @@ class SqlCondition {
   });
 
   SqlCondition.fromJson(core.Map json_)
-      : this(
-          booleanTest: json_.containsKey('booleanTest')
-              ? BooleanTest.fromJson(
-                  json_['booleanTest'] as core.Map<core.String, core.dynamic>)
-              : null,
-          daily: json_.containsKey('daily')
-              ? Daily.fromJson(
-                  json_['daily'] as core.Map<core.String, core.dynamic>)
-              : null,
-          hourly: json_.containsKey('hourly')
-              ? Hourly.fromJson(
-                  json_['hourly'] as core.Map<core.String, core.dynamic>)
-              : null,
-          minutes: json_.containsKey('minutes')
-              ? Minutes.fromJson(
-                  json_['minutes'] as core.Map<core.String, core.dynamic>)
-              : null,
-          query: json_['query'] as core.String?,
-          rowCountTest: json_.containsKey('rowCountTest')
-              ? RowCountTest.fromJson(
-                  json_['rowCountTest'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        booleanTest:
+            json_.containsKey('booleanTest')
+                ? BooleanTest.fromJson(
+                  json_['booleanTest'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        daily:
+            json_.containsKey('daily')
+                ? Daily.fromJson(
+                  json_['daily'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hourly:
+            json_.containsKey('hourly')
+                ? Hourly.fromJson(
+                  json_['hourly'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        minutes:
+            json_.containsKey('minutes')
+                ? Minutes.fromJson(
+                  json_['minutes'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        query: json_['query'] as core.String?,
+        rowCountTest:
+            json_.containsKey('rowCountTest')
+                ? RowCountTest.fromJson(
+                  json_['rowCountTest'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (booleanTest != null) 'booleanTest': booleanTest!,
-        if (daily != null) 'daily': daily!,
-        if (hourly != null) 'hourly': hourly!,
-        if (minutes != null) 'minutes': minutes!,
-        if (query != null) 'query': query!,
-        if (rowCountTest != null) 'rowCountTest': rowCountTest!,
-      };
+    if (booleanTest != null) 'booleanTest': booleanTest!,
+    if (daily != null) 'daily': daily!,
+    if (hourly != null) 'hourly': hourly!,
+    if (minutes != null) 'minutes': minutes!,
+    if (query != null) 'query': query!,
+    if (rowCountTest != null) 'rowCountTest': rowCountTest!,
+  };
 }
 
 /// The Status type defines a logical error model that is suitable for different
@@ -10041,21 +10117,22 @@ class SyntheticMonitorTarget {
   /// Target a Synthetic Monitor GCFv2 instance.
   CloudFunctionV2Target? cloudFunctionV2;
 
-  SyntheticMonitorTarget({
-    this.cloudFunctionV2,
-  });
+  SyntheticMonitorTarget({this.cloudFunctionV2});
 
   SyntheticMonitorTarget.fromJson(core.Map json_)
-      : this(
-          cloudFunctionV2: json_.containsKey('cloudFunctionV2')
-              ? CloudFunctionV2Target.fromJson(json_['cloudFunctionV2']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        cloudFunctionV2:
+            json_.containsKey('cloudFunctionV2')
+                ? CloudFunctionV2Target.fromJson(
+                  json_['cloudFunctionV2']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cloudFunctionV2 != null) 'cloudFunctionV2': cloudFunctionV2!,
-      };
+    if (cloudFunctionV2 != null) 'cloudFunctionV2': cloudFunctionV2!,
+  };
 }
 
 /// Information required for a TCP Uptime check request.
@@ -10069,24 +10146,23 @@ class TcpCheck {
   /// construct the full URL. Required.
   core.int? port;
 
-  TcpCheck({
-    this.pingConfig,
-    this.port,
-  });
+  TcpCheck({this.pingConfig, this.port});
 
   TcpCheck.fromJson(core.Map json_)
-      : this(
-          pingConfig: json_.containsKey('pingConfig')
-              ? PingConfig.fromJson(
-                  json_['pingConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          port: json_['port'] as core.int?,
-        );
+    : this(
+        pingConfig:
+            json_.containsKey('pingConfig')
+                ? PingConfig.fromJson(
+                  json_['pingConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        port: json_['port'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (pingConfig != null) 'pingConfig': pingConfig!,
-        if (port != null) 'port': port!,
-      };
+    if (pingConfig != null) 'pingConfig': pingConfig!,
+    if (port != null) 'port': port!,
+  };
 }
 
 /// Configuration for how to query telemetry on a Service.
@@ -10097,18 +10173,14 @@ class Telemetry {
   /// https://cloud.google.com/apis/design/resource_names.
   core.String? resourceName;
 
-  Telemetry({
-    this.resourceName,
-  });
+  Telemetry({this.resourceName});
 
   Telemetry.fromJson(core.Map json_)
-      : this(
-          resourceName: json_['resourceName'] as core.String?,
-        );
+    : this(resourceName: json_['resourceName'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (resourceName != null) 'resourceName': resourceName!,
-      };
+    if (resourceName != null) 'resourceName': resourceName!,
+  };
 }
 
 /// Describes a time interval: Reads: A half-open time interval.
@@ -10156,21 +10228,18 @@ class TimeInterval {
   /// Optional.
   core.String? startTime;
 
-  TimeInterval({
-    this.endTime,
-    this.startTime,
-  });
+  TimeInterval({this.endTime, this.startTime});
 
   TimeInterval.fromJson(core.Map json_)
-      : this(
-          endTime: json_['endTime'] as core.String?,
-          startTime: json_['startTime'] as core.String?,
-        );
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (endTime != null) 'endTime': endTime!,
-        if (startTime != null) 'startTime': startTime!,
-      };
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+  };
 }
 
 /// Represents a time of day.
@@ -10283,39 +10352,49 @@ class TimeSeries {
   });
 
   TimeSeries.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          metadata: json_.containsKey('metadata')
-              ? MonitoredResourceMetadata.fromJson(
-                  json_['metadata'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metric: json_.containsKey('metric')
-              ? Metric.fromJson(
-                  json_['metric'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metricKind: json_['metricKind'] as core.String?,
-          points: (json_['points'] as core.List?)
-              ?.map((value) =>
-                  Point.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          resource: json_.containsKey('resource')
-              ? MonitoredResource.fromJson(
-                  json_['resource'] as core.Map<core.String, core.dynamic>)
-              : null,
-          unit: json_['unit'] as core.String?,
-          valueType: json_['valueType'] as core.String?,
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        metadata:
+            json_.containsKey('metadata')
+                ? MonitoredResourceMetadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metric:
+            json_.containsKey('metric')
+                ? Metric.fromJson(
+                  json_['metric'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metricKind: json_['metricKind'] as core.String?,
+        points:
+            (json_['points'] as core.List?)
+                ?.map(
+                  (value) => Point.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        resource:
+            json_.containsKey('resource')
+                ? MonitoredResource.fromJson(
+                  json_['resource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        unit: json_['unit'] as core.String?,
+        valueType: json_['valueType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (metadata != null) 'metadata': metadata!,
-        if (metric != null) 'metric': metric!,
-        if (metricKind != null) 'metricKind': metricKind!,
-        if (points != null) 'points': points!,
-        if (resource != null) 'resource': resource!,
-        if (unit != null) 'unit': unit!,
-        if (valueType != null) 'valueType': valueType!,
-      };
+    if (description != null) 'description': description!,
+    if (metadata != null) 'metadata': metadata!,
+    if (metric != null) 'metric': metric!,
+    if (metricKind != null) 'metricKind': metricKind!,
+    if (points != null) 'points': points!,
+    if (resource != null) 'resource': resource!,
+    if (unit != null) 'unit': unit!,
+    if (valueType != null) 'valueType': valueType!,
+  };
 }
 
 /// Represents the values of a time series associated with a
@@ -10332,27 +10411,32 @@ class TimeSeriesData {
   /// The points in the time series.
   core.List<PointData>? pointData;
 
-  TimeSeriesData({
-    this.labelValues,
-    this.pointData,
-  });
+  TimeSeriesData({this.labelValues, this.pointData});
 
   TimeSeriesData.fromJson(core.Map json_)
-      : this(
-          labelValues: (json_['labelValues'] as core.List?)
-              ?.map((value) => LabelValue.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          pointData: (json_['pointData'] as core.List?)
-              ?.map((value) => PointData.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        labelValues:
+            (json_['labelValues'] as core.List?)
+                ?.map(
+                  (value) => LabelValue.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        pointData:
+            (json_['pointData'] as core.List?)
+                ?.map(
+                  (value) => PointData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labelValues != null) 'labelValues': labelValues!,
-        if (pointData != null) 'pointData': pointData!,
-      };
+    if (labelValues != null) 'labelValues': labelValues!,
+    if (pointData != null) 'pointData': pointData!,
+  };
 }
 
 /// A descriptor for the labels and points in a time series.
@@ -10363,27 +10447,32 @@ class TimeSeriesDescriptor {
   /// Descriptors for the point data value columns.
   core.List<ValueDescriptor>? pointDescriptors;
 
-  TimeSeriesDescriptor({
-    this.labelDescriptors,
-    this.pointDescriptors,
-  });
+  TimeSeriesDescriptor({this.labelDescriptors, this.pointDescriptors});
 
   TimeSeriesDescriptor.fromJson(core.Map json_)
-      : this(
-          labelDescriptors: (json_['labelDescriptors'] as core.List?)
-              ?.map((value) => LabelDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          pointDescriptors: (json_['pointDescriptors'] as core.List?)
-              ?.map((value) => ValueDescriptor.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        labelDescriptors:
+            (json_['labelDescriptors'] as core.List?)
+                ?.map(
+                  (value) => LabelDescriptor.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        pointDescriptors:
+            (json_['pointDescriptors'] as core.List?)
+                ?.map(
+                  (value) => ValueDescriptor.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (labelDescriptors != null) 'labelDescriptors': labelDescriptors!,
-        if (pointDescriptors != null) 'pointDescriptors': pointDescriptors!,
-      };
+    if (labelDescriptors != null) 'labelDescriptors': labelDescriptors!,
+    if (pointDescriptors != null) 'pointDescriptors': pointDescriptors!,
+  };
 }
 
 /// A TimeSeriesRatio specifies two TimeSeries to use for computing the
@@ -10423,18 +10512,17 @@ class TimeSeriesRatio {
   });
 
   TimeSeriesRatio.fromJson(core.Map json_)
-      : this(
-          badServiceFilter: json_['badServiceFilter'] as core.String?,
-          goodServiceFilter: json_['goodServiceFilter'] as core.String?,
-          totalServiceFilter: json_['totalServiceFilter'] as core.String?,
-        );
+    : this(
+        badServiceFilter: json_['badServiceFilter'] as core.String?,
+        goodServiceFilter: json_['goodServiceFilter'] as core.String?,
+        totalServiceFilter: json_['totalServiceFilter'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (badServiceFilter != null) 'badServiceFilter': badServiceFilter!,
-        if (goodServiceFilter != null) 'goodServiceFilter': goodServiceFilter!,
-        if (totalServiceFilter != null)
-          'totalServiceFilter': totalServiceFilter!,
-      };
+    if (badServiceFilter != null) 'badServiceFilter': badServiceFilter!,
+    if (goodServiceFilter != null) 'goodServiceFilter': goodServiceFilter!,
+    if (totalServiceFilter != null) 'totalServiceFilter': totalServiceFilter!,
+  };
 }
 
 /// Specifies how many time series must fail a predicate to trigger a condition.
@@ -10449,21 +10537,18 @@ class Trigger {
   /// condition to be triggered.
   core.double? percent;
 
-  Trigger({
-    this.count,
-    this.percent,
-  });
+  Trigger({this.count, this.percent});
 
   Trigger.fromJson(core.Map json_)
-      : this(
-          count: json_['count'] as core.int?,
-          percent: (json_['percent'] as core.num?)?.toDouble(),
-        );
+    : this(
+        count: json_['count'] as core.int?,
+        percent: (json_['percent'] as core.num?)?.toDouble(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (count != null) 'count': count!,
-        if (percent != null) 'percent': percent!,
-      };
+    if (count != null) 'count': count!,
+    if (percent != null) 'percent': percent!,
+  };
 }
 
 /// A single strongly-typed value.
@@ -10497,24 +10582,27 @@ class TypedValue {
   });
 
   TypedValue.fromJson(core.Map json_)
-      : this(
-          boolValue: json_['boolValue'] as core.bool?,
-          distributionValue: json_.containsKey('distributionValue')
-              ? Distribution.fromJson(json_['distributionValue']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
-          int64Value: json_['int64Value'] as core.String?,
-          stringValue: json_['stringValue'] as core.String?,
-        );
+    : this(
+        boolValue: json_['boolValue'] as core.bool?,
+        distributionValue:
+            json_.containsKey('distributionValue')
+                ? Distribution.fromJson(
+                  json_['distributionValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+        int64Value: json_['int64Value'] as core.String?,
+        stringValue: json_['stringValue'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (boolValue != null) 'boolValue': boolValue!,
-        if (distributionValue != null) 'distributionValue': distributionValue!,
-        if (doubleValue != null) 'doubleValue': doubleValue!,
-        if (int64Value != null) 'int64Value': int64Value!,
-        if (stringValue != null) 'stringValue': stringValue!,
-      };
+    if (boolValue != null) 'boolValue': boolValue!,
+    if (distributionValue != null) 'distributionValue': distributionValue!,
+    if (doubleValue != null) 'doubleValue': doubleValue!,
+    if (int64Value != null) 'int64Value': int64Value!,
+    if (stringValue != null) 'stringValue': stringValue!,
+  };
 }
 
 /// This message configures which resources and services to monitor for
@@ -10655,75 +10743,91 @@ class UptimeCheckConfig {
   });
 
   UptimeCheckConfig.fromJson(core.Map json_)
-      : this(
-          checkerType: json_['checkerType'] as core.String?,
-          contentMatchers: (json_['contentMatchers'] as core.List?)
-              ?.map((value) => ContentMatcher.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          disabled: json_['disabled'] as core.bool?,
-          displayName: json_['displayName'] as core.String?,
-          httpCheck: json_.containsKey('httpCheck')
-              ? HttpCheck.fromJson(
-                  json_['httpCheck'] as core.Map<core.String, core.dynamic>)
-              : null,
-          internalCheckers: (json_['internalCheckers'] as core.List?)
-              ?.map((value) => InternalChecker.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          isInternal: json_['isInternal'] as core.bool?,
-          logCheckFailures: json_['logCheckFailures'] as core.bool?,
-          monitoredResource: json_.containsKey('monitoredResource')
-              ? MonitoredResource.fromJson(json_['monitoredResource']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          period: json_['period'] as core.String?,
-          resourceGroup: json_.containsKey('resourceGroup')
-              ? ResourceGroup.fromJson(
-                  json_['resourceGroup'] as core.Map<core.String, core.dynamic>)
-              : null,
-          selectedRegions: (json_['selectedRegions'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          syntheticMonitor: json_.containsKey('syntheticMonitor')
-              ? SyntheticMonitorTarget.fromJson(json_['syntheticMonitor']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          tcpCheck: json_.containsKey('tcpCheck')
-              ? TcpCheck.fromJson(
-                  json_['tcpCheck'] as core.Map<core.String, core.dynamic>)
-              : null,
-          timeout: json_['timeout'] as core.String?,
-          userLabels:
-              (json_['userLabels'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
+    : this(
+        checkerType: json_['checkerType'] as core.String?,
+        contentMatchers:
+            (json_['contentMatchers'] as core.List?)
+                ?.map(
+                  (value) => ContentMatcher.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        disabled: json_['disabled'] as core.bool?,
+        displayName: json_['displayName'] as core.String?,
+        httpCheck:
+            json_.containsKey('httpCheck')
+                ? HttpCheck.fromJson(
+                  json_['httpCheck'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        internalCheckers:
+            (json_['internalCheckers'] as core.List?)
+                ?.map(
+                  (value) => InternalChecker.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        isInternal: json_['isInternal'] as core.bool?,
+        logCheckFailures: json_['logCheckFailures'] as core.bool?,
+        monitoredResource:
+            json_.containsKey('monitoredResource')
+                ? MonitoredResource.fromJson(
+                  json_['monitoredResource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        period: json_['period'] as core.String?,
+        resourceGroup:
+            json_.containsKey('resourceGroup')
+                ? ResourceGroup.fromJson(
+                  json_['resourceGroup'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        selectedRegions:
+            (json_['selectedRegions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        syntheticMonitor:
+            json_.containsKey('syntheticMonitor')
+                ? SyntheticMonitorTarget.fromJson(
+                  json_['syntheticMonitor']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tcpCheck:
+            json_.containsKey('tcpCheck')
+                ? TcpCheck.fromJson(
+                  json_['tcpCheck'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        timeout: json_['timeout'] as core.String?,
+        userLabels: (json_['userLabels']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (checkerType != null) 'checkerType': checkerType!,
-        if (contentMatchers != null) 'contentMatchers': contentMatchers!,
-        if (disabled != null) 'disabled': disabled!,
-        if (displayName != null) 'displayName': displayName!,
-        if (httpCheck != null) 'httpCheck': httpCheck!,
-        if (internalCheckers != null) 'internalCheckers': internalCheckers!,
-        if (isInternal != null) 'isInternal': isInternal!,
-        if (logCheckFailures != null) 'logCheckFailures': logCheckFailures!,
-        if (monitoredResource != null) 'monitoredResource': monitoredResource!,
-        if (name != null) 'name': name!,
-        if (period != null) 'period': period!,
-        if (resourceGroup != null) 'resourceGroup': resourceGroup!,
-        if (selectedRegions != null) 'selectedRegions': selectedRegions!,
-        if (syntheticMonitor != null) 'syntheticMonitor': syntheticMonitor!,
-        if (tcpCheck != null) 'tcpCheck': tcpCheck!,
-        if (timeout != null) 'timeout': timeout!,
-        if (userLabels != null) 'userLabels': userLabels!,
-      };
+    if (checkerType != null) 'checkerType': checkerType!,
+    if (contentMatchers != null) 'contentMatchers': contentMatchers!,
+    if (disabled != null) 'disabled': disabled!,
+    if (displayName != null) 'displayName': displayName!,
+    if (httpCheck != null) 'httpCheck': httpCheck!,
+    if (internalCheckers != null) 'internalCheckers': internalCheckers!,
+    if (isInternal != null) 'isInternal': isInternal!,
+    if (logCheckFailures != null) 'logCheckFailures': logCheckFailures!,
+    if (monitoredResource != null) 'monitoredResource': monitoredResource!,
+    if (name != null) 'name': name!,
+    if (period != null) 'period': period!,
+    if (resourceGroup != null) 'resourceGroup': resourceGroup!,
+    if (selectedRegions != null) 'selectedRegions': selectedRegions!,
+    if (syntheticMonitor != null) 'syntheticMonitor': syntheticMonitor!,
+    if (tcpCheck != null) 'tcpCheck': tcpCheck!,
+    if (timeout != null) 'timeout': timeout!,
+    if (userLabels != null) 'userLabels': userLabels!,
+  };
 }
 
 /// Contains the region, location, and list of IP addresses where checkers in
@@ -10762,24 +10866,20 @@ class UptimeCheckIp {
   /// United States of America
   core.String? region;
 
-  UptimeCheckIp({
-    this.ipAddress,
-    this.location,
-    this.region,
-  });
+  UptimeCheckIp({this.ipAddress, this.location, this.region});
 
   UptimeCheckIp.fromJson(core.Map json_)
-      : this(
-          ipAddress: json_['ipAddress'] as core.String?,
-          location: json_['location'] as core.String?,
-          region: json_['region'] as core.String?,
-        );
+    : this(
+        ipAddress: json_['ipAddress'] as core.String?,
+        location: json_['location'] as core.String?,
+        region: json_['region'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (ipAddress != null) 'ipAddress': ipAddress!,
-        if (location != null) 'location': location!,
-        if (region != null) 'region': region!,
-      };
+    if (ipAddress != null) 'ipAddress': ipAddress!,
+    if (location != null) 'location': location!,
+    if (region != null) 'region': region!,
+  };
 }
 
 /// A descriptor for the value columns in a data point.
@@ -10818,27 +10918,22 @@ class ValueDescriptor {
   /// - "MONEY" : The value is money.
   core.String? valueType;
 
-  ValueDescriptor({
-    this.key,
-    this.metricKind,
-    this.unit,
-    this.valueType,
-  });
+  ValueDescriptor({this.key, this.metricKind, this.unit, this.valueType});
 
   ValueDescriptor.fromJson(core.Map json_)
-      : this(
-          key: json_['key'] as core.String?,
-          metricKind: json_['metricKind'] as core.String?,
-          unit: json_['unit'] as core.String?,
-          valueType: json_['valueType'] as core.String?,
-        );
+    : this(
+        key: json_['key'] as core.String?,
+        metricKind: json_['metricKind'] as core.String?,
+        unit: json_['unit'] as core.String?,
+        valueType: json_['valueType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (key != null) 'key': key!,
-        if (metricKind != null) 'metricKind': metricKind!,
-        if (unit != null) 'unit': unit!,
-        if (valueType != null) 'valueType': valueType!,
-      };
+    if (key != null) 'key': key!,
+    if (metricKind != null) 'metricKind': metricKind!,
+    if (unit != null) 'unit': unit!,
+    if (valueType != null) 'valueType': valueType!,
+  };
 }
 
 /// The VerifyNotificationChannel request.
@@ -10855,18 +10950,14 @@ class VerifyNotificationChannelRequest {
   /// Required.
   core.String? code;
 
-  VerifyNotificationChannelRequest({
-    this.code,
-  });
+  VerifyNotificationChannelRequest({this.code});
 
   VerifyNotificationChannelRequest.fromJson(core.Map json_)
-      : this(
-          code: json_['code'] as core.String?,
-        );
+    : this(code: json_['code'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (code != null) 'code': code!,
-      };
+    if (code != null) 'code': code!,
+  };
 }
 
 /// A WindowsBasedSli defines good_service as the count of time windows for
@@ -10906,30 +10997,39 @@ class WindowsBasedSli {
   });
 
   WindowsBasedSli.fromJson(core.Map json_)
-      : this(
-          goodBadMetricFilter: json_['goodBadMetricFilter'] as core.String?,
-          goodTotalRatioThreshold: json_.containsKey('goodTotalRatioThreshold')
-              ? PerformanceThreshold.fromJson(json_['goodTotalRatioThreshold']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          metricMeanInRange: json_.containsKey('metricMeanInRange')
-              ? MetricRange.fromJson(json_['metricMeanInRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          metricSumInRange: json_.containsKey('metricSumInRange')
-              ? MetricRange.fromJson(json_['metricSumInRange']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          windowPeriod: json_['windowPeriod'] as core.String?,
-        );
+    : this(
+        goodBadMetricFilter: json_['goodBadMetricFilter'] as core.String?,
+        goodTotalRatioThreshold:
+            json_.containsKey('goodTotalRatioThreshold')
+                ? PerformanceThreshold.fromJson(
+                  json_['goodTotalRatioThreshold']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metricMeanInRange:
+            json_.containsKey('metricMeanInRange')
+                ? MetricRange.fromJson(
+                  json_['metricMeanInRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metricSumInRange:
+            json_.containsKey('metricSumInRange')
+                ? MetricRange.fromJson(
+                  json_['metricSumInRange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        windowPeriod: json_['windowPeriod'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (goodBadMetricFilter != null)
-          'goodBadMetricFilter': goodBadMetricFilter!,
-        if (goodTotalRatioThreshold != null)
-          'goodTotalRatioThreshold': goodTotalRatioThreshold!,
-        if (metricMeanInRange != null) 'metricMeanInRange': metricMeanInRange!,
-        if (metricSumInRange != null) 'metricSumInRange': metricSumInRange!,
-        if (windowPeriod != null) 'windowPeriod': windowPeriod!,
-      };
+    if (goodBadMetricFilter != null)
+      'goodBadMetricFilter': goodBadMetricFilter!,
+    if (goodTotalRatioThreshold != null)
+      'goodTotalRatioThreshold': goodTotalRatioThreshold!,
+    if (metricMeanInRange != null) 'metricMeanInRange': metricMeanInRange!,
+    if (metricSumInRange != null) 'metricSumInRange': metricSumInRange!,
+    if (windowPeriod != null) 'windowPeriod': windowPeriod!,
+  };
 }

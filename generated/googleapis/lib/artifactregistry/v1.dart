@@ -81,11 +81,16 @@ class ArtifactRegistryApi {
 
   ProjectsResource get projects => ProjectsResource(_requester);
 
-  ArtifactRegistryApi(http.Client client,
-      {core.String rootUrl = 'https://artifactregistry.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  ArtifactRegistryApi(
+    http.Client client, {
+    core.String rootUrl = 'https://artifactregistry.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class ProjectsResource {
@@ -129,7 +134,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return ProjectSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the Settings for the Project.
@@ -176,7 +182,8 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return ProjectSettings.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -207,10 +214,7 @@ class ProjectsLocationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -259,7 +263,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return VPCSCConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -317,7 +322,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the VPCSC Config for the Project.
@@ -365,7 +371,8 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return VPCSCConfig.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -373,7 +380,7 @@ class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets the latest state of a long-running operation.
   ///
@@ -396,10 +403,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -448,7 +452,7 @@ class ProjectsLocationsRepositoriesResource {
       ProjectsLocationsRepositoriesYumArtifactsResource(_requester);
 
   ProjectsLocationsRepositoriesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a repository.
   ///
@@ -533,6 +537,7 @@ class ProjectsLocationsRepositoriesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -556,10 +561,7 @@ class ProjectsLocationsRepositoriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Repository> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Repository> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -572,7 +574,8 @@ class ProjectsLocationsRepositoriesResource {
       queryParams: queryParams_,
     );
     return Repository.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets the IAM policy for a given resource.
@@ -692,7 +695,8 @@ class ProjectsLocationsRepositoriesResource {
       queryParams: queryParams_,
     );
     return ListRepositoriesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a repository.
@@ -742,7 +746,8 @@ class ProjectsLocationsRepositoriesResource {
       queryParams: queryParams_,
     );
     return Repository.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates the IAM policy for a given resource.
@@ -832,7 +837,8 @@ class ProjectsLocationsRepositoriesResource {
       queryParams: queryParams_,
     );
     return TestIamPermissionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -840,7 +846,7 @@ class ProjectsLocationsRepositoriesAptArtifactsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesAptArtifactsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Imports Apt artifacts.
   ///
@@ -933,7 +939,8 @@ class ProjectsLocationsRepositoriesAptArtifactsResource {
     if (uploadMedia == null) {
       url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/aptArtifacts:create';
     } else {
-      url_ = '/upload/v1/' +
+      url_ =
+          '/upload/v1/' +
           core.Uri.encodeFull('$parent') +
           '/aptArtifacts:create';
     }
@@ -947,7 +954,8 @@ class ProjectsLocationsRepositoriesAptArtifactsResource {
       uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return UploadAptArtifactMediaResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -955,7 +963,7 @@ class ProjectsLocationsRepositoriesAttachmentsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesAttachmentsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates an attachment.
   ///
@@ -1041,6 +1049,7 @@ class ProjectsLocationsRepositoriesAttachmentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1064,10 +1073,7 @@ class ProjectsLocationsRepositoriesAttachmentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Attachment> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Attachment> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -1080,7 +1086,8 @@ class ProjectsLocationsRepositoriesAttachmentsResource {
       queryParams: queryParams_,
     );
     return Attachment.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists attachments.
@@ -1134,7 +1141,8 @@ class ProjectsLocationsRepositoriesAttachmentsResource {
       queryParams: queryParams_,
     );
     return ListAttachmentsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1142,7 +1150,7 @@ class ProjectsLocationsRepositoriesDockerImagesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesDockerImagesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets a docker image.
   ///
@@ -1178,7 +1186,8 @@ class ProjectsLocationsRepositoriesDockerImagesResource {
       queryParams: queryParams_,
     );
     return DockerImage.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists docker images.
@@ -1230,7 +1239,8 @@ class ProjectsLocationsRepositoriesDockerImagesResource {
       queryParams: queryParams_,
     );
     return ListDockerImagesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1238,7 +1248,7 @@ class ProjectsLocationsRepositoriesFilesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesFilesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes a file and all of its content.
   ///
@@ -1274,6 +1284,7 @@ class ProjectsLocationsRepositoriesFilesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1320,11 +1331,13 @@ class ProjectsLocationsRepositoriesFilesResource {
       url_,
       'GET',
       queryParams: queryParams_,
+
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
       return DownloadFileResponse.fromJson(
-          response_ as core.Map<core.String, core.dynamic>);
+        response_ as core.Map<core.String, core.dynamic>,
+      );
     } else {
       return response_ as commons.Media;
     }
@@ -1364,7 +1377,8 @@ class ProjectsLocationsRepositoriesFilesResource {
       queryParams: queryParams_,
     );
     return GoogleDevtoolsArtifactregistryV1File.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists files.
@@ -1452,7 +1466,8 @@ class ProjectsLocationsRepositoriesFilesResource {
       queryParams: queryParams_,
     );
     return ListFilesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a file.
@@ -1502,7 +1517,8 @@ class ProjectsLocationsRepositoriesFilesResource {
       queryParams: queryParams_,
     );
     return GoogleDevtoolsArtifactregistryV1File.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Directly uploads a file to a repository.
@@ -1550,7 +1566,8 @@ class ProjectsLocationsRepositoriesFilesResource {
     if (uploadMedia == null) {
       url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/files:upload';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      url_ = '/resumable/upload/v1/' +
+      url_ =
+          '/resumable/upload/v1/' +
           core.Uri.encodeFull('$parent') +
           '/files:upload';
     } else {
@@ -1566,7 +1583,8 @@ class ProjectsLocationsRepositoriesFilesResource {
       uploadOptions: uploadOptions,
     );
     return UploadFileMediaResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1574,8 +1592,8 @@ class ProjectsLocationsRepositoriesGenericArtifactsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesGenericArtifactsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Directly uploads a Generic artifact.
   ///
@@ -1626,11 +1644,13 @@ class ProjectsLocationsRepositoriesGenericArtifactsResource {
       url_ =
           'v1/' + core.Uri.encodeFull('$parent') + '/genericArtifacts:create';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
-      url_ = '/resumable/upload/v1/' +
+      url_ =
+          '/resumable/upload/v1/' +
           core.Uri.encodeFull('$parent') +
           '/genericArtifacts:create';
     } else {
-      url_ = '/upload/v1/' +
+      url_ =
+          '/upload/v1/' +
           core.Uri.encodeFull('$parent') +
           '/genericArtifacts:create';
     }
@@ -1644,7 +1664,8 @@ class ProjectsLocationsRepositoriesGenericArtifactsResource {
       uploadOptions: uploadOptions,
     );
     return UploadGenericArtifactMediaResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1652,7 +1673,7 @@ class ProjectsLocationsRepositoriesGoModulesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesGoModulesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Directly uploads a Go module.
   ///
@@ -1709,7 +1730,8 @@ class ProjectsLocationsRepositoriesGoModulesResource {
       uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return UploadGoModuleMediaResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1717,8 +1739,8 @@ class ProjectsLocationsRepositoriesGoogetArtifactsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesGoogetArtifactsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Imports GooGet artifacts.
   ///
@@ -1811,7 +1833,8 @@ class ProjectsLocationsRepositoriesGoogetArtifactsResource {
     if (uploadMedia == null) {
       url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/googetArtifacts:create';
     } else {
-      url_ = '/upload/v1/' +
+      url_ =
+          '/upload/v1/' +
           core.Uri.encodeFull('$parent') +
           '/googetArtifacts:create';
     }
@@ -1825,7 +1848,8 @@ class ProjectsLocationsRepositoriesGoogetArtifactsResource {
       uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return UploadGoogetArtifactMediaResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1833,7 +1857,7 @@ class ProjectsLocationsRepositoriesKfpArtifactsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesKfpArtifactsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Directly uploads a KFP artifact.
   ///
@@ -1878,7 +1902,8 @@ class ProjectsLocationsRepositoriesKfpArtifactsResource {
     if (uploadMedia == null) {
       url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/kfpArtifacts:create';
     } else {
-      url_ = '/upload/v1/' +
+      url_ =
+          '/upload/v1/' +
           core.Uri.encodeFull('$parent') +
           '/kfpArtifacts:create';
     }
@@ -1892,7 +1917,8 @@ class ProjectsLocationsRepositoriesKfpArtifactsResource {
       uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return UploadKfpArtifactMediaResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1900,8 +1926,8 @@ class ProjectsLocationsRepositoriesMavenArtifactsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesMavenArtifactsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets a maven artifact.
   ///
@@ -1937,7 +1963,8 @@ class ProjectsLocationsRepositoriesMavenArtifactsResource {
       queryParams: queryParams_,
     );
     return MavenArtifact.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists maven artifacts.
@@ -1985,7 +2012,8 @@ class ProjectsLocationsRepositoriesMavenArtifactsResource {
       queryParams: queryParams_,
     );
     return ListMavenArtifactsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -1993,7 +2021,7 @@ class ProjectsLocationsRepositoriesNpmPackagesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesNpmPackagesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Gets a npm package.
   ///
@@ -2013,10 +2041,7 @@ class ProjectsLocationsRepositoriesNpmPackagesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<NpmPackage> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<NpmPackage> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2029,7 +2054,8 @@ class ProjectsLocationsRepositoriesNpmPackagesResource {
       queryParams: queryParams_,
     );
     return NpmPackage.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists npm packages.
@@ -2077,7 +2103,8 @@ class ProjectsLocationsRepositoriesNpmPackagesResource {
       queryParams: queryParams_,
     );
     return ListNpmPackagesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2090,7 +2117,7 @@ class ProjectsLocationsRepositoriesPackagesResource {
       ProjectsLocationsRepositoriesPackagesVersionsResource(_requester);
 
   ProjectsLocationsRepositoriesPackagesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Deletes a package and all of its versions and tags.
   ///
@@ -2125,6 +2152,7 @@ class ProjectsLocationsRepositoriesPackagesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2148,10 +2176,7 @@ class ProjectsLocationsRepositoriesPackagesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Package> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Package> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2247,7 +2272,8 @@ class ProjectsLocationsRepositoriesPackagesResource {
       queryParams: queryParams_,
     );
     return ListPackagesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a package.
@@ -2304,7 +2330,7 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesPackagesTagsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a tag.
   ///
@@ -2369,10 +2395,7 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2382,6 +2405,7 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2405,10 +2429,7 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Tag> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Tag> get(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -2490,7 +2511,8 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
       queryParams: queryParams_,
     );
     return ListTagsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a tag.
@@ -2549,8 +2571,8 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesPackagesVersionsResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Deletes multiple versions across a repository.
   ///
@@ -2634,6 +2656,7 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2775,7 +2798,8 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
       queryParams: queryParams_,
     );
     return ListVersionsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a version.
@@ -2833,8 +2857,8 @@ class ProjectsLocationsRepositoriesPythonPackagesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesPythonPackagesResource(
-      commons.ApiRequester client)
-      : _requester = client;
+    commons.ApiRequester client,
+  ) : _requester = client;
 
   /// Gets a python package.
   ///
@@ -2870,7 +2894,8 @@ class ProjectsLocationsRepositoriesPythonPackagesResource {
       queryParams: queryParams_,
     );
     return PythonPackage.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists python packages.
@@ -2918,7 +2943,8 @@ class ProjectsLocationsRepositoriesPythonPackagesResource {
       queryParams: queryParams_,
     );
     return ListPythonPackagesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -2926,7 +2952,7 @@ class ProjectsLocationsRepositoriesRulesResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesRulesResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Creates a rule.
   ///
@@ -2972,7 +2998,8 @@ class ProjectsLocationsRepositoriesRulesResource {
       queryParams: queryParams_,
     );
     return GoogleDevtoolsArtifactregistryV1Rule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Deletes a rule.
@@ -2993,10 +3020,7 @@ class ProjectsLocationsRepositoriesRulesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if ($fields != null) 'fields': [$fields],
     };
@@ -3006,6 +3030,7 @@ class ProjectsLocationsRepositoriesRulesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3045,7 +3070,8 @@ class ProjectsLocationsRepositoriesRulesResource {
       queryParams: queryParams_,
     );
     return GoogleDevtoolsArtifactregistryV1Rule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists rules.
@@ -3094,7 +3120,8 @@ class ProjectsLocationsRepositoriesRulesResource {
       queryParams: queryParams_,
     );
     return ListRulesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Updates a rule.
@@ -3143,7 +3170,8 @@ class ProjectsLocationsRepositoriesRulesResource {
       queryParams: queryParams_,
     );
     return GoogleDevtoolsArtifactregistryV1Rule.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3151,7 +3179,7 @@ class ProjectsLocationsRepositoriesYumArtifactsResource {
   final commons.ApiRequester _requester;
 
   ProjectsLocationsRepositoriesYumArtifactsResource(commons.ApiRequester client)
-      : _requester = client;
+    : _requester = client;
 
   /// Imports Yum (RPM) artifacts.
   ///
@@ -3244,7 +3272,8 @@ class ProjectsLocationsRepositoriesYumArtifactsResource {
     if (uploadMedia == null) {
       url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/yumArtifacts:create';
     } else {
-      url_ = '/upload/v1/' +
+      url_ =
+          '/upload/v1/' +
           core.Uri.encodeFull('$parent') +
           '/yumArtifacts:create';
     }
@@ -3258,7 +3287,8 @@ class ProjectsLocationsRepositoriesYumArtifactsResource {
       uploadOptions: commons.UploadOptions.defaultOptions,
     );
     return UploadYumArtifactMediaResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3266,36 +3296,37 @@ class ProjectsLocationsRepositoriesYumArtifactsResource {
 class AptRepository {
   /// Customer-specified remote repository.
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository?
-      customRepository;
+  customRepository;
 
   /// One of the publicly available Apt repositories supported by Artifact
   /// Registry.
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository?
-      publicRepository;
+  publicRepository;
 
-  AptRepository({
-    this.customRepository,
-    this.publicRepository,
-  });
+  AptRepository({this.customRepository, this.publicRepository});
 
   AptRepository.fromJson(core.Map json_)
-      : this(
-          customRepository: json_.containsKey('customRepository')
-              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository
-                  .fromJson(json_['customRepository']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          publicRepository: json_.containsKey('publicRepository')
-              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository
-                  .fromJson(json_['publicRepository']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        customRepository:
+            json_.containsKey('customRepository')
+                ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository.fromJson(
+                  json_['customRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        publicRepository:
+            json_.containsKey('publicRepository')
+                ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository.fromJson(
+                  json_['publicRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customRepository != null) 'customRepository': customRepository!,
-        if (publicRepository != null) 'publicRepository': publicRepository!,
-      };
+    if (customRepository != null) 'customRepository': customRepository!,
+    if (publicRepository != null) 'publicRepository': publicRepository!,
+  };
 }
 
 /// An Attachment refers to additional metadata that can be attached to
@@ -3375,39 +3406,35 @@ class Attachment {
   });
 
   Attachment.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          attachmentNamespace: json_['attachmentNamespace'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          files: (json_['files'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          ociVersionName: json_['ociVersionName'] as core.String?,
-          target: json_['target'] as core.String?,
-          type: json_['type'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        attachmentNamespace: json_['attachmentNamespace'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        files:
+            (json_['files'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        ociVersionName: json_['ociVersionName'] as core.String?,
+        target: json_['target'] as core.String?,
+        type: json_['type'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (attachmentNamespace != null)
-          'attachmentNamespace': attachmentNamespace!,
-        if (createTime != null) 'createTime': createTime!,
-        if (files != null) 'files': files!,
-        if (name != null) 'name': name!,
-        if (ociVersionName != null) 'ociVersionName': ociVersionName!,
-        if (target != null) 'target': target!,
-        if (type != null) 'type': type!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (attachmentNamespace != null)
+      'attachmentNamespace': attachmentNamespace!,
+    if (createTime != null) 'createTime': createTime!,
+    if (files != null) 'files': files!,
+    if (name != null) 'name': name!,
+    if (ociVersionName != null) 'ociVersionName': ociVersionName!,
+    if (target != null) 'target': target!,
+    if (type != null) 'type': type!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// The request to delete multiple versions across a repository.
@@ -3424,23 +3451,21 @@ class BatchDeleteVersionsRequest {
   /// AIP-163.
   core.bool? validateOnly;
 
-  BatchDeleteVersionsRequest({
-    this.names,
-    this.validateOnly,
-  });
+  BatchDeleteVersionsRequest({this.names, this.validateOnly});
 
   BatchDeleteVersionsRequest.fromJson(core.Map json_)
-      : this(
-          names: (json_['names'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          validateOnly: json_['validateOnly'] as core.bool?,
-        );
+    : this(
+        names:
+            (json_['names'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        validateOnly: json_['validateOnly'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (names != null) 'names': names!,
-        if (validateOnly != null) 'validateOnly': validateOnly!,
-      };
+    if (names != null) 'names': names!,
+    if (validateOnly != null) 'validateOnly': validateOnly!,
+  };
 }
 
 /// Associates `members`, or principals, with a `role`.
@@ -3523,29 +3548,28 @@ class Binding {
   /// [here](https://cloud.google.com/iam/docs/understanding-roles).
   core.String? role;
 
-  Binding({
-    this.condition,
-    this.members,
-    this.role,
-  });
+  Binding({this.condition, this.members, this.role});
 
   Binding.fromJson(core.Map json_)
-      : this(
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          members: (json_['members'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          role: json_['role'] as core.String?,
-        );
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (condition != null) 'condition': condition!,
-        if (members != null) 'members': members!,
-        if (role != null) 'role': role!,
-      };
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
 }
 
 /// Artifact policy configuration for repository cleanup policies.
@@ -3576,27 +3600,30 @@ class CleanupPolicy {
   });
 
   CleanupPolicy.fromJson(core.Map json_)
-      : this(
-          action: json_['action'] as core.String?,
-          condition: json_.containsKey('condition')
-              ? CleanupPolicyCondition.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          id: json_['id'] as core.String?,
-          mostRecentVersions: json_.containsKey('mostRecentVersions')
-              ? CleanupPolicyMostRecentVersions.fromJson(
+    : this(
+        action: json_['action'] as core.String?,
+        condition:
+            json_.containsKey('condition')
+                ? CleanupPolicyCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        id: json_['id'] as core.String?,
+        mostRecentVersions:
+            json_.containsKey('mostRecentVersions')
+                ? CleanupPolicyMostRecentVersions.fromJson(
                   json_['mostRecentVersions']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (condition != null) 'condition': condition!,
-        if (id != null) 'id': id!,
-        if (mostRecentVersions != null)
-          'mostRecentVersions': mostRecentVersions!,
-      };
+    if (action != null) 'action': action!,
+    if (condition != null) 'condition': condition!,
+    if (id != null) 'id': id!,
+    if (mostRecentVersions != null) 'mostRecentVersions': mostRecentVersions!,
+  };
 }
 
 /// CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy.
@@ -3643,31 +3670,34 @@ class CleanupPolicyCondition {
   });
 
   CleanupPolicyCondition.fromJson(core.Map json_)
-      : this(
-          newerThan: json_['newerThan'] as core.String?,
-          olderThan: json_['olderThan'] as core.String?,
-          packageNamePrefixes: (json_['packageNamePrefixes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          tagPrefixes: (json_['tagPrefixes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          tagState: json_['tagState'] as core.String?,
-          versionNamePrefixes: (json_['versionNamePrefixes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        newerThan: json_['newerThan'] as core.String?,
+        olderThan: json_['olderThan'] as core.String?,
+        packageNamePrefixes:
+            (json_['packageNamePrefixes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        tagPrefixes:
+            (json_['tagPrefixes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        tagState: json_['tagState'] as core.String?,
+        versionNamePrefixes:
+            (json_['versionNamePrefixes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (newerThan != null) 'newerThan': newerThan!,
-        if (olderThan != null) 'olderThan': olderThan!,
-        if (packageNamePrefixes != null)
-          'packageNamePrefixes': packageNamePrefixes!,
-        if (tagPrefixes != null) 'tagPrefixes': tagPrefixes!,
-        if (tagState != null) 'tagState': tagState!,
-        if (versionNamePrefixes != null)
-          'versionNamePrefixes': versionNamePrefixes!,
-      };
+    if (newerThan != null) 'newerThan': newerThan!,
+    if (olderThan != null) 'olderThan': olderThan!,
+    if (packageNamePrefixes != null)
+      'packageNamePrefixes': packageNamePrefixes!,
+    if (tagPrefixes != null) 'tagPrefixes': tagPrefixes!,
+    if (tagState != null) 'tagState': tagState!,
+    if (versionNamePrefixes != null)
+      'versionNamePrefixes': versionNamePrefixes!,
+  };
 }
 
 /// CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy
@@ -3679,24 +3709,22 @@ class CleanupPolicyMostRecentVersions {
   /// List of package name prefixes that will apply this rule.
   core.List<core.String>? packageNamePrefixes;
 
-  CleanupPolicyMostRecentVersions({
-    this.keepCount,
-    this.packageNamePrefixes,
-  });
+  CleanupPolicyMostRecentVersions({this.keepCount, this.packageNamePrefixes});
 
   CleanupPolicyMostRecentVersions.fromJson(core.Map json_)
-      : this(
-          keepCount: json_['keepCount'] as core.int?,
-          packageNamePrefixes: (json_['packageNamePrefixes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        keepCount: json_['keepCount'] as core.int?,
+        packageNamePrefixes:
+            (json_['packageNamePrefixes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (keepCount != null) 'keepCount': keepCount!,
-        if (packageNamePrefixes != null)
-          'packageNamePrefixes': packageNamePrefixes!,
-      };
+    if (keepCount != null) 'keepCount': keepCount!,
+    if (packageNamePrefixes != null)
+      'packageNamePrefixes': packageNamePrefixes!,
+  };
 }
 
 /// Common remote repository settings type.
@@ -3706,18 +3734,14 @@ class CommonRemoteRepository {
   /// Required.
   core.String? uri;
 
-  CommonRemoteRepository({
-    this.uri,
-  });
+  CommonRemoteRepository({this.uri});
 
   CommonRemoteRepository.fromJson(core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+    : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// DockerImage represents a docker artifact.
@@ -3791,36 +3815,37 @@ class DockerImage {
   });
 
   DockerImage.fromJson(core.Map json_)
-      : this(
-          buildTime: json_['buildTime'] as core.String?,
-          imageSizeBytes: json_['imageSizeBytes'] as core.String?,
-          mediaType: json_['mediaType'] as core.String?,
-          name: json_['name'] as core.String?,
-          tags: (json_['tags'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-          uploadTime: json_['uploadTime'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
+    : this(
+        buildTime: json_['buildTime'] as core.String?,
+        imageSizeBytes: json_['imageSizeBytes'] as core.String?,
+        mediaType: json_['mediaType'] as core.String?,
+        name: json_['name'] as core.String?,
+        tags:
+            (json_['tags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+        uploadTime: json_['uploadTime'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (buildTime != null) 'buildTime': buildTime!,
-        if (imageSizeBytes != null) 'imageSizeBytes': imageSizeBytes!,
-        if (mediaType != null) 'mediaType': mediaType!,
-        if (name != null) 'name': name!,
-        if (tags != null) 'tags': tags!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (uploadTime != null) 'uploadTime': uploadTime!,
-        if (uri != null) 'uri': uri!,
-      };
+    if (buildTime != null) 'buildTime': buildTime!,
+    if (imageSizeBytes != null) 'imageSizeBytes': imageSizeBytes!,
+    if (mediaType != null) 'mediaType': mediaType!,
+    if (name != null) 'name': name!,
+    if (tags != null) 'tags': tags!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (uploadTime != null) 'uploadTime': uploadTime!,
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Configuration for a Docker remote repository.
 class DockerRepository {
   /// Customer-specified remote repository.
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository?
-      customRepository;
+  customRepository;
 
   /// One of the publicly available Docker repositories supported by Artifact
   /// Registry.
@@ -3829,25 +3854,24 @@ class DockerRepository {
   /// - "DOCKER_HUB" : Docker Hub.
   core.String? publicRepository;
 
-  DockerRepository({
-    this.customRepository,
-    this.publicRepository,
-  });
+  DockerRepository({this.customRepository, this.publicRepository});
 
   DockerRepository.fromJson(core.Map json_)
-      : this(
-          customRepository: json_.containsKey('customRepository')
-              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository
-                  .fromJson(json_['customRepository']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          publicRepository: json_['publicRepository'] as core.String?,
-        );
+    : this(
+        customRepository:
+            json_.containsKey('customRepository')
+                ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository.fromJson(
+                  json_['customRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        publicRepository: json_['publicRepository'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customRepository != null) 'customRepository': customRepository!,
-        if (publicRepository != null) 'publicRepository': publicRepository!,
-      };
+    if (customRepository != null) 'customRepository': customRepository!,
+    if (publicRepository != null) 'publicRepository': publicRepository!,
+  };
 }
 
 /// DockerRepositoryConfig is docker related repository details.
@@ -3861,18 +3885,14 @@ class DockerRepositoryConfig {
   /// This does not prevent tags from being created.
   core.bool? immutableTags;
 
-  DockerRepositoryConfig({
-    this.immutableTags,
-  });
+  DockerRepositoryConfig({this.immutableTags});
 
   DockerRepositoryConfig.fromJson(core.Map json_)
-      : this(
-          immutableTags: json_['immutableTags'] as core.bool?,
-        );
+    : this(immutableTags: json_['immutableTags'] as core.bool?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (immutableTags != null) 'immutableTags': immutableTags!,
-      };
+    if (immutableTags != null) 'immutableTags': immutableTags!,
+  };
 }
 
 /// The response to download a file.
@@ -3958,37 +3978,36 @@ class GoogleDevtoolsArtifactregistryV1File {
   });
 
   GoogleDevtoolsArtifactregistryV1File.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          fetchTime: json_['fetchTime'] as core.String?,
-          hashes: (json_['hashes'] as core.List?)
-              ?.map((value) =>
-                  Hash.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          name: json_['name'] as core.String?,
-          owner: json_['owner'] as core.String?,
-          sizeBytes: json_['sizeBytes'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        createTime: json_['createTime'] as core.String?,
+        fetchTime: json_['fetchTime'] as core.String?,
+        hashes:
+            (json_['hashes'] as core.List?)
+                ?.map(
+                  (value) => Hash.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        owner: json_['owner'] as core.String?,
+        sizeBytes: json_['sizeBytes'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (createTime != null) 'createTime': createTime!,
-        if (fetchTime != null) 'fetchTime': fetchTime!,
-        if (hashes != null) 'hashes': hashes!,
-        if (name != null) 'name': name!,
-        if (owner != null) 'owner': owner!,
-        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (createTime != null) 'createTime': createTime!,
+    if (fetchTime != null) 'fetchTime': fetchTime!,
+    if (hashes != null) 'hashes': hashes!,
+    if (name != null) 'name': name!,
+    if (owner != null) 'owner': owner!,
+    if (sizeBytes != null) 'sizeBytes': sizeBytes!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Customer-specified publicly available remote repository.
@@ -4002,14 +4021,12 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomR
   });
 
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository.fromJson(
-      core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Publicly available Apt repositories constructed from a common repository
@@ -4032,16 +4049,16 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicR
   });
 
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository.fromJson(
-      core.Map json_)
-      : this(
-          repositoryBase: json_['repositoryBase'] as core.String?,
-          repositoryPath: json_['repositoryPath'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        repositoryBase: json_['repositoryBase'] as core.String?,
+        repositoryPath: json_['repositoryPath'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (repositoryBase != null) 'repositoryBase': repositoryBase!,
-        if (repositoryPath != null) 'repositoryPath': repositoryPath!,
-      };
+    if (repositoryBase != null) 'repositoryBase': repositoryBase!,
+    if (repositoryPath != null) 'repositoryPath': repositoryPath!,
+  };
 }
 
 /// Customer-specified publicly available remote repository.
@@ -4055,14 +4072,12 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCust
   });
 
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository.fromJson(
-      core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Customer-specified publicly available remote repository.
@@ -4076,14 +4091,12 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCusto
   });
 
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository.fromJson(
-      core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Customer-specified publicly available remote repository.
@@ -4097,14 +4110,12 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomR
   });
 
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository.fromJson(
-      core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Customer-specified publicly available remote repository.
@@ -4118,14 +4129,12 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCust
   });
 
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository.fromJson(
-      core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Customer-specified publicly available remote repository.
@@ -4139,14 +4148,12 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomR
   });
 
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository.fromJson(
-      core.Map json_)
-      : this(
-          uri: json_['uri'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(uri: json_['uri'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uri != null) 'uri': uri!,
-      };
+    if (uri != null) 'uri': uri!,
+  };
 }
 
 /// Publicly available Yum repositories constructed from a common repository
@@ -4172,16 +4179,16 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicR
   });
 
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository.fromJson(
-      core.Map json_)
-      : this(
-          repositoryBase: json_['repositoryBase'] as core.String?,
-          repositoryPath: json_['repositoryPath'] as core.String?,
-        );
+    core.Map json_,
+  ) : this(
+        repositoryBase: json_['repositoryBase'] as core.String?,
+        repositoryPath: json_['repositoryPath'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (repositoryBase != null) 'repositoryBase': repositoryBase!,
-        if (repositoryPath != null) 'repositoryPath': repositoryPath!,
-      };
+    if (repositoryBase != null) 'repositoryBase': repositoryBase!,
+    if (repositoryPath != null) 'repositoryPath': repositoryPath!,
+  };
 }
 
 /// A rule defines the deny or allow action of the operation it applies to and
@@ -4229,24 +4236,26 @@ class GoogleDevtoolsArtifactregistryV1Rule {
   });
 
   GoogleDevtoolsArtifactregistryV1Rule.fromJson(core.Map json_)
-      : this(
-          action: json_['action'] as core.String?,
-          condition: json_.containsKey('condition')
-              ? Expr.fromJson(
-                  json_['condition'] as core.Map<core.String, core.dynamic>)
-              : null,
-          name: json_['name'] as core.String?,
-          operation: json_['operation'] as core.String?,
-          packageId: json_['packageId'] as core.String?,
-        );
+    : this(
+        action: json_['action'] as core.String?,
+        condition:
+            json_.containsKey('condition')
+                ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        operation: json_['operation'] as core.String?,
+        packageId: json_['packageId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (action != null) 'action': action!,
-        if (condition != null) 'condition': condition!,
-        if (name != null) 'name': name!,
-        if (operation != null) 'operation': operation!,
-        if (packageId != null) 'packageId': packageId!,
-      };
+    if (action != null) 'action': action!,
+    if (condition != null) 'condition': condition!,
+    if (name != null) 'name': name!,
+    if (operation != null) 'operation': operation!,
+    if (packageId != null) 'packageId': packageId!,
+  };
 }
 
 /// A hash of file content.
@@ -4263,25 +4272,24 @@ class Hash {
   core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
 
   set valueAsBytes(core.List<core.int> bytes_) {
-    value =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    value = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
-  Hash({
-    this.type,
-    this.value,
-  });
+  Hash({this.type, this.value});
 
   Hash.fromJson(core.Map json_)
-      : this(
-          type: json_['type'] as core.String?,
-          value: json_['value'] as core.String?,
-        );
+    : this(
+        type: json_['type'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (type != null) 'type': type!,
-        if (value != null) 'value': value!,
-      };
+    if (type != null) 'type': type!,
+    if (value != null) 'value': value!,
+  };
 }
 
 /// Google Cloud Storage location where the artifacts currently reside.
@@ -4292,21 +4300,21 @@ class ImportAptArtifactsRequest {
   /// Google Cloud Storage location where input content is located.
   ImportAptArtifactsGcsSource? gcsSource;
 
-  ImportAptArtifactsRequest({
-    this.gcsSource,
-  });
+  ImportAptArtifactsRequest({this.gcsSource});
 
   ImportAptArtifactsRequest.fromJson(core.Map json_)
-      : this(
-          gcsSource: json_.containsKey('gcsSource')
-              ? ImportAptArtifactsGcsSource.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        gcsSource:
+            json_.containsKey('gcsSource')
+                ? ImportAptArtifactsGcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-      };
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+  };
 }
 
 /// Google Cloud Storage location where the artifacts currently reside.
@@ -4317,23 +4325,21 @@ class ImportGoogetArtifactsGcsSource {
   /// Supports URI wildcards for matching multiple objects from a single URI.
   core.bool? useWildcards;
 
-  ImportGoogetArtifactsGcsSource({
-    this.uris,
-    this.useWildcards,
-  });
+  ImportGoogetArtifactsGcsSource({this.uris, this.useWildcards});
 
   ImportGoogetArtifactsGcsSource.fromJson(core.Map json_)
-      : this(
-          uris: (json_['uris'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          useWildcards: json_['useWildcards'] as core.bool?,
-        );
+    : this(
+        uris:
+            (json_['uris'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        useWildcards: json_['useWildcards'] as core.bool?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (uris != null) 'uris': uris!,
-        if (useWildcards != null) 'useWildcards': useWildcards!,
-      };
+    if (uris != null) 'uris': uris!,
+    if (useWildcards != null) 'useWildcards': useWildcards!,
+  };
 }
 
 /// The request to import new googet artifacts.
@@ -4341,21 +4347,21 @@ class ImportGoogetArtifactsRequest {
   /// Google Cloud Storage location where input content is located.
   ImportGoogetArtifactsGcsSource? gcsSource;
 
-  ImportGoogetArtifactsRequest({
-    this.gcsSource,
-  });
+  ImportGoogetArtifactsRequest({this.gcsSource});
 
   ImportGoogetArtifactsRequest.fromJson(core.Map json_)
-      : this(
-          gcsSource: json_.containsKey('gcsSource')
-              ? ImportGoogetArtifactsGcsSource.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        gcsSource:
+            json_.containsKey('gcsSource')
+                ? ImportGoogetArtifactsGcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-      };
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+  };
 }
 
 /// Google Cloud Storage location where the artifacts currently reside.
@@ -4366,21 +4372,21 @@ class ImportYumArtifactsRequest {
   /// Google Cloud Storage location where input content is located.
   ImportYumArtifactsGcsSource? gcsSource;
 
-  ImportYumArtifactsRequest({
-    this.gcsSource,
-  });
+  ImportYumArtifactsRequest({this.gcsSource});
 
   ImportYumArtifactsRequest.fromJson(core.Map json_)
-      : this(
-          gcsSource: json_.containsKey('gcsSource')
-              ? ImportYumArtifactsGcsSource.fromJson(
-                  json_['gcsSource'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        gcsSource:
+            json_.containsKey('gcsSource')
+                ? ImportYumArtifactsGcsSource.fromJson(
+                  json_['gcsSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (gcsSource != null) 'gcsSource': gcsSource!,
-      };
+    if (gcsSource != null) 'gcsSource': gcsSource!,
+  };
 }
 
 /// The response from listing attachments.
@@ -4392,24 +4398,25 @@ class ListAttachmentsResponse {
   /// no more attachments to return.
   core.String? nextPageToken;
 
-  ListAttachmentsResponse({
-    this.attachments,
-    this.nextPageToken,
-  });
+  ListAttachmentsResponse({this.attachments, this.nextPageToken});
 
   ListAttachmentsResponse.fromJson(core.Map json_)
-      : this(
-          attachments: (json_['attachments'] as core.List?)
-              ?.map((value) => Attachment.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        attachments:
+            (json_['attachments'] as core.List?)
+                ?.map(
+                  (value) => Attachment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (attachments != null) 'attachments': attachments!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (attachments != null) 'attachments': attachments!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response from listing docker images.
@@ -4421,24 +4428,25 @@ class ListDockerImagesResponse {
   /// more artifacts to return.
   core.String? nextPageToken;
 
-  ListDockerImagesResponse({
-    this.dockerImages,
-    this.nextPageToken,
-  });
+  ListDockerImagesResponse({this.dockerImages, this.nextPageToken});
 
   ListDockerImagesResponse.fromJson(core.Map json_)
-      : this(
-          dockerImages: (json_['dockerImages'] as core.List?)
-              ?.map((value) => DockerImage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        dockerImages:
+            (json_['dockerImages'] as core.List?)
+                ?.map(
+                  (value) => DockerImage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (dockerImages != null) 'dockerImages': dockerImages!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (dockerImages != null) 'dockerImages': dockerImages!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response from listing files.
@@ -4450,24 +4458,25 @@ class ListFilesResponse {
   /// more files to return.
   core.String? nextPageToken;
 
-  ListFilesResponse({
-    this.files,
-    this.nextPageToken,
-  });
+  ListFilesResponse({this.files, this.nextPageToken});
 
   ListFilesResponse.fromJson(core.Map json_)
-      : this(
-          files: (json_['files'] as core.List?)
-              ?.map((value) => GoogleDevtoolsArtifactregistryV1File.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        files:
+            (json_['files'] as core.List?)
+                ?.map(
+                  (value) => GoogleDevtoolsArtifactregistryV1File.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (files != null) 'files': files!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (files != null) 'files': files!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response message for Locations.ListLocations.
@@ -4478,24 +4487,25 @@ class ListLocationsResponse {
   /// The standard List next-page token.
   core.String? nextPageToken;
 
-  ListLocationsResponse({
-    this.locations,
-    this.nextPageToken,
-  });
+  ListLocationsResponse({this.locations, this.nextPageToken});
 
   ListLocationsResponse.fromJson(core.Map json_)
-      : this(
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => Location.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (locations != null) 'locations': locations!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response from listing maven artifacts.
@@ -4507,24 +4517,25 @@ class ListMavenArtifactsResponse {
   /// more artifacts to return.
   core.String? nextPageToken;
 
-  ListMavenArtifactsResponse({
-    this.mavenArtifacts,
-    this.nextPageToken,
-  });
+  ListMavenArtifactsResponse({this.mavenArtifacts, this.nextPageToken});
 
   ListMavenArtifactsResponse.fromJson(core.Map json_)
-      : this(
-          mavenArtifacts: (json_['mavenArtifacts'] as core.List?)
-              ?.map((value) => MavenArtifact.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          nextPageToken: json_['nextPageToken'] as core.String?,
-        );
+    : this(
+        mavenArtifacts:
+            (json_['mavenArtifacts'] as core.List?)
+                ?.map(
+                  (value) => MavenArtifact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-      };
+    if (mavenArtifacts != null) 'mavenArtifacts': mavenArtifacts!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// The response from listing npm packages.
@@ -4536,24 +4547,25 @@ class ListNpmPackagesResponse {
   /// The npm packages returned.
   core.List<NpmPackage>? npmPackages;
 
-  ListNpmPackagesResponse({
-    this.nextPageToken,
-    this.npmPackages,
-  });
+  ListNpmPackagesResponse({this.nextPageToken, this.npmPackages});
 
   ListNpmPackagesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          npmPackages: (json_['npmPackages'] as core.List?)
-              ?.map((value) => NpmPackage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        npmPackages:
+            (json_['npmPackages'] as core.List?)
+                ?.map(
+                  (value) => NpmPackage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (npmPackages != null) 'npmPackages': npmPackages!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (npmPackages != null) 'npmPackages': npmPackages!,
+  };
 }
 
 /// The response from listing packages.
@@ -4565,24 +4577,25 @@ class ListPackagesResponse {
   /// The packages returned.
   core.List<Package>? packages;
 
-  ListPackagesResponse({
-    this.nextPageToken,
-    this.packages,
-  });
+  ListPackagesResponse({this.nextPageToken, this.packages});
 
   ListPackagesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          packages: (json_['packages'] as core.List?)
-              ?.map((value) => Package.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        packages:
+            (json_['packages'] as core.List?)
+                ?.map(
+                  (value) => Package.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (packages != null) 'packages': packages!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (packages != null) 'packages': packages!,
+  };
 }
 
 /// The response from listing python packages.
@@ -4594,24 +4607,25 @@ class ListPythonPackagesResponse {
   /// The python packages returned.
   core.List<PythonPackage>? pythonPackages;
 
-  ListPythonPackagesResponse({
-    this.nextPageToken,
-    this.pythonPackages,
-  });
+  ListPythonPackagesResponse({this.nextPageToken, this.pythonPackages});
 
   ListPythonPackagesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          pythonPackages: (json_['pythonPackages'] as core.List?)
-              ?.map((value) => PythonPackage.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        pythonPackages:
+            (json_['pythonPackages'] as core.List?)
+                ?.map(
+                  (value) => PythonPackage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (pythonPackages != null) 'pythonPackages': pythonPackages!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (pythonPackages != null) 'pythonPackages': pythonPackages!,
+  };
 }
 
 /// The response from listing repositories.
@@ -4623,24 +4637,25 @@ class ListRepositoriesResponse {
   /// The repositories returned.
   core.List<Repository>? repositories;
 
-  ListRepositoriesResponse({
-    this.nextPageToken,
-    this.repositories,
-  });
+  ListRepositoriesResponse({this.nextPageToken, this.repositories});
 
   ListRepositoriesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          repositories: (json_['repositories'] as core.List?)
-              ?.map((value) => Repository.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        repositories:
+            (json_['repositories'] as core.List?)
+                ?.map(
+                  (value) => Repository.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (repositories != null) 'repositories': repositories!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (repositories != null) 'repositories': repositories!,
+  };
 }
 
 /// The response from listing rules.
@@ -4652,24 +4667,25 @@ class ListRulesResponse {
   /// The rules returned.
   core.List<GoogleDevtoolsArtifactregistryV1Rule>? rules;
 
-  ListRulesResponse({
-    this.nextPageToken,
-    this.rules,
-  });
+  ListRulesResponse({this.nextPageToken, this.rules});
 
   ListRulesResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          rules: (json_['rules'] as core.List?)
-              ?.map((value) => GoogleDevtoolsArtifactregistryV1Rule.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        rules:
+            (json_['rules'] as core.List?)
+                ?.map(
+                  (value) => GoogleDevtoolsArtifactregistryV1Rule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (rules != null) 'rules': rules!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (rules != null) 'rules': rules!,
+  };
 }
 
 /// The response from listing tags.
@@ -4681,24 +4697,25 @@ class ListTagsResponse {
   /// The tags returned.
   core.List<Tag>? tags;
 
-  ListTagsResponse({
-    this.nextPageToken,
-    this.tags,
-  });
+  ListTagsResponse({this.nextPageToken, this.tags});
 
   ListTagsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          tags: (json_['tags'] as core.List?)
-              ?.map((value) =>
-                  Tag.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        tags:
+            (json_['tags'] as core.List?)
+                ?.map(
+                  (value) => Tag.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (tags != null) 'tags': tags!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (tags != null) 'tags': tags!,
+  };
 }
 
 /// The response from listing versions.
@@ -4710,24 +4727,25 @@ class ListVersionsResponse {
   /// The versions returned.
   core.List<Version>? versions;
 
-  ListVersionsResponse({
-    this.nextPageToken,
-    this.versions,
-  });
+  ListVersionsResponse({this.nextPageToken, this.versions});
 
   ListVersionsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          versions: (json_['versions'] as core.List?)
-              ?.map((value) => Version.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        versions:
+            (json_['versions'] as core.List?)
+                ?.map(
+                  (value) => Version.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (versions != null) 'versions': versions!,
-      };
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (versions != null) 'versions': versions!,
+  };
 }
 
 /// A resource that represents a Google Cloud location.
@@ -4786,32 +4804,32 @@ class MavenArtifact {
   });
 
   MavenArtifact.fromJson(core.Map json_)
-      : this(
-          artifactId: json_['artifactId'] as core.String?,
-          createTime: json_['createTime'] as core.String?,
-          groupId: json_['groupId'] as core.String?,
-          name: json_['name'] as core.String?,
-          pomUri: json_['pomUri'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        artifactId: json_['artifactId'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        groupId: json_['groupId'] as core.String?,
+        name: json_['name'] as core.String?,
+        pomUri: json_['pomUri'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (artifactId != null) 'artifactId': artifactId!,
-        if (createTime != null) 'createTime': createTime!,
-        if (groupId != null) 'groupId': groupId!,
-        if (name != null) 'name': name!,
-        if (pomUri != null) 'pomUri': pomUri!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (version != null) 'version': version!,
-      };
+    if (artifactId != null) 'artifactId': artifactId!,
+    if (createTime != null) 'createTime': createTime!,
+    if (groupId != null) 'groupId': groupId!,
+    if (name != null) 'name': name!,
+    if (pomUri != null) 'pomUri': pomUri!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Configuration for a Maven remote repository.
 class MavenRepository {
   /// Customer-specified remote repository.
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository?
-      customRepository;
+  customRepository;
 
   /// One of the publicly available Maven repositories supported by Artifact
   /// Registry.
@@ -4820,25 +4838,24 @@ class MavenRepository {
   /// - "MAVEN_CENTRAL" : Maven Central.
   core.String? publicRepository;
 
-  MavenRepository({
-    this.customRepository,
-    this.publicRepository,
-  });
+  MavenRepository({this.customRepository, this.publicRepository});
 
   MavenRepository.fromJson(core.Map json_)
-      : this(
-          customRepository: json_.containsKey('customRepository')
-              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository
-                  .fromJson(json_['customRepository']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          publicRepository: json_['publicRepository'] as core.String?,
-        );
+    : this(
+        customRepository:
+            json_.containsKey('customRepository')
+                ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository.fromJson(
+                  json_['customRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        publicRepository: json_['publicRepository'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customRepository != null) 'customRepository': customRepository!,
-        if (publicRepository != null) 'publicRepository': publicRepository!,
-      };
+    if (customRepository != null) 'customRepository': customRepository!,
+    if (publicRepository != null) 'publicRepository': publicRepository!,
+  };
 }
 
 /// MavenRepositoryConfig is maven related repository details.
@@ -4859,23 +4876,19 @@ class MavenRepositoryConfig {
   /// - "SNAPSHOT" : SNAPSHOT - repository will accept only Snapshot versions.
   core.String? versionPolicy;
 
-  MavenRepositoryConfig({
-    this.allowSnapshotOverwrites,
-    this.versionPolicy,
-  });
+  MavenRepositoryConfig({this.allowSnapshotOverwrites, this.versionPolicy});
 
   MavenRepositoryConfig.fromJson(core.Map json_)
-      : this(
-          allowSnapshotOverwrites:
-              json_['allowSnapshotOverwrites'] as core.bool?,
-          versionPolicy: json_['versionPolicy'] as core.String?,
-        );
+    : this(
+        allowSnapshotOverwrites: json_['allowSnapshotOverwrites'] as core.bool?,
+        versionPolicy: json_['versionPolicy'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (allowSnapshotOverwrites != null)
-          'allowSnapshotOverwrites': allowSnapshotOverwrites!,
-        if (versionPolicy != null) 'versionPolicy': versionPolicy!,
-      };
+    if (allowSnapshotOverwrites != null)
+      'allowSnapshotOverwrites': allowSnapshotOverwrites!,
+    if (versionPolicy != null) 'versionPolicy': versionPolicy!,
+  };
 }
 
 /// NpmPackage represents an npm artifact.
@@ -4919,32 +4932,33 @@ class NpmPackage {
   });
 
   NpmPackage.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          packageName: json_['packageName'] as core.String?,
-          tags: (json_['tags'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        packageName: json_['packageName'] as core.String?,
+        tags:
+            (json_['tags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (packageName != null) 'packageName': packageName!,
-        if (tags != null) 'tags': tags!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (version != null) 'version': version!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (packageName != null) 'packageName': packageName!,
+    if (tags != null) 'tags': tags!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Configuration for a Npm remote repository.
 class NpmRepository {
   /// Customer-specified remote repository.
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository?
-      customRepository;
+  customRepository;
 
   /// One of the publicly available Npm repositories supported by Artifact
   /// Registry.
@@ -4953,25 +4967,24 @@ class NpmRepository {
   /// - "NPMJS" : npmjs.
   core.String? publicRepository;
 
-  NpmRepository({
-    this.customRepository,
-    this.publicRepository,
-  });
+  NpmRepository({this.customRepository, this.publicRepository});
 
   NpmRepository.fromJson(core.Map json_)
-      : this(
-          customRepository: json_.containsKey('customRepository')
-              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository
-                  .fromJson(json_['customRepository']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          publicRepository: json_['publicRepository'] as core.String?,
-        );
+    : this(
+        customRepository:
+            json_.containsKey('customRepository')
+                ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository.fromJson(
+                  json_['customRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        publicRepository: json_['publicRepository'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customRepository != null) 'customRepository': customRepository!,
-        if (publicRepository != null) 'publicRepository': publicRepository!,
-      };
+    if (customRepository != null) 'customRepository': customRepository!,
+    if (publicRepository != null) 'publicRepository': publicRepository!,
+  };
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -5017,37 +5030,35 @@ class Operation {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  Operation({
-    this.done,
-    this.error,
-    this.metadata,
-    this.name,
-    this.response,
-  });
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
 
   Operation.fromJson(core.Map json_)
-      : this(
-          done: json_['done'] as core.bool?,
-          error: json_.containsKey('error')
-              ? Status.fromJson(
-                  json_['error'] as core.Map<core.String, core.dynamic>)
-              : null,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          response: json_.containsKey('response')
-              ? json_['response'] as core.Map<core.String, core.dynamic>
-              : null,
-        );
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (done != null) 'done': done!,
-        if (error != null) 'error': error!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (response != null) 'response': response!,
-      };
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
 }
 
 /// Packages are named collections of versions.
@@ -5083,28 +5094,23 @@ class Package {
   });
 
   Package.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          name: json_['name'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (createTime != null) 'createTime': createTime!,
-        if (displayName != null) 'displayName': displayName!,
-        if (name != null) 'name': name!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// An Identity and Access Management (IAM) policy, which specifies access
@@ -5167,8 +5173,10 @@ class Policy {
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
 
   set etagAsBytes(core.List<core.int> bytes_) {
-    etag =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// Specifies the format of the policy.
@@ -5190,27 +5198,27 @@ class Policy {
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int? version;
 
-  Policy({
-    this.bindings,
-    this.etag,
-    this.version,
-  });
+  Policy({this.bindings, this.etag, this.version});
 
   Policy.fromJson(core.Map json_)
-      : this(
-          bindings: (json_['bindings'] as core.List?)
-              ?.map((value) => Binding.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          etag: json_['etag'] as core.String?,
-          version: json_['version'] as core.int?,
-        );
+    : this(
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (bindings != null) 'bindings': bindings!,
-        if (etag != null) 'etag': etag!,
-        if (version != null) 'version': version!,
-      };
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// The Artifact Registry settings that apply to a Project.
@@ -5238,26 +5246,21 @@ class ProjectSettings {
   /// partial redirection.
   core.int? pullPercent;
 
-  ProjectSettings({
-    this.legacyRedirectionState,
-    this.name,
-    this.pullPercent,
-  });
+  ProjectSettings({this.legacyRedirectionState, this.name, this.pullPercent});
 
   ProjectSettings.fromJson(core.Map json_)
-      : this(
-          legacyRedirectionState:
-              json_['legacyRedirectionState'] as core.String?,
-          name: json_['name'] as core.String?,
-          pullPercent: json_['pullPercent'] as core.int?,
-        );
+    : this(
+        legacyRedirectionState: json_['legacyRedirectionState'] as core.String?,
+        name: json_['name'] as core.String?,
+        pullPercent: json_['pullPercent'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (legacyRedirectionState != null)
-          'legacyRedirectionState': legacyRedirectionState!,
-        if (name != null) 'name': name!,
-        if (pullPercent != null) 'pullPercent': pullPercent!,
-      };
+    if (legacyRedirectionState != null)
+      'legacyRedirectionState': legacyRedirectionState!,
+    if (name != null) 'name': name!,
+    if (pullPercent != null) 'pullPercent': pullPercent!,
+  };
 }
 
 /// PythonPackage represents a python artifact.
@@ -5308,30 +5311,30 @@ class PythonPackage {
   });
 
   PythonPackage.fromJson(core.Map json_)
-      : this(
-          createTime: json_['createTime'] as core.String?,
-          name: json_['name'] as core.String?,
-          packageName: json_['packageName'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          uri: json_['uri'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        packageName: json_['packageName'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        uri: json_['uri'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (createTime != null) 'createTime': createTime!,
-        if (name != null) 'name': name!,
-        if (packageName != null) 'packageName': packageName!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (uri != null) 'uri': uri!,
-        if (version != null) 'version': version!,
-      };
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (packageName != null) 'packageName': packageName!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (uri != null) 'uri': uri!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Configuration for a Python remote repository.
 class PythonRepository {
   /// Customer-specified remote repository.
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository?
-      customRepository;
+  customRepository;
 
   /// One of the publicly available Python repositories supported by Artifact
   /// Registry.
@@ -5340,25 +5343,24 @@ class PythonRepository {
   /// - "PYPI" : PyPI.
   core.String? publicRepository;
 
-  PythonRepository({
-    this.customRepository,
-    this.publicRepository,
-  });
+  PythonRepository({this.customRepository, this.publicRepository});
 
   PythonRepository.fromJson(core.Map json_)
-      : this(
-          customRepository: json_.containsKey('customRepository')
-              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository
-                  .fromJson(json_['customRepository']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          publicRepository: json_['publicRepository'] as core.String?,
-        );
+    : this(
+        customRepository:
+            json_.containsKey('customRepository')
+                ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository.fromJson(
+                  json_['customRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        publicRepository: json_['publicRepository'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customRepository != null) 'customRepository': customRepository!,
-        if (publicRepository != null) 'publicRepository': publicRepository!,
-      };
+    if (customRepository != null) 'customRepository': customRepository!,
+    if (publicRepository != null) 'publicRepository': publicRepository!,
+  };
 }
 
 /// Remote repository configuration.
@@ -5414,58 +5416,79 @@ class RemoteRepositoryConfig {
   });
 
   RemoteRepositoryConfig.fromJson(core.Map json_)
-      : this(
-          aptRepository: json_.containsKey('aptRepository')
-              ? AptRepository.fromJson(
-                  json_['aptRepository'] as core.Map<core.String, core.dynamic>)
-              : null,
-          commonRepository: json_.containsKey('commonRepository')
-              ? CommonRemoteRepository.fromJson(json_['commonRepository']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          description: json_['description'] as core.String?,
-          disableUpstreamValidation:
-              json_['disableUpstreamValidation'] as core.bool?,
-          dockerRepository: json_.containsKey('dockerRepository')
-              ? DockerRepository.fromJson(json_['dockerRepository']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          mavenRepository: json_.containsKey('mavenRepository')
-              ? MavenRepository.fromJson(json_['mavenRepository']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          npmRepository: json_.containsKey('npmRepository')
-              ? NpmRepository.fromJson(
-                  json_['npmRepository'] as core.Map<core.String, core.dynamic>)
-              : null,
-          pythonRepository: json_.containsKey('pythonRepository')
-              ? PythonRepository.fromJson(json_['pythonRepository']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          upstreamCredentials: json_.containsKey('upstreamCredentials')
-              ? UpstreamCredentials.fromJson(json_['upstreamCredentials']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          yumRepository: json_.containsKey('yumRepository')
-              ? YumRepository.fromJson(
-                  json_['yumRepository'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        aptRepository:
+            json_.containsKey('aptRepository')
+                ? AptRepository.fromJson(
+                  json_['aptRepository'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        commonRepository:
+            json_.containsKey('commonRepository')
+                ? CommonRemoteRepository.fromJson(
+                  json_['commonRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        disableUpstreamValidation:
+            json_['disableUpstreamValidation'] as core.bool?,
+        dockerRepository:
+            json_.containsKey('dockerRepository')
+                ? DockerRepository.fromJson(
+                  json_['dockerRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mavenRepository:
+            json_.containsKey('mavenRepository')
+                ? MavenRepository.fromJson(
+                  json_['mavenRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        npmRepository:
+            json_.containsKey('npmRepository')
+                ? NpmRepository.fromJson(
+                  json_['npmRepository'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pythonRepository:
+            json_.containsKey('pythonRepository')
+                ? PythonRepository.fromJson(
+                  json_['pythonRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        upstreamCredentials:
+            json_.containsKey('upstreamCredentials')
+                ? UpstreamCredentials.fromJson(
+                  json_['upstreamCredentials']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        yumRepository:
+            json_.containsKey('yumRepository')
+                ? YumRepository.fromJson(
+                  json_['yumRepository'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (aptRepository != null) 'aptRepository': aptRepository!,
-        if (commonRepository != null) 'commonRepository': commonRepository!,
-        if (description != null) 'description': description!,
-        if (disableUpstreamValidation != null)
-          'disableUpstreamValidation': disableUpstreamValidation!,
-        if (dockerRepository != null) 'dockerRepository': dockerRepository!,
-        if (mavenRepository != null) 'mavenRepository': mavenRepository!,
-        if (npmRepository != null) 'npmRepository': npmRepository!,
-        if (pythonRepository != null) 'pythonRepository': pythonRepository!,
-        if (upstreamCredentials != null)
-          'upstreamCredentials': upstreamCredentials!,
-        if (yumRepository != null) 'yumRepository': yumRepository!,
-      };
+    if (aptRepository != null) 'aptRepository': aptRepository!,
+    if (commonRepository != null) 'commonRepository': commonRepository!,
+    if (description != null) 'description': description!,
+    if (disableUpstreamValidation != null)
+      'disableUpstreamValidation': disableUpstreamValidation!,
+    if (dockerRepository != null) 'dockerRepository': dockerRepository!,
+    if (mavenRepository != null) 'mavenRepository': mavenRepository!,
+    if (npmRepository != null) 'npmRepository': npmRepository!,
+    if (pythonRepository != null) 'pythonRepository': pythonRepository!,
+    if (upstreamCredentials != null)
+      'upstreamCredentials': upstreamCredentials!,
+    if (yumRepository != null) 'yumRepository': yumRepository!,
+  };
 }
 
 /// A Repository for storing artifacts with a specific format.
@@ -5626,89 +5649,95 @@ class Repository {
   });
 
   Repository.fromJson(core.Map json_)
-      : this(
-          cleanupPolicies:
-              (json_['cleanupPolicies'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              CleanupPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>),
+    : this(
+        cleanupPolicies: (json_['cleanupPolicies']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                CleanupPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
             ),
-          ),
-          cleanupPolicyDryRun: json_['cleanupPolicyDryRun'] as core.bool?,
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          disallowUnspecifiedMode:
-              json_['disallowUnspecifiedMode'] as core.bool?,
-          dockerConfig: json_.containsKey('dockerConfig')
-              ? DockerRepositoryConfig.fromJson(
-                  json_['dockerConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          format: json_['format'] as core.String?,
-          kmsKeyName: json_['kmsKeyName'] as core.String?,
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          mavenConfig: json_.containsKey('mavenConfig')
-              ? MavenRepositoryConfig.fromJson(
-                  json_['mavenConfig'] as core.Map<core.String, core.dynamic>)
-              : null,
-          mode: json_['mode'] as core.String?,
-          name: json_['name'] as core.String?,
-          registryUri: json_['registryUri'] as core.String?,
-          remoteRepositoryConfig: json_.containsKey('remoteRepositoryConfig')
-              ? RemoteRepositoryConfig.fromJson(json_['remoteRepositoryConfig']
-                  as core.Map<core.String, core.dynamic>)
-              : null,
-          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
-          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
-          sizeBytes: json_['sizeBytes'] as core.String?,
-          updateTime: json_['updateTime'] as core.String?,
-          virtualRepositoryConfig: json_.containsKey('virtualRepositoryConfig')
-              ? VirtualRepositoryConfig.fromJson(
+        cleanupPolicyDryRun: json_['cleanupPolicyDryRun'] as core.bool?,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        disallowUnspecifiedMode: json_['disallowUnspecifiedMode'] as core.bool?,
+        dockerConfig:
+            json_.containsKey('dockerConfig')
+                ? DockerRepositoryConfig.fromJson(
+                  json_['dockerConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        format: json_['format'] as core.String?,
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        mavenConfig:
+            json_.containsKey('mavenConfig')
+                ? MavenRepositoryConfig.fromJson(
+                  json_['mavenConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        mode: json_['mode'] as core.String?,
+        name: json_['name'] as core.String?,
+        registryUri: json_['registryUri'] as core.String?,
+        remoteRepositoryConfig:
+            json_.containsKey('remoteRepositoryConfig')
+                ? RemoteRepositoryConfig.fromJson(
+                  json_['remoteRepositoryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+        satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        sizeBytes: json_['sizeBytes'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+        virtualRepositoryConfig:
+            json_.containsKey('virtualRepositoryConfig')
+                ? VirtualRepositoryConfig.fromJson(
                   json_['virtualRepositoryConfig']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          vulnerabilityScanningConfig:
-              json_.containsKey('vulnerabilityScanningConfig')
-                  ? VulnerabilityScanningConfig.fromJson(
-                      json_['vulnerabilityScanningConfig']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        vulnerabilityScanningConfig:
+            json_.containsKey('vulnerabilityScanningConfig')
+                ? VulnerabilityScanningConfig.fromJson(
+                  json_['vulnerabilityScanningConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (cleanupPolicies != null) 'cleanupPolicies': cleanupPolicies!,
-        if (cleanupPolicyDryRun != null)
-          'cleanupPolicyDryRun': cleanupPolicyDryRun!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (disallowUnspecifiedMode != null)
-          'disallowUnspecifiedMode': disallowUnspecifiedMode!,
-        if (dockerConfig != null) 'dockerConfig': dockerConfig!,
-        if (format != null) 'format': format!,
-        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-        if (labels != null) 'labels': labels!,
-        if (mavenConfig != null) 'mavenConfig': mavenConfig!,
-        if (mode != null) 'mode': mode!,
-        if (name != null) 'name': name!,
-        if (registryUri != null) 'registryUri': registryUri!,
-        if (remoteRepositoryConfig != null)
-          'remoteRepositoryConfig': remoteRepositoryConfig!,
-        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
-        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
-        if (sizeBytes != null) 'sizeBytes': sizeBytes!,
-        if (updateTime != null) 'updateTime': updateTime!,
-        if (virtualRepositoryConfig != null)
-          'virtualRepositoryConfig': virtualRepositoryConfig!,
-        if (vulnerabilityScanningConfig != null)
-          'vulnerabilityScanningConfig': vulnerabilityScanningConfig!,
-      };
+    if (cleanupPolicies != null) 'cleanupPolicies': cleanupPolicies!,
+    if (cleanupPolicyDryRun != null)
+      'cleanupPolicyDryRun': cleanupPolicyDryRun!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (disallowUnspecifiedMode != null)
+      'disallowUnspecifiedMode': disallowUnspecifiedMode!,
+    if (dockerConfig != null) 'dockerConfig': dockerConfig!,
+    if (format != null) 'format': format!,
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+    if (labels != null) 'labels': labels!,
+    if (mavenConfig != null) 'mavenConfig': mavenConfig!,
+    if (mode != null) 'mode': mode!,
+    if (name != null) 'name': name!,
+    if (registryUri != null) 'registryUri': registryUri!,
+    if (remoteRepositoryConfig != null)
+      'remoteRepositoryConfig': remoteRepositoryConfig!,
+    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+    if (sizeBytes != null) 'sizeBytes': sizeBytes!,
+    if (updateTime != null) 'updateTime': updateTime!,
+    if (virtualRepositoryConfig != null)
+      'virtualRepositoryConfig': virtualRepositoryConfig!,
+    if (vulnerabilityScanningConfig != null)
+      'vulnerabilityScanningConfig': vulnerabilityScanningConfig!,
+  };
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -5720,21 +5749,21 @@ class SetIamPolicyRequest {
   /// reject them.
   Policy? policy;
 
-  SetIamPolicyRequest({
-    this.policy,
-  });
+  SetIamPolicyRequest({this.policy});
 
   SetIamPolicyRequest.fromJson(core.Map json_)
-      : this(
-          policy: json_.containsKey('policy')
-              ? Policy.fromJson(
-                  json_['policy'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (policy != null) 'policy': policy!,
-      };
+    if (policy != null) 'policy': policy!,
+  };
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -5763,21 +5792,18 @@ class Tag {
   /// escaped.
   core.String? version;
 
-  Tag({
-    this.name,
-    this.version,
-  });
+  Tag({this.name, this.version});
 
   Tag.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          version: json_['version'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (version != null) 'version': version!,
-      };
+    if (name != null) 'name': name!,
+    if (version != null) 'version': version!,
+  };
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -5791,21 +5817,21 @@ class UploadAptArtifactMediaResponse {
   /// Operation to be returned to the user.
   Operation? operation;
 
-  UploadAptArtifactMediaResponse({
-    this.operation,
-  });
+  UploadAptArtifactMediaResponse({this.operation});
 
   UploadAptArtifactMediaResponse.fromJson(core.Map json_)
-      : this(
-          operation: json_.containsKey('operation')
-              ? Operation.fromJson(
-                  json_['operation'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        operation:
+            json_.containsKey('operation')
+                ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operation != null) 'operation': operation!,
-      };
+    if (operation != null) 'operation': operation!,
+  };
 }
 
 /// The request to upload an artifact.
@@ -5816,21 +5842,21 @@ class UploadFileMediaResponse {
   /// Operation that will be returned to the user.
   Operation? operation;
 
-  UploadFileMediaResponse({
-    this.operation,
-  });
+  UploadFileMediaResponse({this.operation});
 
   UploadFileMediaResponse.fromJson(core.Map json_)
-      : this(
-          operation: json_.containsKey('operation')
-              ? Operation.fromJson(
-                  json_['operation'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        operation:
+            json_.containsKey('operation')
+                ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operation != null) 'operation': operation!,
-      };
+    if (operation != null) 'operation': operation!,
+  };
 }
 
 /// The request to upload a file.
@@ -5842,18 +5868,14 @@ class UploadFileRequest {
   /// Optional.
   core.String? fileId;
 
-  UploadFileRequest({
-    this.fileId,
-  });
+  UploadFileRequest({this.fileId});
 
   UploadFileRequest.fromJson(core.Map json_)
-      : this(
-          fileId: json_['fileId'] as core.String?,
-        );
+    : this(fileId: json_['fileId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (fileId != null) 'fileId': fileId!,
-      };
+    if (fileId != null) 'fileId': fileId!,
+  };
 }
 
 /// The response to upload a generic artifact.
@@ -5861,21 +5883,21 @@ class UploadGenericArtifactMediaResponse {
   /// Operation that will be returned to the user.
   Operation? operation;
 
-  UploadGenericArtifactMediaResponse({
-    this.operation,
-  });
+  UploadGenericArtifactMediaResponse({this.operation});
 
   UploadGenericArtifactMediaResponse.fromJson(core.Map json_)
-      : this(
-          operation: json_.containsKey('operation')
-              ? Operation.fromJson(
-                  json_['operation'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        operation:
+            json_.containsKey('operation')
+                ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operation != null) 'operation': operation!,
-      };
+    if (operation != null) 'operation': operation!,
+  };
 }
 
 /// The request to upload a generic artifact.
@@ -5907,24 +5929,20 @@ class UploadGenericArtifactRequest {
   /// a version called `latest` is not allowed.
   core.String? versionId;
 
-  UploadGenericArtifactRequest({
-    this.filename,
-    this.packageId,
-    this.versionId,
-  });
+  UploadGenericArtifactRequest({this.filename, this.packageId, this.versionId});
 
   UploadGenericArtifactRequest.fromJson(core.Map json_)
-      : this(
-          filename: json_['filename'] as core.String?,
-          packageId: json_['packageId'] as core.String?,
-          versionId: json_['versionId'] as core.String?,
-        );
+    : this(
+        filename: json_['filename'] as core.String?,
+        packageId: json_['packageId'] as core.String?,
+        versionId: json_['versionId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (filename != null) 'filename': filename!,
-        if (packageId != null) 'packageId': packageId!,
-        if (versionId != null) 'versionId': versionId!,
-      };
+    if (filename != null) 'filename': filename!,
+    if (packageId != null) 'packageId': packageId!,
+    if (versionId != null) 'versionId': versionId!,
+  };
 }
 
 /// The response to upload a Go module.
@@ -5932,21 +5950,21 @@ class UploadGoModuleMediaResponse {
   /// Operation to be returned to the user.
   Operation? operation;
 
-  UploadGoModuleMediaResponse({
-    this.operation,
-  });
+  UploadGoModuleMediaResponse({this.operation});
 
   UploadGoModuleMediaResponse.fromJson(core.Map json_)
-      : this(
-          operation: json_.containsKey('operation')
-              ? Operation.fromJson(
-                  json_['operation'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        operation:
+            json_.containsKey('operation')
+                ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operation != null) 'operation': operation!,
-      };
+    if (operation != null) 'operation': operation!,
+  };
 }
 
 /// The request to upload a Go module.
@@ -5957,21 +5975,21 @@ class UploadGoogetArtifactMediaResponse {
   /// Operation to be returned to the user.
   Operation? operation;
 
-  UploadGoogetArtifactMediaResponse({
-    this.operation,
-  });
+  UploadGoogetArtifactMediaResponse({this.operation});
 
   UploadGoogetArtifactMediaResponse.fromJson(core.Map json_)
-      : this(
-          operation: json_.containsKey('operation')
-              ? Operation.fromJson(
-                  json_['operation'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        operation:
+            json_.containsKey('operation')
+                ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operation != null) 'operation': operation!,
-      };
+    if (operation != null) 'operation': operation!,
+  };
 }
 
 /// The request to upload an artifact.
@@ -5982,21 +6000,21 @@ class UploadKfpArtifactMediaResponse {
   /// Operation that will be returned to the user.
   Operation? operation;
 
-  UploadKfpArtifactMediaResponse({
-    this.operation,
-  });
+  UploadKfpArtifactMediaResponse({this.operation});
 
   UploadKfpArtifactMediaResponse.fromJson(core.Map json_)
-      : this(
-          operation: json_.containsKey('operation')
-              ? Operation.fromJson(
-                  json_['operation'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        operation:
+            json_.containsKey('operation')
+                ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operation != null) 'operation': operation!,
-      };
+    if (operation != null) 'operation': operation!,
+  };
 }
 
 /// The request to upload an artifact.
@@ -6007,23 +6025,21 @@ class UploadKfpArtifactRequest {
   /// Tags to be created with the version.
   core.List<core.String>? tags;
 
-  UploadKfpArtifactRequest({
-    this.description,
-    this.tags,
-  });
+  UploadKfpArtifactRequest({this.description, this.tags});
 
   UploadKfpArtifactRequest.fromJson(core.Map json_)
-      : this(
-          description: json_['description'] as core.String?,
-          tags: (json_['tags'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
+    : this(
+        description: json_['description'] as core.String?,
+        tags:
+            (json_['tags'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (description != null) 'description': description!,
-        if (tags != null) 'tags': tags!,
-      };
+    if (description != null) 'description': description!,
+    if (tags != null) 'tags': tags!,
+  };
 }
 
 /// The response to upload an artifact.
@@ -6031,21 +6047,21 @@ class UploadYumArtifactMediaResponse {
   /// Operation to be returned to the user.
   Operation? operation;
 
-  UploadYumArtifactMediaResponse({
-    this.operation,
-  });
+  UploadYumArtifactMediaResponse({this.operation});
 
   UploadYumArtifactMediaResponse.fromJson(core.Map json_)
-      : this(
-          operation: json_.containsKey('operation')
-              ? Operation.fromJson(
-                  json_['operation'] as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        operation:
+            json_.containsKey('operation')
+                ? Operation.fromJson(
+                  json_['operation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (operation != null) 'operation': operation!,
-      };
+    if (operation != null) 'operation': operation!,
+  };
 }
 
 /// The request to upload an artifact.
@@ -6056,24 +6072,23 @@ class UpstreamCredentials {
   /// Use username and password to access the remote repository.
   UsernamePasswordCredentials? usernamePasswordCredentials;
 
-  UpstreamCredentials({
-    this.usernamePasswordCredentials,
-  });
+  UpstreamCredentials({this.usernamePasswordCredentials});
 
   UpstreamCredentials.fromJson(core.Map json_)
-      : this(
-          usernamePasswordCredentials:
-              json_.containsKey('usernamePasswordCredentials')
-                  ? UsernamePasswordCredentials.fromJson(
-                      json_['usernamePasswordCredentials']
-                          as core.Map<core.String, core.dynamic>)
-                  : null,
-        );
+    : this(
+        usernamePasswordCredentials:
+            json_.containsKey('usernamePasswordCredentials')
+                ? UsernamePasswordCredentials.fromJson(
+                  json_['usernamePasswordCredentials']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (usernamePasswordCredentials != null)
-          'usernamePasswordCredentials': usernamePasswordCredentials!,
-      };
+    if (usernamePasswordCredentials != null)
+      'usernamePasswordCredentials': usernamePasswordCredentials!,
+  };
 }
 
 /// Artifact policy configuration for the repository contents.
@@ -6088,24 +6103,20 @@ class UpstreamPolicy {
   /// `projects/p1/locations/us-central1/repositories/repo1`.
   core.String? repository;
 
-  UpstreamPolicy({
-    this.id,
-    this.priority,
-    this.repository,
-  });
+  UpstreamPolicy({this.id, this.priority, this.repository});
 
   UpstreamPolicy.fromJson(core.Map json_)
-      : this(
-          id: json_['id'] as core.String?,
-          priority: json_['priority'] as core.int?,
-          repository: json_['repository'] as core.String?,
-        );
+    : this(
+        id: json_['id'] as core.String?,
+        priority: json_['priority'] as core.int?,
+        repository: json_['repository'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (id != null) 'id': id!,
-        if (priority != null) 'priority': priority!,
-        if (repository != null) 'repository': repository!,
-      };
+    if (id != null) 'id': id!,
+    if (priority != null) 'priority': priority!,
+    if (repository != null) 'repository': repository!,
+  };
 }
 
 /// Username and password credentials.
@@ -6120,22 +6131,19 @@ class UsernamePasswordCredentials {
   /// The username to access the remote repository.
   core.String? username;
 
-  UsernamePasswordCredentials({
-    this.passwordSecretVersion,
-    this.username,
-  });
+  UsernamePasswordCredentials({this.passwordSecretVersion, this.username});
 
   UsernamePasswordCredentials.fromJson(core.Map json_)
-      : this(
-          passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
-          username: json_['username'] as core.String?,
-        );
+    : this(
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (passwordSecretVersion != null)
-          'passwordSecretVersion': passwordSecretVersion!,
-        if (username != null) 'username': username!,
-      };
+    if (passwordSecretVersion != null)
+      'passwordSecretVersion': passwordSecretVersion!,
+    if (username != null) 'username': username!,
+  };
 }
 
 /// The Artifact Registry VPC SC config that apply to a Project.
@@ -6158,21 +6166,18 @@ class VPCSCConfig {
   /// Upstreams for the Remote Repositories if the resource is in the perimeter.
   core.String? vpcscPolicy;
 
-  VPCSCConfig({
-    this.name,
-    this.vpcscPolicy,
-  });
+  VPCSCConfig({this.name, this.vpcscPolicy});
 
   VPCSCConfig.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          vpcscPolicy: json_['vpcscPolicy'] as core.String?,
-        );
+    : this(
+        name: json_['name'] as core.String?,
+        vpcscPolicy: json_['vpcscPolicy'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (vpcscPolicy != null) 'vpcscPolicy': vpcscPolicy!,
-      };
+    if (name != null) 'name': name!,
+    if (vpcscPolicy != null) 'vpcscPolicy': vpcscPolicy!,
+  };
 }
 
 /// The body of a version resource.
@@ -6233,37 +6238,37 @@ class Version {
   });
 
   Version.fromJson(core.Map json_)
-      : this(
-          annotations:
-              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
-                  ?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-          createTime: json_['createTime'] as core.String?,
-          description: json_['description'] as core.String?,
-          metadata: json_.containsKey('metadata')
-              ? json_['metadata'] as core.Map<core.String, core.dynamic>
-              : null,
-          name: json_['name'] as core.String?,
-          relatedTags: (json_['relatedTags'] as core.List?)
-              ?.map((value) =>
-                  Tag.fromJson(value as core.Map<core.String, core.dynamic>))
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-        );
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        relatedTags:
+            (json_['relatedTags'] as core.List?)
+                ?.map(
+                  (value) => Tag.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (annotations != null) 'annotations': annotations!,
-        if (createTime != null) 'createTime': createTime!,
-        if (description != null) 'description': description!,
-        if (metadata != null) 'metadata': metadata!,
-        if (name != null) 'name': name!,
-        if (relatedTags != null) 'relatedTags': relatedTags!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
+    if (annotations != null) 'annotations': annotations!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (relatedTags != null) 'relatedTags': relatedTags!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
 }
 
 /// Virtual repository configuration.
@@ -6274,21 +6279,23 @@ class VirtualRepositoryConfig {
   /// Upstream policies cannot be set on a standard repository.
   core.List<UpstreamPolicy>? upstreamPolicies;
 
-  VirtualRepositoryConfig({
-    this.upstreamPolicies,
-  });
+  VirtualRepositoryConfig({this.upstreamPolicies});
 
   VirtualRepositoryConfig.fromJson(core.Map json_)
-      : this(
-          upstreamPolicies: (json_['upstreamPolicies'] as core.List?)
-              ?.map((value) => UpstreamPolicy.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
+    : this(
+        upstreamPolicies:
+            (json_['upstreamPolicies'] as core.List?)
+                ?.map(
+                  (value) => UpstreamPolicy.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (upstreamPolicies != null) 'upstreamPolicies': upstreamPolicies!,
-      };
+    if (upstreamPolicies != null) 'upstreamPolicies': upstreamPolicies!,
+  };
 }
 
 /// Config on whether to perform vulnerability scanning for resources in this
@@ -6337,54 +6344,55 @@ class VulnerabilityScanningConfig {
   });
 
   VulnerabilityScanningConfig.fromJson(core.Map json_)
-      : this(
-          enablementConfig: json_['enablementConfig'] as core.String?,
-          enablementState: json_['enablementState'] as core.String?,
-          enablementStateReason: json_['enablementStateReason'] as core.String?,
-          lastEnableTime: json_['lastEnableTime'] as core.String?,
-        );
+    : this(
+        enablementConfig: json_['enablementConfig'] as core.String?,
+        enablementState: json_['enablementState'] as core.String?,
+        enablementStateReason: json_['enablementStateReason'] as core.String?,
+        lastEnableTime: json_['lastEnableTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (enablementConfig != null) 'enablementConfig': enablementConfig!,
-        if (enablementState != null) 'enablementState': enablementState!,
-        if (enablementStateReason != null)
-          'enablementStateReason': enablementStateReason!,
-        if (lastEnableTime != null) 'lastEnableTime': lastEnableTime!,
-      };
+    if (enablementConfig != null) 'enablementConfig': enablementConfig!,
+    if (enablementState != null) 'enablementState': enablementState!,
+    if (enablementStateReason != null)
+      'enablementStateReason': enablementStateReason!,
+    if (lastEnableTime != null) 'lastEnableTime': lastEnableTime!,
+  };
 }
 
 /// Configuration for a Yum remote repository.
 class YumRepository {
   /// Customer-specified remote repository.
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository?
-      customRepository;
+  customRepository;
 
   /// One of the publicly available Yum repositories supported by Artifact
   /// Registry.
   GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository?
-      publicRepository;
+  publicRepository;
 
-  YumRepository({
-    this.customRepository,
-    this.publicRepository,
-  });
+  YumRepository({this.customRepository, this.publicRepository});
 
   YumRepository.fromJson(core.Map json_)
-      : this(
-          customRepository: json_.containsKey('customRepository')
-              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository
-                  .fromJson(json_['customRepository']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          publicRepository: json_.containsKey('publicRepository')
-              ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository
-                  .fromJson(json_['publicRepository']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-        );
+    : this(
+        customRepository:
+            json_.containsKey('customRepository')
+                ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository.fromJson(
+                  json_['customRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        publicRepository:
+            json_.containsKey('publicRepository')
+                ? GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository.fromJson(
+                  json_['publicRepository']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (customRepository != null) 'customRepository': customRepository!,
-        if (publicRepository != null) 'publicRepository': publicRepository!,
-      };
+    if (customRepository != null) 'customRepository': customRepository!,
+    if (publicRepository != null) 'publicRepository': publicRepository!,
+  };
 }

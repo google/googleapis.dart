@@ -44,11 +44,16 @@ class CloudSecurityTokenApi {
 
   V1Resource get v1 => V1Resource(_requester);
 
-  CloudSecurityTokenApi(http.Client client,
-      {core.String rootUrl = 'https://sts.googleapis.com/',
-      core.String servicePath = ''})
-      : _requester =
-            commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+  CloudSecurityTokenApi(
+    http.Client client, {
+    core.String rootUrl = 'https://sts.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
 }
 
 class V1Resource {
@@ -97,7 +102,8 @@ class V1Resource {
       queryParams: queryParams_,
     );
     return GoogleIdentityStsV1ExchangeTokenResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -255,26 +261,25 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
   });
 
   GoogleIdentityStsV1ExchangeTokenRequest.fromJson(core.Map json_)
-      : this(
-          audience: json_['audience'] as core.String?,
-          grantType: json_['grantType'] as core.String?,
-          options: json_['options'] as core.String?,
-          requestedTokenType: json_['requestedTokenType'] as core.String?,
-          scope: json_['scope'] as core.String?,
-          subjectToken: json_['subjectToken'] as core.String?,
-          subjectTokenType: json_['subjectTokenType'] as core.String?,
-        );
+    : this(
+        audience: json_['audience'] as core.String?,
+        grantType: json_['grantType'] as core.String?,
+        options: json_['options'] as core.String?,
+        requestedTokenType: json_['requestedTokenType'] as core.String?,
+        scope: json_['scope'] as core.String?,
+        subjectToken: json_['subjectToken'] as core.String?,
+        subjectTokenType: json_['subjectTokenType'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (audience != null) 'audience': audience!,
-        if (grantType != null) 'grantType': grantType!,
-        if (options != null) 'options': options!,
-        if (requestedTokenType != null)
-          'requestedTokenType': requestedTokenType!,
-        if (scope != null) 'scope': scope!,
-        if (subjectToken != null) 'subjectToken': subjectToken!,
-        if (subjectTokenType != null) 'subjectTokenType': subjectTokenType!,
-      };
+    if (audience != null) 'audience': audience!,
+    if (grantType != null) 'grantType': grantType!,
+    if (options != null) 'options': options!,
+    if (requestedTokenType != null) 'requestedTokenType': requestedTokenType!,
+    if (scope != null) 'scope': scope!,
+    if (subjectToken != null) 'subjectToken': subjectToken!,
+    if (subjectTokenType != null) 'subjectTokenType': subjectTokenType!,
+  };
 }
 
 /// Response message for ExchangeToken.
@@ -290,8 +295,10 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
       convert.base64.decode(accessBoundarySessionKey!);
 
   set accessBoundarySessionKeyAsBytes(core.List<core.int> bytes_) {
-    accessBoundarySessionKey =
-        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+    accessBoundarySessionKey = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
   }
 
   /// An OAuth 2.0 security token, issued by Google, in response to the token
@@ -330,21 +337,21 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
   });
 
   GoogleIdentityStsV1ExchangeTokenResponse.fromJson(core.Map json_)
-      : this(
-          accessBoundarySessionKey:
-              json_['access_boundary_session_key'] as core.String?,
-          accessToken: json_['access_token'] as core.String?,
-          expiresIn: json_['expires_in'] as core.int?,
-          issuedTokenType: json_['issued_token_type'] as core.String?,
-          tokenType: json_['token_type'] as core.String?,
-        );
+    : this(
+        accessBoundarySessionKey:
+            json_['access_boundary_session_key'] as core.String?,
+        accessToken: json_['access_token'] as core.String?,
+        expiresIn: json_['expires_in'] as core.int?,
+        issuedTokenType: json_['issued_token_type'] as core.String?,
+        tokenType: json_['token_type'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (accessBoundarySessionKey != null)
-          'access_boundary_session_key': accessBoundarySessionKey!,
-        if (accessToken != null) 'access_token': accessToken!,
-        if (expiresIn != null) 'expires_in': expiresIn!,
-        if (issuedTokenType != null) 'issued_token_type': issuedTokenType!,
-        if (tokenType != null) 'token_type': tokenType!,
-      };
+    if (accessBoundarySessionKey != null)
+      'access_boundary_session_key': accessBoundarySessionKey!,
+    if (accessToken != null) 'access_token': accessToken!,
+    if (expiresIn != null) 'expires_in': expiresIn!,
+    if (issuedTokenType != null) 'issued_token_type': issuedTokenType!,
+    if (tokenType != null) 'token_type': tokenType!,
+  };
 }
