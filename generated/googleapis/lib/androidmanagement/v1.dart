@@ -199,7 +199,6 @@ class EnterprisesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -505,7 +504,6 @@ class EnterprisesDevicesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -730,7 +728,6 @@ class EnterprisesDevicesOperationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -908,7 +905,6 @@ class EnterprisesEnrollmentTokensResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1199,7 +1195,6 @@ class EnterprisesPoliciesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1497,7 +1492,6 @@ class EnterprisesWebAppsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1788,7 +1782,6 @@ class SignupUrlsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return SignupUrl.fromJson(response_ as core.Map<core.String, core.dynamic>);

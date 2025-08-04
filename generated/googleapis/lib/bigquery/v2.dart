@@ -159,9 +159,7 @@ class DatasetsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -639,7 +637,6 @@ class JobsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return JobCancelResponse.fromJson(
@@ -696,9 +693,7 @@ class JobsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1109,9 +1104,7 @@ class ModelsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1423,9 +1416,7 @@ class RoutinesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1866,7 +1857,6 @@ class RowAccessPoliciesResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1928,9 +1918,7 @@ class RowAccessPoliciesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2486,9 +2474,7 @@ class TablesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

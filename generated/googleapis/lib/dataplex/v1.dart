@@ -209,7 +209,6 @@ class OrganizationsLocationsEncryptionConfigsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -625,7 +624,6 @@ class OrganizationsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -995,7 +993,6 @@ class ProjectsLocationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1SearchEntriesResponse.fromJson(
@@ -1101,7 +1098,6 @@ class ProjectsLocationsAspectTypesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -1539,7 +1535,6 @@ class ProjectsLocationsDataAttributeBindingsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -2318,7 +2313,6 @@ class ProjectsLocationsDataScansResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -3035,7 +3029,6 @@ class ProjectsLocationsDataTaxonomiesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -3472,7 +3465,6 @@ class ProjectsLocationsDataTaxonomiesAttributesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -3906,7 +3898,6 @@ class ProjectsLocationsEntryGroupsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -4327,7 +4318,6 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1Entry.fromJson(
@@ -4630,7 +4620,6 @@ class ProjectsLocationsEntryGroupsEntryLinksResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleCloudDataplexV1EntryLink.fromJson(
@@ -4942,7 +4931,6 @@ class ProjectsLocationsEntryTypesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -5374,7 +5362,6 @@ class ProjectsLocationsGlossariesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -5791,7 +5778,6 @@ class ProjectsLocationsGlossariesCategoriesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -6203,7 +6189,6 @@ class ProjectsLocationsGlossariesTermsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -6808,7 +6793,6 @@ class ProjectsLocationsLakesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -7274,7 +7258,6 @@ class ProjectsLocationsLakesContentResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -7692,7 +7675,6 @@ class ProjectsLocationsLakesContentitemsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -8126,7 +8108,6 @@ class ProjectsLocationsLakesEnvironmentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -8614,7 +8595,6 @@ class ProjectsLocationsLakesTasksResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -9228,7 +9208,6 @@ class ProjectsLocationsLakesZonesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -9711,7 +9690,6 @@ class ProjectsLocationsLakesZonesAssetsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -10189,7 +10167,6 @@ class ProjectsLocationsLakesZonesEntitiesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -10462,7 +10439,6 @@ class ProjectsLocationsLakesZonesEntitiesPartitionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -10875,7 +10851,6 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);

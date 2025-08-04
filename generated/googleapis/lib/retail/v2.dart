@@ -1389,7 +1389,6 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -2024,7 +2023,6 @@ class ProjectsLocationsCatalogsControlsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -2376,7 +2374,6 @@ class ProjectsLocationsCatalogsModelsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -3019,7 +3016,6 @@ class ProjectsLocationsCatalogsServingConfigsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(

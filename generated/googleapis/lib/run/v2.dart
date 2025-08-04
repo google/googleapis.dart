@@ -435,7 +435,6 @@ class ProjectsLocationsJobsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -892,7 +891,6 @@ class ProjectsLocationsJobsExecutionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -1192,7 +1190,6 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -1465,7 +1462,6 @@ class ProjectsLocationsServicesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -1837,7 +1833,6 @@ class ProjectsLocationsServicesRevisionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -2103,7 +2098,6 @@ class ProjectsLocationsWorkerPoolsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -2485,7 +2479,6 @@ class ProjectsLocationsWorkerPoolsRevisionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(

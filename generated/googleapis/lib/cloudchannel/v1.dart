@@ -825,7 +825,6 @@ class AccountsChannelPartnerLinksChannelPartnerRepricingConfigsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -1120,7 +1119,6 @@ class AccountsChannelPartnerLinksCustomersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -1445,7 +1443,6 @@ class AccountsCustomersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -2225,7 +2222,6 @@ class AccountsCustomersCustomerRepricingConfigsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -3822,7 +3818,6 @@ class OperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(

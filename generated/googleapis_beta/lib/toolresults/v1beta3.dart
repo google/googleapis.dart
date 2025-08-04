@@ -170,7 +170,6 @@ class ProjectsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return ProjectSettings.fromJson(

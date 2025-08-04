@@ -319,7 +319,6 @@ class ProjectsInstanceConfigsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -521,7 +520,6 @@ class ProjectsInstanceConfigsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -559,7 +557,6 @@ class ProjectsInstanceConfigsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -708,7 +705,6 @@ class ProjectsInstanceConfigsSsdCachesOperationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -746,7 +742,6 @@ class ProjectsInstanceConfigsSsdCachesOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -954,7 +949,6 @@ class ProjectsInstancesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1647,7 +1641,6 @@ class ProjectsInstancesBackupsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2020,7 +2013,6 @@ class ProjectsInstancesBackupsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2058,7 +2050,6 @@ class ProjectsInstancesBackupsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2438,7 +2429,6 @@ class ProjectsInstancesDatabasesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3040,7 +3030,6 @@ class ProjectsInstancesDatabasesBackupSchedulesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3504,7 +3493,6 @@ class ProjectsInstancesDatabasesOperationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3542,7 +3530,6 @@ class ProjectsInstancesDatabasesOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4027,7 +4014,6 @@ class ProjectsInstancesDatabasesSessionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4758,7 +4744,6 @@ class ProjectsInstancesInstancePartitionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4976,7 +4961,6 @@ class ProjectsInstancesInstancePartitionsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -5014,7 +4998,6 @@ class ProjectsInstancesInstancePartitionsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -5152,7 +5135,6 @@ class ProjectsInstancesOperationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -5190,7 +5172,6 @@ class ProjectsInstancesOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);

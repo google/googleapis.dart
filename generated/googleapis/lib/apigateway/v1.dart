@@ -268,7 +268,6 @@ class ProjectsLocationsApisResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return ApigatewayOperation.fromJson(
@@ -669,7 +668,6 @@ class ProjectsLocationsApisConfigsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return ApigatewayOperation.fromJson(
@@ -1079,7 +1077,6 @@ class ProjectsLocationsGatewaysResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return ApigatewayOperation.fromJson(
@@ -1481,7 +1478,6 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);

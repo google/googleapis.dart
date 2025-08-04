@@ -596,7 +596,6 @@ class ProjectsLocationsBareMetalAdminClustersResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return QueryBareMetalAdminVersionConfigResponse.fromJson(
@@ -768,7 +767,6 @@ class ProjectsLocationsBareMetalAdminClustersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1009,7 +1007,6 @@ class ProjectsLocationsBareMetalClustersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1372,7 +1369,6 @@ class ProjectsLocationsBareMetalClustersResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return QueryBareMetalVersionConfigResponse.fromJson(
@@ -1539,7 +1535,6 @@ class ProjectsLocationsBareMetalClustersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1675,7 +1670,6 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2120,7 +2114,6 @@ class ProjectsLocationsBareMetalClustersBareMetalNodePoolsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2407,7 +2400,6 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3029,7 +3021,6 @@ class ProjectsLocationsVmwareAdminClustersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3266,7 +3257,6 @@ class ProjectsLocationsVmwareClustersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3621,7 +3611,6 @@ class ProjectsLocationsVmwareClustersResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return QueryVmwareVersionConfigResponse.fromJson(
@@ -3788,7 +3777,6 @@ class ProjectsLocationsVmwareClustersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4018,7 +4006,6 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4448,7 +4435,6 @@ class ProjectsLocationsVmwareClustersVmwareNodePoolsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);

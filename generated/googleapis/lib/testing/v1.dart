@@ -426,7 +426,6 @@ class ProjectsTestMatricesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return CancelTestMatrixResponse.fromJson(

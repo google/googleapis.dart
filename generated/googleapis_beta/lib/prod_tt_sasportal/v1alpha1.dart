@@ -491,7 +491,6 @@ class CustomersDeploymentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
@@ -944,7 +943,6 @@ class CustomersDevicesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
@@ -1301,7 +1299,6 @@ class CustomersNodesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
@@ -1919,7 +1916,6 @@ class DeploymentsDevicesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
@@ -2305,7 +2301,6 @@ class NodesDeploymentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
@@ -2758,7 +2753,6 @@ class NodesDevicesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(
@@ -3114,7 +3108,6 @@ class NodesNodesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return SasPortalEmpty.fromJson(

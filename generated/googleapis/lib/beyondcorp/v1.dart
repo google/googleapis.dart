@@ -184,7 +184,6 @@ class OrganizationsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -530,7 +529,6 @@ class ProjectsLocationsAppConnectionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -1066,7 +1064,6 @@ class ProjectsLocationsAppConnectorsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -1622,7 +1619,6 @@ class ProjectsLocationsAppGatewaysResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -1976,7 +1972,6 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2192,7 +2187,6 @@ class ProjectsLocationsSecurityGatewaysResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -2646,7 +2640,6 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(

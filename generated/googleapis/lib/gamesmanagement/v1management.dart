@@ -107,7 +107,6 @@ class AchievementsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return AchievementResetResponse.fromJson(
@@ -145,7 +144,6 @@ class AchievementsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return AchievementResetAllResponse.fromJson(
@@ -177,9 +175,7 @@ class AchievementsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -217,9 +213,7 @@ class AchievementsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -257,7 +251,6 @@ class AchievementsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -357,9 +350,7 @@ class EventsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -390,9 +381,7 @@ class EventsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -421,9 +410,7 @@ class EventsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -461,9 +448,7 @@ class EventsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -501,7 +486,6 @@ class EventsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -550,9 +534,7 @@ class PlayersResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -595,9 +577,7 @@ class PlayersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -644,7 +624,6 @@ class ScoresResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return PlayerScoreResetResponse.fromJson(
@@ -682,7 +661,6 @@ class ScoresResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return PlayerScoreResetAllResponse.fromJson(
@@ -714,9 +692,7 @@ class ScoresResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -754,9 +730,7 @@ class ScoresResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -794,7 +768,6 @@ class ScoresResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

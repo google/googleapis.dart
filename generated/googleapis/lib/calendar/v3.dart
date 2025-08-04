@@ -180,9 +180,7 @@ class AclResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -561,9 +559,7 @@ class CalendarListResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -958,9 +954,7 @@ class CalendarsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -996,9 +990,7 @@ class CalendarsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1192,7 +1184,6 @@ class ChannelsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1294,9 +1285,7 @@ class EventsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1880,7 +1869,6 @@ class EventsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Event.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2044,7 +2032,6 @@ class EventsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Event.fromJson(response_ as core.Map<core.String, core.dynamic>);

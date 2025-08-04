@@ -1186,7 +1186,6 @@ class ProjectsAppsDebugTokensResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -2498,7 +2497,6 @@ class ProjectsServicesResourcePoliciesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(

@@ -326,7 +326,6 @@ class ProjectsLocationsClustersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -634,7 +633,6 @@ class ProjectsLocationsClustersAclsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -876,7 +874,6 @@ class ProjectsLocationsClustersConsumerGroupsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1113,7 +1110,6 @@ class ProjectsLocationsClustersTopicsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1379,7 +1375,6 @@ class ProjectsLocationsConnectClustersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1638,7 +1633,6 @@ class ProjectsLocationsConnectClustersConnectorsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2047,7 +2041,6 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2233,7 +2226,6 @@ class ProjectsLocationsSchemaRegistriesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2415,7 +2407,6 @@ class ProjectsLocationsSchemaRegistriesConfigResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return SchemaConfig.fromJson(
@@ -2712,7 +2703,6 @@ class ProjectsLocationsSchemaRegistriesContextsConfigResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return SchemaConfig.fromJson(
@@ -2861,7 +2851,6 @@ class ProjectsLocationsSchemaRegistriesContextsModeResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return SchemaMode.fromJson(
@@ -3292,7 +3281,6 @@ class ProjectsLocationsSchemaRegistriesContextsSubjectsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3505,7 +3493,6 @@ class ProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3746,7 +3733,6 @@ class ProjectsLocationsSchemaRegistriesModeResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return SchemaMode.fromJson(
@@ -4166,7 +4152,6 @@ class ProjectsLocationsSchemaRegistriesSubjectsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4379,7 +4364,6 @@ class ProjectsLocationsSchemaRegistriesSubjectsVersionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);

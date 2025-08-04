@@ -20,7 +20,6 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:file_test_package/messages.dart';
 import 'package:http/http.dart' as http;
-
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show
         ApiRequestError,
@@ -84,7 +83,6 @@ class ToyApi {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -663,7 +661,6 @@ class ToyApi {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return ToyResponseFactory.fromJson(
@@ -692,7 +689,6 @@ class ToyApi {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -782,7 +778,6 @@ class ComputeResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
@@ -838,7 +833,6 @@ class ComputeResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {

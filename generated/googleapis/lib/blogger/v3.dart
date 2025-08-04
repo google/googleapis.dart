@@ -329,7 +329,6 @@ class CommentsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Comment.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -374,9 +373,7 @@ class CommentsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -620,7 +617,6 @@ class CommentsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Comment.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -668,7 +664,6 @@ class CommentsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Comment.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -762,9 +757,7 @@ class PagesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1012,7 +1005,6 @@ class PagesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Page.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1055,7 +1047,6 @@ class PagesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Page.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1306,9 +1297,7 @@ class PostsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1676,7 +1665,6 @@ class PostsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Post.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1719,7 +1707,6 @@ class PostsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Post.fromJson(response_ as core.Map<core.String, core.dynamic>);

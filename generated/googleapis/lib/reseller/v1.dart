@@ -351,7 +351,6 @@ class ResellernotifyResource_1 {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return ResellernotifyResource.fromJson(
@@ -391,7 +390,6 @@ class ResellernotifyResource_1 {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return ResellernotifyResource.fromJson(
@@ -455,7 +453,6 @@ class SubscriptionsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
@@ -708,9 +705,7 @@ class SubscriptionsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -992,7 +987,6 @@ class SubscriptionsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Subscription.fromJson(
@@ -1057,7 +1051,6 @@ class SubscriptionsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Subscription.fromJson(

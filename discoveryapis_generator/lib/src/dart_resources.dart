@@ -402,13 +402,7 @@ final queryParams_ = <${core}String, ${core}List<${core}String>>{
 $urlPatternCode
 
     $responseVar await _requester.request(
-      url_,
-      '$httpMethod',
-      $bodyOption
-      $queryParamsArg
-      $mediaUploadArg
-      $mediaResumableArg
-      $downloadOptions
+      url_, '$httpMethod', $bodyOption $queryParamsArg $mediaUploadArg $mediaResumableArg $downloadOptions
     );
 ''');
 

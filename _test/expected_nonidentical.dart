@@ -99,7 +99,6 @@ class ToyApi {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -657,7 +656,6 @@ class ToyApi {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return ToyResponse.fromJson(
@@ -686,7 +684,6 @@ class ToyApi {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -776,7 +773,6 @@ class ComputeResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
@@ -832,7 +828,6 @@ class ComputeResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {

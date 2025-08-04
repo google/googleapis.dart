@@ -488,7 +488,6 @@ class ReportsResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
@@ -550,7 +549,6 @@ class ReportsResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {

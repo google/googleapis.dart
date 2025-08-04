@@ -307,7 +307,6 @@ class AccessproposalsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -747,7 +746,6 @@ class ChannelsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -840,9 +838,7 @@ class CommentsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1107,9 +1103,7 @@ class DrivesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1181,7 +1175,6 @@ class DrivesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Drive.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1271,7 +1264,6 @@ class DrivesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Drive.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1597,9 +1589,7 @@ class FilesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1652,7 +1642,6 @@ class FilesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1693,9 +1682,7 @@ class FilesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1741,7 +1728,6 @@ class FilesResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
@@ -1877,7 +1863,6 @@ class FilesResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
@@ -2515,9 +2500,7 @@ class PermissionsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2838,9 +2821,7 @@ class RepliesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3049,9 +3030,7 @@ class RevisionsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3109,7 +3088,6 @@ class RevisionsResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
@@ -3291,9 +3269,7 @@ class TeamdrivesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

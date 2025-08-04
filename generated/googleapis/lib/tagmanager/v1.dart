@@ -317,9 +317,7 @@ class AccountsContainersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -550,9 +548,7 @@ class AccountsContainersEnvironmentsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -803,9 +799,7 @@ class AccountsContainersFoldersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1076,7 +1070,6 @@ class AccountsContainersMoveFoldersResource {
       'PUT',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1234,9 +1227,7 @@ class AccountsContainersTagsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1480,9 +1471,7 @@ class AccountsContainersTriggersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1726,9 +1715,7 @@ class AccountsContainersVariablesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1974,9 +1961,7 @@ class AccountsContainersVersionsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2129,7 +2114,6 @@ class AccountsContainersVersionsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return PublishContainerVersionResponse.fromJson(
@@ -2183,7 +2167,6 @@ class AccountsContainersVersionsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return ContainerVersion.fromJson(
@@ -2233,7 +2216,6 @@ class AccountsContainersVersionsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return ContainerVersion.fromJson(
@@ -2385,9 +2367,7 @@ class AccountsPermissionsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

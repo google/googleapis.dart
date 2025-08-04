@@ -176,9 +176,7 @@ class SitemapsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -311,9 +309,7 @@ class SitemapsResource {
     await _requester.request(
       url_,
       'PUT',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -348,9 +344,7 @@ class SitesResource {
     await _requester.request(
       url_,
       'PUT',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -380,9 +374,7 @@ class SitesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

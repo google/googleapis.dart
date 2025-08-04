@@ -209,9 +209,7 @@ class UsersResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -365,9 +363,7 @@ class UsersDraftsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -789,9 +785,7 @@ class UsersLabelsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1019,7 +1013,6 @@ class UsersMessagesResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1061,7 +1054,6 @@ class UsersMessagesResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1103,9 +1095,7 @@ class UsersMessagesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1581,7 +1571,6 @@ class UsersMessagesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1625,7 +1614,6 @@ class UsersMessagesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Message.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2261,9 +2249,7 @@ class UsersSettingsCseIdentitiesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2816,7 +2802,6 @@ class UsersSettingsCseKeypairsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2924,9 +2909,7 @@ class UsersSettingsDelegatesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3108,9 +3091,7 @@ class UsersSettingsFiltersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3294,9 +3275,7 @@ class UsersSettingsForwardingAddressesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3486,9 +3465,7 @@ class UsersSettingsSendAsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3719,9 +3696,7 @@ class UsersSettingsSendAsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3774,9 +3749,7 @@ class UsersSettingsSendAsSmimeInfoResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3968,9 +3941,7 @@ class UsersSettingsSendAsSmimeInfoResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4019,9 +3990,7 @@ class UsersThreadsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4239,7 +4208,6 @@ class UsersThreadsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Thread.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4285,7 +4253,6 @@ class UsersThreadsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Thread.fromJson(response_ as core.Map<core.String, core.dynamic>);

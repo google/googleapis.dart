@@ -366,9 +366,7 @@ class CaptionsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -435,7 +433,6 @@ class CaptionsResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
@@ -833,9 +830,7 @@ class ChannelSectionsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1433,9 +1428,7 @@ class CommentsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1589,9 +1582,7 @@ class CommentsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1645,9 +1636,7 @@ class CommentsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1885,7 +1874,6 @@ class LiveBroadcastsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return LiveBroadcast.fromJson(
@@ -1955,9 +1943,7 @@ class LiveBroadcastsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2332,7 +2318,6 @@ class LiveBroadcastsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return LiveBroadcast.fromJson(
@@ -2462,9 +2447,7 @@ class LiveChatBansResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2548,9 +2531,7 @@ class LiveChatMessagesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2710,7 +2691,6 @@ class LiveChatMessagesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return LiveChatMessage.fromJson(
@@ -2749,9 +2729,7 @@ class LiveChatModeratorsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2931,9 +2909,7 @@ class LiveStreamsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3382,9 +3358,7 @@ class PlaylistImagesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3695,9 +3669,7 @@ class PlaylistItemsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3967,9 +3939,7 @@ class PlaylistsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4520,9 +4490,7 @@ class SubscriptionsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4870,9 +4838,7 @@ class ThirdPartyLinksResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -5109,7 +5075,6 @@ class ThumbnailsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
@@ -5323,9 +5288,7 @@ class VideosResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -5665,9 +5628,7 @@ class VideosResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -5716,7 +5677,6 @@ class VideosResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -5911,9 +5871,7 @@ class WatermarksResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

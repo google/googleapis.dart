@@ -98,7 +98,6 @@ class Oauth2Api {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Tokeninfo.fromJson(response_ as core.Map<core.String, core.dynamic>);

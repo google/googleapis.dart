@@ -627,7 +627,6 @@ class ProjectsLocationsAnalysisRulesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -865,7 +864,6 @@ class ProjectsLocationsAssessmentRulesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -1113,7 +1111,6 @@ class ProjectsLocationsAuthorizedViewSetsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -1373,7 +1370,6 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -1851,7 +1847,6 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -2073,7 +2068,6 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAnalysesRes
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -2312,7 +2306,6 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -2587,7 +2580,6 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessments
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -2784,7 +2776,6 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLab
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -2991,7 +2982,6 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -3331,7 +3321,6 @@ class ProjectsLocationsConversationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -3700,7 +3689,6 @@ class ProjectsLocationsConversationsAnalysesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -3935,7 +3923,6 @@ class ProjectsLocationsConversationsAssessmentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -4210,7 +4197,6 @@ class ProjectsLocationsConversationsAssessmentsNotesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -4407,7 +4393,6 @@ class ProjectsLocationsConversationsFeedbackLabelsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -4967,7 +4952,6 @@ class ProjectsLocationsDatasetsConversationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -5234,7 +5218,6 @@ class ProjectsLocationsDatasetsConversationsAnalysesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -5423,7 +5406,6 @@ class ProjectsLocationsDatasetsConversationsFeedbackLabelsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -5868,7 +5850,6 @@ class ProjectsLocationsIssueModelsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -6257,7 +6238,6 @@ class ProjectsLocationsIssueModelsIssuesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -6436,7 +6416,6 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -6618,7 +6597,6 @@ class ProjectsLocationsPhraseMatchersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -6858,7 +6836,6 @@ class ProjectsLocationsQaQuestionTagsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -7097,7 +7074,6 @@ class ProjectsLocationsQaScorecardsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -7345,7 +7321,6 @@ class ProjectsLocationsQaScorecardsRevisionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -7675,7 +7650,6 @@ class ProjectsLocationsQaScorecardsRevisionsQaQuestionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -7907,7 +7881,6 @@ class ProjectsLocationsViewsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(

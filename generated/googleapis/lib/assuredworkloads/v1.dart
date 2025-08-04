@@ -360,7 +360,6 @@ class OrganizationsLocationsWorkloadsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -408,7 +407,6 @@ class OrganizationsLocationsWorkloadsResource {
     final response_ = await _requester.request(
       url_,
       'PUT',
-
       queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse.fromJson(
@@ -449,7 +447,6 @@ class OrganizationsLocationsWorkloadsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse.fromJson(

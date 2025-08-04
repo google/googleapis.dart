@@ -358,7 +358,6 @@ class ProjectsLocationsDatasetsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -804,7 +803,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1325,7 +1323,6 @@ class ProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1566,7 +1563,6 @@ class ProjectsLocationsDatasetsConsentStoresConsentArtifactsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1826,7 +1822,6 @@ class ProjectsLocationsDatasetsConsentStoresConsentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1870,7 +1865,6 @@ class ProjectsLocationsDatasetsConsentStoresConsentsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2352,7 +2346,6 @@ class ProjectsLocationsDatasetsConsentStoresUserDataMappingsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2831,7 +2824,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3840,7 +3832,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4193,7 +4184,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4436,7 +4426,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -5171,7 +5160,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -6264,7 +6252,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -6540,7 +6527,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -6827,7 +6813,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -7496,7 +7481,6 @@ class ProjectsLocationsDatasetsFhirStoresOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return HttpBody.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -7638,7 +7622,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -8251,7 +8234,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);

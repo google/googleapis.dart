@@ -181,7 +181,6 @@ class ProjectsLocationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse.fromJson(
@@ -331,7 +330,6 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(
@@ -526,7 +524,6 @@ class ProjectsLocationsProcessesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -783,7 +780,6 @@ class ProjectsLocationsProcessesRunsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -1033,7 +1029,6 @@ class ProjectsLocationsProcessesRunsLineageEventsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return GoogleProtobufEmpty.fromJson(

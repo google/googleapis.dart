@@ -149,9 +149,7 @@ class DevicesResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -517,9 +515,7 @@ class EnterprisesResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -563,7 +559,6 @@ class EnterprisesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Enterprise.fromJson(
@@ -716,7 +711,6 @@ class EnterprisesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return GenerateEnterpriseUpgradeUrlResponse.fromJson(
@@ -779,7 +773,6 @@ class EnterprisesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return SignupInfo.fromJson(
@@ -1031,7 +1024,6 @@ class EnterprisesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return NotificationSet.fromJson(
@@ -1073,7 +1065,6 @@ class EnterprisesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return EnterprisesSendTestPushNotificationResponse.fromJson(
@@ -1208,9 +1199,7 @@ class EnterprisesResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1264,9 +1253,7 @@ class EntitlementsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1643,9 +1630,7 @@ class InstallsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1864,9 +1849,7 @@ class ManagedconfigurationsfordeviceResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2084,9 +2067,7 @@ class ManagedconfigurationsforuserResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2403,7 +2384,6 @@ class ProductsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2460,7 +2440,6 @@ class ProductsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return ProductsGenerateApprovalUrlResponse.fromJson(
@@ -2725,9 +2704,7 @@ class ProductsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2783,9 +2760,7 @@ class ServiceaccountkeysResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2937,9 +2912,7 @@ class StorelayoutclustersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3178,9 +3151,7 @@ class StorelayoutpagesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3393,9 +3364,7 @@ class UsersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3442,7 +3411,6 @@ class UsersResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return AuthenticationToken.fromJson(
@@ -3671,9 +3639,7 @@ class UsersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3824,9 +3790,7 @@ class WebappsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

@@ -2124,7 +2124,6 @@ class V1Resource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

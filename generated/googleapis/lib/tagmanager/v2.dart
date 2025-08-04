@@ -301,7 +301,6 @@ class AccountsContainersResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Container.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -373,9 +372,7 @@ class AccountsContainersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -559,7 +556,6 @@ class AccountsContainersResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Container.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -739,7 +735,6 @@ class AccountsContainersDestinationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Destination.fromJson(
@@ -861,9 +856,7 @@ class AccountsContainersEnvironmentsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1166,9 +1159,7 @@ class AccountsContainersVersionsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1291,7 +1282,6 @@ class AccountsContainersVersionsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return PublishContainerVersionResponse.fromJson(
@@ -1332,7 +1322,6 @@ class AccountsContainersVersionsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return ContainerVersion.fromJson(
@@ -1371,7 +1360,6 @@ class AccountsContainersVersionsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return ContainerVersion.fromJson(
@@ -1568,9 +1556,7 @@ class AccountsContainersWorkspacesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1721,7 +1707,6 @@ class AccountsContainersWorkspacesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return QuickPreviewResponse.fromJson(
@@ -1771,7 +1756,6 @@ class AccountsContainersWorkspacesResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1809,7 +1793,6 @@ class AccountsContainersWorkspacesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return SyncWorkspaceResponse.fromJson(
@@ -1909,7 +1892,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return CreateBuiltInVariableResponse.fromJson(
@@ -1950,9 +1932,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2155,7 +2135,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return RevertBuiltInVariableResponse.fromJson(
@@ -2237,9 +2216,7 @@ class AccountsContainersWorkspacesClientsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2355,7 +2332,6 @@ class AccountsContainersWorkspacesClientsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return RevertClientResponse.fromJson(
@@ -2483,9 +2459,7 @@ class AccountsContainersWorkspacesFoldersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2525,7 +2499,6 @@ class AccountsContainersWorkspacesFoldersResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return FolderEntities.fromJson(
@@ -2661,7 +2634,6 @@ class AccountsContainersWorkspacesFoldersResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2702,7 +2674,6 @@ class AccountsContainersWorkspacesFoldersResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return RevertFolderResponse.fromJson(
@@ -2833,9 +2804,7 @@ class AccountsContainersWorkspacesGtagConfigResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3040,9 +3009,7 @@ class AccountsContainersWorkspacesTagsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3158,7 +3125,6 @@ class AccountsContainersWorkspacesTagsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return RevertTagResponse.fromJson(
@@ -3289,9 +3255,7 @@ class AccountsContainersWorkspacesTemplatesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3388,7 +3352,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return CustomTemplate.fromJson(
@@ -3475,7 +3438,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return RevertTemplateResponse.fromJson(
@@ -3609,9 +3571,7 @@ class AccountsContainersWorkspacesTransformationsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3733,7 +3693,6 @@ class AccountsContainersWorkspacesTransformationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return RevertTransformationResponse.fromJson(
@@ -3864,9 +3823,7 @@ class AccountsContainersWorkspacesTriggersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3983,7 +3940,6 @@ class AccountsContainersWorkspacesTriggersResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return RevertTriggerResponse.fromJson(
@@ -4112,9 +4068,7 @@ class AccountsContainersWorkspacesVariablesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4231,7 +4185,6 @@ class AccountsContainersWorkspacesVariablesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return RevertVariableResponse.fromJson(
@@ -4359,9 +4312,7 @@ class AccountsContainersWorkspacesZonesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4477,7 +4428,6 @@ class AccountsContainersWorkspacesZonesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return RevertZoneResponse.fromJson(
@@ -4607,9 +4557,7 @@ class AccountsUserPermissionsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

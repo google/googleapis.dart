@@ -130,7 +130,6 @@ class ProjectsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return DeleteSnapshotResponse.fromJson(
@@ -2299,7 +2298,6 @@ class ProjectsLocationsSnapshotsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return DeleteSnapshotResponse.fromJson(

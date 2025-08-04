@@ -166,7 +166,6 @@ class FoldersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Folder.fromJson(response_ as core.Map<core.String, core.dynamic>);

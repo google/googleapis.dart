@@ -592,7 +592,6 @@ class ChannelsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

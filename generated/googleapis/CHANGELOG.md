@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-## 14.1.0-wip
-=======
 ## 14.0.1-wip
 
 - Require `sdk: ^3.7.0`
->>>>>>> 68a0ab923 (Bump minimum SDK version, update deps)
 
 ## 14.0.0
 

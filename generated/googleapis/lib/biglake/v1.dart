@@ -172,7 +172,6 @@ class ProjectsLocationsCatalogsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Catalog.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -354,7 +353,6 @@ class ProjectsLocationsCatalogsDatabasesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Database.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -581,7 +579,6 @@ class ProjectsLocationsCatalogsDatabasesTablesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Table.fromJson(response_ as core.Map<core.String, core.dynamic>);

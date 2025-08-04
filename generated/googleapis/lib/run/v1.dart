@@ -402,7 +402,6 @@ class NamespacesDomainmappingsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Status.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -621,7 +620,6 @@ class NamespacesExecutionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Status.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -835,7 +833,6 @@ class NamespacesJobsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Status.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1097,7 +1094,6 @@ class NamespacesRevisionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Status.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1454,7 +1450,6 @@ class NamespacesServicesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Status.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1866,7 +1861,6 @@ class NamespacesWorkerpoolsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Status.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2460,7 +2454,6 @@ class ProjectsLocationsDomainmappingsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Status.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2777,7 +2770,6 @@ class ProjectsLocationsOperationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2993,7 +2985,6 @@ class ProjectsLocationsRevisionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Status.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3346,7 +3337,6 @@ class ProjectsLocationsServicesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Status.fromJson(response_ as core.Map<core.String, core.dynamic>);

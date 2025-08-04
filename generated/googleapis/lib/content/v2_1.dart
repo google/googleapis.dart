@@ -228,7 +228,6 @@ class AccountsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return AccountsClaimWebsiteResponse.fromJson(
@@ -314,9 +313,7 @@ class AccountsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -917,9 +914,7 @@ class AccountsLabelsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1108,9 +1103,7 @@ class AccountsReturncarrierResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1630,9 +1623,7 @@ class CollectionsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1917,9 +1908,7 @@ class ConversionsourcesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2117,7 +2106,6 @@ class ConversionsourcesResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2346,9 +2334,7 @@ class DatafeedsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2395,7 +2381,6 @@ class DatafeedsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return DatafeedsFetchNowResponse.fromJson(
@@ -2821,7 +2806,6 @@ class FreelistingsprogramResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2863,9 +2847,7 @@ class FreelistingsprogramCheckoutsettingsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3215,7 +3197,6 @@ class LiasettingsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return LiasettingsRequestGmbAccessResponse.fromJson(
@@ -3267,7 +3248,6 @@ class LiasettingsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return LiasettingsRequestInventoryVerificationResponse.fromJson(
@@ -3331,7 +3311,6 @@ class LiasettingsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return LiasettingsSetInventoryVerificationContactResponse.fromJson(
@@ -3401,7 +3380,6 @@ class LiasettingsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return LiaOmnichannelExperience.fromJson(
@@ -3462,7 +3440,6 @@ class LiasettingsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return LiasettingsSetPosDataProviderResponse.fromJson(
@@ -3939,9 +3916,7 @@ class PosResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4260,9 +4235,7 @@ class ProductdeliverytimeResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4395,9 +4368,7 @@ class ProductsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -5137,7 +5108,6 @@ class RecommendationsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -5325,9 +5295,7 @@ class RegionsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -5602,9 +5570,7 @@ class ReturnaddressResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -5820,9 +5786,7 @@ class ReturnpolicyResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -6028,9 +5992,7 @@ class ReturnpolicyonlineResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -6545,7 +6507,6 @@ class ShoppingadsprogramResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

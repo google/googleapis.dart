@@ -565,9 +565,7 @@ class ManagementAccountUserLinksResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1481,9 +1479,7 @@ class ManagementExperimentsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1817,7 +1813,6 @@ class ManagementFiltersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Filter.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2388,9 +2383,7 @@ class ManagementProfileFilterLinksResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2750,9 +2743,7 @@ class ManagementProfileUserLinksResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2978,9 +2969,7 @@ class ManagementProfilesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3288,9 +3277,7 @@ class ManagementRemarketingAudienceResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3660,9 +3647,7 @@ class ManagementUnsampledReportsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3893,7 +3878,6 @@ class ManagementUploadsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4086,7 +4070,6 @@ class ManagementUploadsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
@@ -4140,9 +4123,7 @@ class ManagementWebPropertyAdWordsLinksResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4702,9 +4683,7 @@ class ManagementWebpropertyUserLinksResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

@@ -612,9 +612,7 @@ class ManagedZonesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1070,9 +1068,7 @@ class PoliciesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1443,7 +1439,6 @@ class ResourceRecordSetsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return ResourceRecordSetsDeleteResponse.fromJson(
@@ -1741,9 +1736,7 @@ class ResponsePoliciesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2067,9 +2060,7 @@ class ResponsePolicyRulesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

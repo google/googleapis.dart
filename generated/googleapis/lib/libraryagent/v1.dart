@@ -192,7 +192,6 @@ class ShelvesBooksResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1Book.fromJson(
@@ -325,7 +324,6 @@ class ShelvesBooksResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return GoogleExampleLibraryagentV1Book.fromJson(

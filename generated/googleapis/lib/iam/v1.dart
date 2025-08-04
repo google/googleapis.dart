@@ -315,7 +315,6 @@ class LocationsWorkforcePoolsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -786,7 +785,6 @@ class LocationsWorkforcePoolsProvidersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1068,7 +1066,6 @@ class LocationsWorkforcePoolsProvidersKeysResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1404,7 +1401,6 @@ class LocationsWorkforcePoolsProvidersScimTenantsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return WorkforcePoolProviderScimTenant.fromJson(
@@ -1702,7 +1698,6 @@ class LocationsWorkforcePoolsProvidersScimTenantsTokensResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return WorkforcePoolProviderScimToken.fromJson(
@@ -1960,7 +1955,6 @@ class LocationsWorkforcePoolsSubjectsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2192,7 +2186,6 @@ class OrganizationsRolesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Role.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2639,7 +2632,6 @@ class ProjectsLocationsOauthClientsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return OauthClient.fromJson(
@@ -2926,7 +2918,6 @@ class ProjectsLocationsOauthClientsCredentialsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3164,7 +3155,6 @@ class ProjectsLocationsWorkloadIdentityPoolsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3590,7 +3580,6 @@ class ProjectsLocationsWorkloadIdentityPoolsNamespacesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3932,7 +3921,6 @@ class ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResource 
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4563,7 +4551,6 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4850,7 +4837,6 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersKeysResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -5209,7 +5195,6 @@ class ProjectsRolesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Role.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -5583,7 +5568,6 @@ class ProjectsServiceAccountsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -5813,7 +5797,6 @@ class ProjectsServiceAccountsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -6358,7 +6341,6 @@ class ProjectsServiceAccountsKeysResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);

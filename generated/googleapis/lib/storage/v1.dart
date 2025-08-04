@@ -153,7 +153,6 @@ class AnywhereCachesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return AnywhereCache.fromJson(
@@ -329,7 +328,6 @@ class AnywhereCachesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return AnywhereCache.fromJson(
@@ -374,7 +372,6 @@ class AnywhereCachesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return AnywhereCache.fromJson(
@@ -479,9 +476,7 @@ class BucketAccessControlsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -785,9 +780,7 @@ class BucketsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1151,7 +1144,6 @@ class BucketsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Bucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1345,7 +1337,6 @@ class BucketsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Bucket.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -1579,7 +1570,6 @@ class ChannelsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1633,9 +1623,7 @@ class DefaultObjectAccessControlsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1954,9 +1942,7 @@ class FoldersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2190,7 +2176,6 @@ class FoldersResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return GoogleLongrunningOperation.fromJson(
@@ -2257,9 +2242,7 @@ class ManagedFoldersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2621,9 +2604,7 @@ class NotificationsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2826,9 +2807,7 @@ class ObjectAccessControlsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3523,9 +3502,7 @@ class ObjectsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3635,7 +3612,6 @@ class ObjectsResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
@@ -4088,7 +4064,6 @@ class ObjectsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Object.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4303,7 +4278,6 @@ class ObjectsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return Object.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -4882,7 +4856,6 @@ class OperationsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4925,9 +4898,7 @@ class OperationsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -5082,7 +5053,6 @@ class ProjectsHmacKeysResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return HmacKey.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -5126,9 +5096,7 @@ class ProjectsHmacKeysResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

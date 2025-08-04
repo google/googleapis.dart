@@ -137,7 +137,6 @@ class AccesstokensResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return GeneratePlayGroupingApiTokenResponse.fromJson(
@@ -194,7 +193,6 @@ class AccesstokensResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return GenerateRecallPlayGroupingApiTokenResponse.fromJson(
@@ -307,7 +305,6 @@ class AchievementsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return AchievementIncrementResponse.fromJson(
@@ -415,7 +412,6 @@ class AchievementsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return AchievementRevealResponse.fromJson(
@@ -464,7 +460,6 @@ class AchievementsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return AchievementSetStepsAtLeastResponse.fromJson(
@@ -504,7 +499,6 @@ class AchievementsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return AchievementUnlockResponse.fromJson(
@@ -649,7 +643,6 @@ class ApplicationsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return EndPoint.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -678,9 +671,7 @@ class ApplicationsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1871,7 +1862,6 @@ class ScoresResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return PlayerScoreResponse.fromJson(

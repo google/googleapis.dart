@@ -651,7 +651,6 @@ class EditsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return AppEdit.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -691,9 +690,7 @@ class EditsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -818,7 +815,6 @@ class EditsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return AppEdit.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -989,7 +985,6 @@ class EditsApksResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
@@ -1128,7 +1123,6 @@ class EditsBundlesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
@@ -1281,7 +1275,6 @@ class EditsDeobfuscationfilesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
@@ -1722,7 +1715,6 @@ class EditsExpansionfilesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
@@ -1799,9 +1791,7 @@ class EditsImagesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -1867,7 +1857,6 @@ class EditsImagesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return ImagesDeleteAllResponse.fromJson(
@@ -2033,7 +2022,6 @@ class EditsImagesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
@@ -2089,9 +2077,7 @@ class EditsListingsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2131,9 +2117,7 @@ class EditsListingsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -2943,7 +2927,6 @@ class GeneratedapksResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
@@ -3072,9 +3055,7 @@ class GrantsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3176,7 +3157,6 @@ class InappproductsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3334,9 +3314,7 @@ class InappproductsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3726,7 +3704,6 @@ class InternalappsharingartifactsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
@@ -3795,7 +3772,6 @@ class InternalappsharingartifactsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
       uploadMedia: uploadMedia,
       uploadOptions: uploadOptions,
@@ -3910,7 +3886,6 @@ class MonetizationOnetimeproductsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4058,9 +4033,7 @@ class MonetizationOnetimeproductsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4312,7 +4285,6 @@ class MonetizationOnetimeproductsPurchaseOptionsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4492,7 +4464,6 @@ class MonetizationOnetimeproductsPurchaseOptionsOffersResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -5137,9 +5108,7 @@ class MonetizationSubscriptionsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -5621,9 +5590,7 @@ class MonetizationSubscriptionsBasePlansResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -6143,9 +6110,7 @@ class MonetizationSubscriptionsBasePlansOffersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -6518,9 +6483,7 @@ class OrdersResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -6597,7 +6560,6 @@ class PurchasesProductsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -6645,9 +6607,7 @@ class PurchasesProductsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -6812,7 +6772,6 @@ class PurchasesSubscriptionsResource {
       'POST',
       body: body_,
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -6863,9 +6822,7 @@ class PurchasesSubscriptionsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -7034,9 +6991,7 @@ class PurchasesSubscriptionsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -7091,9 +7046,7 @@ class PurchasesSubscriptionsResource {
     await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -7571,7 +7524,6 @@ class SystemapksVariantsResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
@@ -7745,9 +7697,7 @@ class UsersResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

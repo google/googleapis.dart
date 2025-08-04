@@ -1363,9 +1363,7 @@ class AdvertiserGroupsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -3492,9 +3490,7 @@ class ContentCategoriesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4065,9 +4061,7 @@ class CreativeFieldValuesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -4403,9 +4397,7 @@ class CreativeFieldsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -5760,9 +5752,7 @@ class DynamicTargetingKeysResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -5921,9 +5911,7 @@ class EventTagsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -6258,7 +6246,6 @@ class FilesResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
@@ -6376,9 +6363,7 @@ class FloodlightActivitiesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -6422,7 +6407,6 @@ class FloodlightActivitiesResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return FloodlightActivitiesGenerateTagResponse.fromJson(
@@ -8387,9 +8371,7 @@ class PlacementStrategiesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -8712,7 +8694,6 @@ class PlacementsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return PlacementsGenerateTagsResponse.fromJson(
@@ -9876,9 +9857,7 @@ class ReportsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -10120,7 +10099,6 @@ class ReportsResource {
     final response_ = await _requester.request(
       url_,
       'POST',
-
       queryParams: queryParams_,
     );
     return File.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -10284,7 +10262,6 @@ class ReportsFilesResource {
       url_,
       'GET',
       queryParams: queryParams_,
-
       downloadOptions: downloadOptions,
     );
     if (downloadOptions.isMetadataDownload) {
@@ -11882,9 +11859,7 @@ class UserRolesResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

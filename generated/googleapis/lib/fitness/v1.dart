@@ -288,7 +288,6 @@ class UsersDataSourcesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return DataSource.fromJson(
@@ -557,9 +556,7 @@ class UsersDataSourcesDatasetsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }
@@ -786,9 +783,7 @@ class UsersSessionsResource {
     await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
-
       downloadOptions: null,
     );
   }

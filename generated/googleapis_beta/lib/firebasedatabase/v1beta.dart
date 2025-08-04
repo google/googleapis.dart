@@ -199,7 +199,6 @@ class ProjectsLocationsInstancesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return DatabaseInstance.fromJson(

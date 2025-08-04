@@ -120,7 +120,6 @@ class ProjectsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return DeleteEventsResponse.fromJson(
@@ -607,7 +606,6 @@ class ProjectsLocationsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
-
       queryParams: queryParams_,
     );
     return DeleteEventsResponse.fromJson(
