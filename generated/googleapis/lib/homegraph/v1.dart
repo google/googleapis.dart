@@ -507,6 +507,10 @@ class DeviceNames {
   core.List<core.String>? defaultNames;
 
   /// Primary name of the device, generally provided by the user.
+  ///
+  /// Names will be truncated if over the 60 Unicode code point (character)
+  /// limit and no errors will be thrown. Developers are responsible for
+  /// handling long names.
   core.String? name;
 
   /// Additional names provided by the user for the device.
@@ -747,7 +751,7 @@ class ReportStateAndNotificationDevice {
 /// example). Example: ```json { "requestId":
 /// "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "agentUserId": "1234", "payload": {
 /// "devices": { "states": { "123": { "on": true }, "456": { "on": true,
-/// "brightness": 10 } }, } } } ```
+/// "brightness": 10 }, }, } } } ```
 class ReportStateAndNotificationRequest {
   /// Third-party user ID.
   ///

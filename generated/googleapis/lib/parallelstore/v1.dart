@@ -115,6 +115,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -137,12 +141,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -188,7 +194,7 @@ class ProjectsLocationsInstancesResource {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -243,7 +249,7 @@ class ProjectsLocationsInstancesResource {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes after the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -473,7 +479,7 @@ class ProjectsLocationsInstancesResource {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -735,7 +741,7 @@ class ExportDataRequest {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -821,7 +827,7 @@ class ImportDataRequest {
   /// server will know to ignore the request if it has already been completed.
   /// The server will guarantee that for at least 60 minutes since the first
   /// request. For example, consider a situation where you make an initial
-  /// request and t he request times out. If you make the request again with the
+  /// request and the request times out. If you make the request again with the
   /// same request ID, the server can check if original operation with the same
   /// request ID was received, and if so, will ignore the second request. This
   /// prevents clients from accidentally creating duplicate commitments. The
@@ -904,9 +910,7 @@ class Instance {
   /// Output only.
   core.String? createTime;
 
-  /// Deprecated 'daos_version' field.
-  ///
-  /// Output only. The version of DAOS software running in the instance.
+  /// Deprecated: The version of DAOS software running in the instance.
   ///
   /// Output only.
   @core.Deprecated(

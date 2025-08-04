@@ -2274,7 +2274,7 @@ class EmailForwarding {
 /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
 ///
 /// Request for the `ExportRegistration` method.
-typedef ExportRegistrationRequest = $Shared01;
+typedef ExportRegistrationRequest = $Shared02;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -3077,7 +3077,7 @@ class Policy {
 /// presented with UI elements for input or editing of fields outside countries
 /// where that field is used. For more guidance on how to use this schema, see:
 /// https://support.google.com/business/answer/6397478
-typedef PostalAddress = $PostalAddress;
+typedef PostalAddress = $PostalAddress01;
 
 /// Configures a RRSetRoutingPolicy such that all queries are responded with the
 /// primary_targets if they are healthy.

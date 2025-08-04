@@ -1925,6 +1925,8 @@ api.GoogleAppsDriveLabelsV2Label buildGoogleAppsDriveLabelsV2Label() {
     o.disableTime = 'foo';
     o.disabler = buildGoogleAppsDriveLabelsV2UserInfo();
     o.displayHints = buildGoogleAppsDriveLabelsV2LabelDisplayHints();
+    o.enabledAppSettings =
+        buildGoogleAppsDriveLabelsV2LabelEnabledAppSettings();
     o.fields = buildUnnamed6();
     o.id = 'foo';
     o.labelType = 'foo';
@@ -1966,6 +1968,7 @@ void checkGoogleAppsDriveLabelsV2Label(api.GoogleAppsDriveLabelsV2Label o) {
     );
     checkGoogleAppsDriveLabelsV2UserInfo(o.disabler!);
     checkGoogleAppsDriveLabelsV2LabelDisplayHints(o.displayHints!);
+    checkGoogleAppsDriveLabelsV2LabelEnabledAppSettings(o.enabledAppSettings!);
     checkUnnamed6(o.fields!);
     unittest.expect(
       o.id!,
@@ -2082,6 +2085,67 @@ void checkGoogleAppsDriveLabelsV2LabelDisplayHints(
     unittest.expect(o.shownInApply!, unittest.isTrue);
   }
   buildCounterGoogleAppsDriveLabelsV2LabelDisplayHints--;
+}
+
+core.List<api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp>
+    buildUnnamed7() => [
+          buildGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(),
+          buildGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(),
+        ];
+
+void checkUnnamed7(
+    core.List<api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(o[0]);
+  checkGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(o[1]);
+}
+
+core.int buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettings = 0;
+api.GoogleAppsDriveLabelsV2LabelEnabledAppSettings
+    buildGoogleAppsDriveLabelsV2LabelEnabledAppSettings() {
+  final o = api.GoogleAppsDriveLabelsV2LabelEnabledAppSettings();
+  buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettings++;
+  if (buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettings < 3) {
+    o.enabledApps = buildUnnamed7();
+  }
+  buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettings--;
+  return o;
+}
+
+void checkGoogleAppsDriveLabelsV2LabelEnabledAppSettings(
+    api.GoogleAppsDriveLabelsV2LabelEnabledAppSettings o) {
+  buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettings++;
+  if (buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettings < 3) {
+    checkUnnamed7(o.enabledApps!);
+  }
+  buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettings--;
+}
+
+core.int buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp =
+    0;
+api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp
+    buildGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp() {
+  final o = api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp();
+  buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp++;
+  if (buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp <
+      3) {
+    o.app = 'foo';
+  }
+  buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp--;
+  return o;
+}
+
+void checkGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(
+    api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp o) {
+  buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp++;
+  if (buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp <
+      3) {
+    unittest.expect(
+      o.app!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2LabelLimits = 0;
@@ -2363,12 +2427,12 @@ void checkGoogleAppsDriveLabelsV2LifecycleDisabledPolicy(
   buildCounterGoogleAppsDriveLabelsV2LifecycleDisabledPolicy--;
 }
 
-core.List<api.GoogleAppsDriveLabelsV2LabelLock> buildUnnamed7() => [
+core.List<api.GoogleAppsDriveLabelsV2LabelLock> buildUnnamed8() => [
       buildGoogleAppsDriveLabelsV2LabelLock(),
       buildGoogleAppsDriveLabelsV2LabelLock(),
     ];
 
-void checkUnnamed7(core.List<api.GoogleAppsDriveLabelsV2LabelLock> o) {
+void checkUnnamed8(core.List<api.GoogleAppsDriveLabelsV2LabelLock> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsDriveLabelsV2LabelLock(o[0]);
   checkGoogleAppsDriveLabelsV2LabelLock(o[1]);
@@ -2380,7 +2444,7 @@ api.GoogleAppsDriveLabelsV2ListLabelLocksResponse
   final o = api.GoogleAppsDriveLabelsV2ListLabelLocksResponse();
   buildCounterGoogleAppsDriveLabelsV2ListLabelLocksResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2ListLabelLocksResponse < 3) {
-    o.labelLocks = buildUnnamed7();
+    o.labelLocks = buildUnnamed8();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAppsDriveLabelsV2ListLabelLocksResponse--;
@@ -2391,7 +2455,7 @@ void checkGoogleAppsDriveLabelsV2ListLabelLocksResponse(
     api.GoogleAppsDriveLabelsV2ListLabelLocksResponse o) {
   buildCounterGoogleAppsDriveLabelsV2ListLabelLocksResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2ListLabelLocksResponse < 3) {
-    checkUnnamed7(o.labelLocks!);
+    checkUnnamed8(o.labelLocks!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2400,12 +2464,12 @@ void checkGoogleAppsDriveLabelsV2ListLabelLocksResponse(
   buildCounterGoogleAppsDriveLabelsV2ListLabelLocksResponse--;
 }
 
-core.List<api.GoogleAppsDriveLabelsV2LabelPermission> buildUnnamed8() => [
+core.List<api.GoogleAppsDriveLabelsV2LabelPermission> buildUnnamed9() => [
       buildGoogleAppsDriveLabelsV2LabelPermission(),
       buildGoogleAppsDriveLabelsV2LabelPermission(),
     ];
 
-void checkUnnamed8(core.List<api.GoogleAppsDriveLabelsV2LabelPermission> o) {
+void checkUnnamed9(core.List<api.GoogleAppsDriveLabelsV2LabelPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsDriveLabelsV2LabelPermission(o[0]);
   checkGoogleAppsDriveLabelsV2LabelPermission(o[1]);
@@ -2417,7 +2481,7 @@ api.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse
   final o = api.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse();
   buildCounterGoogleAppsDriveLabelsV2ListLabelPermissionsResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2ListLabelPermissionsResponse < 3) {
-    o.labelPermissions = buildUnnamed8();
+    o.labelPermissions = buildUnnamed9();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAppsDriveLabelsV2ListLabelPermissionsResponse--;
@@ -2428,7 +2492,7 @@ void checkGoogleAppsDriveLabelsV2ListLabelPermissionsResponse(
     api.GoogleAppsDriveLabelsV2ListLabelPermissionsResponse o) {
   buildCounterGoogleAppsDriveLabelsV2ListLabelPermissionsResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2ListLabelPermissionsResponse < 3) {
-    checkUnnamed8(o.labelPermissions!);
+    checkUnnamed9(o.labelPermissions!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2437,12 +2501,12 @@ void checkGoogleAppsDriveLabelsV2ListLabelPermissionsResponse(
   buildCounterGoogleAppsDriveLabelsV2ListLabelPermissionsResponse--;
 }
 
-core.List<api.GoogleAppsDriveLabelsV2Label> buildUnnamed9() => [
+core.List<api.GoogleAppsDriveLabelsV2Label> buildUnnamed10() => [
       buildGoogleAppsDriveLabelsV2Label(),
       buildGoogleAppsDriveLabelsV2Label(),
     ];
 
-void checkUnnamed9(core.List<api.GoogleAppsDriveLabelsV2Label> o) {
+void checkUnnamed10(core.List<api.GoogleAppsDriveLabelsV2Label> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleAppsDriveLabelsV2Label(o[0]);
   checkGoogleAppsDriveLabelsV2Label(o[1]);
@@ -2454,7 +2518,7 @@ api.GoogleAppsDriveLabelsV2ListLabelsResponse
   final o = api.GoogleAppsDriveLabelsV2ListLabelsResponse();
   buildCounterGoogleAppsDriveLabelsV2ListLabelsResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2ListLabelsResponse < 3) {
-    o.labels = buildUnnamed9();
+    o.labels = buildUnnamed10();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleAppsDriveLabelsV2ListLabelsResponse--;
@@ -2465,7 +2529,7 @@ void checkGoogleAppsDriveLabelsV2ListLabelsResponse(
     api.GoogleAppsDriveLabelsV2ListLabelsResponse o) {
   buildCounterGoogleAppsDriveLabelsV2ListLabelsResponse++;
   if (buildCounterGoogleAppsDriveLabelsV2ListLabelsResponse < 3) {
-    checkUnnamed9(o.labels!);
+    checkUnnamed10(o.labels!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -2677,6 +2741,43 @@ void checkGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest(
     );
   }
   buildCounterGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest--;
+}
+
+core.int
+    buildCounterGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest = 0;
+api.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest
+    buildGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest() {
+  final o = api.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest();
+  buildCounterGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest++;
+  if (buildCounterGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest <
+      3) {
+    o.enabledAppSettings =
+        buildGoogleAppsDriveLabelsV2LabelEnabledAppSettings();
+    o.languageCode = 'foo';
+    o.useAdminAccess = true;
+    o.view = 'foo';
+  }
+  buildCounterGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest--;
+  return o;
+}
+
+void checkGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest(
+    api.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest o) {
+  buildCounterGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest++;
+  if (buildCounterGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest <
+      3) {
+    checkGoogleAppsDriveLabelsV2LabelEnabledAppSettings(o.enabledAppSettings!);
+    unittest.expect(
+      o.languageCode!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(o.useAdminAccess!, unittest.isTrue);
+    unittest.expect(
+      o.view!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest--;
 }
 
 core.int buildCounterGoogleAppsDriveLabelsV2UpdateLabelPermissionRequest = 0;
@@ -3639,6 +3740,30 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleAppsDriveLabelsV2LabelEnabledAppSettings',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleAppsDriveLabelsV2LabelEnabledAppSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsDriveLabelsV2LabelEnabledAppSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsDriveLabelsV2LabelEnabledAppSettings(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleAppsDriveLabelsV2LabelLimits', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleAppsDriveLabelsV2LabelLimits();
@@ -3822,6 +3947,19 @@ void main() {
       final od = api.GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest(od);
     });
   });
 
@@ -4508,6 +4646,68 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.updateLabelCopyMode(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGoogleAppsDriveLabelsV2Label(
+          response as api.GoogleAppsDriveLabelsV2Label);
+    });
+
+    unittest.test('method--updateLabelEnabledAppSettings', () async {
+      final mock = HttpServerMock();
+      final res = api.DriveLabelsApi(mock).labels;
+      final arg_request =
+          buildGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj =
+            api.GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildGoogleAppsDriveLabelsV2Label());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateLabelEnabledAppSettings(
+          arg_request, arg_name,
           $fields: arg_$fields);
       checkGoogleAppsDriveLabelsV2Label(
           response as api.GoogleAppsDriveLabelsV2Label);

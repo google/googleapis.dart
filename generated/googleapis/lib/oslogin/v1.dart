@@ -85,9 +85,11 @@ class UsersResource {
   /// [name] - Required. The unique ID for the user in format `users/{user}`.
   /// Value must have pattern `^users/\[^/\]+$`.
   ///
-  /// [projectId] - The project ID of the Google Cloud Platform project.
+  /// [projectId] - Required. The project ID of the Google Cloud Platform
+  /// project.
   ///
-  /// [systemId] - A system ID for filtering the results of the request.
+  /// [systemId] - Optional. A system ID for filtering the results of the
+  /// request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -355,8 +357,8 @@ class UsersSshPublicKeysResource {
   /// public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.
   /// Value must have pattern `^users/\[^/\]+/sshPublicKeys/\[^/\]+$`.
   ///
-  /// [updateMask] - Mask to control which fields get updated. Updates all if
-  /// not present.
+  /// [updateMask] - Optional. Mask to control which fields get updated. Updates
+  /// all if not present.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -575,7 +577,10 @@ class SshPublicKey {
   /// Output only.
   core.String? fingerprint;
 
-  /// Public key text in SSH format, defined by RFC4253 section 6.6.
+  /// Public key text in SSH format, defined by
+  /// [RFC4253](https://www.ietf.org/rfc/rfc4253.txt) section 6.6.
+  ///
+  /// Required.
   core.String? key;
 
   /// The canonical resource name.

@@ -698,8 +698,6 @@ api.ContainerVersionHeader buildContainerVersionHeader() {
     o.numClients = 'foo';
     o.numCustomTemplates = 'foo';
     o.numGtagConfigs = 'foo';
-    o.numMacros = 'foo';
-    o.numRules = 'foo';
     o.numTags = 'foo';
     o.numTransformations = 'foo';
     o.numTriggers = 'foo';
@@ -741,14 +739,6 @@ void checkContainerVersionHeader(api.ContainerVersionHeader o) {
     );
     unittest.expect(
       o.numGtagConfigs!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.numMacros!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.numRules!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -2440,68 +2430,34 @@ void checkUnnamed44(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed45() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed45(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed46() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed46(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<api.Parameter> buildUnnamed47() => [
+core.List<api.Parameter> buildUnnamed45() => [
       buildParameter(),
       buildParameter(),
     ];
 
-void checkUnnamed47(core.List<api.Parameter> o) {
+void checkUnnamed45(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
 }
 
-core.List<api.SetupTag> buildUnnamed48() => [
+core.List<api.SetupTag> buildUnnamed46() => [
       buildSetupTag(),
       buildSetupTag(),
     ];
 
-void checkUnnamed48(core.List<api.SetupTag> o) {
+void checkUnnamed46(core.List<api.SetupTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSetupTag(o[0]);
   checkSetupTag(o[1]);
 }
 
-core.List<api.TeardownTag> buildUnnamed49() => [
+core.List<api.TeardownTag> buildUnnamed47() => [
       buildTeardownTag(),
       buildTeardownTag(),
     ];
 
-void checkUnnamed49(core.List<api.TeardownTag> o) {
+void checkUnnamed47(core.List<api.TeardownTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTeardownTag(o[0]);
   checkTeardownTag(o[1]);
@@ -2513,30 +2469,28 @@ api.Tag buildTag() {
   buildCounterTag++;
   if (buildCounterTag < 3) {
     o.accountId = 'foo';
-    o.blockingRuleId = buildUnnamed43();
-    o.blockingTriggerId = buildUnnamed44();
+    o.blockingTriggerId = buildUnnamed43();
     o.consentSettings = buildTagConsentSetting();
     o.containerId = 'foo';
     o.fingerprint = 'foo';
-    o.firingRuleId = buildUnnamed45();
-    o.firingTriggerId = buildUnnamed46();
+    o.firingTriggerId = buildUnnamed44();
     o.liveOnly = true;
     o.monitoringMetadata = buildParameter();
     o.monitoringMetadataTagNameKey = 'foo';
     o.name = 'foo';
     o.notes = 'foo';
-    o.parameter = buildUnnamed47();
+    o.parameter = buildUnnamed45();
     o.parentFolderId = 'foo';
     o.path = 'foo';
     o.paused = true;
     o.priority = buildParameter();
     o.scheduleEndMs = 'foo';
     o.scheduleStartMs = 'foo';
-    o.setupTag = buildUnnamed48();
+    o.setupTag = buildUnnamed46();
     o.tagFiringOption = 'foo';
     o.tagId = 'foo';
     o.tagManagerUrl = 'foo';
-    o.teardownTag = buildUnnamed49();
+    o.teardownTag = buildUnnamed47();
     o.type = 'foo';
     o.workspaceId = 'foo';
   }
@@ -2551,8 +2505,7 @@ void checkTag(api.Tag o) {
       o.accountId!,
       unittest.equals('foo'),
     );
-    checkUnnamed43(o.blockingRuleId!);
-    checkUnnamed44(o.blockingTriggerId!);
+    checkUnnamed43(o.blockingTriggerId!);
     checkTagConsentSetting(o.consentSettings!);
     unittest.expect(
       o.containerId!,
@@ -2562,8 +2515,7 @@ void checkTag(api.Tag o) {
       o.fingerprint!,
       unittest.equals('foo'),
     );
-    checkUnnamed45(o.firingRuleId!);
-    checkUnnamed46(o.firingTriggerId!);
+    checkUnnamed44(o.firingTriggerId!);
     unittest.expect(o.liveOnly!, unittest.isTrue);
     checkParameter(o.monitoringMetadata!);
     unittest.expect(
@@ -2578,7 +2530,7 @@ void checkTag(api.Tag o) {
       o.notes!,
       unittest.equals('foo'),
     );
-    checkUnnamed47(o.parameter!);
+    checkUnnamed45(o.parameter!);
     unittest.expect(
       o.parentFolderId!,
       unittest.equals('foo'),
@@ -2597,7 +2549,7 @@ void checkTag(api.Tag o) {
       o.scheduleStartMs!,
       unittest.equals('foo'),
     );
-    checkUnnamed48(o.setupTag!);
+    checkUnnamed46(o.setupTag!);
     unittest.expect(
       o.tagFiringOption!,
       unittest.equals('foo'),
@@ -2610,7 +2562,7 @@ void checkTag(api.Tag o) {
       o.tagManagerUrl!,
       unittest.equals('foo'),
     );
-    checkUnnamed49(o.teardownTag!);
+    checkUnnamed47(o.teardownTag!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -2671,12 +2623,12 @@ void checkTeardownTag(api.TeardownTag o) {
   buildCounterTeardownTag--;
 }
 
-core.List<api.Parameter> buildUnnamed50() => [
+core.List<api.Parameter> buildUnnamed48() => [
       buildParameter(),
       buildParameter(),
     ];
 
-void checkUnnamed50(core.List<api.Parameter> o) {
+void checkUnnamed48(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -2692,7 +2644,7 @@ api.Transformation buildTransformation() {
     o.fingerprint = 'foo';
     o.name = 'foo';
     o.notes = 'foo';
-    o.parameter = buildUnnamed50();
+    o.parameter = buildUnnamed48();
     o.parentFolderId = 'foo';
     o.path = 'foo';
     o.tagManagerUrl = 'foo';
@@ -2727,7 +2679,7 @@ void checkTransformation(api.Transformation o) {
       o.notes!,
       unittest.equals('foo'),
     );
-    checkUnnamed50(o.parameter!);
+    checkUnnamed48(o.parameter!);
     unittest.expect(
       o.parentFolderId!,
       unittest.equals('foo'),
@@ -2756,6 +2708,28 @@ void checkTransformation(api.Transformation o) {
   buildCounterTransformation--;
 }
 
+core.List<api.Condition> buildUnnamed49() => [
+      buildCondition(),
+      buildCondition(),
+    ];
+
+void checkUnnamed49(core.List<api.Condition> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCondition(o[0]);
+  checkCondition(o[1]);
+}
+
+core.List<api.Condition> buildUnnamed50() => [
+      buildCondition(),
+      buildCondition(),
+    ];
+
+void checkUnnamed50(core.List<api.Condition> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCondition(o[0]);
+  checkCondition(o[1]);
+}
+
 core.List<api.Condition> buildUnnamed51() => [
       buildCondition(),
       buildCondition(),
@@ -2767,34 +2741,12 @@ void checkUnnamed51(core.List<api.Condition> o) {
   checkCondition(o[1]);
 }
 
-core.List<api.Condition> buildUnnamed52() => [
-      buildCondition(),
-      buildCondition(),
-    ];
-
-void checkUnnamed52(core.List<api.Condition> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkCondition(o[0]);
-  checkCondition(o[1]);
-}
-
-core.List<api.Condition> buildUnnamed53() => [
-      buildCondition(),
-      buildCondition(),
-    ];
-
-void checkUnnamed53(core.List<api.Condition> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkCondition(o[0]);
-  checkCondition(o[1]);
-}
-
-core.List<api.Parameter> buildUnnamed54() => [
+core.List<api.Parameter> buildUnnamed52() => [
       buildParameter(),
       buildParameter(),
     ];
 
-void checkUnnamed54(core.List<api.Parameter> o) {
+void checkUnnamed52(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -2806,13 +2758,13 @@ api.Trigger buildTrigger() {
   buildCounterTrigger++;
   if (buildCounterTrigger < 3) {
     o.accountId = 'foo';
-    o.autoEventFilter = buildUnnamed51();
+    o.autoEventFilter = buildUnnamed49();
     o.checkValidation = buildParameter();
     o.containerId = 'foo';
     o.continuousTimeMinMilliseconds = buildParameter();
-    o.customEventFilter = buildUnnamed52();
+    o.customEventFilter = buildUnnamed50();
     o.eventName = buildParameter();
-    o.filter = buildUnnamed53();
+    o.filter = buildUnnamed51();
     o.fingerprint = 'foo';
     o.horizontalScrollPercentageList = buildParameter();
     o.interval = buildParameter();
@@ -2821,7 +2773,7 @@ api.Trigger buildTrigger() {
     o.maxTimerLengthSeconds = buildParameter();
     o.name = 'foo';
     o.notes = 'foo';
-    o.parameter = buildUnnamed54();
+    o.parameter = buildUnnamed52();
     o.parentFolderId = 'foo';
     o.path = 'foo';
     o.selector = buildParameter();
@@ -2849,16 +2801,16 @@ void checkTrigger(api.Trigger o) {
       o.accountId!,
       unittest.equals('foo'),
     );
-    checkUnnamed51(o.autoEventFilter!);
+    checkUnnamed49(o.autoEventFilter!);
     checkParameter(o.checkValidation!);
     unittest.expect(
       o.containerId!,
       unittest.equals('foo'),
     );
     checkParameter(o.continuousTimeMinMilliseconds!);
-    checkUnnamed52(o.customEventFilter!);
+    checkUnnamed50(o.customEventFilter!);
     checkParameter(o.eventName!);
-    checkUnnamed53(o.filter!);
+    checkUnnamed51(o.filter!);
     unittest.expect(
       o.fingerprint!,
       unittest.equals('foo'),
@@ -2876,7 +2828,7 @@ void checkTrigger(api.Trigger o) {
       o.notes!,
       unittest.equals('foo'),
     );
-    checkUnnamed54(o.parameter!);
+    checkUnnamed52(o.parameter!);
     unittest.expect(
       o.parentFolderId!,
       unittest.equals('foo'),
@@ -2914,12 +2866,12 @@ void checkTrigger(api.Trigger o) {
   buildCounterTrigger--;
 }
 
-core.List<api.ContainerAccess> buildUnnamed55() => [
+core.List<api.ContainerAccess> buildUnnamed53() => [
       buildContainerAccess(),
       buildContainerAccess(),
     ];
 
-void checkUnnamed55(core.List<api.ContainerAccess> o) {
+void checkUnnamed53(core.List<api.ContainerAccess> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainerAccess(o[0]);
   checkContainerAccess(o[1]);
@@ -2932,7 +2884,7 @@ api.UserPermission buildUserPermission() {
   if (buildCounterUserPermission < 3) {
     o.accountAccess = buildAccountAccess();
     o.accountId = 'foo';
-    o.containerAccess = buildUnnamed55();
+    o.containerAccess = buildUnnamed53();
     o.emailAddress = 'foo';
     o.path = 'foo';
   }
@@ -2948,7 +2900,7 @@ void checkUserPermission(api.UserPermission o) {
       o.accountId!,
       unittest.equals('foo'),
     );
-    checkUnnamed55(o.containerAccess!);
+    checkUnnamed53(o.containerAccess!);
     unittest.expect(
       o.emailAddress!,
       unittest.equals('foo'),
@@ -2961,12 +2913,12 @@ void checkUserPermission(api.UserPermission o) {
   buildCounterUserPermission--;
 }
 
-core.List<core.String> buildUnnamed56() => [
+core.List<core.String> buildUnnamed54() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed56(core.List<core.String> o) {
+void checkUnnamed54(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2978,12 +2930,12 @@ void checkUnnamed56(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed57() => [
+core.List<core.String> buildUnnamed55() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed57(core.List<core.String> o) {
+void checkUnnamed55(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2995,12 +2947,12 @@ void checkUnnamed57(core.List<core.String> o) {
   );
 }
 
-core.List<api.Parameter> buildUnnamed58() => [
+core.List<api.Parameter> buildUnnamed56() => [
       buildParameter(),
       buildParameter(),
     ];
 
-void checkUnnamed58(core.List<api.Parameter> o) {
+void checkUnnamed56(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -3013,13 +2965,13 @@ api.Variable buildVariable() {
   if (buildCounterVariable < 3) {
     o.accountId = 'foo';
     o.containerId = 'foo';
-    o.disablingTriggerId = buildUnnamed56();
-    o.enablingTriggerId = buildUnnamed57();
+    o.disablingTriggerId = buildUnnamed54();
+    o.enablingTriggerId = buildUnnamed55();
     o.fingerprint = 'foo';
     o.formatValue = buildVariableFormatValue();
     o.name = 'foo';
     o.notes = 'foo';
-    o.parameter = buildUnnamed58();
+    o.parameter = buildUnnamed56();
     o.parentFolderId = 'foo';
     o.path = 'foo';
     o.scheduleEndMs = 'foo';
@@ -3044,8 +2996,8 @@ void checkVariable(api.Variable o) {
       o.containerId!,
       unittest.equals('foo'),
     );
-    checkUnnamed56(o.disablingTriggerId!);
-    checkUnnamed57(o.enablingTriggerId!);
+    checkUnnamed54(o.disablingTriggerId!);
+    checkUnnamed55(o.enablingTriggerId!);
     unittest.expect(
       o.fingerprint!,
       unittest.equals('foo'),
@@ -3059,7 +3011,7 @@ void checkVariable(api.Variable o) {
       o.notes!,
       unittest.equals('foo'),
     );
-    checkUnnamed58(o.parameter!);
+    checkUnnamed56(o.parameter!);
     unittest.expect(
       o.parentFolderId!,
       unittest.equals('foo'),
@@ -3183,12 +3135,12 @@ void checkWorkspace(api.Workspace o) {
   buildCounterWorkspace--;
 }
 
-core.List<api.ZoneChildContainer> buildUnnamed59() => [
+core.List<api.ZoneChildContainer> buildUnnamed57() => [
       buildZoneChildContainer(),
       buildZoneChildContainer(),
     ];
 
-void checkUnnamed59(core.List<api.ZoneChildContainer> o) {
+void checkUnnamed57(core.List<api.ZoneChildContainer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkZoneChildContainer(o[0]);
   checkZoneChildContainer(o[1]);
@@ -3201,7 +3153,7 @@ api.Zone buildZone() {
   if (buildCounterZone < 3) {
     o.accountId = 'foo';
     o.boundary = buildZoneBoundary();
-    o.childContainer = buildUnnamed59();
+    o.childContainer = buildUnnamed57();
     o.containerId = 'foo';
     o.fingerprint = 'foo';
     o.name = 'foo';
@@ -3224,7 +3176,7 @@ void checkZone(api.Zone o) {
       unittest.equals('foo'),
     );
     checkZoneBoundary(o.boundary!);
-    checkUnnamed59(o.childContainer!);
+    checkUnnamed57(o.childContainer!);
     unittest.expect(
       o.containerId!,
       unittest.equals('foo'),
@@ -3262,23 +3214,23 @@ void checkZone(api.Zone o) {
   buildCounterZone--;
 }
 
-core.List<api.Condition> buildUnnamed60() => [
+core.List<api.Condition> buildUnnamed58() => [
       buildCondition(),
       buildCondition(),
     ];
 
-void checkUnnamed60(core.List<api.Condition> o) {
+void checkUnnamed58(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-core.List<core.String> buildUnnamed61() => [
+core.List<core.String> buildUnnamed59() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed61(core.List<core.String> o) {
+void checkUnnamed59(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3295,8 +3247,8 @@ api.ZoneBoundary buildZoneBoundary() {
   final o = api.ZoneBoundary();
   buildCounterZoneBoundary++;
   if (buildCounterZoneBoundary < 3) {
-    o.condition = buildUnnamed60();
-    o.customEvaluationTriggerId = buildUnnamed61();
+    o.condition = buildUnnamed58();
+    o.customEvaluationTriggerId = buildUnnamed59();
   }
   buildCounterZoneBoundary--;
   return o;
@@ -3305,8 +3257,8 @@ api.ZoneBoundary buildZoneBoundary() {
 void checkZoneBoundary(api.ZoneBoundary o) {
   buildCounterZoneBoundary++;
   if (buildCounterZoneBoundary < 3) {
-    checkUnnamed60(o.condition!);
-    checkUnnamed61(o.customEvaluationTriggerId!);
+    checkUnnamed58(o.condition!);
+    checkUnnamed59(o.customEvaluationTriggerId!);
   }
   buildCounterZoneBoundary--;
 }
@@ -3338,12 +3290,12 @@ void checkZoneChildContainer(api.ZoneChildContainer o) {
   buildCounterZoneChildContainer--;
 }
 
-core.List<core.String> buildUnnamed62() => [
+core.List<core.String> buildUnnamed60() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed62(core.List<core.String> o) {
+void checkUnnamed60(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3361,7 +3313,7 @@ api.ZoneTypeRestriction buildZoneTypeRestriction() {
   buildCounterZoneTypeRestriction++;
   if (buildCounterZoneTypeRestriction < 3) {
     o.enable = true;
-    o.whitelistedTypeId = buildUnnamed62();
+    o.whitelistedTypeId = buildUnnamed60();
   }
   buildCounterZoneTypeRestriction--;
   return o;
@@ -3371,9 +3323,43 @@ void checkZoneTypeRestriction(api.ZoneTypeRestriction o) {
   buildCounterZoneTypeRestriction++;
   if (buildCounterZoneTypeRestriction < 3) {
     unittest.expect(o.enable!, unittest.isTrue);
-    checkUnnamed62(o.whitelistedTypeId!);
+    checkUnnamed60(o.whitelistedTypeId!);
   }
   buildCounterZoneTypeRestriction--;
+}
+
+core.List<core.String> buildUnnamed61() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed61(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed62() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed62(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 core.List<core.String> buildUnnamed63() => [
@@ -3416,40 +3402,6 @@ core.List<core.String> buildUnnamed65() => [
     ];
 
 void checkUnnamed65(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed66() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed66(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed67() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed67(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -6499,7 +6451,7 @@ void main() {
           .workspaces
           .builtInVariables;
       final arg_parent = 'foo';
-      final arg_type = buildUnnamed63();
+      final arg_type = buildUnnamed61();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -6562,7 +6514,7 @@ void main() {
           .workspaces
           .builtInVariables;
       final arg_path = 'foo';
-      final arg_type = buildUnnamed64();
+      final arg_type = buildUnnamed62();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final path = req.url.path;
@@ -7379,9 +7331,9 @@ void main() {
           api.TagManagerApi(mock).accounts.containers.workspaces.folders;
       final arg_request = buildFolder();
       final arg_path = 'foo';
-      final arg_tagId = buildUnnamed65();
-      final arg_triggerId = buildUnnamed66();
-      final arg_variableId = buildUnnamed67();
+      final arg_tagId = buildUnnamed63();
+      final arg_triggerId = buildUnnamed64();
+      final arg_variableId = buildUnnamed65();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =
@@ -8366,6 +8318,84 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.get(arg_path, $fields: arg_$fields);
+      checkCustomTemplate(response as api.CustomTemplate);
+    });
+
+    unittest.test('method--importFromGallery', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.TagManagerApi(mock).accounts.containers.workspaces.templates;
+      final arg_parent = 'foo';
+      final arg_acknowledgePermissions = true;
+      final arg_galleryOwner = 'foo';
+      final arg_galleryRepository = 'foo';
+      final arg_gallerySha = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 14),
+          unittest.equals('tagmanager/v2/'),
+        );
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['acknowledgePermissions']!.first,
+          unittest.equals('$arg_acknowledgePermissions'),
+        );
+        unittest.expect(
+          queryMap['galleryOwner']!.first,
+          unittest.equals(arg_galleryOwner),
+        );
+        unittest.expect(
+          queryMap['galleryRepository']!.first,
+          unittest.equals(arg_galleryRepository),
+        );
+        unittest.expect(
+          queryMap['gallerySha']!.first,
+          unittest.equals(arg_gallerySha),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildCustomTemplate());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.importFromGallery(arg_parent,
+          acknowledgePermissions: arg_acknowledgePermissions,
+          galleryOwner: arg_galleryOwner,
+          galleryRepository: arg_galleryRepository,
+          gallerySha: arg_gallerySha,
+          $fields: arg_$fields);
       checkCustomTemplate(response as api.CustomTemplate);
     });
 

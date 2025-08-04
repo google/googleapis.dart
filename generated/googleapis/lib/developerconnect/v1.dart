@@ -23,8 +23,11 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAccountConnectorsResource]
+///       - [ProjectsLocationsAccountConnectorsUsersResource]
 ///     - [ProjectsLocationsConnectionsResource]
 ///       - [ProjectsLocationsConnectionsGitRepositoryLinksResource]
+///     - [ProjectsLocationsInsightsConfigsResource]
 ///     - [ProjectsLocationsOperationsResource]
 library;
 
@@ -71,8 +74,12 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAccountConnectorsResource get accountConnectors =>
+      ProjectsLocationsAccountConnectorsResource(_requester);
   ProjectsLocationsConnectionsResource get connections =>
       ProjectsLocationsConnectionsResource(_requester);
+  ProjectsLocationsInsightsConfigsResource get insightsConfigs =>
+      ProjectsLocationsInsightsConfigsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
 
@@ -120,6 +127,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -142,12 +153,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -162,6 +175,556 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAccountConnectorsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAccountConnectorsUsersResource get users =>
+      ProjectsLocationsAccountConnectorsUsersResource(_requester);
+
+  ProjectsLocationsAccountConnectorsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new AccountConnector in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Location resource name as the account_connector’s
+  /// parent.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [accountConnectorId] - Required. The ID to use for the AccountConnector,
+  /// which will become the final component of the AccountConnector's resource
+  /// name. Its format should adhere to
+  /// https://google.aip.dev/122#resource-id-segments Names must be unique
+  /// per-project per-location.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set, validate the request, but do not
+  /// actually post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    AccountConnector request,
+    core.String parent, {
+    core.String? accountConnectorId,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (accountConnectorId != null)
+        'accountConnectorId': [accountConnectorId],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/accountConnectors';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single AccountConnector.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/accountConnectors/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The current etag of the AccountConnectorn. If an etag
+  /// is provided and does not match the current etag of the AccountConnector,
+  /// deletion will be blocked and an ABORTED error will be returned.
+  ///
+  /// [force] - Optional. If set to true, any Users from this AccountConnector
+  /// will also be deleted. (Otherwise, the request will only work if the
+  /// AccountConnector has no Users.)
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set, validate the request, but do not
+  /// actually post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.bool? force,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if (force != null) 'force': ['${force}'],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single AccountConnector.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/accountConnectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccountConnector].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccountConnector> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccountConnector.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists AccountConnectors in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListAccountConnectorsRequest
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAccountConnectorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAccountConnectorsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/accountConnectors';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAccountConnectorsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single AccountConnector.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the accountConnector, in the
+  /// format
+  /// `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/accountConnectors/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and the accountConnector is not
+  /// found a new accountConnector will be created. In this situation
+  /// `update_mask` is ignored. The creation will succeed only if the input
+  /// accountConnector has all the necessary
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. The list of fields to be updated.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request, but do not
+  /// actually post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    AccountConnector request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? requestId,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsAccountConnectorsUsersResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAccountConnectorsUsersResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a single User.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/accountConnectors/\[^/\]+/users/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. This checksum is computed by the server based on the
+  /// value of other fields, and may be sent on update and delete requests to
+  /// ensure the client has an up-to-date value before proceeding.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set, validate the request, but do not
+  /// actually post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete the User based on the user credentials.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the AccountConnector resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/accountConnectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> deleteSelf(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/users:deleteSelf';
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Fetches OAuth access token based on end user credentials.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountConnector] - Required. The resource name of the AccountConnector
+  /// in the format `projects / * /locations / * /accountConnectors / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/accountConnectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchAccessTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchAccessTokenResponse> fetchAccessToken(
+    FetchAccessTokenRequest request,
+    core.String accountConnector, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$accountConnector') +
+        '/users:fetchAccessToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return FetchAccessTokenResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Fetch the User based on the user credentials.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the AccountConnector resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/accountConnectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [User].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<User> fetchSelf(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/users:fetchSelf';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return User.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Users in a given project, location, and account_connector.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListUsersRequest
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/accountConnectors/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUsersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUsersResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/users';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListUsersResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1172,6 +1735,286 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
   }
 }
 
+class ProjectsLocationsInsightsConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInsightsConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new InsightsConfig in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value for parent.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [insightsConfigId] - Required. ID of the requesting InsightsConfig.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request, but do not
+  /// actually post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    InsightsConfig request,
+    core.String parent, {
+    core.String? insightsConfigId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (insightsConfigId != null) 'insightsConfigId': [insightsConfigId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/insightsConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a single Insight.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Value for parent.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/insightsConfigs/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. This checksum is computed by the server based on the
+  /// value of other fields, and may be sent on update and delete requests to
+  /// ensure the client has an up-to-date value before proceeding.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set, validate the request, but do not
+  /// actually post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single Insight.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/insightsConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InsightsConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InsightsConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InsightsConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists InsightsConfigs in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListInsightsConfigsRequest.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results. See https://google.aip.dev/160 for
+  /// more details. Filter string, adhering to the rules in
+  /// https://google.aip.dev/160. List only InsightsConfigs matching the filter.
+  /// If filter is empty, all InsightsConfigs are listed.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInsightsConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInsightsConfigsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/insightsConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInsightsConfigsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single InsightsConfig.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the InsightsConfig. Format:
+  /// projects/{project}/locations/{location}/insightsConfigs/{insightsConfig}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/insightsConfigs/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If set to true, and the insightsConfig is not
+  /// found a new insightsConfig will be created. In this situation
+  /// `update_mask` is ignored. The creation will succeed only if the input
+  /// insightsConfig has all the necessary information (e.g a github_config with
+  /// both user_oauth_token and installation_id properties).
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set, validate the request, but do not
+  /// actually post it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    InsightsConfig request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -1356,6 +2199,192 @@ class ProjectsLocationsOperationsResource {
     return ListOperationsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+}
+
+/// AccountConnector encapsulates what a platform administrator needs to
+/// configure for users to connect to the service providers, which includes,
+/// among other fields, the OAuth client ID, client secret, and authorization
+/// and token endpoints.
+class AccountConnector {
+  /// Allows users to store small amounts of arbitrary data.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// The timestamp when the accountConnector was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Labels as key value pairs
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The resource name of the accountConnector, in the format
+  /// `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
+  core.String? name;
+
+  /// Start OAuth flow by clicking on this URL.
+  ///
+  /// Output only.
+  core.String? oauthStartUri;
+
+  /// Provider OAuth config.
+  ProviderOAuthConfig? providerOauthConfig;
+
+  /// The timestamp when the accountConnector was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AccountConnector({
+    this.annotations,
+    this.createTime,
+    this.etag,
+    this.labels,
+    this.name,
+    this.oauthStartUri,
+    this.providerOauthConfig,
+    this.updateTime,
+  });
+
+  AccountConnector.fromJson(core.Map json_)
+      : this(
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          createTime: json_['createTime'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          oauthStartUri: json_['oauthStartUri'] as core.String?,
+          providerOauthConfig: json_.containsKey('providerOauthConfig')
+              ? ProviderOAuthConfig.fromJson(json_['providerOauthConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (createTime != null) 'createTime': createTime!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (oauthStartUri != null) 'oauthStartUri': oauthStartUri!,
+        if (providerOauthConfig != null)
+          'providerOauthConfig': providerOauthConfig!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// AppHubWorkload represents the App Hub Workload.
+class AppHubWorkload {
+  /// The criticality of the App Hub Workload.
+  ///
+  /// Output only.
+  core.String? criticality;
+
+  /// The environment of the App Hub Workload.
+  ///
+  /// Output only.
+  core.String? environment;
+
+  /// The name of the App Hub Workload.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
+  ///
+  /// Required. Output only. Immutable.
+  core.String? workload;
+
+  AppHubWorkload({
+    this.criticality,
+    this.environment,
+    this.workload,
+  });
+
+  AppHubWorkload.fromJson(core.Map json_)
+      : this(
+          criticality: json_['criticality'] as core.String?,
+          environment: json_['environment'] as core.String?,
+          workload: json_['workload'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (criticality != null) 'criticality': criticality!,
+        if (environment != null) 'environment': environment!,
+        if (workload != null) 'workload': workload!,
+      };
+}
+
+/// The artifact config of the artifact that is deployed.
+class ArtifactConfig {
+  /// Set if the artifact metadata is stored in Artifact analysis.
+  ///
+  /// Optional.
+  GoogleArtifactAnalysis? googleArtifactAnalysis;
+
+  /// Set if the artifact is stored in Artifact registry.
+  ///
+  /// Optional.
+  GoogleArtifactRegistry? googleArtifactRegistry;
+
+  /// The URI of the artifact that is deployed.
+  ///
+  /// e.g. `us-docker.pkg.dev/my-project/my-repo/image`. The URI does not
+  /// include the tag / digest because it captures a lineage of artifacts.
+  ///
+  /// Required. Immutable.
+  core.String? uri;
+
+  ArtifactConfig({
+    this.googleArtifactAnalysis,
+    this.googleArtifactRegistry,
+    this.uri,
+  });
+
+  ArtifactConfig.fromJson(core.Map json_)
+      : this(
+          googleArtifactAnalysis: json_.containsKey('googleArtifactAnalysis')
+              ? GoogleArtifactAnalysis.fromJson(json_['googleArtifactAnalysis']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          googleArtifactRegistry: json_.containsKey('googleArtifactRegistry')
+              ? GoogleArtifactRegistry.fromJson(json_['googleArtifactRegistry']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          uri: json_['uri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (googleArtifactAnalysis != null)
+          'googleArtifactAnalysis': googleArtifactAnalysis!,
+        if (googleArtifactRegistry != null)
+          'googleArtifactRegistry': googleArtifactRegistry!,
+        if (uri != null) 'uri': uri!,
+      };
 }
 
 /// Configuration for connections to an instance of Bitbucket Cloud.
@@ -1771,6 +2800,79 @@ class CryptoKeyConfig {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Message for representing an error from exchanging OAuth tokens.
+class ExchangeError {
+  /// https://datatracker.ietf.org/doc/html/rfc6749#section-5.2 - error
+  core.String? code;
+
+  /// https://datatracker.ietf.org/doc/html/rfc6749#section-5.2 -
+  /// error_description
+  core.String? description;
+
+  ExchangeError({
+    this.code,
+    this.description,
+  });
+
+  ExchangeError.fromJson(core.Map json_)
+      : this(
+          code: json_['code'] as core.String?,
+          description: json_['description'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (code != null) 'code': code!,
+        if (description != null) 'description': description!,
+      };
+}
+
+/// Message for fetching an OAuth access token.
+typedef FetchAccessTokenRequest = $Empty;
+
+/// Message for responding to getting an OAuth access token.
+class FetchAccessTokenResponse {
+  /// The error resulted from exchanging OAuth tokens from the service provider.
+  ExchangeError? exchangeError;
+
+  /// Expiration timestamp.
+  ///
+  /// Can be empty if unknown or non-expiring.
+  core.String? expirationTime;
+
+  /// The scopes of the access token.
+  core.List<core.String>? scopes;
+
+  /// The token content.
+  core.String? token;
+
+  FetchAccessTokenResponse({
+    this.exchangeError,
+    this.expirationTime,
+    this.scopes,
+    this.token,
+  });
+
+  FetchAccessTokenResponse.fromJson(core.Map json_)
+      : this(
+          exchangeError: json_.containsKey('exchangeError')
+              ? ExchangeError.fromJson(
+                  json_['exchangeError'] as core.Map<core.String, core.dynamic>)
+              : null,
+          expirationTime: json_['expirationTime'] as core.String?,
+          scopes: (json_['scopes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          token: json_['token'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (exchangeError != null) 'exchangeError': exchangeError!,
+        if (expirationTime != null) 'expirationTime': expirationTime!,
+        if (scopes != null) 'scopes': scopes!,
+        if (token != null) 'token': token!,
+      };
+}
+
 /// Response of fetching github installations.
 class FetchGitHubInstallationsResponse {
   /// List of installations available to the OAuth user (for github.com) or all
@@ -1838,6 +2940,40 @@ typedef FetchReadWriteTokenRequest = $Empty;
 
 /// Message for responding to get read/write token.
 typedef FetchReadWriteTokenResponse = $TokenResponse01;
+
+/// GKEWorkload represents the Google Kubernetes Engine runtime.
+class GKEWorkload {
+  /// The name of the GKE cluster.
+  ///
+  /// Format: `projects/{project}/locations/{location}/clusters/{cluster}`.
+  ///
+  /// Required. Immutable.
+  core.String? cluster;
+
+  /// The name of the GKE deployment.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/clusters/{cluster}/namespaces/{namespace}/deployments/{deployment}`.
+  ///
+  /// Output only.
+  core.String? deployment;
+
+  GKEWorkload({
+    this.cluster,
+    this.deployment,
+  });
+
+  GKEWorkload.fromJson(core.Map json_)
+      : this(
+          cluster: json_['cluster'] as core.String?,
+          deployment: json_['deployment'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cluster != null) 'cluster': cluster!,
+        if (deployment != null) 'deployment': deployment!,
+      };
+}
 
 /// Configuration for connections to github.com.
 class GitHubConfig {
@@ -2319,6 +3455,58 @@ class GitRepositoryLink {
       };
 }
 
+/// Google Artifact Analysis configurations.
+class GoogleArtifactAnalysis {
+  /// The project id of the project where the provenance is stored.
+  ///
+  /// Required.
+  core.String? projectId;
+
+  GoogleArtifactAnalysis({
+    this.projectId,
+  });
+
+  GoogleArtifactAnalysis.fromJson(core.Map json_)
+      : this(
+          projectId: json_['projectId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (projectId != null) 'projectId': projectId!,
+      };
+}
+
+/// Google Artifact Registry configurations.
+class GoogleArtifactRegistry {
+  /// The name of the artifact registry package.
+  ///
+  /// Required. Immutable.
+  core.String? artifactRegistryPackage;
+
+  /// The host project of Artifact Registry.
+  ///
+  /// Required.
+  core.String? projectId;
+
+  GoogleArtifactRegistry({
+    this.artifactRegistryPackage,
+    this.projectId,
+  });
+
+  GoogleArtifactRegistry.fromJson(core.Map json_)
+      : this(
+          artifactRegistryPackage:
+              json_['artifactRegistryPackage'] as core.String?,
+          projectId: json_['projectId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (artifactRegistryPackage != null)
+          'artifactRegistryPackage': artifactRegistryPackage!,
+        if (projectId != null) 'projectId': projectId!,
+      };
+}
+
 /// Message that represents an arbitrary HTTP body.
 ///
 /// It should only be used for payload formats that can't be represented as
@@ -2338,6 +3526,155 @@ class GitRepositoryLink {
 /// request and response bodies are handled, all other features will continue to
 /// work unchanged.
 typedef HttpBody = $HttpBody;
+
+/// The InsightsConfig resource is the core configuration object to capture
+/// events from your Software Development Lifecycle.
+///
+/// It acts as the central hub for managing how Developer connect understands
+/// your application, its runtime environments, and the artifacts deployed
+/// within them.
+class InsightsConfig {
+  /// User specified annotations.
+  ///
+  /// See https://google.aip.dev/148#annotations for more details such as format
+  /// and size limitations.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// The name of the App Hub Application.
+  ///
+  /// Format: projects/{project}/locations/{location}/applications/{application}
+  ///
+  /// Optional.
+  core.String? appHubApplication;
+
+  /// The artifact configurations of the artifacts that are deployed.
+  ///
+  /// Optional.
+  core.List<ArtifactConfig>? artifactConfigs;
+
+  /// Create timestamp
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Any errors that occurred while setting up the InsightsConfig.
+  ///
+  /// Each error will be in the format: `field_name: error_message`, e.g.
+  /// GetAppHubApplication: Permission denied while getting App Hub application.
+  /// Please grant permissions to the P4SA.
+  ///
+  /// Output only.
+  core.List<Status>? errors;
+
+  /// Set of labels associated with an InsightsConfig.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of the InsightsConfig. Format:
+  /// projects/{project}/locations/{location}/insightsConfigs/{insightsConfig}
+  core.String? name;
+
+  /// Reconciling (https://google.aip.dev/128#reconciliation).
+  ///
+  /// Set to true if the current state of InsightsConfig does not match the
+  /// user's intended state, and the service is actively updating the resource
+  /// to reconcile them. This can happen due to user-triggered updates or system
+  /// actions like failover or maintenance.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The runtime configurations where the application is deployed.
+  ///
+  /// Output only.
+  core.List<RuntimeConfig>? runtimeConfigs;
+
+  /// The state of the InsightsConfig.
+  ///
+  /// Optional. Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state specified.
+  /// - "PENDING" : The InsightsConfig is pending application discovery/runtime
+  /// discovery.
+  /// - "COMPLETE" : The initial discovery process is complete.
+  /// - "ERROR" : The InsightsConfig is in an error state.
+  core.String? state;
+
+  /// Update timestamp
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  InsightsConfig({
+    this.annotations,
+    this.appHubApplication,
+    this.artifactConfigs,
+    this.createTime,
+    this.errors,
+    this.labels,
+    this.name,
+    this.reconciling,
+    this.runtimeConfigs,
+    this.state,
+    this.updateTime,
+  });
+
+  InsightsConfig.fromJson(core.Map json_)
+      : this(
+          annotations:
+              (json_['annotations'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          appHubApplication: json_['appHubApplication'] as core.String?,
+          artifactConfigs: (json_['artifactConfigs'] as core.List?)
+              ?.map((value) => ArtifactConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          createTime: json_['createTime'] as core.String?,
+          errors: (json_['errors'] as core.List?)
+              ?.map((value) =>
+                  Status.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          reconciling: json_['reconciling'] as core.bool?,
+          runtimeConfigs: (json_['runtimeConfigs'] as core.List?)
+              ?.map((value) => RuntimeConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotations != null) 'annotations': annotations!,
+        if (appHubApplication != null) 'appHubApplication': appHubApplication!,
+        if (artifactConfigs != null) 'artifactConfigs': artifactConfigs!,
+        if (createTime != null) 'createTime': createTime!,
+        if (errors != null) 'errors': errors!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (reconciling != null) 'reconciling': reconciling!,
+        if (runtimeConfigs != null) 'runtimeConfigs': runtimeConfigs!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
 
 /// Represents an installation of the GitHub App.
 class Installation {
@@ -2393,6 +3730,42 @@ class LinkableGitRepository {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cloneUri != null) 'cloneUri': cloneUri!,
+      };
+}
+
+/// Message for response to listing AccountConnectors
+class ListAccountConnectorsResponse {
+  /// The list of AccountConnectors
+  core.List<AccountConnector>? accountConnectors;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListAccountConnectorsResponse({
+    this.accountConnectors,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAccountConnectorsResponse.fromJson(core.Map json_)
+      : this(
+          accountConnectors: (json_['accountConnectors'] as core.List?)
+              ?.map((value) => AccountConnector.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accountConnectors != null) 'accountConnectors': accountConnectors!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -2469,6 +3842,42 @@ class ListGitRepositoryLinksResponse {
       };
 }
 
+/// Request for response to listing InsightsConfigs.
+class ListInsightsConfigsResponse {
+  /// The list of InsightsConfigs.
+  core.List<InsightsConfig>? insightsConfigs;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListInsightsConfigsResponse({
+    this.insightsConfigs,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListInsightsConfigsResponse.fromJson(core.Map json_)
+      : this(
+          insightsConfigs: (json_['insightsConfigs'] as core.List?)
+              ?.map((value) => InsightsConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (insightsConfigs != null) 'insightsConfigs': insightsConfigs!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
   /// A list of locations that matches the specified filter in the request.
@@ -2522,6 +3931,42 @@ class ListOperationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null) 'operations': operations!,
+      };
+}
+
+/// Message for response to listing Users
+class ListUsersResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  /// The list of Users
+  core.List<User>? users;
+
+  ListUsersResponse({
+    this.nextPageToken,
+    this.unreachable,
+    this.users,
+  });
+
+  ListUsersResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          users: (json_['users'] as core.List?)
+              ?.map((value) =>
+                  User.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+        if (users != null) 'users': users!,
       };
 }
 
@@ -2762,6 +4207,114 @@ class ProcessGitLabWebhookRequest {
       };
 }
 
+/// ProviderOAuthConfig is the OAuth config for a provider.
+class ProviderOAuthConfig {
+  /// User selected scopes to apply to the Oauth config In the event of changing
+  /// scopes, user records under AccountConnector will be deleted and users will
+  /// re-auth again.
+  ///
+  /// Required.
+  core.List<core.String>? scopes;
+
+  /// Developer Connect provided OAuth.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "SYSTEM_PROVIDER_UNSPECIFIED" : No system provider specified.
+  /// - "GITHUB" : GitHub provider. Scopes can be found at
+  /// https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes
+  /// - "GITLAB" : GitLab provider. Scopes can be found at
+  /// https://docs.gitlab.com/user/profile/personal_access_tokens/#personal-access-token-scopes
+  /// - "GOOGLE" : Google provider. Recommended scopes:
+  /// "https://www.googleapis.com/auth/drive.readonly",
+  /// "https://www.googleapis.com/auth/documents.readonly"
+  /// - "SENTRY" : Sentry provider. Scopes can be found at
+  /// https://docs.sentry.io/api/permissions/
+  /// - "ROVO" : Rovo provider. Must select the "rovo" scope.
+  /// - "NEW_RELIC" : New Relic provider. No scopes are allowed.
+  /// - "DATASTAX" : Datastax provider. No scopes are allowed.
+  /// - "DYNATRACE" : Dynatrace provider.
+  core.String? systemProviderId;
+
+  ProviderOAuthConfig({
+    this.scopes,
+    this.systemProviderId,
+  });
+
+  ProviderOAuthConfig.fromJson(core.Map json_)
+      : this(
+          scopes: (json_['scopes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          systemProviderId: json_['systemProviderId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (scopes != null) 'scopes': scopes!,
+        if (systemProviderId != null) 'systemProviderId': systemProviderId!,
+      };
+}
+
+/// RuntimeConfig represents the runtimes where the application is deployed.
+class RuntimeConfig {
+  /// App Hub Workload.
+  ///
+  /// Output only.
+  AppHubWorkload? appHubWorkload;
+
+  /// Google Kubernetes Engine runtime.
+  ///
+  /// Output only.
+  GKEWorkload? gkeWorkload;
+
+  /// The state of the Runtime.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state specified.
+  /// - "LINKED" : The runtime configuration has been linked to the
+  /// InsightsConfig.
+  /// - "UNLINKED" : The runtime configuration has been unlinked to the
+  /// InsightsConfig.
+  core.String? state;
+
+  /// The URI of the runtime configuration.
+  ///
+  /// For GKE, this is the cluster name. For Cloud Run, this is the service
+  /// name.
+  ///
+  /// Required. Immutable.
+  core.String? uri;
+
+  RuntimeConfig({
+    this.appHubWorkload,
+    this.gkeWorkload,
+    this.state,
+    this.uri,
+  });
+
+  RuntimeConfig.fromJson(core.Map json_)
+      : this(
+          appHubWorkload: json_.containsKey('appHubWorkload')
+              ? AppHubWorkload.fromJson(json_['appHubWorkload']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          gkeWorkload: json_.containsKey('gkeWorkload')
+              ? GKEWorkload.fromJson(
+                  json_['gkeWorkload'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_['state'] as core.String?,
+          uri: json_['uri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appHubWorkload != null) 'appHubWorkload': appHubWorkload!,
+        if (gkeWorkload != null) 'gkeWorkload': gkeWorkload!,
+        if (state != null) 'state': state!,
+        if (uri != null) 'uri': uri!,
+      };
+}
+
 /// ServiceDirectoryConfig represents Service Directory configuration for a
 /// connection.
 typedef ServiceDirectoryConfig = $ServiceDirectoryConfig;
@@ -2774,6 +4327,55 @@ typedef ServiceDirectoryConfig = $ServiceDirectoryConfig;
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
+
+/// User represents a user connected to the service providers through a
+/// AccountConnector.
+class User {
+  /// The timestamp when the user was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Developer Connect automatically converts user identity to some human
+  /// readable description, e.g., email address.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The timestamp when the token was last requested.
+  ///
+  /// Output only.
+  core.String? lastTokenRequestTime;
+
+  /// Identifier.
+  ///
+  /// Resource name of the user, in the format `projects / * /locations / *
+  /// /accountConnectors / * /users / * `.
+  core.String? name;
+
+  User({
+    this.createTime,
+    this.displayName,
+    this.lastTokenRequestTime,
+    this.name,
+  });
+
+  User.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          displayName: json_['displayName'] as core.String?,
+          lastTokenRequestTime: json_['lastTokenRequestTime'] as core.String?,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (displayName != null) 'displayName': displayName!,
+        if (lastTokenRequestTime != null)
+          'lastTokenRequestTime': lastTokenRequestTime!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Represents a personal access token that authorized the Connection, and
 /// associated metadata.

@@ -123,6 +123,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -145,12 +149,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2095,6 +2101,8 @@ class InstancePolicy {
   /// (indicated by this field) is the older model, and has been migrated to use
   /// the SPOT model as the underlying technology. This old model will still be
   /// supported.
+  /// - "RESERVATION_BOUND" : Bound to the lifecycle of the reservation in which
+  /// it is provisioned.
   core.String? provisioningModel;
 
   /// If not specified (default), VMs will consume any applicable reservation.
@@ -2246,6 +2254,8 @@ class InstanceStatus {
   /// (indicated by this field) is the older model, and has been migrated to use
   /// the SPOT model as the underlying technology. This old model will still be
   /// supported.
+  /// - "RESERVATION_BOUND" : Bound to the lifecycle of the reservation in which
+  /// it is provisioned.
   core.String? provisioningModel;
 
   /// The max number of tasks can be assigned to this instance type.

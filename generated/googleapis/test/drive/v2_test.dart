@@ -9208,6 +9208,7 @@ void main() {
       final arg_request = buildPermission();
       final arg_fileId = 'foo';
       final arg_emailMessage = 'foo';
+      final arg_enforceExpansiveAccess = true;
       final arg_enforceSingleParent = true;
       final arg_moveToNewOwnersRoot = true;
       final arg_sendNotificationEmails = true;
@@ -9274,6 +9275,10 @@ void main() {
           unittest.equals(arg_emailMessage),
         );
         unittest.expect(
+          queryMap['enforceExpansiveAccess']!.first,
+          unittest.equals('$arg_enforceExpansiveAccess'),
+        );
+        unittest.expect(
           queryMap['enforceSingleParent']!.first,
           unittest.equals('$arg_enforceSingleParent'),
         );
@@ -9310,6 +9315,7 @@ void main() {
       }), true);
       final response = await res.insert(arg_request, arg_fileId,
           emailMessage: arg_emailMessage,
+          enforceExpansiveAccess: arg_enforceExpansiveAccess,
           enforceSingleParent: arg_enforceSingleParent,
           moveToNewOwnersRoot: arg_moveToNewOwnersRoot,
           sendNotificationEmails: arg_sendNotificationEmails,

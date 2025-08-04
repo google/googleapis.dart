@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20230511",
+    "revision": "20250411",
     "rootUrl": "https://cloudtrace.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Trace API",
@@ -117,7 +117,7 @@
                 "traces": {
                     "methods": {
                         "batchWrite": {
-                            "description": "Batch writes new spans to new or existing traces. You cannot update existing spans.",
+                            "description": "Batch writes new spans to new or existing traces. You cannot update existing spans. If a span ID already exists, an additional copy of the span will be stored.",
                             "flatPath": "v2/projects/{projectsId}/traces:batchWrite",
                             "httpMethod": "POST",
                             "id": "cloudtrace.projects.traces.batchWrite",
@@ -150,7 +150,7 @@
                         "spans": {
                             "methods": {
                                 "createSpan": {
-                                    "description": "Creates a new span.",
+                                    "description": "Creates a new span. If a span ID already exists, an additional copy of the span will be stored.",
                                     "flatPath": "v2/projects/{projectsId}/traces/{tracesId}/spans/{spansId}",
                                     "httpMethod": "POST",
                                     "id": "cloudtrace.projects.traces.spans.createSpan",

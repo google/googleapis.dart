@@ -181,7 +181,7 @@ class EntriesResource {
   /// `bigquery.dataset.{PROJECT_ID}.{DATASET_ID}` *
   /// `datacatalog.entry.{PROJECT_ID}.{LOCATION_ID}.{ENTRY_GROUP_ID}.{ENTRY_ID}`
   /// Identifiers (`*_ID`) should comply with the
-  /// [Lexical structure in Standard SQL](https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical).
+  /// [Lexical structure in GoogleSQL](https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -245,8 +245,8 @@ class OrganizationsLocationsResource {
       : _requester = client;
 
   /// Retrieves the configuration related to the migration from Data Catalog to
-  /// Dataplex for a specific organization, including all the projects under it
-  /// which have a separate configuration set.
+  /// Dataplex Universal Catalog for a specific organization, including all the
+  /// projects under it which have a separate configuration set.
   ///
   /// Request parameters:
   ///
@@ -286,7 +286,8 @@ class OrganizationsLocationsResource {
   }
 
   /// Retrieves the effective configuration related to the migration from Data
-  /// Catalog to Dataplex for a specific organization or project.
+  /// Catalog to Dataplex Universal Catalog for a specific organization or
+  /// project.
   ///
   /// If there is no specific configuration set for the resource, the setting is
   /// checked hierarchicahlly through the ancestors of the resource, starting
@@ -330,8 +331,8 @@ class OrganizationsLocationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the configuration related to the migration to Dataplex for an
-  /// organization or project.
+  /// Sets the configuration related to the migration to Dataplex Universal
+  /// Catalog for an organization or project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -401,7 +402,8 @@ class ProjectsLocationsResource {
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves the effective configuration related to the migration from Data
-  /// Catalog to Dataplex for a specific organization or project.
+  /// Catalog to Dataplex Universal Catalog for a specific organization or
+  /// project.
   ///
   /// If there is no specific configuration set for the resource, the setting is
   /// checked hierarchicahlly through the ancestors of the resource, starting
@@ -445,8 +447,8 @@ class ProjectsLocationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the configuration related to the migration to Dataplex for an
-  /// organization or project.
+  /// Sets the configuration related to the migration to Dataplex Universal
+  /// Catalog for an organization or project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1799,7 +1801,9 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   /// operation deletes tags not included in the input tag list. `ReconcileTags`
   /// returns a long-running operation resource that can be queried with
   /// Operations.GetOperation to return ReconcileTagsMetadata and a
-  /// ReconcileTagsResponse message.
+  /// ReconcileTagsResponse message. Note: SearchCatalog might return stale
+  /// search results for up to 24 hours after the `ReconcileTags` operation
+  /// completes.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4636,8 +4640,8 @@ class GoogleCloudDatacatalogV1DatabaseTableSpec {
   /// Not set for "real" tables.
   GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec? databaseViewSpec;
 
-  /// Fields specific to a Dataplex table and present only in the Dataplex table
-  /// entries.
+  /// Fields specific to a Dataplex Universal Catalog table and present only in
+  /// the Dataplex Universal Catalog table entries.
   ///
   /// Output only.
   GoogleCloudDatacatalogV1DataplexTableSpec? dataplexTable;
@@ -4712,13 +4716,13 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec {
       };
 }
 
-/// External table registered by Dataplex.
+/// External table registered by Dataplex Universal Catalog.
 ///
-/// Dataplex publishes data discovered from an asset into multiple other systems
-/// (BigQuery, DPMS) in form of tables. We call them "external tables". External
-/// tables are also synced into the Data Catalog. This message contains pointers
-/// to those external tables (fully qualified name, resource name et cetera)
-/// within the Data Catalog.
+/// Dataplex Universal Catalog publishes data discovered from an asset into
+/// multiple other systems (BigQuery, DPMS) in form of tables. We call them
+/// "external tables". External tables are also synced into the Data Catalog.
+/// This message contains pointers to those external tables (fully qualified
+/// name, resource name et cetera) within the Data Catalog.
 class GoogleCloudDatacatalogV1DataplexExternalTable {
   /// Name of the Data Catalog entry representing the external table.
   core.String? dataCatalogEntry;
@@ -4735,7 +4739,7 @@ class GoogleCloudDatacatalogV1DataplexExternalTable {
   /// - "BIGQUERY" : BigQuery.
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
   /// - "DATAPROC_METASTORE" : Dataproc Metastore.
-  /// - "DATAPLEX" : Dataplex.
+  /// - "DATAPLEX" : Dataplex Universal Catalog.
   /// - "CLOUD_SPANNER" : Cloud Spanner
   /// - "CLOUD_BIGTABLE" : Cloud Bigtable
   /// - "CLOUD_SQL" : Cloud Sql
@@ -4768,9 +4772,9 @@ class GoogleCloudDatacatalogV1DataplexExternalTable {
       };
 }
 
-/// Entry specyfication for a Dataplex fileset.
+/// Entry specification for a Dataplex Universal Catalog fileset.
 class GoogleCloudDatacatalogV1DataplexFilesetSpec {
-  /// Common Dataplex fields.
+  /// Common Dataplex Universal Catalog fields.
   GoogleCloudDatacatalogV1DataplexSpec? dataplexSpec;
 
   GoogleCloudDatacatalogV1DataplexFilesetSpec({
@@ -4790,11 +4794,11 @@ class GoogleCloudDatacatalogV1DataplexFilesetSpec {
       };
 }
 
-/// Common Dataplex fields.
+/// Common Dataplex Universal Catalog fields.
 class GoogleCloudDatacatalogV1DataplexSpec {
-  /// Fully qualified resource name of an asset in Dataplex, to which the
-  /// underlying data source (Cloud Storage bucket or BigQuery dataset) of the
-  /// entity is attached.
+  /// Fully qualified resource name of an asset in Dataplex Universal Catalog,
+  /// to which the underlying data source (Cloud Storage bucket or BigQuery
+  /// dataset) of the entity is attached.
   core.String? asset;
 
   /// Compression format of the data, e.g., zip, gzip etc.
@@ -4805,8 +4809,8 @@ class GoogleCloudDatacatalogV1DataplexSpec {
 
   /// Project ID of the underlying Cloud Storage or BigQuery data.
   ///
-  /// Note that this may not be the same project as the correspondingly Dataplex
-  /// lake / zone / asset.
+  /// Note that this may not be the same project as the corresponding Dataplex
+  /// Universal Catalog lake / zone / asset.
   core.String? projectId;
 
   GoogleCloudDatacatalogV1DataplexSpec({
@@ -4835,13 +4839,13 @@ class GoogleCloudDatacatalogV1DataplexSpec {
       };
 }
 
-/// Entry specification for a Dataplex table.
+/// Entry specification for a Dataplex Universal Catalog table.
 class GoogleCloudDatacatalogV1DataplexTableSpec {
-  /// Common Dataplex fields.
+  /// Common Dataplex Universal Catalog fields.
   GoogleCloudDatacatalogV1DataplexSpec? dataplexSpec;
 
-  /// List of external tables registered by Dataplex in other systems based on
-  /// the same underlying data.
+  /// List of external tables registered by Dataplex Universal Catalog in other
+  /// systems based on the same underlying data.
   ///
   /// External tables allow to query this data in those systems.
   core.List<GoogleCloudDatacatalogV1DataplexExternalTable>? externalTables;
@@ -5000,7 +5004,7 @@ class GoogleCloudDatacatalogV1Entry {
   /// - "BIGQUERY" : BigQuery.
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
   /// - "DATAPROC_METASTORE" : Dataproc Metastore.
-  /// - "DATAPLEX" : Dataplex.
+  /// - "DATAPLEX" : Dataplex Universal Catalog.
   /// - "CLOUD_SPANNER" : Cloud Spanner
   /// - "CLOUD_BIGTABLE" : Cloud Bigtable
   /// - "CLOUD_SQL" : Cloud Sql
@@ -5098,8 +5102,8 @@ class GoogleCloudDatacatalogV1Entry {
   /// - "DATA_SOURCE_CONNECTION" : Connection to a data source. For example, a
   /// BigQuery connection.
   /// - "ROUTINE" : Routine, for example, a BigQuery routine.
-  /// - "LAKE" : A Dataplex lake.
-  /// - "ZONE" : A Dataplex zone.
+  /// - "LAKE" : A Dataplex Universal Catalog lake.
+  /// - "ZONE" : A Dataplex Universal Catalog zone.
   /// - "SERVICE" : A service, for example, a Dataproc Metastore service.
   /// - "DATABASE_SCHEMA" : Schema within a relational database.
   /// - "DASHBOARD" : A Dashboard, for example from Looker.
@@ -5356,7 +5360,7 @@ class GoogleCloudDatacatalogV1EntryGroup {
   core.String? name;
 
   /// When set to \[true\], it means DataCatalog EntryGroup was transferred to
-  /// Dataplex Catalog Service.
+  /// Dataplex Universal Catalog.
   ///
   /// It makes EntryGroup and its Entries to be read-only in DataCatalog.
   /// However, new Tags on EntryGroup and its Entries can be created. After
@@ -5561,8 +5565,8 @@ class GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue {
 ///
 /// Valid only for entries with the 'FILESET' type.
 class GoogleCloudDatacatalogV1FilesetSpec {
-  /// Fields specific to a Dataplex fileset and present only in the Dataplex
-  /// fileset entries.
+  /// Fields specific to a Dataplex Universal Catalog fileset and present only
+  /// in the Dataplex Universal Catalog fileset entries.
   GoogleCloudDatacatalogV1DataplexFilesetSpec? dataplexFileset;
 
   GoogleCloudDatacatalogV1FilesetSpec({
@@ -5630,8 +5634,8 @@ class GoogleCloudDatacatalogV1GcsFilesetSpec {
   /// Patterns to identify a set of files in Google Cloud Storage.
   ///
   /// For more information, see
-  /// [Wildcard Names](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames).
-  /// Note: Currently, bucket wildcards are not supported. Examples of valid
+  /// [Wildcard Names](https://cloud.google.com/storage/docs/wildcards). Note:
+  /// Currently, bucket wildcards are not supported. Examples of valid
   /// `file_patterns`: * `gs://bucket_name/dir / * `: matches all files in
   /// `bucket_name/dir` directory * `gs://bucket_name/dir / * *`: matches all
   /// files in `bucket_name/dir` and all subdirectories *
@@ -5684,8 +5688,8 @@ class GoogleCloudDatacatalogV1ImportEntriesRequest {
   /// Path to a Cloud Storage bucket that contains a dump ready for ingestion.
   core.String? gcsBucketPath;
 
-  /// (Optional) Dataplex task job id, if specified will be used as part of
-  /// ImportEntries LRO ID
+  /// (Optional) Dataplex Universal Catalog task job id, if specified will be
+  /// used as part of ImportEntries LRO ID
   ///
   /// Optional.
   core.String? jobId;
@@ -6005,11 +6009,66 @@ class GoogleCloudDatacatalogV1LookerSystemSpec {
       };
 }
 
-/// The configuration related to the migration to Dataplex applied to an
-/// organization or project.
+/// The configuration related to the migration to Dataplex Universal Catalog
+/// applied to an organization or project.
 ///
 /// It is the response message for SetConfig and RetrieveEffectiveConfig.
-typedef GoogleCloudDatacatalogV1MigrationConfig = $Shared12;
+class GoogleCloudDatacatalogV1MigrationConfig {
+  /// Opt-in status for the UI switch to Dataplex Universal Catalog.
+  /// Possible string values are:
+  /// - "CATALOG_UI_EXPERIENCE_UNSPECIFIED" : Default value. The default UI is
+  /// Dataplex Universal Catalog.
+  /// - "CATALOG_UI_EXPERIENCE_ENABLED" : The UI is Dataplex Universal Catalog.
+  /// - "CATALOG_UI_EXPERIENCE_DISABLED" : The UI is Data Catalog.
+  core.String? catalogUiExperience;
+
+  /// Opt-in status for the migration of Tag Templates to Dataplex Universal
+  /// Catalog.
+  /// Possible string values are:
+  /// - "TAG_TEMPLATE_MIGRATION_UNSPECIFIED" : Default value. Migration of Tag
+  /// Templates from Data Catalog to Dataplex Universal Catalog is not
+  /// performed. For projects that are under an organization, the project
+  /// inherits the organization's configuration when you set the project-level
+  /// configuration to unspecified (`TAG_TEMPLATE_MIGRATION_UNSPECIFIED`). This
+  /// means that when migration is enabled at the organization level, and the
+  /// project-level configuration is unspecified, the project is migrated. To
+  /// explicitly opt-in or opt-out individual projects, set the project-level
+  /// configuration to enabled (`TAG_TEMPLATE_MIGRATION_ENABLED`) or disabled
+  /// (`TAG_TEMPLATE_MIGRATION_DISABLED`).
+  /// - "TAG_TEMPLATE_MIGRATION_ENABLED" : Migration of Tag Templates from Data
+  /// Catalog to Dataplex Universal Catalog is enabled.
+  /// - "TAG_TEMPLATE_MIGRATION_DISABLED" : Migration of Tag Templates from Data
+  /// Catalog to Dataplex Universal Catalog is disabled.
+  core.String? tagTemplateMigration;
+
+  /// The time when the Tag Template migration was enabled.
+  ///
+  /// If the Tag Template migration is not enabled, this field is not set.
+  core.String? templateMigrationEnabledTime;
+
+  GoogleCloudDatacatalogV1MigrationConfig({
+    this.catalogUiExperience,
+    this.tagTemplateMigration,
+    this.templateMigrationEnabledTime,
+  });
+
+  GoogleCloudDatacatalogV1MigrationConfig.fromJson(core.Map json_)
+      : this(
+          catalogUiExperience: json_['catalogUiExperience'] as core.String?,
+          tagTemplateMigration: json_['tagTemplateMigration'] as core.String?,
+          templateMigrationEnabledTime:
+              json_['templateMigrationEnabledTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (catalogUiExperience != null)
+          'catalogUiExperience': catalogUiExperience!,
+        if (tagTemplateMigration != null)
+          'tagTemplateMigration': tagTemplateMigration!,
+        if (templateMigrationEnabledTime != null)
+          'templateMigrationEnabledTime': templateMigrationEnabledTime!,
+      };
+}
 
 /// Specification that applies to a model.
 ///
@@ -6085,7 +6144,8 @@ class GoogleCloudDatacatalogV1ModifyEntryOverviewRequest {
 }
 
 /// The configuration related to the migration from Data Catalog to Dataplex
-/// that has been applied to an organization and any projects under it.
+/// Universal Catalog that has been applied to an organization and any projects
+/// under it.
 ///
 /// It is the response message for RetrieveConfig.
 class GoogleCloudDatacatalogV1OrganizationConfig {
@@ -6347,10 +6407,6 @@ class GoogleCloudDatacatalogV1PolicyTag {
 
 /// Request message for ReconcileTags.
 class GoogleCloudDatacatalogV1ReconcileTagsRequest {
-  /// If set to `true`, deletes entry tags related to a tag template not listed
-  /// in the tags source from an entry.
-  ///
-  /// If set to `false`, unlisted tags are retained.
   core.bool? forceDeleteMissing;
 
   /// The name of the tag template, which is used for reconciliation.
@@ -6862,7 +6918,7 @@ class GoogleCloudDatacatalogV1SearchCatalogResult {
   /// - "BIGQUERY" : BigQuery.
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
   /// - "DATAPROC_METASTORE" : Dataproc Metastore.
-  /// - "DATAPLEX" : Dataplex.
+  /// - "DATAPLEX" : Dataplex Universal Catalog.
   /// - "CLOUD_SPANNER" : Cloud Spanner
   /// - "CLOUD_BIGTABLE" : Cloud Bigtable
   /// - "CLOUD_SQL" : Cloud Sql
@@ -7086,7 +7142,52 @@ class GoogleCloudDatacatalogV1ServiceSpec {
 }
 
 /// Request message for SetConfig.
-typedef GoogleCloudDatacatalogV1SetConfigRequest = $Shared12;
+class GoogleCloudDatacatalogV1SetConfigRequest {
+  /// Opt-in status for the UI switch to Dataplex Universal Catalog.
+  /// Possible string values are:
+  /// - "CATALOG_UI_EXPERIENCE_UNSPECIFIED" : Default value. The default UI is
+  /// Dataplex Universal Catalog.
+  /// - "CATALOG_UI_EXPERIENCE_ENABLED" : The UI is Dataplex Universal Catalog.
+  /// - "CATALOG_UI_EXPERIENCE_DISABLED" : The UI is Data Catalog.
+  core.String? catalogUiExperience;
+
+  /// Opt-in status for the migration of Tag Templates to Dataplex Universal
+  /// Catalog.
+  /// Possible string values are:
+  /// - "TAG_TEMPLATE_MIGRATION_UNSPECIFIED" : Default value. Migration of Tag
+  /// Templates from Data Catalog to Dataplex Universal Catalog is not
+  /// performed. For projects that are under an organization, the project
+  /// inherits the organization's configuration when you set the project-level
+  /// configuration to unspecified (`TAG_TEMPLATE_MIGRATION_UNSPECIFIED`). This
+  /// means that when migration is enabled at the organization level, and the
+  /// project-level configuration is unspecified, the project is migrated. To
+  /// explicitly opt-in or opt-out individual projects, set the project-level
+  /// configuration to enabled (`TAG_TEMPLATE_MIGRATION_ENABLED`) or disabled
+  /// (`TAG_TEMPLATE_MIGRATION_DISABLED`).
+  /// - "TAG_TEMPLATE_MIGRATION_ENABLED" : Migration of Tag Templates from Data
+  /// Catalog to Dataplex Universal Catalog is enabled.
+  /// - "TAG_TEMPLATE_MIGRATION_DISABLED" : Migration of Tag Templates from Data
+  /// Catalog to Dataplex Universal Catalog is disabled.
+  core.String? tagTemplateMigration;
+
+  GoogleCloudDatacatalogV1SetConfigRequest({
+    this.catalogUiExperience,
+    this.tagTemplateMigration,
+  });
+
+  GoogleCloudDatacatalogV1SetConfigRequest.fromJson(core.Map json_)
+      : this(
+          catalogUiExperience: json_['catalogUiExperience'] as core.String?,
+          tagTemplateMigration: json_['tagTemplateMigration'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (catalogUiExperience != null)
+          'catalogUiExperience': catalogUiExperience!,
+        if (tagTemplateMigration != null)
+          'tagTemplateMigration': tagTemplateMigration!,
+      };
+}
 
 /// Specification that applies to entries that are part `SQL_DATABASE` system
 /// (user_specified_type)
@@ -7259,14 +7360,15 @@ class GoogleCloudDatacatalogV1Tag {
   /// Output only.
   /// Possible string values are:
   /// - "DATAPLEX_TRANSFER_STATUS_UNSPECIFIED" : Default value. TagTemplate and
-  /// its tags are only visible and editable in DataCatalog.
+  /// its tags are only visible and editable in Data Catalog.
   /// - "MIGRATED" : TagTemplate and its tags are auto-copied to Dataplex
-  /// service. Visible in both services. Editable in DataCatalog, read-only in
-  /// Dataplex. Deprecated: Individual TagTemplate migration is deprecated in
-  /// favor of organization or project wide TagTemplate migration opt-in.
+  /// Universal Catalog service. Visible in both services. Editable in Data
+  /// Catalog, read-only in Dataplex Universal Catalog. Deprecated: Individual
+  /// TagTemplate migration is deprecated in favor of organization or project
+  /// wide TagTemplate migration opt-in.
   /// - "TRANSFERRED" : TagTemplate and its tags are auto-copied to Dataplex
-  /// service. Visible in both services. Editable in Dataplex, read-only in
-  /// DataCatalog.
+  /// Universal Catalog service. Visible in both services. Editable in Dataplex
+  /// Universal Catalog, read-only in Data Catalog.
   core.String? dataplexTransferStatus;
 
   /// Maps the ID of a tag field to its value and additional information about
@@ -7452,14 +7554,15 @@ class GoogleCloudDatacatalogV1TagTemplate {
   /// Optional.
   /// Possible string values are:
   /// - "DATAPLEX_TRANSFER_STATUS_UNSPECIFIED" : Default value. TagTemplate and
-  /// its tags are only visible and editable in DataCatalog.
+  /// its tags are only visible and editable in Data Catalog.
   /// - "MIGRATED" : TagTemplate and its tags are auto-copied to Dataplex
-  /// service. Visible in both services. Editable in DataCatalog, read-only in
-  /// Dataplex. Deprecated: Individual TagTemplate migration is deprecated in
-  /// favor of organization or project wide TagTemplate migration opt-in.
+  /// Universal Catalog service. Visible in both services. Editable in Data
+  /// Catalog, read-only in Dataplex Universal Catalog. Deprecated: Individual
+  /// TagTemplate migration is deprecated in favor of organization or project
+  /// wide TagTemplate migration opt-in.
   /// - "TRANSFERRED" : TagTemplate and its tags are auto-copied to Dataplex
-  /// service. Visible in both services. Editable in Dataplex, read-only in
-  /// DataCatalog.
+  /// Universal Catalog service. Visible in both services. Editable in Dataplex
+  /// Universal Catalog, read-only in Data Catalog.
   core.String? dataplexTransferStatus;
 
   /// Display name for this template.
@@ -7713,7 +7816,7 @@ class GoogleCloudDatacatalogV1TaxonomyService {
   /// The Google Cloud service name.
   /// Possible string values are:
   /// - "MANAGING_SYSTEM_UNSPECIFIED" : Default value
-  /// - "MANAGING_SYSTEM_DATAPLEX" : Dataplex.
+  /// - "MANAGING_SYSTEM_DATAPLEX" : Dataplex Universal Catalog.
   /// - "MANAGING_SYSTEM_OTHER" : Other
   core.String? name;
 

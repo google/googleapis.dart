@@ -34,7 +34,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250227",
+    "revision": "20250411",
     "rootUrl": "https://dns.googleapis.com/",
     "servicePath": "",
     "title": "Cloud DNS API",
@@ -2429,6 +2429,10 @@
         "ManagedZoneForwardingConfigNameServerTarget": {
             "id": "ManagedZoneForwardingConfigNameServerTarget",
             "properties": {
+                "domainName": {
+                    "description": "Fully qualified domain name for the forwarding target.",
+                    "type": "string"
+                },
                 "forwardingPath": {
                     "description": "Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.",
                     "enum": [

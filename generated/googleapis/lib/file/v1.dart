@@ -124,12 +124,13 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
-  ///
-  /// [includeUnrevealedLocations] - If true, the returned list will include
-  /// locations which are not yet revealed.
   ///
   /// [pageSize] - The maximum number of results to return. If not set, the
   /// service selects a default.
@@ -149,16 +150,15 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
-    core.bool? includeUnrevealedLocations,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
-      if (includeUnrevealedLocations != null)
-        'includeUnrevealedLocations': ['${includeUnrevealedLocations}'],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -2392,11 +2392,17 @@ class ReplicaConfig {
   /// Output only.
   core.List<core.String>? stateReasons;
 
+  /// The time when the replica state was updated.
+  ///
+  /// Output only.
+  core.String? stateUpdateTime;
+
   ReplicaConfig({
     this.lastActiveSyncTime,
     this.peerInstance,
     this.state,
     this.stateReasons,
+    this.stateUpdateTime,
   });
 
   ReplicaConfig.fromJson(core.Map json_)
@@ -2407,6 +2413,7 @@ class ReplicaConfig {
           stateReasons: (json_['stateReasons'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          stateUpdateTime: json_['stateUpdateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2415,6 +2422,7 @@ class ReplicaConfig {
         if (peerInstance != null) 'peerInstance': peerInstance!,
         if (state != null) 'state': state!,
         if (stateReasons != null) 'stateReasons': stateReasons!,
+        if (stateUpdateTime != null) 'stateUpdateTime': stateUpdateTime!,
       };
 }
 

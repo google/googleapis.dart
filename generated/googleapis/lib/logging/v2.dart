@@ -556,6 +556,10 @@ class BillingAccountsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
   /// documented in more detail in AIP-160 (https://google.aip.dev/160).
@@ -578,12 +582,14 @@ class BillingAccountsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1039,9 +1045,6 @@ class BillingAccountsLocationsBucketsLinksResource {
   /// [parent] - Required. The full resource name of the bucket to create a link
   /// for.
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -2041,7 +2044,7 @@ class BillingAccountsLogsResource {
   BillingAccountsLogsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Deletes all the log entries in a log for the _Default Log Bucket.
+  /// Deletes all the log entries in a log for the global _Default Log Bucket.
   ///
   /// The log reappears if it receives new entries. Log entries written shortly
   /// before the delete operation might not be deleted. Entries received after
@@ -3394,6 +3397,10 @@ class FoldersLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
   /// documented in more detail in AIP-160 (https://google.aip.dev/160).
@@ -3416,12 +3423,14 @@ class FoldersLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3877,9 +3886,6 @@ class FoldersLocationsBucketsLinksResource {
   /// [parent] - Required. The full resource name of the bucket to create a link
   /// for.
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -5257,7 +5263,7 @@ class FoldersLogsResource {
 
   FoldersLogsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes all the log entries in a log for the _Default Log Bucket.
+  /// Deletes all the log entries in a log for the global _Default Log Bucket.
   ///
   /// The log reappears if it receives new entries. Log entries written shortly
   /// before the delete operation might not be deleted. Entries received after
@@ -5819,6 +5825,10 @@ class LocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
   /// documented in more detail in AIP-160 (https://google.aip.dev/160).
@@ -5841,12 +5851,14 @@ class LocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -6301,9 +6313,6 @@ class LocationsBucketsLinksResource {
   /// [parent] - Required. The full resource name of the bucket to create a link
   /// for.
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -7024,7 +7033,7 @@ class LogsResource {
 
   LogsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes all the log entries in a log for the _Default Log Bucket.
+  /// Deletes all the log entries in a log for the global _Default Log Bucket.
   ///
   /// The log reappears if it receives new entries. Log entries written shortly
   /// before the delete operation might not be deleted. Entries received after
@@ -7730,6 +7739,10 @@ class OrganizationsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
   /// documented in more detail in AIP-160 (https://google.aip.dev/160).
@@ -7752,12 +7765,14 @@ class OrganizationsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -8213,9 +8228,6 @@ class OrganizationsLocationsBucketsLinksResource {
   /// [parent] - Required. The full resource name of the bucket to create a link
   /// for.
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -9593,7 +9605,7 @@ class OrganizationsLogsResource {
 
   OrganizationsLogsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes all the log entries in a log for the _Default Log Bucket.
+  /// Deletes all the log entries in a log for the global _Default Log Bucket.
   ///
   /// The log reappears if it receives new entries. Log entries written shortly
   /// before the delete operation might not be deleted. Entries received after
@@ -10514,6 +10526,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
   /// documented in more detail in AIP-160 (https://google.aip.dev/160).
@@ -10536,12 +10552,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -10997,9 +11015,6 @@ class ProjectsLocationsBucketsLinksResource {
   /// [parent] - Required. The full resource name of the bucket to create a link
   /// for.
   /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
-  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
@@ -12377,7 +12392,7 @@ class ProjectsLogsResource {
 
   ProjectsLogsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes all the log entries in a log for the _Default Log Bucket.
+  /// Deletes all the log entries in a log for the global _Default Log Bucket.
   ///
   /// The log reappears if it receives new entries. Log entries written shortly
   /// before the delete operation might not be deleted. Entries received after
@@ -13642,6 +13657,153 @@ class V2Resource {
     );
     return Settings.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+}
+
+/// Metadata associated with App Hub.
+class AppHub {
+  /// Metadata associated with the application.
+  AppHubApplication? application;
+
+  /// Metadata associated with the service.
+  AppHubService? service;
+
+  /// Metadata associated with the workload.
+  AppHubWorkload? workload;
+
+  AppHub({
+    this.application,
+    this.service,
+    this.workload,
+  });
+
+  AppHub.fromJson(core.Map json_)
+      : this(
+          application: json_.containsKey('application')
+              ? AppHubApplication.fromJson(
+                  json_['application'] as core.Map<core.String, core.dynamic>)
+              : null,
+          service: json_.containsKey('service')
+              ? AppHubService.fromJson(
+                  json_['service'] as core.Map<core.String, core.dynamic>)
+              : null,
+          workload: json_.containsKey('workload')
+              ? AppHubWorkload.fromJson(
+                  json_['workload'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (application != null) 'application': application!,
+        if (service != null) 'service': service!,
+        if (workload != null) 'workload': workload!,
+      };
+}
+
+/// Resource identifiers associated with an AppHub application AppHub resources
+/// are of the form projects//locations//applications/
+/// projects//locations//applications//services/
+/// projects//locations//applications//workloads/ These resources can be
+/// reconstructed from the components below.
+class AppHubApplication {
+  /// Resource container that owns the application.
+  ///
+  /// Example: "projects/management_project"
+  core.String? container;
+
+  /// Application Id.
+  ///
+  /// Example: "my-app"
+  core.String? id;
+
+  /// Location associated with the Application.
+  ///
+  /// Example: "us-east1"
+  core.String? location;
+
+  AppHubApplication({
+    this.container,
+    this.id,
+    this.location,
+  });
+
+  AppHubApplication.fromJson(core.Map json_)
+      : this(
+          container: json_['container'] as core.String?,
+          id: json_['id'] as core.String?,
+          location: json_['location'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (container != null) 'container': container!,
+        if (id != null) 'id': id!,
+        if (location != null) 'location': location!,
+      };
+}
+
+/// Metadata associated with an App Hub service.
+class AppHubService {
+  /// Service criticality type Example: "CRITICAL"
+  core.String? criticalityType;
+
+  /// Service environment type Example: "DEV"
+  core.String? environmentType;
+
+  /// Service Id.
+  ///
+  /// Example: "my-service"
+  core.String? id;
+
+  AppHubService({
+    this.criticalityType,
+    this.environmentType,
+    this.id,
+  });
+
+  AppHubService.fromJson(core.Map json_)
+      : this(
+          criticalityType: json_['criticalityType'] as core.String?,
+          environmentType: json_['environmentType'] as core.String?,
+          id: json_['id'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (criticalityType != null) 'criticalityType': criticalityType!,
+        if (environmentType != null) 'environmentType': environmentType!,
+        if (id != null) 'id': id!,
+      };
+}
+
+/// Metadata associated with an App Hub workload.
+class AppHubWorkload {
+  /// Workload criticality type Example: "CRITICAL"
+  core.String? criticalityType;
+
+  /// Workload environment type Example: "DEV"
+  core.String? environmentType;
+
+  /// Workload Id.
+  ///
+  /// Example: "my-workload"
+  core.String? id;
+
+  AppHubWorkload({
+    this.criticalityType,
+    this.environmentType,
+    this.id,
+  });
+
+  AppHubWorkload.fromJson(core.Map json_)
+      : this(
+          criticalityType: json_['criticalityType'] as core.String?,
+          environmentType: json_['environmentType'] as core.String?,
+          id: json_['id'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (criticalityType != null) 'criticalityType': criticalityType!,
+        if (environmentType != null) 'environmentType': environmentType!,
+        if (id != null) 'id': id!,
+      };
 }
 
 /// Describes a BigQuery dataset that was created by a link.
@@ -15183,6 +15345,22 @@ class LogBucket {
 
 /// An individual entry in a log.
 class LogEntry {
+  /// AppHub application metadata associated with this LogEntry.
+  ///
+  /// May be empty if there is no associated AppHub application or multiple
+  /// associated applications (such as for VPC flow logs)
+  ///
+  /// Output only.
+  AppHub? apphub;
+
+  /// AppHub application metadata associated with the destination application.
+  ///
+  /// This is only populated if the log represented "edge"-like data (such as
+  /// for VPC flow logs) with a source and destination.
+  ///
+  /// Output only.
+  AppHub? apphubDestination;
+
   /// The Error Reporting (https://cloud.google.com/error-reporting) error
   /// groups associated with this LogEntry.
   ///
@@ -15396,6 +15574,8 @@ class LogEntry {
   core.bool? traceSampled;
 
   LogEntry({
+    this.apphub,
+    this.apphubDestination,
     this.errorGroups,
     this.httpRequest,
     this.insertId,
@@ -15419,6 +15599,14 @@ class LogEntry {
 
   LogEntry.fromJson(core.Map json_)
       : this(
+          apphub: json_.containsKey('apphub')
+              ? AppHub.fromJson(
+                  json_['apphub'] as core.Map<core.String, core.dynamic>)
+              : null,
+          apphubDestination: json_.containsKey('apphubDestination')
+              ? AppHub.fromJson(json_['apphubDestination']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           errorGroups: (json_['errorGroups'] as core.List?)
               ?.map((value) => LogErrorGroup.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -15472,6 +15660,8 @@ class LogEntry {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (apphub != null) 'apphub': apphub!,
+        if (apphubDestination != null) 'apphubDestination': apphubDestination!,
         if (errorGroups != null) 'errorGroups': errorGroups!,
         if (httpRequest != null) 'httpRequest': httpRequest!,
         if (insertId != null) 'insertId': insertId!,
@@ -15669,7 +15859,7 @@ class LogExclusion {
   /// digits, underscores, hyphens, and periods. First character has to be
   /// alphanumeric.
   ///
-  /// Output only.
+  /// Optional.
   core.String? name;
 
   /// The last update timestamp of the exclusion.This field may not be present
@@ -16029,8 +16219,8 @@ class LogSink {
   core.bool? disabled;
 
   /// Log entries that match any of these exclusion filters will not be
-  /// exported.If a log entry is matched by both filter and one of
-  /// exclusion_filters it will not be exported.
+  /// exported.If a log entry is matched by both filter and one of exclusions it
+  /// will not be exported.
   ///
   /// Optional.
   core.List<LogExclusion>? exclusions;
@@ -16082,7 +16272,7 @@ class LogSink {
   /// lower-case alphanumeric characters, underscores, hyphens, periods.First
   /// character has to be alphanumeric.
   ///
-  /// Output only.
+  /// Optional.
   core.String? name;
 
   /// This field is unused.
@@ -16976,7 +17166,7 @@ class RecentQuery {
   /// (https://cloud.google.com/logging/docs/region-support)The QUERY_ID is a
   /// system generated alphanumeric ID.
   ///
-  /// Output only.
+  /// Optional.
   core.String? name;
 
   /// Analytics query that can be executed in Log Analytics.

@@ -1714,6 +1714,7 @@ api.SocketAddress buildSocketAddress() {
     o.address = 'foo';
     o.ipv4Compat = true;
     o.namedPort = 'foo';
+    o.networkNamespaceFilepath = 'foo';
     o.portValue = 42;
     o.protocol = 'foo';
     o.resolverName = 'foo';
@@ -1732,6 +1733,10 @@ void checkSocketAddress(api.SocketAddress o) {
     unittest.expect(o.ipv4Compat!, unittest.isTrue);
     unittest.expect(
       o.namedPort!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.networkNamespaceFilepath!,
       unittest.equals('foo'),
     );
     unittest.expect(

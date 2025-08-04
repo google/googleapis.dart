@@ -511,6 +511,33 @@ void checkItem(api.Item o) {
   buildCounterItem--;
 }
 
+core.int buildCounterMetadata = 0;
+api.Metadata buildMetadata() {
+  final o = api.Metadata();
+  buildCounterMetadata++;
+  if (buildCounterMetadata < 3) {
+    o.firstIncompleteDate = 'foo';
+    o.firstIncompleteHour = 'foo';
+  }
+  buildCounterMetadata--;
+  return o;
+}
+
+void checkMetadata(api.Metadata o) {
+  buildCounterMetadata++;
+  if (buildCounterMetadata < 3) {
+    unittest.expect(
+      o.firstIncompleteDate!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.firstIncompleteHour!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMetadata--;
+}
+
 core.int buildCounterMobileFriendlyIssue = 0;
 api.MobileFriendlyIssue buildMobileFriendlyIssue() {
   final o = api.MobileFriendlyIssue();
@@ -863,6 +890,7 @@ api.SearchAnalyticsQueryResponse buildSearchAnalyticsQueryResponse() {
   final o = api.SearchAnalyticsQueryResponse();
   buildCounterSearchAnalyticsQueryResponse++;
   if (buildCounterSearchAnalyticsQueryResponse < 3) {
+    o.metadata = buildMetadata();
     o.responseAggregationType = 'foo';
     o.rows = buildUnnamed13();
   }
@@ -873,6 +901,7 @@ api.SearchAnalyticsQueryResponse buildSearchAnalyticsQueryResponse() {
 void checkSearchAnalyticsQueryResponse(api.SearchAnalyticsQueryResponse o) {
   buildCounterSearchAnalyticsQueryResponse++;
   if (buildCounterSearchAnalyticsQueryResponse < 3) {
+    checkMetadata(o.metadata!);
     unittest.expect(
       o.responseAggregationType!,
       unittest.equals('foo'),
@@ -1240,6 +1269,16 @@ void main() {
       final od =
           api.Item.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkItem(od);
+    });
+  });
+
+  unittest.group('obj-schema-Metadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Metadata.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkMetadata(od);
     });
   });
 

@@ -65,6 +65,82 @@ void checkAssignment(api.Assignment o) {
   buildCounterAssignment--;
 }
 
+core.List<api.AuditLogConfig> buildUnnamed0() => [
+      buildAuditLogConfig(),
+      buildAuditLogConfig(),
+    ];
+
+void checkUnnamed0(core.List<api.AuditLogConfig> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAuditLogConfig(o[0]);
+  checkAuditLogConfig(o[1]);
+}
+
+core.int buildCounterAuditConfig = 0;
+api.AuditConfig buildAuditConfig() {
+  final o = api.AuditConfig();
+  buildCounterAuditConfig++;
+  if (buildCounterAuditConfig < 3) {
+    o.auditLogConfigs = buildUnnamed0();
+    o.service = 'foo';
+  }
+  buildCounterAuditConfig--;
+  return o;
+}
+
+void checkAuditConfig(api.AuditConfig o) {
+  buildCounterAuditConfig++;
+  if (buildCounterAuditConfig < 3) {
+    checkUnnamed0(o.auditLogConfigs!);
+    unittest.expect(
+      o.service!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAuditConfig--;
+}
+
+core.List<core.String> buildUnnamed1() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed1(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterAuditLogConfig = 0;
+api.AuditLogConfig buildAuditLogConfig() {
+  final o = api.AuditLogConfig();
+  buildCounterAuditLogConfig++;
+  if (buildCounterAuditLogConfig < 3) {
+    o.exemptedMembers = buildUnnamed1();
+    o.logType = 'foo';
+  }
+  buildCounterAuditLogConfig--;
+  return o;
+}
+
+void checkAuditLogConfig(api.AuditLogConfig o) {
+  buildCounterAuditLogConfig++;
+  if (buildCounterAuditLogConfig < 3) {
+    checkUnnamed1(o.exemptedMembers!);
+    unittest.expect(
+      o.logType!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterAuditLogConfig--;
+}
+
 core.int buildCounterAutoscale = 0;
 api.Autoscale buildAutoscale() {
   final o = api.Autoscale();
@@ -92,12 +168,12 @@ void checkAutoscale(api.Autoscale o) {
   buildCounterAutoscale--;
 }
 
-core.List<api.TableReference> buildUnnamed0() => [
+core.List<api.TableReference> buildUnnamed2() => [
       buildTableReference(),
       buildTableReference(),
     ];
 
-void checkUnnamed0(core.List<api.TableReference> o) {
+void checkUnnamed2(core.List<api.TableReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableReference(o[0]);
   checkTableReference(o[1]);
@@ -109,7 +185,7 @@ api.BiReservation buildBiReservation() {
   buildCounterBiReservation++;
   if (buildCounterBiReservation < 3) {
     o.name = 'foo';
-    o.preferredTables = buildUnnamed0();
+    o.preferredTables = buildUnnamed2();
     o.size = 'foo';
     o.updateTime = 'foo';
   }
@@ -124,7 +200,7 @@ void checkBiReservation(api.BiReservation o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed0(o.preferredTables!);
+    checkUnnamed2(o.preferredTables!);
     unittest.expect(
       o.size!,
       unittest.equals('foo'),
@@ -135,6 +211,49 @@ void checkBiReservation(api.BiReservation o) {
     );
   }
   buildCounterBiReservation--;
+}
+
+core.List<core.String> buildUnnamed3() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed3(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterBinding = 0;
+api.Binding buildBinding() {
+  final o = api.Binding();
+  buildCounterBinding++;
+  if (buildCounterBinding < 3) {
+    o.condition = buildExpr();
+    o.members = buildUnnamed3();
+    o.role = 'foo';
+  }
+  buildCounterBinding--;
+  return o;
+}
+
+void checkBinding(api.Binding o) {
+  buildCounterBinding++;
+  if (buildCounterBinding < 3) {
+    checkExpr(o.condition!);
+    checkUnnamed3(o.members!);
+    unittest.expect(
+      o.role!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBinding--;
 }
 
 core.int buildCounterCapacityCommitment = 0;
@@ -215,27 +334,71 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
+core.int buildCounterExpr = 0;
+api.Expr buildExpr() {
+  final o = api.Expr();
+  buildCounterExpr++;
+  if (buildCounterExpr < 3) {
+    o.description = 'foo';
+    o.expression = 'foo';
+    o.location = 'foo';
+    o.title = 'foo';
+  }
+  buildCounterExpr--;
+  return o;
+}
+
+void checkExpr(api.Expr o) {
+  buildCounterExpr++;
+  if (buildCounterExpr < 3) {
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.expression!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.location!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.title!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterExpr--;
+}
+
 core.int buildCounterFailoverReservationRequest = 0;
 api.FailoverReservationRequest buildFailoverReservationRequest() {
   final o = api.FailoverReservationRequest();
   buildCounterFailoverReservationRequest++;
-  if (buildCounterFailoverReservationRequest < 3) {}
+  if (buildCounterFailoverReservationRequest < 3) {
+    o.failoverMode = 'foo';
+  }
   buildCounterFailoverReservationRequest--;
   return o;
 }
 
 void checkFailoverReservationRequest(api.FailoverReservationRequest o) {
   buildCounterFailoverReservationRequest++;
-  if (buildCounterFailoverReservationRequest < 3) {}
+  if (buildCounterFailoverReservationRequest < 3) {
+    unittest.expect(
+      o.failoverMode!,
+      unittest.equals('foo'),
+    );
+  }
   buildCounterFailoverReservationRequest--;
 }
 
-core.List<api.Assignment> buildUnnamed1() => [
+core.List<api.Assignment> buildUnnamed4() => [
       buildAssignment(),
       buildAssignment(),
     ];
 
-void checkUnnamed1(core.List<api.Assignment> o) {
+void checkUnnamed4(core.List<api.Assignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssignment(o[0]);
   checkAssignment(o[1]);
@@ -246,7 +409,7 @@ api.ListAssignmentsResponse buildListAssignmentsResponse() {
   final o = api.ListAssignmentsResponse();
   buildCounterListAssignmentsResponse++;
   if (buildCounterListAssignmentsResponse < 3) {
-    o.assignments = buildUnnamed1();
+    o.assignments = buildUnnamed4();
     o.nextPageToken = 'foo';
   }
   buildCounterListAssignmentsResponse--;
@@ -256,7 +419,7 @@ api.ListAssignmentsResponse buildListAssignmentsResponse() {
 void checkListAssignmentsResponse(api.ListAssignmentsResponse o) {
   buildCounterListAssignmentsResponse++;
   if (buildCounterListAssignmentsResponse < 3) {
-    checkUnnamed1(o.assignments!);
+    checkUnnamed4(o.assignments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -265,12 +428,12 @@ void checkListAssignmentsResponse(api.ListAssignmentsResponse o) {
   buildCounterListAssignmentsResponse--;
 }
 
-core.List<api.CapacityCommitment> buildUnnamed2() => [
+core.List<api.CapacityCommitment> buildUnnamed5() => [
       buildCapacityCommitment(),
       buildCapacityCommitment(),
     ];
 
-void checkUnnamed2(core.List<api.CapacityCommitment> o) {
+void checkUnnamed5(core.List<api.CapacityCommitment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCapacityCommitment(o[0]);
   checkCapacityCommitment(o[1]);
@@ -281,7 +444,7 @@ api.ListCapacityCommitmentsResponse buildListCapacityCommitmentsResponse() {
   final o = api.ListCapacityCommitmentsResponse();
   buildCounterListCapacityCommitmentsResponse++;
   if (buildCounterListCapacityCommitmentsResponse < 3) {
-    o.capacityCommitments = buildUnnamed2();
+    o.capacityCommitments = buildUnnamed5();
     o.nextPageToken = 'foo';
   }
   buildCounterListCapacityCommitmentsResponse--;
@@ -292,7 +455,7 @@ void checkListCapacityCommitmentsResponse(
     api.ListCapacityCommitmentsResponse o) {
   buildCounterListCapacityCommitmentsResponse++;
   if (buildCounterListCapacityCommitmentsResponse < 3) {
-    checkUnnamed2(o.capacityCommitments!);
+    checkUnnamed5(o.capacityCommitments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -301,12 +464,47 @@ void checkListCapacityCommitmentsResponse(
   buildCounterListCapacityCommitmentsResponse--;
 }
 
-core.List<api.Reservation> buildUnnamed3() => [
+core.List<api.ReservationGroup> buildUnnamed6() => [
+      buildReservationGroup(),
+      buildReservationGroup(),
+    ];
+
+void checkUnnamed6(core.List<api.ReservationGroup> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkReservationGroup(o[0]);
+  checkReservationGroup(o[1]);
+}
+
+core.int buildCounterListReservationGroupsResponse = 0;
+api.ListReservationGroupsResponse buildListReservationGroupsResponse() {
+  final o = api.ListReservationGroupsResponse();
+  buildCounterListReservationGroupsResponse++;
+  if (buildCounterListReservationGroupsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.reservationGroups = buildUnnamed6();
+  }
+  buildCounterListReservationGroupsResponse--;
+  return o;
+}
+
+void checkListReservationGroupsResponse(api.ListReservationGroupsResponse o) {
+  buildCounterListReservationGroupsResponse++;
+  if (buildCounterListReservationGroupsResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed6(o.reservationGroups!);
+  }
+  buildCounterListReservationGroupsResponse--;
+}
+
+core.List<api.Reservation> buildUnnamed7() => [
       buildReservation(),
       buildReservation(),
     ];
 
-void checkUnnamed3(core.List<api.Reservation> o) {
+void checkUnnamed7(core.List<api.Reservation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReservation(o[0]);
   checkReservation(o[1]);
@@ -318,7 +516,7 @@ api.ListReservationsResponse buildListReservationsResponse() {
   buildCounterListReservationsResponse++;
   if (buildCounterListReservationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.reservations = buildUnnamed3();
+    o.reservations = buildUnnamed7();
   }
   buildCounterListReservationsResponse--;
   return o;
@@ -331,17 +529,17 @@ void checkListReservationsResponse(api.ListReservationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed3(o.reservations!);
+    checkUnnamed7(o.reservations!);
   }
   buildCounterListReservationsResponse--;
 }
 
-core.List<core.String> buildUnnamed4() => [
+core.List<core.String> buildUnnamed8() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed4(core.List<core.String> o) {
+void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -358,7 +556,8 @@ api.MergeCapacityCommitmentsRequest buildMergeCapacityCommitmentsRequest() {
   final o = api.MergeCapacityCommitmentsRequest();
   buildCounterMergeCapacityCommitmentsRequest++;
   if (buildCounterMergeCapacityCommitmentsRequest < 3) {
-    o.capacityCommitmentIds = buildUnnamed4();
+    o.capacityCommitmentId = 'foo';
+    o.capacityCommitmentIds = buildUnnamed8();
   }
   buildCounterMergeCapacityCommitmentsRequest--;
   return o;
@@ -368,7 +567,11 @@ void checkMergeCapacityCommitmentsRequest(
     api.MergeCapacityCommitmentsRequest o) {
   buildCounterMergeCapacityCommitmentsRequest++;
   if (buildCounterMergeCapacityCommitmentsRequest < 3) {
-    checkUnnamed4(o.capacityCommitmentIds!);
+    unittest.expect(
+      o.capacityCommitmentId!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed8(o.capacityCommitmentIds!);
   }
   buildCounterMergeCapacityCommitmentsRequest--;
 }
@@ -400,6 +603,59 @@ void checkMoveAssignmentRequest(api.MoveAssignmentRequest o) {
   buildCounterMoveAssignmentRequest--;
 }
 
+core.List<api.AuditConfig> buildUnnamed9() => [
+      buildAuditConfig(),
+      buildAuditConfig(),
+    ];
+
+void checkUnnamed9(core.List<api.AuditConfig> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAuditConfig(o[0]);
+  checkAuditConfig(o[1]);
+}
+
+core.List<api.Binding> buildUnnamed10() => [
+      buildBinding(),
+      buildBinding(),
+    ];
+
+void checkUnnamed10(core.List<api.Binding> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkBinding(o[0]);
+  checkBinding(o[1]);
+}
+
+core.int buildCounterPolicy = 0;
+api.Policy buildPolicy() {
+  final o = api.Policy();
+  buildCounterPolicy++;
+  if (buildCounterPolicy < 3) {
+    o.auditConfigs = buildUnnamed9();
+    o.bindings = buildUnnamed10();
+    o.etag = 'foo';
+    o.version = 42;
+  }
+  buildCounterPolicy--;
+  return o;
+}
+
+void checkPolicy(api.Policy o) {
+  buildCounterPolicy++;
+  if (buildCounterPolicy < 3) {
+    checkUnnamed9(o.auditConfigs!);
+    checkUnnamed10(o.bindings!);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.version!,
+      unittest.equals(42),
+    );
+  }
+  buildCounterPolicy--;
+}
+
 core.int buildCounterReplicationStatus = 0;
 api.ReplicationStatus buildReplicationStatus() {
   final o = api.ReplicationStatus();
@@ -408,6 +664,7 @@ api.ReplicationStatus buildReplicationStatus() {
     o.error = buildStatus();
     o.lastErrorTime = 'foo';
     o.lastReplicationTime = 'foo';
+    o.softFailoverStartTime = 'foo';
   }
   buildCounterReplicationStatus--;
   return o;
@@ -425,16 +682,20 @@ void checkReplicationStatus(api.ReplicationStatus o) {
       o.lastReplicationTime!,
       unittest.equals('foo'),
     );
+    unittest.expect(
+      o.softFailoverStartTime!,
+      unittest.equals('foo'),
+    );
   }
   buildCounterReplicationStatus--;
 }
 
-core.Map<core.String, core.String> buildUnnamed5() => {
+core.Map<core.String, core.String> buildUnnamed11() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed5(core.Map<core.String, core.String> o) {
+void checkUnnamed11(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -456,13 +717,14 @@ api.Reservation buildReservation() {
     o.creationTime = 'foo';
     o.edition = 'foo';
     o.ignoreIdleSlots = true;
-    o.labels = buildUnnamed5();
+    o.labels = buildUnnamed11();
     o.maxSlots = 'foo';
     o.multiRegionAuxiliary = true;
     o.name = 'foo';
     o.originalPrimaryLocation = 'foo';
     o.primaryLocation = 'foo';
     o.replicationStatus = buildReplicationStatus();
+    o.reservationGroup = 'foo';
     o.scalingMode = 'foo';
     o.secondaryLocation = 'foo';
     o.slotCapacity = 'foo';
@@ -489,7 +751,7 @@ void checkReservation(api.Reservation o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.ignoreIdleSlots!, unittest.isTrue);
-    checkUnnamed5(o.labels!);
+    checkUnnamed11(o.labels!);
     unittest.expect(
       o.maxSlots!,
       unittest.equals('foo'),
@@ -508,6 +770,10 @@ void checkReservation(api.Reservation o) {
       unittest.equals('foo'),
     );
     checkReplicationStatus(o.replicationStatus!);
+    unittest.expect(
+      o.reservationGroup!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.scalingMode!,
       unittest.equals('foo'),
@@ -528,12 +794,34 @@ void checkReservation(api.Reservation o) {
   buildCounterReservation--;
 }
 
-core.List<api.Assignment> buildUnnamed6() => [
+core.int buildCounterReservationGroup = 0;
+api.ReservationGroup buildReservationGroup() {
+  final o = api.ReservationGroup();
+  buildCounterReservationGroup++;
+  if (buildCounterReservationGroup < 3) {
+    o.name = 'foo';
+  }
+  buildCounterReservationGroup--;
+  return o;
+}
+
+void checkReservationGroup(api.ReservationGroup o) {
+  buildCounterReservationGroup++;
+  if (buildCounterReservationGroup < 3) {
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterReservationGroup--;
+}
+
+core.List<api.Assignment> buildUnnamed12() => [
       buildAssignment(),
       buildAssignment(),
     ];
 
-void checkUnnamed6(core.List<api.Assignment> o) {
+void checkUnnamed12(core.List<api.Assignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssignment(o[0]);
   checkAssignment(o[1]);
@@ -544,7 +832,7 @@ api.SearchAllAssignmentsResponse buildSearchAllAssignmentsResponse() {
   final o = api.SearchAllAssignmentsResponse();
   buildCounterSearchAllAssignmentsResponse++;
   if (buildCounterSearchAllAssignmentsResponse < 3) {
-    o.assignments = buildUnnamed6();
+    o.assignments = buildUnnamed12();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchAllAssignmentsResponse--;
@@ -554,7 +842,7 @@ api.SearchAllAssignmentsResponse buildSearchAllAssignmentsResponse() {
 void checkSearchAllAssignmentsResponse(api.SearchAllAssignmentsResponse o) {
   buildCounterSearchAllAssignmentsResponse++;
   if (buildCounterSearchAllAssignmentsResponse < 3) {
-    checkUnnamed6(o.assignments!);
+    checkUnnamed12(o.assignments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
@@ -563,12 +851,12 @@ void checkSearchAllAssignmentsResponse(api.SearchAllAssignmentsResponse o) {
   buildCounterSearchAllAssignmentsResponse--;
 }
 
-core.List<api.Assignment> buildUnnamed7() => [
+core.List<api.Assignment> buildUnnamed13() => [
       buildAssignment(),
       buildAssignment(),
     ];
 
-void checkUnnamed7(core.List<api.Assignment> o) {
+void checkUnnamed13(core.List<api.Assignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAssignment(o[0]);
   checkAssignment(o[1]);
@@ -579,7 +867,7 @@ api.SearchAssignmentsResponse buildSearchAssignmentsResponse() {
   final o = api.SearchAssignmentsResponse();
   buildCounterSearchAssignmentsResponse++;
   if (buildCounterSearchAssignmentsResponse < 3) {
-    o.assignments = buildUnnamed7();
+    o.assignments = buildUnnamed13();
     o.nextPageToken = 'foo';
   }
   buildCounterSearchAssignmentsResponse--;
@@ -589,13 +877,37 @@ api.SearchAssignmentsResponse buildSearchAssignmentsResponse() {
 void checkSearchAssignmentsResponse(api.SearchAssignmentsResponse o) {
   buildCounterSearchAssignmentsResponse++;
   if (buildCounterSearchAssignmentsResponse < 3) {
-    checkUnnamed7(o.assignments!);
+    checkUnnamed13(o.assignments!);
     unittest.expect(
       o.nextPageToken!,
       unittest.equals('foo'),
     );
   }
   buildCounterSearchAssignmentsResponse--;
+}
+
+core.int buildCounterSetIamPolicyRequest = 0;
+api.SetIamPolicyRequest buildSetIamPolicyRequest() {
+  final o = api.SetIamPolicyRequest();
+  buildCounterSetIamPolicyRequest++;
+  if (buildCounterSetIamPolicyRequest < 3) {
+    o.policy = buildPolicy();
+    o.updateMask = 'foo';
+  }
+  buildCounterSetIamPolicyRequest--;
+  return o;
+}
+
+void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
+  buildCounterSetIamPolicyRequest++;
+  if (buildCounterSetIamPolicyRequest < 3) {
+    checkPolicy(o.policy!);
+    unittest.expect(
+      o.updateMask!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSetIamPolicyRequest--;
 }
 
 core.int buildCounterSplitCapacityCommitmentRequest = 0;
@@ -642,7 +954,7 @@ void checkSplitCapacityCommitmentResponse(
   buildCounterSplitCapacityCommitmentResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed8() => {
+core.Map<core.String, core.Object?> buildUnnamed14() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -655,7 +967,7 @@ core.Map<core.String, core.Object?> buildUnnamed8() => {
       },
     };
 
-void checkUnnamed8(core.Map<core.String, core.Object?> o) {
+void checkUnnamed14(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -687,15 +999,15 @@ void checkUnnamed8(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed9() => [
-      buildUnnamed8(),
-      buildUnnamed8(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed15() => [
+      buildUnnamed14(),
+      buildUnnamed14(),
     ];
 
-void checkUnnamed9(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed15(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed8(o[0]);
-  checkUnnamed8(o[1]);
+  checkUnnamed14(o[0]);
+  checkUnnamed14(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -704,7 +1016,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed9();
+    o.details = buildUnnamed15();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -718,7 +1030,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed9(o.details!);
+    checkUnnamed15(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -759,6 +1071,78 @@ void checkTableReference(api.TableReference o) {
   buildCounterTableReference--;
 }
 
+core.List<core.String> buildUnnamed16() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed16(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed16();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed16(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed17() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed17(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.int buildCounterTestIamPermissionsResponse = 0;
+api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
+  final o = api.TestIamPermissionsResponse();
+  buildCounterTestIamPermissionsResponse++;
+  if (buildCounterTestIamPermissionsResponse < 3) {
+    o.permissions = buildUnnamed17();
+  }
+  buildCounterTestIamPermissionsResponse--;
+  return o;
+}
+
+void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
+  buildCounterTestIamPermissionsResponse++;
+  if (buildCounterTestIamPermissionsResponse < 3) {
+    checkUnnamed17(o.permissions!);
+  }
+  buildCounterTestIamPermissionsResponse--;
+}
+
 void main() {
   unittest.group('obj-schema-Assignment', () {
     unittest.test('to-json--from-json', () async {
@@ -767,6 +1151,26 @@ void main() {
       final od =
           api.Assignment.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAssignment(od);
+    });
+  });
+
+  unittest.group('obj-schema-AuditConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAuditConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AuditConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAuditConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-AuditLogConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAuditLogConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AuditLogConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkAuditLogConfig(od);
     });
   });
 
@@ -790,6 +1194,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Binding', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBinding();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Binding.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkBinding(od);
+    });
+  });
+
   unittest.group('obj-schema-CapacityCommitment', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCapacityCommitment();
@@ -807,6 +1221,16 @@ void main() {
       final od =
           api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od);
+    });
+  });
+
+  unittest.group('obj-schema-Expr', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExpr();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Expr.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkExpr(od);
     });
   });
 
@@ -840,6 +1264,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListReservationGroupsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListReservationGroupsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListReservationGroupsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListReservationGroupsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListReservationsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListReservationsResponse();
@@ -870,6 +1304,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Policy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkPolicy(od);
+    });
+  });
+
   unittest.group('obj-schema-ReplicationStatus', () {
     unittest.test('to-json--from-json', () async {
       final o = buildReplicationStatus();
@@ -890,6 +1334,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ReservationGroup', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReservationGroup();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReservationGroup.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkReservationGroup(od);
+    });
+  });
+
   unittest.group('obj-schema-SearchAllAssignmentsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSearchAllAssignmentsResponse();
@@ -907,6 +1361,16 @@ void main() {
       final od = api.SearchAssignmentsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkSearchAssignmentsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-SetIamPolicyRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSetIamPolicyRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SetIamPolicyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSetIamPolicyRequest(od);
     });
   });
 
@@ -947,6 +1411,26 @@ void main() {
       final od = api.TableReference.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkTableReference(od);
+    });
+  });
+
+  unittest.group('obj-schema-TestIamPermissionsRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTestIamPermissionsRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestIamPermissionsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTestIamPermissionsRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-TestIamPermissionsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTestIamPermissionsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TestIamPermissionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTestIamPermissionsResponse(od);
     });
   });
 
@@ -1662,6 +2146,245 @@ void main() {
     });
   });
 
+  unittest.group('resource-ProjectsLocationsReservationGroupsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigQueryReservationApi(mock).projects.locations.reservationGroups;
+      final arg_request = buildReservationGroup();
+      final arg_parent = 'foo';
+      final arg_reservationGroupId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.ReservationGroup.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReservationGroup(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['reservationGroupId']!.first,
+          unittest.equals(arg_reservationGroupId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildReservationGroup());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          reservationGroupId: arg_reservationGroupId, $fields: arg_$fields);
+      checkReservationGroup(response as api.ReservationGroup);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigQueryReservationApi(mock).projects.locations.reservationGroups;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigQueryReservationApi(mock).projects.locations.reservationGroups;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildReservationGroup());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkReservationGroup(response as api.ReservationGroup);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigQueryReservationApi(mock).projects.locations.reservationGroups;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListReservationGroupsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListReservationGroupsResponse(
+          response as api.ListReservationGroupsResponse);
+    });
+  });
+
   unittest.group('resource-ProjectsLocationsReservationsResource', () {
     unittest.test('method--create', () async {
       final mock = HttpServerMock();
@@ -1892,6 +2615,66 @@ void main() {
       checkReservation(response as api.Reservation);
     });
 
+    unittest.test('method--getIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigQueryReservationApi(mock).projects.locations.reservations;
+      final arg_resource = 'foo';
+      final arg_options_requestedPolicyVersion = 42;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
+          unittest.equals(arg_options_requestedPolicyVersion),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res =
@@ -2021,6 +2804,125 @@ void main() {
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkReservation(response as api.Reservation);
     });
+
+    unittest.test('method--setIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigQueryReservationApi(mock).projects.locations.reservations;
+      final arg_request = buildSetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--testIamPermissions', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigQueryReservationApi(mock).projects.locations.reservations;
+      final arg_request = buildTestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTestIamPermissionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
+    });
   });
 
   unittest.group('resource-ProjectsLocationsReservationsAssignmentsResource',
@@ -2146,6 +3048,69 @@ void main() {
       }), true);
       final response = await res.delete(arg_name, $fields: arg_$fields);
       checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--getIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.BigQueryReservationApi(mock)
+          .projects
+          .locations
+          .reservations
+          .assignments;
+      final arg_resource = 'foo';
+      final arg_options_requestedPolicyVersion = 42;
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
+          unittest.equals(arg_options_requestedPolicyVersion),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
     unittest.test('method--list', () async {
@@ -2344,6 +3309,131 @@ void main() {
       final response = await res.patch(arg_request, arg_name,
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkAssignment(response as api.Assignment);
+    });
+
+    unittest.test('method--setIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res = api.BigQueryReservationApi(mock)
+          .projects
+          .locations
+          .reservations
+          .assignments;
+      final arg_request = buildSetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--testIamPermissions', () async {
+      final mock = HttpServerMock();
+      final res = api.BigQueryReservationApi(mock)
+          .projects
+          .locations
+          .reservations
+          .assignments;
+      final arg_request = buildTestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTestIamPermissionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 }

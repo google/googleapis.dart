@@ -179,6 +179,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -201,12 +205,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -535,6 +541,9 @@ class ProjectsLocationsAssetsResource {
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   ///
+  /// [showHidden] - Optional. When this value is set to 'true,' the response
+  /// will include all assets, including those that are hidden.
+  ///
   /// [view] - View of the assets. Defaults to BASIC.
   /// Possible string values are:
   /// - "ASSET_VIEW_UNSPECIFIED" : The asset view is not specified. The API
@@ -564,6 +573,7 @@ class ProjectsLocationsAssetsResource {
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? showHidden,
     core.String? view,
     core.String? $fields,
   }) async {
@@ -572,6 +582,7 @@ class ProjectsLocationsAssetsResource {
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (showHidden != null) 'showHidden': ['${showHidden}'],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
@@ -3448,9 +3459,16 @@ class AggregateAssetsValuesRequest {
   /// Optional.
   core.String? filter;
 
+  /// When this value is set to 'true,' the response will include all assets,
+  /// including those that are hidden.
+  ///
+  /// Optional.
+  core.bool? showHidden;
+
   AggregateAssetsValuesRequest({
     this.aggregations,
     this.filter,
+    this.showHidden,
   });
 
   AggregateAssetsValuesRequest.fromJson(core.Map json_)
@@ -3460,11 +3478,13 @@ class AggregateAssetsValuesRequest {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           filter: json_['filter'] as core.String?,
+          showHidden: json_['showHidden'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (aggregations != null) 'aggregations': aggregations!,
         if (filter != null) 'filter': filter!,
+        if (showHidden != null) 'showHidden': showHidden!,
       };
 }
 
@@ -3780,6 +3800,21 @@ class Asset {
   /// Output only.
   DatabaseDetails? databaseDetails;
 
+  /// Indicates if the asset is hidden.
+  ///
+  /// Optional.
+  core.bool? hidden;
+
+  /// An optional reason for marking this asset as hidden.
+  ///
+  /// Optional.
+  core.String? hideReason;
+
+  /// The timestamp when the asset was marked as hidden.
+  ///
+  /// Output only.
+  core.String? hideTime;
+
   /// The list of insights associated with the asset.
   ///
   /// Output only.
@@ -3824,6 +3859,9 @@ class Asset {
     this.createTime,
     this.databaseDeploymentDetails,
     this.databaseDetails,
+    this.hidden,
+    this.hideReason,
+    this.hideTime,
     this.insightList,
     this.labels,
     this.machineDetails,
@@ -3858,6 +3896,9 @@ class Asset {
               ? DatabaseDetails.fromJson(json_['databaseDetails']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          hidden: json_['hidden'] as core.bool?,
+          hideReason: json_['hideReason'] as core.String?,
+          hideTime: json_['hideTime'] as core.String?,
           insightList: json_.containsKey('insightList')
               ? InsightList.fromJson(
                   json_['insightList'] as core.Map<core.String, core.dynamic>)
@@ -3892,6 +3933,9 @@ class Asset {
         if (databaseDeploymentDetails != null)
           'databaseDeploymentDetails': databaseDeploymentDetails!,
         if (databaseDetails != null) 'databaseDetails': databaseDetails!,
+        if (hidden != null) 'hidden': hidden!,
+        if (hideReason != null) 'hideReason': hideReason!,
+        if (hideTime != null) 'hideTime': hideTime!,
         if (insightList != null) 'insightList': insightList!,
         if (labels != null) 'labels': labels!,
         if (machineDetails != null) 'machineDetails': machineDetails!,
@@ -4162,6 +4206,11 @@ class BatchDeleteAssetsRequest {
   /// Optional.
   core.bool? allowMissing;
 
+  /// Optional cascading rules for deleting related assets.
+  ///
+  /// Optional.
+  core.List<CascadingRule>? cascadingRules;
+
   /// The IDs of the assets to delete.
   ///
   /// A maximum of 1000 assets can be deleted in a batch. Format:
@@ -4172,12 +4221,17 @@ class BatchDeleteAssetsRequest {
 
   BatchDeleteAssetsRequest({
     this.allowMissing,
+    this.cascadingRules,
     this.names,
   });
 
   BatchDeleteAssetsRequest.fromJson(core.Map json_)
       : this(
           allowMissing: json_['allowMissing'] as core.bool?,
+          cascadingRules: (json_['cascadingRules'] as core.List?)
+              ?.map((value) => CascadingRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           names: (json_['names'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -4185,6 +4239,7 @@ class BatchDeleteAssetsRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (allowMissing != null) 'allowMissing': allowMissing!,
+        if (cascadingRules != null) 'cascadingRules': cascadingRules!,
         if (names != null) 'names': names!,
       };
 }
@@ -4298,6 +4353,31 @@ class BiosDetails {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// Cascading rule for related logical DBs.
+typedef CascadeLogicalDBsRule = $Empty;
+
+/// Specifies cascading rules for traversing relations.
+class CascadingRule {
+  /// Cascading rule for related logical DBs.
+  CascadeLogicalDBsRule? cascadeLogicalDbs;
+
+  CascadingRule({
+    this.cascadeLogicalDbs,
+  });
+
+  CascadingRule.fromJson(core.Map json_)
+      : this(
+          cascadeLogicalDbs: json_.containsKey('cascadeLogicalDbs')
+              ? CascadeLogicalDBsRule.fromJson(json_['cascadeLogicalDbs']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cascadeLogicalDbs != null) 'cascadeLogicalDbs': cascadeLogicalDbs!,
+      };
+}
 
 /// Compute engine migration target.
 class ComputeEngineMigrationTarget {

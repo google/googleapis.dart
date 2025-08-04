@@ -16,7 +16,8 @@
 ///
 /// Manages classes, rosters, and invitations in Google Classroom.
 ///
-/// For more information, see <https://developers.google.com/classroom/>
+/// For more information, see
+/// <https://developers.google.com/workspace/classroom/>
 ///
 /// Create an instance of [ClassroomApi] to access these resources:
 ///
@@ -316,6 +317,48 @@ class CoursesResource {
     return Course.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns the grading period settings in a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user isn't permitted to access the grading period settings
+  /// in the requested course or for access errors. * `NOT_FOUND` if the
+  /// requested course does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. The identifier of the course.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GradingPeriodSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GradingPeriodSettings> getGradingPeriodSettings(
+    core.String courseId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/gradingPeriodSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GradingPeriodSettings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns a list of courses that the requesting user is permitted to view,
   /// restricted to those that match the request.
   ///
@@ -491,6 +534,73 @@ class CoursesResource {
       queryParams: queryParams_,
     );
     return Course.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates grading period settings of a course.
+  ///
+  /// Individual grading periods can be added, removed, or modified using this
+  /// method. The requesting user and course owner must be eligible to modify
+  /// Grading Periods. For details, see
+  /// [licensing requirements](https://developers.google.com/workspace/classroom/grading-periods/manage-grading-periods#licensing_requirements).
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to modify the grading period settings
+  /// in a course or for access errors: *
+  /// UserIneligibleToUpdateGradingPeriodSettings * `INVALID_ARGUMENT` if the
+  /// request is malformed. * `NOT_FOUND` if the requested course does not
+  /// exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. The identifier of the course.
+  ///
+  /// [updateMask] - Mask that identifies which fields in the
+  /// GradingPeriodSettings to update. The GradingPeriodSettings
+  /// `grading_periods` list will be fully replaced by the grading periods
+  /// specified in the update request. For example: * Grading periods included
+  /// in the list without an ID are considered additions, and a new ID will be
+  /// assigned when the request is made. * Grading periods that currently exist,
+  /// but are missing from the request will be considered deletions. * Grading
+  /// periods with an existing ID and modified data are considered edits.
+  /// Unmodified data will be left as is. * Grading periods included with an
+  /// unknown ID will result in an error. The following fields may be specified:
+  /// * `grading_periods` * `apply_to_existing_coursework`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GradingPeriodSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GradingPeriodSettings> updateGradingPeriodSettings(
+    GradingPeriodSettings request,
+    core.String courseId, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/gradingPeriodSettings';
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GradingPeriodSettings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -815,7 +925,7 @@ class CoursesAnnouncementsResource {
   /// To maintain the integrity of its own data and permissions model, an add-on
   /// should call this to validate query parameters and the requesting user's
   /// role whenever the add-on is opened in an
-  /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview).
+  /// [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview).
   /// This method returns the following error codes: * `PERMISSION_DENIED` for
   /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
   /// `NOT_FOUND` if one of the identified resources does not exist.
@@ -837,7 +947,7 @@ class CoursesAnnouncementsResource {
   ///
   /// [attachmentId] - Optional. The identifier of the attachment. This field is
   /// required for all requests except when the user is in the
-  /// [Attachment Discovery iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
+  /// [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
   ///
   /// [postId] - Optional. Deprecated, use `item_id` instead.
   ///
@@ -1575,7 +1685,7 @@ class CoursesCourseWorkResource {
   /// To maintain the integrity of its own data and permissions model, an add-on
   /// should call this to validate query parameters and the requesting user's
   /// role whenever the add-on is opened in an
-  /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview).
+  /// [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview).
   /// This method returns the following error codes: * `PERMISSION_DENIED` for
   /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
   /// `NOT_FOUND` if one of the identified resources does not exist.
@@ -1597,7 +1707,7 @@ class CoursesCourseWorkResource {
   ///
   /// [attachmentId] - Optional. The identifier of the attachment. This field is
   /// required for all requests except when the user is in the
-  /// [Attachment Discovery iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
+  /// [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
   ///
   /// [postId] - Optional. Deprecated, use `item_id` instead.
   ///
@@ -1800,9 +1910,7 @@ class CoursesCourseWorkResource {
   /// error is returned. The following fields may be specified by teachers: *
   /// `title` * `description` * `state` * `due_date` * `due_time` * `max_points`
   /// * `scheduled_time` * `submission_modification_mode` * `topic_id` *
-  /// `grading_period_id` Available in
-  /// [V1_20240401_PREVIEW](https://developers.google.com/classroom/reference/preview)
-  /// and later.
+  /// `grading_period_id`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1848,7 +1956,7 @@ class CoursesCourseWorkResource {
   /// Rubric update capabilities are \[limited\](/classroom/rubrics/limitations)
   /// once grading has started. The requesting user and course owner must have
   /// rubrics creation capabilities. For details, see
-  /// [licensing requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements).
+  /// [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements).
   /// This request must be made by the Google Cloud console of the
   /// [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
   /// create the parent course work item. This method returns the following
@@ -2416,7 +2524,7 @@ class CoursesCourseWorkRubricsResource {
   ///
   /// The requesting user and course owner must have rubrics creation
   /// capabilities. For details, see
-  /// [licensing requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements).
+  /// [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements).
   /// For further details, see \[Rubrics structure and known
   /// limitations\](/classroom/rubrics/limitations). This request must be made
   /// by the Google Cloud console of the
@@ -2479,7 +2587,7 @@ class CoursesCourseWorkRubricsResource {
   ///
   /// The requesting user and course owner must have rubrics creation
   /// capabilities. For details, see
-  /// [licensing requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements).
+  /// [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements).
   /// This request must be made by the Google Cloud console of the
   /// [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
   /// create the corresponding rubric. This method returns the following error
@@ -2649,7 +2757,7 @@ class CoursesCourseWorkRubricsResource {
   /// Rubric update capabilities are \[limited\](/classroom/rubrics/limitations)
   /// once grading has started. The requesting user and course owner must have
   /// rubrics creation capabilities. For details, see
-  /// [licensing requirements](https://developers.google.com/classroom/rubrics/limitations#license-requirements).
+  /// [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements).
   /// This request must be made by the Google Cloud console of the
   /// [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
   /// create the parent course work item. This method returns the following
@@ -3374,7 +3482,7 @@ class CoursesCourseWorkMaterialsResource {
   /// To maintain the integrity of its own data and permissions model, an add-on
   /// should call this to validate query parameters and the requesting user's
   /// role whenever the add-on is opened in an
-  /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview).
+  /// [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview).
   /// This method returns the following error codes: * `PERMISSION_DENIED` for
   /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
   /// `NOT_FOUND` if one of the identified resources does not exist.
@@ -3396,7 +3504,7 @@ class CoursesCourseWorkMaterialsResource {
   ///
   /// [attachmentId] - Optional. The identifier of the attachment. This field is
   /// required for all requests except when the user is in the
-  /// [Attachment Discovery iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
+  /// [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
   ///
   /// [postId] - Optional. Deprecated, use `item_id` instead.
   ///
@@ -3937,7 +4045,7 @@ class CoursesPostsResource {
   /// To maintain the integrity of its own data and permissions model, an add-on
   /// should call this to validate query parameters and the requesting user's
   /// role whenever the add-on is opened in an
-  /// [iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/iframes-overview).
+  /// [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview).
   /// This method returns the following error codes: * `PERMISSION_DENIED` for
   /// access errors. * `INVALID_ARGUMENT` if the request is malformed. *
   /// `NOT_FOUND` if one of the identified resources does not exist.
@@ -3957,7 +4065,7 @@ class CoursesPostsResource {
   ///
   /// [attachmentId] - Optional. The identifier of the attachment. This field is
   /// required for all requests except when the user is in the
-  /// [Attachment Discovery iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
+  /// [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
   ///
   /// [itemId] - Identifier of the `Announcement`, `CourseWork`, or
   /// `CourseWorkMaterial` under which the attachment is attached. This field is
@@ -4492,7 +4600,7 @@ class CoursesStudentsResource {
   /// Adds a user as a student of a course.
   ///
   /// Domain administrators are permitted to
-  /// [directly add](https://developers.google.com/classroom/guides/manage-users)
+  /// [directly add](https://developers.google.com/workspace/classroom/guides/manage-users)
   /// users within their domain as students to courses within their domain.
   /// Students are permitted to add themselves to a course using an enrollment
   /// code. This method returns the following error codes: * `PERMISSION_DENIED`
@@ -4711,7 +4819,7 @@ class CoursesTeachersResource {
   /// Creates a teacher of a course.
   ///
   /// Domain administrators are permitted to
-  /// [directly add](https://developers.google.com/classroom/guides/manage-users)
+  /// [directly add](https://developers.google.com/workspace/classroom/guides/manage-users)
   /// users within their domain as teachers to courses within their domain.
   /// Non-admin users should send an Invitation instead. This method returns the
   /// following error codes: * `PERMISSION_DENIED` if the requesting user is not
@@ -7048,6 +7156,15 @@ class CourseWork {
   /// used in calculating the overall grade. Read-only.
   GradeCategory? gradeCategory;
 
+  /// Identifier of the grading period associated with the coursework.
+  ///
+  /// * At creation, if unspecified, the grading period ID will be set based on
+  /// the `dueDate` (or `scheduledTime` if no `dueDate` is set). * To indicate
+  /// no association to any grading period, set this field to an empty string
+  /// (""). * If specified, it must match an existing grading period ID in the
+  /// course.
+  core.String? gradingPeriodId;
+
   /// Classroom-assigned identifier of this course work, unique per course.
   ///
   /// Read-only.
@@ -7147,6 +7264,7 @@ class CourseWork {
     this.dueDate,
     this.dueTime,
     this.gradeCategory,
+    this.gradingPeriodId,
     this.id,
     this.individualStudentsOptions,
     this.materials,
@@ -7187,6 +7305,7 @@ class CourseWork {
               ? GradeCategory.fromJson(
                   json_['gradeCategory'] as core.Map<core.String, core.dynamic>)
               : null,
+          gradingPeriodId: json_['gradingPeriodId'] as core.String?,
           id: json_['id'] as core.String?,
           individualStudentsOptions:
               json_.containsKey('individualStudentsOptions')
@@ -7226,6 +7345,7 @@ class CourseWork {
         if (dueDate != null) 'dueDate': dueDate!,
         if (dueTime != null) 'dueTime': dueTime!,
         if (gradeCategory != null) 'gradeCategory': gradeCategory!,
+        if (gradingPeriodId != null) 'gradingPeriodId': gradingPeriodId!,
         if (id != null) 'id': id!,
         if (individualStudentsOptions != null)
           'individualStudentsOptions': individualStudentsOptions!,
@@ -7694,6 +7814,41 @@ class Form {
       };
 }
 
+/// Gemini Gem link.
+class GeminiGem {
+  /// Gems resource id.
+  core.String? id;
+
+  /// Title of the Gem.
+  ///
+  /// Read-only.
+  core.String? title;
+
+  /// URL that can be used to access the Gem.
+  ///
+  /// Read-only.
+  core.String? url;
+
+  GeminiGem({
+    this.id,
+    this.title,
+    this.url,
+  });
+
+  GeminiGem.fromJson(core.Map json_)
+      : this(
+          id: json_['id'] as core.String?,
+          title: json_['title'] as core.String?,
+          url: json_['url'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (title != null) 'title': title!,
+        if (url != null) 'url': url!,
+      };
+}
+
 /// Global user permission description.
 class GlobalPermission {
   /// Permission value.
@@ -7870,6 +8025,111 @@ class GradebookSettings {
         if (calculationType != null) 'calculationType': calculationType!,
         if (displaySetting != null) 'displaySetting': displaySetting!,
         if (gradeCategories != null) 'gradeCategories': gradeCategories!,
+      };
+}
+
+/// An individual grading period.
+///
+/// Grading periods must not have overlapping date ranges and must be listed in
+/// chronological order. For example, if the end_date of a grading period is
+/// 2024-01-25, then the start_date of the next grading period must be
+/// 2024-01-26 or later. Each grading period must have a unique title within a
+/// course.
+class GradingPeriod {
+  /// End date, in UTC, of the grading period.
+  ///
+  /// Inclusive.
+  ///
+  /// Required.
+  Date? endDate;
+
+  /// System generated grading period ID.
+  ///
+  /// Read-only.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// Start date, in UTC, of the grading period.
+  ///
+  /// Inclusive.
+  ///
+  /// Required.
+  Date? startDate;
+
+  /// Title of the grading period.
+  ///
+  /// For example, “Semester 1”.
+  ///
+  /// Required.
+  core.String? title;
+
+  GradingPeriod({
+    this.endDate,
+    this.id,
+    this.startDate,
+    this.title,
+  });
+
+  GradingPeriod.fromJson(core.Map json_)
+      : this(
+          endDate: json_.containsKey('endDate')
+              ? Date.fromJson(
+                  json_['endDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          id: json_['id'] as core.String?,
+          startDate: json_.containsKey('startDate')
+              ? Date.fromJson(
+                  json_['startDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          title: json_['title'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endDate != null) 'endDate': endDate!,
+        if (id != null) 'id': id!,
+        if (startDate != null) 'startDate': startDate!,
+        if (title != null) 'title': title!,
+      };
+}
+
+/// Grading period settings that include all the individual grading periods in a
+/// course.
+class GradingPeriodSettings {
+  /// Supports toggling the application of grading periods on existing stream
+  /// items.
+  ///
+  /// Once set, this value is persisted meaning that it does not need to be set
+  /// in every request to update `GradingPeriodSettings`. If not previously set,
+  /// the default is False.
+  core.bool? applyToExistingCoursework;
+
+  /// The list of grading periods in a specific course.
+  ///
+  /// Grading periods must not have overlapping date ranges and must be listed
+  /// in chronological order. Each grading period must have a unique title
+  /// within a course.
+  core.List<GradingPeriod>? gradingPeriods;
+
+  GradingPeriodSettings({
+    this.applyToExistingCoursework,
+    this.gradingPeriods,
+  });
+
+  GradingPeriodSettings.fromJson(core.Map json_)
+      : this(
+          applyToExistingCoursework:
+              json_['applyToExistingCoursework'] as core.bool?,
+          gradingPeriods: (json_['gradingPeriods'] as core.List?)
+              ?.map((value) => GradingPeriod.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applyToExistingCoursework != null)
+          'applyToExistingCoursework': applyToExistingCoursework!,
+        if (gradingPeriods != null) 'gradingPeriods': gradingPeriods!,
       };
 }
 
@@ -8558,13 +8818,21 @@ class ListTopicResponse {
 
 /// Material attached to course work.
 ///
-/// When creating attachments, setting the `form` field is not supported.
+/// When creating attachments, setting the `form`, `gem`, or `notebook` field is
+/// not supported.
 class Material {
   /// Google Drive file material.
   SharedDriveFile? driveFile;
 
   /// Google Forms material.
+  ///
+  /// Read-only.
   Form? form;
+
+  /// Gemini Gem material.
+  ///
+  /// Read-only.
+  GeminiGem? gem;
 
   /// Link material.
   ///
@@ -8572,13 +8840,20 @@ class Material {
   /// this is reflected in the response.
   Link? link;
 
+  /// NotebookLM Notebook material.
+  ///
+  /// Read-only.
+  NotebookLmNotebook? notebook;
+
   /// YouTube video material.
   YouTubeVideo? youtubeVideo;
 
   Material({
     this.driveFile,
     this.form,
+    this.gem,
     this.link,
+    this.notebook,
     this.youtubeVideo,
   });
 
@@ -8592,9 +8867,17 @@ class Material {
               ? Form.fromJson(
                   json_['form'] as core.Map<core.String, core.dynamic>)
               : null,
+          gem: json_.containsKey('gem')
+              ? GeminiGem.fromJson(
+                  json_['gem'] as core.Map<core.String, core.dynamic>)
+              : null,
           link: json_.containsKey('link')
               ? Link.fromJson(
                   json_['link'] as core.Map<core.String, core.dynamic>)
+              : null,
+          notebook: json_.containsKey('notebook')
+              ? NotebookLmNotebook.fromJson(
+                  json_['notebook'] as core.Map<core.String, core.dynamic>)
               : null,
           youtubeVideo: json_.containsKey('youtubeVideo')
               ? YouTubeVideo.fromJson(
@@ -8605,7 +8888,9 @@ class Material {
   core.Map<core.String, core.dynamic> toJson() => {
         if (driveFile != null) 'driveFile': driveFile!,
         if (form != null) 'form': form!,
+        if (gem != null) 'gem': gem!,
         if (link != null) 'link': link!,
+        if (notebook != null) 'notebook': notebook!,
         if (youtubeVideo != null) 'youtubeVideo': youtubeVideo!,
       };
 }
@@ -8820,6 +9105,41 @@ class Name {
         if (familyName != null) 'familyName': familyName!,
         if (fullName != null) 'fullName': fullName!,
         if (givenName != null) 'givenName': givenName!,
+      };
+}
+
+/// NotebookLM Notebook link.
+class NotebookLmNotebook {
+  /// Notebook resource id.
+  core.String? id;
+
+  /// Title of the Notebook.
+  ///
+  /// Read-only.
+  core.String? title;
+
+  /// URL that can be used to access the Notebook.
+  ///
+  /// Read-only.
+  core.String? url;
+
+  NotebookLmNotebook({
+    this.id,
+    this.title,
+    this.url,
+  });
+
+  NotebookLmNotebook.fromJson(core.Map json_)
+      : this(
+          id: json_['id'] as core.String?,
+          title: json_['title'] as core.String?,
+          url: json_['url'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (id != null) 'id': id!,
+        if (title != null) 'title': title!,
+        if (url != null) 'url': url!,
       };
 }
 

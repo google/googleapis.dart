@@ -25,10 +25,10 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241209",
+    "revision": "20250320",
     "rootUrl": "https://gamesmanagement.googleapis.com/",
     "servicePath": "",
-    "title": "Google Play Game Management",
+    "title": "Google Play Games Services Management API",
     "version": "v1management",
     "parameters": {
         "$.xgafv": {

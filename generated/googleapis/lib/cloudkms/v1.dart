@@ -22,6 +22,7 @@
 /// Create an instance of [CloudKMSApi] to access these resources:
 ///
 /// - [FoldersResource]
+/// - [OrganizationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsEkmConfigResource]
@@ -62,6 +63,7 @@ class CloudKMSApi {
   final commons.ApiRequester _requester;
 
   FoldersResource get folders => FoldersResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   CloudKMSApi(http.Client client,
@@ -110,6 +112,44 @@ class FoldersResource {
       queryParams: queryParams_,
     );
     return AutokeyConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the KeyAccessJustificationsPolicyConfig for a given
+  /// organization/folder/projects.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the KeyAccessJustificationsPolicyConfig to
+  /// get.
+  /// Value must have pattern `^folders/\[^/\]+/kajPolicyConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [KeyAccessJustificationsPolicyConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<KeyAccessJustificationsPolicyConfig> getKajPolicyConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return KeyAccessJustificationsPolicyConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -165,6 +205,146 @@ class FoldersResource {
     return AutokeyConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates the KeyAccessJustificationsPolicyConfig for a given
+  /// organization/folder/projects.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name for this
+  /// KeyAccessJustificationsPolicyConfig in the format of
+  /// "{organizations|folders|projects} / * /kajPolicyConfig".
+  /// Value must have pattern `^folders/\[^/\]+/kajPolicyConfig$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [KeyAccessJustificationsPolicyConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<KeyAccessJustificationsPolicyConfig> updateKajPolicyConfig(
+    KeyAccessJustificationsPolicyConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return KeyAccessJustificationsPolicyConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the KeyAccessJustificationsPolicyConfig for a given
+  /// organization/folder/projects.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the KeyAccessJustificationsPolicyConfig to
+  /// get.
+  /// Value must have pattern `^organizations/\[^/\]+/kajPolicyConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [KeyAccessJustificationsPolicyConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<KeyAccessJustificationsPolicyConfig> getKajPolicyConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return KeyAccessJustificationsPolicyConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the KeyAccessJustificationsPolicyConfig for a given
+  /// organization/folder/projects.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name for this
+  /// KeyAccessJustificationsPolicyConfig in the format of
+  /// "{organizations|folders|projects} / * /kajPolicyConfig".
+  /// Value must have pattern `^organizations/\[^/\]+/kajPolicyConfig$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [KeyAccessJustificationsPolicyConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<KeyAccessJustificationsPolicyConfig> updateKajPolicyConfig(
+    KeyAccessJustificationsPolicyConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return KeyAccessJustificationsPolicyConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsResource {
@@ -174,6 +354,44 @@ class ProjectsResource {
       ProjectsLocationsResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the KeyAccessJustificationsPolicyConfig for a given
+  /// organization/folder/projects.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the KeyAccessJustificationsPolicyConfig to
+  /// get.
+  /// Value must have pattern `^projects/\[^/\]+/kajPolicyConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [KeyAccessJustificationsPolicyConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<KeyAccessJustificationsPolicyConfig> getKajPolicyConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return KeyAccessJustificationsPolicyConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Returns the effective Cloud KMS Autokey configuration for a given project.
   ///
@@ -211,6 +429,138 @@ class ProjectsResource {
       queryParams: queryParams_,
     );
     return ShowEffectiveAutokeyConfigResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the KeyAccessJustificationsEnrollmentConfig of the resource
+  /// closest to the given project in hierarchy.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. The number or id of the project to get the effective
+  /// KeyAccessJustificationsEnrollmentConfig for.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse>
+      showEffectiveKeyAccessJustificationsEnrollmentConfig(
+    core.String project, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$project') +
+        ':showEffectiveKeyAccessJustificationsEnrollmentConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns the KeyAccessJustificationsPolicyConfig of the resource closest to
+  /// the given project in hierarchy.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. The number or id of the project to get the effective
+  /// KeyAccessJustificationsPolicyConfig. In the format of "projects/{|}"
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [ShowEffectiveKeyAccessJustificationsPolicyConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ShowEffectiveKeyAccessJustificationsPolicyConfigResponse>
+      showEffectiveKeyAccessJustificationsPolicyConfig(
+    core.String project, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' +
+        core.Uri.encodeFull('$project') +
+        ':showEffectiveKeyAccessJustificationsPolicyConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ShowEffectiveKeyAccessJustificationsPolicyConfigResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the KeyAccessJustificationsPolicyConfig for a given
+  /// organization/folder/projects.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name for this
+  /// KeyAccessJustificationsPolicyConfig in the format of
+  /// "{organizations|folders|projects} / * /kajPolicyConfig".
+  /// Value must have pattern `^projects/\[^/\]+/kajPolicyConfig$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [KeyAccessJustificationsPolicyConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<KeyAccessJustificationsPolicyConfig> updateKajPolicyConfig(
+    KeyAccessJustificationsPolicyConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return KeyAccessJustificationsPolicyConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -352,6 +702,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -374,12 +728,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3379,6 +3735,15 @@ typedef AuditLogConfig = $AuditLogConfig;
 
 /// Cloud KMS Autokey configuration for a folder.
 class AutokeyConfig {
+  /// A checksum computed by the server based on the value of other fields.
+  ///
+  /// This may be sent on update requests to ensure that the client has an
+  /// up-to-date value before proceeding. The request will be rejected with an
+  /// ABORTED error on a mismatched etag.
+  ///
+  /// Optional.
+  core.String? etag;
+
   /// Name of the key project, e.g. `projects/{PROJECT_ID}` or
   /// `projects/{PROJECT_NUMBER}`, where Cloud KMS Autokey will provision a new
   /// CryptoKey when a KeyHandle is created.
@@ -3413,6 +3778,7 @@ class AutokeyConfig {
   core.String? state;
 
   AutokeyConfig({
+    this.etag,
     this.keyProject,
     this.name,
     this.state,
@@ -3420,12 +3786,14 @@ class AutokeyConfig {
 
   AutokeyConfig.fromJson(core.Map json_)
       : this(
+          etag: json_['etag'] as core.String?,
           keyProject: json_['keyProject'] as core.String?,
           name: json_['name'] as core.String?,
           state: json_['state'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
         if (keyProject != null) 'keyProject': keyProject!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
@@ -3954,6 +4322,9 @@ class CryptoKeyVersion {
   /// Signature Algorithm, at security level 3. Randomized version.
   /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
   /// digital signature algorithm, at security level 1. Randomized version.
+  /// - "PQ_SIGN_HASH_SLH_DSA_SHA2_128S_SHA256" : The post-quantum stateless
+  /// hash-based digital signature algorithm, at security level 1. Randomized
+  /// pre-hash version supporting SHA256 digests.
   core.String? algorithm;
 
   /// Statement that was generated and signed by the HSM at key creation time.
@@ -4064,7 +4435,7 @@ class CryptoKeyVersion {
   /// - "ENABLED" : This version may be used for cryptographic operations.
   /// - "DISABLED" : This version may not be used, but the key material is still
   /// available, and the version can be placed back into the ENABLED state.
-  /// - "DESTROYED" : This key material of this version is destroyed and no
+  /// - "DESTROYED" : The key material of this version is destroyed and no
   /// longer stored. This version may only become ENABLED again if this version
   /// is reimport_eligible and the original key material is reimported with a
   /// call to KeyManagementService.ImportCryptoKeyVersion.
@@ -4167,7 +4538,115 @@ class CryptoKeyVersion {
 /// A CryptoKeyVersionTemplate specifies the properties to use when creating a
 /// new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or
 /// automatically as a result of auto-rotation.
-typedef CryptoKeyVersionTemplate = $CryptoKeyVersionTemplate;
+class CryptoKeyVersionTemplate {
+  /// Algorithm to use when creating a CryptoKeyVersion based on this template.
+  ///
+  /// For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if
+  /// both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
+  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
+  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
+  /// - "AES_128_CBC" : AES-CBC (Cipher Block Chaining Mode) using 128-bit keys.
+  /// - "AES_256_CBC" : AES-CBC (Cipher Block Chaining Mode) using 256-bit keys.
+  /// - "AES_128_CTR" : AES-CTR (Counter Mode) using 128-bit keys.
+  /// - "AES_256_CTR" : AES-CTR (Counter Mode) using 256-bit keys.
+  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA512 digest.
+  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 2048 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 3072 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 4096 bit key.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA256" : RSAES-OAEP 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA512" : RSAES-OAEP 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA1" : RSAES-OAEP 2048 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA1" : RSAES-OAEP 3072 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
+  /// digest.
+  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
+  /// curve is only supported for HSM protection level. Other hash functions can
+  /// also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_ED25519" : EdDSA on the Curve25519 in pure mode (taking data as
+  /// input).
+  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
+  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
+  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
+  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
+  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
+  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
+  /// encryption by an external key manager.
+  /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 3. Randomized version.
+  /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
+  /// digital signature algorithm, at security level 1. Randomized version.
+  /// - "PQ_SIGN_HASH_SLH_DSA_SHA2_128S_SHA256" : The post-quantum stateless
+  /// hash-based digital signature algorithm, at security level 1. Randomized
+  /// pre-hash version supporting SHA256 digests.
+  core.String? algorithm;
+
+  /// ProtectionLevel to use when creating a CryptoKeyVersion based on this
+  /// template.
+  ///
+  /// Immutable. Defaults to SOFTWARE.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
+  core.String? protectionLevel;
+
+  CryptoKeyVersionTemplate({
+    this.algorithm,
+    this.protectionLevel,
+  });
+
+  CryptoKeyVersionTemplate.fromJson(core.Map json_)
+      : this(
+          algorithm: json_['algorithm'] as core.String?,
+          protectionLevel: json_['protectionLevel'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (algorithm != null) 'algorithm': algorithm!,
+        if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+      };
+}
 
 /// Request message for KeyManagementService.Decrypt.
 class DecryptRequest {
@@ -4880,6 +5359,9 @@ class ImportCryptoKeyVersionRequest {
   /// Signature Algorithm, at security level 3. Randomized version.
   /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
   /// digital signature algorithm, at security level 1. Randomized version.
+  /// - "PQ_SIGN_HASH_SLH_DSA_SHA2_128S_SHA256" : The post-quantum stateless
+  /// hash-based digital signature algorithm, at security level 1. Randomized
+  /// pre-hash version supporting SHA256 digests.
   core.String? algorithm;
 
   /// The optional name of an existing CryptoKeyVersion to target for an import
@@ -5153,9 +5635,77 @@ class ImportJob {
       };
 }
 
+/// The configuration of a protection level for a project's Key Access
+/// Justifications enrollment.
+class KeyAccessJustificationsEnrollmentConfig {
+  /// Whether the project has KAJ logging enabled.
+  core.bool? auditLogging;
+
+  /// Whether the project is enrolled in KAJ policy enforcement.
+  core.bool? policyEnforcement;
+
+  KeyAccessJustificationsEnrollmentConfig({
+    this.auditLogging,
+    this.policyEnforcement,
+  });
+
+  KeyAccessJustificationsEnrollmentConfig.fromJson(core.Map json_)
+      : this(
+          auditLogging: json_['auditLogging'] as core.bool?,
+          policyEnforcement: json_['policyEnforcement'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auditLogging != null) 'auditLogging': auditLogging!,
+        if (policyEnforcement != null) 'policyEnforcement': policyEnforcement!,
+      };
+}
+
 /// A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason
 /// values for encrypt, decrypt, and sign operations on a CryptoKey.
 typedef KeyAccessJustificationsPolicy = $KeyAccessJustificationsPolicy;
+
+/// A singleton configuration for Key Access Justifications policies.
+class KeyAccessJustificationsPolicyConfig {
+  /// The default key access justification policy used when a CryptoKey is
+  /// created in this folder.
+  ///
+  /// This is only used when a Key Access Justifications policy is not provided
+  /// in the CreateCryptoKeyRequest. This overrides any default policies in its
+  /// ancestry.
+  ///
+  /// Optional.
+  KeyAccessJustificationsPolicy? defaultKeyAccessJustificationPolicy;
+
+  /// Identifier.
+  ///
+  /// The resource name for this KeyAccessJustificationsPolicyConfig in the
+  /// format of "{organizations|folders|projects} / * /kajPolicyConfig".
+  core.String? name;
+
+  KeyAccessJustificationsPolicyConfig({
+    this.defaultKeyAccessJustificationPolicy,
+    this.name,
+  });
+
+  KeyAccessJustificationsPolicyConfig.fromJson(core.Map json_)
+      : this(
+          defaultKeyAccessJustificationPolicy:
+              json_.containsKey('defaultKeyAccessJustificationPolicy')
+                  ? KeyAccessJustificationsPolicy.fromJson(
+                      json_['defaultKeyAccessJustificationPolicy']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultKeyAccessJustificationPolicy != null)
+          'defaultKeyAccessJustificationPolicy':
+              defaultKeyAccessJustificationPolicy!,
+        if (name != null) 'name': name!,
+      };
+}
 
 /// Resource-oriented representation of a request to Cloud KMS Autokey and the
 /// resulting provisioning of a CryptoKey.
@@ -5307,6 +5857,9 @@ class ListCryptoKeyVersionsResponse {
   core.String? nextPageToken;
 
   /// The total number of CryptoKeyVersions that matched the query.
+  ///
+  /// This field is not populated if ListCryptoKeyVersionsRequest.filter is
+  /// applied.
   core.int? totalSize;
 
   ListCryptoKeyVersionsResponse({
@@ -5344,6 +5897,8 @@ class ListCryptoKeysResponse {
   core.String? nextPageToken;
 
   /// The total number of CryptoKeys that matched the query.
+  ///
+  /// This field is not populated if ListCryptoKeysRequest.filter is applied.
   core.int? totalSize;
 
   ListCryptoKeysResponse({
@@ -5381,6 +5936,9 @@ class ListEkmConnectionsResponse {
   core.String? nextPageToken;
 
   /// The total number of EkmConnections that matched the query.
+  ///
+  /// This field is not populated if ListEkmConnectionsRequest.filter is
+  /// applied.
   core.int? totalSize;
 
   ListEkmConnectionsResponse({
@@ -5418,6 +5976,8 @@ class ListImportJobsResponse {
   core.String? nextPageToken;
 
   /// The total number of ImportJobs that matched the query.
+  ///
+  /// This field is not populated if ListImportJobsRequest.filter is applied.
   core.int? totalSize;
 
   ListImportJobsResponse({
@@ -5486,6 +6046,8 @@ class ListKeyRingsResponse {
   core.String? nextPageToken;
 
   /// The total number of KeyRings that matched the query.
+  ///
+  /// This field is not populated if ListKeyRingsRequest.filter is applied.
   core.int? totalSize;
 
   ListKeyRingsResponse({
@@ -6098,6 +6660,9 @@ class PublicKey {
   /// Signature Algorithm, at security level 3. Randomized version.
   /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
   /// digital signature algorithm, at security level 1. Randomized version.
+  /// - "PQ_SIGN_HASH_SLH_DSA_SHA2_128S_SHA256" : The post-quantum stateless
+  /// hash-based digital signature algorithm, at security level 1. Randomized
+  /// pre-hash version supporting SHA256 digests.
   core.String? algorithm;
 
   /// The name of the CryptoKeyVersion public key.
@@ -6865,6 +7430,77 @@ class ShowEffectiveAutokeyConfigResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (keyProject != null) 'keyProject': keyProject!,
+      };
+}
+
+/// Response message for
+/// KeyAccessJustificationsConfig.ShowEffectiveKeyAccessJustificationsEnrollmentConfig
+class ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse {
+  /// The effective KeyAccessJustificationsEnrollmentConfig for external keys.
+  KeyAccessJustificationsEnrollmentConfig? externalConfig;
+
+  /// The effective KeyAccessJustificationsEnrollmentConfig for hardware keys.
+  KeyAccessJustificationsEnrollmentConfig? hardwareConfig;
+
+  /// The effective KeyAccessJustificationsEnrollmentConfig for software keys.
+  KeyAccessJustificationsEnrollmentConfig? softwareConfig;
+
+  ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse({
+    this.externalConfig,
+    this.hardwareConfig,
+    this.softwareConfig,
+  });
+
+  ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse.fromJson(
+      core.Map json_)
+      : this(
+          externalConfig: json_.containsKey('externalConfig')
+              ? KeyAccessJustificationsEnrollmentConfig.fromJson(
+                  json_['externalConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          hardwareConfig: json_.containsKey('hardwareConfig')
+              ? KeyAccessJustificationsEnrollmentConfig.fromJson(
+                  json_['hardwareConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          softwareConfig: json_.containsKey('softwareConfig')
+              ? KeyAccessJustificationsEnrollmentConfig.fromJson(
+                  json_['softwareConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (externalConfig != null) 'externalConfig': externalConfig!,
+        if (hardwareConfig != null) 'hardwareConfig': hardwareConfig!,
+        if (softwareConfig != null) 'softwareConfig': softwareConfig!,
+      };
+}
+
+/// Response message for
+/// KeyAccessJustificationsConfig.ShowEffectiveKeyAccessJustificationsPolicyConfig.
+class ShowEffectiveKeyAccessJustificationsPolicyConfigResponse {
+  /// The effective KeyAccessJustificationsPolicyConfig.
+  KeyAccessJustificationsPolicyConfig? effectiveKajPolicy;
+
+  ShowEffectiveKeyAccessJustificationsPolicyConfigResponse({
+    this.effectiveKajPolicy,
+  });
+
+  ShowEffectiveKeyAccessJustificationsPolicyConfigResponse.fromJson(
+      core.Map json_)
+      : this(
+          effectiveKajPolicy: json_.containsKey('effectiveKajPolicy')
+              ? KeyAccessJustificationsPolicyConfig.fromJson(
+                  json_['effectiveKajPolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effectiveKajPolicy != null)
+          'effectiveKajPolicy': effectiveKajPolicy!,
       };
 }
 

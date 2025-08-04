@@ -16,7 +16,8 @@
 ///
 /// An API for managing Drive Labels
 ///
-/// For more information, see <https://developers.google.com/drive/labels>
+/// For more information, see
+/// <https://developers.google.com/workspace/drive/labels>
 ///
 /// Create an instance of [DriveLabelsApi] to access these resources:
 ///
@@ -571,6 +572,53 @@ class LabelsResource {
     };
 
     final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':updateLabelCopyMode';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAppsDriveLabelsV2Label.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Label's EabledAppSettings.
+  ///
+  /// Enabling a Label in a Workspace Application allows it to be used in that
+  /// application. This change is not revisioned, does not require publishing,
+  /// and takes effect immediately.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Label to update. The resource
+  /// name of the Label to update.
+  /// Value must have pattern `^labels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAppsDriveLabelsV2Label].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAppsDriveLabelsV2Label> updateLabelEnabledAppSettings(
+    GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$name') + ':updateLabelEnabledAppSettings';
 
     final response_ = await _requester.request(
       url_,
@@ -3868,6 +3916,11 @@ class GoogleAppsDriveLabelsV2Label {
   /// Output only.
   GoogleAppsDriveLabelsV2LabelDisplayHints? displayHints;
 
+  /// The EnabledAppSettings for this Label.
+  ///
+  /// Optional.
+  GoogleAppsDriveLabelsV2LabelEnabledAppSettings? enabledAppSettings;
+
   /// List of fields in descending priority order.
   core.List<GoogleAppsDriveLabelsV2Field>? fields;
 
@@ -3968,6 +4021,7 @@ class GoogleAppsDriveLabelsV2Label {
     this.disableTime,
     this.disabler,
     this.displayHints,
+    this.enabledAppSettings,
     this.fields,
     this.id,
     this.labelType,
@@ -4010,6 +4064,11 @@ class GoogleAppsDriveLabelsV2Label {
           displayHints: json_.containsKey('displayHints')
               ? GoogleAppsDriveLabelsV2LabelDisplayHints.fromJson(
                   json_['displayHints'] as core.Map<core.String, core.dynamic>)
+              : null,
+          enabledAppSettings: json_.containsKey('enabledAppSettings')
+              ? GoogleAppsDriveLabelsV2LabelEnabledAppSettings.fromJson(
+                  json_['enabledAppSettings']
+                      as core.Map<core.String, core.dynamic>)
               : null,
           fields: (json_['fields'] as core.List?)
               ?.map((value) => GoogleAppsDriveLabelsV2Field.fromJson(
@@ -4061,6 +4120,8 @@ class GoogleAppsDriveLabelsV2Label {
         if (disableTime != null) 'disableTime': disableTime!,
         if (disabler != null) 'disabler': disabler!,
         if (displayHints != null) 'displayHints': displayHints!,
+        if (enabledAppSettings != null)
+          'enabledAppSettings': enabledAppSettings!,
         if (fields != null) 'fields': fields!,
         if (id != null) 'id': id!,
         if (labelType != null) 'labelType': labelType!,
@@ -4176,6 +4237,58 @@ class GoogleAppsDriveLabelsV2LabelDisplayHints {
         if (hiddenInSearch != null) 'hiddenInSearch': hiddenInSearch!,
         if (priority != null) 'priority': priority!,
         if (shownInApply != null) 'shownInApply': shownInApply!,
+      };
+}
+
+/// Describes the Workspace apps in which the Label can be used.
+class GoogleAppsDriveLabelsV2LabelEnabledAppSettings {
+  /// The list of Apps where the Label can be used.
+  ///
+  /// Optional.
+  core.List<GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp>?
+      enabledApps;
+
+  GoogleAppsDriveLabelsV2LabelEnabledAppSettings({
+    this.enabledApps,
+  });
+
+  GoogleAppsDriveLabelsV2LabelEnabledAppSettings.fromJson(core.Map json_)
+      : this(
+          enabledApps: (json_['enabledApps'] as core.List?)
+              ?.map((value) =>
+                  GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabledApps != null) 'enabledApps': enabledApps!,
+      };
+}
+
+/// An App where the Label can be used.
+class GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp {
+  /// The name of the App.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "APP_UNSPECIFIED" : Unspecified
+  /// - "DRIVE" : Drive.
+  /// - "GMAIL" : Gmail
+  core.String? app;
+
+  GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp({
+    this.app,
+  });
+
+  GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp.fromJson(
+      core.Map json_)
+      : this(
+          app: json_['app'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (app != null) 'app': app!,
       };
 }
 
@@ -4912,6 +5025,71 @@ class GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (copyMode != null) 'copyMode': copyMode!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (useAdminAccess != null) 'useAdminAccess': useAdminAccess!,
+        if (view != null) 'view': view!,
+      };
+}
+
+/// Request to update the `EnabledAppSettings` of the given Label.
+///
+/// This change is not revisioned, does not require publishing, and takes effect
+/// immediately. \
+class GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest {
+  /// The new `EnabledAppSettings` value for the Label.
+  ///
+  /// Required.
+  GoogleAppsDriveLabelsV2LabelEnabledAppSettings? enabledAppSettings;
+
+  /// The BCP-47 language code to use for evaluating localized field labels.
+  ///
+  /// When not specified, values in the default configured language will be
+  /// used.
+  ///
+  /// Optional.
+  core.String? languageCode;
+
+  /// Set to `true` in order to use the user's admin credentials.
+  ///
+  /// The server will verify the user is an admin for the Label before allowing
+  /// access.
+  ///
+  /// Optional.
+  core.bool? useAdminAccess;
+
+  /// When specified, only certain fields belonging to the indicated view will
+  /// be returned.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LABEL_VIEW_BASIC" : Implies the field mask:
+  /// `name,id,revision_id,label_type,properties.*`
+  /// - "LABEL_VIEW_FULL" : All possible fields.
+  core.String? view;
+
+  GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest({
+    this.enabledAppSettings,
+    this.languageCode,
+    this.useAdminAccess,
+    this.view,
+  });
+
+  GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest.fromJson(
+      core.Map json_)
+      : this(
+          enabledAppSettings: json_.containsKey('enabledAppSettings')
+              ? GoogleAppsDriveLabelsV2LabelEnabledAppSettings.fromJson(
+                  json_['enabledAppSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          languageCode: json_['languageCode'] as core.String?,
+          useAdminAccess: json_['useAdminAccess'] as core.bool?,
+          view: json_['view'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (enabledAppSettings != null)
+          'enabledAppSettings': enabledAppSettings!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (useAdminAccess != null) 'useAdminAccess': useAdminAccess!,
         if (view != null) 'view': view!,

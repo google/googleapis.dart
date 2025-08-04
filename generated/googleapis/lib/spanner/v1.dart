@@ -2271,14 +2271,15 @@ class ProjectsInstancesDatabasesResource {
   ProjectsInstancesDatabasesResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Adds split points to specified tables, indexes of a database.
+  /// Adds split points to specified tables and indexes of a database.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [database] - Required. The database on whose tables/indexes split points
-  /// are to be added. Values are of the form `projects//instances//databases/`.
+  /// [database] - Required. The database on whose tables or indexes the split
+  /// points are to be added. Values are of the form
+  /// `projects//instances//databases/`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/databases/\[^/\]+$`.
   ///
@@ -3795,13 +3796,13 @@ class ProjectsInstancesDatabasesSessionsResource {
   /// All mutations in a group are committed atomically. However, mutations
   /// across groups can be committed non-atomically in an unspecified order and
   /// thus, they must be independent of each other. Partial failure is possible,
-  /// i.e., some groups may have been committed successfully, while some may
-  /// have failed. The results of individual batches are streamed into the
-  /// response as the batches are applied. BatchWrite requests are not replay
-  /// protected, meaning that each mutation group may be applied more than once.
-  /// Replays of non-idempotent mutations may have undesirable effects. For
-  /// example, replays of an insert mutation may produce an already exists error
-  /// or if you use generated or commit timestamp-based keys, it may result in
+  /// that is, some groups might have been committed successfully, while some
+  /// might have failed. The results of individual batches are streamed into the
+  /// response as the batches are applied. `BatchWrite` requests are not replay
+  /// protected, meaning that each mutation group can be applied more than once.
+  /// Replays of non-idempotent mutations can have undesirable effects. For
+  /// example, replays of an insert mutation can produce an already exists error
+  /// or if you use generated or commit timestamp-based keys, it can result in
   /// additional rows being added to the mutation's table. We recommend
   /// structuring your mutation groups to be idempotent to avoid this issue.
   ///
@@ -3896,12 +3897,12 @@ class ProjectsInstancesDatabasesSessionsResource {
   /// `Commit` might return an `ABORTED` error. This can occur at any time;
   /// commonly, the cause is conflicts with concurrent transactions. However, it
   /// can also happen for a variety of other reasons. If `Commit` returns
-  /// `ABORTED`, the caller should re-attempt the transaction from the
-  /// beginning, re-using the same session. On very rare occasions, `Commit`
-  /// might return `UNKNOWN`. This can happen, for example, if the client job
-  /// experiences a 1+ hour networking failure. At that point, Cloud Spanner has
-  /// lost track of the transaction outcome and we recommend that you perform
-  /// another read from the database to see the state of things as they are now.
+  /// `ABORTED`, the caller should retry the transaction from the beginning,
+  /// reusing the same session. On very rare occasions, `Commit` might return
+  /// `UNKNOWN`. This can happen, for example, if the client job experiences a
+  /// 1+ hour networking failure. At that point, Cloud Spanner has lost track of
+  /// the transaction outcome and we recommend that you perform another read
+  /// from the database to see the state of things as they are now.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3952,12 +3953,12 @@ class ProjectsInstancesDatabasesSessionsResource {
   /// time. To execute multiple concurrent read-write/write-only transactions,
   /// create multiple sessions. Note that standalone reads and queries use a
   /// transaction internally, and count toward the one transaction limit. Active
-  /// sessions use additional server resources, so it is a good idea to delete
-  /// idle and unneeded sessions. Aside from explicit deletes, Cloud Spanner may
-  /// delete sessions for which no operations are sent for more than an hour. If
-  /// a session is deleted, requests to it return `NOT_FOUND`. Idle sessions can
-  /// be kept alive by sending a trivial SQL query periodically, e.g., `"SELECT
-  /// 1"`.
+  /// sessions use additional server resources, so it's a good idea to delete
+  /// idle and unneeded sessions. Aside from explicit deletes, Cloud Spanner can
+  /// delete sessions when no operations are sent for more than an hour. If a
+  /// session is deleted, requests to it return `NOT_FOUND`. Idle sessions can
+  /// be kept alive by sending a trivial SQL query periodically, for example,
+  /// `"SELECT 1"`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4000,7 +4001,7 @@ class ProjectsInstancesDatabasesSessionsResource {
 
   /// Ends a session, releasing server resources associated with it.
   ///
-  /// This will asynchronously trigger cancellation of any operations that are
+  /// This asynchronously triggers the cancellation of any operations that are
   /// running with this session.
   ///
   /// Request parameters:
@@ -4090,7 +4091,7 @@ class ProjectsInstancesDatabasesSessionsResource {
 
   /// Executes an SQL statement, returning all results in a single reply.
   ///
-  /// This method cannot be used to return a result set larger than 10 MiB; if
+  /// This method can't be used to return a result set larger than 10 MiB; if
   /// the query yields more data than that, the query fails with a
   /// `FAILED_PRECONDITION` error. Operations inside read-write transactions
   /// might return `ABORTED`. If this occurs, the application should restart the
@@ -4192,7 +4193,7 @@ class ProjectsInstancesDatabasesSessionsResource {
 
   /// Gets a session.
   ///
-  /// Returns `NOT_FOUND` if the session does not exist. This is mainly useful
+  /// Returns `NOT_FOUND` if the session doesn't exist. This is mainly useful
   /// for determining whether a session is still alive.
   ///
   /// Request parameters:
@@ -4290,12 +4291,12 @@ class ProjectsInstancesDatabasesSessionsResource {
   ///
   /// Each of the returned partition tokens can be used by ExecuteStreamingSql
   /// to specify a subset of the query result to read. The same session and
-  /// read-only transaction must be used by the PartitionQueryRequest used to
-  /// create the partition tokens and the ExecuteSqlRequests that use the
+  /// read-only transaction must be used by the `PartitionQueryRequest` used to
+  /// create the partition tokens and the `ExecuteSqlRequests` that use the
   /// partition tokens. Partition tokens become invalid when the session used to
   /// create them is deleted, is idle for too long, begins a new transaction, or
-  /// becomes too old. When any of these happen, it is not possible to resume
-  /// the query, and the whole operation must be restarted from the beginning.
+  /// becomes too old. When any of these happen, it isn't possible to resume the
+  /// query, and the whole operation must be restarted from the beginning.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4342,13 +4343,13 @@ class ProjectsInstancesDatabasesSessionsResource {
   ///
   /// Each of the returned partition tokens can be used by StreamingRead to
   /// specify a subset of the read result to read. The same session and
-  /// read-only transaction must be used by the PartitionReadRequest used to
-  /// create the partition tokens and the ReadRequests that use the partition
+  /// read-only transaction must be used by the `PartitionReadRequest` used to
+  /// create the partition tokens and the `ReadRequests` that use the partition
   /// tokens. There are no ordering guarantees on rows returned among the
-  /// returned partition tokens, or even within each individual StreamingRead
-  /// call issued with a partition_token. Partition tokens become invalid when
+  /// returned partition tokens, or even within each individual `StreamingRead`
+  /// call issued with a `partition_token`. Partition tokens become invalid when
   /// the session used to create them is deleted, is idle for too long, begins a
-  /// new transaction, or becomes too old. When any of these happen, it is not
+  /// new transaction, or becomes too old. When any of these happen, it isn't
   /// possible to resume the read, and the whole operation must be restarted
   /// from the beginning.
   ///
@@ -4395,7 +4396,7 @@ class ProjectsInstancesDatabasesSessionsResource {
   /// Reads rows from the database using key lookups and scans, as a simple
   /// key/value style alternative to ExecuteSql.
   ///
-  /// This method cannot be used to return a result set larger than 10 MiB; if
+  /// This method can't be used to return a result set larger than 10 MiB; if
   /// the read matches more data than that, the read fails with a
   /// `FAILED_PRECONDITION` error. Reads inside read-write transactions might
   /// return `ABORTED`. If this occurs, the application should restart the
@@ -4444,10 +4445,10 @@ class ProjectsInstancesDatabasesSessionsResource {
 
   /// Rolls back a transaction, releasing any locks it holds.
   ///
-  /// It is a good idea to call this for any transaction that includes one or
+  /// It's a good idea to call this for any transaction that includes one or
   /// more Read or ExecuteSql requests and ultimately decides not to commit.
   /// `Rollback` returns `OK` if it successfully aborts the transaction, the
-  /// transaction was already aborted, or the transaction is not found.
+  /// transaction was already aborted, or the transaction isn't found.
   /// `Rollback` never returns `ABORTED`.
   ///
   /// [request] - The metadata request object.
@@ -5483,8 +5484,8 @@ class AddSplitPointsRequest {
   ///
   /// For example, "initial_data_load", "special_event_1". Defaults to
   /// "CloudAddSplitPointsAPI" if not specified. The length of the tag must not
-  /// exceed 50 characters,else will be trimmed. Only valid UTF8 characters are
-  /// allowed.
+  /// exceed 50 characters, or else it is trimmed. Only valid UTF8 characters
+  /// are allowed.
   ///
   /// Optional.
   core.String? initiator;
@@ -6210,14 +6211,14 @@ class BackupScheduleSpec {
 class BatchCreateSessionsRequest {
   /// The number of sessions to be created in this batch call.
   ///
-  /// The API may return fewer than the requested number of sessions. If a
+  /// The API can return fewer than the requested number of sessions. If a
   /// specific number of sessions are desired, the client can make additional
-  /// calls to BatchCreateSessions (adjusting session_count as necessary).
+  /// calls to `BatchCreateSessions` (adjusting session_count as necessary).
   ///
   /// Required.
   core.int? sessionCount;
 
-  /// Parameters to be applied to each created session.
+  /// Parameters to apply to each created session.
   Session? sessionTemplate;
 
   BatchCreateSessionsRequest({
@@ -6264,18 +6265,9 @@ class BatchCreateSessionsResponse {
 
 /// The request for BatchWrite.
 class BatchWriteRequest {
-  /// When `exclude_txn_from_change_streams` is set to `true`: * Modifications
-  /// from all transactions in this batch write operation will not be recorded
-  /// in change streams with DDL option `allow_txn_exclusion=true` that are
-  /// tracking columns modified by these transactions.
-  ///
-  /// * Modifications from all transactions in this batch write operation will
-  /// be recorded in change streams with DDL option `allow_txn_exclusion=false
-  /// or not set` that are tracking columns modified by these transactions. When
-  /// `exclude_txn_from_change_streams` is set to `false` or not set,
-  /// Modifications from all transactions in this batch write operation will be
-  /// recorded in all change streams that are tracking columns modified by these
-  /// transactions.
+  /// If you don't set the `exclude_txn_from_change_streams` option or if it's
+  /// set to `false`, then any change streams monitoring columns modified by
+  /// transactions will capture the updates made within that transaction.
   ///
   /// Optional.
   core.bool? excludeTxnFromChangeStreams;
@@ -6362,10 +6354,10 @@ class BatchWriteResponse {
 /// The request for BeginTransaction.
 class BeginTransactionRequest {
   /// Required for read-write transactions on a multiplexed session that commit
-  /// mutations but do not perform any reads or queries.
+  /// mutations but don't perform any reads or queries.
   ///
-  /// Clients should randomly select one of the mutations from the mutation set
-  /// and send it as a part of this request.
+  /// You must randomly select one of the mutations from the mutation set and
+  /// send it as a part of this request.
   ///
   /// Optional.
   Mutation? mutationKey;
@@ -6378,7 +6370,7 @@ class BeginTransactionRequest {
   /// Common options for this request.
   ///
   /// Priority is ignored for this request. Setting the priority in this
-  /// request_options struct will not do anything. To set the priority for a
+  /// `request_options` struct doesn't do anything. To set the priority for a
   /// transaction, set it on the reads and writes that are part of this
   /// transaction instead.
   RequestOptions? requestOptions;
@@ -6613,7 +6605,7 @@ class CommitRequest {
   /// The amount of latency this request is configured to incur in order to
   /// improve throughput.
   ///
-  /// If this field is not set, Spanner assumes requests are relatively latency
+  /// If this field isn't set, Spanner assumes requests are relatively latency
   /// sensitive and automatically determines an appropriate delay time. You can
   /// specify a commit delay value between 0 and 500 ms.
   ///
@@ -6626,11 +6618,11 @@ class CommitRequest {
   /// list.
   core.List<Mutation>? mutations;
 
-  /// If the read-write transaction was executed on a multiplexed session, the
-  /// precommit token with the highest sequence number received in this
-  /// transaction attempt, should be included here.
+  /// If the read-write transaction was executed on a multiplexed session, then
+  /// you must include the precommit token with the highest sequence number
+  /// received in this transaction attempt.
   ///
-  /// Failing to do so will result in a FailedPrecondition error.
+  /// Failing to do so results in a `FailedPrecondition` error.
   ///
   /// Optional.
   MultiplexedSessionPrecommitToken? precommitToken;
@@ -6638,8 +6630,8 @@ class CommitRequest {
   /// Common options for this request.
   RequestOptions? requestOptions;
 
-  /// If `true`, then statistics related to the transaction will be included in
-  /// the CommitResponse.
+  /// If `true`, then statistics related to the transaction is included in the
+  /// CommitResponse.
   ///
   /// Default value is `false`.
   core.bool? returnCommitStats;
@@ -6649,7 +6641,7 @@ class CommitRequest {
   /// Note that unlike commit of a previously-started transaction, commit with a
   /// temporary transaction is non-idempotent. That is, if the `CommitRequest`
   /// is sent to Cloud Spanner more than once (for instance, due to retries in
-  /// the application, or in the transport library), it is possible that the
+  /// the application, or in the transport library), it's possible that the
   /// mutations are executed more than once. If this is undesirable, use
   /// BeginTransaction and Commit instead.
   TransactionOptions? singleUseTransaction;
@@ -6712,7 +6704,7 @@ class CommitRequest {
 
 /// The response for Commit.
 class CommitResponse {
-  /// The statistics about this Commit.
+  /// The statistics about this `Commit`.
   ///
   /// Not returned by default. For more information, see
   /// CommitRequest.return_commit_stats.
@@ -6723,7 +6715,7 @@ class CommitResponse {
 
   /// If specified, transaction has not committed yet.
   ///
-  /// Clients must retry the commit with the new precommit token.
+  /// You must retry the commit with the new precommit token.
   MultiplexedSessionPrecommitToken? precommitToken;
 
   CommitResponse({
@@ -7514,6 +7506,53 @@ class Database {
       };
 }
 
+/// The configuration for each database in the target instance configuration.
+class DatabaseMoveConfig {
+  /// The unique identifier of the database resource in the Instance.
+  ///
+  /// For example, if the database uri is
+  /// `projects/foo/instances/bar/databases/baz`, then the id to supply here is
+  /// baz.
+  ///
+  /// Required.
+  core.String? databaseId;
+
+  /// Encryption configuration to be used for the database in the target
+  /// configuration.
+  ///
+  /// The encryption configuration must be specified for every database which
+  /// currently uses CMEK encryption. If a database currently uses
+  /// Google-managed encryption and a target encryption configuration is not
+  /// specified, then the database defaults to Google-managed encryption. If a
+  /// database currently uses Google-managed encryption and a target CMEK
+  /// encryption is specified, the request is rejected. If a database currently
+  /// uses CMEK encryption, then a target encryption configuration must be
+  /// specified. You can't move a CMEK database to a Google-managed encryption
+  /// database using the MoveInstance API.
+  ///
+  /// Optional.
+  InstanceEncryptionConfig? encryptionConfig;
+
+  DatabaseMoveConfig({
+    this.databaseId,
+    this.encryptionConfig,
+  });
+
+  DatabaseMoveConfig.fromJson(core.Map json_)
+      : this(
+          databaseId: json_['databaseId'] as core.String?,
+          encryptionConfig: json_.containsKey('encryptionConfig')
+              ? InstanceEncryptionConfig.fromJson(json_['encryptionConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databaseId != null) 'databaseId': databaseId!,
+        if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
+      };
+}
+
 /// A Cloud Spanner database role.
 class DatabaseRole {
   /// The name of the database role.
@@ -7674,25 +7713,25 @@ class DiagnosticMessage {
       };
 }
 
-/// The DirectedReadOptions can be used to indicate which replicas or regions
+/// The `DirectedReadOptions` can be used to indicate which replicas or regions
 /// should be used for non-transactional reads or queries.
 ///
-/// DirectedReadOptions may only be specified for a read-only transaction,
-/// otherwise the API will return an `INVALID_ARGUMENT` error.
+/// `DirectedReadOptions` can only be specified for a read-only transaction,
+/// otherwise the API returns an `INVALID_ARGUMENT` error.
 class DirectedReadOptions {
-  /// Exclude_replicas indicates that specified replicas should be excluded from
-  /// serving requests.
+  /// `Exclude_replicas` indicates that specified replicas should be excluded
+  /// from serving requests.
   ///
-  /// Spanner will not route requests to the replicas in this list.
+  /// Spanner doesn't route requests to the replicas in this list.
   ExcludeReplicas? excludeReplicas;
 
-  /// Include_replicas indicates the order of replicas (as they appear in this
+  /// `Include_replicas` indicates the order of replicas (as they appear in this
   /// list) to process the request.
   ///
-  /// If auto_failover_disabled is set to true and all replicas are exhausted
-  /// without finding a healthy replica, Spanner will wait for a replica in the
-  /// list to become available, requests may fail due to `DEADLINE_EXCEEDED`
-  /// errors.
+  /// If `auto_failover_disabled` is set to `true` and all replicas are
+  /// exhausted without finding a healthy replica, Spanner waits for a replica
+  /// in the list to become available, requests might fail due to
+  /// `DEADLINE_EXCEEDED` errors.
   IncludeReplicas? includeReplicas;
 
   DirectedReadOptions({
@@ -7852,15 +7891,15 @@ class ExcludeReplicas {
 
 /// The request for ExecuteBatchDml.
 class ExecuteBatchDmlRequest {
-  /// If set to true, this request marks the end of the transaction.
+  /// If set to `true`, this request marks the end of the transaction.
   ///
-  /// The transaction should be committed or aborted after these statements
-  /// execute, and attempts to execute any other requests against this
-  /// transaction (including reads and queries) will be rejected. Setting this
-  /// option may cause some error reporting to be deferred until commit time
-  /// (e.g. validation of unique constraints). Given this, successful execution
-  /// of statements should not be assumed until a subsequent Commit call
-  /// completes successfully.
+  /// After these statements execute, you must commit or abort the transaction.
+  /// Attempts to execute any other requests against this transaction (including
+  /// reads and queries) are rejected. Setting this option might cause some
+  /// error reporting to be deferred until commit time (for example, validation
+  /// of unique constraints). Given this, successful execution of statements
+  /// shouldn't be assumed until a subsequent `Commit` call completes
+  /// successfully.
   ///
   /// Optional.
   core.bool? lastStatements;
@@ -7871,11 +7910,11 @@ class ExecuteBatchDmlRequest {
   /// A per-transaction sequence number used to identify this request.
   ///
   /// This field makes each request idempotent such that if the request is
-  /// received multiple times, at most one will succeed. The sequence number
-  /// must be monotonically increasing within the transaction. If a request
-  /// arrives for the first time with an out-of-order sequence number, the
-  /// transaction may be aborted. Replays of previously handled requests will
-  /// yield the same response as the first execution.
+  /// received multiple times, at most one succeeds. The sequence number must be
+  /// monotonically increasing within the transaction. If a request arrives for
+  /// the first time with an out-of-order sequence number, the transaction might
+  /// be aborted. Replays of previously handled requests yield the same response
+  /// as the first execution.
   ///
   /// Required.
   core.String? seqno;
@@ -7952,11 +7991,12 @@ class ExecuteBatchDmlRequest {
 /// the third statement failed, and the fourth and fifth statements were not
 /// executed.
 class ExecuteBatchDmlResponse {
-  /// A precommit token will be included if the read-write transaction is on a
+  /// A precommit token is included if the read-write transaction is on a
   /// multiplexed session.
   ///
-  /// The precommit token with the highest sequence number from this transaction
-  /// attempt should be passed to the Commit request for this transaction.
+  /// Pass the precommit token with the highest sequence number from this
+  /// transaction attempt should be passed to the Commit request for this
+  /// transaction.
   ///
   /// Optional.
   MultiplexedSessionPrecommitToken? precommitToken;
@@ -8009,34 +8049,34 @@ class ExecuteSqlRequest {
   /// If this is for a partitioned query and this field is set to `true`, the
   /// request is executed with Spanner Data Boost independent compute resources.
   ///
-  /// If the field is set to `true` but the request does not set
+  /// If the field is set to `true` but the request doesn't set
   /// `partition_token`, the API returns an `INVALID_ARGUMENT` error.
   core.bool? dataBoostEnabled;
 
   /// Directed read options for this request.
   DirectedReadOptions? directedReadOptions;
 
-  /// If set to true, this statement marks the end of the transaction.
+  /// If set to `true`, this statement marks the end of the transaction.
   ///
-  /// The transaction should be committed or aborted after this statement
-  /// executes, and attempts to execute any other requests against this
-  /// transaction (including reads and queries) will be rejected. For DML
-  /// statements, setting this option may cause some error reporting to be
-  /// deferred until commit time (e.g. validation of unique constraints). Given
-  /// this, successful execution of a DML statement should not be assumed until
-  /// a subsequent Commit call completes successfully.
+  /// After this statement executes, you must commit or abort the transaction.
+  /// Attempts to execute any other requests against this transaction (including
+  /// reads and queries) are rejected. For DML statements, setting this option
+  /// might cause some error reporting to be deferred until commit time (for
+  /// example, validation of unique constraints). Given this, successful
+  /// execution of a DML statement shouldn't be assumed until a subsequent
+  /// `Commit` call completes successfully.
   ///
   /// Optional.
   core.bool? lastStatement;
 
-  /// It is not always possible for Cloud Spanner to infer the right SQL type
+  /// It isn't always possible for Cloud Spanner to infer the right SQL type
   /// from a JSON value.
   ///
   /// For example, values of type `BYTES` and values of type `STRING` both
-  /// appear in params as JSON strings. In these cases, `param_types` can be
-  /// used to specify the exact SQL type for some or all of the SQL statement
-  /// parameters. See the definition of Type for more information about SQL
-  /// types.
+  /// appear in params as JSON strings. In these cases, you can use
+  /// `param_types` to specify the exact SQL type for some or all of the SQL
+  /// statement parameters. See the definition of Type for more information
+  /// about SQL types.
   core.Map<core.String, Type>? paramTypes;
 
   /// Parameter names and values that bind to placeholders in the SQL string.
@@ -8047,19 +8087,19 @@ class ExecuteSqlRequest {
   /// https://cloud.google.com/spanner/docs/lexical#identifiers. Parameters can
   /// appear anywhere that a literal value is expected. The same parameter name
   /// can be used more than once, for example: `"WHERE id > @msg_id AND id <
-  /// @msg_id + 100"` It is an error to execute a SQL statement with unbound
+  /// @msg_id + 100"` It's an error to execute a SQL statement with unbound
   /// parameters.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? params;
 
-  /// If present, results will be restricted to the specified partition
-  /// previously created using PartitionQuery().
+  /// If present, results are restricted to the specified partition previously
+  /// created using `PartitionQuery`.
   ///
   /// There must be an exact match for the values of fields common to this
-  /// message and the PartitionQueryRequest message used to create this
-  /// partition_token.
+  /// message and the `PartitionQueryRequest` message used to create this
+  /// `partition_token`.
   core.String? partitionToken;
   core.List<core.int> get partitionTokenAsBytes =>
       convert.base64.decode(partitionToken!);
@@ -8079,7 +8119,7 @@ class ExecuteSqlRequest {
   /// execution statistics information.
   /// - "PROFILE" : This mode returns the query plan, overall execution
   /// statistics, operator level execution statistics along with the results.
-  /// This has a performance overhead compared to the other modes. It is not
+  /// This has a performance overhead compared to the other modes. It isn't
   /// recommended to use this mode for production traffic.
   /// - "WITH_STATS" : This mode returns the overall (but not operator-level)
   /// execution statistics along with the results.
@@ -8112,12 +8152,11 @@ class ExecuteSqlRequest {
   /// A per-transaction sequence number used to identify this request.
   ///
   /// This field makes each request idempotent such that if the request is
-  /// received multiple times, at most one will succeed. The sequence number
-  /// must be monotonically increasing within the transaction. If a request
-  /// arrives for the first time with an out-of-order sequence number, the
-  /// transaction may be aborted. Replays of previously handled requests will
-  /// yield the same response as the first execution. Required for DML
-  /// statements. Ignored for queries.
+  /// received multiple times, at most one succeeds. The sequence number must be
+  /// monotonically increasing within the transaction. If a request arrives for
+  /// the first time with an out-of-order sequence number, the transaction can
+  /// be aborted. Replays of previously handled requests yield the same response
+  /// as the first execution. Required for DML statements. Ignored for queries.
   core.String? seqno;
 
   /// The SQL string.
@@ -8386,12 +8425,12 @@ class GetIamPolicyRequest {
 /// Encapsulates settings provided to GetIamPolicy.
 typedef GetPolicyOptions = $GetPolicyOptions00;
 
-/// An IncludeReplicas contains a repeated set of ReplicaSelection which
+/// An `IncludeReplicas` contains a repeated set of `ReplicaSelection` which
 /// indicates the order in which replicas should be considered.
 class IncludeReplicas {
-  /// If true, Spanner will not route requests to a replica outside the
-  /// include_replicas list when all of the specified replicas are unavailable
-  /// or unhealthy.
+  /// If `true`, Spanner doesn't route requests to a replica outside the
+  /// \<`include_replicas` list when all of the specified replicas are
+  /// unavailable or unhealthy.
   ///
   /// Default value is `false`.
   core.bool? autoFailoverDisabled;
@@ -8989,6 +9028,58 @@ class InstanceConfig {
         if (state != null) 'state': state!,
         if (storageLimitPerProcessingUnit != null)
           'storageLimitPerProcessingUnit': storageLimitPerProcessingUnit!,
+      };
+}
+
+/// Encryption configuration for a Cloud Spanner database.
+class InstanceEncryptionConfig {
+  /// This field is maintained for backwards compatibility.
+  ///
+  /// For new callers, we recommend using `kms_key_names` to specify the KMS
+  /// key. `kms_key_name` should only be used if the location of the KMS key
+  /// matches the database instance’s configuration (location) exactly. E.g. The
+  /// KMS location is in us-central1 or nam3 and the database instance is also
+  /// in us-central1 or nam3. The Cloud KMS key to be used for encrypting and
+  /// decrypting the database. Values are of the form
+  /// `projects//locations//keyRings//cryptoKeys/`.
+  ///
+  /// Optional.
+  core.String? kmsKeyName;
+
+  /// Specifies the KMS configuration for one or more keys used to encrypt the
+  /// database.
+  ///
+  /// Values are of the form `projects//locations//keyRings//cryptoKeys/`. The
+  /// keys referenced by `kms_key_names` must fully cover all regions of the
+  /// database's instance configuration. Some examples: * For regional
+  /// (single-region) instance configurations, specify a regional location KMS
+  /// key. * For multi-region instance configurations of type `GOOGLE_MANAGED`,
+  /// either specify a multi-region location KMS key or multiple regional
+  /// location KMS keys that cover all regions in the instance configuration. *
+  /// For an instance configuration of type `USER_MANAGED`, specify only
+  /// regional location KMS keys to cover each region in the instance
+  /// configuration. Multi-region location KMS keys aren't supported for
+  /// `USER_MANAGED` type instance configurations.
+  ///
+  /// Optional.
+  core.List<core.String>? kmsKeyNames;
+
+  InstanceEncryptionConfig({
+    this.kmsKeyName,
+    this.kmsKeyNames,
+  });
+
+  InstanceEncryptionConfig.fromJson(core.Map json_)
+      : this(
+          kmsKeyName: json_['kmsKeyName'] as core.String?,
+          kmsKeyNames: (json_['kmsKeyNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+        if (kmsKeyNames != null) 'kmsKeyNames': kmsKeyNames!,
       };
 }
 
@@ -10150,24 +10241,37 @@ class MoveInstanceRequest {
   /// Required.
   core.String? targetConfig;
 
+  /// The configuration for each database in the target instance configuration.
+  ///
+  /// Optional.
+  core.List<DatabaseMoveConfig>? targetDatabaseMoveConfigs;
+
   MoveInstanceRequest({
     this.targetConfig,
+    this.targetDatabaseMoveConfigs,
   });
 
   MoveInstanceRequest.fromJson(core.Map json_)
       : this(
           targetConfig: json_['targetConfig'] as core.String?,
+          targetDatabaseMoveConfigs:
+              (json_['targetDatabaseMoveConfigs'] as core.List?)
+                  ?.map((value) => DatabaseMoveConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (targetConfig != null) 'targetConfig': targetConfig!,
+        if (targetDatabaseMoveConfigs != null)
+          'targetDatabaseMoveConfigs': targetDatabaseMoveConfigs!,
       };
 }
 
 /// When a read-write transaction is executed on a multiplexed session, this
-/// precommit token is sent back to the client as a part of the \[Transaction\]
-/// message in the BeginTransaction response and also as a part of the
-/// \[ResultSet\] and \[PartialResultSet\] responses.
+/// precommit token is sent back to the client as a part of the Transaction
+/// message in the BeginTransaction response and also as a part of the ResultSet
+/// and PartialResultSet responses.
 class MultiplexedSessionPrecommitToken {
   /// Opaque precommit token.
   core.String? precommitToken;
@@ -10399,16 +10503,24 @@ class PartialResultSet {
   /// field value.
   core.bool? chunkedValue;
 
+  /// Indicates whether this is the last `PartialResultSet` in the stream.
+  ///
+  /// The server might optionally set this field. Clients shouldn't rely on this
+  /// field being set in all cases.
+  ///
+  /// Optional.
+  core.bool? last;
+
   /// Metadata about the result set, such as row type information.
   ///
   /// Only present in the first response.
   ResultSetMetadata? metadata;
 
-  /// A precommit token will be included if the read-write transaction is on a
-  /// multiplexed session.
+  /// A precommit token is included if the read-write transaction has
+  /// multiplexed sessions enabled.
   ///
-  /// The precommit token with the highest sequence number from this transaction
-  /// attempt should be passed to the Commit request for this transaction.
+  /// Pass the precommit token with the highest sequence number from this
+  /// transaction attempt to the Commit request for this transaction.
   ///
   /// Optional.
   MultiplexedSessionPrecommitToken? precommitToken;
@@ -10432,8 +10544,8 @@ class PartialResultSet {
   /// streaming result set.
   ///
   /// These can be requested by setting ExecuteSqlRequest.query_mode and are
-  /// sent only once with the last response in the stream. This field will also
-  /// be present in the last response for DML statements.
+  /// sent only once with the last response in the stream. This field is also
+  /// present in the last response for DML statements.
   ResultSetStats? stats;
 
   /// A streamed result set consists of a stream of values, which might be split
@@ -10442,28 +10554,28 @@ class PartialResultSet {
   ///
   /// Every N complete values defines a row, where N is equal to the number of
   /// entries in metadata.row_type.fields. Most values are encoded based on type
-  /// as described here. It is possible that the last value in values is
+  /// as described here. It's possible that the last value in values is
   /// "chunked", meaning that the rest of the value is sent in subsequent
   /// `PartialResultSet`(s). This is denoted by the chunked_value field. Two or
   /// more chunked values can be merged to form a complete value as follows: *
-  /// `bool/number/null`: cannot be chunked * `string`: concatenate the strings
-  /// * `list`: concatenate the lists. If the last element in a list is a
+  /// `bool/number/null`: can't be chunked * `string`: concatenate the strings *
+  /// `list`: concatenate the lists. If the last element in a list is a
   /// `string`, `list`, or `object`, merge it with the first element in the next
   /// list by applying these rules recursively. * `object`: concatenate the
   /// (field name, field value) pairs. If a field name is duplicated, then apply
   /// these rules recursively to merge the field values. Some examples of
-  /// merging: # Strings are concatenated. "foo", "bar" =\> "foobar" # Lists of
-  /// non-strings are concatenated. \[2, 3\], \[4\] =\> \[2, 3, 4\] # Lists are
-  /// concatenated, but the last and first elements are merged # because they
-  /// are strings. \["a", "b"\], \["c", "d"\] =\> \["a", "bc", "d"\] # Lists are
-  /// concatenated, but the last and first elements are merged # because they
-  /// are lists. Recursively, the last and first elements # of the inner lists
-  /// are merged because they are strings. \["a", \["b", "c"\]\], \[\["d"\],
-  /// "e"\] =\> \["a", \["b", "cd"\], "e"\] # Non-overlapping object fields are
-  /// combined. {"a": "1"}, {"b": "2"} =\> {"a": "1", "b": 2"} # Overlapping
-  /// object fields are merged. {"a": "1"}, {"a": "2"} =\> {"a": "12"} #
-  /// Examples of merging objects containing lists of strings. {"a": \["1"\]},
-  /// {"a": \["2"\]} =\> {"a": \["12"\]} For a more complete example, suppose a
+  /// merging: Strings are concatenated. "foo", "bar" =\> "foobar" Lists of
+  /// non-strings are concatenated. \[2, 3\], \[4\] =\> \[2, 3, 4\] Lists are
+  /// concatenated, but the last and first elements are merged because they are
+  /// strings. \["a", "b"\], \["c", "d"\] =\> \["a", "bc", "d"\] Lists are
+  /// concatenated, but the last and first elements are merged because they are
+  /// lists. Recursively, the last and first elements of the inner lists are
+  /// merged because they are strings. \["a", \["b", "c"\]\], \[\["d"\], "e"\]
+  /// =\> \["a", \["b", "cd"\], "e"\] Non-overlapping object fields are
+  /// combined. {"a": "1"}, {"b": "2"} =\> {"a": "1", "b": 2"} Overlapping
+  /// object fields are merged. {"a": "1"}, {"a": "2"} =\> {"a": "12"} Examples
+  /// of merging objects containing lists of strings. {"a": \["1"\]}, {"a":
+  /// \["2"\]} =\> {"a": \["12"\]} For a more complete example, suppose a
   /// streaming SQL query is yielding a result set whose rows contain a single
   /// string field. The following `PartialResultSet`s might be yielded: {
   /// "metadata": { ... } "values": \["Hello", "W"\] "chunked_value": true
@@ -10474,8 +10586,8 @@ class PartialResultSet {
   /// + "d"`. Not all `PartialResultSet`s contain a `resume_token`. Execution
   /// can only be resumed from a previously yielded `resume_token`. For the
   /// above sequence of `PartialResultSet`s, resuming the query with
-  /// `"resume_token": "Af65..."` will yield results from the `PartialResultSet`
-  /// with value `["orl"]`.
+  /// `"resume_token": "Af65..."` yields results from the `PartialResultSet`
+  /// with value "orl".
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -10483,6 +10595,7 @@ class PartialResultSet {
 
   PartialResultSet({
     this.chunkedValue,
+    this.last,
     this.metadata,
     this.precommitToken,
     this.resumeToken,
@@ -10493,6 +10606,7 @@ class PartialResultSet {
   PartialResultSet.fromJson(core.Map json_)
       : this(
           chunkedValue: json_['chunkedValue'] as core.bool?,
+          last: json_['last'] as core.bool?,
           metadata: json_.containsKey('metadata')
               ? ResultSetMetadata.fromJson(
                   json_['metadata'] as core.Map<core.String, core.dynamic>)
@@ -10513,6 +10627,7 @@ class PartialResultSet {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (chunkedValue != null) 'chunkedValue': chunkedValue!,
+        if (last != null) 'last': last!,
         if (metadata != null) 'metadata': metadata!,
         if (precommitToken != null) 'precommitToken': precommitToken!,
         if (resumeToken != null) 'resumeToken': resumeToken!,
@@ -10523,8 +10638,8 @@ class PartialResultSet {
 
 /// Information returned for each partition returned in a PartitionResponse.
 class Partition {
-  /// This token can be passed to Read, StreamingRead, ExecuteSql, or
-  /// ExecuteStreamingSql requests to restrict the results to those identified
+  /// This token can be passed to `Read`, `StreamingRead`, `ExecuteSql`, or
+  /// `ExecuteStreamingSql` requests to restrict the results to those identified
   /// by this partition token.
   core.String? partitionToken;
   core.List<core.int> get partitionTokenAsBytes =>
@@ -10549,24 +10664,24 @@ class Partition {
       };
 }
 
-/// Options for a PartitionQueryRequest and PartitionReadRequest.
+/// Options for a `PartitionQueryRequest` and `PartitionReadRequest`.
 class PartitionOptions {
-  /// **Note:** This hint is currently ignored by PartitionQuery and
-  /// PartitionRead requests.
+  /// **Note:** This hint is currently ignored by `PartitionQuery` and
+  /// `PartitionRead` requests.
   ///
-  /// The desired maximum number of partitions to return. For example, this may
-  /// be set to the number of workers available. The default for this option is
-  /// currently 10,000. The maximum value is currently 200,000. This is only a
-  /// hint. The actual number of partitions returned may be smaller or larger
-  /// than this maximum count request.
+  /// The desired maximum number of partitions to return. For example, this
+  /// might be set to the number of workers available. The default for this
+  /// option is currently 10,000. The maximum value is currently 200,000. This
+  /// is only a hint. The actual number of partitions returned can be smaller or
+  /// larger than this maximum count request.
   core.String? maxPartitions;
 
-  /// **Note:** This hint is currently ignored by PartitionQuery and
-  /// PartitionRead requests.
+  /// **Note:** This hint is currently ignored by `PartitionQuery` and
+  /// `PartitionRead` requests.
   ///
   /// The desired data size for each partition generated. The default for this
   /// option is currently 1 GiB. This is only a hint. The actual size of each
-  /// partition may be smaller or larger than this size request.
+  /// partition can be smaller or larger than this size request.
   core.String? partitionSizeBytes;
 
   PartitionOptions({
@@ -10589,7 +10704,7 @@ class PartitionOptions {
 
 /// The request for PartitionQuery
 class PartitionQueryRequest {
-  /// It is not always possible for Cloud Spanner to infer the right SQL type
+  /// It isn't always possible for Cloud Spanner to infer the right SQL type
   /// from a JSON value.
   ///
   /// For example, values of type `BYTES` and values of type `STRING` both
@@ -10605,7 +10720,7 @@ class PartitionQueryRequest {
   /// parameter name (for example, `@firstName`). Parameter names can contain
   /// letters, numbers, and underscores. Parameters can appear anywhere that a
   /// literal value is expected. The same parameter name can be used more than
-  /// once, for example: `"WHERE id > @msg_id AND id < @msg_id + 100"` It is an
+  /// once, for example: `"WHERE id > @msg_id AND id < @msg_id + 100"` It's an
   /// error to execute a SQL statement with unbound parameters.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -10617,21 +10732,21 @@ class PartitionQueryRequest {
 
   /// The query request to generate partitions for.
   ///
-  /// The request fails if the query is not root partitionable. For a query to
-  /// be root partitionable, it needs to satisfy a few conditions. For example,
-  /// if the query execution plan contains a distributed union operator, then it
+  /// The request fails if the query isn't root partitionable. For a query to be
+  /// root partitionable, it needs to satisfy a few conditions. For example, if
+  /// the query execution plan contains a distributed union operator, then it
   /// must be the first operator in the plan. For more information about other
   /// conditions, see
   /// [Read data in parallel](https://cloud.google.com/spanner/docs/reads#read_data_in_parallel).
   /// The query request must not contain DML commands, such as `INSERT`,
-  /// `UPDATE`, or `DELETE`. Use `ExecuteStreamingSql` with a PartitionedDml
+  /// `UPDATE`, or `DELETE`. Use `ExecuteStreamingSql` with a `PartitionedDml`
   /// transaction for large, partition-friendly DML operations.
   ///
   /// Required.
   core.String? sql;
 
-  /// Read only snapshot transactions are supported, read/write and single use
-  /// transactions are not.
+  /// Read-only snapshot transactions are supported, read and write and
+  /// single-use transactions are not.
   TransactionSelector? transaction;
 
   PartitionQueryRequest({
@@ -10690,9 +10805,8 @@ class PartitionReadRequest {
   ///
   /// `key_set` names the primary keys of the rows in table to be yielded,
   /// unless index is present. If index is present, then key_set instead names
-  /// index keys in index. It is not an error for the `key_set` to name rows
-  /// that do not exist in the database. Read yields nothing for nonexistent
-  /// rows.
+  /// index keys in index. It isn't an error for the `key_set` to name rows that
+  /// don't exist in the database. Read yields nothing for nonexistent rows.
   ///
   /// Required.
   KeySet? keySet;
@@ -11069,11 +11183,11 @@ class QueryOptions {
   /// optimizer statistics package. Specifying `latest` as a value instructs
   /// Cloud Spanner to use the latest generated statistics package. If not
   /// specified, Cloud Spanner uses the statistics package set at the database
-  /// level options, or the latest package if the database option is not set.
-  /// The statistics package requested by the query has to be exempt from
-  /// garbage collection. This can be achieved with the following DDL statement:
-  /// ``` ALTER STATISTICS SET OPTIONS (allow_gc=false) ``` The list of
-  /// available statistics packages can be queried from
+  /// level options, or the latest package if the database option isn't set. The
+  /// statistics package requested by the query has to be exempt from garbage
+  /// collection. This can be achieved with the following DDL statement: ```sql
+  /// ALTER STATISTICS SET OPTIONS (allow_gc=false) ``` The list of available
+  /// statistics packages can be queried from
   /// `INFORMATION_SCHEMA.SPANNER_STATISTICS`. Executing a SQL statement with an
   /// invalid optimizer statistics package or with a statistics package that
   /// allows garbage collection fails with an `INVALID_ARGUMENT` error.
@@ -11088,7 +11202,7 @@ class QueryOptions {
   /// other positive integer (from the list of supported optimizer versions)
   /// overrides the default optimizer version for query execution. The list of
   /// supported optimizer versions can be queried from
-  /// SPANNER_SYS.SUPPORTED_OPTIMIZER_VERSIONS. Executing a SQL statement with
+  /// `SPANNER_SYS.SUPPORTED_OPTIMIZER_VERSIONS`. Executing a SQL statement with
   /// an invalid optimizer version fails with an `INVALID_ARGUMENT` error. See
   /// https://cloud.google.com/spanner/docs/query-optimizer/manage-query-optimizer
   /// for more information on managing the query optimizer. The
@@ -11278,7 +11392,7 @@ class ReadOnly {
   ///
   /// Unlike other modes, reads at a specific timestamp are repeatable; the same
   /// read at the same timestamp always returns the same data. If the timestamp
-  /// is in the future, the read will block until the specified timestamp,
+  /// is in the future, the read is blocked until the specified timestamp,
   /// modulo the read's deadline. Useful for large scale consistent reads such
   /// as mapreduces, or for coordinating many reads against a consistent
   /// snapshot of the data. A timestamp in RFC3339 UTC \"Zulu\" format, accurate
@@ -11333,7 +11447,7 @@ class ReadRequest {
   /// If this is for a partitioned read and this field is set to `true`, the
   /// request is executed with Spanner Data Boost independent compute resources.
   ///
-  /// If the field is set to `true` but the request does not set
+  /// If the field is set to `true` but the request doesn't set
   /// `partition_token`, the API returns an `INVALID_ARGUMENT` error.
   core.bool? dataBoostEnabled;
 
@@ -11352,18 +11466,18 @@ class ReadRequest {
   /// unless index is present. If index is present, then key_set instead names
   /// index keys in index. If the partition_token field is empty, rows are
   /// yielded in table primary key order (if index is empty) or index key order
-  /// (if index is non-empty). If the partition_token field is not empty, rows
-  /// will be yielded in an unspecified order. It is not an error for the
-  /// `key_set` to name rows that do not exist in the database. Read yields
-  /// nothing for nonexistent rows.
+  /// (if index is non-empty). If the partition_token field isn't empty, rows
+  /// are yielded in an unspecified order. It isn't an error for the `key_set`
+  /// to name rows that don't exist in the database. Read yields nothing for
+  /// nonexistent rows.
   ///
   /// Required.
   KeySet? keySet;
 
   /// If greater than zero, only the first `limit` rows are yielded.
   ///
-  /// If `limit` is zero, the default is no limit. A limit cannot be specified
-  /// if `partition_token` is set.
+  /// If `limit` is zero, the default is no limit. A limit can't be specified if
+  /// `partition_token` is set.
   core.String? limit;
 
   /// Lock Hint for the request, it can only be used with read-write
@@ -11371,8 +11485,8 @@ class ReadRequest {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "LOCK_HINT_UNSPECIFIED" : Default value. LOCK_HINT_UNSPECIFIED is
-  /// equivalent to LOCK_HINT_SHARED.
+  /// - "LOCK_HINT_UNSPECIFIED" : Default value. `LOCK_HINT_UNSPECIFIED` is
+  /// equivalent to `LOCK_HINT_SHARED`.
   /// - "LOCK_HINT_SHARED" : Acquire shared locks. By default when you perform a
   /// read as part of a read-write transaction, Spanner acquires shared read
   /// locks, which allows other reads to still access the data until your
@@ -11395,37 +11509,38 @@ class ReadRequest {
   /// transaction because then when multiple transactions try to act on the same
   /// data, they automatically get serialized. Each transaction waits its turn
   /// to acquire the lock and avoids getting into deadlock situations. Because
-  /// the exclusive lock hint is just a hint, it should not be considered
-  /// equivalent to a mutex. In other words, you should not use Spanner
-  /// exclusive locks as a mutual exclusion mechanism for the execution of code
-  /// outside of Spanner. **Note:** Request exclusive locks judiciously because
-  /// they block others from reading that data for the entire transaction,
-  /// rather than just when the writes are being performed. Unless you observe
-  /// high write contention, you should use the default of shared read locks so
-  /// you don't prematurely block other clients from reading the data that
-  /// you're writing to.
+  /// the exclusive lock hint is just a hint, it shouldn't be considered
+  /// equivalent to a mutex. In other words, you shouldn't use Spanner exclusive
+  /// locks as a mutual exclusion mechanism for the execution of code outside of
+  /// Spanner. **Note:** Request exclusive locks judiciously because they block
+  /// others from reading that data for the entire transaction, rather than just
+  /// when the writes are being performed. Unless you observe high write
+  /// contention, you should use the default of shared read locks so you don't
+  /// prematurely block other clients from reading the data that you're writing
+  /// to.
   core.String? lockHint;
 
   /// Order for the returned rows.
   ///
-  /// By default, Spanner will return result rows in primary key order except
-  /// for PartitionRead requests. For applications that do not require rows to
-  /// be returned in primary key (`ORDER_BY_PRIMARY_KEY`) order, setting
+  /// By default, Spanner returns result rows in primary key order except for
+  /// PartitionRead requests. For applications that don't require rows to be
+  /// returned in primary key (`ORDER_BY_PRIMARY_KEY`) order, setting
   /// `ORDER_BY_NO_ORDER` option allows Spanner to optimize row retrieval,
-  /// resulting in lower latencies in certain cases (e.g. bulk point lookups).
+  /// resulting in lower latencies in certain cases (for example, bulk point
+  /// lookups).
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "ORDER_BY_UNSPECIFIED" : Default value. ORDER_BY_UNSPECIFIED is
-  /// equivalent to ORDER_BY_PRIMARY_KEY.
+  /// - "ORDER_BY_UNSPECIFIED" : Default value. `ORDER_BY_UNSPECIFIED` is
+  /// equivalent to `ORDER_BY_PRIMARY_KEY`.
   /// - "ORDER_BY_PRIMARY_KEY" : Read rows are returned in primary key order. In
   /// the event that this option is used in conjunction with the
-  /// `partition_token` field, the API will return an `INVALID_ARGUMENT` error.
+  /// `partition_token` field, the API returns an `INVALID_ARGUMENT` error.
   /// - "ORDER_BY_NO_ORDER" : Read rows are returned in any order.
   core.String? orderBy;
 
-  /// If present, results will be restricted to the specified partition
-  /// previously created using PartitionRead().
+  /// If present, results are restricted to the specified partition previously
+  /// created using `PartitionRead`.
   ///
   /// There must be an exact match for the values of fields common to this
   /// message and the PartitionReadRequest message used to create this
@@ -11555,14 +11670,23 @@ class ReadWrite {
 
   /// Read lock mode for the transaction.
   /// Possible string values are:
-  /// - "READ_LOCK_MODE_UNSPECIFIED" : Default value. If the value is not
-  /// specified, the pessimistic read lock is used.
+  /// - "READ_LOCK_MODE_UNSPECIFIED" : Default value. * If isolation level is
+  /// REPEATABLE_READ, then it is an error to specify `read_lock_mode`. Locking
+  /// semantics default to `OPTIMISTIC`. No validation checks are done for
+  /// reads, except to validate that the data that was served at the snapshot
+  /// time is unchanged at commit time in the following cases: 1. reads done as
+  /// part of queries that use `SELECT FOR UPDATE` 2. reads done as part of
+  /// statements with a `LOCK_SCANNED_RANGES` hint 3. reads done as part of DML
+  /// statements * At all other isolation levels, if `read_lock_mode` is the
+  /// default value, then pessimistic read locks are used.
   /// - "PESSIMISTIC" : Pessimistic lock mode. Read locks are acquired
-  /// immediately on read.
+  /// immediately on read. Semantics described only applies to SERIALIZABLE
+  /// isolation.
   /// - "OPTIMISTIC" : Optimistic lock mode. Locks for reads within the
   /// transaction are not acquired on read. Instead the locks are acquired on a
   /// commit to validate that read/queried data has not changed since the
-  /// transaction started.
+  /// transaction started. Semantics described only applies to SERIALIZABLE
+  /// isolation.
   core.String? readLockMode;
 
   ReadWrite({
@@ -11686,13 +11810,13 @@ class ReplicaInfo {
 /// selection: * `location` - The location must be one of the regions within the
 /// multi-region configuration of your database. * `type` - The type of the
 /// replica. Some examples of using replica_selectors are: * `location:us-east1`
-/// --\> The "us-east1" replica(s) of any available type will be used to process
-/// the request. * `type:READ_ONLY` --\> The "READ_ONLY" type replica(s) in
-/// nearest available location will be used to process the request. *
+/// --\> The "us-east1" replica(s) of any available type is used to process the
+/// request. * `type:READ_ONLY` --\> The "READ_ONLY" type replica(s) in the
+/// nearest available location are used to process the request. *
 /// `location:us-east1 type:READ_ONLY` --\> The "READ_ONLY" type replica(s) in
-/// location "us-east1" will be used to process the request.
+/// location "us-east1" is used to process the request.
 class ReplicaSelection {
-  /// The location or region of the serving requests, e.g. "us-east1".
+  /// The location or region of the serving requests, for example, "us-east1".
   core.String? location;
 
   /// The type of replica.
@@ -11733,25 +11857,25 @@ class RequestOptions {
   /// A per-request tag which can be applied to queries or reads, used for
   /// statistics collection.
   ///
-  /// Both request_tag and transaction_tag can be specified for a read or query
-  /// that belongs to a transaction. This field is ignored for requests where
-  /// it's not applicable (e.g. CommitRequest). Legal characters for
-  /// `request_tag` values are all printable characters (ASCII 32 - 126) and the
-  /// length of a request_tag is limited to 50 characters. Values that exceed
-  /// this limit are truncated. Any leading underscore (_) characters will be
+  /// Both `request_tag` and `transaction_tag` can be specified for a read or
+  /// query that belongs to a transaction. This field is ignored for requests
+  /// where it's not applicable (for example, `CommitRequest`). Legal characters
+  /// for `request_tag` values are all printable characters (ASCII 32 - 126) and
+  /// the length of a request_tag is limited to 50 characters. Values that
+  /// exceed this limit are truncated. Any leading underscore (_) characters are
   /// removed from the string.
   core.String? requestTag;
 
   /// A tag used for statistics collection about this transaction.
   ///
-  /// Both request_tag and transaction_tag can be specified for a read or query
-  /// that belongs to a transaction. The value of transaction_tag should be the
-  /// same for all requests belonging to the same transaction. If this request
-  /// doesn't belong to any transaction, transaction_tag will be ignored. Legal
-  /// characters for `transaction_tag` values are all printable characters
-  /// (ASCII 32 - 126) and the length of a transaction_tag is limited to 50
+  /// Both `request_tag` and `transaction_tag` can be specified for a read or
+  /// query that belongs to a transaction. The value of transaction_tag should
+  /// be the same for all requests belonging to the same transaction. If this
+  /// request doesn't belong to any transaction, `transaction_tag` is ignored.
+  /// Legal characters for `transaction_tag` values are all printable characters
+  /// (ASCII 32 - 126) and the length of a `transaction_tag` is limited to 50
   /// characters. Values that exceed this limit are truncated. Any leading
-  /// underscore (_) characters will be removed from the string.
+  /// underscore (_) characters are removed from the string.
   core.String? transactionTag;
 
   RequestOptions({
@@ -11926,11 +12050,11 @@ class ResultSet {
   /// Metadata about the result set, such as row type information.
   ResultSetMetadata? metadata;
 
-  /// A precommit token will be included if the read-write transaction is on a
+  /// A precommit token is included if the read-write transaction is on a
   /// multiplexed session.
   ///
-  /// The precommit token with the highest sequence number from this transaction
-  /// attempt should be passed to the Commit request for this transaction.
+  /// Pass the precommit token with the highest sequence number from this
+  /// transaction attempt to the Commit request for this transaction.
   ///
   /// Optional.
   MultiplexedSessionPrecommitToken? precommitToken;
@@ -11951,8 +12075,8 @@ class ResultSet {
   /// These can be requested by setting ExecuteSqlRequest.query_mode. DML
   /// statements always produce stats containing the number of rows modified,
   /// unless executed using the ExecuteSqlRequest.QueryMode.PLAN
-  /// ExecuteSqlRequest.query_mode. Other fields may or may not be populated,
-  /// based on the ExecuteSqlRequest.query_mode.
+  /// ExecuteSqlRequest.query_mode. Other fields might or might not be
+  /// populated, based on the ExecuteSqlRequest.query_mode.
   ResultSetStats? stats;
 
   ResultSet({
@@ -12062,7 +12186,7 @@ class ResultSetStats {
   /// Standard DML returns an exact count of rows that were modified.
   core.String? rowCountExact;
 
-  /// Partitioned DML does not offer exactly-once semantics, so it returns a
+  /// Partitioned DML doesn't offer exactly-once semantics, so it returns a
   /// lower bound of the rows modified.
   core.String? rowCountLowerBound;
 
@@ -12225,7 +12349,7 @@ class ScanData {
 class Session {
   /// The approximate timestamp when the session is last used.
   ///
-  /// It is typically earlier than the actual last use time.
+  /// It's typically earlier than the actual last use time.
   ///
   /// Output only.
   core.String? approximateLastUseTime;
@@ -12248,7 +12372,7 @@ class Session {
   /// for more information on and examples of labels.
   core.Map<core.String, core.String>? labels;
 
-  /// If true, specifies a multiplexed session.
+  /// If `true`, specifies a multiplexed session.
   ///
   /// Use a multiplexed session for multiple, concurrent read-only operations.
   /// Don't use them for read-write transactions, partitioned reads, or
@@ -12394,7 +12518,7 @@ class SingleRegionQuorum {
       };
 }
 
-/// The split points of a table/index.
+/// The split points of a table or an index.
 class SplitPoints {
   /// The expiration timestamp of the split points.
   ///
@@ -12410,7 +12534,9 @@ class SplitPoints {
   /// If specified, the `table` field must refer to the index's base table.
   core.String? index;
 
-  /// The list of split keys, i.e., the split boundaries.
+  /// The list of split keys.
+  ///
+  /// In essence, the split boundaries.
   ///
   /// Required.
   core.List<Key>? keys;
@@ -12446,7 +12572,7 @@ class SplitPoints {
 
 /// A single DML statement.
 class Statement {
-  /// It is not always possible for Cloud Spanner to infer the right SQL type
+  /// It isn't always possible for Cloud Spanner to infer the right SQL type
   /// from a JSON value.
   ///
   /// For example, values of type `BYTES` and values of type `STRING` both
@@ -12462,7 +12588,7 @@ class Statement {
   /// parameter name (for example, `@firstName`). Parameter names can contain
   /// letters, numbers, and underscores. Parameters can appear anywhere that a
   /// literal value is expected. The same parameter name can be used more than
-  /// once, for example: `"WHERE id > @msg_id AND id < @msg_id + 100"` It is an
+  /// once, for example: `"WHERE id > @msg_id AND id < @msg_id + 100"` It's an
   /// error to execute a SQL statement with unbound parameters.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -12582,7 +12708,7 @@ class Transaction {
         convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// A precommit token will be included in the response of a BeginTransaction
+  /// A precommit token is included in the response of a BeginTransaction
   /// request if the read-write transaction is on a multiplexed session and a
   /// mutation_key was specified in the BeginTransaction.
   ///
@@ -12623,222 +12749,44 @@ class Transaction {
       };
 }
 
-/// Transactions: Each session can have at most one active transaction at a time
-/// (note that standalone reads and queries use a transaction internally and do
-/// count towards the one transaction limit).
-///
-/// After the active transaction is completed, the session can immediately be
-/// re-used for the next transaction. It is not necessary to create a new
-/// session for each transaction. Transaction modes: Cloud Spanner supports
-/// three transaction modes: 1. Locking read-write. This type of transaction is
-/// the only way to write data into Cloud Spanner. These transactions rely on
-/// pessimistic locking and, if necessary, two-phase commit. Locking read-write
-/// transactions may abort, requiring the application to retry. 2. Snapshot
-/// read-only. Snapshot read-only transactions provide guaranteed consistency
-/// across several reads, but do not allow writes. Snapshot read-only
-/// transactions can be configured to read at timestamps in the past, or
-/// configured to perform a strong read (where Spanner will select a timestamp
-/// such that the read is guaranteed to see the effects of all transactions that
-/// have committed before the start of the read). Snapshot read-only
-/// transactions do not need to be committed. Queries on change streams must be
-/// performed with the snapshot read-only transaction mode, specifying a strong
-/// read. See TransactionOptions.ReadOnly.strong for more details. 3.
-/// Partitioned DML. This type of transaction is used to execute a single
-/// Partitioned DML statement. Partitioned DML partitions the key space and runs
-/// the DML statement over each partition in parallel using separate, internal
-/// transactions that commit independently. Partitioned DML transactions do not
-/// need to be committed. For transactions that only read, snapshot read-only
-/// transactions provide simpler semantics and are almost always faster. In
-/// particular, read-only transactions do not take locks, so they do not
-/// conflict with read-write transactions. As a consequence of not taking locks,
-/// they also do not abort, so retry loops are not needed. Transactions may only
-/// read-write data in a single database. They may, however, read-write data in
-/// different tables within that database. Locking read-write transactions:
-/// Locking transactions may be used to atomically read-modify-write data
-/// anywhere in a database. This type of transaction is externally consistent.
-/// Clients should attempt to minimize the amount of time a transaction is
-/// active. Faster transactions commit with higher probability and cause less
-/// contention. Cloud Spanner attempts to keep read locks active as long as the
-/// transaction continues to do reads, and the transaction has not been
-/// terminated by Commit or Rollback. Long periods of inactivity at the client
-/// may cause Cloud Spanner to release a transaction's locks and abort it.
-/// Conceptually, a read-write transaction consists of zero or more reads or SQL
-/// statements followed by Commit. At any time before Commit, the client can
-/// send a Rollback request to abort the transaction. Semantics: Cloud Spanner
-/// can commit the transaction if all read locks it acquired are still valid at
-/// commit time, and it is able to acquire write locks for all writes. Cloud
-/// Spanner can abort the transaction for any reason. If a commit attempt
-/// returns `ABORTED`, Cloud Spanner guarantees that the transaction has not
-/// modified any user data in Cloud Spanner. Unless the transaction commits,
-/// Cloud Spanner makes no guarantees about how long the transaction's locks
-/// were held for. It is an error to use Cloud Spanner locks for any sort of
-/// mutual exclusion other than between Cloud Spanner transactions themselves.
-/// Retrying aborted transactions: When a transaction aborts, the application
-/// can choose to retry the whole transaction again. To maximize the chances of
-/// successfully committing the retry, the client should execute the retry in
-/// the same session as the original attempt. The original session's lock
-/// priority increases with each consecutive abort, meaning that each attempt
-/// has a slightly better chance of success than the previous. Note that the
-/// lock priority is preserved per session (not per transaction). Lock priority
-/// is set by the first read or write in the first attempt of a read-write
-/// transaction. If the application starts a new session to retry the whole
-/// transaction, the transaction loses its original lock priority. Moreover, the
-/// lock priority is only preserved if the transaction fails with an `ABORTED`
-/// error. Under some circumstances (for example, many transactions attempting
-/// to modify the same row(s)), a transaction can abort many times in a short
-/// period before successfully committing. Thus, it is not a good idea to cap
-/// the number of retries a transaction can attempt; instead, it is better to
-/// limit the total amount of time spent retrying. Idle transactions: A
-/// transaction is considered idle if it has no outstanding reads or SQL queries
-/// and has not started a read or SQL query within the last 10 seconds. Idle
-/// transactions can be aborted by Cloud Spanner so that they don't hold on to
-/// locks indefinitely. If an idle transaction is aborted, the commit will fail
-/// with error `ABORTED`. If this behavior is undesirable, periodically
-/// executing a simple SQL query in the transaction (for example, `SELECT 1`)
-/// prevents the transaction from becoming idle. Snapshot read-only
-/// transactions: Snapshot read-only transactions provides a simpler method than
-/// locking read-write transactions for doing several consistent reads. However,
-/// this type of transaction does not support writes. Snapshot transactions do
-/// not take locks. Instead, they work by choosing a Cloud Spanner timestamp,
-/// then executing all reads at that timestamp. Since they do not acquire locks,
-/// they do not block concurrent read-write transactions. Unlike locking
-/// read-write transactions, snapshot read-only transactions never abort. They
-/// can fail if the chosen read timestamp is garbage collected; however, the
-/// default garbage collection policy is generous enough that most applications
-/// do not need to worry about this in practice. Snapshot read-only transactions
-/// do not need to call Commit or Rollback (and in fact are not permitted to do
-/// so). To execute a snapshot transaction, the client specifies a timestamp
-/// bound, which tells Cloud Spanner how to choose a read timestamp. The types
-/// of timestamp bound are: - Strong (the default). - Bounded staleness. - Exact
-/// staleness. If the Cloud Spanner database to be read is geographically
-/// distributed, stale read-only transactions can execute more quickly than
-/// strong or read-write transactions, because they are able to execute far from
-/// the leader replica. Each type of timestamp bound is discussed in detail
-/// below. Strong: Strong reads are guaranteed to see the effects of all
-/// transactions that have committed before the start of the read. Furthermore,
-/// all rows yielded by a single read are consistent with each other -- if any
-/// part of the read observes a transaction, all parts of the read see the
-/// transaction. Strong reads are not repeatable: two consecutive strong
-/// read-only transactions might return inconsistent results if there are
-/// concurrent writes. If consistency across reads is required, the reads should
-/// be executed within a transaction or at an exact read timestamp. Queries on
-/// change streams (see below for more details) must also specify the strong
-/// read timestamp bound. See TransactionOptions.ReadOnly.strong. Exact
-/// staleness: These timestamp bounds execute reads at a user-specified
-/// timestamp. Reads at a timestamp are guaranteed to see a consistent prefix of
-/// the global transaction history: they observe modifications done by all
-/// transactions with a commit timestamp less than or equal to the read
-/// timestamp, and observe none of the modifications done by transactions with a
-/// larger commit timestamp. They will block until all conflicting transactions
-/// that may be assigned commit timestamps \<= the read timestamp have finished.
-/// The timestamp can either be expressed as an absolute Cloud Spanner commit
-/// timestamp or a staleness relative to the current time. These modes do not
-/// require a "negotiation phase" to pick a timestamp. As a result, they execute
-/// slightly faster than the equivalent boundedly stale concurrency modes. On
-/// the other hand, boundedly stale reads usually return fresher results. See
-/// TransactionOptions.ReadOnly.read_timestamp and
-/// TransactionOptions.ReadOnly.exact_staleness. Bounded staleness: Bounded
-/// staleness modes allow Cloud Spanner to pick the read timestamp, subject to a
-/// user-provided staleness bound. Cloud Spanner chooses the newest timestamp
-/// within the staleness bound that allows execution of the reads at the closest
-/// available replica without blocking. All rows yielded are consistent with
-/// each other -- if any part of the read observes a transaction, all parts of
-/// the read see the transaction. Boundedly stale reads are not repeatable: two
-/// stale reads, even if they use the same staleness bound, can execute at
-/// different timestamps and thus return inconsistent results. Boundedly stale
-/// reads execute in two phases: the first phase negotiates a timestamp among
-/// all replicas needed to serve the read. In the second phase, reads are
-/// executed at the negotiated timestamp. As a result of the two phase
-/// execution, bounded staleness reads are usually a little slower than
-/// comparable exact staleness reads. However, they are typically able to return
-/// fresher results, and are more likely to execute at the closest replica.
-/// Because the timestamp negotiation requires up-front knowledge of which rows
-/// will be read, it can only be used with single-use read-only transactions.
-/// See TransactionOptions.ReadOnly.max_staleness and
-/// TransactionOptions.ReadOnly.min_read_timestamp. Old read timestamps and
-/// garbage collection: Cloud Spanner continuously garbage collects deleted and
-/// overwritten data in the background to reclaim storage space. This process is
-/// known as "version GC". By default, version GC reclaims versions after they
-/// are one hour old. Because of this, Cloud Spanner cannot perform reads at
-/// read timestamps more than one hour in the past. This restriction also
-/// applies to in-progress reads and/or SQL queries whose timestamp become too
-/// old while executing. Reads and SQL queries with too-old read timestamps fail
-/// with the error `FAILED_PRECONDITION`. You can configure and extend the
-/// `VERSION_RETENTION_PERIOD` of a database up to a period as long as one week,
-/// which allows Cloud Spanner to perform reads up to one week in the past.
-/// Querying change Streams: A Change Stream is a schema object that can be
-/// configured to watch data changes on the entire database, a set of tables, or
-/// a set of columns in a database. When a change stream is created, Spanner
-/// automatically defines a corresponding SQL Table-Valued Function (TVF) that
-/// can be used to query the change records in the associated change stream
-/// using the ExecuteStreamingSql API. The name of the TVF for a change stream
-/// is generated from the name of the change stream: READ_. All queries on
-/// change stream TVFs must be executed using the ExecuteStreamingSql API with a
-/// single-use read-only transaction with a strong read-only timestamp_bound.
-/// The change stream TVF allows users to specify the start_timestamp and
-/// end_timestamp for the time range of interest. All change records within the
-/// retention period is accessible using the strong read-only timestamp_bound.
-/// All other TransactionOptions are invalid for change stream queries. In
-/// addition, if TransactionOptions.read_only.return_read_timestamp is set to
-/// true, a special value of 2^63 - 2 will be returned in the Transaction
-/// message that describes the transaction, instead of a valid read timestamp.
-/// This special value should be discarded and not used for any subsequent
-/// queries. Please see https://cloud.google.com/spanner/docs/change-streams for
-/// more details on how to query the change stream TVFs. Partitioned DML
-/// transactions: Partitioned DML transactions are used to execute DML
-/// statements with a different execution strategy that provides different, and
-/// often better, scalability properties for large, table-wide operations than
-/// DML in a ReadWrite transaction. Smaller scoped statements, such as an OLTP
-/// workload, should prefer using ReadWrite transactions. Partitioned DML
-/// partitions the keyspace and runs the DML statement on each partition in
-/// separate, internal transactions. These transactions commit automatically
-/// when complete, and run independently from one another. To reduce lock
-/// contention, this execution strategy only acquires read locks on rows that
-/// match the WHERE clause of the statement. Additionally, the smaller
-/// per-partition transactions hold locks for less time. That said, Partitioned
-/// DML is not a drop-in replacement for standard DML used in ReadWrite
-/// transactions. - The DML statement must be fully-partitionable. Specifically,
-/// the statement must be expressible as the union of many statements which each
-/// access only a single row of the table. - The statement is not applied
-/// atomically to all rows of the table. Rather, the statement is applied
-/// atomically to partitions of the table, in independent transactions.
-/// Secondary index rows are updated atomically with the base table rows. -
-/// Partitioned DML does not guarantee exactly-once execution semantics against
-/// a partition. The statement is applied at least once to each partition. It is
-/// strongly recommended that the DML statement should be idempotent to avoid
-/// unexpected results. For instance, it is potentially dangerous to run a
-/// statement such as `UPDATE table SET column = column + 1` as it could be run
-/// multiple times against some rows. - The partitions are committed
-/// automatically - there is no support for Commit or Rollback. If the call
-/// returns an error, or if the client issuing the ExecuteSql call dies, it is
-/// possible that some rows had the statement executed on them successfully. It
-/// is also possible that statement was never executed against other rows. -
-/// Partitioned DML transactions may only contain the execution of a single DML
-/// statement via ExecuteSql or ExecuteStreamingSql. - If any error is
-/// encountered during the execution of the partitioned DML operation (for
-/// instance, a UNIQUE INDEX violation, division by zero, or a value that cannot
-/// be stored due to schema constraints), then the operation is stopped at that
-/// point and an error is returned. It is possible that at this point, some
-/// partitions have been committed (or even committed multiple times), and other
-/// partitions have not been run at all. Given the above, Partitioned DML is
-/// good fit for large, database-wide, operations that are idempotent, such as
-/// deleting old rows from a very large table.
+/// Options to use for transactions.
 class TransactionOptions {
-  /// When `exclude_txn_from_change_streams` is set to `true`: * Modifications
-  /// from this transaction will not be recorded in change streams with DDL
-  /// option `allow_txn_exclusion=true` that are tracking columns modified by
-  /// these transactions.
+  /// When `exclude_txn_from_change_streams` is set to `true`, it prevents read
+  /// or write transactions from being tracked in change streams.
   ///
-  /// * Modifications from this transaction will be recorded in change streams
-  /// with DDL option `allow_txn_exclusion=false or not set` that are tracking
-  /// columns modified by these transactions. When
-  /// `exclude_txn_from_change_streams` is set to `false` or not set,
-  /// Modifications from this transaction will be recorded in all change streams
-  /// that are tracking columns modified by these transactions.
-  /// `exclude_txn_from_change_streams` may only be specified for read-write or
-  /// partitioned-dml transactions, otherwise the API will return an
+  /// * If the DDL option `allow_txn_exclusion` is set to `true`, then the
+  /// updates made within this transaction aren't recorded in the change stream.
+  /// * If you don't set the DDL option `allow_txn_exclusion` or if it's set to
+  /// `false`, then the updates made within this transaction are recorded in the
+  /// change stream. When `exclude_txn_from_change_streams` is set to `false` or
+  /// not set, modifications from this transaction are recorded in all change
+  /// streams that are tracking columns modified by these transactions. The
+  /// `exclude_txn_from_change_streams` option can only be specified for
+  /// read-write or partitioned DML transactions, otherwise the API returns an
   /// `INVALID_ARGUMENT` error.
   core.bool? excludeTxnFromChangeStreams;
+
+  /// Isolation level for the transaction.
+  /// Possible string values are:
+  /// - "ISOLATION_LEVEL_UNSPECIFIED" : Default value. If the value is not
+  /// specified, the `SERIALIZABLE` isolation level is used.
+  /// - "SERIALIZABLE" : All transactions appear as if they executed in a serial
+  /// order, even if some of the reads, writes, and other operations of distinct
+  /// transactions actually occurred in parallel. Spanner assigns commit
+  /// timestamps that reflect the order of committed transactions to implement
+  /// this property. Spanner offers a stronger guarantee than serializability
+  /// called external consistency. For further details, please refer to
+  /// https://cloud.google.com/spanner/docs/true-time-external-consistency#serializability.
+  /// - "REPEATABLE_READ" : All reads performed during the transaction observe a
+  /// consistent snapshot of the database, and the transaction is only
+  /// successfully committed in the absence of conflicts between its updates and
+  /// any concurrent updates that have occurred since that snapshot.
+  /// Consequently, in contrast to `SERIALIZABLE` transactions, only write-write
+  /// conflicts are detected in snapshot transactions. This isolation level does
+  /// not support Read-only and Partitioned DML transactions. When
+  /// `REPEATABLE_READ` is specified on a read-write transaction, the locking
+  /// semantics default to `OPTIMISTIC`.
+  core.String? isolationLevel;
 
   /// Partitioned DML transaction.
   ///
@@ -12847,7 +12795,7 @@ class TransactionOptions {
   /// `session` resource.
   PartitionedDml? partitionedDml;
 
-  /// Transaction will not write.
+  /// Transaction does not write.
   ///
   /// Authorization to begin a read-only transaction requires
   /// `spanner.databases.beginReadOnlyTransaction` permission on the `session`
@@ -12863,6 +12811,7 @@ class TransactionOptions {
 
   TransactionOptions({
     this.excludeTxnFromChangeStreams,
+    this.isolationLevel,
     this.partitionedDml,
     this.readOnly,
     this.readWrite,
@@ -12872,6 +12821,7 @@ class TransactionOptions {
       : this(
           excludeTxnFromChangeStreams:
               json_['excludeTxnFromChangeStreams'] as core.bool?,
+          isolationLevel: json_['isolationLevel'] as core.String?,
           partitionedDml: json_.containsKey('partitionedDml')
               ? PartitionedDml.fromJson(json_['partitionedDml']
                   as core.Map<core.String, core.dynamic>)
@@ -12889,6 +12839,7 @@ class TransactionOptions {
   core.Map<core.String, core.dynamic> toJson() => {
         if (excludeTxnFromChangeStreams != null)
           'excludeTxnFromChangeStreams': excludeTxnFromChangeStreams!,
+        if (isolationLevel != null) 'isolationLevel': isolationLevel!,
         if (partitionedDml != null) 'partitionedDml': partitionedDml!,
         if (readOnly != null) 'readOnly': readOnly!,
         if (readWrite != null) 'readWrite': readWrite!,

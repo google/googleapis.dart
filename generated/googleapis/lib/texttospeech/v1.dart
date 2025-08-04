@@ -435,7 +435,8 @@ class AudioConfig {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "AUDIO_ENCODING_UNSPECIFIED" : Not specified. Will return result
+  /// - "AUDIO_ENCODING_UNSPECIFIED" : Not specified. Only used by
+  /// GenerateVoiceCloningKey. Otherwise, will return result
   /// google.rpc.Code.INVALID_ARGUMENT.
   /// - "LINEAR16" : Uncompressed 16-bit signed little-endian samples (Linear
   /// PCM). Audio content returned as LINEAR16 also contains a WAV header.
@@ -451,6 +452,7 @@ class AudioConfig {
   /// - "PCM" : Uncompressed 16-bit signed little-endian samples (Linear PCM).
   /// Note that as opposed to LINEAR16, audio won't be wrapped in a WAV (or any
   /// other) header.
+  /// - "M4A" : M4A audio.
   core.String? audioEncoding;
 
   /// Input only.
@@ -487,10 +489,10 @@ class AudioConfig {
 
   /// Input only.
   ///
-  /// Speaking rate/speed, in the range \[0.25, 4.0\]. 1.0 is the normal native
+  /// Speaking rate/speed, in the range \[0.25, 2.0\]. 1.0 is the normal native
   /// speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
   /// half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other
-  /// values \< 0.25 or \> 4.0 will return an error.
+  /// values \< 0.25 or \> 2.0 will return an error.
   ///
   /// Optional.
   core.double? speakingRate;
@@ -552,6 +554,19 @@ class CustomPronunciationParams {
   /// https://en.wikipedia.org/wiki/International_Phonetic_Alphabet
   /// - "PHONETIC_ENCODING_X_SAMPA" : X-SAMPA, such as apple -\> "{p@l".
   /// https://en.wikipedia.org/wiki/X-SAMPA
+  /// - "PHONETIC_ENCODING_JAPANESE_YOMIGANA" : For reading-to-pron conversion
+  /// to work well, the `pronunciation` field should only contain Kanji,
+  /// Hiragana, and Katakana. The pronunciation can also contain pitch accents.
+  /// The start of a pitch phrase is specified with `^` and the down-pitch
+  /// position is specified with `!`, for example: phrase:端 pronunciation:^はし
+  /// phrase:箸 pronunciation:^は!し phrase:橋 pronunciation:^はし! We currently only
+  /// support the Tokyo dialect, which allows at most one down-pitch per phrase
+  /// (i.e. at most one `!` between `^`).
+  /// - "PHONETIC_ENCODING_PINYIN" : Used to specify pronunciations for Mandarin
+  /// words. See https://en.wikipedia.org/wiki/Pinyin. For example: 朝阳, the
+  /// pronunciation is "chao2 yang2". The number represents the tone, and there
+  /// is a space between syllables. Neutral tones are represented by 5, for
+  /// example 孩子 "hai2 zi5".
   core.String? phoneticEncoding;
 
   /// The phrase to which the customization is applied.
@@ -823,15 +838,19 @@ class SynthesisInput {
   /// The pronunciation customizations are applied to the input.
   ///
   /// If this is set, the input is synthesized using the given pronunciation
-  /// customizations. The initial support is for English, French, Italian,
-  /// German, and Spanish (EFIGS) languages, as provided in
-  /// VoiceSelectionParams. Journey and Instant Clone voices aren't supported.
-  /// In order to customize the pronunciation of a phrase, there must be an
-  /// exact match of the phrase in the input types. If using SSML, the phrase
-  /// must not be inside a phoneme tag.
+  /// customizations. The initial support is for en-us, with plans to expand to
+  /// other locales in the future. Instant Clone voices aren't supported. In
+  /// order to customize the pronunciation of a phrase, there must be an exact
+  /// match of the phrase in the input types. If using SSML, the phrase must not
+  /// be inside a phoneme tag.
   ///
   /// Optional.
   CustomPronunciations? customPronunciations;
+
+  /// Markup for HD voices specifically.
+  ///
+  /// This field may not be used with any other voices.
+  core.String? markup;
 
   /// The multi-speaker input to be synthesized.
   ///
@@ -850,6 +869,7 @@ class SynthesisInput {
 
   SynthesisInput({
     this.customPronunciations,
+    this.markup,
     this.multiSpeakerMarkup,
     this.ssml,
     this.text,
@@ -861,6 +881,7 @@ class SynthesisInput {
               ? CustomPronunciations.fromJson(json_['customPronunciations']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          markup: json_['markup'] as core.String?,
           multiSpeakerMarkup: json_.containsKey('multiSpeakerMarkup')
               ? MultiSpeakerMarkup.fromJson(json_['multiSpeakerMarkup']
                   as core.Map<core.String, core.dynamic>)
@@ -872,6 +893,7 @@ class SynthesisInput {
   core.Map<core.String, core.dynamic> toJson() => {
         if (customPronunciations != null)
           'customPronunciations': customPronunciations!,
+        if (markup != null) 'markup': markup!,
         if (multiSpeakerMarkup != null)
           'multiSpeakerMarkup': multiSpeakerMarkup!,
         if (ssml != null) 'ssml': ssml!,

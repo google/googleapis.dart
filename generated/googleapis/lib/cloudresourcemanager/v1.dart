@@ -2863,6 +2863,15 @@ class Policy {
 /// It is a container for ACLs, APIs, App Engine Apps, VMs, and other Google
 /// Cloud Platform resources.
 class Project {
+  /// If this project is a Management Project, list of capabilities configured
+  /// on the parent folder.
+  ///
+  /// Note, presence of any capability implies that this is a Management
+  /// Project. Example: `folders/123/capabilities/app-management`. OUTPUT ONLY.
+  ///
+  /// Output only.
+  core.List<core.String>? configuredCapabilities;
+
   /// Creation time.
   ///
   /// Read-only.
@@ -2932,6 +2941,7 @@ class Project {
   core.Map<core.String, core.String>? tags;
 
   Project({
+    this.configuredCapabilities,
     this.createTime,
     this.labels,
     this.lifecycleState,
@@ -2944,6 +2954,10 @@ class Project {
 
   Project.fromJson(core.Map json_)
       : this(
+          configuredCapabilities:
+              (json_['configuredCapabilities'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           createTime: json_['createTime'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -2969,6 +2983,8 @@ class Project {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (configuredCapabilities != null)
+          'configuredCapabilities': configuredCapabilities!,
         if (createTime != null) 'createTime': createTime!,
         if (labels != null) 'labels': labels!,
         if (lifecycleState != null) 'lifecycleState': lifecycleState!,

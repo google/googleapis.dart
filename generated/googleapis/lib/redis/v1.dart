@@ -125,6 +125,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -147,12 +151,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -186,7 +192,7 @@ class ProjectsLocationsBackupCollectionsResource {
   ///
   /// [name] - Required. Redis backupCollection resource name using the form:
   /// `projects/{project_id}/locations/{location_id}/backupCollections/{backup_collection_id}`
-  /// where `location_id` refers to a GCP region.
+  /// where `location_id` refers to a Google Cloud region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupCollections/\[^/\]+$`.
   ///
@@ -229,7 +235,7 @@ class ProjectsLocationsBackupCollectionsResource {
   ///
   /// [parent] - Required. The resource name of the backupCollection location
   /// using the form: `projects/{project_id}/locations/{location_id}` where
-  /// `location_id` refers to a GCP region.
+  /// `location_id` refers to a Google Cloud region.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If not
@@ -480,7 +486,7 @@ class ProjectsLocationsClustersResource {
   ///
   /// [name] - Required. Redis cluster resource name using the form:
   /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
-  /// where `location_id` refers to a GCP region.
+  /// where `location_id` refers to a Google Cloud region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
@@ -530,7 +536,7 @@ class ProjectsLocationsClustersResource {
   ///
   /// [parent] - Required. The resource name of the cluster location using the
   /// form: `projects/{project_id}/locations/{location_id}` where `location_id`
-  /// refers to a GCP region.
+  /// refers to a Google Cloud region.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [clusterId] - Required. The logical name of the Redis cluster in the
@@ -584,7 +590,7 @@ class ProjectsLocationsClustersResource {
   ///
   /// [name] - Required. Redis cluster resource name using the form:
   /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
-  /// where `location_id` refers to a GCP region.
+  /// where `location_id` refers to a Google Cloud region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
@@ -626,7 +632,7 @@ class ProjectsLocationsClustersResource {
   ///
   /// [name] - Required. Redis cluster resource name using the form:
   /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
-  /// where `location_id` refers to a GCP region.
+  /// where `location_id` refers to a Google Cloud region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
@@ -665,7 +671,7 @@ class ProjectsLocationsClustersResource {
   /// [name] - Required. Redis cluster certificate authority resource name using
   /// the form:
   /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}/certificateAuthority`
-  /// where `location_id` refers to a GCP region.
+  /// where `location_id` refers to a Google Cloud region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/certificateAuthority$`.
   ///
@@ -710,7 +716,7 @@ class ProjectsLocationsClustersResource {
   ///
   /// [parent] - Required. The resource name of the cluster location using the
   /// form: `projects/{project_id}/locations/{location_id}` where `location_id`
-  /// refers to a GCP region.
+  /// refers to a Google Cloud region.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. If not specified, a
@@ -821,7 +827,7 @@ class ProjectsLocationsClustersResource {
   ///
   /// [name] - Required. Redis Cluster instance resource name using the form:
   /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
-  /// where `location_id` refers to a GCP region.
+  /// where `location_id` refers to a Google Cloud region.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
@@ -1978,6 +1984,16 @@ class CertificateAuthority {
 
 /// A cluster instance.
 class Cluster {
+  /// Allows customers to specify if they are okay with deploying a multi-zone
+  /// cluster in less than 3 zones.
+  ///
+  /// Once set, if there is a zonal outage during the cluster creation, the
+  /// cluster will only be deployed in 2 zones, and stay within the 2 zones for
+  /// its lifecycle.
+  ///
+  /// Optional. Immutable.
+  core.bool? allowFewerZonesDeployment;
+
   /// If true, cluster endpoints that are created and registered by customers
   /// can be deleted asynchronously.
   ///
@@ -2100,6 +2116,9 @@ class Cluster {
   /// ondemand critical update on the cluster.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? ondemandMaintenance;
 
   /// Persistence config (RDB, AOF) for the cluster.
@@ -2142,10 +2161,27 @@ class Cluster {
   /// Optional.
   core.int? replicaCount;
 
+  /// Reserved for future use.
+  ///
+  /// Optional. Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Optional. Output only.
+  core.bool? satisfiesPzs;
+
   /// Number of shards for the Redis cluster.
   ///
   /// Optional.
   core.int? shardCount;
+
+  /// Input only.
+  ///
+  /// Simulate a maintenance event.
+  ///
+  /// Optional.
+  core.bool? simulateMaintenanceEvent;
 
   /// Redis memory size in GB for the entire cluster rounded up to the next
   /// integer.
@@ -2195,6 +2231,7 @@ class Cluster {
   ZoneDistributionConfig? zoneDistributionConfig;
 
   Cluster({
+    this.allowFewerZonesDeployment,
     this.asyncClusterEndpointsDeletionEnabled,
     this.authorizationMode,
     this.automatedBackupConfig,
@@ -2220,7 +2257,10 @@ class Cluster {
     this.pscServiceAttachments,
     this.redisConfigs,
     this.replicaCount,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.shardCount,
+    this.simulateMaintenanceEvent,
     this.sizeGb,
     this.state,
     this.stateInfo,
@@ -2231,6 +2271,8 @@ class Cluster {
 
   Cluster.fromJson(core.Map json_)
       : this(
+          allowFewerZonesDeployment:
+              json_['allowFewerZonesDeployment'] as core.bool?,
           asyncClusterEndpointsDeletionEnabled:
               json_['asyncClusterEndpointsDeletionEnabled'] as core.bool?,
           authorizationMode: json_['authorizationMode'] as core.String?,
@@ -2306,7 +2348,11 @@ class Cluster {
             ),
           ),
           replicaCount: json_['replicaCount'] as core.int?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           shardCount: json_['shardCount'] as core.int?,
+          simulateMaintenanceEvent:
+              json_['simulateMaintenanceEvent'] as core.bool?,
           sizeGb: json_['sizeGb'] as core.int?,
           state: json_['state'] as core.String?,
           stateInfo: json_.containsKey('stateInfo')
@@ -2322,6 +2368,8 @@ class Cluster {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowFewerZonesDeployment != null)
+          'allowFewerZonesDeployment': allowFewerZonesDeployment!,
         if (asyncClusterEndpointsDeletionEnabled != null)
           'asyncClusterEndpointsDeletionEnabled':
               asyncClusterEndpointsDeletionEnabled!,
@@ -2357,7 +2405,11 @@ class Cluster {
           'pscServiceAttachments': pscServiceAttachments!,
         if (redisConfigs != null) 'redisConfigs': redisConfigs!,
         if (replicaCount != null) 'replicaCount': replicaCount!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (shardCount != null) 'shardCount': shardCount!,
+        if (simulateMaintenanceEvent != null)
+          'simulateMaintenanceEvent': simulateMaintenanceEvent!,
         if (sizeGb != null) 'sizeGb': sizeGb!,
         if (state != null) 'state': state!,
         if (stateInfo != null) 'stateInfo': stateInfo!,
@@ -2531,6 +2583,8 @@ class ClusterPersistenceConfig {
 /// Time window specified for weekly operations.
 class ClusterWeeklyMaintenanceWindow {
   /// Allows to define schedule that runs specified day of the week.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
   /// - "MONDAY" : Monday
@@ -2543,6 +2597,8 @@ class ClusterWeeklyMaintenanceWindow {
   core.String? day;
 
   /// Start time of the window in UTC.
+  ///
+  /// Optional.
   TimeOfDay? startTime;
 
   ClusterWeeklyMaintenanceWindow({
@@ -2601,6 +2657,8 @@ class ConnectionDetail {
 /// Cross cluster replication config.
 class CrossClusterReplicationConfig {
   /// The role of the cluster in cross cluster replication.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "CLUSTER_ROLE_UNSPECIFIED" : Cluster role is not set. The behavior is
   /// equivalent to NONE.
@@ -3306,6 +3364,14 @@ class Instance {
   /// Optional.
   core.List<core.String>? suspensionReasons;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// The service tier of the instance.
   ///
   /// Required.
@@ -3364,6 +3430,7 @@ class Instance {
     this.state,
     this.statusMessage,
     this.suspensionReasons,
+    this.tags,
     this.tier,
     this.transitEncryptionMode,
   });
@@ -3439,6 +3506,12 @@ class Instance {
           suspensionReasons: (json_['suspensionReasons'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           tier: json_['tier'] as core.String?,
           transitEncryptionMode: json_['transitEncryptionMode'] as core.String?,
         );
@@ -3485,6 +3558,7 @@ class Instance {
         if (state != null) 'state': state!,
         if (statusMessage != null) 'statusMessage': statusMessage!,
         if (suspensionReasons != null) 'suspensionReasons': suspensionReasons!,
+        if (tags != null) 'tags': tags!,
         if (tier != null) 'tier': tier!,
         if (transitEncryptionMode != null)
           'transitEncryptionMode': transitEncryptionMode!,
@@ -4363,7 +4437,7 @@ class PscConnection {
   /// Required.
   core.String? network;
 
-  /// The port number of the exposed discovery endpoint.
+  /// port will only be set for Primary/Reader or Discovery endpoint.
   ///
   /// Output only.
   core.int? port;
@@ -4523,6 +4597,8 @@ class RDBConfig {
 class RemoteCluster {
   /// The full resource path of the remote cluster in the format:
   /// projects//locations//clusters/
+  ///
+  /// Output only.
   core.String? cluster;
 
   /// The unique identifier of the remote cluster.

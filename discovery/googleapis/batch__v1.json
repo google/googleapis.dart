@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250122",
+    "revision": "20250721",
     "rootUrl": "https://batch.googleapis.com/",
     "servicePath": "",
     "title": "Batch API",
@@ -147,6 +147,12 @@
                                 "name"
                             ],
                             "parameters": {
+                                "extraLocationTypes": {
+                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
                                 "filter": {
                                     "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                                     "location": "query",
@@ -1294,13 +1300,22 @@
                         "PROVISIONING_MODEL_UNSPECIFIED",
                         "STANDARD",
                         "SPOT",
-                        "PREEMPTIBLE"
+                        "PREEMPTIBLE",
+                        "RESERVATION_BOUND"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        true,
+                        false
                     ],
                     "enumDescriptions": [
                         "Unspecified.",
                         "Standard VM.",
                         "SPOT VM.",
-                        "Preemptible VM (PVM). Above SPOT VM is the preferable model for preemptible VM instances: the old preemptible VM model (indicated by this field) is the older model, and has been migrated to use the SPOT model as the underlying technology. This old model will still be supported."
+                        "Preemptible VM (PVM). Above SPOT VM is the preferable model for preemptible VM instances: the old preemptible VM model (indicated by this field) is the older model, and has been migrated to use the SPOT model as the underlying technology. This old model will still be supported.",
+                        "Bound to the lifecycle of the reservation in which it is provisioned."
                     ],
                     "type": "string"
                 },
@@ -1356,13 +1371,22 @@
                         "PROVISIONING_MODEL_UNSPECIFIED",
                         "STANDARD",
                         "SPOT",
-                        "PREEMPTIBLE"
+                        "PREEMPTIBLE",
+                        "RESERVATION_BOUND"
+                    ],
+                    "enumDeprecated": [
+                        false,
+                        false,
+                        false,
+                        true,
+                        false
                     ],
                     "enumDescriptions": [
                         "Unspecified.",
                         "Standard VM.",
                         "SPOT VM.",
-                        "Preemptible VM (PVM). Above SPOT VM is the preferable model for preemptible VM instances: the old preemptible VM model (indicated by this field) is the older model, and has been migrated to use the SPOT model as the underlying technology. This old model will still be supported."
+                        "Preemptible VM (PVM). Above SPOT VM is the preferable model for preemptible VM instances: the old preemptible VM model (indicated by this field) is the older model, and has been migrated to use the SPOT model as the underlying technology. This old model will still be supported.",
+                        "Bound to the lifecycle of the reservation in which it is provisioned."
                     ],
                     "type": "string"
                 },

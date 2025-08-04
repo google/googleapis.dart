@@ -202,8 +202,11 @@ class EnterprisesResource {
   }
 
   /// Generates an enterprise upgrade URL to upgrade an existing managed Google
-  /// Play Accounts enterprise to a managed Google domain.Note: This feature is
-  /// not generally available.
+  /// Play Accounts enterprise to a managed Google domain.
+  ///
+  /// See the guide
+  /// (https://developers.google.com/android/management/upgrade-an-enterprise)
+  /// for more details.
   ///
   /// [request] - The metadata request object.
   ///
@@ -452,9 +455,10 @@ class EnterprisesDevicesResource {
 
   /// Deletes a device.
   ///
-  /// This operation wipes the device. Deleted devices do not show up in
-  /// enterprises.devices.list calls and a 404 is returned from
-  /// enterprises.devices.get.
+  /// This operation attempts to wipe the device but this is not guaranteed to
+  /// succeed if the device is offline for an extended period. Deleted devices
+  /// do not show up in enterprises.devices.list calls and a 404 is returned
+  /// from enterprises.devices.get.
   ///
   /// Request parameters:
   ///
@@ -1281,6 +1285,50 @@ class EnterprisesPoliciesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Updates or creates applications in a policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Policy containing the ApplicationPolicy
+  /// objects to be updated, in the form
+  /// enterprises/{enterpriseId}/policies/{policyId}.
+  /// Value must have pattern `^enterprises/\[^/\]+/policies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ModifyPolicyApplicationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ModifyPolicyApplicationsResponse> modifyPolicyApplications(
+    ModifyPolicyApplicationsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':modifyPolicyApplications';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ModifyPolicyApplicationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Updates or creates a policy.
   ///
   /// [request] - The metadata request object.
@@ -1325,6 +1373,50 @@ class EnterprisesPoliciesResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Removes applications in a policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the policy containing the ApplicationPolicy
+  /// objects to be removed, in the form
+  /// enterprises/{enterpriseId}/policies/{policyId}.
+  /// Value must have pattern `^enterprises/\[^/\]+/policies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RemovePolicyApplicationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RemovePolicyApplicationsResponse> removePolicyApplications(
+    RemovePolicyApplicationsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':removePolicyApplications';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return RemovePolicyApplicationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1415,7 +1507,7 @@ class EnterprisesWebAppsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the web app in the form
-  /// enterprises/{enterpriseId}/webApp/{packageName}.
+  /// enterprises/{enterpriseId}/webApps/{packageName}.
   /// Value must have pattern `^enterprises/\[^/\]+/webApps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1702,6 +1794,45 @@ class SignupUrlsResource {
   }
 }
 
+/// Parameters associated with the ADD_ESIM command to add an eSIM profile to
+/// the device.
+class AddEsimParams {
+  /// The activation code for the eSIM profile.
+  ///
+  /// Required.
+  core.String? activationCode;
+
+  /// The activation state of the eSIM profile once it is downloaded.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ACTIVATION_STATE_UNSPECIFIED" : eSIM activation state is not specified.
+  /// This defaults to the eSIM profile being NOT_ACTIVATED on personally-owned
+  /// devices and ACTIVATED on company-owned devices.
+  /// - "ACTIVATED" : The eSIM is automatically activated after downloading.
+  /// Setting this as the activation state for personally-owned devices will
+  /// result in the command being rejected.
+  /// - "NOT_ACTIVATED" : The eSIM profile is downloaded but not activated. In
+  /// this case, the user will need to activate the eSIM manually on the device.
+  core.String? activationState;
+
+  AddEsimParams({
+    this.activationCode,
+    this.activationState,
+  });
+
+  AddEsimParams.fromJson(core.Map json_)
+      : this(
+          activationCode: json_['activationCode'] as core.String?,
+          activationState: json_['activationState'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activationCode != null) 'activationCode': activationCode!,
+        if (activationState != null) 'activationState': activationState!,
+      };
+}
+
 /// Advanced security settings.
 ///
 /// In most cases, setting these is not needed.
@@ -1740,11 +1871,11 @@ class AdvancedSecurityOverrides {
   /// user cannot change this.
   /// - "CONTENT_PROTECTION_ENFORCED" : Content protection is enabled and the
   /// user cannot change this.Supported on Android 15 and above. A
-  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
   /// less than 15.
   /// - "CONTENT_PROTECTION_USER_CHOICE" : Content protection is not controlled
   /// by the policy. The user is allowed to choose the behavior of content
-  /// protection.Supported on Android 15 and above. A nonComplianceDetail with
+  /// protection.Supported on Android 15 and above. A NonComplianceDetail with
   /// API_LEVEL is reported if the Android version is less than 15.
   core.String? contentProtectionPolicy;
 
@@ -1786,18 +1917,18 @@ class AdvancedSecurityOverrides {
   /// device if the device supports this.
   /// - "MTE_ENFORCED" : MTE is enabled on the device and the user is not
   /// allowed to change this setting. This can be set on fully managed devices
-  /// and work profiles on company-owned devices. A nonComplianceDetail with
+  /// and work profiles on company-owned devices. A NonComplianceDetail with
   /// MANAGEMENT_MODE is reported for other management modes. A
-  /// nonComplianceDetail with DEVICE_INCOMPATIBLE is reported if the device
+  /// NonComplianceDetail with DEVICE_INCOMPATIBLE is reported if the device
   /// does not support MTE.Supported on Android 14 and above. A
-  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
   /// less than 14.
   /// - "MTE_DISABLED" : MTE is disabled on the device and the user is not
   /// allowed to change this setting. This applies only on fully managed
-  /// devices. In other cases, a nonComplianceDetail with MANAGEMENT_MODE is
-  /// reported. A nonComplianceDetail with DEVICE_INCOMPATIBLE is reported if
+  /// devices. In other cases, a NonComplianceDetail with MANAGEMENT_MODE is
+  /// reported. A NonComplianceDetail with DEVICE_INCOMPATIBLE is reported if
   /// the device does not support MTE.Supported on Android 14 and above. A
-  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
   /// less than 14.
   core.String? mtePolicy;
 
@@ -1915,6 +2046,334 @@ class ApiLevelCondition {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (minApiLevel != null) 'minApiLevel': minApiLevel!,
+      };
+}
+
+/// Access Point Name (APN) policy.
+///
+/// Configuration for Access Point Names (APNs) which may override any other
+/// APNs on the device. See OVERRIDE_APNS_ENABLED and overrideApns for details.
+class ApnPolicy {
+  /// APN settings for override APNs.
+  ///
+  /// There must not be any conflict between any of APN settings provided,
+  /// otherwise the policy will be rejected. Two ApnSettings are considered to
+  /// conflict when all of the following fields match on both:
+  /// numericOperatorId, apn, proxyAddress, proxyPort, mmsProxyAddress,
+  /// mmsProxyPort, mmsc, mvnoType, protocol, roamingProtocol. If some of the
+  /// APN settings result in non-compliance of INVALID_VALUE , they will be
+  /// ignored. This can be set on fully managed devices on Android 10 and above.
+  /// This can also be set on work profiles on Android 13 and above and only
+  /// with ApnSetting's with ENTERPRISE APN type. A NonComplianceDetail with
+  /// API_LEVEL is reported if the Android version is less than 10. A
+  /// NonComplianceDetail with MANAGEMENT_MODE is reported for work profiles on
+  /// Android versions less than 13.
+  ///
+  /// Optional.
+  core.List<ApnSetting>? apnSettings;
+
+  /// Whether override APNs are disabled or enabled.
+  ///
+  /// See DevicePolicyManager.setOverrideApnsEnabled
+  /// (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#setOverrideApnsEnabled)
+  /// for more details.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OVERRIDE_APNS_UNSPECIFIED" : Unspecified. Defaults to
+  /// OVERRIDE_APNS_DISABLED.
+  /// - "OVERRIDE_APNS_DISABLED" : Override APNs disabled. Any configured
+  /// apnSettings are saved on the device, but are disabled and have no effect.
+  /// Any other APNs on the device remain in use.
+  /// - "OVERRIDE_APNS_ENABLED" : Override APNs enabled. Only override APNs are
+  /// in use, any other APNs are ignored. This can only be set on fully managed
+  /// devices on Android 10 and above. For work profiles override APNs are
+  /// enabled via preferentialNetworkServiceSettings and this value cannot be
+  /// set. A NonComplianceDetail with API_LEVEL is reported if the Android
+  /// version is less than 10. A NonComplianceDetail with MANAGEMENT_MODE is
+  /// reported for work profiles.
+  core.String? overrideApns;
+
+  ApnPolicy({
+    this.apnSettings,
+    this.overrideApns,
+  });
+
+  ApnPolicy.fromJson(core.Map json_)
+      : this(
+          apnSettings: (json_['apnSettings'] as core.List?)
+              ?.map((value) => ApnSetting.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          overrideApns: json_['overrideApns'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (apnSettings != null) 'apnSettings': apnSettings!,
+        if (overrideApns != null) 'overrideApns': overrideApns!,
+      };
+}
+
+/// An Access Point Name (APN) configuration for a carrier data connection.
+///
+/// The APN provides configuration to connect a cellular network device to an IP
+/// data network. A carrier uses this setting to decide which IP address to
+/// assign, any security methods to apply, and how the device might be connected
+/// to private networks.
+class ApnSetting {
+  /// Whether User Plane resources have to be activated during every transition
+  /// from CM-IDLE mode to CM-CONNECTED state for this APN.
+  ///
+  /// See 3GPP TS 23.501 section 5.6.13.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ALWAYS_ON_SETTING_UNSPECIFIED" : Unspecified. Defaults to
+  /// NOT_ALWAYS_ON.
+  /// - "NOT_ALWAYS_ON" : The PDU session brought up by this APN should not be
+  /// always on.
+  /// - "ALWAYS_ON" : The PDU session brought up by this APN should always be
+  /// on. Supported on Android 15 and above. A NonComplianceDetail with
+  /// API_LEVEL is reported if the Android version is less than 15.
+  core.String? alwaysOnSetting;
+
+  /// Name of the APN.
+  ///
+  /// Policy will be rejected if this field is empty.
+  ///
+  /// Required.
+  core.String? apn;
+
+  /// Usage categories for the APN.
+  ///
+  /// Policy will be rejected if this field is empty or contains
+  /// APN_TYPE_UNSPECIFIED or duplicates. Multiple APN types can be set on fully
+  /// managed devices. ENTERPRISE is the only allowed APN type on work profiles.
+  /// A NonComplianceDetail with MANAGEMENT_MODE is reported for any other value
+  /// on work profiles. APN types that are not supported on the device or
+  /// management mode will be ignored. If this results in the empty list, the
+  /// APN setting will be ignored, because apnTypes is a required field. A
+  /// NonComplianceDetail with INVALID_VALUE is reported if none of the APN
+  /// types are supported on the device or management mode.
+  ///
+  /// Required.
+  core.List<core.String>? apnTypes;
+
+  /// Authentication type of the APN.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AUTH_TYPE_UNSPECIFIED" : Unspecified. If username is empty, defaults to
+  /// NONE. Otherwise, defaults to PAP_OR_CHAP.
+  /// - "NONE" : Authentication is not required.
+  /// - "PAP" : Authentication type for PAP.
+  /// - "CHAP" : Authentication type for CHAP.
+  /// - "PAP_OR_CHAP" : Authentication type for PAP or CHAP.
+  core.String? authType;
+
+  /// Carrier ID for the APN.
+  ///
+  /// A value of 0 (default) means not set and negative values are rejected.
+  ///
+  /// Optional.
+  core.int? carrierId;
+
+  /// Human-readable name that describes the APN.
+  ///
+  /// Policy will be rejected if this field is empty.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// MMS (Multimedia Messaging Service) proxy address of the APN which can be
+  /// an IP address or hostname (not a URL).
+  ///
+  /// Optional.
+  core.String? mmsProxyAddress;
+
+  /// MMS (Multimedia Messaging Service) proxy port of the APN.
+  ///
+  /// A value of 0 (default) means not set and negative values are rejected.
+  ///
+  /// Optional.
+  core.int? mmsProxyPort;
+
+  /// MMSC (Multimedia Messaging Service Center) URI of the APN.
+  ///
+  /// Optional.
+  core.String? mmsc;
+
+  /// The default MTU (Maximum Transmission Unit) size in bytes of the IPv4
+  /// routes brought up by this APN setting.
+  ///
+  /// A value of 0 (default) means not set and negative values are rejected.
+  /// Supported on Android 13 and above. A NonComplianceDetail with API_LEVEL is
+  /// reported if the Android version is less than 13.
+  ///
+  /// Optional.
+  core.int? mtuV4;
+
+  /// The MTU (Maximum Transmission Unit) size of the IPv6 mobile interface to
+  /// which the APN connected.
+  ///
+  /// A value of 0 (default) means not set and negative values are rejected.
+  /// Supported on Android 13 and above. A NonComplianceDetail with API_LEVEL is
+  /// reported if the Android version is less than 13.
+  ///
+  /// Optional.
+  core.int? mtuV6;
+
+  /// MVNO match type for the APN.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MVNO_TYPE_UNSPECIFIED" : The MVNO type is not specified.
+  /// - "GID" : MVNO type for group identifier level 1.
+  /// - "ICCID" : MVNO type for ICCID.
+  /// - "IMSI" : MVNO type for IMSI.
+  /// - "SPN" : MVNO type for SPN (service provider name).
+  core.String? mvnoType;
+
+  /// Radio technologies (network types) the APN may use.
+  ///
+  /// Policy will be rejected if this field contains NETWORK_TYPE_UNSPECIFIED or
+  /// duplicates.
+  ///
+  /// Optional.
+  core.List<core.String>? networkTypes;
+
+  /// The numeric operator ID of the APN.
+  ///
+  /// Numeric operator ID is defined as MCC (Mobile Country Code) + MNC (Mobile
+  /// Network Code).
+  ///
+  /// Optional.
+  core.String? numericOperatorId;
+
+  /// APN password of the APN.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// The protocol to use to connect to this APN.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PROTOCOL_UNSPECIFIED" : The protocol is not specified.
+  /// - "IP" : Internet protocol.
+  /// - "IPV4V6" : Virtual PDP type introduced to handle dual IP stack UE
+  /// capability.
+  /// - "IPV6" : Internet protocol, version 6.
+  /// - "NON_IP" : Transfer of Non-IP data to external packet data network.
+  /// - "PPP" : Point to point protocol.
+  /// - "UNSTRUCTURED" : Transfer of Unstructured data to the Data Network via
+  /// N6.
+  core.String? protocol;
+
+  /// The proxy address of the APN.
+  ///
+  /// Optional.
+  core.String? proxyAddress;
+
+  /// The proxy port of the APN.
+  ///
+  /// A value of 0 (default) means not set and negative values are rejected.
+  ///
+  /// Optional.
+  core.int? proxyPort;
+
+  /// The protocol to use to connect to this APN while the device is roaming.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PROTOCOL_UNSPECIFIED" : The protocol is not specified.
+  /// - "IP" : Internet protocol.
+  /// - "IPV4V6" : Virtual PDP type introduced to handle dual IP stack UE
+  /// capability.
+  /// - "IPV6" : Internet protocol, version 6.
+  /// - "NON_IP" : Transfer of Non-IP data to external packet data network.
+  /// - "PPP" : Point to point protocol.
+  /// - "UNSTRUCTURED" : Transfer of Unstructured data to the Data Network via
+  /// N6.
+  core.String? roamingProtocol;
+
+  /// APN username of the APN.
+  ///
+  /// Optional.
+  core.String? username;
+
+  ApnSetting({
+    this.alwaysOnSetting,
+    this.apn,
+    this.apnTypes,
+    this.authType,
+    this.carrierId,
+    this.displayName,
+    this.mmsProxyAddress,
+    this.mmsProxyPort,
+    this.mmsc,
+    this.mtuV4,
+    this.mtuV6,
+    this.mvnoType,
+    this.networkTypes,
+    this.numericOperatorId,
+    this.password,
+    this.protocol,
+    this.proxyAddress,
+    this.proxyPort,
+    this.roamingProtocol,
+    this.username,
+  });
+
+  ApnSetting.fromJson(core.Map json_)
+      : this(
+          alwaysOnSetting: json_['alwaysOnSetting'] as core.String?,
+          apn: json_['apn'] as core.String?,
+          apnTypes: (json_['apnTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          authType: json_['authType'] as core.String?,
+          carrierId: json_['carrierId'] as core.int?,
+          displayName: json_['displayName'] as core.String?,
+          mmsProxyAddress: json_['mmsProxyAddress'] as core.String?,
+          mmsProxyPort: json_['mmsProxyPort'] as core.int?,
+          mmsc: json_['mmsc'] as core.String?,
+          mtuV4: json_['mtuV4'] as core.int?,
+          mtuV6: json_['mtuV6'] as core.int?,
+          mvnoType: json_['mvnoType'] as core.String?,
+          networkTypes: (json_['networkTypes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          numericOperatorId: json_['numericOperatorId'] as core.String?,
+          password: json_['password'] as core.String?,
+          protocol: json_['protocol'] as core.String?,
+          proxyAddress: json_['proxyAddress'] as core.String?,
+          proxyPort: json_['proxyPort'] as core.int?,
+          roamingProtocol: json_['roamingProtocol'] as core.String?,
+          username: json_['username'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (alwaysOnSetting != null) 'alwaysOnSetting': alwaysOnSetting!,
+        if (apn != null) 'apn': apn!,
+        if (apnTypes != null) 'apnTypes': apnTypes!,
+        if (authType != null) 'authType': authType!,
+        if (carrierId != null) 'carrierId': carrierId!,
+        if (displayName != null) 'displayName': displayName!,
+        if (mmsProxyAddress != null) 'mmsProxyAddress': mmsProxyAddress!,
+        if (mmsProxyPort != null) 'mmsProxyPort': mmsProxyPort!,
+        if (mmsc != null) 'mmsc': mmsc!,
+        if (mtuV4 != null) 'mtuV4': mtuV4!,
+        if (mtuV6 != null) 'mtuV6': mtuV6!,
+        if (mvnoType != null) 'mvnoType': mvnoType!,
+        if (networkTypes != null) 'networkTypes': networkTypes!,
+        if (numericOperatorId != null) 'numericOperatorId': numericOperatorId!,
+        if (password != null) 'password': password!,
+        if (protocol != null) 'protocol': protocol!,
+        if (proxyAddress != null) 'proxyAddress': proxyAddress!,
+        if (proxyPort != null) 'proxyPort': proxyPort!,
+        if (roamingProtocol != null) 'roamingProtocol': roamingProtocol!,
+        if (username != null) 'username': username!,
       };
 }
 
@@ -2396,7 +2855,13 @@ class ApplicationPolicy {
 
   /// Configuration to enable this app as an extension app, with the capability
   /// of interacting with Android Device Policy offline.This field can be set
-  /// for at most one app.
+  /// for at most one app.The signing key certificate fingerprint of the app on
+  /// the device must match one of the entries in signingKeyFingerprintsSha256
+  /// or the signing key certificate fingerprints obtained from Play Store for
+  /// the app to be able to communicate with Android Device Policy.
+  ///
+  /// If the app is not on Play Store and signingKeyFingerprintsSha256 is not
+  /// set, a NonComplianceDetail with INVALID_VALUE is reported.
   ExtensionConfig? extensionConfig;
 
   /// The constraints for installing the app.
@@ -2488,22 +2953,52 @@ class ApplicationPolicy {
   /// which apply to all apps.
   core.List<PermissionGrant>? permissionGrants;
 
+  /// ID of the preferential network the application uses.
+  ///
+  /// There must be a configuration for the specified network ID in
+  /// preferentialNetworkServiceConfigs. If set to
+  /// PREFERENTIAL_NETWORK_ID_UNSPECIFIED, the application will use the default
+  /// network ID specified in defaultPreferentialNetworkId. See the
+  /// documentation of defaultPreferentialNetworkId for the list of apps
+  /// excluded from this defaulting. This applies on both work profiles and
+  /// fully managed devices on Android 13 and above.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PREFERENTIAL_NETWORK_ID_UNSPECIFIED" : Whether this value is valid and
+  /// what it means depends on where it is used, and this is documented on the
+  /// relevant fields.
+  /// - "NO_PREFERENTIAL_NETWORK" : Application does not use any preferential
+  /// network.
+  /// - "PREFERENTIAL_NETWORK_ID_ONE" : Preferential network identifier 1.
+  /// - "PREFERENTIAL_NETWORK_ID_TWO" : Preferential network identifier 2.
+  /// - "PREFERENTIAL_NETWORK_ID_THREE" : Preferential network identifier 3.
+  /// - "PREFERENTIAL_NETWORK_ID_FOUR" : Preferential network identifier 4.
+  /// - "PREFERENTIAL_NETWORK_ID_FIVE" : Preferential network identifier 5.
+  core.String? preferentialNetworkId;
+
   /// Specifies whether user control is permitted for the app.
   ///
   /// User control includes user actions like force-stopping and clearing app
-  /// data. Supported on Android 11 and above.
+  /// data. Certain types of apps have special treatment, see
+  /// USER_CONTROL_SETTINGS_UNSPECIFIED and USER_CONTROL_ALLOWED for more
+  /// details.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "USER_CONTROL_SETTINGS_UNSPECIFIED" : Uses the default behaviour of the
-  /// app to determine if user control is allowed or disallowed. For most apps,
-  /// user control is allowed by default, but for some critical apps such as
-  /// companion apps (extensionConfig set to true), kiosk apps and other
-  /// critical system apps, user control is disallowed.
+  /// app to determine if user control is allowed or disallowed. User control is
+  /// allowed by default for most apps but disallowed for following types of
+  /// apps: extension apps (see extensionConfig for more details) kiosk apps
+  /// (see KIOSK install type for more details) other critical system apps
   /// - "USER_CONTROL_ALLOWED" : User control is allowed for the app. Kiosk apps
-  /// can use this to allow user control.
-  /// - "USER_CONTROL_DISALLOWED" : User control is disallowed for the app.
-  /// API_LEVEL is reported if the Android version is less than 11.
+  /// can use this to allow user control. For extension apps (see
+  /// extensionConfig for more details), user control is disallowed even if this
+  /// value is set. For kiosk apps (see KIOSK install type for more details),
+  /// this value can be used to allow user control.
+  /// - "USER_CONTROL_DISALLOWED" : User control is disallowed for the app. This
+  /// is supported on Android 11 and above. A NonComplianceDetail with API_LEVEL
+  /// is reported if the Android version is less than 11.
   core.String? userControlSettings;
 
   /// Specifies whether the app installed in the work profile is allowed to add
@@ -2537,6 +3032,7 @@ class ApplicationPolicy {
     this.minimumVersionCode,
     this.packageName,
     this.permissionGrants,
+    this.preferentialNetworkId,
     this.userControlSettings,
     this.workProfileWidgets,
   });
@@ -2586,6 +3082,7 @@ class ApplicationPolicy {
               ?.map((value) => PermissionGrant.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          preferentialNetworkId: json_['preferentialNetworkId'] as core.String?,
           userControlSettings: json_['userControlSettings'] as core.String?,
           workProfileWidgets: json_['workProfileWidgets'] as core.String?,
         );
@@ -2617,10 +3114,45 @@ class ApplicationPolicy {
           'minimumVersionCode': minimumVersionCode!,
         if (packageName != null) 'packageName': packageName!,
         if (permissionGrants != null) 'permissionGrants': permissionGrants!,
+        if (preferentialNetworkId != null)
+          'preferentialNetworkId': preferentialNetworkId!,
         if (userControlSettings != null)
           'userControlSettings': userControlSettings!,
         if (workProfileWidgets != null)
           'workProfileWidgets': workProfileWidgets!,
+      };
+}
+
+/// A change to be made to a single ApplicationPolicy object.
+class ApplicationPolicyChange {
+  /// If ApplicationPolicy.packageName matches an existing ApplicationPolicy
+  /// object within the Policy being modified, then that object will be updated.
+  ///
+  /// Otherwise, it will be added to the end of the Policy.applications.
+  ApplicationPolicy? application;
+
+  /// The field mask indicating the fields to update.
+  ///
+  /// If omitted, all modifiable fields are updated.
+  core.String? updateMask;
+
+  ApplicationPolicyChange({
+    this.application,
+    this.updateMask,
+  });
+
+  ApplicationPolicyChange.fromJson(core.Map json_)
+      : this(
+          application: json_.containsKey('application')
+              ? ApplicationPolicy.fromJson(
+                  json_['application'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_['updateMask'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (application != null) 'application': application!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -2920,6 +3452,15 @@ class ClearAppsDataStatus {
 
 /// A command.
 class Command {
+  /// Parameters for the ADD_ESIM command to add an eSIM profile to the device.
+  ///
+  /// If this is set, then it is suggested that type should not be set. In this
+  /// case, the server automatically sets it to ADD_ESIM. It is also acceptable
+  /// to explicitly set type to ADD_ESIM.
+  ///
+  /// Optional.
+  AddEsimParams? addEsimParams;
+
   /// Parameters for the CLEAR_APP_DATA command to clear the data of specified
   /// apps from the device.
   ///
@@ -2951,7 +3492,11 @@ class Command {
 
   /// If the command failed, an error code explaining the failure.
   ///
-  /// This is not set when the command is cancelled by the caller.
+  /// This is not set when the command is cancelled by the caller. For reasoning
+  /// about command errors, prefer fields in the following order (most preferred
+  /// first): 1. Command-specific fields like clearAppsDataStatus,
+  /// startLostModeStatus, or similar, if they exist. 2. This field, if set. 3.
+  /// The generic error field in the Operation that wraps the command.
   /// Possible string values are:
   /// - "COMMAND_ERROR_CODE_UNSPECIFIED" : There was no error.
   /// - "UNKNOWN" : An unknown error occurred.
@@ -2963,6 +3508,11 @@ class Command {
   /// Device Policy to the latest version may resolve the issue.
   core.String? errorCode;
 
+  /// Status of an ADD_ESIM or REMOVE_ESIM command.
+  ///
+  /// Output only.
+  EsimCommandStatus? esimStatus;
+
   /// For commands of type RESET_PASSWORD, optionally specifies the new
   /// password.
   ///
@@ -2970,6 +3520,31 @@ class Command {
   /// in case of Android 14 devices. Else the command will fail with
   /// INVALID_VALUE.
   core.String? newPassword;
+
+  /// Parameters for the REMOVE_ESIM command to remove an eSIM profile from the
+  /// device.
+  ///
+  /// If this is set, then it is suggested that type should not be set. In this
+  /// case, the server automatically sets it to REMOVE_ESIM. It is also
+  /// acceptable to explicitly set type to REMOVE_ESIM.
+  ///
+  /// Optional.
+  RemoveEsimParams? removeEsimParams;
+
+  /// Parameters for the REQUEST_DEVICE_INFO command to get device related
+  /// information.
+  ///
+  /// If this is set, then it is suggested that type should not be set. In this
+  /// case, the server automatically sets it to REQUEST_DEVICE_INFO . It is also
+  /// acceptable to explicitly set type to REQUEST_DEVICE_INFO.
+  ///
+  /// Optional.
+  RequestDeviceInfoParams? requestDeviceInfoParams;
+
+  /// Status of the REQUEST_DEVICE_INFO command.
+  ///
+  /// Output only.
+  RequestDeviceInfoStatus? requestDeviceInfoStatus;
 
   /// For commands of type RESET_PASSWORD, optionally specifies flags.
   core.List<core.String>? resetPasswordFlags;
@@ -3028,6 +3603,20 @@ class Command {
   /// - "STOP_LOST_MODE" : Takes the device out of lost mode. Only supported on
   /// fully managed devices or organization-owned devices with a managed
   /// profile. See also stop_lost_mode_params.
+  /// - "ADD_ESIM" : Adds an eSIM profile to the device. This is supported on
+  /// Android 15 and above. See also addEsimParams. To remove an eSIM profile,
+  /// use the REMOVE_ESIM command. To determine what happens to the eSIM profile
+  /// when a device is wiped, set wipeDataFlags in the policy. Note: To
+  /// provision multiple eSIMs on a single device, it is recommended to
+  /// introduce a delay of a few minutes between successive executions of the
+  /// command.
+  /// - "REMOVE_ESIM" : Removes an eSIM profile from the device. This is
+  /// supported on Android 15 and above. See also removeEsimParams.
+  /// - "REQUEST_DEVICE_INFO" : Request information related to the device.
+  /// - "WIPE" : Wipes the device, via a factory reset for a company owned
+  /// device, or by deleting the work profile for a personally owned device with
+  /// work profile. The wipe only occurs once the device acknowledges the
+  /// command. The command can be cancelled before then.
   core.String? type;
 
   /// The resource name of the user that owns the device in the form
@@ -3037,13 +3626,27 @@ class Command {
   /// command is sent to.
   core.String? userName;
 
+  /// Parameters for the WIPE command to wipe the device.
+  ///
+  /// If this is set, then it is suggested that type should not be set. In this
+  /// case, the server automatically sets it to WIPE. It is also acceptable to
+  /// explicitly set type to WIPE.
+  ///
+  /// Optional.
+  WipeParams? wipeParams;
+
   Command({
+    this.addEsimParams,
     this.clearAppsDataParams,
     this.clearAppsDataStatus,
     this.createTime,
     this.duration,
     this.errorCode,
+    this.esimStatus,
     this.newPassword,
+    this.removeEsimParams,
+    this.requestDeviceInfoParams,
+    this.requestDeviceInfoStatus,
     this.resetPasswordFlags,
     this.startLostModeParams,
     this.startLostModeStatus,
@@ -3051,10 +3654,15 @@ class Command {
     this.stopLostModeStatus,
     this.type,
     this.userName,
+    this.wipeParams,
   });
 
   Command.fromJson(core.Map json_)
       : this(
+          addEsimParams: json_.containsKey('addEsimParams')
+              ? AddEsimParams.fromJson(
+                  json_['addEsimParams'] as core.Map<core.String, core.dynamic>)
+              : null,
           clearAppsDataParams: json_.containsKey('clearAppsDataParams')
               ? ClearAppsDataParams.fromJson(json_['clearAppsDataParams']
                   as core.Map<core.String, core.dynamic>)
@@ -3066,7 +3674,25 @@ class Command {
           createTime: json_['createTime'] as core.String?,
           duration: json_['duration'] as core.String?,
           errorCode: json_['errorCode'] as core.String?,
+          esimStatus: json_.containsKey('esimStatus')
+              ? EsimCommandStatus.fromJson(
+                  json_['esimStatus'] as core.Map<core.String, core.dynamic>)
+              : null,
           newPassword: json_['newPassword'] as core.String?,
+          removeEsimParams: json_.containsKey('removeEsimParams')
+              ? RemoveEsimParams.fromJson(json_['removeEsimParams']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          requestDeviceInfoParams: json_.containsKey('requestDeviceInfoParams')
+              ? RequestDeviceInfoParams.fromJson(
+                  json_['requestDeviceInfoParams']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          requestDeviceInfoStatus: json_.containsKey('requestDeviceInfoStatus')
+              ? RequestDeviceInfoStatus.fromJson(
+                  json_['requestDeviceInfoStatus']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           resetPasswordFlags: (json_['resetPasswordFlags'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
@@ -3088,9 +3714,14 @@ class Command {
               : null,
           type: json_['type'] as core.String?,
           userName: json_['userName'] as core.String?,
+          wipeParams: json_.containsKey('wipeParams')
+              ? WipeParams.fromJson(
+                  json_['wipeParams'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (addEsimParams != null) 'addEsimParams': addEsimParams!,
         if (clearAppsDataParams != null)
           'clearAppsDataParams': clearAppsDataParams!,
         if (clearAppsDataStatus != null)
@@ -3098,7 +3729,13 @@ class Command {
         if (createTime != null) 'createTime': createTime!,
         if (duration != null) 'duration': duration!,
         if (errorCode != null) 'errorCode': errorCode!,
+        if (esimStatus != null) 'esimStatus': esimStatus!,
         if (newPassword != null) 'newPassword': newPassword!,
+        if (removeEsimParams != null) 'removeEsimParams': removeEsimParams!,
+        if (requestDeviceInfoParams != null)
+          'requestDeviceInfoParams': requestDeviceInfoParams!,
+        if (requestDeviceInfoStatus != null)
+          'requestDeviceInfoStatus': requestDeviceInfoStatus!,
         if (resetPasswordFlags != null)
           'resetPasswordFlags': resetPasswordFlags!,
         if (startLostModeParams != null)
@@ -3111,6 +3748,7 @@ class Command {
           'stopLostModeStatus': stopLostModeStatus!,
         if (type != null) 'type': type!,
         if (userName != null) 'userName': userName!,
+        if (wipeParams != null) 'wipeParams': wipeParams!,
       };
 }
 
@@ -3344,9 +3982,27 @@ class ContentProviderEndpoint {
 /// Controls the data from the work profile that can be accessed from the
 /// personal profile and vice versa.
 ///
-/// A nonComplianceDetail with MANAGEMENT_MODE is reported if the device does
+/// A NonComplianceDetail with MANAGEMENT_MODE is reported if the device does
 /// not have a work profile.
 class CrossProfilePolicies {
+  /// Controls whether personal profile apps can invoke app functions exposed by
+  /// apps in the work profile.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CROSS_PROFILE_APP_FUNCTIONS_UNSPECIFIED" : Unspecified. If appFunctions
+  /// is set to APP_FUNCTIONS_ALLOWED, defaults to
+  /// CROSS_PROFILE_APP_FUNCTIONS_ALLOWED. If appFunctions is set to
+  /// APP_FUNCTIONS_DISALLOWED, defaults to
+  /// CROSS_PROFILE_APP_FUNCTIONS_DISALLOWED.
+  /// - "CROSS_PROFILE_APP_FUNCTIONS_DISALLOWED" : Personal profile apps are not
+  /// allowed to invoke app functions exposed by apps in the work profile.
+  /// - "CROSS_PROFILE_APP_FUNCTIONS_ALLOWED" : Personal profile apps can invoke
+  /// app functions exposed by apps in the work profile. If this is set,
+  /// appFunctions must not be set to APP_FUNCTIONS_DISALLOWED, otherwise the
+  /// policy will be rejected.
+  core.String? crossProfileAppFunctions;
+
   /// Whether text copied from one profile (personal or work) can be pasted in
   /// the other profile.
   /// Possible string values are:
@@ -3390,7 +4046,7 @@ class CrossProfilePolicies {
   /// SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED_EXCEPT_SYSTEM. In this
   /// case, these exemptions act as an allowlist, in addition to the already
   /// allowlisted system apps.Supported on Android 14 and above. A
-  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
   /// less than 14.
   PackageNameList? exemptionsToShowWorkContactsInPersonalProfile;
 
@@ -3405,14 +4061,14 @@ class CrossProfilePolicies {
   /// contacts.When this is set, personal apps specified in
   /// exemptions_to_show_work_contacts_in_personal_profile are allowlisted and
   /// can access work profile contacts directly.Supported on Android 7.0 and
-  /// above. A nonComplianceDetail with API_LEVEL is reported if the Android
+  /// above. A NonComplianceDetail with API_LEVEL is reported if the Android
   /// version is less than 7.0.
   /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED" : Default. Allows apps
   /// in the personal profile to access work profile contacts including contact
   /// searches and incoming calls.When this is set, personal apps specified in
   /// exemptions_to_show_work_contacts_in_personal_profile are blocklisted and
   /// can not access work profile contacts directly.Supported on Android 7.0 and
-  /// above. A nonComplianceDetail with API_LEVEL is reported if the Android
+  /// above. A NonComplianceDetail with API_LEVEL is reported if the Android
   /// version is less than 7.0.
   /// - "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED_EXCEPT_SYSTEM" :
   /// Prevents most personal apps from accessing work profile contacts including
@@ -3424,7 +4080,7 @@ class CrossProfilePolicies {
   /// and can access work profile contacts.Supported on Android 14 and above. If
   /// this is set on a device with Android version less than 14, the behaviour
   /// falls back to SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED and a
-  /// nonComplianceDetail with API_LEVEL is reported.
+  /// NonComplianceDetail with API_LEVEL is reported.
   core.String? showWorkContactsInPersonalProfile;
 
   /// Specifies the default behaviour for work profile widgets.
@@ -3445,6 +4101,7 @@ class CrossProfilePolicies {
   core.String? workProfileWidgetsDefault;
 
   CrossProfilePolicies({
+    this.crossProfileAppFunctions,
     this.crossProfileCopyPaste,
     this.crossProfileDataSharing,
     this.exemptionsToShowWorkContactsInPersonalProfile,
@@ -3454,6 +4111,8 @@ class CrossProfilePolicies {
 
   CrossProfilePolicies.fromJson(core.Map json_)
       : this(
+          crossProfileAppFunctions:
+              json_['crossProfileAppFunctions'] as core.String?,
           crossProfileCopyPaste: json_['crossProfileCopyPaste'] as core.String?,
           crossProfileDataSharing:
               json_['crossProfileDataSharing'] as core.String?,
@@ -3470,6 +4129,8 @@ class CrossProfilePolicies {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (crossProfileAppFunctions != null)
+          'crossProfileAppFunctions': crossProfileAppFunctions!,
         if (crossProfileCopyPaste != null)
           'crossProfileCopyPaste': crossProfileCopyPaste!,
         if (crossProfileDataSharing != null)
@@ -3929,6 +4590,31 @@ class Device {
 /// Covers controls for device connectivity such as Wi-Fi, USB data access,
 /// keyboard/mouse connections, and more.
 class DeviceConnectivityManagement {
+  /// Access Point Name (APN) policy.
+  ///
+  /// Configuration for Access Point Names (APNs) which may override any other
+  /// APNs on the device. See OVERRIDE_APNS_ENABLED and overrideApns for
+  /// details.
+  ///
+  /// Optional.
+  ApnPolicy? apnPolicy;
+
+  /// Controls whether Bluetooth sharing is allowed.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BLUETOOTH_SHARING_UNSPECIFIED" : Unspecified. Defaults to
+  /// BLUETOOTH_SHARING_DISALLOWED on work profiles and
+  /// BLUETOOTH_SHARING_ALLOWED on fully managed devices.
+  /// - "BLUETOOTH_SHARING_ALLOWED" : Bluetooth sharing is allowed.Supported on
+  /// Android 8 and above. A NonComplianceDetail with API_LEVEL is reported on
+  /// work profiles if the Android version is less than 8.
+  /// - "BLUETOOTH_SHARING_DISALLOWED" : Bluetooth sharing is
+  /// disallowed.Supported on Android 8 and above. A NonComplianceDetail with
+  /// API_LEVEL is reported on fully managed devices if the Android version is
+  /// less than 8.
+  core.String? bluetoothSharing;
+
   /// Controls Wi-Fi configuring privileges.
   ///
   /// Based on the option set, user will have either full or limited or no
@@ -3944,7 +4630,7 @@ class DeviceConnectivityManagement {
   /// disallowed. The user is only able to switch between already configured
   /// networks. Supported on Android 13 and above, on fully managed devices and
   /// work profiles on company-owned devices. If the setting is not supported,
-  /// ALLOW_CONFIGURING_WIFI is set. A nonComplianceDetail with API_LEVEL is
+  /// ALLOW_CONFIGURING_WIFI is set. A NonComplianceDetail with API_LEVEL is
   /// reported if the Android version is less than 13. wifiConfigDisabled is
   /// ignored.
   /// - "DISALLOW_CONFIGURING_WIFI" : Disallows configuring Wi-Fi networks. The
@@ -3960,6 +4646,17 @@ class DeviceConnectivityManagement {
   /// policy (see networkEscapeHatchEnabled).
   core.String? configureWifi;
 
+  /// Preferential network service configuration.
+  ///
+  /// Setting this field will override preferentialNetworkService. This can be
+  /// set on both work profiles and fully managed devices on Android 13 and
+  /// above. See 5G network slicing
+  /// (https://developers.google.com/android/management/5g-network-slicing)
+  /// guide for more details.
+  ///
+  /// Optional.
+  PreferentialNetworkServiceSettings? preferentialNetworkServiceSettings;
+
   /// Controls tethering settings.
   ///
   /// Based on the value set, the user is partially or fully disallowed from
@@ -3974,7 +4671,7 @@ class DeviceConnectivityManagement {
   /// - "DISALLOW_WIFI_TETHERING" : Disallows the user from using Wi-Fi
   /// tethering. Supported on company owned devices running Android 13 and
   /// above. If the setting is not supported, ALLOW_ALL_TETHERING will be set. A
-  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
   /// less than 13. tetheringConfigDisabled is ignored.
   /// - "DISALLOW_ALL_TETHERING" : Disallows all forms of tethering. Supported
   /// on fully managed devices and work profile on company-owned devices, on all
@@ -3996,9 +4693,9 @@ class DeviceConnectivityManagement {
   /// - "DISALLOW_USB_DATA_TRANSFER" : When set, all types of USB data transfers
   /// are prohibited. Supported for devices running Android 12 or above with USB
   /// HAL 1.3 or above. If the setting is not supported,
-  /// DISALLOW_USB_FILE_TRANSFER will be set. A nonComplianceDetail with
+  /// DISALLOW_USB_FILE_TRANSFER will be set. A NonComplianceDetail with
   /// API_LEVEL is reported if the Android version is less than 12. A
-  /// nonComplianceDetail with DEVICE_INCOMPATIBLE is reported if the device
+  /// NonComplianceDetail with DEVICE_INCOMPATIBLE is reported if the device
   /// does not have USB HAL 1.3 or above. usbFileTransferDisabled is ignored.
   core.String? usbDataAccess;
 
@@ -4010,7 +4707,7 @@ class DeviceConnectivityManagement {
   /// ALLOW_WIFI_DIRECT
   /// - "ALLOW_WIFI_DIRECT" : The user is allowed to use Wi-Fi direct.
   /// - "DISALLOW_WIFI_DIRECT" : The user is not allowed to use Wi-Fi direct. A
-  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
   /// less than 13.
   core.String? wifiDirectSettings;
 
@@ -4026,7 +4723,10 @@ class DeviceConnectivityManagement {
   WifiSsidPolicy? wifiSsidPolicy;
 
   DeviceConnectivityManagement({
+    this.apnPolicy,
+    this.bluetoothSharing,
     this.configureWifi,
+    this.preferentialNetworkServiceSettings,
     this.tetheringSettings,
     this.usbDataAccess,
     this.wifiDirectSettings,
@@ -4036,7 +4736,18 @@ class DeviceConnectivityManagement {
 
   DeviceConnectivityManagement.fromJson(core.Map json_)
       : this(
+          apnPolicy: json_.containsKey('apnPolicy')
+              ? ApnPolicy.fromJson(
+                  json_['apnPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          bluetoothSharing: json_['bluetoothSharing'] as core.String?,
           configureWifi: json_['configureWifi'] as core.String?,
+          preferentialNetworkServiceSettings:
+              json_.containsKey('preferentialNetworkServiceSettings')
+                  ? PreferentialNetworkServiceSettings.fromJson(
+                      json_['preferentialNetworkServiceSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           tetheringSettings: json_['tetheringSettings'] as core.String?,
           usbDataAccess: json_['usbDataAccess'] as core.String?,
           wifiDirectSettings: json_['wifiDirectSettings'] as core.String?,
@@ -4051,7 +4762,12 @@ class DeviceConnectivityManagement {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (apnPolicy != null) 'apnPolicy': apnPolicy!,
+        if (bluetoothSharing != null) 'bluetoothSharing': bluetoothSharing!,
         if (configureWifi != null) 'configureWifi': configureWifi!,
+        if (preferentialNetworkServiceSettings != null)
+          'preferentialNetworkServiceSettings':
+              preferentialNetworkServiceSettings!,
         if (tetheringSettings != null) 'tetheringSettings': tetheringSettings!,
         if (usbDataAccess != null) 'usbDataAccess': usbDataAccess!,
         if (wifiDirectSettings != null)
@@ -4070,7 +4786,7 @@ class DeviceRadioState {
   /// - "AIRPLANE_MODE_USER_CHOICE" : The user is allowed to toggle airplane
   /// mode on or off.
   /// - "AIRPLANE_MODE_DISABLED" : Airplane mode is disabled. The user is not
-  /// allowed to toggle airplane mode on. A nonComplianceDetail with API_LEVEL
+  /// allowed to toggle airplane mode on. A NonComplianceDetail with API_LEVEL
   /// is reported if the Android version is less than 9.
   core.String? airplaneModeState;
 
@@ -4081,7 +4797,7 @@ class DeviceRadioState {
   /// - "CELLULAR_TWO_G_USER_CHOICE" : The user is allowed to toggle cellular 2G
   /// on or off.
   /// - "CELLULAR_TWO_G_DISABLED" : Cellular 2G is disabled. The user is not
-  /// allowed to toggle cellular 2G on via settings. A nonComplianceDetail with
+  /// allowed to toggle cellular 2G on via settings. A NonComplianceDetail with
   /// API_LEVEL is reported if the Android version is less than 14.
   core.String? cellularTwoGState;
 
@@ -4096,17 +4812,17 @@ class DeviceRadioState {
   /// - "PERSONAL_NETWORK_SECURITY" : A personal network such as WEP, WPA2-PSK
   /// is the minimum required security. The device will not be able to connect
   /// to open wifi networks. This is stricter than OPEN_NETWORK_SECURITY. A
-  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
   /// less than 13.
   /// - "ENTERPRISE_NETWORK_SECURITY" : An enterprise EAP network is the minimum
   /// required security level. The device will not be able to connect to Wi-Fi
   /// network below this security level. This is stricter than
-  /// PERSONAL_NETWORK_SECURITY. A nonComplianceDetail with API_LEVEL is
+  /// PERSONAL_NETWORK_SECURITY. A NonComplianceDetail with API_LEVEL is
   /// reported if the Android version is less than 13.
   /// - "ENTERPRISE_BIT192_NETWORK_SECURITY" : A 192-bit enterprise network is
   /// the minimum required security level. The device will not be able to
   /// connect to Wi-Fi network below this security level. This is stricter than
-  /// ENTERPRISE_NETWORK_SECURITY. A nonComplianceDetail with API_LEVEL is
+  /// ENTERPRISE_NETWORK_SECURITY. A NonComplianceDetail with API_LEVEL is
   /// reported if the Android version is less than 13.
   core.String? minimumWifiSecurityLevel;
 
@@ -4118,7 +4834,7 @@ class DeviceRadioState {
   /// - "ULTRA_WIDEBAND_USER_CHOICE" : The user is allowed to toggle ultra
   /// wideband on or off.
   /// - "ULTRA_WIDEBAND_DISABLED" : Ultra wideband is disabled. The user is not
-  /// allowed to toggle ultra wideband on via settings. A nonComplianceDetail
+  /// allowed to toggle ultra wideband on via settings. A NonComplianceDetail
   /// with API_LEVEL is reported if the Android version is less than 14.
   core.String? ultraWidebandState;
 
@@ -4128,10 +4844,10 @@ class DeviceRadioState {
   /// WIFI_STATE_USER_CHOICE
   /// - "WIFI_STATE_USER_CHOICE" : User is allowed to enable/disable Wi-Fi.
   /// - "WIFI_ENABLED" : Wi-Fi is on and the user is not allowed to turn it off.
-  /// A nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// A NonComplianceDetail with API_LEVEL is reported if the Android version is
   /// less than 13.
   /// - "WIFI_DISABLED" : Wi-Fi is off and the user is not allowed to turn it
-  /// on. A nonComplianceDetail with API_LEVEL is reported if the Android
+  /// on. A NonComplianceDetail with API_LEVEL is reported if the Android
   /// version is less than 13.
   core.String? wifiState;
 
@@ -4368,6 +5084,51 @@ class DpcMigrationInfo {
   core.Map<core.String, core.dynamic> toJson() => {
         if (additionalData != null) 'additionalData': additionalData!,
         if (previousDpc != null) 'previousDpc': previousDpc!,
+      };
+}
+
+/// EID information for each eUICC chip.
+class Eid {
+  /// The EID
+  ///
+  /// Output only.
+  core.String? eid;
+
+  Eid({
+    this.eid,
+  });
+
+  Eid.fromJson(core.Map json_)
+      : this(
+          eid: json_['eid'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eid != null) 'eid': eid!,
+      };
+}
+
+/// Information related to the EIDs of the device.
+class EidInfo {
+  /// EID information for each eUICC chip.
+  ///
+  /// Output only.
+  core.List<Eid>? eids;
+
+  EidInfo({
+    this.eids,
+  });
+
+  EidInfo.fromJson(core.Map json_)
+      : this(
+          eids: (json_['eids'] as core.List?)
+              ?.map((value) =>
+                  Eid.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eids != null) 'eids': eids!,
       };
 }
 
@@ -4686,6 +5447,119 @@ class Enterprise {
       };
 }
 
+/// Status and error details (if present) of an ADD_ESIM or REMOVE_ESIM command.
+class EsimCommandStatus {
+  /// Information about the eSIM added or removed.
+  ///
+  /// This is populated only when the eSIM operation status is SUCCESS.
+  ///
+  /// Output only.
+  EsimInfo? esimInfo;
+
+  /// Details of the error if the status is set to INTERNAL_ERROR.
+  ///
+  /// Output only.
+  InternalErrorDetails? internalErrorDetails;
+
+  /// Status of an ADD_ESIM or REMOVE_ESIM command.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Unspecified. This value is not used.
+  /// - "SUCCESS" : The eSIM operation was successfully performed on the device.
+  /// - "IN_PROGRESS" : The eSIM operation is in progress.
+  /// - "PENDING_USER_ACTION" : The user needs to take an action for the eSIM
+  /// operation to proceed.
+  /// - "ERROR_SETUP_IN_PROGRESS" : The eSIM operation cannot be executed when
+  /// setup is in progress.
+  /// - "ERROR_USER_DENIED" : The user has denied the eSIM operation.
+  /// - "INTERNAL_ERROR" : An error has occurred while trying to add or remove
+  /// the eSIM on the device, see internal_error_details.
+  /// - "ERROR_ICC_ID_NOT_FOUND" : For a REMOVE_ESIM command, the iccId of the
+  /// eSIM to be removed was not found on the device. This could either mean the
+  /// eSIM does not belong to the enterprise or the eSIM corresponding to the
+  /// iccId is not present on the device.
+  /// - "ERROR_MULTIPLE_ACTIVE_ESIMS_NO_AVAILABLE_SLOT" : The ADD_ESIM command
+  /// failed when attempting to add a new eSIM with its activation state set to
+  /// ACTIVATED since multiple eSIM slots on the device contain active eSIM
+  /// profiles and there is no free eSIM slot available. To resolve this, the
+  /// new eSIM can be added with its activation state as NOT_ACTIVATED for later
+  /// manual activation, or the user must first deactivate an existing active
+  /// eSIM for the operation to proceed.
+  core.String? status;
+
+  EsimCommandStatus({
+    this.esimInfo,
+    this.internalErrorDetails,
+    this.status,
+  });
+
+  EsimCommandStatus.fromJson(core.Map json_)
+      : this(
+          esimInfo: json_.containsKey('esimInfo')
+              ? EsimInfo.fromJson(
+                  json_['esimInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          internalErrorDetails: json_.containsKey('internalErrorDetails')
+              ? InternalErrorDetails.fromJson(json_['internalErrorDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          status: json_['status'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (esimInfo != null) 'esimInfo': esimInfo!,
+        if (internalErrorDetails != null)
+          'internalErrorDetails': internalErrorDetails!,
+        if (status != null) 'status': status!,
+      };
+}
+
+/// Details of the eSIM added or removed.
+class EsimInfo {
+  /// ICC ID of the eSIM.
+  ///
+  /// Output only.
+  core.String? iccId;
+
+  EsimInfo({
+    this.iccId,
+  });
+
+  EsimInfo.fromJson(core.Map json_)
+      : this(
+          iccId: json_['iccId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (iccId != null) 'iccId': iccId!,
+      };
+}
+
+/// Information related to the eUICC chip.
+class EuiccChipInfo {
+  /// The Embedded Identity Document (EID) that identifies the eUICC chip for
+  /// each eUICC chip on the device.
+  ///
+  /// This is available on company owned devices running Android 13 and above.
+  ///
+  /// Output only.
+  core.String? eid;
+
+  EuiccChipInfo({
+    this.eid,
+  });
+
+  EuiccChipInfo.fromJson(core.Map json_)
+      : this(
+          eid: json_['eid'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eid != null) 'eid': eid!,
+      };
+}
+
 /// Configuration to enable an app as an extension app, with the capability of
 /// interacting with Android Device Policy offline.
 ///
@@ -4699,19 +5573,29 @@ class ExtensionConfig {
   /// Fully qualified class name of the receiver service class for Android
   /// Device Policy to notify the extension app of any local command status
   /// updates.
+  ///
+  /// The service must be exported in the extension app's AndroidManifest.xml
+  /// and extend NotificationReceiverService
+  /// (https://developers.google.com/android/management/reference/amapi/com/google/android/managementapi/notification/NotificationReceiverService)
+  /// (see Integrate with the AMAPI SDK
+  /// (https://developers.google.com/android/management/sdk-integration) guide
+  /// for more details).
   core.String? notificationReceiver;
 
-  /// Hex-encoded SHA-256 hash of the signing certificate of the extension app.
+  /// Hex-encoded SHA-256 hashes of the signing key certificates of the
+  /// extension app.
   ///
-  /// Only hexadecimal string representations of 64 characters are valid.If not
-  /// specified, the signature for the corresponding package name is obtained
-  /// from the Play Store instead.If this list is empty, the signature of the
-  /// extension app on the device must match the signature obtained from the
-  /// Play Store for the app to be able to communicate with Android Device
-  /// Policy.If this list is not empty, the signature of the extension app on
-  /// the device must match one of the entries in this list for the app to be
-  /// able to communicate with Android Device Policy.In production use cases, it
-  /// is recommended to leave this empty.
+  /// Only hexadecimal string representations of 64 characters are valid.The
+  /// signing key certificate fingerprints are always obtained from the Play
+  /// Store and this field is used to provide additional signing key certificate
+  /// fingerprints. However, if the application is not available on the Play
+  /// Store, this field needs to be set. A NonComplianceDetail with
+  /// INVALID_VALUE is reported if this field is not set when the application is
+  /// not available on the Play Store.The signing key certificate fingerprint of
+  /// the extension app on the device must match one of the signing key
+  /// certificate fingerprints obtained from the Play Store or the ones provided
+  /// in this field for the app to be able to communicate with Android Device
+  /// Policy.In production use cases, it is recommended to leave this empty.
   core.List<core.String>? signingKeyFingerprintsSha256;
 
   ExtensionConfig({
@@ -4952,6 +5836,11 @@ class HardwareInfo {
   /// Output only.
   core.String? enterpriseSpecificId;
 
+  /// Information related to the eUICC chip.
+  ///
+  /// Output only.
+  core.List<EuiccChipInfo>? euiccChipInfo;
+
   /// GPU shutdown temperature thresholds in Celsius for each GPU on the device.
   core.List<core.double>? gpuShutdownTemperatures;
 
@@ -4991,6 +5880,7 @@ class HardwareInfo {
     this.cpuThrottlingTemperatures,
     this.deviceBasebandVersion,
     this.enterpriseSpecificId,
+    this.euiccChipInfo,
     this.gpuShutdownTemperatures,
     this.gpuThrottlingTemperatures,
     this.hardware,
@@ -5022,6 +5912,10 @@ class HardwareInfo {
                   .toList(),
           deviceBasebandVersion: json_['deviceBasebandVersion'] as core.String?,
           enterpriseSpecificId: json_['enterpriseSpecificId'] as core.String?,
+          euiccChipInfo: (json_['euiccChipInfo'] as core.List?)
+              ?.map((value) => EuiccChipInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           gpuShutdownTemperatures:
               (json_['gpuShutdownTemperatures'] as core.List?)
                   ?.map((value) => (value as core.num).toDouble())
@@ -5058,6 +5952,7 @@ class HardwareInfo {
           'deviceBasebandVersion': deviceBasebandVersion!,
         if (enterpriseSpecificId != null)
           'enterpriseSpecificId': enterpriseSpecificId!,
+        if (euiccChipInfo != null) 'euiccChipInfo': euiccChipInfo!,
         if (gpuShutdownTemperatures != null)
           'gpuShutdownTemperatures': gpuShutdownTemperatures!,
         if (gpuThrottlingTemperatures != null)
@@ -5208,6 +6103,168 @@ class InstallConstraint {
           'deviceIdleConstraint': deviceIdleConstraint!,
         if (networkTypeConstraint != null)
           'networkTypeConstraint': networkTypeConstraint!,
+      };
+}
+
+/// Internal error details if present for the ADD_ESIM or REMOVE_ESIM command.
+class InternalErrorDetails {
+  /// Integer representation of the error code as specified here
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#EXTRA_EMBEDDED_SUBSCRIPTION_DETAILED_CODE).
+  ///
+  /// See also, OPERATION_SMDX_SUBJECT_REASON_CODE. See error_code_detail for
+  /// more details.
+  ///
+  /// Output only.
+  core.String? errorCode;
+
+  /// The error code detail corresponding to the error_code.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ERROR_CODE_DETAIL_UNSPECIFIED" : Error code detail is unspecified. The
+  /// error_code is not recognized by Android Management API. However, see
+  /// error_code
+  /// - "ERROR_TIME_OUT" : See EuiccManager.ERROR_TIME_OUT
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_TIME_OUT)
+  /// for details.
+  /// - "ERROR_EUICC_MISSING" : See EuiccManager.ERROR_EUICC_MISSING
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_EUICC_MISSING)
+  /// for details.
+  /// - "ERROR_UNSUPPORTED_VERSION" : See EuiccManager.ERROR_UNSUPPORTED_VERSION
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_UNSUPPORTED_VERSION)
+  /// for details.
+  /// - "ERROR_ADDRESS_MISSING" : See EuiccManager.ERROR_ADDRESS_MISSING
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_ADDRESS_MISSING)
+  /// for details.
+  /// - "ERROR_INVALID_CONFIRMATION_CODE" : See
+  /// EuiccManager.ERROR_INVALID_CONFIRMATION_CODE
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_INVALID_CONFIRMATION_CODE)
+  /// for details.
+  /// - "ERROR_CERTIFICATE_ERROR" : See EuiccManager.ERROR_CERTIFICATE_ERROR
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_CERTIFICATE_ERROR)
+  /// for details.
+  /// - "ERROR_NO_PROFILES_AVAILABLE" : See
+  /// EuiccManager.ERROR_NO_PROFILES_AVAILABLE
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_NO_PROFILES_AVAILABLE)
+  /// for details.
+  /// - "ERROR_CONNECTION_ERROR" : See EuiccManager.ERROR_CONNECTION_ERROR
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_CONNECTION_ERROR)
+  /// for details.
+  /// - "ERROR_INVALID_RESPONSE" : See EuiccManager.ERROR_INVALID_RESPONSE
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_INVALID_RESPONSE)
+  /// for details.
+  /// - "ERROR_CARRIER_LOCKED" : See EuiccManager.ERROR_CARRIER_LOCKED
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_CARRIER_LOCKED)
+  /// for details.
+  /// - "ERROR_DISALLOWED_BY_PPR" : See EuiccManager.ERROR_DISALLOWED_BY_PPR
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_DISALLOWED_BY_PPR)
+  /// for details.
+  /// - "ERROR_INVALID_ACTIVATION_CODE" : See
+  /// EuiccManager.ERROR_INVALID_ACTIVATION_CODE
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_INVALID_ACTIVATION_CODE)
+  /// for details.
+  /// - "ERROR_INCOMPATIBLE_CARRIER" : See
+  /// EuiccManager.ERROR_INCOMPATIBLE_CARRIER
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_INCOMPATIBLE_CARRIER)
+  /// for details.
+  /// - "ERROR_OPERATION_BUSY" : See EuiccManager.ERROR_OPERATION_BUSY
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_OPERATION_BUSY)
+  /// for details.
+  /// - "ERROR_INSTALL_PROFILE" : See EuiccManager.ERROR_INSTALL_PROFILE
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_INSTALL_PROFILE)
+  /// for details.
+  /// - "ERROR_EUICC_INSUFFICIENT_MEMORY" : See
+  /// EuiccManager.ERROR_EUICC_INSUFFICIENT_MEMORY
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_EUICC_INSUFFICIENT_MEMORY)
+  /// for details.
+  /// - "ERROR_INVALID_PORT" : See EuiccManager.ERROR_INVALID_PORT
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_INVALID_PORT)
+  /// for details.
+  /// - "ERROR_SIM_MISSING" : See EuiccManager.ERROR_SIM_MISSING
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#ERROR_SIM_MISSING)
+  /// for details.
+  core.String? errorCodeDetail;
+
+  /// Integer representation of the operation code as specified here
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#EXTRA_EMBEDDED_SUBSCRIPTION_DETAILED_CODE).
+  ///
+  /// See operation_code_detail for more details.
+  ///
+  /// Output only.
+  core.String? operationCode;
+
+  /// The operation code detail corresponding to the operation_code.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "OPERATION_CODE_DETAIL_UNSPECIFIED" : Operation code detail is
+  /// unspecified. The operation_code is not recognized by Android Management
+  /// API. However, see operation_code.
+  /// - "OPERATION_SYSTEM" : See EuiccManager.OPERATION_SYSTEM
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#OPERATION_SYSTEM)
+  /// for details.
+  /// - "OPERATION_SIM_SLOT" : See EuiccManager.OPERATION_SIM_SLOT
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#OPERATION_SIM_SLOT)
+  /// for details.
+  /// - "OPERATION_EUICC_CARD" : See EuiccManager.OPERATION_EUICC_CARD
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#OPERATION_EUICC_CARD)
+  /// for details.
+  /// - "OPERATION_SMDX" : See EuiccManager.OPERATION_SMDX
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#OPERATION_SMDX)
+  /// for details.
+  /// - "OPERATION_SWITCH" : See EuiccManager.OPERATION_SWITCH
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#OPERATION_SWITCH)
+  /// for details.
+  /// - "OPERATION_DOWNLOAD" : See EuiccManager.OPERATION_DOWNLOAD
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#OPERATION_DOWNLOAD)
+  /// for details.
+  /// - "OPERATION_METADATA" : See EuiccManager.OPERATION_METADATA
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#OPERATION_METADATA)
+  /// for details.
+  /// - "OPERATION_EUICC_GSMA" : See EuiccManager.OPERATION_EUICC_GSMA
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#OPERATION_EUICC_GSMA)
+  /// for details.
+  /// - "OPERATION_APDU" : See EuiccManager.OPERATION_APDU
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#OPERATION_APDU)
+  /// for details.
+  /// - "OPERATION_SMDX_SUBJECT_REASON_CODE" : See
+  /// EuiccManager.OPERATION_SMDX_SUBJECT_REASON_CODE
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#OPERATION_SMDX_SUBJECT_REASON_CODE)
+  /// for details. Note that, in this case, error_code is the least significant
+  /// 3 bytes of the EXTRA_EMBEDDED_SUBSCRIPTION_DETAILED_CODE
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#EXTRA_EMBEDDED_SUBSCRIPTION_DETAILED_CODE)
+  /// specifying the subject code and the reason code as indicated here
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#OPERATION_SMDX_SUBJECT_REASON_CODE).
+  /// The most significant byte of the integer is zeroed out. For example, a
+  /// Subject Code of 8.11.1 and a Reason Code of 5.1 is represented in
+  /// error_code as 0000 0000 1000 1011 0001 0000 0101 0001 in binary, which is
+  /// 9113681 in decimal.
+  /// - "OPERATION_HTTP" : See EuiccManager.OPERATION_HTTP
+  /// (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#OPERATION_HTTP)
+  /// for details.
+  core.String? operationCodeDetail;
+
+  InternalErrorDetails({
+    this.errorCode,
+    this.errorCodeDetail,
+    this.operationCode,
+    this.operationCodeDetail,
+  });
+
+  InternalErrorDetails.fromJson(core.Map json_)
+      : this(
+          errorCode: json_['errorCode'] as core.String?,
+          errorCodeDetail: json_['errorCodeDetail'] as core.String?,
+          operationCode: json_['operationCode'] as core.String?,
+          operationCodeDetail: json_['operationCodeDetail'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (errorCode != null) 'errorCode': errorCode!,
+        if (errorCodeDetail != null) 'errorCodeDetail': errorCodeDetail!,
+        if (operationCode != null) 'operationCode': operationCode!,
+        if (operationCodeDetail != null)
+          'operationCodeDetail': operationCodeDetail!,
       };
 }
 
@@ -5947,6 +7004,55 @@ class MigrationToken {
       };
 }
 
+/// Request to update or create ApplicationPolicy objects in the given Policy.
+class ModifyPolicyApplicationsRequest {
+  /// The changes to be made to the ApplicationPolicy objects.
+  ///
+  /// There must be at least one ApplicationPolicyChange.
+  ///
+  /// Required.
+  core.List<ApplicationPolicyChange>? changes;
+
+  ModifyPolicyApplicationsRequest({
+    this.changes,
+  });
+
+  ModifyPolicyApplicationsRequest.fromJson(core.Map json_)
+      : this(
+          changes: (json_['changes'] as core.List?)
+              ?.map((value) => ApplicationPolicyChange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (changes != null) 'changes': changes!,
+      };
+}
+
+/// Response to a request to update or create ApplicationPolicy objects in the
+/// given policy.
+class ModifyPolicyApplicationsResponse {
+  /// The updated policy.
+  Policy? policy;
+
+  ModifyPolicyApplicationsResponse({
+    this.policy,
+  });
+
+  ModifyPolicyApplicationsResponse.fromJson(core.Map json_)
+      : this(
+          policy: json_.containsKey('policy')
+              ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policy != null) 'policy': policy!,
+      };
+}
+
 /// Device network info.
 class NetworkInfo {
   /// IMEI number of the GSM device.
@@ -6093,6 +7199,8 @@ class NonComplianceDetail {
   /// the minimum version code specified by policy.
   /// - "DEVICE_INCOMPATIBLE" : The device is incompatible with the policy
   /// requirements.
+  /// - "PROJECT_NOT_PERMITTED" : The Google Cloud Platform project used to
+  /// manage the device is not permitted to use this policy.
   core.String? nonComplianceReason;
 
   /// The package name indicating which app is out of compliance, if applicable.
@@ -6141,6 +7249,17 @@ class NonComplianceDetail {
   /// (https://chromium.googlesource.com/chromium/src/+/main/components/onc/docs/onc_spec.md#eap-type)
   /// field in openNetworkConfiguration does not correspond to an existing key
   /// installed on the device. nonComplianceReason is set to INVALID_VALUE.
+  /// - "PERMISSIBLE_USAGE_RESTRICTION" : This policy setting is restricted and
+  /// cannot be set for this Google Cloud Platform project. More details
+  /// (including how to enable usage of this policy setting) are available in
+  /// the Permissible Usage policy
+  /// (https://developers.google.com/android/management/permissible-usage).
+  /// nonComplianceReason is set to PROJECT_NOT_PERMITTED.
+  /// - "REQUIRED_ACCOUNT_NOT_IN_ENTERPRISE" : Work account required by the
+  /// workAccountSetupConfig policy setting is not part of the enterprise
+  /// anymore. nonComplianceReason is set to USER_ACTION.
+  /// - "NEW_ACCOUNT_NOT_IN_ENTERPRISE" : Work account added by the user is not
+  /// part of the enterprise. nonComplianceReason is set to USER_ACTION.
   core.String? specificNonComplianceReason;
 
   NonComplianceDetail({
@@ -6222,6 +7341,8 @@ class NonComplianceDetailCondition {
   /// the minimum version code specified by policy.
   /// - "DEVICE_INCOMPATIBLE" : The device is incompatible with the policy
   /// requirements.
+  /// - "PROJECT_NOT_PERMITTED" : The Google Cloud Platform project used to
+  /// manage the device is not permitted to use this policy.
   core.String? nonComplianceReason;
 
   /// The package name of the app that's out of compliance.
@@ -6830,6 +7951,22 @@ class PersonalUsagePolicies {
   /// Account types that can't be managed by the user.
   core.List<core.String>? accountTypesWithManagementDisabled;
 
+  /// Whether bluetooth sharing is allowed.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BLUETOOTH_SHARING_UNSPECIFIED" : Unspecified. Defaults to
+  /// BLUETOOTH_SHARING_ALLOWED.
+  /// - "BLUETOOTH_SHARING_ALLOWED" : Bluetooth sharing is allowed on personal
+  /// profile.Supported on Android 8 and above. A NonComplianceDetail with
+  /// MANAGEMENT_MODE is reported if this is set for a personal device.
+  /// - "BLUETOOTH_SHARING_DISALLOWED" : Bluetooth sharing is disallowed on
+  /// personal profile.Supported on Android 8 and above. A NonComplianceDetail
+  /// with API_LEVEL is reported if the Android version is less than 8. A
+  /// NonComplianceDetail with MANAGEMENT_MODE is reported if this is set for a
+  /// personal device.
+  core.String? bluetoothSharing;
+
   /// If true, the camera is disabled on the personal profile.
   core.bool? cameraDisabled;
 
@@ -6878,6 +8015,7 @@ class PersonalUsagePolicies {
 
   PersonalUsagePolicies({
     this.accountTypesWithManagementDisabled,
+    this.bluetoothSharing,
     this.cameraDisabled,
     this.maxDaysWithWorkOff,
     this.personalApplications,
@@ -6892,6 +8030,7 @@ class PersonalUsagePolicies {
               (json_['accountTypesWithManagementDisabled'] as core.List?)
                   ?.map((value) => value as core.String)
                   .toList(),
+          bluetoothSharing: json_['bluetoothSharing'] as core.String?,
           cameraDisabled: json_['cameraDisabled'] as core.bool?,
           maxDaysWithWorkOff: json_['maxDaysWithWorkOff'] as core.int?,
           personalApplications: (json_['personalApplications'] as core.List?)
@@ -6907,6 +8046,7 @@ class PersonalUsagePolicies {
         if (accountTypesWithManagementDisabled != null)
           'accountTypesWithManagementDisabled':
               accountTypesWithManagementDisabled!,
+        if (bluetoothSharing != null) 'bluetoothSharing': bluetoothSharing!,
         if (cameraDisabled != null) 'cameraDisabled': cameraDisabled!,
         if (maxDaysWithWorkOff != null)
           'maxDaysWithWorkOff': maxDaysWithWorkOff!,
@@ -6971,6 +8111,24 @@ class Policy {
   /// - "ALWAYS" : Apps are auto-updated at any time. Data charges may apply.
   core.String? appAutoUpdatePolicy;
 
+  /// Controls whether apps on the device for fully managed devices or in the
+  /// work profile for devices with work profiles are allowed to expose app
+  /// functions.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "APP_FUNCTIONS_UNSPECIFIED" : Unspecified. Defaults to
+  /// APP_FUNCTIONS_ALLOWED.
+  /// - "APP_FUNCTIONS_DISALLOWED" : Apps on the device for fully managed
+  /// devices or in the work profile for devices with work profiles are not
+  /// allowed to expose app functions. If this is set, crossProfileAppFunctions
+  /// must not be set to CROSS_PROFILE_APP_FUNCTIONS_ALLOWED, otherwise the
+  /// policy will be rejected.
+  /// - "APP_FUNCTIONS_ALLOWED" : Apps on the device for fully managed devices
+  /// or in the work profile for devices with work profiles are allowed to
+  /// expose app functions.
+  core.String? appFunctions;
+
   /// Policy applied to apps.
   ///
   /// This can have at most 3,000 elements.
@@ -6989,7 +8147,7 @@ class Policy {
   /// ASSIST_CONTENT_ALLOWED.
   /// - "ASSIST_CONTENT_DISALLOWED" : Assist content is blocked from being sent
   /// to a privileged app.Supported on Android 15 and above. A
-  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
   /// less than 15.
   /// - "ASSIST_CONTENT_ALLOWED" : Assist content is allowed to be sent to a
   /// privileged app.Supported on Android 15 and above.
@@ -7192,6 +8350,24 @@ class Policy {
   )
   core.bool? ensureVerifyAppsEnabled;
 
+  /// Controls whether the enterpriseDisplayName is visible on the device (e.g.
+  /// lock screen message on company-owned devices).
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENTERPRISE_DISPLAY_NAME_VISIBILITY_UNSPECIFIED" : Unspecified. Defaults
+  /// to displaying the enterprise name that's set at the time of device setup.
+  /// In future, this will default to ENTERPRISE_DISPLAY_NAME_VISIBLE.
+  /// - "ENTERPRISE_DISPLAY_NAME_VISIBLE" : The enterprise display name is
+  /// visible on the device. Supported on work profiles on Android 7 and above.
+  /// Supported on fully managed devices on Android 8 and above. A
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 7. A NonComplianceDetail with MANAGEMENT_MODE is reported on
+  /// fully managed devices on Android 7.
+  /// - "ENTERPRISE_DISPLAY_NAME_HIDDEN" : The enterprise display name is hidden
+  /// on the device.
+  core.String? enterpriseDisplayNameVisibility;
+
   /// Whether factory resetting from settings is disabled.
   core.bool? factoryResetDisabled;
 
@@ -7256,8 +8432,18 @@ class Policy {
   /// disabled. On Android 9 and above, this is equivalent to LOCATION_DISABLED.
   /// - "LOCATION_USER_CHOICE" : Location setting is not restricted on the
   /// device. No specific behavior is set or enforced.
-  /// - "LOCATION_ENFORCED" : Enable location setting on the device.
-  /// - "LOCATION_DISABLED" : Disable location setting on the device.
+  /// - "LOCATION_ENFORCED" : Enable location setting on the device. Important:
+  /// On Android 11 and above, work profiles on company-owned devices cannot
+  /// directly enforce enabling of location services. When LOCATION_ENFORCED is
+  /// set, then a NonComplianceDetail with USER_ACTION is reported. Compliance
+  /// can only be restored once the user manually turns on location services
+  /// through the device's Settings application.
+  /// - "LOCATION_DISABLED" : Disable location setting on the device. Important:
+  /// On Android 11 and above, work profiles on company-owned devices cannot
+  /// directly enforce disabling of location services. When LOCATION_DISABLED is
+  /// set, then a nonComplianceDetail with USER_ACTION is reported. Compliance
+  /// can only be restored once the user manually turns off location services
+  /// through the device's Settings application.
   core.String? locationMode;
 
   /// A message displayed to the user in the device administators settings
@@ -7406,20 +8592,24 @@ class Policy {
   core.List<PolicyEnforcementRule>? policyEnforcementRules;
 
   /// Controls whether preferential network service is enabled on the work
-  /// profile.
+  /// profile or on fully managed devices.
   ///
   /// For example, an organization may have an agreement with a carrier that all
   /// of the work data from its employees' devices will be sent via a network
   /// service dedicated for enterprise use. An example of a supported
   /// preferential network service is the enterprise slice on 5G networks. This
-  /// has no effect on fully managed devices.
+  /// policy has no effect if preferentialNetworkServiceSettings or
+  /// ApplicationPolicy.preferentialNetworkId is set on devices running Android
+  /// 13 or above.
   /// Possible string values are:
   /// - "PREFERENTIAL_NETWORK_SERVICE_UNSPECIFIED" : Unspecified. Defaults to
   /// PREFERENTIAL_NETWORK_SERVICES_DISABLED.
   /// - "PREFERENTIAL_NETWORK_SERVICE_DISABLED" : Preferential network service
   /// is disabled on the work profile.
   /// - "PREFERENTIAL_NETWORK_SERVICE_ENABLED" : Preferential network service is
-  /// enabled on the work profile.
+  /// enabled on the work profile. This setting is only supported on work
+  /// profiles on devices running Android 12 or above. Starting with Android 13,
+  /// fully managed devices are also supported.
   core.String? preferentialNetworkService;
 
   /// Controls whether printing is allowed.
@@ -7430,7 +8620,7 @@ class Policy {
   /// Possible string values are:
   /// - "PRINTING_POLICY_UNSPECIFIED" : Unspecified. Defaults to
   /// PRINTING_ALLOWED.
-  /// - "PRINTING_DISALLOWED" : Printing is disallowed. A nonComplianceDetail
+  /// - "PRINTING_DISALLOWED" : Printing is disallowed. A NonComplianceDetail
   /// with API_LEVEL is reported if the Android version is less than 9.
   /// - "PRINTING_ALLOWED" : Printing is allowed.
   core.String? printingPolicy;
@@ -7606,6 +8796,21 @@ class Policy {
   )
   core.bool? wifiConfigsLockdownEnabled;
 
+  /// Wipe flags to indicate what data is wiped when a device or profile wipe is
+  /// triggered due to any reason (for example, non-compliance).
+  ///
+  /// This does not apply to the enterprises.devices.delete method. . This list
+  /// must not have duplicates.
+  ///
+  /// Optional.
+  core.List<core.String>? wipeDataFlags;
+
+  /// Controls the work account setup configuration, such as details of whether
+  /// a Google authenticated account is required.
+  ///
+  /// Optional.
+  WorkAccountSetupConfig? workAccountSetupConfig;
+
   Policy({
     this.accountTypesWithManagementDisabled,
     this.addUserDisabled,
@@ -7614,6 +8819,7 @@ class Policy {
     this.alwaysOnVpnPackage,
     this.androidDevicePolicyTracks,
     this.appAutoUpdatePolicy,
+    this.appFunctions,
     this.applications,
     this.assistContentPolicy,
     this.autoDateAndTimeZone,
@@ -7640,6 +8846,7 @@ class Policy {
     this.displaySettings,
     this.encryptionPolicy,
     this.ensureVerifyAppsEnabled,
+    this.enterpriseDisplayNameVisibility,
     this.factoryResetDisabled,
     this.frpAdminEmails,
     this.funDisabled,
@@ -7701,6 +8908,8 @@ class Policy {
     this.vpnConfigDisabled,
     this.wifiConfigDisabled,
     this.wifiConfigsLockdownEnabled,
+    this.wipeDataFlags,
+    this.workAccountSetupConfig,
   });
 
   Policy.fromJson(core.Map json_)
@@ -7726,6 +8935,7 @@ class Policy {
                   ?.map((value) => value as core.String)
                   .toList(),
           appAutoUpdatePolicy: json_['appAutoUpdatePolicy'] as core.String?,
+          appFunctions: json_['appFunctions'] as core.String?,
           applications: (json_['applications'] as core.List?)
               ?.map((value) => ApplicationPolicy.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -7788,6 +8998,8 @@ class Policy {
           encryptionPolicy: json_['encryptionPolicy'] as core.String?,
           ensureVerifyAppsEnabled:
               json_['ensureVerifyAppsEnabled'] as core.bool?,
+          enterpriseDisplayNameVisibility:
+              json_['enterpriseDisplayNameVisibility'] as core.String?,
           factoryResetDisabled: json_['factoryResetDisabled'] as core.bool?,
           frpAdminEmails: (json_['frpAdminEmails'] as core.List?)
               ?.map((value) => value as core.String)
@@ -7928,6 +9140,13 @@ class Policy {
           wifiConfigDisabled: json_['wifiConfigDisabled'] as core.bool?,
           wifiConfigsLockdownEnabled:
               json_['wifiConfigsLockdownEnabled'] as core.bool?,
+          wipeDataFlags: (json_['wipeDataFlags'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          workAccountSetupConfig: json_.containsKey('workAccountSetupConfig')
+              ? WorkAccountSetupConfig.fromJson(json_['workAccountSetupConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7945,6 +9164,7 @@ class Policy {
           'androidDevicePolicyTracks': androidDevicePolicyTracks!,
         if (appAutoUpdatePolicy != null)
           'appAutoUpdatePolicy': appAutoUpdatePolicy!,
+        if (appFunctions != null) 'appFunctions': appFunctions!,
         if (applications != null) 'applications': applications!,
         if (assistContentPolicy != null)
           'assistContentPolicy': assistContentPolicy!,
@@ -7988,6 +9208,8 @@ class Policy {
         if (encryptionPolicy != null) 'encryptionPolicy': encryptionPolicy!,
         if (ensureVerifyAppsEnabled != null)
           'ensureVerifyAppsEnabled': ensureVerifyAppsEnabled!,
+        if (enterpriseDisplayNameVisibility != null)
+          'enterpriseDisplayNameVisibility': enterpriseDisplayNameVisibility!,
         if (factoryResetDisabled != null)
           'factoryResetDisabled': factoryResetDisabled!,
         if (frpAdminEmails != null) 'frpAdminEmails': frpAdminEmails!,
@@ -8090,6 +9312,9 @@ class Policy {
           'wifiConfigDisabled': wifiConfigDisabled!,
         if (wifiConfigsLockdownEnabled != null)
           'wifiConfigsLockdownEnabled': wifiConfigsLockdownEnabled!,
+        if (wipeDataFlags != null) 'wipeDataFlags': wipeDataFlags!,
+        if (workAccountSetupConfig != null)
+          'workAccountSetupConfig': workAccountSetupConfig!,
       };
 }
 
@@ -8225,6 +9450,165 @@ class PowerManagementEvent {
         if (batteryLevel != null) 'batteryLevel': batteryLevel!,
         if (createTime != null) 'createTime': createTime!,
         if (eventType != null) 'eventType': eventType!,
+      };
+}
+
+/// Individual preferential network service configuration.
+class PreferentialNetworkServiceConfig {
+  /// Whether fallback to the device-wide default network is allowed.
+  ///
+  /// If this is set to FALLBACK_TO_DEFAULT_CONNECTION_ALLOWED, then
+  /// nonMatchingNetworks must not be set to NON_MATCHING_NETWORKS_DISALLOWED,
+  /// the policy will be rejected otherwise. Note: If this is set to
+  /// FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED, applications are not able to
+  /// access the internet if the 5G slice is not available.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FALLBACK_TO_DEFAULT_CONNECTION_UNSPECIFIED" : Unspecified. Defaults to
+  /// FALLBACK_TO_DEFAULT_CONNECTION_ALLOWED.
+  /// - "FALLBACK_TO_DEFAULT_CONNECTION_ALLOWED" : Fallback to default
+  /// connection is allowed. If this is set, nonMatchingNetworks must not be set
+  /// to NON_MATCHING_NETWORKS_DISALLOWED, the policy will be rejected
+  /// otherwise.
+  /// - "FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED" : Fallback to default
+  /// connection is not allowed.
+  core.String? fallbackToDefaultConnection;
+
+  /// Whether apps this configuration applies to are blocked from using networks
+  /// other than the preferential service.
+  ///
+  /// If this is set to NON_MATCHING_NETWORKS_DISALLOWED, then
+  /// fallbackToDefaultConnection must be set to
+  /// FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "NON_MATCHING_NETWORKS_UNSPECIFIED" : Unspecified. Defaults to
+  /// NON_MATCHING_NETWORKS_ALLOWED.
+  /// - "NON_MATCHING_NETWORKS_ALLOWED" : Apps this configuration applies to are
+  /// allowed to use networks other than the preferential service.
+  /// - "NON_MATCHING_NETWORKS_DISALLOWED" : Apps this configuration applies to
+  /// are disallowed from using other networks than the preferential service.
+  /// This can be set on Android 14 and above. A NonComplianceDetail with
+  /// API_LEVEL is reported if the Android version is less than 14. If this is
+  /// set, fallbackToDefaultConnection must be set to
+  /// FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED, the policy will be rejected
+  /// otherwise.
+  core.String? nonMatchingNetworks;
+
+  /// Preferential network identifier.
+  ///
+  /// This must not be set to NO_PREFERENTIAL_NETWORK or
+  /// PREFERENTIAL_NETWORK_ID_UNSPECIFIED, the policy will be rejected
+  /// otherwise.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PREFERENTIAL_NETWORK_ID_UNSPECIFIED" : Whether this value is valid and
+  /// what it means depends on where it is used, and this is documented on the
+  /// relevant fields.
+  /// - "NO_PREFERENTIAL_NETWORK" : Application does not use any preferential
+  /// network.
+  /// - "PREFERENTIAL_NETWORK_ID_ONE" : Preferential network identifier 1.
+  /// - "PREFERENTIAL_NETWORK_ID_TWO" : Preferential network identifier 2.
+  /// - "PREFERENTIAL_NETWORK_ID_THREE" : Preferential network identifier 3.
+  /// - "PREFERENTIAL_NETWORK_ID_FOUR" : Preferential network identifier 4.
+  /// - "PREFERENTIAL_NETWORK_ID_FIVE" : Preferential network identifier 5.
+  core.String? preferentialNetworkId;
+
+  PreferentialNetworkServiceConfig({
+    this.fallbackToDefaultConnection,
+    this.nonMatchingNetworks,
+    this.preferentialNetworkId,
+  });
+
+  PreferentialNetworkServiceConfig.fromJson(core.Map json_)
+      : this(
+          fallbackToDefaultConnection:
+              json_['fallbackToDefaultConnection'] as core.String?,
+          nonMatchingNetworks: json_['nonMatchingNetworks'] as core.String?,
+          preferentialNetworkId: json_['preferentialNetworkId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fallbackToDefaultConnection != null)
+          'fallbackToDefaultConnection': fallbackToDefaultConnection!,
+        if (nonMatchingNetworks != null)
+          'nonMatchingNetworks': nonMatchingNetworks!,
+        if (preferentialNetworkId != null)
+          'preferentialNetworkId': preferentialNetworkId!,
+      };
+}
+
+/// Preferential network service settings.
+class PreferentialNetworkServiceSettings {
+  /// Default preferential network ID for the applications that are not in
+  /// applications or if ApplicationPolicy.preferentialNetworkId is set to
+  /// PREFERENTIAL_NETWORK_ID_UNSPECIFIED.
+  ///
+  /// There must be a configuration for the specified network ID in
+  /// preferentialNetworkServiceConfigs, unless this is set to
+  /// NO_PREFERENTIAL_NETWORK. If set to PREFERENTIAL_NETWORK_ID_UNSPECIFIED or
+  /// unset, this defaults to NO_PREFERENTIAL_NETWORK. Note: If the default
+  /// preferential network is misconfigured, applications with no
+  /// ApplicationPolicy.preferentialNetworkId set are not able to access the
+  /// internet. This setting does not apply to the following critical apps:
+  /// com.google.android.apps.work.clouddpc
+  /// com.google.android.gmsApplicationPolicy.preferentialNetworkId can still be
+  /// used to configure the preferential network for them.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PREFERENTIAL_NETWORK_ID_UNSPECIFIED" : Whether this value is valid and
+  /// what it means depends on where it is used, and this is documented on the
+  /// relevant fields.
+  /// - "NO_PREFERENTIAL_NETWORK" : Application does not use any preferential
+  /// network.
+  /// - "PREFERENTIAL_NETWORK_ID_ONE" : Preferential network identifier 1.
+  /// - "PREFERENTIAL_NETWORK_ID_TWO" : Preferential network identifier 2.
+  /// - "PREFERENTIAL_NETWORK_ID_THREE" : Preferential network identifier 3.
+  /// - "PREFERENTIAL_NETWORK_ID_FOUR" : Preferential network identifier 4.
+  /// - "PREFERENTIAL_NETWORK_ID_FIVE" : Preferential network identifier 5.
+  core.String? defaultPreferentialNetworkId;
+
+  /// Preferential network service configurations which enables having multiple
+  /// enterprise slices.
+  ///
+  /// There must not be multiple configurations with the same
+  /// preferentialNetworkId. If a configuration is not referenced by any
+  /// application by setting ApplicationPolicy.preferentialNetworkId or by
+  /// setting defaultPreferentialNetworkId, it will be ignored. For devices on
+  /// 4G networks, enterprise APN needs to be configured additionally to set up
+  /// data call for preferential network service. These APNs can be added using
+  /// apnPolicy.
+  ///
+  /// Required.
+  core.List<PreferentialNetworkServiceConfig>?
+      preferentialNetworkServiceConfigs;
+
+  PreferentialNetworkServiceSettings({
+    this.defaultPreferentialNetworkId,
+    this.preferentialNetworkServiceConfigs,
+  });
+
+  PreferentialNetworkServiceSettings.fromJson(core.Map json_)
+      : this(
+          defaultPreferentialNetworkId:
+              json_['defaultPreferentialNetworkId'] as core.String?,
+          preferentialNetworkServiceConfigs:
+              (json_['preferentialNetworkServiceConfigs'] as core.List?)
+                  ?.map((value) => PreferentialNetworkServiceConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultPreferentialNetworkId != null)
+          'defaultPreferentialNetworkId': defaultPreferentialNetworkId!,
+        if (preferentialNetworkServiceConfigs != null)
+          'preferentialNetworkServiceConfigs':
+              preferentialNetworkServiceConfigs!,
       };
 }
 
@@ -8370,6 +9754,144 @@ class ProxyInfo {
         if (host != null) 'host': host!,
         if (pacUri != null) 'pacUri': pacUri!,
         if (port != null) 'port': port!,
+      };
+}
+
+/// Parameters associated with the REMOVE_ESIM command to remove an eSIM profile
+/// from the device.
+class RemoveEsimParams {
+  /// ICC ID of the eSIM profile to be deleted.
+  ///
+  /// Required.
+  core.String? iccId;
+
+  RemoveEsimParams({
+    this.iccId,
+  });
+
+  RemoveEsimParams.fromJson(core.Map json_)
+      : this(
+          iccId: json_['iccId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (iccId != null) 'iccId': iccId!,
+      };
+}
+
+/// Request to remove ApplicationPolicy objects in the given policy.
+class RemovePolicyApplicationsRequest {
+  /// Package names to be removed.
+  ///
+  /// Entries that are not found are ignored. There must be at least one entry
+  /// in package_names.
+  ///
+  /// Required.
+  core.List<core.String>? packageNames;
+
+  RemovePolicyApplicationsRequest({
+    this.packageNames,
+  });
+
+  RemovePolicyApplicationsRequest.fromJson(core.Map json_)
+      : this(
+          packageNames: (json_['packageNames'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (packageNames != null) 'packageNames': packageNames!,
+      };
+}
+
+/// Response to a request to remove ApplicationPolicy objects in the given
+/// policy.
+class RemovePolicyApplicationsResponse {
+  /// The updated policy after ApplicationPolicy objects have been removed.
+  Policy? policy;
+
+  RemovePolicyApplicationsResponse({
+    this.policy,
+  });
+
+  RemovePolicyApplicationsResponse.fromJson(core.Map json_)
+      : this(
+          policy: json_.containsKey('policy')
+              ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policy != null) 'policy': policy!,
+      };
+}
+
+/// Parameters associated with the REQUEST_DEVICE_INFO command to get device
+/// related information.
+class RequestDeviceInfoParams {
+  /// Type of device information to be requested.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DEVICE_INFO_UNSPECIFIED" : This value is disallowed.
+  /// - "EID" : Request the identifier for eSIM. The user will be asked to
+  /// approve the disclosure of the information before the result can be
+  /// returned. If the user doesn't approve the disclosure, USER_DECLINED will
+  /// be returned. This is supported only for personally owned devices with work
+  /// profiles and Android versions 13 and above.
+  core.String? deviceInfo;
+
+  RequestDeviceInfoParams({
+    this.deviceInfo,
+  });
+
+  RequestDeviceInfoParams.fromJson(core.Map json_)
+      : this(
+          deviceInfo: json_['deviceInfo'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deviceInfo != null) 'deviceInfo': deviceInfo!,
+      };
+}
+
+/// Status of the REQUEST_DEVICE_INFO command.
+class RequestDeviceInfoStatus {
+  /// Information related to the EIDs of the device.
+  EidInfo? eidInfo;
+
+  /// Status of a REQUEST_DEVICE_INFO command.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Unspecified. This value is not used.
+  /// - "SUCCEEDED" : Device information has been successfully delivered.
+  /// - "PENDING_USER_ACTION" : The user has not completed the actions required
+  /// to share device information.
+  /// - "USER_DECLINED" : The user declined sharing device information.
+  /// - "UNSUPPORTED" : The requested device info is not supported on this
+  /// device, e.g. eSIM is not supported on the device.
+  core.String? status;
+
+  RequestDeviceInfoStatus({
+    this.eidInfo,
+    this.status,
+  });
+
+  RequestDeviceInfoStatus.fromJson(core.Map json_)
+      : this(
+          eidInfo: json_.containsKey('eidInfo')
+              ? EidInfo.fromJson(
+                  json_['eidInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+          status: json_['status'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eidInfo != null) 'eidInfo': eidInfo!,
+        if (status != null) 'status': status!,
       };
 }
 
@@ -9211,8 +10733,34 @@ class SystemUpdateInfo {
 ///
 /// Only supported on fully managed devices starting from Android API level 23.
 class TelephonyInfo {
+  /// Activation state of the SIM card on the device.
+  ///
+  /// This is applicable for eSIMs only. This is supported on all devices for
+  /// API level 35 and above. This is always ACTIVATION_STATE_UNSPECIFIED for
+  /// physical SIMs and for devices below API level 35.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ACTIVATION_STATE_UNSPECIFIED" : Activation state is not specified.
+  /// - "ACTIVATED" : The SIM card is activated.
+  /// - "NOT_ACTIVATED" : The SIM card is not activated.
+  core.String? activationState;
+
   /// The carrier name associated with this SIM card.
   core.String? carrierName;
+
+  /// The configuration mode of the SIM card on the device.
+  ///
+  /// This is applicable for eSIMs only. This is supported on all devices for
+  /// API level 35 and above. This is always CONFIG_MODE_UNSPECIFIED for
+  /// physical SIMs and for devices below API level 35.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONFIG_MODE_UNSPECIFIED" : The configuration mode is unspecified.
+  /// - "ADMIN_CONFIGURED" : The admin has configured this SIM.
+  /// - "USER_CONFIGURED" : The user has configured this SIM.
+  core.String? configMode;
 
   /// The ICCID associated with this SIM card.
   ///
@@ -9223,20 +10771,26 @@ class TelephonyInfo {
   core.String? phoneNumber;
 
   TelephonyInfo({
+    this.activationState,
     this.carrierName,
+    this.configMode,
     this.iccId,
     this.phoneNumber,
   });
 
   TelephonyInfo.fromJson(core.Map json_)
       : this(
+          activationState: json_['activationState'] as core.String?,
           carrierName: json_['carrierName'] as core.String?,
+          configMode: json_['configMode'] as core.String?,
           iccId: json_['iccId'] as core.String?,
           phoneNumber: json_['phoneNumber'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (activationState != null) 'activationState': activationState!,
         if (carrierName != null) 'carrierName': carrierName!,
+        if (configMode != null) 'configMode': configMode!,
         if (iccId != null) 'iccId': iccId!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
       };
@@ -9557,16 +11111,16 @@ class WifiRoamingSetting {
   /// WIFI_ROAMING_DEFAULT.
   /// - "WIFI_ROAMING_DISABLED" : Wi-Fi roaming is disabled. Supported on
   /// Android 15 and above on fully managed devices and work profiles on
-  /// company-owned devices. A nonComplianceDetail with MANAGEMENT_MODE is
-  /// reported for other management modes. A nonComplianceDetail with API_LEVEL
+  /// company-owned devices. A NonComplianceDetail with MANAGEMENT_MODE is
+  /// reported for other management modes. A NonComplianceDetail with API_LEVEL
   /// is reported if the Android version is less than 15.
   /// - "WIFI_ROAMING_DEFAULT" : Default Wi-Fi roaming mode of the device.
   /// - "WIFI_ROAMING_AGGRESSIVE" : Aggressive roaming mode which allows quicker
   /// Wi-Fi roaming. Supported on Android 15 and above on fully managed devices
-  /// and work profiles on company-owned devices. A nonComplianceDetail with
+  /// and work profiles on company-owned devices. A NonComplianceDetail with
   /// MANAGEMENT_MODE is reported for other management modes. A
-  /// nonComplianceDetail with API_LEVEL is reported if the Android version is
-  /// less than 15. A nonComplianceDetail with DEVICE_INCOMPATIBLE is reported
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 15. A NonComplianceDetail with DEVICE_INCOMPATIBLE is reported
   /// if the device does not support aggressive roaming mode.
   core.String? wifiRoamingMode;
 
@@ -9634,8 +11188,8 @@ class WifiSsidPolicy {
   ///
   /// This field must be non-empty when WifiSsidPolicyType is set to
   /// WIFI_SSID_ALLOWLIST. If this is set to a non-empty list, then a
-  /// nonComplianceDetail detail with API_LEVEL is reported if the Android
-  /// version is less than 13 and a nonComplianceDetail with MANAGEMENT_MODE is
+  /// NonComplianceDetail detail with API_LEVEL is reported if the Android
+  /// version is less than 13 and a NonComplianceDetail with MANAGEMENT_MODE is
   /// reported for non-company-owned devices.
   ///
   /// Optional.
@@ -9691,5 +11245,87 @@ class WipeAction {
   core.Map<core.String, core.dynamic> toJson() => {
         if (preserveFrp != null) 'preserveFrp': preserveFrp!,
         if (wipeAfterDays != null) 'wipeAfterDays': wipeAfterDays!,
+      };
+}
+
+/// Parameters associated with the WIPE command to wipe the device.
+class WipeParams {
+  /// Flags to determine what data to wipe.
+  ///
+  /// Optional.
+  core.List<core.String>? wipeDataFlags;
+
+  /// A short message displayed to the user before wiping the work profile on
+  /// personal devices.
+  ///
+  /// This has no effect on company owned devices. The maximum message length is
+  /// 200 characters.
+  ///
+  /// Optional.
+  UserFacingMessage? wipeReason;
+
+  WipeParams({
+    this.wipeDataFlags,
+    this.wipeReason,
+  });
+
+  WipeParams.fromJson(core.Map json_)
+      : this(
+          wipeDataFlags: (json_['wipeDataFlags'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          wipeReason: json_.containsKey('wipeReason')
+              ? UserFacingMessage.fromJson(
+                  json_['wipeReason'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (wipeDataFlags != null) 'wipeDataFlags': wipeDataFlags!,
+        if (wipeReason != null) 'wipeReason': wipeReason!,
+      };
+}
+
+/// Controls the work account setup configuration, such as details of whether a
+/// Google authenticated account is required.
+class WorkAccountSetupConfig {
+  /// The authentication type of the user on the device.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AUTHENTICATION_TYPE_UNSPECIFIED" : Unspecified. Defaults to
+  /// AUTHENTICATION_TYPE_NOT_ENFORCED.
+  /// - "AUTHENTICATION_TYPE_NOT_ENFORCED" : Authentication status of user on
+  /// device is not enforced.
+  /// - "GOOGLE_AUTHENTICATED" : Requires device to be managed with a Google
+  /// authenticated account.
+  core.String? authenticationType;
+
+  /// The specific google work account email address to be added.
+  ///
+  /// This field is only relevant if authenticationType is GOOGLE_AUTHENTICATED.
+  /// This must be an enterprise account and not a consumer account. Once set
+  /// and a Google authenticated account is added to the device, changing this
+  /// field will have no effect, and thus recommended to be set only once.
+  ///
+  /// Optional.
+  core.String? requiredAccountEmail;
+
+  WorkAccountSetupConfig({
+    this.authenticationType,
+    this.requiredAccountEmail,
+  });
+
+  WorkAccountSetupConfig.fromJson(core.Map json_)
+      : this(
+          authenticationType: json_['authenticationType'] as core.String?,
+          requiredAccountEmail: json_['requiredAccountEmail'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authenticationType != null)
+          'authenticationType': authenticationType!,
+        if (requiredAccountEmail != null)
+          'requiredAccountEmail': requiredAccountEmail!,
       };
 }

@@ -2335,6 +2335,9 @@ typedef Empty = $Empty;
 class FindDevicesByDeviceIdentifierRequest {
   /// The device identifier to search for.
   ///
+  /// If serial number is provided then case insensitive serial number matches
+  /// are allowed.
+  ///
   /// Required.
   DeviceIdentifier? deviceIdentifier;
 

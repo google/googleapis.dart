@@ -2010,6 +2010,8 @@ class Account {
 
   /// Whether this account is premium.
   ///
+  /// Premium accounts have access to additional spam-related metrics.
+  ///
   /// Output only.
   core.bool? premium;
 
@@ -3029,7 +3031,7 @@ class PolicyIssue {
   /// because the ad requests coming from the EEA and UK do not have a TCF
   /// string or the Consent Management Platform (CMP) indicated by the TCF
   /// string is not Google certified. As a result, basic/limited ads will be
-  /// served. See https://support.google.com/adsense/answer/13554116
+  /// served. See https://support.google.com/adsense/answer/13554116.
   core.String? action;
 
   /// List of ad clients associated with the policy issue (either as the primary
@@ -3190,7 +3192,7 @@ class PolicyIssue {
 /// obscure your content. A single policy issue can have multiple policy topics
 /// for a single entity.
 class PolicyTopic {
-  /// Policy topics no longer have a "must-fix" classification.
+  /// Always set to false.
   ///
   /// Required. Deprecated.
   @core.Deprecated(
@@ -3215,9 +3217,10 @@ class PolicyTopic {
   /// Possible string values are:
   /// - "POLICY_TOPIC_TYPE_UNSPECIFIED" : The type is unspecified.
   /// - "POLICY" : Topics that are primarily related to the Google Publisher
-  /// Policy (GPP) https://support.google.com/publisherpolicies/answer/10502938
-  /// or the Google Publisher Restrictions (GPR) policies
-  /// https://support.google.com/publisherpolicies/answer/10437795.
+  /// Policy (GPP)
+  /// (https://support.google.com/publisherpolicies/answer/10502938) or the
+  /// Google Publisher Restrictions (GPR) policies
+  /// (https://support.google.com/publisherpolicies/answer/10437795).
   /// - "ADVERTISER_PREFERENCE" : Topics that are related to advertiser
   /// preferences. Certain advertisers may choose not to bid on content that are
   /// labeled with certain policies.

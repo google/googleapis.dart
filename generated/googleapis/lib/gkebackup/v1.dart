@@ -24,10 +24,14 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsBackupChannelsResource]
+///       - [ProjectsLocationsBackupChannelsBackupPlanBindingsResource]
 ///     - [ProjectsLocationsBackupPlansResource]
 ///       - [ProjectsLocationsBackupPlansBackupsResource]
 ///         - [ProjectsLocationsBackupPlansBackupsVolumeBackupsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsRestoreChannelsResource]
+///       - [ProjectsLocationsRestoreChannelsRestorePlanBindingsResource]
 ///     - [ProjectsLocationsRestorePlansResource]
 ///       - [ProjectsLocationsRestorePlansRestoresResource]
 ///         - [ProjectsLocationsRestorePlansRestoresVolumeRestoresResource]
@@ -77,10 +81,14 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsBackupChannelsResource get backupChannels =>
+      ProjectsLocationsBackupChannelsResource(_requester);
   ProjectsLocationsBackupPlansResource get backupPlans =>
       ProjectsLocationsBackupPlansResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsRestoreChannelsResource get restoreChannels =>
+      ProjectsLocationsRestoreChannelsResource(_requester);
   ProjectsLocationsRestorePlansResource get restorePlans =>
       ProjectsLocationsRestorePlansResource(_requester);
 
@@ -128,6 +136,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -150,12 +162,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -170,6 +184,379 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsBackupChannelsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBackupChannelsBackupPlanBindingsResource
+      get backupPlanBindings =>
+          ProjectsLocationsBackupChannelsBackupPlanBindingsResource(_requester);
+
+  ProjectsLocationsBackupChannelsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new BackupChannel in a given location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location within which to create the
+  /// BackupChannel. Format: `projects / * /locations / * `
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [backupChannelId] - Optional. The client-provided short name for the
+  /// BackupChannel resource. This name must: - be between 1 and 63 characters
+  /// long (inclusive) - consist of only lower-case ASCII letters, numbers, and
+  /// dashes - start with a lower-case letter - end with a lower-case letter or
+  /// number - be unique within the set of BackupChannels in this location If
+  /// the user does not provide a name, a uuid will be used as the name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    BackupChannel request,
+    core.String parent, {
+    core.String? backupChannelId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (backupChannelId != null) 'backupChannelId': [backupChannelId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backupChannels';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing BackupChannel.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Fully qualified BackupChannel name. Format: `projects /
+  /// * /locations / * /backupChannels / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupChannels/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. If provided, this value must match the current value of
+  /// the target BackupChannel's etag field or the request is rejected.
+  ///
+  /// [force] - Optional. If set to true, any BackupPlanAssociations below this
+  /// BackupChannel will also be deleted. Otherwise, the request will only
+  /// succeed if the BackupChannel has no BackupPlanAssociations.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? etag,
+    core.bool? force,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if (force != null) 'force': ['${force}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieve the details of a single BackupChannel.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Fully qualified BackupChannel name. Format: `projects /
+  /// * /locations / * /backupChannels / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupChannels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BackupChannel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BackupChannel> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BackupChannel.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists BackupChannels in a given location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location that contains the BackupChannels to
+  /// list. Format: `projects / * /locations / * `
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Field match expression used to filter the results.
+  ///
+  /// [orderBy] - Optional. Field by which to sort the results.
+  ///
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
+  ///
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListBackupChannels` call. Provide this to retrieve the
+  /// subsequent page in a multi-page list of results. When paginating, all
+  /// other parameters provided to `ListBackupChannels` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBackupChannelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBackupChannelsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backupChannels';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBackupChannelsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a BackupChannel.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The fully qualified name of the BackupChannel.
+  /// `projects / * /locations / * /backupChannels / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupChannels/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. This is used to specify the fields to be
+  /// overwritten in the BackupChannel targeted for update. The values for each
+  /// of these updated fields will be taken from the `backup_channel` provided
+  /// with this request. Field names are relative to the root of the resource
+  /// (e.g., `description`, `labels`, etc.) If no `update_mask` is provided, all
+  /// fields in `backup_channel` will be written to the target BackupChannel
+  /// resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `backup_channel`
+  /// are ignored and are not used to update the target BackupChannel.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    BackupChannel request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsBackupChannelsBackupPlanBindingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBackupChannelsBackupPlanBindingsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieve the details of a single BackupPlanBinding.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Fully qualified BackupPlanBinding name. Format:
+  /// `projects / * /locations / * /backupChannels / * /backupPlanBindings / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupChannels/\[^/\]+/backupPlanBindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BackupPlanBinding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BackupPlanBinding> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BackupPlanBinding.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists BackupPlanBindings in a given location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The BackupChannel that contains the
+  /// BackupPlanBindings to list. Format: `projects / * /locations / *
+  /// /backupChannels / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupChannels/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Field match expression used to filter the results.
+  ///
+  /// [orderBy] - Optional. Field by which to sort the results.
+  ///
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
+  ///
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListBackupPlanBindings` call. Provide this to retrieve the
+  /// subsequent page in a multi-page list of results. When paginating, all
+  /// other parameters provided to `ListBackupPlanBindings` must match the call
+  /// that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBackupPlanBindingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBackupPlanBindingsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/backupPlanBindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBackupPlanBindingsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -853,6 +1240,10 @@ class ProjectsLocationsBackupPlansBackupsResource {
   /// provided to `ListBackups` must match the call that provided the page
   /// token.
   ///
+  /// [returnPartialSuccess] - Optional. If set to true, the response will
+  /// return partial results when some regions are unreachable and the
+  /// unreachable field will be populated.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -869,6 +1260,7 @@ class ProjectsLocationsBackupPlansBackupsResource {
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -876,6 +1268,8 @@ class ProjectsLocationsBackupPlansBackupsResource {
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1489,6 +1883,377 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return GoogleLongrunningListOperationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRestoreChannelsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRestoreChannelsRestorePlanBindingsResource
+      get restorePlanBindings =>
+          ProjectsLocationsRestoreChannelsRestorePlanBindingsResource(
+              _requester);
+
+  ProjectsLocationsRestoreChannelsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new RestoreChannel in a given location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location within which to create the
+  /// RestoreChannel. Format: `projects / * /locations / * `
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [restoreChannelId] - Optional. The client-provided short name for the
+  /// RestoreChannel resource. This name must: - be between 1 and 63 characters
+  /// long (inclusive) - consist of only lower-case ASCII letters, numbers, and
+  /// dashes - start with a lower-case letter - end with a lower-case letter or
+  /// number - be unique within the set of RestoreChannels in this location If
+  /// the user does not provide a name, a uuid will be used as the name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    RestoreChannel request,
+    core.String parent, {
+    core.String? restoreChannelId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (restoreChannelId != null) 'restoreChannelId': [restoreChannelId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/restoreChannels';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an existing RestoreChannel.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Fully qualified RestoreChannel name. Format: `projects
+  /// / * /locations / * /restoreChannels / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreChannels/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. If provided, this value must match the current value of
+  /// the target RestoreChannel's etag field or the request is rejected.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieve the details of a single RestoreChannel.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Fully qualified RestoreChannel name. Format: `projects
+  /// / * /locations / * /restoreChannels / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreChannels/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RestoreChannel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RestoreChannel> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RestoreChannel.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists RestoreChannels in a given location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The location that contains the RestoreChannels to
+  /// list. Format: `projects / * /locations / * `
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Field match expression used to filter the results.
+  ///
+  /// [orderBy] - Optional. Field by which to sort the results.
+  ///
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
+  ///
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListRestoreChannels` call. Provide this to retrieve the
+  /// subsequent page in a multi-page list of results. When paginating, all
+  /// other parameters provided to `ListRestoreChannels` must match the call
+  /// that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRestoreChannelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRestoreChannelsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/restoreChannels';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRestoreChannelsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Update a RestoreChannel.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The fully qualified name of the RestoreChannel.
+  /// `projects / * /locations / * /restoreChannels / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreChannels/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. This is used to specify the fields to be
+  /// overwritten in the RestoreChannel targeted for update. The values for each
+  /// of these updated fields will be taken from the `restore_channel` provided
+  /// with this request. Field names are relative to the root of the resource
+  /// (e.g., `description`, `destination_project_id`, etc.) If no `update_mask`
+  /// is provided, all fields in `restore_channel` will be written to the target
+  /// RestoreChannel resource. Note that OUTPUT_ONLY and IMMUTABLE fields in
+  /// `restore_channel` are ignored and are not used to update the target
+  /// RestoreChannel.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    RestoreChannel request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsRestoreChannelsRestorePlanBindingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRestoreChannelsRestorePlanBindingsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieve the details of a single RestorePlanBinding.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Fully qualified RestorePlanBinding name. Format:
+  /// `projects / * /locations / * /restoreChannels / * /restorePlanBindings / *
+  /// `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreChannels/\[^/\]+/restorePlanBindings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RestorePlanBinding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RestorePlanBinding> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RestorePlanBinding.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists RestorePlanBindings in a given location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The RestoreChannel that contains the
+  /// ListRestorePlanBindings to list. Format: `projects / * /locations / *
+  /// /restoreChannels / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restoreChannels/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Field match expression used to filter the results.
+  ///
+  /// [orderBy] - Optional. Field by which to sort the results.
+  ///
+  /// [pageSize] - Optional. The target number of results to return in a single
+  /// response. If not specified, a default value will be chosen by the service.
+  /// Note that the response may include a partial list and a caller should only
+  /// rely on the response's next_page_token to determine if there are more
+  /// instances left to be queried.
+  ///
+  /// [pageToken] - Optional. The value of next_page_token received from a
+  /// previous `ListRestorePlanBindings` call. Provide this to retrieve the
+  /// subsequent page in a multi-page list of results. When paginating, all
+  /// other parameters provided to `ListRestorePlanBindings` must match the call
+  /// that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRestorePlanBindingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRestorePlanBindingsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/restorePlanBindings';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRestorePlanBindingsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2791,11 +3556,27 @@ class Backup {
   /// Output only.
   core.String? retainExpireTime;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// If set, the list of ProtectedApplications whose resources were included in
   /// the Backup.
   ///
   /// Output only.
   NamespacedNames? selectedApplications;
+
+  /// If set, the list of labels whose constituent namespaces were included in
+  /// the Backup.
+  ///
+  /// Output only.
+  ResourceLabels? selectedNamespaceLabels;
 
   /// If set, the list of namespaces that were included in the Backup.
   ///
@@ -2831,6 +3612,12 @@ class Backup {
   ///
   /// Output only.
   core.String? stateReason;
+
+  /// Information about the troubleshooting steps which will provide debugging
+  /// information to the end users.
+  ///
+  /// Output only.
+  TroubleshootingInfo? troubleshootingInfo;
 
   /// Server generated global unique identifier of
   /// [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier)
@@ -2869,11 +3656,15 @@ class Backup {
     this.resourceCount,
     this.retainDays,
     this.retainExpireTime,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.selectedApplications,
+    this.selectedNamespaceLabels,
     this.selectedNamespaces,
     this.sizeBytes,
     this.state,
     this.stateReason,
+    this.troubleshootingInfo,
     this.uid,
     this.updateTime,
     this.volumeCount,
@@ -2913,8 +3704,14 @@ class Backup {
           resourceCount: json_['resourceCount'] as core.int?,
           retainDays: json_['retainDays'] as core.int?,
           retainExpireTime: json_['retainExpireTime'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           selectedApplications: json_.containsKey('selectedApplications')
               ? NamespacedNames.fromJson(json_['selectedApplications']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          selectedNamespaceLabels: json_.containsKey('selectedNamespaceLabels')
+              ? ResourceLabels.fromJson(json_['selectedNamespaceLabels']
                   as core.Map<core.String, core.dynamic>)
               : null,
           selectedNamespaces: json_.containsKey('selectedNamespaces')
@@ -2924,6 +3721,10 @@ class Backup {
           sizeBytes: json_['sizeBytes'] as core.String?,
           state: json_['state'] as core.String?,
           stateReason: json_['stateReason'] as core.String?,
+          troubleshootingInfo: json_.containsKey('troubleshootingInfo')
+              ? TroubleshootingInfo.fromJson(json_['troubleshootingInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           volumeCount: json_['volumeCount'] as core.int?,
@@ -2953,16 +3754,134 @@ class Backup {
         if (resourceCount != null) 'resourceCount': resourceCount!,
         if (retainDays != null) 'retainDays': retainDays!,
         if (retainExpireTime != null) 'retainExpireTime': retainExpireTime!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (selectedApplications != null)
           'selectedApplications': selectedApplications!,
+        if (selectedNamespaceLabels != null)
+          'selectedNamespaceLabels': selectedNamespaceLabels!,
         if (selectedNamespaces != null)
           'selectedNamespaces': selectedNamespaces!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
         if (state != null) 'state': state!,
         if (stateReason != null) 'stateReason': stateReason!,
+        if (troubleshootingInfo != null)
+          'troubleshootingInfo': troubleshootingInfo!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (volumeCount != null) 'volumeCount': volumeCount!,
+      };
+}
+
+/// A BackupChannel imposes constraints on where clusters can be backed up.
+///
+/// The BackupChannel should be in the same project and region as the cluster
+/// being backed up. The backup can be created only in destination_project.
+class BackupChannel {
+  /// The timestamp when this BackupChannel resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User specified descriptive string for this BackupChannel.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The project where Backups are allowed to be stored.
+  ///
+  /// The format is `projects/{projectId}` or `projects/{projectNumber}`.
+  ///
+  /// Required. Immutable.
+  core.String? destinationProject;
+
+  /// The project_id where Backups are allowed to be stored.
+  ///
+  /// Example Project ID: "my-project-id". This will be an OUTPUT_ONLY field to
+  /// return the project_id of the destination project.
+  ///
+  /// Output only.
+  core.String? destinationProjectId;
+
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a BackupChannel from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the 'etag' in the
+  /// read-modify-write cycle to perform BackupChannel updates in order to avoid
+  /// race conditions: An `etag` is returned in the response to
+  /// `GetBackupChannel`, and systems are expected to put that etag in the
+  /// request to `UpdateBackupChannel` or `DeleteBackupChannel` to ensure that
+  /// their change will be applied to the same version of the resource.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// A set of custom labels supplied by user.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The fully qualified name of the BackupChannel. `projects / * /locations /
+  /// * /backupChannels / * `
+  core.String? name;
+
+  /// Server generated global unique identifier of
+  /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+  /// format.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The timestamp when this BackupChannel resource was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  BackupChannel({
+    this.createTime,
+    this.description,
+    this.destinationProject,
+    this.destinationProjectId,
+    this.etag,
+    this.labels,
+    this.name,
+    this.uid,
+    this.updateTime,
+  });
+
+  BackupChannel.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          destinationProject: json_['destinationProject'] as core.String?,
+          destinationProjectId: json_['destinationProjectId'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (destinationProject != null)
+          'destinationProject': destinationProject!,
+        if (destinationProjectId != null)
+          'destinationProjectId': destinationProjectId!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -3010,6 +3929,10 @@ class BackupConfig {
   /// ProtectedApplications.
   NamespacedNames? selectedApplications;
 
+  /// If set, the list of labels whose constituent namespaces were included in
+  /// the Backup.
+  ResourceLabels? selectedNamespaceLabels;
+
   /// If set, include just the resources in the listed namespaces.
   Namespaces? selectedNamespaces;
 
@@ -3020,6 +3943,7 @@ class BackupConfig {
     this.includeVolumeData,
     this.permissiveMode,
     this.selectedApplications,
+    this.selectedNamespaceLabels,
     this.selectedNamespaces,
   });
 
@@ -3037,6 +3961,10 @@ class BackupConfig {
               ? NamespacedNames.fromJson(json_['selectedApplications']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          selectedNamespaceLabels: json_.containsKey('selectedNamespaceLabels')
+              ? ResourceLabels.fromJson(json_['selectedNamespaceLabels']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           selectedNamespaces: json_.containsKey('selectedNamespaces')
               ? Namespaces.fromJson(json_['selectedNamespaces']
                   as core.Map<core.String, core.dynamic>)
@@ -3051,6 +3979,92 @@ class BackupConfig {
         if (permissiveMode != null) 'permissiveMode': permissiveMode!,
         if (selectedApplications != null)
           'selectedApplications': selectedApplications!,
+        if (selectedNamespaceLabels != null)
+          'selectedNamespaceLabels': selectedNamespaceLabels!,
+        if (selectedNamespaces != null)
+          'selectedNamespaces': selectedNamespaces!,
+      };
+}
+
+/// BackupConfigDetails defines the configuration of Backups created via this
+/// BackupPlan.
+class BackupConfigDetails {
+  /// If True, include all namespaced resources
+  ///
+  /// Output only.
+  core.bool? allNamespaces;
+
+  /// This defines a customer managed encryption key that will be used to
+  /// encrypt the "config" portion (the Kubernetes resources) of Backups created
+  /// via this plan.
+  ///
+  /// Default (empty): Config backup artifacts will not be encrypted.
+  ///
+  /// Output only.
+  EncryptionKey? encryptionKey;
+
+  /// This flag specifies whether Kubernetes Secret resources should be included
+  /// when they fall into the scope of Backups.
+  ///
+  /// Default: False
+  ///
+  /// Output only.
+  core.bool? includeSecrets;
+
+  /// This flag specifies whether volume data should be backed up when PVCs are
+  /// included in the scope of a Backup.
+  ///
+  /// Default: False
+  ///
+  /// Output only.
+  core.bool? includeVolumeData;
+
+  /// If set, include just the resources referenced by the listed
+  /// ProtectedApplications.
+  ///
+  /// Output only.
+  NamespacedNames? selectedApplications;
+
+  /// If set, include just the resources in the listed namespaces.
+  ///
+  /// Output only.
+  Namespaces? selectedNamespaces;
+
+  BackupConfigDetails({
+    this.allNamespaces,
+    this.encryptionKey,
+    this.includeSecrets,
+    this.includeVolumeData,
+    this.selectedApplications,
+    this.selectedNamespaces,
+  });
+
+  BackupConfigDetails.fromJson(core.Map json_)
+      : this(
+          allNamespaces: json_['allNamespaces'] as core.bool?,
+          encryptionKey: json_.containsKey('encryptionKey')
+              ? EncryptionKey.fromJson(
+                  json_['encryptionKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+          includeSecrets: json_['includeSecrets'] as core.bool?,
+          includeVolumeData: json_['includeVolumeData'] as core.bool?,
+          selectedApplications: json_.containsKey('selectedApplications')
+              ? NamespacedNames.fromJson(json_['selectedApplications']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          selectedNamespaces: json_.containsKey('selectedNamespaces')
+              ? Namespaces.fromJson(json_['selectedNamespaces']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allNamespaces != null) 'allNamespaces': allNamespaces!,
+        if (encryptionKey != null) 'encryptionKey': encryptionKey!,
+        if (includeSecrets != null) 'includeSecrets': includeSecrets!,
+        if (includeVolumeData != null) 'includeVolumeData': includeVolumeData!,
+        if (selectedApplications != null)
+          'selectedApplications': selectedApplications!,
         if (selectedNamespaces != null)
           'selectedNamespaces': selectedNamespaces!,
       };
@@ -3058,6 +4072,15 @@ class BackupConfig {
 
 /// Defines the configuration and scheduling for a "line" of Backups.
 class BackupPlan {
+  /// The fully qualified name of the BackupChannel to be used to create a
+  /// backup.
+  ///
+  /// This field is set only if the cluster being backed up is in a different
+  /// project. `projects / * /locations / * /backupChannels / * `
+  ///
+  /// Output only.
+  core.String? backupChannel;
+
   /// Defines the configuration of Backups created via this BackupPlan.
   ///
   /// Optional.
@@ -3192,6 +4215,7 @@ class BackupPlan {
   core.String? updateTime;
 
   BackupPlan({
+    this.backupChannel,
     this.backupConfig,
     this.backupSchedule,
     this.cluster,
@@ -3214,6 +4238,7 @@ class BackupPlan {
 
   BackupPlan.fromJson(core.Map json_)
       : this(
+          backupChannel: json_['backupChannel'] as core.String?,
           backupConfig: json_.containsKey('backupConfig')
               ? BackupConfig.fromJson(
                   json_['backupConfig'] as core.Map<core.String, core.dynamic>)
@@ -3251,6 +4276,7 @@ class BackupPlan {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (backupChannel != null) 'backupChannel': backupChannel!,
         if (backupConfig != null) 'backupConfig': backupConfig!,
         if (backupSchedule != null) 'backupSchedule': backupSchedule!,
         if (cluster != null) 'cluster': cluster!,
@@ -3270,6 +4296,217 @@ class BackupPlan {
         if (stateReason != null) 'stateReason': stateReason!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A BackupPlanBinding binds a BackupPlan with a BackupChannel.
+///
+/// This resource is created automatically when a BackupPlan is created using a
+/// BackupChannel. This also serves as a holder for cross-project fields that
+/// need to be displayed in the current project.
+class BackupPlanBinding {
+  /// The fully qualified name of the BackupPlan bound with the parent
+  /// BackupChannel.
+  ///
+  /// `projects / * /locations / * /backupPlans/{backup_plan}`
+  ///
+  /// Output only. Immutable.
+  core.String? backupPlan;
+
+  /// Contains details about the backup plan/backup.
+  ///
+  /// Output only.
+  BackupPlanDetails? backupPlanDetails;
+
+  /// The fully qualified name of the cluster that is being backed up Valid
+  /// formats: - `projects / * /locations / * /clusters / * ` - `projects / *
+  /// /zones / * /clusters / * `
+  ///
+  /// Output only. Immutable.
+  core.String? cluster;
+
+  /// The timestamp when this binding was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a BackupPlanBinding from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the 'etag' in the
+  /// read-modify-write cycle to perform BackupPlanBinding updates in order to
+  /// avoid race conditions: An `etag` is returned in the response to
+  /// `GetBackupPlanBinding`, and systems are expected to put that etag in the
+  /// request to `UpdateBackupPlanBinding` or `DeleteBackupPlanBinding` to
+  /// ensure that their change will be applied to the same version of the
+  /// resource.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The fully qualified name of the BackupPlanBinding. `projects / *
+  /// /locations / * /backupChannels / * /backupPlanBindings / * `
+  core.String? name;
+
+  /// Server generated global unique identifier of
+  /// [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The timestamp when this binding was created.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  BackupPlanBinding({
+    this.backupPlan,
+    this.backupPlanDetails,
+    this.cluster,
+    this.createTime,
+    this.etag,
+    this.name,
+    this.uid,
+    this.updateTime,
+  });
+
+  BackupPlanBinding.fromJson(core.Map json_)
+      : this(
+          backupPlan: json_['backupPlan'] as core.String?,
+          backupPlanDetails: json_.containsKey('backupPlanDetails')
+              ? BackupPlanDetails.fromJson(json_['backupPlanDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          cluster: json_['cluster'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupPlan != null) 'backupPlan': backupPlan!,
+        if (backupPlanDetails != null) 'backupPlanDetails': backupPlanDetails!,
+        if (cluster != null) 'cluster': cluster!,
+        if (createTime != null) 'createTime': createTime!,
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// Contains metadata about the backup plan/backup.
+class BackupPlanDetails {
+  /// Contains details about the BackupConfig of Backups created via this
+  /// BackupPlan.
+  ///
+  /// Output only.
+  BackupConfigDetails? backupConfigDetails;
+
+  /// The fully qualified name of the last successful Backup created under this
+  /// BackupPlan.
+  ///
+  /// `projects / * /locations / * /backupPlans / * /backups / * `
+  ///
+  /// Output only.
+  core.String? lastSuccessfulBackup;
+
+  /// Completion time of the last successful Backup.
+  ///
+  /// This is sourced from a successful Backup's complete_time field.
+  ///
+  /// Output only.
+  core.String? lastSuccessfulBackupTime;
+
+  /// Start time of next scheduled backup under this BackupPlan by either
+  /// cron_schedule or rpo config.
+  ///
+  /// This is sourced from BackupPlan.
+  ///
+  /// Output only.
+  core.String? nextScheduledBackupTime;
+
+  /// The number of Kubernetes Pods backed up in the last successful Backup
+  /// created via this BackupPlan.
+  ///
+  /// Output only.
+  core.int? protectedPodCount;
+
+  /// Contains details about the RetentionPolicy of Backups created via this
+  /// BackupPlan.
+  ///
+  /// Output only.
+  RetentionPolicyDetails? retentionPolicyDetails;
+
+  /// A number that represents the current risk level of this BackupPlan from
+  /// RPO perspective with 1 being no risk and 5 being highest risk.
+  ///
+  /// Output only.
+  core.int? rpoRiskLevel;
+
+  /// State of the BackupPlan.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default first value for Enums.
+  /// - "CLUSTER_PENDING" : Waiting for cluster state to be RUNNING.
+  /// - "PROVISIONING" : The BackupPlan is in the process of being created.
+  /// - "READY" : The BackupPlan has successfully been created and is ready for
+  /// Backups.
+  /// - "FAILED" : BackupPlan creation has failed.
+  /// - "DEACTIVATED" : The BackupPlan has been deactivated.
+  /// - "DELETING" : The BackupPlan is in the process of being deleted.
+  core.String? state;
+
+  BackupPlanDetails({
+    this.backupConfigDetails,
+    this.lastSuccessfulBackup,
+    this.lastSuccessfulBackupTime,
+    this.nextScheduledBackupTime,
+    this.protectedPodCount,
+    this.retentionPolicyDetails,
+    this.rpoRiskLevel,
+    this.state,
+  });
+
+  BackupPlanDetails.fromJson(core.Map json_)
+      : this(
+          backupConfigDetails: json_.containsKey('backupConfigDetails')
+              ? BackupConfigDetails.fromJson(json_['backupConfigDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          lastSuccessfulBackup: json_['lastSuccessfulBackup'] as core.String?,
+          lastSuccessfulBackupTime:
+              json_['lastSuccessfulBackupTime'] as core.String?,
+          nextScheduledBackupTime:
+              json_['nextScheduledBackupTime'] as core.String?,
+          protectedPodCount: json_['protectedPodCount'] as core.int?,
+          retentionPolicyDetails: json_.containsKey('retentionPolicyDetails')
+              ? RetentionPolicyDetails.fromJson(json_['retentionPolicyDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          rpoRiskLevel: json_['rpoRiskLevel'] as core.int?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupConfigDetails != null)
+          'backupConfigDetails': backupConfigDetails!,
+        if (lastSuccessfulBackup != null)
+          'lastSuccessfulBackup': lastSuccessfulBackup!,
+        if (lastSuccessfulBackupTime != null)
+          'lastSuccessfulBackupTime': lastSuccessfulBackupTime!,
+        if (nextScheduledBackupTime != null)
+          'nextScheduledBackupTime': nextScheduledBackupTime!,
+        if (protectedPodCount != null) 'protectedPodCount': protectedPodCount!,
+        if (retentionPolicyDetails != null)
+          'retentionPolicyDetails': retentionPolicyDetails!,
+        if (rpoRiskLevel != null) 'rpoRiskLevel': rpoRiskLevel!,
+        if (state != null) 'state': state!,
       };
 }
 
@@ -3728,6 +4965,9 @@ class Filter {
 
 /// Response message for GetBackupIndexDownloadUrl.
 class GetBackupIndexDownloadUrlResponse {
+  /// The signed URL for downloading the backup index.
+  ///
+  /// Required.
   core.String? signedUrl;
 
   GetBackupIndexDownloadUrlResponse({
@@ -3934,6 +5174,116 @@ class GroupKindDependency {
       };
 }
 
+/// A single Kubernetes label-value pair.
+class Label {
+  /// The key/name of the label.
+  ///
+  /// Optional.
+  core.String? key;
+
+  /// The value of the label.
+  ///
+  /// Optional.
+  core.String? value;
+
+  Label({
+    this.key,
+    this.value,
+  });
+
+  Label.fromJson(core.Map json_)
+      : this(
+          key: json_['key'] as core.String?,
+          value: json_['value'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
+      };
+}
+
+/// Response message for ListBackupChannels.
+class ListBackupChannelsResponse {
+  /// The list of BackupChannels matching the given criteria.
+  core.List<BackupChannel>? backupChannels;
+
+  /// A token which may be sent as page_token in a subsequent
+  /// `ListBackupChannels` call to retrieve the next page of results.
+  ///
+  /// If this field is omitted or empty, then there are no more results to
+  /// return.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListBackupChannelsResponse({
+    this.backupChannels,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListBackupChannelsResponse.fromJson(core.Map json_)
+      : this(
+          backupChannels: (json_['backupChannels'] as core.List?)
+              ?.map((value) => BackupChannel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupChannels != null) 'backupChannels': backupChannels!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for ListBackupPlanBindings.
+class ListBackupPlanBindingsResponse {
+  /// The list of BackupPlanBindings matching the given criteria.
+  core.List<BackupPlanBinding>? backupPlanBindings;
+
+  /// A token which may be sent as page_token in a subsequent
+  /// `ListBackupPlanBindingss` call to retrieve the next page of results.
+  ///
+  /// If this field is omitted or empty, then there are no more results to
+  /// return.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListBackupPlanBindingsResponse({
+    this.backupPlanBindings,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListBackupPlanBindingsResponse.fromJson(core.Map json_)
+      : this(
+          backupPlanBindings: (json_['backupPlanBindings'] as core.List?)
+              ?.map((value) => BackupPlanBinding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupPlanBindings != null)
+          'backupPlanBindings': backupPlanBindings!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// Response message for ListBackupPlans.
 class ListBackupPlansResponse {
   /// The list of BackupPlans matching the given criteria.
@@ -3986,9 +5336,13 @@ class ListBackupsResponse {
   /// return.
   core.String? nextPageToken;
 
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
   ListBackupsResponse({
     this.backups,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListBackupsResponse.fromJson(core.Map json_)
@@ -3998,11 +5352,15 @@ class ListBackupsResponse {
                   Backup.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (backups != null) 'backups': backups!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -4031,6 +5389,89 @@ class ListLocationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null) 'locations': locations!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListRestoreChannels.
+class ListRestoreChannelsResponse {
+  /// A token which may be sent as page_token in a subsequent
+  /// `ListRestoreChannels` call to retrieve the next page of results.
+  ///
+  /// If this field is omitted or empty, then there are no more results to
+  /// return.
+  core.String? nextPageToken;
+
+  /// The list of RestoreChannels matching the given criteria.
+  core.List<RestoreChannel>? restoreChannels;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListRestoreChannelsResponse({
+    this.nextPageToken,
+    this.restoreChannels,
+    this.unreachable,
+  });
+
+  ListRestoreChannelsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          restoreChannels: (json_['restoreChannels'] as core.List?)
+              ?.map((value) => RestoreChannel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (restoreChannels != null) 'restoreChannels': restoreChannels!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// Response message for ListRestorePlanBindings.
+class ListRestorePlanBindingsResponse {
+  /// A token which may be sent as page_token in a subsequent
+  /// `ListRestorePlanBindings` call to retrieve the next page of results.
+  ///
+  /// If this field is omitted or empty, then there are no more results to
+  /// return.
+  core.String? nextPageToken;
+
+  /// The list of RestorePlanBindings matching the given criteria.
+  core.List<RestorePlanBinding>? restorePlanBindings;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListRestorePlanBindingsResponse({
+    this.nextPageToken,
+    this.restorePlanBindings,
+    this.unreachable,
+  });
+
+  ListRestorePlanBindingsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          restorePlanBindings: (json_['restorePlanBindings'] as core.List?)
+              ?.map((value) => RestorePlanBinding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (restorePlanBindings != null)
+          'restorePlanBindings': restorePlanBindings!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -4430,6 +5871,30 @@ class ResourceFilter {
       };
 }
 
+/// A list of Kubernetes labels.
+class ResourceLabels {
+  /// A list of Kubernetes label-value pairs.
+  ///
+  /// Optional.
+  core.List<Label>? resourceLabels;
+
+  ResourceLabels({
+    this.resourceLabels,
+  });
+
+  ResourceLabels.fromJson(core.Map json_)
+      : this(
+          resourceLabels: (json_['resourceLabels'] as core.List?)
+              ?.map((value) =>
+                  Label.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (resourceLabels != null) 'resourceLabels': resourceLabels!,
+      };
+}
+
 /// Defines a selector to identify a single or a group of resources.
 ///
 /// Conditions in the selector are optional, but at least one field should be
@@ -4538,6 +6003,8 @@ class Restore {
   core.String? createTime;
 
   /// User specified descriptive string for this Restore.
+  ///
+  /// Optional.
   core.String? description;
 
   /// `etag` is used for optimistic concurrency control as a way to help prevent
@@ -4625,6 +6092,12 @@ class Restore {
   /// Output only.
   core.String? stateReason;
 
+  /// Information about the troubleshooting steps which will provide debugging
+  /// information to the end users.
+  ///
+  /// Output only.
+  TroubleshootingInfo? troubleshootingInfo;
+
   /// Server generated global unique identifier of
   /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)
   /// format.
@@ -4664,6 +6137,7 @@ class Restore {
     this.restoreConfig,
     this.state,
     this.stateReason,
+    this.troubleshootingInfo,
     this.uid,
     this.updateTime,
     this.volumeDataRestorePolicyOverrides,
@@ -4699,6 +6173,10 @@ class Restore {
               : null,
           state: json_['state'] as core.String?,
           stateReason: json_['stateReason'] as core.String?,
+          troubleshootingInfo: json_.containsKey('troubleshootingInfo')
+              ? TroubleshootingInfo.fromJson(json_['troubleshootingInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           volumeDataRestorePolicyOverrides:
@@ -4728,12 +6206,126 @@ class Restore {
         if (restoreConfig != null) 'restoreConfig': restoreConfig!,
         if (state != null) 'state': state!,
         if (stateReason != null) 'stateReason': stateReason!,
+        if (troubleshootingInfo != null)
+          'troubleshootingInfo': troubleshootingInfo!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (volumeDataRestorePolicyOverrides != null)
           'volumeDataRestorePolicyOverrides': volumeDataRestorePolicyOverrides!,
         if (volumesRestoredCount != null)
           'volumesRestoredCount': volumesRestoredCount!,
+      };
+}
+
+/// A RestoreChannel imposes constraints on where backups can be restored.
+///
+/// The RestoreChannel should be in the same project and region as the backups.
+/// The backups can only be restored in the `destination_project`.
+class RestoreChannel {
+  /// The timestamp when this RestoreChannel was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User specified descriptive string for this RestoreChannel.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The project into which the backups will be restored.
+  ///
+  /// The format is `projects/{projectId}` or `projects/{projectNumber}`.
+  ///
+  /// Required. Immutable.
+  core.String? destinationProject;
+
+  /// The project_id where backups will be restored.
+  ///
+  /// Example Project ID: "my-project-id". This will be an OUTPUT_ONLY field to
+  /// return the project_id of the destination project.
+  ///
+  /// Output only.
+  core.String? destinationProjectId;
+
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a RestoreChannel from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the 'etag' in the
+  /// read-modify-write cycle to perform RestoreChannel updates in order to
+  /// avoid race conditions: An `etag` is returned in the response to
+  /// `GetRestoreChannel`, and systems are expected to put that etag in the
+  /// request to `UpdateRestoreChannel` or `DeleteRestoreChannel` to ensure that
+  /// their change will be applied to the same version of the resource.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// A set of custom labels supplied by user.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The fully qualified name of the RestoreChannel. `projects / * /locations /
+  /// * /restoreChannels / * `
+  core.String? name;
+
+  /// Server generated global unique identifier of
+  /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+  /// format.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The timestamp when this RestoreChannel was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  RestoreChannel({
+    this.createTime,
+    this.description,
+    this.destinationProject,
+    this.destinationProjectId,
+    this.etag,
+    this.labels,
+    this.name,
+    this.uid,
+    this.updateTime,
+  });
+
+  RestoreChannel.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          description: json_['description'] as core.String?,
+          destinationProject: json_['destinationProject'] as core.String?,
+          destinationProjectId: json_['destinationProjectId'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          name: json_['name'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (description != null) 'description': description!,
+        if (destinationProject != null)
+          'destinationProject': destinationProject!,
+        if (destinationProjectId != null)
+          'destinationProjectId': destinationProjectId!,
+        if (etag != null) 'etag': etag!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -5069,6 +6661,16 @@ class RestorePlan {
   /// Output only.
   core.String? name;
 
+  /// The fully qualified name of the RestoreChannel to be used to create a
+  /// RestorePlan.
+  ///
+  /// This field is set only if the `backup_plan` is in a different project than
+  /// the RestorePlan. Format: `projects / * /locations / * /restoreChannels / *
+  /// `
+  ///
+  /// Output only.
+  core.String? restoreChannel;
+
   /// Configuration of Restores created via this RestorePlan.
   ///
   /// Required.
@@ -5117,6 +6719,7 @@ class RestorePlan {
     this.etag,
     this.labels,
     this.name,
+    this.restoreChannel,
     this.restoreConfig,
     this.state,
     this.stateReason,
@@ -5139,6 +6742,7 @@ class RestorePlan {
             ),
           ),
           name: json_['name'] as core.String?,
+          restoreChannel: json_['restoreChannel'] as core.String?,
           restoreConfig: json_.containsKey('restoreConfig')
               ? RestoreConfig.fromJson(
                   json_['restoreConfig'] as core.Map<core.String, core.dynamic>)
@@ -5157,9 +6761,99 @@ class RestorePlan {
         if (etag != null) 'etag': etag!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (restoreChannel != null) 'restoreChannel': restoreChannel!,
         if (restoreConfig != null) 'restoreConfig': restoreConfig!,
         if (state != null) 'state': state!,
         if (stateReason != null) 'stateReason': stateReason!,
+        if (uid != null) 'uid': uid!,
+        if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A RestorePlanBinding binds a RestorePlan with a RestoreChannel.
+///
+/// This resource is created automatically when a RestorePlan is created using a
+/// RestoreChannel. This also serves as a holder for cross-project fields that
+/// need to be displayed in the current project.
+class RestorePlanBinding {
+  /// The fully qualified name of the BackupPlan bound to the specified
+  /// RestorePlan.
+  ///
+  /// `projects / * /locations / * /backukpPlans/{backup_plan}`
+  ///
+  /// Output only.
+  core.String? backupPlan;
+
+  /// The timestamp when this binding was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a RestorePlanBinding from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the 'etag' in the
+  /// read-modify-write cycle to perform RestorePlanBinding updates in order to
+  /// avoid race conditions: An `etag` is returned in the response to
+  /// `GetRestorePlanBinding`, and systems are expected to put that etag in the
+  /// request to `UpdateRestorePlanBinding` or `DeleteRestorePlanBinding` to
+  /// ensure that their change will be applied to the same version of the
+  /// resource.
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The fully qualified name of the RestorePlanBinding. `projects / *
+  /// /locations / * /restoreChannels / * /restorePlanBindings / * `
+  core.String? name;
+
+  /// The fully qualified name of the RestorePlan bound to this RestoreChannel.
+  ///
+  /// `projects / * /locations / * /restorePlans/{restore_plan}`
+  ///
+  /// Output only.
+  core.String? restorePlan;
+
+  /// Server generated global unique identifier of
+  /// [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// The timestamp when this binding was created.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  RestorePlanBinding({
+    this.backupPlan,
+    this.createTime,
+    this.etag,
+    this.name,
+    this.restorePlan,
+    this.uid,
+    this.updateTime,
+  });
+
+  RestorePlanBinding.fromJson(core.Map json_)
+      : this(
+          backupPlan: json_['backupPlan'] as core.String?,
+          createTime: json_['createTime'] as core.String?,
+          etag: json_['etag'] as core.String?,
+          name: json_['name'] as core.String?,
+          restorePlan: json_['restorePlan'] as core.String?,
+          uid: json_['uid'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupPlan != null) 'backupPlan': backupPlan!,
+        if (createTime != null) 'createTime': createTime!,
+        if (etag != null) 'etag': etag!,
+        if (name != null) 'name': name!,
+        if (restorePlan != null) 'restorePlan': restorePlan!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -5222,6 +6916,49 @@ class RetentionPolicy {
           'backupDeleteLockDays': backupDeleteLockDays!,
         if (backupRetainDays != null) 'backupRetainDays': backupRetainDays!,
         if (locked != null) 'locked': locked!,
+      };
+}
+
+/// RetentionPolicyDetails defines a Backup retention policy for a BackupPlan.
+class RetentionPolicyDetails {
+  /// Minimum age for Backups created via this BackupPlan (in days).
+  ///
+  /// This field MUST be an integer value between 0-90 (inclusive). A Backup
+  /// created under this BackupPlan will NOT be deletable until it reaches
+  /// Backup's (create_time + backup_delete_lock_days). Updating this field of a
+  /// BackupPlan does NOT affect existing Backups under it. Backups created
+  /// AFTER a successful update will inherit the new value. Default: 0 (no
+  /// delete blocking)
+  ///
+  /// Optional.
+  core.int? backupDeleteLockDays;
+
+  /// The default maximum age of a Backup created via this BackupPlan.
+  ///
+  /// This field MUST be an integer value \>= 0 and \<= 365. If specified, a
+  /// Backup created under this BackupPlan will be automatically deleted after
+  /// its age reaches (create_time + backup_retain_days). If not specified,
+  /// Backups created under this BackupPlan will NOT be subject to automatic
+  /// deletion. Default: 0 (no automatic deletion)
+  ///
+  /// Optional.
+  core.int? backupRetainDays;
+
+  RetentionPolicyDetails({
+    this.backupDeleteLockDays,
+    this.backupRetainDays,
+  });
+
+  RetentionPolicyDetails.fromJson(core.Map json_)
+      : this(
+          backupDeleteLockDays: json_['backupDeleteLockDays'] as core.int?,
+          backupRetainDays: json_['backupRetainDays'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (backupDeleteLockDays != null)
+          'backupDeleteLockDays': backupDeleteLockDays!,
+        if (backupRetainDays != null) 'backupRetainDays': backupRetainDays!,
       };
 }
 
@@ -5602,6 +7339,41 @@ class TransformationRuleAction {
       };
 }
 
+/// Stores information about troubleshooting doc for debugging a particular
+/// state of an operation (eg - backup/restore).
+///
+/// This will be used by the end user to debug their operation failure scenario
+/// easily.
+class TroubleshootingInfo {
+  /// Unique code for each backup/restore operation failure message which helps
+  /// user identify the failure.
+  ///
+  /// Output only.
+  core.String? stateReasonCode;
+
+  /// URL for the troubleshooting doc which will help the user fix the failing
+  /// backup/restore operation.
+  ///
+  /// Output only.
+  core.String? stateReasonUri;
+
+  TroubleshootingInfo({
+    this.stateReasonCode,
+    this.stateReasonUri,
+  });
+
+  TroubleshootingInfo.fromJson(core.Map json_)
+      : this(
+          stateReasonCode: json_['stateReasonCode'] as core.String?,
+          stateReasonUri: json_['stateReasonUri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (stateReasonCode != null) 'stateReasonCode': stateReasonCode!,
+        if (stateReasonUri != null) 'stateReasonUri': stateReasonUri!,
+      };
+}
+
 /// Represents the backup of a specific persistent volume as a component of a
 /// Backup - both the record of the operation and a pointer to the underlying
 /// storage-specific artifacts.
@@ -5648,6 +7420,16 @@ class VolumeBackup {
   ///
   /// Output only.
   core.String? name;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzi;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
 
   /// A reference to the source Kubernetes PVC from which this VolumeBackup was
   /// created.
@@ -5721,6 +7503,8 @@ class VolumeBackup {
     this.etag,
     this.format,
     this.name,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.sourcePvc,
     this.state,
     this.stateMessage,
@@ -5738,6 +7522,8 @@ class VolumeBackup {
           etag: json_['etag'] as core.String?,
           format: json_['format'] as core.String?,
           name: json_['name'] as core.String?,
+          satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           sourcePvc: json_.containsKey('sourcePvc')
               ? NamespacedName.fromJson(
                   json_['sourcePvc'] as core.Map<core.String, core.dynamic>)
@@ -5757,6 +7543,8 @@ class VolumeBackup {
         if (etag != null) 'etag': etag!,
         if (format != null) 'format': format!,
         if (name != null) 'name': name!,
+        if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (sourcePvc != null) 'sourcePvc': sourcePvc!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,

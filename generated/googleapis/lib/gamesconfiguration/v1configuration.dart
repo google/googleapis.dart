@@ -12,7 +12,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Google Play Game Services Publishing API - v1configuration
+/// Google Play Games Services Publishing API - v1configuration
 ///
 /// The Google Play Game Services Publishing API allows developers to configure
 /// their games in Game Services.

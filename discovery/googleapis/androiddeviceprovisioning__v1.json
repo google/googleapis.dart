@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241202",
+    "revision": "20250331",
     "rootUrl": "https://androiddeviceprovisioning.googleapis.com/",
     "servicePath": "",
     "title": "Android Device Provisioning Partner API",
@@ -1436,7 +1436,7 @@
             "properties": {
                 "deviceIdentifier": {
                     "$ref": "DeviceIdentifier",
-                    "description": "Required. Required. The device identifier to search for."
+                    "description": "Required. Required. The device identifier to search for. If serial number is provided then case insensitive serial number matches are allowed."
                 },
                 "limit": {
                     "description": "Required. The maximum number of devices to show in a page of results. Must be between 1 and 100 inclusive.",

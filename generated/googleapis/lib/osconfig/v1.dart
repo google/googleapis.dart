@@ -1974,30 +1974,7 @@ class ExecutePatchJobRequest {
 
 /// Message encapsulating a value that can be either absolute ("fixed") or
 /// relative ("percent") to a value.
-class FixedOrPercent {
-  /// Specifies a fixed value.
-  core.int? fixed;
-
-  /// Specifies the relative value defined as a percentage, which will be
-  /// multiplied by a reference value.
-  core.int? percent;
-
-  FixedOrPercent({
-    this.fixed,
-    this.percent,
-  });
-
-  FixedOrPercent.fromJson(core.Map json_)
-      : this(
-          fixed: json_['fixed'] as core.int?,
-          percent: json_['percent'] as core.int?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (fixed != null) 'fixed': fixed!,
-        if (percent != null) 'percent': percent!,
-      };
-}
+typedef FixedOrPercent = $FixedOrPercent;
 
 /// Cloud Storage object representation.
 class GcsObject {
@@ -3030,7 +3007,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $Shared14;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared04;
 
 /// Message representing label set.
 ///
@@ -3039,32 +3016,7 @@ typedef OSPolicyAssignmentInstanceFilterInventory = $Shared14;
 /// applicable for a VM only if it matches all the labels in the LabelSet. *
 /// Example: A LabelSet with 2 labels: `env=prod` and `type=webserver` will only
 /// be applicable for those VMs with both labels present.
-class OSPolicyAssignmentLabelSet {
-  /// Labels are identified by key/value pairs in this map.
-  ///
-  /// A VM should contain all the key/value pairs specified in this map to be
-  /// selected.
-  core.Map<core.String, core.String>? labels;
-
-  OSPolicyAssignmentLabelSet({
-    this.labels,
-  });
-
-  OSPolicyAssignmentLabelSet.fromJson(core.Map json_)
-      : this(
-          labels:
-              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-            (key, value) => core.MapEntry(
-              key,
-              value as core.String,
-            ),
-          ),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (labels != null) 'labels': labels!,
-      };
-}
+typedef OSPolicyAssignmentLabelSet = $OSPolicyAssignmentLabelSet;
 
 /// A report of the OS policy assignment status for a given instance.
 class OSPolicyAssignmentReport {
@@ -3395,7 +3347,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $Shared14;
+typedef OSPolicyInventoryFilter = $Shared04;
 
 /// An OS policy resource is used to define the desired state configuration and
 /// provides a specific functionality like installing/removing packages,
@@ -3636,69 +3588,10 @@ class OSPolicyResourceFile {
 }
 
 /// Specifies a file available as a Cloud Storage Object.
-class OSPolicyResourceFileGcs {
-  /// Bucket of the Cloud Storage object.
-  ///
-  /// Required.
-  core.String? bucket;
-
-  /// Generation number of the Cloud Storage object.
-  core.String? generation;
-
-  /// Name of the Cloud Storage object.
-  ///
-  /// Required.
-  core.String? object;
-
-  OSPolicyResourceFileGcs({
-    this.bucket,
-    this.generation,
-    this.object,
-  });
-
-  OSPolicyResourceFileGcs.fromJson(core.Map json_)
-      : this(
-          bucket: json_['bucket'] as core.String?,
-          generation: json_['generation'] as core.String?,
-          object: json_['object'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (bucket != null) 'bucket': bucket!,
-        if (generation != null) 'generation': generation!,
-        if (object != null) 'object': object!,
-      };
-}
+typedef OSPolicyResourceFileGcs = $OSPolicyResourceFileGcs;
 
 /// Specifies a file available via some URI.
-class OSPolicyResourceFileRemote {
-  /// SHA256 checksum of the remote file.
-  core.String? sha256Checksum;
-
-  /// URI from which to fetch the object.
-  ///
-  /// It should contain both the protocol and path following the format
-  /// `{protocol}://{location}`.
-  ///
-  /// Required.
-  core.String? uri;
-
-  OSPolicyResourceFileRemote({
-    this.sha256Checksum,
-    this.uri,
-  });
-
-  OSPolicyResourceFileRemote.fromJson(core.Map json_)
-      : this(
-          sha256Checksum: json_['sha256Checksum'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (sha256Checksum != null) 'sha256Checksum': sha256Checksum!,
-        if (uri != null) 'uri': uri!,
-      };
-}
+typedef OSPolicyResourceFileRemote = $OSPolicyResourceFileRemote;
 
 /// A resource that manages the state of a file.
 class OSPolicyResourceFileResource {
@@ -3907,7 +3800,7 @@ class OSPolicyResourcePackageResource {
 ///
 /// - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get
 /// -y remove [name]`
-typedef OSPolicyResourcePackageResourceAPT = $Shared03;
+typedef OSPolicyResourcePackageResourceAPT = $Shared00;
 
 /// A deb package file.
 ///
@@ -3948,7 +3841,7 @@ class OSPolicyResourcePackageResourceDeb {
 ///
 /// - install: `googet -noconfirm install package` - remove: `googet -noconfirm
 /// remove package`
-typedef OSPolicyResourcePackageResourceGooGet = $Shared03;
+typedef OSPolicyResourcePackageResourceGooGet = $Shared00;
 
 /// An MSI package.
 ///
@@ -4025,12 +3918,12 @@ class OSPolicyResourcePackageResourceRPM {
 /// A package managed by YUM.
 ///
 /// - install: `yum -y install package` - remove: `yum -y remove package`
-typedef OSPolicyResourcePackageResourceYUM = $Shared03;
+typedef OSPolicyResourcePackageResourceYUM = $Shared00;
 
 /// A package managed by Zypper.
 ///
 /// - install: `zypper -y install package` - remove: `zypper -y rm package`
-typedef OSPolicyResourcePackageResourceZypper = $Shared03;
+typedef OSPolicyResourcePackageResourceZypper = $Shared00;
 
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {
@@ -4085,198 +3978,29 @@ class OSPolicyResourceRepositoryResource {
 ///
 /// These will be added to a repo file that will be managed at
 /// `/etc/apt/sources.list.d/google_osconfig.list`.
-class OSPolicyResourceRepositoryResourceAptRepository {
-  /// Type of archive files in this repository.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "ARCHIVE_TYPE_UNSPECIFIED" : Unspecified is invalid.
-  /// - "DEB" : Deb indicates that the archive contains binary files.
-  /// - "DEB_SRC" : Deb-src indicates that the archive contains source files.
-  core.String? archiveType;
-
-  /// List of components for this repository.
-  ///
-  /// Must contain at least one item.
-  ///
-  /// Required.
-  core.List<core.String>? components;
-
-  /// Distribution of this repository.
-  ///
-  /// Required.
-  core.String? distribution;
-
-  /// URI of the key file for this repository.
-  ///
-  /// The agent maintains a keyring at
-  /// `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
-  core.String? gpgKey;
-
-  /// URI for this repository.
-  ///
-  /// Required.
-  core.String? uri;
-
-  OSPolicyResourceRepositoryResourceAptRepository({
-    this.archiveType,
-    this.components,
-    this.distribution,
-    this.gpgKey,
-    this.uri,
-  });
-
-  OSPolicyResourceRepositoryResourceAptRepository.fromJson(core.Map json_)
-      : this(
-          archiveType: json_['archiveType'] as core.String?,
-          components: (json_['components'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          distribution: json_['distribution'] as core.String?,
-          gpgKey: json_['gpgKey'] as core.String?,
-          uri: json_['uri'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (archiveType != null) 'archiveType': archiveType!,
-        if (components != null) 'components': components!,
-        if (distribution != null) 'distribution': distribution!,
-        if (gpgKey != null) 'gpgKey': gpgKey!,
-        if (uri != null) 'uri': uri!,
-      };
-}
+typedef OSPolicyResourceRepositoryResourceAptRepository
+    = $OSPolicyResourceRepositoryResourceAptRepository;
 
 /// Represents a Goo package repository.
 ///
 /// These are added to a repo file that is managed at
 /// `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
-class OSPolicyResourceRepositoryResourceGooRepository {
-  /// The name of the repository.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The url of the repository.
-  ///
-  /// Required.
-  core.String? url;
-
-  OSPolicyResourceRepositoryResourceGooRepository({
-    this.name,
-    this.url,
-  });
-
-  OSPolicyResourceRepositoryResourceGooRepository.fromJson(core.Map json_)
-      : this(
-          name: json_['name'] as core.String?,
-          url: json_['url'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (name != null) 'name': name!,
-        if (url != null) 'url': url!,
-      };
-}
+typedef OSPolicyResourceRepositoryResourceGooRepository
+    = $OSPolicyResourceRepositoryResourceGooRepository;
 
 /// Represents a single yum package repository.
 ///
 /// These are added to a repo file that is managed at
 /// `/etc/yum.repos.d/google_osconfig.repo`.
-class OSPolicyResourceRepositoryResourceYumRepository {
-  /// The location of the repository directory.
-  ///
-  /// Required.
-  core.String? baseUrl;
-
-  /// The display name of the repository.
-  core.String? displayName;
-
-  /// URIs of GPG keys.
-  core.List<core.String>? gpgKeys;
-
-  /// A one word, unique name for this repository.
-  ///
-  /// This is the `repo id` in the yum config file and also the `display_name`
-  /// if `display_name` is omitted. This id is also used as the unique
-  /// identifier when checking for resource conflicts.
-  ///
-  /// Required.
-  core.String? id;
-
-  OSPolicyResourceRepositoryResourceYumRepository({
-    this.baseUrl,
-    this.displayName,
-    this.gpgKeys,
-    this.id,
-  });
-
-  OSPolicyResourceRepositoryResourceYumRepository.fromJson(core.Map json_)
-      : this(
-          baseUrl: json_['baseUrl'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          gpgKeys: (json_['gpgKeys'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          id: json_['id'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (baseUrl != null) 'baseUrl': baseUrl!,
-        if (displayName != null) 'displayName': displayName!,
-        if (gpgKeys != null) 'gpgKeys': gpgKeys!,
-        if (id != null) 'id': id!,
-      };
-}
+typedef OSPolicyResourceRepositoryResourceYumRepository
+    = $OSPolicyResourceRepositoryResourceYumRepository;
 
 /// Represents a single zypper package repository.
 ///
 /// These are added to a repo file that is managed at
 /// `/etc/zypp/repos.d/google_osconfig.repo`.
-class OSPolicyResourceRepositoryResourceZypperRepository {
-  /// The location of the repository directory.
-  ///
-  /// Required.
-  core.String? baseUrl;
-
-  /// The display name of the repository.
-  core.String? displayName;
-
-  /// URIs of GPG keys.
-  core.List<core.String>? gpgKeys;
-
-  /// A one word, unique name for this repository.
-  ///
-  /// This is the `repo id` in the zypper config file and also the
-  /// `display_name` if `display_name` is omitted. This id is also used as the
-  /// unique identifier when checking for GuestPolicy conflicts.
-  ///
-  /// Required.
-  core.String? id;
-
-  OSPolicyResourceRepositoryResourceZypperRepository({
-    this.baseUrl,
-    this.displayName,
-    this.gpgKeys,
-    this.id,
-  });
-
-  OSPolicyResourceRepositoryResourceZypperRepository.fromJson(core.Map json_)
-      : this(
-          baseUrl: json_['baseUrl'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          gpgKeys: (json_['gpgKeys'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          id: json_['id'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (baseUrl != null) 'baseUrl': baseUrl!,
-        if (displayName != null) 'displayName': displayName!,
-        if (gpgKeys != null) 'gpgKeys': gpgKeys!,
-        if (id != null) 'id': id!,
-      };
-}
+typedef OSPolicyResourceRepositoryResourceZypperRepository
+    = $OSPolicyResourceRepositoryResourceZypperRepository;
 
 /// Sets the time for a one time patch deployment.
 ///
@@ -5331,6 +5055,26 @@ typedef TimeZone = $TimeZone;
 /// For more information, see
 /// [Vulnerability reports](https://cloud.google.com/compute/docs/instances/os-inventory-management#vulnerability-reports).
 class VulnerabilityReport {
+  /// Highest level of severity among all the upgradable vulnerabilities with
+  /// CVEs attached.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "VULNERABILITY_SEVERITY_LEVEL_UNSPECIFIED" : Default SeverityLevel. This
+  /// value is unused.
+  /// - "NONE" : Vulnerability has no severity level.
+  /// - "MINIMAL" : Vulnerability severity level is minimal. This is level below
+  /// the low severity level.
+  /// - "LOW" : Vulnerability severity level is low. This is level below the
+  /// medium severity level.
+  /// - "MEDIUM" : Vulnerability severity level is medium. This is level below
+  /// the high severity level.
+  /// - "HIGH" : Vulnerability severity level is high. This is level below the
+  /// critical severity level.
+  /// - "CRITICAL" : Vulnerability severity level is critical. This is the
+  /// highest severity level.
+  core.String? highestUpgradableCveSeverity;
+
   /// The `vulnerabilityReport` API resource name.
   ///
   /// Format:
@@ -5351,6 +5095,7 @@ class VulnerabilityReport {
   core.List<VulnerabilityReportVulnerability>? vulnerabilities;
 
   VulnerabilityReport({
+    this.highestUpgradableCveSeverity,
     this.name,
     this.updateTime,
     this.vulnerabilities,
@@ -5358,6 +5103,8 @@ class VulnerabilityReport {
 
   VulnerabilityReport.fromJson(core.Map json_)
       : this(
+          highestUpgradableCveSeverity:
+              json_['highestUpgradableCveSeverity'] as core.String?,
           name: json_['name'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
           vulnerabilities: (json_['vulnerabilities'] as core.List?)
@@ -5367,6 +5114,8 @@ class VulnerabilityReport {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (highestUpgradableCveSeverity != null)
+          'highestUpgradableCveSeverity': highestUpgradableCveSeverity!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (vulnerabilities != null) 'vulnerabilities': vulnerabilities!,

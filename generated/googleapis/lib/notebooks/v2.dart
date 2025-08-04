@@ -118,6 +118,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -140,12 +144,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -169,6 +175,51 @@ class ProjectsLocationsInstancesResource {
 
   ProjectsLocationsInstancesResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Initiated by Cloud Console for Oauth consent flow for Workbench Instances.
+  ///
+  /// Do not use this method directly. Design doc: go/wbi-euc:auth-dd
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Notebook Instance resource. Format:
+  /// `projects/{project}/locations/{location}/instances/{instance}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CheckAuthorizationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CheckAuthorizationResponse> checkAuthorization(
+    CheckAuthorizationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':checkAuthorization';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CheckAuthorizationResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 
   /// Checks whether a notebook instance is upgradable.
   ///
@@ -342,6 +393,51 @@ class ProjectsLocationsInstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Called by VM to return an EUC for the instance owner.
+  ///
+  /// Do not use this method directly. Design doc: go/wbi-euc:dd
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// `projects/{project}/locations/{location}/instances/{instance_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateAccessTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateAccessTokenResponse> generateAccessToken(
+    GenerateAccessTokenRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':generateAccessToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GenerateAccessTokenResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Gets details of a single Instance.
   ///
   /// Request parameters:
@@ -379,12 +475,7 @@ class ProjectsLocationsInstancesResource {
     return Instance.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Gets general backend configurations that might also affect the frontend.
-  ///
-  /// Location is required by CCFE. Although we could bypass it to send
-  /// location- less request directly to the backend job, we would need CPE
-  /// (go/cloud-cpe). Having the location might also be useful depending on the
-  /// query.
+  /// Returns various configuration parameters.
   ///
   /// Request parameters:
   ///
@@ -544,7 +635,24 @@ class ProjectsLocationsInstancesResource {
   ///
   /// [requestId] - Optional. Idempotent request UUID.
   ///
-  /// [updateMask] - Required. Mask used to update an instance
+  /// [updateMask] - Required. Mask used to update an instance. Updatable
+  /// fields: * `labels` * `gce_setup.min_cpu_platform` * `gce_setup.metadata` *
+  /// `gce_setup.machine_type` * `gce_setup.accelerator_configs` *
+  /// `gce_setup.accelerator_configs.type` *
+  /// `gce_setup.accelerator_configs.core_count` * `gce_setup.gpu_driver_config`
+  /// * `gce_setup.gpu_driver_config.enable_gpu_driver` *
+  /// `gce_setup.gpu_driver_config.custom_gpu_driver_path` *
+  /// `gce_setup.shielded_instance_config` *
+  /// `gce_setup.shielded_instance_config.enable_secure_boot` *
+  /// `gce_setup.shielded_instance_config.enable_vtpm` *
+  /// `gce_setup.shielded_instance_config.enable_integrity_monitoring` *
+  /// `gce_setup.reservation_affinity` *
+  /// `gce_setup.reservation_affinity.consume_reservation_type` *
+  /// `gce_setup.reservation_affinity.key` *
+  /// `gce_setup.reservation_affinity.values` * `gce_setup.tags` *
+  /// `gce_setup.container_image` * `gce_setup.container_image.repository` *
+  /// `gce_setup.container_image.tag` * `gce_setup.disable_public_ip` *
+  /// `disable_proxy_access`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1501,8 +1609,104 @@ class BootDisk {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
+/// Request message for checking authorization for the instance owner.
+class CheckAuthorizationRequest {
+  /// The details of the OAuth authorization response.
+  ///
+  /// This may include additional params such as dry_run, version_info, origin,
+  /// propagate, etc.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? authorizationDetails;
+
+  CheckAuthorizationRequest({
+    this.authorizationDetails,
+  });
+
+  CheckAuthorizationRequest.fromJson(core.Map json_)
+      : this(
+          authorizationDetails: (json_['authorizationDetails']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authorizationDetails != null)
+          'authorizationDetails': authorizationDetails!,
+      };
+}
+
+/// Response message for checking authorization for the instance owner.
+class CheckAuthorizationResponse {
+  /// Timestamp when this Authorization request was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// If the user has not completed OAuth consent, then the oauth_url is
+  /// returned.
+  ///
+  /// Otherwise, this field is not set.
+  core.String? oauthUri;
+
+  /// Success indicates that the user completed OAuth consent and access tokens
+  /// can be generated.
+  core.bool? success;
+
+  CheckAuthorizationResponse({
+    this.createTime,
+    this.oauthUri,
+    this.success,
+  });
+
+  CheckAuthorizationResponse.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          oauthUri: json_['oauth_uri'] as core.String?,
+          success: json_['success'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (oauthUri != null) 'oauth_uri': oauthUri!,
+        if (success != null) 'success': success!,
+      };
+}
+
 /// Response for checking if a notebook instance is upgradeable.
 typedef CheckInstanceUpgradabilityResponse = $Response;
+
+/// A set of Confidential Instance options.
+class ConfidentialInstanceConfig {
+  /// Defines the type of technology used by the confidential instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED" : No type specified. Do not use
+  /// this value.
+  /// - "SEV" : AMD Secure Encrypted Virtualization.
+  core.String? confidentialInstanceType;
+
+  ConfidentialInstanceConfig({
+    this.confidentialInstanceType,
+  });
+
+  ConfidentialInstanceConfig.fromJson(core.Map json_)
+      : this(
+          confidentialInstanceType:
+              json_['confidentialInstanceType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (confidentialInstanceType != null)
+          'confidentialInstanceType': confidentialInstanceType!,
+      };
+}
 
 /// Response for getting WbI configurations in a location
 class Config {
@@ -1516,6 +1720,12 @@ class Config {
   /// Output only.
   DefaultValues? defaultValues;
 
+  /// Flag to disable the creation of legacy Workbench notebooks (User-managed
+  /// notebooks and Google-managed notebooks).
+  ///
+  /// Output only.
+  core.bool? disableWorkbenchLegacyCreation;
+
   /// The supported values for configuration.
   ///
   /// Output only.
@@ -1524,6 +1734,7 @@ class Config {
   Config({
     this.availableImages,
     this.defaultValues,
+    this.disableWorkbenchLegacyCreation,
     this.supportedValues,
   });
 
@@ -1537,6 +1748,8 @@ class Config {
               ? DefaultValues.fromJson(
                   json_['defaultValues'] as core.Map<core.String, core.dynamic>)
               : null,
+          disableWorkbenchLegacyCreation:
+              json_['disableWorkbenchLegacyCreation'] as core.bool?,
           supportedValues: json_.containsKey('supportedValues')
               ? SupportedValues.fromJson(json_['supportedValues']
                   as core.Map<core.String, core.dynamic>)
@@ -1546,6 +1759,8 @@ class Config {
   core.Map<core.String, core.dynamic> toJson() => {
         if (availableImages != null) 'availableImages': availableImages!,
         if (defaultValues != null) 'defaultValues': defaultValues!,
+        if (disableWorkbenchLegacyCreation != null)
+          'disableWorkbenchLegacyCreation': disableWorkbenchLegacyCreation!,
         if (supportedValues != null) 'supportedValues': supportedValues!,
       };
 }
@@ -1912,6 +2127,11 @@ class GceSetup {
   /// Optional.
   BootDisk? bootDisk;
 
+  /// Confidential instance configuration.
+  ///
+  /// Optional.
+  ConfidentialInstanceConfig? confidentialInstanceConfig;
+
   /// Use a container image to start the notebook instance.
   ///
   /// Optional.
@@ -1968,6 +2188,11 @@ class GceSetup {
   /// Optional.
   core.List<NetworkInterface>? networkInterfaces;
 
+  /// Specifies the reservations that this instance can consume from.
+  ///
+  /// Optional.
+  ReservationAffinity? reservationAffinity;
+
   /// The service account that serves as an identity for the VM instance.
   ///
   /// Currently supports only one service account.
@@ -1996,6 +2221,7 @@ class GceSetup {
   GceSetup({
     this.acceleratorConfigs,
     this.bootDisk,
+    this.confidentialInstanceConfig,
     this.containerImage,
     this.dataDisks,
     this.disablePublicIp,
@@ -2005,6 +2231,7 @@ class GceSetup {
     this.metadata,
     this.minCpuPlatform,
     this.networkInterfaces,
+    this.reservationAffinity,
     this.serviceAccounts,
     this.shieldedInstanceConfig,
     this.tags,
@@ -2021,6 +2248,12 @@ class GceSetup {
               ? BootDisk.fromJson(
                   json_['bootDisk'] as core.Map<core.String, core.dynamic>)
               : null,
+          confidentialInstanceConfig:
+              json_.containsKey('confidentialInstanceConfig')
+                  ? ConfidentialInstanceConfig.fromJson(
+                      json_['confidentialInstanceConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           containerImage: json_.containsKey('containerImage')
               ? ContainerImage.fromJson(json_['containerImage']
                   as core.Map<core.String, core.dynamic>)
@@ -2048,6 +2281,10 @@ class GceSetup {
               ?.map((value) => NetworkInterface.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          reservationAffinity: json_.containsKey('reservationAffinity')
+              ? ReservationAffinity.fromJson(json_['reservationAffinity']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           serviceAccounts: (json_['serviceAccounts'] as core.List?)
               ?.map((value) => ServiceAccount.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -2069,6 +2306,8 @@ class GceSetup {
         if (acceleratorConfigs != null)
           'acceleratorConfigs': acceleratorConfigs!,
         if (bootDisk != null) 'bootDisk': bootDisk!,
+        if (confidentialInstanceConfig != null)
+          'confidentialInstanceConfig': confidentialInstanceConfig!,
         if (containerImage != null) 'containerImage': containerImage!,
         if (dataDisks != null) 'dataDisks': dataDisks!,
         if (disablePublicIp != null) 'disablePublicIp': disablePublicIp!,
@@ -2079,11 +2318,80 @@ class GceSetup {
         if (metadata != null) 'metadata': metadata!,
         if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
         if (networkInterfaces != null) 'networkInterfaces': networkInterfaces!,
+        if (reservationAffinity != null)
+          'reservationAffinity': reservationAffinity!,
         if (serviceAccounts != null) 'serviceAccounts': serviceAccounts!,
         if (shieldedInstanceConfig != null)
           'shieldedInstanceConfig': shieldedInstanceConfig!,
         if (tags != null) 'tags': tags!,
         if (vmImage != null) 'vmImage': vmImage!,
+      };
+}
+
+/// Request message for generating an EUC for the instance owner.
+class GenerateAccessTokenRequest {
+  /// The VM identity token (a JWT) for authenticating the VM.
+  ///
+  /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
+  ///
+  /// Required.
+  core.String? vmToken;
+
+  GenerateAccessTokenRequest({
+    this.vmToken,
+  });
+
+  GenerateAccessTokenRequest.fromJson(core.Map json_)
+      : this(
+          vmToken: json_['vmToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (vmToken != null) 'vmToken': vmToken!,
+      };
+}
+
+/// Response message for generating an EUC for the instance owner.
+class GenerateAccessTokenResponse {
+  /// Short-lived access token string which may be used to access Google APIs.
+  core.String? accessToken;
+
+  /// The time in seconds when the access token expires.
+  ///
+  /// Typically that's 3600.
+  core.int? expiresIn;
+
+  /// Space-separated list of scopes contained in the returned token.
+  ///
+  /// https://cloud.google.com/docs/authentication/token-types#access-contents
+  core.String? scope;
+
+  /// Type of the returned access token (e.g. "Bearer").
+  ///
+  /// It specifies how the token must be used. Bearer tokens may be used by any
+  /// entity without proof of identity.
+  core.String? tokenType;
+
+  GenerateAccessTokenResponse({
+    this.accessToken,
+    this.expiresIn,
+    this.scope,
+    this.tokenType,
+  });
+
+  GenerateAccessTokenResponse.fromJson(core.Map json_)
+      : this(
+          accessToken: json_['access_token'] as core.String?,
+          expiresIn: json_['expires_in'] as core.int?,
+          scope: json_['scope'] as core.String?,
+          tokenType: json_['token_type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessToken != null) 'access_token': accessToken!,
+        if (expiresIn != null) 'expires_in': expiresIn!,
+        if (scope != null) 'scope': scope!,
+        if (tokenType != null) 'token_type': tokenType!,
       };
 }
 
@@ -2133,6 +2441,19 @@ class Instance {
   /// Optional.
   core.bool? disableProxyAccess;
 
+  /// If true, deletion protection will be enabled for this Workbench Instance.
+  ///
+  /// If false, deletion protection will be disabled for this Workbench
+  /// Instance.
+  ///
+  /// Optional.
+  core.bool? enableDeletionProtection;
+
+  /// Flag to enable managed end user credentials for the instance.
+  ///
+  /// Optional.
+  core.bool? enableManagedEuc;
+
   /// Flag that specifies that a notebook can be accessed with third party
   /// identity provider.
   ///
@@ -2175,11 +2496,11 @@ class Instance {
   /// Output only.
   core.String? id;
 
-  /// Input only.
+  /// The owner of this instance after creation.
   ///
-  /// The owner of this instance after creation. Format: `alias@example.com`
-  /// Currently supports one owner only. If not specified, all of the service
-  /// account users of your VM instance's service account can use the instance.
+  /// Format: `alias@example.com` Currently supports one owner only. If not
+  /// specified, all of the service account users of your VM instance's service
+  /// account can use the instance.
   ///
   /// Optional.
   core.List<core.String>? instanceOwners;
@@ -2252,6 +2573,8 @@ class Instance {
     this.createTime,
     this.creator,
     this.disableProxyAccess,
+    this.enableDeletionProtection,
+    this.enableManagedEuc,
     this.enableThirdPartyIdentity,
     this.gceSetup,
     this.healthInfo,
@@ -2274,6 +2597,9 @@ class Instance {
           createTime: json_['createTime'] as core.String?,
           creator: json_['creator'] as core.String?,
           disableProxyAccess: json_['disableProxyAccess'] as core.bool?,
+          enableDeletionProtection:
+              json_['enableDeletionProtection'] as core.bool?,
+          enableManagedEuc: json_['enableManagedEuc'] as core.bool?,
           enableThirdPartyIdentity:
               json_['enableThirdPartyIdentity'] as core.bool?,
           gceSetup: json_.containsKey('gceSetup')
@@ -2318,6 +2644,9 @@ class Instance {
         if (creator != null) 'creator': creator!,
         if (disableProxyAccess != null)
           'disableProxyAccess': disableProxyAccess!,
+        if (enableDeletionProtection != null)
+          'enableDeletionProtection': enableDeletionProtection!,
+        if (enableManagedEuc != null) 'enableManagedEuc': enableManagedEuc!,
         if (enableThirdPartyIdentity != null)
           'enableThirdPartyIdentity': enableThirdPartyIdentity!,
         if (gceSetup != null) 'gceSetup': gceSetup!,
@@ -2716,6 +3045,65 @@ class ReportInstanceInfoSystemRequest {
       };
 }
 
+/// A reservation that an instance can consume from.
+class ReservationAffinity {
+  /// Specifies the type of reservation from which this instance can consume
+  /// resources: RESERVATION_ANY (default), RESERVATION_SPECIFIC, or
+  /// RESERVATION_NONE.
+  ///
+  /// See Consuming reserved instances for examples.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RESERVATION_UNSPECIFIED" : Default type.
+  /// - "RESERVATION_NONE" : Do not consume from any allocated capacity.
+  /// - "RESERVATION_ANY" : Consume any reservation available.
+  /// - "RESERVATION_SPECIFIC" : Must consume from a specific reservation. Must
+  /// specify key value fields for specifying the reservations.
+  core.String? consumeReservationType;
+
+  /// Corresponds to the label key of a reservation resource.
+  ///
+  /// To target a RESERVATION_SPECIFIC by name, use
+  /// compute.googleapis.com/reservation-name as the key and specify the name of
+  /// your reservation as its value.
+  ///
+  /// Optional.
+  core.String? key;
+
+  /// Corresponds to the label values of a reservation resource.
+  ///
+  /// This can be either a name to a reservation in the same project or
+  /// "projects/different-project/reservations/some-reservation-name" to target
+  /// a shared reservation in the same zone but in a different project.
+  ///
+  /// Optional.
+  core.List<core.String>? values;
+
+  ReservationAffinity({
+    this.consumeReservationType,
+    this.key,
+    this.values,
+  });
+
+  ReservationAffinity.fromJson(core.Map json_)
+      : this(
+          consumeReservationType:
+              json_['consumeReservationType'] as core.String?,
+          key: json_['key'] as core.String?,
+          values: (json_['values'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consumeReservationType != null)
+          'consumeReservationType': consumeReservationType!,
+        if (key != null) 'key': key!,
+        if (values != null) 'values': values!,
+      };
+}
+
 /// Request for resetting a notebook instance
 typedef ResetInstanceRequest = $Empty;
 
@@ -2881,7 +3269,7 @@ class ShieldedInstanceConfig {
   /// Enables monitoring and attestation of the boot integrity of the VM
   /// instance. The attestation is performed against the integrity policy
   /// baseline. This baseline is initially derived from the implicitly trusted
-  /// boot image when the VM instance is created. Enabled by default.
+  /// boot image when the VM instance is created.
   ///
   /// Optional.
   core.bool? enableIntegrityMonitoring;
@@ -2896,8 +3284,6 @@ class ShieldedInstanceConfig {
   core.bool? enableSecureBoot;
 
   /// Defines whether the VM instance has the vTPM enabled.
-  ///
-  /// Enabled by default.
   ///
   /// Optional.
   core.bool? enableVtpm;
@@ -3110,7 +3496,7 @@ class UpgradeHistoryEntry {
 typedef UpgradeInstanceRequest = $Empty;
 
 /// Request for upgrading a notebook instance from within the VM
-typedef UpgradeInstanceSystemRequest = $Request11;
+typedef UpgradeInstanceSystemRequest = $Request12;
 
 /// Definition of a custom Compute Engine virtual machine image for starting a
 /// notebook instance with the environment installed directly on the VM.

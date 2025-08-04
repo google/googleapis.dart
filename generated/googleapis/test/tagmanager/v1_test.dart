@@ -297,56 +297,34 @@ void checkUnnamed6(core.List<api.Folder> o) {
   checkFolder(o[1]);
 }
 
-core.List<api.Macro> buildUnnamed7() => [
-      buildMacro(),
-      buildMacro(),
-    ];
-
-void checkUnnamed7(core.List<api.Macro> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkMacro(o[0]);
-  checkMacro(o[1]);
-}
-
-core.List<api.Rule> buildUnnamed8() => [
-      buildRule(),
-      buildRule(),
-    ];
-
-void checkUnnamed8(core.List<api.Rule> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkRule(o[0]);
-  checkRule(o[1]);
-}
-
-core.List<api.Tag> buildUnnamed9() => [
+core.List<api.Tag> buildUnnamed7() => [
       buildTag(),
       buildTag(),
     ];
 
-void checkUnnamed9(core.List<api.Tag> o) {
+void checkUnnamed7(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
 }
 
-core.List<api.Trigger> buildUnnamed10() => [
+core.List<api.Trigger> buildUnnamed8() => [
       buildTrigger(),
       buildTrigger(),
     ];
 
-void checkUnnamed10(core.List<api.Trigger> o) {
+void checkUnnamed8(core.List<api.Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrigger(o[0]);
   checkTrigger(o[1]);
 }
 
-core.List<api.Variable> buildUnnamed11() => [
+core.List<api.Variable> buildUnnamed9() => [
       buildVariable(),
       buildVariable(),
     ];
 
-void checkUnnamed11(core.List<api.Variable> o) {
+void checkUnnamed9(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
@@ -364,13 +342,11 @@ api.ContainerVersion buildContainerVersion() {
     o.deleted = true;
     o.fingerprint = 'foo';
     o.folder = buildUnnamed6();
-    o.macro = buildUnnamed7();
     o.name = 'foo';
     o.notes = 'foo';
-    o.rule = buildUnnamed8();
-    o.tag = buildUnnamed9();
-    o.trigger = buildUnnamed10();
-    o.variable = buildUnnamed11();
+    o.tag = buildUnnamed7();
+    o.trigger = buildUnnamed8();
+    o.variable = buildUnnamed9();
   }
   buildCounterContainerVersion--;
   return o;
@@ -398,7 +374,6 @@ void checkContainerVersion(api.ContainerVersion o) {
       unittest.equals('foo'),
     );
     checkUnnamed6(o.folder!);
-    checkUnnamed7(o.macro!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
@@ -407,10 +382,9 @@ void checkContainerVersion(api.ContainerVersion o) {
       o.notes!,
       unittest.equals('foo'),
     );
-    checkUnnamed8(o.rule!);
-    checkUnnamed9(o.tag!);
-    checkUnnamed10(o.trigger!);
-    checkUnnamed11(o.variable!);
+    checkUnnamed7(o.tag!);
+    checkUnnamed8(o.trigger!);
+    checkUnnamed9(o.variable!);
   }
   buildCounterContainerVersion--;
 }
@@ -425,8 +399,6 @@ api.ContainerVersionHeader buildContainerVersionHeader() {
     o.containerVersionId = 'foo';
     o.deleted = true;
     o.name = 'foo';
-    o.numMacros = 'foo';
-    o.numRules = 'foo';
     o.numTags = 'foo';
     o.numTriggers = 'foo';
     o.numVariables = 'foo';
@@ -453,14 +425,6 @@ void checkContainerVersionHeader(api.ContainerVersionHeader o) {
     unittest.expect(o.deleted!, unittest.isTrue);
     unittest.expect(
       o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.numMacros!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.numRules!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -647,34 +611,34 @@ void checkFolder(api.Folder o) {
   buildCounterFolder--;
 }
 
-core.List<api.Tag> buildUnnamed12() => [
+core.List<api.Tag> buildUnnamed10() => [
       buildTag(),
       buildTag(),
     ];
 
-void checkUnnamed12(core.List<api.Tag> o) {
+void checkUnnamed10(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
 }
 
-core.List<api.Trigger> buildUnnamed13() => [
+core.List<api.Trigger> buildUnnamed11() => [
       buildTrigger(),
       buildTrigger(),
     ];
 
-void checkUnnamed13(core.List<api.Trigger> o) {
+void checkUnnamed11(core.List<api.Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrigger(o[0]);
   checkTrigger(o[1]);
 }
 
-core.List<api.Variable> buildUnnamed14() => [
+core.List<api.Variable> buildUnnamed12() => [
       buildVariable(),
       buildVariable(),
     ];
 
-void checkUnnamed14(core.List<api.Variable> o) {
+void checkUnnamed12(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
@@ -685,9 +649,9 @@ api.FolderEntities buildFolderEntities() {
   final o = api.FolderEntities();
   buildCounterFolderEntities++;
   if (buildCounterFolderEntities < 3) {
-    o.tag = buildUnnamed12();
-    o.trigger = buildUnnamed13();
-    o.variable = buildUnnamed14();
+    o.tag = buildUnnamed10();
+    o.trigger = buildUnnamed11();
+    o.variable = buildUnnamed12();
   }
   buildCounterFolderEntities--;
   return o;
@@ -696,19 +660,19 @@ api.FolderEntities buildFolderEntities() {
 void checkFolderEntities(api.FolderEntities o) {
   buildCounterFolderEntities++;
   if (buildCounterFolderEntities < 3) {
-    checkUnnamed12(o.tag!);
-    checkUnnamed13(o.trigger!);
-    checkUnnamed14(o.variable!);
+    checkUnnamed10(o.tag!);
+    checkUnnamed11(o.trigger!);
+    checkUnnamed12(o.variable!);
   }
   buildCounterFolderEntities--;
 }
 
-core.List<api.UserAccess> buildUnnamed15() => [
+core.List<api.UserAccess> buildUnnamed13() => [
       buildUserAccess(),
       buildUserAccess(),
     ];
 
-void checkUnnamed15(core.List<api.UserAccess> o) {
+void checkUnnamed13(core.List<api.UserAccess> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserAccess(o[0]);
   checkUserAccess(o[1]);
@@ -719,7 +683,7 @@ api.ListAccountUsersResponse buildListAccountUsersResponse() {
   final o = api.ListAccountUsersResponse();
   buildCounterListAccountUsersResponse++;
   if (buildCounterListAccountUsersResponse < 3) {
-    o.userAccess = buildUnnamed15();
+    o.userAccess = buildUnnamed13();
   }
   buildCounterListAccountUsersResponse--;
   return o;
@@ -728,17 +692,17 @@ api.ListAccountUsersResponse buildListAccountUsersResponse() {
 void checkListAccountUsersResponse(api.ListAccountUsersResponse o) {
   buildCounterListAccountUsersResponse++;
   if (buildCounterListAccountUsersResponse < 3) {
-    checkUnnamed15(o.userAccess!);
+    checkUnnamed13(o.userAccess!);
   }
   buildCounterListAccountUsersResponse--;
 }
 
-core.List<api.Account> buildUnnamed16() => [
+core.List<api.Account> buildUnnamed14() => [
       buildAccount(),
       buildAccount(),
     ];
 
-void checkUnnamed16(core.List<api.Account> o) {
+void checkUnnamed14(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccount(o[0]);
   checkAccount(o[1]);
@@ -749,7 +713,7 @@ api.ListAccountsResponse buildListAccountsResponse() {
   final o = api.ListAccountsResponse();
   buildCounterListAccountsResponse++;
   if (buildCounterListAccountsResponse < 3) {
-    o.accounts = buildUnnamed16();
+    o.accounts = buildUnnamed14();
   }
   buildCounterListAccountsResponse--;
   return o;
@@ -758,28 +722,28 @@ api.ListAccountsResponse buildListAccountsResponse() {
 void checkListAccountsResponse(api.ListAccountsResponse o) {
   buildCounterListAccountsResponse++;
   if (buildCounterListAccountsResponse < 3) {
-    checkUnnamed16(o.accounts!);
+    checkUnnamed14(o.accounts!);
   }
   buildCounterListAccountsResponse--;
 }
 
-core.List<api.ContainerVersion> buildUnnamed17() => [
+core.List<api.ContainerVersion> buildUnnamed15() => [
       buildContainerVersion(),
       buildContainerVersion(),
     ];
 
-void checkUnnamed17(core.List<api.ContainerVersion> o) {
+void checkUnnamed15(core.List<api.ContainerVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainerVersion(o[0]);
   checkContainerVersion(o[1]);
 }
 
-core.List<api.ContainerVersionHeader> buildUnnamed18() => [
+core.List<api.ContainerVersionHeader> buildUnnamed16() => [
       buildContainerVersionHeader(),
       buildContainerVersionHeader(),
     ];
 
-void checkUnnamed18(core.List<api.ContainerVersionHeader> o) {
+void checkUnnamed16(core.List<api.ContainerVersionHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainerVersionHeader(o[0]);
   checkContainerVersionHeader(o[1]);
@@ -790,8 +754,8 @@ api.ListContainerVersionsResponse buildListContainerVersionsResponse() {
   final o = api.ListContainerVersionsResponse();
   buildCounterListContainerVersionsResponse++;
   if (buildCounterListContainerVersionsResponse < 3) {
-    o.containerVersion = buildUnnamed17();
-    o.containerVersionHeader = buildUnnamed18();
+    o.containerVersion = buildUnnamed15();
+    o.containerVersionHeader = buildUnnamed16();
   }
   buildCounterListContainerVersionsResponse--;
   return o;
@@ -800,18 +764,18 @@ api.ListContainerVersionsResponse buildListContainerVersionsResponse() {
 void checkListContainerVersionsResponse(api.ListContainerVersionsResponse o) {
   buildCounterListContainerVersionsResponse++;
   if (buildCounterListContainerVersionsResponse < 3) {
-    checkUnnamed17(o.containerVersion!);
-    checkUnnamed18(o.containerVersionHeader!);
+    checkUnnamed15(o.containerVersion!);
+    checkUnnamed16(o.containerVersionHeader!);
   }
   buildCounterListContainerVersionsResponse--;
 }
 
-core.List<api.Container> buildUnnamed19() => [
+core.List<api.Container> buildUnnamed17() => [
       buildContainer(),
       buildContainer(),
     ];
 
-void checkUnnamed19(core.List<api.Container> o) {
+void checkUnnamed17(core.List<api.Container> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainer(o[0]);
   checkContainer(o[1]);
@@ -822,7 +786,7 @@ api.ListContainersResponse buildListContainersResponse() {
   final o = api.ListContainersResponse();
   buildCounterListContainersResponse++;
   if (buildCounterListContainersResponse < 3) {
-    o.containers = buildUnnamed19();
+    o.containers = buildUnnamed17();
   }
   buildCounterListContainersResponse--;
   return o;
@@ -831,17 +795,17 @@ api.ListContainersResponse buildListContainersResponse() {
 void checkListContainersResponse(api.ListContainersResponse o) {
   buildCounterListContainersResponse++;
   if (buildCounterListContainersResponse < 3) {
-    checkUnnamed19(o.containers!);
+    checkUnnamed17(o.containers!);
   }
   buildCounterListContainersResponse--;
 }
 
-core.List<api.Environment> buildUnnamed20() => [
+core.List<api.Environment> buildUnnamed18() => [
       buildEnvironment(),
       buildEnvironment(),
     ];
 
-void checkUnnamed20(core.List<api.Environment> o) {
+void checkUnnamed18(core.List<api.Environment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnvironment(o[0]);
   checkEnvironment(o[1]);
@@ -852,7 +816,7 @@ api.ListEnvironmentsResponse buildListEnvironmentsResponse() {
   final o = api.ListEnvironmentsResponse();
   buildCounterListEnvironmentsResponse++;
   if (buildCounterListEnvironmentsResponse < 3) {
-    o.environments = buildUnnamed20();
+    o.environments = buildUnnamed18();
   }
   buildCounterListEnvironmentsResponse--;
   return o;
@@ -861,17 +825,17 @@ api.ListEnvironmentsResponse buildListEnvironmentsResponse() {
 void checkListEnvironmentsResponse(api.ListEnvironmentsResponse o) {
   buildCounterListEnvironmentsResponse++;
   if (buildCounterListEnvironmentsResponse < 3) {
-    checkUnnamed20(o.environments!);
+    checkUnnamed18(o.environments!);
   }
   buildCounterListEnvironmentsResponse--;
 }
 
-core.List<api.Folder> buildUnnamed21() => [
+core.List<api.Folder> buildUnnamed19() => [
       buildFolder(),
       buildFolder(),
     ];
 
-void checkUnnamed21(core.List<api.Folder> o) {
+void checkUnnamed19(core.List<api.Folder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFolder(o[0]);
   checkFolder(o[1]);
@@ -882,7 +846,7 @@ api.ListFoldersResponse buildListFoldersResponse() {
   final o = api.ListFoldersResponse();
   buildCounterListFoldersResponse++;
   if (buildCounterListFoldersResponse < 3) {
-    o.folders = buildUnnamed21();
+    o.folders = buildUnnamed19();
   }
   buildCounterListFoldersResponse--;
   return o;
@@ -891,17 +855,17 @@ api.ListFoldersResponse buildListFoldersResponse() {
 void checkListFoldersResponse(api.ListFoldersResponse o) {
   buildCounterListFoldersResponse++;
   if (buildCounterListFoldersResponse < 3) {
-    checkUnnamed21(o.folders!);
+    checkUnnamed19(o.folders!);
   }
   buildCounterListFoldersResponse--;
 }
 
-core.List<api.Tag> buildUnnamed22() => [
+core.List<api.Tag> buildUnnamed20() => [
       buildTag(),
       buildTag(),
     ];
 
-void checkUnnamed22(core.List<api.Tag> o) {
+void checkUnnamed20(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
@@ -912,7 +876,7 @@ api.ListTagsResponse buildListTagsResponse() {
   final o = api.ListTagsResponse();
   buildCounterListTagsResponse++;
   if (buildCounterListTagsResponse < 3) {
-    o.tags = buildUnnamed22();
+    o.tags = buildUnnamed20();
   }
   buildCounterListTagsResponse--;
   return o;
@@ -921,17 +885,17 @@ api.ListTagsResponse buildListTagsResponse() {
 void checkListTagsResponse(api.ListTagsResponse o) {
   buildCounterListTagsResponse++;
   if (buildCounterListTagsResponse < 3) {
-    checkUnnamed22(o.tags!);
+    checkUnnamed20(o.tags!);
   }
   buildCounterListTagsResponse--;
 }
 
-core.List<api.Trigger> buildUnnamed23() => [
+core.List<api.Trigger> buildUnnamed21() => [
       buildTrigger(),
       buildTrigger(),
     ];
 
-void checkUnnamed23(core.List<api.Trigger> o) {
+void checkUnnamed21(core.List<api.Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrigger(o[0]);
   checkTrigger(o[1]);
@@ -942,7 +906,7 @@ api.ListTriggersResponse buildListTriggersResponse() {
   final o = api.ListTriggersResponse();
   buildCounterListTriggersResponse++;
   if (buildCounterListTriggersResponse < 3) {
-    o.triggers = buildUnnamed23();
+    o.triggers = buildUnnamed21();
   }
   buildCounterListTriggersResponse--;
   return o;
@@ -951,17 +915,17 @@ api.ListTriggersResponse buildListTriggersResponse() {
 void checkListTriggersResponse(api.ListTriggersResponse o) {
   buildCounterListTriggersResponse++;
   if (buildCounterListTriggersResponse < 3) {
-    checkUnnamed23(o.triggers!);
+    checkUnnamed21(o.triggers!);
   }
   buildCounterListTriggersResponse--;
 }
 
-core.List<api.Variable> buildUnnamed24() => [
+core.List<api.Variable> buildUnnamed22() => [
       buildVariable(),
       buildVariable(),
     ];
 
-void checkUnnamed24(core.List<api.Variable> o) {
+void checkUnnamed22(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
@@ -972,7 +936,7 @@ api.ListVariablesResponse buildListVariablesResponse() {
   final o = api.ListVariablesResponse();
   buildCounterListVariablesResponse++;
   if (buildCounterListVariablesResponse < 3) {
-    o.variables = buildUnnamed24();
+    o.variables = buildUnnamed22();
   }
   buildCounterListVariablesResponse--;
   return o;
@@ -981,9 +945,113 @@ api.ListVariablesResponse buildListVariablesResponse() {
 void checkListVariablesResponse(api.ListVariablesResponse o) {
   buildCounterListVariablesResponse++;
   if (buildCounterListVariablesResponse < 3) {
-    checkUnnamed24(o.variables!);
+    checkUnnamed22(o.variables!);
   }
   buildCounterListVariablesResponse--;
+}
+
+core.List<api.Parameter> buildUnnamed23() => [
+      buildParameter(),
+      buildParameter(),
+    ];
+
+void checkUnnamed23(core.List<api.Parameter> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkParameter(o[0]);
+  checkParameter(o[1]);
+}
+
+core.List<api.Parameter> buildUnnamed24() => [
+      buildParameter(),
+      buildParameter(),
+    ];
+
+void checkUnnamed24(core.List<api.Parameter> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkParameter(o[0]);
+  checkParameter(o[1]);
+}
+
+core.int buildCounterParameter = 0;
+api.Parameter buildParameter() {
+  final o = api.Parameter();
+  buildCounterParameter++;
+  if (buildCounterParameter < 3) {
+    o.key = 'foo';
+    o.list = buildUnnamed23();
+    o.map = buildUnnamed24();
+    o.type = 'foo';
+    o.value = 'foo';
+  }
+  buildCounterParameter--;
+  return o;
+}
+
+void checkParameter(api.Parameter o) {
+  buildCounterParameter++;
+  if (buildCounterParameter < 3) {
+    unittest.expect(
+      o.key!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed23(o.list!);
+    checkUnnamed24(o.map!);
+    unittest.expect(
+      o.type!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.value!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterParameter--;
+}
+
+core.int buildCounterPublishContainerVersionResponse = 0;
+api.PublishContainerVersionResponse buildPublishContainerVersionResponse() {
+  final o = api.PublishContainerVersionResponse();
+  buildCounterPublishContainerVersionResponse++;
+  if (buildCounterPublishContainerVersionResponse < 3) {
+    o.compilerError = true;
+    o.containerVersion = buildContainerVersion();
+  }
+  buildCounterPublishContainerVersionResponse--;
+  return o;
+}
+
+void checkPublishContainerVersionResponse(
+    api.PublishContainerVersionResponse o) {
+  buildCounterPublishContainerVersionResponse++;
+  if (buildCounterPublishContainerVersionResponse < 3) {
+    unittest.expect(o.compilerError!, unittest.isTrue);
+    checkContainerVersion(o.containerVersion!);
+  }
+  buildCounterPublishContainerVersionResponse--;
+}
+
+core.int buildCounterSetupTag = 0;
+api.SetupTag buildSetupTag() {
+  final o = api.SetupTag();
+  buildCounterSetupTag++;
+  if (buildCounterSetupTag < 3) {
+    o.stopOnSetupFailure = true;
+    o.tagName = 'foo';
+  }
+  buildCounterSetupTag--;
+  return o;
+}
+
+void checkSetupTag(api.SetupTag o) {
+  buildCounterSetupTag++;
+  if (buildCounterSetupTag < 3) {
+    unittest.expect(o.stopOnSetupFailure!, unittest.isTrue);
+    unittest.expect(
+      o.tagName!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterSetupTag--;
 }
 
 core.List<core.String> buildUnnamed25() => [
@@ -1031,339 +1099,23 @@ void checkUnnamed27(core.List<api.Parameter> o) {
   checkParameter(o[1]);
 }
 
-core.int buildCounterMacro = 0;
-api.Macro buildMacro() {
-  final o = api.Macro();
-  buildCounterMacro++;
-  if (buildCounterMacro < 3) {
-    o.accountId = 'foo';
-    o.containerId = 'foo';
-    o.disablingRuleId = buildUnnamed25();
-    o.enablingRuleId = buildUnnamed26();
-    o.fingerprint = 'foo';
-    o.macroId = 'foo';
-    o.name = 'foo';
-    o.notes = 'foo';
-    o.parameter = buildUnnamed27();
-    o.parentFolderId = 'foo';
-    o.scheduleEndMs = 'foo';
-    o.scheduleStartMs = 'foo';
-    o.type = 'foo';
-  }
-  buildCounterMacro--;
-  return o;
-}
-
-void checkMacro(api.Macro o) {
-  buildCounterMacro++;
-  if (buildCounterMacro < 3) {
-    unittest.expect(
-      o.accountId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.containerId!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed25(o.disablingRuleId!);
-    checkUnnamed26(o.enablingRuleId!);
-    unittest.expect(
-      o.fingerprint!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.macroId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.notes!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed27(o.parameter!);
-    unittest.expect(
-      o.parentFolderId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.scheduleEndMs!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.scheduleStartMs!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterMacro--;
-}
-
-core.List<api.Parameter> buildUnnamed28() => [
-      buildParameter(),
-      buildParameter(),
-    ];
-
-void checkUnnamed28(core.List<api.Parameter> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkParameter(o[0]);
-  checkParameter(o[1]);
-}
-
-core.List<api.Parameter> buildUnnamed29() => [
-      buildParameter(),
-      buildParameter(),
-    ];
-
-void checkUnnamed29(core.List<api.Parameter> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkParameter(o[0]);
-  checkParameter(o[1]);
-}
-
-core.int buildCounterParameter = 0;
-api.Parameter buildParameter() {
-  final o = api.Parameter();
-  buildCounterParameter++;
-  if (buildCounterParameter < 3) {
-    o.key = 'foo';
-    o.list = buildUnnamed28();
-    o.map = buildUnnamed29();
-    o.type = 'foo';
-    o.value = 'foo';
-  }
-  buildCounterParameter--;
-  return o;
-}
-
-void checkParameter(api.Parameter o) {
-  buildCounterParameter++;
-  if (buildCounterParameter < 3) {
-    unittest.expect(
-      o.key!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed28(o.list!);
-    checkUnnamed29(o.map!);
-    unittest.expect(
-      o.type!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.value!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterParameter--;
-}
-
-core.int buildCounterPublishContainerVersionResponse = 0;
-api.PublishContainerVersionResponse buildPublishContainerVersionResponse() {
-  final o = api.PublishContainerVersionResponse();
-  buildCounterPublishContainerVersionResponse++;
-  if (buildCounterPublishContainerVersionResponse < 3) {
-    o.compilerError = true;
-    o.containerVersion = buildContainerVersion();
-  }
-  buildCounterPublishContainerVersionResponse--;
-  return o;
-}
-
-void checkPublishContainerVersionResponse(
-    api.PublishContainerVersionResponse o) {
-  buildCounterPublishContainerVersionResponse++;
-  if (buildCounterPublishContainerVersionResponse < 3) {
-    unittest.expect(o.compilerError!, unittest.isTrue);
-    checkContainerVersion(o.containerVersion!);
-  }
-  buildCounterPublishContainerVersionResponse--;
-}
-
-core.List<api.Condition> buildUnnamed30() => [
-      buildCondition(),
-      buildCondition(),
-    ];
-
-void checkUnnamed30(core.List<api.Condition> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkCondition(o[0]);
-  checkCondition(o[1]);
-}
-
-core.int buildCounterRule = 0;
-api.Rule buildRule() {
-  final o = api.Rule();
-  buildCounterRule++;
-  if (buildCounterRule < 3) {
-    o.accountId = 'foo';
-    o.condition = buildUnnamed30();
-    o.containerId = 'foo';
-    o.fingerprint = 'foo';
-    o.name = 'foo';
-    o.notes = 'foo';
-    o.ruleId = 'foo';
-  }
-  buildCounterRule--;
-  return o;
-}
-
-void checkRule(api.Rule o) {
-  buildCounterRule++;
-  if (buildCounterRule < 3) {
-    unittest.expect(
-      o.accountId!,
-      unittest.equals('foo'),
-    );
-    checkUnnamed30(o.condition!);
-    unittest.expect(
-      o.containerId!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.fingerprint!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.name!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.notes!,
-      unittest.equals('foo'),
-    );
-    unittest.expect(
-      o.ruleId!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterRule--;
-}
-
-core.int buildCounterSetupTag = 0;
-api.SetupTag buildSetupTag() {
-  final o = api.SetupTag();
-  buildCounterSetupTag++;
-  if (buildCounterSetupTag < 3) {
-    o.stopOnSetupFailure = true;
-    o.tagName = 'foo';
-  }
-  buildCounterSetupTag--;
-  return o;
-}
-
-void checkSetupTag(api.SetupTag o) {
-  buildCounterSetupTag++;
-  if (buildCounterSetupTag < 3) {
-    unittest.expect(o.stopOnSetupFailure!, unittest.isTrue);
-    unittest.expect(
-      o.tagName!,
-      unittest.equals('foo'),
-    );
-  }
-  buildCounterSetupTag--;
-}
-
-core.List<core.String> buildUnnamed31() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed31(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed32() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed32(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed33() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed33(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<core.String> buildUnnamed34() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed34(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.List<api.Parameter> buildUnnamed35() => [
-      buildParameter(),
-      buildParameter(),
-    ];
-
-void checkUnnamed35(core.List<api.Parameter> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkParameter(o[0]);
-  checkParameter(o[1]);
-}
-
-core.List<api.SetupTag> buildUnnamed36() => [
+core.List<api.SetupTag> buildUnnamed28() => [
       buildSetupTag(),
       buildSetupTag(),
     ];
 
-void checkUnnamed36(core.List<api.SetupTag> o) {
+void checkUnnamed28(core.List<api.SetupTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSetupTag(o[0]);
   checkSetupTag(o[1]);
 }
 
-core.List<api.TeardownTag> buildUnnamed37() => [
+core.List<api.TeardownTag> buildUnnamed29() => [
       buildTeardownTag(),
       buildTeardownTag(),
     ];
 
-void checkUnnamed37(core.List<api.TeardownTag> o) {
+void checkUnnamed29(core.List<api.TeardownTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTeardownTag(o[0]);
   checkTeardownTag(o[1]);
@@ -1375,25 +1127,23 @@ api.Tag buildTag() {
   buildCounterTag++;
   if (buildCounterTag < 3) {
     o.accountId = 'foo';
-    o.blockingRuleId = buildUnnamed31();
-    o.blockingTriggerId = buildUnnamed32();
+    o.blockingTriggerId = buildUnnamed25();
     o.containerId = 'foo';
     o.fingerprint = 'foo';
-    o.firingRuleId = buildUnnamed33();
-    o.firingTriggerId = buildUnnamed34();
+    o.firingTriggerId = buildUnnamed26();
     o.liveOnly = true;
     o.name = 'foo';
     o.notes = 'foo';
-    o.parameter = buildUnnamed35();
+    o.parameter = buildUnnamed27();
     o.parentFolderId = 'foo';
     o.paused = true;
     o.priority = buildParameter();
     o.scheduleEndMs = 'foo';
     o.scheduleStartMs = 'foo';
-    o.setupTag = buildUnnamed36();
+    o.setupTag = buildUnnamed28();
     o.tagFiringOption = 'foo';
     o.tagId = 'foo';
-    o.teardownTag = buildUnnamed37();
+    o.teardownTag = buildUnnamed29();
     o.type = 'foo';
   }
   buildCounterTag--;
@@ -1407,8 +1157,7 @@ void checkTag(api.Tag o) {
       o.accountId!,
       unittest.equals('foo'),
     );
-    checkUnnamed31(o.blockingRuleId!);
-    checkUnnamed32(o.blockingTriggerId!);
+    checkUnnamed25(o.blockingTriggerId!);
     unittest.expect(
       o.containerId!,
       unittest.equals('foo'),
@@ -1417,8 +1166,7 @@ void checkTag(api.Tag o) {
       o.fingerprint!,
       unittest.equals('foo'),
     );
-    checkUnnamed33(o.firingRuleId!);
-    checkUnnamed34(o.firingTriggerId!);
+    checkUnnamed26(o.firingTriggerId!);
     unittest.expect(o.liveOnly!, unittest.isTrue);
     unittest.expect(
       o.name!,
@@ -1428,7 +1176,7 @@ void checkTag(api.Tag o) {
       o.notes!,
       unittest.equals('foo'),
     );
-    checkUnnamed35(o.parameter!);
+    checkUnnamed27(o.parameter!);
     unittest.expect(
       o.parentFolderId!,
       unittest.equals('foo'),
@@ -1443,7 +1191,7 @@ void checkTag(api.Tag o) {
       o.scheduleStartMs!,
       unittest.equals('foo'),
     );
-    checkUnnamed36(o.setupTag!);
+    checkUnnamed28(o.setupTag!);
     unittest.expect(
       o.tagFiringOption!,
       unittest.equals('foo'),
@@ -1452,7 +1200,7 @@ void checkTag(api.Tag o) {
       o.tagId!,
       unittest.equals('foo'),
     );
-    checkUnnamed37(o.teardownTag!);
+    checkUnnamed29(o.teardownTag!);
     unittest.expect(
       o.type!,
       unittest.equals('foo'),
@@ -1485,45 +1233,45 @@ void checkTeardownTag(api.TeardownTag o) {
   buildCounterTeardownTag--;
 }
 
-core.List<api.Condition> buildUnnamed38() => [
+core.List<api.Condition> buildUnnamed30() => [
       buildCondition(),
       buildCondition(),
     ];
 
-void checkUnnamed38(core.List<api.Condition> o) {
+void checkUnnamed30(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-core.List<api.Condition> buildUnnamed39() => [
+core.List<api.Condition> buildUnnamed31() => [
       buildCondition(),
       buildCondition(),
     ];
 
-void checkUnnamed39(core.List<api.Condition> o) {
+void checkUnnamed31(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-core.List<api.Condition> buildUnnamed40() => [
+core.List<api.Condition> buildUnnamed32() => [
       buildCondition(),
       buildCondition(),
     ];
 
-void checkUnnamed40(core.List<api.Condition> o) {
+void checkUnnamed32(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-core.List<api.Parameter> buildUnnamed41() => [
+core.List<api.Parameter> buildUnnamed33() => [
       buildParameter(),
       buildParameter(),
     ];
 
-void checkUnnamed41(core.List<api.Parameter> o) {
+void checkUnnamed33(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -1535,13 +1283,13 @@ api.Trigger buildTrigger() {
   buildCounterTrigger++;
   if (buildCounterTrigger < 3) {
     o.accountId = 'foo';
-    o.autoEventFilter = buildUnnamed38();
+    o.autoEventFilter = buildUnnamed30();
     o.checkValidation = buildParameter();
     o.containerId = 'foo';
     o.continuousTimeMinMilliseconds = buildParameter();
-    o.customEventFilter = buildUnnamed39();
+    o.customEventFilter = buildUnnamed31();
     o.eventName = buildParameter();
-    o.filter = buildUnnamed40();
+    o.filter = buildUnnamed32();
     o.fingerprint = 'foo';
     o.horizontalScrollPercentageList = buildParameter();
     o.interval = buildParameter();
@@ -1549,7 +1297,7 @@ api.Trigger buildTrigger() {
     o.limit = buildParameter();
     o.maxTimerLengthSeconds = buildParameter();
     o.name = 'foo';
-    o.parameter = buildUnnamed41();
+    o.parameter = buildUnnamed33();
     o.parentFolderId = 'foo';
     o.selector = buildParameter();
     o.totalTimeMinMilliseconds = buildParameter();
@@ -1574,16 +1322,16 @@ void checkTrigger(api.Trigger o) {
       o.accountId!,
       unittest.equals('foo'),
     );
-    checkUnnamed38(o.autoEventFilter!);
+    checkUnnamed30(o.autoEventFilter!);
     checkParameter(o.checkValidation!);
     unittest.expect(
       o.containerId!,
       unittest.equals('foo'),
     );
     checkParameter(o.continuousTimeMinMilliseconds!);
-    checkUnnamed39(o.customEventFilter!);
+    checkUnnamed31(o.customEventFilter!);
     checkParameter(o.eventName!);
-    checkUnnamed40(o.filter!);
+    checkUnnamed32(o.filter!);
     unittest.expect(
       o.fingerprint!,
       unittest.equals('foo'),
@@ -1597,7 +1345,7 @@ void checkTrigger(api.Trigger o) {
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed41(o.parameter!);
+    checkUnnamed33(o.parameter!);
     unittest.expect(
       o.parentFolderId!,
       unittest.equals('foo'),
@@ -1623,12 +1371,12 @@ void checkTrigger(api.Trigger o) {
   buildCounterTrigger--;
 }
 
-core.List<api.ContainerAccess> buildUnnamed42() => [
+core.List<api.ContainerAccess> buildUnnamed34() => [
       buildContainerAccess(),
       buildContainerAccess(),
     ];
 
-void checkUnnamed42(core.List<api.ContainerAccess> o) {
+void checkUnnamed34(core.List<api.ContainerAccess> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainerAccess(o[0]);
   checkContainerAccess(o[1]);
@@ -1641,7 +1389,7 @@ api.UserAccess buildUserAccess() {
   if (buildCounterUserAccess < 3) {
     o.accountAccess = buildAccountAccess();
     o.accountId = 'foo';
-    o.containerAccess = buildUnnamed42();
+    o.containerAccess = buildUnnamed34();
     o.emailAddress = 'foo';
     o.permissionId = 'foo';
   }
@@ -1657,7 +1405,7 @@ void checkUserAccess(api.UserAccess o) {
       o.accountId!,
       unittest.equals('foo'),
     );
-    checkUnnamed42(o.containerAccess!);
+    checkUnnamed34(o.containerAccess!);
     unittest.expect(
       o.emailAddress!,
       unittest.equals('foo'),
@@ -1670,12 +1418,12 @@ void checkUserAccess(api.UserAccess o) {
   buildCounterUserAccess--;
 }
 
-core.List<core.String> buildUnnamed43() => [
+core.List<core.String> buildUnnamed35() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed43(core.List<core.String> o) {
+void checkUnnamed35(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1687,12 +1435,12 @@ void checkUnnamed43(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed44() => [
+core.List<core.String> buildUnnamed36() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed44(core.List<core.String> o) {
+void checkUnnamed36(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1704,12 +1452,12 @@ void checkUnnamed44(core.List<core.String> o) {
   );
 }
 
-core.List<api.Parameter> buildUnnamed45() => [
+core.List<api.Parameter> buildUnnamed37() => [
       buildParameter(),
       buildParameter(),
     ];
 
-void checkUnnamed45(core.List<api.Parameter> o) {
+void checkUnnamed37(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -1722,12 +1470,12 @@ api.Variable buildVariable() {
   if (buildCounterVariable < 3) {
     o.accountId = 'foo';
     o.containerId = 'foo';
-    o.disablingTriggerId = buildUnnamed43();
-    o.enablingTriggerId = buildUnnamed44();
+    o.disablingTriggerId = buildUnnamed35();
+    o.enablingTriggerId = buildUnnamed36();
     o.fingerprint = 'foo';
     o.name = 'foo';
     o.notes = 'foo';
-    o.parameter = buildUnnamed45();
+    o.parameter = buildUnnamed37();
     o.parentFolderId = 'foo';
     o.scheduleEndMs = 'foo';
     o.scheduleStartMs = 'foo';
@@ -1749,8 +1497,8 @@ void checkVariable(api.Variable o) {
       o.containerId!,
       unittest.equals('foo'),
     );
-    checkUnnamed43(o.disablingTriggerId!);
-    checkUnnamed44(o.enablingTriggerId!);
+    checkUnnamed35(o.disablingTriggerId!);
+    checkUnnamed36(o.enablingTriggerId!);
     unittest.expect(
       o.fingerprint!,
       unittest.equals('foo'),
@@ -1763,7 +1511,7 @@ void checkVariable(api.Variable o) {
       o.notes!,
       unittest.equals('foo'),
     );
-    checkUnnamed45(o.parameter!);
+    checkUnnamed37(o.parameter!);
     unittest.expect(
       o.parentFolderId!,
       unittest.equals('foo'),
@@ -1788,12 +1536,12 @@ void checkVariable(api.Variable o) {
   buildCounterVariable--;
 }
 
-core.List<core.String> buildUnnamed46() => [
+core.List<core.String> buildUnnamed38() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed46(core.List<core.String> o) {
+void checkUnnamed38(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1805,12 +1553,12 @@ void checkUnnamed46(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed47() => [
+core.List<core.String> buildUnnamed39() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed47(core.List<core.String> o) {
+void checkUnnamed39(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -1822,12 +1570,12 @@ void checkUnnamed47(core.List<core.String> o) {
   );
 }
 
-core.List<core.String> buildUnnamed48() => [
+core.List<core.String> buildUnnamed40() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed48(core.List<core.String> o) {
+void checkUnnamed40(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2050,16 +1798,6 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-Macro', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildMacro();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Macro.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkMacro(od);
-    });
-  });
-
   unittest.group('obj-schema-Parameter', () {
     unittest.test('to-json--from-json', () async {
       final o = buildParameter();
@@ -2077,16 +1815,6 @@ void main() {
       final od = api.PublishContainerVersionResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkPublishContainerVersionResponse(od);
-    });
-  });
-
-  unittest.group('obj-schema-Rule', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildRule();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          api.Rule.fromJson(oJson as core.Map<core.String, core.dynamic>);
-      checkRule(od);
     });
   });
 
@@ -3689,9 +3417,9 @@ void main() {
       final arg_accountId = 'foo';
       final arg_containerId = 'foo';
       final arg_folderId = 'foo';
-      final arg_tagId = buildUnnamed46();
-      final arg_triggerId = buildUnnamed47();
-      final arg_variableId = buildUnnamed48();
+      final arg_tagId = buildUnnamed38();
+      final arg_triggerId = buildUnnamed39();
+      final arg_variableId = buildUnnamed40();
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         final obj =

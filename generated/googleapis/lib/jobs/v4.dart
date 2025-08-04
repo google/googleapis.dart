@@ -2569,8 +2569,8 @@ class Job {
   /// Deprecated.
   /// Possible string values are:
   /// - "VISIBILITY_UNSPECIFIED" : Default value.
-  /// - "ACCOUNT_ONLY" : The resource is only visible to the GCP account who
-  /// owns it.
+  /// - "ACCOUNT_ONLY" : The resource is only visible to the Google Cloud
+  /// account who owns it.
   /// - "SHARED_WITH_GOOGLE" : The resource is visible to the owner and may be
   /// visible to other applications and processes at Google.
   /// - "SHARED_WITH_PUBLIC" : The resource is visible to the owner and may be
@@ -3475,19 +3475,20 @@ class Operation {
       };
 }
 
-/// Represents a postal address.
+/// Represents a postal address (for example, for postal delivery or payments
+/// addresses).
 ///
-/// For example for postal delivery or payments addresses. Given a postal
-/// address, a postal service can deliver items to a premise, P.O. Box or
-/// similar. It is not intended to model geographical locations (roads, towns,
-/// mountains). In typical usage an address would be created by user input or
-/// from importing existing data, depending on the type of process. Advice on
-/// address input / editing: - Use an internationalization-ready address widget
-/// such as https://github.com/google/libaddressinput) - Users should not be
-/// presented with UI elements for input or editing of fields outside countries
-/// where that field is used. For more guidance on how to use this schema, see:
-/// https://support.google.com/business/answer/6397478
-typedef PostalAddress = $PostalAddress;
+/// Given a postal address, a postal service can deliver items to a premise,
+/// P.O. box or similar. It is not intended to model geographical locations
+/// (roads, towns, mountains). In typical usage, an address would be created by
+/// user input or from importing existing data, depending on the type of
+/// process. Advice on address input or editing: - Use an
+/// internationalization-ready address widget such as
+/// https://github.com/google/libaddressinput. - Users should not be presented
+/// with UI elements for input or editing of fields outside countries where that
+/// field is used. For more guidance on how to use this schema, see:
+/// https://support.google.com/business/answer/6397478.
+typedef PostalAddress = $PostalAddress00;
 
 /// Options for job processing.
 class ProcessingOptions {

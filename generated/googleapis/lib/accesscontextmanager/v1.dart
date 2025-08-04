@@ -1828,19 +1828,19 @@ class OrganizationsGcpUserAccessBindingsResource {
   /// [append] - Optional. This field controls whether or not certain repeated
   /// settings in the update request overwrite or append to existing settings on
   /// the binding. If true, then append. Otherwise overwrite. So far, only
-  /// scoped_access_settings with reauth_settings supports appending. Global
+  /// scoped_access_settings with session_settings supports appending. Global
   /// access_levels, access_levels in scoped_access_settings,
-  /// dry_run_access_levels, reauth_settings, and session_settings are not
-  /// compatible with append functionality, and the request will return an error
-  /// if append=true when these settings are in the update_mask. The request
-  /// will also return an error if append=true when "scoped_access_settings" is
-  /// not set in the update_mask.
+  /// dry_run_access_levels, and session_settings are not compatible with append
+  /// functionality, and the request will return an error if append=true when
+  /// these settings are in the update_mask. The request will also return an
+  /// error if append=true when "scoped_access_settings" is not set in the
+  /// update_mask.
   ///
   /// [updateMask] - Required. Only the fields specified in this mask are
   /// updated. Because name and group_key cannot be changed, update_mask is
   /// required and may only contain the following fields: `access_levels`,
-  /// `dry_run_access_levels`, `reauth_settings` `session_settings`,
-  /// `scoped_access_settings`. update_mask { paths: "access_levels" }
+  /// `dry_run_access_levels`, `session_settings`, `scoped_access_settings`.
+  /// update_mask { paths: "access_levels" }
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2889,10 +2889,17 @@ class EgressTo {
   /// to all resources outside the perimeter.
   core.List<core.String>? resources;
 
+  /// IAM roles that represent the set of operations that the sources specified
+  /// in the corresponding EgressFrom.
+  ///
+  /// are allowed to perform in this ServicePerimeter.
+  core.List<core.String>? roles;
+
   EgressTo({
     this.externalResources,
     this.operations,
     this.resources,
+    this.roles,
   });
 
   EgressTo.fromJson(core.Map json_)
@@ -2907,12 +2914,16 @@ class EgressTo {
           resources: (json_['resources'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          roles: (json_['roles'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (externalResources != null) 'externalResources': externalResources!,
         if (operations != null) 'operations': operations!,
         if (resources != null) 'resources': resources!,
+        if (roles != null) 'roles': roles!,
       };
 }
 
@@ -2965,15 +2976,15 @@ class GcpUserAccessBinding {
   /// Optional.
   core.List<core.String>? dryRunAccessLevels;
 
-  /// Google Group id whose members are subject to this binding's restrictions.
+  /// Google Group id whose users are subject to this binding's restrictions.
   ///
   /// See "id" in the
-  /// [G Suite Directory API's Groups resource](https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+  /// [Google Workspace Directory API's Group Resource](https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
   /// If a group's email address/alias is changed, this resource will continue
   /// to point at the changed group. This field does not accept group email
   /// addresses or aliases. Example: "01d520gv4vjcrht"
   ///
-  /// Required. Immutable.
+  /// Optional. Immutable.
   core.String? groupKey;
 
   /// Assigned by the server during creation.
@@ -3218,9 +3229,15 @@ class IngressTo {
   /// perimeter are allowed.
   core.List<core.String>? resources;
 
+  /// IAM roles that represent the set of operations that the sources specified
+  /// in the corresponding IngressFrom are allowed to perform in this
+  /// ServicePerimeter.
+  core.List<core.String>? roles;
+
   IngressTo({
     this.operations,
     this.resources,
+    this.roles,
   });
 
   IngressTo.fromJson(core.Map json_)
@@ -3232,11 +3249,15 @@ class IngressTo {
           resources: (json_['resources'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
+          roles: (json_['roles'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (operations != null) 'operations': operations!,
         if (resources != null) 'resources': resources!,
+        if (roles != null) 'roles': roles!,
       };
 }
 

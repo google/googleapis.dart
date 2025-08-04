@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241116",
+    "revision": "20250503",
     "rootUrl": "https://ml.googleapis.com/",
     "servicePath": "",
     "title": "AI Platform Training & Prediction API",

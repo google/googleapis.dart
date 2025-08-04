@@ -68,6 +68,11 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://composer.asia-southeast3.rep.googleapis.com/",
+            "location": "asia-southeast3"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://composer.australia-southeast1.rep.googleapis.com/",
             "location": "australia-southeast1"
         },
@@ -103,6 +108,21 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://composer.europe-west10.rep.googleapis.com/",
+            "location": "europe-west10"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://composer.europe-west12.rep.googleapis.com/",
+            "location": "europe-west12"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://composer.europe-west15.rep.googleapis.com/",
+            "location": "europe-west15"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://composer.europe-west2.rep.googleapis.com/",
             "location": "europe-west2"
         },
@@ -130,16 +150,6 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://composer.europe-west9.rep.googleapis.com/",
             "location": "europe-west9"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://composer.europe-west10.rep.googleapis.com/",
-            "location": "europe-west10"
-        },
-        {
-            "description": "Regional Endpoint",
-            "endpointUrl": "https://composer.europe-west12.rep.googleapis.com/",
-            "location": "europe-west12"
         },
         {
             "description": "Regional Endpoint",
@@ -247,7 +257,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250303",
+    "revision": "20250630",
     "rootUrl": "https://composer.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Composer API",
@@ -645,6 +655,34 @@
                                     },
                                     "response": {
                                         "$ref": "PollAirflowCommandResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "restartWebServer": {
+                                    "description": "Restart Airflow web server.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/environments/{environmentsId}:restartWebServer",
+                                    "httpMethod": "POST",
+                                    "id": "composer.projects.locations.environments.restartWebServer",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The resource name of the environment to restart the web server for, in the form: \"projects/{projectId}/locations/{locationId}/environments/{environmentId}\"",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:restartWebServer",
+                                    "request": {
+                                        "$ref": "RestartWebServerRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -2331,6 +2369,12 @@
                     "description": "Optional. The configuration for scheduled snapshot creation mechanism."
                 }
             },
+            "type": "object"
+        },
+        "RestartWebServerRequest": {
+            "description": "Restart Airflow web server.",
+            "id": "RestartWebServerRequest",
+            "properties": {},
             "type": "object"
         },
         "SaveSnapshotRequest": {

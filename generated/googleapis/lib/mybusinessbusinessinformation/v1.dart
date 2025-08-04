@@ -2009,6 +2009,9 @@ class Metadata {
   /// Output only.
   core.bool? hasVoiceOfMerchant;
 
+  /// Output only.
+  core.bool? isParticularlyPersonalPlace;
+
   /// A link to the location on Maps.
   ///
   /// Output only.
@@ -2041,6 +2044,7 @@ class Metadata {
     this.hasGoogleUpdated,
     this.hasPendingEdits,
     this.hasVoiceOfMerchant,
+    this.isParticularlyPersonalPlace,
     this.mapsUri,
     this.newReviewUri,
     this.placeId,
@@ -2059,6 +2063,8 @@ class Metadata {
           hasGoogleUpdated: json_['hasGoogleUpdated'] as core.bool?,
           hasPendingEdits: json_['hasPendingEdits'] as core.bool?,
           hasVoiceOfMerchant: json_['hasVoiceOfMerchant'] as core.bool?,
+          isParticularlyPersonalPlace:
+              json_['isParticularlyPersonalPlace'] as core.bool?,
           mapsUri: json_['mapsUri'] as core.String?,
           newReviewUri: json_['newReviewUri'] as core.String?,
           placeId: json_['placeId'] as core.String?,
@@ -2082,6 +2088,8 @@ class Metadata {
         if (hasPendingEdits != null) 'hasPendingEdits': hasPendingEdits!,
         if (hasVoiceOfMerchant != null)
           'hasVoiceOfMerchant': hasVoiceOfMerchant!,
+        if (isParticularlyPersonalPlace != null)
+          'isParticularlyPersonalPlace': isParticularlyPersonalPlace!,
         if (mapsUri != null) 'mapsUri': mapsUri!,
         if (newReviewUri != null) 'newReviewUri': newReviewUri!,
         if (placeId != null) 'placeId': placeId!,
@@ -2320,19 +2328,20 @@ class Places {
       };
 }
 
-/// Represents a postal address.
+/// Represents a postal address, such as for postal delivery or payments
+/// addresses.
 ///
-/// For example for postal delivery or payments addresses. Given a postal
-/// address, a postal service can deliver items to a premise, P.O. Box or
-/// similar. It is not intended to model geographical locations (roads, towns,
-/// mountains). In typical usage an address would be created by user input or
-/// from importing existing data, depending on the type of process. Advice on
-/// address input / editing: - Use an internationalization-ready address widget
-/// such as https://github.com/google/libaddressinput) - Users should not be
-/// presented with UI elements for input or editing of fields outside countries
-/// where that field is used. For more guidance on how to use this schema, see:
-/// https://support.google.com/business/answer/6397478
-typedef PostalAddress = $PostalAddress;
+/// With a postal address, a postal service can deliver items to a premise, P.O.
+/// box, or similar. A postal address is not intended to model geographical
+/// locations like roads, towns, or mountains. In typical usage, an address
+/// would be created by user input or from importing existing data, depending on
+/// the type of process. Advice on address input or editing: - Use an
+/// internationalization-ready address widget such as
+/// https://github.com/google/libaddressinput. - Users should not be presented
+/// with UI elements for input or editing of fields outside countries where that
+/// field is used. For more guidance on how to use this schema, see:
+/// https://support.google.com/business/answer/6397478.
+typedef PostalAddress = $PostalAddress00;
 
 /// All information pertaining to the location's profile.
 class Profile {
@@ -2501,7 +2510,7 @@ class SearchGoogleLocationsRequest {
   /// Location to search for.
   ///
   /// If provided, will find locations which match the provided location
-  /// details.
+  /// details, which must include a value for the title.
   Location? location;
 
   /// The number of matches to return.

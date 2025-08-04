@@ -320,20 +320,47 @@ class Reader {
   /// Output only.
   core.String? name;
 
+  /// The SwG publication id that the reader's subscription linking was
+  /// originating from.
+  ///
+  /// Output only.
+  core.String? originatingPublicationId;
+
+  /// The publisher provided id of the reader.
+  ///
+  /// Output only.
+  core.String? ppid;
+
+  /// The SwG publication id that the reader has linked their subscription to.
+  ///
+  /// Output only.
+  core.String? publicationId;
+
   Reader({
     this.createTime,
     this.name,
+    this.originatingPublicationId,
+    this.ppid,
+    this.publicationId,
   });
 
   Reader.fromJson(core.Map json_)
       : this(
           createTime: json_['createTime'] as core.String?,
           name: json_['name'] as core.String?,
+          originatingPublicationId:
+              json_['originatingPublicationId'] as core.String?,
+          ppid: json_['ppid'] as core.String?,
+          publicationId: json_['publicationId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,
+        if (originatingPublicationId != null)
+          'originatingPublicationId': originatingPublicationId!,
+        if (ppid != null) 'ppid': ppid!,
+        if (publicationId != null) 'publicationId': publicationId!,
       };
 }
 

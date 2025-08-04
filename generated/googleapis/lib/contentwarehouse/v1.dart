@@ -5564,25 +5564,7 @@ class GoogleCloudContentwarehouseV1SynonymSetSynonym {
 }
 
 /// String/text values.
-class GoogleCloudContentwarehouseV1TextArray {
-  /// List of text values.
-  core.List<core.String>? values;
-
-  GoogleCloudContentwarehouseV1TextArray({
-    this.values,
-  });
-
-  GoogleCloudContentwarehouseV1TextArray.fromJson(core.Map json_)
-      : this(
-          values: (json_['values'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (values != null) 'values': values!,
-      };
-}
+typedef GoogleCloudContentwarehouseV1TextArray = $Shared05;
 
 /// Configurations for a text property.
 typedef GoogleCloudContentwarehouseV1TextTypeOptions = $Empty;
@@ -8916,7 +8898,7 @@ typedef GoogleTypeMoney = $Money;
 /// presented with UI elements for input or editing of fields outside countries
 /// where that field is used. For more guidance on how to use this schema, see:
 /// https://support.google.com/business/answer/6397478
-typedef GoogleTypePostalAddress = $PostalAddress;
+typedef GoogleTypePostalAddress = $PostalAddress01;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

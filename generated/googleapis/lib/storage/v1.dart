@@ -3758,6 +3758,10 @@ class ObjectsResource {
   /// before endOffset. If startOffset is also set, the objects listed will have
   /// names between startOffset (inclusive) and endOffset (exclusive).
   ///
+  /// [filter] - Filter the returned objects. Currently only supported for the
+  /// contexts field. If delimiter is set, the returned prefixes are exempt from
+  /// this filter.
+  ///
   /// [includeFoldersAsPrefixes] - Only applicable if delimiter is set to '/'.
   /// If true, will also include folders and managed folders (besides objects)
   /// in the returned prefixes.
@@ -3814,6 +3818,7 @@ class ObjectsResource {
     core.String bucket, {
     core.String? delimiter,
     core.String? endOffset,
+    core.String? filter,
     core.bool? includeFoldersAsPrefixes,
     core.bool? includeTrailingDelimiter,
     core.String? matchGlob,
@@ -3830,6 +3835,7 @@ class ObjectsResource {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (delimiter != null) 'delimiter': [delimiter],
       if (endOffset != null) 'endOffset': [endOffset],
+      if (filter != null) 'filter': [filter],
       if (includeFoldersAsPrefixes != null)
         'includeFoldersAsPrefixes': ['${includeFoldersAsPrefixes}'],
       if (includeTrailingDelimiter != null)
@@ -3921,6 +3927,11 @@ class ObjectsResource {
   /// `ifSourceMetagenerationNotMatch` conditions are mutually exclusive: it's
   /// an error for both of them to be set in the request.
   ///
+  /// [projection] - Set of properties to return. Defaults to noAcl.
+  /// Possible string values are:
+  /// - "full" : Include all properties.
+  /// - "noAcl" : Omit the owner, acl property.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -3946,6 +3957,7 @@ class ObjectsResource {
     core.String? ifSourceGenerationNotMatch,
     core.String? ifSourceMetagenerationMatch,
     core.String? ifSourceMetagenerationNotMatch,
+    core.String? projection,
     core.String? userProject,
     core.String? $fields,
   }) async {
@@ -3965,6 +3977,7 @@ class ObjectsResource {
         'ifSourceMetagenerationMatch': [ifSourceMetagenerationMatch],
       if (ifSourceMetagenerationNotMatch != null)
         'ifSourceMetagenerationNotMatch': [ifSourceMetagenerationNotMatch],
+      if (projection != null) 'projection': [projection],
       if (userProject != null) 'userProject': [userProject],
       if ($fields != null) 'fields': [$fields],
     };
@@ -5523,23 +5536,212 @@ class BucketCustomPlacementConfig {
       };
 }
 
+/// If set, the new objects created in this bucket must comply with this
+/// enforcement config.
+///
+/// Changing this has no effect on existing objects; it applies to new objects
+/// only. If omitted, the new objects are allowed to be encrypted with Customer
+/// Managed Encryption type by default.
+class BucketEncryptionCustomerManagedEncryptionEnforcementConfig {
+  /// Server-determined value that indicates the time from which configuration
+  /// was enforced and effective.
+  ///
+  /// This value is in RFC 3339 format.
+  core.DateTime? effectiveTime;
+
+  /// Restriction mode for Customer-Managed Encryption Keys.
+  ///
+  /// Defaults to NotRestricted.
+  /// Possible string values are:
+  /// - "NotRestricted" : Creation of new objects with Customer-Managed
+  /// Encryption is not restricted.
+  /// - "FullyRestricted" : Creation of new objects with Customer-Managed
+  /// Encryption is fully restricted.
+  core.String? restrictionMode;
+
+  BucketEncryptionCustomerManagedEncryptionEnforcementConfig({
+    this.effectiveTime,
+    this.restrictionMode,
+  });
+
+  BucketEncryptionCustomerManagedEncryptionEnforcementConfig.fromJson(
+      core.Map json_)
+      : this(
+          effectiveTime: json_.containsKey('effectiveTime')
+              ? core.DateTime.parse(json_['effectiveTime'] as core.String)
+              : null,
+          restrictionMode: json_['restrictionMode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effectiveTime != null)
+          'effectiveTime': effectiveTime!.toUtc().toIso8601String(),
+        if (restrictionMode != null) 'restrictionMode': restrictionMode!,
+      };
+}
+
+/// If set, the new objects created in this bucket must comply with this
+/// enforcement config.
+///
+/// Changing this has no effect on existing objects; it applies to new objects
+/// only. If omitted, the new objects are allowed to be encrypted with Customer
+/// Supplied Encryption type by default.
+class BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig {
+  /// Server-determined value that indicates the time from which configuration
+  /// was enforced and effective.
+  ///
+  /// This value is in RFC 3339 format.
+  core.DateTime? effectiveTime;
+
+  /// Restriction mode for Customer-Supplied Encryption Keys.
+  ///
+  /// Defaults to NotRestricted.
+  /// Possible string values are:
+  /// - "NotRestricted" : Creation of new objects with Customer-Supplied
+  /// Encryption is not restricted.
+  /// - "FullyRestricted" : Creation of new objects with Customer-Supplied
+  /// Encryption is fully restricted.
+  core.String? restrictionMode;
+
+  BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig({
+    this.effectiveTime,
+    this.restrictionMode,
+  });
+
+  BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig.fromJson(
+      core.Map json_)
+      : this(
+          effectiveTime: json_.containsKey('effectiveTime')
+              ? core.DateTime.parse(json_['effectiveTime'] as core.String)
+              : null,
+          restrictionMode: json_['restrictionMode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effectiveTime != null)
+          'effectiveTime': effectiveTime!.toUtc().toIso8601String(),
+        if (restrictionMode != null) 'restrictionMode': restrictionMode!,
+      };
+}
+
+/// If set, the new objects created in this bucket must comply with this
+/// enforcement config.
+///
+/// Changing this has no effect on existing objects; it applies to new objects
+/// only. If omitted, the new objects are allowed to be encrypted with Google
+/// Managed Encryption type by default.
+class BucketEncryptionGoogleManagedEncryptionEnforcementConfig {
+  /// Server-determined value that indicates the time from which configuration
+  /// was enforced and effective.
+  ///
+  /// This value is in RFC 3339 format.
+  core.DateTime? effectiveTime;
+
+  /// Restriction mode for Google-Managed Encryption Keys.
+  ///
+  /// Defaults to NotRestricted.
+  /// Possible string values are:
+  /// - "NotRestricted" : Creation of new objects with Google Managed Encryption
+  /// is not restricted.
+  /// - "FullyRestricted" : Creation of new objects with Google Managed
+  /// Encryption is fully restricted.
+  core.String? restrictionMode;
+
+  BucketEncryptionGoogleManagedEncryptionEnforcementConfig({
+    this.effectiveTime,
+    this.restrictionMode,
+  });
+
+  BucketEncryptionGoogleManagedEncryptionEnforcementConfig.fromJson(
+      core.Map json_)
+      : this(
+          effectiveTime: json_.containsKey('effectiveTime')
+              ? core.DateTime.parse(json_['effectiveTime'] as core.String)
+              : null,
+          restrictionMode: json_['restrictionMode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effectiveTime != null)
+          'effectiveTime': effectiveTime!.toUtc().toIso8601String(),
+        if (restrictionMode != null) 'restrictionMode': restrictionMode!,
+      };
+}
+
 /// Encryption configuration for a bucket.
 class BucketEncryption {
+  /// If set, the new objects created in this bucket must comply with this
+  /// enforcement config.
+  ///
+  /// Changing this has no effect on existing objects; it applies to new objects
+  /// only. If omitted, the new objects are allowed to be encrypted with
+  /// Customer Managed Encryption type by default.
+  BucketEncryptionCustomerManagedEncryptionEnforcementConfig?
+      customerManagedEncryptionEnforcementConfig;
+
+  /// If set, the new objects created in this bucket must comply with this
+  /// enforcement config.
+  ///
+  /// Changing this has no effect on existing objects; it applies to new objects
+  /// only. If omitted, the new objects are allowed to be encrypted with
+  /// Customer Supplied Encryption type by default.
+  BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig?
+      customerSuppliedEncryptionEnforcementConfig;
+
   /// A Cloud KMS key that will be used to encrypt objects inserted into this
   /// bucket, if no encryption method is specified.
   core.String? defaultKmsKeyName;
 
+  /// If set, the new objects created in this bucket must comply with this
+  /// enforcement config.
+  ///
+  /// Changing this has no effect on existing objects; it applies to new objects
+  /// only. If omitted, the new objects are allowed to be encrypted with Google
+  /// Managed Encryption type by default.
+  BucketEncryptionGoogleManagedEncryptionEnforcementConfig?
+      googleManagedEncryptionEnforcementConfig;
+
   BucketEncryption({
+    this.customerManagedEncryptionEnforcementConfig,
+    this.customerSuppliedEncryptionEnforcementConfig,
     this.defaultKmsKeyName,
+    this.googleManagedEncryptionEnforcementConfig,
   });
 
   BucketEncryption.fromJson(core.Map json_)
       : this(
+          customerManagedEncryptionEnforcementConfig: json_
+                  .containsKey('customerManagedEncryptionEnforcementConfig')
+              ? BucketEncryptionCustomerManagedEncryptionEnforcementConfig
+                  .fromJson(json_['customerManagedEncryptionEnforcementConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          customerSuppliedEncryptionEnforcementConfig: json_
+                  .containsKey('customerSuppliedEncryptionEnforcementConfig')
+              ? BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig
+                  .fromJson(json_['customerSuppliedEncryptionEnforcementConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           defaultKmsKeyName: json_['defaultKmsKeyName'] as core.String?,
+          googleManagedEncryptionEnforcementConfig: json_
+                  .containsKey('googleManagedEncryptionEnforcementConfig')
+              ? BucketEncryptionGoogleManagedEncryptionEnforcementConfig
+                  .fromJson(json_['googleManagedEncryptionEnforcementConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customerManagedEncryptionEnforcementConfig != null)
+          'customerManagedEncryptionEnforcementConfig':
+              customerManagedEncryptionEnforcementConfig!,
+        if (customerSuppliedEncryptionEnforcementConfig != null)
+          'customerSuppliedEncryptionEnforcementConfig':
+              customerSuppliedEncryptionEnforcementConfig!,
         if (defaultKmsKeyName != null) 'defaultKmsKeyName': defaultKmsKeyName!,
+        if (googleManagedEncryptionEnforcementConfig != null)
+          'googleManagedEncryptionEnforcementConfig':
+              googleManagedEncryptionEnforcementConfig!,
       };
 }
 
@@ -5741,6 +5943,13 @@ class BucketIpFilterVpcNetworkSources {
 /// the bucket, as well as its underlying objects. Only enforced when the mode
 /// is set to 'Enabled'.
 class BucketIpFilter {
+  /// Whether to allow all service agents to access the bucket regardless of the
+  /// IP filter configuration.
+  core.bool? allowAllServiceAgentAccess;
+
+  /// Whether to allow cross-org VPCs in the bucket's IP filter configuration.
+  core.bool? allowCrossOrgVpcs;
+
   /// The mode of the IP filter.
   ///
   /// Valid values are 'Enabled' and 'Disabled'.
@@ -5754,6 +5963,8 @@ class BucketIpFilter {
   core.List<BucketIpFilterVpcNetworkSources>? vpcNetworkSources;
 
   BucketIpFilter({
+    this.allowAllServiceAgentAccess,
+    this.allowCrossOrgVpcs,
     this.mode,
     this.publicNetworkSource,
     this.vpcNetworkSources,
@@ -5761,6 +5972,9 @@ class BucketIpFilter {
 
   BucketIpFilter.fromJson(core.Map json_)
       : this(
+          allowAllServiceAgentAccess:
+              json_['allowAllServiceAgentAccess'] as core.bool?,
+          allowCrossOrgVpcs: json_['allowCrossOrgVpcs'] as core.bool?,
           mode: json_['mode'] as core.String?,
           publicNetworkSource: json_.containsKey('publicNetworkSource')
               ? BucketIpFilterPublicNetworkSource.fromJson(
@@ -5774,6 +5988,9 @@ class BucketIpFilter {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allowAllServiceAgentAccess != null)
+          'allowAllServiceAgentAccess': allowAllServiceAgentAccess!,
+        if (allowCrossOrgVpcs != null) 'allowCrossOrgVpcs': allowCrossOrgVpcs!,
         if (mode != null) 'mode': mode!,
         if (publicNetworkSource != null)
           'publicNetworkSource': publicNetworkSource!,
@@ -7924,6 +8141,36 @@ class Notifications {
       };
 }
 
+/// User-defined or system-defined object contexts.
+///
+/// Each object context is a key-payload pair, where the key provides the
+/// identification and the payload holds the associated value and additional
+/// metadata.
+class ObjectContexts {
+  /// User-defined object contexts.
+  core.Map<core.String, ObjectCustomContextPayload>? custom;
+
+  ObjectContexts({
+    this.custom,
+  });
+
+  ObjectContexts.fromJson(core.Map json_)
+      : this(
+          custom:
+              (json_['custom'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ObjectCustomContextPayload.fromJson(
+                  value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (custom != null) 'custom': custom!,
+      };
+}
+
 /// Metadata of customer-supplied encryption key, if the object is encrypted by
 /// such a key.
 class ObjectCustomerEncryption {
@@ -8040,6 +8287,13 @@ class Object {
   /// If an object is stored without a Content-Type, it is served as
   /// application/octet-stream.
   core.String? contentType;
+
+  /// User-defined or system-defined object contexts.
+  ///
+  /// Each object context is a key-payload pair, where the key provides the
+  /// identification and the payload holds the associated value and additional
+  /// metadata.
+  ObjectContexts? contexts;
 
   /// CRC32c checksum, as described in RFC 4960, Appendix B; encoded using
   /// base64 in big-endian byte order.
@@ -8205,6 +8459,7 @@ class Object {
     this.contentEncoding,
     this.contentLanguage,
     this.contentType,
+    this.contexts,
     this.crc32c,
     this.customTime,
     this.customerEncryption,
@@ -8249,6 +8504,10 @@ class Object {
           contentEncoding: json_['contentEncoding'] as core.String?,
           contentLanguage: json_['contentLanguage'] as core.String?,
           contentType: json_['contentType'] as core.String?,
+          contexts: json_.containsKey('contexts')
+              ? ObjectContexts.fromJson(
+                  json_['contexts'] as core.Map<core.String, core.dynamic>)
+              : null,
           crc32c: json_['crc32c'] as core.String?,
           customTime: json_.containsKey('customTime')
               ? core.DateTime.parse(json_['customTime'] as core.String)
@@ -8325,6 +8584,7 @@ class Object {
         if (contentEncoding != null) 'contentEncoding': contentEncoding!,
         if (contentLanguage != null) 'contentLanguage': contentLanguage!,
         if (contentType != null) 'contentType': contentType!,
+        if (contexts != null) 'contexts': contexts!,
         if (crc32c != null) 'crc32c': crc32c!,
         if (customTime != null)
           'customTime': customTime!.toUtc().toIso8601String(),
@@ -8533,6 +8793,43 @@ class ObjectAccessControls {
   core.Map<core.String, core.dynamic> toJson() => {
         if (items != null) 'items': items!,
         if (kind != null) 'kind': kind!,
+      };
+}
+
+/// The payload of a single user-defined object context.
+class ObjectCustomContextPayload {
+  /// The time at which the object context was created in RFC 3339 format.
+  core.DateTime? createTime;
+
+  /// The time at which the object context was last updated in RFC 3339 format.
+  core.DateTime? updateTime;
+
+  /// The value of the object context.
+  core.String? value;
+
+  ObjectCustomContextPayload({
+    this.createTime,
+    this.updateTime,
+    this.value,
+  });
+
+  ObjectCustomContextPayload.fromJson(core.Map json_)
+      : this(
+          createTime: json_.containsKey('createTime')
+              ? core.DateTime.parse(json_['createTime'] as core.String)
+              : null,
+          updateTime: json_.containsKey('updateTime')
+              ? core.DateTime.parse(json_['updateTime'] as core.String)
+              : null,
+          value: json_['value'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null)
+          'createTime': createTime!.toUtc().toIso8601String(),
+        if (updateTime != null)
+          'updateTime': updateTime!.toUtc().toIso8601String(),
+        if (value != null) 'value': value!,
       };
 }
 

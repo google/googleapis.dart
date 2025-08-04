@@ -6002,7 +6002,7 @@ class DiscoverableProgramMerchantSigninInfo {
 
 /// Information about the merchant hosted signup flow for a program.
 class DiscoverableProgramMerchantSignupInfo {
-  ///  User data that is sent in a POST request to the signup website URL.
+  /// User data that is sent in a POST request to the signup website URL.
   ///
   /// This information is encoded and then shared so that the merchant's website
   /// can prefill fields used to enroll the user for the discoverable program.
@@ -7201,14 +7201,14 @@ class EventTicketObject {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED"
+  /// - "STATE_UNSPECIFIED" : Default value.
   /// - "ACTIVE" : Object is active and displayed to with other active objects.
   /// - "active" : Legacy alias for `ACTIVE`. Deprecated.
-  /// - "COMPLETED"
+  /// - "COMPLETED" : Object has completed it's lifecycle.
   /// - "completed" : Legacy alias for `COMPLETED`. Deprecated.
   /// - "EXPIRED" : Object is no longer valid (`validTimeInterval` passed).
   /// - "expired" : Legacy alias for `EXPIRED`. Deprecated.
-  /// - "INACTIVE"
+  /// - "INACTIVE" : Object is no longer valid
   /// - "inactive" : Legacy alias for `INACTIVE`. Deprecated.
   core.String? state;
 
@@ -8684,14 +8684,14 @@ class FlightObject {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED"
+  /// - "STATE_UNSPECIFIED" : Default value.
   /// - "ACTIVE" : Object is active and displayed to with other active objects.
   /// - "active" : Legacy alias for `ACTIVE`. Deprecated.
-  /// - "COMPLETED"
+  /// - "COMPLETED" : Object has completed it's lifecycle.
   /// - "completed" : Legacy alias for `COMPLETED`. Deprecated.
   /// - "EXPIRED" : Object is no longer valid (`validTimeInterval` passed).
   /// - "expired" : Legacy alias for `EXPIRED`. Deprecated.
-  /// - "INACTIVE"
+  /// - "INACTIVE" : Object is no longer valid
   /// - "inactive" : Legacy alias for `INACTIVE`. Deprecated.
   core.String? state;
 
@@ -9443,14 +9443,14 @@ class GenericObject {
   /// example, an `inactive` object is moved to the "Expired passes" section. If
   /// this is not provided, the object would be considered `ACTIVE`.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED"
+  /// - "STATE_UNSPECIFIED" : Default value.
   /// - "ACTIVE" : Object is active and displayed to with other active objects.
   /// - "active" : Legacy alias for `ACTIVE`. Deprecated.
-  /// - "COMPLETED"
+  /// - "COMPLETED" : Object has completed it's lifecycle.
   /// - "completed" : Legacy alias for `COMPLETED`. Deprecated.
   /// - "EXPIRED" : Object is no longer valid (`validTimeInterval` passed).
   /// - "expired" : Legacy alias for `EXPIRED`. Deprecated.
-  /// - "INACTIVE"
+  /// - "INACTIVE" : Object is no longer valid
   /// - "inactive" : Legacy alias for `INACTIVE`. Deprecated.
   core.String? state;
 
@@ -10457,14 +10457,14 @@ class GiftCardObject {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED"
+  /// - "STATE_UNSPECIFIED" : Default value.
   /// - "ACTIVE" : Object is active and displayed to with other active objects.
   /// - "active" : Legacy alias for `ACTIVE`. Deprecated.
-  /// - "COMPLETED"
+  /// - "COMPLETED" : Object has completed it's lifecycle.
   /// - "completed" : Legacy alias for `COMPLETED`. Deprecated.
   /// - "EXPIRED" : Object is no longer valid (`validTimeInterval` passed).
   /// - "expired" : Legacy alias for `EXPIRED`. Deprecated.
-  /// - "INACTIVE"
+  /// - "INACTIVE" : Object is no longer valid
   /// - "inactive" : Legacy alias for `INACTIVE`. Deprecated.
   core.String? state;
 
@@ -10750,8 +10750,6 @@ class GroupingInfo {
 }
 
 /// Wrapping type for Google hosted images.
-///
-/// Next ID: 8
 class Image {
   /// Description of the image used for accessibility.
   LocalizedString? contentDescription;
@@ -12195,14 +12193,14 @@ class LoyaltyObject {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED"
+  /// - "STATE_UNSPECIFIED" : Default value.
   /// - "ACTIVE" : Object is active and displayed to with other active objects.
   /// - "active" : Legacy alias for `ACTIVE`. Deprecated.
-  /// - "COMPLETED"
+  /// - "COMPLETED" : Object has completed it's lifecycle.
   /// - "completed" : Legacy alias for `COMPLETED`. Deprecated.
   /// - "EXPIRED" : Object is no longer valid (`validTimeInterval` passed).
   /// - "expired" : Legacy alias for `EXPIRED`. Deprecated.
-  /// - "INACTIVE"
+  /// - "INACTIVE" : Object is no longer valid
   /// - "inactive" : Legacy alias for `INACTIVE`. Deprecated.
   core.String? state;
 
@@ -14106,14 +14104,14 @@ class OfferObject {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED"
+  /// - "STATE_UNSPECIFIED" : Default value.
   /// - "ACTIVE" : Object is active and displayed to with other active objects.
   /// - "active" : Legacy alias for `ACTIVE`. Deprecated.
-  /// - "COMPLETED"
+  /// - "COMPLETED" : Object has completed it's lifecycle.
   /// - "completed" : Legacy alias for `COMPLETED`. Deprecated.
   /// - "EXPIRED" : Object is no longer valid (`validTimeInterval` passed).
   /// - "expired" : Legacy alias for `EXPIRED`. Deprecated.
-  /// - "INACTIVE"
+  /// - "INACTIVE" : Object is no longer valid
   /// - "inactive" : Legacy alias for `INACTIVE`. Deprecated.
   core.String? state;
 
@@ -16710,14 +16708,14 @@ class TransitObject {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED"
+  /// - "STATE_UNSPECIFIED" : Default value.
   /// - "ACTIVE" : Object is active and displayed to with other active objects.
   /// - "active" : Legacy alias for `ACTIVE`. Deprecated.
-  /// - "COMPLETED"
+  /// - "COMPLETED" : Object has completed it's lifecycle.
   /// - "completed" : Legacy alias for `COMPLETED`. Deprecated.
   /// - "EXPIRED" : Object is no longer valid (`validTimeInterval` passed).
   /// - "expired" : Legacy alias for `EXPIRED`. Deprecated.
-  /// - "INACTIVE"
+  /// - "INACTIVE" : Object is no longer valid
   /// - "inactive" : Legacy alias for `INACTIVE`. Deprecated.
   core.String? state;
 

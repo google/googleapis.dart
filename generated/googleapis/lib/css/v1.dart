@@ -26,6 +26,7 @@
 ///   - [AccountsCssProductInputsResource]
 ///   - [AccountsCssProductsResource]
 ///   - [AccountsLabelsResource]
+///   - [AccountsQuotasResource]
 library;
 
 import 'dart:async' as async;
@@ -66,6 +67,7 @@ class AccountsResource {
   AccountsCssProductsResource get cssProducts =>
       AccountsCssProductsResource(_requester);
   AccountsLabelsResource get labels => AccountsLabelsResource(_requester);
+  AccountsQuotasResource get quotas => AccountsQuotasResource(_requester);
 
   AccountsResource(commons.ApiRequester client) : _requester = client;
 
@@ -336,7 +338,7 @@ class AccountsCssProductInputsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the CSS Product input. Format:
+  /// [name] - Identifier. The name of the CSS Product input. Format:
   /// `accounts/{account}/cssProductInputs/{css_product_input}`, where the last
   /// section `css_product_input` consists of 3 parts:
   /// contentLanguage~feedLabel~offerId. Example:
@@ -401,7 +403,8 @@ class AccountsCssProductsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the CSS product to retrieve.
+  /// [name] - Required. The name of the CSS product to retrieve. Format:
+  /// `accounts/{account}/cssProducts/{css_product}`
   /// Value must have pattern `^accounts/\[^/\]+/cssProducts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -628,7 +631,7 @@ class AccountsLabelsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the label. Format:
+  /// [name] - Identifier. The resource name of the label. Format:
   /// accounts/{account}/labels/{label}
   /// Value must have pattern `^accounts/\[^/\]+/labels/\[^/\]+$`.
   ///
@@ -661,6 +664,63 @@ class AccountsLabelsResource {
       queryParams: queryParams_,
     );
     return AccountLabel.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class AccountsQuotasResource {
+  final commons.ApiRequester _requester;
+
+  AccountsQuotasResource(commons.ApiRequester client) : _requester = client;
+
+  /// Lists the daily call quota and usage per group for your CSS Center
+  /// account.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The CSS account that owns the collection of method
+  /// quotas and resources. In most cases, this is the CSS domain. Format:
+  /// accounts/{account}
+  /// Value must have pattern `^accounts/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of quotas to return in the
+  /// response, used for paging. Defaults to 500; values above 1000 will be
+  /// coerced to 1000.
+  ///
+  /// [pageToken] - Optional. Token (if provided) to retrieve the subsequent
+  /// page. All other parameters must match the original call that provided the
+  /// page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListQuotaGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListQuotaGroupsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/quotas';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListQuotaGroupsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -782,9 +842,9 @@ class AccountLabel {
   /// Center.
   core.String? labelType;
 
-  /// The resource name of the label.
+  /// Identifier.
   ///
-  /// Format: accounts/{account}/labels/{label}
+  /// The resource name of the label. Format: accounts/{account}/labels/{label}
   core.String? name;
 
   AccountLabel({
@@ -1428,10 +1488,11 @@ class CssProductInput {
   )
   core.String? freshnessTime;
 
-  /// The name of the CSS Product input.
+  /// Identifier.
   ///
-  /// Format: `accounts/{account}/cssProductInputs/{css_product_input}`, where
-  /// the last section `css_product_input` consists of 3 parts:
+  /// The name of the CSS Product input. Format:
+  /// `accounts/{account}/cssProductInputs/{css_product_input}`, where the last
+  /// section `css_product_input` consists of 3 parts:
   /// contentLanguage~feedLabel~offerId. Example:
   /// accounts/123/cssProductInputs/de~DE~rawProvidedId123
   core.String? name;
@@ -1879,6 +1940,86 @@ class ListCssProductsResponse {
       };
 }
 
+/// Response message for the ListMethodGroups method.
+class ListQuotaGroupsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The methods, current quota usage and limits per each group.
+  ///
+  /// The quota is shared between all methods in the group. The groups are
+  /// sorted in descending order based on quota_usage.
+  core.List<QuotaGroup>? quotaGroups;
+
+  ListQuotaGroupsResponse({
+    this.nextPageToken,
+    this.quotaGroups,
+  });
+
+  ListQuotaGroupsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          quotaGroups: (json_['quotaGroups'] as core.List?)
+              ?.map((value) => QuotaGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (quotaGroups != null) 'quotaGroups': quotaGroups!,
+      };
+}
+
+/// The method details per method in the CSS API.
+class MethodDetails {
+  /// The name of the method for example `cssproductsservice.listcssproducts`.
+  ///
+  /// Output only.
+  core.String? method;
+
+  /// The path for the method such as `v1/cssproductsservice.listcssproducts`.
+  ///
+  /// Output only.
+  core.String? path;
+
+  /// The sub-API that the method belongs to.
+  ///
+  /// In the CSS API, this is always `css`.
+  ///
+  /// Output only.
+  core.String? subapi;
+
+  /// The API version that the method belongs to.
+  ///
+  /// Output only.
+  core.String? version;
+
+  MethodDetails({
+    this.method,
+    this.path,
+    this.subapi,
+    this.version,
+  });
+
+  MethodDetails.fromJson(core.Map json_)
+      : this(
+          method: json_['method'] as core.String?,
+          path: json_['path'] as core.String?,
+          subapi: json_['subapi'] as core.String?,
+          version: json_['version'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (method != null) 'method': method!,
+        if (path != null) 'path': path!,
+        if (subapi != null) 'subapi': subapi!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// The price represented as a number and currency.
 class Price {
   /// The price represented as a number in micros (1 million micros is an
@@ -1973,6 +2114,72 @@ class ProductWeight {
   core.Map<core.String, core.dynamic> toJson() => {
         if (unit != null) 'unit': unit!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// The group information for methods in the CSS API.
+///
+/// The quota is shared between all methods in the group. Even if none of the
+/// methods within the group have usage the information for the group is
+/// returned.
+class QuotaGroup {
+  /// List of all methods group quota applies to.
+  ///
+  /// Output only.
+  core.List<MethodDetails>? methodDetails;
+
+  /// Identifier.
+  ///
+  /// The resource name of the quota group. Format:
+  /// accounts/{account}/quotas/{group} Example:
+  /// `accounts/12345678/quotas/css-products-insert` Note: The {group} part is
+  /// not guaranteed to follow a specific pattern.
+  core.String? name;
+
+  /// The maximum number of calls allowed per day for the group.
+  ///
+  /// Output only.
+  core.String? quotaLimit;
+
+  /// The maximum number of calls allowed per minute for the group.
+  ///
+  /// Output only.
+  core.String? quotaMinuteLimit;
+
+  /// The current quota usage, meaning the number of calls already made on a
+  /// given day to the methods in the group.
+  ///
+  /// The daily quota limits reset at at 12:00 PM midday UTC.
+  ///
+  /// Output only.
+  core.String? quotaUsage;
+
+  QuotaGroup({
+    this.methodDetails,
+    this.name,
+    this.quotaLimit,
+    this.quotaMinuteLimit,
+    this.quotaUsage,
+  });
+
+  QuotaGroup.fromJson(core.Map json_)
+      : this(
+          methodDetails: (json_['methodDetails'] as core.List?)
+              ?.map((value) => MethodDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          name: json_['name'] as core.String?,
+          quotaLimit: json_['quotaLimit'] as core.String?,
+          quotaMinuteLimit: json_['quotaMinuteLimit'] as core.String?,
+          quotaUsage: json_['quotaUsage'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (methodDetails != null) 'methodDetails': methodDetails!,
+        if (name != null) 'name': name!,
+        if (quotaLimit != null) 'quotaLimit': quotaLimit!,
+        if (quotaMinuteLimit != null) 'quotaMinuteLimit': quotaMinuteLimit!,
+        if (quotaUsage != null) 'quotaUsage': quotaUsage!,
       };
 }
 

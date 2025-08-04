@@ -88,7 +88,8 @@ class ProjectsTracesResource {
 
   /// Batch writes new spans to new or existing traces.
   ///
-  /// You cannot update existing spans.
+  /// You cannot update existing spans. If a span ID already exists, an
+  /// additional copy of the span will be stored.
   ///
   /// [request] - The metadata request object.
   ///
@@ -137,6 +138,9 @@ class ProjectsTracesSpansResource {
       : _requester = client;
 
   /// Creates a new span.
+  ///
+  /// If a span ID already exists, an additional copy of the span will be
+  /// stored.
   ///
   /// [request] - The metadata request object.
   ///

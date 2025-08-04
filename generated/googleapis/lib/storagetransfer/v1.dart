@@ -1168,6 +1168,14 @@ class AzureBlobStorageData {
   /// Optional.
   core.String? credentialsSecret;
 
+  /// Federated identity config of a user registered Azure application.
+  ///
+  /// If `federated_identity_config` is specified, do not specify
+  /// azure_credentials or credentials_secret.
+  ///
+  /// Optional.
+  FederatedIdentityConfig? federatedIdentityConfig;
+
   /// Root path to transfer objects.
   ///
   /// Must be an empty string or full path name that ends with a '/'. This field
@@ -1184,6 +1192,7 @@ class AzureBlobStorageData {
     this.azureCredentials,
     this.container,
     this.credentialsSecret,
+    this.federatedIdentityConfig,
     this.path,
     this.storageAccount,
   });
@@ -1196,6 +1205,11 @@ class AzureBlobStorageData {
               : null,
           container: json_['container'] as core.String?,
           credentialsSecret: json_['credentialsSecret'] as core.String?,
+          federatedIdentityConfig: json_.containsKey('federatedIdentityConfig')
+              ? FederatedIdentityConfig.fromJson(
+                  json_['federatedIdentityConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           path: json_['path'] as core.String?,
           storageAccount: json_['storageAccount'] as core.String?,
         );
@@ -1204,6 +1218,8 @@ class AzureBlobStorageData {
         if (azureCredentials != null) 'azureCredentials': azureCredentials!,
         if (container != null) 'container': container!,
         if (credentialsSecret != null) 'credentialsSecret': credentialsSecret!,
+        if (federatedIdentityConfig != null)
+          'federatedIdentityConfig': federatedIdentityConfig!,
         if (path != null) 'path': path!,
         if (storageAccount != null) 'storageAccount': storageAccount!,
       };
@@ -1324,6 +1340,41 @@ class EventStream {
         if (eventStreamStartTime != null)
           'eventStreamStartTime': eventStreamStartTime!,
         if (name != null) 'name': name!,
+      };
+}
+
+/// The identity of an Azure application through which Storage Transfer Service
+/// can authenticate requests using Azure workload identity federation.
+///
+/// Storage Transfer Service can issue requests to Azure Storage through
+/// registered Azure applications, eliminating the need to pass credentials to
+/// Storage Transfer Service directly. To configure federated identity, see
+/// [Configure access to Microsoft Azure Storage](https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#option_3_authenticate_using_federated_identity).
+class FederatedIdentityConfig {
+  /// The client (application) ID of the application with federated credentials.
+  ///
+  /// Required.
+  core.String? clientId;
+
+  /// The tenant (directory) ID of the application with federated credentials.
+  ///
+  /// Required.
+  core.String? tenantId;
+
+  FederatedIdentityConfig({
+    this.clientId,
+    this.tenantId,
+  });
+
+  FederatedIdentityConfig.fromJson(core.Map json_)
+      : this(
+          clientId: json_['clientId'] as core.String?,
+          tenantId: json_['tenantId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (tenantId != null) 'tenantId': tenantId!,
       };
 }
 
@@ -1456,8 +1507,9 @@ class HdfsData {
 class HttpData {
   /// The URL that points to the file that stores the object list entries.
   ///
-  /// This file must allow public access. Currently, only URLs with HTTP and
-  /// HTTPS schemes are supported.
+  /// This file must allow public access. The URL is either an HTTP/HTTPS
+  /// address (e.g. `https://example.com/urllist.tsv`) or a Cloud Storage path
+  /// (e.g. `gs://my-bucket/urllist.tsv`).
   ///
   /// Required.
   core.String? listUrl;
@@ -1836,8 +1888,13 @@ class NotificationConfig {
 /// "last modification time" refers to the time of the last change to the
 /// object's content or metadata — specifically, this is the `updated` property
 /// of Cloud Storage objects, the `LastModified` field of S3 objects, and the
-/// `Last-Modified` header of Azure blobs. Transfers with a PosixFilesystem
-/// source or destination don't support `ObjectConditions`.
+/// `Last-Modified` header of Azure blobs. For S3 objects, the `LastModified`
+/// value is the time the object begins uploading. If the object meets your
+/// "last modification time" criteria, but has not finished uploading, the
+/// object is not transferred. See
+/// [Transfer from Amazon S3 to Cloud Storage](https://cloud.google.com/storage-transfer/docs/create-transfers/agentless/s3#transfer_options)
+/// for more information. Transfers with a PosixFilesystem source or destination
+/// don't support `ObjectConditions`.
 class ObjectConditions {
   /// If you specify `exclude_prefixes`, Storage Transfer Service uses the items
   /// in the `exclude_prefixes` array to determine which objects to exclude from
@@ -2390,6 +2447,22 @@ class TransferJob {
   /// have a non-empty schedule.
   Schedule? schedule;
 
+  /// The user-managed service account to which to delegate service agent
+  /// permissions.
+  ///
+  /// You can grant Cloud Storage bucket permissions to this service account
+  /// instead of to the Transfer Service service agent. Format is
+  /// `projects/-/serviceAccounts/ACCOUNT_EMAIL_OR_UNIQUEID` Either the service
+  /// account email (`SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com`)
+  /// or the unique ID (`123456789012345678901`) are accepted in the string. The
+  /// `-` wildcard character is required; replacing it with a project ID is
+  /// invalid. See
+  /// https://cloud.google.com//storage-transfer/docs/delegate-service-agent-permissions
+  /// for required permissions.
+  ///
+  /// Optional.
+  core.String? serviceAccount;
+
   /// Status of the job.
   ///
   /// This value MUST be specified for `CreateTransferJobRequests`. **Note:**
@@ -2423,6 +2496,7 @@ class TransferJob {
     this.projectId,
     this.replicationSpec,
     this.schedule,
+    this.serviceAccount,
     this.status,
     this.transferSpec,
   });
@@ -2456,6 +2530,7 @@ class TransferJob {
               ? Schedule.fromJson(
                   json_['schedule'] as core.Map<core.String, core.dynamic>)
               : null,
+          serviceAccount: json_['serviceAccount'] as core.String?,
           status: json_['status'] as core.String?,
           transferSpec: json_.containsKey('transferSpec')
               ? TransferSpec.fromJson(
@@ -2479,6 +2554,7 @@ class TransferJob {
         if (projectId != null) 'projectId': projectId!,
         if (replicationSpec != null) 'replicationSpec': replicationSpec!,
         if (schedule != null) 'schedule': schedule!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (status != null) 'status': status!,
         if (transferSpec != null) 'transferSpec': transferSpec!,
       };

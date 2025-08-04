@@ -550,8 +550,7 @@ class BinarySourceInfo {
   /// This is significant when the source is different than the binary itself.
   /// Historically if they've differed, we've stored the name of the source and
   /// its version in the package/version fields, but we should also store the
-  /// binary package info, as that's what's actually installed. See
-  /// b/175908657#comment15.
+  /// binary package info, as that's what's actually installed.
   PackageVersion? binaryVersion;
 
   /// The source package.
@@ -833,7 +832,7 @@ class BuildProvenance {
       };
 }
 
-typedef BuilderConfig = $Shared00;
+typedef BuilderConfig = $Shared01;
 
 /// Common Vulnerability Scoring System.
 ///
@@ -1008,6 +1007,9 @@ class DiscoveryOccurrence {
   /// The CPE of the resource being scanned.
   core.String? cpe;
 
+  /// Files that make up the resource described by the occurrence.
+  core.List<File>? files;
+
   /// The last time this resource was scanned.
   core.String? lastScanTime;
 
@@ -1022,6 +1024,7 @@ class DiscoveryOccurrence {
     this.archiveTime,
     this.continuousAnalysis,
     this.cpe,
+    this.files,
     this.lastScanTime,
     this.sbomStatus,
   });
@@ -1044,6 +1047,10 @@ class DiscoveryOccurrence {
           archiveTime: json_['archiveTime'] as core.String?,
           continuousAnalysis: json_['continuousAnalysis'] as core.String?,
           cpe: json_['cpe'] as core.String?,
+          files: (json_['files'] as core.List?)
+              ?.map((value) =>
+                  File.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
           lastScanTime: json_['lastScanTime'] as core.String?,
           sbomStatus: json_.containsKey('sbomStatus')
               ? SBOMStatus.fromJson(
@@ -1061,6 +1068,7 @@ class DiscoveryOccurrence {
         if (continuousAnalysis != null)
           'continuousAnalysis': continuousAnalysis!,
         if (cpe != null) 'cpe': cpe!,
+        if (files != null) 'files': files!,
         if (lastScanTime != null) 'lastScanTime': lastScanTime!,
         if (sbomStatus != null) 'sbomStatus': sbomStatus!,
       };
@@ -1114,6 +1122,7 @@ class Envelope {
 }
 
 typedef EnvelopeSignature = $EnvelopeSignature;
+typedef File = $File;
 
 /// Container message for hashes of byte content of files, used in source
 /// messages to verify integrity of source input to the build.
@@ -1255,6 +1264,11 @@ class GrafeasV1LayerDetails {
   /// The base images the layer is found within.
   core.List<GrafeasV1BaseImage>? baseImages;
 
+  /// The layer chain ID (sha256 hash) of the layer in the container image.
+  ///
+  /// https://github.com/opencontainers/image-spec/blob/main/config.md#layer-chainid
+  core.String? chainId;
+
   /// The layer build command that was used to build the layer.
   ///
   /// This may not be found in all layers depending on how the container image
@@ -1269,6 +1283,7 @@ class GrafeasV1LayerDetails {
 
   GrafeasV1LayerDetails({
     this.baseImages,
+    this.chainId,
     this.command,
     this.diffId,
     this.index,
@@ -1280,6 +1295,7 @@ class GrafeasV1LayerDetails {
               ?.map((value) => GrafeasV1BaseImage.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          chainId: json_['chainId'] as core.String?,
           command: json_['command'] as core.String?,
           diffId: json_['diffId'] as core.String?,
           index: json_['index'] as core.int?,
@@ -1287,6 +1303,7 @@ class GrafeasV1LayerDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (baseImages != null) 'baseImages': baseImages!,
+        if (chainId != null) 'chainId': chainId!,
         if (command != null) 'command': command!,
         if (diffId != null) 'diffId': diffId!,
         if (index != null) 'index': index!,
@@ -1295,7 +1312,7 @@ class GrafeasV1LayerDetails {
 
 /// Identifies the entity that executed the recipe, which is trusted to have
 /// correctly performed the operation and populated this provenance.
-typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared00;
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared01;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -1632,12 +1649,14 @@ class LanguagePackageDependency {
 typedef Layer = $Layer;
 
 /// Details about the layer a package was found in.
-///
-/// This should be the same as the LayerDetails message in
-/// google3/third_party/scalibr/binary/proto/scan_result.proto.
 class LayerDetails {
   /// The base images the layer is found within.
   core.List<BaseImage>? baseImages;
+
+  /// The layer chain ID (sha256 hash) of the layer in the container image.
+  ///
+  /// https://github.com/opencontainers/image-spec/blob/main/config.md#layer-chainid
+  core.String? chainId;
 
   /// The layer build command that was used to build the layer.
   ///
@@ -1653,6 +1672,7 @@ class LayerDetails {
 
   LayerDetails({
     this.baseImages,
+    this.chainId,
     this.command,
     this.diffId,
     this.index,
@@ -1664,6 +1684,7 @@ class LayerDetails {
               ?.map((value) => BaseImage.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          chainId: json_['chainId'] as core.String?,
           command: json_['command'] as core.String?,
           diffId: json_['diffId'] as core.String?,
           index: json_['index'] as core.int?,
@@ -1671,6 +1692,7 @@ class LayerDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (baseImages != null) 'baseImages': baseImages!,
+        if (chainId != null) 'chainId': chainId!,
         if (command != null) 'command': command!,
         if (diffId != null) 'diffId': diffId!,
         if (index != null) 'index': index!,
@@ -1921,6 +1943,7 @@ class Occurrence {
   /// - "DSSE_ATTESTATION" : This represents a DSSE attestation Note
   /// - "VULNERABILITY_ASSESSMENT" : This represents a Vulnerability Assessment.
   /// - "SBOM_REFERENCE" : This represents an SBOM Reference.
+  /// - "SECRET" : This represents a secret.
   core.String? kind;
 
   /// The name of the occurrence in the form of
@@ -1954,6 +1977,9 @@ class Occurrence {
   /// Describes a specific SBOM reference occurrences.
   SBOMReferenceOccurrence? sbomReference;
 
+  /// Describes a secret.
+  SecretOccurrence? secret;
+
   /// The time this occurrence was last updated.
   ///
   /// Output only.
@@ -1982,6 +2008,7 @@ class Occurrence {
     this.remediation,
     this.resourceUri,
     this.sbomReference,
+    this.secret,
     this.updateTime,
     this.upgrade,
     this.vulnerability,
@@ -2035,6 +2062,10 @@ class Occurrence {
               ? SBOMReferenceOccurrence.fromJson(
                   json_['sbomReference'] as core.Map<core.String, core.dynamic>)
               : null,
+          secret: json_.containsKey('secret')
+              ? SecretOccurrence.fromJson(
+                  json_['secret'] as core.Map<core.String, core.dynamic>)
+              : null,
           updateTime: json_['updateTime'] as core.String?,
           upgrade: json_.containsKey('upgrade')
               ? UpgradeOccurrence.fromJson(
@@ -2063,6 +2094,7 @@ class Occurrence {
         if (remediation != null) 'remediation': remediation!,
         if (resourceUri != null) 'resourceUri': resourceUri!,
         if (sbomReference != null) 'sbomReference': sbomReference!,
+        if (secret != null) 'secret': secret!,
         if (updateTime != null) 'updateTime': updateTime!,
         if (upgrade != null) 'upgrade': upgrade!,
         if (vulnerability != null) 'vulnerability': vulnerability!,
@@ -2211,13 +2243,12 @@ class PackageData {
   /// - "NPM" : NPM packages.
   /// - "NUGET" : Nuget (C#/.NET) packages.
   /// - "RUBYGEMS" : Ruby packges (from RubyGems package manager).
-  /// - "RUST" : Rust packages from Cargo (Github ecosystem is `RUST`).
+  /// - "RUST" : Rust packages from Cargo (GitHub ecosystem is `RUST`).
   /// - "COMPOSER" : PHP packages from Composer package manager.
   /// - "SWIFT" : Swift packages from Swift Package Manager (SwiftPM).
   core.String? packageType;
 
   /// CVEs that this package is no longer vulnerable to
-  /// go/drydock-dd-custom-binary-scanning
   core.List<core.String>? patchedCve;
 
   /// DEPRECATED
@@ -2804,6 +2835,79 @@ class SbomReferenceIntotoPayload {
 /// A predicate which describes the SBOM being referenced.
 typedef SbomReferenceIntotoPredicate = $SbomReferenceIntotoPredicate;
 
+/// The location of the secret.
+class SecretLocation {
+  /// The secret is found from a file.
+  GrafeasV1FileLocation? fileLocation;
+
+  SecretLocation({
+    this.fileLocation,
+  });
+
+  SecretLocation.fromJson(core.Map json_)
+      : this(
+          fileLocation: json_.containsKey('fileLocation')
+              ? GrafeasV1FileLocation.fromJson(
+                  json_['fileLocation'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileLocation != null) 'fileLocation': fileLocation!,
+      };
+}
+
+/// The occurrence provides details of a secret.
+class SecretOccurrence {
+  /// Type of secret.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SECRET_KIND_UNSPECIFIED" : Unspecified
+  /// - "SECRET_KIND_UNKNOWN" : The secret kind is unknown.
+  /// - "SECRET_KIND_GCP_SERVICE_ACCOUNT_KEY" : A GCP service account key per:
+  /// https://cloud.google.com/iam/docs/creating-managing-service-account-keys
+  core.String? kind;
+
+  /// Locations where the secret is detected.
+  ///
+  /// Optional.
+  core.List<SecretLocation>? locations;
+
+  /// Status of the secret.
+  ///
+  /// Optional.
+  core.List<SecretStatus>? statuses;
+
+  SecretOccurrence({
+    this.kind,
+    this.locations,
+    this.statuses,
+  });
+
+  SecretOccurrence.fromJson(core.Map json_)
+      : this(
+          kind: json_['kind'] as core.String?,
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => SecretLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          statuses: (json_['statuses'] as core.List?)
+              ?.map((value) => SecretStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (kind != null) 'kind': kind!,
+        if (locations != null) 'locations': locations!,
+        if (statuses != null) 'statuses': statuses!,
+      };
+}
+
+/// The status of the secret with a timestamp.
+typedef SecretStatus = $SecretStatus;
+
 /// Verifiers (e.g. Kritis implementations) MUST verify signatures with respect
 /// to the trust anchors defined in policy (e.g. a Kritis policy).
 ///
@@ -2824,7 +2928,7 @@ typedef SbomReferenceIntotoPredicate = $SbomReferenceIntotoPredicate;
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
 typedef Signature = $Signature;
-typedef SlsaBuilder = $Shared00;
+typedef SlsaBuilder = $Shared01;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.

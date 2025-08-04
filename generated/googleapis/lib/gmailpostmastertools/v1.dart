@@ -18,7 +18,8 @@
 /// to email traffic metrics (like spam reports, delivery errors etc) otherwise
 /// available through the Gmail Postmaster Tools UI currently.
 ///
-/// For more information, see <https://developers.google.com/gmail/postmaster>
+/// For more information, see
+/// <https://developers.google.com/workspace/gmail/postmaster>
 ///
 /// Create an instance of [PostmasterToolsApi] to access these resources:
 ///

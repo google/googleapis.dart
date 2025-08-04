@@ -148,6 +148,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -170,12 +174,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<GoogleCloudLocationListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2468,6 +2474,11 @@ class Backup {
   /// Output only.
   core.String? clusterUid;
 
+  /// Timestamp when the resource finished being created.
+  ///
+  /// Output only.
+  core.String? createCompletionTime;
+
   /// Create time stamp
   ///
   /// Output only.
@@ -2607,7 +2618,10 @@ class Backup {
   /// Output only.
   core.String? uid;
 
-  /// Update time stamp
+  /// Update time stamp Users should not infer any meaning from this field.
+  ///
+  /// Its value is generally unrelated to the timing of the backup creation
+  /// operation.
   ///
   /// Output only.
   core.String? updateTime;
@@ -2616,6 +2630,7 @@ class Backup {
     this.annotations,
     this.clusterName,
     this.clusterUid,
+    this.createCompletionTime,
     this.createTime,
     this.databaseVersion,
     this.deleteTime,
@@ -2650,6 +2665,7 @@ class Backup {
           ),
           clusterName: json_['clusterName'] as core.String?,
           clusterUid: json_['clusterUid'] as core.String?,
+          createCompletionTime: json_['createCompletionTime'] as core.String?,
           createTime: json_['createTime'] as core.String?,
           databaseVersion: json_['databaseVersion'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
@@ -2696,6 +2712,8 @@ class Backup {
         if (annotations != null) 'annotations': annotations!,
         if (clusterName != null) 'clusterName': clusterName!,
         if (clusterUid != null) 'clusterUid': clusterUid!,
+        if (createCompletionTime != null)
+          'createCompletionTime': createCompletionTime!,
         if (createTime != null) 'createTime': createTime!,
         if (databaseVersion != null) 'databaseVersion': databaseVersion!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
@@ -3017,11 +3035,8 @@ class Cluster {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The state of the cluster is unknown.
   /// - "READY" : The cluster is active and running.
-  /// - "STOPPED" : The cluster is stopped. All instances in the cluster are
-  /// stopped. Customers can start a stopped cluster at any point and all their
-  /// instances will come back to life with same names and IP resources. In this
-  /// state, customer pays for storage. Associated backups could also be present
-  /// in a stopped cluster.
+  /// - "STOPPED" : This is unused. Even when all instances in the cluster are
+  /// stopped, the cluster remains in READY state.
   /// - "EMPTY" : The cluster is empty and has no associated resources. All
   /// instances, associated storage and backups have been deleted.
   /// - "CREATING" : The cluster is being created.
@@ -3364,7 +3379,15 @@ class ContinuousBackupConfig {
 class ContinuousBackupInfo {
   /// The earliest restorable time that can be restored to.
   ///
-  /// Output only field.
+  /// If continuous backups and recovery was recently enabled, the earliest
+  /// restorable time is the creation time of the earliest eligible backup
+  /// within this cluster's continuous backup recovery window. After a cluster
+  /// has had continuous backups enabled for the duration of its recovery
+  /// window, the earliest restorable time becomes "now minus the recovery
+  /// window". For example, assuming a point in time recovery is attempted at
+  /// 04/16/2025 3:23:00PM with a 14d recovery window, the earliest restorable
+  /// time would be 04/02/2025 3:23:00PM. This field is only visible if the
+  /// CLUSTER_VIEW_CONTINUOUS_BACKUP cluster view is provided.
   ///
   /// Output only.
   core.String? earliestRestorableTime;
@@ -3383,8 +3406,6 @@ class ContinuousBackupInfo {
   EncryptionInfo? encryptionInfo;
 
   /// Days of the week on which a continuous backup is taken.
-  ///
-  /// Output only field. Ignored if passed into the request.
   ///
   /// Output only.
   core.List<core.String>? schedule;
@@ -3577,6 +3598,58 @@ class CsvImportOptions {
       };
 }
 
+/// DenyMaintenancePeriod definition.
+///
+/// Excepting emergencies, maintenance will not be scheduled to start within
+/// this deny period. The start_date must be less than the end_date.
+class DenyMaintenancePeriod {
+  /// Deny period end date.
+  ///
+  /// This can be: * A full date, with non-zero year, month and day values OR *
+  /// A month and day value, with a zero year for recurring
+  GoogleTypeDate? endDate;
+
+  /// Deny period start date.
+  ///
+  /// This can be: * A full date, with non-zero year, month and day values OR *
+  /// A month and day value, with a zero year for recurring
+  GoogleTypeDate? startDate;
+
+  /// Time in UTC when the deny period starts on start_date and ends on
+  /// end_date.
+  ///
+  /// This can be: * Full time OR * All zeros for 00:00:00 UTC
+  GoogleTypeTimeOfDay? time;
+
+  DenyMaintenancePeriod({
+    this.endDate,
+    this.startDate,
+    this.time,
+  });
+
+  DenyMaintenancePeriod.fromJson(core.Map json_)
+      : this(
+          endDate: json_.containsKey('endDate')
+              ? GoogleTypeDate.fromJson(
+                  json_['endDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startDate: json_.containsKey('startDate')
+              ? GoogleTypeDate.fromJson(
+                  json_['startDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          time: json_.containsKey('time')
+              ? GoogleTypeTimeOfDay.fromJson(
+                  json_['time'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endDate != null) 'endDate': endDate!,
+        if (startDate != null) 'startDate': startDate!,
+        if (time != null) 'time': time!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -3747,6 +3820,18 @@ class GoogleCloudLocationListLocationsResponse {
 /// A resource that represents a Google Cloud location.
 typedef GoogleCloudLocationLocation = $Location00;
 
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
+typedef GoogleTypeDate = $Date;
+
 /// Represents a time of day.
 ///
 /// The date and time zone are either not significant or are specified
@@ -3876,6 +3961,22 @@ class InjectFaultRequest {
 ///
 /// It's the main unit of computing resources in AlloyDB.
 class Instance {
+  /// Specifies whether an instance needs to spin up.
+  ///
+  /// Once the instance is active, the activation policy can be updated to the
+  /// `NEVER` to stop the instance. Likewise, the activation policy can be
+  /// updated to `ALWAYS` to start the instance. There are restrictions around
+  /// when an instance can/cannot be activated (for example, a read pool
+  /// instance should be stopped before stopping primary etc.). Please refer to
+  /// the API documentation for more details.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ACTIVATION_POLICY_UNSPECIFIED" : The policy is not specified.
+  /// - "ALWAYS" : The instance is running.
+  /// - "NEVER" : The instance is not running.
+  core.String? activationPolicy;
+
   /// Annotations to allow client tools to store small amount of arbitrary data.
   ///
   /// This is distinct from labels. https://google.aip.dev/128
@@ -4079,6 +4180,7 @@ class Instance {
   Node? writableNode;
 
   Instance({
+    this.activationPolicy,
     this.annotations,
     this.availabilityType,
     this.clientConnectionConfig,
@@ -4111,6 +4213,7 @@ class Instance {
 
   Instance.fromJson(core.Map json_)
       : this(
+          activationPolicy: json_['activationPolicy'] as core.String?,
           annotations:
               (json_['annotations'] as core.Map<core.String, core.dynamic>?)
                   ?.map(
@@ -4194,6 +4297,7 @@ class Instance {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (activationPolicy != null) 'activationPolicy': activationPolicy!,
         if (annotations != null) 'annotations': annotations!,
         if (availabilityType != null) 'availabilityType': availabilityType!,
         if (clientConnectionConfig != null)
@@ -4231,6 +4335,18 @@ class Instance {
 
 /// Metadata related to instance-level network configuration.
 class InstanceNetworkConfig {
+  /// Name of the allocated IP range for the private IP AlloyDB instance, for
+  /// example: "google-managed-services-default".
+  ///
+  /// If set, the instance IPs will be created from this allocated range and
+  /// will override the IP range used by the parent cluster. The range name must
+  /// comply with [RFC 1035](http://datatracker.ietf.org/doc/html/rfc1035).
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+  ///
+  /// Optional.
+  core.String? allocatedIpRangeOverride;
+
   /// A list of external network authorized to access this instance.
   ///
   /// Optional.
@@ -4247,14 +4363,28 @@ class InstanceNetworkConfig {
   /// Optional.
   core.bool? enablePublicIp;
 
+  /// The resource link for the VPC network in which instance resources are
+  /// created and from which they are accessible via Private IP.
+  ///
+  /// This will be the same value as the parent cluster's network. It is
+  /// specified in the form: //
+  /// `projects/{project_number}/global/networks/{network_id}`.
+  ///
+  /// Output only.
+  core.String? network;
+
   InstanceNetworkConfig({
+    this.allocatedIpRangeOverride,
     this.authorizedExternalNetworks,
     this.enableOutboundPublicIp,
     this.enablePublicIp,
+    this.network,
   });
 
   InstanceNetworkConfig.fromJson(core.Map json_)
       : this(
+          allocatedIpRangeOverride:
+              json_['allocatedIpRangeOverride'] as core.String?,
           authorizedExternalNetworks:
               (json_['authorizedExternalNetworks'] as core.List?)
                   ?.map((value) => AuthorizedNetwork.fromJson(
@@ -4262,14 +4392,18 @@ class InstanceNetworkConfig {
                   .toList(),
           enableOutboundPublicIp: json_['enableOutboundPublicIp'] as core.bool?,
           enablePublicIp: json_['enablePublicIp'] as core.bool?,
+          network: json_['network'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (allocatedIpRangeOverride != null)
+          'allocatedIpRangeOverride': allocatedIpRangeOverride!,
         if (authorizedExternalNetworks != null)
           'authorizedExternalNetworks': authorizedExternalNetworks!,
         if (enableOutboundPublicIp != null)
           'enableOutboundPublicIp': enableOutboundPublicIp!,
         if (enablePublicIp != null) 'enablePublicIp': enablePublicIp!,
+        if (network != null) 'network': network!,
       };
 }
 
@@ -4501,7 +4635,32 @@ class ListUsersResponse {
 }
 
 /// MachineConfig describes the configuration of a machine.
-typedef MachineConfig = $MachineConfig;
+class MachineConfig {
+  /// The number of CPU's in the VM instance.
+  core.int? cpuCount;
+
+  /// Machine type of the VM instance.
+  ///
+  /// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd". cpu_count must
+  /// match the number of vCPUs in the machine type.
+  core.String? machineType;
+
+  MachineConfig({
+    this.cpuCount,
+    this.machineType,
+  });
+
+  MachineConfig.fromJson(core.Map json_)
+      : this(
+          cpuCount: json_['cpuCount'] as core.int?,
+          machineType: json_['machineType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cpuCount != null) 'cpuCount': cpuCount!,
+        if (machineType != null) 'machineType': machineType!,
+      };
+}
 
 /// MaintenanceSchedule stores the maintenance schedule generated from the
 /// MaintenanceUpdatePolicy, once a maintenance rollout is triggered, if
@@ -4531,17 +4690,28 @@ class MaintenanceSchedule {
 
 /// MaintenanceUpdatePolicy defines the policy for system updates.
 class MaintenanceUpdatePolicy {
+  /// Periods to deny maintenance.
+  ///
+  /// Currently limited to 1.
+  core.List<DenyMaintenancePeriod>? denyMaintenancePeriods;
+
   /// Preferred windows to perform maintenance.
   ///
   /// Currently limited to 1.
   core.List<MaintenanceWindow>? maintenanceWindows;
 
   MaintenanceUpdatePolicy({
+    this.denyMaintenancePeriods,
     this.maintenanceWindows,
   });
 
   MaintenanceUpdatePolicy.fromJson(core.Map json_)
       : this(
+          denyMaintenancePeriods:
+              (json_['denyMaintenancePeriods'] as core.List?)
+                  ?.map((value) => DenyMaintenancePeriod.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
           maintenanceWindows: (json_['maintenanceWindows'] as core.List?)
               ?.map((value) => MaintenanceWindow.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -4549,6 +4719,8 @@ class MaintenanceUpdatePolicy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (denyMaintenancePeriods != null)
+          'denyMaintenancePeriods': denyMaintenancePeriods!,
         if (maintenanceWindows != null)
           'maintenanceWindows': maintenanceWindows!,
       };
@@ -4988,6 +5160,17 @@ class PscAutoConnectionConfig {
 
   /// The status of the service connection policy.
   ///
+  /// Possible values: "STATE_UNSPECIFIED" - Default state, when Connection Map
+  /// is created initially. "VALID" - Set when policy and map configuration is
+  /// valid, and their matching can lead to allowing creation of PSC Connections
+  /// subject to other constraints like connections limit.
+  /// "CONNECTION_POLICY_MISSING" - No Service Connection Policy found for this
+  /// network and Service Class "POLICY_LIMIT_REACHED" - Service Connection
+  /// Policy limit reached for this network and Service Class
+  /// "CONSUMER_INSTANCE_PROJECT_NOT_ALLOWLISTED" - The consumer instance
+  /// project is not in AllowedGoogleProducersResourceHierarchyLevels of the
+  /// matching ServiceConnectionPolicy.
+  ///
   /// Output only.
   core.String? consumerNetworkStatus;
 
@@ -5001,6 +5184,14 @@ class PscAutoConnectionConfig {
   core.String? ipAddress;
 
   /// The status of the PSC service automation connection.
+  ///
+  /// Possible values: "STATE_UNSPECIFIED" - An invalid state as the default
+  /// case. "ACTIVE" - The connection has been created successfully. "FAILED" -
+  /// The connection is not functional since some resources on the connection
+  /// fail to be created. "CREATING" - The connection is being created.
+  /// "DELETING" - The connection is being deleted. "CREATE_REPAIRING" - The
+  /// connection is being repaired to complete creation. "DELETE_REPAIRING" -
+  /// The connection is being repaired to complete deletion.
   ///
   /// Output only.
   core.String? status;
@@ -5354,6 +5545,8 @@ class RestartInstanceRequest {
 
 /// Message for restoring a Cluster from a backup or another cluster at a given
 /// point in time.
+///
+/// NEXT_ID: 11
 class RestoreClusterRequest {
   /// Backup source.
   BackupSource? backupSource;

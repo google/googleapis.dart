@@ -2754,6 +2754,23 @@ void checkWaitOperationRequest(api.WaitOperationRequest o) {
   buildCounterWaitOperationRequest--;
 }
 
+core.List<core.String> buildUnnamed45() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed45(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-AdaptiveMtDataset', () {
     unittest.test('to-json--from-json', () async {
@@ -4081,6 +4098,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.TranslateApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed45();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -4118,6 +4136,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -4141,6 +4163,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,

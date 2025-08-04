@@ -41,6 +41,17 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Google Workspace Events API lets you subscribe to events and manage
 /// change notifications across Google Workspace applications.
 class WorkspaceEventsApi {
+  /// On their own behalf, apps in Google Chat can see, add, update, and remove
+  /// members from conversations and spaces
+  static const chatAppMembershipsScope =
+      'https://www.googleapis.com/auth/chat.app.memberships';
+
+  /// On their own behalf, apps in Google Chat can create conversations and
+  /// spaces and see or update their metadata (including history settings and
+  /// access settings)
+  static const chatAppSpacesScope =
+      'https://www.googleapis.com/auth/chat.app.spaces';
+
   /// Private Service: https://www.googleapis.com/auth/chat.bot
   static const chatBotScope = 'https://www.googleapis.com/auth/chat.bot';
 
@@ -169,7 +180,6 @@ class SubscriptionsResource {
 
   SubscriptionsResource(commons.ApiRequester client) : _requester = client;
 
-  /// [Developer Preview](https://developers.google.com/workspace/preview):
   /// Creates a Google Workspace subscription.
   ///
   /// To learn how to use this method, see
@@ -214,7 +224,6 @@ class SubscriptionsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// [Developer Preview](https://developers.google.com/workspace/preview):
   /// Deletes a Google Workspace subscription.
   ///
   /// To learn how to use this method, see
@@ -270,8 +279,7 @@ class SubscriptionsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// [Developer Preview](https://developers.google.com/workspace/preview): Gets
-  /// details about a Google Workspace subscription.
+  /// Gets details about a Google Workspace subscription.
   ///
   /// To learn how to use this method, see
   /// [Get details about a Google Workspace subscription](https://developers.google.com/workspace/events/guides/get-subscription).
@@ -311,7 +319,6 @@ class SubscriptionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// [Developer Preview](https://developers.google.com/workspace/preview):
   /// Lists Google Workspace subscriptions.
   ///
   /// To learn how to use this method, see
@@ -380,7 +387,6 @@ class SubscriptionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// [Developer Preview](https://developers.google.com/workspace/preview):
   /// Updates or renews a Google Workspace subscription.
   ///
   /// To learn how to use this method, see
@@ -399,8 +405,8 @@ class SubscriptionsResource {
   /// in a subscription: * `expire_time`: The timestamp when the subscription
   /// expires. * `ttl`: The time-to-live (TTL) or duration of the subscription.
   /// * `event_types`: The list of event types to receive about the target
-  /// resource. To fully replace the subscription (the equivalent of `PUT`), use
-  /// `*`. Any omitted fields are updated with empty values.
+  /// resource. When using the `*` wildcard (equivalent to `PUT`), omitted
+  /// fields are set to empty values and rejected if they're invalid.
   ///
   /// [validateOnly] - Optional. If set to `true`, validates and previews the
   /// request, but doesn't update the subscription.
@@ -440,7 +446,6 @@ class SubscriptionsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// [Developer Preview](https://developers.google.com/workspace/preview):
   /// Reactivates a suspended Google Workspace subscription.
   ///
   /// This method resets your subscription's `State` field to `ACTIVE`. Before
@@ -524,9 +529,14 @@ class NotificationEndpoint {
   /// The Pub/Sub topic that receives events for the subscription.
   ///
   /// Format: `projects/{project}/topics/{topic}` You must create the topic in
-  /// the same Google Cloud project where you create this subscription. When the
-  /// topic receives events, the events are encoded as Pub/Sub messages. For
-  /// details, see the
+  /// the same Google Cloud project where you create this subscription. Note:
+  /// The Google Workspace Events API uses
+  /// [ordering keys](https://cloud.google.com/pubsub/docs/ordering) for the
+  /// benefit of sequential events. If the Cloud Pub/Sub topic has a
+  /// [message storage policy](https://cloud.google.com/pubsub/docs/resource-location-restriction#exceptions)
+  /// configured to exclude the nearest Google Cloud region, publishing events
+  /// with ordering keys will fail. When the topic receives events, the events
+  /// are encoded as Pub/Sub messages. For details, see the
   /// [Google Cloud Pub/Sub Protocol Binding for CloudEvents](https://github.com/googleapis/google-cloudevents/blob/main/docs/spec/pubsub.md).
   ///
   /// Immutable.
@@ -624,7 +634,7 @@ class Operation {
 
 /// Options about what data to include in the event payload.
 ///
-/// Only supported for Google Chat events.
+/// Only supported for Google Chat and Google Drive events.
 class PayloadOptions {
   /// If `include_resource` is set to `true`, the list of fields to include in
   /// the event payload.
@@ -678,10 +688,9 @@ typedef ReactivateSubscriptionRequest = $Empty;
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
 
-/// [Developer Preview](https://developers.google.com/workspace/preview).
+/// A subscription to receive events about a Google Workspace resource.
 ///
-/// A subscription to receive events about a Google Workspace resource. To learn
-/// more about subscriptions, see the
+/// To learn more about subscriptions, see the
 /// [Google Workspace Events API overview](https://developers.google.com/workspace/events).
 class Subscription {
   /// The user who authorized the creation of the subscription.
@@ -741,7 +750,7 @@ class Subscription {
 
   /// Options about what data to include in the event payload.
   ///
-  /// Only supported for Google Chat events.
+  /// Only supported for Google Chat and Google Drive events.
   ///
   /// Optional.
   PayloadOptions? payloadOptions;

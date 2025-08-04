@@ -981,8 +981,6 @@ class Content {
 }
 
 /// Request to create a script project.
-///
-/// Request to create a script project.
 class CreateProjectRequest {
   /// The Drive ID of a parent file that the created script project is bound to.
   ///
@@ -1933,7 +1931,7 @@ class Project {
 
   /// The parent's Drive ID that the script will be attached to.
   ///
-  /// This is usually the ID of a Google Document or Google Sheet. This filed is
+  /// This is usually the ID of a Google Document or Google Sheet. This field is
   /// optional, and if not set, a stand-alone script will be created.
   core.String? parentId;
 

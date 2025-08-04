@@ -35,7 +35,9 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsApplicationsResource]
+///       - [ProjectsLocationsApplicationsAuthorizedCertificatesResource]
 ///       - [ProjectsLocationsApplicationsAuthorizedDomainsResource]
+///       - [ProjectsLocationsApplicationsDomainMappingsResource]
 ///       - [ProjectsLocationsApplicationsServicesResource]
 ///         - [ProjectsLocationsApplicationsServicesVersionsResource]
 library;
@@ -1242,6 +1244,10 @@ class AppsLocationsResource {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
   /// documented in more detail in AIP-160 (https://google.aip.dev/160).
@@ -1264,12 +1270,14 @@ class AppsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String appsId, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2163,14 +2171,392 @@ class ProjectsLocationsResource {
 class ProjectsLocationsApplicationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsApplicationsAuthorizedCertificatesResource
+      get authorizedCertificates =>
+          ProjectsLocationsApplicationsAuthorizedCertificatesResource(
+              _requester);
   ProjectsLocationsApplicationsAuthorizedDomainsResource
       get authorizedDomains =>
           ProjectsLocationsApplicationsAuthorizedDomainsResource(_requester);
+  ProjectsLocationsApplicationsDomainMappingsResource get domainMappings =>
+      ProjectsLocationsApplicationsDomainMappingsResource(_requester);
   ProjectsLocationsApplicationsServicesResource get services =>
       ProjectsLocationsApplicationsServicesResource(_requester);
 
   ProjectsLocationsApplicationsResource(commons.ApiRequester client)
       : _requester = client;
+
+  /// Updates the specified Application resource.
+  ///
+  /// You can update the following fields: auth_domain - Google authentication
+  /// domain for controlling user access to the application.
+  /// default_cookie_expiration - Cookie expiration policy for the application.
+  /// iap - Identity-Aware Proxy properties for the application.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Name of the Application resource to update.
+  /// Example: apps/myapp.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [updateMask] - Required. Standard field mask for the set of fields to be
+  /// updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Application request,
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsApplicationsAuthorizedCertificatesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsAuthorizedCertificatesResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Uploads the specified SSL certificate.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `parent`. Name of the parent Application resource.
+  /// Example: apps/myapp.
+  ///
+  /// [locationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuthorizedCertificate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuthorizedCertificate> create(
+    AuthorizedCertificate request,
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/authorizedCertificates';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AuthorizedCertificate.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes the specified SSL certificate.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Name of the resource to delete. Example:
+  /// apps/myapp/authorizedCertificates/12345.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [authorizedCertificatesId] - Part of `name`. See documentation of
+  /// `projectsId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId,
+    core.String authorizedCertificatesId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/authorizedCertificates/' +
+        commons.escapeVariable('$authorizedCertificatesId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the specified SSL certificate.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Name of the resource requested. Example:
+  /// apps/myapp/authorizedCertificates/12345.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [authorizedCertificatesId] - Part of `name`. See documentation of
+  /// `projectsId`.
+  ///
+  /// [view] - Controls the set of fields returned in the GET response.
+  /// Possible string values are:
+  /// - "BASIC_CERTIFICATE" : Basic certificate information, including
+  /// applicable domains and expiration date.
+  /// - "FULL_CERTIFICATE" : The information from BASIC_CERTIFICATE, plus
+  /// detailed information on the domain mappings that have this certificate
+  /// mapped.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuthorizedCertificate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuthorizedCertificate> get(
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId,
+    core.String authorizedCertificatesId, {
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/authorizedCertificates/' +
+        commons.escapeVariable('$authorizedCertificatesId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AuthorizedCertificate.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all SSL certificates the user is authorized to administer.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `parent`. Name of the parent Application resource.
+  /// Example: apps/myapp.
+  ///
+  /// [locationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [view] - Controls the set of fields returned in the LIST response.
+  /// Possible string values are:
+  /// - "BASIC_CERTIFICATE" : Basic certificate information, including
+  /// applicable domains and expiration date.
+  /// - "FULL_CERTIFICATE" : The information from BASIC_CERTIFICATE, plus
+  /// detailed information on the domain mappings that have this certificate
+  /// mapped.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAuthorizedCertificatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAuthorizedCertificatesResponse> list(
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/authorizedCertificates';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAuthorizedCertificatesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified SSL certificate.
+  ///
+  /// To renew a certificate and maintain its existing domain mappings, update
+  /// certificate_data with a new certificate. The new certificate must be
+  /// applicable to the same domains as the original certificate. The
+  /// certificate display_name may also be updated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Name of the resource to update. Example:
+  /// apps/myapp/authorizedCertificates/12345.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [authorizedCertificatesId] - Part of `name`. See documentation of
+  /// `projectsId`.
+  ///
+  /// [updateMask] - Standard field mask for the set of fields to be updated.
+  /// Updates are only supported on the certificate_raw_data and display_name
+  /// fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AuthorizedCertificate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AuthorizedCertificate> patch(
+    AuthorizedCertificate request,
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId,
+    core.String authorizedCertificatesId, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/authorizedCertificates/' +
+        commons.escapeVariable('$authorizedCertificatesId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return AuthorizedCertificate.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsApplicationsAuthorizedDomainsResource {
@@ -2237,6 +2623,137 @@ class ProjectsLocationsApplicationsAuthorizedDomainsResource {
   }
 }
 
+class ProjectsLocationsApplicationsDomainMappingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsApplicationsDomainMappingsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Maps a domain to an application.
+  ///
+  /// A user must be authorized to administer a domain in order to map it to an
+  /// application. For a list of available authorized domains, see
+  /// AuthorizedDomains.ListAuthorizedDomains.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `parent`. Name of the parent Application resource.
+  /// Example: apps/myapp.
+  ///
+  /// [locationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `parent`. See documentation of `projectsId`.
+  ///
+  /// [overrideStrategy] - Whether the domain creation should override any
+  /// existing mappings for this domain. By default, overrides are rejected.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY" : Strategy unspecified. Defaults
+  /// to STRICT.
+  /// - "STRICT" : Overrides not allowed. If a mapping already exists for the
+  /// specified domain, the request will return an ALREADY_EXISTS (409).
+  /// - "OVERRIDE" : Overrides allowed. If a mapping already exists for the
+  /// specified domain, the request will overwrite it. Note that this might stop
+  /// another Google product from serving. For example, if the domain is mapped
+  /// to another App Engine application, that app will no longer serve from that
+  /// domain.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    DomainMapping request,
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId, {
+    core.String? overrideStrategy,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (overrideStrategy != null) 'overrideStrategy': [overrideStrategy],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/domainMappings';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the specified domain mapping.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Name of the resource requested. Example:
+  /// apps/myapp/domainMappings/example.com.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [domainMappingsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DomainMapping].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DomainMapping> get(
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId,
+    core.String domainMappingsId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/domainMappings/' +
+        commons.escapeVariable('$domainMappingsId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DomainMapping.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsApplicationsServicesResource {
   final commons.ApiRequester _requester;
 
@@ -2292,6 +2809,83 @@ class ProjectsLocationsApplicationsServicesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the configuration of the specified service.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Name of the resource to update. Example:
+  /// apps/myapp/services/default.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [servicesId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [migrateTraffic] - Set to true to gradually shift traffic to one or more
+  /// versions that you specify. By default, traffic is shifted immediately. For
+  /// gradual traffic migration, the target versions must be located within
+  /// instances that are configured for both warmup requests
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#InboundServiceType)
+  /// and automatic scaling
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#AutomaticScaling).
+  /// You must specify the shardBy
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services#ShardBy)
+  /// field in the Service resource. Gradual traffic migration is not supported
+  /// in the App Engine flexible environment. For examples, see Migrating and
+  /// Splitting Traffic
+  /// (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
+  ///
+  /// [updateMask] - Required. Standard field mask for the set of fields to be
+  /// updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Service request,
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId,
+    core.String servicesId, {
+    core.bool? migrateTraffic,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (migrateTraffic != null) 'migrateTraffic': ['${migrateTraffic}'],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/services/' +
+        commons.escapeVariable('$servicesId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -2356,6 +2950,104 @@ class ProjectsLocationsApplicationsServicesVersionsResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the specified Version resource.
+  ///
+  /// You can specify the following fields depending on the App Engine
+  /// environment and type of scaling that the version resource uses:Standard
+  /// environment instance_class
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class)automatic
+  /// scaling in the standard environment: automatic_scaling.min_idle_instances
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+  /// automatic_scaling.max_idle_instances
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+  /// automaticScaling.standard_scheduler_settings.max_instances
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+  /// automaticScaling.standard_scheduler_settings.min_instances
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+  /// automaticScaling.standard_scheduler_settings.target_cpu_utilization
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+  /// automaticScaling.standard_scheduler_settings.target_throughput_utilization
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)basic
+  /// scaling or manual scaling in the standard environment: serving_status
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)
+  /// manual_scaling.instances
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)Flexible
+  /// environment serving_status
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)automatic
+  /// scaling in the flexible environment: automatic_scaling.min_total_instances
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+  /// automatic_scaling.max_total_instances
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+  /// automatic_scaling.cool_down_period_sec
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+  /// automatic_scaling.cpu_utilization.target_utilization
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)manual
+  /// scaling in the flexible environment: manual_scaling.instances
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectsId] - Part of `name`. Name of the resource to update. Example:
+  /// apps/myapp/services/default/versions/1.
+  ///
+  /// [locationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [applicationsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [servicesId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [versionsId] - Part of `name`. See documentation of `projectsId`.
+  ///
+  /// [updateMask] - Standard field mask for the set of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Version request,
+    core.String projectsId,
+    core.String locationsId,
+    core.String applicationsId,
+    core.String servicesId,
+    core.String versionsId, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/projects/' +
+        commons.escapeVariable('$projectsId') +
+        '/locations/' +
+        commons.escapeVariable('$locationsId') +
+        '/applications/' +
+        commons.escapeVariable('$applicationsId') +
+        '/services/' +
+        commons.escapeVariable('$servicesId') +
+        '/versions/' +
+        commons.escapeVariable('$versionsId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);

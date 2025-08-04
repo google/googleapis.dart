@@ -16,7 +16,7 @@
 ///
 /// Reads and writes Google Sheets.
 ///
-/// For more information, see <https://developers.google.com/sheets/>
+/// For more information, see <https://developers.google.com/workspace/sheets/>
 ///
 /// Create an instance of [SheetsApi] to access these resources:
 ///
@@ -179,23 +179,27 @@ class SpreadsheetsResource {
   ///
   /// The caller must specify the spreadsheet ID. By default, data within grids
   /// is not returned. You can include grid data in one of 2 ways: * Specify a
-  /// [field mask](https://developers.google.com/sheets/api/guides/field-masks)
+  /// [field mask](https://developers.google.com/workspace/sheets/api/guides/field-masks)
   /// listing your desired fields using the `fields` URL parameter in HTTP * Set
   /// the includeGridData URL parameter to true. If a field mask is set, the
   /// `includeGridData` parameter is ignored For large spreadsheets, as a best
   /// practice, retrieve only the specific spreadsheet fields that you want. To
   /// retrieve only subsets of spreadsheet data, use the ranges URL parameter.
-  /// Ranges are specified using \[A1
-  /// notation\](/sheets/api/guides/concepts#cell). You can define a single cell
-  /// (for example, `A1`) or multiple cells (for example, `A1:D5`). You can also
-  /// get cells from other sheets within the same spreadsheet (for example,
-  /// `Sheet2!A1:C4`) or retrieve multiple ranges at once (for example,
-  /// `?ranges=A1:D5&ranges=Sheet2!A1:C4`). Limiting the range returns only the
-  /// portions of the spreadsheet that intersect the requested ranges.
+  /// Ranges are specified using
+  /// [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell).
+  /// You can define a single cell (for example, `A1`) or multiple cells (for
+  /// example, `A1:D5`). You can also get cells from other sheets within the
+  /// same spreadsheet (for example, `Sheet2!A1:C4`) or retrieve multiple ranges
+  /// at once (for example, `?ranges=A1:D5&ranges=Sheet2!A1:C4`). Limiting the
+  /// range returns only the portions of the spreadsheet that intersect the
+  /// requested ranges.
   ///
   /// Request parameters:
   ///
   /// [spreadsheetId] - The spreadsheet to request.
+  ///
+  /// [excludeTablesInBandedRanges] - True if tables should be excluded in the
+  /// banded ranges. False if not set.
   ///
   /// [includeGridData] - True if grid data should be returned. This parameter
   /// is ignored if a field mask was set in the request.
@@ -214,11 +218,14 @@ class SpreadsheetsResource {
   /// this method will complete with the same error.
   async.Future<Spreadsheet> get(
     core.String spreadsheetId, {
+    core.bool? excludeTablesInBandedRanges,
     core.bool? includeGridData,
     core.List<core.String>? ranges,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (excludeTablesInBandedRanges != null)
+        'excludeTablesInBandedRanges': ['${excludeTablesInBandedRanges}'],
       if (includeGridData != null) 'includeGridData': ['${includeGridData}'],
       if (ranges != null) 'ranges': ranges,
       if ($fields != null) 'fields': [$fields],
@@ -244,7 +251,7 @@ class SpreadsheetsResource {
   /// of the spreadsheet that intersect ranges matched by any of the filters. By
   /// default, data within grids is not returned. You can include grid data one
   /// of 2 ways: * Specify a
-  /// [field mask](https://developers.google.com/sheets/api/guides/field-masks)
+  /// [field mask](https://developers.google.com/workspace/sheets/api/guides/field-masks)
   /// listing your desired fields using the `fields` URL parameter in HTTP * Set
   /// the includeGridData parameter to true. If a field mask is set, the
   /// `includeGridData` parameter is ignored For large spreadsheets, as a best
@@ -454,13 +461,14 @@ class SpreadsheetsValuesResource {
   /// The input range is used to search for existing data and find a "table"
   /// within that range. Values will be appended to the next row of the table,
   /// starting with the first column of the table. See the
-  /// \[guide\](/sheets/api/guides/values#appending_values) and \[sample
-  /// code\](/sheets/api/samples/writing#append_values) for specific details of
-  /// how tables are detected and data is appended. The caller must specify the
-  /// spreadsheet ID, range, and a valueInputOption. The `valueInputOption` only
-  /// controls how the input data will be added to the sheet (column-wise or
-  /// row-wise), it does not influence what cell the data starts being written
-  /// to.
+  /// [guide](https://developers.google.com/workspace/sheets/api/guides/values#appending_values)
+  /// and
+  /// [sample code](https://developers.google.com/workspace/sheets/api/samples/writing#append_values)
+  /// for specific details of how tables are detected and data is appended. The
+  /// caller must specify the spreadsheet ID, range, and a valueInputOption. The
+  /// `valueInputOption` only controls how the input data will be added to the
+  /// sheet (column-wise or row-wise), it does not influence what cell the data
+  /// starts being written to.
   ///
   /// [request] - The metadata request object.
   ///
@@ -468,9 +476,10 @@ class SpreadsheetsValuesResource {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to update.
   ///
-  /// [range] - The \[A1 notation\](/sheets/api/guides/concepts#cell) of a range
-  /// to search for a logical table of data. Values are appended after the last
-  /// row of the table.
+  /// [range] - The
+  /// [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell)
+  /// of a range to search for a logical table of data. Values are appended
+  /// after the last row of the table.
   ///
   /// [includeValuesInResponse] - Determines if the update response should
   /// include the values of the cells that were appended. By default, responses
@@ -517,7 +526,7 @@ class SpreadsheetsValuesResource {
   /// values as decimal values. This lets you perform arithmetic on them in
   /// formulas. For more information on interpreting date and time values, see
   /// \[About date & time
-  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
+  /// values\](https://developers.google.com/workspace/sheets/api/guides/formats#about_date_time_values).
   ///
   /// [valueInputOption] - How the input data should be interpreted.
   /// Possible string values are:
@@ -707,9 +716,9 @@ class SpreadsheetsValuesResource {
   /// - "ROWS" : Operates on the rows of a sheet.
   /// - "COLUMNS" : Operates on the columns of a sheet.
   ///
-  /// [ranges] - The \[A1 notation or R1C1
-  /// notation\](/sheets/api/guides/concepts#cell) of the range to retrieve
-  /// values from.
+  /// [ranges] - The
+  /// [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell)
+  /// of the range to retrieve values from.
   ///
   /// [valueRenderOption] - How values should be represented in the output. The
   /// default render option is ValueRenderOption.FORMATTED_VALUE.
@@ -728,7 +737,7 @@ class SpreadsheetsValuesResource {
   /// values as decimal values. This lets you perform arithmetic on them in
   /// formulas. For more information on interpreting date and time values, see
   /// \[About date & time
-  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
+  /// values\](https://developers.google.com/workspace/sheets/api/guides/formats#about_date_time_values).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -918,8 +927,9 @@ class SpreadsheetsValuesResource {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to update.
   ///
-  /// [range] - The \[A1 notation or R1C1
-  /// notation\](/sheets/api/guides/concepts#cell) of the values to clear.
+  /// [range] - The
+  /// [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell)
+  /// of the values to clear.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -966,9 +976,9 @@ class SpreadsheetsValuesResource {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
   ///
-  /// [range] - The \[A1 notation or R1C1
-  /// notation\](/sheets/api/guides/concepts#cell) of the range to retrieve
-  /// values from.
+  /// [range] - The
+  /// [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell)
+  /// of the range to retrieve values from.
   ///
   /// [dateTimeRenderOption] - How dates, times, and durations should be
   /// represented in the output. This is ignored if value_render_option is
@@ -1013,7 +1023,7 @@ class SpreadsheetsValuesResource {
   /// values as decimal values. This lets you perform arithmetic on them in
   /// formulas. For more information on interpreting date and time values, see
   /// \[About date & time
-  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
+  /// values\](https://developers.google.com/workspace/sheets/api/guides/formats#about_date_time_values).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1065,8 +1075,9 @@ class SpreadsheetsValuesResource {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to update.
   ///
-  /// [range] - The \[A1 notation\](/sheets/api/guides/concepts#cell) of the
-  /// values to update.
+  /// [range] - The
+  /// [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell)
+  /// of the values to update.
   ///
   /// [includeValuesInResponse] - Determines if the update response should
   /// include the values of the cells that were updated. By default, responses
@@ -1108,7 +1119,7 @@ class SpreadsheetsValuesResource {
   /// values as decimal values. This lets you perform arithmetic on them in
   /// formulas. For more information on interpreting date and time values, see
   /// \[About date & time
-  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
+  /// values\](https://developers.google.com/workspace/sheets/api/guides/formats#about_date_time_values).
   ///
   /// [valueInputOption] - How the input data should be interpreted.
   /// Possible string values are:
@@ -1658,6 +1669,54 @@ class AddSlicerResponse {
       };
 }
 
+/// Adds a new table to the spreadsheet.
+class AddTableRequest {
+  /// The table to add.
+  ///
+  /// Required.
+  Table? table;
+
+  AddTableRequest({
+    this.table,
+  });
+
+  AddTableRequest.fromJson(core.Map json_)
+      : this(
+          table: json_.containsKey('table')
+              ? Table.fromJson(
+                  json_['table'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (table != null) 'table': table!,
+      };
+}
+
+/// The result of adding a table.
+class AddTableResponse {
+  /// The table that was added.
+  ///
+  /// Output only.
+  Table? table;
+
+  AddTableResponse({
+    this.table,
+  });
+
+  AddTableResponse.fromJson(core.Map json_)
+      : this(
+          table: json_.containsKey('table')
+              ? Table.fromJson(
+                  json_['table'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (table != null) 'table': table!,
+      };
+}
+
 /// Adds new cells after the last row with data in a sheet, inserting new rows
 /// into the sheet if necessary.
 class AppendCellsRequest {
@@ -1674,10 +1733,17 @@ class AppendCellsRequest {
   /// The sheet ID to append the data to.
   core.int? sheetId;
 
+  /// The ID of the table to append data to.
+  ///
+  /// The data will be only appended to the table body. This field also takes
+  /// precedence over the `sheet_id` field.
+  core.String? tableId;
+
   AppendCellsRequest({
     this.fields,
     this.rows,
     this.sheetId,
+    this.tableId,
   });
 
   AppendCellsRequest.fromJson(core.Map json_)
@@ -1688,12 +1754,14 @@ class AppendCellsRequest {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           sheetId: json_['sheetId'] as core.int?,
+          tableId: json_['tableId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fields != null) 'fields': fields!,
         if (rows != null) 'rows': rows!,
         if (sheetId != null) 'sheetId': sheetId!,
+        if (tableId != null) 'tableId': tableId!,
       };
 }
 
@@ -1854,7 +1922,15 @@ class AutoResizeDimensionsRequest {
 /// A banded (alternating colors) range in a sheet.
 class BandedRange {
   /// The ID of the banded range.
+  ///
+  /// If unset, refer to banded_range_reference.
   core.int? bandedRangeId;
+
+  /// The reference of the banded range, used to identify the ID that is not
+  /// supported by the banded_range_id.
+  ///
+  /// Output only.
+  core.String? bandedRangeReference;
 
   /// Properties for column bands.
   ///
@@ -1875,6 +1951,7 @@ class BandedRange {
 
   BandedRange({
     this.bandedRangeId,
+    this.bandedRangeReference,
     this.columnProperties,
     this.range,
     this.rowProperties,
@@ -1883,6 +1960,7 @@ class BandedRange {
   BandedRange.fromJson(core.Map json_)
       : this(
           bandedRangeId: json_['bandedRangeId'] as core.int?,
+          bandedRangeReference: json_['bandedRangeReference'] as core.String?,
           columnProperties: json_.containsKey('columnProperties')
               ? BandingProperties.fromJson(json_['columnProperties']
                   as core.Map<core.String, core.dynamic>)
@@ -1899,6 +1977,8 @@ class BandedRange {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (bandedRangeId != null) 'bandedRangeId': bandedRangeId!,
+        if (bandedRangeReference != null)
+          'bandedRangeReference': bandedRangeReference!,
         if (columnProperties != null) 'columnProperties': columnProperties!,
         if (range != null) 'range': range!,
         if (rowProperties != null) 'rowProperties': rowProperties!,
@@ -2578,11 +2658,17 @@ class BasicFilter {
   /// specifications.
   core.List<SortSpec>? sortSpecs;
 
+  /// The table this filter is backed by, if any.
+  ///
+  /// When writing, only one of range or table_id may be set.
+  core.String? tableId;
+
   BasicFilter({
     this.criteria,
     this.filterSpecs,
     this.range,
     this.sortSpecs,
+    this.tableId,
   });
 
   BasicFilter.fromJson(core.Map json_)
@@ -2607,6 +2693,7 @@ class BasicFilter {
               ?.map((value) => SortSpec.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          tableId: json_['tableId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2614,6 +2701,7 @@ class BasicFilter {
         if (filterSpecs != null) 'filterSpecs': filterSpecs!,
         if (range != null) 'range': range!,
         if (sortSpecs != null) 'sortSpecs': sortSpecs!,
+        if (tableId != null) 'tableId': tableId!,
       };
 }
 
@@ -2701,8 +2789,8 @@ class BatchClearValuesByDataFilterRequest {
 /// The response when clearing a range of values selected with DataFilters in a
 /// spreadsheet.
 class BatchClearValuesByDataFilterResponse {
-  /// The ranges that were cleared, in \[A1
-  /// notation\](/sheets/api/guides/concepts#cell).
+  /// The ranges that were cleared, in
+  /// [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell).
   ///
   /// If the requests are for an unbounded range or a ranger larger than the
   /// bounds of the sheet, this is the actual ranges that were cleared, bounded
@@ -2733,8 +2821,8 @@ class BatchClearValuesByDataFilterResponse {
 
 /// The request for clearing more than one range of values in a spreadsheet.
 class BatchClearValuesRequest {
-  /// The ranges to clear, in \[A1 notation or R1C1
-  /// notation\](/sheets/api/guides/concepts#cell).
+  /// The ranges to clear, in
+  /// [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell).
   core.List<core.String>? ranges;
 
   BatchClearValuesRequest({
@@ -2841,7 +2929,7 @@ class BatchGetValuesByDataFilterRequest {
   /// values as decimal values. This lets you perform arithmetic on them in
   /// formulas. For more information on interpreting date and time values, see
   /// \[About date & time
-  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
+  /// values\](https://developers.google.com/workspace/sheets/api/guides/formats#about_date_time_values).
   core.String? valueRenderOption;
 
   BatchGetValuesByDataFilterRequest({
@@ -3084,7 +3172,7 @@ class BatchUpdateValuesByDataFilterRequest {
   /// values as decimal values. This lets you perform arithmetic on them in
   /// formulas. For more information on interpreting date and time values, see
   /// \[About date & time
-  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
+  /// values\](https://developers.google.com/workspace/sheets/api/guides/formats#about_date_time_values).
   core.String? responseValueRenderOption;
 
   /// How the input data should be interpreted.
@@ -3242,7 +3330,7 @@ class BatchUpdateValuesRequest {
   /// values as decimal values. This lets you perform arithmetic on them in
   /// formulas. For more information on interpreting date and time values, see
   /// \[About date & time
-  /// values\](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
+  /// values\](https://developers.google.com/workspace/sheets/api/guides/formats#about_date_time_values).
   core.String? responseValueRenderOption;
 
   /// How the input data should be interpreted.
@@ -4137,6 +4225,19 @@ class CandlestickSeries {
 
 /// Data about a specific cell.
 class CellData {
+  /// Runs of chips applied to subsections of the cell.
+  ///
+  /// Properties of a run start at a specific index in the text and continue
+  /// until the next run. When reading, all chipped and non-chipped runs are
+  /// included. Non-chipped runs will have an empty Chip. When writing, only
+  /// runs with chips are included. Runs containing chips are of length 1 and
+  /// are represented in the user-entered text by an “@” placeholder symbol. New
+  /// runs will overwrite any prior runs. Writing a new user_entered_value will
+  /// erase previous runs.
+  ///
+  /// Optional.
+  core.List<ChipRun>? chipRuns;
+
   /// Information about a data source formula on the cell.
   ///
   /// The field is set if user_entered_value is a formula referencing some
@@ -4222,6 +4323,7 @@ class CellData {
   ExtendedValue? userEnteredValue;
 
   CellData({
+    this.chipRuns,
     this.dataSourceFormula,
     this.dataSourceTable,
     this.dataValidation,
@@ -4238,6 +4340,10 @@ class CellData {
 
   CellData.fromJson(core.Map json_)
       : this(
+          chipRuns: (json_['chipRuns'] as core.List?)
+              ?.map((value) => ChipRun.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           dataSourceFormula: json_.containsKey('dataSourceFormula')
               ? DataSourceFormula.fromJson(json_['dataSourceFormula']
                   as core.Map<core.String, core.dynamic>)
@@ -4280,6 +4386,7 @@ class CellData {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (chipRuns != null) 'chipRuns': chipRuns!,
         if (dataSourceFormula != null) 'dataSourceFormula': dataSourceFormula!,
         if (dataSourceTable != null) 'dataSourceTable': dataSourceTable!,
         if (dataValidation != null) 'dataValidation': dataValidation!,
@@ -5011,6 +5118,73 @@ class ChartSpec {
       };
 }
 
+/// The Smart Chip.
+class Chip {
+  /// Properties of a linked person.
+  PersonProperties? personProperties;
+
+  /// Properties of a rich link.
+  RichLinkProperties? richLinkProperties;
+
+  Chip({
+    this.personProperties,
+    this.richLinkProperties,
+  });
+
+  Chip.fromJson(core.Map json_)
+      : this(
+          personProperties: json_.containsKey('personProperties')
+              ? PersonProperties.fromJson(json_['personProperties']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          richLinkProperties: json_.containsKey('richLinkProperties')
+              ? RichLinkProperties.fromJson(json_['richLinkProperties']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (personProperties != null) 'personProperties': personProperties!,
+        if (richLinkProperties != null)
+          'richLinkProperties': richLinkProperties!,
+      };
+}
+
+/// The run of a chip.
+///
+/// The chip continues until the start index of the next run.
+class ChipRun {
+  /// The chip of this run.
+  ///
+  /// Optional.
+  Chip? chip;
+
+  /// The zero-based character index where this run starts, in UTF-16 code
+  /// units.
+  ///
+  /// Required.
+  core.int? startIndex;
+
+  ChipRun({
+    this.chip,
+    this.startIndex,
+  });
+
+  ChipRun.fromJson(core.Map json_)
+      : this(
+          chip: json_.containsKey('chip')
+              ? Chip.fromJson(
+                  json_['chip'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startIndex: json_['startIndex'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (chip != null) 'chip': chip!,
+        if (startIndex != null) 'startIndex': startIndex!,
+      };
+}
+
 /// Clears the basic filter, if any exists on the sheet.
 class ClearBasicFilterRequest {
   /// The sheet ID on which the basic filter should be cleared.
@@ -5118,10 +5292,10 @@ class ColorStyle {
   /// RGB color.
   ///
   /// The
-  /// \[`alpha`\](/sheets/api/reference/rest/v4/spreadsheets/other#Color.FIELDS.alpha)
+  /// \[`alpha`\](https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets/other#Color.FIELDS.alpha)
   /// value in the
-  /// \[`Color`\](/sheets/api/reference/rest/v4/spreadsheets/other#color) object
-  /// isn't generally supported.
+  /// \[`Color`\](https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets/other#color)
+  /// object isn't generally supported.
   Color? rgbColor;
 
   /// Theme color.
@@ -6833,6 +7007,25 @@ class DeleteSheetRequest {
       };
 }
 
+/// Removes the table with the given ID from the spreadsheet.
+class DeleteTableRequest {
+  /// The ID of the table to delete.
+  core.String? tableId;
+
+  DeleteTableRequest({
+    this.tableId,
+  });
+
+  DeleteTableRequest.fromJson(core.Map json_)
+      : this(
+          tableId: json_['tableId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tableId != null) 'tableId': tableId!,
+      };
+}
+
 /// Developer metadata associated with a location or object in a spreadsheet.
 ///
 /// Developer metadata may be used to associate arbitrary data with various
@@ -7748,12 +7941,12 @@ class FilterView {
 
   /// The named range this filter view is backed by, if any.
   ///
-  /// When writing, only one of range or named_range_id may be set.
+  /// When writing, only one of range or named_range_id or table_id may be set.
   core.String? namedRangeId;
 
   /// The range this filter view covers.
   ///
-  /// When writing, only one of range or named_range_id may be set.
+  /// When writing, only one of range or named_range_id or table_id may be set.
   GridRange? range;
 
   /// The sort order per column.
@@ -7761,6 +7954,11 @@ class FilterView {
   /// Later specifications are used when values are equal in the earlier
   /// specifications.
   core.List<SortSpec>? sortSpecs;
+
+  /// The table this filter view is backed by, if any.
+  ///
+  /// When writing, only one of range or named_range_id or table_id may be set.
+  core.String? tableId;
 
   /// The name of the filter view.
   core.String? title;
@@ -7772,6 +7970,7 @@ class FilterView {
     this.namedRangeId,
     this.range,
     this.sortSpecs,
+    this.tableId,
     this.title,
   });
 
@@ -7799,6 +7998,7 @@ class FilterView {
               ?.map((value) => SortSpec.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          tableId: json_['tableId'] as core.String?,
           title: json_['title'] as core.String?,
         );
 
@@ -7809,6 +8009,7 @@ class FilterView {
         if (namedRangeId != null) 'namedRangeId': namedRangeId!,
         if (range != null) 'range': range!,
         if (sortSpecs != null) 'sortSpecs': sortSpecs!,
+        if (tableId != null) 'tableId': tableId!,
         if (title != null) 'title': title!,
       };
 }
@@ -7946,6 +8147,11 @@ class GetSpreadsheetByDataFilterRequest {
   /// spreadsheet.
   core.List<DataFilter>? dataFilters;
 
+  /// True if tables should be excluded in the banded ranges.
+  ///
+  /// False if not set.
+  core.bool? excludeTablesInBandedRanges;
+
   /// True if grid data should be returned.
   ///
   /// This parameter is ignored if a field mask was set in the request.
@@ -7953,6 +8159,7 @@ class GetSpreadsheetByDataFilterRequest {
 
   GetSpreadsheetByDataFilterRequest({
     this.dataFilters,
+    this.excludeTablesInBandedRanges,
     this.includeGridData,
   });
 
@@ -7962,11 +8169,15 @@ class GetSpreadsheetByDataFilterRequest {
               ?.map((value) => DataFilter.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          excludeTablesInBandedRanges:
+              json_['excludeTablesInBandedRanges'] as core.bool?,
           includeGridData: json_['includeGridData'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (dataFilters != null) 'dataFilters': dataFilters!,
+        if (excludeTablesInBandedRanges != null)
+          'excludeTablesInBandedRanges': excludeTablesInBandedRanges!,
         if (includeGridData != null) 'includeGridData': includeGridData!,
       };
 }
@@ -8955,9 +9166,9 @@ class NumberFormat {
   /// Pattern string used for formatting.
   ///
   /// If not set, a default pattern based on the user's locale will be used if
-  /// necessary for the given type. See the \[Date and Number Formats
-  /// guide\](/sheets/api/guides/formats) for more information about the
-  /// supported patterns.
+  /// necessary for the given type. See the
+  /// [Date and Number Formats guide](https://developers.google.com/workspace/sheets/api/guides/formats)
+  /// for more information about the supported patterns.
   core.String? pattern;
 
   /// The type of the number format.
@@ -9256,6 +9467,44 @@ class PasteDataRequest {
         if (delimiter != null) 'delimiter': delimiter!,
         if (html != null) 'html': html!,
         if (type != null) 'type': type!,
+      };
+}
+
+/// Properties specific to a linked person.
+class PersonProperties {
+  /// The display format of the person chip.
+  ///
+  /// If not set, the default display format is used.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DISPLAY_FORMAT_UNSPECIFIED" : Default value, do not use.
+  /// - "DEFAULT" : Default display format.
+  /// - "LAST_NAME_COMMA_FIRST_NAME" : Last name, first name display format.
+  /// - "EMAIL" : Email display format.
+  core.String? displayFormat;
+
+  /// The email address linked to this person.
+  ///
+  /// This field is always present.
+  ///
+  /// Required.
+  core.String? email;
+
+  PersonProperties({
+    this.displayFormat,
+    this.email,
+  });
+
+  PersonProperties.fromJson(core.Map json_)
+      : this(
+          displayFormat: json_['displayFormat'] as core.String?,
+          email: json_['email'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (displayFormat != null) 'displayFormat': displayFormat!,
+        if (email != null) 'email': email!,
       };
 }
 
@@ -9944,7 +10193,7 @@ class ProtectedRange {
 
   /// The named range this protected range is backed by, if any.
   ///
-  /// When writing, only one of range or named_range_id may be set.
+  /// When writing, only one of range or named_range_id or table_id may be set.
   core.String? namedRangeId;
 
   /// The ID of the protected range.
@@ -9955,8 +10204,8 @@ class ProtectedRange {
   /// The range that is being protected.
   ///
   /// The range may be fully unbounded, in which case this is considered a
-  /// protected sheet. When writing, only one of range or named_range_id may be
-  /// set.
+  /// protected sheet. When writing, only one of range or named_range_id or
+  /// table_id may be set.
   GridRange? range;
 
   /// True if the user who requested this protected range can edit the protected
@@ -9964,6 +10213,11 @@ class ProtectedRange {
   ///
   /// This field is read-only.
   core.bool? requestingUserCanEdit;
+
+  /// The table this protected range is backed by, if any.
+  ///
+  /// When writing, only one of range or named_range_id or table_id may be set.
+  core.String? tableId;
 
   /// The list of unprotected ranges within a protected sheet.
   ///
@@ -9987,6 +10241,7 @@ class ProtectedRange {
     this.protectedRangeId,
     this.range,
     this.requestingUserCanEdit,
+    this.tableId,
     this.unprotectedRanges,
     this.warningOnly,
   });
@@ -10005,6 +10260,7 @@ class ProtectedRange {
                   json_['range'] as core.Map<core.String, core.dynamic>)
               : null,
           requestingUserCanEdit: json_['requestingUserCanEdit'] as core.bool?,
+          tableId: json_['tableId'] as core.String?,
           unprotectedRanges: (json_['unprotectedRanges'] as core.List?)
               ?.map((value) => GridRange.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -10020,6 +10276,7 @@ class ProtectedRange {
         if (range != null) 'range': range!,
         if (requestingUserCanEdit != null)
           'requestingUserCanEdit': requestingUserCanEdit!,
+        if (tableId != null) 'tableId': tableId!,
         if (unprotectedRanges != null) 'unprotectedRanges': unprotectedRanges!,
         if (warningOnly != null) 'warningOnly': warningOnly!,
       };
@@ -10285,6 +10542,9 @@ class Request {
   /// Adds a slicer.
   AddSlicerRequest? addSlicer;
 
+  /// Adds a table.
+  AddTableRequest? addTable;
+
   /// Appends cells after the last row with data in a sheet.
   AppendCellsRequest? appendCells;
 
@@ -10353,6 +10613,9 @@ class Request {
 
   /// Deletes a sheet.
   DeleteSheetRequest? deleteSheet;
+
+  /// A request for deleting a table.
+  DeleteTableRequest? deleteTable;
 
   /// Duplicates a filter view.
   DuplicateFilterViewRequest? duplicateFilterView;
@@ -10456,6 +10719,9 @@ class Request {
   /// Updates the spreadsheet's properties.
   UpdateSpreadsheetPropertiesRequest? updateSpreadsheetProperties;
 
+  /// Updates a table.
+  UpdateTableRequest? updateTable;
+
   Request({
     this.addBanding,
     this.addChart,
@@ -10467,6 +10733,7 @@ class Request {
     this.addProtectedRange,
     this.addSheet,
     this.addSlicer,
+    this.addTable,
     this.appendCells,
     this.appendDimension,
     this.autoFill,
@@ -10489,6 +10756,7 @@ class Request {
     this.deleteProtectedRange,
     this.deleteRange,
     this.deleteSheet,
+    this.deleteTable,
     this.duplicateFilterView,
     this.duplicateSheet,
     this.findReplace,
@@ -10523,6 +10791,7 @@ class Request {
     this.updateSheetProperties,
     this.updateSlicerSpec,
     this.updateSpreadsheetProperties,
+    this.updateTable,
   });
 
   Request.fromJson(core.Map json_)
@@ -10568,6 +10837,10 @@ class Request {
           addSlicer: json_.containsKey('addSlicer')
               ? AddSlicerRequest.fromJson(
                   json_['addSlicer'] as core.Map<core.String, core.dynamic>)
+              : null,
+          addTable: json_.containsKey('addTable')
+              ? AddTableRequest.fromJson(
+                  json_['addTable'] as core.Map<core.String, core.dynamic>)
               : null,
           appendCells: json_.containsKey('appendCells')
               ? AppendCellsRequest.fromJson(
@@ -10665,6 +10938,10 @@ class Request {
           deleteSheet: json_.containsKey('deleteSheet')
               ? DeleteSheetRequest.fromJson(
                   json_['deleteSheet'] as core.Map<core.String, core.dynamic>)
+              : null,
+          deleteTable: json_.containsKey('deleteTable')
+              ? DeleteTableRequest.fromJson(
+                  json_['deleteTable'] as core.Map<core.String, core.dynamic>)
               : null,
           duplicateFilterView: json_.containsKey('duplicateFilterView')
               ? DuplicateFilterViewRequest.fromJson(json_['duplicateFilterView']
@@ -10816,6 +11093,10 @@ class Request {
                       json_['updateSpreadsheetProperties']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          updateTable: json_.containsKey('updateTable')
+              ? UpdateTableRequest.fromJson(
+                  json_['updateTable'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10830,6 +11111,7 @@ class Request {
         if (addProtectedRange != null) 'addProtectedRange': addProtectedRange!,
         if (addSheet != null) 'addSheet': addSheet!,
         if (addSlicer != null) 'addSlicer': addSlicer!,
+        if (addTable != null) 'addTable': addTable!,
         if (appendCells != null) 'appendCells': appendCells!,
         if (appendDimension != null) 'appendDimension': appendDimension!,
         if (autoFill != null) 'autoFill': autoFill!,
@@ -10860,6 +11142,7 @@ class Request {
           'deleteProtectedRange': deleteProtectedRange!,
         if (deleteRange != null) 'deleteRange': deleteRange!,
         if (deleteSheet != null) 'deleteSheet': deleteSheet!,
+        if (deleteTable != null) 'deleteTable': deleteTable!,
         if (duplicateFilterView != null)
           'duplicateFilterView': duplicateFilterView!,
         if (duplicateSheet != null) 'duplicateSheet': duplicateSheet!,
@@ -10904,6 +11187,7 @@ class Request {
         if (updateSlicerSpec != null) 'updateSlicerSpec': updateSlicerSpec!,
         if (updateSpreadsheetProperties != null)
           'updateSpreadsheetProperties': updateSpreadsheetProperties!,
+        if (updateTable != null) 'updateTable': updateTable!,
       };
 }
 
@@ -10935,6 +11219,9 @@ class Response {
 
   /// A reply from adding a slicer.
   AddSlicerResponse? addSlicer;
+
+  /// A reply from adding a table.
+  AddTableResponse? addTable;
 
   /// A reply from cancelling data source object refreshes.
   CancelDataSourceRefreshResponse? cancelDataSourceRefresh;
@@ -10991,6 +11278,7 @@ class Response {
     this.addProtectedRange,
     this.addSheet,
     this.addSlicer,
+    this.addTable,
     this.cancelDataSourceRefresh,
     this.createDeveloperMetadata,
     this.deleteConditionalFormatRule,
@@ -11045,6 +11333,10 @@ class Response {
           addSlicer: json_.containsKey('addSlicer')
               ? AddSlicerResponse.fromJson(
                   json_['addSlicer'] as core.Map<core.String, core.dynamic>)
+              : null,
+          addTable: json_.containsKey('addTable')
+              ? AddTableResponse.fromJson(
+                  json_['addTable'] as core.Map<core.String, core.dynamic>)
               : null,
           cancelDataSourceRefresh: json_.containsKey('cancelDataSourceRefresh')
               ? CancelDataSourceRefreshResponse.fromJson(
@@ -11130,6 +11422,7 @@ class Response {
         if (addProtectedRange != null) 'addProtectedRange': addProtectedRange!,
         if (addSheet != null) 'addSheet': addSheet!,
         if (addSlicer != null) 'addSlicer': addSlicer!,
+        if (addTable != null) 'addTable': addTable!,
         if (cancelDataSourceRefresh != null)
           'cancelDataSourceRefresh': cancelDataSourceRefresh!,
         if (createDeveloperMetadata != null)
@@ -11154,6 +11447,44 @@ class Response {
           'updateDeveloperMetadata': updateDeveloperMetadata!,
         if (updateEmbeddedObjectPosition != null)
           'updateEmbeddedObjectPosition': updateEmbeddedObjectPosition!,
+      };
+}
+
+/// Properties of a link to a Google resource (such as a file in Drive, a
+/// YouTube video, a Maps address, or a Calendar event).
+///
+/// Only Drive files can be written as chips. All other rich link types are read
+/// only. URIs cannot exceed 2000 bytes when writing. NOTE: Writing Drive file
+/// chips requires at least one of the `drive.file`, `drive.readonly`, or
+/// `drive` OAuth scopes.
+class RichLinkProperties {
+  /// The [MIME type](https://developers.google.com/drive/api/v3/mime-types) of
+  /// the link, if there's one (for example, when it's a file in Drive).
+  ///
+  /// Output only.
+  core.String? mimeType;
+
+  /// The URI to the link.
+  ///
+  /// This is always present.
+  ///
+  /// Required.
+  core.String? uri;
+
+  RichLinkProperties({
+    this.mimeType,
+    this.uri,
+  });
+
+  RichLinkProperties.fromJson(core.Map json_)
+      : this(
+          mimeType: json_['mimeType'] as core.String?,
+          uri: json_['uri'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (mimeType != null) 'mimeType': mimeType!,
+        if (uri != null) 'uri': uri!,
       };
 }
 
@@ -11464,6 +11795,9 @@ class Sheet {
   /// The slicers on this sheet.
   core.List<Slicer>? slicers;
 
+  /// The tables on this sheet.
+  core.List<Table>? tables;
+
   Sheet({
     this.bandedRanges,
     this.basicFilter,
@@ -11478,6 +11812,7 @@ class Sheet {
     this.protectedRanges,
     this.rowGroups,
     this.slicers,
+    this.tables,
   });
 
   Sheet.fromJson(core.Map json_)
@@ -11534,6 +11869,10 @@ class Sheet {
               ?.map((value) =>
                   Slicer.fromJson(value as core.Map<core.String, core.dynamic>))
               .toList(),
+          tables: (json_['tables'] as core.List?)
+              ?.map((value) =>
+                  Table.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -11551,6 +11890,7 @@ class Sheet {
         if (protectedRanges != null) 'protectedRanges': protectedRanges!,
         if (rowGroups != null) 'rowGroups': rowGroups!,
         if (slicers != null) 'slicers': slicers!,
+        if (tables != null) 'tables': tables!,
       };
 }
 
@@ -12215,6 +12555,214 @@ class SpreadsheetTheme {
   core.Map<core.String, core.dynamic> toJson() => {
         if (primaryFontFamily != null) 'primaryFontFamily': primaryFontFamily!,
         if (themeColors != null) 'themeColors': themeColors!,
+      };
+}
+
+/// A table.
+class Table {
+  /// The table column properties.
+  core.List<TableColumnProperties>? columnProperties;
+
+  /// The table name.
+  ///
+  /// This is unique to all tables in the same spreadsheet.
+  core.String? name;
+
+  /// The table range.
+  GridRange? range;
+
+  /// The table rows properties.
+  TableRowsProperties? rowsProperties;
+
+  /// The id of the table.
+  core.String? tableId;
+
+  Table({
+    this.columnProperties,
+    this.name,
+    this.range,
+    this.rowsProperties,
+    this.tableId,
+  });
+
+  Table.fromJson(core.Map json_)
+      : this(
+          columnProperties: (json_['columnProperties'] as core.List?)
+              ?.map((value) => TableColumnProperties.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          name: json_['name'] as core.String?,
+          range: json_.containsKey('range')
+              ? GridRange.fromJson(
+                  json_['range'] as core.Map<core.String, core.dynamic>)
+              : null,
+          rowsProperties: json_.containsKey('rowsProperties')
+              ? TableRowsProperties.fromJson(json_['rowsProperties']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          tableId: json_['tableId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columnProperties != null) 'columnProperties': columnProperties!,
+        if (name != null) 'name': name!,
+        if (range != null) 'range': range!,
+        if (rowsProperties != null) 'rowsProperties': rowsProperties!,
+        if (tableId != null) 'tableId': tableId!,
+      };
+}
+
+/// A data validation rule for a column in a table.
+class TableColumnDataValidationRule {
+  /// The condition that data in the cell must match.
+  ///
+  /// Valid only if the \[BooleanCondition.type\] is ONE_OF_LIST.
+  BooleanCondition? condition;
+
+  TableColumnDataValidationRule({
+    this.condition,
+  });
+
+  TableColumnDataValidationRule.fromJson(core.Map json_)
+      : this(
+          condition: json_.containsKey('condition')
+              ? BooleanCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
+      };
+}
+
+/// The table column.
+class TableColumnProperties {
+  /// The 0-based column index.
+  ///
+  /// This index is relative to its position in the table and is not necessarily
+  /// the same as the column index in the sheet.
+  core.int? columnIndex;
+
+  /// The column name.
+  core.String? columnName;
+
+  /// The column type.
+  /// Possible string values are:
+  /// - "COLUMN_TYPE_UNSPECIFIED" : An unspecified column type.
+  /// - "DOUBLE" : The number column type.
+  /// - "CURRENCY" : The currency column type.
+  /// - "PERCENT" : The percent column type.
+  /// - "DATE" : The date column type.
+  /// - "TIME" : The time column type.
+  /// - "DATE_TIME" : The date and time column type.
+  /// - "TEXT" : The text column type.
+  /// - "BOOLEAN" : The boolean column type.
+  /// - "DROPDOWN" : The dropdown column type.
+  /// - "FILES_CHIP" : The files chip column type
+  /// - "PEOPLE_CHIP" : The people chip column type
+  /// - "FINANCE_CHIP" : The finance chip column type
+  /// - "PLACE_CHIP" : The place chip column type
+  /// - "RATINGS_CHIP" : The ratings chip column type
+  core.String? columnType;
+
+  /// The column data validation rule.
+  ///
+  /// Only set for dropdown column type.
+  TableColumnDataValidationRule? dataValidationRule;
+
+  TableColumnProperties({
+    this.columnIndex,
+    this.columnName,
+    this.columnType,
+    this.dataValidationRule,
+  });
+
+  TableColumnProperties.fromJson(core.Map json_)
+      : this(
+          columnIndex: json_['columnIndex'] as core.int?,
+          columnName: json_['columnName'] as core.String?,
+          columnType: json_['columnType'] as core.String?,
+          dataValidationRule: json_.containsKey('dataValidationRule')
+              ? TableColumnDataValidationRule.fromJson(
+                  json_['dataValidationRule']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (columnIndex != null) 'columnIndex': columnIndex!,
+        if (columnName != null) 'columnName': columnName!,
+        if (columnType != null) 'columnType': columnType!,
+        if (dataValidationRule != null)
+          'dataValidationRule': dataValidationRule!,
+      };
+}
+
+/// The table row properties.
+class TableRowsProperties {
+  /// The first color that is alternating.
+  ///
+  /// If this field is set, the first banded row is filled with the specified
+  /// color. Otherwise, the first banded row is filled with a default color.
+  ColorStyle? firstBandColorStyle;
+
+  /// The color of the last row.
+  ///
+  /// If this field is not set a footer is not added, the last row is filled
+  /// with either first_band_color_style or second_band_color_style, depending
+  /// on the color of the previous row. If updating an existing table without a
+  /// footer to have a footer, the range will be expanded by 1 row. If updating
+  /// an existing table with a footer and removing a footer, the range will be
+  /// shrunk by 1 row.
+  ColorStyle? footerColorStyle;
+
+  /// The color of the header row.
+  ///
+  /// If this field is set, the header row is filled with the specified color.
+  /// Otherwise, the header row is filled with a default color.
+  ColorStyle? headerColorStyle;
+
+  /// The second color that is alternating.
+  ///
+  /// If this field is set, the second banded row is filled with the specified
+  /// color. Otherwise, the second banded row is filled with a default color.
+  ColorStyle? secondBandColorStyle;
+
+  TableRowsProperties({
+    this.firstBandColorStyle,
+    this.footerColorStyle,
+    this.headerColorStyle,
+    this.secondBandColorStyle,
+  });
+
+  TableRowsProperties.fromJson(core.Map json_)
+      : this(
+          firstBandColorStyle: json_.containsKey('firstBandColorStyle')
+              ? ColorStyle.fromJson(json_['firstBandColorStyle']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          footerColorStyle: json_.containsKey('footerColorStyle')
+              ? ColorStyle.fromJson(json_['footerColorStyle']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          headerColorStyle: json_.containsKey('headerColorStyle')
+              ? ColorStyle.fromJson(json_['headerColorStyle']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          secondBandColorStyle: json_.containsKey('secondBandColorStyle')
+              ? ColorStyle.fromJson(json_['secondBandColorStyle']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (firstBandColorStyle != null)
+          'firstBandColorStyle': firstBandColorStyle!,
+        if (footerColorStyle != null) 'footerColorStyle': footerColorStyle!,
+        if (headerColorStyle != null) 'headerColorStyle': headerColorStyle!,
+        if (secondBandColorStyle != null)
+          'secondBandColorStyle': secondBandColorStyle!,
       };
 }
 
@@ -13687,6 +14235,42 @@ class UpdateSpreadsheetPropertiesRequest {
       };
 }
 
+/// Updates a table in the spreadsheet.
+class UpdateTableRequest {
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `table` is implied and
+  /// should not be specified. A single `"*"` can be used as short-hand for
+  /// listing every field.
+  ///
+  /// Required.
+  core.String? fields;
+
+  /// The table to update.
+  ///
+  /// Required.
+  Table? table;
+
+  UpdateTableRequest({
+    this.fields,
+    this.table,
+  });
+
+  UpdateTableRequest.fromJson(core.Map json_)
+      : this(
+          fields: json_['fields'] as core.String?,
+          table: json_.containsKey('table')
+              ? Table.fromJson(
+                  json_['table'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fields != null) 'fields': fields!,
+        if (table != null) 'table': table!,
+      };
+}
+
 /// The response when updating a range of values by a data filter in a
 /// spreadsheet.
 class UpdateValuesByDataFilterResponse {
@@ -13706,8 +14290,9 @@ class UpdateValuesByDataFilterResponse {
   /// `true`.
   ValueRange? updatedData;
 
-  /// The range (in \[A1 notation\](/sheets/api/guides/concepts#cell)) that
-  /// updates were applied to.
+  /// The range (in
+  /// [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell))
+  /// that updates were applied to.
   core.String? updatedRange;
 
   /// The number of rows where at least one cell in the row was updated.
@@ -13821,8 +14406,8 @@ class ValueRange {
   /// - "COLUMNS" : Operates on the columns of a sheet.
   core.String? majorDimension;
 
-  /// The range the values cover, in \[A1
-  /// notation\](/sheets/api/guides/concepts#cell).
+  /// The range the values cover, in
+  /// [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell).
   ///
   /// For output, this range indicates the entire requested range, even though
   /// the values will exclude trailing rows and columns. When appending values,

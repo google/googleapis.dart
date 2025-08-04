@@ -16,7 +16,7 @@
 ///
 /// The Google Drive API allows clients to access resources from Google Drive.
 ///
-/// For more information, see <https://developers.google.com/drive/>
+/// For more information, see <https://developers.google.com/workspace/drive/>
 ///
 /// Create an instance of [DriveApi] to access these resources:
 ///
@@ -1318,7 +1318,7 @@ class DrivesResource {
   ///
   /// This method accepts the `q` parameter, which is a search query combining
   /// one or more search terms. For more information, see the \[Search for
-  /// shared drives\](/drive/api/guides/search-shareddrives) guide.
+  /// shared drives\](/workspace/drive/api/guides/search-shareddrives) guide.
   ///
   /// Request parameters:
   ///
@@ -1759,9 +1759,9 @@ class FilesResource {
   /// the file contents in the response body. Downloading content with
   /// `alt=media` only works if the file is stored in Drive. To download Google
   /// Docs, Sheets, and Slides use
-  /// \[`files.export`\](/drive/api/reference/rest/v2/files/export) instead. For
-  /// more information, see \[Download & export
-  /// files\](/drive/api/guides/manage-downloads).
+  /// \[`files.export`\](/workspace/drive/api/reference/rest/v2/files/export)
+  /// instead. For more information, see \[Download & export
+  /// files\](/workspace/drive/api/guides/manage-downloads).
   ///
   /// Request parameters:
   ///
@@ -1864,8 +1864,8 @@ class FilesResource {
   /// the literal `* / * ` value. The literal `* / * ` is only used to indicate
   /// that any valid MIME type can be uploaded. For more information on
   /// uploading files, see \[Upload file
-  /// data\](/drive/api/guides/manage-uploads). Apps creating shortcuts with
-  /// `files.insert` must specify the MIME type
+  /// data\](/workspace/drive/api/guides/manage-uploads). Apps creating
+  /// shortcuts with `files.insert` must specify the MIME type
   /// `application/vnd.google-apps.shortcut`. Apps should specify a file
   /// extension in the `title` property when inserting files with the API. For
   /// example, an operation to insert a JPEG file should specify something like
@@ -2003,10 +2003,10 @@ class FilesResource {
   ///
   /// This method accepts the `q` parameter, which is a search query combining
   /// one or more search terms. For more information, see the \[Search for files
-  /// & folders\](/drive/api/guides/search-files) guide. *Note:* This method
-  /// returns *all* files by default, including trashed files. If you don't want
-  /// trashed files to appear in the list, use the `trashed=false` query
-  /// parameter to remove trashed files from the results.
+  /// & folders\](/workspace/drive/api/guides/search-files) guide. *Note:* This
+  /// method returns *all* files by default, including trashed files. If you
+  /// don't want trashed files to appear in the list, use the `trashed=false`
+  /// query parameter to remove trashed files from the results.
   ///
   /// Request parameters:
   ///
@@ -2565,7 +2565,7 @@ class FilesResource {
   /// rather than the literal `* / * ` value. The literal `* / * ` is only used
   /// to indicate that any valid MIME type can be uploaded. For more information
   /// on uploading files, see \[Upload file
-  /// data\](/drive/api/guides/manage-uploads).
+  /// data\](/workspace/drive/api/guides/manage-uploads).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3181,6 +3181,9 @@ class PermissionsResource {
   /// [emailMessage] - A plain text custom message to include in notification
   /// emails.
   ///
+  /// [enforceExpansiveAccess] - Whether the request should enforce expansive
+  /// access rules.
+  ///
   /// [enforceSingleParent] - Deprecated: See `moveToNewOwnersRoot` for details.
   ///
   /// [moveToNewOwnersRoot] - This parameter will only take effect if the item
@@ -3217,6 +3220,7 @@ class PermissionsResource {
     Permission request,
     core.String fileId, {
     core.String? emailMessage,
+    core.bool? enforceExpansiveAccess,
     core.bool? enforceSingleParent,
     core.bool? moveToNewOwnersRoot,
     core.bool? sendNotificationEmails,
@@ -3228,6 +3232,8 @@ class PermissionsResource {
     final body_ = convert_1.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (emailMessage != null) 'emailMessage': [emailMessage],
+      if (enforceExpansiveAccess != null)
+        'enforceExpansiveAccess': ['${enforceExpansiveAccess}'],
       if (enforceSingleParent != null)
         'enforceSingleParent': ['${enforceSingleParent}'],
       if (moveToNewOwnersRoot != null)
@@ -5624,7 +5630,7 @@ class Comment {
   /// A region of the document represented as a JSON string.
   ///
   /// For details on defining anchor properties, refer to
-  /// [Add comments and replies](https://developers.google.com/drive/api/v2/manage-comments).
+  /// [Add comments and replies](https://developers.google.com/workspace/drive/api/v2/manage-comments).
   core.String? anchor;
 
   /// The author of the comment.
@@ -10239,6 +10245,9 @@ class User {
 
   /// The email address of the user.
   ///
+  /// This may not be present in certain contexts if the user has not made their
+  /// email address visible to the requester.
+  ///
   /// Output only.
   core.String? emailAddress;
 
@@ -10248,12 +10257,14 @@ class User {
   /// Output only.
   core.bool? isAuthenticatedUser;
 
-  /// This is always `drive#user`.
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string `drive#user`.
   ///
   /// Output only.
   core.String? kind;
 
-  /// The user's ID as visible in the permissions collection.
+  /// The user's ID as visible in Permission resources.
   ///
   /// Output only.
   core.String? permissionId;

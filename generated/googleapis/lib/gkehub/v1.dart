@@ -212,6 +212,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -234,12 +238,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3890,12 +3896,16 @@ class CommonFeatureSpec {
   /// Multicluster Ingress-specific spec.
   MultiClusterIngressFeatureSpec? multiclusteringress;
 
+  /// RBAC Role Binding Actuation feature spec
+  RBACRoleBindingActuationFeatureSpec? rbacrolebindingactuation;
+
   CommonFeatureSpec({
     this.appdevexperience,
     this.clusterupgrade,
     this.dataplanev2,
     this.fleetobservability,
     this.multiclusteringress,
+    this.rbacrolebindingactuation,
   });
 
   CommonFeatureSpec.fromJson(core.Map json_)
@@ -3922,6 +3932,12 @@ class CommonFeatureSpec {
                   json_['multiclusteringress']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          rbacrolebindingactuation:
+              json_.containsKey('rbacrolebindingactuation')
+                  ? RBACRoleBindingActuationFeatureSpec.fromJson(
+                      json_['rbacrolebindingactuation']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3932,6 +3948,8 @@ class CommonFeatureSpec {
           'fleetobservability': fleetobservability!,
         if (multiclusteringress != null)
           'multiclusteringress': multiclusteringress!,
+        if (rbacrolebindingactuation != null)
+          'rbacrolebindingactuation': rbacrolebindingactuation!,
       };
 }
 
@@ -3946,6 +3964,9 @@ class CommonFeatureState {
   /// FleetObservability feature state.
   FleetObservabilityFeatureState? fleetobservability;
 
+  /// RBAC Role Binding Actuation feature state
+  RBACRoleBindingActuationFeatureState? rbacrolebindingactuation;
+
   /// The "running state" of the Feature in this Fleet.
   ///
   /// Output only.
@@ -3955,6 +3976,7 @@ class CommonFeatureState {
     this.appdevexperience,
     this.clusterupgrade,
     this.fleetobservability,
+    this.rbacrolebindingactuation,
     this.state,
   });
 
@@ -3973,6 +3995,12 @@ class CommonFeatureState {
                   json_['fleetobservability']
                       as core.Map<core.String, core.dynamic>)
               : null,
+          rbacrolebindingactuation:
+              json_.containsKey('rbacrolebindingactuation')
+                  ? RBACRoleBindingActuationFeatureState.fromJson(
+                      json_['rbacrolebindingactuation']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
           state: json_.containsKey('state')
               ? FeatureState.fromJson(
                   json_['state'] as core.Map<core.String, core.dynamic>)
@@ -3984,6 +4012,8 @@ class CommonFeatureState {
         if (clusterupgrade != null) 'clusterupgrade': clusterupgrade!,
         if (fleetobservability != null)
           'fleetobservability': fleetobservability!,
+        if (rbacrolebindingactuation != null)
+          'rbacrolebindingactuation': rbacrolebindingactuation!,
         if (state != null) 'state': state!,
       };
 }
@@ -4530,7 +4560,7 @@ class ConfigManagementDeploymentOverride {
   /// Required.
   core.String? deploymentName;
 
-  /// The namespace of the deployment resource to be overridden..
+  /// The namespace of the deployment resource to be overridden.
   ///
   /// Required.
   core.String? deploymentNamespace;
@@ -5088,7 +5118,7 @@ typedef ConfigManagementPolicyControllerMigration
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef ConfigManagementPolicyControllerMonitoring = $Shared02;
+typedef ConfigManagementPolicyControllerMonitoring = $Shared03;
 
 /// State for PolicyControllerState.
 class ConfigManagementPolicyControllerState {
@@ -7078,6 +7108,10 @@ class Membership {
 
   /// Labels for this membership.
   ///
+  /// These labels are not leveraged by multi-cluster features, instead, we
+  /// prefer cluster labels, which can be set on GKE cluster or other cluster
+  /// types.
+  ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
@@ -7090,6 +7124,15 @@ class Membership {
   ///
   /// Output only.
   core.String? lastConnectionTime;
+
+  /// The type of the membership.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MEMBERSHIP_TYPE_UNSPECIFIED" : The MembershipType is not set.
+  /// - "LIGHTWEIGHT" : The membership supports only lightweight compatible
+  /// features.
+  core.String? membershipType;
 
   /// The monitoring config information for this membership.
   ///
@@ -7137,6 +7180,7 @@ class Membership {
     this.externalId,
     this.labels,
     this.lastConnectionTime,
+    this.membershipType,
     this.monitoringConfig,
     this.name,
     this.state,
@@ -7167,6 +7211,7 @@ class Membership {
             ),
           ),
           lastConnectionTime: json_['lastConnectionTime'] as core.String?,
+          membershipType: json_['membershipType'] as core.String?,
           monitoringConfig: json_.containsKey('monitoringConfig')
               ? MonitoringConfig.fromJson(json_['monitoringConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -7191,6 +7236,7 @@ class Membership {
         if (labels != null) 'labels': labels!,
         if (lastConnectionTime != null)
           'lastConnectionTime': lastConnectionTime!,
+        if (membershipType != null) 'membershipType': membershipType!,
         if (monitoringConfig != null) 'monitoringConfig': monitoringConfig!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
@@ -8442,7 +8488,7 @@ class PolicyControllerMembershipState {
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef PolicyControllerMonitoringConfig = $Shared02;
+typedef PolicyControllerMonitoringConfig = $Shared03;
 
 /// OnClusterState represents the state of a sub-component of Policy Controller.
 class PolicyControllerOnClusterState {
@@ -8814,6 +8860,37 @@ class RBACRoleBinding {
       };
 }
 
+/// **RBAC RoleBinding Actuation**: The Hub-wide input for the
+/// RBACRoleBindingActuation feature.
+class RBACRoleBindingActuationFeatureSpec {
+  /// The list of allowed custom roles (ClusterRoles).
+  ///
+  /// If a ClusterRole is not part of this list, it cannot be used in a Scope
+  /// RBACRoleBinding. If a ClusterRole in this list is in use, it cannot be
+  /// removed from the list.
+  core.List<core.String>? allowedCustomRoles;
+
+  RBACRoleBindingActuationFeatureSpec({
+    this.allowedCustomRoles,
+  });
+
+  RBACRoleBindingActuationFeatureSpec.fromJson(core.Map json_)
+      : this(
+          allowedCustomRoles: (json_['allowedCustomRoles'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowedCustomRoles != null)
+          'allowedCustomRoles': allowedCustomRoles!,
+      };
+}
+
+/// **RBAC RoleBinding Actuation**: An empty state left as an example Hub-wide
+/// Feature state.
+typedef RBACRoleBindingActuationFeatureState = $Empty;
+
 /// RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding
 /// resource.
 class RBACRoleBindingLifecycleState {
@@ -8925,6 +9002,11 @@ class ResourceOptions {
 
 /// Role is the type for Kubernetes roles
 class Role {
+  /// custom_role is the name of a custom KubernetesClusterRole to use.
+  ///
+  /// Optional.
+  core.String? customRole;
+
   /// predefined_role is the Kubernetes default role to use
   /// Possible string values are:
   /// - "UNKNOWN" : UNKNOWN
@@ -8936,15 +9018,18 @@ class Role {
   core.String? predefinedRole;
 
   Role({
+    this.customRole,
     this.predefinedRole,
   });
 
   Role.fromJson(core.Map json_)
       : this(
+          customRole: json_['customRole'] as core.String?,
           predefinedRole: json_['predefinedRole'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customRole != null) 'customRole': customRole!,
         if (predefinedRole != null) 'predefinedRole': predefinedRole!,
       };
 }
@@ -9110,9 +9195,6 @@ class ScopeLifecycleState {
 typedef SecurityPostureConfig = $SecurityPostureConfig;
 
 /// Condition being reported.
-///
-/// TODO b/395151419: Remove this message once the membership-level conditions
-/// field uses the common Condition message.
 typedef ServiceMeshCondition = $ServiceMeshCondition;
 
 /// Status of control plane management.
@@ -9146,6 +9228,8 @@ class ServiceMeshControlPlaneManagement {
   /// migrate workloads to a new control plane revision.)
   /// - "DEGRADED" : DEGRADED means that the component is ready, but operating
   /// in a degraded state.
+  /// - "DEPROVISIONING" : DEPROVISIONING means that deprovisioning is in
+  /// progress.
   core.String? state;
 
   ServiceMeshControlPlaneManagement({
@@ -9192,6 +9276,8 @@ class ServiceMeshDataPlaneManagement {
   /// migrate workloads to a new control plane revision.)
   /// - "DEGRADED" : DEGRADED means that the component is ready, but operating
   /// in a degraded state.
+  /// - "DEPROVISIONING" : DEPROVISIONING means that deprovisioning is in
+  /// progress.
   core.String? state;
 
   ServiceMeshDataPlaneManagement({
@@ -9249,6 +9335,8 @@ class ServiceMeshMembershipSpec {
   /// cluster.
   /// - "MANAGEMENT_MANUAL" : User will manually configure their service mesh
   /// components.
+  /// - "MANAGEMENT_NOT_INSTALLED" : Google should remove any managed Service
+  /// Mesh components from this cluster and deprovision any resources.
   core.String? management;
 
   ServiceMeshMembershipSpec({
@@ -9275,8 +9363,6 @@ class ServiceMeshMembershipSpec {
 /// Mesh Hub Controller.
 class ServiceMeshMembershipState {
   /// List of conditions reported for this membership.
-  ///
-  /// TODO b/395151419: Use the common Condition message.
   ///
   /// Output only.
   core.List<ServiceMeshCondition>? conditions;

@@ -1105,6 +1105,7 @@ api.AccountUser buildAccountUser() {
     o.orderManager = true;
     o.paymentsAnalyst = true;
     o.paymentsManager = true;
+    o.readOnly = true;
     o.reportingManager = true;
   }
   buildCounterAccountUser--;
@@ -1122,6 +1123,7 @@ void checkAccountUser(api.AccountUser o) {
     unittest.expect(o.orderManager!, unittest.isTrue);
     unittest.expect(o.paymentsAnalyst!, unittest.isTrue);
     unittest.expect(o.paymentsManager!, unittest.isTrue);
+    unittest.expect(o.readOnly!, unittest.isTrue);
     unittest.expect(o.reportingManager!, unittest.isTrue);
   }
   buildCounterAccountUser--;
@@ -8725,6 +8727,7 @@ api.Product buildProduct() {
     o.material = 'foo';
     o.maxEnergyEfficiencyClass = 'foo';
     o.maxHandlingTime = 'foo';
+    o.maximumRetailPrice = buildPrice();
     o.minEnergyEfficiencyClass = 'foo';
     o.minHandlingTime = 'foo';
     o.mobileLink = 'foo';
@@ -8953,6 +8956,7 @@ void checkProduct(api.Product o) {
       o.maxHandlingTime!,
       unittest.equals('foo'),
     );
+    checkPrice(o.maximumRetailPrice!);
     unittest.expect(
       o.minEnergyEfficiencyClass!,
       unittest.equals('foo'),
@@ -11001,6 +11005,7 @@ api.Promotion buildPromotion() {
     o.brandExclusion = buildUnnamed158();
     o.contentLanguage = 'foo';
     o.couponValueType = 'foo';
+    o.customRedemptionRestriction = 'foo';
     o.freeGiftDescription = 'foo';
     o.freeGiftItemId = 'foo';
     o.freeGiftValue = buildPriceAmount();
@@ -11014,6 +11019,7 @@ api.Promotion buildPromotion() {
     o.limitQuantity = 42;
     o.limitValue = buildPriceAmount();
     o.longTitle = 'foo';
+    o.maxDiscountAmount = buildPriceAmount();
     o.minimumPurchaseAmount = buildPriceAmount();
     o.minimumPurchaseQuantity = 42;
     o.moneyBudget = buildPriceAmount();
@@ -11033,6 +11039,7 @@ api.Promotion buildPromotion() {
     o.promotionStatus = buildPromotionPromotionStatus();
     o.promotionUrl = 'foo';
     o.redemptionChannel = buildUnnamed166();
+    o.redemptionRestriction = 'foo';
     o.shippingServiceNames = buildUnnamed167();
     o.storeApplicability = 'foo';
     o.storeCode = buildUnnamed168();
@@ -11054,6 +11061,10 @@ void checkPromotion(api.Promotion o) {
     );
     unittest.expect(
       o.couponValueType!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.customRedemptionRestriction!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -11090,6 +11101,7 @@ void checkPromotion(api.Promotion o) {
       o.longTitle!,
       unittest.equals('foo'),
     );
+    checkPriceAmount(o.maxDiscountAmount!);
     checkPriceAmount(o.minimumPurchaseAmount!);
     unittest.expect(
       o.minimumPurchaseQuantity!,
@@ -11136,6 +11148,10 @@ void checkPromotion(api.Promotion o) {
       unittest.equals('foo'),
     );
     checkUnnamed166(o.redemptionChannel!);
+    unittest.expect(
+      o.redemptionRestriction!,
+      unittest.equals('foo'),
+    );
     checkUnnamed167(o.shippingServiceNames!);
     unittest.expect(
       o.storeApplicability!,

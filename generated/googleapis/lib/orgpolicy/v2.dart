@@ -1482,6 +1482,11 @@ class GoogleCloudOrgpolicyV2Constraint {
   /// Mutable.
   core.String? displayName;
 
+  /// Managed constraint and canned constraint sometimes can have equivalents.
+  ///
+  /// This field is used to store the equivalent constraint name.
+  core.String? equivalentConstraint;
+
   /// Defines this constraint as being a list constraint.
   GoogleCloudOrgpolicyV2ConstraintListConstraint? listConstraint;
 
@@ -1507,6 +1512,7 @@ class GoogleCloudOrgpolicyV2Constraint {
     this.constraintDefault,
     this.description,
     this.displayName,
+    this.equivalentConstraint,
     this.listConstraint,
     this.name,
     this.supportsDryRun,
@@ -1523,6 +1529,7 @@ class GoogleCloudOrgpolicyV2Constraint {
           constraintDefault: json_['constraintDefault'] as core.String?,
           description: json_['description'] as core.String?,
           displayName: json_['displayName'] as core.String?,
+          equivalentConstraint: json_['equivalentConstraint'] as core.String?,
           listConstraint: json_.containsKey('listConstraint')
               ? GoogleCloudOrgpolicyV2ConstraintListConstraint.fromJson(
                   json_['listConstraint']
@@ -1538,6 +1545,8 @@ class GoogleCloudOrgpolicyV2Constraint {
         if (constraintDefault != null) 'constraintDefault': constraintDefault!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
+        if (equivalentConstraint != null)
+          'equivalentConstraint': equivalentConstraint!,
         if (listConstraint != null) 'listConstraint': listConstraint!,
         if (name != null) 'name': name!,
         if (supportsDryRun != null) 'supportsDryRun': supportsDryRun!,
@@ -1784,102 +1793,8 @@ class GoogleCloudOrgpolicyV2ConstraintListConstraint {
 /// By creating a custom constraint, customers can apply policies of this custom
 /// constraint. *Creating a custom constraint itself does NOT apply any policy
 /// enforcement*.
-class GoogleCloudOrgpolicyV2CustomConstraint {
-  /// Allow or deny type.
-  /// Possible string values are:
-  /// - "ACTION_TYPE_UNSPECIFIED" : This is only used for distinguishing unset
-  /// values and should never be used. Results in an error.
-  /// - "ALLOW" : Allowed action type.
-  /// - "DENY" : Deny action type.
-  core.String? actionType;
-
-  /// A Common Expression Language (CEL) condition which is used in the
-  /// evaluation of the constraint.
-  ///
-  /// For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
-  /// or, `resource.management.auto_upgrade == true` The max length of the
-  /// condition is 1000 characters.
-  core.String? condition;
-
-  /// Detailed information about this custom policy constraint.
-  ///
-  /// The max length of the description is 2000 characters.
-  core.String? description;
-
-  /// One line display name for the UI.
-  ///
-  /// The max length of the display_name is 200 characters.
-  core.String? displayName;
-
-  /// All the operations being applied for this constraint.
-  core.List<core.String>? methodTypes;
-
-  /// Name of the constraint.
-  ///
-  /// This is unique within the organization. Format of the name should be *
-  /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}`
-  /// Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
-  /// The max length is 70 characters and the minimum length is 1. Note that the
-  /// prefix `organizations/{organization_id}/customConstraints/` is not
-  /// counted.
-  ///
-  /// Immutable.
-  core.String? name;
-
-  /// The resource instance type on which this policy applies.
-  ///
-  /// Format will be of the form : `/` Example: *
-  /// `compute.googleapis.com/Instance`.
-  ///
-  /// Immutable.
-  core.List<core.String>? resourceTypes;
-
-  /// The last time this custom constraint was updated.
-  ///
-  /// This represents the last time that the `CreateCustomConstraint` or
-  /// `UpdateCustomConstraint` methods were called.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  GoogleCloudOrgpolicyV2CustomConstraint({
-    this.actionType,
-    this.condition,
-    this.description,
-    this.displayName,
-    this.methodTypes,
-    this.name,
-    this.resourceTypes,
-    this.updateTime,
-  });
-
-  GoogleCloudOrgpolicyV2CustomConstraint.fromJson(core.Map json_)
-      : this(
-          actionType: json_['actionType'] as core.String?,
-          condition: json_['condition'] as core.String?,
-          description: json_['description'] as core.String?,
-          displayName: json_['displayName'] as core.String?,
-          methodTypes: (json_['methodTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          name: json_['name'] as core.String?,
-          resourceTypes: (json_['resourceTypes'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-          updateTime: json_['updateTime'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (actionType != null) 'actionType': actionType!,
-        if (condition != null) 'condition': condition!,
-        if (description != null) 'description': description!,
-        if (displayName != null) 'displayName': displayName!,
-        if (methodTypes != null) 'methodTypes': methodTypes!,
-        if (name != null) 'name': name!,
-        if (resourceTypes != null) 'resourceTypes': resourceTypes!,
-        if (updateTime != null) 'updateTime': updateTime!,
-      };
-}
+typedef GoogleCloudOrgpolicyV2CustomConstraint
+    = $GoogleCloudOrgpolicyV2CustomConstraint;
 
 /// The response returned from the ListConstraints method.
 class GoogleCloudOrgpolicyV2ListConstraintsResponse {
@@ -2166,8 +2081,9 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
 
   /// If `true`, then the policy is enforced.
   ///
-  /// If `false`, then any configuration is acceptable. This field can be set
-  /// only in policies for boolean constraints.
+  /// If `false`, then any configuration is acceptable. This field can be set in
+  /// policies for boolean constraints, custom constraints and managed
+  /// constraints.
   core.bool? enforce;
 
   /// Required for managed constraints if parameters are defined.

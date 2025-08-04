@@ -18,7 +18,7 @@
 /// and related licenses for all users of a customer that you manage.
 ///
 /// For more information, see
-/// <https://developers.google.com/admin-sdk/licensing/>
+/// <https://developers.google.com/workspace/admin/licensing/>
 ///
 /// Create an instance of [LicensingApi] to access these resources:
 ///

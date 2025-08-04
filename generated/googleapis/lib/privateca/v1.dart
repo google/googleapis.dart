@@ -130,6 +130,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -152,12 +156,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2558,6 +2564,52 @@ class AllowedKeyType {
       };
 }
 
+/// AttributeTypeAndValue specifies an attribute type and value.
+///
+/// It can use either a OID or enum value to specify the attribute type.
+class AttributeTypeAndValue {
+  /// Object ID for an attribute type of an attribute and value pair.
+  ObjectId? objectId;
+
+  /// The attribute type of the attribute and value pair.
+  /// Possible string values are:
+  /// - "ATTRIBUTE_TYPE_UNSPECIFIED" : Attribute type is unspecified.
+  /// - "COMMON_NAME" : The "common name" of the subject.
+  /// - "COUNTRY_CODE" : The country code of the subject.
+  /// - "ORGANIZATION" : The organization of the subject.
+  /// - "ORGANIZATIONAL_UNIT" : The organizational unit of the subject.
+  /// - "LOCALITY" : The locality or city of the subject.
+  /// - "PROVINCE" : The province, territory, or regional state of the subject.
+  /// - "STREET_ADDRESS" : The street address of the subject.
+  /// - "POSTAL_CODE" : The postal code of the subject.
+  core.String? type;
+
+  /// The value for the attribute type.
+  core.String? value;
+
+  AttributeTypeAndValue({
+    this.objectId,
+    this.type,
+    this.value,
+  });
+
+  AttributeTypeAndValue.fromJson(core.Map json_)
+      : this(
+          objectId: json_.containsKey('objectId')
+              ? ObjectId.fromJson(
+                  json_['objectId'] as core.Map<core.String, core.dynamic>)
+              : null,
+          type: json_['type'] as core.String?,
+          value: json_['value'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (objectId != null) 'objectId': objectId!,
+        if (type != null) 'type': type!,
+        if (value != null) 'value': value!,
+      };
+}
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -2930,6 +2982,12 @@ class Certificate {
   /// certificate's Subject and/or SubjectAltNames are specified in the
   /// certificate request. This mode requires the caller to have the
   /// `privateca.certificates.create` permission.
+  /// - "RDN_SEQUENCE" : A mode used to get an accurate representation of the
+  /// Subject field's distinguished name. Indicates that the certificate's
+  /// Subject and/or SubjectAltNames are specified in the certificate request.
+  /// When parsing a PEM CSR this mode will maintain the sequence of RDNs found
+  /// in the CSR's subject field in the issued Certificate. This mode requires
+  /// the caller to have the `privateca.certificates.create` permission.
   /// - "REFLECTED_SPIFFE" : A mode reserved for special cases. Indicates that
   /// the certificate should have one SPIFFE SubjectAltNames set by the service
   /// based on the caller's identity. This mode will ignore any explicitly
@@ -5125,6 +5183,29 @@ class PublishingOptions {
       };
 }
 
+/// RelativeDistinguishedName specifies a relative distinguished name which will
+/// be used to build a distinguished name.
+class RelativeDistinguishedName {
+  /// Attributes describes the attribute value assertions in the RDN.
+  core.List<AttributeTypeAndValue>? attributes;
+
+  RelativeDistinguishedName({
+    this.attributes,
+  });
+
+  RelativeDistinguishedName.fromJson(core.Map json_)
+      : this(
+          attributes: (json_['attributes'] as core.List?)
+              ?.map((value) => AttributeTypeAndValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (attributes != null) 'attributes': attributes!,
+      };
+}
+
 /// Describes fields that are relavent to the revocation of a Certificate.
 class RevocationDetails {
   /// Indicates why a Certificate was revoked.
@@ -5379,6 +5460,9 @@ class Subject {
   /// The province, territory, or regional state of the subject.
   core.String? province;
 
+  /// This field can be used in place of the named subject fields.
+  core.List<RelativeDistinguishedName>? rdnSequence;
+
   /// The street address of the subject.
   core.String? streetAddress;
 
@@ -5390,6 +5474,7 @@ class Subject {
     this.organizationalUnit,
     this.postalCode,
     this.province,
+    this.rdnSequence,
     this.streetAddress,
   });
 
@@ -5402,6 +5487,10 @@ class Subject {
           organizationalUnit: json_['organizationalUnit'] as core.String?,
           postalCode: json_['postalCode'] as core.String?,
           province: json_['province'] as core.String?,
+          rdnSequence: (json_['rdnSequence'] as core.List?)
+              ?.map((value) => RelativeDistinguishedName.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
           streetAddress: json_['streetAddress'] as core.String?,
         );
 
@@ -5414,6 +5503,7 @@ class Subject {
           'organizationalUnit': organizationalUnit!,
         if (postalCode != null) 'postalCode': postalCode!,
         if (province != null) 'province': province!,
+        if (rdnSequence != null) 'rdnSequence': rdnSequence!,
         if (streetAddress != null) 'streetAddress': streetAddress!,
       };
 }

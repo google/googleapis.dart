@@ -23,7 +23,11 @@
 ///
 /// - [EffectiveTagsResource]
 /// - [FoldersResource]
+///   - [FoldersCapabilitiesResource]
 /// - [LiensResource]
+/// - [LocationsResource]
+///   - [LocationsEffectiveTagBindingCollectionsResource]
+///   - [LocationsTagBindingCollectionsResource]
 /// - [OperationsResource]
 /// - [OrganizationsResource]
 /// - [ProjectsResource]
@@ -64,6 +68,7 @@ class CloudResourceManagerApi {
   EffectiveTagsResource get effectiveTags => EffectiveTagsResource(_requester);
   FoldersResource get folders => FoldersResource(_requester);
   LiensResource get liens => LiensResource(_requester);
+  LocationsResource get locations => LocationsResource(_requester);
   OperationsResource get operations => OperationsResource(_requester);
   OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
@@ -137,6 +142,9 @@ class EffectiveTagsResource {
 
 class FoldersResource {
   final commons.ApiRequester _requester;
+
+  FoldersCapabilitiesResource get capabilities =>
+      FoldersCapabilitiesResource(_requester);
 
   FoldersResource(commons.ApiRequester client) : _requester = client;
 
@@ -461,7 +469,7 @@ class FoldersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of the folder. Its format is
+  /// [name] - Identifier. The resource name of the folder. Its format is
   /// `folders/{folder_id}`, for example: "folders/1234".
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
@@ -718,6 +726,99 @@ class FoldersResource {
   }
 }
 
+class FoldersCapabilitiesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersCapabilitiesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves the Capability identified by the supplied resource name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the capability to get. For example,
+  /// `folders/123/capabilities/app-management`
+  /// Value must have pattern `^folders/\[^/\]+/capabilities/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Capability].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Capability> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Capability.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the Capability.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. The resource name of the capability. Must
+  /// be in the following form: *
+  /// `folders/{folder_id}/capabilities/{capability_name}` For example,
+  /// `folders/123/capabilities/app-management` Following are the allowed
+  /// {capability_name} values: * `app-management`
+  /// Value must have pattern `^folders/\[^/\]+/capabilities/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Only
+  /// \[Capability.value\] can be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Capability request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class LiensResource {
   final commons.ApiRequester _requester;
 
@@ -895,6 +996,161 @@ class LiensResource {
     );
     return ListLiensResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class LocationsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsEffectiveTagBindingCollectionsResource
+      get effectiveTagBindingCollections =>
+          LocationsEffectiveTagBindingCollectionsResource(_requester);
+  LocationsTagBindingCollectionsResource get tagBindingCollections =>
+      LocationsTagBindingCollectionsResource(_requester);
+
+  LocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class LocationsEffectiveTagBindingCollectionsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsEffectiveTagBindingCollectionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns effective tag bindings on a GCP resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full name of the EffectiveTagBindingCollection in
+  /// format:
+  /// `locations/{location}/effectiveTagBindingCollections/{encoded-full-resource-name}`
+  /// where the encoded-full-resource-name is the UTF-8 encoded name of the
+  /// resource the TagBindings are bound to. E.g.
+  /// "locations/global/effectiveTagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/effectiveTagBindingCollections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EffectiveTagBindingCollection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EffectiveTagBindingCollection> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return EffectiveTagBindingCollection.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class LocationsTagBindingCollectionsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsTagBindingCollectionsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns tag bindings directly attached to a GCP resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full name of the TagBindingCollection in format:
+  /// `locations/{location}/tagBindingCollections/{encoded-full-resource-name}`
+  /// where the enoded-full-resource-name is the UTF-8 encoded name of the
+  /// resource the TagBindings are bound to. E.g.
+  /// "locations/global/tagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/tagBindingCollections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TagBindingCollection].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TagBindingCollection> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TagBindingCollection.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates tag bindings directly attached to a GCP resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the TagBindingCollection, following the
+  /// convention:
+  /// `locations/{location}/tagBindingCollections/{encoded-full-resource-name}`
+  /// where the encoded-full-resource-name is the UTF-8 encoded name of the GCP
+  /// resource the TagBindings are bound to.
+  /// "locations/global/tagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+  /// Value must have pattern
+  /// `^locations/\[^/\]+/tagBindingCollections/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> update(
+    TagBindingCollection request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3095,6 +3351,40 @@ class Binding {
       };
 }
 
+/// Representation of a Capability.
+class Capability {
+  /// Identifier.
+  ///
+  /// The resource name of the capability. Must be in the following form: *
+  /// `folders/{folder_id}/capabilities/{capability_name}` For example,
+  /// `folders/123/capabilities/app-management` Following are the allowed
+  /// {capability_name} values: * `app-management`
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The configured value of the capability at the given parent resource.
+  ///
+  /// Required.
+  core.bool? value;
+
+  Capability({
+    this.name,
+    this.value,
+  });
+
+  Capability.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          value: json_['value'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (value != null) 'value': value!,
+      };
+}
+
 /// An EffectiveTag represents a tag that applies to a resource during policy
 /// evaluation.
 ///
@@ -3169,6 +3459,55 @@ class EffectiveTag {
       };
 }
 
+/// Represents a collection of effective tag bindings for a GCP resource.
+class EffectiveTagBindingCollection {
+  /// Tag keys/values effectively bound to this resource, specified in
+  /// namespaced format.
+  ///
+  /// For example: "123/environment": "production"
+  core.Map<core.String, core.String>? effectiveTags;
+
+  /// The full resource name of the resource the TagBindings are bound to.
+  ///
+  /// E.g. `//cloudresourcemanager.googleapis.com/projects/123`
+  core.String? fullResourceName;
+
+  /// Identifier.
+  ///
+  /// The name of the EffectiveTagBindingCollection, following the convention:
+  /// `locations/{location}/effectiveTagBindingCollections/{encoded-full-resource-name}`
+  /// where the encoded-full-resource-name is the UTF-8 encoded name of the GCP
+  /// resource the TagBindings are bound to. E.g.
+  /// "locations/global/effectiveTagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+  core.String? name;
+
+  EffectiveTagBindingCollection({
+    this.effectiveTags,
+    this.fullResourceName,
+    this.name,
+  });
+
+  EffectiveTagBindingCollection.fromJson(core.Map json_)
+      : this(
+          effectiveTags:
+              (json_['effectiveTags'] as core.Map<core.String, core.dynamic>?)
+                  ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+          fullResourceName: json_['fullResourceName'] as core.String?,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effectiveTags != null) 'effectiveTags': effectiveTags!,
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -3200,6 +3539,14 @@ typedef Expr = $Expr;
 /// A folder in an organization's resource hierarchy, used to organize that
 /// organization's resources.
 class Folder {
+  /// Optional capabilities configured for this folder (via UpdateCapability
+  /// API).
+  ///
+  /// Example: `folders/123/capabilities/app-management`.
+  ///
+  /// Output only.
+  core.List<core.String>? configuredCapabilities;
+
   /// Timestamp when the folder was created.
   ///
   /// Output only.
@@ -3229,11 +3576,18 @@ class Folder {
   /// Output only.
   core.String? etag;
 
-  /// The resource name of the folder.
+  /// Management Project associated with this folder (if app-management
+  /// capability is enabled).
   ///
-  /// Its format is `folders/{folder_id}`, for example: "folders/1234".
+  /// Example: `projects/google-mp-123` OUTPUT ONLY.
   ///
   /// Output only.
+  core.String? managementProject;
+
+  /// Identifier.
+  ///
+  /// The resource name of the folder. Its format is `folders/{folder_id}`, for
+  /// example: "folders/1234".
   core.String? name;
 
   /// The folder's parent's resource name.
@@ -3272,10 +3626,12 @@ class Folder {
   core.String? updateTime;
 
   Folder({
+    this.configuredCapabilities,
     this.createTime,
     this.deleteTime,
     this.displayName,
     this.etag,
+    this.managementProject,
     this.name,
     this.parent,
     this.state,
@@ -3285,10 +3641,15 @@ class Folder {
 
   Folder.fromJson(core.Map json_)
       : this(
+          configuredCapabilities:
+              (json_['configuredCapabilities'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           etag: json_['etag'] as core.String?,
+          managementProject: json_['managementProject'] as core.String?,
           name: json_['name'] as core.String?,
           parent: json_['parent'] as core.String?,
           state: json_['state'] as core.String?,
@@ -3302,10 +3663,13 @@ class Folder {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (configuredCapabilities != null)
+          'configuredCapabilities': configuredCapabilities!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (displayName != null) 'displayName': displayName!,
         if (etag != null) 'etag': etag!,
+        if (managementProject != null) 'managementProject': managementProject!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
         if (state != null) 'state': state!,
@@ -3950,6 +4314,15 @@ class Policy {
 /// It is a container for ACLs, APIs, App Engine Apps, VMs, and other Google
 /// Cloud Platform resources.
 class Project {
+  /// If this project is a Management Project, list of capabilities configured
+  /// on the parent folder.
+  ///
+  /// Note, presence of any capability implies that this is a Management
+  /// Project. Example: `folders/123/capabilities/app-management`. OUTPUT ONLY.
+  ///
+  /// Output only.
+  core.List<core.String>? configuredCapabilities;
+
   /// Creation time.
   ///
   /// Output only.
@@ -4044,6 +4417,7 @@ class Project {
   core.String? updateTime;
 
   Project({
+    this.configuredCapabilities,
     this.createTime,
     this.deleteTime,
     this.displayName,
@@ -4059,6 +4433,10 @@ class Project {
 
   Project.fromJson(core.Map json_)
       : this(
+          configuredCapabilities:
+              (json_['configuredCapabilities'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           createTime: json_['createTime'] as core.String?,
           deleteTime: json_['deleteTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
@@ -4084,6 +4462,8 @@ class Project {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (configuredCapabilities != null)
+          'configuredCapabilities': configuredCapabilities!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
         if (displayName != null) 'displayName': displayName!,
@@ -4304,6 +4684,64 @@ class TagBinding {
       };
 }
 
+/// Represents a collection of tags directly bound to a GCP resource.
+class TagBindingCollection {
+  /// A checksum based on the current bindings which can be passed to prevent
+  /// race conditions.
+  ///
+  /// This field is always set in server responses.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// The full resource name of the resource the TagBindings are bound to.
+  ///
+  /// E.g. `//cloudresourcemanager.googleapis.com/projects/123`
+  core.String? fullResourceName;
+
+  /// Identifier.
+  ///
+  /// The name of the TagBindingCollection, following the convention:
+  /// `locations/{location}/tagBindingCollections/{encoded-full-resource-name}`
+  /// where the encoded-full-resource-name is the UTF-8 encoded name of the GCP
+  /// resource the TagBindings are bound to.
+  /// "locations/global/tagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123"
+  core.String? name;
+
+  /// Tag keys/values directly bound to this resource, specified in namespaced
+  /// format.
+  ///
+  /// For example: "123/environment": "production"
+  core.Map<core.String, core.String>? tags;
+
+  TagBindingCollection({
+    this.etag,
+    this.fullResourceName,
+    this.name,
+    this.tags,
+  });
+
+  TagBindingCollection.fromJson(core.Map json_)
+      : this(
+          etag: json_['etag'] as core.String?,
+          fullResourceName: json_['fullResourceName'] as core.String?,
+          name: json_['name'] as core.String?,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (etag != null) 'etag': etag!,
+        if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+        if (name != null) 'name': name!,
+        if (tags != null) 'tags': tags!,
+      };
+}
+
 /// A TagHold represents the use of a TagValue that is not captured by
 /// TagBindings.
 ///
@@ -4457,7 +4895,7 @@ class TagKey {
   /// The user friendly name for a TagKey.
   ///
   /// The short name should be unique for TagKeys within the same tag namespace.
-  /// The short name must be 1-63 characters, beginning and ending with an
+  /// The short name must be 1-256 characters, beginning and ending with an
   /// alphanumeric character (\[a-z0-9A-Z\]) with dashes (-), underscores (_),
   /// dots (.), and alphanumerics between.
   ///
@@ -4567,8 +5005,8 @@ class TagValue {
   /// User-assigned short name for TagValue.
   ///
   /// The short name should be unique for TagValues within the same parent
-  /// TagKey. The short name must be 63 characters or less, beginning and ending
-  /// with an alphanumeric character (\[a-z0-9A-Z\]) with dashes (-),
+  /// TagKey. The short name must be 256 characters or less, beginning and
+  /// ending with an alphanumeric character (\[a-z0-9A-Z\]) with dashes (-),
   /// underscores (_), dots (.), and alphanumerics between.
   ///
   /// Required. Immutable.

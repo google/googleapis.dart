@@ -62,6 +62,7 @@ api.GoogleCloudOrgpolicyV2Constraint buildGoogleCloudOrgpolicyV2Constraint() {
     o.constraintDefault = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
+    o.equivalentConstraint = 'foo';
     o.listConstraint = buildGoogleCloudOrgpolicyV2ConstraintListConstraint();
     o.name = 'foo';
     o.supportsDryRun = true;
@@ -87,6 +88,10 @@ void checkGoogleCloudOrgpolicyV2Constraint(
     );
     unittest.expect(
       o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.equivalentConstraint!,
       unittest.equals('foo'),
     );
     checkGoogleCloudOrgpolicyV2ConstraintListConstraint(o.listConstraint!);

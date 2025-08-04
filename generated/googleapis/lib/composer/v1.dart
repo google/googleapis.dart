@@ -647,6 +647,49 @@ class ProjectsLocationsEnvironmentsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Restart Airflow web server.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the environment to restart the web
+  /// server for, in the form:
+  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> restartWebServer(
+    RestartWebServerRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':restartWebServer';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Creates a snapshots of a Cloud Composer environment.
   ///
   /// As a result of this operation, snapshot of environment's state is stored
@@ -3559,6 +3602,9 @@ class RecoveryConfig {
           'scheduledSnapshotsConfig': scheduledSnapshotsConfig!,
       };
 }
+
+/// Restart Airflow web server.
+typedef RestartWebServerRequest = $Empty;
 
 /// Request to create a snapshot of a Cloud Composer environment.
 class SaveSnapshotRequest {

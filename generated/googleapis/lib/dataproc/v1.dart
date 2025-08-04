@@ -3128,6 +3128,8 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
   ///
+  /// [jobIds] - Optional. List of Job IDs to filter by if provided.
+  ///
   /// [jobStatus] - Optional. List only jobs in the specific state.
   /// Possible string values are:
   /// - "JOB_EXECUTION_STATUS_UNSPECIFIED"
@@ -3158,6 +3160,7 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
   /// this method will complete with the same error.
   async.Future<SearchSessionSparkApplicationJobsResponse> searchJobs(
     core.String name, {
+    core.List<core.String>? jobIds,
     core.String? jobStatus,
     core.int? pageSize,
     core.String? pageToken,
@@ -3165,6 +3168,7 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (jobIds != null) 'jobIds': jobIds,
       if (jobStatus != null) 'jobStatus': [jobStatus],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3196,6 +3200,9 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
   /// [details] - Optional. Lists/ hides details of Spark plan nodes. True is
   /// set to list and false to hide.
   ///
+  /// [operationIds] - Optional. List of Spark Connect operation IDs to filter
+  /// by if provided.
+  ///
   /// [pageSize] - Optional. Maximum number of queries to return in each
   /// response. The service may return fewer than this. The default page size is
   /// 10; the maximum page size is 100.
@@ -3223,6 +3230,7 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
       searchSqlQueries(
     core.String name, {
     core.bool? details,
+    core.List<core.String>? operationIds,
     core.int? pageSize,
     core.String? pageToken,
     core.String? parent,
@@ -3231,6 +3239,7 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (details != null) 'details': ['${details}'],
+      if (operationIds != null) 'operationIds': operationIds,
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (parent != null) 'parent': [parent],
@@ -3419,6 +3428,8 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
   ///
   /// [parent] - Required. Parent (Session) resource reference.
   ///
+  /// [stageIds] - Optional. List of Stage IDs to filter by if provided.
+  ///
   /// [stageStatus] - Optional. List only stages in the given state.
   /// Possible string values are:
   /// - "STAGE_STATUS_UNSPECIFIED"
@@ -3448,6 +3459,7 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
     core.int? pageSize,
     core.String? pageToken,
     core.String? parent,
+    core.List<core.String>? stageIds,
     core.String? stageStatus,
     core.String? summaryMetricsMask,
     core.String? $fields,
@@ -3456,6 +3468,7 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if (parent != null) 'parent': [parent],
+      if (stageIds != null) 'stageIds': stageIds,
       if (stageStatus != null) 'stageStatus': [stageStatus],
       if (summaryMetricsMask != null)
         'summaryMetricsMask': [summaryMetricsMask],
@@ -3527,6 +3540,8 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/sessions/\[^/\]+/sparkApplications/\[^/\]+$`.
   ///
+  /// [jobIds] - Optional. List of Job IDs to filter by if provided.
+  ///
   /// [parent] - Required. Parent (Session) resource reference.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3541,10 +3556,12 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
   /// this method will complete with the same error.
   async.Future<SummarizeSessionSparkApplicationJobsResponse> summarizeJobs(
     core.String name, {
+    core.List<core.String>? jobIds,
     core.String? parent,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (jobIds != null) 'jobIds': jobIds,
       if (parent != null) 'parent': [parent],
       if ($fields != null) 'fields': [$fields],
     };
@@ -3626,6 +3643,8 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
   ///
   /// [parent] - Required. Parent (Session) resource reference.
   ///
+  /// [stageIds] - Optional. List of Stage IDs to filter by if provided.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3639,10 +3658,12 @@ class ProjectsLocationsSessionsSparkApplicationsResource {
   async.Future<SummarizeSessionSparkApplicationStagesResponse> summarizeStages(
     core.String name, {
     core.String? parent,
+    core.List<core.String>? stageIds,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (parent != null) 'parent': [parent],
+      if (stageIds != null) 'stageIds': stageIds,
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -7681,6 +7702,41 @@ class ApplicationInfo {
       };
 }
 
+/// Authentication configuration for a workload is used to set the default
+/// identity for the workload execution.
+///
+/// The config specifies the type of identity (service account or user) that
+/// will be used by workloads to access resources on the project(s).
+class AuthenticationConfig {
+  /// Authentication type for the user workload running in containers.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "AUTHENTICATION_TYPE_UNSPECIFIED" : If AuthenticationType is unspecified
+  /// then END_USER_CREDENTIALS is used for 3.0 and newer runtimes, and
+  /// SERVICE_ACCOUNT is used for older runtimes.
+  /// - "SERVICE_ACCOUNT" : Use service account credentials for authenticating
+  /// to other services.
+  /// - "END_USER_CREDENTIALS" : Use OAuth credentials associated with the
+  /// workload creator/user for authenticating to other services.
+  core.String? userWorkloadAuthenticationType;
+
+  AuthenticationConfig({
+    this.userWorkloadAuthenticationType,
+  });
+
+  AuthenticationConfig.fromJson(core.Map json_)
+      : this(
+          userWorkloadAuthenticationType:
+              json_['userWorkloadAuthenticationType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (userWorkloadAuthenticationType != null)
+          'userWorkloadAuthenticationType': userWorkloadAuthenticationType!,
+      };
+}
+
 /// Autoscaling Policy config associated with the cluster.
 class AutoscalingConfig {
   /// The autoscaling policy used by the cluster.Only resource names including
@@ -7711,6 +7767,18 @@ class AutoscalingConfig {
 /// Describes an autoscaling policy for Dataproc cluster autoscaler.
 class AutoscalingPolicy {
   BasicAutoscalingAlgorithm? basicAlgorithm;
+
+  /// The type of the clusters for which this autoscaling policy is to be
+  /// configured.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CLUSTER_TYPE_UNSPECIFIED" : Not set.
+  /// - "STANDARD" : Standard dataproc cluster with a minimum of two primary
+  /// workers.
+  /// - "ZERO_SCALE" : Clusters that can use only secondary workers and be
+  /// scaled down to zero secondary worker nodes.
+  core.String? clusterType;
 
   /// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9),
   /// underscores (_), and hyphens (-).
@@ -7757,6 +7825,7 @@ class AutoscalingPolicy {
 
   AutoscalingPolicy({
     this.basicAlgorithm,
+    this.clusterType,
     this.id,
     this.labels,
     this.name,
@@ -7770,6 +7839,7 @@ class AutoscalingPolicy {
               ? BasicAutoscalingAlgorithm.fromJson(json_['basicAlgorithm']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          clusterType: json_['clusterType'] as core.String?,
           id: json_['id'] as core.String?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -7792,6 +7862,7 @@ class AutoscalingPolicy {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (basicAlgorithm != null) 'basicAlgorithm': basicAlgorithm!,
+        if (clusterType != null) 'clusterType': clusterType!,
         if (id != null) 'id': id!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -8516,6 +8587,29 @@ class ClusterConfig {
   /// Optional.
   core.List<AuxiliaryNodeGroup>? auxiliaryNodeGroups;
 
+  /// The tier of the cluster.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CLUSTER_TIER_UNSPECIFIED" : Not set. Works the same as
+  /// CLUSTER_TIER_STANDARD.
+  /// - "CLUSTER_TIER_STANDARD" : Standard dataproc cluster.
+  /// - "CLUSTER_TIER_PREMIUM" : Premium dataproc cluster.
+  core.String? clusterTier;
+
+  /// The type of the cluster.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CLUSTER_TYPE_UNSPECIFIED" : Not set.
+  /// - "STANDARD" : Standard dataproc cluster with a minimum of two primary
+  /// workers.
+  /// - "SINGLE_NODE" :
+  /// https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/single-node-clusters
+  /// - "ZERO_SCALE" : Clusters that can use only secondary workers and be
+  /// scaled down to zero secondary worker nodes.
+  core.String? clusterType;
+
   /// A Cloud Storage bucket used to stage job dependencies, config files, and
   /// job driver console output.
   ///
@@ -8633,6 +8727,8 @@ class ClusterConfig {
   ClusterConfig({
     this.autoscalingConfig,
     this.auxiliaryNodeGroups,
+    this.clusterTier,
+    this.clusterType,
     this.configBucket,
     this.dataprocMetricConfig,
     this.encryptionConfig,
@@ -8660,6 +8756,8 @@ class ClusterConfig {
               ?.map((value) => AuxiliaryNodeGroup.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          clusterTier: json_['clusterTier'] as core.String?,
+          clusterType: json_['clusterType'] as core.String?,
           configBucket: json_['configBucket'] as core.String?,
           dataprocMetricConfig: json_.containsKey('dataprocMetricConfig')
               ? DataprocMetricConfig.fromJson(json_['dataprocMetricConfig']
@@ -8720,6 +8818,8 @@ class ClusterConfig {
         if (autoscalingConfig != null) 'autoscalingConfig': autoscalingConfig!,
         if (auxiliaryNodeGroups != null)
           'auxiliaryNodeGroups': auxiliaryNodeGroups!,
+        if (clusterTier != null) 'clusterTier': clusterTier!,
+        if (clusterType != null) 'clusterType': clusterType!,
         if (configBucket != null) 'configBucket': configBucket!,
         if (dataprocMetricConfig != null)
           'dataprocMetricConfig': dataprocMetricConfig!,
@@ -9141,7 +9241,8 @@ class DiagnoseClusterRequest {
       };
 }
 
-/// Specifies the config of disk options for a group of VM instances.
+/// Specifies the config of boot disk and attached disk options for a group of
+/// VM instances.
 class DiskConfig {
   /// Indicates how many IOPS to provision for the disk.
   ///
@@ -9404,6 +9505,15 @@ class EnvironmentConfig {
 
 /// Execution configuration for a workload.
 class ExecutionConfig {
+  /// Authentication configuration used to set the default identity for the
+  /// workload execution.
+  ///
+  /// The config specifies the type of identity (service account or user) that
+  /// will be used by workloads to access resources on the project(s).
+  ///
+  /// Optional.
+  AuthenticationConfig? authenticationConfig;
+
   /// Applies to sessions only.
   ///
   /// The duration to keep the session alive while it's idling. Exceeding this
@@ -9477,6 +9587,7 @@ class ExecutionConfig {
   core.String? ttl;
 
   ExecutionConfig({
+    this.authenticationConfig,
     this.idleTtl,
     this.kmsKey,
     this.networkTags,
@@ -9489,6 +9600,10 @@ class ExecutionConfig {
 
   ExecutionConfig.fromJson(core.Map json_)
       : this(
+          authenticationConfig: json_.containsKey('authenticationConfig')
+              ? AuthenticationConfig.fromJson(json_['authenticationConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           idleTtl: json_['idleTtl'] as core.String?,
           kmsKey: json_['kmsKey'] as core.String?,
           networkTags: (json_['networkTags'] as core.List?)
@@ -9502,6 +9617,8 @@ class ExecutionConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (authenticationConfig != null)
+          'authenticationConfig': authenticationConfig!,
         if (idleTtl != null) 'idleTtl': idleTtl!,
         if (kmsKey != null) 'kmsKey': kmsKey!,
         if (networkTags != null) 'networkTags': networkTags!,
@@ -10173,9 +10290,10 @@ class GceClusterConfig {
   /// Optional.
   ReservationAffinity? reservationAffinity;
 
-  /// Resource manager tags to add to all instances (see Resource manager tags
-  /// resources
-  /// (https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)).
+  /// Resource manager tags
+  /// (https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
+  /// to add to all instances (see Use secure tags in Dataproc
+  /// (https://cloud.google.com/dataproc/docs/guides/attach-secure-tags)).
   ///
   /// Optional.
   core.Map<core.String, core.String>? resourceManagerTags;
@@ -12521,6 +12639,24 @@ class LifecycleConfig {
   /// Optional.
   core.String? autoDeleteTtl;
 
+  /// The time when cluster will be auto-stopped (see JSON representation of
+  /// Timestamp
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  ///
+  /// Optional.
+  core.String? autoStopTime;
+
+  /// The lifetime duration of the cluster.
+  ///
+  /// The cluster will be auto-stopped at the end of this period, calculated
+  /// from the time of submission of the create or update cluster request.
+  /// Minimum value is 10 minutes; maximum value is 14 days (see JSON
+  /// representation of Duration
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  ///
+  /// Optional.
+  core.String? autoStopTtl;
+
   /// The duration to keep the cluster alive while idling (when no jobs are
   /// running).
   ///
@@ -12540,26 +12676,46 @@ class LifecycleConfig {
   /// Output only.
   core.String? idleStartTime;
 
+  /// The duration to keep the cluster started while idling (when no jobs are
+  /// running).
+  ///
+  /// Passing this threshold will cause the cluster to be stopped. Minimum value
+  /// is 5 minutes; maximum value is 14 days (see JSON representation of
+  /// Duration
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  ///
+  /// Optional.
+  core.String? idleStopTtl;
+
   LifecycleConfig({
     this.autoDeleteTime,
     this.autoDeleteTtl,
+    this.autoStopTime,
+    this.autoStopTtl,
     this.idleDeleteTtl,
     this.idleStartTime,
+    this.idleStopTtl,
   });
 
   LifecycleConfig.fromJson(core.Map json_)
       : this(
           autoDeleteTime: json_['autoDeleteTime'] as core.String?,
           autoDeleteTtl: json_['autoDeleteTtl'] as core.String?,
+          autoStopTime: json_['autoStopTime'] as core.String?,
+          autoStopTtl: json_['autoStopTtl'] as core.String?,
           idleDeleteTtl: json_['idleDeleteTtl'] as core.String?,
           idleStartTime: json_['idleStartTime'] as core.String?,
+          idleStopTtl: json_['idleStopTtl'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (autoDeleteTime != null) 'autoDeleteTime': autoDeleteTime!,
         if (autoDeleteTtl != null) 'autoDeleteTtl': autoDeleteTtl!,
+        if (autoStopTime != null) 'autoStopTime': autoStopTime!,
+        if (autoStopTtl != null) 'autoStopTtl': autoStopTtl!,
         if (idleDeleteTtl != null) 'idleDeleteTtl': idleDeleteTtl!,
         if (idleStartTime != null) 'idleStartTime': idleStartTime!,
+        if (idleStopTtl != null) 'idleStopTtl': idleStopTtl!,
       };
 }
 
@@ -13071,7 +13227,7 @@ class Metric {
   /// For example, if one or more spark:executive metrics are listed as metric
   /// overrides, other SPARK metrics are not collected. The collection of the
   /// metrics for other enabled custom metric sources is unaffected. For
-  /// example, if both SPARK andd YARN metric sources are enabled, and overrides
+  /// example, if both SPARK and YARN metric sources are enabled, and overrides
   /// are provided for Spark metrics only, all YARN metrics are collected.
   ///
   /// Optional.
@@ -14146,6 +14302,35 @@ class ProcessSummary {
         if (processLogs != null) 'processLogs': processLogs!,
         if (removeTime != null) 'removeTime': removeTime!,
         if (totalCores != null) 'totalCores': totalCores!,
+      };
+}
+
+/// Properties of the workload organized by origin.
+class PropertiesInfo {
+  /// Properties set by autotuning engine.
+  ///
+  /// Output only.
+  core.Map<core.String, ValueInfo>? autotuningProperties;
+
+  PropertiesInfo({
+    this.autotuningProperties,
+  });
+
+  PropertiesInfo.fromJson(core.Map json_)
+      : this(
+          autotuningProperties: (json_['autotuningProperties']
+                  as core.Map<core.String, core.dynamic>?)
+              ?.map(
+            (key, value) => core.MapEntry(
+              key,
+              ValueInfo.fromJson(value as core.Map<core.String, core.dynamic>),
+            ),
+          ),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (autotuningProperties != null)
+          'autotuningProperties': autotuningProperties!,
       };
 }
 
@@ -15280,12 +15465,18 @@ class RuntimeInfo {
   /// Output only.
   core.String? outputUri;
 
+  /// Properties of the workload organized by origin.
+  ///
+  /// Optional.
+  PropertiesInfo? propertiesInfo;
+
   RuntimeInfo({
     this.approximateUsage,
     this.currentUsage,
     this.diagnosticOutputUri,
     this.endpoints,
     this.outputUri,
+    this.propertiesInfo,
   });
 
   RuntimeInfo.fromJson(core.Map json_)
@@ -15307,6 +15498,10 @@ class RuntimeInfo {
             ),
           ),
           outputUri: json_['outputUri'] as core.String?,
+          propertiesInfo: json_.containsKey('propertiesInfo')
+              ? PropertiesInfo.fromJson(json_['propertiesInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -15316,6 +15511,7 @@ class RuntimeInfo {
           'diagnosticOutputUri': diagnosticOutputUri!,
         if (endpoints != null) 'endpoints': endpoints!,
         if (outputUri != null) 'outputUri': outputUri!,
+        if (propertiesInfo != null) 'propertiesInfo': propertiesInfo!,
       };
 }
 
@@ -19731,17 +19927,29 @@ class UsageMetrics {
   /// Optional.
   core.String? milliDcuSeconds;
 
+  /// Slot usage in (milliSlot x seconds).
+  ///
+  /// Optional.
+  core.String? milliSlotSeconds;
+
   /// Shuffle storage usage in (GB x seconds) (see Dataproc Serverless pricing
   /// (https://cloud.google.com/dataproc-serverless/pricing)).
   ///
   /// Optional.
   core.String? shuffleStorageGbSeconds;
 
+  /// The timestamp of the usage metrics.
+  ///
+  /// Optional.
+  core.String? updateTime;
+
   UsageMetrics({
     this.acceleratorType,
     this.milliAcceleratorSeconds,
     this.milliDcuSeconds,
+    this.milliSlotSeconds,
     this.shuffleStorageGbSeconds,
+    this.updateTime,
   });
 
   UsageMetrics.fromJson(core.Map json_)
@@ -19750,8 +19958,10 @@ class UsageMetrics {
           milliAcceleratorSeconds:
               json_['milliAcceleratorSeconds'] as core.String?,
           milliDcuSeconds: json_['milliDcuSeconds'] as core.String?,
+          milliSlotSeconds: json_['milliSlotSeconds'] as core.String?,
           shuffleStorageGbSeconds:
               json_['shuffleStorageGbSeconds'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19759,8 +19969,10 @@ class UsageMetrics {
         if (milliAcceleratorSeconds != null)
           'milliAcceleratorSeconds': milliAcceleratorSeconds!,
         if (milliDcuSeconds != null) 'milliDcuSeconds': milliDcuSeconds!,
+        if (milliSlotSeconds != null) 'milliSlotSeconds': milliSlotSeconds!,
         if (shuffleStorageGbSeconds != null)
           'shuffleStorageGbSeconds': shuffleStorageGbSeconds!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 
@@ -19794,6 +20006,11 @@ class UsageSnapshot {
   /// Optional.
   core.String? milliDcuPremium;
 
+  /// Milli (one-thousandth) Slot usage of the workload.
+  ///
+  /// Optional.
+  core.String? milliSlot;
+
   /// Shuffle Storage in gigabytes (GB).
   ///
   /// (see Dataproc Serverless pricing
@@ -19820,6 +20037,7 @@ class UsageSnapshot {
     this.milliAccelerator,
     this.milliDcu,
     this.milliDcuPremium,
+    this.milliSlot,
     this.shuffleStorageGb,
     this.shuffleStorageGbPremium,
     this.snapshotTime,
@@ -19831,6 +20049,7 @@ class UsageSnapshot {
           milliAccelerator: json_['milliAccelerator'] as core.String?,
           milliDcu: json_['milliDcu'] as core.String?,
           milliDcuPremium: json_['milliDcuPremium'] as core.String?,
+          milliSlot: json_['milliSlot'] as core.String?,
           shuffleStorageGb: json_['shuffleStorageGb'] as core.String?,
           shuffleStorageGbPremium:
               json_['shuffleStorageGbPremium'] as core.String?,
@@ -19842,10 +20061,44 @@ class UsageSnapshot {
         if (milliAccelerator != null) 'milliAccelerator': milliAccelerator!,
         if (milliDcu != null) 'milliDcu': milliDcu!,
         if (milliDcuPremium != null) 'milliDcuPremium': milliDcuPremium!,
+        if (milliSlot != null) 'milliSlot': milliSlot!,
         if (shuffleStorageGb != null) 'shuffleStorageGb': shuffleStorageGb!,
         if (shuffleStorageGbPremium != null)
           'shuffleStorageGbPremium': shuffleStorageGbPremium!,
         if (snapshotTime != null) 'snapshotTime': snapshotTime!,
+      };
+}
+
+/// Annotatated property value.
+class ValueInfo {
+  /// Annotation, comment or explanation why the property was set.
+  core.String? annotation;
+
+  /// Value which was replaced by the corresponding component.
+  ///
+  /// Optional.
+  core.String? overriddenValue;
+
+  /// Property value.
+  core.String? value;
+
+  ValueInfo({
+    this.annotation,
+    this.overriddenValue,
+    this.value,
+  });
+
+  ValueInfo.fromJson(core.Map json_)
+      : this(
+          annotation: json_['annotation'] as core.String?,
+          overriddenValue: json_['overriddenValue'] as core.String?,
+          value: json_['value'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotation != null) 'annotation': annotation!,
+        if (overriddenValue != null) 'overriddenValue': overriddenValue!,
+        if (value != null) 'value': value!,
       };
 }
 

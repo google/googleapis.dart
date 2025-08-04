@@ -26,6 +26,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsConnectionsResource]
 ///       - [ProjectsLocationsConnectionsConnectionSchemaMetadataResource]
+///       - [ProjectsLocationsConnectionsEndUserAuthenticationsResource]
 ///       - [ProjectsLocationsConnectionsEventSubscriptionsResource]
 ///       - [ProjectsLocationsConnectionsRuntimeActionSchemasResource]
 ///       - [ProjectsLocationsConnectionsRuntimeEntitySchemasResource]
@@ -223,6 +224,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -245,12 +250,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -322,6 +329,10 @@ class ProjectsLocationsConnectionsResource {
       get connectionSchemaMetadata =>
           ProjectsLocationsConnectionsConnectionSchemaMetadataResource(
               _requester);
+  ProjectsLocationsConnectionsEndUserAuthenticationsResource
+      get endUserAuthentications =>
+          ProjectsLocationsConnectionsEndUserAuthenticationsResource(
+              _requester);
   ProjectsLocationsConnectionsEventSubscriptionsResource
       get eventSubscriptions =>
           ProjectsLocationsConnectionsEventSubscriptionsResource(_requester);
@@ -390,6 +401,11 @@ class ProjectsLocationsConnectionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
+  /// [force] - Optional. If set to true, any child
+  /// EndUserAuthentication/EventSubscription resources will also be deleted.
+  /// Otherwise, the request will fail if the connection has any children.
+  /// Followed the best practice from https://aip.dev/135#cascading-delete
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -402,9 +418,11 @@ class ProjectsLocationsConnectionsResource {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
     core.String name, {
+    core.bool? force,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -677,12 +695,16 @@ class ProjectsLocationsConnectionsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. You can modify only the fields listed below. To
-  /// lock/unlock a connection: * `lock_config` To suspend/resume a connection:
-  /// * `suspended` To update the connection details: * `description` * `labels`
-  /// * `connector_version` * `config_variables` * `auth_config` *
-  /// `destination_configs` * `node_config` * `log_config` * `ssl_config` *
-  /// `eventing_enablement_type` * `eventing_config` * `auth_override_enabled`
+  /// [updateMask] - Required. The list of fields to update. Fields are
+  /// specified relative to the connection. A field will be overwritten if it is
+  /// in the mask. The field mask must not be empty, and it must not contain
+  /// fields that are immutable or only set by the server. You can modify only
+  /// the fields listed below. To lock/unlock a connection: * `lock_config` To
+  /// suspend/resume a connection: * `suspended` To update the connection
+  /// details: * `description` * `labels` * `connector_version` *
+  /// `config_variables` * `auth_config` * `destination_configs` * `node_config`
+  /// * `log_config` * `ssl_config` * `eventing_enablement_type` *
+  /// `eventing_config` * `auth_override_enabled` * `async_operations_enabled`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1160,6 +1182,253 @@ class ProjectsLocationsConnectionsConnectionSchemaMetadataResource {
   }
 }
 
+class ProjectsLocationsConnectionsEndUserAuthenticationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConnectionsEndUserAuthenticationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new EndUserAuthentication in a given project,location and
+  /// connection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the EndUserAuthentication, of the
+  /// form: `projects / * /locations / * /connections / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [endUserAuthenticationId] - Required. Identifier to assign to the
+  /// EndUserAuthentication. Must be unique within scope of the parent resource.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    EndUserAuthentication request,
+    core.String parent, {
+    core.String? endUserAuthenticationId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (endUserAuthenticationId != null)
+        'endUserAuthenticationId': [endUserAuthenticationId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/endUserAuthentications';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single EndUserAuthentication.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / * /locations / *
+  /// /connections / * /endUserAuthentication / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/endUserAuthentications/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single EndUserAuthentication.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the form: `projects / * /locations / *
+  /// /connections / * /EndUserAuthentications / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/endUserAuthentications/\[^/\]+$`.
+  ///
+  /// [view] - Optional. View of the EndUserAuthentication to return.
+  /// Possible string values are:
+  /// - "END_USER_AUTHENTICATION_VIEW_UNSPECIFIED" :
+  /// END_USER_AUTHENTICATION_UNSPECIFIED.
+  /// - "BASIC_VIEW" : Do not include secret fields.
+  /// - "FULL_VIEW" : Include secret fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [EndUserAuthentication].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EndUserAuthentication> get(
+    core.String name, {
+    core.String? view,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return EndUserAuthentication.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List EndUserAuthentications in a given project,location and connection.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource of the EndUserAuthentication, of the
+  /// form: `projects / * /locations / * /connections / * `
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [filter] - Filter.
+  ///
+  /// [orderBy] - Order by parameters.
+  ///
+  /// [pageSize] - Page size.
+  ///
+  /// [pageToken] - Page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEndUserAuthenticationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEndUserAuthenticationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/endUserAuthentications';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListEndUserAuthenticationsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates the parameters of a single EndUserAuthentication.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Identifier. Resource name of the EndUserAuthentication.
+  /// Format:
+  /// projects/{project}/locations/{location}/connections/{connection}/endUserAuthentications/{end_user_authentication}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/endUserAuthentications/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update. A field will be
+  /// overwritten if it is in the mask. You can modify only the fields listed
+  /// below. To update the EndUserAuthentication details: *
+  /// `notify_endpoint_destination`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    EndUserAuthentication request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsConnectionsEventSubscriptionsResource {
   final commons.ApiRequester _requester;
 
@@ -1351,7 +1620,8 @@ class ProjectsLocationsConnectionsEventSubscriptionsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource name of the EventSubscription. Format:
+  /// [name] - Required. Identifier. Resource name of the EventSubscription.
+  /// Format:
   /// projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/eventSubscriptions/\[^/\]+$`.
@@ -1814,6 +2084,7 @@ class ProjectsLocationsEndpointAttachmentsResource {
   ///
   /// [endpointAttachmentId] - Required. Identifier to assign to the
   /// EndpointAttachment. Must be unique within scope of the parent resource.
+  /// The regex is: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2671,6 +2942,9 @@ class ProjectsLocationsGlobalManagedZonesResource {
   ///
   /// [pageToken] - Page token.
   ///
+  /// [returnPartialSuccess] - Optional. If true, allow partial responses for
+  /// multi-regional Aggregated List requests.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2687,6 +2961,7 @@ class ProjectsLocationsGlobalManagedZonesResource {
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -2694,6 +2969,8 @@ class ProjectsLocationsGlobalManagedZonesResource {
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3406,9 +3683,7 @@ class ProjectsLocationsProvidersConnectorsVersionsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Parent resource of the connectors, of the form:
-  /// `projects / * /locations / * /providers / * /connectors / * ` Only global
-  /// location is supported for ConnectorVersion resource.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/providers/\[^/\]+/connectors/\[^/\]+$`.
   ///
@@ -3611,12 +3886,18 @@ typedef AuditLogConfig = $AuditLogConfig;
 /// AuthConfig defines details of a authentication type.
 class AuthConfig {
   /// List containing additional auth configs.
+  ///
+  /// Optional.
   core.List<ConfigVariable>? additionalVariables;
 
   /// Identifier key for auth config
+  ///
+  /// Optional.
   core.String? authKey;
 
   /// The type of authentication configured.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "AUTH_TYPE_UNSPECIFIED" : Authentication type not specified.
   /// - "USER_PASSWORD" : Username and Password Authentication.
@@ -4161,6 +4442,8 @@ class ConfigVariable {
   core.String? intValue;
 
   /// Key of the config variable.
+  ///
+  /// Optional.
   core.String? key;
 
   /// Value is a secret.
@@ -4482,6 +4765,15 @@ class Connection {
   /// Output only.
   core.String? envoyImageLocation;
 
+  /// Additional Oauth2.0 Auth config for EUA.
+  ///
+  /// If the connection is configured using non-OAuth authentication but OAuth
+  /// needs to be used for EUA, this field can be populated with the OAuth
+  /// config. This should be a OAuth2AuthCodeFlow Auth type only.
+  ///
+  /// Optional.
+  AuthConfig? euaOauthAuthConfig;
+
   /// Eventing config of a connection
   ///
   /// Optional.
@@ -4503,6 +4795,15 @@ class Connection {
   ///
   /// Output only.
   EventingRuntimeData? eventingRuntimeData;
+
+  /// Fallback on admin credentials for the connection.
+  ///
+  /// If this both auth_override_enabled and fallback_on_admin_credentials are
+  /// set to true, the connection will use the admin credentials if the dynamic
+  /// auth header is not present during auth override.
+  ///
+  /// Optional.
+  core.bool? fallbackOnAdminCredentials;
 
   /// The name of the Hostname of the Service Directory service with TLS.
   ///
@@ -4617,9 +4918,11 @@ class Connection {
     this.description,
     this.destinationConfigs,
     this.envoyImageLocation,
+    this.euaOauthAuthConfig,
     this.eventingConfig,
     this.eventingEnablementType,
     this.eventingRuntimeData,
+    this.fallbackOnAdminCredentials,
     this.host,
     this.imageLocation,
     this.isTrustedTester,
@@ -4672,6 +4975,10 @@ class Connection {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           envoyImageLocation: json_['envoyImageLocation'] as core.String?,
+          euaOauthAuthConfig: json_.containsKey('euaOauthAuthConfig')
+              ? AuthConfig.fromJson(json_['euaOauthAuthConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           eventingConfig: json_.containsKey('eventingConfig')
               ? EventingConfig.fromJson(json_['eventingConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -4682,6 +4989,8 @@ class Connection {
               ? EventingRuntimeData.fromJson(json_['eventingRuntimeData']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          fallbackOnAdminCredentials:
+              json_['fallbackOnAdminCredentials'] as core.bool?,
           host: json_['host'] as core.String?,
           imageLocation: json_['imageLocation'] as core.String?,
           isTrustedTester: json_['isTrustedTester'] as core.bool?,
@@ -4746,11 +5055,15 @@ class Connection {
           'destinationConfigs': destinationConfigs!,
         if (envoyImageLocation != null)
           'envoyImageLocation': envoyImageLocation!,
+        if (euaOauthAuthConfig != null)
+          'euaOauthAuthConfig': euaOauthAuthConfig!,
         if (eventingConfig != null) 'eventingConfig': eventingConfig!,
         if (eventingEnablementType != null)
           'eventingEnablementType': eventingEnablementType!,
         if (eventingRuntimeData != null)
           'eventingRuntimeData': eventingRuntimeData!,
+        if (fallbackOnAdminCredentials != null)
+          'fallbackOnAdminCredentials': fallbackOnAdminCredentials!,
         if (host != null) 'host': host!,
         if (imageLocation != null) 'imageLocation': imageLocation!,
         if (isTrustedTester != null) 'isTrustedTester': isTrustedTester!,
@@ -5071,8 +5384,19 @@ class ConnectorInfraConfig {
   /// Indicate whether connector is being migrated to TLS.
   core.bool? migrateTls;
 
+  /// Indicate whether connector is being migrated to use direct VPC egress.
+  /// Possible string values are:
+  /// - "NETWORK_EGRESS_MODE_UNSPECIFIED" : Network egress mode is not
+  /// specified.
+  /// - "SERVERLESS_VPC_ACCESS_CONNECTOR" : Default model VPC Access Connector.
+  /// - "DIRECT_VPC_EGRESS" : Direct VPC Egress.
+  core.String? networkEgressMode;
+
   /// Indicate whether cloud spanner is required for connector job.
   core.bool? provisionCloudSpanner;
+
+  /// Indicate whether memstore is required for connector job.
+  core.bool? provisionMemstore;
 
   /// Max QPS supported by the connector version before throttling of requests.
   core.String? ratelimitThreshold;
@@ -5096,7 +5420,9 @@ class ConnectorInfraConfig {
     this.maxInstanceRequestConcurrency,
     this.migrateDeploymentModel,
     this.migrateTls,
+    this.networkEgressMode,
     this.provisionCloudSpanner,
+    this.provisionMemstore,
     this.ratelimitThreshold,
     this.resourceLimits,
     this.resourceRequests,
@@ -5121,7 +5447,9 @@ class ConnectorInfraConfig {
               json_['maxInstanceRequestConcurrency'] as core.int?,
           migrateDeploymentModel: json_['migrateDeploymentModel'] as core.bool?,
           migrateTls: json_['migrateTls'] as core.bool?,
+          networkEgressMode: json_['networkEgressMode'] as core.String?,
           provisionCloudSpanner: json_['provisionCloudSpanner'] as core.bool?,
+          provisionMemstore: json_['provisionMemstore'] as core.bool?,
           ratelimitThreshold: json_['ratelimitThreshold'] as core.String?,
           resourceLimits: json_.containsKey('resourceLimits')
               ? ResourceLimits.fromJson(json_['resourceLimits']
@@ -5149,8 +5477,10 @@ class ConnectorInfraConfig {
         if (migrateDeploymentModel != null)
           'migrateDeploymentModel': migrateDeploymentModel!,
         if (migrateTls != null) 'migrateTls': migrateTls!,
+        if (networkEgressMode != null) 'networkEgressMode': networkEgressMode!,
         if (provisionCloudSpanner != null)
           'provisionCloudSpanner': provisionCloudSpanner!,
+        if (provisionMemstore != null) 'provisionMemstore': provisionMemstore!,
         if (ratelimitThreshold != null)
           'ratelimitThreshold': ratelimitThreshold!,
         if (resourceLimits != null) 'resourceLimits': resourceLimits!,
@@ -5205,11 +5535,6 @@ class ConnectorVersion {
   ///
   /// Output only.
   EventingConfigTemplate? eventingConfigTemplate;
-
-  /// Is async operations supported.
-  ///
-  /// Output only.
-  core.bool? isAsyncOperationsSupported;
 
   /// Is custom actions supported.
   ///
@@ -5300,6 +5625,11 @@ class ConnectorVersion {
   /// Output only.
   core.String? updateTime;
 
+  /// VPCSC config for the connector.
+  ///
+  /// Output only.
+  VpcscConfig? vpcscConfig;
+
   ConnectorVersion({
     this.authConfigTemplates,
     this.authOverrideEnabled,
@@ -5310,7 +5640,6 @@ class ConnectorVersion {
     this.displayName,
     this.egressControlConfig,
     this.eventingConfigTemplate,
-    this.isAsyncOperationsSupported,
     this.isCustomActionsSupported,
     this.isCustomEntitiesSupported,
     this.labels,
@@ -5326,6 +5655,7 @@ class ConnectorVersion {
     this.supportedStandardEntities,
     this.unsupportedConnectionTypes,
     this.updateTime,
+    this.vpcscConfig,
   });
 
   ConnectorVersion.fromJson(core.Map json_)
@@ -5359,8 +5689,6 @@ class ConnectorVersion {
               ? EventingConfigTemplate.fromJson(json_['eventingConfigTemplate']
                   as core.Map<core.String, core.dynamic>)
               : null,
-          isAsyncOperationsSupported:
-              json_['isAsyncOperationsSupported'] as core.bool?,
           isCustomActionsSupported:
               json_['isCustomActionsSupported'] as core.bool?,
           isCustomEntitiesSupported:
@@ -5412,6 +5740,10 @@ class ConnectorVersion {
                   ?.map((value) => value as core.String)
                   .toList(),
           updateTime: json_['updateTime'] as core.String?,
+          vpcscConfig: json_.containsKey('vpcscConfig')
+              ? VpcscConfig.fromJson(
+                  json_['vpcscConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5431,8 +5763,6 @@ class ConnectorVersion {
           'egressControlConfig': egressControlConfig!,
         if (eventingConfigTemplate != null)
           'eventingConfigTemplate': eventingConfigTemplate!,
-        if (isAsyncOperationsSupported != null)
-          'isAsyncOperationsSupported': isAsyncOperationsSupported!,
         if (isCustomActionsSupported != null)
           'isCustomActionsSupported': isCustomActionsSupported!,
         if (isCustomEntitiesSupported != null)
@@ -5455,6 +5785,7 @@ class ConnectorVersion {
         if (unsupportedConnectionTypes != null)
           'unsupportedConnectionTypes': unsupportedConnectionTypes!,
         if (updateTime != null) 'updateTime': updateTime!,
+        if (vpcscConfig != null) 'vpcscConfig': vpcscConfig!,
       };
 }
 
@@ -5628,6 +5959,7 @@ class CustomConnector {
   /// - "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED" : Connector type is not specified.
   /// - "OPEN_API" : OpenAPI connector.
   /// - "PROTO" : Proto connector.
+  /// - "SDK" : SDK connector.
   core.String? customConnectorType;
 
   /// Description of the resource.
@@ -5740,16 +6072,38 @@ class CustomConnector {
 
 /// CustomConnectorVersion indicates a specific version of a connector.
 class CustomConnectorVersion {
-  /// Authentication config for accessing connector facade/ proxy.
+  /// Indicates if Async Operations/Connector Job is supported.
+  ///
+  /// This is only available for SDK based custom connectors.
+  ///
+  /// Optional.
+  core.bool? asyncOperationsSupport;
+
+  /// Authentication config for accessing connector service (facade).
   ///
   /// This is used only when enable_backend_destination_config is true.
   ///
   /// Optional.
   AuthConfig? authConfig;
 
-  /// Backend variables config templates.
+  /// Auth Config Templates is only used when connector backend is enabled.
   ///
-  /// This translates to additional variable templates in connection.
+  /// This is used to specify the auth configs supported by the connector
+  /// backend service to talk to the actual application backend.
+  ///
+  /// Optional.
+  core.List<AuthConfigTemplate>? authConfigTemplates;
+
+  /// Auth override support.
+  ///
+  /// Optional.
+  core.bool? authOverrideSupport;
+
+  /// Backend variable templates is only used when connector backend is enabled.
+  ///
+  /// This is used to specify the variables required by the connector backend
+  /// service to talk to the actual application backend. This translates to
+  /// additional variable templates in the connection config.
   ///
   /// Optional.
   core.List<ConfigVariableTemplate>? backendVariableTemplates;
@@ -5759,15 +6113,17 @@ class CustomConnectorVersion {
   /// Output only.
   core.String? createTime;
 
-  /// Destination config(s) for accessing connector facade/ proxy.
+  /// Destination config(s) for accessing connector service (facade).
   ///
   /// This is used only when enable_backend_destination_config is true.
   ///
   /// Optional.
   core.List<DestinationConfig>? destinationConfigs;
 
-  /// When enabled, the connector will be a facade/ proxy, and connects to the
-  /// destination provided during connection creation.
+  /// Indicates if an intermediatory connectorservice is used as backend.
+  ///
+  /// When this is enabled, the connector destination and connector auth config
+  /// are required. For SDK based connectors, this is always enabled.
   ///
   /// Optional.
   core.bool? enableBackendDestinationConfig;
@@ -5808,13 +6164,16 @@ class CustomConnectorVersion {
 
   /// Location of the custom connector spec.
   ///
-  /// The location can be either a public url like `https://public-url.com/spec`
-  /// Or a Google Cloud Storage location like `gs:///`
+  /// This is only used for Open API based custom connectors. The location can
+  /// be either a public url like `https://public-url.com/spec` Or a Google
+  /// Cloud Storage location like `gs:///`.
   ///
   /// Optional.
   core.String? specLocation;
 
-  /// Server URLs parsed from the spec.
+  /// Server URLs parsed from the Open API spec.
+  ///
+  /// This is only used for Open API based custom connectors.
   ///
   /// Output only.
   core.List<core.String>? specServerUrls;
@@ -5834,7 +6193,10 @@ class CustomConnectorVersion {
   core.String? updateTime;
 
   CustomConnectorVersion({
+    this.asyncOperationsSupport,
     this.authConfig,
+    this.authConfigTemplates,
+    this.authOverrideSupport,
     this.backendVariableTemplates,
     this.createTime,
     this.destinationConfigs,
@@ -5852,10 +6214,16 @@ class CustomConnectorVersion {
 
   CustomConnectorVersion.fromJson(core.Map json_)
       : this(
+          asyncOperationsSupport: json_['asyncOperationsSupport'] as core.bool?,
           authConfig: json_.containsKey('authConfig')
               ? AuthConfig.fromJson(
                   json_['authConfig'] as core.Map<core.String, core.dynamic>)
               : null,
+          authConfigTemplates: (json_['authConfigTemplates'] as core.List?)
+              ?.map((value) => AuthConfigTemplate.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          authOverrideSupport: json_['authOverrideSupport'] as core.bool?,
           backendVariableTemplates:
               (json_['backendVariableTemplates'] as core.List?)
                   ?.map((value) => ConfigVariableTemplate.fromJson(
@@ -5894,7 +6262,13 @@ class CustomConnectorVersion {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (asyncOperationsSupport != null)
+          'asyncOperationsSupport': asyncOperationsSupport!,
         if (authConfig != null) 'authConfig': authConfig!,
+        if (authConfigTemplates != null)
+          'authConfigTemplates': authConfigTemplates!,
+        if (authOverrideSupport != null)
+          'authOverrideSupport': authOverrideSupport!,
         if (backendVariableTemplates != null)
           'backendVariableTemplates': backendVariableTemplates!,
         if (createTime != null) 'createTime': createTime!,
@@ -6032,6 +6406,36 @@ class DestinationConfigTemplate {
       };
 }
 
+/// EUASecret provides a reference to entries in Secret Manager.
+class EUASecret {
+  /// The plain string value of the secret.
+  ///
+  /// Optional.
+  core.String? secretValue;
+
+  /// The resource name of the secret version in the format, format as:
+  /// `projects / * /secrets / * /versions / * `.
+  ///
+  /// Optional.
+  core.String? secretVersion;
+
+  EUASecret({
+    this.secretValue,
+    this.secretVersion,
+  });
+
+  EUASecret.fromJson(core.Map json_)
+      : this(
+          secretValue: json_['secretValue'] as core.String?,
+          secretVersion: json_['secretVersion'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (secretValue != null) 'secretValue': secretValue!,
+        if (secretVersion != null) 'secretVersion': secretVersion!,
+      };
+}
+
 /// Egress control config for connector runtime.
 ///
 /// These configurations define the rules to identify which outbound
@@ -6121,9 +6525,13 @@ typedef EncryptionKey = $EncryptionKey;
 /// Endpoint message includes details of the Destination endpoint.
 class EndPoint {
   /// The URI of the Endpoint.
+  ///
+  /// Optional.
   core.String? endpointUri;
 
   /// List of Header to be added to the Endpoint.
+  ///
+  /// Optional.
   core.List<Header>? headers;
 
   EndPoint({
@@ -6143,6 +6551,773 @@ class EndPoint {
   core.Map<core.String, core.dynamic> toJson() => {
         if (endpointUri != null) 'endpointUri': endpointUri!,
         if (headers != null) 'headers': headers!,
+      };
+}
+
+/// AuthConfig defines details of a authentication type.
+class EndUserAuthentication {
+  /// Config variables for the EndUserAuthentication.
+  ///
+  /// Optional.
+  core.List<EndUserAuthenticationConfigVariable>? configVariables;
+
+  /// Created time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Destination configs for the EndUserAuthentication.
+  ///
+  /// Optional.
+  core.List<DestinationConfig>? destinationConfigs;
+
+  /// The EndUserAuthenticationConfig for the EndUserAuthentication.
+  ///
+  /// Optional.
+  EndUserAuthenticationConfig? endUserAuthenticationConfig;
+
+  /// Labels for the EndUserAuthentication.
+  ///
+  /// Optional.
+  core.List<core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// Resource name of the EndUserAuthentication. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}/endUserAuthentications/{end_user_authentication}
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The destination to hit when we receive an event
+  ///
+  /// Optional.
+  EndUserAuthenticationNotifyEndpointDestination? notifyEndpointDestination;
+
+  /// Roles for the EndUserAuthentication.
+  ///
+  /// Optional.
+  core.List<core.String>? roles;
+
+  /// Status of the EndUserAuthentication.
+  ///
+  /// Optional.
+  EndUserAuthenticationEndUserAuthenticationStatus? status;
+
+  /// Updated time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  /// The user id of the user.
+  ///
+  /// Optional.
+  core.String? userId;
+
+  EndUserAuthentication({
+    this.configVariables,
+    this.createTime,
+    this.destinationConfigs,
+    this.endUserAuthenticationConfig,
+    this.labels,
+    this.name,
+    this.notifyEndpointDestination,
+    this.roles,
+    this.status,
+    this.updateTime,
+    this.userId,
+  });
+
+  EndUserAuthentication.fromJson(core.Map json_)
+      : this(
+          configVariables: (json_['configVariables'] as core.List?)
+              ?.map((value) => EndUserAuthenticationConfigVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          createTime: json_['createTime'] as core.String?,
+          destinationConfigs: (json_['destinationConfigs'] as core.List?)
+              ?.map((value) => DestinationConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          endUserAuthenticationConfig:
+              json_.containsKey('endUserAuthenticationConfig')
+                  ? EndUserAuthenticationConfig.fromJson(
+                      json_['endUserAuthenticationConfig']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          labels: (json_['labels'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          name: json_['name'] as core.String?,
+          notifyEndpointDestination:
+              json_.containsKey('notifyEndpointDestination')
+                  ? EndUserAuthenticationNotifyEndpointDestination.fromJson(
+                      json_['notifyEndpointDestination']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          roles: (json_['roles'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          status: json_.containsKey('status')
+              ? EndUserAuthenticationEndUserAuthenticationStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateTime: json_['updateTime'] as core.String?,
+          userId: json_['userId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (configVariables != null) 'configVariables': configVariables!,
+        if (createTime != null) 'createTime': createTime!,
+        if (destinationConfigs != null)
+          'destinationConfigs': destinationConfigs!,
+        if (endUserAuthenticationConfig != null)
+          'endUserAuthenticationConfig': endUserAuthenticationConfig!,
+        if (labels != null) 'labels': labels!,
+        if (name != null) 'name': name!,
+        if (notifyEndpointDestination != null)
+          'notifyEndpointDestination': notifyEndpointDestination!,
+        if (roles != null) 'roles': roles!,
+        if (status != null) 'status': status!,
+        if (updateTime != null) 'updateTime': updateTime!,
+        if (userId != null) 'userId': userId!,
+      };
+}
+
+/// EndUserAuthenticationConfig defines details of a authentication
+/// configuration for EUC
+class EndUserAuthenticationConfig {
+  /// List containing additional auth configs.
+  ///
+  /// Optional.
+  core.List<EndUserAuthenticationConfigVariable>? additionalVariables;
+
+  /// Identifier key for auth config
+  core.String? authKey;
+
+  /// The type of authentication configured.
+  /// Possible string values are:
+  /// - "AUTH_TYPE_UNSPECIFIED" : Authentication type not specified.
+  /// - "USER_PASSWORD" : Username and Password Authentication.
+  /// - "OAUTH2_JWT_BEARER" : JSON Web Token (JWT) Profile for Oauth 2.0
+  /// Authorization Grant based authentication
+  /// - "OAUTH2_CLIENT_CREDENTIALS" : Oauth 2.0 Client Credentials Grant
+  /// Authentication
+  /// - "SSH_PUBLIC_KEY" : SSH Public Key Authentication
+  /// - "OAUTH2_AUTH_CODE_FLOW" : Oauth 2.0 Authorization Code Flow
+  /// - "GOOGLE_AUTHENTICATION" : Google authentication
+  /// - "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED" : Oauth 2.0 Authorization Code
+  /// Flow with Google Provided OAuth Client
+  core.String? authType;
+
+  /// Oauth2AuthCodeFlow.
+  EndUserAuthenticationConfigOauth2AuthCodeFlow? oauth2AuthCodeFlow;
+
+  /// Oauth2AuthCodeFlowGoogleManaged.
+  EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged?
+      oauth2AuthCodeFlowGoogleManaged;
+
+  /// Oauth2ClientCredentials.
+  EndUserAuthenticationConfigOauth2ClientCredentials? oauth2ClientCredentials;
+
+  /// Oauth2JwtBearer.
+  EndUserAuthenticationConfigOauth2JwtBearer? oauth2JwtBearer;
+
+  /// SSH Public Key.
+  EndUserAuthenticationConfigSshPublicKey? sshPublicKey;
+
+  /// UserPassword.
+  EndUserAuthenticationConfigUserPassword? userPassword;
+
+  EndUserAuthenticationConfig({
+    this.additionalVariables,
+    this.authKey,
+    this.authType,
+    this.oauth2AuthCodeFlow,
+    this.oauth2AuthCodeFlowGoogleManaged,
+    this.oauth2ClientCredentials,
+    this.oauth2JwtBearer,
+    this.sshPublicKey,
+    this.userPassword,
+  });
+
+  EndUserAuthenticationConfig.fromJson(core.Map json_)
+      : this(
+          additionalVariables: (json_['additionalVariables'] as core.List?)
+              ?.map((value) => EndUserAuthenticationConfigVariable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          authKey: json_['authKey'] as core.String?,
+          authType: json_['authType'] as core.String?,
+          oauth2AuthCodeFlow: json_.containsKey('oauth2AuthCodeFlow')
+              ? EndUserAuthenticationConfigOauth2AuthCodeFlow.fromJson(
+                  json_['oauth2AuthCodeFlow']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          oauth2AuthCodeFlowGoogleManaged:
+              json_.containsKey('oauth2AuthCodeFlowGoogleManaged')
+                  ? EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged
+                      .fromJson(json_['oauth2AuthCodeFlowGoogleManaged']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          oauth2ClientCredentials: json_.containsKey('oauth2ClientCredentials')
+              ? EndUserAuthenticationConfigOauth2ClientCredentials.fromJson(
+                  json_['oauth2ClientCredentials']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          oauth2JwtBearer: json_.containsKey('oauth2JwtBearer')
+              ? EndUserAuthenticationConfigOauth2JwtBearer.fromJson(
+                  json_['oauth2JwtBearer']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          sshPublicKey: json_.containsKey('sshPublicKey')
+              ? EndUserAuthenticationConfigSshPublicKey.fromJson(
+                  json_['sshPublicKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+          userPassword: json_.containsKey('userPassword')
+              ? EndUserAuthenticationConfigUserPassword.fromJson(
+                  json_['userPassword'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (additionalVariables != null)
+          'additionalVariables': additionalVariables!,
+        if (authKey != null) 'authKey': authKey!,
+        if (authType != null) 'authType': authType!,
+        if (oauth2AuthCodeFlow != null)
+          'oauth2AuthCodeFlow': oauth2AuthCodeFlow!,
+        if (oauth2AuthCodeFlowGoogleManaged != null)
+          'oauth2AuthCodeFlowGoogleManaged': oauth2AuthCodeFlowGoogleManaged!,
+        if (oauth2ClientCredentials != null)
+          'oauth2ClientCredentials': oauth2ClientCredentials!,
+        if (oauth2JwtBearer != null) 'oauth2JwtBearer': oauth2JwtBearer!,
+        if (sshPublicKey != null) 'sshPublicKey': sshPublicKey!,
+        if (userPassword != null) 'userPassword': userPassword!,
+      };
+}
+
+/// Parameters to support Oauth 2.0 Auth Code Grant Authentication.
+///
+/// See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
+class EndUserAuthenticationConfigOauth2AuthCodeFlow {
+  /// Authorization code to be exchanged for access and refresh tokens.
+  ///
+  /// Optional.
+  core.String? authCode;
+
+  /// Auth URL for Authorization Code Flow
+  ///
+  /// Optional.
+  core.String? authUri;
+
+  /// Client ID for user-provided OAuth app.
+  ///
+  /// Optional.
+  core.String? clientId;
+
+  /// Client secret for user-provided OAuth app.
+  ///
+  /// Optional.
+  EUASecret? clientSecret;
+
+  /// Whether to enable PKCE when the user performs the auth code flow.
+  ///
+  /// Optional.
+  core.bool? enablePkce;
+
+  /// Auth Code Data
+  ///
+  /// Optional.
+  OAuthTokenData? oauthTokenData;
+
+  /// PKCE verifier to be used during the auth code exchange.
+  ///
+  /// Optional.
+  core.String? pkceVerifier;
+
+  /// Redirect URI to be provided during the auth code exchange.
+  ///
+  /// Optional.
+  core.String? redirectUri;
+
+  /// Scopes the connection will request when the user performs the auth code
+  /// flow.
+  ///
+  /// Optional.
+  core.List<core.String>? scopes;
+
+  EndUserAuthenticationConfigOauth2AuthCodeFlow({
+    this.authCode,
+    this.authUri,
+    this.clientId,
+    this.clientSecret,
+    this.enablePkce,
+    this.oauthTokenData,
+    this.pkceVerifier,
+    this.redirectUri,
+    this.scopes,
+  });
+
+  EndUserAuthenticationConfigOauth2AuthCodeFlow.fromJson(core.Map json_)
+      : this(
+          authCode: json_['authCode'] as core.String?,
+          authUri: json_['authUri'] as core.String?,
+          clientId: json_['clientId'] as core.String?,
+          clientSecret: json_.containsKey('clientSecret')
+              ? EUASecret.fromJson(
+                  json_['clientSecret'] as core.Map<core.String, core.dynamic>)
+              : null,
+          enablePkce: json_['enablePkce'] as core.bool?,
+          oauthTokenData: json_.containsKey('oauthTokenData')
+              ? OAuthTokenData.fromJson(json_['oauthTokenData']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          pkceVerifier: json_['pkceVerifier'] as core.String?,
+          redirectUri: json_['redirectUri'] as core.String?,
+          scopes: (json_['scopes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authCode != null) 'authCode': authCode!,
+        if (authUri != null) 'authUri': authUri!,
+        if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
+        if (enablePkce != null) 'enablePkce': enablePkce!,
+        if (oauthTokenData != null) 'oauthTokenData': oauthTokenData!,
+        if (pkceVerifier != null) 'pkceVerifier': pkceVerifier!,
+        if (redirectUri != null) 'redirectUri': redirectUri!,
+        if (scopes != null) 'scopes': scopes!,
+      };
+}
+
+/// Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google
+/// Provided OAuth Client.
+///
+/// See https://tools.ietf.org/html/rfc6749#section-1.3.1 for more details.
+class EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged {
+  /// Authorization code to be exchanged for access and refresh tokens.
+  ///
+  /// Optional.
+  core.String? authCode;
+
+  /// Auth Code Data
+  OAuthTokenData? oauthTokenData;
+
+  /// Redirect URI to be provided during the auth code exchange.
+  ///
+  /// Optional.
+  core.String? redirectUri;
+
+  /// Scopes the connection will request when the user performs the auth code
+  /// flow.
+  ///
+  /// Required.
+  core.List<core.String>? scopes;
+
+  EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged({
+    this.authCode,
+    this.oauthTokenData,
+    this.redirectUri,
+    this.scopes,
+  });
+
+  EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged.fromJson(
+      core.Map json_)
+      : this(
+          authCode: json_['authCode'] as core.String?,
+          oauthTokenData: json_.containsKey('oauthTokenData')
+              ? OAuthTokenData.fromJson(json_['oauthTokenData']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          redirectUri: json_['redirectUri'] as core.String?,
+          scopes: (json_['scopes'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (authCode != null) 'authCode': authCode!,
+        if (oauthTokenData != null) 'oauthTokenData': oauthTokenData!,
+        if (redirectUri != null) 'redirectUri': redirectUri!,
+        if (scopes != null) 'scopes': scopes!,
+      };
+}
+
+/// Parameters to support Oauth 2.0 Client Credentials Grant Authentication.
+///
+/// See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
+class EndUserAuthenticationConfigOauth2ClientCredentials {
+  /// The client identifier.
+  core.String? clientId;
+
+  /// string value or secret version containing the client secret.
+  ///
+  /// Required.
+  EUASecret? clientSecret;
+
+  EndUserAuthenticationConfigOauth2ClientCredentials({
+    this.clientId,
+    this.clientSecret,
+  });
+
+  EndUserAuthenticationConfigOauth2ClientCredentials.fromJson(core.Map json_)
+      : this(
+          clientId: json_['clientId'] as core.String?,
+          clientSecret: json_.containsKey('clientSecret')
+              ? EUASecret.fromJson(
+                  json_['clientSecret'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientId != null) 'clientId': clientId!,
+        if (clientSecret != null) 'clientSecret': clientSecret!,
+      };
+}
+
+/// Parameters to support JSON Web Token (JWT) Profile for Oauth 2.0
+/// Authorization Grant based authentication.
+///
+/// See https://tools.ietf.org/html/rfc7523 for more details.
+class EndUserAuthenticationConfigOauth2JwtBearer {
+  /// secret version/value reference containing a PKCS#8 PEM-encoded private key
+  /// associated with the Client Certificate.
+  ///
+  /// This private key will be used to sign JWTs used for the jwt-bearer
+  /// authorization grant. Specified in the form as: `projects / * /strings / *
+  /// /versions / * `.
+  ///
+  /// Required.
+  EUASecret? clientKey;
+
+  /// JwtClaims providers fields to generate the token.
+  EndUserAuthenticationConfigOauth2JwtBearerJwtClaims? jwtClaims;
+
+  EndUserAuthenticationConfigOauth2JwtBearer({
+    this.clientKey,
+    this.jwtClaims,
+  });
+
+  EndUserAuthenticationConfigOauth2JwtBearer.fromJson(core.Map json_)
+      : this(
+          clientKey: json_.containsKey('clientKey')
+              ? EUASecret.fromJson(
+                  json_['clientKey'] as core.Map<core.String, core.dynamic>)
+              : null,
+          jwtClaims: json_.containsKey('jwtClaims')
+              ? EndUserAuthenticationConfigOauth2JwtBearerJwtClaims.fromJson(
+                  json_['jwtClaims'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (clientKey != null) 'clientKey': clientKey!,
+        if (jwtClaims != null) 'jwtClaims': jwtClaims!,
+      };
+}
+
+/// JWT claims used for the jwt-bearer authorization grant.
+class EndUserAuthenticationConfigOauth2JwtBearerJwtClaims {
+  /// Value for the "aud" claim.
+  core.String? audience;
+
+  /// Value for the "iss" claim.
+  core.String? issuer;
+
+  /// Value for the "sub" claim.
+  core.String? subject;
+
+  EndUserAuthenticationConfigOauth2JwtBearerJwtClaims({
+    this.audience,
+    this.issuer,
+    this.subject,
+  });
+
+  EndUserAuthenticationConfigOauth2JwtBearerJwtClaims.fromJson(core.Map json_)
+      : this(
+          audience: json_['audience'] as core.String?,
+          issuer: json_['issuer'] as core.String?,
+          subject: json_['subject'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (audience != null) 'audience': audience!,
+        if (issuer != null) 'issuer': issuer!,
+        if (subject != null) 'subject': subject!,
+      };
+}
+
+/// Parameters to support Ssh public key Authentication.
+class EndUserAuthenticationConfigSshPublicKey {
+  /// Format of SSH Client cert.
+  core.String? certType;
+
+  /// SSH Client Cert.
+  ///
+  /// It should contain both public and private key.
+  ///
+  /// Required.
+  EUASecret? sshClientCert;
+
+  /// Password (passphrase) for ssh client certificate if it has one.
+  ///
+  /// Required.
+  EUASecret? sshClientCertPass;
+
+  /// The user account used to authenticate.
+  core.String? username;
+
+  EndUserAuthenticationConfigSshPublicKey({
+    this.certType,
+    this.sshClientCert,
+    this.sshClientCertPass,
+    this.username,
+  });
+
+  EndUserAuthenticationConfigSshPublicKey.fromJson(core.Map json_)
+      : this(
+          certType: json_['certType'] as core.String?,
+          sshClientCert: json_.containsKey('sshClientCert')
+              ? EUASecret.fromJson(
+                  json_['sshClientCert'] as core.Map<core.String, core.dynamic>)
+              : null,
+          sshClientCertPass: json_.containsKey('sshClientCertPass')
+              ? EUASecret.fromJson(json_['sshClientCertPass']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          username: json_['username'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (certType != null) 'certType': certType!,
+        if (sshClientCert != null) 'sshClientCert': sshClientCert!,
+        if (sshClientCertPass != null) 'sshClientCertPass': sshClientCertPass!,
+        if (username != null) 'username': username!,
+      };
+}
+
+/// Parameters to support Username and Password Authentication.
+class EndUserAuthenticationConfigUserPassword {
+  /// string value or secret version reference containing the password.
+  ///
+  /// Required.
+  EUASecret? password;
+
+  /// Username.
+  core.String? username;
+
+  EndUserAuthenticationConfigUserPassword({
+    this.password,
+    this.username,
+  });
+
+  EndUserAuthenticationConfigUserPassword.fromJson(core.Map json_)
+      : this(
+          password: json_.containsKey('password')
+              ? EUASecret.fromJson(
+                  json_['password'] as core.Map<core.String, core.dynamic>)
+              : null,
+          username: json_['username'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (password != null) 'password': password!,
+        if (username != null) 'username': username!,
+      };
+}
+
+/// EndUserAuthenticationConfigVariable represents a configuration variable
+/// present in a EndUserAuthentication.
+class EndUserAuthenticationConfigVariable {
+  /// Value is a bool.
+  core.bool? boolValue;
+
+  /// Value is an integer
+  core.String? intValue;
+
+  /// Key of the config variable.
+  ///
+  /// Required.
+  core.String? key;
+
+  /// Value is a secret
+  EUASecret? secretValue;
+
+  /// Value is a string.
+  core.String? stringValue;
+
+  EndUserAuthenticationConfigVariable({
+    this.boolValue,
+    this.intValue,
+    this.key,
+    this.secretValue,
+    this.stringValue,
+  });
+
+  EndUserAuthenticationConfigVariable.fromJson(core.Map json_)
+      : this(
+          boolValue: json_['boolValue'] as core.bool?,
+          intValue: json_['intValue'] as core.String?,
+          key: json_['key'] as core.String?,
+          secretValue: json_.containsKey('secretValue')
+              ? EUASecret.fromJson(
+                  json_['secretValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          stringValue: json_['stringValue'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (boolValue != null) 'boolValue': boolValue!,
+        if (intValue != null) 'intValue': intValue!,
+        if (key != null) 'key': key!,
+        if (secretValue != null) 'secretValue': secretValue!,
+        if (stringValue != null) 'stringValue': stringValue!,
+      };
+}
+
+/// EndUserAuthentication Status denotes the status of the EndUserAuthentication
+/// resource.
+class EndUserAuthenticationEndUserAuthenticationStatus {
+  /// Description of the state.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// State of Event Subscription resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default state.
+  /// - "ACTIVE" : EndUserAuthentication is in Active state.
+  /// - "ERROR" : EndUserAuthentication is in Error state.
+  core.String? state;
+
+  EndUserAuthenticationEndUserAuthenticationStatus({
+    this.description,
+    this.state,
+  });
+
+  EndUserAuthenticationEndUserAuthenticationStatus.fromJson(core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Message for NotifyEndpointDestination Destination to hit when the refresh
+/// token is expired.
+class EndUserAuthenticationNotifyEndpointDestination {
+  /// OPTION 1: Hit an endpoint when the refresh token is expired.
+  ///
+  /// Optional.
+  EndUserAuthenticationNotifyEndpointDestinationEndPoint? endpoint;
+
+  /// Service account needed for runtime plane to notify the backend.
+  ///
+  /// Required.
+  core.String? serviceAccount;
+
+  /// type of the destination
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default state.
+  /// - "ENDPOINT" : Endpoint - Hit the value of endpoint when event is received
+  core.String? type;
+
+  EndUserAuthenticationNotifyEndpointDestination({
+    this.endpoint,
+    this.serviceAccount,
+    this.type,
+  });
+
+  EndUserAuthenticationNotifyEndpointDestination.fromJson(core.Map json_)
+      : this(
+          endpoint: json_.containsKey('endpoint')
+              ? EndUserAuthenticationNotifyEndpointDestinationEndPoint.fromJson(
+                  json_['endpoint'] as core.Map<core.String, core.dynamic>)
+              : null,
+          serviceAccount: json_['serviceAccount'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endpoint != null) 'endpoint': endpoint!,
+        if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// Endpoint message includes details of the Destination endpoint.
+class EndUserAuthenticationNotifyEndpointDestinationEndPoint {
+  /// The URI of the Endpoint.
+  ///
+  /// Required.
+  core.String? endpointUri;
+
+  /// List of Header to be added to the Endpoint.
+  ///
+  /// Optional.
+  core.List<EndUserAuthenticationNotifyEndpointDestinationEndPointHeader>?
+      headers;
+
+  EndUserAuthenticationNotifyEndpointDestinationEndPoint({
+    this.endpointUri,
+    this.headers,
+  });
+
+  EndUserAuthenticationNotifyEndpointDestinationEndPoint.fromJson(
+      core.Map json_)
+      : this(
+          endpointUri: json_['endpointUri'] as core.String?,
+          headers: (json_['headers'] as core.List?)
+              ?.map((value) =>
+                  EndUserAuthenticationNotifyEndpointDestinationEndPointHeader
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endpointUri != null) 'endpointUri': endpointUri!,
+        if (headers != null) 'headers': headers!,
+      };
+}
+
+/// Header details for a given header to be added to Endpoint.
+class EndUserAuthenticationNotifyEndpointDestinationEndPointHeader {
+  /// Key of Header.
+  ///
+  /// Required.
+  core.String? key;
+
+  /// Value of Header.
+  ///
+  /// Required.
+  core.String? value;
+
+  EndUserAuthenticationNotifyEndpointDestinationEndPointHeader({
+    this.key,
+    this.value,
+  });
+
+  EndUserAuthenticationNotifyEndpointDestinationEndPointHeader.fromJson(
+      core.Map json_)
+      : this(
+          key: json_['key'] as core.String?,
+          value: json_['value'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (key != null) 'key': key!,
+        if (value != null) 'value': value!,
       };
 }
 
@@ -6316,9 +7491,9 @@ class EventSubscription {
   /// Optional.
   JMS? jms;
 
-  /// Resource name of the EventSubscription.
+  /// Identifier.
   ///
-  /// Format:
+  /// Resource name of the EventSubscription. Format:
   /// projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription}
   ///
   /// Required.
@@ -6413,9 +7588,13 @@ class EventSubscriptionDestination {
   PubSub? pubsub;
 
   /// Service account needed for runtime plane to trigger IP workflow.
+  ///
+  /// Optional.
   core.String? serviceAccount;
 
   /// type of the destination
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Default state.
   /// - "ENDPOINT" : Endpoint - Hit the value of endpoint when event is received
@@ -6581,7 +7760,7 @@ class EventType {
       };
 }
 
-/// Eventing Configuration of a connection
+/// Eventing Configuration of a connection next: 19
 class EventingConfig {
   /// Additional eventing related field values
   ///
@@ -6620,6 +7799,12 @@ class EventingConfig {
   /// Optional.
   AuthConfig? listenerAuthConfig;
 
+  /// List of projects to be allowlisted for the service attachment created in
+  /// the tenant project for eventing ingress.
+  ///
+  /// Optional.
+  core.List<core.String>? privateConnectivityAllowlistedProjects;
+
   /// Private Connectivity Enabled.
   ///
   /// Optional.
@@ -6635,6 +7820,11 @@ class EventingConfig {
   /// Optional.
   DestinationConfig? registrationDestinationConfig;
 
+  /// Ssl config of a connection
+  ///
+  /// Optional.
+  SslConfig? sslConfig;
+
   EventingConfig({
     this.additionalVariables,
     this.authConfig,
@@ -6643,9 +7833,11 @@ class EventingConfig {
     this.enrichmentEnabled,
     this.eventsListenerIngressEndpoint,
     this.listenerAuthConfig,
+    this.privateConnectivityAllowlistedProjects,
     this.privateConnectivityEnabled,
     this.proxyDestinationConfig,
     this.registrationDestinationConfig,
+    this.sslConfig,
   });
 
   EventingConfig.fromJson(core.Map json_)
@@ -6673,6 +7865,10 @@ class EventingConfig {
               ? AuthConfig.fromJson(json_['listenerAuthConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          privateConnectivityAllowlistedProjects:
+              (json_['privateConnectivityAllowlistedProjects'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           privateConnectivityEnabled:
               json_['privateConnectivityEnabled'] as core.bool?,
           proxyDestinationConfig: json_.containsKey('proxyDestinationConfig')
@@ -6685,6 +7881,10 @@ class EventingConfig {
                       json_['registrationDestinationConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          sslConfig: json_.containsKey('sslConfig')
+              ? SslConfig.fromJson(
+                  json_['sslConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -6698,16 +7898,22 @@ class EventingConfig {
           'eventsListenerIngressEndpoint': eventsListenerIngressEndpoint!,
         if (listenerAuthConfig != null)
           'listenerAuthConfig': listenerAuthConfig!,
+        if (privateConnectivityAllowlistedProjects != null)
+          'privateConnectivityAllowlistedProjects':
+              privateConnectivityAllowlistedProjects!,
         if (privateConnectivityEnabled != null)
           'privateConnectivityEnabled': privateConnectivityEnabled!,
         if (proxyDestinationConfig != null)
           'proxyDestinationConfig': proxyDestinationConfig!,
         if (registrationDestinationConfig != null)
           'registrationDestinationConfig': registrationDestinationConfig!,
+        if (sslConfig != null) 'sslConfig': sslConfig!,
       };
 }
 
 /// Eventing Config details of a connector version.
+///
+/// next: 14
 class EventingConfigTemplate {
   /// Additional fields that need to be rendered.
   core.List<ConfigVariableTemplate>? additionalVariables;
@@ -6748,6 +7954,9 @@ class EventingConfigTemplate {
   /// Registration host destination config template.
   DestinationConfigTemplate? registrationDestinationConfig;
 
+  /// SSL Config template for the connector version.
+  SslConfigTemplate? sslConfigTemplate;
+
   /// Trigger Config fields that needs to be rendered
   core.List<ConfigVariableTemplate>? triggerConfigVariables;
 
@@ -6763,6 +7972,7 @@ class EventingConfigTemplate {
     this.listenerAuthConfigTemplates,
     this.proxyDestinationConfig,
     this.registrationDestinationConfig,
+    this.sslConfigTemplate,
     this.triggerConfigVariables,
   });
 
@@ -6802,6 +8012,10 @@ class EventingConfigTemplate {
                       json_['registrationDestinationConfig']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          sslConfigTemplate: json_.containsKey('sslConfigTemplate')
+              ? SslConfigTemplate.fromJson(json_['sslConfigTemplate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           triggerConfigVariables:
               (json_['triggerConfigVariables'] as core.List?)
                   ?.map((value) => ConfigVariableTemplate.fromJson(
@@ -6830,6 +8044,7 @@ class EventingConfigTemplate {
           'proxyDestinationConfig': proxyDestinationConfig!,
         if (registrationDestinationConfig != null)
           'registrationDestinationConfig': registrationDestinationConfig!,
+        if (sslConfigTemplate != null) 'sslConfigTemplate': sslConfigTemplate!,
         if (triggerConfigVariables != null)
           'triggerConfigVariables': triggerConfigVariables!,
       };
@@ -7295,9 +8510,13 @@ typedef HPAConfig = $HPAConfig;
 /// Header details for a given header to be added to Endpoint.
 class Header {
   /// Key of Header.
+  ///
+  /// Optional.
   core.String? key;
 
   /// Value of Header.
+  ///
+  /// Optional.
   core.String? value;
 
   Header({
@@ -7857,6 +9076,44 @@ class ListCustomConnectorsResponse {
       };
 }
 
+/// Response message for ConnectorsService.ListEndUserAuthentications
+class ListEndUserAuthenticationsResponse {
+  /// Subscriptions.
+  core.List<EndUserAuthentication>? endUserAuthentications;
+
+  /// Next page token.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListEndUserAuthenticationsResponse({
+    this.endUserAuthentications,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListEndUserAuthenticationsResponse.fromJson(core.Map json_)
+      : this(
+          endUserAuthentications:
+              (json_['endUserAuthentications'] as core.List?)
+                  ?.map((value) => EndUserAuthentication.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endUserAuthentications != null)
+          'endUserAuthentications': endUserAuthentications!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
 /// Response message for ConnectorsService.ListEndpointAttachments
 class ListEndpointAttachmentsResponse {
   /// EndpointAttachments.
@@ -8023,9 +9280,13 @@ class ListManagedZonesResponse {
   /// Next page token.
   core.String? nextPageToken;
 
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
   ListManagedZonesResponse({
     this.managedZones,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListManagedZonesResponse.fromJson(core.Map json_)
@@ -8035,11 +9296,15 @@ class ListManagedZonesResponse {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (managedZones != null) 'managedZones': managedZones!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -8504,33 +9769,100 @@ class NetworkConfig {
 /// Node configuration for the connection.
 typedef NodeConfig = $NodeConfig;
 
+/// pass only at create and not update using updateMask Auth Code Data
+class OAuthTokenData {
+  /// Access token for the connection.
+  ///
+  /// Optional.
+  EUASecret? accessToken;
+
+  /// Timestamp when the access token was created.
+  ///
+  /// Optional.
+  core.String? createTime;
+
+  /// Time in seconds when the access token expires.
+  ///
+  /// Optional.
+  core.String? expiry;
+
+  /// Refresh token for the connection.
+  ///
+  /// Optional.
+  EUASecret? refreshToken;
+
+  OAuthTokenData({
+    this.accessToken,
+    this.createTime,
+    this.expiry,
+    this.refreshToken,
+  });
+
+  OAuthTokenData.fromJson(core.Map json_)
+      : this(
+          accessToken: json_.containsKey('accessToken')
+              ? EUASecret.fromJson(
+                  json_['accessToken'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_['createTime'] as core.String?,
+          expiry: json_['expiry'] as core.String?,
+          refreshToken: json_.containsKey('refreshToken')
+              ? EUASecret.fromJson(
+                  json_['refreshToken'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (accessToken != null) 'accessToken': accessToken!,
+        if (createTime != null) 'createTime': createTime!,
+        if (expiry != null) 'expiry': expiry!,
+        if (refreshToken != null) 'refreshToken': refreshToken!,
+      };
+}
+
 /// Parameters to support Oauth 2.0 Auth Code Grant Authentication.
 ///
 /// See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
 class Oauth2AuthCodeFlow {
   /// Authorization code to be exchanged for access and refresh tokens.
+  ///
+  /// Optional.
   core.String? authCode;
 
   /// Auth URL for Authorization Code Flow
+  ///
+  /// Optional.
   core.String? authUri;
 
   /// Client ID for user-provided OAuth app.
+  ///
+  /// Optional.
   core.String? clientId;
 
   /// Client secret for user-provided OAuth app.
+  ///
+  /// Optional.
   Secret? clientSecret;
 
   /// Whether to enable PKCE when the user performs the auth code flow.
+  ///
+  /// Optional.
   core.bool? enablePkce;
 
   /// PKCE verifier to be used during the auth code exchange.
+  ///
+  /// Optional.
   core.String? pkceVerifier;
 
   /// Redirect URI to be provided during the auth code exchange.
+  ///
+  /// Optional.
   core.String? redirectUri;
 
   /// Scopes the connection will request when the user performs the auth code
   /// flow.
+  ///
+  /// Optional.
   core.List<core.String>? scopes;
 
   Oauth2AuthCodeFlow({
@@ -8584,9 +9916,13 @@ typedef Oauth2AuthCodeFlowGoogleManaged = $Oauth2AuthCodeFlowGoogleManaged;
 /// See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
 class Oauth2ClientCredentials {
   /// The client identifier.
+  ///
+  /// Optional.
   core.String? clientId;
 
   /// Secret version reference containing the client secret.
+  ///
+  /// Optional.
   Secret? clientSecret;
 
   Oauth2ClientCredentials({
@@ -8620,9 +9956,13 @@ class Oauth2JwtBearer {
   /// This private key will be used to sign JWTs used for the jwt-bearer
   /// authorization grant. Specified in the form as: `projects / * /secrets / *
   /// /versions / * `.
+  ///
+  /// Optional.
   Secret? clientKey;
 
   /// JwtClaims providers fields to generate the token.
+  ///
+  /// Optional.
   JwtClaims? jwtClaims;
 
   Oauth2JwtBearer({
@@ -10037,17 +11377,25 @@ class Source {
 /// Parameters to support Ssh public key Authentication.
 class SshPublicKey {
   /// Format of SSH Client cert.
+  ///
+  /// Optional.
   core.String? certType;
 
   /// SSH Client Cert.
   ///
   /// It should contain both public and private key.
+  ///
+  /// Optional.
   Secret? sshClientCert;
 
   /// Password (passphrase) for ssh client certificate if it has one.
+  ///
+  /// Optional.
   Secret? sshClientCertPass;
 
   /// The user account used to authenticate.
+  ///
+  /// Optional.
   core.String? username;
 
   SshPublicKey({
@@ -10318,6 +11666,9 @@ class SupportedRuntimeFeatures {
   /// Specifies if the connector supports action apis like 'executeAction'.
   core.bool? actionApis;
 
+  /// Specifies if the connector supports async long running operations.
+  core.bool? asyncOperations;
+
   /// Specifies if the connector supports entity apis like 'createEntity'.
   core.bool? entityApis;
 
@@ -10326,6 +11677,7 @@ class SupportedRuntimeFeatures {
 
   SupportedRuntimeFeatures({
     this.actionApis,
+    this.asyncOperations,
     this.entityApis,
     this.sqlQuery,
   });
@@ -10333,12 +11685,14 @@ class SupportedRuntimeFeatures {
   SupportedRuntimeFeatures.fromJson(core.Map json_)
       : this(
           actionApis: json_['actionApis'] as core.bool?,
+          asyncOperations: json_['asyncOperations'] as core.bool?,
           entityApis: json_['entityApis'] as core.bool?,
           sqlQuery: json_['sqlQuery'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (actionApis != null) 'actionApis': actionApis!,
+        if (asyncOperations != null) 'asyncOperations': asyncOperations!,
         if (entityApis != null) 'entityApis': entityApis!,
         if (sqlQuery != null) 'sqlQuery': sqlQuery!,
       };
@@ -10361,50 +11715,18 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 /// 100 duration: { seconds: 300 } } - if the quota limit is 10000 calls per
 /// day, then the message would be: { quota_limit: 10000 duration: { seconds:
 /// 86400 } and so on.
-class TrafficShapingConfig {
-  /// * The duration over which the API call quota limits are calculated.
-  ///
-  /// This duration is used to define the time window for evaluating if the
-  /// number of API calls made by a user is within the allowed quota limits. For
-  /// example: - To define a quota sampled over 16 seconds, set `seconds` to 16
-  /// - To define a quota sampled over 5 minutes, set `seconds` to 300 (5 * 60)
-  /// - To define a quota sampled over 1 day, set `seconds` to 86400 (24 * 60 *
-  /// 60) and so on. It is important to note that this duration is not the time
-  /// the quota is valid for, but rather the time window over which the quota is
-  /// evaluated. For example, if the quota is 100 calls per 10 seconds, then
-  /// this duration field would be set to 10 seconds.
-  ///
-  /// Required.
-  core.String? duration;
-
-  /// Maximum number of api calls allowed.
-  ///
-  /// Required.
-  core.String? quotaLimit;
-
-  TrafficShapingConfig({
-    this.duration,
-    this.quotaLimit,
-  });
-
-  TrafficShapingConfig.fromJson(core.Map json_)
-      : this(
-          duration: json_['duration'] as core.String?,
-          quotaLimit: json_['quotaLimit'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (duration != null) 'duration': duration!,
-        if (quotaLimit != null) 'quotaLimit': quotaLimit!,
-      };
-}
+typedef TrafficShapingConfig = $TrafficShapingConfig;
 
 /// Parameters to support Username and Password Authentication.
 class UserPassword {
   /// Secret version reference containing the password.
+  ///
+  /// Optional.
   Secret? password;
 
   /// Username.
+  ///
+  /// Optional.
   core.String? username;
 
   UserPassword({
@@ -10449,6 +11771,7 @@ class ValidateCustomConnectorSpecRequest {
   /// - "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED" : Connector type is not specified.
   /// - "OPEN_API" : OpenAPI connector.
   /// - "PROTO" : Proto connector.
+  /// - "SDK" : SDK connector.
   core.String? specType;
 
   ValidateCustomConnectorSpecRequest({
@@ -10489,6 +11812,37 @@ class ValidateCustomConnectorSpecResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (errorMessage != null) 'errorMessage': errorMessage!,
+      };
+}
+
+/// This configuration provides VPCSC config for a connector.
+class VpcscConfig {
+  /// The list of allowlisted FQDNs for VPCSC.
+  core.List<core.String>? defaultAllowlistedHost;
+
+  /// Whether to disable firewall VPCSC flow.
+  core.bool? disableFirewallVpcscFlow;
+
+  VpcscConfig({
+    this.defaultAllowlistedHost,
+    this.disableFirewallVpcscFlow,
+  });
+
+  VpcscConfig.fromJson(core.Map json_)
+      : this(
+          defaultAllowlistedHost:
+              (json_['defaultAllowlistedHost'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
+          disableFirewallVpcscFlow:
+              json_['disableFirewallVpcscFlow'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (defaultAllowlistedHost != null)
+          'defaultAllowlistedHost': defaultAllowlistedHost!,
+        if (disableFirewallVpcscFlow != null)
+          'disableFirewallVpcscFlow': disableFirewallVpcscFlow!,
       };
 }
 

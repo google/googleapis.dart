@@ -51,9 +51,11 @@
 ///   - [PropertiesFirebaseLinksResource]
 ///   - [PropertiesGoogleAdsLinksResource]
 ///   - [PropertiesKeyEventsResource]
+///   - [PropertiesReportingDataAnnotationsResource]
 ///   - [PropertiesRollupPropertySourceLinksResource]
 ///   - [PropertiesSearchAds360LinksResource]
 ///   - [PropertiesSubpropertyEventFiltersResource]
+///   - [PropertiesSubpropertySyncConfigsResource]
 library;
 
 import 'dart:async' as async;
@@ -1004,12 +1006,16 @@ class PropertiesResource {
       PropertiesGoogleAdsLinksResource(_requester);
   PropertiesKeyEventsResource get keyEvents =>
       PropertiesKeyEventsResource(_requester);
+  PropertiesReportingDataAnnotationsResource get reportingDataAnnotations =>
+      PropertiesReportingDataAnnotationsResource(_requester);
   PropertiesRollupPropertySourceLinksResource get rollupPropertySourceLinks =>
       PropertiesRollupPropertySourceLinksResource(_requester);
   PropertiesSearchAds360LinksResource get searchAds360Links =>
       PropertiesSearchAds360LinksResource(_requester);
   PropertiesSubpropertyEventFiltersResource get subpropertyEventFilters =>
       PropertiesSubpropertyEventFiltersResource(_requester);
+  PropertiesSubpropertySyncConfigsResource get subpropertySyncConfigs =>
+      PropertiesSubpropertySyncConfigsResource(_requester);
 
   PropertiesResource(commons.ApiRequester client) : _requester = client;
 
@@ -1101,48 +1107,6 @@ class PropertiesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Creates a connected site tag for a Universal Analytics property.
-  ///
-  /// You can create a maximum of 20 connected site tags per property. Note:
-  /// This API cannot be used on GA4 properties.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a
-  /// [GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse>
-      createConnectedSiteTag(
-    GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest request, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const url_ = 'v1alpha/properties:createConnectedSiteTag';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Create a roll-up property and all roll-up property source links.
   ///
   /// [request] - The metadata request object.
@@ -1224,132 +1188,6 @@ class PropertiesResource {
     );
     return GoogleAnalyticsAdminV1alphaProperty.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a connected site tag for a Universal Analytics property.
-  ///
-  /// Note: this has no effect on GA4 properties.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleProtobufEmpty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> deleteConnectedSiteTag(
-    GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest request, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const url_ = 'v1alpha/properties:deleteConnectedSiteTag';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleProtobufEmpty.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Fetches the opt out status for the automated GA4 setup process for a UA
-  /// property.
-  ///
-  /// Note: this has no effect on GA4 property.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a
-  /// [GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<
-          GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse>
-      fetchAutomatedGa4ConfigurationOptOut(
-    GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest
-        request, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const url_ = 'v1alpha/properties:fetchAutomatedGa4ConfigurationOptOut';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Given a specified UA property, looks up the GA4 property connected to it.
-  ///
-  /// Note: this cannot be used with GA4 properties.
-  ///
-  /// Request parameters:
-  ///
-  /// [property] - Required. The UA property for which to look up the connected
-  /// GA4 property. Note this request uses the internal property ID, not the
-  /// tracking ID of the form UA-XXXXXX-YY. Format:
-  /// properties/{internal_web_property_id} Example: properties/1234
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a
-  /// [GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse>
-      fetchConnectedGa4Property({
-    core.String? property,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (property != null) 'property': [property],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const url_ = 'v1alpha/properties:fetchConnectedGa4Property';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lookup for a single GA Property.
@@ -1504,6 +1342,45 @@ class PropertiesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns the singleton data retention settings for this property.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the settings to lookup. Format:
+  /// properties/{property}/reportingIdentitySettings Example:
+  /// "properties/1000/reportingIdentitySettings"
+  /// Value must have pattern `^properties/\[^/\]+/reportingIdentitySettings$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaReportingIdentitySettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaReportingIdentitySettings>
+      getReportingIdentitySettings(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaReportingIdentitySettings.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Returns child Properties under the specified parent Account.
   ///
   /// Properties will be excluded if the caller does not have access.
@@ -1571,48 +1448,6 @@ class PropertiesResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1alphaListPropertiesResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists the connected site tags for a Universal Analytics property.
-  ///
-  /// A maximum of 20 connected site tags will be returned. Note: this has no
-  /// effect on GA4 property.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a
-  /// [GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse>
-      listConnectedSiteTags(
-    GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest request, {
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const url_ = 'v1alpha/properties:listConnectedSiteTags';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 
@@ -1770,31 +1605,29 @@ class PropertiesResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Sets the opt out status for the automated GA4 setup process for a UA
-  /// property.
-  ///
-  /// Note: this has no effect on GA4 property.
+  /// Submits a request for user deletion for a property.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
+  /// [name] - Required. The name of the property to submit user deletion for.
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a
-  /// [GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse].
+  /// Completes with a [GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<
-          GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse>
-      setAutomatedGa4ConfigurationOptOut(
-    GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest
-        request, {
+  async.Future<GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse>
+      submitUserDeletion(
+    GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest request,
+    core.String name, {
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
@@ -1802,7 +1635,8 @@ class PropertiesResource {
       if ($fields != null) 'fields': [$fields],
     };
 
-    const url_ = 'v1alpha/properties:setAutomatedGa4ConfigurationOptOut';
+    final url_ =
+        'v1alpha/' + core.Uri.encodeFull('$name') + ':submitUserDeletion';
 
     final response_ = await _requester.request(
       url_,
@@ -1810,8 +1644,8 @@ class PropertiesResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
-        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+    return GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates attribution settings on a property.
@@ -6927,6 +6761,268 @@ class PropertiesKeyEventsResource {
   }
 }
 
+class PropertiesReportingDataAnnotationsResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesReportingDataAnnotationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a Reporting Data Annotation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The property for which to create a Reporting Data
+  /// Annotation. Format: properties/property_id Example: properties/123
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaReportingDataAnnotation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaReportingDataAnnotation> create(
+    GoogleAnalyticsAdminV1alphaReportingDataAnnotation request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1alpha/' +
+        core.Uri.encodeFull('$parent') +
+        '/reportingDataAnnotations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaReportingDataAnnotation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a Reporting Data Annotation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Reporting Data Annotation to
+  /// delete. Format:
+  /// properties/property_id/reportingDataAnnotations/reporting_data_annotation
+  /// Example: properties/123/reportingDataAnnotations/456
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/reportingDataAnnotations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lookup a single Reporting Data Annotation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Reporting Data Annotation to
+  /// lookup. Format:
+  /// properties/property_id/reportingDataAnnotations/reportingDataAnnotation
+  /// Example: properties/123/reportingDataAnnotations/456
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/reportingDataAnnotations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaReportingDataAnnotation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaReportingDataAnnotation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaReportingDataAnnotation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all Reporting Data Annotations on a property.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the property. Format:
+  /// properties/property_id Example: properties/123
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter that restricts which reporting data
+  /// annotations under the parent property are listed. Supported fields are: *
+  /// 'name' * `title` * `description` * `annotation_date` *
+  /// `annotation_date_range` * `color` Additionally, this API provides the
+  /// following helper functions: * annotation_duration() : the duration that
+  /// this annotation marks,
+  /// [durations](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/duration.proto).
+  /// expect a numeric representation of seconds followed by an `s` suffix. *
+  /// is_annotation_in_range(start_date, end_date) : if the annotation is in the
+  /// range specified by the `start_date` and `end_date`. The dates are in
+  /// ISO-8601 format, for example `2031-06-28`. Supported operations: * `=` :
+  /// equals * `!=` : not equals * `<` : less than * `>` : greater than * `<=` :
+  /// less than or equals * `>=` : greater than or equals * `:` : has operator *
+  /// `=~` : [regular expression](https://github.com/google/re2/wiki/Syntax)
+  /// match * `!~` :
+  /// [regular expression](https://github.com/google/re2/wiki/Syntax) does not
+  /// match * `NOT` : Logical not * `AND` : Logical and * `OR` : Logical or
+  /// Examples: 1. `title="Holiday Sale"` 2. `description=~"[Bb]ig
+  /// [Gg]ame.*[Ss]ale"` 3. `is_annotation_in_range("2025-12-25", "2026-01-16")
+  /// = true` 4. `annotation_duration() >= 172800s AND title:BOGO`
+  ///
+  /// [pageSize] - Optional. The maximum number of resources to return. The
+  /// service may return fewer than this value, even if there are additional
+  /// pages. If unspecified, at most 50 resources will be returned. The maximum
+  /// value is 200; (higher values will be coerced to the maximum)
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListReportingDataAnnotations` call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListReportingDataAnnotations` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse>
+      list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1alpha/' +
+        core.Uri.encodeFull('$parent') +
+        '/reportingDataAnnotations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a Reporting Data Annotation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Identifier. Resource name of this Reporting Data
+  /// Annotation. Format:
+  /// 'properties/{property_id}/reportingDataAnnotations/{reporting_data_annotation}'
+  /// Format: 'properties/123/reportingDataAnnotations/456'
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/reportingDataAnnotations/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Field names must be
+  /// in snake case (for example, "field_to_update"). Omitted fields will not be
+  /// updated. To replace the entire entity, use one path with the string "*" to
+  /// match all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaReportingDataAnnotation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaReportingDataAnnotation> patch(
+    GoogleAnalyticsAdminV1alphaReportingDataAnnotation request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaReportingDataAnnotation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class PropertiesRollupPropertySourceLinksResource {
   final commons.ApiRequester _requester;
 
@@ -7584,6 +7680,159 @@ class PropertiesSubpropertyEventFiltersResource {
       queryParams: queryParams_,
     );
     return GoogleAnalyticsAdminV1alphaSubpropertyEventFilter.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class PropertiesSubpropertySyncConfigsResource {
+  final commons.ApiRequester _requester;
+
+  PropertiesSubpropertySyncConfigsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lookup for a single `SubpropertySyncConfig`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the SubpropertySyncConfig to lookup.
+  /// Format:
+  /// properties/{ordinary_property_id}/subpropertySyncConfigs/{subproperty_id}
+  /// Example: properties/1234/subpropertySyncConfigs/5678
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/subpropertySyncConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaSubpropertySyncConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaSubpropertySyncConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaSubpropertySyncConfig.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List all `SubpropertySyncConfig` resources for a property.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the property. Format:
+  /// properties/property_id Example: properties/123
+  /// Value must have pattern `^properties/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of resources to return. The
+  /// service may return fewer than this value, even if there are additional
+  /// pages. If unspecified, at most 50 resources will be returned. The maximum
+  /// value is 200; (higher values will be coerced to the maximum)
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListSubpropertySyncConfig` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListSubpropertySyncConfig` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse>
+      list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1alpha/' + core.Uri.encodeFull('$parent') + '/subpropertySyncConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a `SubpropertySyncConfig`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Identifier. Format:
+  /// properties/{ordinary_property_id}/subpropertySyncConfigs/{subproperty_id}
+  /// Example: properties/1234/subpropertySyncConfigs/5678
+  /// Value must have pattern
+  /// `^properties/\[^/\]+/subpropertySyncConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update. Field names must be
+  /// in snake case (for example, "field_to_update"). Omitted fields will not be
+  /// updated. To replace the entire entity, use one path with the string "*" to
+  /// match all fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleAnalyticsAdminV1alphaSubpropertySyncConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleAnalyticsAdminV1alphaSubpropertySyncConfig> patch(
+    GoogleAnalyticsAdminV1alphaSubpropertySyncConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1alpha/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleAnalyticsAdminV1alphaSubpropertySyncConfig.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -9630,12 +9879,22 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
   /// A snapshot of a Property resource in change history.
   GoogleAnalyticsAdminV1alphaProperty? property;
 
+  /// A snapshot of a ReportingDataAnnotation resource in change history.
+  GoogleAnalyticsAdminV1alphaReportingDataAnnotation? reportingDataAnnotation;
+
+  /// A snapshot of a ReportingIdentitySettings resource in change history.
+  GoogleAnalyticsAdminV1alphaReportingIdentitySettings?
+      reportingIdentitySettings;
+
   /// A snapshot of a SearchAds360Link resource in change history.
   GoogleAnalyticsAdminV1alphaSearchAds360Link? searchAds360Link;
 
   /// A snapshot of SKAdNetworkConversionValueSchema resource in change history.
   GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema?
       skadnetworkConversionValueSchema;
+
+  /// A snapshot of a SubpropertySyncConfig resource in change history.
+  GoogleAnalyticsAdminV1alphaSubpropertySyncConfig? subpropertySyncConfig;
 
   GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource({
     this.account,
@@ -9662,8 +9921,11 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
     this.keyEvent,
     this.measurementProtocolSecret,
     this.property,
+    this.reportingDataAnnotation,
+    this.reportingIdentitySettings,
     this.searchAds360Link,
     this.skadnetworkConversionValueSchema,
+    this.subpropertySyncConfig,
   });
 
   GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource.fromJson(
@@ -9782,6 +10044,17 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
               ? GoogleAnalyticsAdminV1alphaProperty.fromJson(
                   json_['property'] as core.Map<core.String, core.dynamic>)
               : null,
+          reportingDataAnnotation: json_.containsKey('reportingDataAnnotation')
+              ? GoogleAnalyticsAdminV1alphaReportingDataAnnotation.fromJson(
+                  json_['reportingDataAnnotation']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          reportingIdentitySettings: json_
+                  .containsKey('reportingIdentitySettings')
+              ? GoogleAnalyticsAdminV1alphaReportingIdentitySettings.fromJson(
+                  json_['reportingIdentitySettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           searchAds360Link: json_.containsKey('searchAds360Link')
               ? GoogleAnalyticsAdminV1alphaSearchAds360Link.fromJson(
                   json_['searchAds360Link']
@@ -9793,6 +10066,11 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
                       .fromJson(json_['skadnetworkConversionValueSchema']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          subpropertySyncConfig: json_.containsKey('subpropertySyncConfig')
+              ? GoogleAnalyticsAdminV1alphaSubpropertySyncConfig.fromJson(
+                  json_['subpropertySyncConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -9829,9 +10107,15 @@ class GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
         if (measurementProtocolSecret != null)
           'measurementProtocolSecret': measurementProtocolSecret!,
         if (property != null) 'property': property!,
+        if (reportingDataAnnotation != null)
+          'reportingDataAnnotation': reportingDataAnnotation!,
+        if (reportingIdentitySettings != null)
+          'reportingIdentitySettings': reportingIdentitySettings!,
         if (searchAds360Link != null) 'searchAds360Link': searchAds360Link!,
         if (skadnetworkConversionValueSchema != null)
           'skadnetworkConversionValueSchema': skadnetworkConversionValueSchema!,
+        if (subpropertySyncConfig != null)
+          'subpropertySyncConfig': subpropertySyncConfig!,
       };
 }
 
@@ -10183,39 +10467,6 @@ class GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter {
       };
 }
 
-/// Configuration for a specific Connected Site Tag.
-class GoogleAnalyticsAdminV1alphaConnectedSiteTag {
-  /// User-provided display name for the connected site tag.
-  ///
-  /// Must be less than 256 characters.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// "Tag ID to forward events to.
-  ///
-  /// Also known as the Measurement ID, or the "G-ID" (For example: G-12345).
-  ///
-  /// Required.
-  core.String? tagId;
-
-  GoogleAnalyticsAdminV1alphaConnectedSiteTag({
-    this.displayName,
-    this.tagId,
-  });
-
-  GoogleAnalyticsAdminV1alphaConnectedSiteTag.fromJson(core.Map json_)
-      : this(
-          displayName: json_['displayName'] as core.String?,
-          tagId: json_['tagId'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (displayName != null) 'displayName': displayName!,
-        if (tagId != null) 'tagId': tagId!,
-      };
-}
-
 /// A conversion event in a Google Analytics property.
 class GoogleAnalyticsAdminV1alphaConversionEvent {
   /// The method by which conversions will be counted across multiple events
@@ -10416,44 +10667,6 @@ class GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest {
         if (parent != null) 'parent': parent!,
       };
 }
-
-/// Request message for CreateConnectedSiteTag RPC.
-class GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest {
-  /// The tag to add to the Universal Analytics property
-  ///
-  /// Required.
-  GoogleAnalyticsAdminV1alphaConnectedSiteTag? connectedSiteTag;
-
-  /// The Universal Analytics property to create connected site tags for.
-  ///
-  /// This API does not support GA4 properties. Format:
-  /// properties/{universalAnalyticsPropertyId} Example: properties/1234
-  core.String? property;
-
-  GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest({
-    this.connectedSiteTag,
-    this.property,
-  });
-
-  GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagRequest.fromJson(
-      core.Map json_)
-      : this(
-          connectedSiteTag: json_.containsKey('connectedSiteTag')
-              ? GoogleAnalyticsAdminV1alphaConnectedSiteTag.fromJson(
-                  json_['connectedSiteTag']
-                      as core.Map<core.String, core.dynamic>)
-              : null,
-          property: json_['property'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (connectedSiteTag != null) 'connectedSiteTag': connectedSiteTag!,
-        if (property != null) 'property': property!,
-      };
-}
-
-/// Response message for CreateConnectedSiteTag RPC.
-typedef GoogleAnalyticsAdminV1alphaCreateConnectedSiteTagResponse = $Empty;
 
 /// Request message for CreateRollupProperty RPC.
 class GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest {
@@ -10736,37 +10949,6 @@ class GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
-      };
-}
-
-/// Request message for DeleteConnectedSiteTag RPC.
-class GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest {
-  /// The Universal Analytics property to delete connected site tags for.
-  ///
-  /// This API does not support GA4 properties. Format:
-  /// properties/{universalAnalyticsPropertyId} Example: properties/1234
-  core.String? property;
-
-  /// Tag ID to forward events to.
-  ///
-  /// Also known as the Measurement ID, or the "G-ID" (For example: G-12345).
-  core.String? tagId;
-
-  GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest({
-    this.property,
-    this.tagId,
-  });
-
-  GoogleAnalyticsAdminV1alphaDeleteConnectedSiteTagRequest.fromJson(
-      core.Map json_)
-      : this(
-          property: json_['property'] as core.String?,
-          tagId: json_['tagId'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (property != null) 'property': property!,
-        if (tagId != null) 'tagId': tagId!,
       };
 }
 
@@ -11599,76 +11781,6 @@ class GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter {
       };
 }
 
-/// Request for fetching the opt out status for the automated GA4 setup process.
-class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest {
-  /// The UA property to get the opt out status.
-  ///
-  /// Note this request uses the internal property ID, not the tracking ID of
-  /// the form UA-XXXXXX-YY. Format: properties/{internalWebPropertyId} Example:
-  /// properties/1234
-  ///
-  /// Required.
-  core.String? property;
-
-  GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest({
-    this.property,
-  });
-
-  GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutRequest.fromJson(
-      core.Map json_)
-      : this(
-          property: json_['property'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (property != null) 'property': property!,
-      };
-}
-
-/// Response message for fetching the opt out status for the automated GA4 setup
-/// process.
-class GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse {
-  /// The opt out status for the UA property.
-  core.bool? optOut;
-
-  GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse({
-    this.optOut,
-  });
-
-  GoogleAnalyticsAdminV1alphaFetchAutomatedGa4ConfigurationOptOutResponse.fromJson(
-      core.Map json_)
-      : this(
-          optOut: json_['optOut'] as core.bool?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (optOut != null) 'optOut': optOut!,
-      };
-}
-
-/// Response for looking up GA4 property connected to a UA property.
-class GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse {
-  /// The GA4 property connected to the UA property.
-  ///
-  /// An empty string is returned when there is no connected GA4 property.
-  /// Format: properties/{property_id} Example: properties/1234
-  core.String? property;
-
-  GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse({
-    this.property,
-  });
-
-  GoogleAnalyticsAdminV1alphaFetchConnectedGa4PropertyResponse.fromJson(
-      core.Map json_)
-      : this(
-          property: json_['property'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (property != null) 'property': property!,
-      };
-}
-
 /// A link between a Google Analytics property and a Firebase project.
 typedef GoogleAnalyticsAdminV1alphaFirebaseLink = $FirebaseLink;
 
@@ -12202,55 +12314,6 @@ class GoogleAnalyticsAdminV1alphaListChannelGroupsResponse {
       };
 }
 
-/// Request message for ListConnectedSiteTags RPC.
-class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest {
-  /// The Universal Analytics property to fetch connected site tags for.
-  ///
-  /// This does not work on GA4 properties. A maximum of 20 connected site tags
-  /// will be returned. Example Format: `properties/1234`
-  core.String? property;
-
-  GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest({
-    this.property,
-  });
-
-  GoogleAnalyticsAdminV1alphaListConnectedSiteTagsRequest.fromJson(
-      core.Map json_)
-      : this(
-          property: json_['property'] as core.String?,
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (property != null) 'property': property!,
-      };
-}
-
-/// Response message for ListConnectedSiteTags RPC.
-class GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse {
-  /// The site tags for the Universal Analytics property.
-  ///
-  /// A maximum of 20 connected site tags will be returned.
-  core.List<GoogleAnalyticsAdminV1alphaConnectedSiteTag>? connectedSiteTags;
-
-  GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse({
-    this.connectedSiteTags,
-  });
-
-  GoogleAnalyticsAdminV1alphaListConnectedSiteTagsResponse.fromJson(
-      core.Map json_)
-      : this(
-          connectedSiteTags: (json_['connectedSiteTags'] as core.List?)
-              ?.map((value) =>
-                  GoogleAnalyticsAdminV1alphaConnectedSiteTag.fromJson(
-                      value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (connectedSiteTags != null) 'connectedSiteTags': connectedSiteTags!,
-      };
-}
-
 /// Response message for ListConversionEvents RPC.
 class GoogleAnalyticsAdminV1alphaListConversionEventsResponse {
   /// The requested conversion events
@@ -12709,6 +12772,41 @@ class GoogleAnalyticsAdminV1alphaListPropertiesResponse {
       };
 }
 
+/// Response message for ListReportingDataAnnotation RPC.
+class GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of Reporting Data Annotations.
+  core.List<GoogleAnalyticsAdminV1alphaReportingDataAnnotation>?
+      reportingDataAnnotations;
+
+  GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse({
+    this.nextPageToken,
+    this.reportingDataAnnotations,
+  });
+
+  GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          reportingDataAnnotations: (json_['reportingDataAnnotations']
+                  as core.List?)
+              ?.map((value) =>
+                  GoogleAnalyticsAdminV1alphaReportingDataAnnotation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (reportingDataAnnotations != null)
+          'reportingDataAnnotations': reportingDataAnnotations!,
+      };
+}
+
 /// Response message for ListRollupPropertySourceLinks RPC.
 class GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
@@ -12848,6 +12946,41 @@ class GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (subpropertyEventFilters != null)
           'subpropertyEventFilters': subpropertyEventFilters!,
+      };
+}
+
+/// Response message for ListSubpropertySyncConfigs RPC.
+class GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of `SubpropertySyncConfig` resources.
+  core.List<GoogleAnalyticsAdminV1alphaSubpropertySyncConfig>?
+      subpropertySyncConfigs;
+
+  GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse({
+    this.nextPageToken,
+    this.subpropertySyncConfigs,
+  });
+
+  GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          subpropertySyncConfigs:
+              (json_['subpropertySyncConfigs'] as core.List?)
+                  ?.map((value) =>
+                      GoogleAnalyticsAdminV1alphaSubpropertySyncConfig.fromJson(
+                          value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (subpropertySyncConfigs != null)
+          'subpropertySyncConfigs': subpropertySyncConfigs!,
       };
 }
 
@@ -13055,6 +13188,19 @@ typedef GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse
 
 /// Request message for CreateSubproperty RPC.
 class GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest {
+  /// The subproperty feature synchronization mode for Custom Dimensions and
+  /// Metrics
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SYNCHRONIZATION_MODE_UNSPECIFIED" : Synchronization mode unknown or not
+  /// specified.
+  /// - "NONE" : Entities are not synchronized. Local edits are allowed on the
+  /// subproperty.
+  /// - "ALL" : Entities are synchronized from parent property. Local mutations
+  /// are not allowed on the subproperty (Create / Update / Delete)
+  core.String? customDimensionAndMetricSynchronizationMode;
+
   /// The subproperty to create.
   ///
   /// Required.
@@ -13066,6 +13212,7 @@ class GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest {
   GoogleAnalyticsAdminV1alphaSubpropertyEventFilter? subpropertyEventFilter;
 
   GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest({
+    this.customDimensionAndMetricSynchronizationMode,
     this.subproperty,
     this.subpropertyEventFilter,
   });
@@ -13073,6 +13220,9 @@ class GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest {
   GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest.fromJson(
       core.Map json_)
       : this(
+          customDimensionAndMetricSynchronizationMode:
+              json_['customDimensionAndMetricSynchronizationMode']
+                  as core.String?,
           subproperty: json_.containsKey('subproperty')
               ? GoogleAnalyticsAdminV1alphaProperty.fromJson(
                   json_['subproperty'] as core.Map<core.String, core.dynamic>)
@@ -13085,6 +13235,9 @@ class GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (customDimensionAndMetricSynchronizationMode != null)
+          'customDimensionAndMetricSynchronizationMode':
+              customDimensionAndMetricSynchronizationMode!,
         if (subproperty != null) 'subproperty': subproperty!,
         if (subpropertyEventFilter != null)
           'subpropertyEventFilter': subpropertyEventFilter!,
@@ -13149,6 +13302,183 @@ class GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (eventEditRules != null) 'eventEditRules': eventEditRules!,
+      };
+}
+
+/// A Reporting Data Annotation is a comment connected to certain dates for
+/// reporting data.
+class GoogleAnalyticsAdminV1alphaReportingDataAnnotation {
+  /// If set, the Reporting Data Annotation is for a specific date represented
+  /// by this field.
+  ///
+  /// The date must be a valid date with year, month and day set. The date may
+  /// be in the past, present, or future.
+  GoogleTypeDate? annotationDate;
+
+  /// If set, the Reporting Data Annotation is for a range of dates represented
+  /// by this field.
+  GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange?
+      annotationDateRange;
+
+  /// The color used for display of this Reporting Data Annotation.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "COLOR_UNSPECIFIED" : Color unknown or not specified.
+  /// - "PURPLE" : Purple color.
+  /// - "BROWN" : Brown color.
+  /// - "BLUE" : Blue color.
+  /// - "GREEN" : Green color.
+  /// - "RED" : Red color.
+  /// - "CYAN" : Cyan color.
+  /// - "ORANGE" : Orange color. (Only used for system-generated annotations)
+  core.String? color;
+
+  /// Description for this Reporting Data Annotation.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Identifier.
+  ///
+  /// Resource name of this Reporting Data Annotation. Format:
+  /// 'properties/{property_id}/reportingDataAnnotations/{reporting_data_annotation}'
+  /// Format: 'properties/123/reportingDataAnnotations/456'
+  ///
+  /// Required.
+  core.String? name;
+
+  /// If true, this annotation was generated by the Google Analytics system.
+  ///
+  /// System-generated annotations cannot be updated or deleted.
+  ///
+  /// Output only.
+  core.bool? systemGenerated;
+
+  /// Human-readable title for this Reporting Data Annotation.
+  ///
+  /// Required.
+  core.String? title;
+
+  GoogleAnalyticsAdminV1alphaReportingDataAnnotation({
+    this.annotationDate,
+    this.annotationDateRange,
+    this.color,
+    this.description,
+    this.name,
+    this.systemGenerated,
+    this.title,
+  });
+
+  GoogleAnalyticsAdminV1alphaReportingDataAnnotation.fromJson(core.Map json_)
+      : this(
+          annotationDate: json_.containsKey('annotationDate')
+              ? GoogleTypeDate.fromJson(json_['annotationDate']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          annotationDateRange: json_.containsKey('annotationDateRange')
+              ? GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange
+                  .fromJson(json_['annotationDateRange']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          color: json_['color'] as core.String?,
+          description: json_['description'] as core.String?,
+          name: json_['name'] as core.String?,
+          systemGenerated: json_['systemGenerated'] as core.bool?,
+          title: json_['title'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (annotationDate != null) 'annotationDate': annotationDate!,
+        if (annotationDateRange != null)
+          'annotationDateRange': annotationDateRange!,
+        if (color != null) 'color': color!,
+        if (description != null) 'description': description!,
+        if (name != null) 'name': name!,
+        if (systemGenerated != null) 'systemGenerated': systemGenerated!,
+        if (title != null) 'title': title!,
+      };
+}
+
+/// Represents a Reporting Data Annotation's date range, both start and end
+/// dates are inclusive.
+///
+/// Time zones are based on the parent property.
+class GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange {
+  /// The end date for this range.
+  ///
+  /// Must be a valid date with year, month, and day set. This date must be
+  /// greater than or equal to the start date.
+  ///
+  /// Required.
+  GoogleTypeDate? endDate;
+
+  /// The start date for this range.
+  ///
+  /// Must be a valid date with year, month, and day set. The date may be in the
+  /// past, present, or future.
+  ///
+  /// Required.
+  GoogleTypeDate? startDate;
+
+  GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange({
+    this.endDate,
+    this.startDate,
+  });
+
+  GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange.fromJson(
+      core.Map json_)
+      : this(
+          endDate: json_.containsKey('endDate')
+              ? GoogleTypeDate.fromJson(
+                  json_['endDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+          startDate: json_.containsKey('startDate')
+              ? GoogleTypeDate.fromJson(
+                  json_['startDate'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endDate != null) 'endDate': endDate!,
+        if (startDate != null) 'startDate': startDate!,
+      };
+}
+
+/// A resource containing settings related to reporting identity.
+class GoogleAnalyticsAdminV1alphaReportingIdentitySettings {
+  /// Identifier.
+  ///
+  /// Resource name for this reporting identity settings singleton resource.
+  /// Format: properties/{property_id}/reportingIdentitySettings Example:
+  /// "properties/1234/reportingIdentitySettings"
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The strategy used for identifying user identities in reports.
+  /// Possible string values are:
+  /// - "IDENTITY_BLENDING_STRATEGY_UNSPECIFIED" : Unspecified blending
+  /// strategy.
+  /// - "BLENDED" : Blended reporting identity strategy.
+  /// - "OBSERVED" : Observed reporting identity strategy.
+  /// - "DEVICE_BASED" : Device-based reporting identity strategy.
+  core.String? reportingIdentity;
+
+  GoogleAnalyticsAdminV1alphaReportingIdentitySettings({
+    this.name,
+    this.reportingIdentity,
+  });
+
+  GoogleAnalyticsAdminV1alphaReportingIdentitySettings.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          reportingIdentity: json_['reportingIdentity'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (reportingIdentity != null) 'reportingIdentity': reportingIdentity!,
       };
 }
 
@@ -13741,42 +14071,75 @@ class GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse {
       };
 }
 
-/// Request for setting the opt out status for the automated GA4 setup process.
-class GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest {
-  /// The status to set.
-  core.bool? optOut;
+/// Request message for SubmitUserDeletion RPC.
+class GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest {
+  /// Firebase
+  /// [application instance ID](https://firebase.google.com/docs/reference/android/com/google/firebase/analytics/FirebaseAnalytics.html#getAppInstanceId).
+  core.String? appInstanceId;
 
-  /// The UA property to set the opt out status.
-  ///
-  /// Note this request uses the internal property ID, not the tracking ID of
-  /// the form UA-XXXXXX-YY. Format: properties/{internalWebPropertyId} Example:
-  /// properties/1234
-  ///
-  /// Required.
-  core.String? property;
+  /// Google Analytics
+  /// [client ID](https://support.google.com/analytics/answer/11593727).
+  core.String? clientId;
 
-  GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest({
-    this.optOut,
-    this.property,
+  /// Google Analytics
+  /// [user ID](https://firebase.google.com/docs/analytics/userid).
+  core.String? userId;
+
+  /// \[User-provided
+  /// data\](https://support.google.com/analytics/answer/14077171).
+  ///
+  /// May contain either one email address or one phone number. Email addresses
+  /// should be normalized as such: * lowercase * remove periods before @ for
+  /// gmail.com/googlemail.com addresses * remove all spaces Phone numbers
+  /// should be normalized as such: * remove all non digit characters * add +
+  /// prefix
+  core.String? userProvidedData;
+
+  GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest({
+    this.appInstanceId,
+    this.clientId,
+    this.userId,
+    this.userProvidedData,
   });
 
-  GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutRequest.fromJson(
-      core.Map json_)
+  GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest.fromJson(core.Map json_)
       : this(
-          optOut: json_['optOut'] as core.bool?,
-          property: json_['property'] as core.String?,
+          appInstanceId: json_['appInstanceId'] as core.String?,
+          clientId: json_['clientId'] as core.String?,
+          userId: json_['userId'] as core.String?,
+          userProvidedData: json_['userProvidedData'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
-        if (optOut != null) 'optOut': optOut!,
-        if (property != null) 'property': property!,
+        if (appInstanceId != null) 'appInstanceId': appInstanceId!,
+        if (clientId != null) 'clientId': clientId!,
+        if (userId != null) 'userId': userId!,
+        if (userProvidedData != null) 'userProvidedData': userProvidedData!,
       };
 }
 
-/// Response message for setting the opt out status for the automated GA4 setup
-/// process.
-typedef GoogleAnalyticsAdminV1alphaSetAutomatedGa4ConfigurationOptOutResponse
-    = $Empty;
+/// Response message for SubmitUserDeletion RPC.
+class GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse {
+  /// Marks the moment for which all visitor data before this point should be
+  /// deleted.
+  ///
+  /// This is set to the time at which the deletion request was received.
+  core.String? deletionRequestTime;
+
+  GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse({
+    this.deletionRequestTime,
+  });
+
+  GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse.fromJson(core.Map json_)
+      : this(
+          deletionRequestTime: json_['deletionRequestTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (deletionRequestTime != null)
+          'deletionRequestTime': deletionRequestTime!,
+      };
+}
 
 /// A resource message representing a Google Analytics subproperty event filter.
 class GoogleAnalyticsAdminV1alphaSubpropertyEventFilter {
@@ -14038,6 +14401,67 @@ class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList {
       };
 }
 
+/// Subproperty synchronization configuration controls how ordinary property
+/// configurations are synchronized to subproperties.
+///
+/// This resource is provisioned automatically for each subproperty.
+class GoogleAnalyticsAdminV1alphaSubpropertySyncConfig {
+  /// Resource name of the subproperty that these settings apply to.
+  ///
+  /// Output only. Immutable.
+  core.String? applyToProperty;
+
+  /// Specifies the Custom Dimension / Metric synchronization mode for the
+  /// subproperty.
+  ///
+  /// If set to ALL, Custom Dimension / Metric synchronization will be
+  /// immediately enabled. Local configuration of Custom Dimensions / Metrics
+  /// will not be allowed on the subproperty so long as the synchronization mode
+  /// is set to ALL. If set to NONE, Custom Dimensions / Metric synchronization
+  /// is disabled. Custom Dimensions / Metrics must be configured explicitly on
+  /// the Subproperty.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SYNCHRONIZATION_MODE_UNSPECIFIED" : Synchronization mode unknown or not
+  /// specified.
+  /// - "NONE" : Entities are not synchronized. Local edits are allowed on the
+  /// subproperty.
+  /// - "ALL" : Entities are synchronized from parent property. Local mutations
+  /// are not allowed on the subproperty (Create / Update / Delete)
+  core.String? customDimensionAndMetricSyncMode;
+
+  /// Identifier.
+  ///
+  /// Format:
+  /// properties/{ordinary_property_id}/subpropertySyncConfigs/{subproperty_id}
+  /// Example: properties/1234/subpropertySyncConfigs/5678
+  ///
+  /// Output only.
+  core.String? name;
+
+  GoogleAnalyticsAdminV1alphaSubpropertySyncConfig({
+    this.applyToProperty,
+    this.customDimensionAndMetricSyncMode,
+    this.name,
+  });
+
+  GoogleAnalyticsAdminV1alphaSubpropertySyncConfig.fromJson(core.Map json_)
+      : this(
+          applyToProperty: json_['applyToProperty'] as core.String?,
+          customDimensionAndMetricSyncMode:
+              json_['customDimensionAndMetricSyncMode'] as core.String?,
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applyToProperty != null) 'applyToProperty': applyToProperty!,
+        if (customDimensionAndMetricSyncMode != null)
+          'customDimensionAndMetricSyncMode': customDimensionAndMetricSyncMode!,
+        if (name != null) 'name': name!,
+      };
+}
+
 /// Request message for UpdateAccessBinding RPC.
 class GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest {
   /// The access binding to update.
@@ -14069,3 +14493,15 @@ class GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef GoogleProtobufEmpty = $Empty;
+
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
+typedef GoogleTypeDate = $Date;

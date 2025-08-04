@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241201",
+    "revision": "20250727",
     "rootUrl": "https://osconfig.googleapis.com/",
     "servicePath": "",
     "title": "OS Config API",
@@ -1497,6 +1497,50 @@
             },
             "type": "object"
         },
+        "GoogleCloudOsconfigV2__OperationMetadata": {
+            "description": "Represents the metadata of the long-running operation.",
+            "id": "GoogleCloudOsconfigV2__OperationMetadata",
+            "properties": {
+                "apiVersion": {
+                    "description": "Output only. API version used to start the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "Output only. The time the operation was created.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Output only. The time the operation finished running.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "requestedCancellation": {
+                    "description": "Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "statusMessage": {
+                    "description": "Output only. Human-readable status of the operation, if any.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "target": {
+                    "description": "Output only. Server-defined resource path for the target of the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "verb": {
+                    "description": "Output only. Name of the verb executed by the operation.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudOsconfigV2beta__OperationMetadata": {
             "description": "Represents the metadata of the long-running operation.",
             "id": "GoogleCloudOsconfigV2beta__OperationMetadata",
@@ -2011,6 +2055,13 @@
                     "type": "array"
                 }
             },
+            "type": "object"
+        },
+        "MessageSet": {
+            "deprecated": true,
+            "description": "This is proto2's version of MessageSet. DEPRECATED: DO NOT USE FOR NEW FIELDS. If you are using editions or proto2, please make your own extendable messages for your use case. If you are using proto3, please use `Any` instead. MessageSet was the implementation of extensions for proto1. When proto2 was introduced, extensions were implemented as a first-class feature. This schema for MessageSet was meant to be a \"bridge\" solution to migrate MessageSet-bearing messages from proto1 to proto2. This schema has been open-sourced only to facilitate the migration of Google products with MessageSet-bearing messages to open-source environments.",
+            "id": "MessageSet",
+            "properties": {},
             "type": "object"
         },
         "MonthlySchedule": {
@@ -3541,6 +3592,35 @@
             },
             "type": "object"
         },
+        "StatusProto": {
+            "description": "Wire-format for a Status object",
+            "id": "StatusProto",
+            "properties": {
+                "canonicalCode": {
+                    "description": "copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 canonical_code = 6;",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "code": {
+                    "description": "Numeric code drawn from the space specified below. Often, this is the canonical error space, and code is drawn from google3/util/task/codes.proto copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 code = 1;",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "Detail message copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional string message = 3;",
+                    "type": "string"
+                },
+                "messageSet": {
+                    "$ref": "MessageSet",
+                    "description": "message_set associates an arbitrary proto message with the status. copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional proto2.bridge.MessageSet message_set = 5;"
+                },
+                "space": {
+                    "description": "copybara:strip_begin(b/383363683) Space to which this status belongs copybara:strip_end_and_replace optional string space = 2; // Space to which this status belongs",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "TimeOfDay": {
             "description": "Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.",
             "id": "TimeOfDay",
@@ -3587,6 +3667,29 @@
             "description": "This API resource represents the vulnerability report for a specified Compute Engine virtual machine (VM) instance at a given point in time. For more information, see [Vulnerability reports](https://cloud.google.com/compute/docs/instances/os-inventory-management#vulnerability-reports).",
             "id": "VulnerabilityReport",
             "properties": {
+                "highestUpgradableCveSeverity": {
+                    "description": "Output only. Highest level of severity among all the upgradable vulnerabilities with CVEs attached.",
+                    "enum": [
+                        "VULNERABILITY_SEVERITY_LEVEL_UNSPECIFIED",
+                        "NONE",
+                        "MINIMAL",
+                        "LOW",
+                        "MEDIUM",
+                        "HIGH",
+                        "CRITICAL"
+                    ],
+                    "enumDescriptions": [
+                        "Default SeverityLevel. This value is unused.",
+                        "Vulnerability has no severity level.",
+                        "Vulnerability severity level is minimal. This is level below the low severity level.",
+                        "Vulnerability severity level is low. This is level below the medium severity level.",
+                        "Vulnerability severity level is medium. This is level below the high severity level.",
+                        "Vulnerability severity level is high. This is level below the critical severity level.",
+                        "Vulnerability severity level is critical. This is the highest severity level."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "name": {
                     "description": "Output only. The `vulnerabilityReport` API resource name. Format: `projects/{project_number}/locations/{location}/instances/{instance_id}/vulnerabilityReport`",
                     "readOnly": true,

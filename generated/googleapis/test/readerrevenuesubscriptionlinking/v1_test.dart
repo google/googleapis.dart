@@ -85,6 +85,9 @@ api.Reader buildReader() {
   if (buildCounterReader < 3) {
     o.createTime = 'foo';
     o.name = 'foo';
+    o.originatingPublicationId = 'foo';
+    o.ppid = 'foo';
+    o.publicationId = 'foo';
   }
   buildCounterReader--;
   return o;
@@ -99,6 +102,18 @@ void checkReader(api.Reader o) {
     );
     unittest.expect(
       o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.originatingPublicationId!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.ppid!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.publicationId!,
       unittest.equals('foo'),
     );
   }

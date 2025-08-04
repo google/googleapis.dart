@@ -845,6 +845,14 @@ typedef Expr = $Expr;
 /// A Folder in an Organization's resource hierarchy, used to organize that
 /// Organization's resources.
 class Folder {
+  /// Optional capabilities configured for this folder (via UpdateCapability
+  /// API).
+  ///
+  /// Example: `folders/123/capabilities/app-management`.
+  ///
+  /// Output only.
+  core.List<core.String>? configuredCapabilities;
+
   /// Timestamp when the Folder was created.
   ///
   /// Assigned by the server.
@@ -875,6 +883,14 @@ class Folder {
   /// user.
   core.String? lifecycleState;
 
+  /// Management Project associated with this folder (if app-management
+  /// capability is enabled).
+  ///
+  /// Example: `projects/google-mp-123` OUTPUT ONLY.
+  ///
+  /// Output only.
+  core.String? managementProject;
+
   /// The resource name of the Folder.
   ///
   /// Its format is `folders/{folder_id}`, for example: "folders/1234".
@@ -900,9 +916,11 @@ class Folder {
   core.Map<core.String, core.String>? tags;
 
   Folder({
+    this.configuredCapabilities,
     this.createTime,
     this.displayName,
     this.lifecycleState,
+    this.managementProject,
     this.name,
     this.parent,
     this.tags,
@@ -910,9 +928,14 @@ class Folder {
 
   Folder.fromJson(core.Map json_)
       : this(
+          configuredCapabilities:
+              (json_['configuredCapabilities'] as core.List?)
+                  ?.map((value) => value as core.String)
+                  .toList(),
           createTime: json_['createTime'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           lifecycleState: json_['lifecycleState'] as core.String?,
+          managementProject: json_['managementProject'] as core.String?,
           name: json_['name'] as core.String?,
           parent: json_['parent'] as core.String?,
           tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -924,9 +947,12 @@ class Folder {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (configuredCapabilities != null)
+          'configuredCapabilities': configuredCapabilities!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (lifecycleState != null) 'lifecycleState': lifecycleState!,
+        if (managementProject != null) 'managementProject': managementProject!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
         if (tags != null) 'tags': tags!,

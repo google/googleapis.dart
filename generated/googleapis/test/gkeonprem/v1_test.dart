@@ -905,6 +905,7 @@ api.BareMetalCluster buildBareMetalCluster() {
     o.fleet = buildFleet();
     o.loadBalancer = buildBareMetalLoadBalancerConfig();
     o.localName = 'foo';
+    o.localNamespace = 'foo';
     o.maintenanceConfig = buildBareMetalMaintenanceConfig();
     o.maintenanceStatus = buildBareMetalMaintenanceStatus();
     o.name = 'foo';
@@ -970,6 +971,10 @@ void checkBareMetalCluster(api.BareMetalCluster o) {
     checkBareMetalLoadBalancerConfig(o.loadBalancer!);
     unittest.expect(
       o.localName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.localNamespace!,
       unittest.equals('foo'),
     );
     checkBareMetalMaintenanceConfig(o.maintenanceConfig!);
@@ -2225,6 +2230,7 @@ api.EnrollBareMetalClusterRequest buildEnrollBareMetalClusterRequest() {
     o.adminClusterMembership = 'foo';
     o.bareMetalClusterId = 'foo';
     o.localName = 'foo';
+    o.localNamespace = 'foo';
   }
   buildCounterEnrollBareMetalClusterRequest--;
   return o;
@@ -2243,6 +2249,10 @@ void checkEnrollBareMetalClusterRequest(api.EnrollBareMetalClusterRequest o) {
     );
     unittest.expect(
       o.localName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.localNamespace!,
       unittest.equals('foo'),
     );
   }
@@ -3797,6 +3807,7 @@ api.VmwareAdminCluster buildVmwareAdminCluster() {
     o.controlPlaneNode = buildVmwareAdminControlPlaneNodeConfig();
     o.createTime = 'foo';
     o.description = 'foo';
+    o.enableAdvancedCluster = true;
     o.endpoint = 'foo';
     o.etag = 'foo';
     o.fleet = buildFleet();
@@ -3808,6 +3819,7 @@ api.VmwareAdminCluster buildVmwareAdminCluster() {
     o.onPremVersion = 'foo';
     o.platformConfig = buildVmwarePlatformConfig();
     o.preparedSecrets = buildVmwareAdminPreparedSecretsConfig();
+    o.privateRegistryConfig = buildVmwareAdminPrivateRegistryConfig();
     o.reconciling = true;
     o.state = 'foo';
     o.status = buildResourceStatus();
@@ -3841,6 +3853,7 @@ void checkVmwareAdminCluster(api.VmwareAdminCluster o) {
       o.description!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.enableAdvancedCluster!, unittest.isTrue);
     unittest.expect(
       o.endpoint!,
       unittest.equals('foo'),
@@ -3870,6 +3883,7 @@ void checkVmwareAdminCluster(api.VmwareAdminCluster o) {
     );
     checkVmwarePlatformConfig(o.platformConfig!);
     checkVmwareAdminPreparedSecretsConfig(o.preparedSecrets!);
+    checkVmwareAdminPrivateRegistryConfig(o.privateRegistryConfig!);
     unittest.expect(o.reconciling!, unittest.isTrue);
     unittest.expect(
       o.state!,
@@ -4151,6 +4165,34 @@ void checkVmwareAdminPreparedSecretsConfig(
   buildCounterVmwareAdminPreparedSecretsConfig--;
 }
 
+core.int buildCounterVmwareAdminPrivateRegistryConfig = 0;
+api.VmwareAdminPrivateRegistryConfig buildVmwareAdminPrivateRegistryConfig() {
+  final o = api.VmwareAdminPrivateRegistryConfig();
+  buildCounterVmwareAdminPrivateRegistryConfig++;
+  if (buildCounterVmwareAdminPrivateRegistryConfig < 3) {
+    o.address = 'foo';
+    o.caCert = 'foo';
+  }
+  buildCounterVmwareAdminPrivateRegistryConfig--;
+  return o;
+}
+
+void checkVmwareAdminPrivateRegistryConfig(
+    api.VmwareAdminPrivateRegistryConfig o) {
+  buildCounterVmwareAdminPrivateRegistryConfig++;
+  if (buildCounterVmwareAdminPrivateRegistryConfig < 3) {
+    unittest.expect(
+      o.address!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.caCert!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterVmwareAdminPrivateRegistryConfig--;
+}
+
 core.List<api.VmwareIpBlock> buildUnnamed63() => [
       buildVmwareIpBlock(),
       buildVmwareIpBlock(),
@@ -4403,6 +4445,7 @@ api.VmwareCluster buildVmwareCluster() {
     o.deleteTime = 'foo';
     o.description = 'foo';
     o.disableBundledIngress = true;
+    o.enableAdvancedCluster = true;
     o.enableControlPlaneV2 = true;
     o.endpoint = 'foo';
     o.etag = 'foo';
@@ -4458,6 +4501,7 @@ void checkVmwareCluster(api.VmwareCluster o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.disableBundledIngress!, unittest.isTrue);
+    unittest.expect(o.enableAdvancedCluster!, unittest.isTrue);
     unittest.expect(o.enableControlPlaneV2!, unittest.isTrue);
     unittest.expect(
       o.endpoint!,
@@ -5548,6 +5592,23 @@ void checkVmwareVsphereTag(api.VmwareVsphereTag o) {
     );
   }
   buildCounterVmwareVsphereTag--;
+}
+
+core.List<core.String> buildUnnamed83() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed83(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -6701,6 +6762,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-VmwareAdminPrivateRegistryConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVmwareAdminPrivateRegistryConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VmwareAdminPrivateRegistryConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkVmwareAdminPrivateRegistryConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-VmwareAdminSeesawConfig', () {
     unittest.test('to-json--from-json', () async {
       final o = buildVmwareAdminSeesawConfig();
@@ -7088,6 +7159,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.GKEOnPremApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed83();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7125,6 +7197,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -7148,6 +7224,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,
@@ -10469,6 +10546,7 @@ void main() {
       final arg_name = 'foo';
       final arg_allowMissing = true;
       final arg_etag = 'foo';
+      final arg_ignoreErrors = true;
       final arg_validateOnly = true;
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -10512,6 +10590,10 @@ void main() {
           unittest.equals(arg_etag),
         );
         unittest.expect(
+          queryMap['ignoreErrors']!.first,
+          unittest.equals('$arg_ignoreErrors'),
+        );
+        unittest.expect(
           queryMap['validateOnly']!.first,
           unittest.equals('$arg_validateOnly'),
         );
@@ -10529,6 +10611,7 @@ void main() {
       final response = await res.unenroll(arg_name,
           allowMissing: arg_allowMissing,
           etag: arg_etag,
+          ignoreErrors: arg_ignoreErrors,
           validateOnly: arg_validateOnly,
           $fields: arg_$fields);
       checkOperation(response as api.Operation);

@@ -182,6 +182,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -204,12 +208,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -4209,7 +4215,7 @@ class Enrollment {
   /// It matches the form
   /// projects/{project}/locations/{location}/messageBuses/{messageBus}.
   ///
-  /// Required.
+  /// Required. Immutable.
   core.String? messageBus;
 
   /// Identifier.
@@ -4673,6 +4679,11 @@ class GoogleChannelConfig {
   /// Optional.
   core.String? cryptoKeyName;
 
+  /// Resource labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
   /// The resource name of the config.
   ///
   /// Must be in the format of,
@@ -4690,6 +4701,7 @@ class GoogleChannelConfig {
 
   GoogleChannelConfig({
     this.cryptoKeyName,
+    this.labels,
     this.name,
     this.updateTime,
   });
@@ -4697,12 +4709,20 @@ class GoogleChannelConfig {
   GoogleChannelConfig.fromJson(core.Map json_)
       : this(
           cryptoKeyName: json_['cryptoKeyName'] as core.String?,
+          labels:
+              (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           name: json_['name'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
+        if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -6125,6 +6145,12 @@ class Pipeline {
   /// Optional.
   GoogleCloudEventarcV1PipelineRetryPolicy? retryPolicy;
 
+  /// Whether or not this Pipeline satisfies the requirements of physical zone
+  /// separation
+  ///
+  /// Output only.
+  core.bool? satisfiesPzs;
+
   /// Server-assigned unique identifier for the Pipeline.
   ///
   /// The value is a UUID4 string and guaranteed to remain unchanged until the
@@ -6155,6 +6181,7 @@ class Pipeline {
     this.mediations,
     this.name,
     this.retryPolicy,
+    this.satisfiesPzs,
     this.uid,
     this.updateTime,
   });
@@ -6203,6 +6230,7 @@ class Pipeline {
               ? GoogleCloudEventarcV1PipelineRetryPolicy.fromJson(
                   json_['retryPolicy'] as core.Map<core.String, core.dynamic>)
               : null,
+          satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           uid: json_['uid'] as core.String?,
           updateTime: json_['updateTime'] as core.String?,
         );
@@ -6221,6 +6249,7 @@ class Pipeline {
         if (mediations != null) 'mediations': mediations!,
         if (name != null) 'name': name!,
         if (retryPolicy != null) 'retryPolicy': retryPolicy!,
+        if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (uid != null) 'uid': uid!,
         if (updateTime != null) 'updateTime': updateTime!,
       };

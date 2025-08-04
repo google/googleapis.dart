@@ -171,6 +171,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -193,12 +197,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -779,6 +785,10 @@ class ProjectsLocationsPrivateConnectionsResource {
   /// valid UUID with the exception that zero UUID is not supported
   /// (00000000-0000-0000-0000-000000000000).
   ///
+  /// [validateOnly] - Optional. When supplied with PSC Interface config, will
+  /// get/create the tenant project required for the customer to allow list and
+  /// won't actually create the private connection.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -795,6 +805,7 @@ class ProjectsLocationsPrivateConnectionsResource {
     core.bool? force,
     core.String? privateConnectionId,
     core.String? requestId,
+    core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
@@ -803,6 +814,7 @@ class ProjectsLocationsPrivateConnectionsResource {
       if (privateConnectionId != null)
         'privateConnectionId': [privateConnectionId],
       if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1755,6 +1767,9 @@ typedef AvroFileFormat = $Empty;
 ///
 /// Specific objects can be excluded.
 class BackfillAllStrategy {
+  /// MongoDB data source objects to avoid backfilling
+  MongodbCluster? mongodbExcludedObjects;
+
   /// MySQL data source objects to avoid backfilling.
   MysqlRdbms? mysqlExcludedObjects;
 
@@ -1771,6 +1786,7 @@ class BackfillAllStrategy {
   SqlServerRdbms? sqlServerExcludedObjects;
 
   BackfillAllStrategy({
+    this.mongodbExcludedObjects,
     this.mysqlExcludedObjects,
     this.oracleExcludedObjects,
     this.postgresqlExcludedObjects,
@@ -1780,6 +1796,10 @@ class BackfillAllStrategy {
 
   BackfillAllStrategy.fromJson(core.Map json_)
       : this(
+          mongodbExcludedObjects: json_.containsKey('mongodbExcludedObjects')
+              ? MongodbCluster.fromJson(json_['mongodbExcludedObjects']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           mysqlExcludedObjects: json_.containsKey('mysqlExcludedObjects')
               ? MysqlRdbms.fromJson(json_['mysqlExcludedObjects']
                   as core.Map<core.String, core.dynamic>)
@@ -1806,6 +1826,8 @@ class BackfillAllStrategy {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (mongodbExcludedObjects != null)
+          'mongodbExcludedObjects': mongodbExcludedObjects!,
         if (mysqlExcludedObjects != null)
           'mysqlExcludedObjects': mysqlExcludedObjects!,
         if (oracleExcludedObjects != null)
@@ -1894,6 +1916,12 @@ class BackfillJob {
 
 /// Backfill strategy to disable automatic backfill for the Stream's objects.
 typedef BackfillNoneStrategy = $Empty;
+
+/// Message to represent the option where Datastream will enforce encryption
+/// without authenticating server identity.
+///
+/// Server certificates will be trusted by default.
+typedef BasicEncryption = $Empty;
 
 /// BigQuery destination configuration
 class BigQueryDestinationConfig {
@@ -2147,6 +2175,9 @@ class ConnectionProfile {
   /// Labels.
   core.Map<core.String, core.String>? labels;
 
+  /// MongoDB Connection Profile configuration.
+  MongodbProfile? mongodbProfile;
+
   /// MySQL ConnectionProfile configuration.
   MysqlProfile? mysqlProfile;
 
@@ -2197,6 +2228,7 @@ class ConnectionProfile {
     this.forwardSshConnectivity,
     this.gcsProfile,
     this.labels,
+    this.mongodbProfile,
     this.mysqlProfile,
     this.name,
     this.oracleProfile,
@@ -2234,6 +2266,10 @@ class ConnectionProfile {
               value as core.String,
             ),
           ),
+          mongodbProfile: json_.containsKey('mongodbProfile')
+              ? MongodbProfile.fromJson(json_['mongodbProfile']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           mysqlProfile: json_.containsKey('mysqlProfile')
               ? MysqlProfile.fromJson(
                   json_['mysqlProfile'] as core.Map<core.String, core.dynamic>)
@@ -2278,6 +2314,7 @@ class ConnectionProfile {
           'forwardSshConnectivity': forwardSshConnectivity!,
         if (gcsProfile != null) 'gcsProfile': gcsProfile!,
         if (labels != null) 'labels': labels!,
+        if (mongodbProfile != null) 'mongodbProfile': mongodbProfile!,
         if (mysqlProfile != null) 'mysqlProfile': mysqlProfile!,
         if (name != null) 'name': name!,
         if (oracleProfile != null) 'oracleProfile': oracleProfile!,
@@ -2403,6 +2440,9 @@ class DiscoverConnectionProfileRequest {
   /// The number of hierarchy levels below the current level to be retrieved.
   core.int? hierarchyDepth;
 
+  /// MongoDB cluster to enrich with child data objects and metadata.
+  MongodbCluster? mongodbCluster;
+
   /// MySQL RDBMS to enrich with child data objects and metadata.
   MysqlRdbms? mysqlRdbms;
 
@@ -2412,6 +2452,9 @@ class DiscoverConnectionProfileRequest {
   /// PostgreSQL RDBMS to enrich with child data objects and metadata.
   PostgresqlRdbms? postgresqlRdbms;
 
+  /// Salesforce organization to enrich with child data objects and metadata.
+  SalesforceOrg? salesforceOrg;
+
   /// SQLServer RDBMS to enrich with child data objects and metadata.
   SqlServerRdbms? sqlServerRdbms;
 
@@ -2420,9 +2463,11 @@ class DiscoverConnectionProfileRequest {
     this.connectionProfileName,
     this.fullHierarchy,
     this.hierarchyDepth,
+    this.mongodbCluster,
     this.mysqlRdbms,
     this.oracleRdbms,
     this.postgresqlRdbms,
+    this.salesforceOrg,
     this.sqlServerRdbms,
   });
 
@@ -2435,6 +2480,10 @@ class DiscoverConnectionProfileRequest {
           connectionProfileName: json_['connectionProfileName'] as core.String?,
           fullHierarchy: json_['fullHierarchy'] as core.bool?,
           hierarchyDepth: json_['hierarchyDepth'] as core.int?,
+          mongodbCluster: json_.containsKey('mongodbCluster')
+              ? MongodbCluster.fromJson(json_['mongodbCluster']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           mysqlRdbms: json_.containsKey('mysqlRdbms')
               ? MysqlRdbms.fromJson(
                   json_['mysqlRdbms'] as core.Map<core.String, core.dynamic>)
@@ -2446,6 +2495,10 @@ class DiscoverConnectionProfileRequest {
           postgresqlRdbms: json_.containsKey('postgresqlRdbms')
               ? PostgresqlRdbms.fromJson(json_['postgresqlRdbms']
                   as core.Map<core.String, core.dynamic>)
+              : null,
+          salesforceOrg: json_.containsKey('salesforceOrg')
+              ? SalesforceOrg.fromJson(
+                  json_['salesforceOrg'] as core.Map<core.String, core.dynamic>)
               : null,
           sqlServerRdbms: json_.containsKey('sqlServerRdbms')
               ? SqlServerRdbms.fromJson(json_['sqlServerRdbms']
@@ -2459,15 +2512,20 @@ class DiscoverConnectionProfileRequest {
           'connectionProfileName': connectionProfileName!,
         if (fullHierarchy != null) 'fullHierarchy': fullHierarchy!,
         if (hierarchyDepth != null) 'hierarchyDepth': hierarchyDepth!,
+        if (mongodbCluster != null) 'mongodbCluster': mongodbCluster!,
         if (mysqlRdbms != null) 'mysqlRdbms': mysqlRdbms!,
         if (oracleRdbms != null) 'oracleRdbms': oracleRdbms!,
         if (postgresqlRdbms != null) 'postgresqlRdbms': postgresqlRdbms!,
+        if (salesforceOrg != null) 'salesforceOrg': salesforceOrg!,
         if (sqlServerRdbms != null) 'sqlServerRdbms': sqlServerRdbms!,
       };
 }
 
 /// Response from a discover request.
 class DiscoverConnectionProfileResponse {
+  /// Enriched MongoDB cluster.
+  MongodbCluster? mongodbCluster;
+
   /// Enriched MySQL RDBMS object.
   MysqlRdbms? mysqlRdbms;
 
@@ -2477,18 +2535,27 @@ class DiscoverConnectionProfileResponse {
   /// Enriched PostgreSQL RDBMS object.
   PostgresqlRdbms? postgresqlRdbms;
 
+  /// Enriched Salesforce organization.
+  SalesforceOrg? salesforceOrg;
+
   /// Enriched SQLServer RDBMS object.
   SqlServerRdbms? sqlServerRdbms;
 
   DiscoverConnectionProfileResponse({
+    this.mongodbCluster,
     this.mysqlRdbms,
     this.oracleRdbms,
     this.postgresqlRdbms,
+    this.salesforceOrg,
     this.sqlServerRdbms,
   });
 
   DiscoverConnectionProfileResponse.fromJson(core.Map json_)
       : this(
+          mongodbCluster: json_.containsKey('mongodbCluster')
+              ? MongodbCluster.fromJson(json_['mongodbCluster']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           mysqlRdbms: json_.containsKey('mysqlRdbms')
               ? MysqlRdbms.fromJson(
                   json_['mysqlRdbms'] as core.Map<core.String, core.dynamic>)
@@ -2501,6 +2568,10 @@ class DiscoverConnectionProfileResponse {
               ? PostgresqlRdbms.fromJson(json_['postgresqlRdbms']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          salesforceOrg: json_.containsKey('salesforceOrg')
+              ? SalesforceOrg.fromJson(
+                  json_['salesforceOrg'] as core.Map<core.String, core.dynamic>)
+              : null,
           sqlServerRdbms: json_.containsKey('sqlServerRdbms')
               ? SqlServerRdbms.fromJson(json_['sqlServerRdbms']
                   as core.Map<core.String, core.dynamic>)
@@ -2508,9 +2579,11 @@ class DiscoverConnectionProfileResponse {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (mongodbCluster != null) 'mongodbCluster': mongodbCluster!,
         if (mysqlRdbms != null) 'mysqlRdbms': mysqlRdbms!,
         if (oracleRdbms != null) 'oracleRdbms': oracleRdbms!,
         if (postgresqlRdbms != null) 'postgresqlRdbms': postgresqlRdbms!,
+        if (salesforceOrg != null) 'salesforceOrg': salesforceOrg!,
         if (sqlServerRdbms != null) 'sqlServerRdbms': sqlServerRdbms!,
       };
 }
@@ -2525,6 +2598,56 @@ typedef DropLargeObjects = $Empty;
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// Message to represent the option where Datastream will enforce encryption and
+/// authenticate server identity.
+///
+/// ca_certificate must be set if user selects this option.
+class EncryptionAndServerValidation {
+  /// Input only.
+  ///
+  /// PEM-encoded certificate of the CA that signed the source database server's
+  /// certificate.
+  ///
+  /// Optional.
+  core.String? caCertificate;
+
+  /// The hostname mentioned in the Subject or SAN extension of the server
+  /// certificate.
+  ///
+  /// This field is used for bypassing the hostname validation while verifying
+  /// server certificate. This is required for scenarios where the host name
+  /// that datastream connects to is different from the certificate's subject.
+  /// This specifically happens for private connectivity. It could also happen
+  /// when the customer provides a public IP in connection profile but the same
+  /// is not present in the server certificate.
+  ///
+  /// Optional.
+  core.String? serverCertificateHostname;
+
+  EncryptionAndServerValidation({
+    this.caCertificate,
+    this.serverCertificateHostname,
+  });
+
+  EncryptionAndServerValidation.fromJson(core.Map json_)
+      : this(
+          caCertificate: json_['caCertificate'] as core.String?,
+          serverCertificateHostname:
+              json_['serverCertificateHostname'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caCertificate != null) 'caCertificate': caCertificate!,
+        if (serverCertificateHostname != null)
+          'serverCertificateHostname': serverCertificateHostname!,
+      };
+}
+
+/// Message to represent the option where encryption is not enforced.
+///
+/// An empty message right now to allow future extensibility.
+typedef EncryptionNotEnforced = $Empty;
 
 /// Represent a user-facing Error.
 class Error {
@@ -2690,6 +2813,36 @@ class GcsProfile {
 
 /// Use GTID based replication.
 typedef Gtid = $Empty;
+
+/// A HostAddress represents a transport end point, which is the combination of
+/// an IP address or hostname and a port number.
+class HostAddress {
+  /// Hostname for the connection.
+  ///
+  /// Required.
+  core.String? hostname;
+
+  /// Port for the connection.
+  ///
+  /// Optional.
+  core.int? port;
+
+  HostAddress({
+    this.hostname,
+    this.port,
+  });
+
+  HostAddress.fromJson(core.Map json_)
+      : this(
+          hostname: json_['hostname'] as core.String?,
+          port: json_['port'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hostname != null) 'hostname': hostname!,
+        if (port != null) 'port': port!,
+      };
+}
 
 /// JSON file format configuration.
 class JsonFileFormat {
@@ -3001,6 +3154,368 @@ class LookupStreamObjectRequest {
 /// destination table.
 typedef Merge = $Empty;
 
+/// MongoDB Cluster structure.
+class MongodbCluster {
+  /// MongoDB databases in the cluster.
+  core.List<MongodbDatabase>? databases;
+
+  MongodbCluster({
+    this.databases,
+  });
+
+  MongodbCluster.fromJson(core.Map json_)
+      : this(
+          databases: (json_['databases'] as core.List?)
+              ?.map((value) => MongodbDatabase.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (databases != null) 'databases': databases!,
+      };
+}
+
+/// MongoDB Collection.
+class MongodbCollection {
+  /// Collection name.
+  core.String? collection;
+
+  /// Fields in the collection.
+  core.List<MongodbField>? fields;
+
+  MongodbCollection({
+    this.collection,
+    this.fields,
+  });
+
+  MongodbCollection.fromJson(core.Map json_)
+      : this(
+          collection: json_['collection'] as core.String?,
+          fields: (json_['fields'] as core.List?)
+              ?.map((value) => MongodbField.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (collection != null) 'collection': collection!,
+        if (fields != null) 'fields': fields!,
+      };
+}
+
+/// MongoDB Database.
+class MongodbDatabase {
+  /// Collections in the database.
+  core.List<MongodbCollection>? collections;
+
+  /// Database name.
+  core.String? database;
+
+  MongodbDatabase({
+    this.collections,
+    this.database,
+  });
+
+  MongodbDatabase.fromJson(core.Map json_)
+      : this(
+          collections: (json_['collections'] as core.List?)
+              ?.map((value) => MongodbCollection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          database: json_['database'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (collections != null) 'collections': collections!,
+        if (database != null) 'database': database!,
+      };
+}
+
+/// MongoDB Field.
+class MongodbField {
+  /// Field name.
+  core.String? field;
+
+  MongodbField({
+    this.field,
+  });
+
+  MongodbField.fromJson(core.Map json_)
+      : this(
+          field: json_['field'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (field != null) 'field': field!,
+      };
+}
+
+/// MongoDB data source object identifier.
+class MongodbObjectIdentifier {
+  /// The collection name.
+  ///
+  /// Required.
+  core.String? collection;
+
+  /// The database name.
+  ///
+  /// Required.
+  core.String? database;
+
+  MongodbObjectIdentifier({
+    this.collection,
+    this.database,
+  });
+
+  MongodbObjectIdentifier.fromJson(core.Map json_)
+      : this(
+          collection: json_['collection'] as core.String?,
+          database: json_['database'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (collection != null) 'collection': collection!,
+        if (database != null) 'database': database!,
+      };
+}
+
+/// MongoDB profile.
+class MongodbProfile {
+  /// List of host addresses for a MongoDB cluster.
+  ///
+  /// For SRV connection format, this list must contain exactly one DNS host
+  /// without a port. For Standard connection format, this list must contain all
+  /// the required hosts in the cluster with their respective ports.
+  ///
+  /// Required.
+  core.List<HostAddress>? hostAddresses;
+
+  /// Password for the MongoDB connection.
+  ///
+  /// Mutually exclusive with the `secret_manager_stored_password` field.
+  ///
+  /// Optional.
+  core.String? password;
+
+  /// Name of the replica set.
+  ///
+  /// Only needed for self hosted replica set type MongoDB cluster. For SRV
+  /// connection format, this field must be empty. For Standard connection
+  /// format, this field must be specified.
+  ///
+  /// Optional.
+  core.String? replicaSet;
+
+  /// A reference to a Secret Manager resource name storing the SQLServer
+  /// connection password.
+  ///
+  /// Mutually exclusive with the `password` field.
+  ///
+  /// Optional.
+  core.String? secretManagerStoredPassword;
+
+  /// Srv connection format.
+  SrvConnectionFormat? srvConnectionFormat;
+
+  /// SSL configuration for the MongoDB connection.
+  ///
+  /// Optional.
+  MongodbSslConfig? sslConfig;
+
+  /// Standard connection format.
+  StandardConnectionFormat? standardConnectionFormat;
+
+  /// Username for the MongoDB connection.
+  ///
+  /// Required.
+  core.String? username;
+
+  MongodbProfile({
+    this.hostAddresses,
+    this.password,
+    this.replicaSet,
+    this.secretManagerStoredPassword,
+    this.srvConnectionFormat,
+    this.sslConfig,
+    this.standardConnectionFormat,
+    this.username,
+  });
+
+  MongodbProfile.fromJson(core.Map json_)
+      : this(
+          hostAddresses: (json_['hostAddresses'] as core.List?)
+              ?.map((value) => HostAddress.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          password: json_['password'] as core.String?,
+          replicaSet: json_['replicaSet'] as core.String?,
+          secretManagerStoredPassword:
+              json_['secretManagerStoredPassword'] as core.String?,
+          srvConnectionFormat: json_.containsKey('srvConnectionFormat')
+              ? SrvConnectionFormat.fromJson(json_['srvConnectionFormat']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          sslConfig: json_.containsKey('sslConfig')
+              ? MongodbSslConfig.fromJson(
+                  json_['sslConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
+          standardConnectionFormat:
+              json_.containsKey('standardConnectionFormat')
+                  ? StandardConnectionFormat.fromJson(
+                      json_['standardConnectionFormat']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          username: json_['username'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (hostAddresses != null) 'hostAddresses': hostAddresses!,
+        if (password != null) 'password': password!,
+        if (replicaSet != null) 'replicaSet': replicaSet!,
+        if (secretManagerStoredPassword != null)
+          'secretManagerStoredPassword': secretManagerStoredPassword!,
+        if (srvConnectionFormat != null)
+          'srvConnectionFormat': srvConnectionFormat!,
+        if (sslConfig != null) 'sslConfig': sslConfig!,
+        if (standardConnectionFormat != null)
+          'standardConnectionFormat': standardConnectionFormat!,
+        if (username != null) 'username': username!,
+      };
+}
+
+/// MongoDB source configuration.
+class MongodbSourceConfig {
+  /// MongoDB collections to exclude from the stream.
+  MongodbCluster? excludeObjects;
+
+  /// MongoDB collections to include in the stream.
+  MongodbCluster? includeObjects;
+
+  /// Maximum number of concurrent backfill tasks.
+  ///
+  /// The number should be non-negative and less than or equal to 50. If not set
+  /// (or set to 0), the system's default value is used
+  ///
+  /// Optional.
+  core.int? maxConcurrentBackfillTasks;
+
+  MongodbSourceConfig({
+    this.excludeObjects,
+    this.includeObjects,
+    this.maxConcurrentBackfillTasks,
+  });
+
+  MongodbSourceConfig.fromJson(core.Map json_)
+      : this(
+          excludeObjects: json_.containsKey('excludeObjects')
+              ? MongodbCluster.fromJson(json_['excludeObjects']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          includeObjects: json_.containsKey('includeObjects')
+              ? MongodbCluster.fromJson(json_['includeObjects']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          maxConcurrentBackfillTasks:
+              json_['maxConcurrentBackfillTasks'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (excludeObjects != null) 'excludeObjects': excludeObjects!,
+        if (includeObjects != null) 'includeObjects': includeObjects!,
+        if (maxConcurrentBackfillTasks != null)
+          'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
+      };
+}
+
+/// MongoDB SSL configuration information.
+class MongodbSslConfig {
+  /// Input only.
+  ///
+  /// PEM-encoded certificate of the CA that signed the source database server's
+  /// certificate.
+  ///
+  /// Optional.
+  core.String? caCertificate;
+
+  /// Indicates whether the ca_certificate field is set.
+  ///
+  /// Output only.
+  core.bool? caCertificateSet;
+
+  /// Input only.
+  ///
+  /// PEM-encoded certificate that will be used by the replica to authenticate
+  /// against the source database server. If this field is used then the
+  /// 'client_key' and the 'ca_certificate' fields are mandatory.
+  ///
+  /// Optional.
+  core.String? clientCertificate;
+
+  /// Indicates whether the client_certificate field is set.
+  ///
+  /// Output only.
+  core.bool? clientCertificateSet;
+
+  /// Input only.
+  ///
+  /// PEM-encoded private key associated with the Client Certificate. If this
+  /// field is used then the 'client_certificate' and the 'ca_certificate'
+  /// fields are mandatory.
+  ///
+  /// Optional.
+  core.String? clientKey;
+
+  /// Indicates whether the client_key field is set.
+  ///
+  /// Output only.
+  core.bool? clientKeySet;
+
+  /// Input only.
+  ///
+  /// A reference to a Secret Manager resource name storing the PEM-encoded
+  /// private key associated with the Client Certificate. If this field is used
+  /// then the 'client_certificate' and the 'ca_certificate' fields are
+  /// mandatory. Mutually exclusive with the `client_key` field.
+  ///
+  /// Optional.
+  core.String? secretManagerStoredClientKey;
+
+  MongodbSslConfig({
+    this.caCertificate,
+    this.caCertificateSet,
+    this.clientCertificate,
+    this.clientCertificateSet,
+    this.clientKey,
+    this.clientKeySet,
+    this.secretManagerStoredClientKey,
+  });
+
+  MongodbSslConfig.fromJson(core.Map json_)
+      : this(
+          caCertificate: json_['caCertificate'] as core.String?,
+          caCertificateSet: json_['caCertificateSet'] as core.bool?,
+          clientCertificate: json_['clientCertificate'] as core.String?,
+          clientCertificateSet: json_['clientCertificateSet'] as core.bool?,
+          clientKey: json_['clientKey'] as core.String?,
+          clientKeySet: json_['clientKeySet'] as core.bool?,
+          secretManagerStoredClientKey:
+              json_['secretManagerStoredClientKey'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (caCertificate != null) 'caCertificate': caCertificate!,
+        if (caCertificateSet != null) 'caCertificateSet': caCertificateSet!,
+        if (clientCertificate != null) 'clientCertificate': clientCertificate!,
+        if (clientCertificateSet != null)
+          'clientCertificateSet': clientCertificateSet!,
+        if (clientKey != null) 'clientKey': clientKey!,
+        if (clientKeySet != null) 'clientKeySet': clientKeySet!,
+        if (secretManagerStoredClientKey != null)
+          'secretManagerStoredClientKey': secretManagerStoredClientKey!,
+      };
+}
+
 /// CDC strategy to start replicating from the most recent position in the
 /// source.
 typedef MostRecentStartPosition = $Empty;
@@ -3202,6 +3717,14 @@ class MysqlProfile {
   /// Port for the MySQL connection, default value is 3306.
   core.int? port;
 
+  /// A reference to a Secret Manager resource name storing the MySQL connection
+  /// password.
+  ///
+  /// Mutually exclusive with the `password` field.
+  ///
+  /// Optional.
+  core.String? secretManagerStoredPassword;
+
   /// SSL configuration for the MySQL connection.
   MysqlSslConfig? sslConfig;
 
@@ -3214,6 +3737,7 @@ class MysqlProfile {
     this.hostname,
     this.password,
     this.port,
+    this.secretManagerStoredPassword,
     this.sslConfig,
     this.username,
   });
@@ -3223,6 +3747,8 @@ class MysqlProfile {
           hostname: json_['hostname'] as core.String?,
           password: json_['password'] as core.String?,
           port: json_['port'] as core.int?,
+          secretManagerStoredPassword:
+              json_['secretManagerStoredPassword'] as core.String?,
           sslConfig: json_.containsKey('sslConfig')
               ? MysqlSslConfig.fromJson(
                   json_['sslConfig'] as core.Map<core.String, core.dynamic>)
@@ -3234,6 +3760,8 @@ class MysqlProfile {
         if (hostname != null) 'hostname': hostname!,
         if (password != null) 'password': password!,
         if (port != null) 'port': port!,
+        if (secretManagerStoredPassword != null)
+          'secretManagerStoredPassword': secretManagerStoredPassword!,
         if (sslConfig != null) 'sslConfig': sslConfig!,
         if (username != null) 'username': username!,
       };
@@ -3362,8 +3890,7 @@ class MysqlSslConfig {
   ///
   /// PEM-encoded private key associated with the Client Certificate. If this
   /// field is used then the 'client_certificate' and the 'ca_certificate'
-  /// fields are mandatory. Mutually exclusive with the
-  /// `secret_manager_stored_client_key` field.
+  /// fields are mandatory.
   ///
   /// Optional.
   core.String? clientKey;
@@ -3582,6 +4109,8 @@ class OracleAsmConfig {
 
   /// Password for the Oracle ASM connection.
   ///
+  /// Mutually exclusive with the `secret_manager_stored_password` field.
+  ///
   /// Optional.
   core.String? password;
 
@@ -3589,6 +4118,14 @@ class OracleAsmConfig {
   ///
   /// Required.
   core.int? port;
+
+  /// A reference to a Secret Manager resource name storing the Oracle ASM
+  /// connection password.
+  ///
+  /// Mutually exclusive with the `password` field.
+  ///
+  /// Optional.
+  core.String? secretManagerStoredPassword;
 
   /// Username for the Oracle ASM connection.
   ///
@@ -3602,6 +4139,7 @@ class OracleAsmConfig {
     this.oracleSslConfig,
     this.password,
     this.port,
+    this.secretManagerStoredPassword,
     this.username,
   });
 
@@ -3623,6 +4161,8 @@ class OracleAsmConfig {
               : null,
           password: json_['password'] as core.String?,
           port: json_['port'] as core.int?,
+          secretManagerStoredPassword:
+              json_['secretManagerStoredPassword'] as core.String?,
           username: json_['username'] as core.String?,
         );
 
@@ -3634,6 +4174,8 @@ class OracleAsmConfig {
         if (oracleSslConfig != null) 'oracleSslConfig': oracleSslConfig!,
         if (password != null) 'password': password!,
         if (port != null) 'port': port!,
+        if (secretManagerStoredPassword != null)
+          'secretManagerStoredPassword': secretManagerStoredPassword!,
         if (username != null) 'username': username!,
       };
 }
@@ -3987,20 +4529,35 @@ class OracleSslConfig {
   /// Output only.
   core.bool? caCertificateSet;
 
+  /// The distinguished name (DN) mentioned in the server certificate.
+  ///
+  /// This corresponds to SSL_SERVER_CERT_DN sqlnet parameter. Refer
+  /// https://docs.oracle.com/en/database/oracle/oracle-database/19/netrf/local-naming-parameters-in-tns-ora-file.html#GUID-70AB0695-A9AA-4A94-B141-4C605236EEB7
+  /// If this field is not provided, the DN matching is not enforced.
+  ///
+  /// Optional.
+  core.String? serverCertificateDistinguishedName;
+
   OracleSslConfig({
     this.caCertificate,
     this.caCertificateSet,
+    this.serverCertificateDistinguishedName,
   });
 
   OracleSslConfig.fromJson(core.Map json_)
       : this(
           caCertificate: json_['caCertificate'] as core.String?,
           caCertificateSet: json_['caCertificateSet'] as core.bool?,
+          serverCertificateDistinguishedName:
+              json_['serverCertificateDistinguishedName'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (caCertificate != null) 'caCertificate': caCertificate!,
         if (caCertificateSet != null) 'caCertificateSet': caCertificateSet!,
+        if (serverCertificateDistinguishedName != null)
+          'serverCertificateDistinguishedName':
+              serverCertificateDistinguishedName!,
       };
 }
 
@@ -4121,6 +4678,14 @@ class PostgresqlProfile {
   /// Port for the PostgreSQL connection, default value is 5432.
   core.int? port;
 
+  /// A reference to a Secret Manager resource name storing the PostgreSQL
+  /// connection password.
+  ///
+  /// Mutually exclusive with the `password` field.
+  ///
+  /// Optional.
+  core.String? secretManagerStoredPassword;
+
   /// SSL configuration for the PostgreSQL connection.
   ///
   /// In case PostgresqlSslConfig is not set, the connection will use the
@@ -4141,6 +4706,7 @@ class PostgresqlProfile {
     this.hostname,
     this.password,
     this.port,
+    this.secretManagerStoredPassword,
     this.sslConfig,
     this.username,
   });
@@ -4151,6 +4717,8 @@ class PostgresqlProfile {
           hostname: json_['hostname'] as core.String?,
           password: json_['password'] as core.String?,
           port: json_['port'] as core.int?,
+          secretManagerStoredPassword:
+              json_['secretManagerStoredPassword'] as core.String?,
           sslConfig: json_.containsKey('sslConfig')
               ? PostgresqlSslConfig.fromJson(
                   json_['sslConfig'] as core.Map<core.String, core.dynamic>)
@@ -4163,6 +4731,8 @@ class PostgresqlProfile {
         if (hostname != null) 'hostname': hostname!,
         if (password != null) 'password': password!,
         if (port != null) 'port': port!,
+        if (secretManagerStoredPassword != null)
+          'secretManagerStoredPassword': secretManagerStoredPassword!,
         if (sslConfig != null) 'sslConfig': sslConfig!,
         if (username != null) 'username': username!,
       };
@@ -4375,6 +4945,9 @@ class PrivateConnection {
   /// Output only.
   core.String? name;
 
+  /// PSC Interface Config.
+  PscInterfaceConfig? pscInterfaceConfig;
+
   /// Reserved for future use.
   ///
   /// Output only.
@@ -4414,6 +4987,7 @@ class PrivateConnection {
     this.error,
     this.labels,
     this.name,
+    this.pscInterfaceConfig,
     this.satisfiesPzi,
     this.satisfiesPzs,
     this.state,
@@ -4437,6 +5011,10 @@ class PrivateConnection {
             ),
           ),
           name: json_['name'] as core.String?,
+          pscInterfaceConfig: json_.containsKey('pscInterfaceConfig')
+              ? PscInterfaceConfig.fromJson(json_['pscInterfaceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
           satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
           state: json_['state'] as core.String?,
@@ -4453,6 +5031,8 @@ class PrivateConnection {
         if (error != null) 'error': error!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
+        if (pscInterfaceConfig != null)
+          'pscInterfaceConfig': pscInterfaceConfig!,
         if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
         if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
         if (state != null) 'state': state!,
@@ -4482,6 +5062,31 @@ class PrivateConnectivity {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (privateConnection != null) 'privateConnection': privateConnection!,
+      };
+}
+
+/// The PSC Interface configuration is used to create PSC Interface between
+/// Datastream and the consumer's PSC.
+class PscInterfaceConfig {
+  /// Fully qualified name of the Network Attachment that Datastream will
+  /// connect to.
+  ///
+  /// Format: `projects/{project}/regions/{region}/networkAttachments/{name}`
+  ///
+  /// Required.
+  core.String? networkAttachment;
+
+  PscInterfaceConfig({
+    this.networkAttachment,
+  });
+
+  PscInterfaceConfig.fromJson(core.Map json_)
+      : this(
+          networkAttachment: json_['networkAttachment'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (networkAttachment != null) 'networkAttachment': networkAttachment!,
       };
 }
 
@@ -4811,15 +5416,24 @@ class ServerAndClientVerification {
   /// PEM-encoded private key associated with the client certificate. This value
   /// will be used during the SSL/TLS handshake, allowing the PostgreSQL server
   /// to authenticate the client's identity, i.e. identity of the Datastream.
-  /// Mutually exclusive with the `secret_manager_stored_client_key` field.
   ///
   /// Optional.
   core.String? clientKey;
+
+  /// The hostname mentioned in the Subject or SAN extension of the server
+  /// certificate.
+  ///
+  /// If this field is not provided, the hostname in the server certificate is
+  /// not validated.
+  ///
+  /// Optional.
+  core.String? serverCertificateHostname;
 
   ServerAndClientVerification({
     this.caCertificate,
     this.clientCertificate,
     this.clientKey,
+    this.serverCertificateHostname,
   });
 
   ServerAndClientVerification.fromJson(core.Map json_)
@@ -4827,12 +5441,16 @@ class ServerAndClientVerification {
           caCertificate: json_['caCertificate'] as core.String?,
           clientCertificate: json_['clientCertificate'] as core.String?,
           clientKey: json_['clientKey'] as core.String?,
+          serverCertificateHostname:
+              json_['serverCertificateHostname'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (caCertificate != null) 'caCertificate': caCertificate!,
         if (clientCertificate != null) 'clientCertificate': clientCertificate!,
         if (clientKey != null) 'clientKey': clientKey!,
+        if (serverCertificateHostname != null)
+          'serverCertificateHostname': serverCertificateHostname!,
       };
 }
 
@@ -4848,17 +5466,31 @@ class ServerVerification {
   /// Required.
   core.String? caCertificate;
 
+  /// The hostname mentioned in the Subject or SAN extension of the server
+  /// certificate.
+  ///
+  /// If this field is not provided, the hostname in the server certificate is
+  /// not validated.
+  ///
+  /// Optional.
+  core.String? serverCertificateHostname;
+
   ServerVerification({
     this.caCertificate,
+    this.serverCertificateHostname,
   });
 
   ServerVerification.fromJson(core.Map json_)
       : this(
           caCertificate: json_['caCertificate'] as core.String?,
+          serverCertificateHostname:
+              json_['serverCertificateHostname'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (caCertificate != null) 'caCertificate': caCertificate!,
+        if (serverCertificateHostname != null)
+          'serverCertificateHostname': serverCertificateHostname!,
       };
 }
 
@@ -4886,6 +5518,9 @@ class SingleTargetDataset {
 
 /// The configuration of the stream source.
 class SourceConfig {
+  /// MongoDB data source configuration.
+  MongodbSourceConfig? mongodbSourceConfig;
+
   /// MySQL data source configuration.
   MysqlSourceConfig? mysqlSourceConfig;
 
@@ -4910,6 +5545,7 @@ class SourceConfig {
   SqlServerSourceConfig? sqlServerSourceConfig;
 
   SourceConfig({
+    this.mongodbSourceConfig,
     this.mysqlSourceConfig,
     this.oracleSourceConfig,
     this.postgresqlSourceConfig,
@@ -4920,6 +5556,10 @@ class SourceConfig {
 
   SourceConfig.fromJson(core.Map json_)
       : this(
+          mongodbSourceConfig: json_.containsKey('mongodbSourceConfig')
+              ? MongodbSourceConfig.fromJson(json_['mongodbSourceConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           mysqlSourceConfig: json_.containsKey('mysqlSourceConfig')
               ? MysqlSourceConfig.fromJson(json_['mysqlSourceConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -4945,6 +5585,8 @@ class SourceConfig {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (mongodbSourceConfig != null)
+          'mongodbSourceConfig': mongodbSourceConfig!,
         if (mysqlSourceConfig != null) 'mysqlSourceConfig': mysqlSourceConfig!,
         if (oracleSourceConfig != null)
           'oracleSourceConfig': oracleSourceConfig!,
@@ -4965,8 +5607,16 @@ class SourceHierarchyDatasets {
   /// The dataset template to use for dynamic dataset creation.
   DatasetTemplate? datasetTemplate;
 
+  /// The project id of the BigQuery dataset.
+  ///
+  /// If not specified, the project will be inferred from the stream resource.
+  ///
+  /// Optional.
+  core.String? projectId;
+
   SourceHierarchyDatasets({
     this.datasetTemplate,
+    this.projectId,
   });
 
   SourceHierarchyDatasets.fromJson(core.Map json_)
@@ -4975,15 +5625,20 @@ class SourceHierarchyDatasets {
               ? DatasetTemplate.fromJson(json_['datasetTemplate']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          projectId: json_['projectId'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (datasetTemplate != null) 'datasetTemplate': datasetTemplate!,
+        if (projectId != null) 'projectId': projectId!,
       };
 }
 
 /// Represents an identifier of an object in the data source.
 class SourceObjectIdentifier {
+  /// MongoDB data source object identifier.
+  MongodbObjectIdentifier? mongodbIdentifier;
+
   /// Mysql data source object identifier.
   MysqlObjectIdentifier? mysqlIdentifier;
 
@@ -5000,6 +5655,7 @@ class SourceObjectIdentifier {
   SqlServerObjectIdentifier? sqlServerIdentifier;
 
   SourceObjectIdentifier({
+    this.mongodbIdentifier,
     this.mysqlIdentifier,
     this.oracleIdentifier,
     this.postgresqlIdentifier,
@@ -5009,6 +5665,10 @@ class SourceObjectIdentifier {
 
   SourceObjectIdentifier.fromJson(core.Map json_)
       : this(
+          mongodbIdentifier: json_.containsKey('mongodbIdentifier')
+              ? MongodbObjectIdentifier.fromJson(json_['mongodbIdentifier']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           mysqlIdentifier: json_.containsKey('mysqlIdentifier')
               ? MysqlObjectIdentifier.fromJson(json_['mysqlIdentifier']
                   as core.Map<core.String, core.dynamic>)
@@ -5034,6 +5694,7 @@ class SourceObjectIdentifier {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (mongodbIdentifier != null) 'mongodbIdentifier': mongodbIdentifier!,
         if (mysqlIdentifier != null) 'mysqlIdentifier': mysqlIdentifier!,
         if (oracleIdentifier != null) 'oracleIdentifier': oracleIdentifier!,
         if (postgresqlIdentifier != null)
@@ -5205,6 +5866,19 @@ class SqlServerProfile {
   /// Port for the SQLServer connection, default value is 1433.
   core.int? port;
 
+  /// A reference to a Secret Manager resource name storing the SQLServer
+  /// connection password.
+  ///
+  /// Mutually exclusive with the `password` field.
+  ///
+  /// Optional.
+  core.String? secretManagerStoredPassword;
+
+  /// SSL configuration for the SQLServer connection.
+  ///
+  /// Optional.
+  SqlServerSslConfig? sslConfig;
+
   /// Username for the SQLServer connection.
   ///
   /// Required.
@@ -5215,6 +5889,8 @@ class SqlServerProfile {
     this.hostname,
     this.password,
     this.port,
+    this.secretManagerStoredPassword,
+    this.sslConfig,
     this.username,
   });
 
@@ -5224,6 +5900,12 @@ class SqlServerProfile {
           hostname: json_['hostname'] as core.String?,
           password: json_['password'] as core.String?,
           port: json_['port'] as core.int?,
+          secretManagerStoredPassword:
+              json_['secretManagerStoredPassword'] as core.String?,
+          sslConfig: json_.containsKey('sslConfig')
+              ? SqlServerSslConfig.fromJson(
+                  json_['sslConfig'] as core.Map<core.String, core.dynamic>)
+              : null,
           username: json_['username'] as core.String?,
         );
 
@@ -5232,6 +5914,9 @@ class SqlServerProfile {
         if (hostname != null) 'hostname': hostname!,
         if (password != null) 'password': password!,
         if (port != null) 'port': port!,
+        if (secretManagerStoredPassword != null)
+          'secretManagerStoredPassword': secretManagerStoredPassword!,
+        if (sslConfig != null) 'sslConfig': sslConfig!,
         if (username != null) 'username': username!,
       };
 }
@@ -5350,6 +6035,57 @@ class SqlServerSourceConfig {
       };
 }
 
+/// SQL Server SSL configuration information.
+class SqlServerSslConfig {
+  /// If set, Datastream will enforce encryption without authenticating server
+  /// identity.
+  ///
+  /// Server certificates will be trusted by default.
+  BasicEncryption? basicEncryption;
+
+  /// If set, Datastream will enforce encryption and authenticate server
+  /// identity.
+  EncryptionAndServerValidation? encryptionAndServerValidation;
+
+  /// If set, Datastream will not enforce encryption.
+  ///
+  /// If the DB server mandates encryption, then connection will be encrypted
+  /// but server identity will not be authenticated.
+  EncryptionNotEnforced? encryptionNotEnforced;
+
+  SqlServerSslConfig({
+    this.basicEncryption,
+    this.encryptionAndServerValidation,
+    this.encryptionNotEnforced,
+  });
+
+  SqlServerSslConfig.fromJson(core.Map json_)
+      : this(
+          basicEncryption: json_.containsKey('basicEncryption')
+              ? BasicEncryption.fromJson(json_['basicEncryption']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          encryptionAndServerValidation:
+              json_.containsKey('encryptionAndServerValidation')
+                  ? EncryptionAndServerValidation.fromJson(
+                      json_['encryptionAndServerValidation']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          encryptionNotEnforced: json_.containsKey('encryptionNotEnforced')
+              ? EncryptionNotEnforced.fromJson(json_['encryptionNotEnforced']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (basicEncryption != null) 'basicEncryption': basicEncryption!,
+        if (encryptionAndServerValidation != null)
+          'encryptionAndServerValidation': encryptionAndServerValidation!,
+        if (encryptionNotEnforced != null)
+          'encryptionNotEnforced': encryptionNotEnforced!,
+      };
+}
+
 /// SQLServer table.
 class SqlServerTable {
   /// SQLServer columns in the schema.
@@ -5383,6 +6119,31 @@ class SqlServerTable {
 
 /// Configuration to use Transaction Logs CDC read method.
 typedef SqlServerTransactionLogs = $Empty;
+
+/// Srv connection format.
+typedef SrvConnectionFormat = $Empty;
+
+/// Standard connection format.
+class StandardConnectionFormat {
+  /// Specifies whether the client connects directly to the host\[:port\] in the
+  /// connection URI.
+  ///
+  /// Optional.
+  core.bool? directConnection;
+
+  StandardConnectionFormat({
+    this.directConnection,
+  });
+
+  StandardConnectionFormat.fromJson(core.Map json_)
+      : this(
+          directConnection: json_['directConnection'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (directConnection != null) 'directConnection': directConnection!,
+      };
+}
 
 /// Request for manually initiating a backfill job for a specific stream object.
 typedef StartBackfillJobRequest = $Empty;

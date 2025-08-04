@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250205",
+    "revision": "20250721",
     "rootUrl": "https://looker.googleapis.com/",
     "servicePath": "",
     "title": "Looker (Google Cloud core) API",
@@ -147,6 +147,12 @@
                                 "name"
                             ],
                             "parameters": {
+                                "extraLocationTypes": {
+                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
                                 "filter": {
                                     "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                                     "location": "query",
@@ -948,6 +954,20 @@
                     "$ref": "AdminSettings",
                     "description": "Looker Instance Admin settings."
                 },
+                "classType": {
+                    "description": "Optional. Storage class of the instance.",
+                    "enum": [
+                        "CLASS_TYPE_UNSPECIFIED",
+                        "R1",
+                        "P1"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified storage class.",
+                        "Filestore.",
+                        "PD SSD."
+                    ],
+                    "type": "string"
+                },
                 "consumerNetwork": {
                     "description": "Network name in the consumer project. Format: `projects/{project}/global/networks/{network}`. Note that the consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.",
                     "type": "string"
@@ -1041,7 +1061,10 @@
                         "LOOKER_CORE_EMBED_ANNUAL",
                         "LOOKER_CORE_NONPROD_STANDARD_ANNUAL",
                         "LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL",
-                        "LOOKER_CORE_NONPROD_EMBED_ANNUAL"
+                        "LOOKER_CORE_NONPROD_EMBED_ANNUAL",
+                        "LOOKER_CORE_TRIAL_STANDARD",
+                        "LOOKER_CORE_TRIAL_ENTERPRISE",
+                        "LOOKER_CORE_TRIAL_EMBED"
                     ],
                     "enumDescriptions": [
                         "Platform edition is unspecified.",
@@ -1052,7 +1075,10 @@
                         "Subscription Embed.",
                         "Nonprod Subscription Standard.",
                         "Nonprod Subscription Enterprise.",
-                        "Nonprod Subscription Embed."
+                        "Nonprod Subscription Embed.",
+                        "Trial Standard.",
+                        "Trial Enterprise.",
+                        "Trial Embed."
                     ],
                     "type": "string"
                 },
@@ -1501,8 +1527,15 @@
                     "type": "string"
                 },
                 "localFqdn": {
-                    "description": "Required. Fully qualified domain name that will be used in the private DNS record created for the service attachment.",
+                    "description": "Optional. Fully qualified domain name that will be used in the private DNS record created for the service attachment.",
                     "type": "string"
+                },
+                "localFqdns": {
+                    "description": "Optional. List of fully qualified domain names that will be used in the private DNS record created for the service attachment.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
                 "targetServiceAttachmentUri": {
                     "description": "Required. URI of the service attachment to connect to. Format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment}",

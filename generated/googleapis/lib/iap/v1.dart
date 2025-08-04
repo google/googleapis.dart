@@ -1444,12 +1444,13 @@ class Brand {
       };
 }
 
-/// Allows customers to configure HTTP request paths that'll allow HTTP OPTIONS
-/// call to bypass authentication and authorization.
+/// Allows customers to configure HTTP request paths that'll allow HTTP
+/// `OPTIONS` call to bypass authentication and authorization.
 class CorsSettings {
-  /// Configuration to allow HTTP OPTIONS calls to skip authorization.
+  /// Configuration to allow HTTP `OPTIONS` calls to skip authentication and
+  /// authorization.
   ///
-  /// If undefined, IAP will not apply any special logic to OPTIONS requests.
+  /// If undefined, IAP will not apply any special logic to `OPTIONS` requests.
   core.bool? allowHttpOptions;
 
   CorsSettings({
@@ -1520,7 +1521,8 @@ typedef Empty = $Empty;
 /// information.
 typedef Expr = $Expr;
 
-/// Allows customers to configure tenant_id for GCIP instance per-app.
+/// Allows customers to configure tenant IDs for a Cloud Identity Platform
+/// (GCIP) instance for each application.
 class GcipSettings {
   /// Login page URI associated with the GCIP tenants.
   ///
@@ -1528,13 +1530,13 @@ class GcipSettings {
   /// page, though it could be overridden at the sub resource level.
   core.String? loginPageUri;
 
-  /// GCIP tenant ids that are linked to the IAP resource.
+  /// GCIP tenant IDs that are linked to the IAP resource.
   ///
-  /// tenant_ids could be a string beginning with a number character to indicate
-  /// authenticating with GCIP tenant flow, or in the format of _ to indicate
-  /// authenticating with GCIP agent flow. If agent flow is used, tenant_ids
-  /// should only contain one single element, while for tenant flow, tenant_ids
-  /// can contain multiple elements.
+  /// `tenant_ids` could be a string beginning with a number character to
+  /// indicate authenticating with GCIP tenant flow, or in the format of `_` to
+  /// indicate authenticating with GCIP agent flow. If agent flow is used,
+  /// `tenant_ids` should only contain one single element, while for tenant
+  /// flow, `tenant_ids` can contain multiple elements.
   ///
   /// Optional.
   core.List<core.String>? tenantIds;
@@ -2137,7 +2139,7 @@ class Resource {
   /// For create operations, GCP service is expected to pass resource from
   /// customer request as is. For update/patch operations, GCP service is
   /// expected to compute the next state with the patch provided by the user.
-  /// See go/custom-constraints-org-policy-integration-guide for additional
+  /// See go/federated-custom-org-policy-integration-guide for additional
   /// details.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -2159,6 +2161,18 @@ class Resource {
   /// availability and management requirements. * Talk to iam-conditions-eng@
   /// about your use case.
   core.Map<core.String, core.String>? labels;
+
+  /// The locations of the resource.
+  ///
+  /// This field is used to determine whether the request is compliant with
+  /// Trust Boundaries. Usage: - If unset or empty, the location of
+  /// authorization is used as the target location. - For global resources: use
+  /// a single value of "global". - For regional/multi-regional resources: use
+  /// name of the GCP region(s) where the resource exists (e.g., \["us-east1",
+  /// "us-west1"\]). For multi-regional resources specify the name of each GCP
+  /// region in the resource's multi-region. NOTE: Only GCP cloud region names
+  /// are supported - go/cloud-region-names.
+  core.List<core.String>? locations;
 
   /// The **relative** name of the resource, which is the URI path of the
   /// resource without the leading "/".
@@ -2217,6 +2231,7 @@ class Resource {
   Resource({
     this.expectedNextState,
     this.labels,
+    this.locations,
     this.name,
     this.nextStateOfTags,
     this.service,
@@ -2236,6 +2251,9 @@ class Resource {
               value as core.String,
             ),
           ),
+          locations: (json_['locations'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           name: json_['name'] as core.String?,
           nextStateOfTags: json_.containsKey('nextStateOfTags')
               ? NextStateOfTags.fromJson(json_['nextStateOfTags']
@@ -2248,6 +2266,7 @@ class Resource {
   core.Map<core.String, core.dynamic> toJson() => {
         if (expectedNextState != null) 'expectedNextState': expectedNextState!,
         if (labels != null) 'labels': labels!,
+        if (locations != null) 'locations': locations!,
         if (name != null) 'name': name!,
         if (nextStateOfTags != null) 'nextStateOfTags': nextStateOfTags!,
         if (service != null) 'service': service!,

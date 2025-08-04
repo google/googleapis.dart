@@ -21,6 +21,7 @@
 ///
 /// Create an instance of [HangoutsChatApi] to access these resources:
 ///
+/// - [CustomEmojisResource]
 /// - [MediaResource]
 /// - [SpacesResource]
 ///   - [SpacesMembersResource]
@@ -106,6 +107,14 @@ class HangoutsChatApi {
   /// Private Service: https://www.googleapis.com/auth/chat.bot
   static const chatBotScope = 'https://www.googleapis.com/auth/chat.bot';
 
+  /// View, create, and delete custom emoji in Google Chat
+  static const chatCustomemojisScope =
+      'https://www.googleapis.com/auth/chat.customemojis';
+
+  /// View custom emoji in Google Chat
+  static const chatCustomemojisReadonlyScope =
+      'https://www.googleapis.com/auth/chat.customemojis.readonly';
+
   /// Delete conversations and spaces and remove access to associated files in
   /// Google Chat
   static const chatDeleteScope = 'https://www.googleapis.com/auth/chat.delete';
@@ -179,6 +188,7 @@ class HangoutsChatApi {
 
   final commons.ApiRequester _requester;
 
+  CustomEmojisResource get customEmojis => CustomEmojisResource(_requester);
   MediaResource get media => MediaResource(_requester);
   SpacesResource get spaces => SpacesResource(_requester);
   UsersResource get users => UsersResource(_requester);
@@ -188,6 +198,237 @@ class HangoutsChatApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
+}
+
+class CustomEmojisResource {
+  final commons.ApiRequester _requester;
+
+  CustomEmojisResource(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a custom emoji.
+  ///
+  /// Custom emojis are only available for Google Workspace accounts, and the
+  /// administrator must turn custom emojis on for the organization. For more
+  /// information, see
+  /// [Learn about custom emojis in Google Chat](https://support.google.com/chat/answer/12800149)
+  /// and
+  /// [Manage custom emoji permissions](https://support.google.com/a/answer/12850085).
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.customemojis`
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomEmoji].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomEmoji> create(
+    CustomEmoji request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/customEmojis';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CustomEmoji.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a custom emoji.
+  ///
+  /// By default, users can only delete custom emoji they created.
+  /// [Emoji managers](https://support.google.com/a/answer/12850085) assigned by
+  /// the administrator can delete any custom emoji in the organization. See
+  /// [Learn about custom emojis in Google Chat](https://support.google.com/chat/answer/12800149).
+  /// Custom emojis are only available for Google Workspace accounts, and the
+  /// administrator must turn custom emojis on for the organization. For more
+  /// information, see
+  /// [Learn about custom emojis in Google Chat](https://support.google.com/chat/answer/12800149)
+  /// and
+  /// [Manage custom emoji permissions](https://support.google.com/a/answer/12850085).
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.customemojis`
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the custom emoji to delete. Format:
+  /// `customEmojis/{customEmoji}` You can use the emoji name as an alias for
+  /// `{customEmoji}`. For example, `customEmojis/:example-emoji:` where
+  /// `:example-emoji:` is the emoji name for a custom emoji.
+  /// Value must have pattern `^customEmojis/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns details about a custom emoji.
+  ///
+  /// Custom emojis are only available for Google Workspace accounts, and the
+  /// administrator must turn custom emojis on for the organization. For more
+  /// information, see
+  /// [Learn about custom emojis in Google Chat](https://support.google.com/chat/answer/12800149)
+  /// and
+  /// [Manage custom emoji permissions](https://support.google.com/a/answer/12850085).
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.customemojis.readonly` -
+  /// `https://www.googleapis.com/auth/chat.customemojis`
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the custom emoji. Format:
+  /// `customEmojis/{customEmoji}` You can use the emoji name as an alias for
+  /// `{customEmoji}`. For example, `customEmojis/:example-emoji:` where
+  /// `:example-emoji:` is the emoji name for a custom emoji.
+  /// Value must have pattern `^customEmojis/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomEmoji].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomEmoji> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CustomEmoji.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists custom emojis visible to the authenticated user.
+  ///
+  /// Custom emojis are only available for Google Workspace accounts, and the
+  /// administrator must turn custom emojis on for the organization. For more
+  /// information, see
+  /// [Learn about custom emojis in Google Chat](https://support.google.com/chat/answer/12800149)
+  /// and
+  /// [Manage custom emoji permissions](https://support.google.com/a/answer/12850085).
+  /// Requires
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.customemojis.readonly` -
+  /// `https://www.googleapis.com/auth/chat.customemojis`
+  ///
+  /// Request parameters:
+  ///
+  /// [filter] - Optional. A query filter. Supports filtering by creator. To
+  /// filter by creator, you must specify a valid value. Currently only
+  /// `creator("users/me")` and `NOT creator("users/me")` are accepted to filter
+  /// custom emojis by whether they were created by the calling user or not. For
+  /// example, the following query returns custom emojis created by the caller:
+  /// ``` creator("users/me") ``` Invalid queries are rejected with an
+  /// `INVALID_ARGUMENT` error.
+  ///
+  /// [pageSize] - Optional. The maximum number of custom emojis returned. The
+  /// service can return fewer custom emojis than this value. If unspecified,
+  /// the default value is 25. The maximum value is 200; values above 200 are
+  /// changed to 200.
+  ///
+  /// [pageToken] - Optional. (If resuming from a previous query.) A page token
+  /// received from a previous list custom emoji call. Provide this to retrieve
+  /// the subsequent page. When paginating, the filter value should match the
+  /// call that provided the page token. Passing a different value might lead to
+  /// unexpected results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCustomEmojisResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCustomEmojisResponse> list({
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/customEmojis';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListCustomEmojisResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class MediaResource {
@@ -252,7 +493,12 @@ class MediaResource {
   /// For an example, see
   /// [Upload media as a file attachment](https://developers.google.com/workspace/chat/upload-media-attachments).
   /// Requires user
-  /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.messages.create` -
+  /// `https://www.googleapis.com/auth/chat.messages` -
+  /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only)
   /// You can upload attachments up to 200 MB. Certain file types aren't
   /// supported. For details, see
   /// [File types blocked by Google Chat](https://support.google.com/chat/answer/7651457?&co=GENIE.Platform%3DDesktop#File%20types%20blocked%20in%20Google%20Chat).
@@ -334,8 +580,10 @@ class SpacesResource {
   /// for the specified space and makes it visible to users.
   ///
   /// Requires
-  /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
-  /// and domain-wide delegation. For more information, see
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// and domain-wide delegation with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.import` For more information, see
   /// [Authorize Google Chat apps to import data](https://developers.google.com/workspace/chat/authorize-import).
   ///
   /// [request] - The metadata request object.
@@ -388,17 +636,29 @@ class SpacesResource {
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
   /// with
-  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in
-  /// [Developer Preview](https://developers.google.com/workspace/preview) -
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and
+  /// one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.app.spaces.create` -
+  /// `https://www.googleapis.com/auth/chat.app.spaces` -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.spaces.create` -
+  /// `https://www.googleapis.com/auth/chat.spaces` -
+  /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only)
   /// When authenticating as an app, the `space.customer` field must be set in
-  /// the request. Space membership upon creation depends on whether the space
-  /// is created in `Import mode`: * **Import mode:** No members are created. *
-  /// **All other modes:** The calling user is added as a member. This is: * The
-  /// app itself when using app authentication. * The human user when using user
-  /// authentication. If you receive the error message `ALREADY_EXISTS` when
-  /// creating a space, try a different `displayName`. An existing space within
-  /// the Google Workspace organization might already use this display name.
+  /// the request. When authenticating as an app, the Chat app is added as a
+  /// member of the space. However, unlike human authentication, the Chat app is
+  /// not added as a space manager. By default, the Chat app can be removed from
+  /// the space by all space members. To allow only space managers to remove the
+  /// app from a space, set `space.permission_settings.manage_apps` to
+  /// `managers_allowed`. Space membership upon creation depends on whether the
+  /// space is created in `Import mode`: * **Import mode:** No members are
+  /// created. * **All other modes:** The calling user is added as a member.
+  /// This is: * The app itself when using app authentication. * The human user
+  /// when using user authentication. If you receive the error message
+  /// `ALREADY_EXISTS` when creating a space, try a different `displayName`. An
+  /// existing space within the Google Workspace organization might already use
+  /// this display name.
   ///
   /// [request] - The metadata request object.
   ///
@@ -453,11 +713,18 @@ class SpacesResource {
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
   /// with
-  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in
-  /// [Developer Preview](https://developers.google.com/workspace/preview) -
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and
+  /// the authorization scope: -
+  /// `https://www.googleapis.com/auth/chat.app.delete` (only in spaces the app
+  /// created) -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-  /// You can authenticate and authorize this method with administrator
-  /// privileges by setting the `use_admin_access` field in the request.
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.delete` -
+  /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only) -
+  /// User authentication grants administrator privileges when an administrator
+  /// account authenticates, `use_admin_access` is `true`, and the following
+  /// authorization scope is used: -
+  /// `https://www.googleapis.com/auth/chat.admin.delete`
   ///
   /// Request parameters:
   ///
@@ -512,12 +779,16 @@ class SpacesResource {
   /// calling Chat app. With
   /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user),
   /// returns the direct message space between the specified user and the
-  /// authenticated user. // Supports the following types of
+  /// authenticated user. Supports the following types of
   /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize):
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// with the authorization scope: - `https://www.googleapis.com/auth/chat.bot`
   /// -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.spaces.readonly` -
+  /// `https://www.googleapis.com/auth/chat.spaces`
   ///
   /// Request parameters:
   ///
@@ -571,10 +842,24 @@ class SpacesResource {
   /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize):
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
-  /// -
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.bot` -
+  /// `https://www.googleapis.com/auth/chat.app.spaces` with
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-  /// You can authenticate and authorize this method with administrator
-  /// privileges by setting the `use_admin_access` field in the request.
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.spaces.readonly` -
+  /// `https://www.googleapis.com/auth/chat.spaces` - User authentication grants
+  /// administrator privileges when an administrator account authenticates,
+  /// `use_admin_access` is `true`, and one of the following authorization
+  /// scopes is used: -
+  /// `https://www.googleapis.com/auth/chat.admin.spaces.readonly` -
+  /// `https://www.googleapis.com/auth/chat.admin.spaces` App authentication has
+  /// the following limitations: - `space.access_settings` is only populated
+  /// when using the `chat.app.spaces` scope. -
+  /// `space.predefind_permission_settings` and `space.permission_settings` are
+  /// only populated when using the `chat.app.spaces` scope, and only for spaces
+  /// the app created.
   ///
   /// Request parameters:
   ///
@@ -628,9 +913,13 @@ class SpacesResource {
   /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize):
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// with the authorization scope: - `https://www.googleapis.com/auth/chat.bot`
   /// -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-  /// To list all named spaces by Google Workspace organization, use the
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.spaces.readonly` -
+  /// `https://www.googleapis.com/auth/chat.spaces` To list all named spaces by
+  /// Google Workspace organization, use the
   /// \[`spaces.search()`\](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/search)
   /// method using Workspace administrator privileges instead.
   ///
@@ -704,11 +993,21 @@ class SpacesResource {
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
   /// with
-  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in
-  /// [Developer Preview](https://developers.google.com/workspace/preview) -
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and
+  /// one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.app.spaces` -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-  /// You can authenticate and authorize this method with administrator
-  /// privileges by setting the `use_admin_access` field in the request.
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.spaces` -
+  /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only) -
+  /// User authentication grants administrator privileges when an administrator
+  /// account authenticates, `use_admin_access` is `true`, and the following
+  /// authorization scopes is used: -
+  /// `https://www.googleapis.com/auth/chat.admin.spaces` App authentication has
+  /// the following limitations: - To update either
+  /// `space.predefined_permission_settings` or `space.permission_settings`, the
+  /// app must be the space creator. - Updating the
+  /// `space.access_settings.audience` is not supported for app authentication.
   ///
   /// [request] - The metadata request object.
   ///
@@ -816,8 +1115,12 @@ class SpacesResource {
   /// administrator's search.
   ///
   /// Requires
-  /// [user authentication with administrator privileges](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user#admin-privileges).
-  /// In the request, set `use_admin_access` to `true`.
+  /// [user authentication with administrator privileges](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user#admin-privileges)
+  /// and one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.admin.spaces.readonly` -
+  /// `https://www.googleapis.com/auth/chat.admin.spaces` In the request, set
+  /// `use_admin_access` to `true`.
   ///
   /// Request parameters:
   ///
@@ -969,7 +1272,11 @@ class SpacesResource {
   /// message `ALREADY_EXISTS` when setting up a space, try a different
   /// `displayName`. An existing space within the Google Workspace organization
   /// might already use this display name. Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.spaces.create` -
+  /// `https://www.googleapis.com/auth/chat.spaces`
   ///
   /// [request] - The metadata request object.
   ///
@@ -1022,12 +1329,22 @@ class SpacesMembersResource {
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
   /// with
-  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in
-  /// [Developer Preview](https://developers.google.com/workspace/preview) -
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and
+  /// the authorization scope: -
+  /// `https://www.googleapis.com/auth/chat.app.memberships` -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-  /// You can authenticate and authorize this method with administrator
-  /// privileges by setting the `use_admin_access` field in the request. For
-  /// example usage, see: -
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.memberships` -
+  /// `https://www.googleapis.com/auth/chat.memberships.app` (to add the calling
+  /// app to the space) - `https://www.googleapis.com/auth/chat.import` (import
+  /// mode spaces only) - User authentication grants administrator privileges
+  /// when an administrator account authenticates, `use_admin_access` is `true`,
+  /// and the following authorization scope is used: -
+  /// `https://www.googleapis.com/auth/chat.admin.memberships` App
+  /// authentication is not supported for the following use cases: - Inviting
+  /// users external to the Workspace organization that owns the space. - Adding
+  /// a Google Group to a space. - Adding a Chat app to a space. For example
+  /// usage, see: -
   /// [Invite or add a user to a space](https://developers.google.com/workspace/chat/create-members#create-user-membership).
   /// -
   /// [Invite or add a Google Group to a space](https://developers.google.com/workspace/chat/create-members#create-group-membership).
@@ -1095,19 +1412,37 @@ class SpacesMembersResource {
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
   /// with
-  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in
-  /// [Developer Preview](https://developers.google.com/workspace/preview) -
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and
+  /// the authorization scope: -
+  /// `https://www.googleapis.com/auth/chat.app.memberships` -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-  /// You can authenticate and authorize this method with administrator
-  /// privileges by setting the `use_admin_access` field in the request.
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.memberships` -
+  /// `https://www.googleapis.com/auth/chat.memberships.app` (to remove the
+  /// calling app from the space) -
+  /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only) -
+  /// User authentication grants administrator privileges when an administrator
+  /// account authenticates, `use_admin_access` is `true`, and the following
+  /// authorization scope is used: -
+  /// `https://www.googleapis.com/auth/chat.admin.memberships` App
+  /// authentication is not supported for the following use cases: - Removing a
+  /// Google Group from a space. - Removing a Chat app from a space. To delete
+  /// memberships for space managers, the requester must be a space manager. If
+  /// you're using
+  /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// the Chat app must be the space creator.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the membership to delete. Chat apps
   /// can delete human users' or their own memberships. Chat apps can't delete
   /// other apps' memberships. When deleting a human membership, requires the
-  /// `chat.memberships` scope and `spaces/{space}/members/{member}` format. You
-  /// can use the email as an alias for `{member}`. For example,
+  /// `chat.memberships` scope with
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// or the `chat.memberships.app` scope with
+  /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// and the `spaces/{space}/members/{member}` format. You can use the email as
+  /// an alias for `{member}`. For example,
   /// `spaces/{space}/members/example@gmail.com` where `example@gmail.com` is
   /// the email of the Google Chat user. When deleting an app membership,
   /// requires the `chat.memberships.app` scope and `spaces/{space}/members/app`
@@ -1162,10 +1497,19 @@ class SpacesMembersResource {
   /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize):
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
-  /// -
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.bot` -
+  /// `https://www.googleapis.com/auth/chat.app.memberships` (requires
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth)) -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-  /// You can authenticate and authorize this method with administrator
-  /// privileges by setting the `use_admin_access` field in the request.
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.memberships.readonly` -
+  /// `https://www.googleapis.com/auth/chat.memberships` - User authentication
+  /// grants administrator privileges when an administrator account
+  /// authenticates, `use_admin_access` is `true`, and one of the following
+  /// authorization scopes is used: -
+  /// `https://www.googleapis.com/auth/chat.admin.memberships.readonly` -
+  /// `https://www.googleapis.com/auth/chat.admin.memberships`
   ///
   /// Request parameters:
   ///
@@ -1233,10 +1577,20 @@ class SpacesMembersResource {
   /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize):
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
-  /// -
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.bot` -
+  /// `https://www.googleapis.com/auth/chat.app.memberships` (requires
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth)) -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-  /// You can authenticate and authorize this method with administrator
-  /// privileges by setting the `use_admin_access` field in the request.
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.memberships.readonly` -
+  /// `https://www.googleapis.com/auth/chat.memberships` -
+  /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only) -
+  /// User authentication grants administrator privileges when an administrator
+  /// account authenticates, `use_admin_access` is `true`, and one of the
+  /// following authorization scopes is used: -
+  /// `https://www.googleapis.com/auth/chat.admin.memberships.readonly` -
+  /// `https://www.googleapis.com/auth/chat.admin.memberships`
   ///
   /// Request parameters:
   ///
@@ -1345,11 +1699,18 @@ class SpacesMembersResource {
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
   /// with
-  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in
-  /// [Developer Preview](https://developers.google.com/workspace/preview) -
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) and
+  /// the authorization scope: -
+  /// `https://www.googleapis.com/auth/chat.app.memberships` (only in spaces the
+  /// app created) -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-  /// You can authenticate and authorize this method with administrator
-  /// privileges by setting the `use_admin_access` field in the request.
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.memberships` -
+  /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only) -
+  /// User authentication grants administrator privileges when an administrator
+  /// account authenticates, `use_admin_access` is `true`, and the following
+  /// authorization scope is used: -
+  /// `https://www.googleapis.com/auth/chat.admin.memberships`
   ///
   /// [request] - The metadata request object.
   ///
@@ -1421,10 +1782,17 @@ class SpacesMessagesResource {
   ///
   /// For an example, see
   /// [Send a message](https://developers.google.com/workspace/chat/create-messages).
-  /// The `create()` method requires either
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-  /// or
-  /// [app authentication](https://developers.google.com/workspace/chat/authorize-import).
+  /// Supports the following types of
+  /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize):
+  /// -
+  /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// with the authorization scope: - `https://www.googleapis.com/auth/chat.bot`
+  /// -
+  /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.messages.create` -
+  /// `https://www.googleapis.com/auth/chat.messages` -
+  /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only)
   /// Chat attributes the message sender differently depending on the type of
   /// authentication that you use in your request. The following image shows how
   /// Chat attributes a message when you use app authentication. Chat displays
@@ -1538,8 +1906,12 @@ class SpacesMessagesResource {
   /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize):
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// with the authorization scope: - `https://www.googleapis.com/auth/chat.bot`
   /// -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.messages` -
+  /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only)
   /// When using app authentication, requests can only delete messages created
   /// by the calling Chat app.
   ///
@@ -1597,9 +1969,13 @@ class SpacesMessagesResource {
   /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize):
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// with the authorization scope: - `https://www.googleapis.com/auth/chat.bot`
   /// -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-  /// Note: Might return a message from a blocked member or space.
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.messages.readonly` -
+  /// `https://www.googleapis.com/auth/chat.messages` Note: Might return a
+  /// message from a blocked member or space.
   ///
   /// Request parameters:
   ///
@@ -1646,7 +2022,12 @@ class SpacesMessagesResource {
   /// empty JSON object, `{}`. For an example, see
   /// [List messages](https://developers.google.com/workspace/chat/api/guides/v1/messages/list).
   /// Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.messages.readonly` -
+  /// `https://www.googleapis.com/auth/chat.messages` -
+  /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only)
   ///
   /// Request parameters:
   ///
@@ -1744,8 +2125,12 @@ class SpacesMessagesResource {
   /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize):
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// with the authorization scope: - `https://www.googleapis.com/auth/chat.bot`
   /// -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.messages` -
+  /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only)
   /// When using app authentication, requests can only update messages created
   /// by the calling Chat app.
   ///
@@ -1824,8 +2209,12 @@ class SpacesMessagesResource {
   /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize):
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// with the authorization scope: - `https://www.googleapis.com/auth/chat.bot`
   /// -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.messages` -
+  /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only)
   /// When using app authentication, requests can only update messages created
   /// by the calling Chat app.
   ///
@@ -1908,7 +2297,10 @@ class SpacesMessagesAttachmentsResource {
   /// For an example, see
   /// [Get metadata about a message attachment](https://developers.google.com/workspace/chat/get-media-attachments).
   /// Requires
-  /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+  /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.bot`
   ///
   /// Request parameters:
   ///
@@ -1958,7 +2350,13 @@ class SpacesMessagesReactionsResource {
   /// For an example, see
   /// [Add a reaction to a message](https://developers.google.com/workspace/chat/create-reactions).
   /// Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.messages.reactions.create` -
+  /// `https://www.googleapis.com/auth/chat.messages.reactions` -
+  /// `https://www.googleapis.com/auth/chat.messages` -
+  /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only)
   ///
   /// [request] - The metadata request object.
   ///
@@ -2004,7 +2402,12 @@ class SpacesMessagesReactionsResource {
   /// For an example, see
   /// [Delete a reaction](https://developers.google.com/workspace/chat/delete-reactions).
   /// Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.messages.reactions` -
+  /// `https://www.googleapis.com/auth/chat.messages` -
+  /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only)
   ///
   /// Request parameters:
   ///
@@ -2046,7 +2449,13 @@ class SpacesMessagesReactionsResource {
   /// For an example, see
   /// [List reactions for a message](https://developers.google.com/workspace/chat/list-reactions).
   /// Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.messages.reactions.readonly` -
+  /// `https://www.googleapis.com/auth/chat.messages.reactions` -
+  /// `https://www.googleapis.com/auth/chat.messages.readonly` -
+  /// `https://www.googleapis.com/auth/chat.messages`
   ///
   /// Request parameters:
   ///
@@ -2074,8 +2483,8 @@ class SpacesMessagesReactionsResource {
   /// "{uid}" emoji.unicode = "🙂" OR user.name = "users/{user}" emoji.unicode =
   /// "🙂" OR emoji.custom_emoji.uid = "{uid}" OR user.name = "users/{user}"
   /// emoji.unicode = "🙂" OR emoji.custom_emoji.uid = "{uid}" AND user.name =
-  /// "users/{user}" ``` Invalid queries are rejected by the server with an
-  /// `INVALID_ARGUMENT` error.
+  /// "users/{user}" ``` Invalid queries are rejected with an `INVALID_ARGUMENT`
+  /// error.
   ///
   /// [pageSize] - Optional. The maximum number of reactions returned. The
   /// service can return fewer reactions than this value. If unspecified, the
@@ -2138,9 +2547,19 @@ class SpacesSpaceEventsResource {
   /// later updated, the server returns the updated `Message` resource in the
   /// event payload. Note: The `permissionSettings` field is not returned in the
   /// Space object of the Space event data for this request. Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
-  /// To get an event, the authenticated user must be a member of the space. For
-  /// an example, see
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with an
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes)
+  /// appropriate for reading the requested data: -
+  /// `https://www.googleapis.com/auth/chat.spaces.readonly` -
+  /// `https://www.googleapis.com/auth/chat.spaces` -
+  /// `https://www.googleapis.com/auth/chat.messages.readonly` -
+  /// `https://www.googleapis.com/auth/chat.messages` -
+  /// `https://www.googleapis.com/auth/chat.messages.reactions.readonly` -
+  /// `https://www.googleapis.com/auth/chat.messages.reactions` -
+  /// `https://www.googleapis.com/auth/chat.memberships.readonly` -
+  /// `https://www.googleapis.com/auth/chat.memberships` To get an event, the
+  /// authenticated user must be a member of the space. For an example, see
   /// [Get details about an event from a Google Chat space](https://developers.google.com/workspace/chat/get-space-event).
   ///
   /// Request parameters:
@@ -2187,9 +2606,19 @@ class SpacesSpaceEventsResource {
   /// resources that contain the latest membership details. If new members were
   /// removed during the requested period, the event payload contains an empty
   /// `Membership` resource. Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
-  /// To list events, the authenticated user must be a member of the space. For
-  /// an example, see
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with an
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes)
+  /// appropriate for reading the requested data: -
+  /// `https://www.googleapis.com/auth/chat.spaces.readonly` -
+  /// `https://www.googleapis.com/auth/chat.spaces` -
+  /// `https://www.googleapis.com/auth/chat.messages.readonly` -
+  /// `https://www.googleapis.com/auth/chat.messages` -
+  /// `https://www.googleapis.com/auth/chat.messages.reactions.readonly` -
+  /// `https://www.googleapis.com/auth/chat.messages.reactions` -
+  /// `https://www.googleapis.com/auth/chat.memberships.readonly` -
+  /// `https://www.googleapis.com/auth/chat.memberships` To list events, the
+  /// authenticated user must be a member of the space. For an example, see
   /// [List events from a Google Chat space](https://developers.google.com/workspace/chat/list-space-events).
   ///
   /// Request parameters:
@@ -2299,7 +2728,11 @@ class UsersSpacesResource {
   /// For an example, see
   /// [Get details about a user's space read state](https://developers.google.com/workspace/chat/get-space-read-state).
   /// Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.readstate.readonly` -
+  /// `https://www.googleapis.com/auth/chat.users.readstate`
   ///
   /// Request parameters:
   ///
@@ -2348,7 +2781,10 @@ class UsersSpacesResource {
   /// For an example, see
   /// [Update a user's space read state](https://developers.google.com/workspace/chat/update-space-read-state).
   /// Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.readstate`
   ///
   /// [request] - The metadata request object.
   ///
@@ -2409,10 +2845,15 @@ class UsersSpacesSpaceNotificationSettingResource {
   UsersSpacesSpaceNotificationSettingResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Gets the space notification state setting.
+  /// Gets the space notification setting.
   ///
+  /// For an example, see
+  /// [Get the caller's space notification setting](https://developers.google.com/workspace/chat/get-space-notification-setting).
   /// Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.spacesettings`
   ///
   /// Request parameters:
   ///
@@ -2454,10 +2895,15 @@ class UsersSpacesSpaceNotificationSettingResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Updates the space notification state setting.
+  /// Updates the space notification setting.
   ///
+  /// For an example, see
+  /// [Update the caller's space notification setting](https://developers.google.com/workspace/chat/update-space-notification-setting).
   /// Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with the
+  /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.spacesettings`
   ///
   /// [request] - The metadata request object.
   ///
@@ -2517,7 +2963,11 @@ class UsersSpacesThreadsResource {
   /// For an example, see
   /// [Get details about a user's thread read state](https://developers.google.com/workspace/chat/get-thread-read-state).
   /// Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following
+  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
+  /// - `https://www.googleapis.com/auth/chat.users.readstate.readonly` -
+  /// `https://www.googleapis.com/auth/chat.users.readstate`
   ///
   /// Request parameters:
   ///
@@ -2600,9 +3050,8 @@ class AccessSettings {
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
   /// with
   /// [administrator approval](https://support.google.com/a?p=chat-app-auth)
-  /// with the `chat.app.spaces` scope in
-  /// [Developer Preview](https://developers.google.com/workspace/preview). This
-  /// field is not populated when using the `chat.bot` scope with
+  /// with the `chat.app.spaces` scope. This field is not populated when using
+  /// the `chat.bot` scope with
   /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
   /// Setting the target audience requires
   /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
@@ -2835,7 +3284,9 @@ class ActionStatus {
       };
 }
 
-/// Annotations associated with the plain-text body of the message.
+/// Annotations can be associated with the plain-text body of the message or
+/// with chips that link to Google Workspace resources like Google Docs or
+/// Sheets with `start_index` and `length` of 0.
 ///
 /// To add basic formatting to a text message, see
 /// [Format text messages](https://developers.google.com/workspace/chat/format-messages).
@@ -2853,6 +3304,8 @@ class Annotation {
 
   /// Length of the substring in the plain-text message body this annotation
   /// corresponds to.
+  ///
+  /// If not present, indicates a length of 0.
   core.int? length;
 
   /// The metadata for a rich link.
@@ -3107,6 +3560,35 @@ class Button {
   core.Map<core.String, core.dynamic> toJson() => {
         if (imageButton != null) 'imageButton': imageButton!,
         if (textButton != null) 'textButton': textButton!,
+      };
+}
+
+/// Data for Calendar event links.
+class CalendarEventLinkData {
+  /// The
+  /// [Calendar identifier](https://developers.google.com/workspace/calendar/api/v3/reference/calendars)
+  /// of the linked Calendar.
+  core.String? calendarId;
+
+  /// The
+  /// [Event identifier](https://developers.google.com/workspace/calendar/api/v3/reference/events)
+  /// of the linked Calendar event.
+  core.String? eventId;
+
+  CalendarEventLinkData({
+    this.calendarId,
+    this.eventId,
+  });
+
+  CalendarEventLinkData.fromJson(core.Map json_)
+      : this(
+          calendarId: json_['calendarId'] as core.String?,
+          eventId: json_['eventId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (calendarId != null) 'calendarId': calendarId!,
+        if (eventId != null) 'eventId': eventId!,
       };
 }
 
@@ -3412,23 +3894,72 @@ class CompleteImportSpaceResponse {
       };
 }
 
-/// Represents a custom emoji.
+/// Represents a
+/// [custom emoji](https://support.google.com/chat/answer/12800149).
 class CustomEmoji {
+  /// User-provided name for the custom emoji, which is unique within the
+  /// organization.
+  ///
+  /// Required when the custom emoji is created, output only otherwise. Emoji
+  /// names must start and end with colons, must be lowercase and can only
+  /// contain alphanumeric characters, hyphens, and underscores. Hyphens and
+  /// underscores should be used to separate words and cannot be used
+  /// consecutively. Example: `:valid-emoji-name:`
+  ///
+  /// Optional. Immutable.
+  core.String? emojiName;
+
+  /// Identifier.
+  ///
+  /// The resource name of the custom emoji, assigned by the server. Format:
+  /// `customEmojis/{customEmoji}`
+  core.String? name;
+
+  /// Input only.
+  ///
+  /// Payload data. Required when the custom emoji is created.
+  ///
+  /// Optional.
+  CustomEmojiPayload? payload;
+
+  /// A temporary image URL for the custom emoji, valid for at least 10 minutes.
+  ///
+  /// Note that this is not populated in the response when the custom emoji is
+  /// created.
+  ///
+  /// Output only.
+  core.String? temporaryImageUri;
+
   /// Unique key for the custom emoji resource.
   ///
   /// Output only.
   core.String? uid;
 
   CustomEmoji({
+    this.emojiName,
+    this.name,
+    this.payload,
+    this.temporaryImageUri,
     this.uid,
   });
 
   CustomEmoji.fromJson(core.Map json_)
       : this(
+          emojiName: json_['emojiName'] as core.String?,
+          name: json_['name'] as core.String?,
+          payload: json_.containsKey('payload')
+              ? CustomEmojiPayload.fromJson(
+                  json_['payload'] as core.Map<core.String, core.dynamic>)
+              : null,
+          temporaryImageUri: json_['temporaryImageUri'] as core.String?,
           uid: json_['uid'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (emojiName != null) 'emojiName': emojiName!,
+        if (name != null) 'name': name!,
+        if (payload != null) 'payload': payload!,
+        if (temporaryImageUri != null) 'temporaryImageUri': temporaryImageUri!,
         if (uid != null) 'uid': uid!,
       };
 }
@@ -3452,6 +3983,48 @@ class CustomEmojiMetadata {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (customEmoji != null) 'customEmoji': customEmoji!,
+      };
+}
+
+/// Payload data for the custom emoji.
+class CustomEmojiPayload {
+  /// Input only.
+  ///
+  /// The image used for the custom emoji. The payload must be under 256 KB and
+  /// the dimension of the image must be square and between 64 and 500 pixels.
+  /// The restrictions are subject to change.
+  ///
+  /// Required.
+  core.String? fileContent;
+  core.List<core.int> get fileContentAsBytes =>
+      convert.base64.decode(fileContent!);
+
+  set fileContentAsBytes(core.List<core.int> bytes_) {
+    fileContent =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Input only.
+  ///
+  /// The image file name. Supported file extensions: `.png`, `.jpg`, `.gif`.
+  ///
+  /// Required.
+  core.String? filename;
+
+  CustomEmojiPayload({
+    this.fileContent,
+    this.filename,
+  });
+
+  CustomEmojiPayload.fromJson(core.Map json_)
+      : this(
+          fileContent: json_['fileContent'] as core.String?,
+          filename: json_['filename'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fileContent != null) 'fileContent': fileContent!,
+        if (filename != null) 'filename': filename!,
       };
 }
 
@@ -3871,8 +4444,8 @@ class GoogleAppsCardV1BorderStyle {
   /// The border type.
   /// Possible string values are:
   /// - "BORDER_TYPE_UNSPECIFIED" : Don't use. Unspecified.
-  /// - "NO_BORDER" : Default value. No border.
-  /// - "STROKE" : Outline.
+  /// - "NO_BORDER" : No border.
+  /// - "STROKE" : Default value. Outline.
   core.String? type;
 
   GoogleAppsCardV1BorderStyle({
@@ -5726,6 +6299,15 @@ class GoogleAppsCardV1SelectionInput {
   /// An external data source, such as a relational database.
   GoogleAppsCardV1Action? externalDataSource;
 
+  /// Text that appears below the selection input field meant to assist users by
+  /// prompting them to enter a certain value.
+  ///
+  /// This text is always visible. Only supported by Google Workspace Workflows,
+  /// but not Google Chat API or Google Workspace Add-ons.
+  ///
+  /// Optional.
+  core.String? hintText;
+
   /// An array of selectable items.
   ///
   /// For example, an array of radio buttons or checkboxes. Supports up to 100
@@ -5805,6 +6387,7 @@ class GoogleAppsCardV1SelectionInput {
 
   GoogleAppsCardV1SelectionInput({
     this.externalDataSource,
+    this.hintText,
     this.items,
     this.label,
     this.multiSelectMaxSelectedItems,
@@ -5821,6 +6404,7 @@ class GoogleAppsCardV1SelectionInput {
               ? GoogleAppsCardV1Action.fromJson(json_['externalDataSource']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          hintText: json_['hintText'] as core.String?,
           items: (json_['items'] as core.List?)
               ?.map((value) => GoogleAppsCardV1SelectionItem.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -5846,6 +6430,7 @@ class GoogleAppsCardV1SelectionInput {
   core.Map<core.String, core.dynamic> toJson() => {
         if (externalDataSource != null)
           'externalDataSource': externalDataSource!,
+        if (hintText != null) 'hintText': hintText!,
         if (items != null) 'items': items!,
         if (label != null) 'label': label!,
         if (multiSelectMaxSelectedItems != null)
@@ -5875,12 +6460,6 @@ class GoogleAppsCardV1SelectionItem {
   /// If the selection input only accepts one value (such as for radio buttons
   /// or a dropdown menu), only set this field for one item.
   core.bool? selected;
-
-  /// For multiselect menus, the URL for the icon displayed next to the item's
-  /// `text` field.
-  ///
-  /// Supports PNG and JPEG files. Must be an `HTTPS` URL. For example,
-  /// `https://developers.google.com/workspace/chat/images/quickstart-app-avatar.png`.
   core.String? startIconUri;
 
   /// The text that identifies or describes the item to users.
@@ -6328,7 +6907,7 @@ class GoogleAppsCardV1Widget {
   /// For example, the following JSON creates a date time picker to schedule an
   /// appointment: ``` "dateTimePicker": { "name": "appointment_time", "label":
   /// "Book your appointment at:", "type": "DATE_AND_TIME", "valueMsEpoch":
-  /// "796435200000" } ```
+  /// 796435200000 } ```
   GoogleAppsCardV1DateTimePicker? dateTimePicker;
 
   /// Displays a decorated text item.
@@ -6872,6 +7451,39 @@ class KeyValue {
       };
 }
 
+/// A response to list custom emojis.
+class ListCustomEmojisResponse {
+  /// Unordered list.
+  ///
+  /// List of custom emojis.
+  core.List<CustomEmoji>? customEmojis;
+
+  /// A token that you can send as `pageToken` to retrieve the next page of
+  /// results.
+  ///
+  /// If empty, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListCustomEmojisResponse({
+    this.customEmojis,
+    this.nextPageToken,
+  });
+
+  ListCustomEmojisResponse.fromJson(core.Map json_)
+      : this(
+          customEmojis: (json_['customEmojis'] as core.List?)
+              ?.map((value) => CustomEmoji.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          nextPageToken: json_['nextPageToken'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (customEmojis != null) 'customEmojis': customEmojis!,
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
 /// Response to list memberships of the space.
 class ListMembershipsResponse {
   /// Unordered list.
@@ -7057,6 +7669,52 @@ class MatchedUrl {
 
 /// Media resource.
 typedef Media = $Media;
+
+/// Data for Meet space links.
+class MeetSpaceLinkData {
+  /// If the Meet is a Huddle, indicates the status of the huddle.
+  ///
+  /// Otherwise, this is unset.
+  ///
+  /// Optional. Output only.
+  /// Possible string values are:
+  /// - "HUDDLE_STATUS_UNSPECIFIED" : Default value for the enum. Don't use.
+  /// - "STARTED" : The huddle has started.
+  /// - "ENDED" : The huddle has ended. In this case the Meet space URI and
+  /// identifiers will no longer be valid.
+  /// - "MISSED" : The huddle has been missed. In this case the Meet space URI
+  /// and identifiers will no longer be valid.
+  core.String? huddleStatus;
+
+  /// Meeting code of the linked Meet space.
+  core.String? meetingCode;
+
+  /// Indicates the type of the Meet space.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value for the enum. Don't use.
+  /// - "MEETING" : The Meet space is a meeting.
+  /// - "HUDDLE" : The Meet space is a huddle.
+  core.String? type;
+
+  MeetSpaceLinkData({
+    this.huddleStatus,
+    this.meetingCode,
+    this.type,
+  });
+
+  MeetSpaceLinkData.fromJson(core.Map json_)
+      : this(
+          huddleStatus: json_['huddleStatus'] as core.String?,
+          meetingCode: json_['meetingCode'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (huddleStatus != null) 'huddleStatus': huddleStatus!,
+        if (meetingCode != null) 'meetingCode': meetingCode!,
+        if (type != null) 'type': type!,
+      };
+}
 
 /// Represents a membership relation in Google Chat, such as whether a user or
 /// Chat app is invited to, part of, or absent from a space.
@@ -7370,7 +8028,9 @@ class Message {
   /// posted.
   ActionResponse? actionResponse;
 
-  /// Annotations associated with the `text` in this message.
+  /// Annotations can be associated with the plain-text body of the message or
+  /// with chips that link to Google Workspace resources like Google Docs or
+  /// Sheets with `start_index` and `length` of 0.
   ///
   /// Output only.
   core.List<Annotation>? annotations;
@@ -7528,7 +8188,7 @@ class Message {
   ///
   /// Google Chat users can quote a message to reply to it.
   ///
-  /// Output only.
+  /// Optional.
   QuotedMessageMetadata? quotedMessageMetadata;
 
   /// The user who created the message.
@@ -8065,14 +8725,14 @@ class QuotedMessageMetadata {
   /// The timestamp when the quoted message was created or when the quoted
   /// message was last updated.
   ///
-  /// Output only.
+  /// Required.
   core.String? lastUpdateTime;
 
-  /// Resource name of the quoted message.
+  /// Resource name of the message that is quoted.
   ///
   /// Format: `spaces/{space}/messages/{message}`
   ///
-  /// Output only.
+  /// Required.
   core.String? name;
 
   QuotedMessageMetadata({
@@ -8233,12 +8893,22 @@ class ReactionDeletedEventData {
 }
 
 /// A rich link to a resource.
+///
+/// Rich links can be associated with the plain-text body of the message or
+/// represent chips that link to Google Workspace resources like Google Docs or
+/// Sheets with `start_index` and `length` of 0.
 class RichLinkMetadata {
+  /// Data for a Calendar event link.
+  CalendarEventLinkData? calendarEventLinkData;
+
   /// Data for a chat space link.
   ChatSpaceLinkData? chatSpaceLinkData;
 
   /// Data for a drive link.
   DriveLinkData? driveLinkData;
+
+  /// Data for a Meet space link.
+  MeetSpaceLinkData? meetSpaceLinkData;
 
   /// The rich link type.
   /// Possible string values are:
@@ -8246,20 +8916,29 @@ class RichLinkMetadata {
   /// - "DRIVE_FILE" : A Google Drive rich link type.
   /// - "CHAT_SPACE" : A Chat space rich link type. For example, a space smart
   /// chip.
+  /// - "MEET_SPACE" : A Meet message rich link type. For example, a Meet chip.
+  /// - "CALENDAR_EVENT" : A Calendar message rich link type. For example, a
+  /// Calendar chip.
   core.String? richLinkType;
 
   /// The URI of this link.
   core.String? uri;
 
   RichLinkMetadata({
+    this.calendarEventLinkData,
     this.chatSpaceLinkData,
     this.driveLinkData,
+    this.meetSpaceLinkData,
     this.richLinkType,
     this.uri,
   });
 
   RichLinkMetadata.fromJson(core.Map json_)
       : this(
+          calendarEventLinkData: json_.containsKey('calendarEventLinkData')
+              ? CalendarEventLinkData.fromJson(json_['calendarEventLinkData']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           chatSpaceLinkData: json_.containsKey('chatSpaceLinkData')
               ? ChatSpaceLinkData.fromJson(json_['chatSpaceLinkData']
                   as core.Map<core.String, core.dynamic>)
@@ -8268,13 +8947,20 @@ class RichLinkMetadata {
               ? DriveLinkData.fromJson(
                   json_['driveLinkData'] as core.Map<core.String, core.dynamic>)
               : null,
+          meetSpaceLinkData: json_.containsKey('meetSpaceLinkData')
+              ? MeetSpaceLinkData.fromJson(json_['meetSpaceLinkData']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           richLinkType: json_['richLinkType'] as core.String?,
           uri: json_['uri'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (calendarEventLinkData != null)
+          'calendarEventLinkData': calendarEventLinkData!,
         if (chatSpaceLinkData != null) 'chatSpaceLinkData': chatSpaceLinkData!,
         if (driveLinkData != null) 'driveLinkData': driveLinkData!,
+        if (meetSpaceLinkData != null) 'meetSpaceLinkData': meetSpaceLinkData!,
         if (richLinkType != null) 'richLinkType': richLinkType!,
         if (uri != null) 'uri': uri!,
       };
@@ -8566,6 +9252,21 @@ class Space {
   /// Optional. Immutable.
   core.String? createTime;
 
+  /// The customer id of the domain of the space.
+  ///
+  /// Required only when creating a space with
+  /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// and `SpaceType` is `SPACE`, otherwise should not be set. In the format
+  /// `customers/{customer}`, where `customer` is the `id` from the \[Admin SDK
+  /// customer resource\](
+  /// https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers).
+  /// Private apps can also use the `customers/my_customer` alias to create the
+  /// space in the same Google Workspace organization as the app. For DMs, this
+  /// field isn't populated.
+  ///
+  /// Optional. Immutable.
+  core.String? customer;
+
   /// The space's display name.
   ///
   /// Required when
@@ -8638,8 +9339,7 @@ class Space {
   ///
   /// Input for updating exact space permission settings, where existing
   /// permission settings are replaced. Output lists current permission
-  /// settings. Reading and updating permission settings supports: - In
-  /// [Developer Preview](https://developers.google.com/workspace/preview),
+  /// settings. Reading and updating permission settings supports: -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
   /// with
   /// [administrator approval](https://support.google.com/a?p=chat-app-auth)
@@ -8655,8 +9355,7 @@ class Space {
   /// Predefined space permission settings, input only when creating a space. If
   /// the field is not set, a collaboration space is created. After you create
   /// the space, settings are populated in the `PermissionSettings` field.
-  /// Setting predefined permission settings supports: - In
-  /// [Developer Preview](https://developers.google.com/workspace/preview),
+  /// Setting predefined permission settings supports: -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
   /// with
   /// [administrator approval](https://support.google.com/a?p=chat-app-auth)
@@ -8759,6 +9458,7 @@ class Space {
     this.accessSettings,
     this.adminInstalled,
     this.createTime,
+    this.customer,
     this.displayName,
     this.externalUserAllowed,
     this.importMode,
@@ -8786,6 +9486,7 @@ class Space {
               : null,
           adminInstalled: json_['adminInstalled'] as core.bool?,
           createTime: json_['createTime'] as core.String?,
+          customer: json_['customer'] as core.String?,
           displayName: json_['displayName'] as core.String?,
           externalUserAllowed: json_['externalUserAllowed'] as core.bool?,
           importMode: json_['importMode'] as core.bool?,
@@ -8819,6 +9520,7 @@ class Space {
         if (accessSettings != null) 'accessSettings': accessSettings!,
         if (adminInstalled != null) 'adminInstalled': adminInstalled!,
         if (createTime != null) 'createTime': createTime!,
+        if (customer != null) 'customer': customer!,
         if (displayName != null) 'displayName': displayName!,
         if (externalUserAllowed != null)
           'externalUserAllowed': externalUserAllowed!,

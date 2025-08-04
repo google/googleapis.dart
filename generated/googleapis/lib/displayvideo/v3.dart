@@ -68,8 +68,6 @@
 ///     - [PartnersTargetingTypesAssignedTargetingOptionsResource]
 /// - [SdfdownloadtasksResource]
 ///   - [SdfdownloadtasksOperationsResource]
-/// - [SdfuploadtasksResource]
-///   - [SdfuploadtasksOperationsResource]
 /// - [TargetingTypesResource]
 ///   - [TargetingTypesTargetingOptionsResource]
 /// - [UsersResource]
@@ -143,8 +141,6 @@ class DisplayVideoApi {
   PartnersResource get partners => PartnersResource(_requester);
   SdfdownloadtasksResource get sdfdownloadtasks =>
       SdfdownloadtasksResource(_requester);
-  SdfuploadtasksResource get sdfuploadtasks =>
-      SdfuploadtasksResource(_requester);
   TargetingTypesResource get targetingTypes =>
       TargetingTypesResource(_requester);
   UsersResource get users => UsersResource(_requester);
@@ -427,10 +423,10 @@ class AdvertisersResource {
   /// information.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `displayName` (default) * `entityStatus` * `updateTime` The default
-  /// sorting order is ascending. To specify descending order for a field, a
-  /// suffix "desc" should be added to the field name. For example, `displayName
-  /// desc`.
+  /// `advertiserId` (default) * `displayName` * `entityStatus` * `updateTime`
+  /// The default sorting order is ascending. To specify descending order for a
+  /// field, a suffix "desc" should be added to the field name. For example,
+  /// `displayName desc`.
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `200`. If
   /// unspecified will default to `100`.
@@ -1094,6 +1090,11 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
@@ -1272,6 +1273,11 @@ class AdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [filter] - Optional. Allows filtering by assigned targeting option fields.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -1936,6 +1942,11 @@ class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this campaign that identifies the assigned targeting
@@ -2118,6 +2129,11 @@ class AdvertisersCampaignsTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -3570,6 +3586,11 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3755,6 +3776,11 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -3947,6 +3973,11 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this insertion order that identifies the assigned
@@ -4142,6 +4173,11 @@ class AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -5109,6 +5145,11 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5305,6 +5346,11 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -5387,8 +5433,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
   /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
   /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` *
-  /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
-  /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
+  /// `TARGETING_TYPE_INVENTORY_MODE` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only
+  /// for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
   /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
   /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
   /// Value must have pattern `^\[^/\]+$`.
@@ -5501,6 +5547,11 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
@@ -5586,8 +5637,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` *
   /// `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` *
   /// `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` *
-  /// `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for
-  /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
+  /// `TARGETING_TYPE_INVENTORY_MODE` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only
+  /// for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) *
   /// `TARGETING_TYPE_YOUTUBE_VIDEO` (only for
   /// `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
   /// Value must have pattern `^\[^/\]+$`.
@@ -5700,6 +5751,11 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -6822,7 +6878,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_INVENTORY_MODE`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -6933,6 +6990,11 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6981,7 +7043,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_INVENTORY_MODE`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -7092,6 +7155,11 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -7144,7 +7212,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
   /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
-  /// `TARGETING_TYPE_KEYWORD`
+  /// `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -7255,6 +7323,11 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this advertiser that identifies the assigned targeting
@@ -7309,7 +7382,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
   /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` *
   /// `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` *
-  /// `TARGETING_TYPE_KEYWORD`
+  /// `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -7420,6 +7493,11 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -7800,11 +7878,9 @@ class CustomBiddingAlgorithmsResource {
 
   /// Updates an existing custom bidding algorithm.
   ///
-  /// Returns the updated custom bidding algorithm if successful. *Warning*:
-  /// Starting **April 1, 2025**, requests updating custom bidding algorithms
-  /// that are assigned to line items will return an error. \[Read more about
-  /// this announced
-  /// change\](/display-video/api/deprecations#features.custom_bidding_floodlight).
+  /// Returns the updated custom bidding algorithm if successful. Requests
+  /// updating a custom bidding algorithm assigned to a line item will return an
+  /// error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -7967,11 +8043,9 @@ class CustomBiddingAlgorithmsRulesResource {
 
   /// Creates a new rules resource.
   ///
-  /// Returns the newly created rules resource if successful. *Warning*:
-  /// Starting **April 1, 2025**, requests updating custom bidding algorithms
-  /// that are assigned to line items will return an error. \[Read more about
-  /// this announced
-  /// change\](/display-video/api/deprecations#features.custom_bidding_floodlight).
+  /// Returns the newly created rules resource if successful. Requests creating
+  /// a custom bidding rules resource under an algorithm assigned to a line item
+  /// will return an error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8161,11 +8235,9 @@ class CustomBiddingAlgorithmsScriptsResource {
 
   /// Creates a new custom bidding script.
   ///
-  /// Returns the newly created script if successful. *Warning*: Starting
-  /// **April 1, 2025**, requests updating custom bidding algorithms that are
-  /// assigned to line items will return an error. \[Read more about this
-  /// announced
-  /// change\](/display-video/api/deprecations#features.custom_bidding_floodlight).
+  /// Returns the newly created script if successful. Requests creating a custom
+  /// bidding script under an algorithm assigned to a line item will return an
+  /// error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8640,9 +8712,8 @@ class FirstAndThirdPartyAudiencesResource {
   /// desc`.
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `5000`. If
-  /// unspecified, this value defaults to `100`. Returns error code
-  /// `INVALID_ARGUMENT` if an invalid value is specified. *Warning*: Starting
-  /// **March 6, 2025**, this value will default to `5000` if not set.
+  /// unspecified, this value defaults to `5000`. Returns error code
+  /// `INVALID_ARGUMENT` if an invalid value is specified.
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically, this is the value of next_page_token returned from the
@@ -11179,6 +11250,11 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11336,6 +11412,11 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
@@ -11495,6 +11576,11 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this partner that identifies the assigned targeting
@@ -11656,6 +11742,11 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [filter] - Allows filtering by assigned targeting option fields. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -11740,8 +11831,8 @@ class SdfdownloadtasksResource {
   /// If the request is successful, the response type of the operation is
   /// SdfDownloadTask. The response will not include the download files, which
   /// must be retrieved with media.download. The state of operation can be
-  /// retrieved with sdfdownloadtask.operations.get. Any errors can be found in
-  /// the error.message. Note that error.details is expected to be empty.
+  /// retrieved with `sdfdownloadtasks.operations.get`. Any errors can be found
+  /// in the error.message. Note that error.details is expected to be empty.
   ///
   /// [request] - The metadata request object.
   ///
@@ -11792,59 +11883,6 @@ class SdfdownloadtasksOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern `^sdfdownloadtasks/operations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v3/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-}
-
-class SdfuploadtasksResource {
-  final commons.ApiRequester _requester;
-
-  SdfuploadtasksOperationsResource get operations =>
-      SdfuploadtasksOperationsResource(_requester);
-
-  SdfuploadtasksResource(commons.ApiRequester client) : _requester = client;
-}
-
-class SdfuploadtasksOperationsResource {
-  final commons.ApiRequester _requester;
-
-  SdfuploadtasksOperationsResource(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the latest state of an asynchronous SDF download task operation.
-  ///
-  /// Clients should poll this method at intervals of 30 seconds.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource.
-  /// Value must have pattern `^sdfuploadtasks/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12021,6 +12059,11 @@ class TargetingTypesTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [targetingOptionId] - Required. The ID of the of targeting option to
   /// retrieve.
@@ -12195,6 +12238,11 @@ class TargetingTypesTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [advertiserId] - Required. The Advertiser this request is being made in
   /// the context of.
@@ -12391,6 +12439,11 @@ class TargetingTypesTargetingOptionsResource {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12773,6 +12826,7 @@ class AdGroup {
   /// including in-stream and bumper ads.
   /// - "AD_GROUP_FORMAT_MASTHEAD" : Masthead Ad that is surfaced on the top
   /// slot on the YouTube homepage.
+  /// - "AD_GROUP_FORMAT_DEMAND_GEN" : Demand Gen ads.
   core.String? adGroupFormat;
 
   /// The unique ID of the ad group.
@@ -13074,7 +13128,7 @@ class AdGroupAssignedTargetingOption {
 /// Additional URLs related to the ad, including beacons.
 typedef AdUrl = $AdUrl;
 
-/// Details of Adloox brand safety settings.
+/// Details of Scope3 (previously known as Adloox) brand safety settings.
 typedef Adloox = $Adloox;
 
 /// A single advertiser in Display & Video 360 (DV360).
@@ -13655,6 +13709,16 @@ class AssignedTargetingOption {
   /// `TARGETING_TYPE_CONTENT_STREAM_TYPE`.
   ContentStreamTypeAssignedTargetingOptionDetails? contentStreamTypeDetails;
 
+  /// Content theme details.
+  ///
+  /// This field will be populated when the targeting_type is
+  /// `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`. Content theme are targeting
+  /// exclusions. Advertiser level content theme exclusions, if set, are always
+  /// applied in serving (even though they aren't visible in resource settings).
+  /// Resource settings can exclude content theme in addition to advertiser
+  /// exclusions.
+  ContentThemeAssignedTargetingOptionDetails? contentThemeExclusionDetails;
+
   /// Day and time details.
   ///
   /// This field will be populated when the targeting_type is
@@ -13953,6 +14017,11 @@ class AssignedTargetingOption {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   core.String? targetingType;
 
   /// Third party verification details.
@@ -14017,6 +14086,7 @@ class AssignedTargetingOption {
     this.contentInstreamPositionDetails,
     this.contentOutstreamPositionDetails,
     this.contentStreamTypeDetails,
+    this.contentThemeExclusionDetails,
     this.dayAndTimeDetails,
     this.deviceMakeModelDetails,
     this.deviceTypeDetails,
@@ -14141,6 +14211,12 @@ class AssignedTargetingOption {
               json_.containsKey('contentStreamTypeDetails')
                   ? ContentStreamTypeAssignedTargetingOptionDetails.fromJson(
                       json_['contentStreamTypeDetails']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          contentThemeExclusionDetails:
+              json_.containsKey('contentThemeExclusionDetails')
+                  ? ContentThemeAssignedTargetingOptionDetails.fromJson(
+                      json_['contentThemeExclusionDetails']
                           as core.Map<core.String, core.dynamic>)
                   : null,
           dayAndTimeDetails: json_.containsKey('dayAndTimeDetails')
@@ -14345,6 +14421,8 @@ class AssignedTargetingOption {
           'contentOutstreamPositionDetails': contentOutstreamPositionDetails!,
         if (contentStreamTypeDetails != null)
           'contentStreamTypeDetails': contentStreamTypeDetails!,
+        if (contentThemeExclusionDetails != null)
+          'contentThemeExclusionDetails': contentThemeExclusionDetails!,
         if (dayAndTimeDetails != null) 'dayAndTimeDetails': dayAndTimeDetails!,
         if (deviceMakeModelDetails != null)
           'deviceMakeModelDetails': deviceMakeModelDetails!,
@@ -14777,7 +14855,8 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   ///
   /// Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_INVENTORY_MODE`
   core.List<CreateAssignedTargetingOptionsRequest>? createRequests;
 
   /// The assigned targeting options to delete in batch, specified as a list of
@@ -14785,7 +14864,8 @@ class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   ///
   /// Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
   /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` *
+  /// `TARGETING_TYPE_INVENTORY_MODE`
   core.List<DeleteAssignedTargetingOptionsRequest>? deleteRequests;
 
   BulkEditAdvertiserAssignedTargetingOptionsRequest({
@@ -16305,6 +16385,21 @@ typedef ContentStreamTypeAssignedTargetingOptionDetails
 typedef ContentStreamTypeTargetingOptionDetails
     = $ContentStreamTypeTargetingOptionDetails;
 
+/// Targeting details for content theme.
+///
+/// This will be populated in the details field of an AssignedTargetingOption
+/// when targeting_type is `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`.
+typedef ContentThemeAssignedTargetingOptionDetails
+    = $ContentThemeAssignedTargetingOptionDetails;
+
+/// Represents a targetable content theme.
+///
+/// This will be populated in the content_theme_details field of the
+/// TargetingOption when targeting_type is
+/// `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`.
+typedef ContentThemeTargetingOptionDetails
+    = $ContentThemeTargetingOptionDetails;
+
 /// Settings that control how conversions are counted.
 ///
 /// All post-click conversions will be counted. A percentage value can be set
@@ -16314,12 +16409,10 @@ class ConversionCountingConfig {
   ///
   /// The number of conversions counted is the sum of all of the conversions
   /// counted by all of the Floodlight activity IDs specified in this field.
-  /// *Warning*: Starting **April 1, 2025**, this field will no longer be
-  /// writable while a custom bidding algorithm is assigned to the line item. If
-  /// you set this field and assign a custom bidding algorithm in the same
-  /// request, the floodlight activities must match the ones used by the custom
-  /// bidding algorithm. \[Read more about this announced
-  /// change\](/display-video/api/deprecations#features.custom_bidding_floodlight).
+  /// This field can't be updated if a custom bidding algorithm is assigned to
+  /// the line item. If you set this field and assign a custom bidding algorithm
+  /// in the same request, the floodlight activities must match the ones used by
+  /// the custom bidding algorithm.
   core.List<TrackingFloodlightActivityConfig>? floodlightActivityConfigs;
 
   /// The percentage of post-view conversions to count, in millis (1/1000 of a
@@ -16501,6 +16594,11 @@ class CreateAssignedTargetingOptionsRequest {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   core.String? targetingType;
 
   CreateAssignedTargetingOptionsRequest({
@@ -16577,6 +16675,7 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_8" : SDF version 8. Read the \[v8 migration
   /// guide\](/display-video/api/structured-data-file/v8-migration-guide) before
   /// migrating to this version.
+  /// - "SDF_VERSION_8_1" : SDF version 8.1.
   core.String? version;
 
   CreateSdfDownloadTaskRequest({
@@ -18381,17 +18480,10 @@ class FirstAndThirdPartyAudience {
   /// The duration in days that an entry remains in the audience after the
   /// qualifying event.
   ///
-  /// If the audience has no expiration, set the value of this field to 10000.
-  /// Otherwise, the set value must be greater than 0 and less than or equal to
-  /// 540. Only applicable to first party audiences. This field is required if
-  /// one of the following audience_type is used: *
-  /// `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID` *Warning*:
-  /// Starting on **April 7, 2025**, audiences will no longer be able to have
-  /// infinite membership duration. This field will no longer accept the value
-  /// 10000 and all audiences with membership durations greater than 540 days
-  /// will be updated to a membership duration of 540 days. \[Read more about
-  /// this announced
-  /// change\](/display-video/api/deprecations#features.audience_duration).
+  /// The set value must be greater than 0 and less than or equal to 540. Only
+  /// applicable to first party audiences. This field is required if one of the
+  /// following audience_type is used: * `CUSTOMER_MATCH_CONTACT_INFO` *
+  /// `CUSTOMER_MATCH_DEVICE_ID`
   core.String? membershipDurationDays;
 
   /// Input only.
@@ -19117,6 +19209,8 @@ class GuaranteedOrder {
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
   /// - "EXCHANGE_CORE" : Core.
+  /// - "EXCHANGE_COMMERCE_GRID" : Commerce Grid.
+  /// - "EXCHANGE_SPOTIFY" : Spotify.
   /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
@@ -19395,10 +19489,6 @@ class InsertionOrder {
   core.String? entityStatus;
 
   /// The frequency capping setting of the insertion order.
-  ///
-  /// *Warning*: On **February 28, 2025**, frequency cap time periods greater
-  /// than 30 days will no longer be accepted. \[Read more about this announced
-  /// change\](/display-video/api/deprecations#features.lifetime_frequency_cap)
   ///
   /// Required.
   FrequencyCap? frequencyCap;
@@ -19849,6 +19939,8 @@ class InventorySource {
   /// - "EXCHANGE_TOPON_GBID" : TopOn.
   /// - "EXCHANGE_NETFLIX" : Netflix.
   /// - "EXCHANGE_CORE" : Core.
+  /// - "EXCHANGE_COMMERCE_GRID" : Commerce Grid.
+  /// - "EXCHANGE_SPOTIFY" : Spotify.
   /// - "EXCHANGE_TUBI" : Tubi.
   core.String? exchange;
 
@@ -20388,14 +20480,6 @@ class LineItem {
   core.String? campaignId;
 
   /// The conversion tracking setting of the line item.
-  ///
-  /// *Warning*: Starting **April 1, 2025**, the floodlight_activity_configs
-  /// field will no longer be writable while a custom bidding algorithm is
-  /// assigned to the line item. If you set this field and assign a custom
-  /// bidding algorithm in the same request, the floodlight activities must
-  /// match the ones used by the custom bidding algorithm. \[Read more about
-  /// this announced
-  /// change\](/display-video/api/deprecations#features.custom_bidding_floodlight).
   ConversionCountingConfig? conversionCounting;
 
   /// The IDs of the creatives associated with the line item.
@@ -20448,10 +20532,7 @@ class LineItem {
   /// The impression frequency cap settings of the line item.
   ///
   /// The max_impressions field in this settings object must be used if
-  /// assigning a limited cap. *Warning*: On **February 28, 2025**, frequency
-  /// cap time periods greater than 30 days will no longer be accepted. \[Read
-  /// more about this announced
-  /// change\](/display-video/api/deprecations#features.lifetime_frequency_cap)
+  /// assigning a limited cap.
   ///
   /// Required.
   FrequencyCap? frequencyCap;
@@ -22622,7 +22703,147 @@ typedef PartnerBillingConfig = $PartnerBillingConfig;
 /// and using third-party audience segment data (data fee). Some examples of
 /// partner costs include the fees for using DV360, a third-party ad server, or
 /// a third-party ad serving verification service.
-typedef PartnerCost = $PartnerCost;
+class PartnerCost {
+  /// The type of the partner cost.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PARTNER_COST_TYPE_UNSPECIFIED" : Type value is not specified or is
+  /// unknown in this version.
+  /// - "PARTNER_COST_TYPE_ADLOOX" : The cost is charged for using Scope3
+  /// (previously known as Adloox). Billed by the partner.
+  /// - "PARTNER_COST_TYPE_ADLOOX_PREBID" : The cost is charged for using Scope3
+  /// (previously known as Adloox) Pre-Bid. Billed through DV360.
+  /// - "PARTNER_COST_TYPE_ADSAFE" : The cost is charged for using AdSafe.
+  /// Billed by the partner.
+  /// - "PARTNER_COST_TYPE_ADXPOSE" : The cost is charged for using AdExpose.
+  /// Billed by the partner.
+  /// - "PARTNER_COST_TYPE_AGGREGATE_KNOWLEDGE" : The cost is charged for using
+  /// Aggregate Knowledge. Billed by the partner.
+  /// - "PARTNER_COST_TYPE_AGENCY_TRADING_DESK" : The cost is charged for using
+  /// an Agency Trading Desk. Billed by the partner.
+  /// - "PARTNER_COST_TYPE_DV360_FEE" : The cost is charged for using DV360.
+  /// Billed through DV360.
+  /// - "PARTNER_COST_TYPE_COMSCORE_VCE" : The cost is charged for using
+  /// comScore vCE. Billed through DV360.
+  /// - "PARTNER_COST_TYPE_DATA_MANAGEMENT_PLATFORM" : The cost is charged for
+  /// using a Data Management Platform. Billed by the partner.
+  /// - "PARTNER_COST_TYPE_DEFAULT" : The default cost type. Billed by the
+  /// partner.
+  /// - "PARTNER_COST_TYPE_DOUBLE_VERIFY" : The cost is charged for using
+  /// DoubleVerify. Billed by the partner.
+  /// - "PARTNER_COST_TYPE_DOUBLE_VERIFY_PREBID" : The cost is charged for using
+  /// DoubleVerify Pre-Bid. Billed through DV360.
+  /// - "PARTNER_COST_TYPE_EVIDON" : The cost is charged for using Evidon.
+  /// Billed by the partner.
+  /// - "PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE_VIDEO" : The cost is charged for
+  /// using Integral Ad Science Video. Billed by the partner.
+  /// - "PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE_PREBID" : The cost is charged for
+  /// using Integral Ad Science Pre-Bid. Billed through DV360.
+  /// - "PARTNER_COST_TYPE_MEDIA_COST_DATA" : The cost is charged for using
+  /// media cost data. Billed by the partner.
+  /// - "PARTNER_COST_TYPE_MOAT_VIDEO" : The cost is charged for using MOAT
+  /// Video. Billed by the partner.
+  /// - "PARTNER_COST_TYPE_NIELSEN_DAR" : The cost is charged for using Nielsen
+  /// Digital Ad Ratings. Billed through DV360.
+  /// - "PARTNER_COST_TYPE_SHOP_LOCAL" : The cost is charged for using
+  /// ShopLocal. Billed by the partner.
+  /// - "PARTNER_COST_TYPE_TERACENT" : The cost is charged for using Teracent.
+  /// Billed by the partner.
+  /// - "PARTNER_COST_TYPE_THIRD_PARTY_AD_SERVER" : The cost is charged for
+  /// using a third-party ad server. Billed by the partner.
+  /// - "PARTNER_COST_TYPE_TRUST_METRICS" : The cost is charged for using
+  /// TrustMetrics. Billed by the partner.
+  /// - "PARTNER_COST_TYPE_VIZU" : The cost is charged for using Vizu. Billed by
+  /// the partner.
+  /// - "PARTNER_COST_TYPE_ADLINGO_FEE" : The cost is charged for using AdLingo.
+  /// Billed through DV360.
+  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_1" : The cost is charged as custom fee 1.
+  /// Billed by the partner.
+  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_2" : The cost is charged as custom fee 2.
+  /// Billed by the partner.
+  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_3" : The cost is charged as custom fee 3.
+  /// Billed by the partner.
+  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_4" : The cost is charged as custom fee 4.
+  /// Billed by the partner.
+  /// - "PARTNER_COST_TYPE_CUSTOM_FEE_5" : The cost is charged as custom fee 5.
+  /// Billed by the partner.
+  /// - "PARTNER_COST_TYPE_SCIBIDS_FEE" : The cost is charged for using Scibids.
+  /// Billed through DV360. This type is currently only available to certain
+  /// customers. Other customers attempting to use this type will receive an
+  /// error.
+  core.String? costType;
+
+  /// The CPM fee amount in micros of advertiser's currency.
+  ///
+  /// Applicable when the fee_type is `PARTNER_FEE_TYPE_CPM_FEE`. Must be
+  /// greater than or equal to 0. For example, for 1.5 standard unit of the
+  /// advertiser's currency, set this field to 1500000.
+  core.String? feeAmount;
+
+  /// The media fee percentage in millis (1/1000 of a percent).
+  ///
+  /// Applicable when the fee_type is `PARTNER_FEE_TYPE_MEDIA_FEE`. Must be
+  /// greater than or equal to 0. For example: 100 represents 0.1%.
+  core.String? feePercentageMillis;
+
+  /// The fee type for this partner cost.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PARTNER_COST_FEE_TYPE_UNSPECIFIED" : Value is not specified or is
+  /// unknown in this version.
+  /// - "PARTNER_COST_FEE_TYPE_CPM_FEE" : The partner cost is a fixed CPM fee.
+  /// Not applicable when the partner cost cost_type is one of: *
+  /// `PARTNER_COST_TYPE_MEDIA_COST_DATA` * `PARTNER_COST_TYPE_DV360_FEE`.
+  /// - "PARTNER_COST_FEE_TYPE_MEDIA_FEE" : The partner cost is a percentage
+  /// surcharge based on the media cost. Not applicable when the partner
+  /// cost_type is one of: * `PARTNER_COST_TYPE_SHOP_LOCAL` *
+  /// `PARTNER_COST_TYPE_TRUST_METRICS` *
+  /// `PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE_VIDEO` *
+  /// `PARTNER_COST_TYPE_MOAT_VIDEO`.
+  core.String? feeType;
+
+  /// The invoice type for this partner cost.
+  ///
+  /// * Required when cost_type is one of: - `PARTNER_COST_TYPE_ADLOOX` -
+  /// `PARTNER_COST_TYPE_DOUBLE_VERIFY` -
+  /// `PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE`. * Output only for other types.
+  /// Possible string values are:
+  /// - "PARTNER_COST_INVOICE_TYPE_UNSPECIFIED" : Type value is not specified or
+  /// is unknown in this version.
+  /// - "PARTNER_COST_INVOICE_TYPE_DV360" : Partner cost is billed through
+  /// DV360.
+  /// - "PARTNER_COST_INVOICE_TYPE_PARTNER" : Partner cost is billed by the
+  /// partner.
+  core.String? invoiceType;
+
+  PartnerCost({
+    this.costType,
+    this.feeAmount,
+    this.feePercentageMillis,
+    this.feeType,
+    this.invoiceType,
+  });
+
+  PartnerCost.fromJson(core.Map json_)
+      : this(
+          costType: json_['costType'] as core.String?,
+          feeAmount: json_['feeAmount'] as core.String?,
+          feePercentageMillis: json_['feePercentageMillis'] as core.String?,
+          feeType: json_['feeType'] as core.String?,
+          invoiceType: json_['invoiceType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (costType != null) 'costType': costType!,
+        if (feeAmount != null) 'feeAmount': feeAmount!,
+        if (feePercentageMillis != null)
+          'feePercentageMillis': feePercentageMillis!,
+        if (feeType != null) 'feeType': feeType!,
+        if (invoiceType != null) 'invoiceType': invoiceType!,
+      };
+}
 
 /// Settings that control how partner related data may be accessed.
 class PartnerDataAccessConfig {
@@ -23294,6 +23515,9 @@ class TargetingOption {
   /// Content stream type resource details.
   ContentStreamTypeTargetingOptionDetails? contentStreamTypeDetails;
 
+  /// Content theme details.
+  ContentThemeTargetingOptionDetails? contentThemeDetails;
+
   /// Device make and model resource details.
   DeviceMakeModelTargetingOptionDetails? deviceMakeModelDetails;
 
@@ -23469,6 +23693,11 @@ class TargetingOption {
   /// certain position of a session. Only supported for Ad Group resources under
   /// YouTube Programmatic Reservation line items. Targeting of this type cannot
   /// be created or updated using the API.
+  /// - "TARGETING_TYPE_CONTENT_THEME_EXCLUSION" : Filter website content by
+  /// content themes (for example, religion). Only supported for Advertiser
+  /// resources. Targeting of this type cannot be created or updated using the
+  /// API. This targeting is only inherited by child YouTube and Demand Gen line
+  /// item resources.
   core.String? targetingType;
 
   /// User rewarded content details.
@@ -23494,6 +23723,7 @@ class TargetingOption {
     this.contentInstreamPositionDetails,
     this.contentOutstreamPositionDetails,
     this.contentStreamTypeDetails,
+    this.contentThemeDetails,
     this.deviceMakeModelDetails,
     this.deviceTypeDetails,
     this.digitalContentLabelDetails,
@@ -23587,6 +23817,11 @@ class TargetingOption {
                       json_['contentStreamTypeDetails']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          contentThemeDetails: json_.containsKey('contentThemeDetails')
+              ? ContentThemeTargetingOptionDetails.fromJson(
+                  json_['contentThemeDetails']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           deviceMakeModelDetails: json_.containsKey('deviceMakeModelDetails')
               ? DeviceMakeModelTargetingOptionDetails.fromJson(
                   json_['deviceMakeModelDetails']
@@ -23715,6 +23950,8 @@ class TargetingOption {
           'contentOutstreamPositionDetails': contentOutstreamPositionDetails!,
         if (contentStreamTypeDetails != null)
           'contentStreamTypeDetails': contentStreamTypeDetails!,
+        if (contentThemeDetails != null)
+          'contentThemeDetails': contentThemeDetails!,
         if (deviceMakeModelDetails != null)
           'deviceMakeModelDetails': deviceMakeModelDetails!,
         if (deviceTypeDetails != null) 'deviceTypeDetails': deviceTypeDetails!,
@@ -23760,7 +23997,10 @@ class ThirdPartyMeasurementConfigs {
   /// The third-party vendors measuring brand lift.
   ///
   /// The following third-party vendors are applicable: *
-  /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR`
+  /// `THIRD_PARTY_VENDOR_DYNATA` * `THIRD_PARTY_VENDOR_KANTAR` *
+  /// `THIRD_PARTY_VENDOR_KANTAR_MILLWARD_BROWN` *
+  /// `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `THIRD_PARTY_VENDOR_INTAGE` *
+  /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_MACROMILL`
   ///
   /// Optional.
   core.List<ThirdPartyVendorConfig>? brandLiftVendorConfigs;
@@ -23769,7 +24009,8 @@ class ThirdPartyMeasurementConfigs {
   ///
   /// The following third-party vendors are applicable: *
   /// `THIRD_PARTY_VENDOR_ZERF` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` *
-  /// `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE`
+  /// `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` *
+  /// `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` * `THIRD_PARTY_VENDOR_ZEFR`
   ///
   /// Optional.
   core.List<ThirdPartyVendorConfig>? brandSafetyVendorConfigs;
@@ -23778,7 +24019,11 @@ class ThirdPartyMeasurementConfigs {
   ///
   /// The following third-party vendors are applicable: *
   /// `THIRD_PARTY_VENDOR_NIELSEN` * `THIRD_PARTY_VENDOR_COMSCORE` *
-  /// `THIRD_PARTY_VENDOR_KANTAR`
+  /// `THIRD_PARTY_VENDOR_KANTAR` * `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL` *
+  /// `THIRD_PARTY_VENDOR_KANTAR_MILLWARD_BROWN` *
+  /// `THIRD_PARTY_VENDOR_VIDEO_RESEARCH` * `THIRD_PARTY_VENDOR_MEDIA_SCOPE` *
+  /// `THIRD_PARTY_VENDOR_AUDIENCE_PROJECT` * `THIRD_PARTY_VENDOR_VIDEO_AMP` *
+  /// `THIRD_PARTY_VENDOR_ISPOT_TV`
   ///
   /// Optional.
   core.List<ThirdPartyVendorConfig>? reachVendorConfigs;
@@ -23788,7 +24033,8 @@ class ThirdPartyMeasurementConfigs {
   /// The following third-party vendors are applicable: *
   /// `THIRD_PARTY_VENDOR_MOAT` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` *
   /// `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` * `THIRD_PARTY_VENDOR_COMSCORE` *
-  /// `THIRD_PARTY_VENDOR_TELEMETRY` * `THIRD_PARTY_VENDOR_MEETRICS`
+  /// `THIRD_PARTY_VENDOR_TELEMETRY` * `THIRD_PARTY_VENDOR_MEETRICS` *
+  /// `THIRD_PARTY_VENDOR_GOOGLE_INTERNAL`
   ///
   /// Optional.
   core.List<ThirdPartyVendorConfig>? viewabilityVendorConfigs;
@@ -23850,7 +24096,7 @@ typedef ThirdPartyVendorConfig = $ThirdPartyVendorConfig;
 /// This will be populated in the details field of an AssignedTargetingOption
 /// when targeting_type is `TARGETING_TYPE_THIRD_PARTY_VERIFIER`.
 class ThirdPartyVerifierAssignedTargetingOptionDetails {
-  /// Third party brand verifier -- Adloox.
+  /// Third party brand verifier -- Scope3 (previously known as Adloox).
   Adloox? adloox;
 
   /// Third party brand verifier -- DoubleVerify.
@@ -24081,6 +24327,9 @@ typedef UserRewardedContentAssignedTargetingOptionDetails
 /// targeting_type is `TARGETING_TYPE_USER_REWARDED_CONTENT`.
 typedef UserRewardedContentTargetingOptionDetails
     = $UserRewardedContentTargetingOptionDetails;
+
+/// The video ad inventory control used in certain YouTube line item types.
+typedef VideoAdInventoryControl = $VideoAdInventoryControl;
 
 /// Settings related to VideoAdSequence.
 class VideoAdSequenceSettings {
@@ -24320,6 +24569,11 @@ typedef YoutubeAndPartnersInventorySourceConfig
 /// Settings for YouTube and Partners line items.
 class YoutubeAndPartnersSettings {
   /// The kind of content on which the YouTube and Partners ads will be shown.
+  ///
+  /// *Warning*: This field will be removed in the near future. Use
+  /// effective_content_category instead.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_UNSPECIFIED" : Content category
   /// is not specified or is unknown in this version.
@@ -24338,7 +24592,8 @@ class YoutubeAndPartnersSettings {
   /// The content category which takes effect when serving the line item.
   ///
   /// When content category is set in both line item and advertiser, the
-  /// stricter one will take effect when serving the line item.
+  /// stricter one will take effect when serving the line item. New line items
+  /// will only inherit the advertiser level setting.
   ///
   /// Output only.
   /// Possible string values are:
@@ -24387,6 +24642,11 @@ class YoutubeAndPartnersSettings {
   /// Optional.
   ThirdPartyMeasurementConfigs? thirdPartyMeasurementConfigs;
 
+  /// The settings to control which inventory is allowed for this line item.
+  ///
+  /// Optional.
+  VideoAdInventoryControl? videoAdInventoryControl;
+
   /// The settings related to VideoAdSequence.
   ///
   /// Optional.
@@ -24395,10 +24655,7 @@ class YoutubeAndPartnersSettings {
   /// The view frequency cap settings of the line item.
   ///
   /// The max_views field in this settings object must be used if assigning a
-  /// limited cap. *Warning*: On **February 28, 2025**, frequency cap time
-  /// periods greater than 30 days will no longer be accepted. \[Read more about
-  /// this announced
-  /// change\](/display-video/api/deprecations#features.lifetime_frequency_cap)
+  /// limited cap.
   FrequencyCap? viewFrequencyCap;
 
   YoutubeAndPartnersSettings({
@@ -24410,6 +24667,7 @@ class YoutubeAndPartnersSettings {
     this.relatedVideoIds,
     this.targetFrequency,
     this.thirdPartyMeasurementConfigs,
+    this.videoAdInventoryControl,
     this.videoAdSequenceSettings,
     this.viewFrequencyCap,
   });
@@ -24439,6 +24697,11 @@ class YoutubeAndPartnersSettings {
                       json_['thirdPartyMeasurementConfigs']
                           as core.Map<core.String, core.dynamic>)
                   : null,
+          videoAdInventoryControl: json_.containsKey('videoAdInventoryControl')
+              ? VideoAdInventoryControl.fromJson(
+                  json_['videoAdInventoryControl']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           videoAdSequenceSettings: json_.containsKey('videoAdSequenceSettings')
               ? VideoAdSequenceSettings.fromJson(
                   json_['videoAdSequenceSettings']
@@ -24462,6 +24725,8 @@ class YoutubeAndPartnersSettings {
         if (targetFrequency != null) 'targetFrequency': targetFrequency!,
         if (thirdPartyMeasurementConfigs != null)
           'thirdPartyMeasurementConfigs': thirdPartyMeasurementConfigs!,
+        if (videoAdInventoryControl != null)
+          'videoAdInventoryControl': videoAdInventoryControl!,
         if (videoAdSequenceSettings != null)
           'videoAdSequenceSettings': videoAdSequenceSettings!,
         if (viewFrequencyCap != null) 'viewFrequencyCap': viewFrequencyCap!,

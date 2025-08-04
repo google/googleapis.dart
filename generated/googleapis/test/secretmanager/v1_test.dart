@@ -806,23 +806,40 @@ void checkUnnamed11(core.Map<core.String, core.String> o) {
   );
 }
 
-core.List<api.Topic> buildUnnamed12() => [
+core.Map<core.String, core.String> buildUnnamed12() => {
+      'x': 'foo',
+      'y': 'foo',
+    };
+
+void checkUnnamed12(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o['x']!,
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o['y']!,
+    unittest.equals('foo'),
+  );
+}
+
+core.List<api.Topic> buildUnnamed13() => [
       buildTopic(),
       buildTopic(),
     ];
 
-void checkUnnamed12(core.List<api.Topic> o) {
+void checkUnnamed13(core.List<api.Topic> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTopic(o[0]);
   checkTopic(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed13() => {
+core.Map<core.String, core.String> buildUnnamed14() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed13(core.Map<core.String, core.String> o) {
+void checkUnnamed14(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -848,9 +865,10 @@ api.Secret buildSecret() {
     o.name = 'foo';
     o.replication = buildReplication();
     o.rotation = buildRotation();
-    o.topics = buildUnnamed12();
+    o.tags = buildUnnamed12();
+    o.topics = buildUnnamed13();
     o.ttl = 'foo';
-    o.versionAliases = buildUnnamed13();
+    o.versionAliases = buildUnnamed14();
     o.versionDestroyTtl = 'foo';
   }
   buildCounterSecret--;
@@ -881,12 +899,13 @@ void checkSecret(api.Secret o) {
     );
     checkReplication(o.replication!);
     checkRotation(o.rotation!);
-    checkUnnamed12(o.topics!);
+    checkUnnamed12(o.tags!);
+    checkUnnamed13(o.topics!);
     unittest.expect(
       o.ttl!,
       unittest.equals('foo'),
     );
-    checkUnnamed13(o.versionAliases!);
+    checkUnnamed14(o.versionAliases!);
     unittest.expect(
       o.versionDestroyTtl!,
       unittest.equals('foo'),
@@ -999,42 +1018,6 @@ void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed14() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed14(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterTestIamPermissionsRequest = 0;
-api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
-  final o = api.TestIamPermissionsRequest();
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed14();
-  }
-  buildCounterTestIamPermissionsRequest--;
-  return o;
-}
-
-void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
-  buildCounterTestIamPermissionsRequest++;
-  if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed14(o.permissions!);
-  }
-  buildCounterTestIamPermissionsRequest--;
-}
-
 core.List<core.String> buildUnnamed15() => [
       'foo',
       'foo',
@@ -1052,12 +1035,48 @@ void checkUnnamed15(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterTestIamPermissionsRequest = 0;
+api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
+  final o = api.TestIamPermissionsRequest();
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    o.permissions = buildUnnamed15();
+  }
+  buildCounterTestIamPermissionsRequest--;
+  return o;
+}
+
+void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
+  buildCounterTestIamPermissionsRequest++;
+  if (buildCounterTestIamPermissionsRequest < 3) {
+    checkUnnamed15(o.permissions!);
+  }
+  buildCounterTestIamPermissionsRequest--;
+}
+
+core.List<core.String> buildUnnamed16() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed16(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterTestIamPermissionsResponse = 0;
 api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed15();
+    o.permissions = buildUnnamed16();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1066,7 +1085,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed15(o.permissions!);
+    checkUnnamed16(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1093,12 +1112,12 @@ void checkTopic(api.Topic o) {
   buildCounterTopic--;
 }
 
-core.List<api.Replica> buildUnnamed16() => [
+core.List<api.Replica> buildUnnamed17() => [
       buildReplica(),
       buildReplica(),
     ];
 
-void checkUnnamed16(core.List<api.Replica> o) {
+void checkUnnamed17(core.List<api.Replica> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReplica(o[0]);
   checkReplica(o[1]);
@@ -1109,7 +1128,7 @@ api.UserManaged buildUserManaged() {
   final o = api.UserManaged();
   buildCounterUserManaged++;
   if (buildCounterUserManaged < 3) {
-    o.replicas = buildUnnamed16();
+    o.replicas = buildUnnamed17();
   }
   buildCounterUserManaged--;
   return o;
@@ -1118,17 +1137,17 @@ api.UserManaged buildUserManaged() {
 void checkUserManaged(api.UserManaged o) {
   buildCounterUserManaged++;
   if (buildCounterUserManaged < 3) {
-    checkUnnamed16(o.replicas!);
+    checkUnnamed17(o.replicas!);
   }
   buildCounterUserManaged--;
 }
 
-core.List<api.ReplicaStatus> buildUnnamed17() => [
+core.List<api.ReplicaStatus> buildUnnamed18() => [
       buildReplicaStatus(),
       buildReplicaStatus(),
     ];
 
-void checkUnnamed17(core.List<api.ReplicaStatus> o) {
+void checkUnnamed18(core.List<api.ReplicaStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReplicaStatus(o[0]);
   checkReplicaStatus(o[1]);
@@ -1139,7 +1158,7 @@ api.UserManagedStatus buildUserManagedStatus() {
   final o = api.UserManagedStatus();
   buildCounterUserManagedStatus++;
   if (buildCounterUserManagedStatus < 3) {
-    o.replicas = buildUnnamed17();
+    o.replicas = buildUnnamed18();
   }
   buildCounterUserManagedStatus--;
   return o;
@@ -1148,9 +1167,26 @@ api.UserManagedStatus buildUserManagedStatus() {
 void checkUserManagedStatus(api.UserManagedStatus o) {
   buildCounterUserManagedStatus++;
   if (buildCounterUserManagedStatus < 3) {
-    checkUnnamed17(o.replicas!);
+    checkUnnamed18(o.replicas!);
   }
   buildCounterUserManagedStatus--;
+}
+
+core.List<core.String> buildUnnamed19() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed19(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -1541,6 +1577,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.SecretManagerApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed19();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -1578,6 +1615,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -1601,6 +1642,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,

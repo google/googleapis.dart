@@ -164,6 +164,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -186,12 +190,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -4599,7 +4605,8 @@ class CanaryDeployment {
   /// Optional.
   Predeploy? predeploy;
 
-  /// Whether to run verify tests after each percentage deployment.
+  /// Whether to run verify tests after each percentage deployment via `skaffold
+  /// verify`.
   ///
   /// Optional.
   core.bool? verify;
@@ -5669,7 +5676,7 @@ class DeployPolicy {
   /// Optional.
   core.String? description;
 
-  /// The weak etag of the `Automation` resource.
+  /// The weak etag of the `DeployPolicy` resource.
   ///
   /// This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the client
@@ -7307,7 +7314,7 @@ class PhaseConfig {
   /// Optional.
   core.List<core.String>? profiles;
 
-  /// Whether to run verify tests after the deployment.
+  /// Whether to run verify tests after the deployment via `skaffold verify`.
   ///
   /// Optional.
   core.bool? verify;
@@ -9871,19 +9878,19 @@ class Stage {
 class Standard {
   /// Configuration for the postdeploy job.
   ///
-  /// If this is not configured, postdeploy job will not be present.
+  /// If this is not configured, the postdeploy job will not be present.
   ///
   /// Optional.
   Postdeploy? postdeploy;
 
   /// Configuration for the predeploy job.
   ///
-  /// If this is not configured, predeploy job will not be present.
+  /// If this is not configured, the predeploy job will not be present.
   ///
   /// Optional.
   Predeploy? predeploy;
 
-  /// Whether to verify a deployment.
+  /// Whether to verify a deployment via `skaffold verify`.
   ///
   /// Optional.
   core.bool? verify;

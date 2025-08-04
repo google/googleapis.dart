@@ -122,6 +122,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -144,12 +148,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2484,6 +2490,16 @@ class Secret {
   /// Optional.
   Rotation? rotation;
 
+  /// Input only.
+  ///
+  /// Immutable. Mapping of Tag keys/values directly bound to this resource. For
+  /// example: "123/environment": "production", "123/costCenter": "marketing"
+  /// Tags are used to organize and group resources. Tags can be used to control
+  /// policy evaluation for the resource.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// A list of up to 10 Pub/Sub topics to which messages are published when
   /// control plane operations are called on the secret or its versions.
   ///
@@ -2528,6 +2544,7 @@ class Secret {
     this.name,
     this.replication,
     this.rotation,
+    this.tags,
     this.topics,
     this.ttl,
     this.versionAliases,
@@ -2569,6 +2586,12 @@ class Secret {
               ? Rotation.fromJson(
                   json_['rotation'] as core.Map<core.String, core.dynamic>)
               : null,
+          tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+            (key, value) => core.MapEntry(
+              key,
+              value as core.String,
+            ),
+          ),
           topics: (json_['topics'] as core.List?)
               ?.map((value) =>
                   Topic.fromJson(value as core.Map<core.String, core.dynamic>))
@@ -2596,6 +2619,7 @@ class Secret {
         if (name != null) 'name': name!,
         if (replication != null) 'replication': replication!,
         if (rotation != null) 'rotation': rotation!,
+        if (tags != null) 'tags': tags!,
         if (topics != null) 'topics': topics!,
         if (ttl != null) 'ttl': ttl!,
         if (versionAliases != null) 'versionAliases': versionAliases!,

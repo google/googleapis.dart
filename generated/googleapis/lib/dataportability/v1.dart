@@ -52,11 +52,6 @@ class DataPortabilityApi {
   static const dataportabilityAlertsSubscriptionsScope =
       'https://www.googleapis.com/auth/dataportability.alerts.subscriptions';
 
-  /// Move a copy of messages between you and the businesses you have
-  /// conversations with across Google services
-  static const dataportabilityBusinessmessagingConversationsScope =
-      'https://www.googleapis.com/auth/dataportability.businessmessaging.conversations';
-
   /// Move a copy of the information you entered into online forms in Chrome
   static const dataportabilityChromeAutofillScope =
       'https://www.googleapis.com/auth/dataportability.chrome.autofill';
@@ -137,6 +132,10 @@ class DataPortabilityApi {
   /// Move a copy of your Starred places list on Maps
   static const dataportabilityMapsStarredPlacesScope =
       'https://www.googleapis.com/auth/dataportability.maps.starred_places';
+
+  /// Move a copy of your vehicle profile on Maps
+  static const dataportabilityMapsVehicleProfileScope =
+      'https://www.googleapis.com/auth/dataportability.maps.vehicle_profile';
 
   /// Move a copy of your Maps activity
   static const dataportabilityMyactivityMapsScope =

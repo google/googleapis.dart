@@ -1374,6 +1374,33 @@ void checkGoogleBigtableAdminV2TypeDate(api.GoogleBigtableAdminV2TypeDate o) {
   buildCounterGoogleBigtableAdminV2TypeDate--;
 }
 
+core.int buildCounterGoogleBigtableAdminV2TypeEnum = 0;
+api.GoogleBigtableAdminV2TypeEnum buildGoogleBigtableAdminV2TypeEnum() {
+  final o = api.GoogleBigtableAdminV2TypeEnum();
+  buildCounterGoogleBigtableAdminV2TypeEnum++;
+  if (buildCounterGoogleBigtableAdminV2TypeEnum < 3) {
+    o.enumName = 'foo';
+    o.schemaBundleId = 'foo';
+  }
+  buildCounterGoogleBigtableAdminV2TypeEnum--;
+  return o;
+}
+
+void checkGoogleBigtableAdminV2TypeEnum(api.GoogleBigtableAdminV2TypeEnum o) {
+  buildCounterGoogleBigtableAdminV2TypeEnum++;
+  if (buildCounterGoogleBigtableAdminV2TypeEnum < 3) {
+    unittest.expect(
+      o.enumName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.schemaBundleId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleBigtableAdminV2TypeEnum--;
+}
+
 core.int buildCounterGoogleBigtableAdminV2TypeFloat32 = 0;
 api.GoogleBigtableAdminV2TypeFloat32 buildGoogleBigtableAdminV2TypeFloat32() {
   final o = api.GoogleBigtableAdminV2TypeFloat32();
@@ -1509,6 +1536,33 @@ void checkGoogleBigtableAdminV2TypeMap(api.GoogleBigtableAdminV2TypeMap o) {
     checkType(o.valueType!);
   }
   buildCounterGoogleBigtableAdminV2TypeMap--;
+}
+
+core.int buildCounterGoogleBigtableAdminV2TypeProto = 0;
+api.GoogleBigtableAdminV2TypeProto buildGoogleBigtableAdminV2TypeProto() {
+  final o = api.GoogleBigtableAdminV2TypeProto();
+  buildCounterGoogleBigtableAdminV2TypeProto++;
+  if (buildCounterGoogleBigtableAdminV2TypeProto < 3) {
+    o.messageName = 'foo';
+    o.schemaBundleId = 'foo';
+  }
+  buildCounterGoogleBigtableAdminV2TypeProto--;
+  return o;
+}
+
+void checkGoogleBigtableAdminV2TypeProto(api.GoogleBigtableAdminV2TypeProto o) {
+  buildCounterGoogleBigtableAdminV2TypeProto++;
+  if (buildCounterGoogleBigtableAdminV2TypeProto < 3) {
+    unittest.expect(
+      o.messageName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.schemaBundleId!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterGoogleBigtableAdminV2TypeProto--;
 }
 
 core.int buildCounterGoogleBigtableAdminV2TypeString = 0;
@@ -2235,12 +2289,82 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse--;
 }
 
-core.List<api.Operation> buildUnnamed23() => [
+core.List<api.LogicalView> buildUnnamed23() => [
+      buildLogicalView(),
+      buildLogicalView(),
+    ];
+
+void checkUnnamed23(core.List<api.LogicalView> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkLogicalView(o[0]);
+  checkLogicalView(o[1]);
+}
+
+core.int buildCounterListLogicalViewsResponse = 0;
+api.ListLogicalViewsResponse buildListLogicalViewsResponse() {
+  final o = api.ListLogicalViewsResponse();
+  buildCounterListLogicalViewsResponse++;
+  if (buildCounterListLogicalViewsResponse < 3) {
+    o.logicalViews = buildUnnamed23();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListLogicalViewsResponse--;
+  return o;
+}
+
+void checkListLogicalViewsResponse(api.ListLogicalViewsResponse o) {
+  buildCounterListLogicalViewsResponse++;
+  if (buildCounterListLogicalViewsResponse < 3) {
+    checkUnnamed23(o.logicalViews!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListLogicalViewsResponse--;
+}
+
+core.List<api.MaterializedView> buildUnnamed24() => [
+      buildMaterializedView(),
+      buildMaterializedView(),
+    ];
+
+void checkUnnamed24(core.List<api.MaterializedView> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMaterializedView(o[0]);
+  checkMaterializedView(o[1]);
+}
+
+core.int buildCounterListMaterializedViewsResponse = 0;
+api.ListMaterializedViewsResponse buildListMaterializedViewsResponse() {
+  final o = api.ListMaterializedViewsResponse();
+  buildCounterListMaterializedViewsResponse++;
+  if (buildCounterListMaterializedViewsResponse < 3) {
+    o.materializedViews = buildUnnamed24();
+    o.nextPageToken = 'foo';
+  }
+  buildCounterListMaterializedViewsResponse--;
+  return o;
+}
+
+void checkListMaterializedViewsResponse(api.ListMaterializedViewsResponse o) {
+  buildCounterListMaterializedViewsResponse++;
+  if (buildCounterListMaterializedViewsResponse < 3) {
+    checkUnnamed24(o.materializedViews!);
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterListMaterializedViewsResponse--;
+}
+
+core.List<api.Operation> buildUnnamed25() => [
       buildOperation(),
       buildOperation(),
     ];
 
-void checkUnnamed23(core.List<api.Operation> o) {
+void checkUnnamed25(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -2252,7 +2376,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed23();
+    o.operations = buildUnnamed25();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -2265,17 +2389,52 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed23(o.operations!);
+    checkUnnamed25(o.operations!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.List<api.Table> buildUnnamed24() => [
+core.List<api.SchemaBundle> buildUnnamed26() => [
+      buildSchemaBundle(),
+      buildSchemaBundle(),
+    ];
+
+void checkUnnamed26(core.List<api.SchemaBundle> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSchemaBundle(o[0]);
+  checkSchemaBundle(o[1]);
+}
+
+core.int buildCounterListSchemaBundlesResponse = 0;
+api.ListSchemaBundlesResponse buildListSchemaBundlesResponse() {
+  final o = api.ListSchemaBundlesResponse();
+  buildCounterListSchemaBundlesResponse++;
+  if (buildCounterListSchemaBundlesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.schemaBundles = buildUnnamed26();
+  }
+  buildCounterListSchemaBundlesResponse--;
+  return o;
+}
+
+void checkListSchemaBundlesResponse(api.ListSchemaBundlesResponse o) {
+  buildCounterListSchemaBundlesResponse++;
+  if (buildCounterListSchemaBundlesResponse < 3) {
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed26(o.schemaBundles!);
+  }
+  buildCounterListSchemaBundlesResponse--;
+}
+
+core.List<api.Table> buildUnnamed27() => [
       buildTable(),
       buildTable(),
     ];
 
-void checkUnnamed24(core.List<api.Table> o) {
+void checkUnnamed27(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTable(o[0]);
   checkTable(o[1]);
@@ -2287,7 +2446,7 @@ api.ListTablesResponse buildListTablesResponse() {
   buildCounterListTablesResponse++;
   if (buildCounterListTablesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.tables = buildUnnamed24();
+    o.tables = buildUnnamed27();
   }
   buildCounterListTablesResponse--;
   return o;
@@ -2300,17 +2459,17 @@ void checkListTablesResponse(api.ListTablesResponse o) {
       o.nextPageToken!,
       unittest.equals('foo'),
     );
-    checkUnnamed24(o.tables!);
+    checkUnnamed27(o.tables!);
   }
   buildCounterListTablesResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed25() => {
+core.Map<core.String, core.String> buildUnnamed28() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed25(core.Map<core.String, core.String> o) {
+void checkUnnamed28(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2322,7 +2481,7 @@ void checkUnnamed25(core.Map<core.String, core.String> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed26() => {
+core.Map<core.String, core.Object?> buildUnnamed29() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2335,7 +2494,7 @@ core.Map<core.String, core.Object?> buildUnnamed26() => {
       },
     };
 
-void checkUnnamed26(core.Map<core.String, core.Object?> o) {
+void checkUnnamed29(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -2373,9 +2532,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed25();
+    o.labels = buildUnnamed28();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed26();
+    o.metadata = buildUnnamed29();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -2389,18 +2548,86 @@ void checkLocation(api.Location o) {
       o.displayName!,
       unittest.equals('foo'),
     );
-    checkUnnamed25(o.labels!);
+    checkUnnamed28(o.labels!);
     unittest.expect(
       o.locationId!,
       unittest.equals('foo'),
     );
-    checkUnnamed26(o.metadata!);
+    checkUnnamed29(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
   }
   buildCounterLocation--;
+}
+
+core.int buildCounterLogicalView = 0;
+api.LogicalView buildLogicalView() {
+  final o = api.LogicalView();
+  buildCounterLogicalView++;
+  if (buildCounterLogicalView < 3) {
+    o.deletionProtection = true;
+    o.etag = 'foo';
+    o.name = 'foo';
+    o.query = 'foo';
+  }
+  buildCounterLogicalView--;
+  return o;
+}
+
+void checkLogicalView(api.LogicalView o) {
+  buildCounterLogicalView++;
+  if (buildCounterLogicalView < 3) {
+    unittest.expect(o.deletionProtection!, unittest.isTrue);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.query!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterLogicalView--;
+}
+
+core.int buildCounterMaterializedView = 0;
+api.MaterializedView buildMaterializedView() {
+  final o = api.MaterializedView();
+  buildCounterMaterializedView++;
+  if (buildCounterMaterializedView < 3) {
+    o.deletionProtection = true;
+    o.etag = 'foo';
+    o.name = 'foo';
+    o.query = 'foo';
+  }
+  buildCounterMaterializedView--;
+  return o;
+}
+
+void checkMaterializedView(api.MaterializedView o) {
+  buildCounterMaterializedView++;
+  if (buildCounterMaterializedView < 3) {
+    unittest.expect(o.deletionProtection!, unittest.isTrue);
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.query!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterMaterializedView--;
 }
 
 core.int buildCounterModification = 0;
@@ -2436,12 +2663,12 @@ void checkModification(api.Modification o) {
   buildCounterModification--;
 }
 
-core.List<api.Modification> buildUnnamed27() => [
+core.List<api.Modification> buildUnnamed30() => [
       buildModification(),
       buildModification(),
     ];
 
-void checkUnnamed27(core.List<api.Modification> o) {
+void checkUnnamed30(core.List<api.Modification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkModification(o[0]);
   checkModification(o[1]);
@@ -2453,7 +2680,7 @@ api.ModifyColumnFamiliesRequest buildModifyColumnFamiliesRequest() {
   buildCounterModifyColumnFamiliesRequest++;
   if (buildCounterModifyColumnFamiliesRequest < 3) {
     o.ignoreWarnings = true;
-    o.modifications = buildUnnamed27();
+    o.modifications = buildUnnamed30();
   }
   buildCounterModifyColumnFamiliesRequest--;
   return o;
@@ -2463,17 +2690,17 @@ void checkModifyColumnFamiliesRequest(api.ModifyColumnFamiliesRequest o) {
   buildCounterModifyColumnFamiliesRequest++;
   if (buildCounterModifyColumnFamiliesRequest < 3) {
     unittest.expect(o.ignoreWarnings!, unittest.isTrue);
-    checkUnnamed27(o.modifications!);
+    checkUnnamed30(o.modifications!);
   }
   buildCounterModifyColumnFamiliesRequest--;
 }
 
-core.List<core.String> buildUnnamed28() => [
+core.List<core.String> buildUnnamed31() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed28(core.List<core.String> o) {
+void checkUnnamed31(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -2490,7 +2717,7 @@ api.MultiClusterRoutingUseAny buildMultiClusterRoutingUseAny() {
   final o = api.MultiClusterRoutingUseAny();
   buildCounterMultiClusterRoutingUseAny++;
   if (buildCounterMultiClusterRoutingUseAny < 3) {
-    o.clusterIds = buildUnnamed28();
+    o.clusterIds = buildUnnamed31();
     o.rowAffinity = buildRowAffinity();
   }
   buildCounterMultiClusterRoutingUseAny--;
@@ -2500,13 +2727,13 @@ api.MultiClusterRoutingUseAny buildMultiClusterRoutingUseAny() {
 void checkMultiClusterRoutingUseAny(api.MultiClusterRoutingUseAny o) {
   buildCounterMultiClusterRoutingUseAny++;
   if (buildCounterMultiClusterRoutingUseAny < 3) {
-    checkUnnamed28(o.clusterIds!);
+    checkUnnamed31(o.clusterIds!);
     checkRowAffinity(o.rowAffinity!);
   }
   buildCounterMultiClusterRoutingUseAny--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed29() => {
+core.Map<core.String, core.Object?> buildUnnamed32() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2519,7 +2746,7 @@ core.Map<core.String, core.Object?> buildUnnamed29() => {
       },
     };
 
-void checkUnnamed29(core.Map<core.String, core.Object?> o) {
+void checkUnnamed32(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -2551,7 +2778,7 @@ void checkUnnamed29(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.Map<core.String, core.Object?> buildUnnamed30() => {
+core.Map<core.String, core.Object?> buildUnnamed33() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2564,7 +2791,7 @@ core.Map<core.String, core.Object?> buildUnnamed30() => {
       },
     };
 
-void checkUnnamed30(core.Map<core.String, core.Object?> o) {
+void checkUnnamed33(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -2603,9 +2830,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed29();
+    o.metadata = buildUnnamed32();
     o.name = 'foo';
-    o.response = buildUnnamed30();
+    o.response = buildUnnamed33();
   }
   buildCounterOperation--;
   return o;
@@ -2616,33 +2843,33 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed29(o.metadata!);
+    checkUnnamed32(o.metadata!);
     unittest.expect(
       o.name!,
       unittest.equals('foo'),
     );
-    checkUnnamed30(o.response!);
+    checkUnnamed33(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.List<api.AuditConfig> buildUnnamed31() => [
+core.List<api.AuditConfig> buildUnnamed34() => [
       buildAuditConfig(),
       buildAuditConfig(),
     ];
 
-void checkUnnamed31(core.List<api.AuditConfig> o) {
+void checkUnnamed34(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-core.List<api.Binding> buildUnnamed32() => [
+core.List<api.Binding> buildUnnamed35() => [
       buildBinding(),
       buildBinding(),
     ];
 
-void checkUnnamed32(core.List<api.Binding> o) {
+void checkUnnamed35(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -2653,8 +2880,8 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed31();
-    o.bindings = buildUnnamed32();
+    o.auditConfigs = buildUnnamed34();
+    o.bindings = buildUnnamed35();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -2665,8 +2892,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed31(o.auditConfigs!);
-    checkUnnamed32(o.bindings!);
+    checkUnnamed34(o.auditConfigs!);
+    checkUnnamed35(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -2677,6 +2904,28 @@ void checkPolicy(api.Policy o) {
     );
   }
   buildCounterPolicy--;
+}
+
+core.int buildCounterProtoSchema = 0;
+api.ProtoSchema buildProtoSchema() {
+  final o = api.ProtoSchema();
+  buildCounterProtoSchema++;
+  if (buildCounterProtoSchema < 3) {
+    o.protoDescriptors = 'foo';
+  }
+  buildCounterProtoSchema--;
+  return o;
+}
+
+void checkProtoSchema(api.ProtoSchema o) {
+  buildCounterProtoSchema++;
+  if (buildCounterProtoSchema < 3) {
+    unittest.expect(
+      o.protoDescriptors!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterProtoSchema--;
 }
 
 core.int buildCounterRestoreInfo = 0;
@@ -2743,6 +2992,35 @@ void checkRowAffinity(api.RowAffinity o) {
   buildCounterRowAffinity++;
   if (buildCounterRowAffinity < 3) {}
   buildCounterRowAffinity--;
+}
+
+core.int buildCounterSchemaBundle = 0;
+api.SchemaBundle buildSchemaBundle() {
+  final o = api.SchemaBundle();
+  buildCounterSchemaBundle++;
+  if (buildCounterSchemaBundle < 3) {
+    o.etag = 'foo';
+    o.name = 'foo';
+    o.protoSchema = buildProtoSchema();
+  }
+  buildCounterSchemaBundle--;
+  return o;
+}
+
+void checkSchemaBundle(api.SchemaBundle o) {
+  buildCounterSchemaBundle++;
+  if (buildCounterSchemaBundle < 3) {
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+    checkProtoSchema(o.protoSchema!);
+  }
+  buildCounterSchemaBundle--;
 }
 
 core.int buildCounterSetIamPolicyRequest = 0;
@@ -2852,7 +3130,7 @@ void checkStandardReadRemoteWrites(api.StandardReadRemoteWrites o) {
   buildCounterStandardReadRemoteWrites--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed33() => {
+core.Map<core.String, core.Object?> buildUnnamed36() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -2865,7 +3143,7 @@ core.Map<core.String, core.Object?> buildUnnamed33() => {
       },
     };
 
-void checkUnnamed33(core.Map<core.String, core.Object?> o) {
+void checkUnnamed36(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -2897,15 +3175,15 @@ void checkUnnamed33(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed34() => [
-      buildUnnamed33(),
-      buildUnnamed33(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed37() => [
+      buildUnnamed36(),
+      buildUnnamed36(),
     ];
 
-void checkUnnamed34(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed37(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed33(o[0]);
-  checkUnnamed33(o[1]);
+  checkUnnamed36(o[0]);
+  checkUnnamed36(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -2914,7 +3192,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed34();
+    o.details = buildUnnamed37();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -2928,7 +3206,7 @@ void checkStatus(api.Status o) {
       o.code!,
       unittest.equals(42),
     );
-    checkUnnamed34(o.details!);
+    checkUnnamed37(o.details!);
     unittest.expect(
       o.message!,
       unittest.equals('foo'),
@@ -2937,23 +3215,23 @@ void checkStatus(api.Status o) {
   buildCounterStatus--;
 }
 
-core.Map<core.String, api.ClusterState> buildUnnamed35() => {
+core.Map<core.String, api.ClusterState> buildUnnamed38() => {
       'x': buildClusterState(),
       'y': buildClusterState(),
     };
 
-void checkUnnamed35(core.Map<core.String, api.ClusterState> o) {
+void checkUnnamed38(core.Map<core.String, api.ClusterState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkClusterState(o['x']!);
   checkClusterState(o['y']!);
 }
 
-core.Map<core.String, api.ColumnFamily> buildUnnamed36() => {
+core.Map<core.String, api.ColumnFamily> buildUnnamed39() => {
       'x': buildColumnFamily(),
       'y': buildColumnFamily(),
     };
 
-void checkUnnamed36(core.Map<core.String, api.ColumnFamily> o) {
+void checkUnnamed39(core.Map<core.String, api.ColumnFamily> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColumnFamily(o['x']!);
   checkColumnFamily(o['y']!);
@@ -2966,13 +3244,15 @@ api.Table buildTable() {
   if (buildCounterTable < 3) {
     o.automatedBackupPolicy = buildAutomatedBackupPolicy();
     o.changeStreamConfig = buildChangeStreamConfig();
-    o.clusterStates = buildUnnamed35();
-    o.columnFamilies = buildUnnamed36();
+    o.clusterStates = buildUnnamed38();
+    o.columnFamilies = buildUnnamed39();
     o.deletionProtection = true;
     o.granularity = 'foo';
     o.name = 'foo';
     o.restoreInfo = buildRestoreInfo();
+    o.rowKeySchema = buildGoogleBigtableAdminV2TypeStruct();
     o.stats = buildTableStats();
+    o.tieredStorageConfig = buildTieredStorageConfig();
   }
   buildCounterTable--;
   return o;
@@ -2983,8 +3263,8 @@ void checkTable(api.Table o) {
   if (buildCounterTable < 3) {
     checkAutomatedBackupPolicy(o.automatedBackupPolicy!);
     checkChangeStreamConfig(o.changeStreamConfig!);
-    checkUnnamed35(o.clusterStates!);
-    checkUnnamed36(o.columnFamilies!);
+    checkUnnamed38(o.clusterStates!);
+    checkUnnamed39(o.columnFamilies!);
     unittest.expect(o.deletionProtection!, unittest.isTrue);
     unittest.expect(
       o.granularity!,
@@ -2995,7 +3275,9 @@ void checkTable(api.Table o) {
       unittest.equals('foo'),
     );
     checkRestoreInfo(o.restoreInfo!);
+    checkGoogleBigtableAdminV2TypeStruct(o.rowKeySchema!);
     checkTableStats(o.stats!);
+    checkTieredStorageConfig(o.tieredStorageConfig!);
   }
   buildCounterTable--;
 }
@@ -3037,12 +3319,12 @@ void checkTableStats(api.TableStats o) {
   buildCounterTableStats--;
 }
 
-core.List<core.String> buildUnnamed37() => [
+core.List<core.String> buildUnnamed40() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed37(core.List<core.String> o) {
+void checkUnnamed40(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3059,7 +3341,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed37();
+    o.permissions = buildUnnamed40();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -3068,17 +3350,17 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed37(o.permissions!);
+    checkUnnamed40(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed38() => [
+core.List<core.String> buildUnnamed41() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed38(core.List<core.String> o) {
+void checkUnnamed41(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3095,7 +3377,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed38();
+    o.permissions = buildUnnamed41();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -3104,9 +3386,50 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed38(o.permissions!);
+    checkUnnamed41(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
+}
+
+core.int buildCounterTieredStorageConfig = 0;
+api.TieredStorageConfig buildTieredStorageConfig() {
+  final o = api.TieredStorageConfig();
+  buildCounterTieredStorageConfig++;
+  if (buildCounterTieredStorageConfig < 3) {
+    o.infrequentAccess = buildTieredStorageRule();
+  }
+  buildCounterTieredStorageConfig--;
+  return o;
+}
+
+void checkTieredStorageConfig(api.TieredStorageConfig o) {
+  buildCounterTieredStorageConfig++;
+  if (buildCounterTieredStorageConfig < 3) {
+    checkTieredStorageRule(o.infrequentAccess!);
+  }
+  buildCounterTieredStorageConfig--;
+}
+
+core.int buildCounterTieredStorageRule = 0;
+api.TieredStorageRule buildTieredStorageRule() {
+  final o = api.TieredStorageRule();
+  buildCounterTieredStorageRule++;
+  if (buildCounterTieredStorageRule < 3) {
+    o.includeIfOlderThan = 'foo';
+  }
+  buildCounterTieredStorageRule--;
+  return o;
+}
+
+void checkTieredStorageRule(api.TieredStorageRule o) {
+  buildCounterTieredStorageRule++;
+  if (buildCounterTieredStorageRule < 3) {
+    unittest.expect(
+      o.includeIfOlderThan!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterTieredStorageRule--;
 }
 
 core.int buildCounterType = 0;
@@ -3119,10 +3442,12 @@ api.Type buildType() {
     o.boolType = buildGoogleBigtableAdminV2TypeBool();
     o.bytesType = buildGoogleBigtableAdminV2TypeBytes();
     o.dateType = buildGoogleBigtableAdminV2TypeDate();
+    o.enumType = buildGoogleBigtableAdminV2TypeEnum();
     o.float32Type = buildGoogleBigtableAdminV2TypeFloat32();
     o.float64Type = buildGoogleBigtableAdminV2TypeFloat64();
     o.int64Type = buildGoogleBigtableAdminV2TypeInt64();
     o.mapType = buildGoogleBigtableAdminV2TypeMap();
+    o.protoType = buildGoogleBigtableAdminV2TypeProto();
     o.stringType = buildGoogleBigtableAdminV2TypeString();
     o.structType = buildGoogleBigtableAdminV2TypeStruct();
     o.timestampType = buildGoogleBigtableAdminV2TypeTimestamp();
@@ -3139,10 +3464,12 @@ void checkType(api.Type o) {
     checkGoogleBigtableAdminV2TypeBool(o.boolType!);
     checkGoogleBigtableAdminV2TypeBytes(o.bytesType!);
     checkGoogleBigtableAdminV2TypeDate(o.dateType!);
+    checkGoogleBigtableAdminV2TypeEnum(o.enumType!);
     checkGoogleBigtableAdminV2TypeFloat32(o.float32Type!);
     checkGoogleBigtableAdminV2TypeFloat64(o.float64Type!);
     checkGoogleBigtableAdminV2TypeInt64(o.int64Type!);
     checkGoogleBigtableAdminV2TypeMap(o.mapType!);
+    checkGoogleBigtableAdminV2TypeProto(o.protoType!);
     checkGoogleBigtableAdminV2TypeString(o.stringType!);
     checkGoogleBigtableAdminV2TypeStruct(o.structType!);
     checkGoogleBigtableAdminV2TypeTimestamp(o.timestampType!);
@@ -3165,12 +3492,12 @@ void checkUndeleteTableRequest(api.UndeleteTableRequest o) {
   buildCounterUndeleteTableRequest--;
 }
 
-core.List<api.GcRule> buildUnnamed39() => [
+core.List<api.GcRule> buildUnnamed42() => [
       buildGcRule(),
       buildGcRule(),
     ];
 
-void checkUnnamed39(core.List<api.GcRule> o) {
+void checkUnnamed42(core.List<api.GcRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGcRule(o[0]);
   checkGcRule(o[1]);
@@ -3181,7 +3508,7 @@ api.Union buildUnion() {
   final o = api.Union();
   buildCounterUnion++;
   if (buildCounterUnion < 3) {
-    o.rules = buildUnnamed39();
+    o.rules = buildUnnamed42();
   }
   buildCounterUnion--;
   return o;
@@ -3190,9 +3517,26 @@ api.Union buildUnion() {
 void checkUnion(api.Union o) {
   buildCounterUnion++;
   if (buildCounterUnion < 3) {
-    checkUnnamed39(o.rules!);
+    checkUnnamed42(o.rules!);
   }
   buildCounterUnion--;
+}
+
+core.List<core.String> buildUnnamed43() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed43(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -3672,6 +4016,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-GoogleBigtableAdminV2TypeEnum', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleBigtableAdminV2TypeEnum();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleBigtableAdminV2TypeEnum.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleBigtableAdminV2TypeEnum(od);
+    });
+  });
+
   unittest.group('obj-schema-GoogleBigtableAdminV2TypeFloat32', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleBigtableAdminV2TypeFloat32();
@@ -3743,6 +4097,16 @@ void main() {
       final od = api.GoogleBigtableAdminV2TypeMap.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkGoogleBigtableAdminV2TypeMap(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleBigtableAdminV2TypeProto', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleBigtableAdminV2TypeProto();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleBigtableAdminV2TypeProto.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkGoogleBigtableAdminV2TypeProto(od);
     });
   });
 
@@ -3973,6 +4337,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListLogicalViewsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListLogicalViewsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListLogicalViewsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListLogicalViewsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListMaterializedViewsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListMaterializedViewsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListMaterializedViewsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListMaterializedViewsResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-ListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildListOperationsResponse();
@@ -3980,6 +4364,16 @@ void main() {
       final od = api.ListOperationsResponse.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkListOperationsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListSchemaBundlesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListSchemaBundlesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListSchemaBundlesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkListSchemaBundlesResponse(od);
     });
   });
 
@@ -4000,6 +4394,26 @@ void main() {
       final od =
           api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLocation(od);
+    });
+  });
+
+  unittest.group('obj-schema-LogicalView', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildLogicalView();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.LogicalView.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkLogicalView(od);
+    });
+  });
+
+  unittest.group('obj-schema-MaterializedView', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMaterializedView();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MaterializedView.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkMaterializedView(od);
     });
   });
 
@@ -4053,6 +4467,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ProtoSchema', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildProtoSchema();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProtoSchema.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkProtoSchema(od);
+    });
+  });
+
   unittest.group('obj-schema-RestoreInfo', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRestoreInfo();
@@ -4080,6 +4504,16 @@ void main() {
       final od = api.RowAffinity.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkRowAffinity(od);
+    });
+  });
+
+  unittest.group('obj-schema-SchemaBundle', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSchemaBundle();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SchemaBundle.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkSchemaBundle(od);
     });
   });
 
@@ -4183,6 +4617,26 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-TieredStorageConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTieredStorageConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TieredStorageConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTieredStorageConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-TieredStorageRule', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTieredStorageRule();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TieredStorageRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkTieredStorageRule(od);
+    });
+  });
+
   unittest.group('obj-schema-Type', () {
     unittest.test('to-json--from-json', () async {
       final o = buildType();
@@ -4214,6 +4668,110 @@ void main() {
   });
 
   unittest.group('resource-OperationsResource', () {
+    unittest.test('method--cancel', () async {
+      final mock = HttpServerMock();
+      final res = api.BigtableAdminApi(mock).operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.cancel(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.BigtableAdminApi(mock).operations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.BigtableAdminApi(mock).operations;
@@ -6155,6 +6713,179 @@ void main() {
   });
 
   unittest.group('resource-ProjectsInstancesLogicalViewsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res = api.BigtableAdminApi(mock).projects.instances.logicalViews;
+      final arg_request = buildLogicalView();
+      final arg_parent = 'foo';
+      final arg_logicalViewId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.LogicalView.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLogicalView(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['logicalViewId']!.first,
+          unittest.equals(arg_logicalViewId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          logicalViewId: arg_logicalViewId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res = api.BigtableAdminApi(mock).projects.instances.logicalViews;
+      final arg_name = 'foo';
+      final arg_etag = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['etag']!.first,
+          unittest.equals(arg_etag),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.BigtableAdminApi(mock).projects.instances.logicalViews;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildLogicalView());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogicalView(response as api.LogicalView);
+    });
+
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
       final res = api.BigtableAdminApi(mock).projects.instances.logicalViews;
@@ -6211,6 +6942,134 @@ void main() {
       final response = await res.getIamPolicy(arg_request, arg_resource,
           $fields: arg_$fields);
       checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res = api.BigtableAdminApi(mock).projects.instances.logicalViews;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListLogicalViewsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLogicalViewsResponse(response as api.ListLogicalViewsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res = api.BigtableAdminApi(mock).projects.instances.logicalViews;
+      final arg_request = buildLogicalView();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.LogicalView.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLogicalView(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
     unittest.test('method--setIamPolicy', () async {
@@ -6332,6 +7191,182 @@ void main() {
   });
 
   unittest.group('resource-ProjectsInstancesMaterializedViewsResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final arg_request = buildMaterializedView();
+      final arg_parent = 'foo';
+      final arg_materializedViewId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.MaterializedView.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkMaterializedView(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['materializedViewId']!.first,
+          unittest.equals(arg_materializedViewId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          materializedViewId: arg_materializedViewId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final arg_name = 'foo';
+      final arg_etag = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['etag']!.first,
+          unittest.equals(arg_etag),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildMaterializedView());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkMaterializedView(response as api.MaterializedView);
+    });
+
     unittest.test('method--getIamPolicy', () async {
       final mock = HttpServerMock();
       final res =
@@ -6389,6 +7424,137 @@ void main() {
       final response = await res.getIamPolicy(arg_request, arg_resource,
           $fields: arg_$fields);
       checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListMaterializedViewsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListMaterializedViewsResponse(
+          response as api.ListMaterializedViewsResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.materializedViews;
+      final arg_request = buildMaterializedView();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.MaterializedView.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkMaterializedView(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
     unittest.test('method--setIamPolicy', () async {
@@ -7048,6 +8214,7 @@ void main() {
       final res = api.BigtableAdminApi(mock).projects.instances.tables;
       final arg_request = buildTable();
       final arg_name = 'foo';
+      final arg_ignoreWarnings = true;
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7087,6 +8254,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['ignoreWarnings']!.first,
+          unittest.equals('$arg_ignoreWarnings'),
+        );
+        unittest.expect(
           queryMap['updateMask']!.first,
           unittest.equals(arg_updateMask),
         );
@@ -7102,7 +8273,9 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.patch(arg_request, arg_name,
-          updateMask: arg_updateMask, $fields: arg_$fields);
+          ignoreWarnings: arg_ignoreWarnings,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
       checkOperation(response as api.Operation);
     });
 
@@ -7846,11 +9019,563 @@ void main() {
     });
   });
 
+  unittest.group('resource-ProjectsInstancesTablesSchemaBundlesResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final arg_request = buildSchemaBundle();
+      final arg_parent = 'foo';
+      final arg_schemaBundleId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SchemaBundle.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSchemaBundle(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['schemaBundleId']!.first,
+          unittest.equals(arg_schemaBundleId),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.create(arg_request, arg_parent,
+          schemaBundleId: arg_schemaBundleId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final arg_name = 'foo';
+      final arg_etag = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['etag']!.first,
+          unittest.equals(arg_etag),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildEmpty());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildSchemaBundle());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSchemaBundle(response as api.SchemaBundle);
+    });
+
+    unittest.test('method--getIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final arg_request = buildGetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.GetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIamPolicyRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final arg_parent = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_view = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          core.int.parse(queryMap['pageSize']!.first),
+          unittest.equals(arg_pageSize),
+        );
+        unittest.expect(
+          queryMap['pageToken']!.first,
+          unittest.equals(arg_pageToken),
+        );
+        unittest.expect(
+          queryMap['view']!.first,
+          unittest.equals(arg_view),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildListSchemaBundlesResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListSchemaBundlesResponse(response as api.ListSchemaBundlesResponse);
+    });
+
+    unittest.test('method--patch', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final arg_request = buildSchemaBundle();
+      final arg_name = 'foo';
+      final arg_ignoreWarnings = true;
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SchemaBundle.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSchemaBundle(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['ignoreWarnings']!.first,
+          unittest.equals('$arg_ignoreWarnings'),
+        );
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.patch(arg_request, arg_name,
+          ignoreWarnings: arg_ignoreWarnings,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--setIamPolicy', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final arg_request = buildSetIamPolicyRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildPolicy());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
+    });
+
+    unittest.test('method--testIamPermissions', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.BigtableAdminApi(mock).projects.instances.tables.schemaBundles;
+      final arg_request = buildTestIamPermissionsRequest();
+      final arg_resource = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildTestIamPermissionsResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
+    });
+  });
+
   unittest.group('resource-ProjectsLocationsResource', () {
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res = api.BigtableAdminApi(mock).projects.locations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v2/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildLocation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
+    });
+
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.BigtableAdminApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed43();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7888,6 +9613,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -7911,6 +9640,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,

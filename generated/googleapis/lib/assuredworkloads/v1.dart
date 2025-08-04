@@ -22,6 +22,7 @@
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsOperationsResource]
 ///     - [OrganizationsLocationsWorkloadsResource]
+///       - [OrganizationsLocationsWorkloadsUpdatesResource]
 ///       - [OrganizationsLocationsWorkloadsViolationsResource]
 library;
 
@@ -176,6 +177,8 @@ class OrganizationsLocationsOperationsResource {
 class OrganizationsLocationsWorkloadsResource {
   final commons.ApiRequester _requester;
 
+  OrganizationsLocationsWorkloadsUpdatesResource get updates =>
+      OrganizationsLocationsWorkloadsUpdatesResource(_requester);
   OrganizationsLocationsWorkloadsViolationsResource get violations =>
       OrganizationsLocationsWorkloadsViolationsResource(_requester);
 
@@ -204,7 +207,7 @@ class OrganizationsLocationsWorkloadsResource {
   /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
   ///
   /// [pageSize] - Optional. Page size. If a value is not specified, the default
-  /// value of 10 is used.
+  /// value of 10 is used. The maximum value is 50.
   ///
   /// [pageToken] - Optional. The page token from the previous response. It
   /// needs to be passed in the second and following requests.
@@ -352,6 +355,55 @@ class OrganizationsLocationsWorkloadsResource {
     );
     return GoogleProtobufEmpty.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// This endpoint enables Assured Workloads service to offer compliance
+  /// updates for the folder based assured workload.
+  ///
+  /// It sets up an Assured Workloads Service Agent, having permissions to read
+  /// compliance controls (for example: Org Policies) applied on the workload.
+  /// The caller must have `resourcemanager.folders.getIamPolicy` and
+  /// `resourcemanager.folders.setIamPolicy` permissions on the assured workload
+  /// folder.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The `name` field is used to identify the workload.
+  /// Format:
+  /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/workloads/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse>
+      enableComplianceUpdates(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':enableComplianceUpdates';
+
+    final response_ = await _requester.request(
+      url_,
+      'PUT',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse
+        .fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Enable resource violation monitoring for a workload.
@@ -645,6 +697,104 @@ class OrganizationsLocationsWorkloadsResource {
   }
 }
 
+class OrganizationsLocationsWorkloadsUpdatesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsWorkloadsUpdatesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// This endpoint creates a new operation to apply the given update.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the update. Format:
+  /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}/updates/{update_id}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/workloads/\[^/\]+/updates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> apply(
+    GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':apply';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// This endpoint lists all updates for the given workload.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required.
+  /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/workloads/\[^/\]+$`.
+  ///
+  /// [pageSize] - Page size. The default value is 20 and the max allowed value
+  /// is 100.
+  ///
+  /// [pageToken] - Page token returned from previous request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/updates';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class OrganizationsLocationsWorkloadsViolationsResource {
   final commons.ApiRequester _requester;
 
@@ -895,6 +1045,29 @@ class GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse {
       };
 }
 
+/// Request to apply update to a workload.
+class GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest {
+  /// The action to be performed on the update.
+  /// Possible string values are:
+  /// - "WORKLOAD_UPDATE_ACTION_UNSPECIFIED" : Unspecified value.
+  /// - "APPLY" : The update is applied.
+  core.String? action;
+
+  GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest({
+    this.action,
+  });
+
+  GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest.fromJson(
+      core.Map json_)
+      : this(
+          action: json_['action'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (action != null) 'action': action!,
+      };
+}
+
 /// Represents move analysis results for an asset.
 class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis {
   /// List of eligible analyses performed for the asset.
@@ -936,6 +1109,9 @@ class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis {
       };
 }
 
+/// Response for EnableComplianceUpdates endpoint.
+typedef GoogleCloudAssuredworkloadsV1EnableComplianceUpdatesResponse = $Empty;
+
 /// Response for EnableResourceMonitoring endpoint.
 typedef GoogleCloudAssuredworkloadsV1EnableResourceMonitoringResponse = $Empty;
 
@@ -966,6 +1142,38 @@ class GoogleCloudAssuredworkloadsV1ListViolationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (violations != null) 'violations': violations!,
+      };
+}
+
+/// Response of listing the compliance updates per workload with pagination.
+class GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse {
+  /// The next page token.
+  ///
+  /// Return empty if reached the last page.
+  core.String? nextPageToken;
+
+  /// The list of workload updates for a given workload.
+  core.List<GoogleCloudAssuredworkloadsV1WorkloadUpdate>? workloadUpdates;
+
+  GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse({
+    this.nextPageToken,
+    this.workloadUpdates,
+  });
+
+  GoogleCloudAssuredworkloadsV1ListWorkloadUpdatesResponse.fromJson(
+      core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          workloadUpdates: (json_['workloadUpdates'] as core.List?)
+              ?.map((value) =>
+                  GoogleCloudAssuredworkloadsV1WorkloadUpdate.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (workloadUpdates != null) 'workloadUpdates': workloadUpdates!,
       };
 }
 
@@ -1141,6 +1349,147 @@ class GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest {
       };
 }
 
+/// This assured workload service object is used to represent the org policy
+/// attached to a resource.
+///
+/// It servces the same purpose as the orgpolicy.v2.Policy object but with
+/// functionality that is limited to what is supported by Assured Workloads(e.g.
+/// only one rule under one OrgPolicy object, no conditions, etc).
+class GoogleCloudAssuredworkloadsV1OrgPolicy {
+  /// The constraint name of the OrgPolicy.
+  ///
+  /// e.g. "constraints/gcp.resourceLocations".
+  core.String? constraint;
+
+  /// If `inherit` is true, policy rules of the lowest ancestor in the resource
+  /// hierarchy chain are inherited.
+  ///
+  /// If it is false, policy rules are not inherited.
+  core.bool? inherit;
+
+  /// Ignores policies set above this resource and restores to the
+  /// `constraint_default` value.
+  ///
+  /// `reset` can only be true when `rules` is empty and `inherit` is false.
+  core.bool? reset;
+
+  /// Resource that the OrgPolicy attaches to.
+  ///
+  /// Format: folders/123" projects/123".
+  core.String? resource;
+
+  /// The rule of the OrgPolicy.
+  GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule? rule;
+
+  GoogleCloudAssuredworkloadsV1OrgPolicy({
+    this.constraint,
+    this.inherit,
+    this.reset,
+    this.resource,
+    this.rule,
+  });
+
+  GoogleCloudAssuredworkloadsV1OrgPolicy.fromJson(core.Map json_)
+      : this(
+          constraint: json_['constraint'] as core.String?,
+          inherit: json_['inherit'] as core.bool?,
+          reset: json_['reset'] as core.bool?,
+          resource: json_['resource'] as core.String?,
+          rule: json_.containsKey('rule')
+              ? GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule.fromJson(
+                  json_['rule'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (constraint != null) 'constraint': constraint!,
+        if (inherit != null) 'inherit': inherit!,
+        if (reset != null) 'reset': reset!,
+        if (resource != null) 'resource': resource!,
+        if (rule != null) 'rule': rule!,
+      };
+}
+
+/// A rule used to express this policy.
+class GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule {
+  /// ListPolicy only when all values are allowed.
+  core.bool? allowAll;
+
+  /// ListPolicy only when all values are denied.
+  core.bool? denyAll;
+
+  /// BooleanPolicy only.
+  core.bool? enforce;
+
+  /// ListPolicy only when custom values are specified.
+  GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues? values;
+
+  GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule({
+    this.allowAll,
+    this.denyAll,
+    this.enforce,
+    this.values,
+  });
+
+  GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRule.fromJson(core.Map json_)
+      : this(
+          allowAll: json_['allowAll'] as core.bool?,
+          denyAll: json_['denyAll'] as core.bool?,
+          enforce: json_['enforce'] as core.bool?,
+          values: json_.containsKey('values')
+              ? GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues
+                  .fromJson(
+                      json_['values'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowAll != null) 'allowAll': allowAll!,
+        if (denyAll != null) 'denyAll': denyAll!,
+        if (enforce != null) 'enforce': enforce!,
+        if (values != null) 'values': values!,
+      };
+}
+
+/// The values allowed for a ListPolicy.
+typedef GoogleCloudAssuredworkloadsV1OrgPolicyPolicyRuleStringValues
+    = $StringValues;
+
+/// Represents an update for an org policy control applied on an Assured
+/// Workload resource.
+///
+/// The inherited org policy is not considered.
+class GoogleCloudAssuredworkloadsV1OrgPolicyUpdate {
+  /// The org policy currently applied on the assured workload resource.
+  GoogleCloudAssuredworkloadsV1OrgPolicy? appliedPolicy;
+
+  /// The suggested org policy that replaces the applied policy.
+  GoogleCloudAssuredworkloadsV1OrgPolicy? suggestedPolicy;
+
+  GoogleCloudAssuredworkloadsV1OrgPolicyUpdate({
+    this.appliedPolicy,
+    this.suggestedPolicy,
+  });
+
+  GoogleCloudAssuredworkloadsV1OrgPolicyUpdate.fromJson(core.Map json_)
+      : this(
+          appliedPolicy: json_.containsKey('appliedPolicy')
+              ? GoogleCloudAssuredworkloadsV1OrgPolicy.fromJson(
+                  json_['appliedPolicy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          suggestedPolicy: json_.containsKey('suggestedPolicy')
+              ? GoogleCloudAssuredworkloadsV1OrgPolicy.fromJson(
+                  json_['suggestedPolicy']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appliedPolicy != null) 'appliedPolicy': appliedPolicy!,
+        if (suggestedPolicy != null) 'suggestedPolicy': suggestedPolicy!,
+      };
+}
+
 /// Request for restricting list of available resources in Workload environment.
 class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
   /// The type of restriction for using gcp products in the Workload
@@ -1179,6 +1528,29 @@ class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
 
 /// Response for restricting the list of allowed resources.
 typedef GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse = $Empty;
+
+/// The details of the update.
+class GoogleCloudAssuredworkloadsV1UpdateDetails {
+  /// Update to one org policy, e.g. gcp.resourceLocation.
+  GoogleCloudAssuredworkloadsV1OrgPolicyUpdate? orgPolicyUpdate;
+
+  GoogleCloudAssuredworkloadsV1UpdateDetails({
+    this.orgPolicyUpdate,
+  });
+
+  GoogleCloudAssuredworkloadsV1UpdateDetails.fromJson(core.Map json_)
+      : this(
+          orgPolicyUpdate: json_.containsKey('orgPolicyUpdate')
+              ? GoogleCloudAssuredworkloadsV1OrgPolicyUpdate.fromJson(
+                  json_['orgPolicyUpdate']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (orgPolicyUpdate != null) 'orgPolicyUpdate': orgPolicyUpdate!,
+      };
+}
 
 /// Workload monitoring Violation.
 class GoogleCloudAssuredworkloadsV1Violation {
@@ -1601,6 +1973,36 @@ class GoogleCloudAssuredworkloadsV1Workload {
   /// Science Controls with US Support
   /// - "IRS_1075" : Internal Revenue Service 1075 controls
   /// - "CANADA_CONTROLLED_GOODS" : Canada Controlled Goods
+  /// - "AUSTRALIA_DATA_BOUNDARY_AND_SUPPORT" : Australia Data Boundary and
+  /// Support
+  /// - "CANADA_DATA_BOUNDARY_AND_SUPPORT" : Canada Data Boundary and Support
+  /// - "DATA_BOUNDARY_FOR_CANADA_CONTROLLED_GOODS" : Data Boundary for Canada
+  /// Controlled Goods
+  /// - "DATA_BOUNDARY_FOR_CANADA_PROTECTED_B" : Data Boundary for Canada
+  /// Protected B
+  /// - "DATA_BOUNDARY_FOR_CJIS" : Data Boundary for CJIS
+  /// - "DATA_BOUNDARY_FOR_FEDRAMP_HIGH" : Data Boundary for FedRAMP High
+  /// - "DATA_BOUNDARY_FOR_FEDRAMP_MODERATE" : Data Boundary for FedRAMP
+  /// Moderate
+  /// - "DATA_BOUNDARY_FOR_IL2" : Data Boundary for IL2
+  /// - "DATA_BOUNDARY_FOR_IL4" : Data Boundary for IL4
+  /// - "DATA_BOUNDARY_FOR_IL5" : Data Boundary for IL5
+  /// - "DATA_BOUNDARY_FOR_IRS_PUBLICATION_1075" : Data Boundary for IRS
+  /// Publication 1075
+  /// - "DATA_BOUNDARY_FOR_ITAR" : Data Boundary for ITAR
+  /// - "EU_DATA_BOUNDARY_AND_SUPPORT" : Data Boundary for EU Regions and
+  /// Support
+  /// - "ISRAEL_DATA_BOUNDARY_AND_SUPPORT" : Data Boundary for Israel Regions
+  /// - "US_DATA_BOUNDARY_AND_SUPPORT" : Data Boundary for US Regions and
+  /// Support
+  /// - "US_DATA_BOUNDARY_FOR_HEALTHCARE_AND_LIFE_SCIENCES" : Data Boundary for
+  /// US Healthcare and Life Sciences
+  /// - "US_DATA_BOUNDARY_FOR_HEALTHCARE_AND_LIFE_SCIENCES_WITH_SUPPORT" : Data
+  /// Boundary for US Healthcare and Life Sciences with Support
+  /// - "KSA_DATA_BOUNDARY_WITH_ACCESS_JUSTIFICATIONS" : KSA Data Boundary with
+  /// Access Justifications
+  /// - "REGIONAL_DATA_BOUNDARY" : Regional Data Boundary
+  /// - "JAPAN_DATA_BOUNDARY" : JAPAN Data Boundary
   core.String? complianceRegime;
 
   /// Count of active Violations in the Workload.
@@ -2223,6 +2625,64 @@ class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (setupErrors != null) 'setupErrors': setupErrors!,
         if (setupStatus != null) 'setupStatus': setupStatus!,
+      };
+}
+
+/// A workload update is a change to the workload's compliance configuration.
+class GoogleCloudAssuredworkloadsV1WorkloadUpdate {
+  /// The time the update was created.
+  core.String? createTime;
+
+  /// The details of the update.
+  GoogleCloudAssuredworkloadsV1UpdateDetails? details;
+
+  /// Identifier.
+  ///
+  /// Resource name of the WorkloadUpdate. Format:
+  /// organizations/{organization}/locations/{location}/workloads/{workload}/updates/{update}
+  ///
+  /// Output only. Immutable.
+  core.String? name;
+
+  /// The state of the update.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified.
+  /// - "AVAILABLE" : The update is available to be applied.
+  /// - "APPLIED" : The update has been applied.
+  /// - "WITHDRAWN" : The update has been withdrawn by the service.
+  core.String? state;
+
+  /// The time the update was last updated.
+  core.String? updateTime;
+
+  GoogleCloudAssuredworkloadsV1WorkloadUpdate({
+    this.createTime,
+    this.details,
+    this.name,
+    this.state,
+    this.updateTime,
+  });
+
+  GoogleCloudAssuredworkloadsV1WorkloadUpdate.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          details: json_.containsKey('details')
+              ? GoogleCloudAssuredworkloadsV1UpdateDetails.fromJson(
+                  json_['details'] as core.Map<core.String, core.dynamic>)
+              : null,
+          name: json_['name'] as core.String?,
+          state: json_['state'] as core.String?,
+          updateTime: json_['updateTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (details != null) 'details': details!,
+        if (name != null) 'name': name!,
+        if (state != null) 'state': state!,
+        if (updateTime != null) 'updateTime': updateTime!,
       };
 }
 

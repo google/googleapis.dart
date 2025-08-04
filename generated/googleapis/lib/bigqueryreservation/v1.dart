@@ -14,7 +14,7 @@
 
 /// BigQuery Reservation API - v1
 ///
-/// A service to modify your BigQuery flat-rate reservations.
+/// A service to modify your BigQuery reservations.
 ///
 /// For more information, see <https://cloud.google.com/bigquery/>
 ///
@@ -23,6 +23,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsCapacityCommitmentsResource]
+///     - [ProjectsLocationsReservationGroupsResource]
 ///     - [ProjectsLocationsReservationsResource]
 ///       - [ProjectsLocationsReservationsAssignmentsResource]
 library;
@@ -40,7 +41,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// A service to modify your BigQuery flat-rate reservations.
+/// A service to modify your BigQuery reservations.
 class BigQueryReservationApi {
   /// View and manage your data in Google BigQuery and see the email address for
   /// your Google Account
@@ -76,6 +77,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsCapacityCommitmentsResource get capacityCommitments =>
       ProjectsLocationsCapacityCommitmentsResource(_requester);
+  ProjectsLocationsReservationGroupsResource get reservationGroups =>
+      ProjectsLocationsReservationGroupsResource(_requester);
   ProjectsLocationsReservationsResource get reservations =>
       ProjectsLocationsReservationsResource(_requester);
 
@@ -264,8 +267,8 @@ class ProjectsLocationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the singleton BI reservation. Reservation
-  /// names have the form
+  /// [name] - Identifier. The resource name of the singleton BI reservation.
+  /// Reservation names have the form
   /// `projects/{project_id}/locations/{location_id}/biReservation`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/biReservation$`.
@@ -658,6 +661,187 @@ class ProjectsLocationsCapacityCommitmentsResource {
   }
 }
 
+class ProjectsLocationsReservationGroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsReservationGroupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new reservation group.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Project, location. E.g.,
+  /// `projects/myproject/locations/US`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [reservationGroupId] - Required. The reservation group ID. It must only
+  /// contain lower case alphanumeric characters or dashes. It must start with a
+  /// letter and must not end with a dash. Its maximum length is 64 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReservationGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReservationGroup> create(
+    ReservationGroup request,
+    core.String parent, {
+    core.String? reservationGroupId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (reservationGroupId != null)
+        'reservationGroupId': [reservationGroupId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/reservationGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ReservationGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a reservation.
+  ///
+  /// Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has
+  /// assignments.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the reservation group to retrieve.
+  /// E.g., `projects/myproject/locations/US/reservationGroups/team1-prod`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservationGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns information about the reservation group.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the reservation group to retrieve.
+  /// E.g., `projects/myproject/locations/US/reservationGroups/team1-prod`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservationGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReservationGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReservationGroup> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ReservationGroup.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the reservation groups for the project in the specified
+  /// location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name containing project and
+  /// location, e.g.: `projects/myproject/locations/US`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of items to return per page.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListReservationGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListReservationGroupsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/reservationGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListReservationGroupsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsReservationsResource {
   final commons.ApiRequester _requester;
 
@@ -841,6 +1025,68 @@ class ProjectsLocationsReservationsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the access control policy for a resource.
+  ///
+  /// May return: * A`NOT_FOUND` error if the resource doesn't exist or you
+  /// don't have the permission to view it. * An empty policy if the resource
+  /// exists but doesn't have a set policy. Supported resources are: -
+  /// Reservations - ReservationAssignments To call this method, you must have
+  /// the following Google IAM permissions: -
+  /// `bigqueryreservation.reservations.getIamPolicy` to get policies on
+  /// reservations.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists all the reservations for the project in the specified location.
   ///
   /// Request parameters:
@@ -893,8 +1139,8 @@ class ProjectsLocationsReservationsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the reservation, e.g., `projects / *
-  /// /locations / * /reservations/team1-prod`. The reservation_id must only
+  /// [name] - Identifier. The resource name of the reservation, e.g., `projects
+  /// / * /locations / * /reservations/team1-prod`. The reservation_id must only
   /// contain lower case alphanumeric characters or dashes. It must start with a
   /// letter and must not end with a dash. Its maximum length is 64 characters.
   /// Value must have pattern
@@ -933,6 +1179,105 @@ class ProjectsLocationsReservationsResource {
       queryParams: queryParams_,
     );
     return Reservation.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets an access control policy for a resource.
+  ///
+  /// Replaces any existing policy. Supported resources are: - Reservations To
+  /// call this method, you must have the following Google IAM permissions: -
+  /// `bigqueryreservation.reservations.setIamPolicy` to set policies on
+  /// reservations.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets your permissions on a resource.
+  ///
+  /// Returns an empty set of permissions if the resource doesn't exist.
+  /// Supported resources are: - Reservations No Google IAM permissions are
+  /// required to call this method.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -1057,6 +1402,68 @@ class ProjectsLocationsReservationsAssignmentsResource {
       queryParams: queryParams_,
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// May return: * A`NOT_FOUND` error if the resource doesn't exist or you
+  /// don't have the permission to view it. * An empty policy if the resource
+  /// exists but doesn't have a set policy. Supported resources are: -
+  /// Reservations - ReservationAssignments To call this method, you must have
+  /// the following Google IAM permissions: -
+  /// `bigqueryreservation.reservations.getIamPolicy` to get policies on
+  /// reservations.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+/assignments/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists assignments.
@@ -1215,6 +1622,105 @@ class ProjectsLocationsReservationsAssignmentsResource {
     return Assignment.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Sets an access control policy for a resource.
+  ///
+  /// Replaces any existing policy. Supported resources are: - Reservations To
+  /// call this method, you must have the following Google IAM permissions: -
+  /// `bigqueryreservation.reservations.setIamPolicy` to set policies on
+  /// reservations.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+/assignments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets your permissions on a resource.
+  ///
+  /// Returns an empty set of permissions if the resource doesn't exist.
+  /// Supported resources are: - Reservations No Google IAM permissions are
+  /// required to call this method.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+/assignments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 /// An assignment allows a project to submit jobs of a certain type using slots
@@ -1223,6 +1729,8 @@ class Assignment {
   /// The resource which will use the reservation.
   ///
   /// E.g. `projects/myproject`, `folders/123`, or `organizations/456`.
+  ///
+  /// Optional.
   core.String? assignee;
 
   /// This field controls if "Gemini in BigQuery"
@@ -1239,6 +1747,8 @@ class Assignment {
   core.bool? enableGeminiInBigquery;
 
   /// Which type of jobs will use the reservation.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "JOB_TYPE_UNSPECIFIED" : Invalid type. Requests with this value will be
   /// rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.
@@ -1302,6 +1812,61 @@ class Assignment {
       };
 }
 
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
+/// service: the log_types specified in each AuditConfig are enabled, and the
+/// exempted_members in each AuditLogConfig are exempted. Example Policy with
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
+class AuditConfig {
+  /// The configuration for logging of each type of permission.
+  core.List<AuditLogConfig>? auditLogConfigs;
+
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
+  core.String? service;
+
+  AuditConfig({
+    this.auditLogConfigs,
+    this.service,
+  });
+
+  AuditConfig.fromJson(core.Map json_)
+      : this(
+          auditLogConfigs: (json_['auditLogConfigs'] as core.List?)
+              ?.map((value) => AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          service: json_['service'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+        if (service != null) 'service': service!,
+      };
+}
+
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
+typedef AuditLogConfig = $AuditLogConfig;
+
 /// Auto scaling settings.
 class Autoscale {
   /// The slot capacity added to this reservation when autoscale happens.
@@ -1315,6 +1880,8 @@ class Autoscale {
   core.String? currentSlots;
 
   /// Number of slots to be scaled when needed.
+  ///
+  /// Optional.
   core.String? maxSlots;
 
   Autoscale({
@@ -1336,16 +1903,20 @@ class Autoscale {
 
 /// Represents a BI Reservation.
 class BiReservation {
-  /// The resource name of the singleton BI reservation.
+  /// Identifier.
   ///
-  /// Reservation names have the form
-  /// `projects/{project_id}/locations/{location_id}/biReservation`.
+  /// The resource name of the singleton BI reservation. Reservation names have
+  /// the form `projects/{project_id}/locations/{location_id}/biReservation`.
   core.String? name;
 
   /// Preferred tables to use BI capacity for.
+  ///
+  /// Optional.
   core.List<TableReference>? preferredTables;
 
   /// Size of a reservation, in bytes.
+  ///
+  /// Optional.
   core.String? size;
 
   /// The last update timestamp of a reservation.
@@ -1379,6 +1950,111 @@ class BiReservation {
       };
 }
 
+/// Associates `members`, or principals, with a `role`.
+class Binding {
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  Expr? condition;
+
+  /// Specifies the principals requesting access for a Google Cloud resource.
+  ///
+  /// `members` can have the following values: * `allUsers`: A special
+  /// identifier that represents anyone who is on the internet; with or without
+  /// a Google account. * `allAuthenticatedUsers`: A special identifier that
+  /// represents anyone who is authenticated with a Google account or a service
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
+  /// `group:{emailid}`: An email address that represents a Google group. For
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
+  /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
+  /// the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  /// role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email
+  /// address (plus unique identifier) representing a Google group that has been
+  /// recently deleted. For example,
+  /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
+  /// this value reverts to `group:{emailid}` and the recovered group retains
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+  core.List<core.String>? members;
+
+  /// Role that is assigned to the list of `members`, or principals.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
+  core.String? role;
+
+  Binding({
+    this.condition,
+    this.members,
+    this.role,
+  });
+
+  Binding.fromJson(core.Map json_)
+      : this(
+          condition: json_.containsKey('condition')
+              ? Expr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>)
+              : null,
+          members: (json_['members'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          role: json_['role'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (condition != null) 'condition': condition!,
+        if (members != null) 'members': members!,
+        if (role != null) 'role': role!,
+      };
+}
+
 /// Capacity commitment is a way to purchase compute capacity for BigQuery jobs
 /// (in the form of slots) with some committed period of usage.
 ///
@@ -1407,6 +2083,8 @@ class CapacityCommitment {
   core.String? commitmentStartTime;
 
   /// Edition of the capacity commitment.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "EDITION_UNSPECIFIED" : Default value, which will be treated as
   /// ENTERPRISE.
@@ -1433,6 +2111,9 @@ class CapacityCommitment {
   /// region which is designated for disaster recovery purposes. If false, this
   /// commitment is placed in the organization's default region. NOTE: this is a
   /// preview feature. Project must be allow-listed in order to set this field.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? multiRegionAuxiliary;
 
   /// The resource name of the capacity commitment, e.g.,
@@ -1447,6 +2128,8 @@ class CapacityCommitment {
   core.String? name;
 
   /// Capacity commitment commitment plan.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "COMMITMENT_PLAN_UNSPECIFIED" : Invalid plan value. Requests with this
   /// value will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.
@@ -1485,6 +2168,8 @@ class CapacityCommitment {
   ///
   /// Once the plan is changed, committed period is extended according to
   /// commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "COMMITMENT_PLAN_UNSPECIFIED" : Invalid plan value. Requests with this
   /// value will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.
@@ -1519,6 +2204,8 @@ class CapacityCommitment {
   core.String? renewalPlan;
 
   /// Number of slots in this commitment.
+  ///
+  /// Optional.
   core.String? slotCount;
 
   /// State of the commitment.
@@ -1590,8 +2277,53 @@ class CapacityCommitment {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() \< 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
+typedef Expr = $Expr;
+
 /// The request for ReservationService.FailoverReservation.
-typedef FailoverReservationRequest = $Empty;
+class FailoverReservationRequest {
+  /// failover mode for the failover operation.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "FAILOVER_MODE_UNSPECIFIED" : Invalid value.
+  /// - "SOFT" : When customers initiate a soft failover, BigQuery will wait
+  /// until all committed writes are replicated to the secondary.
+  /// - "HARD" : When customers initiate a hard failover, BigQuery will not wait
+  /// until all committed writes are replicated to the secondary. There can be
+  /// data loss for hard failover.
+  core.String? failoverMode;
+
+  FailoverReservationRequest({
+    this.failoverMode,
+  });
+
+  FailoverReservationRequest.fromJson(core.Map json_)
+      : this(
+          failoverMode: json_['failoverMode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (failoverMode != null) 'failoverMode': failoverMode!,
+      };
+}
 
 /// The response for ReservationService.ListAssignments.
 class ListAssignmentsResponse {
@@ -1652,6 +2384,35 @@ class ListCapacityCommitmentsResponse {
       };
 }
 
+/// The response for ReservationService.ListReservationGroups.
+class ListReservationGroupsResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  /// List of reservations visible to the user.
+  core.List<ReservationGroup>? reservationGroups;
+
+  ListReservationGroupsResponse({
+    this.nextPageToken,
+    this.reservationGroups,
+  });
+
+  ListReservationGroupsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          reservationGroups: (json_['reservationGroups'] as core.List?)
+              ?.map((value) => ReservationGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (reservationGroups != null) 'reservationGroups': reservationGroups!,
+      };
+}
+
 /// The response for ReservationService.ListReservations.
 class ListReservationsResponse {
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -1683,6 +2444,16 @@ class ListReservationsResponse {
 
 /// The request for ReservationService.MergeCapacityCommitments.
 class MergeCapacityCommitmentsRequest {
+  /// The optional resulting capacity commitment ID.
+  ///
+  /// Capacity commitment name will be generated automatically if this field is
+  /// empty. This field must only contain lower case alphanumeric characters or
+  /// dashes. The first and last character cannot be a dash. Max length is 64
+  /// characters.
+  ///
+  /// Optional.
+  core.String? capacityCommitmentId;
+
   /// Ids of capacity commitments to merge.
   ///
   /// These capacity commitments must exist under admin project and location
@@ -1692,17 +2463,21 @@ class MergeCapacityCommitmentsRequest {
   core.List<core.String>? capacityCommitmentIds;
 
   MergeCapacityCommitmentsRequest({
+    this.capacityCommitmentId,
     this.capacityCommitmentIds,
   });
 
   MergeCapacityCommitmentsRequest.fromJson(core.Map json_)
       : this(
+          capacityCommitmentId: json_['capacityCommitmentId'] as core.String?,
           capacityCommitmentIds: (json_['capacityCommitmentIds'] as core.List?)
               ?.map((value) => value as core.String)
               .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (capacityCommitmentId != null)
+          'capacityCommitmentId': capacityCommitmentId!,
         if (capacityCommitmentIds != null)
           'capacityCommitmentIds': capacityCommitmentIds!,
       };
@@ -1743,6 +2518,121 @@ class MoveAssignmentRequest {
       };
 }
 
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
+/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "description": "Does not grant access after Sep 2020", "expression":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+class Policy {
+  /// Specifies cloud audit logging configuration for this policy.
+  core.List<AuditConfig>? auditConfigs;
+
+  /// Associates a list of `members`, or principals, with a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
+  core.List<Binding>? bindings;
+
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform policy updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
+  /// systems are expected to put that etag in the request to `setIamPolicy` to
+  /// ensure that their change will be applied to the same version of the
+  /// policy. **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost.
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
+
+  set etagAsBytes(core.List<core.int> bytes_) {
+    etag =
+        convert.base64.encode(bytes_).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  core.int? version;
+
+  Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
+
+  Policy.fromJson(core.Map json_)
+      : this(
+          auditConfigs: (json_['auditConfigs'] as core.List?)
+              ?.map((value) => AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          bindings: (json_['bindings'] as core.List?)
+              ?.map((value) => Binding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          etag: json_['etag'] as core.String?,
+          version: json_['version'] as core.int?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+        if (bindings != null) 'bindings': bindings!,
+        if (etag != null) 'etag': etag!,
+        if (version != null) 'version': version!,
+      };
+}
+
 /// Disaster Recovery(DR) replication status of the reservation.
 class ReplicationStatus {
   /// The last error encountered while trying to replicate changes from the
@@ -1767,10 +2657,21 @@ class ReplicationStatus {
   /// Output only.
   core.String? lastReplicationTime;
 
+  /// The time at which a soft failover for the reservation and its associated
+  /// datasets was initiated.
+  ///
+  /// After this field is set, all subsequent changes to the reservation will be
+  /// rejected unless a hard failover overrides this operation. This field will
+  /// be cleared once the failover is complete.
+  ///
+  /// Output only.
+  core.String? softFailoverStartTime;
+
   ReplicationStatus({
     this.error,
     this.lastErrorTime,
     this.lastReplicationTime,
+    this.softFailoverStartTime,
   });
 
   ReplicationStatus.fromJson(core.Map json_)
@@ -1781,6 +2682,7 @@ class ReplicationStatus {
               : null,
           lastErrorTime: json_['lastErrorTime'] as core.String?,
           lastReplicationTime: json_['lastReplicationTime'] as core.String?,
+          softFailoverStartTime: json_['softFailoverStartTime'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1788,12 +2690,16 @@ class ReplicationStatus {
         if (lastErrorTime != null) 'lastErrorTime': lastErrorTime!,
         if (lastReplicationTime != null)
           'lastReplicationTime': lastReplicationTime!,
+        if (softFailoverStartTime != null)
+          'softFailoverStartTime': softFailoverStartTime!,
       };
 }
 
 /// A reservation is a mechanism used to guarantee slots to users.
 class Reservation {
   /// The configuration parameters for the auto scaling feature.
+  ///
+  /// Optional.
   Autoscale? autoscale;
 
   /// Job concurrency target which sets a soft upper bound on the number of jobs
@@ -1804,6 +2710,8 @@ class Reservation {
   /// concurrency target will be automatically computed by the system. NOTE:
   /// this field is exposed as target job concurrency in the Information Schema,
   /// DDL and BigQuery CLI.
+  ///
+  /// Optional.
   core.String? concurrency;
 
   /// Creation time of the reservation.
@@ -1812,6 +2720,8 @@ class Reservation {
   core.String? creationTime;
 
   /// Edition of the reservation.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "EDITION_UNSPECIFIED" : Default value, which will be treated as
   /// ENTERPRISE.
@@ -1825,12 +2735,14 @@ class Reservation {
   ///
   /// If true, a query or pipeline job using this reservation will execute with
   /// the slot capacity specified in the slot_capacity field at most.
+  ///
+  /// Optional.
   core.bool? ignoreIdleSlots;
 
   /// The labels associated with this reservation.
   ///
   /// You can use these to organize and group your reservations. You can set
-  /// this property when inserting or updating a reservation.
+  /// this property when you create or update a reservation.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -1883,14 +2795,17 @@ class Reservation {
   /// reservation is placed in the organization's default region. NOTE: this is
   /// a preview feature. Project must be allow-listed in order to set this
   /// field.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? multiRegionAuxiliary;
 
-  /// The resource name of the reservation, e.g., `projects / * /locations / *
-  /// /reservations/team1-prod`.
+  /// Identifier.
   ///
-  /// The reservation_id must only contain lower case alphanumeric characters or
-  /// dashes. It must start with a letter and must not end with a dash. Its
-  /// maximum length is 64 characters.
+  /// The resource name of the reservation, e.g., `projects / * /locations / *
+  /// /reservations/team1-prod`. The reservation_id must only contain lower case
+  /// alphanumeric characters or dashes. It must start with a letter and must
+  /// not end with a dash. Its maximum length is 64 characters.
   core.String? name;
 
   /// The location where the reservation was originally created.
@@ -1922,10 +2837,22 @@ class Reservation {
   /// Output only.
   ReplicationStatus? replicationStatus;
 
+  /// The reservation group that this reservation belongs to.
+  ///
+  /// You can set this property when you create or update a reservation.
+  /// Reservations do not need to belong to a reservation group. Format:
+  /// projects/{project}/locations/{location}/reservationGroups/{reservation_group}
+  /// or just {reservation_group}
+  ///
+  /// Optional.
+  core.String? reservationGroup;
+
   /// The scaling mode for the reservation.
   ///
   /// If the field is present but max_slots is not present, requests will be
   /// rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "SCALING_MODE_UNSPECIFIED" : Default value of ScalingMode.
   /// - "AUTOSCALE_ONLY" : The reservation will scale up only using slots from
@@ -1991,6 +2918,8 @@ class Reservation {
   /// you have recently changed your baseline slot capacity and your baseline
   /// slots exceed your committed slots. Otherwise, you can decrease your
   /// baseline slots every few minutes.
+  ///
+  /// Optional.
   core.String? slotCapacity;
 
   /// Last update time of the reservation.
@@ -2011,6 +2940,7 @@ class Reservation {
     this.originalPrimaryLocation,
     this.primaryLocation,
     this.replicationStatus,
+    this.reservationGroup,
     this.scalingMode,
     this.secondaryLocation,
     this.slotCapacity,
@@ -2044,6 +2974,7 @@ class Reservation {
               ? ReplicationStatus.fromJson(json_['replicationStatus']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          reservationGroup: json_['reservationGroup'] as core.String?,
           scalingMode: json_['scalingMode'] as core.String?,
           secondaryLocation: json_['secondaryLocation'] as core.String?,
           slotCapacity: json_['slotCapacity'] as core.String?,
@@ -2065,10 +2996,35 @@ class Reservation {
           'originalPrimaryLocation': originalPrimaryLocation!,
         if (primaryLocation != null) 'primaryLocation': primaryLocation!,
         if (replicationStatus != null) 'replicationStatus': replicationStatus!,
+        if (reservationGroup != null) 'reservationGroup': reservationGroup!,
         if (scalingMode != null) 'scalingMode': scalingMode!,
         if (secondaryLocation != null) 'secondaryLocation': secondaryLocation!,
         if (slotCapacity != null) 'slotCapacity': slotCapacity!,
         if (updateTime != null) 'updateTime': updateTime!,
+      };
+}
+
+/// A reservation group is a container for reservations.
+class ReservationGroup {
+  /// Identifier.
+  ///
+  /// The resource name of the reservation group, e.g., `projects / * /locations
+  /// / * /reservationGroups/team1-prod`. The reservation_group_id must only
+  /// contain lower case alphanumeric characters or dashes. It must start with a
+  /// letter and must not end with a dash. Its maximum length is 64 characters.
+  core.String? name;
+
+  ReservationGroup({
+    this.name,
+  });
+
+  ReservationGroup.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
       };
 }
 
@@ -2127,6 +3083,41 @@ class SearchAssignmentsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (assignments != null) 'assignments': assignments!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Request message for `SetIamPolicy` method.
+class SetIamPolicyRequest {
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Google Cloud services (such as Projects) might
+  /// reject them.
+  Policy? policy;
+
+  /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
+  /// Only the fields in the mask will be modified. If no mask is provided, the
+  /// following default mask is used: `paths: "bindings, etag"`
+  core.String? updateMask;
+
+  SetIamPolicyRequest({
+    this.policy,
+    this.updateMask,
+  });
+
+  SetIamPolicyRequest.fromJson(core.Map json_)
+      : this(
+          policy: json_.containsKey('policy')
+              ? Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_['updateMask'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (policy != null) 'policy': policy!,
+        if (updateMask != null) 'updateMask': updateMask!,
       };
 }
 
@@ -2194,12 +3185,18 @@ typedef Status = $Status00;
 /// Internally stored as google.cloud.bi.v1.BqTableReference.
 class TableReference {
   /// The ID of the dataset in the above project.
+  ///
+  /// Optional.
   core.String? datasetId;
 
   /// The assigned project ID of the project.
+  ///
+  /// Optional.
   core.String? projectId;
 
   /// The ID of the table in the above dataset.
+  ///
+  /// Optional.
   core.String? tableId;
 
   TableReference({
@@ -2221,3 +3218,9 @@ class TableReference {
         if (tableId != null) 'tableId': tableId!,
       };
 }
+
+/// Request message for `TestIamPermissions` method.
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
+
+/// Response message for `TestIamPermissions` method.
+typedef TestIamPermissionsResponse = $PermissionsResponse;

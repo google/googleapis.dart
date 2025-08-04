@@ -88,6 +88,8 @@ api.AccessApprovalSettings buildAccessApprovalSettings() {
   if (buildCounterAccessApprovalSettings < 3) {
     o.activeKeyVersion = 'foo';
     o.ancestorHasActiveKeyVersion = true;
+    o.approvalPolicy = buildCustomerApprovalApprovalPolicy();
+    o.effectiveApprovalPolicy = buildCustomerApprovalApprovalPolicy();
     o.enrolledAncestor = true;
     o.enrolledServices = buildUnnamed0();
     o.invalidKeyVersion = true;
@@ -111,6 +113,8 @@ void checkAccessApprovalSettings(api.AccessApprovalSettings o) {
       unittest.equals('foo'),
     );
     unittest.expect(o.ancestorHasActiveKeyVersion!, unittest.isTrue);
+    checkCustomerApprovalApprovalPolicy(o.approvalPolicy!);
+    checkCustomerApprovalApprovalPolicy(o.effectiveApprovalPolicy!);
     unittest.expect(o.enrolledAncestor!, unittest.isTrue);
     checkUnnamed0(o.enrolledServices!);
     unittest.expect(o.invalidKeyVersion!, unittest.isTrue);
@@ -276,6 +280,7 @@ api.ApproveDecision buildApproveDecision() {
     o.autoApproved = true;
     o.expireTime = 'foo';
     o.invalidateTime = 'foo';
+    o.policyApproved = true;
     o.signatureInfo = buildSignatureInfo();
   }
   buildCounterApproveDecision--;
@@ -298,6 +303,7 @@ void checkApproveDecision(api.ApproveDecision o) {
       o.invalidateTime!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.policyApproved!, unittest.isTrue);
     checkSignatureInfo(o.signatureInfo!);
   }
   buildCounterApproveDecision--;
@@ -323,6 +329,28 @@ void checkAugmentedInfo(api.AugmentedInfo o) {
     );
   }
   buildCounterAugmentedInfo--;
+}
+
+core.int buildCounterCustomerApprovalApprovalPolicy = 0;
+api.CustomerApprovalApprovalPolicy buildCustomerApprovalApprovalPolicy() {
+  final o = api.CustomerApprovalApprovalPolicy();
+  buildCounterCustomerApprovalApprovalPolicy++;
+  if (buildCounterCustomerApprovalApprovalPolicy < 3) {
+    o.justificationBasedApprovalPolicy = 'foo';
+  }
+  buildCounterCustomerApprovalApprovalPolicy--;
+  return o;
+}
+
+void checkCustomerApprovalApprovalPolicy(api.CustomerApprovalApprovalPolicy o) {
+  buildCounterCustomerApprovalApprovalPolicy++;
+  if (buildCounterCustomerApprovalApprovalPolicy < 3) {
+    unittest.expect(
+      o.justificationBasedApprovalPolicy!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterCustomerApprovalApprovalPolicy--;
 }
 
 core.int buildCounterDismissApprovalRequestMessage = 0;
@@ -596,6 +624,16 @@ void main() {
       final od = api.AugmentedInfo.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkAugmentedInfo(od);
+    });
+  });
+
+  unittest.group('obj-schema-CustomerApprovalApprovalPolicy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCustomerApprovalApprovalPolicy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CustomerApprovalApprovalPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkCustomerApprovalApprovalPolicy(od);
     });
   });
 

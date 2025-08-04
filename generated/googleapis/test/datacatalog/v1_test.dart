@@ -1774,6 +1774,7 @@ api.GoogleCloudDatacatalogV1MigrationConfig
   if (buildCounterGoogleCloudDatacatalogV1MigrationConfig < 3) {
     o.catalogUiExperience = 'foo';
     o.tagTemplateMigration = 'foo';
+    o.templateMigrationEnabledTime = 'foo';
   }
   buildCounterGoogleCloudDatacatalogV1MigrationConfig--;
   return o;
@@ -1789,6 +1790,10 @@ void checkGoogleCloudDatacatalogV1MigrationConfig(
     );
     unittest.expect(
       o.tagTemplateMigration!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.templateMigrationEnabledTime!,
       unittest.equals('foo'),
     );
   }

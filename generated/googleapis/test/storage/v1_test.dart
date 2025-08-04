@@ -371,12 +371,114 @@ void checkUnnamed7(core.List<api.ObjectAccessControl> o) {
   checkObjectAccessControl(o[1]);
 }
 
+core.int
+    buildCounterBucketEncryptionCustomerManagedEncryptionEnforcementConfig = 0;
+api.BucketEncryptionCustomerManagedEncryptionEnforcementConfig
+    buildBucketEncryptionCustomerManagedEncryptionEnforcementConfig() {
+  final o = api.BucketEncryptionCustomerManagedEncryptionEnforcementConfig();
+  buildCounterBucketEncryptionCustomerManagedEncryptionEnforcementConfig++;
+  if (buildCounterBucketEncryptionCustomerManagedEncryptionEnforcementConfig <
+      3) {
+    o.effectiveTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.restrictionMode = 'foo';
+  }
+  buildCounterBucketEncryptionCustomerManagedEncryptionEnforcementConfig--;
+  return o;
+}
+
+void checkBucketEncryptionCustomerManagedEncryptionEnforcementConfig(
+    api.BucketEncryptionCustomerManagedEncryptionEnforcementConfig o) {
+  buildCounterBucketEncryptionCustomerManagedEncryptionEnforcementConfig++;
+  if (buildCounterBucketEncryptionCustomerManagedEncryptionEnforcementConfig <
+      3) {
+    unittest.expect(
+      o.effectiveTime!,
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
+    );
+    unittest.expect(
+      o.restrictionMode!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBucketEncryptionCustomerManagedEncryptionEnforcementConfig--;
+}
+
+core.int
+    buildCounterBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig = 0;
+api.BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig
+    buildBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig() {
+  final o = api.BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig();
+  buildCounterBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig++;
+  if (buildCounterBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig <
+      3) {
+    o.effectiveTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.restrictionMode = 'foo';
+  }
+  buildCounterBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig--;
+  return o;
+}
+
+void checkBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig(
+    api.BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig o) {
+  buildCounterBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig++;
+  if (buildCounterBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig <
+      3) {
+    unittest.expect(
+      o.effectiveTime!,
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
+    );
+    unittest.expect(
+      o.restrictionMode!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig--;
+}
+
+core.int buildCounterBucketEncryptionGoogleManagedEncryptionEnforcementConfig =
+    0;
+api.BucketEncryptionGoogleManagedEncryptionEnforcementConfig
+    buildBucketEncryptionGoogleManagedEncryptionEnforcementConfig() {
+  final o = api.BucketEncryptionGoogleManagedEncryptionEnforcementConfig();
+  buildCounterBucketEncryptionGoogleManagedEncryptionEnforcementConfig++;
+  if (buildCounterBucketEncryptionGoogleManagedEncryptionEnforcementConfig <
+      3) {
+    o.effectiveTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.restrictionMode = 'foo';
+  }
+  buildCounterBucketEncryptionGoogleManagedEncryptionEnforcementConfig--;
+  return o;
+}
+
+void checkBucketEncryptionGoogleManagedEncryptionEnforcementConfig(
+    api.BucketEncryptionGoogleManagedEncryptionEnforcementConfig o) {
+  buildCounterBucketEncryptionGoogleManagedEncryptionEnforcementConfig++;
+  if (buildCounterBucketEncryptionGoogleManagedEncryptionEnforcementConfig <
+      3) {
+    unittest.expect(
+      o.effectiveTime!,
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
+    );
+    unittest.expect(
+      o.restrictionMode!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterBucketEncryptionGoogleManagedEncryptionEnforcementConfig--;
+}
+
 core.int buildCounterBucketEncryption = 0;
 api.BucketEncryption buildBucketEncryption() {
   final o = api.BucketEncryption();
   buildCounterBucketEncryption++;
   if (buildCounterBucketEncryption < 3) {
+    o.customerManagedEncryptionEnforcementConfig =
+        buildBucketEncryptionCustomerManagedEncryptionEnforcementConfig();
+    o.customerSuppliedEncryptionEnforcementConfig =
+        buildBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig();
     o.defaultKmsKeyName = 'foo';
+    o.googleManagedEncryptionEnforcementConfig =
+        buildBucketEncryptionGoogleManagedEncryptionEnforcementConfig();
   }
   buildCounterBucketEncryption--;
   return o;
@@ -385,10 +487,16 @@ api.BucketEncryption buildBucketEncryption() {
 void checkBucketEncryption(api.BucketEncryption o) {
   buildCounterBucketEncryption++;
   if (buildCounterBucketEncryption < 3) {
+    checkBucketEncryptionCustomerManagedEncryptionEnforcementConfig(
+        o.customerManagedEncryptionEnforcementConfig!);
+    checkBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig(
+        o.customerSuppliedEncryptionEnforcementConfig!);
     unittest.expect(
       o.defaultKmsKeyName!,
       unittest.equals('foo'),
     );
+    checkBucketEncryptionGoogleManagedEncryptionEnforcementConfig(
+        o.googleManagedEncryptionEnforcementConfig!);
   }
   buildCounterBucketEncryption--;
 }
@@ -587,6 +695,8 @@ api.BucketIpFilter buildBucketIpFilter() {
   final o = api.BucketIpFilter();
   buildCounterBucketIpFilter++;
   if (buildCounterBucketIpFilter < 3) {
+    o.allowAllServiceAgentAccess = true;
+    o.allowCrossOrgVpcs = true;
     o.mode = 'foo';
     o.publicNetworkSource = buildBucketIpFilterPublicNetworkSource();
     o.vpcNetworkSources = buildUnnamed10();
@@ -598,6 +708,8 @@ api.BucketIpFilter buildBucketIpFilter() {
 void checkBucketIpFilter(api.BucketIpFilter o) {
   buildCounterBucketIpFilter++;
   if (buildCounterBucketIpFilter < 3) {
+    unittest.expect(o.allowAllServiceAgentAccess!, unittest.isTrue);
+    unittest.expect(o.allowCrossOrgVpcs!, unittest.isTrue);
     unittest.expect(
       o.mode!,
       unittest.equals('foo'),
@@ -2412,6 +2524,36 @@ void checkUnnamed33(core.List<api.ObjectAccessControl> o) {
   checkObjectAccessControl(o[1]);
 }
 
+core.Map<core.String, api.ObjectCustomContextPayload> buildUnnamed34() => {
+      'x': buildObjectCustomContextPayload(),
+      'y': buildObjectCustomContextPayload(),
+    };
+
+void checkUnnamed34(core.Map<core.String, api.ObjectCustomContextPayload> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkObjectCustomContextPayload(o['x']!);
+  checkObjectCustomContextPayload(o['y']!);
+}
+
+core.int buildCounterObjectContexts = 0;
+api.ObjectContexts buildObjectContexts() {
+  final o = api.ObjectContexts();
+  buildCounterObjectContexts++;
+  if (buildCounterObjectContexts < 3) {
+    o.custom = buildUnnamed34();
+  }
+  buildCounterObjectContexts--;
+  return o;
+}
+
+void checkObjectContexts(api.ObjectContexts o) {
+  buildCounterObjectContexts++;
+  if (buildCounterObjectContexts < 3) {
+    checkUnnamed34(o.custom!);
+  }
+  buildCounterObjectContexts--;
+}
+
 core.int buildCounterObjectCustomerEncryption = 0;
 api.ObjectCustomerEncryption buildObjectCustomerEncryption() {
   final o = api.ObjectCustomerEncryption();
@@ -2439,12 +2581,12 @@ void checkObjectCustomerEncryption(api.ObjectCustomerEncryption o) {
   buildCounterObjectCustomerEncryption--;
 }
 
-core.Map<core.String, core.String> buildUnnamed34() => {
+core.Map<core.String, core.String> buildUnnamed35() => {
       'x': 'foo',
       'y': 'foo',
     };
 
-void checkUnnamed34(core.Map<core.String, core.String> o) {
+void checkUnnamed35(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o['x']!,
@@ -2523,6 +2665,7 @@ api.Object buildObject() {
     o.contentEncoding = 'foo';
     o.contentLanguage = 'foo';
     o.contentType = 'foo';
+    o.contexts = buildObjectContexts();
     o.crc32c = 'foo';
     o.customTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.customerEncryption = buildObjectCustomerEncryption();
@@ -2535,7 +2678,7 @@ api.Object buildObject() {
     o.kmsKeyName = 'foo';
     o.md5Hash = 'foo';
     o.mediaLink = 'foo';
-    o.metadata = buildUnnamed34();
+    o.metadata = buildUnnamed35();
     o.metageneration = 'foo';
     o.name = 'foo';
     o.owner = buildObjectOwner();
@@ -2589,6 +2732,7 @@ void checkObject(api.Object o) {
       o.contentType!,
       unittest.equals('foo'),
     );
+    checkObjectContexts(o.contexts!);
     unittest.expect(
       o.crc32c!,
       unittest.equals('foo'),
@@ -2631,7 +2775,7 @@ void checkObject(api.Object o) {
       o.mediaLink!,
       unittest.equals('foo'),
     );
-    checkUnnamed34(o.metadata!);
+    checkUnnamed35(o.metadata!);
     unittest.expect(
       o.metageneration!,
       unittest.equals('foo'),
@@ -2797,12 +2941,12 @@ void checkObjectAccessControl(api.ObjectAccessControl o) {
   buildCounterObjectAccessControl--;
 }
 
-core.List<api.ObjectAccessControl> buildUnnamed35() => [
+core.List<api.ObjectAccessControl> buildUnnamed36() => [
       buildObjectAccessControl(),
       buildObjectAccessControl(),
     ];
 
-void checkUnnamed35(core.List<api.ObjectAccessControl> o) {
+void checkUnnamed36(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0]);
   checkObjectAccessControl(o[1]);
@@ -2813,7 +2957,7 @@ api.ObjectAccessControls buildObjectAccessControls() {
   final o = api.ObjectAccessControls();
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    o.items = buildUnnamed35();
+    o.items = buildUnnamed36();
     o.kind = 'foo';
   }
   buildCounterObjectAccessControls--;
@@ -2823,7 +2967,7 @@ api.ObjectAccessControls buildObjectAccessControls() {
 void checkObjectAccessControls(api.ObjectAccessControls o) {
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    checkUnnamed35(o.items!);
+    checkUnnamed36(o.items!);
     unittest.expect(
       o.kind!,
       unittest.equals('foo'),
@@ -2832,63 +2976,47 @@ void checkObjectAccessControls(api.ObjectAccessControls o) {
   buildCounterObjectAccessControls--;
 }
 
-core.List<api.Object> buildUnnamed36() => [
-      buildObject(),
-      buildObject(),
-    ];
-
-void checkUnnamed36(core.List<api.Object> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkObject(o[0]);
-  checkObject(o[1]);
-}
-
-core.List<core.String> buildUnnamed37() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed37(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
-}
-
-core.int buildCounterObjects = 0;
-api.Objects buildObjects() {
-  final o = api.Objects();
-  buildCounterObjects++;
-  if (buildCounterObjects < 3) {
-    o.items = buildUnnamed36();
-    o.kind = 'foo';
-    o.nextPageToken = 'foo';
-    o.prefixes = buildUnnamed37();
+core.int buildCounterObjectCustomContextPayload = 0;
+api.ObjectCustomContextPayload buildObjectCustomContextPayload() {
+  final o = api.ObjectCustomContextPayload();
+  buildCounterObjectCustomContextPayload++;
+  if (buildCounterObjectCustomContextPayload < 3) {
+    o.createTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.updateTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.value = 'foo';
   }
-  buildCounterObjects--;
+  buildCounterObjectCustomContextPayload--;
   return o;
 }
 
-void checkObjects(api.Objects o) {
-  buildCounterObjects++;
-  if (buildCounterObjects < 3) {
-    checkUnnamed36(o.items!);
+void checkObjectCustomContextPayload(api.ObjectCustomContextPayload o) {
+  buildCounterObjectCustomContextPayload++;
+  if (buildCounterObjectCustomContextPayload < 3) {
     unittest.expect(
-      o.kind!,
-      unittest.equals('foo'),
+      o.createTime!,
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
     );
     unittest.expect(
-      o.nextPageToken!,
+      o.updateTime!,
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
+    );
+    unittest.expect(
+      o.value!,
       unittest.equals('foo'),
     );
-    checkUnnamed37(o.prefixes!);
   }
-  buildCounterObjects--;
+  buildCounterObjectCustomContextPayload--;
+}
+
+core.List<api.Object> buildUnnamed37() => [
+      buildObject(),
+      buildObject(),
+    ];
+
+void checkUnnamed37(core.List<api.Object> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkObject(o[0]);
+  checkObject(o[1]);
 }
 
 core.List<core.String> buildUnnamed38() => [
@@ -2908,13 +3036,61 @@ void checkUnnamed38(core.List<core.String> o) {
   );
 }
 
+core.int buildCounterObjects = 0;
+api.Objects buildObjects() {
+  final o = api.Objects();
+  buildCounterObjects++;
+  if (buildCounterObjects < 3) {
+    o.items = buildUnnamed37();
+    o.kind = 'foo';
+    o.nextPageToken = 'foo';
+    o.prefixes = buildUnnamed38();
+  }
+  buildCounterObjects--;
+  return o;
+}
+
+void checkObjects(api.Objects o) {
+  buildCounterObjects++;
+  if (buildCounterObjects < 3) {
+    checkUnnamed37(o.items!);
+    unittest.expect(
+      o.kind!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.nextPageToken!,
+      unittest.equals('foo'),
+    );
+    checkUnnamed38(o.prefixes!);
+  }
+  buildCounterObjects--;
+}
+
+core.List<core.String> buildUnnamed39() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed39(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 core.int buildCounterPolicyBindings = 0;
 api.PolicyBindings buildPolicyBindings() {
   final o = api.PolicyBindings();
   buildCounterPolicyBindings++;
   if (buildCounterPolicyBindings < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed38();
+    o.members = buildUnnamed39();
     o.role = 'foo';
   }
   buildCounterPolicyBindings--;
@@ -2925,7 +3101,7 @@ void checkPolicyBindings(api.PolicyBindings o) {
   buildCounterPolicyBindings++;
   if (buildCounterPolicyBindings < 3) {
     checkExpr(o.condition!);
-    checkUnnamed38(o.members!);
+    checkUnnamed39(o.members!);
     unittest.expect(
       o.role!,
       unittest.equals('foo'),
@@ -2934,12 +3110,12 @@ void checkPolicyBindings(api.PolicyBindings o) {
   buildCounterPolicyBindings--;
 }
 
-core.List<api.PolicyBindings> buildUnnamed39() => [
+core.List<api.PolicyBindings> buildUnnamed40() => [
       buildPolicyBindings(),
       buildPolicyBindings(),
     ];
 
-void checkUnnamed39(core.List<api.PolicyBindings> o) {
+void checkUnnamed40(core.List<api.PolicyBindings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPolicyBindings(o[0]);
   checkPolicyBindings(o[1]);
@@ -2950,7 +3126,7 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed39();
+    o.bindings = buildUnnamed40();
     o.etag = 'foo';
     o.kind = 'foo';
     o.resourceId = 'foo';
@@ -2963,7 +3139,7 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed39(o.bindings!);
+    checkUnnamed40(o.bindings!);
     unittest.expect(
       o.etag!,
       unittest.equals('foo'),
@@ -2984,12 +3160,12 @@ void checkPolicy(api.Policy o) {
   buildCounterPolicy--;
 }
 
-core.List<core.String> buildUnnamed40() => [
+core.List<core.String> buildUnnamed41() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed40(core.List<core.String> o) {
+void checkUnnamed41(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3007,7 +3183,7 @@ api.RelocateBucketRequestDestinationCustomPlacementConfig
   final o = api.RelocateBucketRequestDestinationCustomPlacementConfig();
   buildCounterRelocateBucketRequestDestinationCustomPlacementConfig++;
   if (buildCounterRelocateBucketRequestDestinationCustomPlacementConfig < 3) {
-    o.dataLocations = buildUnnamed40();
+    o.dataLocations = buildUnnamed41();
   }
   buildCounterRelocateBucketRequestDestinationCustomPlacementConfig--;
   return o;
@@ -3017,7 +3193,7 @@ void checkRelocateBucketRequestDestinationCustomPlacementConfig(
     api.RelocateBucketRequestDestinationCustomPlacementConfig o) {
   buildCounterRelocateBucketRequestDestinationCustomPlacementConfig++;
   if (buildCounterRelocateBucketRequestDestinationCustomPlacementConfig < 3) {
-    checkUnnamed40(o.dataLocations!);
+    checkUnnamed41(o.dataLocations!);
   }
   buildCounterRelocateBucketRequestDestinationCustomPlacementConfig--;
 }
@@ -3118,12 +3294,12 @@ void checkServiceAccount(api.ServiceAccount o) {
   buildCounterServiceAccount--;
 }
 
-core.List<core.String> buildUnnamed41() => [
+core.List<core.String> buildUnnamed42() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed41(core.List<core.String> o) {
+void checkUnnamed42(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3141,7 +3317,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
     o.kind = 'foo';
-    o.permissions = buildUnnamed41();
+    o.permissions = buildUnnamed42();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -3154,26 +3330,9 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
       o.kind!,
       unittest.equals('foo'),
     );
-    checkUnnamed41(o.permissions!);
+    checkUnnamed42(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
-}
-
-core.List<core.String> buildUnnamed42() => [
-      'foo',
-      'foo',
-    ];
-
-void checkUnnamed42(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(
-    o[0],
-    unittest.equals('foo'),
-  );
-  unittest.expect(
-    o[1],
-    unittest.equals('foo'),
-  );
 }
 
 core.List<core.String> buildUnnamed43() => [
@@ -3199,6 +3358,23 @@ core.List<core.String> buildUnnamed44() => [
     ];
 
 void checkUnnamed44(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
+core.List<core.String> buildUnnamed45() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed45(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3278,6 +3454,45 @@ void main() {
       final od = api.BucketCustomPlacementConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkBucketCustomPlacementConfig(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-BucketEncryptionCustomerManagedEncryptionEnforcementConfig',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildBucketEncryptionCustomerManagedEncryptionEnforcementConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BucketEncryptionCustomerManagedEncryptionEnforcementConfig
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkBucketEncryptionCustomerManagedEncryptionEnforcementConfig(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkBucketEncryptionCustomerSuppliedEncryptionEnforcementConfig(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-BucketEncryptionGoogleManagedEncryptionEnforcementConfig',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBucketEncryptionGoogleManagedEncryptionEnforcementConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.BucketEncryptionGoogleManagedEncryptionEnforcementConfig.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkBucketEncryptionGoogleManagedEncryptionEnforcementConfig(od);
     });
   });
 
@@ -3743,6 +3958,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ObjectContexts', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildObjectContexts();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ObjectContexts.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkObjectContexts(od);
+    });
+  });
+
   unittest.group('obj-schema-ObjectCustomerEncryption', () {
     unittest.test('to-json--from-json', () async {
       final o = buildObjectCustomerEncryption();
@@ -3810,6 +4035,16 @@ void main() {
       final od = api.ObjectAccessControls.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkObjectAccessControls(od);
+    });
+  });
+
+  unittest.group('obj-schema-ObjectCustomContextPayload', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildObjectCustomContextPayload();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ObjectCustomContextPayload.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkObjectCustomContextPayload(od);
     });
   });
 
@@ -5946,7 +6181,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.StorageApi(mock).buckets;
       final arg_bucket = 'foo';
-      final arg_permissions = buildUnnamed42();
+      final arg_permissions = buildUnnamed43();
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7730,7 +7965,7 @@ void main() {
       final res = api.StorageApi(mock).managedFolders;
       final arg_bucket = 'foo';
       final arg_managedFolder = 'foo';
-      final arg_permissions = buildUnnamed43();
+      final arg_permissions = buildUnnamed44();
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9665,6 +9900,7 @@ void main() {
       final arg_bucket = 'foo';
       final arg_delimiter = 'foo';
       final arg_endOffset = 'foo';
+      final arg_filter = 'foo';
       final arg_includeFoldersAsPrefixes = true;
       final arg_includeTrailingDelimiter = true;
       final arg_matchGlob = 'foo';
@@ -9736,6 +9972,10 @@ void main() {
           unittest.equals(arg_endOffset),
         );
         unittest.expect(
+          queryMap['filter']!.first,
+          unittest.equals(arg_filter),
+        );
+        unittest.expect(
           queryMap['includeFoldersAsPrefixes']!.first,
           unittest.equals('$arg_includeFoldersAsPrefixes'),
         );
@@ -9793,6 +10033,7 @@ void main() {
       final response = await res.list(arg_bucket,
           delimiter: arg_delimiter,
           endOffset: arg_endOffset,
+          filter: arg_filter,
           includeFoldersAsPrefixes: arg_includeFoldersAsPrefixes,
           includeTrailingDelimiter: arg_includeTrailingDelimiter,
           matchGlob: arg_matchGlob,
@@ -9822,6 +10063,7 @@ void main() {
       final arg_ifSourceGenerationNotMatch = 'foo';
       final arg_ifSourceMetagenerationMatch = 'foo';
       final arg_ifSourceMetagenerationNotMatch = 'foo';
+      final arg_projection = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9927,6 +10169,10 @@ void main() {
           unittest.equals(arg_ifSourceMetagenerationNotMatch),
         );
         unittest.expect(
+          queryMap['projection']!.first,
+          unittest.equals(arg_projection),
+        );
+        unittest.expect(
           queryMap['userProject']!.first,
           unittest.equals(arg_userProject),
         );
@@ -9951,6 +10197,7 @@ void main() {
           ifSourceGenerationNotMatch: arg_ifSourceGenerationNotMatch,
           ifSourceMetagenerationMatch: arg_ifSourceMetagenerationMatch,
           ifSourceMetagenerationNotMatch: arg_ifSourceMetagenerationNotMatch,
+          projection: arg_projection,
           userProject: arg_userProject,
           $fields: arg_$fields);
       checkObject(response as api.Object);
@@ -10545,7 +10792,7 @@ void main() {
       final res = api.StorageApi(mock).objects;
       final arg_bucket = 'foo';
       final arg_object = 'foo';
-      final arg_permissions = buildUnnamed44();
+      final arg_permissions = buildUnnamed45();
       final arg_generation = 'foo';
       final arg_userProject = 'foo';
       final arg_$fields = 'foo';

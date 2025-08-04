@@ -12,7 +12,7 @@
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Google Play Game Services - v1
+/// Google Play Games Services API - v1
 ///
 /// The Google Play Games Service allows developers to enhance games with social
 /// leaderboards, achievements, game state, sign-in with Google, and more.

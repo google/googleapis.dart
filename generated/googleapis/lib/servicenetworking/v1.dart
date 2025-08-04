@@ -329,8 +329,8 @@ class ServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The service that is managing peering connectivity for a service
-  /// producer's organization. For Google services that support this
+  /// [parent] - Required. The service that is managing peering connectivity for
+  /// a service producer's organization. For Google services that support this
   /// functionality, this value is `services/servicenetworking.googleapis.com`.
   /// Value must have pattern `^services/\[^/\]+$`.
   ///
@@ -372,8 +372,8 @@ class ServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The service that is managing peering connectivity for a service
-  /// producer's organization. For Google services that support this
+  /// [parent] - Required. The service that is managing peering connectivity for
+  /// a service producer's organization. For Google services that support this
   /// functionality, this value is `services/servicenetworking.googleapis.com`.
   /// Value must have pattern `^services/\[^/\]+$`.
   ///
@@ -525,8 +525,8 @@ class ServicesConnectionsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The service that is managing peering connectivity for a service
-  /// producer's organization. For Google services that support this
+  /// [parent] - Required. The service that is managing peering connectivity for
+  /// a service producer's organization. For Google services that support this
   /// functionality, this value is `services/servicenetworking.googleapis.com`.
   /// Value must have pattern `^services/\[^/\]+$`.
   ///
@@ -611,16 +611,16 @@ class ServicesConnectionsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The service that is managing peering connectivity for a service
-  /// producer's organization. For Google services that support this
+  /// [parent] - Required. The service that is managing peering connectivity for
+  /// a service producer's organization. For Google services that support this
   /// functionality, this value is `services/servicenetworking.googleapis.com`.
   /// If you specify `services/-` as the parameter value, all configured peering
   /// services are listed.
   /// Value must have pattern `^services/\[^/\]+$`.
   ///
-  /// [network] - The name of service consumer's VPC network that's connected
-  /// with service producer network through a private connection. The network
-  /// name must be in the following format:
+  /// [network] - Required. The name of service consumer's VPC network that's
+  /// connected with service producer network through a private connection. The
+  /// network name must be in the following format:
   /// `projects/{project}/global/networks/{network}`. {project} is a project
   /// number, such as in `12345` that includes the VPC service consumer's VPC
   /// network. {network} is the name of the service consumer's VPC network.
@@ -662,9 +662,9 @@ class ServicesConnectionsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The private service connection that connects to a service
-  /// producer organization. The name includes both the private service name and
-  /// the VPC network peering name in the format of
+  /// [name] - Required. The private service connection that connects to a
+  /// service producer organization. The name includes both the private service
+  /// name and the VPC network peering name in the format of
   /// `services/{peering_service_name}/connections/{vpc_peering_name}`. For
   /// Google services that support this functionality, this is
   /// `services/servicenetworking.googleapis.com/connections/servicenetworking-googleapis-com`.
@@ -1681,17 +1681,16 @@ class AddSubnetworkRequest {
   /// Optional.
   core.bool? checkServiceNetworkingUsePermission;
 
-  /// Specifies a custom time bucket for Arcus subnetwork request idempotency.
+  /// Specifies a custom time bucket for GCE subnetwork request idempotency.
   ///
-  /// If two equivalent concurrent requests are made, Arcus will know to ignore
+  /// If two equivalent concurrent requests are made, GCE will know to ignore
   /// the request if it has already been completed or is in progress. Only
   /// requests with matching compute_idempotency_window have guaranteed
   /// idempotency. Changing this time window between requests results in
   /// undefined behavior. Zero (or empty) value with
   /// custom_compute_idempotency_window=true specifies no idempotency (i.e. no
-  /// request ID is provided to Arcus). Maximum value of 14 days (enforced by
-  /// Arcus limit). For more information on how to use, see:
-  /// go/revisit-sn-idempotency-window
+  /// request ID is provided to GCE). Maximum value of 14 days (enforced by GCE
+  /// limit).
   ///
   /// Optional.
   core.String? computeIdempotencyWindow;
@@ -1770,8 +1769,9 @@ class AddSubnetworkRequest {
   /// Optional.
   core.String? purpose;
 
-  /// The name of a \[region\](/compute/docs/regions-zones) for the subnet, such
-  /// `europe-west1`.
+  /// The name of a
+  /// [region](https://cloud.google.com/compute/docs/regions-zones) for the
+  /// subnet, such `europe-west1`.
   ///
   /// Required.
   core.String? region;
@@ -1826,8 +1826,8 @@ class AddSubnetworkRequest {
   /// A name for the new subnet.
   ///
   /// For information about the naming requirements, see
-  /// \[subnetwork\](/compute/docs/reference/rest/v1/subnetworks) in the Compute
-  /// API documentation.
+  /// [subnetwork](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks)
+  /// in the Compute API documentation.
   ///
   /// Required.
   core.String? subnetwork;
@@ -1836,13 +1836,12 @@ class AddSubnetworkRequest {
   /// `roles/servicenetworking.subnetworkAdmin` role on the subnet.
   core.List<core.String>? subnetworkUsers;
 
-  /// Specifies if Service Networking should use a custom time bucket for Arcus
+  /// Specifies if Service Networking should use a custom time bucket for GCE
   /// idempotency.
   ///
-  /// If false, Service Networking uses a 300 second (5 minute) Arcus
-  /// idempotency window. If true, Service Networking uses a custom idempotency
-  /// window provided by the user in field compute_idempotency_window. For more
-  /// information on how to use, see: go/revisit-sn-idempotency-window
+  /// If false, Service Networking uses a 300 second (5 minute) GCE idempotency
+  /// window. If true, Service Networking uses a custom idempotency window
+  /// provided by the user in field compute_idempotency_window.
   ///
   /// Optional.
   core.bool? useCustomComputeIdempotencyWindow;
@@ -1948,12 +1947,18 @@ typedef CancelOperationRequest = $Empty;
 /// Cloud SQL configuration.
 class CloudSQLConfig {
   /// Peering service used for peering with the Cloud SQL project.
+  ///
+  /// Required.
   core.String? service;
 
   /// The name of the umbrella network in the Cloud SQL umbrella project.
+  ///
+  /// Required.
   core.String? umbrellaNetwork;
 
   /// The project number of the Cloud SQL umbrella project.
+  ///
+  /// Required.
   core.String? umbrellaProject;
 
   CloudSQLConfig({
@@ -1989,6 +1994,8 @@ class Connection {
   /// `{project}` is a project number, such as in `12345` that includes the VPC
   /// service consumer's VPC network. `{network}` is the name of the service
   /// consumer's VPC network.
+  ///
+  /// Required.
   core.String? network;
 
   /// The name of the VPC Network Peering connection that was created by the
@@ -2641,6 +2648,8 @@ class PeeredDnsDomain {
   /// Must be unique within the consumer network. The name must be 1-63
   /// characters long, must begin with a letter, end with a letter or digit, and
   /// only contain lowercase letters, digits or dashes.
+  ///
+  /// Required.
   core.String? name;
 
   PeeredDnsDomain({
@@ -2880,6 +2889,8 @@ class SearchRangeRequest {
   /// CreateConnection method. Must be in a form
   /// 'projects/{project}/global/networks/{network}'. {project} is a project
   /// number, as in '12345' {network} is network name.
+  ///
+  /// Required.
   core.String? network;
 
   SearchRangeRequest({
@@ -3158,8 +3169,8 @@ class ValidateConsumerConfigRequest {
   /// and HOST_PROJECT_NOT_FOUND are done when consumer_project is provided.
   ConsumerProject? consumerProject;
 
-  /// RANGES_EXHAUSTED, RANGES_EXHAUSTED, and RANGES_DELETED_LATER are done when
-  /// range_reservation is provided.
+  /// RANGES_EXHAUSTED, RANGES_NOT_RESERVED, and RANGES_DELETED_LATER are done
+  /// when range_reservation is provided.
   RangeReservation? rangeReservation;
 
   /// The validations will be performed in the order listed in the

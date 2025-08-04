@@ -16,7 +16,7 @@
 ///
 /// The Google Drive API allows clients to access resources from Google Drive.
 ///
-/// For more information, see <https://developers.google.com/drive/>
+/// For more information, see <https://developers.google.com/workspace/drive/>
 ///
 /// Create an instance of [DriveApi] to access these resources:
 ///
@@ -131,10 +131,10 @@ class AboutResource {
   /// capabilities.
   ///
   /// For more information, see
-  /// [Return user info](https://developers.google.com/drive/api/guides/user-info).
+  /// [Return user info](https://developers.google.com/workspace/drive/api/guides/user-info).
   /// Required: The `fields` parameter must be set. To return the exact fields
   /// you need, see
-  /// [Return specific fields](https://developers.google.com/drive/api/guides/fields-parameter).
+  /// [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
   ///
   /// Request parameters:
   ///
@@ -313,7 +313,7 @@ class AppsResource {
   /// Gets a specific app.
   ///
   /// For more information, see
-  /// [Return user info](https://developers.google.com/drive/api/guides/user-info).
+  /// [Return user info](https://developers.google.com/workspace/drive/api/guides/user-info).
   ///
   /// Request parameters:
   ///
@@ -350,7 +350,7 @@ class AppsResource {
   /// Lists a user's installed apps.
   ///
   /// For more information, see
-  /// [Return user info](https://developers.google.com/drive/api/guides/user-info).
+  /// [Return user info](https://developers.google.com/workspace/drive/api/guides/user-info).
   ///
   /// Request parameters:
   ///
@@ -414,7 +414,7 @@ class ChangesResource {
   /// Gets the starting pageToken for listing future changes.
   ///
   /// For more information, see
-  /// [Retrieve changes](https://developers.google.com/drive/api/guides/manage-changes).
+  /// [Retrieve changes](https://developers.google.com/workspace/drive/api/guides/manage-changes).
   ///
   /// Request parameters:
   ///
@@ -469,7 +469,7 @@ class ChangesResource {
   /// Lists the changes for a user or shared drive.
   ///
   /// For more information, see
-  /// [Retrieve changes](https://developers.google.com/drive/api/guides/manage-changes).
+  /// [Retrieve changes](https://developers.google.com/workspace/drive/api/guides/manage-changes).
   ///
   /// Request parameters:
   ///
@@ -586,7 +586,7 @@ class ChangesResource {
   /// Subscribes to changes for a user.
   ///
   /// For more information, see
-  /// [Notifications for resource changes](https://developers.google.com/drive/api/guides/push).
+  /// [Notifications for resource changes](https://developers.google.com/workspace/drive/api/guides/push).
   ///
   /// [request] - The metadata request object.
   ///
@@ -713,7 +713,7 @@ class ChannelsResource {
   /// Stops watching resources through this channel.
   ///
   /// For more information, see
-  /// [Notifications for resource changes](https://developers.google.com/drive/api/guides/push).
+  /// [Notifications for resource changes](https://developers.google.com/workspace/drive/api/guides/push).
   ///
   /// [request] - The metadata request object.
   ///
@@ -756,10 +756,10 @@ class CommentsResource {
   /// Creates a comment on a file.
   ///
   /// For more information, see
-  /// [Manage comments and replies](https://developers.google.com/drive/api/guides/manage-comments).
+  /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
   /// Required: The `fields` parameter must be set. To return the exact fields
   /// you need, see
-  /// [Return specific fields](https://developers.google.com/drive/api/guides/fields-parameter).
+  /// [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
   ///
   /// [request] - The metadata request object.
   ///
@@ -801,10 +801,7 @@ class CommentsResource {
   /// Deletes a comment.
   ///
   /// For more information, see
-  /// [Manage comments and replies](https://developers.google.com/drive/api/guides/manage-comments).
-  /// Required: The `fields` parameter must be set. To return the exact fields
-  /// you need, see
-  /// [Return specific fields](https://developers.google.com/drive/api/guides/fields-parameter).
+  /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
   ///
   /// Request parameters:
   ///
@@ -845,10 +842,10 @@ class CommentsResource {
   /// Gets a comment by ID.
   ///
   /// For more information, see
-  /// [Manage comments and replies](https://developers.google.com/drive/api/guides/manage-comments).
+  /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
   /// Required: The `fields` parameter must be set. To return the exact fields
   /// you need, see
-  /// [Return specific fields](https://developers.google.com/drive/api/guides/fields-parameter).
+  /// [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
   ///
   /// Request parameters:
   ///
@@ -896,10 +893,10 @@ class CommentsResource {
   /// Lists a file's comments.
   ///
   /// For more information, see
-  /// [Manage comments and replies](https://developers.google.com/drive/api/guides/manage-comments).
+  /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
   /// Required: The `fields` parameter must be set. To return the exact fields
   /// you need, see
-  /// [Return specific fields](https://developers.google.com/drive/api/guides/fields-parameter).
+  /// [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
   ///
   /// Request parameters:
   ///
@@ -958,10 +955,10 @@ class CommentsResource {
   /// Updates a comment with patch semantics.
   ///
   /// For more information, see
-  /// [Manage comments and replies](https://developers.google.com/drive/api/guides/manage-comments).
+  /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
   /// Required: The `fields` parameter must be set. To return the exact fields
   /// you need, see
-  /// [Return specific fields](https://developers.google.com/drive/api/guides/fields-parameter).
+  /// [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1183,7 +1180,7 @@ class DrivesResource {
   ///
   /// This method accepts the `q` parameter, which is a search query combining
   /// one or more search terms. For more information, see the \[Search for
-  /// shared drives\](/drive/api/guides/search-shareddrives) guide.
+  /// shared drives\](/workspace/drive/api/guides/search-shareddrives) guide.
   ///
   /// Request parameters:
   ///
@@ -1418,8 +1415,8 @@ class FilesResource {
   /// the literal `* / * ` value. The literal `* / * ` is only used to indicate
   /// that any valid MIME type can be uploaded. For more information on
   /// uploading files, see \[Upload file
-  /// data\](/drive/api/guides/manage-uploads). Apps creating shortcuts with
-  /// `files.create` must specify the MIME type
+  /// data\](/workspace/drive/api/guides/manage-uploads). Apps creating
+  /// shortcuts with `files.create` must specify the MIME type
   /// `application/vnd.google-apps.shortcut`. Apps should specify a file
   /// extension in the `name` property when inserting files with the API. For
   /// example, an operation to insert a JPEG file should specify something like
@@ -1791,9 +1788,9 @@ class FilesResource {
   /// the file contents in the response body. Downloading content with
   /// `alt=media` only works if the file is stored in Drive. To download Google
   /// Docs, Sheets, and Slides use
-  /// \[`files.export`\](/drive/api/reference/rest/v3/files/export) instead. For
-  /// more information, see \[Download & export
-  /// files\](/drive/api/guides/manage-downloads).
+  /// \[`files.export`\](/workspace/drive/api/reference/rest/v3/files/export)
+  /// instead. For more information, see \[Download & export
+  /// files\](/workspace/drive/api/guides/manage-downloads).
   ///
   /// Request parameters:
   ///
@@ -1874,10 +1871,10 @@ class FilesResource {
   ///
   /// This method accepts the `q` parameter, which is a search query combining
   /// one or more search terms. For more information, see the \[Search for files
-  /// & folders\](/drive/api/guides/search-files) guide. *Note:* This method
-  /// returns *all* files by default, including trashed files. If you don't want
-  /// trashed files to appear in the list, use the `trashed=false` query
-  /// parameter to remove trashed files from the results.
+  /// & folders\](/workspace/drive/api/guides/search-files) guide. *Note:* This
+  /// method returns *all* files by default, including trashed files. If you
+  /// don't want trashed files to appear in the list, use the `trashed=false`
+  /// query parameter to remove trashed files from the results.
   ///
   /// Request parameters:
   ///
@@ -2105,7 +2102,7 @@ class FilesResource {
   /// rather than the literal `* / * ` value. The literal `* / * ` is only used
   /// to indicate that any valid MIME type can be uploaded. For more information
   /// on uploading files, see \[Upload file
-  /// data\](/drive/api/guides/manage-uploads).
+  /// data\](/workspace/drive/api/guides/manage-uploads).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2291,83 +2288,6 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.
-  ///
-  /// The server makes a best effort to cancel the operation, but success is not
-  /// guaranteed. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
-  /// or other methods to check whether the cancellation succeeded or whether
-  /// the operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
-  /// to `Code.CANCELLED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be cancelled.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<void> cancel(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'operations/' + commons.escapeVariable('$name') + ':cancel';
-
-    await _requester.request(
-      url_,
-      'POST',
-      queryParams: queryParams_,
-      downloadOptions: null,
-    );
-  }
-
-  /// Deletes a long-running operation.
-  ///
-  /// This method indicates that the client is no longer interested in the
-  /// operation result. It does not cancel the operation. If the server doesn't
-  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be deleted.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<void> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'operations/' + commons.escapeVariable('$name');
-
-    await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-      downloadOptions: null,
-    );
-  }
-
   /// Gets the latest state of a long-running operation.
   ///
   /// Clients can use this method to poll the operation result at intervals as
@@ -2404,56 +2324,6 @@ class OperationsResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
-
-  /// Lists operations that match the specified filter in the request.
-  ///
-  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [filter] - The standard list filter.
-  ///
-  /// [name] - The name of the operation's parent resource.
-  ///
-  /// [pageSize] - The standard list page size.
-  ///
-  /// [pageToken] - The standard list page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListOperationsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListOperationsResponse> list({
-    core.String? filter,
-    core.String? name,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (name != null) 'name': [name],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    const url_ = 'operations';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListOperationsResponse.fromJson(
-        response_ as core.Map<core.String, core.dynamic>);
-  }
 }
 
 class PermissionsResource {
@@ -2474,6 +2344,9 @@ class PermissionsResource {
   ///
   /// [emailMessage] - A plain text custom message to include in the
   /// notification email.
+  ///
+  /// [enforceExpansiveAccess] - Whether the request should enforce expansive
+  /// access rules.
   ///
   /// [enforceSingleParent] - Deprecated: See `moveToNewOwnersRoot` for details.
   ///
@@ -2516,6 +2389,7 @@ class PermissionsResource {
     Permission request,
     core.String fileId, {
     core.String? emailMessage,
+    core.bool? enforceExpansiveAccess,
     core.bool? enforceSingleParent,
     core.bool? moveToNewOwnersRoot,
     core.bool? sendNotificationEmail,
@@ -2528,6 +2402,8 @@ class PermissionsResource {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (emailMessage != null) 'emailMessage': [emailMessage],
+      if (enforceExpansiveAccess != null)
+        'enforceExpansiveAccess': ['${enforceExpansiveAccess}'],
       if (enforceSingleParent != null)
         'enforceSingleParent': ['${enforceSingleParent}'],
       if (moveToNewOwnersRoot != null)
@@ -4355,7 +4231,7 @@ class Comment {
   /// A region of the document represented as a JSON string.
   ///
   /// For details on defining anchor properties, refer to
-  /// [Manage comments and replies](https://developers.google.com/drive/api/v3/manage-comments).
+  /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/v3/manage-comments).
   core.String? anchor;
 
   /// The author of the comment.
@@ -4642,6 +4518,49 @@ class DownloadRestriction {
       };
 }
 
+/// Download restrictions applied to the file.
+class DownloadRestrictionsMetadata {
+  /// The effective download restriction applied to this file.
+  ///
+  /// This considers all restriction settings and DLP rules.
+  ///
+  /// Output only.
+  DownloadRestriction? effectiveDownloadRestrictionWithContext;
+
+  /// The download restriction of the file applied directly by the owner or
+  /// organizer.
+  ///
+  /// This does not take into account shared drive settings or DLP rules.
+  DownloadRestriction? itemDownloadRestriction;
+
+  DownloadRestrictionsMetadata({
+    this.effectiveDownloadRestrictionWithContext,
+    this.itemDownloadRestriction,
+  });
+
+  DownloadRestrictionsMetadata.fromJson(core.Map json_)
+      : this(
+          effectiveDownloadRestrictionWithContext:
+              json_.containsKey('effectiveDownloadRestrictionWithContext')
+                  ? DownloadRestriction.fromJson(
+                      json_['effectiveDownloadRestrictionWithContext']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          itemDownloadRestriction: json_.containsKey('itemDownloadRestriction')
+              ? DownloadRestriction.fromJson(json_['itemDownloadRestriction']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (effectiveDownloadRestrictionWithContext != null)
+          'effectiveDownloadRestrictionWithContext':
+              effectiveDownloadRestrictionWithContext!,
+        if (itemDownloadRestriction != null)
+          'itemDownloadRestriction': itemDownloadRestriction!,
+      };
+}
+
 /// An image file and cropping parameters from which a background image for this
 /// shared drive is set.
 ///
@@ -4719,6 +4638,12 @@ class DriveCapabilities {
   ///
   /// Output only.
   core.bool? canChangeDomainUsersOnlyRestriction;
+
+  /// Whether the current user can change organizer-applied download
+  /// restrictions of this shared drive.
+  ///
+  /// Output only.
+  core.bool? canChangeDownloadRestriction;
 
   /// Whether the current user can change the background of this shared drive.
   ///
@@ -4821,6 +4746,7 @@ class DriveCapabilities {
     this.canAddChildren,
     this.canChangeCopyRequiresWriterPermissionRestriction,
     this.canChangeDomainUsersOnlyRestriction,
+    this.canChangeDownloadRestriction,
     this.canChangeDriveBackground,
     this.canChangeDriveMembersOnlyRestriction,
     this.canChangeSharingFoldersRequiresOrganizerPermissionRestriction,
@@ -4848,6 +4774,8 @@ class DriveCapabilities {
                   as core.bool?,
           canChangeDomainUsersOnlyRestriction:
               json_['canChangeDomainUsersOnlyRestriction'] as core.bool?,
+          canChangeDownloadRestriction:
+              json_['canChangeDownloadRestriction'] as core.bool?,
           canChangeDriveBackground:
               json_['canChangeDriveBackground'] as core.bool?,
           canChangeDriveMembersOnlyRestriction:
@@ -4880,6 +4808,8 @@ class DriveCapabilities {
         if (canChangeDomainUsersOnlyRestriction != null)
           'canChangeDomainUsersOnlyRestriction':
               canChangeDomainUsersOnlyRestriction!,
+        if (canChangeDownloadRestriction != null)
+          'canChangeDownloadRestriction': canChangeDownloadRestriction!,
         if (canChangeDriveBackground != null)
           'canChangeDriveBackground': canChangeDriveBackground!,
         if (canChangeDriveMembersOnlyRestriction != null)
@@ -5210,6 +5140,12 @@ class FileCapabilities {
   /// Output only.
   core.bool? canChangeCopyRequiresWriterPermission;
 
+  /// Whether the current user can change the owner or organizer-applied
+  /// download restrictions of the file.
+  ///
+  /// Output only.
+  core.bool? canChangeItemDownloadRestriction;
+
   /// Whether the current user can change the securityUpdateEnabled field on
   /// link share metadata.
   ///
@@ -5477,6 +5413,7 @@ class FileCapabilities {
     this.canAddFolderFromAnotherDrive,
     this.canAddMyDriveParent,
     this.canChangeCopyRequiresWriterPermission,
+    this.canChangeItemDownloadRestriction,
     this.canChangeSecurityUpdateEnabled,
     this.canChangeViewersCanCopyContent,
     this.canComment,
@@ -5526,6 +5463,8 @@ class FileCapabilities {
           canAddMyDriveParent: json_['canAddMyDriveParent'] as core.bool?,
           canChangeCopyRequiresWriterPermission:
               json_['canChangeCopyRequiresWriterPermission'] as core.bool?,
+          canChangeItemDownloadRestriction:
+              json_['canChangeItemDownloadRestriction'] as core.bool?,
           canChangeSecurityUpdateEnabled:
               json_['canChangeSecurityUpdateEnabled'] as core.bool?,
           canChangeViewersCanCopyContent:
@@ -5592,6 +5531,8 @@ class FileCapabilities {
         if (canChangeCopyRequiresWriterPermission != null)
           'canChangeCopyRequiresWriterPermission':
               canChangeCopyRequiresWriterPermission!,
+        if (canChangeItemDownloadRestriction != null)
+          'canChangeItemDownloadRestriction': canChangeItemDownloadRestriction!,
         if (canChangeSecurityUpdateEnabled != null)
           'canChangeSecurityUpdateEnabled': canChangeSecurityUpdateEnabled!,
         if (canChangeViewersCanCopyContent != null)
@@ -6136,6 +6077,9 @@ class File {
   /// A short description of the file.
   core.String? description;
 
+  /// Download restrictions applied on the file.
+  DownloadRestrictionsMetadata? downloadRestrictions;
+
   /// ID of the shared drive the file resides in.
   ///
   /// Only populated for items in shared drives.
@@ -6505,6 +6449,7 @@ class File {
     this.copyRequiresWriterPermission,
     this.createdTime,
     this.description,
+    this.downloadRestrictions,
     this.driveId,
     this.explicitlyTrashed,
     this.exportLinks,
@@ -6591,6 +6536,11 @@ class File {
               ? core.DateTime.parse(json_['createdTime'] as core.String)
               : null,
           description: json_['description'] as core.String?,
+          downloadRestrictions: json_.containsKey('downloadRestrictions')
+              ? DownloadRestrictionsMetadata.fromJson(
+                  json_['downloadRestrictions']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           driveId: json_['driveId'] as core.String?,
           explicitlyTrashed: json_['explicitlyTrashed'] as core.bool?,
           exportLinks:
@@ -6722,6 +6672,8 @@ class File {
         if (createdTime != null)
           'createdTime': createdTime!.toUtc().toIso8601String(),
         if (description != null) 'description': description!,
+        if (downloadRestrictions != null)
+          'downloadRestrictions': downloadRestrictions!,
         if (driveId != null) 'driveId': driveId!,
         if (explicitlyTrashed != null) 'explicitlyTrashed': explicitlyTrashed!,
         if (exportLinks != null) 'exportLinks': exportLinks!,
@@ -7206,34 +7158,6 @@ class ListAccessProposalsResponse {
       };
 }
 
-/// The response message for Operations.ListOperations.
-class ListOperationsResponse {
-  /// The standard List next-page token.
-  core.String? nextPageToken;
-
-  /// A list of operations that matches the specified filter in the request.
-  core.List<Operation>? operations;
-
-  ListOperationsResponse({
-    this.nextPageToken,
-    this.operations,
-  });
-
-  ListOperationsResponse.fromJson(core.Map json_)
-      : this(
-          nextPageToken: json_['nextPageToken'] as core.String?,
-          operations: (json_['operations'] as core.List?)
-              ?.map((value) => Operation.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-        if (operations != null) 'operations': operations!,
-      };
-}
-
 /// A request to modify the set of labels on a file.
 ///
 /// This request may contain many modifications that will either all succeed or
@@ -7491,10 +7415,10 @@ class PermissionTeamDrivePermissionDetails {
 /// a folder hierarchy. By default, permissions requests only return a subset of
 /// fields. Permission kind, ID, type, and role are always returned. To retrieve
 /// specific fields, see
-/// https://developers.google.com/drive/api/guides/fields-parameter. Some
-/// resource methods (such as `permissions.update`) require a `permissionId`.
-/// Use the `permissions.list` method to retrieve the ID for a file, folder, or
-/// shared drive.
+/// https://developers.google.com/workspace/drive/api/guides/fields-parameter.
+/// Some resource methods (such as `permissions.update`) require a
+/// `permissionId`. Use the `permissions.list` method to retrieve the ID for a
+/// file, folder, or shared drive.
 class Permission {
   /// Whether the permission allows the file to be discovered through search.
   ///
@@ -8233,6 +8157,10 @@ class TeamDriveCapabilities {
   /// this Team Drive.
   core.bool? canChangeDomainUsersOnlyRestriction;
 
+  /// Whether the current user can change organizer-applied download
+  /// restrictions of this shared drive.
+  core.bool? canChangeDownloadRestriction;
+
   /// Whether the current user can change the
   /// `sharingFoldersRequiresOrganizerPermission` restriction of this Team
   /// Drive.
@@ -8306,6 +8234,7 @@ class TeamDriveCapabilities {
     this.canAddChildren,
     this.canChangeCopyRequiresWriterPermissionRestriction,
     this.canChangeDomainUsersOnlyRestriction,
+    this.canChangeDownloadRestriction,
     this.canChangeSharingFoldersRequiresOrganizerPermissionRestriction,
     this.canChangeTeamDriveBackground,
     this.canChangeTeamMembersOnlyRestriction,
@@ -8334,6 +8263,8 @@ class TeamDriveCapabilities {
                   as core.bool?,
           canChangeDomainUsersOnlyRestriction:
               json_['canChangeDomainUsersOnlyRestriction'] as core.bool?,
+          canChangeDownloadRestriction:
+              json_['canChangeDownloadRestriction'] as core.bool?,
           canChangeSharingFoldersRequiresOrganizerPermissionRestriction: json_[
                   'canChangeSharingFoldersRequiresOrganizerPermissionRestriction']
               as core.bool?,
@@ -8367,6 +8298,8 @@ class TeamDriveCapabilities {
         if (canChangeDomainUsersOnlyRestriction != null)
           'canChangeDomainUsersOnlyRestriction':
               canChangeDomainUsersOnlyRestriction!,
+        if (canChangeDownloadRestriction != null)
+          'canChangeDownloadRestriction': canChangeDownloadRestriction!,
         if (canChangeSharingFoldersRequiresOrganizerPermissionRestriction !=
             null)
           'canChangeSharingFoldersRequiresOrganizerPermissionRestriction':
@@ -8649,7 +8582,7 @@ class User {
 
   /// Identifies what kind of resource this is.
   ///
-  /// Value: the fixed string `"drive#user"`.
+  /// Value: the fixed string `drive#user`.
   ///
   /// Output only.
   core.String? kind;

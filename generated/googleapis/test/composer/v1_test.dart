@@ -1506,6 +1506,21 @@ void checkRecoveryConfig(api.RecoveryConfig o) {
   buildCounterRecoveryConfig--;
 }
 
+core.int buildCounterRestartWebServerRequest = 0;
+api.RestartWebServerRequest buildRestartWebServerRequest() {
+  final o = api.RestartWebServerRequest();
+  buildCounterRestartWebServerRequest++;
+  if (buildCounterRestartWebServerRequest < 3) {}
+  buildCounterRestartWebServerRequest--;
+  return o;
+}
+
+void checkRestartWebServerRequest(api.RestartWebServerRequest o) {
+  buildCounterRestartWebServerRequest++;
+  if (buildCounterRestartWebServerRequest < 3) {}
+  buildCounterRestartWebServerRequest--;
+}
+
 core.int buildCounterSaveSnapshotRequest = 0;
 api.SaveSnapshotRequest buildSaveSnapshotRequest() {
   final o = api.SaveSnapshotRequest();
@@ -2564,6 +2579,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RestartWebServerRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRestartWebServerRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RestartWebServerRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRestartWebServerRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-SaveSnapshotRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSaveSnapshotRequest();
@@ -3372,6 +3397,64 @@ void main() {
           $fields: arg_$fields);
       checkPollAirflowCommandResponse(
           response as api.PollAirflowCommandResponse);
+    });
+
+    unittest.test('method--restartWebServer', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudComposerApi(mock).projects.locations.environments;
+      final arg_request = buildRestartWebServerRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.RestartWebServerRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRestartWebServerRequest(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(buildOperation());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.restartWebServer(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
     unittest.test('method--saveSnapshot', () async {

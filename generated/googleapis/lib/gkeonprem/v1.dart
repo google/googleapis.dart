@@ -133,6 +133,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -155,12 +159,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -2965,6 +2971,14 @@ class ProjectsLocationsVmwareAdminClustersResource {
   /// provided and does not match the current etag of the cluster, deletion will
   /// be blocked and an ABORTED error will be returned.
   ///
+  /// [ignoreErrors] - Optional. If set to true, the unenrollment of a vmware
+  /// admin cluster resource will succeed even if errors occur during
+  /// unenrollment. This parameter can be used when you want to unenroll admin
+  /// cluster resource and the on-prem admin cluster is disconnected /
+  /// unreachable. WARNING: Using this parameter when your admin cluster still
+  /// exists may result in a deleted GCP admin cluster but existing resourcelink
+  /// in on-prem admin cluster and membership.
+  ///
   /// [validateOnly] - Validate the request without actually doing any updates.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2981,12 +2995,14 @@ class ProjectsLocationsVmwareAdminClustersResource {
     core.String name, {
     core.bool? allowMissing,
     core.String? etag,
+    core.bool? ignoreErrors,
     core.bool? validateOnly,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
       if (etag != null) 'etag': [etag],
+      if (ignoreErrors != null) 'ignoreErrors': ['${ignoreErrors}'],
       if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
       if ($fields != null) 'fields': [$fields],
     };
@@ -5575,6 +5591,11 @@ class BareMetalCluster {
   /// Output only.
   core.String? localName;
 
+  /// The namespace of the cluster.
+  ///
+  /// Output only.
+  core.String? localNamespace;
+
   /// Maintenance configuration.
   BareMetalMaintenanceConfig? maintenanceConfig;
 
@@ -5677,6 +5698,7 @@ class BareMetalCluster {
     this.fleet,
     this.loadBalancer,
     this.localName,
+    this.localNamespace,
     this.maintenanceConfig,
     this.maintenanceStatus,
     this.name,
@@ -5737,6 +5759,7 @@ class BareMetalCluster {
                   json_['loadBalancer'] as core.Map<core.String, core.dynamic>)
               : null,
           localName: json_['localName'] as core.String?,
+          localNamespace: json_['localNamespace'] as core.String?,
           maintenanceConfig: json_.containsKey('maintenanceConfig')
               ? BareMetalMaintenanceConfig.fromJson(json_['maintenanceConfig']
                   as core.Map<core.String, core.dynamic>)
@@ -5811,6 +5834,7 @@ class BareMetalCluster {
         if (fleet != null) 'fleet': fleet!,
         if (loadBalancer != null) 'loadBalancer': loadBalancer!,
         if (localName != null) 'localName': localName!,
+        if (localNamespace != null) 'localNamespace': localNamespace!,
         if (maintenanceConfig != null) 'maintenanceConfig': maintenanceConfig!,
         if (maintenanceStatus != null) 'maintenanceStatus': maintenanceStatus!,
         if (name != null) 'name': name!,
@@ -7162,10 +7186,16 @@ class EnrollBareMetalClusterRequest {
   /// Optional.
   core.String? localName;
 
+  /// The namespace of the cluster.
+  ///
+  /// Optional.
+  core.String? localNamespace;
+
   EnrollBareMetalClusterRequest({
     this.adminClusterMembership,
     this.bareMetalClusterId,
     this.localName,
+    this.localNamespace,
   });
 
   EnrollBareMetalClusterRequest.fromJson(core.Map json_)
@@ -7174,6 +7204,7 @@ class EnrollBareMetalClusterRequest {
               json_['adminClusterMembership'] as core.String?,
           bareMetalClusterId: json_['bareMetalClusterId'] as core.String?,
           localName: json_['localName'] as core.String?,
+          localNamespace: json_['localNamespace'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7182,6 +7213,7 @@ class EnrollBareMetalClusterRequest {
         if (bareMetalClusterId != null)
           'bareMetalClusterId': bareMetalClusterId!,
         if (localName != null) 'localName': localName!,
+        if (localNamespace != null) 'localNamespace': localNamespace!,
       };
 }
 
@@ -8430,6 +8462,9 @@ class VmwareAdminCluster {
   /// A human readable description of this VMware admin cluster.
   core.String? description;
 
+  /// Enable advanced cluster.
+  core.bool? enableAdvancedCluster;
+
   /// The DNS name of VMware admin cluster's API server.
   ///
   /// Output only.
@@ -8489,6 +8524,9 @@ class VmwareAdminCluster {
   /// Output only.
   VmwareAdminPreparedSecretsConfig? preparedSecrets;
 
+  /// Configuration for registry.
+  VmwareAdminPrivateRegistryConfig? privateRegistryConfig;
+
   /// If set, there are currently changes in flight to the VMware admin cluster.
   ///
   /// Output only.
@@ -8546,6 +8584,7 @@ class VmwareAdminCluster {
     this.controlPlaneNode,
     this.createTime,
     this.description,
+    this.enableAdvancedCluster,
     this.endpoint,
     this.etag,
     this.fleet,
@@ -8557,6 +8596,7 @@ class VmwareAdminCluster {
     this.onPremVersion,
     this.platformConfig,
     this.preparedSecrets,
+    this.privateRegistryConfig,
     this.reconciling,
     this.state,
     this.status,
@@ -8601,6 +8641,7 @@ class VmwareAdminCluster {
               : null,
           createTime: json_['createTime'] as core.String?,
           description: json_['description'] as core.String?,
+          enableAdvancedCluster: json_['enableAdvancedCluster'] as core.bool?,
           endpoint: json_['endpoint'] as core.String?,
           etag: json_['etag'] as core.String?,
           fleet: json_.containsKey('fleet')
@@ -8626,6 +8667,11 @@ class VmwareAdminCluster {
           preparedSecrets: json_.containsKey('preparedSecrets')
               ? VmwareAdminPreparedSecretsConfig.fromJson(
                   json_['preparedSecrets']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          privateRegistryConfig: json_.containsKey('privateRegistryConfig')
+              ? VmwareAdminPrivateRegistryConfig.fromJson(
+                  json_['privateRegistryConfig']
                       as core.Map<core.String, core.dynamic>)
               : null,
           reconciling: json_['reconciling'] as core.bool?,
@@ -8658,6 +8704,8 @@ class VmwareAdminCluster {
         if (controlPlaneNode != null) 'controlPlaneNode': controlPlaneNode!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
+        if (enableAdvancedCluster != null)
+          'enableAdvancedCluster': enableAdvancedCluster!,
         if (endpoint != null) 'endpoint': endpoint!,
         if (etag != null) 'etag': etag!,
         if (fleet != null) 'fleet': fleet!,
@@ -8669,6 +8717,8 @@ class VmwareAdminCluster {
         if (onPremVersion != null) 'onPremVersion': onPremVersion!,
         if (platformConfig != null) 'platformConfig': platformConfig!,
         if (preparedSecrets != null) 'preparedSecrets': preparedSecrets!,
+        if (privateRegistryConfig != null)
+          'privateRegistryConfig': privateRegistryConfig!,
         if (reconciling != null) 'reconciling': reconciling!,
         if (state != null) 'state': state!,
         if (status != null) 'status': status!,
@@ -8992,6 +9042,37 @@ class VmwareAdminPreparedSecretsConfig {
       };
 }
 
+/// VmwareAdminPrivateRegistryConfig represents configuration for admin cluster
+/// registry.
+class VmwareAdminPrivateRegistryConfig {
+  /// The registry address.
+  core.String? address;
+
+  /// When the container runtime pulls an image from private registry, the
+  /// registry must prove its identity by presenting a certificate.
+  ///
+  /// The registry's certificate is signed by a certificate authority (CA). The
+  /// container runtime uses the CA's certificate to validate the registry's
+  /// certificate.
+  core.String? caCert;
+
+  VmwareAdminPrivateRegistryConfig({
+    this.address,
+    this.caCert,
+  });
+
+  VmwareAdminPrivateRegistryConfig.fromJson(core.Map json_)
+      : this(
+          address: json_['address'] as core.String?,
+          caCert: json_['caCert'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (caCert != null) 'caCert': caCert!,
+      };
+}
+
 /// VmwareSeesawConfig represents configuration parameters for an already
 /// existing Seesaw load balancer.
 ///
@@ -9293,6 +9374,9 @@ class VmwareCluster {
   /// Disable bundled ingress.
   core.bool? disableBundledIngress;
 
+  /// Enable advanced cluster.
+  core.bool? enableAdvancedCluster;
+
   /// Enable control plane V2.
   ///
   /// Default to false.
@@ -9418,6 +9502,7 @@ class VmwareCluster {
     this.deleteTime,
     this.description,
     this.disableBundledIngress,
+    this.enableAdvancedCluster,
     this.enableControlPlaneV2,
     this.endpoint,
     this.etag,
@@ -9480,6 +9565,7 @@ class VmwareCluster {
           deleteTime: json_['deleteTime'] as core.String?,
           description: json_['description'] as core.String?,
           disableBundledIngress: json_['disableBundledIngress'] as core.bool?,
+          enableAdvancedCluster: json_['enableAdvancedCluster'] as core.bool?,
           enableControlPlaneV2: json_['enableControlPlaneV2'] as core.bool?,
           endpoint: json_['endpoint'] as core.String?,
           etag: json_['etag'] as core.String?,
@@ -9543,6 +9629,8 @@ class VmwareCluster {
         if (description != null) 'description': description!,
         if (disableBundledIngress != null)
           'disableBundledIngress': disableBundledIngress!,
+        if (enableAdvancedCluster != null)
+          'enableAdvancedCluster': enableAdvancedCluster!,
         if (enableControlPlaneV2 != null)
           'enableControlPlaneV2': enableControlPlaneV2!,
         if (endpoint != null) 'endpoint': endpoint!,

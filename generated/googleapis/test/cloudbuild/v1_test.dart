@@ -1196,6 +1196,7 @@ api.BuildTrigger buildBuildTrigger() {
     o.build = buildBuild();
     o.createTime = 'foo';
     o.description = 'foo';
+    o.developerConnectEventConfig = buildDeveloperConnectEventConfig();
     o.disabled = true;
     o.eventType = 'foo';
     o.filename = 'foo';
@@ -1237,6 +1238,7 @@ void checkBuildTrigger(api.BuildTrigger o) {
       o.description!,
       unittest.equals('foo'),
     );
+    checkDeveloperConnectEventConfig(o.developerConnectEventConfig!);
     unittest.expect(o.disabled!, unittest.isTrue);
     unittest.expect(
       o.eventType!,
@@ -1526,6 +1528,37 @@ void checkDeveloperConnectConfig(api.DeveloperConnectConfig o) {
     );
   }
   buildCounterDeveloperConnectConfig--;
+}
+
+core.int buildCounterDeveloperConnectEventConfig = 0;
+api.DeveloperConnectEventConfig buildDeveloperConnectEventConfig() {
+  final o = api.DeveloperConnectEventConfig();
+  buildCounterDeveloperConnectEventConfig++;
+  if (buildCounterDeveloperConnectEventConfig < 3) {
+    o.gitRepositoryLink = 'foo';
+    o.gitRepositoryLinkType = 'foo';
+    o.pullRequest = buildPullRequestFilter();
+    o.push = buildPushFilter();
+  }
+  buildCounterDeveloperConnectEventConfig--;
+  return o;
+}
+
+void checkDeveloperConnectEventConfig(api.DeveloperConnectEventConfig o) {
+  buildCounterDeveloperConnectEventConfig++;
+  if (buildCounterDeveloperConnectEventConfig < 3) {
+    unittest.expect(
+      o.gitRepositoryLink!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.gitRepositoryLinkType!,
+      unittest.equals('foo'),
+    );
+    checkPullRequestFilter(o.pullRequest!);
+    checkPushFilter(o.push!);
+  }
+  buildCounterDeveloperConnectEventConfig--;
 }
 
 core.int buildCounterEmpty = 0;
@@ -4440,6 +4473,16 @@ void main() {
       final od = api.DeveloperConnectConfig.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkDeveloperConnectConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-DeveloperConnectEventConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeveloperConnectEventConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeveloperConnectEventConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkDeveloperConnectEventConfig(od);
     });
   });
 

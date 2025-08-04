@@ -68,6 +68,11 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://datalineage.asia-southeast3.rep.googleapis.com/",
+            "location": "asia-southeast3"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://datalineage.australia-southeast1.rep.googleapis.com/",
             "location": "australia-southeast1"
         },
@@ -90,6 +95,11 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://datalineage.europe-north2.rep.googleapis.com/",
             "location": "europe-north2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://datalineage.europe-north3.rep.googleapis.com/",
+            "location": "europe-north3"
         },
         {
             "description": "Regional Endpoint",
@@ -267,7 +277,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250207",
+    "revision": "20250711",
     "rootUrl": "https://datalineage.googleapis.com/",
     "servicePath": "",
     "title": "Data Lineage API",
@@ -400,7 +410,7 @@
                                     "type": "string"
                                 },
                                 "requestId": {
-                                    "description": "A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.",
+                                    "description": "Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -586,7 +596,7 @@
                                             "type": "string"
                                         },
                                         "requestId": {
-                                            "description": "A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.",
+                                            "description": "Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.",
                                             "location": "query",
                                             "type": "string"
                                         }
@@ -714,6 +724,11 @@
                                             "required": true,
                                             "type": "string"
                                         },
+                                        "requestId": {
+                                            "description": "Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
                                         "updateMask": {
                                             "description": "The list of fields to update. Currently not used. The whole message is updated.",
                                             "format": "google-fieldmask",
@@ -753,7 +768,7 @@
                                                     "type": "string"
                                                 },
                                                 "requestId": {
-                                                    "description": "A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.",
+                                                    "description": "Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.",
                                                     "location": "query",
                                                     "type": "string"
                                                 }
@@ -920,7 +935,7 @@
                                                             "type": "string"
                                                         },
                                                         "requestId": {
-                                                            "description": "A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.",
+                                                            "description": "Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.",
                                                             "location": "query",
                                                             "type": "string"
                                                         }

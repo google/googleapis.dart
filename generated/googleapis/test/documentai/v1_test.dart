@@ -281,6 +281,7 @@ api.GoogleCloudDocumentaiV1Document buildGoogleCloudDocumentaiV1Document() {
   if (buildCounterGoogleCloudDocumentaiV1Document < 3) {
     o.chunkedDocument = buildGoogleCloudDocumentaiV1DocumentChunkedDocument();
     o.content = 'foo';
+    o.docid = 'foo';
     o.documentLayout = buildGoogleCloudDocumentaiV1DocumentDocumentLayout();
     o.entities = buildUnnamed3();
     o.entityRelations = buildUnnamed4();
@@ -305,6 +306,10 @@ void checkGoogleCloudDocumentaiV1Document(
     checkGoogleCloudDocumentaiV1DocumentChunkedDocument(o.chunkedDocument!);
     unittest.expect(
       o.content!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.docid!,
       unittest.equals('foo'),
     );
     checkGoogleCloudDocumentaiV1DocumentDocumentLayout(o.documentLayout!);
@@ -604,6 +609,7 @@ api.GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock
   if (buildCounterGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock <
       3) {
     o.blockId = 'foo';
+    o.boundingBox = buildGoogleCloudDocumentaiV1BoundingPoly();
     o.listBlock =
         buildGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock();
     o.pageSpan =
@@ -626,6 +632,7 @@ void checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock(
       o.blockId!,
       unittest.equals('foo'),
     );
+    checkGoogleCloudDocumentaiV1BoundingPoly(o.boundingBox!);
     checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock(
         o.listBlock!);
     checkGoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan(
@@ -1077,6 +1084,7 @@ api.GoogleCloudDocumentaiV1DocumentEntityNormalizedValue
     o.floatValue = 42.0;
     o.integerValue = 42;
     o.moneyValue = buildGoogleTypeMoney();
+    o.signatureValue = true;
     o.text = 'foo';
   }
   buildCounterGoogleCloudDocumentaiV1DocumentEntityNormalizedValue--;
@@ -1100,6 +1108,7 @@ void checkGoogleCloudDocumentaiV1DocumentEntityNormalizedValue(
       unittest.equals(42),
     );
     checkGoogleTypeMoney(o.moneyValue!);
+    unittest.expect(o.signatureValue!, unittest.isTrue);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),
@@ -2672,6 +2681,7 @@ api.GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty
   buildCounterGoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty++;
   if (buildCounterGoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty < 3) {
     o.displayName = 'foo';
+    o.method = 'foo';
     o.name = 'foo';
     o.occurrenceType = 'foo';
     o.valueType = 'foo';
@@ -2686,6 +2696,10 @@ void checkGoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty(
   if (buildCounterGoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty < 3) {
     unittest.expect(
       o.displayName!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.method!,
       unittest.equals('foo'),
     );
     unittest.expect(
@@ -5303,6 +5317,23 @@ void checkGoogleTypeTimeZone(api.GoogleTypeTimeZone o) {
   buildCounterGoogleTypeTimeZone--;
 }
 
+core.List<core.String> buildUnnamed83() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed83(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-GoogleCloudDocumentaiV1Barcode', () {
     unittest.test('to-json--from-json', () async {
@@ -6852,6 +6883,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.DocumentApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed83();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -6889,6 +6921,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -6913,6 +6949,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,

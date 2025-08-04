@@ -315,6 +315,8 @@ api.CloudFunction buildCloudFunction() {
     o.network = 'foo';
     o.onDeployUpdatePolicy = buildOnDeployUpdatePolicy();
     o.runtime = 'foo';
+    o.satisfiesPzi = true;
+    o.satisfiesPzs = true;
     o.secretEnvironmentVariables = buildUnnamed6();
     o.secretVolumes = buildUnnamed7();
     o.serviceAccountEmail = 'foo';
@@ -407,6 +409,8 @@ void checkCloudFunction(api.CloudFunction o) {
       o.runtime!,
       unittest.equals('foo'),
     );
+    unittest.expect(o.satisfiesPzi!, unittest.isTrue);
+    unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     checkUnnamed6(o.secretEnvironmentVariables!);
     checkUnnamed7(o.secretVolumes!);
     unittest.expect(
@@ -1408,6 +1412,23 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse--;
 }
 
+core.List<core.String> buildUnnamed23() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed23(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
+}
+
 void main() {
   unittest.group('obj-schema-AuditConfig', () {
     unittest.test('to-json--from-json', () async {
@@ -1853,6 +1874,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudFunctionsApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed23();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -1890,6 +1912,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -1913,6 +1939,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,

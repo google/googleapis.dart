@@ -916,6 +916,8 @@ api.EnrollmentToken buildEnrollmentToken() {
   if (buildCounterEnrollmentToken < 3) {
     o.duration = 'foo';
     o.enrollmentTokenType = 'foo';
+    o.googleAuthenticationOptions =
+        buildEnrollmentTokenGoogleAuthenticationOptions();
     o.token = 'foo';
   }
   buildCounterEnrollmentToken--;
@@ -933,12 +935,43 @@ void checkEnrollmentToken(api.EnrollmentToken o) {
       o.enrollmentTokenType!,
       unittest.equals('foo'),
     );
+    checkEnrollmentTokenGoogleAuthenticationOptions(
+        o.googleAuthenticationOptions!);
     unittest.expect(
       o.token!,
       unittest.equals('foo'),
     );
   }
   buildCounterEnrollmentToken--;
+}
+
+core.int buildCounterEnrollmentTokenGoogleAuthenticationOptions = 0;
+api.EnrollmentTokenGoogleAuthenticationOptions
+    buildEnrollmentTokenGoogleAuthenticationOptions() {
+  final o = api.EnrollmentTokenGoogleAuthenticationOptions();
+  buildCounterEnrollmentTokenGoogleAuthenticationOptions++;
+  if (buildCounterEnrollmentTokenGoogleAuthenticationOptions < 3) {
+    o.authenticationRequirement = 'foo';
+    o.requiredAccountEmail = 'foo';
+  }
+  buildCounterEnrollmentTokenGoogleAuthenticationOptions--;
+  return o;
+}
+
+void checkEnrollmentTokenGoogleAuthenticationOptions(
+    api.EnrollmentTokenGoogleAuthenticationOptions o) {
+  buildCounterEnrollmentTokenGoogleAuthenticationOptions++;
+  if (buildCounterEnrollmentTokenGoogleAuthenticationOptions < 3) {
+    unittest.expect(
+      o.authenticationRequirement!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.requiredAccountEmail!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterEnrollmentTokenGoogleAuthenticationOptions--;
 }
 
 core.List<api.Administrator> buildUnnamed12() => [
@@ -3641,6 +3674,16 @@ void main() {
       final od = api.EnrollmentToken.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkEnrollmentToken(od);
+    });
+  });
+
+  unittest.group('obj-schema-EnrollmentTokenGoogleAuthenticationOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEnrollmentTokenGoogleAuthenticationOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnrollmentTokenGoogleAuthenticationOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkEnrollmentTokenGoogleAuthenticationOptions(od);
     });
   });
 

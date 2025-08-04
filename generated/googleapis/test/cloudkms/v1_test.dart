@@ -243,6 +243,7 @@ api.AutokeyConfig buildAutokeyConfig() {
   final o = api.AutokeyConfig();
   buildCounterAutokeyConfig++;
   if (buildCounterAutokeyConfig < 3) {
+    o.etag = 'foo';
     o.keyProject = 'foo';
     o.name = 'foo';
     o.state = 'foo';
@@ -254,6 +255,10 @@ api.AutokeyConfig buildAutokeyConfig() {
 void checkAutokeyConfig(api.AutokeyConfig o) {
   buildCounterAutokeyConfig++;
   if (buildCounterAutokeyConfig < 3) {
+    unittest.expect(
+      o.etag!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.keyProject!,
       unittest.equals('foo'),
@@ -1181,6 +1186,29 @@ void checkImportJob(api.ImportJob o) {
   buildCounterImportJob--;
 }
 
+core.int buildCounterKeyAccessJustificationsEnrollmentConfig = 0;
+api.KeyAccessJustificationsEnrollmentConfig
+    buildKeyAccessJustificationsEnrollmentConfig() {
+  final o = api.KeyAccessJustificationsEnrollmentConfig();
+  buildCounterKeyAccessJustificationsEnrollmentConfig++;
+  if (buildCounterKeyAccessJustificationsEnrollmentConfig < 3) {
+    o.auditLogging = true;
+    o.policyEnforcement = true;
+  }
+  buildCounterKeyAccessJustificationsEnrollmentConfig--;
+  return o;
+}
+
+void checkKeyAccessJustificationsEnrollmentConfig(
+    api.KeyAccessJustificationsEnrollmentConfig o) {
+  buildCounterKeyAccessJustificationsEnrollmentConfig++;
+  if (buildCounterKeyAccessJustificationsEnrollmentConfig < 3) {
+    unittest.expect(o.auditLogging!, unittest.isTrue);
+    unittest.expect(o.policyEnforcement!, unittest.isTrue);
+  }
+  buildCounterKeyAccessJustificationsEnrollmentConfig--;
+}
+
 core.List<core.String> buildUnnamed9() => [
       'foo',
       'foo',
@@ -1215,6 +1243,33 @@ void checkKeyAccessJustificationsPolicy(api.KeyAccessJustificationsPolicy o) {
     checkUnnamed9(o.allowedAccessReasons!);
   }
   buildCounterKeyAccessJustificationsPolicy--;
+}
+
+core.int buildCounterKeyAccessJustificationsPolicyConfig = 0;
+api.KeyAccessJustificationsPolicyConfig
+    buildKeyAccessJustificationsPolicyConfig() {
+  final o = api.KeyAccessJustificationsPolicyConfig();
+  buildCounterKeyAccessJustificationsPolicyConfig++;
+  if (buildCounterKeyAccessJustificationsPolicyConfig < 3) {
+    o.defaultKeyAccessJustificationPolicy =
+        buildKeyAccessJustificationsPolicy();
+    o.name = 'foo';
+  }
+  buildCounterKeyAccessJustificationsPolicyConfig--;
+  return o;
+}
+
+void checkKeyAccessJustificationsPolicyConfig(
+    api.KeyAccessJustificationsPolicyConfig o) {
+  buildCounterKeyAccessJustificationsPolicyConfig++;
+  if (buildCounterKeyAccessJustificationsPolicyConfig < 3) {
+    checkKeyAccessJustificationsPolicy(o.defaultKeyAccessJustificationPolicy!);
+    unittest.expect(
+      o.name!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterKeyAccessJustificationsPolicyConfig--;
 }
 
 core.int buildCounterKeyHandle = 0;
@@ -2338,6 +2393,59 @@ void checkShowEffectiveAutokeyConfigResponse(
   buildCounterShowEffectiveAutokeyConfigResponse--;
 }
 
+core.int
+    buildCounterShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse =
+    0;
+api.ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse
+    buildShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse() {
+  final o = api.ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse();
+  buildCounterShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse++;
+  if (buildCounterShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse <
+      3) {
+    o.externalConfig = buildKeyAccessJustificationsEnrollmentConfig();
+    o.hardwareConfig = buildKeyAccessJustificationsEnrollmentConfig();
+    o.softwareConfig = buildKeyAccessJustificationsEnrollmentConfig();
+  }
+  buildCounterShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse--;
+  return o;
+}
+
+void checkShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse(
+    api.ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse o) {
+  buildCounterShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse++;
+  if (buildCounterShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse <
+      3) {
+    checkKeyAccessJustificationsEnrollmentConfig(o.externalConfig!);
+    checkKeyAccessJustificationsEnrollmentConfig(o.hardwareConfig!);
+    checkKeyAccessJustificationsEnrollmentConfig(o.softwareConfig!);
+  }
+  buildCounterShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse--;
+}
+
+core.int buildCounterShowEffectiveKeyAccessJustificationsPolicyConfigResponse =
+    0;
+api.ShowEffectiveKeyAccessJustificationsPolicyConfigResponse
+    buildShowEffectiveKeyAccessJustificationsPolicyConfigResponse() {
+  final o = api.ShowEffectiveKeyAccessJustificationsPolicyConfigResponse();
+  buildCounterShowEffectiveKeyAccessJustificationsPolicyConfigResponse++;
+  if (buildCounterShowEffectiveKeyAccessJustificationsPolicyConfigResponse <
+      3) {
+    o.effectiveKajPolicy = buildKeyAccessJustificationsPolicyConfig();
+  }
+  buildCounterShowEffectiveKeyAccessJustificationsPolicyConfigResponse--;
+  return o;
+}
+
+void checkShowEffectiveKeyAccessJustificationsPolicyConfigResponse(
+    api.ShowEffectiveKeyAccessJustificationsPolicyConfigResponse o) {
+  buildCounterShowEffectiveKeyAccessJustificationsPolicyConfigResponse++;
+  if (buildCounterShowEffectiveKeyAccessJustificationsPolicyConfigResponse <
+      3) {
+    checkKeyAccessJustificationsPolicyConfig(o.effectiveKajPolicy!);
+  }
+  buildCounterShowEffectiveKeyAccessJustificationsPolicyConfigResponse--;
+}
+
 core.Map<core.String, core.Object?> buildUnnamed24() => {
       'x': {
         'list': [1, 2, 3],
@@ -2554,6 +2662,23 @@ void checkWrappingPublicKey(api.WrappingPublicKey o) {
     );
   }
   buildCounterWrappingPublicKey--;
+}
+
+core.List<core.String> buildUnnamed28() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed28(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -2837,6 +2962,16 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-KeyAccessJustificationsEnrollmentConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildKeyAccessJustificationsEnrollmentConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.KeyAccessJustificationsEnrollmentConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkKeyAccessJustificationsEnrollmentConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-KeyAccessJustificationsPolicy', () {
     unittest.test('to-json--from-json', () async {
       final o = buildKeyAccessJustificationsPolicy();
@@ -2844,6 +2979,16 @@ void main() {
       final od = api.KeyAccessJustificationsPolicy.fromJson(
           oJson as core.Map<core.String, core.dynamic>);
       checkKeyAccessJustificationsPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-KeyAccessJustificationsPolicyConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildKeyAccessJustificationsPolicyConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.KeyAccessJustificationsPolicyConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkKeyAccessJustificationsPolicyConfig(od);
     });
   });
 
@@ -3107,6 +3252,33 @@ void main() {
     });
   });
 
+  unittest.group(
+      'obj-schema-ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o =
+          buildShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse(od);
+    });
+  });
+
+  unittest.group(
+      'obj-schema-ShowEffectiveKeyAccessJustificationsPolicyConfigResponse',
+      () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildShowEffectiveKeyAccessJustificationsPolicyConfigResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od =
+          api.ShowEffectiveKeyAccessJustificationsPolicyConfigResponse.fromJson(
+              oJson as core.Map<core.String, core.dynamic>);
+      checkShowEffectiveKeyAccessJustificationsPolicyConfigResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       final o = buildStatus();
@@ -3221,6 +3393,61 @@ void main() {
       checkAutokeyConfig(response as api.AutokeyConfig);
     });
 
+    unittest.test('method--getKajPolicyConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).folders;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildKeyAccessJustificationsPolicyConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getKajPolicyConfig(arg_name, $fields: arg_$fields);
+      checkKeyAccessJustificationsPolicyConfig(
+          response as api.KeyAccessJustificationsPolicyConfig);
+    });
+
     unittest.test('method--updateAutokeyConfig', () async {
       final mock = HttpServerMock();
       final res = api.CloudKMSApi(mock).folders;
@@ -3283,9 +3510,251 @@ void main() {
           updateMask: arg_updateMask, $fields: arg_$fields);
       checkAutokeyConfig(response as api.AutokeyConfig);
     });
+
+    unittest.test('method--updateKajPolicyConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).folders;
+      final arg_request = buildKeyAccessJustificationsPolicyConfig();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.KeyAccessJustificationsPolicyConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkKeyAccessJustificationsPolicyConfig(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildKeyAccessJustificationsPolicyConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateKajPolicyConfig(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkKeyAccessJustificationsPolicyConfig(
+          response as api.KeyAccessJustificationsPolicyConfig);
+    });
+  });
+
+  unittest.group('resource-OrganizationsResource', () {
+    unittest.test('method--getKajPolicyConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).organizations;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildKeyAccessJustificationsPolicyConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getKajPolicyConfig(arg_name, $fields: arg_$fields);
+      checkKeyAccessJustificationsPolicyConfig(
+          response as api.KeyAccessJustificationsPolicyConfig);
+    });
+
+    unittest.test('method--updateKajPolicyConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).organizations;
+      final arg_request = buildKeyAccessJustificationsPolicyConfig();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.KeyAccessJustificationsPolicyConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkKeyAccessJustificationsPolicyConfig(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildKeyAccessJustificationsPolicyConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateKajPolicyConfig(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkKeyAccessJustificationsPolicyConfig(
+          response as api.KeyAccessJustificationsPolicyConfig);
+    });
   });
 
   unittest.group('resource-ProjectsResource', () {
+    unittest.test('method--getKajPolicyConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).projects;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildKeyAccessJustificationsPolicyConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response =
+          await res.getKajPolicyConfig(arg_name, $fields: arg_$fields);
+      checkKeyAccessJustificationsPolicyConfig(
+          response as api.KeyAccessJustificationsPolicyConfig);
+    });
+
     unittest.test('method--showEffectiveAutokeyConfig', () async {
       final mock = HttpServerMock();
       final res = api.CloudKMSApi(mock).projects;
@@ -3339,6 +3808,186 @@ void main() {
           $fields: arg_$fields);
       checkShowEffectiveAutokeyConfigResponse(
           response as api.ShowEffectiveAutokeyConfigResponse);
+    });
+
+    unittest
+        .test('method--showEffectiveKeyAccessJustificationsEnrollmentConfig',
+            () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).projects;
+      final arg_project = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res
+          .showEffectiveKeyAccessJustificationsEnrollmentConfig(arg_project,
+              $fields: arg_$fields);
+      checkShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse(response
+          as api.ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse);
+    });
+
+    unittest.test('method--showEffectiveKeyAccessJustificationsPolicyConfig',
+        () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).projects;
+      final arg_project = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp = convert.json.encode(
+            buildShowEffectiveKeyAccessJustificationsPolicyConfigResponse());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res
+          .showEffectiveKeyAccessJustificationsPolicyConfig(arg_project,
+              $fields: arg_$fields);
+      checkShowEffectiveKeyAccessJustificationsPolicyConfigResponse(response
+          as api.ShowEffectiveKeyAccessJustificationsPolicyConfigResponse);
+    });
+
+    unittest.test('method--updateKajPolicyConfig', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudKMSApi(mock).projects;
+      final arg_request = buildKeyAccessJustificationsPolicyConfig();
+      final arg_name = 'foo';
+      final arg_updateMask = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        final obj = api.KeyAccessJustificationsPolicyConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkKeyAccessJustificationsPolicyConfig(obj);
+
+        final path = req.url.path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 1),
+          unittest.equals('/'),
+        );
+        pathOffset += 1;
+        unittest.expect(
+          path.substring(pathOffset, pathOffset + 3),
+          unittest.equals('v1/'),
+        );
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        final query = req.url.query;
+        var queryOffset = 0;
+        final queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            final keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+          queryMap['updateMask']!.first,
+          unittest.equals(arg_updateMask),
+        );
+        unittest.expect(
+          queryMap['fields']!.first,
+          unittest.equals(arg_$fields),
+        );
+
+        final h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        final resp =
+            convert.json.encode(buildKeyAccessJustificationsPolicyConfig());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      final response = await res.updateKajPolicyConfig(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkKeyAccessJustificationsPolicyConfig(
+          response as api.KeyAccessJustificationsPolicyConfig);
     });
   });
 
@@ -3510,6 +4159,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudKMSApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed28();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -3547,6 +4197,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -3570,6 +4224,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,

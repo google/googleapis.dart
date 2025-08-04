@@ -18,7 +18,7 @@
 /// this API (v1beta1) is available to all Google Workspace customers.
 ///
 /// For more information, see
-/// <https://developers.google.com/admin-sdk/alertcenter/>
+/// <https://developers.google.com/workspace/admin/alertcenter/>
 ///
 /// Create an instance of [AlertCenterApi] to access these resources:
 ///
@@ -292,9 +292,9 @@ class AlertsResource {
   ///
   /// [filter] - Optional. A query string for filtering alert results. For more
   /// details, see
-  /// [Query filters](https://developers.google.com/admin-sdk/alertcenter/guides/query-filters)
+  /// [Query filters](https://developers.google.com/workspace/admin/alertcenter/guides/query-filters)
   /// and
-  /// [Supported query filter fields](https://developers.google.com/admin-sdk/alertcenter/reference/filter-fields#alerts.list).
+  /// [Supported query filter fields](https://developers.google.com/workspace/admin/alertcenter/reference/filter-fields#alerts.list).
   ///
   /// [orderBy] - Optional. The sort order of the list results. If not specified
   /// results may be returned in arbitrary order. You can sort the results in
@@ -472,9 +472,9 @@ class AlertsFeedbackResource {
   ///
   /// [filter] - Optional. A query string for filtering alert feedback results.
   /// For more details, see
-  /// [Query filters](https://developers.google.com/admin-sdk/alertcenter/guides/query-filters)
+  /// [Query filters](https://developers.google.com/workspace/admin/alertcenter/guides/query-filters)
   /// and
-  /// [Supported query filter fields](https://developers.google.com/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).
+  /// [Supported query filter fields](https://developers.google.com/workspace/admin/alertcenter/reference/filter-fields#alerts.feedback.list).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -684,7 +684,7 @@ class Alert {
   ///
   /// This is output only after alert is created. For a list of available alert
   /// types see
-  /// [Google Workspace Alert types](https://developers.google.com/admin-sdk/alertcenter/reference/alert-types).
+  /// [Google Workspace Alert types](https://developers.google.com/workspace/admin/alertcenter/reference/alert-types).
   ///
   /// Required.
   core.String? type;
@@ -1142,7 +1142,7 @@ class ListAlertsResponse {
 /// Settings for callback notifications.
 ///
 /// For more details see
-/// [Google Workspace Alert Notification](https://developers.google.com/admin-sdk/alertcenter/guides/notifications).
+/// [Google Workspace Alert Notification](https://developers.google.com/workspace/admin/alertcenter/guides/notifications).
 class Notification {
   /// A Google Cloud Pub/sub topic destination.
   CloudPubsubTopic? cloudPubsubTopic;

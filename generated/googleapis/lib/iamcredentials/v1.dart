@@ -23,7 +23,11 @@
 ///
 /// Create an instance of [IAMCredentialsApi] to access these resources:
 ///
+/// - [LocationsResource]
+///   - [LocationsWorkforcePoolsResource]
 /// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsWorkloadIdentityPoolsResource]
 ///   - [ProjectsServiceAccountsResource]
 library;
 
@@ -34,6 +38,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -51,6 +56,7 @@ class IAMCredentialsApi {
 
   final commons.ApiRequester _requester;
 
+  LocationsResource get locations => LocationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   IAMCredentialsApi(http.Client client,
@@ -60,13 +66,120 @@ class IAMCredentialsApi {
             commons.ApiRequester(client, rootUrl, servicePath, requestHeaders);
 }
 
+class LocationsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsWorkforcePoolsResource get workforcePools =>
+      LocationsWorkforcePoolsResource(_requester);
+
+  LocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class LocationsWorkforcePoolsResource {
+  final commons.ApiRequester _requester;
+
+  LocationsWorkforcePoolsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns the trust boundary info for a given workforce pool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of workforce pool.
+  /// Value must have pattern `^locations/\[^/\]+/workforcePools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkforcePoolAllowedLocations].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkforcePoolAllowedLocations> getAllowedLocations(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/allowedLocations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkforcePoolAllowedLocations.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
   ProjectsServiceAccountsResource get serviceAccounts =>
       ProjectsServiceAccountsResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsResource get workloadIdentityPools =>
+      ProjectsLocationsWorkloadIdentityPoolsResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns the trust boundary info for a given workload identity pool.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of workload identity pool.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkloadIdentityPoolAllowedLocations].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkloadIdentityPoolAllowedLocations> getAllowedLocations(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/allowedLocations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkloadIdentityPoolAllowedLocations.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsServiceAccountsResource {
@@ -399,10 +512,18 @@ class GenerateIdTokenRequest {
   /// claims.
   core.bool? includeEmail;
 
+  /// Include the organization number of the service account in the token.
+  ///
+  /// If set to `true`, the token will contain a `google.organization_number`
+  /// claim. The value of the claim will be `null` if the service account isn't
+  /// associated with an organization.
+  core.bool? organizationNumberIncluded;
+
   GenerateIdTokenRequest({
     this.audience,
     this.delegates,
     this.includeEmail,
+    this.organizationNumberIncluded,
   });
 
   GenerateIdTokenRequest.fromJson(core.Map json_)
@@ -412,17 +533,30 @@ class GenerateIdTokenRequest {
               ?.map((value) => value as core.String)
               .toList(),
           includeEmail: json_['includeEmail'] as core.bool?,
+          organizationNumberIncluded:
+              json_['organizationNumberIncluded'] as core.bool?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (audience != null) 'audience': audience!,
         if (delegates != null) 'delegates': delegates!,
         if (includeEmail != null) 'includeEmail': includeEmail!,
+        if (organizationNumberIncluded != null)
+          'organizationNumberIncluded': organizationNumberIncluded!,
       };
 }
 
 class GenerateIdTokenResponse {
   /// The OpenId Connect ID token.
+  ///
+  /// The token is a JSON Web Token (JWT) that contains a payload with claims.
+  /// See the [JSON Web Token spec](https://tools.ietf.org/html/rfc7519) for
+  /// more information. Here is an example of a decoded JWT payload: ``` {
+  /// "iss": "https://accounts.google.com", "iat": 1496953245, "exp":
+  /// 1496953245, "aud": "https://www.example.com", "sub":
+  /// "107517467455664443765", "azp": "107517467455664443765", "email":
+  /// "my-iam-account@my-project.iam.gserviceaccount.com", "email_verified":
+  /// true, "google": { "organization_number": 123456 } } ```
   core.String? token;
 
   GenerateIdTokenResponse({
@@ -440,37 +574,7 @@ class GenerateIdTokenResponse {
 }
 
 /// Represents a list of allowed locations for given service account.
-class ServiceAccountAllowedLocations {
-  /// The hex encoded bitmap of the trust boundary locations
-  ///
-  /// Output only.
-  core.String? encodedLocations;
-
-  /// The human readable trust boundary locations.
-  ///
-  /// For example, \["us-central1", "europe-west1"\]
-  ///
-  /// Output only.
-  core.List<core.String>? locations;
-
-  ServiceAccountAllowedLocations({
-    this.encodedLocations,
-    this.locations,
-  });
-
-  ServiceAccountAllowedLocations.fromJson(core.Map json_)
-      : this(
-          encodedLocations: json_['encodedLocations'] as core.String?,
-          locations: (json_['locations'] as core.List?)
-              ?.map((value) => value as core.String)
-              .toList(),
-        );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-        if (encodedLocations != null) 'encodedLocations': encodedLocations!,
-        if (locations != null) 'locations': locations!,
-      };
-}
+typedef ServiceAccountAllowedLocations = $AllowedLocations;
 
 class SignBlobRequest {
   /// The sequence of service accounts in a delegation chain.
@@ -643,3 +747,9 @@ class SignJwtResponse {
         if (signedJwt != null) 'signedJwt': signedJwt!,
       };
 }
+
+/// Represents a list of allowed locations for given workforce pool.
+typedef WorkforcePoolAllowedLocations = $AllowedLocations;
+
+/// Represents a list of allowed locations for given workload identity pool.
+typedef WorkloadIdentityPoolAllowedLocations = $AllowedLocations;

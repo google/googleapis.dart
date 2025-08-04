@@ -1931,6 +1931,9 @@ class BlogPosts {
 
 class Blog {
   /// The JSON custom meta-data for the Blog.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? customMetaData;
 
   /// The description of this blog.
@@ -2898,6 +2901,9 @@ class Post {
   core.String? content;
 
   /// The JSON meta-data for the Post.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? customMetaData;
 
   /// Etag of the resource.

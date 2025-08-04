@@ -22,7 +22,7 @@
 /// Matters** privilege. For example, to download an export, an account needs
 /// the **Manage Exports** privilege and the matter shared with them.
 ///
-/// For more information, see <https://developers.google.com/vault>
+/// For more information, see <https://developers.google.com/workspace/vault>
 ///
 /// Create an instance of [VaultApi] to access these resources:
 ///
@@ -297,7 +297,7 @@ class MattersResource {
   /// choice.
   /// - "FULL" : Returns the basic details and a list of matter owners and
   /// collaborators (see
-  /// [MatterPermissions](https://developers.google.com/vault/reference/rest/v1/matters#matterpermission)).
+  /// [MatterPermissions](https://developers.google.com/workspace/vault/reference/rest/v1/matters#matterpermission)).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -355,7 +355,7 @@ class MattersResource {
   /// choice.
   /// - "FULL" : Returns the basic details and a list of matter owners and
   /// collaborators (see
-  /// [MatterPermissions](https://developers.google.com/vault/reference/rest/v1/matters#matterpermission)).
+  /// [MatterPermissions](https://developers.google.com/workspace/vault/reference/rest/v1/matters#matterpermission)).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2122,6 +2122,25 @@ class DriveOptions {
   )
   core.bool? includeTeamDrives;
 
+  /// Options to include or exclude documents in shared drives.
+  ///
+  /// We recommend using this field over include_shared_drives. This field
+  /// overrides include_shared_drives and include_team_drives when set.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SHARED_DRIVES_OPTION_UNSPECIFIED" : No shared drive option specified.
+  /// - "NOT_INCLUDED" : If a resource is in a shared drive, it isn't included
+  /// in the search.
+  /// - "INCLUDED_IF_ACCOUNT_IS_NOT_A_MEMBER" : Shared drive resources are only
+  /// included in instances where the account is a collaborator on a resource
+  /// but they are not a member of the shared drive. This maps to the *"Included
+  /// only if documents shared directly (not due to shared drive membership)"*
+  /// option in the Vault UI. (Previously "include_shared_drives" off)
+  /// - "INCLUDED" : Resources in shared drives are included in the search.
+  /// (Previously "include_shared_drives" on)
+  core.String? sharedDrivesOption;
+
   /// Search the current version of the Drive file, but export the contents of
   /// the last version saved before 12:00 AM UTC on the specified date.
   ///
@@ -2132,6 +2151,7 @@ class DriveOptions {
     this.clientSideEncryptedOption,
     this.includeSharedDrives,
     this.includeTeamDrives,
+    this.sharedDrivesOption,
     this.versionDate,
   });
 
@@ -2141,6 +2161,7 @@ class DriveOptions {
               json_['clientSideEncryptedOption'] as core.String?,
           includeSharedDrives: json_['includeSharedDrives'] as core.bool?,
           includeTeamDrives: json_['includeTeamDrives'] as core.bool?,
+          sharedDrivesOption: json_['sharedDrivesOption'] as core.String?,
           versionDate: json_['versionDate'] as core.String?,
         );
 
@@ -2150,6 +2171,8 @@ class DriveOptions {
         if (includeSharedDrives != null)
           'includeSharedDrives': includeSharedDrives!,
         if (includeTeamDrives != null) 'includeTeamDrives': includeTeamDrives!,
+        if (sharedDrivesOption != null)
+          'sharedDrivesOption': sharedDrivesOption!,
         if (versionDate != null) 'versionDate': versionDate!,
       };
 }
@@ -2425,7 +2448,7 @@ typedef HangoutsChatExportOptions = $ExportOptions00;
 /// The Chat spaces to search
 class HangoutsChatInfo {
   /// A list of Chat spaces IDs, as provided by the
-  /// [Chat API](https://developers.google.com/chat).
+  /// [Chat API](https://developers.google.com/workspace/chat).
   ///
   /// There is a limit of exporting from 500 Chat spaces per request.
   core.List<core.String>? roomId;
@@ -3257,21 +3280,21 @@ class Query {
   /// - "SEARCH_METHOD_UNSPECIFIED" : A search method must be specified or else
   /// it is rejected.
   /// - "ACCOUNT" : Search the data of the accounts specified in
-  /// [AccountInfo](https://developers.google.com/vault/reference/rest/v1/Query#accountinfo).
+  /// [AccountInfo](https://developers.google.com/workspace/vault/reference/rest/v1/Query#accountinfo).
   /// - "ORG_UNIT" : Search the data of all accounts in the organizational unit
   /// specified in
-  /// [OrgUnitInfo](https://developers.google.com/vault/reference/rest/v1/Query#orgunitinfo).
+  /// [OrgUnitInfo](https://developers.google.com/workspace/vault/reference/rest/v1/Query#orgunitinfo).
   /// - "TEAM_DRIVE" : Search the data in the Team Drive specified in
   /// **team_drive_info**.
   /// - "ENTIRE_ORG" : Search the data of all accounts in the organization.
   /// Supported only for Gmail. When specified, you don't need to specify
   /// **AccountInfo** or **OrgUnitInfo**.
   /// - "ROOM" : Search messages in the Chat spaces specified in
-  /// [HangoutsChatInfo](https://developers.google.com/vault/reference/rest/v1/Query#hangoutschatinfo).
+  /// [HangoutsChatInfo](https://developers.google.com/workspace/vault/reference/rest/v1/Query#hangoutschatinfo).
   /// - "SITES_URL" : Search for sites by the published site URLs specified in
-  /// [SitesUrlInfo](https://developers.google.com/vault/reference/rest/v1/Query#sitesurlinfo).
+  /// [SitesUrlInfo](https://developers.google.com/workspace/vault/reference/rest/v1/Query#sitesurlinfo).
   /// - "SHARED_DRIVE" : Search the files in the shared drives specified in
-  /// [SharedDriveInfo](https://developers.google.com/vault/reference/rest/v1/Query#shareddriveinfo).
+  /// [SharedDriveInfo](https://developers.google.com/workspace/vault/reference/rest/v1/Query#shareddriveinfo).
   /// - "DRIVE_DOCUMENT" : Retrieve the documents specified in
   /// DriveDocumentInfo.
   core.String? method;
@@ -3284,21 +3307,21 @@ class Query {
   /// - "SEARCH_METHOD_UNSPECIFIED" : A search method must be specified or else
   /// it is rejected.
   /// - "ACCOUNT" : Search the data of the accounts specified in
-  /// [AccountInfo](https://developers.google.com/vault/reference/rest/v1/Query#accountinfo).
+  /// [AccountInfo](https://developers.google.com/workspace/vault/reference/rest/v1/Query#accountinfo).
   /// - "ORG_UNIT" : Search the data of all accounts in the organizational unit
   /// specified in
-  /// [OrgUnitInfo](https://developers.google.com/vault/reference/rest/v1/Query#orgunitinfo).
+  /// [OrgUnitInfo](https://developers.google.com/workspace/vault/reference/rest/v1/Query#orgunitinfo).
   /// - "TEAM_DRIVE" : Search the data in the Team Drive specified in
   /// **team_drive_info**.
   /// - "ENTIRE_ORG" : Search the data of all accounts in the organization.
   /// Supported only for Gmail. When specified, you don't need to specify
   /// **AccountInfo** or **OrgUnitInfo**.
   /// - "ROOM" : Search messages in the Chat spaces specified in
-  /// [HangoutsChatInfo](https://developers.google.com/vault/reference/rest/v1/Query#hangoutschatinfo).
+  /// [HangoutsChatInfo](https://developers.google.com/workspace/vault/reference/rest/v1/Query#hangoutschatinfo).
   /// - "SITES_URL" : Search for sites by the published site URLs specified in
-  /// [SitesUrlInfo](https://developers.google.com/vault/reference/rest/v1/Query#sitesurlinfo).
+  /// [SitesUrlInfo](https://developers.google.com/workspace/vault/reference/rest/v1/Query#sitesurlinfo).
   /// - "SHARED_DRIVE" : Search the files in the shared drives specified in
-  /// [SharedDriveInfo](https://developers.google.com/vault/reference/rest/v1/Query#shareddriveinfo).
+  /// [SharedDriveInfo](https://developers.google.com/workspace/vault/reference/rest/v1/Query#shareddriveinfo).
   /// - "DRIVE_DOCUMENT" : Retrieve the documents specified in
   /// DriveDocumentInfo.
   @core.Deprecated(

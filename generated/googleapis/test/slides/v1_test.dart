@@ -2937,6 +2937,7 @@ api.SubstringMatchCriteria buildSubstringMatchCriteria() {
   buildCounterSubstringMatchCriteria++;
   if (buildCounterSubstringMatchCriteria < 3) {
     o.matchCase = true;
+    o.searchByRegex = true;
     o.text = 'foo';
   }
   buildCounterSubstringMatchCriteria--;
@@ -2947,6 +2948,7 @@ void checkSubstringMatchCriteria(api.SubstringMatchCriteria o) {
   buildCounterSubstringMatchCriteria++;
   if (buildCounterSubstringMatchCriteria < 3) {
     unittest.expect(o.matchCase!, unittest.isTrue);
+    unittest.expect(o.searchByRegex!, unittest.isTrue);
     unittest.expect(
       o.text!,
       unittest.equals('foo'),

@@ -141,9 +141,9 @@ class ProjectsLocationsResource {
   /// own the process, run, and lineage event.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [requestId] - A unique identifier for this request. Restricted to 36 ASCII
-  /// characters. A random UUID is recommended. This request is idempotent only
-  /// if a `request_id` is provided.
+  /// [requestId] - Optional. A unique identifier for this request. Restricted
+  /// to 36 ASCII characters. A random UUID is recommended. This request is
+  /// idempotent only if a `request_id` is provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -436,9 +436,9 @@ class ProjectsLocationsProcessesResource {
   /// own the process.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [requestId] - A unique identifier for this request. Restricted to 36 ASCII
-  /// characters. A random UUID is recommended. This request is idempotent only
-  /// if a `request_id` is provided.
+  /// [requestId] - Optional. A unique identifier for this request. Restricted
+  /// to 36 ASCII characters. A random UUID is recommended. This request is
+  /// idempotent only if a `request_id` is provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -622,6 +622,10 @@ class ProjectsLocationsProcessesResource {
   /// [allowMissing] - If set to true and the process is not found, the request
   /// inserts it.
   ///
+  /// [requestId] - Optional. A unique identifier for this request. Restricted
+  /// to 36 ASCII characters. A random UUID is recommended. This request is
+  /// idempotent only if a `request_id` is provided.
+  ///
   /// [updateMask] - The list of fields to update. Currently not used. The whole
   /// message is updated.
   ///
@@ -639,12 +643,14 @@ class ProjectsLocationsProcessesResource {
     GoogleCloudDatacatalogLineageV1Process request,
     core.String name, {
     core.bool? allowMissing,
+    core.String? requestId,
     core.String? updateMask,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (requestId != null) 'requestId': [requestId],
       if (updateMask != null) 'updateMask': [updateMask],
       if ($fields != null) 'fields': [$fields],
     };
@@ -681,9 +687,9 @@ class ProjectsLocationsProcessesRunsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processes/\[^/\]+$`.
   ///
-  /// [requestId] - A unique identifier for this request. Restricted to 36 ASCII
-  /// characters. A random UUID is recommended. This request is idempotent only
-  /// if a `request_id` is provided.
+  /// [requestId] - Optional. A unique identifier for this request. Restricted
+  /// to 36 ASCII characters. A random UUID is recommended. This request is
+  /// idempotent only if a `request_id` is provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -925,9 +931,9 @@ class ProjectsLocationsProcessesRunsLineageEventsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/processes/\[^/\]+/runs/\[^/\]+$`.
   ///
-  /// [requestId] - A unique identifier for this request. Restricted to 36 ASCII
-  /// characters. A random UUID is recommended. This request is idempotent only
-  /// if a `request_id` is provided.
+  /// [requestId] - Optional. A unique identifier for this request. Restricted
+  /// to 36 ASCII characters. A random UUID is recommended. This request is
+  /// idempotent only if a `request_id` is provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

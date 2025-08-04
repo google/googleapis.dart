@@ -195,7 +195,8 @@ class ProjectsLocationsResource {
   /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}`
   /// for Revision
   /// `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}`
-  /// for Execution
+  /// for Execution {project_id_or_number} may contains domain-scoped project
+  /// IDs
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1959,9 +1960,9 @@ class ProjectsLocationsWorkerPoolsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The location and project in which this worker pool
-  /// should be created. Format: projects/{project}/locations/{location}, where
-  /// {project} can be project id or number. Only lowercase characters, digits,
-  /// and hyphens.
+  /// should be created. Format: `projects/{project}/locations/{location}`,
+  /// where `{project}` can be project id or number. Only lowercase characters,
+  /// digits, and hyphens.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [validateOnly] - Optional. Indicates that the request should be validated
@@ -1971,7 +1972,7 @@ class ProjectsLocationsWorkerPoolsResource {
   /// [workerPoolId] - Required. The unique identifier for the WorkerPool. It
   /// must begin with letter, and cannot end with hyphen; must contain fewer
   /// than 50 characters. The name of the worker pool becomes
-  /// {parent}/workerPools/{worker_pool_id}.
+  /// `{parent}/workerPools/{worker_pool_id}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2014,8 +2015,8 @@ class ProjectsLocationsWorkerPoolsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full name of the WorkerPool. Format:
-  /// projects/{project}/locations/{location}/workerPools/{worker_pool}, where
-  /// {project} can be project id or number.
+  /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`, where
+  /// `{project}` can be project id or number.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
   ///
@@ -2063,8 +2064,8 @@ class ProjectsLocationsWorkerPoolsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full name of the WorkerPool. Format:
-  /// projects/{project}/locations/{location}/workerPools/{worker_pool}, where
-  /// {project} can be project id or number.
+  /// `projects/{project}/locations/{location}/workerPools/{worker_pool}`, where
+  /// `{project}` can be project id or number.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
   ///
@@ -2163,8 +2164,8 @@ class ProjectsLocationsWorkerPoolsResource {
   ///
   /// [parent] - Required. The location and project to list resources on.
   /// Location must be a valid Google Cloud region, and cannot be the "-"
-  /// wildcard. Format: projects/{project}/locations/{location}, where {project}
-  /// can be project id or number.
+  /// wildcard. Format: `projects/{project}/locations/{location}`, where
+  /// `{project}` can be project id or number.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of WorkerPools to return in this call.
@@ -2219,7 +2220,7 @@ class ProjectsLocationsWorkerPoolsResource {
   /// [name] - The fully qualified name of this WorkerPool. In
   /// CreateWorkerPoolRequest, this field is ignored, and instead composed from
   /// CreateWorkerPoolRequest.parent and CreateWorkerPoolRequest.worker_id.
-  /// Format: projects/{project}/locations/{location}/workerPools/{worker_id}
+  /// Format: `projects/{project}/locations/{location}/workerPools/{worker_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workerPools/\[^/\]+$`.
   ///
@@ -2913,6 +2914,7 @@ class GoogleCloudRunV2Condition {
   /// - "POSTPONED_RETRY" : System will retry later; current attempt failed.
   /// - "INTERNAL" : An internal error occurred. Further information may be in
   /// the message.
+  /// - "VPC_NETWORK_NOT_FOUND" : User-provided VPC network was not found.
   core.String? reason;
 
   /// A reason for the revision condition.
@@ -4265,7 +4267,7 @@ class GoogleCloudRunV2Job {
   ///
   /// May be used to detect modification conflict during updates.
   ///
-  /// Output only.
+  /// Optional.
   core.String? etag;
 
   /// Number of executions created for this job.
@@ -4751,6 +4753,37 @@ class GoogleCloudRunV2Metadata {
       };
 }
 
+/// Settings for multi-region deployment.
+class GoogleCloudRunV2MultiRegionSettings {
+  /// System-generated unique id for the multi-region Service.
+  ///
+  /// Optional.
+  core.String? multiRegionId;
+
+  /// List of regions to deploy to, including primary region.
+  ///
+  /// Required.
+  core.List<core.String>? regions;
+
+  GoogleCloudRunV2MultiRegionSettings({
+    this.multiRegionId,
+    this.regions,
+  });
+
+  GoogleCloudRunV2MultiRegionSettings.fromJson(core.Map json_)
+      : this(
+          multiRegionId: json_['multiRegionId'] as core.String?,
+          regions: (json_['regions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (multiRegionId != null) 'multiRegionId': multiRegionId!,
+        if (regions != null) 'regions': regions!,
+      };
+}
+
 /// Represents an NFS mount.
 class GoogleCloudRunV2NFSVolumeSource {
   /// Path that is exported by the NFS server.
@@ -5133,6 +5166,11 @@ class GoogleCloudRunV2Revision {
   /// Output only.
   core.String? generation;
 
+  /// True if GPU zonal redundancy is disabled on this revision.
+  ///
+  /// Optional. Output only.
+  core.bool? gpuZonalRedundancyDisabled;
+
   /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   ///
@@ -5290,6 +5328,7 @@ class GoogleCloudRunV2Revision {
     this.executionEnvironment,
     this.expireTime,
     this.generation,
+    this.gpuZonalRedundancyDisabled,
     this.labels,
     this.launchStage,
     this.logUri,
@@ -5342,6 +5381,8 @@ class GoogleCloudRunV2Revision {
           executionEnvironment: json_['executionEnvironment'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
           generation: json_['generation'] as core.String?,
+          gpuZonalRedundancyDisabled:
+              json_['gpuZonalRedundancyDisabled'] as core.bool?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -5406,6 +5447,8 @@ class GoogleCloudRunV2Revision {
           'executionEnvironment': executionEnvironment!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (generation != null) 'generation': generation!,
+        if (gpuZonalRedundancyDisabled != null)
+          'gpuZonalRedundancyDisabled': gpuZonalRedundancyDisabled!,
         if (labels != null) 'labels': labels!,
         if (launchStage != null) 'launchStage': launchStage!,
         if (logUri != null) 'logUri': logUri!,
@@ -5540,6 +5583,11 @@ class GoogleCloudRunV2RevisionTemplate {
   /// - "EXECUTION_ENVIRONMENT_GEN2" : Uses Second Generation environment.
   core.String? executionEnvironment;
 
+  /// True if GPU zonal redundancy is disabled on this revision.
+  ///
+  /// Optional.
+  core.bool? gpuZonalRedundancyDisabled;
+
   /// Disables health checking containers during deployment.
   ///
   /// Optional.
@@ -5633,6 +5681,7 @@ class GoogleCloudRunV2RevisionTemplate {
     this.encryptionKeyRevocationAction,
     this.encryptionKeyShutdownDuration,
     this.executionEnvironment,
+    this.gpuZonalRedundancyDisabled,
     this.healthCheckDisabled,
     this.labels,
     this.maxInstanceRequestConcurrency,
@@ -5667,6 +5716,8 @@ class GoogleCloudRunV2RevisionTemplate {
           encryptionKeyShutdownDuration:
               json_['encryptionKeyShutdownDuration'] as core.String?,
           executionEnvironment: json_['executionEnvironment'] as core.String?,
+          gpuZonalRedundancyDisabled:
+              json_['gpuZonalRedundancyDisabled'] as core.bool?,
           healthCheckDisabled: json_['healthCheckDisabled'] as core.bool?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
@@ -5713,6 +5764,8 @@ class GoogleCloudRunV2RevisionTemplate {
           'encryptionKeyShutdownDuration': encryptionKeyShutdownDuration!,
         if (executionEnvironment != null)
           'executionEnvironment': executionEnvironment!,
+        if (gpuZonalRedundancyDisabled != null)
+          'gpuZonalRedundancyDisabled': gpuZonalRedundancyDisabled!,
         if (healthCheckDisabled != null)
           'healthCheckDisabled': healthCheckDisabled!,
         if (labels != null) 'labels': labels!,
@@ -5771,7 +5824,38 @@ class GoogleCloudRunV2RunJobRequest {
 }
 
 /// SecretEnvVarSource represents a source for the value of an EnvVar.
-typedef GoogleCloudRunV2SecretKeySelector = $Shared05;
+class GoogleCloudRunV2SecretKeySelector {
+  /// The name of the secret in Cloud Secret Manager.
+  ///
+  /// Format: {secret_name} if the secret is in the same project.
+  /// projects/{project}/secrets/{secret_name} if the secret is in a different
+  /// project.
+  ///
+  /// Required.
+  core.String? secret;
+
+  /// The Cloud Secret Manager secret version.
+  ///
+  /// Can be 'latest' for the latest version, an integer for a specific version,
+  /// or a version alias.
+  core.String? version;
+
+  GoogleCloudRunV2SecretKeySelector({
+    this.secret,
+    this.version,
+  });
+
+  GoogleCloudRunV2SecretKeySelector.fromJson(core.Map json_)
+      : this(
+          secret: json_['secret'] as core.String?,
+          version: json_['version'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (secret != null) 'secret': secret!,
+        if (version != null) 'version': version!,
+      };
+}
 
 /// The secret's value will be presented as the content of a file whose name is
 /// defined in the item path.
@@ -5918,7 +6002,7 @@ class GoogleCloudRunV2Service {
   ///
   /// May be used to detect modification conflict during updates.
   ///
-  /// Output only.
+  /// Optional.
   core.String? etag;
 
   /// For a deleted resource, the time after which it will be permanently
@@ -5935,6 +6019,11 @@ class GoogleCloudRunV2Service {
   ///
   /// Output only.
   core.String? generation;
+
+  /// IAP settings on the Service.
+  ///
+  /// Optional.
+  core.bool? iapEnabled;
 
   /// Provides the ingress settings for this Service.
   ///
@@ -5954,7 +6043,7 @@ class GoogleCloudRunV2Service {
   /// Disables IAM permission check for run.routes.invoke for callers of this
   /// service.
   ///
-  /// This feature is available by invitation only. For more information, visit
+  /// For more information, visit
   /// https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
   ///
   /// Optional.
@@ -6042,6 +6131,11 @@ class GoogleCloudRunV2Service {
   /// documentation.
   core.String? launchStage;
 
+  /// Settings for multi-region deployment.
+  ///
+  /// Optional.
+  GoogleCloudRunV2MultiRegionSettings? multiRegionSettings;
+
   /// The fully qualified name of this Service.
   ///
   /// In CreateServiceRequest, this field is ignored, and instead composed from
@@ -6106,6 +6200,12 @@ class GoogleCloudRunV2Service {
   /// Output only.
   GoogleCloudRunV2Condition? terminalCondition;
 
+  /// True if Cloud Run Threat Detection monitoring is enabled for the parent
+  /// project of this Service.
+  ///
+  /// Output only.
+  core.bool? threatDetectionEnabled;
+
   /// Specifies how to distribute traffic over a collection of Revisions
   /// belonging to the Service.
   ///
@@ -6162,6 +6262,7 @@ class GoogleCloudRunV2Service {
     this.etag,
     this.expireTime,
     this.generation,
+    this.iapEnabled,
     this.ingress,
     this.invokerIamDisabled,
     this.labels,
@@ -6169,6 +6270,7 @@ class GoogleCloudRunV2Service {
     this.latestCreatedRevision,
     this.latestReadyRevision,
     this.launchStage,
+    this.multiRegionSettings,
     this.name,
     this.observedGeneration,
     this.reconciling,
@@ -6176,6 +6278,7 @@ class GoogleCloudRunV2Service {
     this.scaling,
     this.template,
     this.terminalCondition,
+    this.threatDetectionEnabled,
     this.traffic,
     this.trafficStatuses,
     this.uid,
@@ -6220,6 +6323,7 @@ class GoogleCloudRunV2Service {
           etag: json_['etag'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
           generation: json_['generation'] as core.String?,
+          iapEnabled: json_['iapEnabled'] as core.bool?,
           ingress: json_['ingress'] as core.String?,
           invokerIamDisabled: json_['invokerIamDisabled'] as core.bool?,
           labels:
@@ -6233,6 +6337,11 @@ class GoogleCloudRunV2Service {
           latestCreatedRevision: json_['latestCreatedRevision'] as core.String?,
           latestReadyRevision: json_['latestReadyRevision'] as core.String?,
           launchStage: json_['launchStage'] as core.String?,
+          multiRegionSettings: json_.containsKey('multiRegionSettings')
+              ? GoogleCloudRunV2MultiRegionSettings.fromJson(
+                  json_['multiRegionSettings']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           name: json_['name'] as core.String?,
           observedGeneration: json_['observedGeneration'] as core.String?,
           reconciling: json_['reconciling'] as core.bool?,
@@ -6249,6 +6358,7 @@ class GoogleCloudRunV2Service {
               ? GoogleCloudRunV2Condition.fromJson(json_['terminalCondition']
                   as core.Map<core.String, core.dynamic>)
               : null,
+          threatDetectionEnabled: json_['threatDetectionEnabled'] as core.bool?,
           traffic: (json_['traffic'] as core.List?)
               ?.map((value) => GoogleCloudRunV2TrafficTarget.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -6283,6 +6393,7 @@ class GoogleCloudRunV2Service {
         if (etag != null) 'etag': etag!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (generation != null) 'generation': generation!,
+        if (iapEnabled != null) 'iapEnabled': iapEnabled!,
         if (ingress != null) 'ingress': ingress!,
         if (invokerIamDisabled != null)
           'invokerIamDisabled': invokerIamDisabled!,
@@ -6293,6 +6404,8 @@ class GoogleCloudRunV2Service {
         if (latestReadyRevision != null)
           'latestReadyRevision': latestReadyRevision!,
         if (launchStage != null) 'launchStage': launchStage!,
+        if (multiRegionSettings != null)
+          'multiRegionSettings': multiRegionSettings!,
         if (name != null) 'name': name!,
         if (observedGeneration != null)
           'observedGeneration': observedGeneration!,
@@ -6301,6 +6414,8 @@ class GoogleCloudRunV2Service {
         if (scaling != null) 'scaling': scaling!,
         if (template != null) 'template': template!,
         if (terminalCondition != null) 'terminalCondition': terminalCondition!,
+        if (threatDetectionEnabled != null)
+          'threatDetectionEnabled': threatDetectionEnabled!,
         if (traffic != null) 'traffic': traffic!,
         if (trafficStatuses != null) 'trafficStatuses': trafficStatuses!,
         if (uid != null) 'uid': uid!,
@@ -6673,6 +6788,11 @@ class GoogleCloudRunV2Task {
   /// Output only.
   core.String? generation;
 
+  /// True if GPU zonal redundancy is disabled on this task.
+  ///
+  /// Optional. Output only.
+  core.bool? gpuZonalRedundancyDisabled;
+
   /// Index of the Task, unique per execution, and beginning at 0.
   ///
   /// Output only.
@@ -6814,6 +6934,7 @@ class GoogleCloudRunV2Task {
     this.executionEnvironment,
     this.expireTime,
     this.generation,
+    this.gpuZonalRedundancyDisabled,
     this.index,
     this.job,
     this.labels,
@@ -6863,6 +6984,8 @@ class GoogleCloudRunV2Task {
           executionEnvironment: json_['executionEnvironment'] as core.String?,
           expireTime: json_['expireTime'] as core.String?,
           generation: json_['generation'] as core.String?,
+          gpuZonalRedundancyDisabled:
+              json_['gpuZonalRedundancyDisabled'] as core.bool?,
           index: json_['index'] as core.int?,
           job: json_['job'] as core.String?,
           labels:
@@ -6918,6 +7041,8 @@ class GoogleCloudRunV2Task {
           'executionEnvironment': executionEnvironment!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (generation != null) 'generation': generation!,
+        if (gpuZonalRedundancyDisabled != null)
+          'gpuZonalRedundancyDisabled': gpuZonalRedundancyDisabled!,
         if (index != null) 'index': index!,
         if (job != null) 'job': job!,
         if (labels != null) 'labels': labels!,
@@ -6948,6 +7073,7 @@ class GoogleCloudRunV2TaskAttemptResult {
   ///
   /// This may be unset if the container was unable to exit cleanly with a code
   /// due to some other failure. See status field for possible failure details.
+  /// At most one of exit_code or term_signal will be set.
   ///
   /// Output only.
   core.int? exitCode;
@@ -6959,9 +7085,18 @@ class GoogleCloudRunV2TaskAttemptResult {
   /// Output only.
   GoogleRpcStatus? status;
 
+  /// Termination signal of the container.
+  ///
+  /// This is set to non-zero if the container is terminated by the system. At
+  /// most one of exit_code or term_signal will be set.
+  ///
+  /// Output only.
+  core.int? termSignal;
+
   GoogleCloudRunV2TaskAttemptResult({
     this.exitCode,
     this.status,
+    this.termSignal,
   });
 
   GoogleCloudRunV2TaskAttemptResult.fromJson(core.Map json_)
@@ -6971,11 +7106,13 @@ class GoogleCloudRunV2TaskAttemptResult {
               ? GoogleRpcStatus.fromJson(
                   json_['status'] as core.Map<core.String, core.dynamic>)
               : null,
+          termSignal: json_['termSignal'] as core.int?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (exitCode != null) 'exitCode': exitCode!,
         if (status != null) 'status': status!,
+        if (termSignal != null) 'termSignal': termSignal!,
       };
 }
 
@@ -7001,6 +7138,11 @@ class GoogleCloudRunV2TaskTemplate {
   /// - "EXECUTION_ENVIRONMENT_GEN1" : Uses the First Generation environment.
   /// - "EXECUTION_ENVIRONMENT_GEN2" : Uses Second Generation environment.
   core.String? executionEnvironment;
+
+  /// True if GPU zonal redundancy is disabled on this task template.
+  ///
+  /// Optional.
+  core.bool? gpuZonalRedundancyDisabled;
 
   /// Number of retries allowed per Task, before marking this Task failed.
   ///
@@ -7048,6 +7190,7 @@ class GoogleCloudRunV2TaskTemplate {
     this.containers,
     this.encryptionKey,
     this.executionEnvironment,
+    this.gpuZonalRedundancyDisabled,
     this.maxRetries,
     this.nodeSelector,
     this.serviceAccount,
@@ -7064,6 +7207,8 @@ class GoogleCloudRunV2TaskTemplate {
               .toList(),
           encryptionKey: json_['encryptionKey'] as core.String?,
           executionEnvironment: json_['executionEnvironment'] as core.String?,
+          gpuZonalRedundancyDisabled:
+              json_['gpuZonalRedundancyDisabled'] as core.bool?,
           maxRetries: json_['maxRetries'] as core.int?,
           nodeSelector: json_.containsKey('nodeSelector')
               ? GoogleCloudRunV2NodeSelector.fromJson(
@@ -7086,6 +7231,8 @@ class GoogleCloudRunV2TaskTemplate {
         if (encryptionKey != null) 'encryptionKey': encryptionKey!,
         if (executionEnvironment != null)
           'executionEnvironment': executionEnvironment!,
+        if (gpuZonalRedundancyDisabled != null)
+          'gpuZonalRedundancyDisabled': gpuZonalRedundancyDisabled!,
         if (maxRetries != null) 'maxRetries': maxRetries!,
         if (nodeSelector != null) 'nodeSelector': nodeSelector!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
@@ -7479,7 +7626,7 @@ class GoogleCloudRunV2WorkerPool {
   ///
   /// May be used to detect modification conflict during updates.
   ///
-  /// Output only.
+  /// Optional.
   core.String? etag;
 
   /// For a deleted resource, the time after which it will be permamently
@@ -7600,7 +7747,7 @@ class GoogleCloudRunV2WorkerPool {
   ///
   /// In CreateWorkerPoolRequest, this field is ignored, and instead composed
   /// from CreateWorkerPoolRequest.parent and CreateWorkerPoolRequest.worker_id.
-  /// Format: projects/{project}/locations/{location}/workerPools/{worker_id}
+  /// Format: `projects/{project}/locations/{location}/workerPools/{worker_id}`
   core.String? name;
 
   /// The generation of this WorkerPool currently serving traffic.
@@ -7859,6 +8006,11 @@ class GoogleCloudRunV2WorkerPoolRevisionTemplate {
   /// Optional.
   core.String? encryptionKeyShutdownDuration;
 
+  /// True if GPU zonal redundancy is disabled on this worker pool.
+  ///
+  /// Optional.
+  core.bool? gpuZonalRedundancyDisabled;
+
   /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   ///
@@ -7903,11 +8055,6 @@ class GoogleCloudRunV2WorkerPoolRevisionTemplate {
   /// Optional.
   GoogleCloudRunV2ServiceMesh? serviceMesh;
 
-  /// Enable session affinity.
-  ///
-  /// Optional.
-  core.bool? sessionAffinity;
-
   /// A list of Volumes to make available to containers.
   ///
   /// Optional.
@@ -7927,12 +8074,12 @@ class GoogleCloudRunV2WorkerPoolRevisionTemplate {
     this.encryptionKey,
     this.encryptionKeyRevocationAction,
     this.encryptionKeyShutdownDuration,
+    this.gpuZonalRedundancyDisabled,
     this.labels,
     this.nodeSelector,
     this.revision,
     this.serviceAccount,
     this.serviceMesh,
-    this.sessionAffinity,
     this.volumes,
     this.vpcAccess,
   });
@@ -7956,6 +8103,8 @@ class GoogleCloudRunV2WorkerPoolRevisionTemplate {
               json_['encryptionKeyRevocationAction'] as core.String?,
           encryptionKeyShutdownDuration:
               json_['encryptionKeyShutdownDuration'] as core.String?,
+          gpuZonalRedundancyDisabled:
+              json_['gpuZonalRedundancyDisabled'] as core.bool?,
           labels:
               (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
             (key, value) => core.MapEntry(
@@ -7973,7 +8122,6 @@ class GoogleCloudRunV2WorkerPoolRevisionTemplate {
               ? GoogleCloudRunV2ServiceMesh.fromJson(
                   json_['serviceMesh'] as core.Map<core.String, core.dynamic>)
               : null,
-          sessionAffinity: json_['sessionAffinity'] as core.bool?,
           volumes: (json_['volumes'] as core.List?)
               ?.map((value) => GoogleCloudRunV2Volume.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -7992,12 +8140,13 @@ class GoogleCloudRunV2WorkerPoolRevisionTemplate {
           'encryptionKeyRevocationAction': encryptionKeyRevocationAction!,
         if (encryptionKeyShutdownDuration != null)
           'encryptionKeyShutdownDuration': encryptionKeyShutdownDuration!,
+        if (gpuZonalRedundancyDisabled != null)
+          'gpuZonalRedundancyDisabled': gpuZonalRedundancyDisabled!,
         if (labels != null) 'labels': labels!,
         if (nodeSelector != null) 'nodeSelector': nodeSelector!,
         if (revision != null) 'revision': revision!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!,
         if (serviceMesh != null) 'serviceMesh': serviceMesh!,
-        if (sessionAffinity != null) 'sessionAffinity': sessionAffinity!,
         if (volumes != null) 'volumes': volumes!,
         if (vpcAccess != null) 'vpcAccess': vpcAccess!,
       };
@@ -8010,79 +8159,18 @@ class GoogleCloudRunV2WorkerPoolScaling {
   /// Optional.
   core.int? manualInstanceCount;
 
-  /// The maximum count of instances distributed among revisions based on the
-  /// specified instance split percentages.
-  ///
-  /// Optional.
-  core.int? maxInstanceCount;
-
-  /// A maximum percentage of instances that will be moved in each step of
-  /// traffic split changes.
-  ///
-  /// When set to a positive value, the server will bring up, at most, that
-  /// percentage of new instances at a time before moving traffic to them. After
-  /// moving traffic, the server will bring down instances of the old revision.
-  /// This can reduce a spike of total active instances during changes from one
-  /// revision to another but specifying how many extra instances can be brought
-  /// up at a time.
-  ///
-  /// Optional.
-  core.int? maxSurge;
-
-  /// A maximum percentage of instances that may be unavailable during changes
-  /// from one revision to another.
-  ///
-  /// When set to a positive value, the server may bring down instances before
-  /// bringing up new instances. This can prevent a spike of total active
-  /// instances during changes from one revision by reducing the pool of
-  /// instances before bringing up new ones. Some requests may be slow or fail
-  /// to serve during the transition.
-  ///
-  /// Optional.
-  core.int? maxUnavailable;
-
-  /// The minimum count of instances distributed among revisions based on the
-  /// specified instance split percentages.
-  ///
-  /// Optional.
-  core.int? minInstanceCount;
-
-  /// The scaling mode for the worker pool.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "SCALING_MODE_UNSPECIFIED" : Unspecified.
-  /// - "AUTOMATIC" : Automatically scale between min and max instances.
-  /// - "MANUAL" : Scale to exactly min instances and ignore the max instances.
-  core.String? scalingMode;
-
   GoogleCloudRunV2WorkerPoolScaling({
     this.manualInstanceCount,
-    this.maxInstanceCount,
-    this.maxSurge,
-    this.maxUnavailable,
-    this.minInstanceCount,
-    this.scalingMode,
   });
 
   GoogleCloudRunV2WorkerPoolScaling.fromJson(core.Map json_)
       : this(
           manualInstanceCount: json_['manualInstanceCount'] as core.int?,
-          maxInstanceCount: json_['maxInstanceCount'] as core.int?,
-          maxSurge: json_['maxSurge'] as core.int?,
-          maxUnavailable: json_['maxUnavailable'] as core.int?,
-          minInstanceCount: json_['minInstanceCount'] as core.int?,
-          scalingMode: json_['scalingMode'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (manualInstanceCount != null)
           'manualInstanceCount': manualInstanceCount!,
-        if (maxInstanceCount != null) 'maxInstanceCount': maxInstanceCount!,
-        if (maxSurge != null) 'maxSurge': maxSurge!,
-        if (maxUnavailable != null) 'maxUnavailable': maxUnavailable!,
-        if (minInstanceCount != null) 'minInstanceCount': minInstanceCount!,
-        if (scalingMode != null) 'scalingMode': scalingMode!,
       };
 }
 
@@ -8547,16 +8635,22 @@ typedef GoogleRpcStatus = $Status00;
 typedef GoogleTypeExpr = $Expr;
 
 /// This is proto2's version of MessageSet.
-typedef Proto2BridgeMessageSet = $Empty;
+///
+/// DEPRECATED: DO NOT USE FOR NEW FIELDS. If you are using editions or proto2,
+/// please make your own extendable messages for your use case. If you are using
+/// proto3, please use `Any` instead. MessageSet was the implementation of
+/// extensions for proto1. When proto2 was introduced, extensions were
+/// implemented as a first-class feature. This schema for MessageSet was meant
+/// to be a "bridge" solution to migrate MessageSet-bearing messages from proto1
+/// to proto2. This schema has been open-sourced only to facilitate the
+/// migration of Google products with MessageSet-bearing messages to open-source
+/// environments.
+typedef Proto2BridgeMessageSet = $Shared02;
 
 /// Wire-format for a Status object
 class UtilStatusProto {
-  /// The canonical error code (see codes.proto) that most closely corresponds
-  /// to this status.
-  ///
-  /// This may be missing, and in the common case of the generic space, it
-  /// definitely will be. copybara:strip_begin(b/383363683)
-  /// copybara:strip_end_and_replace optional int32 canonical_code = 6;
+  /// copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional
+  /// int32 canonical_code = 6;
   core.int? canonicalCode;
 
   /// Numeric code drawn from the space specified below.
@@ -8576,9 +8670,9 @@ class UtilStatusProto {
   /// proto2.bridge.MessageSet message_set = 5;
   Proto2BridgeMessageSet? messageSet;
 
-  /// The following are usually only present when code != 0 Space to which this
-  /// status belongs copybara:strip_begin(b/383363683)
-  /// copybara:strip_end_and_replace optional string space = 2;
+  /// copybara:strip_begin(b/383363683) Space to which this status belongs
+  /// copybara:strip_end_and_replace optional string space = 2; // Space to
+  /// which this status belongs
   core.String? space;
 
   UtilStatusProto({

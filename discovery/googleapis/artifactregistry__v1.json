@@ -91,6 +91,11 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://artifactregistry.europe-north2.rep.googleapis.com/",
+            "location": "europe-north2"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://artifactregistry.europe-southwest1.rep.googleapis.com/",
             "location": "europe-southwest1"
         },
@@ -161,6 +166,11 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://artifactregistry.northamerica-south1.rep.googleapis.com/",
+            "location": "northamerica-south1"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://artifactregistry.southamerica-east1.rep.googleapis.com/",
             "location": "southamerica-east1"
         },
@@ -196,11 +206,6 @@
         },
         {
             "description": "Regional Endpoint",
-            "endpointUrl": "https://artifactregistry.us-east7.rep.googleapis.com/",
-            "location": "us-east7"
-        },
-        {
-            "description": "Regional Endpoint",
             "endpointUrl": "https://artifactregistry.us-south1.rep.googleapis.com/",
             "location": "us-south1"
         },
@@ -233,6 +238,21 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://artifactregistry.me-central2.rep.googleapis.com/",
             "location": "me-central2"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://artifactregistry.us-east7.rep.googleapis.com/",
+            "location": "us-east7"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://artifactregistry.us.rep.googleapis.com/",
+            "location": "us"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://artifactregistry.eu.rep.googleapis.com/",
+            "location": "eu"
         }
     ],
     "icons": {
@@ -245,7 +265,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20241205",
+    "revision": "20250704",
     "rootUrl": "https://artifactregistry.googleapis.com/",
     "servicePath": "",
     "title": "Artifact Registry API",
@@ -456,6 +476,12 @@
                                 "name"
                             ],
                             "parameters": {
+                                "extraLocationTypes": {
+                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "location": "query",
+                                    "repeated": true,
+                                    "type": "string"
+                                },
                                 "filter": {
                                     "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                                     "location": "query",
@@ -2580,7 +2606,7 @@
             "id": "BatchDeleteVersionsRequest",
             "properties": {
                 "names": {
-                    "description": "Required. The names of the versions to delete. A maximum of 10000 versions can be deleted in a batch.",
+                    "description": "Required. The names of the versions to delete. The maximum number of versions deleted per batch is determined by the service and is dependent on the available resources in the region.",
                     "items": {
                         "type": "string"
                     },
@@ -2751,7 +2777,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Required. registry_location, project_id, repository_name and image id forms a unique image name:`projects//locations//repository//dockerImages/`. For example, \"projects/test-project/locations/us-west4/repositories/test-repo/dockerImages/ nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf\", where \"us-west4\" is the registry_location, \"test-project\" is the project_id, \"test-repo\" is the repository_name and \"nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf\" is the image's digest.",
+                    "description": "Required. registry_location, project_id, repository_name and image id forms a unique image name:`projects//locations//repositories//dockerImages/`. For example, \"projects/test-project/locations/us-west4/repositories/test-repo/dockerImages/ nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf\", where \"us-west4\" is the registry_location, \"test-project\" is the project_id, \"test-repo\" is the repository_name and \"nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf\" is the image's digest.",
                     "type": "string"
                 },
                 "tags": {
@@ -4157,12 +4183,12 @@
                     "description": "Configuration specific for a Remote Repository."
                 },
                 "satisfiesPzi": {
-                    "description": "Output only. If set, the repository satisfies physical zone isolation.",
+                    "description": "Output only. Whether or not this repository satisfies PZI.",
                     "readOnly": true,
                     "type": "boolean"
                 },
                 "satisfiesPzs": {
-                    "description": "Output only. If set, the repository satisfies physical zone separation.",
+                    "description": "Output only. Whether or not this repository satisfies PZS.",
                     "readOnly": true,
                     "type": "boolean"
                 },
@@ -4359,7 +4385,7 @@
                     "type": "string"
                 },
                 "versionId": {
-                    "description": "The ID of the version of the generic artifact. If the version does not exist, a new version will be created. The version_id must start and end with a letter or number, can only contain lowercase letters, numbers, hyphens and periods, i.e. [a-z0-9-.] and cannot exceed a total of 128 characters. Creating a version called `latest` is not allowed.",
+                    "description": "The ID of the version of the generic artifact. If the version does not exist, a new version will be created. The version_id must start and end with a letter or number, can only contain lowercase letters, numbers, the following characters [-.+~:], i.e.[a-z0-9-.+~:] and cannot exceed a total of 128 characters. Creating a version called `latest` is not allowed.",
                     "type": "string"
                 }
             },

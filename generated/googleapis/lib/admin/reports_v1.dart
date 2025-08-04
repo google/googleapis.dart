@@ -18,7 +18,7 @@
 /// resources like user, groups etc. It also provides audit and usage reports of
 /// domain.
 ///
-/// For more information, see <https://developers.google.com/admin-sdk/>
+/// For more information, see <https://developers.google.com/workspace/admin/>
 ///
 /// Create an instance of [ReportsApi] to access these resources:
 ///
@@ -36,6 +36,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -97,7 +98,7 @@ class ActivitiesResource {
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)`.
+  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)`.
   /// Possible string values are:
   /// - "access_transparency" : The Google Workspace Access Transparency
   /// activity reports return information about different types of Access
@@ -150,6 +151,9 @@ class ActivitiesResource {
   /// only available for Google Workspace Business and Enterprise customers.
   /// - "vault" : The Vault activity reports return information about various
   /// types of Vault activity events.
+  /// - "gemini_in_workspace_apps" : The Gemini for Workspace activity reports
+  /// return information about various types of Gemini activity events performed
+  /// by users within a Workspace application.
   ///
   /// [actorIpAddress] - The Internet Protocol (IP) Address of host where the
   /// event was performed. This is an additional way to filter a report's
@@ -454,13 +458,13 @@ class ActivitiesResource {
   /// Value must have pattern
   /// `(.+\[\<,\<=,==,\>=,\>,\<\>\].+,)*(.+\[\<,\<=,==,\>=,\>,\<\>\].+)`.
   ///
-  /// [groupIdFilter] - Comma separated group ids (obfuscated) on which user
-  /// activities are filtered, i.e. the response will contain activities for
-  /// only those users that are a part of at least one of the group ids
-  /// mentioned here. Format: "id:abc123,id:xyz456" *Important:* To filter by
-  /// groups, you must explicitly add the groups to your filtering groups
-  /// allowlist. For more information about adding groups to filtering groups
-  /// allowlist, see
+  /// [groupIdFilter] - `Deprecated`. This field is deprecated and is no longer
+  /// supported. Comma separated group ids (obfuscated) on which user activities
+  /// are filtered, i.e. the response will contain activities for only those
+  /// users that are a part of at least one of the group ids mentioned here.
+  /// Format: "id:abc123,id:xyz456" *Important:* To filter by groups, you must
+  /// explicitly add the groups to your filtering groups allowlist. For more
+  /// information about adding groups to filtering groups allowlist, see
   /// [Filter results by Google Group](https://support.google.com/a/answer/11482175)
   /// Value must have pattern `(id:\[a-z0-9\]+(,id:\[a-z0-9\]+)*)`.
   ///
@@ -620,7 +624,7 @@ class CustomerUsageReportsResource {
   /// event parameters that refine a report's results. The parameter is
   /// associated with a specific application. The application values for the
   /// Customers usage report include `accounts`, `app_maker`, `apps_scripts`,
-  /// `calendar`, `classroom`, `cros`, `docs`, `gmail`, `gplus`,
+  /// `calendar`, `chat`, `classroom`, `cros`, `docs`, `gmail`, `gplus`,
   /// `device_management`, `meet`, and `sites`. A `parameters` query string is
   /// in the CSV form of `app_name1:param_name1, app_name2:param_name2`. *Note:*
   /// The API doesn't accept multiple values of a parameter. If a particular
@@ -829,10 +833,10 @@ class UserUsageReportResource {
   /// application's event parameters where the parameter's value is manipulated
   /// by a relational operator. The `filters` query string includes the name of
   /// the application whose usage is returned in the report. The application
-  /// values for the Users Usage Report include `accounts`, `docs`, and `gmail`.
-  /// Filters are in the form `[application name]:parameter name[parameter
-  /// value],...`. In this example, the `<>` 'not equal to' operator is
-  /// URL-encoded in the request's query string (%3C%3E): GET
+  /// values for the Users Usage Report include `accounts`, `chat`, `docs`, and
+  /// `gmail`. Filters are in the form `[application name]:parameter
+  /// name[parameter value],...`. In this example, the `<>` 'not equal to'
+  /// operator is URL-encoded in the request's query string (%3C%3E): GET
   /// https://www.googleapis.com/admin/reports/v1/usage/users/all/dates/2013-03-03
   /// ?parameters=accounts:last_login_time
   /// &filters=accounts:last_login_time%3C%3E2010-10-28T10:26:35.000Z The
@@ -871,7 +875,7 @@ class UserUsageReportResource {
   /// event parameters that refine a report's results. The parameter is
   /// associated with a specific application. The application values for the
   /// Customers Usage report include `accounts`, `app_maker`, `apps_scripts`,
-  /// `calendar`, `classroom`, `cros`, `docs`, `gmail`, `gplus`,
+  /// `calendar`, `chat`, `classroom`, `cros`, `docs`, `gmail`, `gplus`,
   /// `device_management`, `meet`, and `sites`. A `parameters` query string is
   /// in the CSV form of `app_name1:param_name1, app_name2:param_name2`. *Note:*
   /// The API doesn't accept multiple values of a parameter. If a particular
@@ -978,8 +982,42 @@ class Activities {
       };
 }
 
+/// Details of the application that was the actor for the activity.
+class ActivityActorApplicationInfo {
+  /// Name of the application used to perform the action.
+  core.String? applicationName;
+
+  /// Whether the application was impersonating a user.
+  core.bool? impersonation;
+
+  /// OAuth client id of the third party application used to perform the action.
+  core.String? oauthClientId;
+
+  ActivityActorApplicationInfo({
+    this.applicationName,
+    this.impersonation,
+    this.oauthClientId,
+  });
+
+  ActivityActorApplicationInfo.fromJson(core.Map json_)
+      : this(
+          applicationName: json_['applicationName'] as core.String?,
+          impersonation: json_['impersonation'] as core.bool?,
+          oauthClientId: json_['oauthClientId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (applicationName != null) 'applicationName': applicationName!,
+        if (impersonation != null) 'impersonation': impersonation!,
+        if (oauthClientId != null) 'oauthClientId': oauthClientId!,
+      };
+}
+
 /// User doing the action.
 class ActivityActor {
+  /// Details of the application that was the actor for the activity.
+  ActivityActorApplicationInfo? applicationInfo;
+
   /// The type of actor.
   core.String? callerType;
 
@@ -1001,6 +1039,7 @@ class ActivityActor {
   core.String? profileId;
 
   ActivityActor({
+    this.applicationInfo,
     this.callerType,
     this.email,
     this.key,
@@ -1009,6 +1048,10 @@ class ActivityActor {
 
   ActivityActor.fromJson(core.Map json_)
       : this(
+          applicationInfo: json_.containsKey('applicationInfo')
+              ? ActivityActorApplicationInfo.fromJson(json_['applicationInfo']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
           callerType: json_['callerType'] as core.String?,
           email: json_['email'] as core.String?,
           key: json_['key'] as core.String?,
@@ -1016,6 +1059,7 @@ class ActivityActor {
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
+        if (applicationInfo != null) 'applicationInfo': applicationInfo!,
         if (callerType != null) 'callerType': callerType!,
         if (email != null) 'email': email!,
         if (key != null) 'key': key!,
@@ -1164,6 +1208,9 @@ class ActivityEvents {
   /// names for various applications above in `applicationName`.
   core.List<ActivityEventsParameters>? parameters;
 
+  /// Resource ids associated with the event.
+  core.List<core.String>? resourceIds;
+
   /// Type of event.
   ///
   /// The Google Workspace service or feature that an administrator changes is
@@ -1176,6 +1223,7 @@ class ActivityEvents {
   ActivityEvents({
     this.name,
     this.parameters,
+    this.resourceIds,
     this.type,
   });
 
@@ -1186,12 +1234,16 @@ class ActivityEvents {
               ?.map((value) => ActivityEventsParameters.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          resourceIds: (json_['resourceIds'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           type: json_['type'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (parameters != null) 'parameters': parameters!,
+        if (resourceIds != null) 'resourceIds': resourceIds!,
         if (type != null) 'type': type!,
       };
 }
@@ -1268,11 +1320,17 @@ class Activity {
   /// For an activity report, the value is `audit#activity`.
   core.String? kind;
 
+  /// Network information of the user doing the action.
+  ActivityNetworkInfo? networkInfo;
+
   /// This is the domain that is affected by the report's event.
   ///
   /// For example domain of Admin console or the Drive application's document
   /// owner.
   core.String? ownerDomain;
+
+  /// Details of the resource on which the action was performed.
+  core.List<ResourceDetails>? resourceDetails;
 
   Activity({
     this.actor,
@@ -1281,7 +1339,9 @@ class Activity {
     this.id,
     this.ipAddress,
     this.kind,
+    this.networkInfo,
     this.ownerDomain,
+    this.resourceDetails,
   });
 
   Activity.fromJson(core.Map json_)
@@ -1301,7 +1361,15 @@ class Activity {
               : null,
           ipAddress: json_['ipAddress'] as core.String?,
           kind: json_['kind'] as core.String?,
+          networkInfo: json_.containsKey('networkInfo')
+              ? ActivityNetworkInfo.fromJson(
+                  json_['networkInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
           ownerDomain: json_['ownerDomain'] as core.String?,
+          resourceDetails: (json_['resourceDetails'] as core.List?)
+              ?.map((value) => ResourceDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1311,7 +1379,90 @@ class Activity {
         if (id != null) 'id': id!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (kind != null) 'kind': kind!,
+        if (networkInfo != null) 'networkInfo': networkInfo!,
         if (ownerDomain != null) 'ownerDomain': ownerDomain!,
+        if (resourceDetails != null) 'resourceDetails': resourceDetails!,
+      };
+}
+
+/// Network information of the user doing the action.
+class ActivityNetworkInfo {
+  /// IP Address of the user doing the action.
+  core.List<core.int>? ipAsn;
+
+  /// ISO 3166-1 alpha-2 region code of the user doing the action.
+  core.String? regionCode;
+
+  /// ISO 3166-2 region code (states and provinces) for countries of the user
+  /// doing the action.
+  core.String? subdivisionCode;
+
+  ActivityNetworkInfo({
+    this.ipAsn,
+    this.regionCode,
+    this.subdivisionCode,
+  });
+
+  ActivityNetworkInfo.fromJson(core.Map json_)
+      : this(
+          ipAsn: (json_['ipAsn'] as core.List?)
+              ?.map((value) => value as core.int)
+              .toList(),
+          regionCode: json_['regionCode'] as core.String?,
+          subdivisionCode: json_['subdivisionCode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (ipAsn != null) 'ipAsn': ipAsn!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (subdivisionCode != null) 'subdivisionCode': subdivisionCode!,
+      };
+}
+
+/// Details of the label applied on the resource.
+class AppliedLabel {
+  /// List of fields which are part of the label and have been set by the user.
+  ///
+  /// If label has a field which was not set by the user, it would not be
+  /// present in this list.
+  core.List<FieldValue>? fieldValues;
+
+  /// Identifier of the label - Only the label id, not the full OnePlatform
+  /// resource name.
+  core.String? id;
+
+  /// The reason why the label was applied on the resource.
+  Reason? reason;
+
+  /// Title of the label
+  core.String? title;
+
+  AppliedLabel({
+    this.fieldValues,
+    this.id,
+    this.reason,
+    this.title,
+  });
+
+  AppliedLabel.fromJson(core.Map json_)
+      : this(
+          fieldValues: (json_['fieldValues'] as core.List?)
+              ?.map((value) => FieldValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          id: json_['id'] as core.String?,
+          reason: json_.containsKey('reason')
+              ? Reason.fromJson(
+                  json_['reason'] as core.Map<core.String, core.dynamic>)
+              : null,
+          title: json_['title'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fieldValues != null) 'fieldValues': fieldValues!,
+        if (id != null) 'id': id!,
+        if (reason != null) 'reason': reason!,
+        if (title != null) 'title': title!,
       };
 }
 
@@ -1410,6 +1561,236 @@ class Channel {
       };
 }
 
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values. * A month and day, with a zero year (for example, an
+/// anniversary). * A year on its own, with a zero month and a zero day. * A
+/// year and month, with a zero day (for example, a credit card expiration
+/// date). Related types: * google.type.TimeOfDay * google.type.DateTime *
+/// google.protobuf.Timestamp
+typedef Date = $Date;
+
+/// Details of the field value set by the user for the particular label.
+class FieldValue {
+  /// Setting a date value.
+  Date? dateValue;
+
+  /// Display name of the field
+  core.String? displayName;
+
+  /// Identifier of the field
+  core.String? id;
+
+  /// Setting an integer value.
+  core.String? integerValue;
+
+  /// Setting a long text value.
+  core.String? longTextValue;
+
+  /// The reason why the field was applied to the label.
+  Reason? reason;
+
+  /// Setting a selection list value by selecting multiple values from a
+  /// dropdown.
+  FieldValueSelectionListValue? selectionListValue;
+
+  /// Setting a selection value by selecting a single value from a dropdown.
+  FieldValueSelectionValue? selectionValue;
+
+  /// Setting a text list value.
+  FieldValueTextListValue? textListValue;
+
+  /// Setting a text value.
+  core.String? textValue;
+
+  /// Type of the field
+  core.String? type;
+
+  /// If the field is unset, this will be true.
+  core.bool? unsetValue;
+
+  /// Setting a user list value by selecting multiple users.
+  FieldValueUserListValue? userListValue;
+
+  /// Setting a user value by selecting a single user.
+  FieldValueUserValue? userValue;
+
+  FieldValue({
+    this.dateValue,
+    this.displayName,
+    this.id,
+    this.integerValue,
+    this.longTextValue,
+    this.reason,
+    this.selectionListValue,
+    this.selectionValue,
+    this.textListValue,
+    this.textValue,
+    this.type,
+    this.unsetValue,
+    this.userListValue,
+    this.userValue,
+  });
+
+  FieldValue.fromJson(core.Map json_)
+      : this(
+          dateValue: json_.containsKey('dateValue')
+              ? Date.fromJson(
+                  json_['dateValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          displayName: json_['displayName'] as core.String?,
+          id: json_['id'] as core.String?,
+          integerValue: json_['integerValue'] as core.String?,
+          longTextValue: json_['longTextValue'] as core.String?,
+          reason: json_.containsKey('reason')
+              ? Reason.fromJson(
+                  json_['reason'] as core.Map<core.String, core.dynamic>)
+              : null,
+          selectionListValue: json_.containsKey('selectionListValue')
+              ? FieldValueSelectionListValue.fromJson(
+                  json_['selectionListValue']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          selectionValue: json_.containsKey('selectionValue')
+              ? FieldValueSelectionValue.fromJson(json_['selectionValue']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          textListValue: json_.containsKey('textListValue')
+              ? FieldValueTextListValue.fromJson(
+                  json_['textListValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          textValue: json_['textValue'] as core.String?,
+          type: json_['type'] as core.String?,
+          unsetValue: json_['unsetValue'] as core.bool?,
+          userListValue: json_.containsKey('userListValue')
+              ? FieldValueUserListValue.fromJson(
+                  json_['userListValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+          userValue: json_.containsKey('userValue')
+              ? FieldValueUserValue.fromJson(
+                  json_['userValue'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (dateValue != null) 'dateValue': dateValue!,
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+        if (integerValue != null) 'integerValue': integerValue!,
+        if (longTextValue != null) 'longTextValue': longTextValue!,
+        if (reason != null) 'reason': reason!,
+        if (selectionListValue != null)
+          'selectionListValue': selectionListValue!,
+        if (selectionValue != null) 'selectionValue': selectionValue!,
+        if (textListValue != null) 'textListValue': textListValue!,
+        if (textValue != null) 'textValue': textValue!,
+        if (type != null) 'type': type!,
+        if (unsetValue != null) 'unsetValue': unsetValue!,
+        if (userListValue != null) 'userListValue': userListValue!,
+        if (userValue != null) 'userValue': userValue!,
+      };
+}
+
+/// Setting a selection list value by selecting multiple values from a dropdown.
+class FieldValueSelectionListValue {
+  /// List of selections.
+  core.List<FieldValueSelectionValue>? values;
+
+  FieldValueSelectionListValue({
+    this.values,
+  });
+
+  FieldValueSelectionListValue.fromJson(core.Map json_)
+      : this(
+          values: (json_['values'] as core.List?)
+              ?.map((value) => FieldValueSelectionValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (values != null) 'values': values!,
+      };
+}
+
+/// Setting a selection value by selecting a single value from a dropdown.
+class FieldValueSelectionValue {
+  /// Whether the selection is badged.
+  core.bool? badged;
+
+  /// Display name of the selection.
+  core.String? displayName;
+
+  /// Identifier of the selection.
+  core.String? id;
+
+  FieldValueSelectionValue({
+    this.badged,
+    this.displayName,
+    this.id,
+  });
+
+  FieldValueSelectionValue.fromJson(core.Map json_)
+      : this(
+          badged: json_['badged'] as core.bool?,
+          displayName: json_['displayName'] as core.String?,
+          id: json_['id'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (badged != null) 'badged': badged!,
+        if (displayName != null) 'displayName': displayName!,
+        if (id != null) 'id': id!,
+      };
+}
+
+/// Setting a text list value.
+typedef FieldValueTextListValue = $Shared05;
+
+/// Setting a user list value by selecting multiple users.
+class FieldValueUserListValue {
+  /// List of users.
+  core.List<FieldValueUserValue>? values;
+
+  FieldValueUserListValue({
+    this.values,
+  });
+
+  FieldValueUserListValue.fromJson(core.Map json_)
+      : this(
+          values: (json_['values'] as core.List?)
+              ?.map((value) => FieldValueUserValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (values != null) 'values': values!,
+      };
+}
+
+/// Setting a user value by selecting a single user.
+class FieldValueUserValue {
+  /// Email of the user.
+  core.String? email;
+
+  FieldValueUserValue({
+    this.email,
+  });
+
+  FieldValueUserValue.fromJson(core.Map json_)
+      : this(
+          email: json_['email'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (email != null) 'email': email!,
+      };
+}
+
 /// JSON template for a parameter used in various reports.
 class NestedParameter {
   /// Boolean value of the parameter.
@@ -1468,6 +1849,74 @@ class NestedParameter {
         if (multiValue != null) 'multiValue': multiValue!,
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
+      };
+}
+
+/// The reason why the label/field was applied.
+class Reason {
+  /// The type of the reason.
+  core.String? reasonType;
+
+  Reason({
+    this.reasonType,
+  });
+
+  Reason.fromJson(core.Map json_)
+      : this(
+          reasonType: json_['reasonType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (reasonType != null) 'reasonType': reasonType!,
+      };
+}
+
+/// Details of the resource on which the action was performed.
+class ResourceDetails {
+  /// List of labels applied on the resource
+  core.List<AppliedLabel>? appliedLabels;
+
+  /// Identifier of the resource.
+  core.String? id;
+
+  /// Defines relationship of the resource to the events
+  core.String? relation;
+
+  /// Title of the resource.
+  ///
+  /// For instance, in case of a drive document, this would be the title of the
+  /// document. In case of an email, this would be the subject.
+  core.String? title;
+
+  /// Type of the resource - document, email, chat message
+  core.String? type;
+
+  ResourceDetails({
+    this.appliedLabels,
+    this.id,
+    this.relation,
+    this.title,
+    this.type,
+  });
+
+  ResourceDetails.fromJson(core.Map json_)
+      : this(
+          appliedLabels: (json_['appliedLabels'] as core.List?)
+              ?.map((value) => AppliedLabel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          id: json_['id'] as core.String?,
+          relation: json_['relation'] as core.String?,
+          title: json_['title'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (appliedLabels != null) 'appliedLabels': appliedLabels!,
+        if (id != null) 'id': id!,
+        if (relation != null) 'relation': relation!,
+        if (title != null) 'title': title!,
+        if (type != null) 'type': type!,
       };
 }
 
@@ -1623,9 +2072,8 @@ class UsageReport {
 
   /// Parameter value pairs for various applications.
   ///
-  /// For the Entity Usage Report parameters and values, see \[the Entity Usage
-  /// parameters
-  /// reference\](/admin-sdk/reports/v1/reference/usage-ref-appendix-a/entities).
+  /// For the Entity Usage Report parameters and values, see
+  /// [the Entity Usage parameters reference](https://developers.google.com/workspace/admin/reports/v1/reference/usage-ref-appendix-a/entities).
   ///
   /// Output only.
   core.List<UsageReportParameters>? parameters;

@@ -733,7 +733,11 @@ class DataPolicy {
   /// Used as {data_policy_id} in part of the resource name.
   core.String? dataPolicyId;
 
+  /// Data policy type.
+  ///
   /// Type of data policy.
+  ///
+  /// Required.
   /// Possible string values are:
   /// - "DATA_POLICY_TYPE_UNSPECIFIED" : Default value for the data policy type.
   /// This should not be used.

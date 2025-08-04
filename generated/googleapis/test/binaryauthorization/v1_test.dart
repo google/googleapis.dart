@@ -1707,6 +1707,7 @@ api.VerificationRule buildVerificationRule() {
   if (buildCounterVerificationRule < 3) {
     o.attestationSource = buildAttestationSource();
     o.configBasedBuildRequired = true;
+    o.customConstraints = 'foo';
     o.trustedBuilder = 'foo';
     o.trustedSourceRepoPatterns = buildUnnamed30();
   }
@@ -1719,6 +1720,10 @@ void checkVerificationRule(api.VerificationRule o) {
   if (buildCounterVerificationRule < 3) {
     checkAttestationSource(o.attestationSource!);
     unittest.expect(o.configBasedBuildRequired!, unittest.isTrue);
+    unittest.expect(
+      o.customConstraints!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.trustedBuilder!,
       unittest.equals('foo'),

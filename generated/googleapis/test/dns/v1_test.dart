@@ -882,6 +882,7 @@ api.ManagedZoneForwardingConfigNameServerTarget
   final o = api.ManagedZoneForwardingConfigNameServerTarget();
   buildCounterManagedZoneForwardingConfigNameServerTarget++;
   if (buildCounterManagedZoneForwardingConfigNameServerTarget < 3) {
+    o.domainName = 'foo';
     o.forwardingPath = 'foo';
     o.ipv4Address = 'foo';
     o.ipv6Address = 'foo';
@@ -895,6 +896,10 @@ void checkManagedZoneForwardingConfigNameServerTarget(
     api.ManagedZoneForwardingConfigNameServerTarget o) {
   buildCounterManagedZoneForwardingConfigNameServerTarget++;
   if (buildCounterManagedZoneForwardingConfigNameServerTarget < 3) {
+    unittest.expect(
+      o.domainName!,
+      unittest.equals('foo'),
+    );
     unittest.expect(
       o.forwardingPath!,
       unittest.equals('foo'),

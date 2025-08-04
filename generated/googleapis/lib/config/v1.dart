@@ -28,6 +28,8 @@
 ///         - [ProjectsLocationsDeploymentsRevisionsResourcesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsPreviewsResource]
+///       - [ProjectsLocationsPreviewsResourceChangesResource]
+///       - [ProjectsLocationsPreviewsResourceDriftsResource]
 ///     - [ProjectsLocationsTerraformVersionsResource]
 library;
 
@@ -127,6 +129,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -149,12 +155,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -690,7 +698,7 @@ class ProjectsLocationsDeploymentsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the deployment. Format:
+  /// [name] - Identifier. Resource name of the deployment. Format:
   /// `projects/{project}/locations/{location}/deployments/{deployment}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/deployments/\[^/\]+$`.
@@ -1348,6 +1356,11 @@ class ProjectsLocationsOperationsResource {
 class ProjectsLocationsPreviewsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsPreviewsResourceChangesResource get resourceChanges =>
+      ProjectsLocationsPreviewsResourceChangesResource(_requester);
+  ProjectsLocationsPreviewsResourceDriftsResource get resourceDrifts =>
+      ProjectsLocationsPreviewsResourceDriftsResource(_requester);
+
   ProjectsLocationsPreviewsResource(commons.ApiRequester client)
       : _requester = client;
 
@@ -1608,6 +1621,230 @@ class ProjectsLocationsPreviewsResource {
       queryParams: queryParams_,
     );
     return ListPreviewsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsPreviewsResourceChangesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPreviewsResourceChangesResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get a ResourceChange for a given preview.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource change to retrieve. Format:
+  /// 'projects/{project_id}/locations/{location}/previews/{preview}/resourceChanges/{resource_change}'.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/previews/\[^/\]+/resourceChanges/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResourceChange].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResourceChange> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ResourceChange.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists ResourceChanges for a given preview.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent in whose context the ResourceChanges are
+  /// listed. The parent value is in the format:
+  /// 'projects/{project_id}/locations/{location}/previews/{preview}'.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/previews/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Lists the resource changes that match the filter
+  /// expression. A filter expression filters the resource changes listed in the
+  /// response. The expression must be of the form '{field} {operator} {value}'
+  /// where operators: '\<', '\>', '\<=', '\>=', '!=', '=', ':' are supported
+  /// (colon ':' represents a HAS operator which is roughly synonymous with
+  /// equality). {field} can refer to a proto or JSON field, or a synthetic
+  /// field. Field names can be camelCase or snake_case. Examples: - Filter by
+  /// name: name =
+  /// "projects/foo/locations/us-central1/previews/dep/resourceChanges/baz
+  ///
+  /// [orderBy] - Optional. Field to use to sort the list.
+  ///
+  /// [pageSize] - Optional. When requesting a page of resource changes,
+  /// 'page_size' specifies number of resource changes to return. If
+  /// unspecified, at most 500 will be returned. The maximum value is 1000.
+  ///
+  /// [pageToken] - Optional. Token returned by previous call to
+  /// 'ListResourceChanges' which specifies the position in the list from where
+  /// to continue listing the resource changes.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListResourceChangesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListResourceChangesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/resourceChanges';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListResourceChangesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsPreviewsResourceDriftsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPreviewsResourceDriftsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get a ResourceDrift for a given preview.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the resource drift to retrieve. Format:
+  /// 'projects/{project_id}/locations/{location}/previews/{preview}/resourceDrifts/{resource_drift}'.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/previews/\[^/\]+/resourceDrifts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResourceDrift].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResourceDrift> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ResourceDrift.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List ResourceDrifts for a given preview.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent in whose context the ResourceDrifts are
+  /// listed. The parent value is in the format:
+  /// 'projects/{project_id}/locations/{location}/previews/{preview}'.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/previews/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Lists the resource drifts that match the filter
+  /// expression. A filter expression filters the resource drifts listed in the
+  /// response. The expression must be of the form '{field} {operator} {value}'
+  /// where operators: '\<', '\>', '\<=', '\>=', '!=', '=', ':' are supported
+  /// (colon ':' represents a HAS operator which is roughly synonymous with
+  /// equality). {field} can refer to a proto or JSON field, or a synthetic
+  /// field. Field names can be camelCase or snake_case. Examples: - Filter by
+  /// name: name =
+  /// "projects/foo/locations/us-central1/previews/dep/resourceDrifts/baz
+  ///
+  /// [orderBy] - Optional. Field to use to sort the list.
+  ///
+  /// [pageSize] - Optional. When requesting a page of resource drifts,
+  /// 'page_size' specifies number of resource drifts to return. If unspecified,
+  /// at most 500 will be returned. The maximum value is 1000.
+  ///
+  /// [pageToken] - Optional. Token returned by previous call to
+  /// 'ListResourceDrifts' which specifies the position in the list from where
+  /// to continue listing the resource drifts.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListResourceDriftsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListResourceDriftsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/resourceDrifts';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListResourceDriftsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -2031,6 +2268,8 @@ class Deployment {
   core.bool? importExistingResources;
 
   /// User-defined metadata for the deployment.
+  ///
+  /// Optional.
   core.Map<core.String, core.String>? labels;
 
   /// Revision name that was most recently applied.
@@ -2055,9 +2294,10 @@ class Deployment {
   /// - "UNLOCK_FAILED" : The deployment has failed to unlock.
   core.String? lockState;
 
-  /// Resource name of the deployment.
+  /// Identifier.
   ///
-  /// Format: `projects/{project}/locations/{location}/deployments/{deployment}`
+  /// Resource name of the deployment. Format:
+  /// `projects/{project}/locations/{location}/deployments/{deployment}`
   core.String? name;
 
   /// Input to control quota checks for resources in terraform configuration
@@ -2531,6 +2771,90 @@ class ListPreviewsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (previews != null) 'previews': previews!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// A response to a 'ListResourceChanges' call.
+///
+/// Contains a list of ResourceChanges.
+class ListResourceChangesResponse {
+  /// A token to request the next page of resources from the
+  /// 'ListResourceChanges' method.
+  ///
+  /// The value of an empty string means that there are no more resources to
+  /// return.
+  core.String? nextPageToken;
+
+  /// List of ResourceChanges.
+  core.List<ResourceChange>? resourceChanges;
+
+  /// Unreachable resources, if any.
+  core.List<core.String>? unreachable;
+
+  ListResourceChangesResponse({
+    this.nextPageToken,
+    this.resourceChanges,
+    this.unreachable,
+  });
+
+  ListResourceChangesResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          resourceChanges: (json_['resourceChanges'] as core.List?)
+              ?.map((value) => ResourceChange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (resourceChanges != null) 'resourceChanges': resourceChanges!,
+        if (unreachable != null) 'unreachable': unreachable!,
+      };
+}
+
+/// A response to a 'ListResourceDrifts' call.
+///
+/// Contains a list of ResourceDrifts.
+class ListResourceDriftsResponse {
+  /// A token to request the next page of resources from the
+  /// 'ListResourceDrifts' method.
+  ///
+  /// The value of an empty string means that there are no more resources to
+  /// return.
+  core.String? nextPageToken;
+
+  /// List of ResourceDrifts.
+  core.List<ResourceDrift>? resourceDrifts;
+
+  /// Unreachable resources, if any.
+  core.List<core.String>? unreachable;
+
+  ListResourceDriftsResponse({
+    this.nextPageToken,
+    this.resourceDrifts,
+    this.unreachable,
+  });
+
+  ListResourceDriftsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          resourceDrifts: (json_['resourceDrifts'] as core.List?)
+              ?.map((value) => ResourceDrift.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (resourceDrifts != null) 'resourceDrifts': resourceDrifts!,
         if (unreachable != null) 'unreachable': unreachable!,
       };
 }
@@ -3233,6 +3557,144 @@ class PreviewResult {
       };
 }
 
+/// A property change represents a change to a property in the state file.
+class PropertyChange {
+  /// Representations of the object value after the actions.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? after;
+
+  /// The paths of sensitive fields in `after`.
+  ///
+  /// Paths are relative to `path`.
+  ///
+  /// Output only.
+  core.List<core.String>? afterSensitivePaths;
+
+  /// Representations of the object value before the actions.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? before;
+
+  /// The paths of sensitive fields in `before`.
+  ///
+  /// Paths are relative to `path`.
+  ///
+  /// Output only.
+  core.List<core.String>? beforeSensitivePaths;
+
+  /// The path of the property change.
+  ///
+  /// Output only.
+  core.String? path;
+
+  PropertyChange({
+    this.after,
+    this.afterSensitivePaths,
+    this.before,
+    this.beforeSensitivePaths,
+    this.path,
+  });
+
+  PropertyChange.fromJson(core.Map json_)
+      : this(
+          after: json_['after'],
+          afterSensitivePaths: (json_['afterSensitivePaths'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          before: json_['before'],
+          beforeSensitivePaths: (json_['beforeSensitivePaths'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          path: json_['path'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (after != null) 'after': after!,
+        if (afterSensitivePaths != null)
+          'afterSensitivePaths': afterSensitivePaths!,
+        if (before != null) 'before': before!,
+        if (beforeSensitivePaths != null)
+          'beforeSensitivePaths': beforeSensitivePaths!,
+        if (path != null) 'path': path!,
+      };
+}
+
+/// A property drift represents a drift to a property in the state file.
+class PropertyDrift {
+  /// Representations of the object value after the actions.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? after;
+
+  /// The paths of sensitive fields in `after`.
+  ///
+  /// Paths are relative to `path`.
+  ///
+  /// Output only.
+  core.List<core.String>? afterSensitivePaths;
+
+  /// Representations of the object value before the actions.
+  ///
+  /// Output only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? before;
+
+  /// The paths of sensitive fields in `before`.
+  ///
+  /// Paths are relative to `path`.
+  ///
+  /// Output only.
+  core.List<core.String>? beforeSensitivePaths;
+
+  /// The path of the property drift.
+  ///
+  /// Output only.
+  core.String? path;
+
+  PropertyDrift({
+    this.after,
+    this.afterSensitivePaths,
+    this.before,
+    this.beforeSensitivePaths,
+    this.path,
+  });
+
+  PropertyDrift.fromJson(core.Map json_)
+      : this(
+          after: json_['after'],
+          afterSensitivePaths: (json_['afterSensitivePaths'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          before: json_['before'],
+          beforeSensitivePaths: (json_['beforeSensitivePaths'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          path: json_['path'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (after != null) 'after': after!,
+        if (afterSensitivePaths != null)
+          'afterSensitivePaths': afterSensitivePaths!,
+        if (before != null) 'before': before!,
+        if (beforeSensitivePaths != null)
+          'beforeSensitivePaths': beforeSensitivePaths!,
+        if (path != null) 'path': path!,
+      };
+}
+
 /// Resource represents a Google Cloud Platform resource actuated by IM.
 ///
 /// Resources are child resources of Revisions.
@@ -3337,6 +3799,209 @@ class ResourceCAIInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
+      };
+}
+
+/// A resource change represents a change to a resource in the state file.
+class ResourceChange {
+  /// The intent of the resource change.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "INTENT_UNSPECIFIED" : The default value.
+  /// - "CREATE" : The resource will be created.
+  /// - "UPDATE" : The resource will be updated.
+  /// - "DELETE" : The resource will be deleted.
+  /// - "RECREATE" : The resource will be recreated.
+  /// - "UNCHANGED" : The resource will be untouched.
+  core.String? intent;
+
+  /// Identifier.
+  ///
+  /// The name of the resource change. Format:
+  /// 'projects/{project_id}/locations/{location}/previews/{preview}/resourceChanges/{resource_change}'.
+  core.String? name;
+
+  /// The property changes of the resource change.
+  ///
+  /// Output only.
+  core.List<PropertyChange>? propertyChanges;
+
+  /// Terraform info of the resource change.
+  ///
+  /// Output only.
+  ResourceChangeTerraformInfo? terraformInfo;
+
+  ResourceChange({
+    this.intent,
+    this.name,
+    this.propertyChanges,
+    this.terraformInfo,
+  });
+
+  ResourceChange.fromJson(core.Map json_)
+      : this(
+          intent: json_['intent'] as core.String?,
+          name: json_['name'] as core.String?,
+          propertyChanges: (json_['propertyChanges'] as core.List?)
+              ?.map((value) => PropertyChange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          terraformInfo: json_.containsKey('terraformInfo')
+              ? ResourceChangeTerraformInfo.fromJson(
+                  json_['terraformInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (intent != null) 'intent': intent!,
+        if (name != null) 'name': name!,
+        if (propertyChanges != null) 'propertyChanges': propertyChanges!,
+        if (terraformInfo != null) 'terraformInfo': terraformInfo!,
+      };
+}
+
+/// Terraform info of a ResourceChange.
+class ResourceChangeTerraformInfo {
+  /// TF resource actions.
+  ///
+  /// Output only.
+  core.List<core.String>? actions;
+
+  /// TF resource address that uniquely identifies the resource.
+  ///
+  /// Output only.
+  core.String? address;
+
+  /// TF resource provider.
+  ///
+  /// Output only.
+  core.String? provider;
+
+  /// TF resource name.
+  ///
+  /// Output only.
+  core.String? resourceName;
+
+  /// TF resource type.
+  ///
+  /// Output only.
+  core.String? type;
+
+  ResourceChangeTerraformInfo({
+    this.actions,
+    this.address,
+    this.provider,
+    this.resourceName,
+    this.type,
+  });
+
+  ResourceChangeTerraformInfo.fromJson(core.Map json_)
+      : this(
+          actions: (json_['actions'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          address: json_['address'] as core.String?,
+          provider: json_['provider'] as core.String?,
+          resourceName: json_['resourceName'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (actions != null) 'actions': actions!,
+        if (address != null) 'address': address!,
+        if (provider != null) 'provider': provider!,
+        if (resourceName != null) 'resourceName': resourceName!,
+        if (type != null) 'type': type!,
+      };
+}
+
+/// A resource drift represents a drift to a resource in the state file.
+class ResourceDrift {
+  /// Identifier.
+  ///
+  /// The name of the resource drift. Format:
+  /// 'projects/{project_id}/locations/{location}/previews/{preview}/resourceDrifts/{resource_drift}'.
+  core.String? name;
+
+  /// The property drifts of the resource drift.
+  ///
+  /// Output only.
+  core.List<PropertyDrift>? propertyDrifts;
+
+  /// Terraform info of the resource drift.
+  ///
+  /// Output only.
+  ResourceDriftTerraformInfo? terraformInfo;
+
+  ResourceDrift({
+    this.name,
+    this.propertyDrifts,
+    this.terraformInfo,
+  });
+
+  ResourceDrift.fromJson(core.Map json_)
+      : this(
+          name: json_['name'] as core.String?,
+          propertyDrifts: (json_['propertyDrifts'] as core.List?)
+              ?.map((value) => PropertyDrift.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          terraformInfo: json_.containsKey('terraformInfo')
+              ? ResourceDriftTerraformInfo.fromJson(
+                  json_['terraformInfo'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (name != null) 'name': name!,
+        if (propertyDrifts != null) 'propertyDrifts': propertyDrifts!,
+        if (terraformInfo != null) 'terraformInfo': terraformInfo!,
+      };
+}
+
+/// Terraform info of a ResourceChange.
+class ResourceDriftTerraformInfo {
+  /// The address of the drifted resource.
+  ///
+  /// Output only.
+  core.String? address;
+
+  /// The provider of the drifted resource.
+  ///
+  /// Output only.
+  core.String? provider;
+
+  /// TF resource name.
+  ///
+  /// Output only.
+  core.String? resourceName;
+
+  /// The type of the drifted resource.
+  ///
+  /// Output only.
+  core.String? type;
+
+  ResourceDriftTerraformInfo({
+    this.address,
+    this.provider,
+    this.resourceName,
+    this.type,
+  });
+
+  ResourceDriftTerraformInfo.fromJson(core.Map json_)
+      : this(
+          address: json_['address'] as core.String?,
+          provider: json_['provider'] as core.String?,
+          resourceName: json_['resourceName'] as core.String?,
+          type: json_['type'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (address != null) 'address': address!,
+        if (provider != null) 'provider': provider!,
+        if (resourceName != null) 'resourceName': resourceName!,
+        if (type != null) 'type': type!,
       };
 }
 

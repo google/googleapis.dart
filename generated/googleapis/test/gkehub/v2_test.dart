@@ -1412,6 +1412,7 @@ api.FeatureSpec buildFeatureSpec() {
     o.identityservice = buildIdentityServiceSpec();
     o.origin = buildOrigin();
     o.policycontroller = buildPolicyControllerSpec();
+    o.rbacrolebindingactuation = buildRBACRoleBindingActuationSpec();
     o.servicemesh = buildServiceMeshSpec();
     o.workloadcertificate = buildWorkloadCertificateSpec();
   }
@@ -1427,6 +1428,7 @@ void checkFeatureSpec(api.FeatureSpec o) {
     checkIdentityServiceSpec(o.identityservice!);
     checkOrigin(o.origin!);
     checkPolicyControllerSpec(o.policycontroller!);
+    checkRBACRoleBindingActuationSpec(o.rbacrolebindingactuation!);
     checkServiceMeshSpec(o.servicemesh!);
     checkWorkloadCertificateSpec(o.workloadcertificate!);
   }
@@ -1444,6 +1446,7 @@ api.FeatureState buildFeatureState() {
     o.identityservice = buildIdentityServiceState();
     o.metering = buildMeteringState();
     o.policycontroller = buildPolicyControllerState();
+    o.rbacrolebindingactuation = buildRBACRoleBindingActuationState();
     o.servicemesh = buildServiceMeshState();
     o.state = buildState();
   }
@@ -1460,6 +1463,7 @@ void checkFeatureState(api.FeatureState o) {
     checkIdentityServiceState(o.identityservice!);
     checkMeteringState(o.metering!);
     checkPolicyControllerState(o.policycontroller!);
+    checkRBACRoleBindingActuationState(o.rbacrolebindingactuation!);
     checkServiceMeshState(o.servicemesh!);
     checkState(o.state!);
   }
@@ -3068,7 +3072,88 @@ void checkPolicyControllerToleration(api.PolicyControllerToleration o) {
   buildCounterPolicyControllerToleration--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed31() => {
+core.int buildCounterRBACRoleBindingActuationRBACRoleBindingState = 0;
+api.RBACRoleBindingActuationRBACRoleBindingState
+    buildRBACRoleBindingActuationRBACRoleBindingState() {
+  final o = api.RBACRoleBindingActuationRBACRoleBindingState();
+  buildCounterRBACRoleBindingActuationRBACRoleBindingState++;
+  if (buildCounterRBACRoleBindingActuationRBACRoleBindingState < 3) {
+    o.description = 'foo';
+    o.state = 'foo';
+    o.updateTime = 'foo';
+  }
+  buildCounterRBACRoleBindingActuationRBACRoleBindingState--;
+  return o;
+}
+
+void checkRBACRoleBindingActuationRBACRoleBindingState(
+    api.RBACRoleBindingActuationRBACRoleBindingState o) {
+  buildCounterRBACRoleBindingActuationRBACRoleBindingState++;
+  if (buildCounterRBACRoleBindingActuationRBACRoleBindingState < 3) {
+    unittest.expect(
+      o.description!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.state!,
+      unittest.equals('foo'),
+    );
+    unittest.expect(
+      o.updateTime!,
+      unittest.equals('foo'),
+    );
+  }
+  buildCounterRBACRoleBindingActuationRBACRoleBindingState--;
+}
+
+core.int buildCounterRBACRoleBindingActuationSpec = 0;
+api.RBACRoleBindingActuationSpec buildRBACRoleBindingActuationSpec() {
+  final o = api.RBACRoleBindingActuationSpec();
+  buildCounterRBACRoleBindingActuationSpec++;
+  if (buildCounterRBACRoleBindingActuationSpec < 3) {}
+  buildCounterRBACRoleBindingActuationSpec--;
+  return o;
+}
+
+void checkRBACRoleBindingActuationSpec(api.RBACRoleBindingActuationSpec o) {
+  buildCounterRBACRoleBindingActuationSpec++;
+  if (buildCounterRBACRoleBindingActuationSpec < 3) {}
+  buildCounterRBACRoleBindingActuationSpec--;
+}
+
+core.Map<core.String, api.RBACRoleBindingActuationRBACRoleBindingState>
+    buildUnnamed31() => {
+          'x': buildRBACRoleBindingActuationRBACRoleBindingState(),
+          'y': buildRBACRoleBindingActuationRBACRoleBindingState(),
+        };
+
+void checkUnnamed31(
+    core.Map<core.String, api.RBACRoleBindingActuationRBACRoleBindingState> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRBACRoleBindingActuationRBACRoleBindingState(o['x']!);
+  checkRBACRoleBindingActuationRBACRoleBindingState(o['y']!);
+}
+
+core.int buildCounterRBACRoleBindingActuationState = 0;
+api.RBACRoleBindingActuationState buildRBACRoleBindingActuationState() {
+  final o = api.RBACRoleBindingActuationState();
+  buildCounterRBACRoleBindingActuationState++;
+  if (buildCounterRBACRoleBindingActuationState < 3) {
+    o.rbacrolebindingStates = buildUnnamed31();
+  }
+  buildCounterRBACRoleBindingActuationState--;
+  return o;
+}
+
+void checkRBACRoleBindingActuationState(api.RBACRoleBindingActuationState o) {
+  buildCounterRBACRoleBindingActuationState++;
+  if (buildCounterRBACRoleBindingActuationState < 3) {
+    checkUnnamed31(o.rbacrolebindingStates!);
+  }
+  buildCounterRBACRoleBindingActuationState--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed32() => {
       'x': {
         'list': [1, 2, 3],
         'bool': true,
@@ -3081,7 +3166,7 @@ core.Map<core.String, core.Object?> buildUnnamed31() => {
       },
     };
 
-void checkUnnamed31(core.Map<core.String, core.Object?> o) {
+void checkUnnamed32(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -3113,12 +3198,12 @@ void checkUnnamed31(core.Map<core.String, core.Object?> o) {
   );
 }
 
-core.List<core.String> buildUnnamed32() => [
+core.List<core.String> buildUnnamed33() => [
       'foo',
       'foo',
     ];
 
-void checkUnnamed32(core.List<core.String> o) {
+void checkUnnamed33(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(
     o[0],
@@ -3135,10 +3220,10 @@ api.ServiceMeshAnalysisMessage buildServiceMeshAnalysisMessage() {
   final o = api.ServiceMeshAnalysisMessage();
   buildCounterServiceMeshAnalysisMessage++;
   if (buildCounterServiceMeshAnalysisMessage < 3) {
-    o.args = buildUnnamed31();
+    o.args = buildUnnamed32();
     o.description = 'foo';
     o.messageBase = buildServiceMeshAnalysisMessageBase();
-    o.resourcePaths = buildUnnamed32();
+    o.resourcePaths = buildUnnamed33();
   }
   buildCounterServiceMeshAnalysisMessage--;
   return o;
@@ -3147,13 +3232,13 @@ api.ServiceMeshAnalysisMessage buildServiceMeshAnalysisMessage() {
 void checkServiceMeshAnalysisMessage(api.ServiceMeshAnalysisMessage o) {
   buildCounterServiceMeshAnalysisMessage++;
   if (buildCounterServiceMeshAnalysisMessage < 3) {
-    checkUnnamed31(o.args!);
+    checkUnnamed32(o.args!);
     unittest.expect(
       o.description!,
       unittest.equals('foo'),
     );
     checkServiceMeshAnalysisMessageBase(o.messageBase!);
-    checkUnnamed32(o.resourcePaths!);
+    checkUnnamed33(o.resourcePaths!);
   }
   buildCounterServiceMeshAnalysisMessage--;
 }
@@ -3224,12 +3309,12 @@ void checkServiceMeshCondition(api.ServiceMeshCondition o) {
   buildCounterServiceMeshCondition--;
 }
 
-core.List<api.ServiceMeshStatusDetails> buildUnnamed33() => [
+core.List<api.ServiceMeshStatusDetails> buildUnnamed34() => [
       buildServiceMeshStatusDetails(),
       buildServiceMeshStatusDetails(),
     ];
 
-void checkUnnamed33(core.List<api.ServiceMeshStatusDetails> o) {
+void checkUnnamed34(core.List<api.ServiceMeshStatusDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceMeshStatusDetails(o[0]);
   checkServiceMeshStatusDetails(o[1]);
@@ -3240,7 +3325,7 @@ api.ServiceMeshControlPlaneManagement buildServiceMeshControlPlaneManagement() {
   final o = api.ServiceMeshControlPlaneManagement();
   buildCounterServiceMeshControlPlaneManagement++;
   if (buildCounterServiceMeshControlPlaneManagement < 3) {
-    o.details = buildUnnamed33();
+    o.details = buildUnnamed34();
     o.implementation = 'foo';
     o.state = 'foo';
   }
@@ -3252,7 +3337,7 @@ void checkServiceMeshControlPlaneManagement(
     api.ServiceMeshControlPlaneManagement o) {
   buildCounterServiceMeshControlPlaneManagement++;
   if (buildCounterServiceMeshControlPlaneManagement < 3) {
-    checkUnnamed33(o.details!);
+    checkUnnamed34(o.details!);
     unittest.expect(
       o.implementation!,
       unittest.equals('foo'),
@@ -3265,12 +3350,12 @@ void checkServiceMeshControlPlaneManagement(
   buildCounterServiceMeshControlPlaneManagement--;
 }
 
-core.List<api.ServiceMeshStatusDetails> buildUnnamed34() => [
+core.List<api.ServiceMeshStatusDetails> buildUnnamed35() => [
       buildServiceMeshStatusDetails(),
       buildServiceMeshStatusDetails(),
     ];
 
-void checkUnnamed34(core.List<api.ServiceMeshStatusDetails> o) {
+void checkUnnamed35(core.List<api.ServiceMeshStatusDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceMeshStatusDetails(o[0]);
   checkServiceMeshStatusDetails(o[1]);
@@ -3281,7 +3366,7 @@ api.ServiceMeshDataPlaneManagement buildServiceMeshDataPlaneManagement() {
   final o = api.ServiceMeshDataPlaneManagement();
   buildCounterServiceMeshDataPlaneManagement++;
   if (buildCounterServiceMeshDataPlaneManagement < 3) {
-    o.details = buildUnnamed34();
+    o.details = buildUnnamed35();
     o.state = 'foo';
   }
   buildCounterServiceMeshDataPlaneManagement--;
@@ -3291,7 +3376,7 @@ api.ServiceMeshDataPlaneManagement buildServiceMeshDataPlaneManagement() {
 void checkServiceMeshDataPlaneManagement(api.ServiceMeshDataPlaneManagement o) {
   buildCounterServiceMeshDataPlaneManagement++;
   if (buildCounterServiceMeshDataPlaneManagement < 3) {
-    checkUnnamed34(o.details!);
+    checkUnnamed35(o.details!);
     unittest.expect(
       o.state!,
       unittest.equals('foo'),
@@ -3337,23 +3422,23 @@ void checkServiceMeshSpec(api.ServiceMeshSpec o) {
   buildCounterServiceMeshSpec--;
 }
 
-core.List<api.ServiceMeshAnalysisMessage> buildUnnamed35() => [
+core.List<api.ServiceMeshAnalysisMessage> buildUnnamed36() => [
       buildServiceMeshAnalysisMessage(),
       buildServiceMeshAnalysisMessage(),
     ];
 
-void checkUnnamed35(core.List<api.ServiceMeshAnalysisMessage> o) {
+void checkUnnamed36(core.List<api.ServiceMeshAnalysisMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceMeshAnalysisMessage(o[0]);
   checkServiceMeshAnalysisMessage(o[1]);
 }
 
-core.List<api.ServiceMeshCondition> buildUnnamed36() => [
+core.List<api.ServiceMeshCondition> buildUnnamed37() => [
       buildServiceMeshCondition(),
       buildServiceMeshCondition(),
     ];
 
-void checkUnnamed36(core.List<api.ServiceMeshCondition> o) {
+void checkUnnamed37(core.List<api.ServiceMeshCondition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceMeshCondition(o[0]);
   checkServiceMeshCondition(o[1]);
@@ -3364,8 +3449,8 @@ api.ServiceMeshState buildServiceMeshState() {
   final o = api.ServiceMeshState();
   buildCounterServiceMeshState++;
   if (buildCounterServiceMeshState < 3) {
-    o.analysisMessages = buildUnnamed35();
-    o.conditions = buildUnnamed36();
+    o.analysisMessages = buildUnnamed36();
+    o.conditions = buildUnnamed37();
     o.configApiVersion = 'foo';
     o.controlPlaneManagement = buildServiceMeshControlPlaneManagement();
     o.dataPlaneManagement = buildServiceMeshDataPlaneManagement();
@@ -3377,8 +3462,8 @@ api.ServiceMeshState buildServiceMeshState() {
 void checkServiceMeshState(api.ServiceMeshState o) {
   buildCounterServiceMeshState++;
   if (buildCounterServiceMeshState < 3) {
-    checkUnnamed35(o.analysisMessages!);
-    checkUnnamed36(o.conditions!);
+    checkUnnamed36(o.analysisMessages!);
+    checkUnnamed37(o.conditions!);
     unittest.expect(
       o.configApiVersion!,
       unittest.equals('foo'),
@@ -3495,6 +3580,23 @@ void checkWorkloadCertificateSpec(api.WorkloadCertificateSpec o) {
     );
   }
   buildCounterWorkloadCertificateSpec--;
+}
+
+core.List<core.String> buildUnnamed38() => [
+      'foo',
+      'foo',
+    ];
+
+void checkUnnamed38(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(
+    o[0],
+    unittest.equals('foo'),
+  );
+  unittest.expect(
+    o[1],
+    unittest.equals('foo'),
+  );
 }
 
 void main() {
@@ -4301,6 +4403,36 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-RBACRoleBindingActuationRBACRoleBindingState', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRBACRoleBindingActuationRBACRoleBindingState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RBACRoleBindingActuationRBACRoleBindingState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRBACRoleBindingActuationRBACRoleBindingState(od);
+    });
+  });
+
+  unittest.group('obj-schema-RBACRoleBindingActuationSpec', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRBACRoleBindingActuationSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RBACRoleBindingActuationSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRBACRoleBindingActuationSpec(od);
+    });
+  });
+
+  unittest.group('obj-schema-RBACRoleBindingActuationState', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRBACRoleBindingActuationState();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RBACRoleBindingActuationState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
+      checkRBACRoleBindingActuationState(od);
+    });
+  });
+
   unittest.group('obj-schema-ServiceMeshAnalysisMessage', () {
     unittest.test('to-json--from-json', () async {
       final o = buildServiceMeshAnalysisMessage();
@@ -4468,6 +4600,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.GKEHubApi(mock).projects.locations;
       final arg_name = 'foo';
+      final arg_extraLocationTypes = buildUnnamed38();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -4505,6 +4638,10 @@ void main() {
           }
         }
         unittest.expect(
+          queryMap['extraLocationTypes']!,
+          unittest.equals(arg_extraLocationTypes),
+        );
+        unittest.expect(
           queryMap['filter']!.first,
           unittest.equals(arg_filter),
         );
@@ -4528,6 +4665,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       final response = await res.list(arg_name,
+          extraLocationTypes: arg_extraLocationTypes,
           filter: arg_filter,
           pageSize: arg_pageSize,
           pageToken: arg_pageToken,

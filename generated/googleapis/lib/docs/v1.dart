@@ -16,7 +16,7 @@
 ///
 /// Reads and writes Google Docs documents.
 ///
-/// For more information, see <https://developers.google.com/docs/>
+/// For more information, see <https://developers.google.com/workspace/docs/>
 ///
 /// Create an instance of [DocsApi] to access these resources:
 ///
@@ -7012,22 +7012,34 @@ class SubstringMatchCriteria {
   /// - `False`: the search is case insensitive.
   core.bool? matchCase;
 
+  /// True if the find value should be treated as a regular expression.
+  ///
+  /// Any backslashes in the pattern should be escaped. - `True`: the search
+  /// text is treated as a regular expressions. - `False`: the search text is
+  /// treated as a substring for matching.
+  ///
+  /// Optional.
+  core.bool? searchByRegex;
+
   /// The text to search for in the document.
   core.String? text;
 
   SubstringMatchCriteria({
     this.matchCase,
+    this.searchByRegex,
     this.text,
   });
 
   SubstringMatchCriteria.fromJson(core.Map json_)
       : this(
           matchCase: json_['matchCase'] as core.bool?,
+          searchByRegex: json_['searchByRegex'] as core.bool?,
           text: json_['text'] as core.String?,
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (matchCase != null) 'matchCase': matchCase!,
+        if (searchByRegex != null) 'searchByRegex': searchByRegex!,
         if (text != null) 'text': text!,
       };
 }

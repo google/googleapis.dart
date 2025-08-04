@@ -42,12 +42,16 @@
 /// - [InappproductsResource]
 /// - [InternalappsharingartifactsResource]
 /// - [MonetizationResource]
+///   - [MonetizationOnetimeproductsResource]
+///     - [MonetizationOnetimeproductsPurchaseOptionsResource]
+///       - [MonetizationOnetimeproductsPurchaseOptionsOffersResource]
 ///   - [MonetizationSubscriptionsResource]
 ///     - [MonetizationSubscriptionsBasePlansResource]
 ///       - [MonetizationSubscriptionsBasePlansOffersResource]
 /// - [OrdersResource]
 /// - [PurchasesResource]
 ///   - [PurchasesProductsResource]
+///   - [PurchasesProductsv2Resource]
 ///   - [PurchasesSubscriptionsResource]
 ///   - [PurchasesSubscriptionsv2Resource]
 ///   - [PurchasesVoidedpurchasesResource]
@@ -586,10 +590,11 @@ class EditsResource {
   ///
   /// [editId] - Identifier of the edit.
   ///
-  /// [changesNotSentForReview] - Indicates that the changes in this edit will
-  /// not be reviewed until they are explicitly sent for review from the Google
-  /// Play Console UI. These changes will be added to any other changes that are
-  /// not yet sent for review.
+  /// [changesNotSentForReview] - When a rejection happens, the parameter will
+  /// make sure that the changes in this edit won't be reviewed until they are
+  /// explicitly sent for review from within the Google Play Console UI. These
+  /// changes will be added to any other changes that are not yet sent for
+  /// review.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3667,6 +3672,8 @@ class InternalappsharingartifactsResource {
 class MonetizationResource {
   final commons.ApiRequester _requester;
 
+  MonetizationOnetimeproductsResource get onetimeproducts =>
+      MonetizationOnetimeproductsResource(_requester);
   MonetizationSubscriptionsResource get subscriptions =>
       MonetizationSubscriptionsResource(_requester);
 
@@ -3713,6 +3720,980 @@ class MonetizationResource {
       queryParams: queryParams_,
     );
     return ConvertRegionPricesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class MonetizationOnetimeproductsResource {
+  final commons.ApiRequester _requester;
+
+  MonetizationOnetimeproductsPurchaseOptionsResource get purchaseOptions =>
+      MonetizationOnetimeproductsPurchaseOptionsResource(_requester);
+
+  MonetizationOnetimeproductsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes one or more one-time products.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) for which the
+  /// one-time products should be deleted. Must be equal to the package_name
+  /// field on all the OneTimeProduct resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> batchDelete(
+    BatchDeleteOneTimeProductsRequest request,
+    core.String packageName, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts:batchDelete';
+
+    await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Reads one or more one-time products.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) for which the
+  /// products should be retrieved. Must be equal to the package_name field on
+  /// all requests.
+  ///
+  /// [productIds] - Required. A list of up to 100 product IDs to retrieve. All
+  /// IDs must be different.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchGetOneTimeProductsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchGetOneTimeProductsResponse> batchGet(
+    core.String packageName, {
+    core.List<core.String>? productIds,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (productIds != null) 'productIds': productIds,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts:batchGet';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BatchGetOneTimeProductsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates or updates one or more one-time products.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) for which the
+  /// one-time products should be updated. Must be equal to the package_name
+  /// field on all the OneTimeProduct resources.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchUpdateOneTimeProductsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchUpdateOneTimeProductsResponse> batchUpdate(
+    BatchUpdateOneTimeProductsRequest request,
+    core.String packageName, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts:batchUpdate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchUpdateOneTimeProductsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a one-time product.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the one-time
+  /// product to delete.
+  ///
+  /// [productId] - Required. The one-time product ID of the one-time product to
+  /// delete.
+  ///
+  /// [latencyTolerance] - Optional. The latency tolerance for the propagation
+  /// of this product update. Defaults to latency-sensitive.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> delete(
+    core.String packageName,
+    core.String productId, {
+    core.String? latencyTolerance,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (latencyTolerance != null) 'latencyTolerance': [latencyTolerance],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts/' +
+        commons.escapeVariable('$productId');
+
+    await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Reads a single one-time product.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the product to
+  /// retrieve.
+  ///
+  /// [productId] - Required. The product ID of the product to retrieve.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OneTimeProduct].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OneTimeProduct> get(
+    core.String packageName,
+    core.String productId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts/' +
+        commons.escapeVariable('$productId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return OneTimeProduct.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all one-time products under a given app.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) for which the
+  /// one-time product should be read.
+  ///
+  /// [pageSize] - Optional. The maximum number of one-time product to return.
+  /// The service may return fewer than this value. If unspecified, at most 50
+  /// one-time products will be returned. The maximum value is 1000; values
+  /// above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListOneTimeProducts` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListOneTimeProducts`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOneTimeProductsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOneTimeProductsResponse> list(
+    core.String packageName, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOneTimeProductsResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates or updates a one-time product.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. Immutable. Package name of the parent app.
+  ///
+  /// [productId] - Required. Immutable. Unique product ID of the product.
+  /// Unique within the parent app. Product IDs must start with a number or
+  /// lowercase letter, and can contain numbers (0-9), lowercase letters (a-z),
+  /// underscores (_), and periods (.).
+  ///
+  /// [allowMissing] - Optional. If set to true, and the one-time product with
+  /// the given package_name and product_id doesn't exist, the one-time product
+  /// will be created. If a new one-time product is created, update_mask is
+  /// ignored.
+  ///
+  /// [latencyTolerance] - Optional. The latency tolerance for the propagation
+  /// of this product upsert. Defaults to latency-sensitive.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  ///
+  /// [regionsVersion_version] - Required. A string representing the version of
+  /// available regions being used for the specified resource. Regional prices
+  /// and latest supported version for the resource have to be specified
+  /// according to the information published in
+  /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
+  /// Each time the supported locations substantially change, the version will
+  /// be incremented. Using this field will ensure that creating and updating
+  /// the resource with an older region's version and set of regional prices and
+  /// currencies will succeed even though a new version is available.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OneTimeProduct].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OneTimeProduct> patch(
+    OneTimeProduct request,
+    core.String packageName,
+    core.String productId, {
+    core.bool? allowMissing,
+    core.String? latencyTolerance,
+    core.String? regionsVersion_version,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (latencyTolerance != null) 'latencyTolerance': [latencyTolerance],
+      if (regionsVersion_version != null)
+        'regionsVersion.version': [regionsVersion_version],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/onetimeproducts/' +
+        commons.escapeVariable('$productId');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return OneTimeProduct.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class MonetizationOnetimeproductsPurchaseOptionsResource {
+  final commons.ApiRequester _requester;
+
+  MonetizationOnetimeproductsPurchaseOptionsOffersResource get offers =>
+      MonetizationOnetimeproductsPurchaseOptionsOffersResource(_requester);
+
+  MonetizationOnetimeproductsPurchaseOptionsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes purchase options across one or multiple one-time products.
+  ///
+  /// By default this operation will fail if there are any existing offers under
+  /// the deleted purchase options. Use the force parameter to override the
+  /// default behavior.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the purchase
+  /// options to delete.
+  ///
+  /// [productId] - Required. The product ID of the parent one-time product, if
+  /// all purchase options to delete belong to the same one-time product. If
+  /// this batch delete spans multiple one-time products, set this field to "-".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> batchDelete(
+    BatchDeletePurchaseOptionsRequest request,
+    core.String packageName,
+    core.String productId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts/' +
+        commons.escapeVariable('$productId') +
+        '/purchaseOptions:batchDelete';
+
+    await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Activates or deactivates purchase options across one or multiple one-time
+  /// products.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the updated
+  /// purchase options.
+  ///
+  /// [productId] - Required. The product ID of the parent one-time product, if
+  /// all updated purchase options belong to the same one-time product. If this
+  /// batch update spans multiple one-time products, set this field to "-".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchUpdatePurchaseOptionStatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchUpdatePurchaseOptionStatesResponse> batchUpdateStates(
+    BatchUpdatePurchaseOptionStatesRequest request,
+    core.String packageName,
+    core.String productId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts/' +
+        commons.escapeVariable('$productId') +
+        '/purchaseOptions:batchUpdateStates';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchUpdatePurchaseOptionStatesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class MonetizationOnetimeproductsPurchaseOptionsOffersResource {
+  final commons.ApiRequester _requester;
+
+  MonetizationOnetimeproductsPurchaseOptionsOffersResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Activates a one-time product offer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the offer to
+  /// activate.
+  ///
+  /// [productId] - Required. The parent one-time product (ID) of the offer to
+  /// activate.
+  ///
+  /// [purchaseOptionId] - Required. The parent purchase option (ID) of the
+  /// offer to activate.
+  ///
+  /// [offerId] - Required. The offer ID of the offer to activate.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OneTimeProductOffer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OneTimeProductOffer> activate(
+    ActivateOneTimeProductOfferRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String purchaseOptionId,
+    core.String offerId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts/' +
+        commons.escapeVariable('$productId') +
+        '/purchaseOptions/' +
+        commons.escapeVariable('$purchaseOptionId') +
+        '/offers/' +
+        commons.escapeVariable('$offerId') +
+        ':activate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return OneTimeProductOffer.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes one or more one-time product offers.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the offers to
+  /// delete. Must be equal to the package_name field on all the
+  /// OneTimeProductOffer resources.
+  ///
+  /// [productId] - Required. The product ID of the parent one-time product, if
+  /// all offers to delete belong to the same product. If this request spans
+  /// multiple one-time products, set this field to "-".
+  ///
+  /// [purchaseOptionId] - Required. The parent purchase option (ID) for which
+  /// the offers should be deleted. May be specified as '-' to update offers
+  /// from multiple purchase options.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<void> batchDelete(
+    BatchDeleteOneTimeProductOffersRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String purchaseOptionId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts/' +
+        commons.escapeVariable('$productId') +
+        '/purchaseOptions/' +
+        commons.escapeVariable('$purchaseOptionId') +
+        '/offers:batchDelete';
+
+    await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+      downloadOptions: null,
+    );
+  }
+
+  /// Reads one or more one-time product offers.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the updated
+  /// offers. Must be equal to the package_name field on all the updated
+  /// OneTimeProductOffer resources.
+  ///
+  /// [productId] - Required. The product ID of the parent one-time product, if
+  /// all updated offers belong to the same product. If this request spans
+  /// multiple one-time products, set this field to "-".
+  ///
+  /// [purchaseOptionId] - Required. The parent purchase option (ID) for which
+  /// the offers should be updated. May be specified as '-' to update offers
+  /// from multiple purchase options.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchGetOneTimeProductOffersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchGetOneTimeProductOffersResponse> batchGet(
+    BatchGetOneTimeProductOffersRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String purchaseOptionId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts/' +
+        commons.escapeVariable('$productId') +
+        '/purchaseOptions/' +
+        commons.escapeVariable('$purchaseOptionId') +
+        '/offers:batchGet';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchGetOneTimeProductOffersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates or updates one or more one-time product offers.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the updated
+  /// offers. Must be equal to the package_name field on all the updated
+  /// OneTimeProductOffer resources.
+  ///
+  /// [productId] - Required. The product ID of the parent one-time product, if
+  /// all updated offers belong to the same product. If this request spans
+  /// multiple one-time products, set this field to "-".
+  ///
+  /// [purchaseOptionId] - Required. The parent purchase option (ID) for which
+  /// the offers should be updated. May be specified as '-' to update offers
+  /// from multiple purchase options.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchUpdateOneTimeProductOffersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchUpdateOneTimeProductOffersResponse> batchUpdate(
+    BatchUpdateOneTimeProductOffersRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String purchaseOptionId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts/' +
+        commons.escapeVariable('$productId') +
+        '/purchaseOptions/' +
+        commons.escapeVariable('$purchaseOptionId') +
+        '/offers:batchUpdate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchUpdateOneTimeProductOffersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates a batch of one-time product offer states.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the updated
+  /// one-time product offers.
+  ///
+  /// [productId] - Required. The product ID of the parent one-time product, if
+  /// all updated offers belong to the same one-time product. If this batch
+  /// update spans multiple one-time products, set this field to "-".
+  ///
+  /// [purchaseOptionId] - Required. The purchase option ID of the parent
+  /// purchase option, if all updated offers belong to the same purchase option.
+  /// If this batch update spans multiple purchase options, set this field to
+  /// "-".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchUpdateOneTimeProductOfferStatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchUpdateOneTimeProductOfferStatesResponse> batchUpdateStates(
+    BatchUpdateOneTimeProductOfferStatesRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String purchaseOptionId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts/' +
+        commons.escapeVariable('$productId') +
+        '/purchaseOptions/' +
+        commons.escapeVariable('$purchaseOptionId') +
+        '/offers:batchUpdateStates';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BatchUpdateOneTimeProductOfferStatesResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Cancels a one-time product offer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the offer to
+  /// cancel.
+  ///
+  /// [productId] - Required. The parent one-time product (ID) of the offer to
+  /// cancel.
+  ///
+  /// [purchaseOptionId] - Required. The parent purchase option (ID) of the
+  /// offer to cancel.
+  ///
+  /// [offerId] - Required. The offer ID of the offer to cancel.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OneTimeProductOffer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OneTimeProductOffer> cancel(
+    CancelOneTimeProductOfferRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String purchaseOptionId,
+    core.String offerId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts/' +
+        commons.escapeVariable('$productId') +
+        '/purchaseOptions/' +
+        commons.escapeVariable('$purchaseOptionId') +
+        '/offers/' +
+        commons.escapeVariable('$offerId') +
+        ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return OneTimeProductOffer.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deactivates a one-time product offer.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) of the offer to
+  /// deactivate.
+  ///
+  /// [productId] - Required. The parent one-time product (ID) of the offer to
+  /// deactivate.
+  ///
+  /// [purchaseOptionId] - Required. The parent purchase option (ID) of the
+  /// offer to deactivate.
+  ///
+  /// [offerId] - Required. The offer ID of the offer to deactivate.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OneTimeProductOffer].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OneTimeProductOffer> deactivate(
+    DeactivateOneTimeProductOfferRequest request,
+    core.String packageName,
+    core.String productId,
+    core.String purchaseOptionId,
+    core.String offerId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts/' +
+        commons.escapeVariable('$productId') +
+        '/purchaseOptions/' +
+        commons.escapeVariable('$purchaseOptionId') +
+        '/offers/' +
+        commons.escapeVariable('$offerId') +
+        ':deactivate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return OneTimeProductOffer.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all offers under a given app, product, or purchase option.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The parent app (package name) for which the
+  /// offers should be read.
+  ///
+  /// [productId] - Required. The parent one-time product (ID) for which the
+  /// offers should be read. May be specified as '-' to read all offers under an
+  /// app.
+  ///
+  /// [purchaseOptionId] - Required. The parent purchase option (ID) for which
+  /// the offers should be read. May be specified as '-' to read all offers
+  /// under a one-time product or an app. Must be specified as '-' if product_id
+  /// is specified as '-'.
+  ///
+  /// [pageSize] - Optional. The maximum number of offers to return. The service
+  /// may return fewer than this value. If unspecified, at most 50 offers will
+  /// be returned. The maximum value is 1000; values above 1000 will be coerced
+  /// to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListOneTimeProductsOffers` call. Provide this to retrieve the subsequent
+  /// page. When paginating, product_id, package_name and purchase_option_id
+  /// provided to `ListOneTimeProductsOffersRequest` must match the call that
+  /// provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOneTimeProductOffersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOneTimeProductOffersResponse> list(
+    core.String packageName,
+    core.String productId,
+    core.String purchaseOptionId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/oneTimeProducts/' +
+        commons.escapeVariable('$productId') +
+        '/purchaseOptions/' +
+        commons.escapeVariable('$purchaseOptionId') +
+        '/offers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOneTimeProductOffersResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
 }
@@ -3888,14 +4869,13 @@ class MonetizationSubscriptionsResource {
   ///
   /// [regionsVersion_version] - Required. A string representing the version of
   /// available regions being used for the specified resource. Regional prices
-  /// for the resource have to be specified according to the information
-  /// published in
+  /// and latest supported version for the resource have to be specified
+  /// according to the information published in
   /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
   /// Each time the supported locations substantially change, the version will
   /// be incremented. Using this field will ensure that creating and updating
   /// the resource with an older region's version and set of regional prices and
-  /// currencies will succeed even though a new version is available. The latest
-  /// version is 2022/02.
+  /// currencies will succeed even though a new version is available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4110,14 +5090,13 @@ class MonetizationSubscriptionsResource {
   ///
   /// [regionsVersion_version] - Required. A string representing the version of
   /// available regions being used for the specified resource. Regional prices
-  /// for the resource have to be specified according to the information
-  /// published in
+  /// and latest supported version for the resource have to be specified
+  /// according to the information published in
   /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
   /// Each time the supported locations substantially change, the version will
   /// be incremented. Using this field will ensure that creating and updating
   /// the resource with an older region's version and set of regional prices and
-  /// currencies will succeed even though a new version is available. The latest
-  /// version is 2022/02.
+  /// currencies will succeed even though a new version is available.
   ///
   /// [updateMask] - Required. The list of fields to be updated.
   ///
@@ -4784,14 +5763,13 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   ///
   /// [regionsVersion_version] - Required. A string representing the version of
   /// available regions being used for the specified resource. Regional prices
-  /// for the resource have to be specified according to the information
-  /// published in
+  /// and latest supported version for the resource have to be specified
+  /// according to the information published in
   /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
   /// Each time the supported locations substantially change, the version will
   /// be incremented. Using this field will ensure that creating and updating
   /// the resource with an older region's version and set of regional prices and
-  /// currencies will succeed even though a new version is available. The latest
-  /// version is 2022/02.
+  /// currencies will succeed even though a new version is available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5109,14 +6087,13 @@ class MonetizationSubscriptionsBasePlansOffersResource {
   ///
   /// [regionsVersion_version] - Required. A string representing the version of
   /// available regions being used for the specified resource. Regional prices
-  /// for the resource have to be specified according to the information
-  /// published in
+  /// and latest supported version for the resource have to be specified
+  /// according to the information published in
   /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
   /// Each time the supported locations substantially change, the version will
   /// be incremented. Using this field will ensure that creating and updating
   /// the resource with an older region's version and set of regional prices and
-  /// currencies will succeed even though a new version is available. The latest
-  /// version is 2022/02.
+  /// currencies will succeed even though a new version is available.
   ///
   /// [updateMask] - Required. The list of fields to be updated.
   ///
@@ -5177,6 +6154,95 @@ class OrdersResource {
 
   OrdersResource(commons.ApiRequester client) : _requester = client;
 
+  /// Get order details for a list of orders.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The package name of the application for which
+  /// this subscription or in-app item was purchased (for example,
+  /// 'com.some.thing').
+  ///
+  /// [orderIds] - Required. The list of order IDs to retrieve order details
+  /// for. There must be between 1 and 1000 (inclusive) order IDs per request.
+  /// If any order ID is not found or does not match the provided package, the
+  /// entire request will fail with an error. The order IDs must be distinct.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchGetOrdersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchGetOrdersResponse> batchget(
+    core.String packageName, {
+    core.List<core.String>? orderIds,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (orderIds != null) 'orderIds': orderIds,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/orders:batchGet';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BatchGetOrdersResponse.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get order details for a single order.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The package name of the application for which
+  /// this subscription or in-app item was purchased (for example,
+  /// 'com.some.thing').
+  ///
+  /// [orderId] - Required. The order ID provided to the user when the
+  /// subscription or in-app order was purchased.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Order].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Order> get(
+    core.String packageName,
+    core.String orderId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/orders/' +
+        commons.escapeVariable('$orderId');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Order.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Refunds a user's subscription or in-app purchase order.
   ///
   /// Orders older than 3 years cannot be refunded.
@@ -5234,6 +6300,8 @@ class PurchasesResource {
 
   PurchasesProductsResource get products =>
       PurchasesProductsResource(_requester);
+  PurchasesProductsv2Resource get productsv2 =>
+      PurchasesProductsv2Resource(_requester);
   PurchasesSubscriptionsResource get subscriptions =>
       PurchasesSubscriptionsResource(_requester);
   PurchasesSubscriptionsv2Resource get subscriptionsv2 =>
@@ -5398,6 +6466,56 @@ class PurchasesProductsResource {
   }
 }
 
+class PurchasesProductsv2Resource {
+  final commons.ApiRequester _requester;
+
+  PurchasesProductsv2Resource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Checks the purchase and consumption status of an inapp item.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package name of the application the inapp product was
+  /// sold in (for example, 'com.some.thing').
+  ///
+  /// [token] - The token provided to the user's device when the inapp product
+  /// was purchased.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProductPurchaseV2].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProductPurchaseV2> getproductpurchasev2(
+    core.String packageName,
+    core.String token, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/purchases/productsv2/tokens/' +
+        commons.escapeVariable('$token');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ProductPurchaseV2.fromJson(
+        response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class PurchasesSubscriptionsResource {
   final commons.ApiRequester _requester;
 
@@ -5413,8 +6531,9 @@ class PurchasesSubscriptionsResource {
   /// [packageName] - The package name of the application for which this
   /// subscription was purchased (for example, 'com.some.thing').
   ///
-  /// [subscriptionId] - The purchased subscription ID (for example,
-  /// 'monthly001').
+  /// [subscriptionId] - Note: Since May 21, 2025, subscription_id is not
+  /// required, and not recommended for subscription with add-ons. The purchased
+  /// subscription ID (for example, 'monthly001').
   ///
   /// [token] - The token provided to the user's device when the subscription
   /// was purchased.
@@ -5465,8 +6584,9 @@ class PurchasesSubscriptionsResource {
   /// [packageName] - The package name of the application for which this
   /// subscription was purchased (for example, 'com.some.thing').
   ///
-  /// [subscriptionId] - The purchased subscription ID (for example,
-  /// 'monthly001').
+  /// [subscriptionId] - Note: Since May 21, 2025, subscription_id is not
+  /// required, and not recommended for subscription with add-ons. The purchased
+  /// subscription ID (for example, 'monthly001').
   ///
   /// [token] - The token provided to the user's device when the subscription
   /// was purchased.
@@ -5561,6 +6681,8 @@ class PurchasesSubscriptionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: Use purchases.subscriptionsv2.get instead.
+  ///
   /// Checks whether a user's subscription purchase is valid and returns its
   /// expiry time.
   ///
@@ -5585,6 +6707,9 @@ class PurchasesSubscriptionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<SubscriptionPurchase> get(
     core.String packageName,
     core.String subscriptionId,
@@ -5611,6 +6736,8 @@ class PurchasesSubscriptionsResource {
         response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Deprecated: Use orders.refund instead.
+  ///
   /// Refunds a user's subscription purchase, but the subscription remains valid
   /// until its expiration time and it will continue to recur.
   ///
@@ -5633,6 +6760,9 @@ class PurchasesSubscriptionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<void> refund(
     core.String packageName,
     core.String subscriptionId,
@@ -5659,9 +6789,10 @@ class PurchasesSubscriptionsResource {
     );
   }
 
-  /// Refunds and immediately revokes a user's subscription purchase.
+  /// Deprecated: Use purchases.subscriptionsv2.revoke instead.
   ///
-  /// Access to the subscription will be terminated immediately and it will stop
+  /// Refunds and immediately revokes a user's subscription purchase. Access to
+  /// the subscription will be terminated immediately and it will stop
   /// recurring.
   ///
   /// Request parameters:
@@ -5683,6 +6814,9 @@ class PurchasesSubscriptionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   async.Future<void> revoke(
     core.String packageName,
     core.String subscriptionId,
@@ -6584,6 +7718,128 @@ class ActivateBasePlanRequest {
       };
 }
 
+/// Request message for ActivateOneTimeProductOffer.
+class ActivateOneTimeProductOfferRequest {
+  /// The latency tolerance for the propagation of this update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The offer ID of the offer to activate.
+  ///
+  /// Required.
+  core.String? offerId;
+
+  /// The parent app (package name) of the offer to activate.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The parent one-time product (ID) of the offer to activate.
+  ///
+  /// Required.
+  core.String? productId;
+
+  /// The parent purchase option (ID) of the offer to activate.
+  ///
+  /// Required.
+  core.String? purchaseOptionId;
+
+  ActivateOneTimeProductOfferRequest({
+    this.latencyTolerance,
+    this.offerId,
+    this.packageName,
+    this.productId,
+    this.purchaseOptionId,
+  });
+
+  ActivateOneTimeProductOfferRequest.fromJson(core.Map json_)
+      : this(
+          latencyTolerance: json_['latencyTolerance'] as core.String?,
+          offerId: json_['offerId'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
+          productId: json_['productId'] as core.String?,
+          purchaseOptionId: json_['purchaseOptionId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (offerId != null) 'offerId': offerId!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+        if (purchaseOptionId != null) 'purchaseOptionId': purchaseOptionId!,
+      };
+}
+
+/// Request message for UpdatePurchaseOptionState.
+class ActivatePurchaseOptionRequest {
+  /// The latency tolerance for the propagation of this product update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The parent app (package name) of the purchase option to activate.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The parent one-time product (ID) of the purchase option to activate.
+  ///
+  /// Required.
+  core.String? productId;
+
+  /// The purchase option ID of the purchase option to activate.
+  ///
+  /// Required.
+  core.String? purchaseOptionId;
+
+  ActivatePurchaseOptionRequest({
+    this.latencyTolerance,
+    this.packageName,
+    this.productId,
+    this.purchaseOptionId,
+  });
+
+  ActivatePurchaseOptionRequest.fromJson(core.Map json_)
+      : this(
+          latencyTolerance: json_['latencyTolerance'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
+          productId: json_['productId'] as core.String?,
+          purchaseOptionId: json_['purchaseOptionId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+        if (purchaseOptionId != null) 'purchaseOptionId': purchaseOptionId!,
+      };
+}
+
 /// Request message for ActivateSubscriptionOffer.
 class ActivateSubscriptionOfferRequest {
   /// The parent base plan (ID) of the offer to activate.
@@ -7237,7 +8493,7 @@ class AppVersionRange {
 }
 
 /// Deprecated: subscription archiving is not supported.
-typedef ArchiveSubscriptionRequest = $Shared01;
+typedef ArchiveSubscriptionRequest = $Shared02;
 
 /// Metadata of an asset module.
 class AssetModuleMetadata {
@@ -7428,6 +8684,9 @@ class AutoRenewingPlan {
   SubscriptionItemPriceChangeDetails? priceChangeDetails;
 
   /// The current recurring price of the auto renewing plan.
+  ///
+  /// Note that the price does not take into account discounts and taxes, call
+  /// orders.get API instead if transaction details are needed.
   Money? recurringPrice;
 
   AutoRenewingPlan({
@@ -7578,6 +8837,179 @@ class BasePlan {
           'prepaidBasePlanType': prepaidBasePlanType!,
         if (regionalConfigs != null) 'regionalConfigs': regionalConfigs!,
         if (state != null) 'state': state!,
+      };
+}
+
+/// Request message for BatchDeleteOneTimeProductOffers.
+class BatchDeleteOneTimeProductOffersRequest {
+  /// A list of update requests of up to 100 elements.
+  ///
+  /// All requests must correspond to different offers.
+  ///
+  /// Required.
+  core.List<DeleteOneTimeProductOfferRequest>? requests;
+
+  BatchDeleteOneTimeProductOffersRequest({
+    this.requests,
+  });
+
+  BatchDeleteOneTimeProductOffersRequest.fromJson(core.Map json_)
+      : this(
+          requests: (json_['requests'] as core.List?)
+              ?.map((value) => DeleteOneTimeProductOfferRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Request message for BatchDeleteOneTimeProduct.
+class BatchDeleteOneTimeProductsRequest {
+  /// A list of delete requests of up to 100 elements.
+  ///
+  /// All requests must delete different one-time products.
+  ///
+  /// Required.
+  core.List<DeleteOneTimeProductRequest>? requests;
+
+  BatchDeleteOneTimeProductsRequest({
+    this.requests,
+  });
+
+  BatchDeleteOneTimeProductsRequest.fromJson(core.Map json_)
+      : this(
+          requests: (json_['requests'] as core.List?)
+              ?.map((value) => DeleteOneTimeProductRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Request message for BatchDeletePurchaseOption.
+class BatchDeletePurchaseOptionsRequest {
+  /// A list of delete requests of up to 100 elements.
+  ///
+  /// All requests must delete purchase options from different one-time
+  /// products.
+  ///
+  /// Required.
+  core.List<DeletePurchaseOptionRequest>? requests;
+
+  BatchDeletePurchaseOptionsRequest({
+    this.requests,
+  });
+
+  BatchDeletePurchaseOptionsRequest.fromJson(core.Map json_)
+      : this(
+          requests: (json_['requests'] as core.List?)
+              ?.map((value) => DeletePurchaseOptionRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Request message for the BatchGetOneTimeProductOffers endpoint.
+class BatchGetOneTimeProductOffersRequest {
+  /// A list of get requests of up to 100 elements.
+  ///
+  /// All requests must retrieve different offers.
+  ///
+  /// Required.
+  core.List<GetOneTimeProductOfferRequest>? requests;
+
+  BatchGetOneTimeProductOffersRequest({
+    this.requests,
+  });
+
+  BatchGetOneTimeProductOffersRequest.fromJson(core.Map json_)
+      : this(
+          requests: (json_['requests'] as core.List?)
+              ?.map((value) => GetOneTimeProductOfferRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Response message for the BatchGetOneTimeProductOffers endpoint.
+class BatchGetOneTimeProductOffersResponse {
+  /// The list of updated one-time product offers, in the same order as the
+  /// request.
+  core.List<OneTimeProductOffer>? oneTimeProductOffers;
+
+  BatchGetOneTimeProductOffersResponse({
+    this.oneTimeProductOffers,
+  });
+
+  BatchGetOneTimeProductOffersResponse.fromJson(core.Map json_)
+      : this(
+          oneTimeProductOffers: (json_['oneTimeProductOffers'] as core.List?)
+              ?.map((value) => OneTimeProductOffer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (oneTimeProductOffers != null)
+          'oneTimeProductOffers': oneTimeProductOffers!,
+      };
+}
+
+/// Response message for the BatchGetOneTimeProducts endpoint.
+class BatchGetOneTimeProductsResponse {
+  /// The list of requested one-time products, in the same order as the request.
+  core.List<OneTimeProduct>? oneTimeProducts;
+
+  BatchGetOneTimeProductsResponse({
+    this.oneTimeProducts,
+  });
+
+  BatchGetOneTimeProductsResponse.fromJson(core.Map json_)
+      : this(
+          oneTimeProducts: (json_['oneTimeProducts'] as core.List?)
+              ?.map((value) => OneTimeProduct.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (oneTimeProducts != null) 'oneTimeProducts': oneTimeProducts!,
+      };
+}
+
+/// Response for the orders.batchGet API.
+class BatchGetOrdersResponse {
+  /// Details for the requested order IDs.
+  core.List<Order>? orders;
+
+  BatchGetOrdersResponse({
+    this.orders,
+  });
+
+  BatchGetOrdersResponse.fromJson(core.Map json_)
+      : this(
+          orders: (json_['orders'] as core.List?)
+              ?.map((value) =>
+                  Order.fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (orders != null) 'orders': orders!,
       };
 }
 
@@ -7747,6 +9179,205 @@ class BatchUpdateBasePlanStatesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (subscriptions != null) 'subscriptions': subscriptions!,
+      };
+}
+
+/// Request message for BatchUpdateOneTimeProductOfferStates.
+class BatchUpdateOneTimeProductOfferStatesRequest {
+  /// The update request list of up to 100 elements.
+  ///
+  /// All requests must update different offers.
+  ///
+  /// Required.
+  core.List<UpdateOneTimeProductOfferStateRequest>? requests;
+
+  BatchUpdateOneTimeProductOfferStatesRequest({
+    this.requests,
+  });
+
+  BatchUpdateOneTimeProductOfferStatesRequest.fromJson(core.Map json_)
+      : this(
+          requests: (json_['requests'] as core.List?)
+              ?.map((value) => UpdateOneTimeProductOfferStateRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Response message for BatchUpdateOneTimeProductOfferStates.
+class BatchUpdateOneTimeProductOfferStatesResponse {
+  /// The updated one-time product offers list, in the same order as the
+  /// request.
+  core.List<OneTimeProductOffer>? oneTimeProductOffers;
+
+  BatchUpdateOneTimeProductOfferStatesResponse({
+    this.oneTimeProductOffers,
+  });
+
+  BatchUpdateOneTimeProductOfferStatesResponse.fromJson(core.Map json_)
+      : this(
+          oneTimeProductOffers: (json_['oneTimeProductOffers'] as core.List?)
+              ?.map((value) => OneTimeProductOffer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (oneTimeProductOffers != null)
+          'oneTimeProductOffers': oneTimeProductOffers!,
+      };
+}
+
+/// Request message for BatchUpdateOneTimeProductOffers.
+class BatchUpdateOneTimeProductOffersRequest {
+  /// A list of update requests of up to 100 elements.
+  ///
+  /// All requests must update different offers.
+  ///
+  /// Required.
+  core.List<UpdateOneTimeProductOfferRequest>? requests;
+
+  BatchUpdateOneTimeProductOffersRequest({
+    this.requests,
+  });
+
+  BatchUpdateOneTimeProductOffersRequest.fromJson(core.Map json_)
+      : this(
+          requests: (json_['requests'] as core.List?)
+              ?.map((value) => UpdateOneTimeProductOfferRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Response message for BatchUpdateOneTimeProductOffers.
+class BatchUpdateOneTimeProductOffersResponse {
+  /// The list of updated one-time product offers, in the same order as the
+  /// request.
+  core.List<OneTimeProductOffer>? oneTimeProductOffers;
+
+  BatchUpdateOneTimeProductOffersResponse({
+    this.oneTimeProductOffers,
+  });
+
+  BatchUpdateOneTimeProductOffersResponse.fromJson(core.Map json_)
+      : this(
+          oneTimeProductOffers: (json_['oneTimeProductOffers'] as core.List?)
+              ?.map((value) => OneTimeProductOffer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (oneTimeProductOffers != null)
+          'oneTimeProductOffers': oneTimeProductOffers!,
+      };
+}
+
+/// Request message for BatchUpdateOneTimeProduct.
+class BatchUpdateOneTimeProductsRequest {
+  /// A list of update requests of up to 100 elements.
+  ///
+  /// All requests must update different one-time products.
+  ///
+  /// Required.
+  core.List<UpdateOneTimeProductRequest>? requests;
+
+  BatchUpdateOneTimeProductsRequest({
+    this.requests,
+  });
+
+  BatchUpdateOneTimeProductsRequest.fromJson(core.Map json_)
+      : this(
+          requests: (json_['requests'] as core.List?)
+              ?.map((value) => UpdateOneTimeProductRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Response message for BatchUpdateOneTimeProduct.
+class BatchUpdateOneTimeProductsResponse {
+  /// The list of updated one-time products list, in the same order as the
+  /// request.
+  core.List<OneTimeProduct>? oneTimeProducts;
+
+  BatchUpdateOneTimeProductsResponse({
+    this.oneTimeProducts,
+  });
+
+  BatchUpdateOneTimeProductsResponse.fromJson(core.Map json_)
+      : this(
+          oneTimeProducts: (json_['oneTimeProducts'] as core.List?)
+              ?.map((value) => OneTimeProduct.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (oneTimeProducts != null) 'oneTimeProducts': oneTimeProducts!,
+      };
+}
+
+/// Request message for BatchUpdatePurchaseOptionStates.
+class BatchUpdatePurchaseOptionStatesRequest {
+  /// The update request list of up to 100 elements.
+  ///
+  /// All requests must update different purchase options.
+  ///
+  /// Required.
+  core.List<UpdatePurchaseOptionStateRequest>? requests;
+
+  BatchUpdatePurchaseOptionStatesRequest({
+    this.requests,
+  });
+
+  BatchUpdatePurchaseOptionStatesRequest.fromJson(core.Map json_)
+      : this(
+          requests: (json_['requests'] as core.List?)
+              ?.map((value) => UpdatePurchaseOptionStateRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (requests != null) 'requests': requests!,
+      };
+}
+
+/// Response message for BatchUpdatePurchaseOptionStates.
+class BatchUpdatePurchaseOptionStatesResponse {
+  /// The list of updated one-time products.
+  ///
+  /// This list will match the requests one to one, in the same order.
+  core.List<OneTimeProduct>? oneTimeProducts;
+
+  BatchUpdatePurchaseOptionStatesResponse({
+    this.oneTimeProducts,
+  });
+
+  BatchUpdatePurchaseOptionStatesResponse.fromJson(core.Map json_)
+      : this(
+          oneTimeProducts: (json_['oneTimeProducts'] as core.List?)
+              ?.map((value) => OneTimeProduct.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (oneTimeProducts != null) 'oneTimeProducts': oneTimeProducts!,
       };
 }
 
@@ -7960,11 +9591,113 @@ class BundlesListResponse {
       };
 }
 
+/// Address information for the customer, for use in tax computation.
+class BuyerAddress {
+  /// Two letter country code based on ISO-3166-1 Alpha-2 (UN country codes).
+  core.String? buyerCountry;
+
+  /// Postal code of an address.
+  ///
+  /// When Google is the Merchant of Record for the order, this information is
+  /// not included.
+  core.String? buyerPostcode;
+
+  /// Top-level administrative subdivision of the buyer address country.
+  ///
+  /// When Google is the Merchant of Record for the order, this information is
+  /// not included.
+  core.String? buyerState;
+
+  BuyerAddress({
+    this.buyerCountry,
+    this.buyerPostcode,
+    this.buyerState,
+  });
+
+  BuyerAddress.fromJson(core.Map json_)
+      : this(
+          buyerCountry: json_['buyerCountry'] as core.String?,
+          buyerPostcode: json_['buyerPostcode'] as core.String?,
+          buyerState: json_['buyerState'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buyerCountry != null) 'buyerCountry': buyerCountry!,
+        if (buyerPostcode != null) 'buyerPostcode': buyerPostcode!,
+        if (buyerState != null) 'buyerState': buyerState!,
+      };
+}
+
 /// Request message for CancelAppRecovery.
 typedef CancelAppRecoveryRequest = $Empty;
 
 /// Response message for CancelAppRecovery.
 typedef CancelAppRecoveryResponse = $Empty;
+
+/// Request message for CancelOneTimeProductOffer.
+class CancelOneTimeProductOfferRequest {
+  /// The latency tolerance for the propagation of this update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The offer ID of the offer to cancel.
+  ///
+  /// Required.
+  core.String? offerId;
+
+  /// The parent app (package name) of the offer to cancel.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The parent one-time product (ID) of the offer to cancel.
+  ///
+  /// Required.
+  core.String? productId;
+
+  /// The parent purchase option (ID) of the offer to cancel.
+  ///
+  /// Required.
+  core.String? purchaseOptionId;
+
+  CancelOneTimeProductOfferRequest({
+    this.latencyTolerance,
+    this.offerId,
+    this.packageName,
+    this.productId,
+    this.purchaseOptionId,
+  });
+
+  CancelOneTimeProductOfferRequest.fromJson(core.Map json_)
+      : this(
+          latencyTolerance: json_['latencyTolerance'] as core.String?,
+          offerId: json_['offerId'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
+          productId: json_['productId'] as core.String?,
+          purchaseOptionId: json_['purchaseOptionId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (offerId != null) 'offerId': offerId!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+        if (purchaseOptionId != null) 'purchaseOptionId': purchaseOptionId!,
+      };
+}
 
 /// Result of the cancel survey when the subscription was canceled by the user.
 class CancelSurveyResult {
@@ -8061,6 +9794,25 @@ class CanceledStateContext {
           'systemInitiatedCancellation': systemInitiatedCancellation!,
         if (userInitiatedCancellation != null)
           'userInitiatedCancellation': userInitiatedCancellation!,
+      };
+}
+
+/// Details of when the order was canceled.
+class CancellationEvent {
+  /// The time when the order was canceled.
+  core.String? eventTime;
+
+  CancellationEvent({
+    this.eventTime,
+  });
+
+  CancellationEvent.fromJson(core.Map json_)
+      : this(
+          eventTime: json_['eventTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventTime != null) 'eventTime': eventTime!,
       };
 }
 
@@ -8358,6 +10110,128 @@ class DeactivateBasePlanRequest {
       };
 }
 
+/// Request message for DeactivateOneTimeProductOffer.
+class DeactivateOneTimeProductOfferRequest {
+  /// The latency tolerance for the propagation of this update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The offer ID of the offer to deactivate.
+  ///
+  /// Required.
+  core.String? offerId;
+
+  /// The parent app (package name) of the offer to deactivate.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The parent one-time product (ID) of the offer to deactivate.
+  ///
+  /// Required.
+  core.String? productId;
+
+  /// The parent purchase option (ID) of the offer to deactivate.
+  ///
+  /// Required.
+  core.String? purchaseOptionId;
+
+  DeactivateOneTimeProductOfferRequest({
+    this.latencyTolerance,
+    this.offerId,
+    this.packageName,
+    this.productId,
+    this.purchaseOptionId,
+  });
+
+  DeactivateOneTimeProductOfferRequest.fromJson(core.Map json_)
+      : this(
+          latencyTolerance: json_['latencyTolerance'] as core.String?,
+          offerId: json_['offerId'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
+          productId: json_['productId'] as core.String?,
+          purchaseOptionId: json_['purchaseOptionId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (offerId != null) 'offerId': offerId!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+        if (purchaseOptionId != null) 'purchaseOptionId': purchaseOptionId!,
+      };
+}
+
+/// Request message for UpdatePurchaseOptionState.
+class DeactivatePurchaseOptionRequest {
+  /// The latency tolerance for the propagation of this product update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The parent app (package name) of the purchase option to deactivate.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The parent one-time product (ID) of the purchase option to deactivate.
+  ///
+  /// Required.
+  core.String? productId;
+
+  /// The purchase option ID of the purchase option to deactivate.
+  ///
+  /// Required.
+  core.String? purchaseOptionId;
+
+  DeactivatePurchaseOptionRequest({
+    this.latencyTolerance,
+    this.packageName,
+    this.productId,
+    this.purchaseOptionId,
+  });
+
+  DeactivatePurchaseOptionRequest.fromJson(core.Map json_)
+      : this(
+          latencyTolerance: json_['latencyTolerance'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
+          productId: json_['productId'] as core.String?,
+          purchaseOptionId: json_['purchaseOptionId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+        if (purchaseOptionId != null) 'purchaseOptionId': purchaseOptionId!,
+      };
+}
+
 /// Request message for DeactivateSubscriptionOffer.
 class DeactivateSubscriptionOfferRequest {
   /// The parent base plan (ID) of the offer to deactivate.
@@ -8439,6 +10313,189 @@ class DeferredItemReplacement {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (productId != null) 'productId': productId!,
+      };
+}
+
+/// Request message for deleting an one-time product offer.
+class DeleteOneTimeProductOfferRequest {
+  /// The latency tolerance for the propagation of this product update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The unique offer ID of the offer to delete.
+  ///
+  /// Required.
+  core.String? offerId;
+
+  /// The parent app (package name) of the offer to delete.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The parent one-time product (ID) of the offer to delete.
+  ///
+  /// Required.
+  core.String? productId;
+
+  /// The parent purchase option (ID) of the offer to delete.
+  ///
+  /// Required.
+  core.String? purchaseOptionId;
+
+  DeleteOneTimeProductOfferRequest({
+    this.latencyTolerance,
+    this.offerId,
+    this.packageName,
+    this.productId,
+    this.purchaseOptionId,
+  });
+
+  DeleteOneTimeProductOfferRequest.fromJson(core.Map json_)
+      : this(
+          latencyTolerance: json_['latencyTolerance'] as core.String?,
+          offerId: json_['offerId'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
+          productId: json_['productId'] as core.String?,
+          purchaseOptionId: json_['purchaseOptionId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (offerId != null) 'offerId': offerId!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+        if (purchaseOptionId != null) 'purchaseOptionId': purchaseOptionId!,
+      };
+}
+
+/// Request message for deleting a one-time product.
+class DeleteOneTimeProductRequest {
+  /// The latency tolerance for the propagation of this product update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The parent app (package name) of the one-time product to delete.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The one-time product ID of the one-time product to delete.
+  ///
+  /// Required.
+  core.String? productId;
+
+  DeleteOneTimeProductRequest({
+    this.latencyTolerance,
+    this.packageName,
+    this.productId,
+  });
+
+  DeleteOneTimeProductRequest.fromJson(core.Map json_)
+      : this(
+          latencyTolerance: json_['latencyTolerance'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
+          productId: json_['productId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+      };
+}
+
+/// Request message for deleting a purchase option.
+class DeletePurchaseOptionRequest {
+  /// This field has no effect for purchase options with no offers under them.
+  ///
+  /// For purchase options with associated offers: * If `force` is set to false
+  /// (default), an error will be returned. * If `force` is set to true, any
+  /// associated offers under the purchase option will be deleted.
+  ///
+  /// Optional.
+  core.bool? force;
+
+  /// The latency tolerance for the propagation of this product update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The parent app (package name) of the purchase option to delete.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The parent one-time product (ID) of the purchase option to delete.
+  ///
+  /// Required.
+  core.String? productId;
+
+  /// The purchase option ID of the purchase option to delete.
+  ///
+  /// Required.
+  core.String? purchaseOptionId;
+
+  DeletePurchaseOptionRequest({
+    this.force,
+    this.latencyTolerance,
+    this.packageName,
+    this.productId,
+    this.purchaseOptionId,
+  });
+
+  DeletePurchaseOptionRequest.fromJson(core.Map json_)
+      : this(
+          force: json_['force'] as core.bool?,
+          latencyTolerance: json_['latencyTolerance'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
+          productId: json_['productId'] as core.String?,
+          purchaseOptionId: json_['purchaseOptionId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (force != null) 'force': force!,
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+        if (purchaseOptionId != null) 'purchaseOptionId': purchaseOptionId!,
       };
 }
 
@@ -9762,6 +11819,51 @@ class GeneratedUniversalApk {
       };
 }
 
+/// Request message for GetOneTimeProductOffers.
+class GetOneTimeProductOfferRequest {
+  /// The unique offer ID of the offer to get.
+  ///
+  /// Required.
+  core.String? offerId;
+
+  /// The parent app (package name) of the offer to get.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  /// The parent one-time product (ID) of the offer to get.
+  ///
+  /// Required.
+  core.String? productId;
+
+  /// The parent purchase option (ID) of the offer to get.
+  ///
+  /// Required.
+  core.String? purchaseOptionId;
+
+  GetOneTimeProductOfferRequest({
+    this.offerId,
+    this.packageName,
+    this.productId,
+    this.purchaseOptionId,
+  });
+
+  GetOneTimeProductOfferRequest.fromJson(core.Map json_)
+      : this(
+          offerId: json_['offerId'] as core.String?,
+          packageName: json_['packageName'] as core.String?,
+          productId: json_['productId'] as core.String?,
+          purchaseOptionId: json_['purchaseOptionId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (offerId != null) 'offerId': offerId!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+        if (purchaseOptionId != null) 'purchaseOptionId': purchaseOptionId!,
+      };
+}
+
 /// Request message for GetSubscriptionOffer.
 class GetSubscriptionOfferRequest {
   /// The parent base plan (ID) of the offer to get.
@@ -10701,6 +12803,93 @@ class LanguageTargeting {
       };
 }
 
+/// Details of a line item.
+class LineItem {
+  /// Item's listed price on Play Store, this may or may not include tax.
+  ///
+  /// Excludes any discounts or promotions.
+  Money? listingPrice;
+
+  /// Details of a one-time purchase.
+  OneTimePurchaseDetails? oneTimePurchaseDetails;
+
+  /// Details of a paid app purchase.
+  PaidAppDetails? paidAppDetails;
+
+  /// The purchased product ID or in-app SKU (for example, 'monthly001' or
+  /// 'com.some.thing.inapp1').
+  core.String? productId;
+
+  /// Developer-specified name of the product.
+  ///
+  /// Displayed in buyer's locale. Example: coins, monthly subscription, etc.
+  core.String? productTitle;
+
+  /// Details of a subscription purchase.
+  SubscriptionDetails? subscriptionDetails;
+
+  /// The tax paid for this line item.
+  Money? tax;
+
+  /// The total amount paid by the user for this line item, taking into account
+  /// discounts and tax.
+  Money? total;
+
+  LineItem({
+    this.listingPrice,
+    this.oneTimePurchaseDetails,
+    this.paidAppDetails,
+    this.productId,
+    this.productTitle,
+    this.subscriptionDetails,
+    this.tax,
+    this.total,
+  });
+
+  LineItem.fromJson(core.Map json_)
+      : this(
+          listingPrice: json_.containsKey('listingPrice')
+              ? Money.fromJson(
+                  json_['listingPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+          oneTimePurchaseDetails: json_.containsKey('oneTimePurchaseDetails')
+              ? OneTimePurchaseDetails.fromJson(json_['oneTimePurchaseDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          paidAppDetails: json_.containsKey('paidAppDetails')
+              ? PaidAppDetails.fromJson(json_['paidAppDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          productId: json_['productId'] as core.String?,
+          productTitle: json_['productTitle'] as core.String?,
+          subscriptionDetails: json_.containsKey('subscriptionDetails')
+              ? SubscriptionDetails.fromJson(json_['subscriptionDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          tax: json_.containsKey('tax')
+              ? Money.fromJson(
+                  json_['tax'] as core.Map<core.String, core.dynamic>)
+              : null,
+          total: json_.containsKey('total')
+              ? Money.fromJson(
+                  json_['total'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (listingPrice != null) 'listingPrice': listingPrice!,
+        if (oneTimePurchaseDetails != null)
+          'oneTimePurchaseDetails': oneTimePurchaseDetails!,
+        if (paidAppDetails != null) 'paidAppDetails': paidAppDetails!,
+        if (productId != null) 'productId': productId!,
+        if (productTitle != null) 'productTitle': productTitle!,
+        if (subscriptionDetails != null)
+          'subscriptionDetails': subscriptionDetails!,
+        if (tax != null) 'tax': tax!,
+        if (total != null) 'total': total!,
+      };
+}
+
 /// Response message for ListAppRecoveries.
 ///
 /// -- api-linter: core::0158::response-next-page-token-field=disabled
@@ -10752,6 +12941,67 @@ class ListDeviceTierConfigsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
         if (deviceTierConfigs != null) 'deviceTierConfigs': deviceTierConfigs!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+      };
+}
+
+/// Response message for ListOneTimeProductOffers.
+class ListOneTimeProductOffersResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The one_time_product offers from the specified request.
+  core.List<OneTimeProductOffer>? oneTimeProductOffers;
+
+  ListOneTimeProductOffersResponse({
+    this.nextPageToken,
+    this.oneTimeProductOffers,
+  });
+
+  ListOneTimeProductOffersResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          oneTimeProductOffers: (json_['oneTimeProductOffers'] as core.List?)
+              ?.map((value) => OneTimeProductOffer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (oneTimeProductOffers != null)
+          'oneTimeProductOffers': oneTimeProductOffers!,
+      };
+}
+
+/// Response message for ListOneTimeProducts.
+class ListOneTimeProductsResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The one-time products from the specified app.
+  core.List<OneTimeProduct>? oneTimeProducts;
+
+  ListOneTimeProductsResponse({
+    this.nextPageToken,
+    this.oneTimeProducts,
+  });
+
+  ListOneTimeProductsResponse.fromJson(core.Map json_)
+      : this(
+          nextPageToken: json_['nextPageToken'] as core.String?,
+          oneTimeProducts: (json_['oneTimeProducts'] as core.List?)
+              ?.map((value) => OneTimeProduct.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (oneTimeProducts != null) 'oneTimeProducts': oneTimeProducts!,
       };
 }
 
@@ -11348,6 +13598,1056 @@ class OneTimeExternalTransaction {
       };
 }
 
+/// A single one-time product for an app.
+class OneTimeProduct {
+  /// Set of localized title and description data.
+  ///
+  /// Must not have duplicate entries with the same language_code.
+  ///
+  /// Required.
+  core.List<OneTimeProductListing>? listings;
+
+  /// List of up to 20 custom tags specified for this one-time product, and
+  /// returned to the app through the billing library.
+  ///
+  /// Purchase options and offers for this product will also receive these tags
+  /// in the billing library.
+  ///
+  /// Optional.
+  core.List<OfferTag>? offerTags;
+
+  /// Package name of the parent app.
+  ///
+  /// Required. Immutable.
+  core.String? packageName;
+
+  /// Unique product ID of the product.
+  ///
+  /// Unique within the parent app. Product IDs must start with a number or
+  /// lowercase letter, and can contain numbers (0-9), lowercase letters (a-z),
+  /// underscores (_), and periods (.).
+  ///
+  /// Required. Immutable.
+  core.String? productId;
+
+  /// The set of purchase options for this one-time product.
+  ///
+  /// Required.
+  core.List<OneTimeProductPurchaseOption>? purchaseOptions;
+
+  /// The version of the regions configuration that was used to generate the
+  /// one-time product.
+  ///
+  /// Output only.
+  RegionsVersion? regionsVersion;
+
+  /// Countries where the purchase of this one-time product is restricted to
+  /// payment methods registered in the same country.
+  ///
+  /// If empty, no payment location restrictions are imposed.
+  ///
+  /// Optional.
+  RestrictedPaymentCountries? restrictedPaymentCountries;
+
+  /// Details about taxes and legal compliance.
+  OneTimeProductTaxAndComplianceSettings? taxAndComplianceSettings;
+
+  OneTimeProduct({
+    this.listings,
+    this.offerTags,
+    this.packageName,
+    this.productId,
+    this.purchaseOptions,
+    this.regionsVersion,
+    this.restrictedPaymentCountries,
+    this.taxAndComplianceSettings,
+  });
+
+  OneTimeProduct.fromJson(core.Map json_)
+      : this(
+          listings: (json_['listings'] as core.List?)
+              ?.map((value) => OneTimeProductListing.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          offerTags: (json_['offerTags'] as core.List?)
+              ?.map((value) => OfferTag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          packageName: json_['packageName'] as core.String?,
+          productId: json_['productId'] as core.String?,
+          purchaseOptions: (json_['purchaseOptions'] as core.List?)
+              ?.map((value) => OneTimeProductPurchaseOption.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          regionsVersion: json_.containsKey('regionsVersion')
+              ? RegionsVersion.fromJson(json_['regionsVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          restrictedPaymentCountries:
+              json_.containsKey('restrictedPaymentCountries')
+                  ? RestrictedPaymentCountries.fromJson(
+                      json_['restrictedPaymentCountries']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          taxAndComplianceSettings:
+              json_.containsKey('taxAndComplianceSettings')
+                  ? OneTimeProductTaxAndComplianceSettings.fromJson(
+                      json_['taxAndComplianceSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (listings != null) 'listings': listings!,
+        if (offerTags != null) 'offerTags': offerTags!,
+        if (packageName != null) 'packageName': packageName!,
+        if (productId != null) 'productId': productId!,
+        if (purchaseOptions != null) 'purchaseOptions': purchaseOptions!,
+        if (regionsVersion != null) 'regionsVersion': regionsVersion!,
+        if (restrictedPaymentCountries != null)
+          'restrictedPaymentCountries': restrictedPaymentCountries!,
+        if (taxAndComplianceSettings != null)
+          'taxAndComplianceSettings': taxAndComplianceSettings!,
+      };
+}
+
+/// A purchase option that can be bought.
+class OneTimeProductBuyPurchaseOption {
+  /// Whether this purchase option will be available in legacy PBL flows that do
+  /// not support one-time products model.
+  ///
+  /// Up to one "buy" purchase option can be marked as backwards compatible.
+  ///
+  /// Optional.
+  core.bool? legacyCompatible;
+
+  /// Whether this purchase option allows multi-quantity.
+  ///
+  /// Multi-quantity allows buyer to purchase more than one item in a single
+  /// checkout.
+  ///
+  /// Optional.
+  core.bool? multiQuantityEnabled;
+
+  OneTimeProductBuyPurchaseOption({
+    this.legacyCompatible,
+    this.multiQuantityEnabled,
+  });
+
+  OneTimeProductBuyPurchaseOption.fromJson(core.Map json_)
+      : this(
+          legacyCompatible: json_['legacyCompatible'] as core.bool?,
+          multiQuantityEnabled: json_['multiQuantityEnabled'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (legacyCompatible != null) 'legacyCompatible': legacyCompatible!,
+        if (multiQuantityEnabled != null)
+          'multiQuantityEnabled': multiQuantityEnabled!,
+      };
+}
+
+/// Configuration specific to discounted offers.
+class OneTimeProductDiscountedOffer {
+  /// Time when the offer will stop being available.
+  core.String? endTime;
+
+  /// The number of times this offer can be redeemed.
+  ///
+  /// If unset or set to 0, allows for unlimited offer redemptions. Otherwise
+  /// must be a number between 1 and 50 inclusive.
+  ///
+  /// Optional.
+  core.String? redemptionLimit;
+
+  /// Time when the offer will start being available.
+  core.String? startTime;
+
+  OneTimeProductDiscountedOffer({
+    this.endTime,
+    this.redemptionLimit,
+    this.startTime,
+  });
+
+  OneTimeProductDiscountedOffer.fromJson(core.Map json_)
+      : this(
+          endTime: json_['endTime'] as core.String?,
+          redemptionLimit: json_['redemptionLimit'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (redemptionLimit != null) 'redemptionLimit': redemptionLimit!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// Regional store listing for a one-time product.
+class OneTimeProductListing {
+  /// The description of this product in the language of this listing.
+  ///
+  /// The maximum length is 200 characters.
+  ///
+  /// Required.
+  core.String? description;
+
+  /// The language of this listing, as defined by BCP-47, e.g., "en-US".
+  ///
+  /// Required.
+  core.String? languageCode;
+
+  /// The title of this product in the language of this listing.
+  ///
+  /// The maximum length is 55 characters.
+  ///
+  /// Required.
+  core.String? title;
+
+  OneTimeProductListing({
+    this.description,
+    this.languageCode,
+    this.title,
+  });
+
+  OneTimeProductListing.fromJson(core.Map json_)
+      : this(
+          description: json_['description'] as core.String?,
+          languageCode: json_['languageCode'] as core.String?,
+          title: json_['title'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (description != null) 'description': description!,
+        if (languageCode != null) 'languageCode': languageCode!,
+        if (title != null) 'title': title!,
+      };
+}
+
+/// A single offer for a one-time product.
+class OneTimeProductOffer {
+  /// A discounted offer.
+  OneTimeProductDiscountedOffer? discountedOffer;
+
+  /// The ID of this product offer.
+  ///
+  /// Must be unique within the purchase option. It must start with a number or
+  /// lower-case letter, and can only contain lower-case letters (a-z), numbers
+  /// (0-9), and hyphens (-). The maximum length is 63 characters.
+  ///
+  /// Required. Immutable.
+  core.String? offerId;
+
+  /// List of up to 20 custom tags specified for this offer, and returned to the
+  /// app through the billing library.
+  ///
+  /// Optional.
+  core.List<OfferTag>? offerTags;
+
+  /// The package name of the app the parent product belongs to.
+  ///
+  /// Required. Immutable.
+  core.String? packageName;
+
+  /// A pre-order offer.
+  OneTimeProductPreOrderOffer? preOrderOffer;
+
+  /// The ID of the parent product this offer belongs to.
+  ///
+  /// Required. Immutable.
+  core.String? productId;
+
+  /// The ID of the purchase option to which this offer is an extension.
+  ///
+  /// Required. Immutable.
+  core.String? purchaseOptionId;
+
+  /// Set of regional pricing and availability information for this offer.
+  ///
+  /// Must not have duplicate entries with the same region_code.
+  core.List<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>?
+      regionalPricingAndAvailabilityConfigs;
+
+  /// The version of the regions configuration that was used to generate the
+  /// one-time product offer.
+  ///
+  /// Output only.
+  RegionsVersion? regionsVersion;
+
+  /// The current state of this offer.
+  ///
+  /// This field cannot be changed by updating the resource. Use the dedicated
+  /// endpoints instead.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value, should never be used.
+  /// - "DRAFT" : The offer is not and has never been available to users.
+  /// - "ACTIVE" : The offer is available to users, as long as its conditions
+  /// are met.
+  /// - "CANCELLED" : This state is specific to pre-orders. The offer is
+  /// cancelled and not available to users. All pending orders related to this
+  /// offer were cancelled.
+  /// - "INACTIVE" : This state is specific to discounted offers. The offer is
+  /// no longer available to users.
+  core.String? state;
+
+  OneTimeProductOffer({
+    this.discountedOffer,
+    this.offerId,
+    this.offerTags,
+    this.packageName,
+    this.preOrderOffer,
+    this.productId,
+    this.purchaseOptionId,
+    this.regionalPricingAndAvailabilityConfigs,
+    this.regionsVersion,
+    this.state,
+  });
+
+  OneTimeProductOffer.fromJson(core.Map json_)
+      : this(
+          discountedOffer: json_.containsKey('discountedOffer')
+              ? OneTimeProductDiscountedOffer.fromJson(json_['discountedOffer']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          offerId: json_['offerId'] as core.String?,
+          offerTags: (json_['offerTags'] as core.List?)
+              ?.map((value) => OfferTag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          packageName: json_['packageName'] as core.String?,
+          preOrderOffer: json_.containsKey('preOrderOffer')
+              ? OneTimeProductPreOrderOffer.fromJson(
+                  json_['preOrderOffer'] as core.Map<core.String, core.dynamic>)
+              : null,
+          productId: json_['productId'] as core.String?,
+          purchaseOptionId: json_['purchaseOptionId'] as core.String?,
+          regionalPricingAndAvailabilityConfigs:
+              (json_['regionalPricingAndAvailabilityConfigs'] as core.List?)
+                  ?.map((value) =>
+                      OneTimeProductOfferRegionalPricingAndAvailabilityConfig
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
+                  .toList(),
+          regionsVersion: json_.containsKey('regionsVersion')
+              ? RegionsVersion.fromJson(json_['regionsVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (discountedOffer != null) 'discountedOffer': discountedOffer!,
+        if (offerId != null) 'offerId': offerId!,
+        if (offerTags != null) 'offerTags': offerTags!,
+        if (packageName != null) 'packageName': packageName!,
+        if (preOrderOffer != null) 'preOrderOffer': preOrderOffer!,
+        if (productId != null) 'productId': productId!,
+        if (purchaseOptionId != null) 'purchaseOptionId': purchaseOptionId!,
+        if (regionalPricingAndAvailabilityConfigs != null)
+          'regionalPricingAndAvailabilityConfigs':
+              regionalPricingAndAvailabilityConfigs!,
+        if (regionsVersion != null) 'regionsVersion': regionsVersion!,
+        if (state != null) 'state': state!,
+      };
+}
+
+/// Options for one-time product offers without a regional price override.
+typedef OneTimeProductOfferNoPriceOverrideOptions = $Empty;
+
+/// Regional pricing and availability configuration for a one-time product
+/// offer.
+class OneTimeProductOfferRegionalPricingAndAvailabilityConfig {
+  /// The absolute value of the discount that is subtracted from the purchase
+  /// option price.
+  ///
+  /// It should be between 0 and the purchase option price.
+  Money? absoluteDiscount;
+
+  /// The availability for this region.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "AVAILABILITY_UNSPECIFIED" : Unspecified availability. Must not be used.
+  /// - "AVAILABLE" : The offer is available to users.
+  /// - "NO_LONGER_AVAILABLE" : The offer is no longer available to users. This
+  /// value can only be used if the availability was previously set as
+  /// AVAILABLE.
+  core.String? availability;
+
+  /// The price defined in the purchase option for this region will be used.
+  OneTimeProductOfferNoPriceOverrideOptions? noOverride;
+
+  /// Region code this configuration applies to, as defined by ISO 3166-2, e.g.,
+  /// "US".
+  ///
+  /// Required.
+  core.String? regionCode;
+
+  /// The fraction of the purchase option price that the user pays for this
+  /// offer.
+  ///
+  /// For example, if the purchase option price for this region is $12, then a
+  /// 50% discount would correspond to a price of $6. The discount must be
+  /// specified as a fraction strictly larger than 0 and strictly smaller than
+  /// 1. The resulting price will be rounded to the nearest billable unit (e.g.
+  /// cents for USD). The relative discount is considered invalid if the
+  /// discounted price ends up being smaller than the minimum price allowed in
+  /// this region.
+  core.double? relativeDiscount;
+
+  OneTimeProductOfferRegionalPricingAndAvailabilityConfig({
+    this.absoluteDiscount,
+    this.availability,
+    this.noOverride,
+    this.regionCode,
+    this.relativeDiscount,
+  });
+
+  OneTimeProductOfferRegionalPricingAndAvailabilityConfig.fromJson(
+      core.Map json_)
+      : this(
+          absoluteDiscount: json_.containsKey('absoluteDiscount')
+              ? Money.fromJson(json_['absoluteDiscount']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          availability: json_['availability'] as core.String?,
+          noOverride: json_.containsKey('noOverride')
+              ? OneTimeProductOfferNoPriceOverrideOptions.fromJson(
+                  json_['noOverride'] as core.Map<core.String, core.dynamic>)
+              : null,
+          regionCode: json_['regionCode'] as core.String?,
+          relativeDiscount:
+              (json_['relativeDiscount'] as core.num?)?.toDouble(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (absoluteDiscount != null) 'absoluteDiscount': absoluteDiscount!,
+        if (availability != null) 'availability': availability!,
+        if (noOverride != null) 'noOverride': noOverride!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (relativeDiscount != null) 'relativeDiscount': relativeDiscount!,
+      };
+}
+
+/// Configuration specific to pre-order offers.
+class OneTimeProductPreOrderOffer {
+  /// Time when the pre-order will stop being available.
+  ///
+  /// Required.
+  core.String? endTime;
+
+  /// Specifies how price changes affect pre-existing pre-orders.
+  ///
+  /// Required. Immutable.
+  /// Possible string values are:
+  /// - "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_UNSPECIFIED" : Unspecified price change
+  /// behavior. Must not be used.
+  /// - "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_TWO_POINT_LOWEST" : The buyer gets
+  /// charged the minimum between the initial price at the time of pre-order and
+  /// the final offer price on the release date.
+  /// - "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_NEW_ORDERS_ONLY" : The buyer gets the
+  /// same price as the one they pre-ordered, regardless of any price changes
+  /// that may have happened after the pre-order.
+  core.String? priceChangeBehavior;
+
+  /// Time on which the product associated with the pre-order will be released
+  /// and the pre-order orders fulfilled.
+  ///
+  /// Required.
+  core.String? releaseTime;
+
+  /// Time when the pre-order will start being available.
+  ///
+  /// Required.
+  core.String? startTime;
+
+  OneTimeProductPreOrderOffer({
+    this.endTime,
+    this.priceChangeBehavior,
+    this.releaseTime,
+    this.startTime,
+  });
+
+  OneTimeProductPreOrderOffer.fromJson(core.Map json_)
+      : this(
+          endTime: json_['endTime'] as core.String?,
+          priceChangeBehavior: json_['priceChangeBehavior'] as core.String?,
+          releaseTime: json_['releaseTime'] as core.String?,
+          startTime: json_['startTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (endTime != null) 'endTime': endTime!,
+        if (priceChangeBehavior != null)
+          'priceChangeBehavior': priceChangeBehavior!,
+        if (releaseTime != null) 'releaseTime': releaseTime!,
+        if (startTime != null) 'startTime': startTime!,
+      };
+}
+
+/// A single purchase option for a one-time product.
+class OneTimeProductPurchaseOption {
+  /// A purchase option that can be bought.
+  OneTimeProductBuyPurchaseOption? buyOption;
+
+  /// Pricing information for any new locations Play may launch in the future.
+  ///
+  /// If omitted, the purchase option will not be automatically available in any
+  /// new locations Play may launch in the future.
+  OneTimeProductPurchaseOptionNewRegionsConfig? newRegionsConfig;
+
+  /// List of up to 20 custom tags specified for this purchase option, and
+  /// returned to the app through the billing library.
+  ///
+  /// Offers for this purchase option will also receive these tags in the
+  /// billing library.
+  ///
+  /// Optional.
+  core.List<OfferTag>? offerTags;
+
+  /// The unique identifier of this purchase option.
+  ///
+  /// Must be unique within the one-time product. It must start with a number or
+  /// lower-case letter, and can only contain lower-case letters (a-z), numbers
+  /// (0-9), and hyphens (-). The maximum length is 63 characters.
+  ///
+  /// Required. Immutable.
+  core.String? purchaseOptionId;
+
+  /// Regional pricing and availability information for this purchase option.
+  core.List<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>?
+      regionalPricingAndAvailabilityConfigs;
+
+  /// A purchase option that can be rented.
+  OneTimeProductRentPurchaseOption? rentOption;
+
+  /// The state of the purchase option, i.e., whether it's active.
+  ///
+  /// This field cannot be changed by updating the resource. Use the dedicated
+  /// endpoints instead.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value, should never be used.
+  /// - "DRAFT" : The purchase option is not and has never been available to
+  /// users.
+  /// - "ACTIVE" : The purchase option is available to users.
+  /// - "INACTIVE" : The purchase option is not available to users anymore.
+  /// - "INACTIVE_PUBLISHED" : The purchase option is not available for purchase
+  /// anymore, but we continue to expose its offer via the Play Billing Library
+  /// for backwards compatibility. Only automatically migrated purchase options
+  /// can be in this state.
+  core.String? state;
+
+  /// Details about taxes and legal compliance.
+  ///
+  /// Optional.
+  PurchaseOptionTaxAndComplianceSettings? taxAndComplianceSettings;
+
+  OneTimeProductPurchaseOption({
+    this.buyOption,
+    this.newRegionsConfig,
+    this.offerTags,
+    this.purchaseOptionId,
+    this.regionalPricingAndAvailabilityConfigs,
+    this.rentOption,
+    this.state,
+    this.taxAndComplianceSettings,
+  });
+
+  OneTimeProductPurchaseOption.fromJson(core.Map json_)
+      : this(
+          buyOption: json_.containsKey('buyOption')
+              ? OneTimeProductBuyPurchaseOption.fromJson(
+                  json_['buyOption'] as core.Map<core.String, core.dynamic>)
+              : null,
+          newRegionsConfig: json_.containsKey('newRegionsConfig')
+              ? OneTimeProductPurchaseOptionNewRegionsConfig.fromJson(
+                  json_['newRegionsConfig']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
+          offerTags: (json_['offerTags'] as core.List?)
+              ?.map((value) => OfferTag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          purchaseOptionId: json_['purchaseOptionId'] as core.String?,
+          regionalPricingAndAvailabilityConfigs: (json_[
+                  'regionalPricingAndAvailabilityConfigs'] as core.List?)
+              ?.map((value) =>
+                  OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          rentOption: json_.containsKey('rentOption')
+              ? OneTimeProductRentPurchaseOption.fromJson(
+                  json_['rentOption'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_['state'] as core.String?,
+          taxAndComplianceSettings:
+              json_.containsKey('taxAndComplianceSettings')
+                  ? PurchaseOptionTaxAndComplianceSettings.fromJson(
+                      json_['taxAndComplianceSettings']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buyOption != null) 'buyOption': buyOption!,
+        if (newRegionsConfig != null) 'newRegionsConfig': newRegionsConfig!,
+        if (offerTags != null) 'offerTags': offerTags!,
+        if (purchaseOptionId != null) 'purchaseOptionId': purchaseOptionId!,
+        if (regionalPricingAndAvailabilityConfigs != null)
+          'regionalPricingAndAvailabilityConfigs':
+              regionalPricingAndAvailabilityConfigs!,
+        if (rentOption != null) 'rentOption': rentOption!,
+        if (state != null) 'state': state!,
+        if (taxAndComplianceSettings != null)
+          'taxAndComplianceSettings': taxAndComplianceSettings!,
+      };
+}
+
+/// Pricing information for any new regions Play may launch in the future.
+class OneTimeProductPurchaseOptionNewRegionsConfig {
+  /// The regional availability for the new regions config.
+  ///
+  /// When set to AVAILABLE, the pricing information will be used for any new
+  /// regions Play may launch in the future.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "AVAILABILITY_UNSPECIFIED" : Unspecified availability. Must not be used.
+  /// - "AVAILABLE" : The config will be used for any new regions Play may
+  /// launch in the future.
+  /// - "NO_LONGER_AVAILABLE" : The config is not available anymore and will not
+  /// be used for any new regions Play may launch in the future. This value can
+  /// only be used if the availability was previously set as AVAILABLE.
+  core.String? availability;
+
+  /// Price in EUR to use for any new regions Play may launch in.
+  ///
+  /// Required.
+  Money? eurPrice;
+
+  /// Price in USD to use for any new regions Play may launch in.
+  ///
+  /// Required.
+  Money? usdPrice;
+
+  OneTimeProductPurchaseOptionNewRegionsConfig({
+    this.availability,
+    this.eurPrice,
+    this.usdPrice,
+  });
+
+  OneTimeProductPurchaseOptionNewRegionsConfig.fromJson(core.Map json_)
+      : this(
+          availability: json_['availability'] as core.String?,
+          eurPrice: json_.containsKey('eurPrice')
+              ? Money.fromJson(
+                  json_['eurPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+          usdPrice: json_.containsKey('usdPrice')
+              ? Money.fromJson(
+                  json_['usdPrice'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (availability != null) 'availability': availability!,
+        if (eurPrice != null) 'eurPrice': eurPrice!,
+        if (usdPrice != null) 'usdPrice': usdPrice!,
+      };
+}
+
+/// Regional pricing and availability configuration for a purchase option.
+class OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig {
+  /// The availability of the purchase option.
+  /// Possible string values are:
+  /// - "AVAILABILITY_UNSPECIFIED" : Unspecified availability. Must not be used.
+  /// - "AVAILABLE" : The purchase option is available to users.
+  /// - "NO_LONGER_AVAILABLE" : The purchase option is no longer available to
+  /// users. This value can only be used if the availability was previously set
+  /// as AVAILABLE.
+  /// - "AVAILABLE_IF_RELEASED" : The purchase option is initially unavailable,
+  /// but made available via a released pre-order offer.
+  /// - "AVAILABLE_FOR_OFFERS_ONLY" : The purchase option is unavailable but
+  /// offers linked to it (i.e. Play Points offer) are available.
+  core.String? availability;
+
+  /// The price of the purchase option in the specified region.
+  ///
+  /// Must be set in the currency that is linked to the specified region.
+  Money? price;
+
+  /// Region code this configuration applies to, as defined by ISO 3166-2, e.g.,
+  /// "US".
+  ///
+  /// Required.
+  core.String? regionCode;
+
+  OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig({
+    this.availability,
+    this.price,
+    this.regionCode,
+  });
+
+  OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig.fromJson(
+      core.Map json_)
+      : this(
+          availability: json_['availability'] as core.String?,
+          price: json_.containsKey('price')
+              ? Money.fromJson(
+                  json_['price'] as core.Map<core.String, core.dynamic>)
+              : null,
+          regionCode: json_['regionCode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (availability != null) 'availability': availability!,
+        if (price != null) 'price': price!,
+        if (regionCode != null) 'regionCode': regionCode!,
+      };
+}
+
+/// A purchase option that can be rented.
+class OneTimeProductRentPurchaseOption {
+  /// The amount of time the user has after starting consuming the entitlement
+  /// before it is revoked.
+  ///
+  /// Specified in ISO 8601 format.
+  ///
+  /// Optional.
+  core.String? expirationPeriod;
+
+  /// The amount of time a user has the entitlement for.
+  ///
+  /// Starts at purchase flow completion. Specified in ISO 8601 format.
+  ///
+  /// Required.
+  core.String? rentalPeriod;
+
+  OneTimeProductRentPurchaseOption({
+    this.expirationPeriod,
+    this.rentalPeriod,
+  });
+
+  OneTimeProductRentPurchaseOption.fromJson(core.Map json_)
+      : this(
+          expirationPeriod: json_['expirationPeriod'] as core.String?,
+          rentalPeriod: json_['rentalPeriod'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (expirationPeriod != null) 'expirationPeriod': expirationPeriod!,
+        if (rentalPeriod != null) 'rentalPeriod': rentalPeriod!,
+      };
+}
+
+/// Details about taxation, Google Play policy and legal compliance for one-time
+/// products.
+class OneTimeProductTaxAndComplianceSettings {
+  /// Whether this one-time product is declared as a product representing a
+  /// tokenized digital asset.
+  core.bool? isTokenizedDigitalAsset;
+
+  /// Regional tax configuration.
+  core.List<RegionalTaxConfig>? regionalTaxConfigs;
+
+  OneTimeProductTaxAndComplianceSettings({
+    this.isTokenizedDigitalAsset,
+    this.regionalTaxConfigs,
+  });
+
+  OneTimeProductTaxAndComplianceSettings.fromJson(core.Map json_)
+      : this(
+          isTokenizedDigitalAsset:
+              json_['isTokenizedDigitalAsset'] as core.bool?,
+          regionalTaxConfigs: (json_['regionalTaxConfigs'] as core.List?)
+              ?.map((value) => RegionalTaxConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isTokenizedDigitalAsset != null)
+          'isTokenizedDigitalAsset': isTokenizedDigitalAsset!,
+        if (regionalTaxConfigs != null)
+          'regionalTaxConfigs': regionalTaxConfigs!,
+      };
+}
+
+/// Details of a one-time purchase.
+class OneTimePurchaseDetails {
+  /// The offer ID of the one-time purchase offer.
+  core.String? offerId;
+
+  /// ID of the purchase option.
+  ///
+  /// This field is set for both purchase options and variant offers. For
+  /// purchase options, this ID identifies the purchase option itself. For
+  /// variant offers, this ID refers to the associated purchase option, and in
+  /// conjunction with offer_id it identifies the variant offer.
+  core.String? purchaseOptionId;
+
+  /// The number of items purchased (for multi-quantity item purchases).
+  core.int? quantity;
+
+  /// The details of a rent purchase.
+  ///
+  /// Only set if it is a rent purchase.
+  RentalDetails? rentalDetails;
+
+  OneTimePurchaseDetails({
+    this.offerId,
+    this.purchaseOptionId,
+    this.quantity,
+    this.rentalDetails,
+  });
+
+  OneTimePurchaseDetails.fromJson(core.Map json_)
+      : this(
+          offerId: json_['offerId'] as core.String?,
+          purchaseOptionId: json_['purchaseOptionId'] as core.String?,
+          quantity: json_['quantity'] as core.int?,
+          rentalDetails: json_.containsKey('rentalDetails')
+              ? RentalDetails.fromJson(
+                  json_['rentalDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (offerId != null) 'offerId': offerId!,
+        if (purchaseOptionId != null) 'purchaseOptionId': purchaseOptionId!,
+        if (quantity != null) 'quantity': quantity!,
+        if (rentalDetails != null) 'rentalDetails': rentalDetails!,
+      };
+}
+
+/// The Order resource encapsulates comprehensive information about a
+/// transaction made on Google Play.
+///
+/// It includes a variety of attributes that provide details about the order
+/// itself, the products purchased, and the history of events related to the
+/// order. The Orders APIs provide real-time access to your order data within
+/// the Google Play ecosystem. You can retrieve detailed information and
+/// metadata for both one-time and recurring orders, including transaction
+/// details like charges, taxes, and refunds, as well as metadata such as
+/// pricing phases for subscriptions. The Orders APIs let you automate tasks
+/// related to order management, reducing the need for manual checks via the
+/// Play Developer Console. The following are some of the use cases for this
+/// API: + Real-time order data retrieval - Get order details and metadata
+/// immediately after a purchase using an order ID. + Order update
+/// synchronization - Periodically sync order updates to maintain an up-to-date
+/// record of order information. Note: + The Orders API calls count towards your
+/// Play Developer API quota, which defaults to 200K daily, and may be
+/// insufficient to sync extensive order histories. + A maximum of 1000 orders
+/// can be retrieved per call. Using larger page sizes is recommended to
+/// minimize quota usage. Check your quota in the Cloud Console and request more
+/// if required.
+class Order {
+  /// Address information for the customer, for use in tax computation.
+  ///
+  /// When Google is the Merchant of Record for the order, only country is
+  /// shown.
+  BuyerAddress? buyerAddress;
+
+  /// The time when the order was created.
+  core.String? createTime;
+
+  /// Your revenue for this order in the buyer's currency, including deductions
+  /// of partial refunds, taxes and fees.
+  ///
+  /// Google deducts standard transaction and third party fees from each sale,
+  /// including VAT in some regions.
+  Money? developerRevenueInBuyerCurrency;
+
+  /// The time of the last event that occurred on the order.
+  core.String? lastEventTime;
+
+  /// The individual line items making up this order.
+  core.List<LineItem>? lineItems;
+
+  /// Detailed information about the order at creation time.
+  OrderDetails? orderDetails;
+
+  /// Details about events which modified the order.
+  OrderHistory? orderHistory;
+
+  /// The order ID.
+  core.String? orderId;
+
+  /// Play points applied to the order, including offer information, discount
+  /// rate and point values.
+  PointsDetails? pointsDetails;
+
+  /// The token provided to the user's device when the subscription or item was
+  /// purchased.
+  core.String? purchaseToken;
+
+  /// The state of the order.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified. This value is not used.
+  /// - "PENDING" : Order has been created and is waiting to be processed.
+  /// - "PROCESSED" : Order has been successfully processed.
+  /// - "CANCELED" : Order was canceled before being processed.
+  /// - "PENDING_REFUND" : Requested refund is waiting to be processed.
+  /// - "PARTIALLY_REFUNDED" : Part of the order amount was refunded.
+  /// - "REFUNDED" : The full order amount was refunded.
+  core.String? state;
+
+  /// The total tax paid as a part of this order.
+  Money? tax;
+
+  /// The final amount paid by the customer, taking into account discounts and
+  /// taxes.
+  Money? total;
+
+  Order({
+    this.buyerAddress,
+    this.createTime,
+    this.developerRevenueInBuyerCurrency,
+    this.lastEventTime,
+    this.lineItems,
+    this.orderDetails,
+    this.orderHistory,
+    this.orderId,
+    this.pointsDetails,
+    this.purchaseToken,
+    this.state,
+    this.tax,
+    this.total,
+  });
+
+  Order.fromJson(core.Map json_)
+      : this(
+          buyerAddress: json_.containsKey('buyerAddress')
+              ? BuyerAddress.fromJson(
+                  json_['buyerAddress'] as core.Map<core.String, core.dynamic>)
+              : null,
+          createTime: json_['createTime'] as core.String?,
+          developerRevenueInBuyerCurrency:
+              json_.containsKey('developerRevenueInBuyerCurrency')
+                  ? Money.fromJson(json_['developerRevenueInBuyerCurrency']
+                      as core.Map<core.String, core.dynamic>)
+                  : null,
+          lastEventTime: json_['lastEventTime'] as core.String?,
+          lineItems: (json_['lineItems'] as core.List?)
+              ?.map((value) => LineItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          orderDetails: json_.containsKey('orderDetails')
+              ? OrderDetails.fromJson(
+                  json_['orderDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          orderHistory: json_.containsKey('orderHistory')
+              ? OrderHistory.fromJson(
+                  json_['orderHistory'] as core.Map<core.String, core.dynamic>)
+              : null,
+          orderId: json_['orderId'] as core.String?,
+          pointsDetails: json_.containsKey('pointsDetails')
+              ? PointsDetails.fromJson(
+                  json_['pointsDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          purchaseToken: json_['purchaseToken'] as core.String?,
+          state: json_['state'] as core.String?,
+          tax: json_.containsKey('tax')
+              ? Money.fromJson(
+                  json_['tax'] as core.Map<core.String, core.dynamic>)
+              : null,
+          total: json_.containsKey('total')
+              ? Money.fromJson(
+                  json_['total'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (buyerAddress != null) 'buyerAddress': buyerAddress!,
+        if (createTime != null) 'createTime': createTime!,
+        if (developerRevenueInBuyerCurrency != null)
+          'developerRevenueInBuyerCurrency': developerRevenueInBuyerCurrency!,
+        if (lastEventTime != null) 'lastEventTime': lastEventTime!,
+        if (lineItems != null) 'lineItems': lineItems!,
+        if (orderDetails != null) 'orderDetails': orderDetails!,
+        if (orderHistory != null) 'orderHistory': orderHistory!,
+        if (orderId != null) 'orderId': orderId!,
+        if (pointsDetails != null) 'pointsDetails': pointsDetails!,
+        if (purchaseToken != null) 'purchaseToken': purchaseToken!,
+        if (state != null) 'state': state!,
+        if (tax != null) 'tax': tax!,
+        if (total != null) 'total': total!,
+      };
+}
+
+/// Detailed information about the order at creation time.
+class OrderDetails {
+  /// Indicates whether the listed price was tax inclusive or not.
+  core.bool? taxInclusive;
+
+  OrderDetails({
+    this.taxInclusive,
+  });
+
+  OrderDetails.fromJson(core.Map json_)
+      : this(
+          taxInclusive: json_['taxInclusive'] as core.bool?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (taxInclusive != null) 'taxInclusive': taxInclusive!,
+      };
+}
+
+/// Details about events which modified the order.
+class OrderHistory {
+  /// Details of when the order was canceled.
+  CancellationEvent? cancellationEvent;
+
+  /// Details of the partial refund events for this order.
+  core.List<PartialRefundEvent>? partialRefundEvents;
+
+  /// Details of when the order was processed.
+  ProcessedEvent? processedEvent;
+
+  /// Details of when the order was fully refunded.
+  RefundEvent? refundEvent;
+
+  OrderHistory({
+    this.cancellationEvent,
+    this.partialRefundEvents,
+    this.processedEvent,
+    this.refundEvent,
+  });
+
+  OrderHistory.fromJson(core.Map json_)
+      : this(
+          cancellationEvent: json_.containsKey('cancellationEvent')
+              ? CancellationEvent.fromJson(json_['cancellationEvent']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          partialRefundEvents: (json_['partialRefundEvents'] as core.List?)
+              ?.map((value) => PartialRefundEvent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          processedEvent: json_.containsKey('processedEvent')
+              ? ProcessedEvent.fromJson(json_['processedEvent']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          refundEvent: json_.containsKey('refundEvent')
+              ? RefundEvent.fromJson(
+                  json_['refundEvent'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (cancellationEvent != null) 'cancellationEvent': cancellationEvent!,
+        if (partialRefundEvents != null)
+          'partialRefundEvents': partialRefundEvents!,
+        if (processedEvent != null) 'processedEvent': processedEvent!,
+        if (refundEvent != null) 'refundEvent': refundEvent!,
+      };
+}
+
 /// Details of a recurring external transaction product which doesn't belong to
 /// any other more specific category.
 typedef OtherRecurringProduct = $Empty;
@@ -11539,6 +14839,9 @@ class OtherRegionsSubscriptionOfferPhasePrices {
 /// protocol buffer message describes the page that has been returned.
 typedef PageInfo = $PageInfo;
 
+/// Details of a paid app purchase.
+typedef PaidAppDetails = $Empty;
+
 /// A partial refund of a transaction.
 class PartialRefund {
   /// A unique id distinguishing this partial refund.
@@ -11577,6 +14880,51 @@ class PartialRefund {
       };
 }
 
+/// Details of the partial refund events for this order.
+class PartialRefundEvent {
+  /// The time when the partial refund was created.
+  core.String? createTime;
+
+  /// The time when the partial refund was processed.
+  core.String? processTime;
+
+  /// Details for the partial refund.
+  RefundDetails? refundDetails;
+
+  /// The state of the partial refund.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State unspecified. This value is not used.
+  /// - "PENDING" : The partial refund has been created, but not yet processed.
+  /// - "PROCESSED_SUCCESSFULLY" : The partial refund was processed
+  /// successfully.
+  core.String? state;
+
+  PartialRefundEvent({
+    this.createTime,
+    this.processTime,
+    this.refundDetails,
+    this.state,
+  });
+
+  PartialRefundEvent.fromJson(core.Map json_)
+      : this(
+          createTime: json_['createTime'] as core.String?,
+          processTime: json_['processTime'] as core.String?,
+          refundDetails: json_.containsKey('refundDetails')
+              ? RefundDetails.fromJson(
+                  json_['refundDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          state: json_['state'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (createTime != null) 'createTime': createTime!,
+        if (processTime != null) 'processTime': processTime!,
+        if (refundDetails != null) 'refundDetails': refundDetails!,
+        if (state != null) 'state': state!,
+      };
+}
+
 /// Information specific to a subscription in paused state.
 class PausedStateContext {
   /// Time at which the subscription will be automatically resumed.
@@ -11602,6 +14950,59 @@ class PausedStateContext {
 /// The cancellation will happen only after the user finished all committed
 /// payments.
 typedef PendingCancellation = $Empty;
+
+/// Details relating to any Play Points applied to an order.
+class PointsDetails {
+  /// The monetary value of a Play Points coupon.
+  ///
+  /// This is the discount the coupon provides, which may not be the total
+  /// amount. Only set when Play Points coupons have been used. E.g. for a 100
+  /// points for $2 coupon, this is $2.
+  Money? pointsCouponValue;
+
+  /// The percentage rate which the Play Points promotion reduces the cost by.
+  ///
+  /// E.g. for a 100 points for $2 coupon, this is 500,000. Since $2 has an
+  /// estimate of 200 points, but the actual Points required, 100, is 50% of
+  /// this, and 50% in micros is 500,000. Between 0 and 1,000,000.
+  core.String? pointsDiscountRateMicros;
+
+  /// ID unique to the play points offer in use for this order.
+  core.String? pointsOfferId;
+
+  /// The number of Play Points applied in this order.
+  ///
+  /// E.g. for a 100 points for $2 coupon, this is 100. For coupon stacked with
+  /// base offer, this is the total points spent across both.
+  core.String? pointsSpent;
+
+  PointsDetails({
+    this.pointsCouponValue,
+    this.pointsDiscountRateMicros,
+    this.pointsOfferId,
+    this.pointsSpent,
+  });
+
+  PointsDetails.fromJson(core.Map json_)
+      : this(
+          pointsCouponValue: json_.containsKey('pointsCouponValue')
+              ? Money.fromJson(json_['pointsCouponValue']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          pointsDiscountRateMicros:
+              json_['pointsDiscountRateMicros'] as core.String?,
+          pointsOfferId: json_['pointsOfferId'] as core.String?,
+          pointsSpent: json_['pointsSpent'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (pointsCouponValue != null) 'pointsCouponValue': pointsCouponValue!,
+        if (pointsDiscountRateMicros != null)
+          'pointsDiscountRateMicros': pointsDiscountRateMicros!,
+        if (pointsOfferId != null) 'pointsOfferId': pointsOfferId!,
+        if (pointsSpent != null) 'pointsSpent': pointsSpent!,
+      };
+}
 
 /// Represents a base plan that does not automatically renew at the end of the
 /// base plan, and must be manually renewed by the user.
@@ -11691,6 +15092,136 @@ class Price {
   core.Map<core.String, core.dynamic> toJson() => {
         if (currency != null) 'currency': currency!,
         if (priceMicros != null) 'priceMicros': priceMicros!,
+      };
+}
+
+/// Details of when the order was processed.
+class ProcessedEvent {
+  /// The time when the order was processed.
+  core.String? eventTime;
+
+  ProcessedEvent({
+    this.eventTime,
+  });
+
+  ProcessedEvent.fromJson(core.Map json_)
+      : this(
+          eventTime: json_['eventTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventTime != null) 'eventTime': eventTime!,
+      };
+}
+
+/// Contains item-level info for a ProductPurchaseV2.
+class ProductLineItem {
+  /// The purchased product ID (for example, 'monthly001').
+  core.String? productId;
+
+  /// The offer details for this item.
+  ProductOfferDetails? productOfferDetails;
+
+  ProductLineItem({
+    this.productId,
+    this.productOfferDetails,
+  });
+
+  ProductLineItem.fromJson(core.Map json_)
+      : this(
+          productId: json_['productId'] as core.String?,
+          productOfferDetails: json_.containsKey('productOfferDetails')
+              ? ProductOfferDetails.fromJson(json_['productOfferDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productId != null) 'productId': productId!,
+        if (productOfferDetails != null)
+          'productOfferDetails': productOfferDetails!,
+      };
+}
+
+/// Offer details information related to a purchase line item.
+class ProductOfferDetails {
+  /// The consumption state of the purchase.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONSUMPTION_STATE_UNSPECIFIED" : Consumption state unspecified. This
+  /// value should never be set.
+  /// - "CONSUMPTION_STATE_YET_TO_BE_CONSUMED" : Yet to be consumed.
+  /// - "CONSUMPTION_STATE_CONSUMED" : Consumed already.
+  core.String? consumptionState;
+
+  /// The offer ID.
+  ///
+  /// Only present for offers.
+  core.String? offerId;
+
+  /// The latest offer tags associated with the offer.
+  ///
+  /// It includes tags inherited from the purchase option.
+  core.List<core.String>? offerTags;
+
+  /// The per-transaction offer token used to make this purchase line item.
+  core.String? offerToken;
+
+  /// The purchase option ID.
+  core.String? purchaseOptionId;
+
+  /// The quantity associated with the purchase of the inapp product.
+  core.int? quantity;
+
+  /// The quantity eligible for refund, i.e. quantity that hasn't been refunded.
+  ///
+  /// The value reflects quantity-based partial refunds and full refunds.
+  core.int? refundableQuantity;
+
+  /// Offer details about rent offers.
+  ///
+  /// This will only be set for rental line items.
+  RentOfferDetails? rentOfferDetails;
+
+  ProductOfferDetails({
+    this.consumptionState,
+    this.offerId,
+    this.offerTags,
+    this.offerToken,
+    this.purchaseOptionId,
+    this.quantity,
+    this.refundableQuantity,
+    this.rentOfferDetails,
+  });
+
+  ProductOfferDetails.fromJson(core.Map json_)
+      : this(
+          consumptionState: json_['consumptionState'] as core.String?,
+          offerId: json_['offerId'] as core.String?,
+          offerTags: (json_['offerTags'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
+          offerToken: json_['offerToken'] as core.String?,
+          purchaseOptionId: json_['purchaseOptionId'] as core.String?,
+          quantity: json_['quantity'] as core.int?,
+          refundableQuantity: json_['refundableQuantity'] as core.int?,
+          rentOfferDetails: json_.containsKey('rentOfferDetails')
+              ? RentOfferDetails.fromJson(json_['rentOfferDetails']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (consumptionState != null) 'consumptionState': consumptionState!,
+        if (offerId != null) 'offerId': offerId!,
+        if (offerTags != null) 'offerTags': offerTags!,
+        if (offerToken != null) 'offerToken': offerToken!,
+        if (purchaseOptionId != null) 'purchaseOptionId': purchaseOptionId!,
+        if (quantity != null) 'quantity': quantity!,
+        if (refundableQuantity != null)
+          'refundableQuantity': refundableQuantity!,
+        if (rentOfferDetails != null) 'rentOfferDetails': rentOfferDetails!,
       };
 }
 
@@ -11839,8 +15370,190 @@ class ProductPurchase {
       };
 }
 
+/// A ProductPurchaseV2 resource indicates the status of a user's inapp product
+/// purchase.
+class ProductPurchaseV2 {
+  /// The acknowledgement state of the purchase.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ACKNOWLEDGEMENT_STATE_UNSPECIFIED" : Unspecified acknowledgement state.
+  /// - "ACKNOWLEDGEMENT_STATE_PENDING" : The purchase is not acknowledged yet.
+  /// - "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED" : The purchase is acknowledged.
+  core.String? acknowledgementState;
+
+  /// This kind represents a ProductPurchaseV2 object in the androidpublisher
+  /// service.
+  core.String? kind;
+
+  /// An obfuscated version of the id that is uniquely associated with the
+  /// user's account in your app.
+  ///
+  /// Only present if specified using
+  /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid
+  /// when the purchase was made.
+  core.String? obfuscatedExternalAccountId;
+
+  /// An obfuscated version of the id that is uniquely associated with the
+  /// user's profile in your app.
+  ///
+  /// Only present if specified using
+  /// https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid
+  /// when the purchase was made.
+  core.String? obfuscatedExternalProfileId;
+
+  /// The order id associated with the purchase of the inapp product.
+  ///
+  /// May not be set if there is no order associated with the purchase.
+  core.String? orderId;
+
+  /// Contains item-level info for a ProductPurchaseV2.
+  core.List<ProductLineItem>? productLineItem;
+
+  /// The time when the purchase was successful, i.e., when the PurchaseState
+  /// has changed to PURCHASED.
+  ///
+  /// This field will not be present until the payment is complete. For example,
+  /// if the user initiated a pending transaction
+  /// (https://developer.android.com/google/play/billing/integrate#pending),
+  /// this field will not be populated until the user successfully completes the
+  /// steps required to complete the transaction.
+  core.String? purchaseCompletionTime;
+
+  /// Information about the purchase state of the purchase.
+  PurchaseStateContext? purchaseStateContext;
+
+  /// ISO 3166-1 alpha-2 billing region code of the user at the time the product
+  /// was granted.
+  core.String? regionCode;
+
+  /// Information related to test purchases.
+  ///
+  /// This will only be set for test purchases.
+  TestPurchaseContext? testPurchaseContext;
+
+  ProductPurchaseV2({
+    this.acknowledgementState,
+    this.kind,
+    this.obfuscatedExternalAccountId,
+    this.obfuscatedExternalProfileId,
+    this.orderId,
+    this.productLineItem,
+    this.purchaseCompletionTime,
+    this.purchaseStateContext,
+    this.regionCode,
+    this.testPurchaseContext,
+  });
+
+  ProductPurchaseV2.fromJson(core.Map json_)
+      : this(
+          acknowledgementState: json_['acknowledgementState'] as core.String?,
+          kind: json_['kind'] as core.String?,
+          obfuscatedExternalAccountId:
+              json_['obfuscatedExternalAccountId'] as core.String?,
+          obfuscatedExternalProfileId:
+              json_['obfuscatedExternalProfileId'] as core.String?,
+          orderId: json_['orderId'] as core.String?,
+          productLineItem: (json_['productLineItem'] as core.List?)
+              ?.map((value) => ProductLineItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList(),
+          purchaseCompletionTime:
+              json_['purchaseCompletionTime'] as core.String?,
+          purchaseStateContext: json_.containsKey('purchaseStateContext')
+              ? PurchaseStateContext.fromJson(json_['purchaseStateContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          regionCode: json_['regionCode'] as core.String?,
+          testPurchaseContext: json_.containsKey('testPurchaseContext')
+              ? TestPurchaseContext.fromJson(json_['testPurchaseContext']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (acknowledgementState != null)
+          'acknowledgementState': acknowledgementState!,
+        if (kind != null) 'kind': kind!,
+        if (obfuscatedExternalAccountId != null)
+          'obfuscatedExternalAccountId': obfuscatedExternalAccountId!,
+        if (obfuscatedExternalProfileId != null)
+          'obfuscatedExternalProfileId': obfuscatedExternalProfileId!,
+        if (orderId != null) 'orderId': orderId!,
+        if (productLineItem != null) 'productLineItem': productLineItem!,
+        if (purchaseCompletionTime != null)
+          'purchaseCompletionTime': purchaseCompletionTime!,
+        if (purchaseStateContext != null)
+          'purchaseStateContext': purchaseStateContext!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (testPurchaseContext != null)
+          'testPurchaseContext': testPurchaseContext!,
+      };
+}
+
 /// Request for the product.purchases.acknowledge API.
 typedef ProductPurchasesAcknowledgeRequest = $PurchasesAcknowledgeRequest;
+
+/// Details about taxation, Google Play policy and legal compliance for one-time
+/// product purchase options.
+class PurchaseOptionTaxAndComplianceSettings {
+  /// Digital content or service classification for products distributed to
+  /// users in eligible regions.
+  ///
+  /// If unset, it defaults to `WITHDRAWAL_RIGHT_DIGITAL_CONTENT`. Refer to the
+  /// [Help Center article](https://support.google.com/googleplay/android-developer/answer/10463498)
+  /// for more information.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
+  /// - "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
+  /// - "WITHDRAWAL_RIGHT_SERVICE"
+  core.String? withdrawalRightType;
+
+  PurchaseOptionTaxAndComplianceSettings({
+    this.withdrawalRightType,
+  });
+
+  PurchaseOptionTaxAndComplianceSettings.fromJson(core.Map json_)
+      : this(
+          withdrawalRightType: json_['withdrawalRightType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (withdrawalRightType != null)
+          'withdrawalRightType': withdrawalRightType!,
+      };
+}
+
+/// Context about the purchase state.
+class PurchaseStateContext {
+  /// The purchase state of the purchase.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PURCHASE_STATE_UNSPECIFIED" : Purchase state unspecified. This value
+  /// should never be set.
+  /// - "PURCHASED" : Purchased successfully.
+  /// - "CANCELLED" : Purchase canceled.
+  /// - "PENDING" : The purchase is in a pending state and has not yet been
+  /// completed. For more information on handling pending purchases, see
+  /// https://developer.android.com/google/play/billing/integrate#pending.
+  core.String? purchaseState;
+
+  PurchaseStateContext({
+    this.purchaseState,
+  });
+
+  PurchaseStateContext.fromJson(core.Map json_)
+      : this(
+          purchaseState: json_['purchaseState'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (purchaseState != null) 'purchaseState': purchaseState!,
+      };
+}
 
 /// Represents a transaction that is part of a recurring series of payments.
 ///
@@ -11918,6 +15631,77 @@ class RecurringExternalTransaction {
           'migratedTransactionProgram': migratedTransactionProgram!,
         if (otherRecurringProduct != null)
           'otherRecurringProduct': otherRecurringProduct!,
+      };
+}
+
+/// Details for a partial or full refund.
+class RefundDetails {
+  /// The amount of tax refunded.
+  Money? tax;
+
+  /// The total amount refunded, including tax.
+  Money? total;
+
+  RefundDetails({
+    this.tax,
+    this.total,
+  });
+
+  RefundDetails.fromJson(core.Map json_)
+      : this(
+          tax: json_.containsKey('tax')
+              ? Money.fromJson(
+                  json_['tax'] as core.Map<core.String, core.dynamic>)
+              : null,
+          total: json_.containsKey('total')
+              ? Money.fromJson(
+                  json_['total'] as core.Map<core.String, core.dynamic>)
+              : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (tax != null) 'tax': tax!,
+        if (total != null) 'total': total!,
+      };
+}
+
+/// Details of when the order was fully refunded.
+class RefundEvent {
+  /// The time when the order was fully refunded.
+  core.String? eventTime;
+
+  /// Details for the full refund.
+  RefundDetails? refundDetails;
+
+  /// The reason the order was refunded.
+  /// Possible string values are:
+  /// - "REFUND_REASON_UNSPECIFIED" : Refund reason unspecified. This value is
+  /// not used.
+  /// - "OTHER" : The order was refunded for a reason other than the listed
+  /// reasons here.
+  /// - "CHARGEBACK" : The order was charged back.
+  core.String? refundReason;
+
+  RefundEvent({
+    this.eventTime,
+    this.refundDetails,
+    this.refundReason,
+  });
+
+  RefundEvent.fromJson(core.Map json_)
+      : this(
+          eventTime: json_['eventTime'] as core.String?,
+          refundDetails: json_.containsKey('refundDetails')
+              ? RefundDetails.fromJson(
+                  json_['refundDetails'] as core.Map<core.String, core.dynamic>)
+              : null,
+          refundReason: json_['refundReason'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eventTime != null) 'eventTime': eventTime!,
+        if (refundDetails != null) 'refundDetails': refundDetails!,
+        if (refundReason != null) 'refundReason': refundReason!,
       };
 }
 
@@ -12174,6 +15958,83 @@ class RegionalSubscriptionOfferPhaseConfig {
 /// subscription offer
 typedef RegionalSubscriptionOfferPhaseFreePriceOverride = $Empty;
 
+/// Details about taxation in a given geographical region.
+class RegionalTaxConfig {
+  /// You must tell us if your app contains streaming products to correctly
+  /// charge US state and local sales tax.
+  ///
+  /// Field only supported in the United States.
+  core.bool? eligibleForStreamingServiceTaxRate;
+
+  /// Region code this configuration applies to, as defined by ISO 3166-2, e.g.
+  /// "US".
+  ///
+  /// Required.
+  core.String? regionCode;
+
+  /// To collect communications or amusement taxes in the United States, choose
+  /// the appropriate tax category.
+  ///
+  /// [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498#streaming_tax).
+  /// Possible string values are:
+  /// - "STREAMING_TAX_TYPE_UNSPECIFIED" : No telecommunications tax collected.
+  /// - "STREAMING_TAX_TYPE_TELCO_VIDEO_RENTAL" : US-specific telecommunications
+  /// tax tier for video streaming, on demand, rentals / subscriptions /
+  /// pay-per-view.
+  /// - "STREAMING_TAX_TYPE_TELCO_VIDEO_SALES" : US-specific telecommunications
+  /// tax tier for video streaming of pre-recorded content like movies, tv
+  /// shows.
+  /// - "STREAMING_TAX_TYPE_TELCO_VIDEO_MULTI_CHANNEL" : US-specific
+  /// telecommunications tax tier for video streaming of multi-channel
+  /// programming.
+  /// - "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL" : US-specific telecommunications
+  /// tax tier for audio streaming, rental / subscription.
+  /// - "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES" : US-specific telecommunications
+  /// tax tier for audio streaming, sale / permanent download.
+  /// - "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL" : US-specific
+  /// telecommunications tax tier for multi channel audio streaming like radio.
+  core.String? streamingTaxType;
+
+  /// Tax tier to specify reduced tax rate.
+  ///
+  /// Developers who sell digital news, magazines, newspapers, books, or
+  /// audiobooks in various regions may be eligible for reduced tax rates.
+  /// [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498).
+  /// Possible string values are:
+  /// - "TAX_TIER_UNSPECIFIED"
+  /// - "TAX_TIER_BOOKS_1"
+  /// - "TAX_TIER_NEWS_1"
+  /// - "TAX_TIER_NEWS_2"
+  /// - "TAX_TIER_MUSIC_OR_AUDIO_1"
+  /// - "TAX_TIER_LIVE_OR_BROADCAST_1"
+  core.String? taxTier;
+
+  RegionalTaxConfig({
+    this.eligibleForStreamingServiceTaxRate,
+    this.regionCode,
+    this.streamingTaxType,
+    this.taxTier,
+  });
+
+  RegionalTaxConfig.fromJson(core.Map json_)
+      : this(
+          eligibleForStreamingServiceTaxRate:
+              json_['eligibleForStreamingServiceTaxRate'] as core.bool?,
+          regionCode: json_['regionCode'] as core.String?,
+          streamingTaxType: json_['streamingTaxType'] as core.String?,
+          taxTier: json_['taxTier'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (eligibleForStreamingServiceTaxRate != null)
+          'eligibleForStreamingServiceTaxRate':
+              eligibleForStreamingServiceTaxRate!,
+        if (regionCode != null) 'regionCode': regionCode!,
+        if (streamingTaxType != null) 'streamingTaxType': streamingTaxType!,
+        if (taxTier != null) 'taxTier': taxTier!,
+      };
+}
+
 /// Specified details about taxation in a given geographical region.
 class RegionalTaxRateInfo {
   /// You must tell us if your app contains streaming products to correctly
@@ -12273,14 +16134,13 @@ class RegionsVersion {
   /// A string representing the version of available regions being used for the
   /// specified resource.
   ///
-  /// Regional prices for the resource have to be specified according to the
-  /// information published in
+  /// Regional prices and latest supported version for the resource have to be
+  /// specified according to the information published in
   /// [this article](https://support.google.com/googleplay/android-developer/answer/10532353).
   /// Each time the supported locations substantially change, the version will
   /// be incremented. Using this field will ensure that creating and updating
   /// the resource with an older region's version and set of regional prices and
-  /// currencies will succeed even though a new version is available. The latest
-  /// version is 2022/02.
+  /// currencies will succeed even though a new version is available.
   ///
   /// Required.
   core.String? version;
@@ -12379,6 +16239,12 @@ class RemoteInAppUpdateDataPerBundle {
         if (versionCode != null) 'versionCode': versionCode!,
       };
 }
+
+/// Offer details information related to a rental line item.
+typedef RentOfferDetails = $Empty;
+
+/// Details of a rental purchase.
+typedef RentalDetails = $Empty;
 
 /// Information specific to cancellations caused by subscription replacement.
 typedef ReplacementCancellation = $Empty;
@@ -12558,11 +16424,17 @@ class ReviewsReplyResponse {
 
 /// Revocation context of the purchases.subscriptionsv2.revoke API.
 class RevocationContext {
-  /// Used when users should be refunded the full amount of the latest order of
-  /// the subscription.
+  /// Used when users should be refunded the full amount of latest charge on
+  /// each item in the subscription.
   ///
   /// Optional.
   RevocationContextFullRefund? fullRefund;
+
+  /// Used when a specific item should be refunded in a subscription with add-on
+  /// items.
+  ///
+  /// Optional.
+  RevocationContextItemBasedRefund? itemBasedRefund;
 
   /// Used when users should be refunded a prorated amount they paid for their
   /// subscription based on the amount of time remaining in a subscription.
@@ -12572,6 +16444,7 @@ class RevocationContext {
 
   RevocationContext({
     this.fullRefund,
+    this.itemBasedRefund,
     this.proratedRefund,
   });
 
@@ -12581,6 +16454,11 @@ class RevocationContext {
               ? RevocationContextFullRefund.fromJson(
                   json_['fullRefund'] as core.Map<core.String, core.dynamic>)
               : null,
+          itemBasedRefund: json_.containsKey('itemBasedRefund')
+              ? RevocationContextItemBasedRefund.fromJson(
+                  json_['itemBasedRefund']
+                      as core.Map<core.String, core.dynamic>)
+              : null,
           proratedRefund: json_.containsKey('proratedRefund')
               ? RevocationContextProratedRefund.fromJson(json_['proratedRefund']
                   as core.Map<core.String, core.dynamic>)
@@ -12589,6 +16467,7 @@ class RevocationContext {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (fullRefund != null) 'fullRefund': fullRefund!,
+        if (itemBasedRefund != null) 'itemBasedRefund': itemBasedRefund!,
         if (proratedRefund != null) 'proratedRefund': proratedRefund!,
       };
 }
@@ -12596,6 +16475,29 @@ class RevocationContext {
 /// Used to determine if the refund type in the RevocationContext is a full
 /// refund.
 typedef RevocationContextFullRefund = $Empty;
+
+/// Used to determine what specific item to revoke in a subscription with
+/// multiple items.
+class RevocationContextItemBasedRefund {
+  /// If the subscription is a subscription with add-ons, the product id of the
+  /// subscription item to revoke.
+  ///
+  /// Required.
+  core.String? productId;
+
+  RevocationContextItemBasedRefund({
+    this.productId,
+  });
+
+  RevocationContextItemBasedRefund.fromJson(core.Map json_)
+      : this(
+          productId: json_['productId'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (productId != null) 'productId': productId!,
+      };
+}
 
 /// Used to determine if the refund type in the RevocationContext is a prorated
 /// refund.
@@ -13110,6 +17012,66 @@ class SubscriptionDeferralInfo {
       };
 }
 
+/// Details of a subscription purchase.
+class SubscriptionDetails {
+  /// The base plan ID of the subscription.
+  core.String? basePlanId;
+
+  /// The offer ID for the current subscription offer.
+  core.String? offerId;
+
+  /// The pricing phase for the billing period funded by this order.
+  /// Possible string values are:
+  /// - "OFFER_PHASE_UNSPECIFIED" : Offer phase unspecified. This value is not
+  /// used.
+  /// - "BASE" : The order funds a base price period.
+  /// - "INTRODUCTORY" : The order funds an introductory pricing period.
+  /// - "FREE_TRIAL" : The order funds a free trial period.
+  core.String? offerPhase;
+
+  /// The end of the billing period funded by this order.
+  ///
+  /// This is a snapshot of the billing/service period end time at the moment
+  /// the order was processed, and should be used only for accounting. To get
+  /// the current end time of the subscription service period, use
+  /// purchases.subscriptionsv2.get.
+  core.String? servicePeriodEndTime;
+
+  /// The start of the billing period funded by this order.
+  ///
+  /// This is a snapshot of the billing/service period start time at the moment
+  /// the order was processed, and should be used only for accounting.
+  core.String? servicePeriodStartTime;
+
+  SubscriptionDetails({
+    this.basePlanId,
+    this.offerId,
+    this.offerPhase,
+    this.servicePeriodEndTime,
+    this.servicePeriodStartTime,
+  });
+
+  SubscriptionDetails.fromJson(core.Map json_)
+      : this(
+          basePlanId: json_['basePlanId'] as core.String?,
+          offerId: json_['offerId'] as core.String?,
+          offerPhase: json_['offerPhase'] as core.String?,
+          servicePeriodEndTime: json_['servicePeriodEndTime'] as core.String?,
+          servicePeriodStartTime:
+              json_['servicePeriodStartTime'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (basePlanId != null) 'basePlanId': basePlanId!,
+        if (offerId != null) 'offerId': offerId!,
+        if (offerPhase != null) 'offerPhase': offerPhase!,
+        if (servicePeriodEndTime != null)
+          'servicePeriodEndTime': servicePeriodEndTime!,
+        if (servicePeriodStartTime != null)
+          'servicePeriodStartTime': servicePeriodStartTime!,
+      };
+}
+
 /// Price change related information of a subscription item.
 class SubscriptionItemPriceChangeDetails {
   /// The renewal time at which the price change will become effective for the
@@ -13142,6 +17104,7 @@ class SubscriptionItemPriceChangeDetails {
   /// - "CONFIRMED" : The price change is confirmed to happen for the user.
   /// - "APPLIED" : The price change is applied, i.e. the user has started being
   /// charged the new price.
+  /// - "CANCELED" : The price change was canceled.
   core.String? priceChangeState;
 
   SubscriptionItemPriceChangeDetails({
@@ -13795,6 +17758,12 @@ class SubscriptionPurchaseLineItem {
   /// renews).
   core.String? expiryTime;
 
+  /// The order id of the latest successful order associated with this item.
+  ///
+  /// Not present if the item is not owned by the user yet (e.g. the item being
+  /// deferred replaced to).
+  core.String? latestSuccessfulOrderId;
+
   /// The offer details for this item.
   OfferDetails? offerDetails;
 
@@ -13813,6 +17782,7 @@ class SubscriptionPurchaseLineItem {
     this.autoRenewingPlan,
     this.deferredItemReplacement,
     this.expiryTime,
+    this.latestSuccessfulOrderId,
     this.offerDetails,
     this.prepaidPlan,
     this.productId,
@@ -13831,6 +17801,8 @@ class SubscriptionPurchaseLineItem {
                       as core.Map<core.String, core.dynamic>)
               : null,
           expiryTime: json_['expiryTime'] as core.String?,
+          latestSuccessfulOrderId:
+              json_['latestSuccessfulOrderId'] as core.String?,
           offerDetails: json_.containsKey('offerDetails')
               ? OfferDetails.fromJson(
                   json_['offerDetails'] as core.Map<core.String, core.dynamic>)
@@ -13851,6 +17823,8 @@ class SubscriptionPurchaseLineItem {
         if (deferredItemReplacement != null)
           'deferredItemReplacement': deferredItemReplacement!,
         if (expiryTime != null) 'expiryTime': expiryTime!,
+        if (latestSuccessfulOrderId != null)
+          'latestSuccessfulOrderId': latestSuccessfulOrderId!,
         if (offerDetails != null) 'offerDetails': offerDetails!,
         if (prepaidPlan != null) 'prepaidPlan': prepaidPlan!,
         if (productId != null) 'productId': productId!,
@@ -13881,13 +17855,16 @@ class SubscriptionPurchaseV2 {
   /// androidpublisher service.
   core.String? kind;
 
-  /// The order id of the latest order associated with the purchase of the
-  /// subscription.
+  /// Deprecated: Use line_items.latest_successful_order_id instead.
   ///
-  /// For autoRenewing subscription, this is the order id of signup order if it
-  /// is not renewed yet, or the last recurring order id (success, pending, or
-  /// declined order). For prepaid subscription, this is the order id associated
-  /// with the queried purchase token.
+  /// The order id of the latest order associated with the purchase of the
+  /// subscription. For autoRenewing subscription, this is the order id of
+  /// signup order if it is not renewed yet, or the last recurring order id
+  /// (success, pending, or declined order). For prepaid subscription, this is
+  /// the order id associated with the queried purchase token.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? latestOrderId;
 
   /// Item-level info for a subscription purchase.
@@ -14077,7 +18054,7 @@ class SubscriptionPurchasesDeferResponse {
       };
 }
 
-/// Details about taxation, Google Play policy and legal compliance for
+/// Details about taxation, Google Play policy, and legal compliance for
 /// subscription products.
 class SubscriptionTaxAndComplianceSettings {
   /// Digital content or service classification for products distributed to
@@ -14448,6 +18425,29 @@ class TargetingUpdate {
 
 /// Whether this subscription purchase is a test purchase.
 typedef TestPurchase = $Empty;
+
+/// Context about a test purchase.
+class TestPurchaseContext {
+  /// The fop type of the test purchase.
+  /// Possible string values are:
+  /// - "FOP_TYPE_UNSPECIFIED" : Fop type unspecified. This value should never
+  /// be set.
+  /// - "TEST" : The purchase was made using a test card.
+  core.String? fopType;
+
+  TestPurchaseContext({
+    this.fopType,
+  });
+
+  TestPurchaseContext.fromJson(core.Map json_)
+      : this(
+          fopType: json_['fopType'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (fopType != null) 'fopType': fopType!,
+      };
+}
 
 /// The testers of an app.
 ///
@@ -14893,6 +18893,257 @@ class UpdateBasePlanStateRequest {
           'activateBasePlanRequest': activateBasePlanRequest!,
         if (deactivateBasePlanRequest != null)
           'deactivateBasePlanRequest': deactivateBasePlanRequest!,
+      };
+}
+
+/// Request message for UpdateOneTimeProductOffer.
+class UpdateOneTimeProductOfferRequest {
+  /// If set to true, and the offer with the given package_name, product_id,
+  /// purchase_option_id and offer_id doesn't exist, an offer will be created.
+  ///
+  /// If a new offer is created, the update_mask is ignored.
+  ///
+  /// Optional.
+  core.bool? allowMissing;
+
+  /// The latency tolerance for the propagation of this offer update.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The one-time product offer to update.
+  ///
+  /// Required.
+  OneTimeProductOffer? oneTimeProductOffer;
+
+  /// The version of the available regions being used for the offer.
+  ///
+  /// Required.
+  RegionsVersion? regionsVersion;
+
+  /// The list of fields to be updated.
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  UpdateOneTimeProductOfferRequest({
+    this.allowMissing,
+    this.latencyTolerance,
+    this.oneTimeProductOffer,
+    this.regionsVersion,
+    this.updateMask,
+  });
+
+  UpdateOneTimeProductOfferRequest.fromJson(core.Map json_)
+      : this(
+          allowMissing: json_['allowMissing'] as core.bool?,
+          latencyTolerance: json_['latencyTolerance'] as core.String?,
+          oneTimeProductOffer: json_.containsKey('oneTimeProductOffer')
+              ? OneTimeProductOffer.fromJson(json_['oneTimeProductOffer']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          regionsVersion: json_.containsKey('regionsVersion')
+              ? RegionsVersion.fromJson(json_['regionsVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_['updateMask'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowMissing != null) 'allowMissing': allowMissing!,
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (oneTimeProductOffer != null)
+          'oneTimeProductOffer': oneTimeProductOffer!,
+        if (regionsVersion != null) 'regionsVersion': regionsVersion!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Request message to update the state of a one-time product offer.
+class UpdateOneTimeProductOfferStateRequest {
+  /// Activates an offer.
+  ///
+  /// Once activated, the offer is available to users, as long as its conditions
+  /// are met.
+  ActivateOneTimeProductOfferRequest? activateOneTimeProductOfferRequest;
+
+  /// Cancels an offer.
+  ///
+  /// Once cancelled, the offer is not available to users. Any pending orders
+  /// related to this offer will be cancelled. This state transition is specific
+  /// to pre-orders.
+  CancelOneTimeProductOfferRequest? cancelOneTimeProductOfferRequest;
+
+  /// Deactivates an offer.
+  ///
+  /// Once deactivated, the offer is no longer available to users. This state
+  /// transition is specific to discounted offers.
+  DeactivateOneTimeProductOfferRequest? deactivateOneTimeProductOfferRequest;
+
+  UpdateOneTimeProductOfferStateRequest({
+    this.activateOneTimeProductOfferRequest,
+    this.cancelOneTimeProductOfferRequest,
+    this.deactivateOneTimeProductOfferRequest,
+  });
+
+  UpdateOneTimeProductOfferStateRequest.fromJson(core.Map json_)
+      : this(
+          activateOneTimeProductOfferRequest:
+              json_.containsKey('activateOneTimeProductOfferRequest')
+                  ? ActivateOneTimeProductOfferRequest.fromJson(
+                      json_['activateOneTimeProductOfferRequest']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          cancelOneTimeProductOfferRequest:
+              json_.containsKey('cancelOneTimeProductOfferRequest')
+                  ? CancelOneTimeProductOfferRequest.fromJson(
+                      json_['cancelOneTimeProductOfferRequest']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          deactivateOneTimeProductOfferRequest:
+              json_.containsKey('deactivateOneTimeProductOfferRequest')
+                  ? DeactivateOneTimeProductOfferRequest.fromJson(
+                      json_['deactivateOneTimeProductOfferRequest']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activateOneTimeProductOfferRequest != null)
+          'activateOneTimeProductOfferRequest':
+              activateOneTimeProductOfferRequest!,
+        if (cancelOneTimeProductOfferRequest != null)
+          'cancelOneTimeProductOfferRequest': cancelOneTimeProductOfferRequest!,
+        if (deactivateOneTimeProductOfferRequest != null)
+          'deactivateOneTimeProductOfferRequest':
+              deactivateOneTimeProductOfferRequest!,
+      };
+}
+
+/// Request message for UpdateOneTimeProduct.
+class UpdateOneTimeProductRequest {
+  /// If set to true, and the one-time product with the given package_name and
+  /// product_id doesn't exist, the one-time product will be created.
+  ///
+  /// If a new one-time product is created, update_mask is ignored.
+  ///
+  /// Optional.
+  core.bool? allowMissing;
+
+  /// The latency tolerance for the propagation of this product upsert.
+  ///
+  /// Defaults to latency-sensitive.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED" : Defaults to
+  /// PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE" : The update will
+  /// propagate to clients within several minutes on average and up to a few
+  /// hours in rare cases. Throughput is limited to 7,200 updates per app per
+  /// hour.
+  /// - "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT" : The update will
+  /// propagate to clients within 24 hours. Supports high throughput of up to
+  /// 720,000 updates per app per hour using batch modification methods.
+  core.String? latencyTolerance;
+
+  /// The one-time product to upsert.
+  ///
+  /// Required.
+  OneTimeProduct? oneTimeProduct;
+
+  /// The version of the available regions being used for the one-time product.
+  ///
+  /// Required.
+  RegionsVersion? regionsVersion;
+
+  /// The list of fields to be updated.
+  ///
+  /// Required.
+  core.String? updateMask;
+
+  UpdateOneTimeProductRequest({
+    this.allowMissing,
+    this.latencyTolerance,
+    this.oneTimeProduct,
+    this.regionsVersion,
+    this.updateMask,
+  });
+
+  UpdateOneTimeProductRequest.fromJson(core.Map json_)
+      : this(
+          allowMissing: json_['allowMissing'] as core.bool?,
+          latencyTolerance: json_['latencyTolerance'] as core.String?,
+          oneTimeProduct: json_.containsKey('oneTimeProduct')
+              ? OneTimeProduct.fromJson(json_['oneTimeProduct']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          regionsVersion: json_.containsKey('regionsVersion')
+              ? RegionsVersion.fromJson(json_['regionsVersion']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          updateMask: json_['updateMask'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (allowMissing != null) 'allowMissing': allowMissing!,
+        if (latencyTolerance != null) 'latencyTolerance': latencyTolerance!,
+        if (oneTimeProduct != null) 'oneTimeProduct': oneTimeProduct!,
+        if (regionsVersion != null) 'regionsVersion': regionsVersion!,
+        if (updateMask != null) 'updateMask': updateMask!,
+      };
+}
+
+/// Request message to update the state of a one-time product purchase option.
+class UpdatePurchaseOptionStateRequest {
+  /// Activates a purchase option.
+  ///
+  /// Once activated, the purchase option will be available.
+  ActivatePurchaseOptionRequest? activatePurchaseOptionRequest;
+
+  /// Deactivates a purchase option.
+  ///
+  /// Once deactivated, the purchase option will become unavailable.
+  DeactivatePurchaseOptionRequest? deactivatePurchaseOptionRequest;
+
+  UpdatePurchaseOptionStateRequest({
+    this.activatePurchaseOptionRequest,
+    this.deactivatePurchaseOptionRequest,
+  });
+
+  UpdatePurchaseOptionStateRequest.fromJson(core.Map json_)
+      : this(
+          activatePurchaseOptionRequest:
+              json_.containsKey('activatePurchaseOptionRequest')
+                  ? ActivatePurchaseOptionRequest.fromJson(
+                      json_['activatePurchaseOptionRequest']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+          deactivatePurchaseOptionRequest:
+              json_.containsKey('deactivatePurchaseOptionRequest')
+                  ? DeactivatePurchaseOptionRequest.fromJson(
+                      json_['deactivatePurchaseOptionRequest']
+                          as core.Map<core.String, core.dynamic>)
+                  : null,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (activatePurchaseOptionRequest != null)
+          'activatePurchaseOptionRequest': activatePurchaseOptionRequest!,
+        if (deactivatePurchaseOptionRequest != null)
+          'deactivatePurchaseOptionRequest': deactivatePurchaseOptionRequest!,
       };
 }
 

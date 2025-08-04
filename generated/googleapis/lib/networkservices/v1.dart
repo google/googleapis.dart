@@ -163,6 +163,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -185,12 +189,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -1115,6 +1121,10 @@ class ProjectsLocationsEndpointPoliciesResource {
   /// prior `ListEndpointPolicies` call, and that the system should return the
   /// next page of data.
   ///
+  /// [returnPartialSuccess] - Optional. If true, allow partial responses for
+  /// multi-regional Aggregated List requests. Otherwise if one of the locations
+  /// is down or unreachable, the Aggregated List request will fail.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1129,11 +1139,14 @@ class ProjectsLocationsEndpointPoliciesResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1437,7 +1450,7 @@ class ProjectsLocationsGatewaysRouteViewsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the GatewayRouteView resource. Formats:
-  /// projects/{project_number}/locations/{location}/gateways/{gateway_name}/routeViews/{route_view_name}
+  /// projects/{project_number}/locations/{location}/gateways/{gateway}/routeViews/{route_view}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/gateways/\[^/\]+/routeViews/\[^/\]+$`.
   ///
@@ -1475,7 +1488,7 @@ class ProjectsLocationsGatewaysRouteViewsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The Gateway to which a Route is associated. Formats:
-  /// projects/{project_number}/locations/{location}/gateways/{gateway_name}
+  /// projects/{project_number}/locations/{location}/gateways/{gateway}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/gateways/\[^/\]+$`.
   ///
@@ -1661,6 +1674,10 @@ class ProjectsLocationsGrpcRoutesResource {
   /// Indicates that this is a continuation of a prior `ListGrpcRoutes` call,
   /// and that the system should return the next page of data.
   ///
+  /// [returnPartialSuccess] - Optional. If true, allow partial responses for
+  /// multi-regional Aggregated List requests. Otherwise if one of the locations
+  /// is down or unreachable, the Aggregated List request will fail.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1675,11 +1692,14 @@ class ProjectsLocationsGrpcRoutesResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1886,6 +1906,10 @@ class ProjectsLocationsHttpRoutesResource {
   /// Indicates that this is a continuation of a prior `ListHttpRoutes` call,
   /// and that the system should return the next page of data.
   ///
+  /// [returnPartialSuccess] - Optional. If true, allow partial responses for
+  /// multi-regional Aggregated List requests. Otherwise if one of the locations
+  /// is down or unreachable, the Aggregated List request will fail.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1900,11 +1924,14 @@ class ProjectsLocationsHttpRoutesResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2773,7 +2800,7 @@ class ProjectsLocationsMeshesRouteViewsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the MeshRouteView resource. Format:
-  /// projects/{project_number}/locations/{location}/meshes/{mesh_name}/routeViews/{route_view_name}
+  /// projects/{project_number}/locations/{location}/meshes/{mesh}/routeViews/{route_view}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/meshes/\[^/\]+/routeViews/\[^/\]+$`.
   ///
@@ -2811,7 +2838,7 @@ class ProjectsLocationsMeshesRouteViewsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The Mesh to which a Route is associated. Format:
-  /// projects/{project_number}/locations/{location}/meshes/{mesh_name}
+  /// projects/{project_number}/locations/{location}/meshes/{mesh}
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/meshes/\[^/\]+$`.
   ///
@@ -3215,6 +3242,56 @@ class ProjectsLocationsServiceBindingsResource {
     return ListServiceBindingsResponse.fromJson(
         response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Updates the parameters of a single ServiceBinding.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Name of the ServiceBinding resource. It matches
+  /// pattern `projects / * /locations / * /serviceBindings/`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/serviceBindings/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the ServiceBinding resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    ServiceBinding request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsServiceLbPoliciesResource {
@@ -3588,6 +3665,10 @@ class ProjectsLocationsTcpRoutesResource {
   /// Indicates that this is a continuation of a prior `ListTcpRoutes` call, and
   /// that the system should return the next page of data.
   ///
+  /// [returnPartialSuccess] - Optional. If true, allow partial responses for
+  /// multi-regional Aggregated List requests. Otherwise if one of the locations
+  /// is down or unreachable, the Aggregated List request will fail.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3602,11 +3683,14 @@ class ProjectsLocationsTcpRoutesResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3813,6 +3897,10 @@ class ProjectsLocationsTlsRoutesResource {
   /// Indicates that this is a continuation of a prior `ListTlsRoutes` call, and
   /// that the system should return the next page of data.
   ///
+  /// [returnPartialSuccess] - Optional. If true, allow partial responses for
+  /// multi-regional Aggregated List requests. Otherwise if one of the locations
+  /// is down or unreachable, the Aggregated List request will fail.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3827,11 +3915,14 @@ class ProjectsLocationsTlsRoutesResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4511,11 +4602,15 @@ class AuthzExtension {
   /// Optional.
   /// Possible string values are:
   /// - "WIRE_FORMAT_UNSPECIFIED" : Not specified.
-  /// - "EXT_PROC_GRPC" : The extension service uses ExtProc GRPC API over a
+  /// - "EXT_PROC_GRPC" : The extension service uses ext_proc gRPC API over a
   /// gRPC stream. This is the default value if the wire format is not
   /// specified. The backend service for the extension must use HTTP2 or H2C as
   /// the protocol. All `supported_events` for a client request are sent as part
   /// of the same gRPC stream.
+  /// - "EXT_AUTHZ_GRPC" : The extension service uses Envoy's `ext_authz` gRPC
+  /// API. The backend service for the extension must use HTTP2, or H2C as the
+  /// protocol. `EXT_AUTHZ_GRPC` is only supported for `AuthzExtension`
+  /// resources.
   core.String? wireFormat;
 
   AuthzExtension({
@@ -4980,7 +5075,8 @@ class ExtensionChain {
   ///
   /// At least one extension is required. Up to 3 extensions can be defined for
   /// each extension chain for `LbTrafficExtension` resource. `LbRouteExtension`
-  /// chains are limited to 1 extension per extension chain.
+  /// and `LbEdgeExtension` chains are limited to 1 extension per extension
+  /// chain.
   ///
   /// Required.
   core.List<ExtensionChainExtension>? extensions;
@@ -5070,8 +5166,15 @@ class ExtensionChainExtension {
   /// `com.google.lb_traffic_extension.lbtrafficextension1.chain1.ext1`. The
   /// following variables are supported in the metadata: `{forwarding_rule_id}`
   /// - substituted with the forwarding rule's fully qualified resource name.
-  /// This field is not supported for plugin extensions. Setting it results in a
-  /// validation error.
+  /// This field must not be set for plugin extensions. Setting it results in a
+  /// validation error. You can set metadata at either the resource level or the
+  /// extension level. The extension level metadata is recommended because you
+  /// can pass a different set of metadata through each extension to the
+  /// backend. This field is subject to following limitations: * The total size
+  /// of the metadata must be less than 1KiB. * The total number of keys in the
+  /// metadata must be less than 16. * The length of each key must be less than
+  /// 64 characters. * The length of each value must be less than 1024
+  /// characters. * All values must be strings.
   ///
   /// Optional.
   ///
@@ -5104,8 +5207,8 @@ class ExtensionChainExtension {
   /// in the format:
   /// `projects/{project}/locations/{location}/wasmPlugins/{plugin}` or
   /// `//networkservices.googleapis.com/projects/{project}/locations/{location}/wasmPlugins/{wasmPlugin}`.
-  /// Plugin extensions are currently supported for the `LbTrafficExtension` and
-  /// the `LbRouteExtension` resources.
+  /// Plugin extensions are currently supported for the `LbTrafficExtension`,
+  /// the `LbRouteExtension`, and the `LbEdgeExtension` resources.
   ///
   /// Required.
   core.String? service;
@@ -5113,18 +5216,20 @@ class ExtensionChainExtension {
   /// A set of events during request or response processing for which this
   /// extension is called.
   ///
-  /// This field is required for the `LbTrafficExtension` resource. It must not
-  /// be set for the `LbRouteExtension` resource, otherwise a validation error
-  /// is returned.
+  /// For the `LbTrafficExtension` resource, this field is required. For the
+  /// `LbRouteExtension` resource, this field is optional. If unspecified,
+  /// `REQUEST_HEADERS` event is assumed as supported. For the `LbEdgeExtension`
+  /// resource, this field is required and must only contain `REQUEST_HEADERS`
+  /// event.
   ///
   /// Optional.
   core.List<core.String>? supportedEvents;
 
   /// Specifies the timeout for each individual message on the stream.
   ///
-  /// The timeout must be between `10`-`1000` milliseconds. Required for callout
-  /// extensions. This field is not supported for plugin extensions. Setting it
-  /// results in a validation error.
+  /// The timeout must be between `10`-`10000` milliseconds. Required for
+  /// callout extensions. This field is not supported for plugin extensions.
+  /// Setting it results in a validation error.
   ///
   /// Optional.
   core.String? timeout;
@@ -5294,7 +5399,7 @@ class Gateway {
   /// traffic.
   ///
   /// The proxy binds to the specified ports. Gateways of type
-  /// 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH'
+  /// 'SECURE_WEB_GATEWAY' are limited to 5 ports. Gateways of type 'OPEN_MESH'
   /// listen on 0.0.0.0 for IPv4 and :: for IPv6 and support multiple ports.
   ///
   /// Required.
@@ -5452,7 +5557,7 @@ class GatewayRouteView {
   /// Identifier.
   ///
   /// Full path name of the GatewayRouteView resource. Format:
-  /// projects/{project_number}/locations/{location}/gateways/{gateway_name}/routeViews/{route_view_name}
+  /// projects/{project_number}/locations/{location}/gateways/{gateway}/routeViews/{route_view}
   ///
   /// Output only.
   core.String? name;
@@ -6739,7 +6844,8 @@ class HttpRouteRedirect {
 ///
 /// The proxy does not wait for responses from the shadow service. Prior to
 /// sending traffic to the shadow service, the host/authority header is suffixed
-/// with -shadow.
+/// with -shadow. Mirroring is currently not supported for Cloud Run
+/// destinations.
 class HttpRouteRequestMirrorPolicy {
   /// The destination the requests will be mirrored to.
   ///
@@ -7171,8 +7277,8 @@ class LbRouteExtension {
   /// A list of references to the forwarding rules to which this service
   /// extension is attached.
   ///
-  /// At least one forwarding rule is required. There can be only one
-  /// `LbRouteExtension` resource per forwarding rule.
+  /// At least one forwarding rule is required. Only one `LbRouteExtension`
+  /// resource can be associated with a forwarding rule.
   ///
   /// Required.
   core.List<core.String>? forwardingRules;
@@ -7206,11 +7312,16 @@ class LbRouteExtension {
   /// (of type `google.protobuf.Struct`) in the `ProcessingRequest` message sent
   /// to the extension server.
   ///
-  /// The metadata is available under the namespace
+  /// The metadata applies to all extensions in all extensions chains in this
+  /// resource. The metadata is available under the key
   /// `com.google.lb_route_extension.`. The following variables are supported in
-  /// the metadata Struct: `{forwarding_rule_id}` - substituted with the
-  /// forwarding rule's fully qualified resource name. This field is not
-  /// supported for plugin extensions. Setting it results in a validation error.
+  /// the metadata: `{forwarding_rule_id}` - substituted with the forwarding
+  /// rule's fully qualified resource name. This field must not be set if at
+  /// least one of the extension chains contains plugin extensions. Setting it
+  /// results in a validation error. You can set metadata at either the resource
+  /// level or the extension level. The extension level metadata is recommended
+  /// because you can pass a different set of metadata through each extension to
+  /// the backend.
   ///
   /// Optional.
   ///
@@ -7312,8 +7423,8 @@ class LbTrafficExtension {
   /// A list of references to the forwarding rules to which this service
   /// extension is attached.
   ///
-  /// At least one forwarding rule is required. There can be only one
-  /// `LBTrafficExtension` resource per forwarding rule.
+  /// At least one forwarding rule is required. Only one `LbTrafficExtension`
+  /// resource can be associated with a forwarding rule.
   ///
   /// Optional.
   core.List<core.String>? forwardingRules;
@@ -7343,14 +7454,20 @@ class LbTrafficExtension {
   /// HTTP(S) Load Balancing.
   core.String? loadBalancingScheme;
 
-  /// The metadata provided here is included in the
-  /// `ProcessingRequest.metadata_context.filter_metadata` map field.
+  /// The metadata provided here is included as part of the `metadata_context`
+  /// (of type `google.protobuf.Struct`) in the `ProcessingRequest` message sent
+  /// to the extension server.
   ///
-  /// The metadata is available under the key
+  /// The metadata applies to all extensions in all extensions chains in this
+  /// resource. The metadata is available under the key
   /// `com.google.lb_traffic_extension.`. The following variables are supported
   /// in the metadata: `{forwarding_rule_id}` - substituted with the forwarding
-  /// rule's fully qualified resource name. This field is not supported for
-  /// plugin extensions. Setting it results in a validation error.
+  /// rule's fully qualified resource name. This field must not be set if at
+  /// least one of the extension chains contains plugin extensions. Setting it
+  /// results in a validation error. You can set metadata at either the resource
+  /// level or the extension level. The extension level metadata is recommended
+  /// because you can pass a different set of metadata through each extension to
+  /// the backend.
   ///
   /// Optional.
   ///
@@ -7471,9 +7588,17 @@ class ListEndpointPoliciesResponse {
   /// `next_page_token` as `page_token`.
   core.String? nextPageToken;
 
+  /// Unreachable resources.
+  ///
+  /// Populated when the request opts into return_partial_success and reading
+  /// across collections e.g. when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   ListEndpointPoliciesResponse({
     this.endpointPolicies,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListEndpointPoliciesResponse.fromJson(core.Map json_)
@@ -7483,11 +7608,15 @@ class ListEndpointPoliciesResponse {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (endpointPolicies != null) 'endpointPolicies': endpointPolicies!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -7501,9 +7630,16 @@ class ListGatewayRouteViewsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
+  /// Unreachable resources.
+  ///
+  /// Populated when the request attempts to list all resources across all
+  /// supported locations, while some locations are temporarily unavailable.
+  core.List<core.String>? unreachable;
+
   ListGatewayRouteViewsResponse({
     this.gatewayRouteViews,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListGatewayRouteViewsResponse.fromJson(core.Map json_)
@@ -7513,11 +7649,15 @@ class ListGatewayRouteViewsResponse {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (gatewayRouteViews != null) 'gatewayRouteViews': gatewayRouteViews!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -7573,9 +7713,17 @@ class ListGrpcRoutesResponse {
   /// `next_page_token` as `page_token`.
   core.String? nextPageToken;
 
+  /// Unreachable resources.
+  ///
+  /// Populated when the request opts into return_partial_success and reading
+  /// across collections e.g. when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   ListGrpcRoutesResponse({
     this.grpcRoutes,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListGrpcRoutesResponse.fromJson(core.Map json_)
@@ -7585,11 +7733,15 @@ class ListGrpcRoutesResponse {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (grpcRoutes != null) 'grpcRoutes': grpcRoutes!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -7605,9 +7757,17 @@ class ListHttpRoutesResponse {
   /// `next_page_token` as `page_token`.
   core.String? nextPageToken;
 
+  /// Unreachable resources.
+  ///
+  /// Populated when the request opts into return_partial_success and reading
+  /// across collections e.g. when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   ListHttpRoutesResponse({
     this.httpRoutes,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListHttpRoutesResponse.fromJson(core.Map json_)
@@ -7617,11 +7777,15 @@ class ListHttpRoutesResponse {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (httpRoutes != null) 'httpRoutes': httpRoutes!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -7736,9 +7900,16 @@ class ListMeshRouteViewsResponse {
   /// If this field is omitted, there are no subsequent pages.
   core.String? nextPageToken;
 
+  /// Unreachable resources.
+  ///
+  /// Populated when the request attempts to list all resources across all
+  /// supported locations, while some locations are temporarily unavailable.
+  core.List<core.String>? unreachable;
+
   ListMeshRouteViewsResponse({
     this.meshRouteViews,
     this.nextPageToken,
+    this.unreachable,
   });
 
   ListMeshRouteViewsResponse.fromJson(core.Map json_)
@@ -7748,11 +7919,15 @@ class ListMeshRouteViewsResponse {
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
           nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (meshRouteViews != null) 'meshRouteViews': meshRouteViews!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -7840,9 +8015,16 @@ class ListServiceBindingsResponse {
   /// List of ServiceBinding resources.
   core.List<ServiceBinding>? serviceBindings;
 
+  /// Unreachable resources.
+  ///
+  /// Populated when the request attempts to list all resources across all
+  /// supported locations, while some locations are temporarily unavailable.
+  core.List<core.String>? unreachable;
+
   ListServiceBindingsResponse({
     this.nextPageToken,
     this.serviceBindings,
+    this.unreachable,
   });
 
   ListServiceBindingsResponse.fromJson(core.Map json_)
@@ -7852,11 +8034,15 @@ class ListServiceBindingsResponse {
               ?.map((value) => ServiceBinding.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (serviceBindings != null) 'serviceBindings': serviceBindings!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -7872,9 +8058,16 @@ class ListServiceLbPoliciesResponse {
   /// List of ServiceLbPolicy resources.
   core.List<ServiceLbPolicy>? serviceLbPolicies;
 
+  /// Unreachable resources.
+  ///
+  /// Populated when the request attempts to list all resources across all
+  /// supported locations, while some locations are temporarily unavailable.
+  core.List<core.String>? unreachable;
+
   ListServiceLbPoliciesResponse({
     this.nextPageToken,
     this.serviceLbPolicies,
+    this.unreachable,
   });
 
   ListServiceLbPoliciesResponse.fromJson(core.Map json_)
@@ -7884,11 +8077,15 @@ class ListServiceLbPoliciesResponse {
               ?.map((value) => ServiceLbPolicy.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (serviceLbPolicies != null) 'serviceLbPolicies': serviceLbPolicies!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -7904,9 +8101,17 @@ class ListTcpRoutesResponse {
   /// List of TcpRoute resources.
   core.List<TcpRoute>? tcpRoutes;
 
+  /// Unreachable resources.
+  ///
+  /// Populated when the request opts into return_partial_success and reading
+  /// across collections e.g. when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   ListTcpRoutesResponse({
     this.nextPageToken,
     this.tcpRoutes,
+    this.unreachable,
   });
 
   ListTcpRoutesResponse.fromJson(core.Map json_)
@@ -7916,11 +8121,15 @@ class ListTcpRoutesResponse {
               ?.map((value) => TcpRoute.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (tcpRoutes != null) 'tcpRoutes': tcpRoutes!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -7936,9 +8145,17 @@ class ListTlsRoutesResponse {
   /// List of TlsRoute resources.
   core.List<TlsRoute>? tlsRoutes;
 
+  /// Unreachable resources.
+  ///
+  /// Populated when the request opts into return_partial_success and reading
+  /// across collections e.g. when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   ListTlsRoutesResponse({
     this.nextPageToken,
     this.tlsRoutes,
+    this.unreachable,
   });
 
   ListTlsRoutesResponse.fromJson(core.Map json_)
@@ -7948,11 +8165,15 @@ class ListTlsRoutesResponse {
               ?.map((value) => TlsRoute.fromJson(
                   value as core.Map<core.String, core.dynamic>))
               .toList(),
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
         );
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (tlsRoutes != null) 'tlsRoutes': tlsRoutes!,
+        if (unreachable != null) 'unreachable': unreachable!,
       };
 }
 
@@ -7965,17 +8186,27 @@ class ListWasmPluginVersionsResponse {
   /// `next_page_token` as `page_token`.
   core.String? nextPageToken;
 
+  /// Unreachable resources.
+  ///
+  /// Populated when the request attempts to list all resources across all
+  /// supported locations, while some locations are temporarily unavailable.
+  core.List<core.String>? unreachable;
+
   /// List of `WasmPluginVersion` resources.
   core.List<WasmPluginVersion>? wasmPluginVersions;
 
   ListWasmPluginVersionsResponse({
     this.nextPageToken,
+    this.unreachable,
     this.wasmPluginVersions,
   });
 
   ListWasmPluginVersionsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           wasmPluginVersions: (json_['wasmPluginVersions'] as core.List?)
               ?.map((value) => WasmPluginVersion.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -7984,6 +8215,7 @@ class ListWasmPluginVersionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
         if (wasmPluginVersions != null)
           'wasmPluginVersions': wasmPluginVersions!,
       };
@@ -7998,17 +8230,27 @@ class ListWasmPluginsResponse {
   /// `next_page_token` as `page_token`.
   core.String? nextPageToken;
 
+  /// Unreachable resources.
+  ///
+  /// Populated when the request attempts to list all resources across all
+  /// supported locations, while some locations are temporarily unavailable.
+  core.List<core.String>? unreachable;
+
   /// List of `WasmPlugin` resources.
   core.List<WasmPlugin>? wasmPlugins;
 
   ListWasmPluginsResponse({
     this.nextPageToken,
+    this.unreachable,
     this.wasmPlugins,
   });
 
   ListWasmPluginsResponse.fromJson(core.Map json_)
       : this(
           nextPageToken: json_['nextPageToken'] as core.String?,
+          unreachable: (json_['unreachable'] as core.List?)
+              ?.map((value) => value as core.String)
+              .toList(),
           wasmPlugins: (json_['wasmPlugins'] as core.List?)
               ?.map((value) => WasmPlugin.fromJson(
                   value as core.Map<core.String, core.dynamic>))
@@ -8017,6 +8259,7 @@ class ListWasmPluginsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+        if (unreachable != null) 'unreachable': unreachable!,
         if (wasmPlugins != null) 'wasmPlugins': wasmPlugins!,
       };
 }
@@ -8136,7 +8379,7 @@ class MeshRouteView {
   /// Identifier.
   ///
   /// Full path name of the MeshRouteView resource. Format:
-  /// projects/{project_number}/locations/{location}/meshes/{mesh_name}/routeViews/{route_view_name}
+  /// projects/{project_number}/locations/{location}/meshes/{mesh}/routeViews/{route_view}
   ///
   /// Output only.
   core.String? name;
@@ -8382,8 +8625,10 @@ class Policy {
 /// ServiceBinding can be used to: - Bind a Service Directory Service to be used
 /// in a BackendService resource.
 ///
-/// - Bind a Private Service Connect producer service to be used in consumer
-/// Cloud Service Mesh or Application Load Balancers.
+/// This feature will be deprecated soon. - Bind a Private Service Connect
+/// producer service to be used in consumer Cloud Service Mesh or Application
+/// Load Balancers. - Bind a Cloud Run service to be used in consumer Cloud
+/// Service Mesh or Application Load Balancers.
 class ServiceBinding {
   /// The timestamp when the resource was created.
   ///
@@ -8411,18 +8656,26 @@ class ServiceBinding {
   /// The full Service Directory Service name of the format `projects / *
   /// /locations / * /namespaces / * /services / * `.
   ///
-  /// This field must be set.
+  /// This field is for Service Directory integration which will be deprecated
+  /// soon.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? service;
 
   /// The unique identifier of the Service Directory Service against which the
   /// ServiceBinding resource is validated.
   ///
   /// This is populated when the Service Binding resource is used in another
-  /// resource (like Backend Service). This is of the UUID4 format.
+  /// resource (like Backend Service). This is of the UUID4 format. This field
+  /// is for Service Directory integration which will be deprecated soon.
   ///
   /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? serviceId;
 
   /// The timestamp when the resource was updated.
@@ -8494,6 +8747,12 @@ class ServiceLbPolicy {
   /// Optional.
   ServiceLbPolicyFailoverConfig? failoverConfig;
 
+  /// Configuration to provide isolation support for the associated Backend
+  /// Service.
+  ///
+  /// Optional.
+  ServiceLbPolicyIsolationConfig? isolationConfig;
+
   /// Set of label tags associated with the ServiceLbPolicy resource.
   ///
   /// Optional.
@@ -8536,6 +8795,7 @@ class ServiceLbPolicy {
     this.createTime,
     this.description,
     this.failoverConfig,
+    this.isolationConfig,
     this.labels,
     this.loadBalancingAlgorithm,
     this.name,
@@ -8553,6 +8813,10 @@ class ServiceLbPolicy {
           description: json_['description'] as core.String?,
           failoverConfig: json_.containsKey('failoverConfig')
               ? ServiceLbPolicyFailoverConfig.fromJson(json_['failoverConfig']
+                  as core.Map<core.String, core.dynamic>)
+              : null,
+          isolationConfig: json_.containsKey('isolationConfig')
+              ? ServiceLbPolicyIsolationConfig.fromJson(json_['isolationConfig']
                   as core.Map<core.String, core.dynamic>)
               : null,
           labels:
@@ -8573,6 +8837,7 @@ class ServiceLbPolicy {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (failoverConfig != null) 'failoverConfig': failoverConfig!,
+        if (isolationConfig != null) 'isolationConfig': isolationConfig!,
         if (labels != null) 'labels': labels!,
         if (loadBalancingAlgorithm != null)
           'loadBalancingAlgorithm': loadBalancingAlgorithm!,
@@ -8637,6 +8902,49 @@ class ServiceLbPolicyFailoverConfig {
   core.Map<core.String, core.dynamic> toJson() => {
         if (failoverHealthThreshold != null)
           'failoverHealthThreshold': failoverHealthThreshold!,
+      };
+}
+
+/// Configuration to provide isolation support for the associated Backend
+/// Service.
+class ServiceLbPolicyIsolationConfig {
+  /// The isolation granularity of the load balancer.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ISOLATION_GRANULARITY_UNSPECIFIED" : No isolation is configured for the
+  /// backend service. Traffic can overflow based on the load balancing
+  /// algorithm.
+  /// - "REGION" : Traffic for this service will be isolated at the cloud region
+  /// level.
+  core.String? isolationGranularity;
+
+  /// The isolation mode of the load balancer.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ISOLATION_MODE_UNSPECIFIED" : No isolation mode is configured for the
+  /// backend service.
+  /// - "NEAREST" : Traffic will be sent to the nearest region.
+  /// - "STRICT" : Traffic will fail if no serving backends are available in the
+  /// same region as the load balancer.
+  core.String? isolationMode;
+
+  ServiceLbPolicyIsolationConfig({
+    this.isolationGranularity,
+    this.isolationMode,
+  });
+
+  ServiceLbPolicyIsolationConfig.fromJson(core.Map json_)
+      : this(
+          isolationGranularity: json_['isolationGranularity'] as core.String?,
+          isolationMode: json_['isolationMode'] as core.String?,
+        );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+        if (isolationGranularity != null)
+          'isolationGranularity': isolationGranularity!,
+        if (isolationMode != null) 'isolationMode': isolationMode!,
       };
 }
 
@@ -9132,7 +9440,7 @@ class TlsRouteRouteDestination {
   /// Required.
   core.String? serviceName;
 
-  /// Specifies the proportion of requests forwareded to the backend referenced
+  /// Specifies the proportion of requests forwarded to the backend referenced
   /// by the service_name field.
   ///
   /// This is computed as: - weight/Sum(weights in destinations) Weights in all
@@ -9410,7 +9718,7 @@ class WasmPluginLogConfig {
 
   /// Non-empty default.
   ///
-  /// Specificies the lowest level of the plugin logs that are exported to Cloud
+  /// Specifies the lowest level of the plugin logs that are exported to Cloud
   /// Logging. This setting relates to the logs generated by using logging
   /// statements in your Wasm code. This field is can be set only if logging is
   /// enabled for the plugin. If the field is not provided when logging is
@@ -9493,21 +9801,30 @@ class WasmPluginVersion {
   /// Optional.
   core.String? description;
 
-  /// The resolved digest for the image specified in the `image` field.
+  /// This field holds the digest (usually checksum) value for the plugin image.
   ///
-  /// The digest is resolved during the creation of `WasmPluginVersion`
-  /// resource. This field holds the digest value, regardless of whether a tag
-  /// or digest was originally specified in the `image` field.
+  /// The value is calculated based on the `image_uri` field. If the `image_uri`
+  /// field refers to a container image, the digest value is obtained from the
+  /// container image. If the `image_uri` field refers to a generic artifact,
+  /// the digest value is calculated based on the contents of the file.
   ///
   /// Output only.
   core.String? imageDigest;
 
-  /// URI of the container image containing the plugin, stored in the Artifact
-  /// Registry.
+  /// URI of the image containing the Wasm module, stored in Artifact Registry.
   ///
-  /// When a new `WasmPluginVersion` resource is created, the digest of the
-  /// container image is saved in the `image_digest` field. When downloading an
-  /// image, the digest value is used instead of an image tag.
+  /// The URI can refer to one of the following repository formats: * Container
+  /// images: the `image_uri` must point to a container that contains a single
+  /// file with the name `plugin.wasm`. When a new `WasmPluginVersion` resource
+  /// is created, the digest of the image is saved in the `image_digest` field.
+  /// When pulling a container image from Artifact Registry, the digest value is
+  /// used instead of an image tag. * Generic artifacts: the `image_uri` must be
+  /// in this format:
+  /// `projects/{project}/locations/{location}/repositories/{repository}/
+  /// genericArtifacts/{package}:{version}`. The specified package and version
+  /// must contain a file with the name `plugin.wasm`. When a new
+  /// `WasmPluginVersion` resource is created, the checksum of the contents of
+  /// the file is saved in the `image_digest` field.
   ///
   /// Optional.
   core.String? imageUri;
@@ -9542,8 +9859,8 @@ class WasmPluginVersion {
   /// This field holds the digest (usually checksum) value for the plugin
   /// configuration.
   ///
-  /// The value is calculated based on the contents of `plugin_config_data` or
-  /// the container image defined by the `plugin_config_uri` field.
+  /// The value is calculated based on the contents of `plugin_config_data`
+  /// field or the image defined by the `plugin_config_uri` field.
   ///
   /// Output only.
   core.String? pluginConfigDigest;
@@ -9551,10 +9868,19 @@ class WasmPluginVersion {
   /// URI of the plugin configuration stored in the Artifact Registry.
   ///
   /// The configuration is provided to the plugin at runtime through the
-  /// `ON_CONFIGURE` callback. The container image must contain only a single
-  /// file with the name `plugin.config`. When a new `WasmPluginVersion`
-  /// resource is created, the digest of the container image is saved in the
-  /// `plugin_config_digest` field.
+  /// `ON_CONFIGURE` callback. The URI can refer to one of the following
+  /// repository formats: * Container images: the `plugin_config_uri` must point
+  /// to a container that contains a single file with the name `plugin.config`.
+  /// When a new `WasmPluginVersion` resource is created, the digest of the
+  /// image is saved in the `plugin_config_digest` field. When pulling a
+  /// container image from Artifact Registry, the digest value is used instead
+  /// of an image tag. * Generic artifacts: the `plugin_config_uri` must be in
+  /// this format:
+  /// `projects/{project}/locations/{location}/repositories/{repository}/
+  /// genericArtifacts/{package}:{version}`. The specified package and version
+  /// must contain a file with the name `plugin.config`. When a new
+  /// `WasmPluginVersion` resource is created, the checksum of the contents of
+  /// the file is saved in the `plugin_config_digest` field.
   core.String? pluginConfigUri;
 
   /// The timestamp when the resource was updated.
@@ -9623,21 +9949,30 @@ class WasmPluginVersionDetails {
   /// Optional.
   core.String? description;
 
-  /// The resolved digest for the image specified in `image`.
+  /// This field holds the digest (usually checksum) value for the plugin image.
   ///
-  /// The digest is resolved during the creation of a `WasmPluginVersion`
-  /// resource. This field holds the digest value regardless of whether a tag or
-  /// digest was originally specified in the `image` field.
+  /// The value is calculated based on the `image_uri` field. If the `image_uri`
+  /// field refers to a container image, the digest value is obtained from the
+  /// container image. If the `image_uri` field refers to a generic artifact,
+  /// the digest value is calculated based on the contents of the file.
   ///
   /// Output only.
   core.String? imageDigest;
 
-  /// URI of the container image containing the Wasm module, stored in the
-  /// Artifact Registry.
+  /// URI of the image containing the Wasm module, stored in Artifact Registry.
   ///
-  /// The container image must contain only a single file with the name
-  /// `plugin.wasm`. When a new `WasmPluginVersion` resource is created, the URI
-  /// gets resolved to an image digest and saved in the `image_digest` field.
+  /// The URI can refer to one of the following repository formats: * Container
+  /// images: the `image_uri` must point to a container that contains a single
+  /// file with the name `plugin.wasm`. When a new `WasmPluginVersion` resource
+  /// is created, the digest of the image is saved in the `image_digest` field.
+  /// When pulling a container image from Artifact Registry, the digest value is
+  /// used instead of an image tag. * Generic artifacts: the `image_uri` must be
+  /// in this format:
+  /// `projects/{project}/locations/{location}/repositories/{repository}/
+  /// genericArtifacts/{package}:{version}`. The specified package and version
+  /// must contain a file with the name `plugin.wasm`. When a new
+  /// `WasmPluginVersion` resource is created, the checksum of the contents of
+  /// the file is saved in the `image_digest` field.
   ///
   /// Optional.
   core.String? imageUri;
@@ -9665,8 +10000,8 @@ class WasmPluginVersionDetails {
   /// This field holds the digest (usually checksum) value for the plugin
   /// configuration.
   ///
-  /// The value is calculated based on the contents of the `plugin_config_data`
-  /// field or the container image defined by the `plugin_config_uri` field.
+  /// The value is calculated based on the contents of `plugin_config_data`
+  /// field or the image defined by the `plugin_config_uri` field.
   ///
   /// Output only.
   core.String? pluginConfigDigest;
@@ -9674,10 +10009,19 @@ class WasmPluginVersionDetails {
   /// URI of the plugin configuration stored in the Artifact Registry.
   ///
   /// The configuration is provided to the plugin at runtime through the
-  /// `ON_CONFIGURE` callback. The container image must contain only a single
-  /// file with the name `plugin.config`. When a new `WasmPluginVersion`
-  /// resource is created, the digest of the container image is saved in the
-  /// `plugin_config_digest` field.
+  /// `ON_CONFIGURE` callback. The URI can refer to one of the following
+  /// repository formats: * Container images: the `plugin_config_uri` must point
+  /// to a container that contains a single file with the name `plugin.config`.
+  /// When a new `WasmPluginVersion` resource is created, the digest of the
+  /// image is saved in the `plugin_config_digest` field. When pulling a
+  /// container image from Artifact Registry, the digest value is used instead
+  /// of an image tag. * Generic artifacts: the `plugin_config_uri` must be in
+  /// this format:
+  /// `projects/{project}/locations/{location}/repositories/{repository}/
+  /// genericArtifacts/{package}:{version}`. The specified package and version
+  /// must contain a file with the name `plugin.config`. When a new
+  /// `WasmPluginVersion` resource is created, the checksum of the contents of
+  /// the file is saved in the `plugin_config_digest` field.
   core.String? pluginConfigUri;
 
   /// The timestamp when the resource was updated.
