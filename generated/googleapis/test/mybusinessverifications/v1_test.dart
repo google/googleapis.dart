@@ -478,6 +478,7 @@ api.VerifyLocationRequest buildVerifyLocationRequest() {
     o.method = 'foo';
     o.phoneNumber = 'foo';
     o.token = buildVerificationToken();
+    o.trustedPartnerToken = 'foo';
   }
   buildCounterVerifyLocationRequest--;
   return o;
@@ -493,6 +494,7 @@ void checkVerifyLocationRequest(api.VerifyLocationRequest o) {
     unittest.expect(o.method!, unittest.equals('foo'));
     unittest.expect(o.phoneNumber!, unittest.equals('foo'));
     checkVerificationToken(o.token!);
+    unittest.expect(o.trustedPartnerToken!, unittest.equals('foo'));
   }
   buildCounterVerifyLocationRequest--;
 }

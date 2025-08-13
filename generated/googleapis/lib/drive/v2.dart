@@ -2009,12 +2009,12 @@ class FilesResource {
 
   ///  Lists the user's files.
   ///
-  /// This method accepts the `q` parameter, which is a search query combining
-  /// one or more search terms. For more information, see the \[Search for files
-  /// & folders\](/workspace/drive/api/guides/search-files) guide. *Note:* This
-  /// method returns *all* files by default, including trashed files. If you
-  /// don't want trashed files to appear in the list, use the `trashed=false`
-  /// query parameter to remove trashed files from the results.
+  /// For more information, see \[Search for files and
+  /// folders\](/workspace/drive/api/guides/search-files). This method accepts
+  /// the `q` parameter, which is a search query combining one or more search
+  /// terms. This method returns *all* files by default, including trashed
+  /// files. If you don't want trashed files to appear in the list, use the
+  /// `trashed=false` query parameter to remove trashed files from the results.
   ///
   /// Request parameters:
   ///
@@ -2563,17 +2563,19 @@ class FilesResource {
     return File.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  ///  Updates a file's metadata and/or content.
+  ///  Updates a file's metadata, content, or both.
   ///
   /// When calling this method, only populate fields in the request that you
   /// want to modify. When updating fields, some fields might be changed
   /// automatically, such as `modifiedDate`. This method supports patch
   /// semantics. This method supports an * / upload* URI and accepts uploaded
   /// media with the following characteristics: - *Maximum file size:* 5,120 GB
-  /// - *Accepted Media MIME types:*`* / * ` Note: Specify a valid MIME type,
-  /// rather than the literal `* / * ` value. The literal `* / * ` is only used
-  /// to indicate that any valid MIME type can be uploaded. For more information
-  /// on uploading files, see \[Upload file
+  /// - *Accepted Media MIME types:* `* / * ` (Specify a valid MIME type, rather
+  /// than the literal `* / * ` value. The literal `* / * ` is only used to
+  /// indicate that any valid MIME type can be uploaded. For more information,
+  /// see \[Google Workspace and Google Drive supported MIME
+  /// types\](/workspace/drive/api/guides/mime-types).) For more information on
+  /// uploading files, see \[Upload file
   /// data\](/workspace/drive/api/guides/manage-uploads).
   ///
   /// [request] - The metadata request object.
@@ -5667,7 +5669,7 @@ class ChildReference {
   };
 }
 
-/// The context of the file which is being commented on.
+/// Context of a file which is being commented on.
 class CommentContext {
   /// The MIME type of the context snippet.
   core.String? type;
@@ -5693,26 +5695,17 @@ class CommentContext {
 }
 
 /// A comment on a file in Google Drive.
-///
-/// Some resource methods (such as `comments.update`) require a `commentId`. Use
-/// the `comments.list` method to retrieve the ID for a comment in a file.
 class Comment {
   /// A region of the document represented as a JSON string.
   ///
   /// For details on defining anchor properties, refer to
-  /// [Add comments and replies](https://developers.google.com/workspace/drive/api/v2/manage-comments).
+  /// [Manage comments and replies](https://developers.google.com/workspace/drive/api/v3/manage-comments).
   core.String? anchor;
 
-  /// The author of the comment.
-  ///
-  /// The author's email address and permission ID will not be populated.
-  ///
-  /// Output only.
+  /// The user who wrote this comment.
   User? author;
 
   /// The ID of the comment.
-  ///
-  /// Output only.
   core.String? commentId;
 
   /// The plain text content used to create this comment.
@@ -5721,7 +5714,7 @@ class Comment {
   /// edits to a comment's content.
   core.String? content;
 
-  /// The context of the file which is being commented on.
+  /// Context of a file which is being commented on.
   CommentContext? context;
 
   /// The date when this comment was first created.
@@ -5731,50 +5724,34 @@ class Comment {
   ///
   /// If a comment has been deleted the content will be cleared and this will
   /// only represent a comment that once existed.
-  ///
-  /// Output only.
   core.bool? deleted;
 
   /// The file which this comment is addressing.
-  ///
-  /// Output only.
   core.String? fileId;
 
   /// The title of the file which this comment is addressing.
-  ///
-  /// Output only.
   core.String? fileTitle;
 
   /// HTML formatted content for this comment.
-  ///
-  /// Output only.
   core.String? htmlContent;
 
-  /// This is always `drive#comment`.
-  ///
-  /// Output only.
+  /// This is always drive#comment.
   core.String? kind;
 
   /// The date when this comment or any of its replies were last modified.
   core.DateTime? modifiedDate;
 
   /// Replies to this post.
-  ///
-  /// Output only.
   core.List<CommentReply>? replies;
 
   /// A link back to this comment.
-  ///
-  /// Output only.
   core.String? selfLink;
 
   /// The status of this comment.
   ///
   /// Status can be changed by posting a reply to a comment with the desired
-  /// status. * `open` - The comment is still open. * `resolved` - The comment
-  /// has been resolved by one of its replies.
-  ///
-  /// Output only.
+  /// status. Possible values are: * `open` - The comment is still open. *
+  /// `resolved` - The comment has been resolved by one of its replies.
   core.String? status;
 
   Comment({
@@ -5866,7 +5843,7 @@ class CommentList {
   /// additional page of results should be fetched.
   core.List<Comment>? items;
 
-  /// This is always `drive#commentList`.
+  /// This is always drive#commentList.
   core.String? kind;
 
   /// A link to the next page of comments.
@@ -5915,16 +5892,9 @@ class CommentList {
   };
 }
 
-/// A comment on a file in Google Drive.
-///
-/// Some resource methods (such as `replies.update`) require a `replyId`. Use
-/// the `replies.list` method to retrieve the ID for a reply.
+/// A reply to a comment on a file in Google Drive.
 class CommentReply {
-  /// The author of the reply.
-  ///
-  /// The author's email address and permission ID will not be populated.
-  ///
-  /// Output only.
+  /// The user who wrote this reply.
   User? author;
 
   /// The plain text content used to create this reply.
@@ -5941,31 +5911,23 @@ class CommentReply {
   ///
   /// If a reply has been deleted the content will be cleared and this will only
   /// represent a reply that once existed.
-  ///
-  /// Output only.
   core.bool? deleted;
 
   /// HTML formatted content for this reply.
-  ///
-  /// Output only.
   core.String? htmlContent;
 
-  /// This is always `drive#commentReply`.
-  ///
-  /// Output only.
+  /// This is always drive#commentReply.
   core.String? kind;
 
   /// The date when this reply was last modified.
   core.DateTime? modifiedDate;
 
   /// The ID of the reply.
-  ///
-  /// Output only.
   core.String? replyId;
 
   /// The action this reply performed to the parent comment.
   ///
-  /// When creating a new reply this is the action to be perform to the parent
+  /// When creating a new reply this is the action to be perform tSo the parent
   /// comment. Possible values are: * `resolve` - To resolve a comment. *
   /// `reopen` - To reopen (un-resolve) a comment.
   core.String? verb;

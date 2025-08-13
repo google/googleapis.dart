@@ -78,6 +78,7 @@
 ///       - [ProjectsLocationsConversationsSuggestionsResource]
 ///     - [ProjectsLocationsEncryptionSpecResource]
 ///     - [ProjectsLocationsGeneratorsResource]
+///       - [ProjectsLocationsGeneratorsEvaluationsResource]
 ///     - [ProjectsLocationsKnowledgeBasesResource]
 ///       - [ProjectsLocationsKnowledgeBasesDocumentsResource]
 ///     - [ProjectsLocationsOperationsResource]
@@ -6946,9 +6947,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -12502,6 +12503,9 @@ class ProjectsLocationsEncryptionSpecResource {
 class ProjectsLocationsGeneratorsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsGeneratorsEvaluationsResource get evaluations =>
+      ProjectsLocationsGeneratorsEvaluationsResource(_requester);
+
   ProjectsLocationsGeneratorsResource(commons.ApiRequester client)
     : _requester = client;
 
@@ -12729,6 +12733,186 @@ class ProjectsLocationsGeneratorsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudDialogflowV2Generator.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsGeneratorsEvaluationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsGeneratorsEvaluationsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates evaluation of a generator.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The generator resource name. Format:
+  /// `projects//locations//generators/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/generators/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    GoogleCloudDialogflowV2GeneratorEvaluation request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/evaluations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes an evaluation of generator.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The generator evaluation resource name. Format:
+  /// `projects//locations//generators// evaluations/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/generators/\[^/\]+/evaluations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets an evaluation of generator.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The generator evaluation resource name. Format:
+  /// `projects//locations//generators//evaluations/`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/generators/\[^/\]+/evaluations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2GeneratorEvaluation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2GeneratorEvaluation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2GeneratorEvaluation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists evaluations of generator.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The generator resource name. Format:
+  /// `projects//locations//generators/` Wildcard value `-` is supported on
+  /// generator_id to list evaluations across all generators under same project.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/generators/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Maximum number of evaluations to return in a single
+  /// page. By default 100 and at most 1000.
+  ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/evaluations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -14586,10 +14770,16 @@ class GoogleCloudDialogflowV2AgentAssistantRecord {
   /// Output only.
   GoogleCloudDialogflowV2FaqAnswer? faqAnswer;
 
+  /// The generator suggestion.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2GeneratorSuggestion? generatorSuggestion;
+
   GoogleCloudDialogflowV2AgentAssistantRecord({
     this.articleSuggestionAnswer,
     this.dialogflowAssistAnswer,
     this.faqAnswer,
+    this.generatorSuggestion,
   });
 
   GoogleCloudDialogflowV2AgentAssistantRecord.fromJson(core.Map json_)
@@ -14614,6 +14804,13 @@ class GoogleCloudDialogflowV2AgentAssistantRecord {
                   json_['faqAnswer'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        generatorSuggestion:
+            json_.containsKey('generatorSuggestion')
+                ? GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(
+                  json_['generatorSuggestion']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14622,6 +14819,8 @@ class GoogleCloudDialogflowV2AgentAssistantRecord {
     if (dialogflowAssistAnswer != null)
       'dialogflowAssistAnswer': dialogflowAssistAnswer!,
     if (faqAnswer != null) 'faqAnswer': faqAnswer!,
+    if (generatorSuggestion != null)
+      'generatorSuggestion': generatorSuggestion!,
   };
 }
 
@@ -17828,6 +18027,42 @@ class GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig {
   };
 }
 
+/// A common evalaution pipeline status.
+class GoogleCloudDialogflowV2EvaluationStatus {
+  /// If the value is `false`, it means the evaluation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  ///
+  /// Output only.
+  core.bool? done;
+
+  /// The error result of the evaluation in case of failure in evaluation
+  /// pipeline.
+  ///
+  /// Output only.
+  GoogleRpcStatus? pipelineStatus;
+
+  GoogleCloudDialogflowV2EvaluationStatus({this.done, this.pipelineStatus});
+
+  GoogleCloudDialogflowV2EvaluationStatus.fromJson(core.Map json_)
+    : this(
+        done: json_['done'] as core.bool?,
+        pipelineStatus:
+            json_.containsKey('pipelineStatus')
+                ? GoogleRpcStatus.fromJson(
+                  json_['pipelineStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (done != null) 'done': done!,
+    if (pipelineStatus != null) 'pipelineStatus': pipelineStatus!,
+  };
+}
+
 /// Events allow for matching intents by event name instead of the natural
 /// language input.
 ///
@@ -18895,6 +19130,436 @@ class GoogleCloudDialogflowV2Generator {
     if (tools != null) 'tools': tools!,
     if (triggerEvent != null) 'triggerEvent': triggerEvent!,
     if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// Represents evaluation result of a generator.
+class GoogleCloudDialogflowV2GeneratorEvaluation {
+  /// Completion time of this generator evaluation.
+  ///
+  /// Output only.
+  core.String? completeTime;
+
+  /// Creation time of this generator evaluation.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The display name of the generator evaluation.
+  ///
+  /// At most 64 bytes long.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// The result status of the evaluation pipeline.
+  ///
+  /// Provides the status information including if the evaluation is still in
+  /// progress, completed or failed with certain error and user actionable
+  /// message.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2EvaluationStatus? evaluationStatus;
+
+  /// The configuration of the evaluation task.
+  ///
+  /// Required.
+  GoogleCloudDialogflowV2GeneratorEvaluationConfig? generatorEvaluationConfig;
+
+  /// The initial generator that was used when creating this evaluation.
+  ///
+  /// This is a copy of the generator read from storage when creating the
+  /// evaluation.
+  ///
+  /// Required.
+  GoogleCloudDialogflowV2Generator? initialGenerator;
+
+  /// Identifier.
+  ///
+  /// The resource name of the evaluation. Format:
+  /// `projects//locations//generators// evaluations/`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Only available when the summarization generator is provided.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2SummarizationEvaluationMetrics? summarizationMetrics;
+
+  GoogleCloudDialogflowV2GeneratorEvaluation({
+    this.completeTime,
+    this.createTime,
+    this.displayName,
+    this.evaluationStatus,
+    this.generatorEvaluationConfig,
+    this.initialGenerator,
+    this.name,
+    this.summarizationMetrics,
+  });
+
+  GoogleCloudDialogflowV2GeneratorEvaluation.fromJson(core.Map json_)
+    : this(
+        completeTime: json_['completeTime'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        evaluationStatus:
+            json_.containsKey('evaluationStatus')
+                ? GoogleCloudDialogflowV2EvaluationStatus.fromJson(
+                  json_['evaluationStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        generatorEvaluationConfig:
+            json_.containsKey('generatorEvaluationConfig')
+                ? GoogleCloudDialogflowV2GeneratorEvaluationConfig.fromJson(
+                  json_['generatorEvaluationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        initialGenerator:
+            json_.containsKey('initialGenerator')
+                ? GoogleCloudDialogflowV2Generator.fromJson(
+                  json_['initialGenerator']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        summarizationMetrics:
+            json_.containsKey('summarizationMetrics')
+                ? GoogleCloudDialogflowV2SummarizationEvaluationMetrics.fromJson(
+                  json_['summarizationMetrics']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (completeTime != null) 'completeTime': completeTime!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (evaluationStatus != null) 'evaluationStatus': evaluationStatus!,
+    if (generatorEvaluationConfig != null)
+      'generatorEvaluationConfig': generatorEvaluationConfig!,
+    if (initialGenerator != null) 'initialGenerator': initialGenerator!,
+    if (name != null) 'name': name!,
+    if (summarizationMetrics != null)
+      'summarizationMetrics': summarizationMetrics!,
+  };
+}
+
+/// Generator evaluation input config.
+class GoogleCloudDialogflowV2GeneratorEvaluationConfig {
+  /// The config/source of input data.
+  ///
+  /// Required.
+  GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig?
+  inputDataConfig;
+
+  /// The output Cloud Storage bucket path to store eval files, e.g.
+  /// per_summary_accuracy_score report.
+  ///
+  /// This path is provided by customer and files stored in it are visible to
+  /// customer, no internal data should be stored in this path.
+  ///
+  /// Required.
+  core.String? outputGcsBucketPath;
+
+  /// Evaluation configs for summarization generator.
+  GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig?
+  summarizationConfig;
+
+  GoogleCloudDialogflowV2GeneratorEvaluationConfig({
+    this.inputDataConfig,
+    this.outputGcsBucketPath,
+    this.summarizationConfig,
+  });
+
+  GoogleCloudDialogflowV2GeneratorEvaluationConfig.fromJson(core.Map json_)
+    : this(
+        inputDataConfig:
+            json_.containsKey('inputDataConfig')
+                ? GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig.fromJson(
+                  json_['inputDataConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        outputGcsBucketPath: json_['outputGcsBucketPath'] as core.String?,
+        summarizationConfig:
+            json_.containsKey('summarizationConfig')
+                ? GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig.fromJson(
+                  json_['summarizationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (inputDataConfig != null) 'inputDataConfig': inputDataConfig!,
+    if (outputGcsBucketPath != null)
+      'outputGcsBucketPath': outputGcsBucketPath!,
+    if (summarizationConfig != null)
+      'summarizationConfig': summarizationConfig!,
+  };
+}
+
+/// The distinctive configs for Agent Assist conversations as the conversation
+/// source.
+class GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig {
+  /// The end of the time range for conversations to be evaluated.
+  ///
+  /// Only conversations ended at or before this timestamp will be sampled.
+  ///
+  /// Required.
+  core.String? endTime;
+
+  /// The start of the time range for conversations to be evaluated.
+  ///
+  /// Only conversations created at or after this timestamp will be sampled.
+  ///
+  /// Required.
+  core.String? startTime;
+
+  GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig({
+    this.endTime,
+    this.startTime,
+  });
+
+  GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        endTime: json_['endTime'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (endTime != null) 'endTime': endTime!,
+    if (startTime != null) 'startTime': startTime!,
+  };
+}
+
+/// The distinctive configs for dataset as the conversation source.
+class GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig {
+  /// The identifier of the dataset to be evaluated.
+  ///
+  /// Format: `projects//locations//datasets/`.
+  ///
+  /// Required.
+  core.String? dataset;
+
+  GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig({
+    this.dataset,
+  });
+
+  GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig.fromJson(
+    core.Map json_,
+  ) : this(dataset: json_['dataset'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dataset != null) 'dataset': dataset!,
+  };
+}
+
+/// Input data config details
+class GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig {
+  /// The distinctive configs for Agent Assist conversations as the conversation
+  /// source.
+  GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig?
+  agentAssistInputDataConfig;
+
+  /// The distinctive configs for dataset as the conversation source.
+  GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig?
+  datasetInputDataConfig;
+
+  /// The end timestamp to fetch conversation data.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? endTime;
+
+  /// The source type of input data.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "INPUT_DATA_SOURCE_TYPE_UNSPECIFIED" : Unspecified InputDataSourceType.
+  /// Should not be used.
+  /// - "AGENT_ASSIST_CONVERSATIONS" : Fetch data from Agent Assist storage. If
+  /// this source type is chosen, input_data_config.start_time and
+  /// input_data_config.end_timestamp must be provided.
+  /// - "INSIGHTS_CONVERSATIONS" : Fetch data from Insights storage. If this
+  /// source type is chosen, input_data_config.start_time and
+  /// input_data_config.end_timestamp must be provided.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? inputDataSourceType;
+
+  /// Whether the summary generation is allowed when the pre-existing qualified
+  /// summaries are insufficient to cover the sample size.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? isSummaryGenerationAllowed;
+
+  /// Desired number of conversation-summary pairs to be evaluated.
+  ///
+  /// Optional.
+  core.int? sampleSize;
+
+  /// The start timestamp to fetch conversation data.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? startTime;
+
+  /// Option to control whether summaries are generated during evaluation.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SUMMARY_GENERATION_OPTION_UNSPECIFIED" : Default option will not be
+  /// used
+  /// - "ALWAYS_GENERATE" : Always Generate summary for all conversations.
+  /// - "GENERATE_IF_MISSING" : Gnerate only missing summaries.
+  /// - "DO_NOT_GENERATE" : Do not generate new summaries. Only use existing
+  /// summaries found.
+  core.String? summaryGenerationOption;
+
+  GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig({
+    this.agentAssistInputDataConfig,
+    this.datasetInputDataConfig,
+    this.endTime,
+    this.inputDataSourceType,
+    this.isSummaryGenerationAllowed,
+    this.sampleSize,
+    this.startTime,
+    this.summaryGenerationOption,
+  });
+
+  GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        agentAssistInputDataConfig:
+            json_.containsKey('agentAssistInputDataConfig')
+                ? GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig.fromJson(
+                  json_['agentAssistInputDataConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        datasetInputDataConfig:
+            json_.containsKey('datasetInputDataConfig')
+                ? GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig.fromJson(
+                  json_['datasetInputDataConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endTime: json_['endTime'] as core.String?,
+        inputDataSourceType: json_['inputDataSourceType'] as core.String?,
+        isSummaryGenerationAllowed:
+            json_['isSummaryGenerationAllowed'] as core.bool?,
+        sampleSize: json_['sampleSize'] as core.int?,
+        startTime: json_['startTime'] as core.String?,
+        summaryGenerationOption:
+            json_['summaryGenerationOption'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (agentAssistInputDataConfig != null)
+      'agentAssistInputDataConfig': agentAssistInputDataConfig!,
+    if (datasetInputDataConfig != null)
+      'datasetInputDataConfig': datasetInputDataConfig!,
+    if (endTime != null) 'endTime': endTime!,
+    if (inputDataSourceType != null)
+      'inputDataSourceType': inputDataSourceType!,
+    if (isSummaryGenerationAllowed != null)
+      'isSummaryGenerationAllowed': isSummaryGenerationAllowed!,
+    if (sampleSize != null) 'sampleSize': sampleSize!,
+    if (startTime != null) 'startTime': startTime!,
+    if (summaryGenerationOption != null)
+      'summaryGenerationOption': summaryGenerationOption!,
+  };
+}
+
+/// Evaluation configs for summarization generator.
+class GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig {
+  /// Version for summarization accuracy.
+  ///
+  /// This will determine the prompt and model used at backend.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? accuracyEvaluationVersion;
+
+  /// Version for summarization completeness.
+  ///
+  /// This will determine the prompt and model used at backend.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? completenessEvaluationVersion;
+
+  /// Enable accuracy evaluation.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? enableAccuracyEvaluation;
+
+  /// Enable completeness evaluation.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? enableCompletenessEvaluation;
+
+  /// Version for summarization evaluation.
+  ///
+  /// Output only.
+  core.String? evaluatorVersion;
+
+  GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig({
+    this.accuracyEvaluationVersion,
+    this.completenessEvaluationVersion,
+    this.enableAccuracyEvaluation,
+    this.enableCompletenessEvaluation,
+    this.evaluatorVersion,
+  });
+
+  GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        accuracyEvaluationVersion:
+            json_['accuracyEvaluationVersion'] as core.String?,
+        completenessEvaluationVersion:
+            json_['completenessEvaluationVersion'] as core.String?,
+        enableAccuracyEvaluation:
+            json_['enableAccuracyEvaluation'] as core.bool?,
+        enableCompletenessEvaluation:
+            json_['enableCompletenessEvaluation'] as core.bool?,
+        evaluatorVersion: json_['evaluatorVersion'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accuracyEvaluationVersion != null)
+      'accuracyEvaluationVersion': accuracyEvaluationVersion!,
+    if (completenessEvaluationVersion != null)
+      'completenessEvaluationVersion': completenessEvaluationVersion!,
+    if (enableAccuracyEvaluation != null)
+      'enableAccuracyEvaluation': enableAccuracyEvaluation!,
+    if (enableCompletenessEvaluation != null)
+      'enableCompletenessEvaluation': enableCompletenessEvaluation!,
+    if (evaluatorVersion != null) 'evaluatorVersion': evaluatorVersion!,
   };
 }
 
@@ -22969,6 +23634,42 @@ class GoogleCloudDialogflowV2ListEnvironmentsResponse {
   };
 }
 
+/// Response of ListGeneratorEvaluations.
+class GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse {
+  /// The list of evaluations to return.
+  core.List<GoogleCloudDialogflowV2GeneratorEvaluation>? generatorEvaluations;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String? nextPageToken;
+
+  GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse({
+    this.generatorEvaluations,
+    this.nextPageToken,
+  });
+
+  GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        generatorEvaluations:
+            (json_['generatorEvaluations'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2GeneratorEvaluation.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (generatorEvaluations != null)
+      'generatorEvaluations': generatorEvaluations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
 /// Response of ListGenerators.
 class GoogleCloudDialogflowV2ListGeneratorsResponse {
   /// List of generators retrieved.
@@ -26141,6 +26842,708 @@ class GoogleCloudDialogflowV2SummarizationContext {
     if (summarizationSections != null)
       'summarizationSections': summarizationSections!,
     if (version != null) 'version': version!,
+  };
+}
+
+/// Evaluation metrics for summarization generator.
+class GoogleCloudDialogflowV2SummarizationEvaluationMetrics {
+  /// List of conversation details.
+  ///
+  /// Output only.
+  core.List<
+    GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail
+  >?
+  conversationDetails;
+
+  /// A list of aggregated(average) scores per metric section.
+  ///
+  /// Output only.
+  core.List<
+    GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric
+  >?
+  overallMetrics;
+
+  /// Overall token per section.
+  ///
+  /// This is an aggregated(sum) result of input token of summary acorss all
+  /// conversations that are selected for summarization evaluation.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken>?
+  overallSectionTokens;
+
+  /// User bucket uri for merged evaluation score and aggregation score csv.
+  ///
+  /// Output only.
+  core.String? summarizationEvaluationMergedResultsUri;
+
+  /// A list of evaluation results per conversation(&summary), metric and
+  /// section.
+  ///
+  /// Output only.
+  core.List<
+    GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult
+  >?
+  summarizationEvaluationResults;
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetrics({
+    this.conversationDetails,
+    this.overallMetrics,
+    this.overallSectionTokens,
+    this.summarizationEvaluationMergedResultsUri,
+    this.summarizationEvaluationResults,
+  });
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetrics.fromJson(core.Map json_)
+    : this(
+        conversationDetails:
+            (json_['conversationDetails'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        overallMetrics:
+            (json_['overallMetrics'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        overallSectionTokens:
+            (json_['overallSectionTokens'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        summarizationEvaluationMergedResultsUri:
+            json_['summarizationEvaluationMergedResultsUri'] as core.String?,
+        summarizationEvaluationResults:
+            (json_['summarizationEvaluationResults'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (conversationDetails != null)
+      'conversationDetails': conversationDetails!,
+    if (overallMetrics != null) 'overallMetrics': overallMetrics!,
+    if (overallSectionTokens != null)
+      'overallSectionTokens': overallSectionTokens!,
+    if (summarizationEvaluationMergedResultsUri != null)
+      'summarizationEvaluationMergedResultsUri':
+          summarizationEvaluationMergedResultsUri!,
+    if (summarizationEvaluationResults != null)
+      'summarizationEvaluationResults': summarizationEvaluationResults!,
+  };
+}
+
+/// Decomposition details for accuracy.
+class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition {
+  /// The accuracy reasoning of the breakdown point.
+  ///
+  /// Output only.
+  core.String? accuracyReasoning;
+
+  /// Whether the breakdown point is accurate or not.
+  ///
+  /// Output only.
+  core.bool? isAccurate;
+
+  /// The breakdown point of the summary.
+  ///
+  /// Output only.
+  core.String? point;
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition({
+    this.accuracyReasoning,
+    this.isAccurate,
+    this.point,
+  });
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition.fromJson(
+    core.Map json_,
+  ) : this(
+        accuracyReasoning: json_['accuracyReasoning'] as core.String?,
+        isAccurate: json_['isAccurate'] as core.bool?,
+        point: json_['point'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accuracyReasoning != null) 'accuracyReasoning': accuracyReasoning!,
+    if (isAccurate != null) 'isAccurate': isAccurate!,
+    if (point != null) 'point': point!,
+  };
+}
+
+/// Decomposition details for adherence.
+class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition {
+  /// The adherence reasoning of the breakdown point.
+  ///
+  /// Output only.
+  core.String? adherenceReasoning;
+
+  /// Whether the breakdown point is adherent or not.
+  ///
+  /// Output only.
+  core.bool? isAdherent;
+
+  /// The breakdown point of the given instructions.
+  ///
+  /// Output only.
+  core.String? point;
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition({
+    this.adherenceReasoning,
+    this.isAdherent,
+    this.point,
+  });
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition.fromJson(
+    core.Map json_,
+  ) : this(
+        adherenceReasoning: json_['adherenceReasoning'] as core.String?,
+        isAdherent: json_['isAdherent'] as core.bool?,
+        point: json_['point'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adherenceReasoning != null) 'adherenceReasoning': adherenceReasoning!,
+    if (isAdherent != null) 'isAdherent': isAdherent!,
+    if (point != null) 'point': point!,
+  };
+}
+
+/// Rubric result of the adherence evaluation.
+///
+/// A rubric is ued to determine if the summary adheres to all aspects of the
+/// given instructions.
+class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric {
+  /// A boolean that indicates whether the rubric question is addressed or not.
+  ///
+  /// Output only.
+  core.bool? isAddressed;
+
+  /// The question generated from instruction that used to evaluate summary.
+  ///
+  /// Output only.
+  core.String? question;
+
+  /// The reasoning of the rubric question is addressed or not.
+  ///
+  /// Output only.
+  core.String? reasoning;
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric({
+    this.isAddressed,
+    this.question,
+    this.reasoning,
+  });
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric.fromJson(
+    core.Map json_,
+  ) : this(
+        isAddressed: json_['isAddressed'] as core.bool?,
+        question: json_['question'] as core.String?,
+        reasoning: json_['reasoning'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (isAddressed != null) 'isAddressed': isAddressed!,
+    if (question != null) 'question': question!,
+    if (reasoning != null) 'reasoning': reasoning!,
+  };
+}
+
+/// Rubric details of the completeness evaluation result.
+class GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric {
+  /// A boolean that indicates whether the rubric question is addressed or not.
+  ///
+  /// Output only.
+  core.bool? isAddressed;
+
+  /// The question generated from instruction that used to evaluate summary.
+  ///
+  /// Output only.
+  core.String? question;
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric({
+    this.isAddressed,
+    this.question,
+  });
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric.fromJson(
+    core.Map json_,
+  ) : this(
+        isAddressed: json_['isAddressed'] as core.bool?,
+        question: json_['question'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (isAddressed != null) 'isAddressed': isAddressed!,
+    if (question != null) 'question': question!,
+  };
+}
+
+/// Aggregated evaluation result on conversation level.
+///
+/// This conatins evaluation results of all the metrics and sections.
+class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail {
+  /// Conversation transcript that used for summarization evaluation as a
+  /// reference.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDialogflowV2MessageEntry>? messageEntries;
+
+  /// List of metric details.
+  ///
+  /// Output only.
+  core.List<
+    GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail
+  >?
+  metricDetails;
+
+  /// Conversation level token count per section.
+  ///
+  /// This is an aggregated(sum) result of input token of summary acorss all
+  /// metrics for a single conversation.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken>?
+  sectionTokens;
+
+  /// Summary sections that used for summarization evaluation as a reference.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDialogflowV2SummarySuggestionSummarySection>?
+  summarySections;
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail({
+    this.messageEntries,
+    this.metricDetails,
+    this.sectionTokens,
+    this.summarySections,
+  });
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail.fromJson(
+    core.Map json_,
+  ) : this(
+        messageEntries:
+            (json_['messageEntries'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudDialogflowV2MessageEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        metricDetails:
+            (json_['metricDetails'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        sectionTokens:
+            (json_['sectionTokens'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        summarySections:
+            (json_['summarySections'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2SummarySuggestionSummarySection.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (messageEntries != null) 'messageEntries': messageEntries!,
+    if (metricDetails != null) 'metricDetails': metricDetails!,
+    if (sectionTokens != null) 'sectionTokens': sectionTokens!,
+    if (summarySections != null) 'summarySections': summarySections!,
+  };
+}
+
+/// Aggregated result on metric level.
+///
+/// This conatins the evaluation results of all the sections.
+class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail {
+  /// Metrics name.
+  ///
+  /// e.g. accuracy, adherence, completeness.
+  ///
+  /// Output only.
+  core.String? metric;
+
+  /// Aggregated(average) score on this metric across all sections.
+  ///
+  /// Output only.
+  core.double? score;
+
+  /// List of section details.
+  ///
+  /// Output only.
+  core.List<
+    GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail
+  >?
+  sectionDetails;
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail({
+    this.metric,
+    this.score,
+    this.sectionDetails,
+  });
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail.fromJson(
+    core.Map json_,
+  ) : this(
+        metric: json_['metric'] as core.String?,
+        score: (json_['score'] as core.num?)?.toDouble(),
+        sectionDetails:
+            (json_['sectionDetails'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (metric != null) 'metric': metric!,
+    if (score != null) 'score': score!,
+    if (sectionDetails != null) 'sectionDetails': sectionDetails!,
+  };
+}
+
+/// Section level result.
+class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail {
+  /// List of evaluation result.
+  ///
+  /// The list only contains one kind of the evaluation result.
+  ///
+  /// Output only.
+  core.List<
+    GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult
+  >?
+  evaluationResults;
+
+  /// Aggregated(average) score on this section across all evaluation results.
+  ///
+  /// Either decompositions or rubrics.
+  ///
+  /// Output only.
+  core.double? score;
+
+  /// The name of the summary instruction.
+  ///
+  /// Output only.
+  core.String? section;
+
+  /// Summary for this section
+  ///
+  /// Output only.
+  core.String? sectionSummary;
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail({
+    this.evaluationResults,
+    this.score,
+    this.section,
+    this.sectionSummary,
+  });
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail.fromJson(
+    core.Map json_,
+  ) : this(
+        evaluationResults:
+            (json_['evaluationResults'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        score: (json_['score'] as core.num?)?.toDouble(),
+        section: json_['section'] as core.String?,
+        sectionSummary: json_['sectionSummary'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (evaluationResults != null) 'evaluationResults': evaluationResults!,
+    if (score != null) 'score': score!,
+    if (section != null) 'section': section!,
+    if (sectionSummary != null) 'sectionSummary': sectionSummary!,
+  };
+}
+
+/// Decomposition details
+class GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition {
+  /// only available for accuracy metric.
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition?
+  accuracyDecomposition;
+
+  /// only available for adherence metric.
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition?
+  adherenceDecomposition;
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition({
+    this.accuracyDecomposition,
+    this.adherenceDecomposition,
+  });
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition.fromJson(
+    core.Map json_,
+  ) : this(
+        accuracyDecomposition:
+            json_.containsKey('accuracyDecomposition')
+                ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition.fromJson(
+                  json_['accuracyDecomposition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        adherenceDecomposition:
+            json_.containsKey('adherenceDecomposition')
+                ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition.fromJson(
+                  json_['adherenceDecomposition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accuracyDecomposition != null)
+      'accuracyDecomposition': accuracyDecomposition!,
+    if (adherenceDecomposition != null)
+      'adherenceDecomposition': adherenceDecomposition!,
+  };
+}
+
+/// Evaluation result that contains one of accuracy, adherence or completeness
+/// evaluation result.
+class GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult {
+  /// Only available for accuracy metric.
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition?
+  accuracyDecomposition;
+
+  /// Only available for adherence metric.
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric?
+  adherenceRubric;
+
+  /// Only available for completeness metric.
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric?
+  completenessRubric;
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult({
+    this.accuracyDecomposition,
+    this.adherenceRubric,
+    this.completenessRubric,
+  });
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult.fromJson(
+    core.Map json_,
+  ) : this(
+        accuracyDecomposition:
+            json_.containsKey('accuracyDecomposition')
+                ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition.fromJson(
+                  json_['accuracyDecomposition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        adherenceRubric:
+            json_.containsKey('adherenceRubric')
+                ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric.fromJson(
+                  json_['adherenceRubric']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        completenessRubric:
+            json_.containsKey('completenessRubric')
+                ? GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric.fromJson(
+                  json_['completenessRubric']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accuracyDecomposition != null)
+      'accuracyDecomposition': accuracyDecomposition!,
+    if (adherenceRubric != null) 'adherenceRubric': adherenceRubric!,
+    if (completenessRubric != null) 'completenessRubric': completenessRubric!,
+  };
+}
+
+/// Overall performance per metric.
+///
+/// This is the aggregated score for each metric across all conversations that
+/// are selected for summarization evaluation.
+class GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric {
+  /// Metric name.
+  ///
+  /// e.g. accuracy, adherence, completeness.
+  ///
+  /// Output only.
+  core.String? metric;
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric({
+    this.metric,
+  });
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric.fromJson(
+    core.Map json_,
+  ) : this(metric: json_['metric'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (metric != null) 'metric': metric!,
+  };
+}
+
+/// A pair of section name and input token count of the input summary section.
+class GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken {
+  /// The name of the summary instruction.
+  ///
+  /// Output only.
+  core.String? section;
+
+  /// Token count.
+  ///
+  /// Output only.
+  core.String? tokenCount;
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken({
+    this.section,
+    this.tokenCount,
+  });
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken.fromJson(
+    core.Map json_,
+  ) : this(
+        section: json_['section'] as core.String?,
+        tokenCount: json_['tokenCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (section != null) 'section': section!,
+    if (tokenCount != null) 'tokenCount': tokenCount!,
+  };
+}
+
+/// Evaluation result per conversation(&summary), metric and section.
+class GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult {
+  /// List of decompostion details
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.List<GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition>?
+  decompositions;
+
+  /// List of evaluation results.
+  ///
+  /// Output only.
+  core.List<
+    GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult
+  >?
+  evaluationResults;
+
+  /// metric name, e.g. accuracy, completeness, adherence, etc.
+  ///
+  /// Output only.
+  core.String? metric;
+
+  /// score calculated from decompositions
+  ///
+  /// Output only.
+  core.double? score;
+
+  /// section/task name, e.g. action, situation, etc
+  ///
+  /// Output only.
+  core.String? section;
+
+  /// Summary of this section
+  ///
+  /// Output only.
+  core.String? sectionSummary;
+
+  /// conversation session id
+  ///
+  /// Output only.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? sessionId;
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult({
+    this.decompositions,
+    this.evaluationResults,
+    this.metric,
+    this.score,
+    this.section,
+    this.sectionSummary,
+    this.sessionId,
+  });
+
+  GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult.fromJson(
+    core.Map json_,
+  ) : this(
+        decompositions:
+            (json_['decompositions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        evaluationResults:
+            (json_['evaluationResults'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        metric: json_['metric'] as core.String?,
+        score: (json_['score'] as core.num?)?.toDouble(),
+        section: json_['section'] as core.String?,
+        sectionSummary: json_['sectionSummary'] as core.String?,
+        sessionId: json_['sessionId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (decompositions != null) 'decompositions': decompositions!,
+    if (evaluationResults != null) 'evaluationResults': evaluationResults!,
+    if (metric != null) 'metric': metric!,
+    if (score != null) 'score': score!,
+    if (section != null) 'section': section!,
+    if (sectionSummary != null) 'sectionSummary': sectionSummary!,
+    if (sessionId != null) 'sessionId': sessionId!,
   };
 }
 

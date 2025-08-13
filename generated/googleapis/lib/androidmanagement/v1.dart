@@ -598,8 +598,9 @@ class EnterprisesDevicesResource {
   /// enterprises/{enterpriseId}.
   /// Value must have pattern `^enterprises/\[^/\]+$`.
   ///
-  /// [pageSize] - The requested page size. The actual page size may be fixed to
-  /// a min or max value.
+  /// [pageSize] - The requested page size. If unspecified, at most 10 devices
+  /// will be returned. The maximum value is 100; values above 100 will be
+  /// coerced to 100. The limits can change over time.
   ///
   /// [pageToken] - A token identifying a page of results returned by the
   /// server.
@@ -785,6 +786,14 @@ class EnterprisesDevicesOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to true, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field.This can only be true when
+  /// reading across collections e.g. when parent is set to
+  /// "projects/example/locations/-".This field is not by default supported and
+  /// will result in an UNIMPLEMENTED error if set unless explicitly documented
+  /// otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -800,12 +809,15 @@ class EnterprisesDevicesOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1873,7 +1885,9 @@ class AdvancedSecurityOverrides {
   /// Controls access to developer settings: developer options and safe boot.
   ///
   /// Replaces safeBootDisabled (deprecated) and debuggingFeaturesAllowed
-  /// (deprecated).
+  /// (deprecated). On personally-owned devices with a work profile, setting
+  /// this policy will not disable safe boot. In this case, a
+  /// NonComplianceDetail with MANAGEMENT_MODE is reported.
   /// Possible string values are:
   /// - "DEVELOPER_SETTINGS_UNSPECIFIED" : Unspecified. Defaults to
   /// DEVELOPER_SETTINGS_DISABLED.
@@ -2806,6 +2820,12 @@ class ApplicationPolicy {
   /// provider.
   core.String? credentialProviderPolicy;
 
+  /// Configuration for this custom app.install_type must be set to CUSTOM for
+  /// this to be set.
+  ///
+  /// Optional.
+  CustomAppConfig? customAppConfig;
+
   /// The default policy for all permissions requested by the app.
   ///
   /// If specified, this overrides the policy-level default_permission_policy
@@ -2850,13 +2870,20 @@ class ApplicationPolicy {
 
   /// Configuration to enable this app as an extension app, with the capability
   /// of interacting with Android Device Policy offline.This field can be set
-  /// for at most one app.The signing key certificate fingerprint of the app on
-  /// the device must match one of the entries in signingKeyFingerprintsSha256
-  /// or the signing key certificate fingerprints obtained from Play Store for
-  /// the app to be able to communicate with Android Device Policy.
+  /// for at most one app.
   ///
-  /// If the app is not on Play Store and signingKeyFingerprintsSha256 is not
-  /// set, a NonComplianceDetail with INVALID_VALUE is reported.
+  /// If there is any app with COMPANION_APP role, this field cannot be set.The
+  /// signing key certificate fingerprint of the app on the device must match
+  /// one of the entries in ApplicationPolicy.signingKeyCerts or
+  /// ExtensionConfig.signingKeyFingerprintsSha256 (deprecated) or the signing
+  /// key certificate fingerprints obtained from Play Store for the app to be
+  /// able to communicate with Android Device Policy. If the app is not on Play
+  /// Store and if ApplicationPolicy.signingKeyCerts and
+  /// ExtensionConfig.signingKeyFingerprintsSha256 (deprecated) are not set, a
+  /// NonComplianceDetail with INVALID_VALUE is reported.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   ExtensionConfig? extensionConfig;
 
   /// The constraints for installing the app.
@@ -2896,7 +2923,26 @@ class ApplicationPolicy {
   /// won't complete until the app is installed. After installation, users won't
   /// be able to remove the app. You can only set this installType for one app
   /// per policy. When this is present in the policy, status bar will be
-  /// automatically disabled.
+  /// automatically disabled.If there is any app with KIOSK role, then this
+  /// install type cannot be set for any app.
+  /// - "CUSTOM" : The app can only be installed and updated via AMAPI SDK
+  /// command
+  /// (https://developers.google.com/android/management/extensibility-sdk-integration).Note:
+  /// This only affects fully managed devices. Play related fields
+  /// minimumVersionCode, accessibleTrackIds, autoUpdateMode, installConstraint
+  /// and installPriority cannot be set for the app. The app isn't available in
+  /// the Play Store. The app installed on the device has applicationSource set
+  /// to CUSTOM. The signing key certificate fingerprint of the app on the
+  /// device must match one of the entries in ApplicationPolicy.signingKeyCerts
+  /// . Otherwise, a NonComplianceDetail with APP_SIGNING_CERT_MISMATCH is
+  /// reported. Changing the installType to and from CUSTOM uninstalls the
+  /// existing app if its signing key certificate fingerprint doesn't match the
+  /// one from the new app source. Removing the app from applications doesn't
+  /// uninstall the existing app if it conforms to playStoreMode. See also
+  /// customAppConfig. This is different from the Google Play Custom App
+  /// Publishing
+  /// (https://developers.google.com/android/work/play/custom-app-api/get-started)
+  /// feature.
   core.String? installType;
 
   /// Whether the app is allowed to lock itself in full-screen mode.
@@ -2972,6 +3018,52 @@ class ApplicationPolicy {
   /// - "PREFERENTIAL_NETWORK_ID_FIVE" : Preferential network identifier 5.
   core.String? preferentialNetworkId;
 
+  /// Roles the app has.Apps having certain roles can be exempted from power and
+  /// background execution restrictions, suspension and hibernation on Android
+  /// 14 and above.
+  ///
+  /// The user control can also be disallowed for apps with certain roles on
+  /// Android 11 and above. Refer to the documentation of each RoleType for more
+  /// details.The app is notified about the roles that are set for it if the app
+  /// has a notification receiver service with . The app is notified whenever
+  /// its roles are updated or after the app is installed when it has nonempty
+  /// list of roles. The app can use this notification to bootstrap itself after
+  /// the installation. See Integrate with the AMAPI SDK
+  /// (https://developers.google.com/android/management/sdk-integration) and
+  /// Manage app roles
+  /// (https://developers.google.com/android/management/app-roles) guides for
+  /// more details on the requirements for the service.For the exemptions to be
+  /// applied and the app to be notified about the roles, the signing key
+  /// certificate fingerprint of the app on the device must match one of the
+  /// signing key certificate fingerprints obtained from Play Store or one of
+  /// the entries in ApplicationPolicy.signingKeyCerts. Otherwise, a
+  /// NonComplianceDetail with APP_SIGNING_CERT_MISMATCH is reported.There must
+  /// not be duplicate roles with the same roleType. Multiple apps cannot hold a
+  /// role with the same roleType. A role with type ROLE_TYPE_UNSPECIFIED is not
+  /// allowed.
+  ///
+  /// Optional.
+  core.List<Role>? roles;
+
+  /// Signing key certificates of the app.This field is required in the
+  /// following cases: The app has installType set to CUSTOM (i.e. a custom
+  /// app).
+  ///
+  /// The app has roles set to a nonempty list and the app does not exist on the
+  /// Play Store. The app has extensionConfig set (i.e. an extension app) but
+  /// ExtensionConfig.signingKeyFingerprintsSha256 (deprecated) is not set and
+  /// the app does not exist on the Play Store.If this field is not set for a
+  /// custom app, the policy is rejected. If it is not set when required for a
+  /// non-custom app, a NonComplianceDetail with INVALID_VALUE is reported.For
+  /// other cases, this field is optional and the signing key certificates
+  /// obtained from Play Store are used.See following policy settings to see how
+  /// this field is used: choosePrivateKeyRules
+  /// ApplicationPolicy.InstallType.CUSTOM ApplicationPolicy.extensionConfig
+  /// ApplicationPolicy.roles
+  ///
+  /// Optional.
+  core.List<ApplicationSigningKeyCert>? signingKeyCerts;
+
   /// Specifies whether user control is permitted for the app.
   ///
   /// User control includes user actions like force-stopping and clearing app
@@ -2985,12 +3077,15 @@ class ApplicationPolicy {
   /// app to determine if user control is allowed or disallowed. User control is
   /// allowed by default for most apps but disallowed for following types of
   /// apps: extension apps (see extensionConfig for more details) kiosk apps
-  /// (see KIOSK install type for more details) other critical system apps
+  /// (see KIOSK install type for more details) apps with roles set to a
+  /// nonempty list other critical system apps
   /// - "USER_CONTROL_ALLOWED" : User control is allowed for the app. Kiosk apps
   /// can use this to allow user control. For extension apps (see
   /// extensionConfig for more details), user control is disallowed even if this
-  /// value is set. For kiosk apps (see KIOSK install type for more details),
-  /// this value can be used to allow user control.
+  /// value is set.For apps with roles set to a nonempty list (except roles
+  /// containing only KIOSK role), this value cannot be set.For kiosk apps (see
+  /// KIOSK install type and KIOSK role type for more details), this value can
+  /// be used to allow user control.
   /// - "USER_CONTROL_DISALLOWED" : User control is disallowed for the app. This
   /// is supported on Android 11 and above. A NonComplianceDetail with API_LEVEL
   /// is reported if the Android version is less than 11.
@@ -3014,6 +3109,7 @@ class ApplicationPolicy {
     this.autoUpdateMode,
     this.connectedWorkAndPersonalApp,
     this.credentialProviderPolicy,
+    this.customAppConfig,
     this.defaultPermissionPolicy,
     this.delegatedScopes,
     this.disabled,
@@ -3028,6 +3124,8 @@ class ApplicationPolicy {
     this.packageName,
     this.permissionGrants,
     this.preferentialNetworkId,
+    this.roles,
+    this.signingKeyCerts,
     this.userControlSettings,
     this.workProfileWidgets,
   });
@@ -3045,6 +3143,13 @@ class ApplicationPolicy {
             json_['connectedWorkAndPersonalApp'] as core.String?,
         credentialProviderPolicy:
             json_['credentialProviderPolicy'] as core.String?,
+        customAppConfig:
+            json_.containsKey('customAppConfig')
+                ? CustomAppConfig.fromJson(
+                  json_['customAppConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         defaultPermissionPolicy:
             json_['defaultPermissionPolicy'] as core.String?,
         delegatedScopes:
@@ -3093,6 +3198,22 @@ class ApplicationPolicy {
                 )
                 .toList(),
         preferentialNetworkId: json_['preferentialNetworkId'] as core.String?,
+        roles:
+            (json_['roles'] as core.List?)
+                ?.map(
+                  (value) => Role.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        signingKeyCerts:
+            (json_['signingKeyCerts'] as core.List?)
+                ?.map(
+                  (value) => ApplicationSigningKeyCert.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         userControlSettings: json_['userControlSettings'] as core.String?,
         workProfileWidgets: json_['workProfileWidgets'] as core.String?,
       );
@@ -3106,6 +3227,7 @@ class ApplicationPolicy {
       'connectedWorkAndPersonalApp': connectedWorkAndPersonalApp!,
     if (credentialProviderPolicy != null)
       'credentialProviderPolicy': credentialProviderPolicy!,
+    if (customAppConfig != null) 'customAppConfig': customAppConfig!,
     if (defaultPermissionPolicy != null)
       'defaultPermissionPolicy': defaultPermissionPolicy!,
     if (delegatedScopes != null) 'delegatedScopes': delegatedScopes!,
@@ -3124,6 +3246,8 @@ class ApplicationPolicy {
     if (permissionGrants != null) 'permissionGrants': permissionGrants!,
     if (preferentialNetworkId != null)
       'preferentialNetworkId': preferentialNetworkId!,
+    if (roles != null) 'roles': roles!,
+    if (signingKeyCerts != null) 'signingKeyCerts': signingKeyCerts!,
     if (userControlSettings != null)
       'userControlSettings': userControlSettings!,
     if (workProfileWidgets != null) 'workProfileWidgets': workProfileWidgets!,
@@ -3173,6 +3297,9 @@ class ApplicationReport {
   /// - "SYSTEM_APP_UPDATED_VERSION" : This is an updated system app.
   /// - "INSTALLED_FROM_PLAY_STORE" : The app was installed from the Google Play
   /// Store.
+  /// - "CUSTOM" : The app was installed using the AMAPI SDK command
+  /// (https://developers.google.com/android/management/extensibility-sdk-integration).
+  /// See also: CUSTOM
   core.String? applicationSource;
 
   /// The display name of the app.
@@ -3307,6 +3434,39 @@ class ApplicationReportingSettings {
   };
 }
 
+/// The application signing key certificate.
+class ApplicationSigningKeyCert {
+  /// The SHA-256 hash value of the signing key certificate of the app.
+  ///
+  /// This must be a valid SHA-256 hash value, i.e. 32 bytes. Otherwise, the
+  /// policy is rejected.
+  ///
+  /// Required.
+  core.String? signingKeyCertFingerprintSha256;
+  core.List<core.int> get signingKeyCertFingerprintSha256AsBytes =>
+      convert.base64.decode(signingKeyCertFingerprintSha256!);
+
+  set signingKeyCertFingerprintSha256AsBytes(core.List<core.int> bytes_) {
+    signingKeyCertFingerprintSha256 = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  ApplicationSigningKeyCert({this.signingKeyCertFingerprintSha256});
+
+  ApplicationSigningKeyCert.fromJson(core.Map json_)
+    : this(
+        signingKeyCertFingerprintSha256:
+            json_['signingKeyCertFingerprintSha256'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (signingKeyCertFingerprintSha256 != null)
+      'signingKeyCertFingerprintSha256': signingKeyCertFingerprintSha256!,
+  };
+}
+
 /// An action to block access to apps and data on a fully managed device or in a
 /// work profile.
 ///
@@ -3364,9 +3524,11 @@ class BlockAction {
 class ChoosePrivateKeyRule {
   /// The package names to which this rule applies.
   ///
-  /// The hash of the signing certificate for each app is verified against the
-  /// hash provided by Play. If no package names are specified, then the alias
-  /// is provided to all apps that call KeyChain.choosePrivateKeyAlias
+  /// The signing key certificate fingerprint of the app is verified against the
+  /// signing key certificate fingerprints provided by Play Store and
+  /// ApplicationPolicy.signingKeyCerts . If no package names are specified,
+  /// then the alias is provided to all apps that call
+  /// KeyChain.choosePrivateKeyAlias
   /// (https://developer.android.com/reference/android/security/KeyChain#choosePrivateKeyAlias%28android.app.Activity,%20android.security.KeyChainAliasCallback,%20java.lang.String\[\],%20java.security.Principal\[\],%20java.lang.String,%20int,%20java.lang.String%29)
   /// or any overloads (but not without calling KeyChain.choosePrivateKeyAlias,
   /// even on Android 11 and above). Any app with the same Android UID as a
@@ -4184,6 +4346,32 @@ class CrossProfilePolicies {
   };
 }
 
+/// Configuration for a custom app.
+class CustomAppConfig {
+  /// User uninstall settings of the custom app.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "USER_UNINSTALL_SETTINGS_UNSPECIFIED" : Unspecified. Defaults to
+  /// DISALLOW_UNINSTALL_BY_USER.
+  /// - "DISALLOW_UNINSTALL_BY_USER" : User is not allowed to uninstall the
+  /// custom app.
+  /// - "ALLOW_UNINSTALL_BY_USER" : User is allowed to uninstall the custom app.
+  core.String? userUninstallSettings;
+
+  CustomAppConfig({this.userUninstallSettings});
+
+  CustomAppConfig.fromJson(core.Map json_)
+    : this(
+        userUninstallSettings: json_['userUninstallSettings'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (userUninstallSettings != null)
+      'userUninstallSettings': userUninstallSettings!,
+  };
+}
+
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
 /// The time of day and time zone are either specified elsewhere or are
@@ -4211,9 +4399,12 @@ class Device {
 
   /// The password requirements currently applied to the device.
   ///
-  /// The applied requirements may be slightly different from those specified in
-  /// passwordPolicies in some cases. fieldPath is set based on
-  /// passwordPolicies.
+  /// This field exists because the applied requirements may be slightly
+  /// different from those specified in passwordPolicies in some cases. Note
+  /// that this field does not provide information about password compliance.
+  /// For non-compliance information, see nonComplianceDetails.
+  /// NonComplianceDetail.fieldPath, is set based on passwordPolicies, not based
+  /// on this field.
   core.List<PasswordRequirements>? appliedPasswordPolicies;
 
   /// The name of the policy currently applied to the device.
@@ -5671,6 +5862,9 @@ class ExtensionConfig {
   /// (see Integrate with the AMAPI SDK
   /// (https://developers.google.com/android/management/sdk-integration) guide
   /// for more details).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? notificationReceiver;
 
   /// Hex-encoded SHA-256 hashes of the signing key certificates of the
@@ -5687,6 +5881,9 @@ class ExtensionConfig {
   /// certificate fingerprints obtained from the Play Store or the ones provided
   /// in this field for the app to be able to communicate with Android Device
   /// Policy.In production use cases, it is recommended to leave this empty.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? signingKeyFingerprintsSha256;
 
   ExtensionConfig({
@@ -5949,6 +6146,9 @@ class HardwareInfo {
   core.String? model;
 
   /// The device serial number.
+  ///
+  /// However, for personally-owned devices running Android 12 and above, this
+  /// is the same as the enterpriseSpecificId.
   core.String? serialNumber;
 
   /// Device skin shutdown temperature thresholds in Celsius.
@@ -6662,7 +6862,18 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// ListOperationsRequest.return_partial_success and reads across collections
+  /// e.g. when attempting to list all resources across all supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -6675,11 +6886,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -7291,6 +7507,8 @@ class NonComplianceDetail {
   /// the minimum version code specified by policy.
   /// - "DEVICE_INCOMPATIBLE" : The device is incompatible with the policy
   /// requirements.
+  /// - "APP_SIGNING_CERT_MISMATCH" : The app's signing certificate does not
+  /// match the setting value.
   /// - "PROJECT_NOT_PERMITTED" : The Google Cloud Platform project used to
   /// manage the device is not permitted to use this policy.
   core.String? nonComplianceReason;
@@ -7434,6 +7652,8 @@ class NonComplianceDetailCondition {
   /// the minimum version code specified by policy.
   /// - "DEVICE_INCOMPATIBLE" : The device is incompatible with the policy
   /// requirements.
+  /// - "APP_SIGNING_CERT_MISMATCH" : The app's signing certificate does not
+  /// match the setting value.
   /// - "PROJECT_NOT_PERMITTED" : The Google Cloud Platform project used to
   /// manage the device is not permitted to use this policy.
   core.String? nonComplianceReason;
@@ -10027,6 +10247,60 @@ class RequestDeviceInfoStatus {
   core.Map<core.String, core.dynamic> toJson() => {
     if (eidInfo != null) 'eidInfo': eidInfo!,
     if (status != null) 'status': status!,
+  };
+}
+
+/// Role an app can have.
+class Role {
+  /// The type of the role an app can have.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ROLE_TYPE_UNSPECIFIED" : The role type is unspecified. This value must
+  /// not be used.
+  /// - "COMPANION_APP" : The role type for companion apps. This role enables
+  /// the app as a companion app with the capability of interacting with Android
+  /// Device Policy offline. This is the recommended way to configure an app as
+  /// a companion app. For legacy way, see extensionConfig.On Android 14 and
+  /// above, the app with this role is exempted from power and background
+  /// execution restrictions, suspension and hibernation. On Android 11 and
+  /// above, the user control is disallowed for the app with this role.
+  /// userControlSettings cannot be set to USER_CONTROL_ALLOWED for the app with
+  /// this role.Android Device Policy notifies the companion app of any local
+  /// command status updates if the app has a service with . See Integrate with
+  /// the AMAPI SDK
+  /// (https://developers.google.com/android/management/sdk-integration) guide
+  /// for more details on the requirements for the service.
+  /// - "KIOSK" : The role type for kiosk apps. An app can have this role only
+  /// if it has installType set to REQUIRED_FOR_SETUP or CUSTOM. Before adding
+  /// this role to an app with CUSTOM install type, the app must already be
+  /// installed on the device.The app having this role type is set as the
+  /// preferred home intent and allowlisted for lock task mode. When there is an
+  /// app with this role type, status bar will be automatically disabled.This is
+  /// preferable to setting installType to KIOSK.On Android 11 and above, the
+  /// user control is disallowed but userControlSettings can be set to
+  /// USER_CONTROL_ALLOWED to allow user control for the app with this role.
+  /// - "MOBILE_THREAT_DEFENSE_ENDPOINT_DETECTION_RESPONSE" : The role type for
+  /// Mobile Threat Defense (MTD) / Endpoint Detection & Response (EDR) apps.On
+  /// Android 14 and above, the app with this role is exempted from power and
+  /// background execution restrictions, suspension and hibernation. On Android
+  /// 11 and above, the user control is disallowed and userControlSettings
+  /// cannot be set to USER_CONTROL_ALLOWED for the app with this role.
+  /// - "SYSTEM_HEALTH_MONITORING" : The role type for system health monitoring
+  /// apps.On Android 14 and above, the app with this role is exempted from
+  /// power and background execution restrictions, suspension and hibernation.
+  /// On Android 11 and above, the user control is disallowed and
+  /// userControlSettings cannot be set to USER_CONTROL_ALLOWED for the app with
+  /// this role.
+  core.String? roleType;
+
+  Role({this.roleType});
+
+  Role.fromJson(core.Map json_)
+    : this(roleType: json_['roleType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (roleType != null) 'roleType': roleType!,
   };
 }
 

@@ -492,6 +492,8 @@ api.GoogleApiSource buildGoogleApiSource() {
     o.labels = buildUnnamed9();
     o.loggingConfig = buildLoggingConfig();
     o.name = 'foo';
+    o.organizationSubscription = buildOrganizationSubscription();
+    o.projectSubscriptions = buildProjectSubscriptions();
     o.uid = 'foo';
     o.updateTime = 'foo';
   }
@@ -511,6 +513,8 @@ void checkGoogleApiSource(api.GoogleApiSource o) {
     checkUnnamed9(o.labels!);
     checkLoggingConfig(o.loggingConfig!);
     unittest.expect(o.name!, unittest.equals('foo'));
+    checkOrganizationSubscription(o.organizationSubscription!);
+    checkProjectSubscriptions(o.projectSubscriptions!);
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
@@ -1667,6 +1671,25 @@ void checkNetworkConfig(api.NetworkConfig o) {
   buildCounterNetworkConfig--;
 }
 
+core.int buildCounterOrganizationSubscription = 0;
+api.OrganizationSubscription buildOrganizationSubscription() {
+  final o = api.OrganizationSubscription();
+  buildCounterOrganizationSubscription++;
+  if (buildCounterOrganizationSubscription < 3) {
+    o.enabled = true;
+  }
+  buildCounterOrganizationSubscription--;
+  return o;
+}
+
+void checkOrganizationSubscription(api.OrganizationSubscription o) {
+  buildCounterOrganizationSubscription++;
+  if (buildCounterOrganizationSubscription < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+  }
+  buildCounterOrganizationSubscription--;
+}
+
 core.Map<core.String, core.String> buildUnnamed39() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed39(core.Map<core.String, core.String> o) {
@@ -1799,12 +1822,39 @@ void checkPolicy(api.Policy o) {
   buildCounterPolicy--;
 }
 
-core.List<api.EventType> buildUnnamed45() => [
+core.List<core.String> buildUnnamed45() => ['foo', 'foo'];
+
+void checkUnnamed45(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterProjectSubscriptions = 0;
+api.ProjectSubscriptions buildProjectSubscriptions() {
+  final o = api.ProjectSubscriptions();
+  buildCounterProjectSubscriptions++;
+  if (buildCounterProjectSubscriptions < 3) {
+    o.list = buildUnnamed45();
+  }
+  buildCounterProjectSubscriptions--;
+  return o;
+}
+
+void checkProjectSubscriptions(api.ProjectSubscriptions o) {
+  buildCounterProjectSubscriptions++;
+  if (buildCounterProjectSubscriptions < 3) {
+    checkUnnamed45(o.list!);
+  }
+  buildCounterProjectSubscriptions--;
+}
+
+core.List<api.EventType> buildUnnamed46() => [
   buildEventType(),
   buildEventType(),
 ];
 
-void checkUnnamed45(core.List<api.EventType> o) {
+void checkUnnamed46(core.List<api.EventType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventType(o[0]);
   checkEventType(o[1]);
@@ -1816,7 +1866,7 @@ api.Provider buildProvider() {
   buildCounterProvider++;
   if (buildCounterProvider < 3) {
     o.displayName = 'foo';
-    o.eventTypes = buildUnnamed45();
+    o.eventTypes = buildUnnamed46();
     o.name = 'foo';
   }
   buildCounterProvider--;
@@ -1827,7 +1877,7 @@ void checkProvider(api.Provider o) {
   buildCounterProvider++;
   if (buildCounterProvider < 3) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed45(o.eventTypes!);
+    checkUnnamed46(o.eventTypes!);
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterProvider--;
@@ -1896,9 +1946,9 @@ void checkStateCondition(api.StateCondition o) {
   buildCounterStateCondition--;
 }
 
-core.List<core.String> buildUnnamed46() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed47() => ['foo', 'foo'];
 
-void checkUnnamed46(core.List<core.String> o) {
+void checkUnnamed47(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1909,7 +1959,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed46();
+    o.permissions = buildUnnamed47();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1918,14 +1968,14 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed46(o.permissions!);
+    checkUnnamed47(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed47() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed48() => ['foo', 'foo'];
 
-void checkUnnamed47(core.List<core.String> o) {
+void checkUnnamed48(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1936,7 +1986,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed47();
+    o.permissions = buildUnnamed48();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1945,7 +1995,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed47(o.permissions!);
+    checkUnnamed48(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -1969,31 +2019,31 @@ void checkTransport(api.Transport o) {
   buildCounterTransport--;
 }
 
-core.Map<core.String, api.StateCondition> buildUnnamed48() => {
+core.Map<core.String, api.StateCondition> buildUnnamed49() => {
   'x': buildStateCondition(),
   'y': buildStateCondition(),
 };
 
-void checkUnnamed48(core.Map<core.String, api.StateCondition> o) {
+void checkUnnamed49(core.Map<core.String, api.StateCondition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStateCondition(o['x']!);
   checkStateCondition(o['y']!);
 }
 
-core.List<api.EventFilter> buildUnnamed49() => [
+core.List<api.EventFilter> buildUnnamed50() => [
   buildEventFilter(),
   buildEventFilter(),
 ];
 
-void checkUnnamed49(core.List<api.EventFilter> o) {
+void checkUnnamed50(core.List<api.EventFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventFilter(o[0]);
   checkEventFilter(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed50() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed51() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed50(core.Map<core.String, core.String> o) {
+void checkUnnamed51(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -2005,13 +2055,13 @@ api.Trigger buildTrigger() {
   buildCounterTrigger++;
   if (buildCounterTrigger < 3) {
     o.channel = 'foo';
-    o.conditions = buildUnnamed48();
+    o.conditions = buildUnnamed49();
     o.createTime = 'foo';
     o.destination = buildDestination();
     o.etag = 'foo';
     o.eventDataContentType = 'foo';
-    o.eventFilters = buildUnnamed49();
-    o.labels = buildUnnamed50();
+    o.eventFilters = buildUnnamed50();
+    o.labels = buildUnnamed51();
     o.name = 'foo';
     o.satisfiesPzs = true;
     o.serviceAccount = 'foo';
@@ -2027,13 +2077,13 @@ void checkTrigger(api.Trigger o) {
   buildCounterTrigger++;
   if (buildCounterTrigger < 3) {
     unittest.expect(o.channel!, unittest.equals('foo'));
-    checkUnnamed48(o.conditions!);
+    checkUnnamed49(o.conditions!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkDestination(o.destination!);
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.eventDataContentType!, unittest.equals('foo'));
-    checkUnnamed49(o.eventFilters!);
-    checkUnnamed50(o.labels!);
+    checkUnnamed50(o.eventFilters!);
+    checkUnnamed51(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
@@ -2044,9 +2094,9 @@ void checkTrigger(api.Trigger o) {
   buildCounterTrigger--;
 }
 
-core.List<core.String> buildUnnamed51() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed52() => ['foo', 'foo'];
 
-void checkUnnamed51(core.List<core.String> o) {
+void checkUnnamed52(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2631,6 +2681,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-OrganizationSubscription', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOrganizationSubscription();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.OrganizationSubscription.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkOrganizationSubscription(od);
+    });
+  });
+
   unittest.group('obj-schema-Pipeline', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPipeline();
@@ -2650,6 +2711,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkPolicy(od);
+    });
+  });
+
+  unittest.group('obj-schema-ProjectSubscriptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildProjectSubscriptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProjectSubscriptions.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkProjectSubscriptions(od);
     });
   });
 
@@ -2855,7 +2927,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.EventarcApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed51();
+      final arg_extraLocationTypes = buildUnnamed52();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

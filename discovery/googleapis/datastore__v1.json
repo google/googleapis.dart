@@ -17,6 +17,18 @@
     "description": "Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application. ",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/datastore/",
+    "endpoints": [
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://datastore.us-east7.rep.googleapis.com/",
+            "location": "us-east7"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-datastore.us-east7.rep.googleapis.com/",
+            "location": "us-east7"
+        }
+    ],
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -27,7 +39,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250212",
+    "revision": "20250830",
     "rootUrl": "https://datastore.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Datastore API",

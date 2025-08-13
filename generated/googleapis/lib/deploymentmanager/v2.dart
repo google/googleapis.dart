@@ -2017,6 +2017,8 @@ class GlobalSetPolicyRequest {
   /// in general a valid policy but certain services (like Projects) might
   /// reject them.
   Policy? policy;
+
+  /// Update mask for the policy.
   core.String? updateMask;
 
   GlobalSetPolicyRequest({
@@ -3891,7 +3893,10 @@ class SetAutoscalerLinkOperationMetadata {
   /// List of zonal IGM IDs part of the RMIG.
   core.List<core.String>? zonalIgmIds;
 
-  SetAutoscalerLinkOperationMetadata({this.zonalIgmIds});
+  /// Map of zone to an ID of the zonal IGM belonging to the RMIG.
+  core.Map<core.String, core.String>? zoneToIgmIds;
+
+  SetAutoscalerLinkOperationMetadata({this.zonalIgmIds, this.zoneToIgmIds});
 
   SetAutoscalerLinkOperationMetadata.fromJson(core.Map json_)
     : this(
@@ -3899,10 +3904,14 @@ class SetAutoscalerLinkOperationMetadata {
             (json_['zonalIgmIds'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
+        zoneToIgmIds: (json_['zoneToIgmIds']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (zonalIgmIds != null) 'zonalIgmIds': zonalIgmIds!,
+    if (zoneToIgmIds != null) 'zoneToIgmIds': zoneToIgmIds!,
   };
 }
 

@@ -207,9 +207,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -408,6 +408,9 @@ class ProjectsLocationsApiHubInstancesResource {
   }
 
   /// Deletes the API hub instance.
+  ///
+  /// Deleting the API hub instance will also result in the removal of all
+  /// associated runtime project attachments and the host project registration.
   ///
   /// Request parameters:
   ///
@@ -4701,6 +4704,53 @@ class ProjectsLocationsPluginsInstancesResource {
       queryParams: queryParams_,
     );
     return GoogleCloudApihubV1ListPluginInstancesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Manages data for a given plugin instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the plugin instance for which data needs to
+  /// be managed. Format:
+  /// `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/plugins/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a
+  /// [GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse>
+  manageSourceData(
+    GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':manageSourceData';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -9181,6 +9231,73 @@ class GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse {
   };
 }
 
+/// The ManagePluginInstanceSourceData method's request.
+class GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest {
+  /// Action to be performed.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ACTION_UNSPECIFIED" : Default unspecified action.
+  /// - "UPLOAD" : Upload or upsert data.
+  /// - "DELETE" : Delete data.
+  core.String? action;
+
+  /// Data to be managed.
+  ///
+  /// Required.
+  core.String? data;
+  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
+
+  set dataAsBytes(core.List<core.int> bytes_) {
+    data = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Type of data to be managed.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DATA_TYPE_UNSPECIFIED" : Default unspecified type.
+  /// - "PROXY_DEPLOYMENT_MANIFEST" : Proxy deployment manifest.
+  /// - "ENVIRONMENT_MANIFEST" : Environment manifest.
+  /// - "PROXY_BUNDLE" : Proxy bundle.
+  /// - "SHARED_FLOW_BUNDLE" : Shared flow bundle.
+  core.String? dataType;
+
+  /// Relative path of data being managed for a given plugin instance.
+  ///
+  /// Required.
+  core.String? relativePath;
+
+  GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest({
+    this.action,
+    this.data,
+    this.dataType,
+    this.relativePath,
+  });
+
+  GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest.fromJson(
+    core.Map json_,
+  ) : this(
+        action: json_['action'] as core.String?,
+        data: json_['data'] as core.String?,
+        dataType: json_['dataType'] as core.String?,
+        relativePath: json_['relativePath'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (action != null) 'action': action!,
+    if (data != null) 'data': data!,
+    if (dataType != null) 'dataType': dataType!,
+    if (relativePath != null) 'relativePath': relativePath!,
+  };
+}
+
+/// The ManagePluginInstanceSourceData method's response.
+typedef GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse = $Empty;
+
 /// MatchResult represents the result of matching a discovered API operation
 /// with a catalog API operation.
 class GoogleCloudApihubV1MatchResult {
@@ -9514,7 +9631,10 @@ class GoogleCloudApihubV1PathParam {
 class GoogleCloudApihubV1Plugin {
   /// The configuration of actions supported by the plugin.
   ///
-  /// Required.
+  /// **REQUIRED**: This field must be provided when creating or updating a
+  /// Plugin. The server will reject requests if this field is missing.
+  ///
+  /// Optional.
   core.List<GoogleCloudApihubV1PluginActionConfig>? actionsConfig;
 
   /// The configuration template for the plugin.

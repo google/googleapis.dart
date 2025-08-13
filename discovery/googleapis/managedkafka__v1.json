@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250701",
+    "revision": "20250911",
     "rootUrl": "https://managedkafka.googleapis.com/",
     "servicePath": "",
     "title": "Managed Service for Apache Kafka API",
@@ -148,7 +148,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -1535,6 +1535,21 @@
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+$",
                                             "required": true,
+                                            "type": "string"
+                                        },
+                                        "view": {
+                                            "description": "Optional. Specifies the view to return for the schema registry instances. If not specified, the default view is SCHEMA_REGISTRY_VIEW_BASIC.",
+                                            "enum": [
+                                                "SCHEMA_REGISTRY_VIEW_UNSPECIFIED",
+                                                "SCHEMA_REGISTRY_VIEW_BASIC",
+                                                "SCHEMA_REGISTRY_VIEW_FULL"
+                                            ],
+                                            "enumDescriptions": [
+                                                "The unset value. The API will default to SCHEMA_REGISTRY_VIEW_BASIC.",
+                                                "If SchemaRegistryView is not specified, this is the default value. Returns only the name of the schema registry. The contexts associated with it are not included.",
+                                                "Returns the name of the schema registry and all the contexts associated with it."
+                                            ],
+                                            "location": "query",
                                             "type": "string"
                                         }
                                     },
@@ -3167,6 +3182,10 @@
                     "$ref": "TlsConfig",
                     "description": "Optional. TLS configuration for the Kafka cluster."
                 },
+                "updateOptions": {
+                    "$ref": "UpdateOptions",
+                    "description": "Optional. UpdateOptions represents options that control how updates to the cluster are applied."
+                },
                 "updateTime": {
                     "description": "Output only. The time when the cluster was last updated.",
                     "format": "google-datetime",
@@ -4243,6 +4262,17 @@
                         "$ref": "CertificateAuthorityServiceConfig"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "UpdateOptions": {
+            "description": "UpdateOptions specifies options that influence how a cluster update is applied. These options control the behavior of the update process, rather than defining the desired end-state of a cluster.",
+            "id": "UpdateOptions",
+            "properties": {
+                "allowBrokerDownscaleOnClusterUpscale": {
+                    "description": "Optional. If true, allows an update operation that increases the total vCPU and/or memory allocation of the cluster to significantly decrease the per-broker vCPU and/or memory allocation. This can result in reduced performance and availability. By default, the update operation will fail if an upscale request results in a vCPU or memory allocation for the brokers that is smaller than 90% of the current broker size.",
+                    "type": "boolean"
                 }
             },
             "type": "object"

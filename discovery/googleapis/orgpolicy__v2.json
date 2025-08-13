@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250606",
+    "revision": "20250815",
     "rootUrl": "https://orgpolicy.googleapis.com/",
     "servicePath": "",
     "title": "Organization Policy API",
@@ -1365,7 +1365,7 @@
                         "description": "Properties of the object.",
                         "type": "any"
                     },
-                    "description": "Optional. Required for managed constraints if parameters are defined. Passes parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \"allowedLocations\" : [\"us-east1\", \"us-west1\"], \"allowAll\" : true }",
+                    "description": "Optional. Required for managed constraints if parameters are defined. Passes parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: ``` { \"allowedLocations\" : [\"us-east1\", \"us-west1\"], \"allowAll\" : true } ```",
                     "type": "object"
                 },
                 "values": {

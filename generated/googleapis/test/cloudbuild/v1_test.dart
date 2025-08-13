@@ -3121,6 +3121,7 @@ api.WorkerConfig buildWorkerConfig() {
   buildCounterWorkerConfig++;
   if (buildCounterWorkerConfig < 3) {
     o.diskSizeGb = 'foo';
+    o.enableNestedVirtualization = true;
     o.machineType = 'foo';
   }
   buildCounterWorkerConfig--;
@@ -3131,6 +3132,7 @@ void checkWorkerConfig(api.WorkerConfig o) {
   buildCounterWorkerConfig++;
   if (buildCounterWorkerConfig < 3) {
     unittest.expect(o.diskSizeGb!, unittest.equals('foo'));
+    unittest.expect(o.enableNestedVirtualization!, unittest.isTrue);
     unittest.expect(o.machineType!, unittest.equals('foo'));
   }
   buildCounterWorkerConfig--;

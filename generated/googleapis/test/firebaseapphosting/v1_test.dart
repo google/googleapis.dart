@@ -26,6 +26,33 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterArchiveSource = 0;
+api.ArchiveSource buildArchiveSource() {
+  final o = api.ArchiveSource();
+  buildCounterArchiveSource++;
+  if (buildCounterArchiveSource < 3) {
+    o.author = buildSourceUserMetadata();
+    o.description = 'foo';
+    o.externalSignedUri = 'foo';
+    o.rootDirectory = 'foo';
+    o.userStorageUri = 'foo';
+  }
+  buildCounterArchiveSource--;
+  return o;
+}
+
+void checkArchiveSource(api.ArchiveSource o) {
+  buildCounterArchiveSource++;
+  if (buildCounterArchiveSource < 3) {
+    checkSourceUserMetadata(o.author!);
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.externalSignedUri!, unittest.equals('foo'));
+    unittest.expect(o.rootDirectory!, unittest.equals('foo'));
+    unittest.expect(o.userStorageUri!, unittest.equals('foo'));
+  }
+  buildCounterArchiveSource--;
+}
+
 core.Map<core.String, core.String> buildUnnamed0() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed0(core.Map<core.String, core.String> o) {
@@ -71,6 +98,7 @@ api.Backend buildBackend() {
     o.mode = 'foo';
     o.name = 'foo';
     o.reconciling = true;
+    o.requestLogsDisabled = true;
     o.serviceAccount = 'foo';
     o.servingLocality = 'foo';
     o.uid = 'foo';
@@ -97,6 +125,7 @@ void checkBackend(api.Backend o) {
     unittest.expect(o.mode!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
+    unittest.expect(o.requestLogsDisabled!, unittest.isTrue);
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
     unittest.expect(o.servingLocality!, unittest.equals('foo'));
     unittest.expect(o.uid!, unittest.equals('foo'));
@@ -186,6 +215,7 @@ api.BuildSource buildBuildSource() {
   final o = api.BuildSource();
   buildCounterBuildSource++;
   if (buildCounterBuildSource < 3) {
+    o.archive = buildArchiveSource();
     o.codebase = buildCodebaseSource();
     o.container = buildContainerSource();
   }
@@ -196,6 +226,7 @@ api.BuildSource buildBuildSource() {
 void checkBuildSource(api.BuildSource o) {
   buildCounterBuildSource++;
   if (buildCounterBuildSource < 3) {
+    checkArchiveSource(o.archive!);
     checkCodebaseSource(o.codebase!);
     checkContainerSource(o.container!);
   }
@@ -1163,6 +1194,29 @@ void checkServingBehavior(api.ServingBehavior o) {
   buildCounterServingBehavior--;
 }
 
+core.int buildCounterSourceUserMetadata = 0;
+api.SourceUserMetadata buildSourceUserMetadata() {
+  final o = api.SourceUserMetadata();
+  buildCounterSourceUserMetadata++;
+  if (buildCounterSourceUserMetadata < 3) {
+    o.displayName = 'foo';
+    o.email = 'foo';
+    o.imageUri = 'foo';
+  }
+  buildCounterSourceUserMetadata--;
+  return o;
+}
+
+void checkSourceUserMetadata(api.SourceUserMetadata o) {
+  buildCounterSourceUserMetadata++;
+  if (buildCounterSourceUserMetadata < 3) {
+    unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.email!, unittest.equals('foo'));
+    unittest.expect(o.imageUri!, unittest.equals('foo'));
+  }
+  buildCounterSourceUserMetadata--;
+}
+
 core.Map<core.String, core.Object?> buildUnnamed32() => {
   'x': {
     'list': [1, 2, 3],
@@ -1362,6 +1416,17 @@ void checkUnnamed37(core.List<core.String> o) {
 }
 
 void main() {
+  unittest.group('obj-schema-ArchiveSource', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildArchiveSource();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ArchiveSource.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkArchiveSource(od);
+    });
+  });
+
   unittest.group('obj-schema-Backend', () {
     unittest.test('to-json--from-json', () async {
       final o = buildBackend();
@@ -1700,6 +1765,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkServingBehavior(od);
+    });
+  });
+
+  unittest.group('obj-schema-SourceUserMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSourceUserMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SourceUserMetadata.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSourceUserMetadata(od);
     });
   });
 

@@ -776,6 +776,7 @@ api.ServiceAttachment buildServiceAttachment() {
   buildCounterServiceAttachment++;
   if (buildCounterServiceAttachment < 3) {
     o.connectionStatus = 'foo';
+    o.failureReason = 'foo';
     o.localFqdn = 'foo';
     o.localFqdns = buildUnnamed13();
     o.targetServiceAttachmentUri = 'foo';
@@ -788,6 +789,7 @@ void checkServiceAttachment(api.ServiceAttachment o) {
   buildCounterServiceAttachment++;
   if (buildCounterServiceAttachment < 3) {
     unittest.expect(o.connectionStatus!, unittest.equals('foo'));
+    unittest.expect(o.failureReason!, unittest.equals('foo'));
     unittest.expect(o.localFqdn!, unittest.equals('foo'));
     checkUnnamed13(o.localFqdns!);
     unittest.expect(o.targetServiceAttachmentUri!, unittest.equals('foo'));

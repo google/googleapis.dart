@@ -5002,8 +5002,10 @@ class DataMaskingStatistics {
   };
 }
 
-/// Data policy option proto, it currently supports name only, will support
-/// precedence later.
+/// Data policy option.
+///
+/// For more information, see
+/// [Mask data by applying data policies to a column](https://cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column/).
 class DataPolicyOption {
   /// Data policy resource name in the form of
   /// projects/project_id/locations/location_id/dataPolicies/data_policy_id.
@@ -7337,8 +7339,8 @@ class ExternalRuntimeOptions {
 class ExternalServiceCost {
   /// The billing method used for the external job.
   ///
-  /// This field is only used when billed on the services sku, set to
-  /// "SERVICES_SKU". Otherwise, it is unspecified for backward compatibility.
+  /// This field, set to `SERVICES_SKU`, is only used when billing under the
+  /// services SKU. Otherwise, it is unspecified for backward compatibility.
   core.String? billingMethod;
 
   /// External service cost in terms of bigquery bytes billed.
@@ -8246,6 +8248,90 @@ class HparamTuningTrial {
   };
 }
 
+/// Statistics related to Incremental Query Results.
+///
+/// Populated as part of JobStatistics2. This feature is not yet available.
+class IncrementalResultStats {
+  /// Reason why incremental query results are/were not written by the query.
+  /// Possible string values are:
+  /// - "DISABLED_REASON_UNSPECIFIED" : Disabled reason not specified.
+  /// - "OTHER" : Some other reason.
+  core.String? disabledReason;
+
+  /// The time at which the result table's contents were modified.
+  ///
+  /// May be absent if no results have been written or the query has completed.
+  core.String? resultSetLastModifyTime;
+
+  /// The time at which the result table's contents were completely replaced.
+  ///
+  /// May be absent if no results have been written or the query has completed.
+  core.String? resultSetLastReplaceTime;
+
+  IncrementalResultStats({
+    this.disabledReason,
+    this.resultSetLastModifyTime,
+    this.resultSetLastReplaceTime,
+  });
+
+  IncrementalResultStats.fromJson(core.Map json_)
+    : this(
+        disabledReason: json_['disabledReason'] as core.String?,
+        resultSetLastModifyTime:
+            json_['resultSetLastModifyTime'] as core.String?,
+        resultSetLastReplaceTime:
+            json_['resultSetLastReplaceTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (disabledReason != null) 'disabledReason': disabledReason!,
+    if (resultSetLastModifyTime != null)
+      'resultSetLastModifyTime': resultSetLastModifyTime!,
+    if (resultSetLastReplaceTime != null)
+      'resultSetLastReplaceTime': resultSetLastReplaceTime!,
+  };
+}
+
+/// Statistics for index pruning.
+class IndexPruningStats {
+  /// The base table reference.
+  TableReference? baseTable;
+
+  /// The number of parallel inputs after index pruning.
+  core.String? postIndexPruningParallelInputCount;
+
+  /// The number of parallel inputs before index pruning.
+  core.String? preIndexPruningParallelInputCount;
+
+  IndexPruningStats({
+    this.baseTable,
+    this.postIndexPruningParallelInputCount,
+    this.preIndexPruningParallelInputCount,
+  });
+
+  IndexPruningStats.fromJson(core.Map json_)
+    : this(
+        baseTable:
+            json_.containsKey('baseTable')
+                ? TableReference.fromJson(
+                  json_['baseTable'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        postIndexPruningParallelInputCount:
+            json_['postIndexPruningParallelInputCount'] as core.String?,
+        preIndexPruningParallelInputCount:
+            json_['preIndexPruningParallelInputCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (baseTable != null) 'baseTable': baseTable!,
+    if (postIndexPruningParallelInputCount != null)
+      'postIndexPruningParallelInputCount': postIndexPruningParallelInputCount!,
+    if (preIndexPruningParallelInputCount != null)
+      'preIndexPruningParallelInputCount': preIndexPruningParallelInputCount!,
+  };
+}
+
 /// Reason about why no search index was used in the search query (or
 /// sub-query).
 class IndexUnusedReason {
@@ -8737,13 +8823,12 @@ class JobConfiguration {
   /// \[Pick one\] Configures an extract job.
   JobConfigurationExtract? extract;
 
-  /// Job timeout in milliseconds.
+  /// Job timeout in milliseconds relative to the job creation time.
   ///
-  /// If this time limit is exceeded, BigQuery will attempt to stop a longer
-  /// job, but may not always succeed in canceling it before the job completes.
-  /// For example, a job that takes more than 60 seconds to complete has a
-  /// better chance of being stopped than a job that takes 10 seconds to
-  /// complete.
+  /// If this time limit is exceeded, BigQuery attempts to stop the job, but
+  /// might not always succeed in canceling it before the job completes. For
+  /// example, a job that takes more than 60 seconds to complete has a better
+  /// chance of being stopped than a job that takes 10 seconds to complete.
   ///
   /// Optional.
   core.String? jobTimeoutMs;
@@ -8767,6 +8852,15 @@ class JobConfiguration {
   /// \[Pick one\] Configures a load job.
   JobConfigurationLoad? load;
 
+  /// INTERNAL: DO NOT USE.
+  ///
+  /// The maximum rate of slot consumption to allow for this job. If set, the
+  /// number of slots used to execute the job will be throttled to try and keep
+  /// its slot consumption below the requested rate.
+  ///
+  /// Optional.
+  core.int? maxSlots;
+
   /// \[Pick one\] Configures a query job.
   JobConfigurationQuery? query;
 
@@ -8788,6 +8882,7 @@ class JobConfiguration {
     this.jobType,
     this.labels,
     this.load,
+    this.maxSlots,
     this.query,
     this.reservation,
   });
@@ -8818,6 +8913,7 @@ class JobConfiguration {
                   json_['load'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        maxSlots: json_['maxSlots'] as core.int?,
         query:
             json_.containsKey('query')
                 ? JobConfigurationQuery.fromJson(
@@ -8835,6 +8931,7 @@ class JobConfiguration {
     if (jobType != null) 'jobType': jobType!,
     if (labels != null) 'labels': labels!,
     if (load != null) 'load': load!,
+    if (maxSlots != null) 'maxSlots': maxSlots!,
     if (query != null) 'query': query!,
     if (reservation != null) 'reservation': reservation!,
   };
@@ -9300,13 +9397,14 @@ class JobConfigurationLoad {
   /// of the load job if a schema is autodetected or supplied in the job
   /// configuration.
   ///
-  /// Schema update options are supported in two cases: when writeDisposition is
-  /// WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination
-  /// table is a partition of a table, specified by partition decorators. For
-  /// normal tables, WRITE_TRUNCATE will always overwrite the schema. One or
-  /// more of the following values are specified: * ALLOW_FIELD_ADDITION: allow
-  /// adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow
-  /// relaxing a required field in the original schema to nullable.
+  /// Schema update options are supported in three cases: when writeDisposition
+  /// is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE_DATA; when
+  /// writeDisposition is WRITE_TRUNCATE and the destination table is a
+  /// partition of a table, specified by partition decorators. For normal
+  /// tables, WRITE_TRUNCATE will always overwrite the schema. One or more of
+  /// the following values are specified: * ALLOW_FIELD_ADDITION: allow adding a
+  /// nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a
+  /// required field in the original schema to nullable.
   core.List<core.String>? schemaUpdateOptions;
 
   /// The number of rows at the top of a CSV file that BigQuery will skip when
@@ -9781,13 +9879,14 @@ class JobConfigurationQuery {
   /// Allows the schema of the destination table to be updated as a side effect
   /// of the query job.
   ///
-  /// Schema update options are supported in two cases: when writeDisposition is
-  /// WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination
-  /// table is a partition of a table, specified by partition decorators. For
-  /// normal tables, WRITE_TRUNCATE will always overwrite the schema. One or
-  /// more of the following values are specified: * ALLOW_FIELD_ADDITION: allow
-  /// adding a nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow
-  /// relaxing a required field in the original schema to nullable.
+  /// Schema update options are supported in three cases: when writeDisposition
+  /// is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE_DATA; when
+  /// writeDisposition is WRITE_TRUNCATE and the destination table is a
+  /// partition of a table, specified by partition decorators. For normal
+  /// tables, WRITE_TRUNCATE will always overwrite the schema. One or more of
+  /// the following values are specified: * ALLOW_FIELD_ADDITION: allow adding a
+  /// nullable field to the schema. * ALLOW_FIELD_RELAXATION: allow relaxing a
+  /// required field in the original schema to nullable.
   core.List<core.String>? schemaUpdateOptions;
 
   /// Options controlling the execution of scripts.
@@ -10857,6 +10956,13 @@ class JobStatistics2 {
   /// Output only.
   core.List<ExternalServiceCost>? externalServiceCosts;
 
+  /// Statistics related to incremental query results, if enabled for the query.
+  ///
+  /// This feature is not yet available.
+  ///
+  /// Output only.
+  IncrementalResultStats? incrementalResultStats;
+
   /// Statistics for a LOAD query.
   ///
   /// Output only.
@@ -11072,12 +11178,12 @@ class JobStatistics2 {
   /// Output only.
   core.String? totalPartitionsProcessed;
 
-  /// Total slot-milliseconds for the job that run on external services and
-  /// billed on the service SKU.
+  /// Total slot milliseconds for the job that ran on external services and
+  /// billed on the services SKU.
   ///
   /// This field is only populated for jobs that have external service costs,
   /// and is the total of the usage for costs whose billing method is
-  /// "SERVICES_SKU".
+  /// `"SERVICES_SKU"`.
   ///
   /// Output only.
   core.String? totalServicesSkuSlotMs;
@@ -11122,6 +11228,7 @@ class JobStatistics2 {
     this.estimatedBytesProcessed,
     this.exportDataStatistics,
     this.externalServiceCosts,
+    this.incrementalResultStats,
     this.loadQueryStatistics,
     this.materializedViewStatistics,
     this.metadataCacheStatistics,
@@ -11244,6 +11351,13 @@ class JobStatistics2 {
                   ),
                 )
                 .toList(),
+        incrementalResultStats:
+            json_.containsKey('incrementalResultStats')
+                ? IncrementalResultStats.fromJson(
+                  json_['incrementalResultStats']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         loadQueryStatistics:
             json_.containsKey('loadQueryStatistics')
                 ? LoadQueryStatistics.fromJson(
@@ -11407,6 +11521,8 @@ class JobStatistics2 {
       'exportDataStatistics': exportDataStatistics!,
     if (externalServiceCosts != null)
       'externalServiceCosts': externalServiceCosts!,
+    if (incrementalResultStats != null)
+      'incrementalResultStats': incrementalResultStats!,
     if (loadQueryStatistics != null)
       'loadQueryStatistics': loadQueryStatistics!,
     if (materializedViewStatistics != null)
@@ -13320,6 +13436,43 @@ class ProjectReference {
   };
 }
 
+/// The column metadata index pruning statistics.
+class PruningStats {
+  /// The number of parallel inputs matched.
+  core.String? postCmetaPruningParallelInputCount;
+
+  /// The number of partitions matched.
+  core.String? postCmetaPruningPartitionCount;
+
+  /// The number of parallel inputs scanned.
+  core.String? preCmetaPruningParallelInputCount;
+
+  PruningStats({
+    this.postCmetaPruningParallelInputCount,
+    this.postCmetaPruningPartitionCount,
+    this.preCmetaPruningParallelInputCount,
+  });
+
+  PruningStats.fromJson(core.Map json_)
+    : this(
+        postCmetaPruningParallelInputCount:
+            json_['postCmetaPruningParallelInputCount'] as core.String?,
+        postCmetaPruningPartitionCount:
+            json_['postCmetaPruningPartitionCount'] as core.String?,
+        preCmetaPruningParallelInputCount:
+            json_['preCmetaPruningParallelInputCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (postCmetaPruningParallelInputCount != null)
+      'postCmetaPruningParallelInputCount': postCmetaPruningParallelInputCount!,
+    if (postCmetaPruningPartitionCount != null)
+      'postCmetaPruningPartitionCount': postCmetaPruningPartitionCount!,
+    if (preCmetaPruningParallelInputCount != null)
+      'preCmetaPruningParallelInputCount': preCmetaPruningParallelInputCount!,
+  };
+}
+
 /// Options for a user-defined Python function.
 class PythonOptions {
   /// The name of the function defined in Python code as the entry point when
@@ -13715,6 +13868,15 @@ class QueryRequest {
   /// Optional.
   core.int? maxResults;
 
+  /// INTERNAL: DO NOT USE.
+  ///
+  /// The maximum rate of slot consumption to allow for this job. If set, the
+  /// number of slots used to execute the job will be throttled to try and keep
+  /// its slot consumption below the requested rate. This limit is best effort.
+  ///
+  /// Optional.
+  core.int? maxSlots;
+
   /// Limits the bytes billed for this query.
   ///
   /// Queries with bytes billed above this limit will fail (without incurring a
@@ -13835,6 +13997,7 @@ class QueryRequest {
     this.labels,
     this.location,
     this.maxResults,
+    this.maxSlots,
     this.maximumBytesBilled,
     this.parameterMode,
     this.preserveNulls,
@@ -13889,6 +14052,7 @@ class QueryRequest {
         ),
         location: json_['location'] as core.String?,
         maxResults: json_['maxResults'] as core.int?,
+        maxSlots: json_['maxSlots'] as core.int?,
         maximumBytesBilled: json_['maximumBytesBilled'] as core.String?,
         parameterMode: json_['parameterMode'] as core.String?,
         preserveNulls: json_['preserveNulls'] as core.bool?,
@@ -13925,6 +14089,7 @@ class QueryRequest {
     if (labels != null) 'labels': labels!,
     if (location != null) 'location': location!,
     if (maxResults != null) 'maxResults': maxResults!,
+    if (maxSlots != null) 'maxSlots': maxSlots!,
     if (maximumBytesBilled != null) 'maximumBytesBilled': maximumBytesBilled!,
     if (parameterMode != null) 'parameterMode': parameterMode!,
     if (preserveNulls != null) 'preserveNulls': preserveNulls!,
@@ -14643,16 +14808,17 @@ class Routine {
 
   /// The body of the routine.
   ///
-  /// For functions, this is the expression in the AS clause. If language=SQL,
-  /// it is the substring inside (but excluding) the parentheses. For example,
-  /// for the function created with the following statement: `CREATE FUNCTION
-  /// JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body
-  /// is `concat(x, "\n", y)` (\n is not replaced with linebreak). If
-  /// language=JAVASCRIPT, it is the evaluated string in the AS clause. For
+  /// For functions, this is the expression in the AS clause. If `language =
+  /// "SQL"`, it is the substring inside (but excluding) the parentheses. For
   /// example, for the function created with the following statement: `CREATE
-  /// FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The
-  /// definition_body is `return "\n";\n` Note that both \n are replaced with
-  /// linebreaks.
+  /// FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The
+  /// definition_body is `concat(x, "\n", y)` (\n is not replaced with
+  /// linebreak). If `language="JAVASCRIPT"`, it is the evaluated string in the
+  /// AS clause. For example, for the function created with the following
+  /// statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return
+  /// "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are
+  /// replaced with linebreaks. If `definition_body` references another routine,
+  /// then that routine must be fully qualified with its project ID.
   ///
   /// Required.
   core.String? definitionBody;
@@ -15312,6 +15478,14 @@ class ScriptStatistics {
 ///
 /// Populated as part of JobStatistics2.
 class SearchStatistics {
+  /// Search index pruning statistics, one for each base table that has a search
+  /// index.
+  ///
+  /// If a base table does not have a search index or the index does not help
+  /// with pruning on the base table, then there is no pruning statistics for
+  /// that table.
+  core.List<IndexPruningStats>? indexPruningStats;
+
   /// When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains
   /// why indexes were not used in all or part of the search query.
   ///
@@ -15332,10 +15506,22 @@ class SearchStatistics {
   /// - "FULLY_USED" : The entire search query used search indexes.
   core.String? indexUsageMode;
 
-  SearchStatistics({this.indexUnusedReasons, this.indexUsageMode});
+  SearchStatistics({
+    this.indexPruningStats,
+    this.indexUnusedReasons,
+    this.indexUsageMode,
+  });
 
   SearchStatistics.fromJson(core.Map json_)
     : this(
+        indexPruningStats:
+            (json_['indexPruningStats'] as core.List?)
+                ?.map(
+                  (value) => IndexPruningStats.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         indexUnusedReasons:
             (json_['indexUnusedReasons'] as core.List?)
                 ?.map(
@@ -15348,6 +15534,7 @@ class SearchStatistics {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (indexPruningStats != null) 'indexPruningStats': indexPruningStats!,
     if (indexUnusedReasons != null) 'indexUnusedReasons': indexUnusedReasons!,
     if (indexUsageMode != null) 'indexUsageMode': indexUsageMode!,
   };
@@ -17437,7 +17624,7 @@ class TableFieldSchema {
   /// Optional.
   core.String? collation;
 
-  /// Data policy options, will replace the data_policies.
+  /// Data policies attached to this field, used for field-level access control.
   ///
   /// Optional.
   core.List<DataPolicyOption>? dataPolicies;
@@ -17552,6 +17739,15 @@ class TableFieldSchema {
   /// Optional.
   core.String? scale;
 
+  /// Precision (maximum number of total digits in base 10) for seconds of
+  /// TIMESTAMP type.
+  ///
+  /// Possible values include: * 6 (Default, for TIMESTAMP type with microsecond
+  /// precision) * 12 (For TIMESTAMP type with picosecond precision)
+  ///
+  /// Optional.
+  core.String? timestampPrecision;
+
   /// The field data type.
   ///
   /// Possible values include: * STRING * BYTES * INTEGER (or INT64) * FLOAT (or
@@ -17578,6 +17774,7 @@ class TableFieldSchema {
     this.rangeElementType,
     this.roundingMode,
     this.scale,
+    this.timestampPrecision,
     this.type,
   });
 
@@ -17628,6 +17825,7 @@ class TableFieldSchema {
                 : null,
         roundingMode: json_['roundingMode'] as core.String?,
         scale: json_['scale'] as core.String?,
+        timestampPrecision: json_['timestampPrecision'] as core.String?,
         type: json_['type'] as core.String?,
       );
 
@@ -17649,6 +17847,7 @@ class TableFieldSchema {
     if (rangeElementType != null) 'rangeElementType': rangeElementType!,
     if (roundingMode != null) 'roundingMode': roundingMode!,
     if (scale != null) 'scale': scale!,
+    if (timestampPrecision != null) 'timestampPrecision': timestampPrecision!,
     if (type != null) 'type': type!,
   };
 }
@@ -17870,6 +18069,9 @@ class TableMetadataCacheUsage {
   /// Free form human-readable reason metadata caching was unused for the job.
   core.String? explanation;
 
+  /// The column metadata index pruning statistics.
+  PruningStats? pruningStats;
+
   /// Duration since last refresh as of this job for managed tables (indicates
   /// metadata cache staleness as seen by this job).
   core.String? staleness;
@@ -17894,6 +18096,7 @@ class TableMetadataCacheUsage {
 
   TableMetadataCacheUsage({
     this.explanation,
+    this.pruningStats,
     this.staleness,
     this.tableReference,
     this.tableType,
@@ -17903,6 +18106,12 @@ class TableMetadataCacheUsage {
   TableMetadataCacheUsage.fromJson(core.Map json_)
     : this(
         explanation: json_['explanation'] as core.String?,
+        pruningStats:
+            json_.containsKey('pruningStats')
+                ? PruningStats.fromJson(
+                  json_['pruningStats'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         staleness: json_['staleness'] as core.String?,
         tableReference:
             json_.containsKey('tableReference')
@@ -17917,6 +18126,7 @@ class TableMetadataCacheUsage {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (explanation != null) 'explanation': explanation!,
+    if (pruningStats != null) 'pruningStats': pruningStats!,
     if (staleness != null) 'staleness': staleness!,
     if (tableReference != null) 'tableReference': tableReference!,
     if (tableType != null) 'tableType': tableType!,
@@ -18332,6 +18542,11 @@ class TrainingOptions {
   /// If true, enable global explanation during training.
   core.bool? enableGlobalExplain;
 
+  /// The idle TTL of the endpoint before the resources get destroyed.
+  ///
+  /// The default value is 6.5 hours.
+  core.String? endpointIdleTtl;
+
   /// Feedback type that specifies which algorithm to run for matrix
   /// factorization.
   /// Possible string values are:
@@ -18442,6 +18657,11 @@ class TrainingOptions {
   /// The target evaluation metrics to optimize the hyperparameters for.
   core.List<core.String>? hparamTuningObjectives;
 
+  /// The id of a Hugging Face model.
+  ///
+  /// For example, `google/gemma-2-2b-it`.
+  core.String? huggingFaceModelId;
+
   /// Include drift when fitting an ARIMA model.
   core.bool? includeDrift;
 
@@ -18517,6 +18737,9 @@ class TrainingOptions {
   /// - "MEAN_LOG_LOSS" : Mean log loss, used for logistic regression.
   core.String? lossType;
 
+  /// The type of the machine used to deploy and serve the model.
+  core.String? machineType;
+
   /// The maximum number of iterations in training.
   ///
   /// Used only for iterative training algorithms.
@@ -18524,6 +18747,12 @@ class TrainingOptions {
 
   /// Maximum number of trials to run in parallel.
   core.String? maxParallelTrials;
+
+  /// The maximum number of machine replicas that will be deployed on an
+  /// endpoint.
+  ///
+  /// The default value is equal to min_replica_count.
+  core.String? maxReplicaCount;
 
   /// The maximum number of time points in a time series that can be used in
   /// modeling the trend component of the time series.
@@ -18546,6 +18775,12 @@ class TrainingOptions {
   /// Used only for iterative training algorithms.
   core.double? minRelativeProgress;
 
+  /// The minimum number of machine replicas that will be always deployed on an
+  /// endpoint.
+  ///
+  /// This value must be greater than or equal to 1. The default value is 1.
+  core.String? minReplicaCount;
+
   /// Minimum split loss for boosted tree models.
   core.double? minSplitLoss;
 
@@ -18563,6 +18798,11 @@ class TrainingOptions {
 
   /// Minimum sum of instance weight needed in a child for boosted tree models.
   core.String? minTreeChildWeight;
+
+  /// The name of a Vertex model garden publisher model.
+  ///
+  /// Format is `publishers/{publisher}/models/{model}@{optional_version_id}`.
+  core.String? modelGardenModelName;
 
   /// The model registry.
   /// Possible string values are:
@@ -18621,6 +18861,31 @@ class TrainingOptions {
   /// - "RANDOMIZED" : Randomized SVD.
   /// - "AUTO" : Auto.
   core.String? pcaSolver;
+
+  /// Corresponds to the label key of a reservation resource used by Vertex AI.
+  ///
+  /// To target a SPECIFIC_RESERVATION by name, use
+  /// `compute.googleapis.com/reservation-name` as the key and specify the name
+  /// of your reservation as its value.
+  core.String? reservationAffinityKey;
+
+  /// Specifies the reservation affinity type used to configure a Vertex AI
+  /// resource.
+  ///
+  /// The default value is `NO_RESERVATION`.
+  /// Possible string values are:
+  /// - "RESERVATION_AFFINITY_TYPE_UNSPECIFIED" : Default value.
+  /// - "NO_RESERVATION" : No reservation.
+  /// - "ANY_RESERVATION" : Any reservation.
+  /// - "SPECIFIC_RESERVATION" : Specific reservation.
+  core.String? reservationAffinityType;
+
+  /// Corresponds to the label values of a reservation resource used by Vertex
+  /// AI.
+  ///
+  /// This must be the full resource name of the reservation or reservation
+  /// block.
+  core.List<core.String>? reservationAffinityValues;
 
   /// Number of paths for the sampled Shapley explain method.
   core.String? sampledShapleyNumPaths;
@@ -18732,6 +18997,7 @@ class TrainingOptions {
     this.dropout,
     this.earlyStop,
     this.enableGlobalExplain,
+    this.endpointIdleTtl,
     this.feedbackType,
     this.fitIntercept,
     this.forecastLimitLowerBound,
@@ -18741,6 +19007,7 @@ class TrainingOptions {
     this.holidayRegions,
     this.horizon,
     this.hparamTuningObjectives,
+    this.huggingFaceModelId,
     this.includeDrift,
     this.initialLearnRate,
     this.inputLabelColumns,
@@ -18757,15 +19024,19 @@ class TrainingOptions {
     this.learnRate,
     this.learnRateStrategy,
     this.lossType,
+    this.machineType,
     this.maxIterations,
     this.maxParallelTrials,
+    this.maxReplicaCount,
     this.maxTimeSeriesLength,
     this.maxTreeDepth,
     this.minAprioriSupport,
     this.minRelativeProgress,
+    this.minReplicaCount,
     this.minSplitLoss,
     this.minTimeSeriesLength,
     this.minTreeChildWeight,
+    this.modelGardenModelName,
     this.modelRegistry,
     this.modelUri,
     this.nonSeasonalOrder,
@@ -18778,6 +19049,9 @@ class TrainingOptions {
     this.optimizer,
     this.pcaExplainedVarianceRatio,
     this.pcaSolver,
+    this.reservationAffinityKey,
+    this.reservationAffinityType,
+    this.reservationAffinityValues,
     this.sampledShapleyNumPaths,
     this.scaleFeatures,
     this.standardizeFeatures,
@@ -18833,6 +19107,7 @@ class TrainingOptions {
         dropout: (json_['dropout'] as core.num?)?.toDouble(),
         earlyStop: json_['earlyStop'] as core.bool?,
         enableGlobalExplain: json_['enableGlobalExplain'] as core.bool?,
+        endpointIdleTtl: json_['endpointIdleTtl'] as core.String?,
         feedbackType: json_['feedbackType'] as core.String?,
         fitIntercept: json_['fitIntercept'] as core.bool?,
         forecastLimitLowerBound:
@@ -18853,6 +19128,7 @@ class TrainingOptions {
             (json_['hparamTuningObjectives'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
+        huggingFaceModelId: json_['huggingFaceModelId'] as core.String?,
         includeDrift: json_['includeDrift'] as core.bool?,
         initialLearnRate: (json_['initialLearnRate'] as core.num?)?.toDouble(),
         inputLabelColumns:
@@ -18880,17 +19156,21 @@ class TrainingOptions {
         learnRate: (json_['learnRate'] as core.num?)?.toDouble(),
         learnRateStrategy: json_['learnRateStrategy'] as core.String?,
         lossType: json_['lossType'] as core.String?,
+        machineType: json_['machineType'] as core.String?,
         maxIterations: json_['maxIterations'] as core.String?,
         maxParallelTrials: json_['maxParallelTrials'] as core.String?,
+        maxReplicaCount: json_['maxReplicaCount'] as core.String?,
         maxTimeSeriesLength: json_['maxTimeSeriesLength'] as core.String?,
         maxTreeDepth: json_['maxTreeDepth'] as core.String?,
         minAprioriSupport:
             (json_['minAprioriSupport'] as core.num?)?.toDouble(),
         minRelativeProgress:
             (json_['minRelativeProgress'] as core.num?)?.toDouble(),
+        minReplicaCount: json_['minReplicaCount'] as core.String?,
         minSplitLoss: (json_['minSplitLoss'] as core.num?)?.toDouble(),
         minTimeSeriesLength: json_['minTimeSeriesLength'] as core.String?,
         minTreeChildWeight: json_['minTreeChildWeight'] as core.String?,
+        modelGardenModelName: json_['modelGardenModelName'] as core.String?,
         modelRegistry: json_['modelRegistry'] as core.String?,
         modelUri: json_['modelUri'] as core.String?,
         nonSeasonalOrder:
@@ -18910,6 +19190,13 @@ class TrainingOptions {
         pcaExplainedVarianceRatio:
             (json_['pcaExplainedVarianceRatio'] as core.num?)?.toDouble(),
         pcaSolver: json_['pcaSolver'] as core.String?,
+        reservationAffinityKey: json_['reservationAffinityKey'] as core.String?,
+        reservationAffinityType:
+            json_['reservationAffinityType'] as core.String?,
+        reservationAffinityValues:
+            (json_['reservationAffinityValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         sampledShapleyNumPaths: json_['sampledShapleyNumPaths'] as core.String?,
         scaleFeatures: json_['scaleFeatures'] as core.bool?,
         standardizeFeatures: json_['standardizeFeatures'] as core.bool?,
@@ -18973,6 +19260,7 @@ class TrainingOptions {
     if (earlyStop != null) 'earlyStop': earlyStop!,
     if (enableGlobalExplain != null)
       'enableGlobalExplain': enableGlobalExplain!,
+    if (endpointIdleTtl != null) 'endpointIdleTtl': endpointIdleTtl!,
     if (feedbackType != null) 'feedbackType': feedbackType!,
     if (fitIntercept != null) 'fitIntercept': fitIntercept!,
     if (forecastLimitLowerBound != null)
@@ -18985,6 +19273,7 @@ class TrainingOptions {
     if (horizon != null) 'horizon': horizon!,
     if (hparamTuningObjectives != null)
       'hparamTuningObjectives': hparamTuningObjectives!,
+    if (huggingFaceModelId != null) 'huggingFaceModelId': huggingFaceModelId!,
     if (includeDrift != null) 'includeDrift': includeDrift!,
     if (initialLearnRate != null) 'initialLearnRate': initialLearnRate!,
     if (inputLabelColumns != null) 'inputLabelColumns': inputLabelColumns!,
@@ -19005,18 +19294,23 @@ class TrainingOptions {
     if (learnRate != null) 'learnRate': learnRate!,
     if (learnRateStrategy != null) 'learnRateStrategy': learnRateStrategy!,
     if (lossType != null) 'lossType': lossType!,
+    if (machineType != null) 'machineType': machineType!,
     if (maxIterations != null) 'maxIterations': maxIterations!,
     if (maxParallelTrials != null) 'maxParallelTrials': maxParallelTrials!,
+    if (maxReplicaCount != null) 'maxReplicaCount': maxReplicaCount!,
     if (maxTimeSeriesLength != null)
       'maxTimeSeriesLength': maxTimeSeriesLength!,
     if (maxTreeDepth != null) 'maxTreeDepth': maxTreeDepth!,
     if (minAprioriSupport != null) 'minAprioriSupport': minAprioriSupport!,
     if (minRelativeProgress != null)
       'minRelativeProgress': minRelativeProgress!,
+    if (minReplicaCount != null) 'minReplicaCount': minReplicaCount!,
     if (minSplitLoss != null) 'minSplitLoss': minSplitLoss!,
     if (minTimeSeriesLength != null)
       'minTimeSeriesLength': minTimeSeriesLength!,
     if (minTreeChildWeight != null) 'minTreeChildWeight': minTreeChildWeight!,
+    if (modelGardenModelName != null)
+      'modelGardenModelName': modelGardenModelName!,
     if (modelRegistry != null) 'modelRegistry': modelRegistry!,
     if (modelUri != null) 'modelUri': modelUri!,
     if (nonSeasonalOrder != null) 'nonSeasonalOrder': nonSeasonalOrder!,
@@ -19032,6 +19326,12 @@ class TrainingOptions {
     if (pcaExplainedVarianceRatio != null)
       'pcaExplainedVarianceRatio': pcaExplainedVarianceRatio!,
     if (pcaSolver != null) 'pcaSolver': pcaSolver!,
+    if (reservationAffinityKey != null)
+      'reservationAffinityKey': reservationAffinityKey!,
+    if (reservationAffinityType != null)
+      'reservationAffinityType': reservationAffinityType!,
+    if (reservationAffinityValues != null)
+      'reservationAffinityValues': reservationAffinityValues!,
     if (sampledShapleyNumPaths != null)
       'sampledShapleyNumPaths': sampledShapleyNumPaths!,
     if (scaleFeatures != null) 'scaleFeatures': scaleFeatures!,

@@ -1121,6 +1121,25 @@ void checkMerge(api.Merge o) {
   buildCounterMerge--;
 }
 
+core.int buildCounterMongodbChangeStreamPosition = 0;
+api.MongodbChangeStreamPosition buildMongodbChangeStreamPosition() {
+  final o = api.MongodbChangeStreamPosition();
+  buildCounterMongodbChangeStreamPosition++;
+  if (buildCounterMongodbChangeStreamPosition < 3) {
+    o.startTime = 'foo';
+  }
+  buildCounterMongodbChangeStreamPosition--;
+  return o;
+}
+
+void checkMongodbChangeStreamPosition(api.MongodbChangeStreamPosition o) {
+  buildCounterMongodbChangeStreamPosition++;
+  if (buildCounterMongodbChangeStreamPosition < 3) {
+    unittest.expect(o.startTime!, unittest.equals('foo'));
+  }
+  buildCounterMongodbChangeStreamPosition--;
+}
+
 core.List<api.MongodbDatabase> buildUnnamed17() => [
   buildMongodbDatabase(),
   buildMongodbDatabase(),
@@ -2764,6 +2783,7 @@ api.SpecificStartPosition buildSpecificStartPosition() {
   final o = api.SpecificStartPosition();
   buildCounterSpecificStartPosition++;
   if (buildCounterSpecificStartPosition < 3) {
+    o.mongodbChangeStreamPosition = buildMongodbChangeStreamPosition();
     o.mysqlGtidPosition = buildMysqlGtidPosition();
     o.mysqlLogPosition = buildMysqlLogPosition();
     o.oracleScnPosition = buildOracleScnPosition();
@@ -2776,6 +2796,7 @@ api.SpecificStartPosition buildSpecificStartPosition() {
 void checkSpecificStartPosition(api.SpecificStartPosition o) {
   buildCounterSpecificStartPosition++;
   if (buildCounterSpecificStartPosition < 3) {
+    checkMongodbChangeStreamPosition(o.mongodbChangeStreamPosition!);
     checkMysqlGtidPosition(o.mysqlGtidPosition!);
     checkMysqlLogPosition(o.mysqlLogPosition!);
     checkOracleScnPosition(o.oracleScnPosition!);
@@ -3878,6 +3899,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkMerge(od);
+    });
+  });
+
+  unittest.group('obj-schema-MongodbChangeStreamPosition', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMongodbChangeStreamPosition();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.MongodbChangeStreamPosition.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMongodbChangeStreamPosition(od);
     });
   });
 

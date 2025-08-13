@@ -28,6 +28,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsDataExchangesResource]
 ///       - [ProjectsLocationsDataExchangesListingsResource]
+///       - [ProjectsLocationsDataExchangesQueryTemplatesResource]
 ///     - [ProjectsLocationsSubscriptionsResource]
 library;
 
@@ -173,6 +174,8 @@ class ProjectsLocationsDataExchangesResource {
 
   ProjectsLocationsDataExchangesListingsResource get listings =>
       ProjectsLocationsDataExchangesListingsResource(_requester);
+  ProjectsLocationsDataExchangesQueryTemplatesResource get queryTemplates =>
+      ProjectsLocationsDataExchangesQueryTemplatesResource(_requester);
 
   ProjectsLocationsDataExchangesResource(commons.ApiRequester client)
     : _requester = client;
@@ -1105,6 +1108,325 @@ class ProjectsLocationsDataExchangesListingsResource {
   }
 }
 
+class ProjectsLocationsDataExchangesQueryTemplatesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDataExchangesQueryTemplatesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Approves a query template.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource path of the QueryTemplate. e.g.
+  /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+/queryTemplates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueryTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryTemplate> approve(
+    ApproveQueryTemplateRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':approve';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return QueryTemplate.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Creates a new QueryTemplate
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource path of the QueryTemplate. e.g.
+  /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myQueryTemplate`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+$`.
+  ///
+  /// [queryTemplateId] - Required. The ID of the QueryTemplate to create. Must
+  /// contain only Unicode letters, numbers (0-9), underscores (_). Max length:
+  /// 100 bytes.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueryTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryTemplate> create(
+    QueryTemplate request,
+    core.String parent, {
+    core.String? queryTemplateId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (queryTemplateId != null) 'queryTemplateId': [queryTemplateId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/queryTemplates';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return QueryTemplate.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a query template.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource path of the QueryTemplate. e.g.
+  /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+/queryTemplates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets a QueryTemplate
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The parent resource path of the QueryTemplate. e.g.
+  /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+/queryTemplates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueryTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryTemplate> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return QueryTemplate.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all QueryTemplates in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource path of the QueryTemplates. e.g.
+  /// `projects/myproject/locations/us/dataExchanges/123`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return in a single
+  /// response page. Leverage the page tokens to iterate through the entire
+  /// collection.
+  ///
+  /// [pageToken] - Optional. Page token, returned by a previous call, to
+  /// request the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListQueryTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListQueryTemplatesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/queryTemplates';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListQueryTemplatesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates an existing QueryTemplate
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the QueryTemplate. e.g.
+  /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+/queryTemplates/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. Field mask specifies the fields to update in the
+  /// query template resource. The fields specified in the `updateMask` are
+  /// relative to the resource and are not a full request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueryTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryTemplate> patch(
+    QueryTemplate request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return QueryTemplate.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Submits a query template for approval.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource path of the QueryTemplate. e.g.
+  /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataExchanges/\[^/\]+/queryTemplates/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueryTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryTemplate> submit(
+    SubmitQueryTemplateRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':submit';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return QueryTemplate.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsSubscriptionsResource {
   final commons.ApiRequester _requester;
 
@@ -1424,6 +1746,9 @@ class ProjectsLocationsSubscriptionsResource {
   }
 }
 
+/// Message for approving a QueryTemplate.
+typedef ApproveQueryTemplateRequest = $Empty;
+
 /// Specifies the audit configuration for a service.
 ///
 /// The configuration determines which permission types are logged, and what
@@ -1587,6 +1912,19 @@ class BigQueryDatasetSource {
   /// Optional.
   core.String? dataset;
 
+  /// Server-owned effective state of replicas.
+  ///
+  /// Contains both primary and secondary replicas. Each replica includes a
+  /// system-computed (output-only) state and primary designation.
+  ///
+  /// Output only.
+  core.List<Replica>? effectiveReplicas;
+
+  /// A list of regions where the publisher has created shared dataset replicas.
+  ///
+  /// Optional.
+  core.List<core.String>? replicaLocations;
+
   /// If set, restricted export policy will be propagated and enforced on the
   /// linked dataset.
   ///
@@ -1602,6 +1940,8 @@ class BigQueryDatasetSource {
 
   BigQueryDatasetSource({
     this.dataset,
+    this.effectiveReplicas,
+    this.replicaLocations,
     this.restrictedExportPolicy,
     this.selectedResources,
   });
@@ -1609,6 +1949,18 @@ class BigQueryDatasetSource {
   BigQueryDatasetSource.fromJson(core.Map json_)
     : this(
         dataset: json_['dataset'] as core.String?,
+        effectiveReplicas:
+            (json_['effectiveReplicas'] as core.List?)
+                ?.map(
+                  (value) => Replica.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        replicaLocations:
+            (json_['replicaLocations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         restrictedExportPolicy:
             json_.containsKey('restrictedExportPolicy')
                 ? RestrictedExportPolicy.fromJson(
@@ -1628,6 +1980,8 @@ class BigQueryDatasetSource {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (dataset != null) 'dataset': dataset!,
+    if (effectiveReplicas != null) 'effectiveReplicas': effectiveReplicas!,
+    if (replicaLocations != null) 'replicaLocations': replicaLocations!,
     if (restrictedExportPolicy != null)
       'restrictedExportPolicy': restrictedExportPolicy!,
     if (selectedResources != null) 'selectedResources': selectedResources!,
@@ -2181,12 +2535,21 @@ class DestinationDataset {
   /// Required.
   core.String? location;
 
+  /// The geographic locations where the dataset should be replicated.
+  ///
+  /// See [BigQuery locations](https://cloud.google.com/bigquery/docs/locations)
+  /// for supported locations.
+  ///
+  /// Optional.
+  core.List<core.String>? replicaLocations;
+
   DestinationDataset({
     this.datasetReference,
     this.description,
     this.friendlyName,
     this.labels,
     this.location,
+    this.replicaLocations,
   });
 
   DestinationDataset.fromJson(core.Map json_)
@@ -2204,6 +2567,10 @@ class DestinationDataset {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         location: json_['location'] as core.String?,
+        replicaLocations:
+            (json_['replicaLocations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2212,6 +2579,7 @@ class DestinationDataset {
     if (friendlyName != null) 'friendlyName': friendlyName!,
     if (labels != null) 'labels': labels!,
     if (location != null) 'location': location!,
+    if (replicaLocations != null) 'replicaLocations': replicaLocations!,
   };
 }
 
@@ -2881,6 +3249,35 @@ class ListOrgDataExchangesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
     if (dataExchanges != null) 'dataExchanges': dataExchanges!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
+/// Message for response to the list of QueryTemplates.
+class ListQueryTemplatesResponse {
+  /// A token to request the next page of results.
+  core.String? nextPageToken;
+
+  /// The list of QueryTemplates.
+  core.List<QueryTemplate>? queryTemplates;
+
+  ListQueryTemplatesResponse({this.nextPageToken, this.queryTemplates});
+
+  ListQueryTemplatesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        queryTemplates:
+            (json_['queryTemplates'] as core.List?)
+                ?.map(
+                  (value) => QueryTemplate.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (queryTemplates != null) 'queryTemplates': queryTemplates!,
   };
 }
 
@@ -3611,8 +4008,178 @@ class PushConfig {
   };
 }
 
+/// A query template is a container for sharing table-valued functions defined
+/// by contributors in a data clean room.
+class QueryTemplate {
+  /// Timestamp when the QueryTemplate was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Short description of the QueryTemplate.
+  ///
+  /// The description must not contain Unicode non-characters and C0 and C1
+  /// control codes except tabs (HT), new lines (LF), carriage returns (CR), and
+  /// page breaks (FF). Default value is an empty string. Max length: 2000
+  /// bytes.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Human-readable display name of the QueryTemplate.
+  ///
+  /// The display name must contain only Unicode letters, numbers (0-9),
+  /// underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or
+  /// end with spaces. Default value is an empty string. Max length: 63 bytes.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// Documentation describing the QueryTemplate.
+  ///
+  /// Optional.
+  core.String? documentation;
+
+  /// The resource name of the QueryTemplate.
+  ///
+  /// e.g.
+  /// `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Email or URL of the primary point of contact of the QueryTemplate.
+  ///
+  /// Max Length: 1000 bytes.
+  ///
+  /// Optional.
+  core.String? primaryContact;
+
+  /// Will be deprecated.
+  ///
+  /// Email or URL of the primary point of contact of the QueryTemplate. Max
+  /// Length: 1000 bytes.
+  ///
+  /// Optional.
+  core.String? proposer;
+
+  /// The routine associated with the QueryTemplate.
+  ///
+  /// Optional.
+  Routine? routine;
+
+  /// The QueryTemplate lifecycle state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "DRAFTED" : The QueryTemplate is in draft state.
+  /// - "PENDING" : The QueryTemplate is in pending state.
+  /// - "DELETED" : The QueryTemplate is in deleted state.
+  /// - "APPROVED" : The QueryTemplate is in approved state.
+  core.String? state;
+
+  /// Timestamp when the QueryTemplate was last modified.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  QueryTemplate({
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.documentation,
+    this.name,
+    this.primaryContact,
+    this.proposer,
+    this.routine,
+    this.state,
+    this.updateTime,
+  });
+
+  QueryTemplate.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        documentation: json_['documentation'] as core.String?,
+        name: json_['name'] as core.String?,
+        primaryContact: json_['primaryContact'] as core.String?,
+        proposer: json_['proposer'] as core.String?,
+        routine:
+            json_.containsKey('routine')
+                ? Routine.fromJson(
+                  json_['routine'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (documentation != null) 'documentation': documentation!,
+    if (name != null) 'name': name!,
+    if (primaryContact != null) 'primaryContact': primaryContact!,
+    if (proposer != null) 'proposer': proposer!,
+    if (routine != null) 'routine': routine!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
 /// Message for refreshing a subscription.
 typedef RefreshSubscriptionRequest = $Empty;
+
+/// Represents the state of a replica of a shared dataset.
+///
+/// It includes the geographic location of the replica and system-computed,
+/// output-only fields indicating its replication state and whether it is the
+/// primary replica.
+class Replica {
+  /// The geographic location where the replica resides.
+  ///
+  /// See [BigQuery locations](https://cloud.google.com/bigquery/docs/locations)
+  /// for supported locations. Eg. "us-central1".
+  ///
+  /// Output only.
+  core.String? location;
+
+  /// Indicates that this replica is the primary replica.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PRIMARY_STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "PRIMARY_REPLICA" : The replica is the primary replica.
+  core.String? primaryState;
+
+  /// Assigned by Analytics Hub based on real BigQuery replication state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "REPLICA_STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "READY_TO_USE" : The replica is backfilled and ready to use.
+  /// - "UNAVAILABLE" : The replica is unavailable, does not exist, or has not
+  /// been backfilled yet.
+  core.String? replicaState;
+
+  Replica({this.location, this.primaryState, this.replicaState});
+
+  Replica.fromJson(core.Map json_)
+    : this(
+        location: json_['location'] as core.String?,
+        primaryState: json_['primaryState'] as core.String?,
+        replicaState: json_['replicaState'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (location != null) 'location': location!,
+    if (primaryState != null) 'primaryState': primaryState!,
+    if (replicaState != null) 'replicaState': replicaState!,
+  };
+}
 
 /// Restricted export config, used to configure restricted export on linked
 /// dataset.
@@ -3736,6 +4303,35 @@ class RevokeSubscriptionRequest {
 /// Empty for now.
 typedef RevokeSubscriptionResponse = $Empty;
 
+/// Represents a bigquery routine.
+class Routine {
+  /// The definition body of the routine.
+  ///
+  /// Optional.
+  core.String? definitionBody;
+
+  /// The type of routine.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ROUTINE_TYPE_UNSPECIFIED" : Default value.
+  /// - "TABLE_VALUED_FUNCTION" : Non-built-in persistent TVF.
+  core.String? routineType;
+
+  Routine({this.definitionBody, this.routineType});
+
+  Routine.fromJson(core.Map json_)
+    : this(
+        definitionBody: json_['definitionBody'] as core.String?,
+        routineType: json_['routineType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (definitionBody != null) 'definitionBody': definitionBody!,
+    if (routineType != null) 'routineType': routineType!,
+  };
+}
+
 /// Resource in this dataset that is selectively shared.
 class SelectedResource {
   /// Format: For routine:
@@ -3849,6 +4445,9 @@ class SharingEnvironmentConfig {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
+
+/// Message for submitting a QueryTemplate.
+typedef SubmitQueryTemplateRequest = $Empty;
 
 /// Message for subscribing to a Data Exchange.
 class SubscribeDataExchangeRequest {

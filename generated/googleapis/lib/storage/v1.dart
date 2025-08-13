@@ -7270,6 +7270,12 @@ class BulkRestoreObjectsRequest {
   /// The default is false.
   core.bool? copySourceAcl;
 
+  /// Restores only the objects that were created after this time.
+  core.DateTime? createdAfterTime;
+
+  /// Restores only the objects that were created before this time.
+  core.DateTime? createdBeforeTime;
+
   /// Restores only the objects matching any of the specified glob(s).
   ///
   /// If this parameter is not specified, all objects will be restored within
@@ -7285,6 +7291,8 @@ class BulkRestoreObjectsRequest {
   BulkRestoreObjectsRequest({
     this.allowOverwrite,
     this.copySourceAcl,
+    this.createdAfterTime,
+    this.createdBeforeTime,
     this.matchGlobs,
     this.softDeletedAfterTime,
     this.softDeletedBeforeTime,
@@ -7294,6 +7302,14 @@ class BulkRestoreObjectsRequest {
     : this(
         allowOverwrite: json_['allowOverwrite'] as core.bool?,
         copySourceAcl: json_['copySourceAcl'] as core.bool?,
+        createdAfterTime:
+            json_.containsKey('createdAfterTime')
+                ? core.DateTime.parse(json_['createdAfterTime'] as core.String)
+                : null,
+        createdBeforeTime:
+            json_.containsKey('createdBeforeTime')
+                ? core.DateTime.parse(json_['createdBeforeTime'] as core.String)
+                : null,
         matchGlobs:
             (json_['matchGlobs'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -7315,6 +7331,10 @@ class BulkRestoreObjectsRequest {
   core.Map<core.String, core.dynamic> toJson() => {
     if (allowOverwrite != null) 'allowOverwrite': allowOverwrite!,
     if (copySourceAcl != null) 'copySourceAcl': copySourceAcl!,
+    if (createdAfterTime != null)
+      'createdAfterTime': createdAfterTime!.toUtc().toIso8601String(),
+    if (createdBeforeTime != null)
+      'createdBeforeTime': createdBeforeTime!.toUtc().toIso8601String(),
     if (matchGlobs != null) 'matchGlobs': matchGlobs!,
     if (softDeletedAfterTime != null)
       'softDeletedAfterTime': softDeletedAfterTime!.toUtc().toIso8601String(),

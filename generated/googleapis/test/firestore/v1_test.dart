@@ -1339,6 +1339,7 @@ api.GoogleFirestoreAdminV1Index buildGoogleFirestoreAdminV1Index() {
     o.queryScope = 'foo';
     o.shardCount = 42;
     o.state = 'foo';
+    o.unique = true;
   }
   buildCounterGoogleFirestoreAdminV1Index--;
   return o;
@@ -1355,6 +1356,7 @@ void checkGoogleFirestoreAdminV1Index(api.GoogleFirestoreAdminV1Index o) {
     unittest.expect(o.queryScope!, unittest.equals('foo'));
     unittest.expect(o.shardCount!, unittest.equals(42));
     unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.unique!, unittest.isTrue);
   }
   buildCounterGoogleFirestoreAdminV1Index--;
 }

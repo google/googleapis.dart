@@ -3128,6 +3128,7 @@ api.VmwareAdminCluster buildVmwareAdminCluster() {
     o.platformConfig = buildVmwarePlatformConfig();
     o.preparedSecrets = buildVmwareAdminPreparedSecretsConfig();
     o.privateRegistryConfig = buildVmwareAdminPrivateRegistryConfig();
+    o.proxy = buildVmwareAdminProxy();
     o.reconciling = true;
     o.state = 'foo';
     o.status = buildResourceStatus();
@@ -3165,6 +3166,7 @@ void checkVmwareAdminCluster(api.VmwareAdminCluster o) {
     checkVmwarePlatformConfig(o.platformConfig!);
     checkVmwareAdminPreparedSecretsConfig(o.preparedSecrets!);
     checkVmwareAdminPrivateRegistryConfig(o.privateRegistryConfig!);
+    checkVmwareAdminProxy(o.proxy!);
     unittest.expect(o.reconciling!, unittest.isTrue);
     unittest.expect(o.state!, unittest.equals('foo'));
     checkResourceStatus(o.status!);
@@ -3407,6 +3409,27 @@ void checkVmwareAdminPrivateRegistryConfig(
     unittest.expect(o.caCert!, unittest.equals('foo'));
   }
   buildCounterVmwareAdminPrivateRegistryConfig--;
+}
+
+core.int buildCounterVmwareAdminProxy = 0;
+api.VmwareAdminProxy buildVmwareAdminProxy() {
+  final o = api.VmwareAdminProxy();
+  buildCounterVmwareAdminProxy++;
+  if (buildCounterVmwareAdminProxy < 3) {
+    o.noProxy = 'foo';
+    o.url = 'foo';
+  }
+  buildCounterVmwareAdminProxy--;
+  return o;
+}
+
+void checkVmwareAdminProxy(api.VmwareAdminProxy o) {
+  buildCounterVmwareAdminProxy++;
+  if (buildCounterVmwareAdminProxy < 3) {
+    unittest.expect(o.noProxy!, unittest.equals('foo'));
+    unittest.expect(o.url!, unittest.equals('foo'));
+  }
+  buildCounterVmwareAdminProxy--;
 }
 
 core.List<api.VmwareIpBlock> buildUnnamed63() => [
@@ -5749,6 +5772,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkVmwareAdminPrivateRegistryConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-VmwareAdminProxy', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildVmwareAdminProxy();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.VmwareAdminProxy.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkVmwareAdminProxy(od);
     });
   });
 

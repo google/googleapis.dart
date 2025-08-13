@@ -275,6 +275,7 @@ api.Advertiser buildAdvertiser() {
     o.adServerConfig = buildAdvertiserAdServerConfig();
     o.advertiserId = 'foo';
     o.billingConfig = buildAdvertiserBillingConfig();
+    o.containsEuPoliticalAds = 'foo';
     o.creativeConfig = buildAdvertiserCreativeConfig();
     o.dataAccessConfig = buildAdvertiserDataAccessConfig();
     o.displayName = 'foo';
@@ -297,6 +298,7 @@ void checkAdvertiser(api.Advertiser o) {
     checkAdvertiserAdServerConfig(o.adServerConfig!);
     unittest.expect(o.advertiserId!, unittest.equals('foo'));
     checkAdvertiserBillingConfig(o.billingConfig!);
+    unittest.expect(o.containsEuPoliticalAds!, unittest.equals('foo'));
     checkAdvertiserCreativeConfig(o.creativeConfig!);
     checkAdvertiserDataAccessConfig(o.dataAccessConfig!);
     unittest.expect(o.displayName!, unittest.equals('foo'));
@@ -3453,6 +3455,7 @@ api.CustomBiddingAlgorithm buildCustomBiddingAlgorithm() {
     o.name = 'foo';
     o.partnerId = 'foo';
     o.sharedAdvertiserIds = buildUnnamed63();
+    o.thirdPartyOptimizationPartner = 'foo';
   }
   buildCounterCustomBiddingAlgorithm--;
   return o;
@@ -3470,6 +3473,7 @@ void checkCustomBiddingAlgorithm(api.CustomBiddingAlgorithm o) {
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.partnerId!, unittest.equals('foo'));
     checkUnnamed63(o.sharedAdvertiserIds!);
+    unittest.expect(o.thirdPartyOptimizationPartner!, unittest.equals('foo'));
   }
   buildCounterCustomBiddingAlgorithm--;
 }
@@ -4180,6 +4184,7 @@ api.DuplicateLineItemRequest buildDuplicateLineItemRequest() {
   final o = api.DuplicateLineItemRequest();
   buildCounterDuplicateLineItemRequest++;
   if (buildCounterDuplicateLineItemRequest < 3) {
+    o.containsEuPoliticalAds = 'foo';
     o.targetDisplayName = 'foo';
   }
   buildCounterDuplicateLineItemRequest--;
@@ -4189,6 +4194,7 @@ api.DuplicateLineItemRequest buildDuplicateLineItemRequest() {
 void checkDuplicateLineItemRequest(api.DuplicateLineItemRequest o) {
   buildCounterDuplicateLineItemRequest++;
   if (buildCounterDuplicateLineItemRequest < 3) {
+    unittest.expect(o.containsEuPoliticalAds!, unittest.equals('foo'));
     unittest.expect(o.targetDisplayName!, unittest.equals('foo'));
   }
   buildCounterDuplicateLineItemRequest--;
@@ -4928,6 +4934,7 @@ api.GenerateDefaultLineItemRequest buildGenerateDefaultLineItemRequest() {
   final o = api.GenerateDefaultLineItemRequest();
   buildCounterGenerateDefaultLineItemRequest++;
   if (buildCounterGenerateDefaultLineItemRequest < 3) {
+    o.containsEuPoliticalAds = 'foo';
     o.displayName = 'foo';
     o.insertionOrderId = 'foo';
     o.lineItemType = 'foo';
@@ -4940,6 +4947,7 @@ api.GenerateDefaultLineItemRequest buildGenerateDefaultLineItemRequest() {
 void checkGenerateDefaultLineItemRequest(api.GenerateDefaultLineItemRequest o) {
   buildCounterGenerateDefaultLineItemRequest++;
   if (buildCounterGenerateDefaultLineItemRequest < 3) {
+    unittest.expect(o.containsEuPoliticalAds!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.insertionOrderId!, unittest.equals('foo'));
     unittest.expect(o.lineItemType!, unittest.equals('foo'));
@@ -6113,6 +6121,7 @@ api.LineItem buildLineItem() {
     o.bidStrategy = buildBiddingStrategy();
     o.budget = buildLineItemBudget();
     o.campaignId = 'foo';
+    o.containsEuPoliticalAds = 'foo';
     o.conversionCounting = buildConversionCountingConfig();
     o.creativeIds = buildUnnamed102();
     o.displayName = 'foo';
@@ -6146,6 +6155,7 @@ void checkLineItem(api.LineItem o) {
     checkBiddingStrategy(o.bidStrategy!);
     checkLineItemBudget(o.budget!);
     unittest.expect(o.campaignId!, unittest.equals('foo'));
+    unittest.expect(o.containsEuPoliticalAds!, unittest.equals('foo'));
     checkConversionCountingConfig(o.conversionCounting!);
     checkUnnamed102(o.creativeIds!);
     unittest.expect(o.displayName!, unittest.equals('foo'));

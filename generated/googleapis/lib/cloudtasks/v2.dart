@@ -162,9 +162,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -988,6 +988,10 @@ class ProjectsLocationsQueuesTasksResource {
 
   /// Gets a task.
   ///
+  /// After a task is successfully executed or has exhausted its retry attempts,
+  /// the task is deleted. A `GetTask` request for a deleted task returns a
+  /// `NOT_FOUND` error.
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. The task name. For example:
@@ -1679,7 +1683,7 @@ class CreateTaskRequest {
   /// de-duplication. If a task's ID is identical to that of an existing task or
   /// a task that was deleted or executed recently then the call will fail with
   /// ALREADY_EXISTS. The IDs of deleted tasks are not immediately available for
-  /// reuse. It can take up to 4 hours (or 9 days if the task's queue was
+  /// reuse. It can take up to 24 hours (or 9 days if the task's queue was
   /// created using a queue.yaml or queue.xml) for the task ID to be released
   /// and made available again. Because there is an extra lookup cost to
   /// identify duplicate task names, these CreateTask calls have significantly
@@ -3055,9 +3059,10 @@ class UriOverride {
   /// Port override.
   ///
   /// When specified, replaces the port part of the task URI. For instance, for
-  /// a URI http://www.google.com/foo and port=123, the overridden URI becomes
-  /// http://www.google.com:123/foo. Note that the port value must be a positive
-  /// integer. Setting the port to 0 (Zero) clears the URI port.
+  /// a URI "https://www.example.com/example" and port=123, the overridden URI
+  /// becomes "https://www.example.com:123/example". Note that the port value
+  /// must be a positive integer. Setting the port to 0 (Zero) clears the URI
+  /// port.
   core.String? port;
 
   /// URI query.
@@ -3072,10 +3077,10 @@ class UriOverride {
   /// (HTTP or HTTPS).
   /// Possible string values are:
   /// - "SCHEME_UNSPECIFIED" : Scheme unspecified. Defaults to HTTPS.
-  /// - "HTTP" : Convert the scheme to HTTP, e.g., https://www.google.ca will
-  /// change to http://www.google.ca.
-  /// - "HTTPS" : Convert the scheme to HTTPS, e.g., http://www.google.ca will
-  /// change to https://www.google.ca.
+  /// - "HTTP" : Convert the scheme to HTTP, e.g., "https://www.example.com"
+  /// will change to "http://www.example.com".
+  /// - "HTTPS" : Convert the scheme to HTTPS, e.g., "http://www.example.com"
+  /// will change to "https://www.example.com".
   core.String? scheme;
 
   /// URI Override Enforce Mode When specified, determines the Target

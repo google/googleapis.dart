@@ -127,9 +127,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1869,10 +1869,25 @@ class BackupCollection {
   /// Output only.
   core.String? kmsKey;
 
+  /// The last time a backup was created in the backup collection.
+  ///
+  /// Output only.
+  core.String? lastBackupTime;
+
   /// Identifier.
   ///
   /// Full resource path of the backup collection.
   core.String? name;
+
+  /// Total number of backups in the backup collection.
+  ///
+  /// Output only.
+  core.String? totalBackupCount;
+
+  /// Total size of all backups in the backup collection.
+  ///
+  /// Output only.
+  core.String? totalBackupSizeBytes;
 
   /// System assigned unique identifier of the backup collection.
   ///
@@ -1884,7 +1899,10 @@ class BackupCollection {
     this.clusterUid,
     this.createTime,
     this.kmsKey,
+    this.lastBackupTime,
     this.name,
+    this.totalBackupCount,
+    this.totalBackupSizeBytes,
     this.uid,
   });
 
@@ -1894,7 +1912,10 @@ class BackupCollection {
         clusterUid: json_['clusterUid'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         kmsKey: json_['kmsKey'] as core.String?,
+        lastBackupTime: json_['lastBackupTime'] as core.String?,
         name: json_['name'] as core.String?,
+        totalBackupCount: json_['totalBackupCount'] as core.String?,
+        totalBackupSizeBytes: json_['totalBackupSizeBytes'] as core.String?,
         uid: json_['uid'] as core.String?,
       );
 
@@ -1903,7 +1924,11 @@ class BackupCollection {
     if (clusterUid != null) 'clusterUid': clusterUid!,
     if (createTime != null) 'createTime': createTime!,
     if (kmsKey != null) 'kmsKey': kmsKey!,
+    if (lastBackupTime != null) 'lastBackupTime': lastBackupTime!,
     if (name != null) 'name': name!,
+    if (totalBackupCount != null) 'totalBackupCount': totalBackupCount!,
+    if (totalBackupSizeBytes != null)
+      'totalBackupSizeBytes': totalBackupSizeBytes!,
     if (uid != null) 'uid': uid!,
   };
 }
@@ -1976,14 +2001,12 @@ class CertificateAuthority {
 
 /// A cluster instance.
 class Cluster {
-  /// Allows customers to specify if they are okay with deploying a multi-zone
-  /// cluster in less than 3 zones.
-  ///
-  /// Once set, if there is a zonal outage during the cluster creation, the
-  /// cluster will only be deployed in 2 zones, and stay within the 2 zones for
-  /// its lifecycle.
+  /// Deprecated, do not use.
   ///
   /// Optional. Immutable.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? allowFewerZonesDeployment;
 
   /// If true, cluster endpoints that are created and registered by customers
@@ -2064,6 +2087,11 @@ class Cluster {
   ///
   /// Optional.
   core.String? kmsKey;
+
+  /// Labels to represent user-provided metadata.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
 
   /// ClusterMaintenancePolicy determines when to allow or deny updates.
   ///
@@ -2236,6 +2264,7 @@ class Cluster {
     this.encryptionInfo,
     this.gcsSource,
     this.kmsKey,
+    this.labels,
     this.maintenancePolicy,
     this.maintenanceSchedule,
     this.managedBackupSource,
@@ -2316,6 +2345,9 @@ class Cluster {
                 )
                 : null,
         kmsKey: json_['kmsKey'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
         maintenancePolicy:
             json_.containsKey('maintenancePolicy')
                 ? ClusterMaintenancePolicy.fromJson(
@@ -2420,6 +2452,7 @@ class Cluster {
     if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
     if (gcsSource != null) 'gcsSource': gcsSource!,
     if (kmsKey != null) 'kmsKey': kmsKey!,
+    if (labels != null) 'labels': labels!,
     if (maintenancePolicy != null) 'maintenancePolicy': maintenancePolicy!,
     if (maintenanceSchedule != null)
       'maintenanceSchedule': maintenanceSchedule!,

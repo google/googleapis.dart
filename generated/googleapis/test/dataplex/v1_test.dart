@@ -1519,6 +1519,192 @@ void checkGoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions(
   buildCounterGoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions--;
 }
 
+core.int buildCounterGoogleCloudDataplexV1DataDocumentationResult = 0;
+api.GoogleCloudDataplexV1DataDocumentationResult
+buildGoogleCloudDataplexV1DataDocumentationResult() {
+  final o = api.GoogleCloudDataplexV1DataDocumentationResult();
+  buildCounterGoogleCloudDataplexV1DataDocumentationResult++;
+  if (buildCounterGoogleCloudDataplexV1DataDocumentationResult < 3) {
+    o.tableResult =
+        buildGoogleCloudDataplexV1DataDocumentationResultTableResult();
+  }
+  buildCounterGoogleCloudDataplexV1DataDocumentationResult--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1DataDocumentationResult(
+  api.GoogleCloudDataplexV1DataDocumentationResult o,
+) {
+  buildCounterGoogleCloudDataplexV1DataDocumentationResult++;
+  if (buildCounterGoogleCloudDataplexV1DataDocumentationResult < 3) {
+    checkGoogleCloudDataplexV1DataDocumentationResultTableResult(
+      o.tableResult!,
+    );
+  }
+  buildCounterGoogleCloudDataplexV1DataDocumentationResult--;
+}
+
+core.List<api.GoogleCloudDataplexV1DataDocumentationResultField>
+buildUnnamed20() => [
+  buildGoogleCloudDataplexV1DataDocumentationResultField(),
+  buildGoogleCloudDataplexV1DataDocumentationResultField(),
+];
+
+void checkUnnamed20(
+  core.List<api.GoogleCloudDataplexV1DataDocumentationResultField> o,
+) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDataplexV1DataDocumentationResultField(o[0]);
+  checkGoogleCloudDataplexV1DataDocumentationResultField(o[1]);
+}
+
+core.int buildCounterGoogleCloudDataplexV1DataDocumentationResultField = 0;
+api.GoogleCloudDataplexV1DataDocumentationResultField
+buildGoogleCloudDataplexV1DataDocumentationResultField() {
+  final o = api.GoogleCloudDataplexV1DataDocumentationResultField();
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultField++;
+  if (buildCounterGoogleCloudDataplexV1DataDocumentationResultField < 3) {
+    o.description = 'foo';
+    o.fields = buildUnnamed20();
+    o.name = 'foo';
+  }
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultField--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1DataDocumentationResultField(
+  api.GoogleCloudDataplexV1DataDocumentationResultField o,
+) {
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultField++;
+  if (buildCounterGoogleCloudDataplexV1DataDocumentationResultField < 3) {
+    unittest.expect(o.description!, unittest.equals('foo'));
+    checkUnnamed20(o.fields!);
+    unittest.expect(o.name!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultField--;
+}
+
+core.int buildCounterGoogleCloudDataplexV1DataDocumentationResultQuery = 0;
+api.GoogleCloudDataplexV1DataDocumentationResultQuery
+buildGoogleCloudDataplexV1DataDocumentationResultQuery() {
+  final o = api.GoogleCloudDataplexV1DataDocumentationResultQuery();
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultQuery++;
+  if (buildCounterGoogleCloudDataplexV1DataDocumentationResultQuery < 3) {
+    o.description = 'foo';
+    o.sql = 'foo';
+  }
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultQuery--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1DataDocumentationResultQuery(
+  api.GoogleCloudDataplexV1DataDocumentationResultQuery o,
+) {
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultQuery++;
+  if (buildCounterGoogleCloudDataplexV1DataDocumentationResultQuery < 3) {
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.sql!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultQuery--;
+}
+
+core.List<api.GoogleCloudDataplexV1DataDocumentationResultField>
+buildUnnamed21() => [
+  buildGoogleCloudDataplexV1DataDocumentationResultField(),
+  buildGoogleCloudDataplexV1DataDocumentationResultField(),
+];
+
+void checkUnnamed21(
+  core.List<api.GoogleCloudDataplexV1DataDocumentationResultField> o,
+) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDataplexV1DataDocumentationResultField(o[0]);
+  checkGoogleCloudDataplexV1DataDocumentationResultField(o[1]);
+}
+
+core.int buildCounterGoogleCloudDataplexV1DataDocumentationResultSchema = 0;
+api.GoogleCloudDataplexV1DataDocumentationResultSchema
+buildGoogleCloudDataplexV1DataDocumentationResultSchema() {
+  final o = api.GoogleCloudDataplexV1DataDocumentationResultSchema();
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultSchema++;
+  if (buildCounterGoogleCloudDataplexV1DataDocumentationResultSchema < 3) {
+    o.fields = buildUnnamed21();
+  }
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultSchema--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1DataDocumentationResultSchema(
+  api.GoogleCloudDataplexV1DataDocumentationResultSchema o,
+) {
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultSchema++;
+  if (buildCounterGoogleCloudDataplexV1DataDocumentationResultSchema < 3) {
+    checkUnnamed21(o.fields!);
+  }
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultSchema--;
+}
+
+core.List<api.GoogleCloudDataplexV1DataDocumentationResultQuery>
+buildUnnamed22() => [
+  buildGoogleCloudDataplexV1DataDocumentationResultQuery(),
+  buildGoogleCloudDataplexV1DataDocumentationResultQuery(),
+];
+
+void checkUnnamed22(
+  core.List<api.GoogleCloudDataplexV1DataDocumentationResultQuery> o,
+) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDataplexV1DataDocumentationResultQuery(o[0]);
+  checkGoogleCloudDataplexV1DataDocumentationResultQuery(o[1]);
+}
+
+core.int buildCounterGoogleCloudDataplexV1DataDocumentationResultTableResult =
+    0;
+api.GoogleCloudDataplexV1DataDocumentationResultTableResult
+buildGoogleCloudDataplexV1DataDocumentationResultTableResult() {
+  final o = api.GoogleCloudDataplexV1DataDocumentationResultTableResult();
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultTableResult++;
+  if (buildCounterGoogleCloudDataplexV1DataDocumentationResultTableResult < 3) {
+    o.name = 'foo';
+    o.overview = 'foo';
+    o.queries = buildUnnamed22();
+    o.schema = buildGoogleCloudDataplexV1DataDocumentationResultSchema();
+  }
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultTableResult--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1DataDocumentationResultTableResult(
+  api.GoogleCloudDataplexV1DataDocumentationResultTableResult o,
+) {
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultTableResult++;
+  if (buildCounterGoogleCloudDataplexV1DataDocumentationResultTableResult < 3) {
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.overview!, unittest.equals('foo'));
+    checkUnnamed22(o.queries!);
+    checkGoogleCloudDataplexV1DataDocumentationResultSchema(o.schema!);
+  }
+  buildCounterGoogleCloudDataplexV1DataDocumentationResultTableResult--;
+}
+
+core.int buildCounterGoogleCloudDataplexV1DataDocumentationSpec = 0;
+api.GoogleCloudDataplexV1DataDocumentationSpec
+buildGoogleCloudDataplexV1DataDocumentationSpec() {
+  final o = api.GoogleCloudDataplexV1DataDocumentationSpec();
+  buildCounterGoogleCloudDataplexV1DataDocumentationSpec++;
+  if (buildCounterGoogleCloudDataplexV1DataDocumentationSpec < 3) {}
+  buildCounterGoogleCloudDataplexV1DataDocumentationSpec--;
+  return o;
+}
+
+void checkGoogleCloudDataplexV1DataDocumentationSpec(
+  api.GoogleCloudDataplexV1DataDocumentationSpec o,
+) {
+  buildCounterGoogleCloudDataplexV1DataDocumentationSpec++;
+  if (buildCounterGoogleCloudDataplexV1DataDocumentationSpec < 3) {}
+  buildCounterGoogleCloudDataplexV1DataDocumentationSpec--;
+}
+
 core.int buildCounterGoogleCloudDataplexV1DataProfileResult = 0;
 api.GoogleCloudDataplexV1DataProfileResult
 buildGoogleCloudDataplexV1DataProfileResult() {
@@ -1610,12 +1796,12 @@ checkGoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportRe
 }
 
 core.List<api.GoogleCloudDataplexV1DataProfileResultProfileField>
-buildUnnamed20() => [
+buildUnnamed23() => [
   buildGoogleCloudDataplexV1DataProfileResultProfileField(),
   buildGoogleCloudDataplexV1DataProfileResultProfileField(),
 ];
 
-void checkUnnamed20(
+void checkUnnamed23(
   core.List<api.GoogleCloudDataplexV1DataProfileResultProfileField> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -1629,7 +1815,7 @@ buildGoogleCloudDataplexV1DataProfileResultProfile() {
   final o = api.GoogleCloudDataplexV1DataProfileResultProfile();
   buildCounterGoogleCloudDataplexV1DataProfileResultProfile++;
   if (buildCounterGoogleCloudDataplexV1DataProfileResultProfile < 3) {
-    o.fields = buildUnnamed20();
+    o.fields = buildUnnamed23();
   }
   buildCounterGoogleCloudDataplexV1DataProfileResultProfile--;
   return o;
@@ -1640,7 +1826,7 @@ void checkGoogleCloudDataplexV1DataProfileResultProfile(
 ) {
   buildCounterGoogleCloudDataplexV1DataProfileResultProfile++;
   if (buildCounterGoogleCloudDataplexV1DataProfileResultProfile < 3) {
-    checkUnnamed20(o.fields!);
+    checkUnnamed23(o.fields!);
   }
   buildCounterGoogleCloudDataplexV1DataProfileResultProfile--;
 }
@@ -1679,12 +1865,12 @@ void checkGoogleCloudDataplexV1DataProfileResultProfileField(
 core.List<
   api.GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue
 >
-buildUnnamed21() => [
+buildUnnamed24() => [
   buildGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue(),
   buildGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue(),
 ];
 
-void checkUnnamed21(
+void checkUnnamed24(
   core.List<
     api.GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue
   >
@@ -1715,7 +1901,7 @@ buildGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo() {
     o.nullRatio = 42.0;
     o.stringProfile =
         buildGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo();
-    o.topNValues = buildUnnamed21();
+    o.topNValues = buildUnnamed24();
   }
   buildCounterGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo--;
   return o;
@@ -1738,14 +1924,14 @@ void checkGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo(
     checkGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo(
       o.stringProfile!,
     );
-    checkUnnamed21(o.topNValues!);
+    checkUnnamed24(o.topNValues!);
   }
   buildCounterGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo--;
 }
 
-core.List<core.double> buildUnnamed22() => [42.0, 42.0];
+core.List<core.double> buildUnnamed25() => [42.0, 42.0];
 
-void checkUnnamed22(core.List<core.double> o) {
+void checkUnnamed25(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -1764,7 +1950,7 @@ buildGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInf
     o.average = 42.0;
     o.max = 42.0;
     o.min = 42.0;
-    o.quartiles = buildUnnamed22();
+    o.quartiles = buildUnnamed25();
     o.standardDeviation = 42.0;
   }
   buildCounterGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo--;
@@ -1782,15 +1968,15 @@ checkGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInf
     unittest.expect(o.average!, unittest.equals(42.0));
     unittest.expect(o.max!, unittest.equals(42.0));
     unittest.expect(o.min!, unittest.equals(42.0));
-    checkUnnamed22(o.quartiles!);
+    checkUnnamed25(o.quartiles!);
     unittest.expect(o.standardDeviation!, unittest.equals(42.0));
   }
   buildCounterGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo--;
 }
 
-core.List<core.String> buildUnnamed23() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed26() => ['foo', 'foo'];
 
-void checkUnnamed23(core.List<core.String> o) {
+void checkUnnamed26(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1809,7 +1995,7 @@ buildGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldIn
     o.average = 42.0;
     o.max = 'foo';
     o.min = 'foo';
-    o.quartiles = buildUnnamed23();
+    o.quartiles = buildUnnamed26();
     o.standardDeviation = 42.0;
   }
   buildCounterGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo--;
@@ -1827,7 +2013,7 @@ checkGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldIn
     unittest.expect(o.average!, unittest.equals(42.0));
     unittest.expect(o.max!, unittest.equals('foo'));
     unittest.expect(o.min!, unittest.equals('foo'));
-    checkUnnamed23(o.quartiles!);
+    checkUnnamed26(o.quartiles!);
     unittest.expect(o.standardDeviation!, unittest.equals(42.0));
   }
   buildCounterGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo--;
@@ -1983,9 +2169,9 @@ void checkGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport(
   buildCounterGoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport--;
 }
 
-core.List<core.String> buildUnnamed24() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed27() => ['foo', 'foo'];
 
-void checkUnnamed24(core.List<core.String> o) {
+void checkUnnamed27(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1997,7 +2183,7 @@ buildGoogleCloudDataplexV1DataProfileSpecSelectedFields() {
   final o = api.GoogleCloudDataplexV1DataProfileSpecSelectedFields();
   buildCounterGoogleCloudDataplexV1DataProfileSpecSelectedFields++;
   if (buildCounterGoogleCloudDataplexV1DataProfileSpecSelectedFields < 3) {
-    o.fieldNames = buildUnnamed24();
+    o.fieldNames = buildUnnamed27();
   }
   buildCounterGoogleCloudDataplexV1DataProfileSpecSelectedFields--;
   return o;
@@ -2008,18 +2194,18 @@ void checkGoogleCloudDataplexV1DataProfileSpecSelectedFields(
 ) {
   buildCounterGoogleCloudDataplexV1DataProfileSpecSelectedFields++;
   if (buildCounterGoogleCloudDataplexV1DataProfileSpecSelectedFields < 3) {
-    checkUnnamed24(o.fieldNames!);
+    checkUnnamed27(o.fieldNames!);
   }
   buildCounterGoogleCloudDataplexV1DataProfileSpecSelectedFields--;
 }
 
 core.List<api.GoogleCloudDataplexV1DataQualityDimensionResult>
-buildUnnamed25() => [
+buildUnnamed28() => [
   buildGoogleCloudDataplexV1DataQualityDimensionResult(),
   buildGoogleCloudDataplexV1DataQualityDimensionResult(),
 ];
 
-void checkUnnamed25(
+void checkUnnamed28(
   core.List<api.GoogleCloudDataplexV1DataQualityDimensionResult> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2034,7 +2220,7 @@ buildGoogleCloudDataplexV1DataQualityColumnResult() {
   buildCounterGoogleCloudDataplexV1DataQualityColumnResult++;
   if (buildCounterGoogleCloudDataplexV1DataQualityColumnResult < 3) {
     o.column = 'foo';
-    o.dimensions = buildUnnamed25();
+    o.dimensions = buildUnnamed28();
     o.passed = true;
     o.score = 42.0;
   }
@@ -2048,7 +2234,7 @@ void checkGoogleCloudDataplexV1DataQualityColumnResult(
   buildCounterGoogleCloudDataplexV1DataQualityColumnResult++;
   if (buildCounterGoogleCloudDataplexV1DataQualityColumnResult < 3) {
     unittest.expect(o.column!, unittest.equals('foo'));
-    checkUnnamed25(o.dimensions!);
+    checkUnnamed28(o.dimensions!);
     unittest.expect(o.passed!, unittest.isTrue);
     unittest.expect(o.score!, unittest.equals(42.0));
   }
@@ -2103,13 +2289,13 @@ void checkGoogleCloudDataplexV1DataQualityDimensionResult(
   buildCounterGoogleCloudDataplexV1DataQualityDimensionResult--;
 }
 
-core.List<api.GoogleCloudDataplexV1DataQualityColumnResult> buildUnnamed26() =>
+core.List<api.GoogleCloudDataplexV1DataQualityColumnResult> buildUnnamed29() =>
     [
       buildGoogleCloudDataplexV1DataQualityColumnResult(),
       buildGoogleCloudDataplexV1DataQualityColumnResult(),
     ];
 
-void checkUnnamed26(
+void checkUnnamed29(
   core.List<api.GoogleCloudDataplexV1DataQualityColumnResult> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2118,12 +2304,12 @@ void checkUnnamed26(
 }
 
 core.List<api.GoogleCloudDataplexV1DataQualityDimensionResult>
-buildUnnamed27() => [
+buildUnnamed30() => [
   buildGoogleCloudDataplexV1DataQualityDimensionResult(),
   buildGoogleCloudDataplexV1DataQualityDimensionResult(),
 ];
 
-void checkUnnamed27(
+void checkUnnamed30(
   core.List<api.GoogleCloudDataplexV1DataQualityDimensionResult> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2131,12 +2317,12 @@ void checkUnnamed27(
   checkGoogleCloudDataplexV1DataQualityDimensionResult(o[1]);
 }
 
-core.List<api.GoogleCloudDataplexV1DataQualityRuleResult> buildUnnamed28() => [
+core.List<api.GoogleCloudDataplexV1DataQualityRuleResult> buildUnnamed31() => [
   buildGoogleCloudDataplexV1DataQualityRuleResult(),
   buildGoogleCloudDataplexV1DataQualityRuleResult(),
 ];
 
-void checkUnnamed28(
+void checkUnnamed31(
   core.List<api.GoogleCloudDataplexV1DataQualityRuleResult> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2152,13 +2338,13 @@ buildGoogleCloudDataplexV1DataQualityResult() {
   if (buildCounterGoogleCloudDataplexV1DataQualityResult < 3) {
     o.catalogPublishingStatus =
         buildGoogleCloudDataplexV1DataScanCatalogPublishingStatus();
-    o.columns = buildUnnamed26();
-    o.dimensions = buildUnnamed27();
+    o.columns = buildUnnamed29();
+    o.dimensions = buildUnnamed30();
     o.passed = true;
     o.postScanActionsResult =
         buildGoogleCloudDataplexV1DataQualityResultPostScanActionsResult();
     o.rowCount = 'foo';
-    o.rules = buildUnnamed28();
+    o.rules = buildUnnamed31();
     o.scannedData = buildGoogleCloudDataplexV1ScannedData();
     o.score = 42.0;
   }
@@ -2174,14 +2360,14 @@ void checkGoogleCloudDataplexV1DataQualityResult(
     checkGoogleCloudDataplexV1DataScanCatalogPublishingStatus(
       o.catalogPublishingStatus!,
     );
-    checkUnnamed26(o.columns!);
-    checkUnnamed27(o.dimensions!);
+    checkUnnamed29(o.columns!);
+    checkUnnamed30(o.dimensions!);
     unittest.expect(o.passed!, unittest.isTrue);
     checkGoogleCloudDataplexV1DataQualityResultPostScanActionsResult(
       o.postScanActionsResult!,
     );
     unittest.expect(o.rowCount!, unittest.equals('foo'));
-    checkUnnamed28(o.rules!);
+    checkUnnamed31(o.rules!);
     checkGoogleCloudDataplexV1ScannedData(o.scannedData!);
     unittest.expect(o.score!, unittest.equals(42.0));
   }
@@ -2450,9 +2636,9 @@ void checkGoogleCloudDataplexV1DataQualityRuleRowConditionExpectation(
   buildCounterGoogleCloudDataplexV1DataQualityRuleRowConditionExpectation--;
 }
 
-core.List<core.String> buildUnnamed29() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed32() => ['foo', 'foo'];
 
-void checkUnnamed29(core.List<core.String> o) {
+void checkUnnamed32(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2464,7 +2650,7 @@ buildGoogleCloudDataplexV1DataQualityRuleSetExpectation() {
   final o = api.GoogleCloudDataplexV1DataQualityRuleSetExpectation();
   buildCounterGoogleCloudDataplexV1DataQualityRuleSetExpectation++;
   if (buildCounterGoogleCloudDataplexV1DataQualityRuleSetExpectation < 3) {
-    o.values = buildUnnamed29();
+    o.values = buildUnnamed32();
   }
   buildCounterGoogleCloudDataplexV1DataQualityRuleSetExpectation--;
   return o;
@@ -2475,7 +2661,7 @@ void checkGoogleCloudDataplexV1DataQualityRuleSetExpectation(
 ) {
   buildCounterGoogleCloudDataplexV1DataQualityRuleSetExpectation++;
   if (buildCounterGoogleCloudDataplexV1DataQualityRuleSetExpectation < 3) {
-    checkUnnamed29(o.values!);
+    checkUnnamed32(o.values!);
   }
   buildCounterGoogleCloudDataplexV1DataQualityRuleSetExpectation--;
 }
@@ -2581,12 +2767,12 @@ void checkGoogleCloudDataplexV1DataQualityRuleUniquenessExpectation(
   buildCounterGoogleCloudDataplexV1DataQualityRuleUniquenessExpectation--;
 }
 
-core.List<api.GoogleCloudDataplexV1DataQualityRule> buildUnnamed30() => [
+core.List<api.GoogleCloudDataplexV1DataQualityRule> buildUnnamed33() => [
   buildGoogleCloudDataplexV1DataQualityRule(),
   buildGoogleCloudDataplexV1DataQualityRule(),
 ];
 
-void checkUnnamed30(core.List<api.GoogleCloudDataplexV1DataQualityRule> o) {
+void checkUnnamed33(core.List<api.GoogleCloudDataplexV1DataQualityRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1DataQualityRule(o[0]);
   checkGoogleCloudDataplexV1DataQualityRule(o[1]);
@@ -2602,7 +2788,7 @@ buildGoogleCloudDataplexV1DataQualitySpec() {
     o.postScanActions =
         buildGoogleCloudDataplexV1DataQualitySpecPostScanActions();
     o.rowFilter = 'foo';
-    o.rules = buildUnnamed30();
+    o.rules = buildUnnamed33();
     o.samplingPercent = 42.0;
   }
   buildCounterGoogleCloudDataplexV1DataQualitySpec--;
@@ -2619,7 +2805,7 @@ void checkGoogleCloudDataplexV1DataQualitySpec(
       o.postScanActions!,
     );
     unittest.expect(o.rowFilter!, unittest.equals('foo'));
-    checkUnnamed30(o.rules!);
+    checkUnnamed33(o.rules!);
     unittest.expect(o.samplingPercent!, unittest.equals(42.0));
   }
   buildCounterGoogleCloudDataplexV1DataQualitySpec--;
@@ -2773,9 +2959,9 @@ void checkGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport(
   buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport--;
 }
 
-core.List<core.String> buildUnnamed31() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed34() => ['foo', 'foo'];
 
-void checkUnnamed31(core.List<core.String> o) {
+void checkUnnamed34(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2789,7 +2975,7 @@ buildGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients() {
   buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients++;
   if (buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients <
       3) {
-    o.emails = buildUnnamed31();
+    o.emails = buildUnnamed34();
   }
   buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients--;
   return o;
@@ -2801,7 +2987,7 @@ void checkGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients(
   buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients++;
   if (buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients <
       3) {
-    checkUnnamed31(o.emails!);
+    checkUnnamed34(o.emails!);
   }
   buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients--;
 }
@@ -2835,9 +3021,9 @@ checkGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger(
   buildCounterGoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger--;
 }
 
-core.Map<core.String, core.String> buildUnnamed32() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed35() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed32(core.Map<core.String, core.String> o) {
+void checkUnnamed35(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -2852,6 +3038,9 @@ api.GoogleCloudDataplexV1DataScan buildGoogleCloudDataplexV1DataScan() {
     o.data = buildGoogleCloudDataplexV1DataSource();
     o.dataDiscoveryResult = buildGoogleCloudDataplexV1DataDiscoveryResult();
     o.dataDiscoverySpec = buildGoogleCloudDataplexV1DataDiscoverySpec();
+    o.dataDocumentationResult =
+        buildGoogleCloudDataplexV1DataDocumentationResult();
+    o.dataDocumentationSpec = buildGoogleCloudDataplexV1DataDocumentationSpec();
     o.dataProfileResult = buildGoogleCloudDataplexV1DataProfileResult();
     o.dataProfileSpec = buildGoogleCloudDataplexV1DataProfileSpec();
     o.dataQualityResult = buildGoogleCloudDataplexV1DataQualityResult();
@@ -2860,7 +3049,7 @@ api.GoogleCloudDataplexV1DataScan buildGoogleCloudDataplexV1DataScan() {
     o.displayName = 'foo';
     o.executionSpec = buildGoogleCloudDataplexV1DataScanExecutionSpec();
     o.executionStatus = buildGoogleCloudDataplexV1DataScanExecutionStatus();
-    o.labels = buildUnnamed32();
+    o.labels = buildUnnamed35();
     o.name = 'foo';
     o.state = 'foo';
     o.type = 'foo';
@@ -2878,6 +3067,10 @@ void checkGoogleCloudDataplexV1DataScan(api.GoogleCloudDataplexV1DataScan o) {
     checkGoogleCloudDataplexV1DataSource(o.data!);
     checkGoogleCloudDataplexV1DataDiscoveryResult(o.dataDiscoveryResult!);
     checkGoogleCloudDataplexV1DataDiscoverySpec(o.dataDiscoverySpec!);
+    checkGoogleCloudDataplexV1DataDocumentationResult(
+      o.dataDocumentationResult!,
+    );
+    checkGoogleCloudDataplexV1DataDocumentationSpec(o.dataDocumentationSpec!);
     checkGoogleCloudDataplexV1DataProfileResult(o.dataProfileResult!);
     checkGoogleCloudDataplexV1DataProfileSpec(o.dataProfileSpec!);
     checkGoogleCloudDataplexV1DataQualityResult(o.dataQualityResult!);
@@ -2886,7 +3079,7 @@ void checkGoogleCloudDataplexV1DataScan(api.GoogleCloudDataplexV1DataScan o) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
     checkGoogleCloudDataplexV1DataScanExecutionSpec(o.executionSpec!);
     checkGoogleCloudDataplexV1DataScanExecutionStatus(o.executionStatus!);
-    checkUnnamed32(o.labels!);
+    checkUnnamed35(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
     unittest.expect(o.type!, unittest.equals('foo'));
@@ -2976,6 +3169,9 @@ api.GoogleCloudDataplexV1DataScanJob buildGoogleCloudDataplexV1DataScanJob() {
     o.createTime = 'foo';
     o.dataDiscoveryResult = buildGoogleCloudDataplexV1DataDiscoveryResult();
     o.dataDiscoverySpec = buildGoogleCloudDataplexV1DataDiscoverySpec();
+    o.dataDocumentationResult =
+        buildGoogleCloudDataplexV1DataDocumentationResult();
+    o.dataDocumentationSpec = buildGoogleCloudDataplexV1DataDocumentationSpec();
     o.dataProfileResult = buildGoogleCloudDataplexV1DataProfileResult();
     o.dataProfileSpec = buildGoogleCloudDataplexV1DataProfileSpec();
     o.dataQualityResult = buildGoogleCloudDataplexV1DataQualityResult();
@@ -3000,6 +3196,10 @@ void checkGoogleCloudDataplexV1DataScanJob(
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkGoogleCloudDataplexV1DataDiscoveryResult(o.dataDiscoveryResult!);
     checkGoogleCloudDataplexV1DataDiscoverySpec(o.dataDiscoverySpec!);
+    checkGoogleCloudDataplexV1DataDocumentationResult(
+      o.dataDocumentationResult!,
+    );
+    checkGoogleCloudDataplexV1DataDocumentationSpec(o.dataDocumentationSpec!);
     checkGoogleCloudDataplexV1DataProfileResult(o.dataProfileResult!);
     checkGoogleCloudDataplexV1DataProfileSpec(o.dataProfileSpec!);
     checkGoogleCloudDataplexV1DataQualityResult(o.dataQualityResult!);
@@ -3038,9 +3238,9 @@ void checkGoogleCloudDataplexV1DataSource(
   buildCounterGoogleCloudDataplexV1DataSource--;
 }
 
-core.Map<core.String, core.String> buildUnnamed33() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed36() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed33(core.Map<core.String, core.String> o) {
+void checkUnnamed36(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3057,7 +3257,7 @@ api.GoogleCloudDataplexV1DataTaxonomy buildGoogleCloudDataplexV1DataTaxonomy() {
     o.description = 'foo';
     o.displayName = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed33();
+    o.labels = buildUnnamed36();
     o.name = 'foo';
     o.uid = 'foo';
     o.updateTime = 'foo';
@@ -3077,7 +3277,7 @@ void checkGoogleCloudDataplexV1DataTaxonomy(
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
-    checkUnnamed33(o.labels!);
+    checkUnnamed36(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
@@ -3254,12 +3454,12 @@ void checkGoogleCloudDataplexV1EntityCompatibilityStatusCompatibility(
   buildCounterGoogleCloudDataplexV1EntityCompatibilityStatusCompatibility--;
 }
 
-core.Map<core.String, api.GoogleCloudDataplexV1Aspect> buildUnnamed34() => {
+core.Map<core.String, api.GoogleCloudDataplexV1Aspect> buildUnnamed37() => {
   'x': buildGoogleCloudDataplexV1Aspect(),
   'y': buildGoogleCloudDataplexV1Aspect(),
 };
 
-void checkUnnamed34(core.Map<core.String, api.GoogleCloudDataplexV1Aspect> o) {
+void checkUnnamed37(core.Map<core.String, api.GoogleCloudDataplexV1Aspect> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1Aspect(o['x']!);
   checkGoogleCloudDataplexV1Aspect(o['y']!);
@@ -3270,7 +3470,7 @@ api.GoogleCloudDataplexV1Entry buildGoogleCloudDataplexV1Entry() {
   final o = api.GoogleCloudDataplexV1Entry();
   buildCounterGoogleCloudDataplexV1Entry++;
   if (buildCounterGoogleCloudDataplexV1Entry < 3) {
-    o.aspects = buildUnnamed34();
+    o.aspects = buildUnnamed37();
     o.createTime = 'foo';
     o.entrySource = buildGoogleCloudDataplexV1EntrySource();
     o.entryType = 'foo';
@@ -3286,7 +3486,7 @@ api.GoogleCloudDataplexV1Entry buildGoogleCloudDataplexV1Entry() {
 void checkGoogleCloudDataplexV1Entry(api.GoogleCloudDataplexV1Entry o) {
   buildCounterGoogleCloudDataplexV1Entry++;
   if (buildCounterGoogleCloudDataplexV1Entry < 3) {
-    checkUnnamed34(o.aspects!);
+    checkUnnamed37(o.aspects!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkGoogleCloudDataplexV1EntrySource(o.entrySource!);
     unittest.expect(o.entryType!, unittest.equals('foo'));
@@ -3298,9 +3498,9 @@ void checkGoogleCloudDataplexV1Entry(api.GoogleCloudDataplexV1Entry o) {
   buildCounterGoogleCloudDataplexV1Entry--;
 }
 
-core.Map<core.String, core.String> buildUnnamed35() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed38() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed35(core.Map<core.String, core.String> o) {
+void checkUnnamed38(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3315,7 +3515,7 @@ api.GoogleCloudDataplexV1EntryGroup buildGoogleCloudDataplexV1EntryGroup() {
     o.description = 'foo';
     o.displayName = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed35();
+    o.labels = buildUnnamed38();
     o.name = 'foo';
     o.transferStatus = 'foo';
     o.uid = 'foo';
@@ -3334,7 +3534,7 @@ void checkGoogleCloudDataplexV1EntryGroup(
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
-    checkUnnamed35(o.labels!);
+    checkUnnamed38(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.transferStatus!, unittest.equals('foo'));
     unittest.expect(o.uid!, unittest.equals('foo'));
@@ -3343,13 +3543,13 @@ void checkGoogleCloudDataplexV1EntryGroup(
   buildCounterGoogleCloudDataplexV1EntryGroup--;
 }
 
-core.List<api.GoogleCloudDataplexV1EntryLinkEntryReference> buildUnnamed36() =>
+core.List<api.GoogleCloudDataplexV1EntryLinkEntryReference> buildUnnamed39() =>
     [
       buildGoogleCloudDataplexV1EntryLinkEntryReference(),
       buildGoogleCloudDataplexV1EntryLinkEntryReference(),
     ];
 
-void checkUnnamed36(
+void checkUnnamed39(
   core.List<api.GoogleCloudDataplexV1EntryLinkEntryReference> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -3364,7 +3564,7 @@ api.GoogleCloudDataplexV1EntryLink buildGoogleCloudDataplexV1EntryLink() {
   if (buildCounterGoogleCloudDataplexV1EntryLink < 3) {
     o.createTime = 'foo';
     o.entryLinkType = 'foo';
-    o.entryReferences = buildUnnamed36();
+    o.entryReferences = buildUnnamed39();
     o.name = 'foo';
     o.updateTime = 'foo';
   }
@@ -3377,7 +3577,7 @@ void checkGoogleCloudDataplexV1EntryLink(api.GoogleCloudDataplexV1EntryLink o) {
   if (buildCounterGoogleCloudDataplexV1EntryLink < 3) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.entryLinkType!, unittest.equals('foo'));
-    checkUnnamed36(o.entryReferences!);
+    checkUnnamed39(o.entryReferences!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
@@ -3410,20 +3610,20 @@ void checkGoogleCloudDataplexV1EntryLinkEntryReference(
   buildCounterGoogleCloudDataplexV1EntryLinkEntryReference--;
 }
 
-core.List<api.GoogleCloudDataplexV1EntrySourceAncestor> buildUnnamed37() => [
+core.List<api.GoogleCloudDataplexV1EntrySourceAncestor> buildUnnamed40() => [
   buildGoogleCloudDataplexV1EntrySourceAncestor(),
   buildGoogleCloudDataplexV1EntrySourceAncestor(),
 ];
 
-void checkUnnamed37(core.List<api.GoogleCloudDataplexV1EntrySourceAncestor> o) {
+void checkUnnamed40(core.List<api.GoogleCloudDataplexV1EntrySourceAncestor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1EntrySourceAncestor(o[0]);
   checkGoogleCloudDataplexV1EntrySourceAncestor(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed38() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed41() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed38(core.Map<core.String, core.String> o) {
+void checkUnnamed41(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3434,11 +3634,11 @@ api.GoogleCloudDataplexV1EntrySource buildGoogleCloudDataplexV1EntrySource() {
   final o = api.GoogleCloudDataplexV1EntrySource();
   buildCounterGoogleCloudDataplexV1EntrySource++;
   if (buildCounterGoogleCloudDataplexV1EntrySource < 3) {
-    o.ancestors = buildUnnamed37();
+    o.ancestors = buildUnnamed40();
     o.createTime = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
-    o.labels = buildUnnamed38();
+    o.labels = buildUnnamed41();
     o.location = 'foo';
     o.platform = 'foo';
     o.resource = 'foo';
@@ -3454,11 +3654,11 @@ void checkGoogleCloudDataplexV1EntrySource(
 ) {
   buildCounterGoogleCloudDataplexV1EntrySource++;
   if (buildCounterGoogleCloudDataplexV1EntrySource < 3) {
-    checkUnnamed37(o.ancestors!);
+    checkUnnamed40(o.ancestors!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed38(o.labels!);
+    checkUnnamed41(o.labels!);
     unittest.expect(o.location!, unittest.equals('foo'));
     unittest.expect(o.platform!, unittest.equals('foo'));
     unittest.expect(o.resource!, unittest.equals('foo'));
@@ -3492,28 +3692,28 @@ void checkGoogleCloudDataplexV1EntrySourceAncestor(
   buildCounterGoogleCloudDataplexV1EntrySourceAncestor--;
 }
 
-core.Map<core.String, core.String> buildUnnamed39() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed42() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed39(core.Map<core.String, core.String> o) {
+void checkUnnamed42(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.GoogleCloudDataplexV1EntryTypeAspectInfo> buildUnnamed40() => [
+core.List<api.GoogleCloudDataplexV1EntryTypeAspectInfo> buildUnnamed43() => [
   buildGoogleCloudDataplexV1EntryTypeAspectInfo(),
   buildGoogleCloudDataplexV1EntryTypeAspectInfo(),
 ];
 
-void checkUnnamed40(core.List<api.GoogleCloudDataplexV1EntryTypeAspectInfo> o) {
+void checkUnnamed43(core.List<api.GoogleCloudDataplexV1EntryTypeAspectInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1EntryTypeAspectInfo(o[0]);
   checkGoogleCloudDataplexV1EntryTypeAspectInfo(o[1]);
 }
 
-core.List<core.String> buildUnnamed41() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed44() => ['foo', 'foo'];
 
-void checkUnnamed41(core.List<core.String> o) {
+void checkUnnamed44(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3529,12 +3729,12 @@ api.GoogleCloudDataplexV1EntryType buildGoogleCloudDataplexV1EntryType() {
     o.description = 'foo';
     o.displayName = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed39();
+    o.labels = buildUnnamed42();
     o.name = 'foo';
     o.platform = 'foo';
-    o.requiredAspects = buildUnnamed40();
+    o.requiredAspects = buildUnnamed43();
     o.system = 'foo';
-    o.typeAliases = buildUnnamed41();
+    o.typeAliases = buildUnnamed44();
     o.uid = 'foo';
     o.updateTime = 'foo';
   }
@@ -3550,12 +3750,12 @@ void checkGoogleCloudDataplexV1EntryType(api.GoogleCloudDataplexV1EntryType o) {
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
-    checkUnnamed39(o.labels!);
+    checkUnnamed42(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.platform!, unittest.equals('foo'));
-    checkUnnamed40(o.requiredAspects!);
+    checkUnnamed43(o.requiredAspects!);
     unittest.expect(o.system!, unittest.equals('foo'));
-    checkUnnamed41(o.typeAliases!);
+    checkUnnamed44(o.typeAliases!);
     unittest.expect(o.uid!, unittest.equals('foo'));
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
@@ -3606,9 +3806,9 @@ void checkGoogleCloudDataplexV1EntryTypeAuthorization(
   buildCounterGoogleCloudDataplexV1EntryTypeAuthorization--;
 }
 
-core.Map<core.String, core.String> buildUnnamed42() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed45() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed42(core.Map<core.String, core.String> o) {
+void checkUnnamed45(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3625,7 +3825,7 @@ api.GoogleCloudDataplexV1Environment buildGoogleCloudDataplexV1Environment() {
     o.endpoints = buildGoogleCloudDataplexV1EnvironmentEndpoints();
     o.infrastructureSpec =
         buildGoogleCloudDataplexV1EnvironmentInfrastructureSpec();
-    o.labels = buildUnnamed42();
+    o.labels = buildUnnamed45();
     o.name = 'foo';
     o.sessionSpec = buildGoogleCloudDataplexV1EnvironmentSessionSpec();
     o.sessionStatus = buildGoogleCloudDataplexV1EnvironmentSessionStatus();
@@ -3649,7 +3849,7 @@ void checkGoogleCloudDataplexV1Environment(
     checkGoogleCloudDataplexV1EnvironmentInfrastructureSpec(
       o.infrastructureSpec!,
     );
-    checkUnnamed42(o.labels!);
+    checkUnnamed45(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleCloudDataplexV1EnvironmentSessionSpec(o.sessionSpec!);
     checkGoogleCloudDataplexV1EnvironmentSessionStatus(o.sessionStatus!);
@@ -3745,25 +3945,25 @@ void checkGoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources(
   buildCounterGoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources--;
 }
 
-core.List<core.String> buildUnnamed43() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed46() => ['foo', 'foo'];
 
-void checkUnnamed43(core.List<core.String> o) {
+void checkUnnamed46(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.String> buildUnnamed44() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed47() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed44(core.Map<core.String, core.String> o) {
+void checkUnnamed47(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed45() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed48() => ['foo', 'foo'];
 
-void checkUnnamed45(core.List<core.String> o) {
+void checkUnnamed48(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3780,9 +3980,9 @@ buildGoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime() {
   if (buildCounterGoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime <
       3) {
     o.imageVersion = 'foo';
-    o.javaLibraries = buildUnnamed43();
-    o.properties = buildUnnamed44();
-    o.pythonPackages = buildUnnamed45();
+    o.javaLibraries = buildUnnamed46();
+    o.properties = buildUnnamed47();
+    o.pythonPackages = buildUnnamed48();
   }
   buildCounterGoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime--;
   return o;
@@ -3795,9 +3995,9 @@ void checkGoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime(
   if (buildCounterGoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime <
       3) {
     unittest.expect(o.imageVersion!, unittest.equals('foo'));
-    checkUnnamed43(o.javaLibraries!);
-    checkUnnamed44(o.properties!);
-    checkUnnamed45(o.pythonPackages!);
+    checkUnnamed46(o.javaLibraries!);
+    checkUnnamed47(o.properties!);
+    checkUnnamed48(o.pythonPackages!);
   }
   buildCounterGoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime--;
 }
@@ -3866,12 +4066,12 @@ void checkGoogleCloudDataplexV1GenerateDataQualityRulesRequest(
   buildCounterGoogleCloudDataplexV1GenerateDataQualityRulesRequest--;
 }
 
-core.List<api.GoogleCloudDataplexV1DataQualityRule> buildUnnamed46() => [
+core.List<api.GoogleCloudDataplexV1DataQualityRule> buildUnnamed49() => [
   buildGoogleCloudDataplexV1DataQualityRule(),
   buildGoogleCloudDataplexV1DataQualityRule(),
 ];
 
-void checkUnnamed46(core.List<api.GoogleCloudDataplexV1DataQualityRule> o) {
+void checkUnnamed49(core.List<api.GoogleCloudDataplexV1DataQualityRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1DataQualityRule(o[0]);
   checkGoogleCloudDataplexV1DataQualityRule(o[1]);
@@ -3883,7 +4083,7 @@ buildGoogleCloudDataplexV1GenerateDataQualityRulesResponse() {
   final o = api.GoogleCloudDataplexV1GenerateDataQualityRulesResponse();
   buildCounterGoogleCloudDataplexV1GenerateDataQualityRulesResponse++;
   if (buildCounterGoogleCloudDataplexV1GenerateDataQualityRulesResponse < 3) {
-    o.rule = buildUnnamed46();
+    o.rule = buildUnnamed49();
   }
   buildCounterGoogleCloudDataplexV1GenerateDataQualityRulesResponse--;
   return o;
@@ -3894,14 +4094,14 @@ void checkGoogleCloudDataplexV1GenerateDataQualityRulesResponse(
 ) {
   buildCounterGoogleCloudDataplexV1GenerateDataQualityRulesResponse++;
   if (buildCounterGoogleCloudDataplexV1GenerateDataQualityRulesResponse < 3) {
-    checkUnnamed46(o.rule!);
+    checkUnnamed49(o.rule!);
   }
   buildCounterGoogleCloudDataplexV1GenerateDataQualityRulesResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed47() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed50() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed47(core.Map<core.String, core.String> o) {
+void checkUnnamed50(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3917,7 +4117,7 @@ api.GoogleCloudDataplexV1Glossary buildGoogleCloudDataplexV1Glossary() {
     o.description = 'foo';
     o.displayName = 'foo';
     o.etag = 'foo';
-    o.labels = buildUnnamed47();
+    o.labels = buildUnnamed50();
     o.name = 'foo';
     o.termCount = 42;
     o.uid = 'foo';
@@ -3935,7 +4135,7 @@ void checkGoogleCloudDataplexV1Glossary(api.GoogleCloudDataplexV1Glossary o) {
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
-    checkUnnamed47(o.labels!);
+    checkUnnamed50(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.termCount!, unittest.equals(42));
     unittest.expect(o.uid!, unittest.equals('foo'));
@@ -3944,9 +4144,9 @@ void checkGoogleCloudDataplexV1Glossary(api.GoogleCloudDataplexV1Glossary o) {
   buildCounterGoogleCloudDataplexV1Glossary--;
 }
 
-core.Map<core.String, core.String> buildUnnamed48() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed51() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed48(core.Map<core.String, core.String> o) {
+void checkUnnamed51(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3961,7 +4161,7 @@ buildGoogleCloudDataplexV1GlossaryCategory() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
-    o.labels = buildUnnamed48();
+    o.labels = buildUnnamed51();
     o.name = 'foo';
     o.parent = 'foo';
     o.uid = 'foo';
@@ -3979,7 +4179,7 @@ void checkGoogleCloudDataplexV1GlossaryCategory(
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed48(o.labels!);
+    checkUnnamed51(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.parent!, unittest.equals('foo'));
     unittest.expect(o.uid!, unittest.equals('foo'));
@@ -3988,9 +4188,9 @@ void checkGoogleCloudDataplexV1GlossaryCategory(
   buildCounterGoogleCloudDataplexV1GlossaryCategory--;
 }
 
-core.Map<core.String, core.String> buildUnnamed49() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed52() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed49(core.Map<core.String, core.String> o) {
+void checkUnnamed52(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -4004,7 +4204,7 @@ api.GoogleCloudDataplexV1GlossaryTerm buildGoogleCloudDataplexV1GlossaryTerm() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
-    o.labels = buildUnnamed49();
+    o.labels = buildUnnamed52();
     o.name = 'foo';
     o.parent = 'foo';
     o.uid = 'foo';
@@ -4022,7 +4222,7 @@ void checkGoogleCloudDataplexV1GlossaryTerm(
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed49(o.labels!);
+    checkUnnamed52(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.parent!, unittest.equals('foo'));
     unittest.expect(o.uid!, unittest.equals('foo'));
@@ -4031,9 +4231,9 @@ void checkGoogleCloudDataplexV1GlossaryTerm(
   buildCounterGoogleCloudDataplexV1GlossaryTerm--;
 }
 
-core.Map<core.String, core.String> buildUnnamed50() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed53() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed50(core.Map<core.String, core.String> o) {
+void checkUnnamed53(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -4046,7 +4246,7 @@ api.GoogleCloudDataplexV1Job buildGoogleCloudDataplexV1Job() {
   if (buildCounterGoogleCloudDataplexV1Job < 3) {
     o.endTime = 'foo';
     o.executionSpec = buildGoogleCloudDataplexV1TaskExecutionSpec();
-    o.labels = buildUnnamed50();
+    o.labels = buildUnnamed53();
     o.message = 'foo';
     o.name = 'foo';
     o.retryCount = 42;
@@ -4066,7 +4266,7 @@ void checkGoogleCloudDataplexV1Job(api.GoogleCloudDataplexV1Job o) {
   if (buildCounterGoogleCloudDataplexV1Job < 3) {
     unittest.expect(o.endTime!, unittest.equals('foo'));
     checkGoogleCloudDataplexV1TaskExecutionSpec(o.executionSpec!);
-    checkUnnamed50(o.labels!);
+    checkUnnamed53(o.labels!);
     unittest.expect(o.message!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.retryCount!, unittest.equals(42));
@@ -4080,9 +4280,9 @@ void checkGoogleCloudDataplexV1Job(api.GoogleCloudDataplexV1Job o) {
   buildCounterGoogleCloudDataplexV1Job--;
 }
 
-core.Map<core.String, core.String> buildUnnamed51() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed54() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed51(core.Map<core.String, core.String> o) {
+void checkUnnamed54(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -4097,7 +4297,7 @@ api.GoogleCloudDataplexV1Lake buildGoogleCloudDataplexV1Lake() {
     o.createTime = 'foo';
     o.description = 'foo';
     o.displayName = 'foo';
-    o.labels = buildUnnamed51();
+    o.labels = buildUnnamed54();
     o.metastore = buildGoogleCloudDataplexV1LakeMetastore();
     o.metastoreStatus = buildGoogleCloudDataplexV1LakeMetastoreStatus();
     o.name = 'foo';
@@ -4117,7 +4317,7 @@ void checkGoogleCloudDataplexV1Lake(api.GoogleCloudDataplexV1Lake o) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed51(o.labels!);
+    checkUnnamed54(o.labels!);
     checkGoogleCloudDataplexV1LakeMetastore(o.metastore!);
     checkGoogleCloudDataplexV1LakeMetastoreStatus(o.metastoreStatus!);
     unittest.expect(o.name!, unittest.equals('foo'));
@@ -4179,12 +4379,12 @@ void checkGoogleCloudDataplexV1LakeMetastoreStatus(
   buildCounterGoogleCloudDataplexV1LakeMetastoreStatus--;
 }
 
-core.List<api.GoogleCloudDataplexV1Action> buildUnnamed52() => [
+core.List<api.GoogleCloudDataplexV1Action> buildUnnamed55() => [
   buildGoogleCloudDataplexV1Action(),
   buildGoogleCloudDataplexV1Action(),
 ];
 
-void checkUnnamed52(core.List<api.GoogleCloudDataplexV1Action> o) {
+void checkUnnamed55(core.List<api.GoogleCloudDataplexV1Action> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1Action(o[0]);
   checkGoogleCloudDataplexV1Action(o[1]);
@@ -4196,7 +4396,7 @@ buildGoogleCloudDataplexV1ListActionsResponse() {
   final o = api.GoogleCloudDataplexV1ListActionsResponse();
   buildCounterGoogleCloudDataplexV1ListActionsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListActionsResponse < 3) {
-    o.actions = buildUnnamed52();
+    o.actions = buildUnnamed55();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDataplexV1ListActionsResponse--;
@@ -4208,26 +4408,26 @@ void checkGoogleCloudDataplexV1ListActionsResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListActionsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListActionsResponse < 3) {
-    checkUnnamed52(o.actions!);
+    checkUnnamed55(o.actions!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDataplexV1ListActionsResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1AspectType> buildUnnamed53() => [
+core.List<api.GoogleCloudDataplexV1AspectType> buildUnnamed56() => [
   buildGoogleCloudDataplexV1AspectType(),
   buildGoogleCloudDataplexV1AspectType(),
 ];
 
-void checkUnnamed53(core.List<api.GoogleCloudDataplexV1AspectType> o) {
+void checkUnnamed56(core.List<api.GoogleCloudDataplexV1AspectType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1AspectType(o[0]);
   checkGoogleCloudDataplexV1AspectType(o[1]);
 }
 
-core.List<core.String> buildUnnamed54() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed57() => ['foo', 'foo'];
 
-void checkUnnamed54(core.List<core.String> o) {
+void checkUnnamed57(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4239,9 +4439,9 @@ buildGoogleCloudDataplexV1ListAspectTypesResponse() {
   final o = api.GoogleCloudDataplexV1ListAspectTypesResponse();
   buildCounterGoogleCloudDataplexV1ListAspectTypesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListAspectTypesResponse < 3) {
-    o.aspectTypes = buildUnnamed53();
+    o.aspectTypes = buildUnnamed56();
     o.nextPageToken = 'foo';
-    o.unreachableLocations = buildUnnamed54();
+    o.unreachableLocations = buildUnnamed57();
   }
   buildCounterGoogleCloudDataplexV1ListAspectTypesResponse--;
   return o;
@@ -4252,19 +4452,19 @@ void checkGoogleCloudDataplexV1ListAspectTypesResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListAspectTypesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListAspectTypesResponse < 3) {
-    checkUnnamed53(o.aspectTypes!);
+    checkUnnamed56(o.aspectTypes!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed54(o.unreachableLocations!);
+    checkUnnamed57(o.unreachableLocations!);
   }
   buildCounterGoogleCloudDataplexV1ListAspectTypesResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1Asset> buildUnnamed55() => [
+core.List<api.GoogleCloudDataplexV1Asset> buildUnnamed58() => [
   buildGoogleCloudDataplexV1Asset(),
   buildGoogleCloudDataplexV1Asset(),
 ];
 
-void checkUnnamed55(core.List<api.GoogleCloudDataplexV1Asset> o) {
+void checkUnnamed58(core.List<api.GoogleCloudDataplexV1Asset> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1Asset(o[0]);
   checkGoogleCloudDataplexV1Asset(o[1]);
@@ -4276,7 +4476,7 @@ buildGoogleCloudDataplexV1ListAssetsResponse() {
   final o = api.GoogleCloudDataplexV1ListAssetsResponse();
   buildCounterGoogleCloudDataplexV1ListAssetsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListAssetsResponse < 3) {
-    o.assets = buildUnnamed55();
+    o.assets = buildUnnamed58();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDataplexV1ListAssetsResponse--;
@@ -4288,18 +4488,18 @@ void checkGoogleCloudDataplexV1ListAssetsResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListAssetsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListAssetsResponse < 3) {
-    checkUnnamed55(o.assets!);
+    checkUnnamed58(o.assets!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDataplexV1ListAssetsResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1Content> buildUnnamed56() => [
+core.List<api.GoogleCloudDataplexV1Content> buildUnnamed59() => [
   buildGoogleCloudDataplexV1Content(),
   buildGoogleCloudDataplexV1Content(),
 ];
 
-void checkUnnamed56(core.List<api.GoogleCloudDataplexV1Content> o) {
+void checkUnnamed59(core.List<api.GoogleCloudDataplexV1Content> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1Content(o[0]);
   checkGoogleCloudDataplexV1Content(o[1]);
@@ -4311,7 +4511,7 @@ buildGoogleCloudDataplexV1ListContentResponse() {
   final o = api.GoogleCloudDataplexV1ListContentResponse();
   buildCounterGoogleCloudDataplexV1ListContentResponse++;
   if (buildCounterGoogleCloudDataplexV1ListContentResponse < 3) {
-    o.content = buildUnnamed56();
+    o.content = buildUnnamed59();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDataplexV1ListContentResponse--;
@@ -4323,18 +4523,18 @@ void checkGoogleCloudDataplexV1ListContentResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListContentResponse++;
   if (buildCounterGoogleCloudDataplexV1ListContentResponse < 3) {
-    checkUnnamed56(o.content!);
+    checkUnnamed59(o.content!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDataplexV1ListContentResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1DataAttributeBinding> buildUnnamed57() => [
+core.List<api.GoogleCloudDataplexV1DataAttributeBinding> buildUnnamed60() => [
   buildGoogleCloudDataplexV1DataAttributeBinding(),
   buildGoogleCloudDataplexV1DataAttributeBinding(),
 ];
 
-void checkUnnamed57(
+void checkUnnamed60(
   core.List<api.GoogleCloudDataplexV1DataAttributeBinding> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -4342,9 +4542,9 @@ void checkUnnamed57(
   checkGoogleCloudDataplexV1DataAttributeBinding(o[1]);
 }
 
-core.List<core.String> buildUnnamed58() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed61() => ['foo', 'foo'];
 
-void checkUnnamed58(core.List<core.String> o) {
+void checkUnnamed61(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4356,9 +4556,9 @@ buildGoogleCloudDataplexV1ListDataAttributeBindingsResponse() {
   final o = api.GoogleCloudDataplexV1ListDataAttributeBindingsResponse();
   buildCounterGoogleCloudDataplexV1ListDataAttributeBindingsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListDataAttributeBindingsResponse < 3) {
-    o.dataAttributeBindings = buildUnnamed57();
+    o.dataAttributeBindings = buildUnnamed60();
     o.nextPageToken = 'foo';
-    o.unreachableLocations = buildUnnamed58();
+    o.unreachableLocations = buildUnnamed61();
   }
   buildCounterGoogleCloudDataplexV1ListDataAttributeBindingsResponse--;
   return o;
@@ -4369,27 +4569,27 @@ void checkGoogleCloudDataplexV1ListDataAttributeBindingsResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListDataAttributeBindingsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListDataAttributeBindingsResponse < 3) {
-    checkUnnamed57(o.dataAttributeBindings!);
+    checkUnnamed60(o.dataAttributeBindings!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed58(o.unreachableLocations!);
+    checkUnnamed61(o.unreachableLocations!);
   }
   buildCounterGoogleCloudDataplexV1ListDataAttributeBindingsResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1DataAttribute> buildUnnamed59() => [
+core.List<api.GoogleCloudDataplexV1DataAttribute> buildUnnamed62() => [
   buildGoogleCloudDataplexV1DataAttribute(),
   buildGoogleCloudDataplexV1DataAttribute(),
 ];
 
-void checkUnnamed59(core.List<api.GoogleCloudDataplexV1DataAttribute> o) {
+void checkUnnamed62(core.List<api.GoogleCloudDataplexV1DataAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1DataAttribute(o[0]);
   checkGoogleCloudDataplexV1DataAttribute(o[1]);
 }
 
-core.List<core.String> buildUnnamed60() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed63() => ['foo', 'foo'];
 
-void checkUnnamed60(core.List<core.String> o) {
+void checkUnnamed63(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4401,9 +4601,9 @@ buildGoogleCloudDataplexV1ListDataAttributesResponse() {
   final o = api.GoogleCloudDataplexV1ListDataAttributesResponse();
   buildCounterGoogleCloudDataplexV1ListDataAttributesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListDataAttributesResponse < 3) {
-    o.dataAttributes = buildUnnamed59();
+    o.dataAttributes = buildUnnamed62();
     o.nextPageToken = 'foo';
-    o.unreachableLocations = buildUnnamed60();
+    o.unreachableLocations = buildUnnamed63();
   }
   buildCounterGoogleCloudDataplexV1ListDataAttributesResponse--;
   return o;
@@ -4414,19 +4614,19 @@ void checkGoogleCloudDataplexV1ListDataAttributesResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListDataAttributesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListDataAttributesResponse < 3) {
-    checkUnnamed59(o.dataAttributes!);
+    checkUnnamed62(o.dataAttributes!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed60(o.unreachableLocations!);
+    checkUnnamed63(o.unreachableLocations!);
   }
   buildCounterGoogleCloudDataplexV1ListDataAttributesResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1DataScanJob> buildUnnamed61() => [
+core.List<api.GoogleCloudDataplexV1DataScanJob> buildUnnamed64() => [
   buildGoogleCloudDataplexV1DataScanJob(),
   buildGoogleCloudDataplexV1DataScanJob(),
 ];
 
-void checkUnnamed61(core.List<api.GoogleCloudDataplexV1DataScanJob> o) {
+void checkUnnamed64(core.List<api.GoogleCloudDataplexV1DataScanJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1DataScanJob(o[0]);
   checkGoogleCloudDataplexV1DataScanJob(o[1]);
@@ -4438,7 +4638,7 @@ buildGoogleCloudDataplexV1ListDataScanJobsResponse() {
   final o = api.GoogleCloudDataplexV1ListDataScanJobsResponse();
   buildCounterGoogleCloudDataplexV1ListDataScanJobsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListDataScanJobsResponse < 3) {
-    o.dataScanJobs = buildUnnamed61();
+    o.dataScanJobs = buildUnnamed64();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDataplexV1ListDataScanJobsResponse--;
@@ -4450,26 +4650,26 @@ void checkGoogleCloudDataplexV1ListDataScanJobsResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListDataScanJobsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListDataScanJobsResponse < 3) {
-    checkUnnamed61(o.dataScanJobs!);
+    checkUnnamed64(o.dataScanJobs!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDataplexV1ListDataScanJobsResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1DataScan> buildUnnamed62() => [
+core.List<api.GoogleCloudDataplexV1DataScan> buildUnnamed65() => [
   buildGoogleCloudDataplexV1DataScan(),
   buildGoogleCloudDataplexV1DataScan(),
 ];
 
-void checkUnnamed62(core.List<api.GoogleCloudDataplexV1DataScan> o) {
+void checkUnnamed65(core.List<api.GoogleCloudDataplexV1DataScan> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1DataScan(o[0]);
   checkGoogleCloudDataplexV1DataScan(o[1]);
 }
 
-core.List<core.String> buildUnnamed63() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed66() => ['foo', 'foo'];
 
-void checkUnnamed63(core.List<core.String> o) {
+void checkUnnamed66(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4481,9 +4681,9 @@ buildGoogleCloudDataplexV1ListDataScansResponse() {
   final o = api.GoogleCloudDataplexV1ListDataScansResponse();
   buildCounterGoogleCloudDataplexV1ListDataScansResponse++;
   if (buildCounterGoogleCloudDataplexV1ListDataScansResponse < 3) {
-    o.dataScans = buildUnnamed62();
+    o.dataScans = buildUnnamed65();
     o.nextPageToken = 'foo';
-    o.unreachable = buildUnnamed63();
+    o.unreachable = buildUnnamed66();
   }
   buildCounterGoogleCloudDataplexV1ListDataScansResponse--;
   return o;
@@ -4494,27 +4694,27 @@ void checkGoogleCloudDataplexV1ListDataScansResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListDataScansResponse++;
   if (buildCounterGoogleCloudDataplexV1ListDataScansResponse < 3) {
-    checkUnnamed62(o.dataScans!);
+    checkUnnamed65(o.dataScans!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed63(o.unreachable!);
+    checkUnnamed66(o.unreachable!);
   }
   buildCounterGoogleCloudDataplexV1ListDataScansResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1DataTaxonomy> buildUnnamed64() => [
+core.List<api.GoogleCloudDataplexV1DataTaxonomy> buildUnnamed67() => [
   buildGoogleCloudDataplexV1DataTaxonomy(),
   buildGoogleCloudDataplexV1DataTaxonomy(),
 ];
 
-void checkUnnamed64(core.List<api.GoogleCloudDataplexV1DataTaxonomy> o) {
+void checkUnnamed67(core.List<api.GoogleCloudDataplexV1DataTaxonomy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1DataTaxonomy(o[0]);
   checkGoogleCloudDataplexV1DataTaxonomy(o[1]);
 }
 
-core.List<core.String> buildUnnamed65() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed68() => ['foo', 'foo'];
 
-void checkUnnamed65(core.List<core.String> o) {
+void checkUnnamed68(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4526,9 +4726,9 @@ buildGoogleCloudDataplexV1ListDataTaxonomiesResponse() {
   final o = api.GoogleCloudDataplexV1ListDataTaxonomiesResponse();
   buildCounterGoogleCloudDataplexV1ListDataTaxonomiesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListDataTaxonomiesResponse < 3) {
-    o.dataTaxonomies = buildUnnamed64();
+    o.dataTaxonomies = buildUnnamed67();
     o.nextPageToken = 'foo';
-    o.unreachableLocations = buildUnnamed65();
+    o.unreachableLocations = buildUnnamed68();
   }
   buildCounterGoogleCloudDataplexV1ListDataTaxonomiesResponse--;
   return o;
@@ -4539,27 +4739,27 @@ void checkGoogleCloudDataplexV1ListDataTaxonomiesResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListDataTaxonomiesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListDataTaxonomiesResponse < 3) {
-    checkUnnamed64(o.dataTaxonomies!);
+    checkUnnamed67(o.dataTaxonomies!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed65(o.unreachableLocations!);
+    checkUnnamed68(o.unreachableLocations!);
   }
   buildCounterGoogleCloudDataplexV1ListDataTaxonomiesResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1EncryptionConfig> buildUnnamed66() => [
+core.List<api.GoogleCloudDataplexV1EncryptionConfig> buildUnnamed69() => [
   buildGoogleCloudDataplexV1EncryptionConfig(),
   buildGoogleCloudDataplexV1EncryptionConfig(),
 ];
 
-void checkUnnamed66(core.List<api.GoogleCloudDataplexV1EncryptionConfig> o) {
+void checkUnnamed69(core.List<api.GoogleCloudDataplexV1EncryptionConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1EncryptionConfig(o[0]);
   checkGoogleCloudDataplexV1EncryptionConfig(o[1]);
 }
 
-core.List<core.String> buildUnnamed67() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed70() => ['foo', 'foo'];
 
-void checkUnnamed67(core.List<core.String> o) {
+void checkUnnamed70(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4571,9 +4771,9 @@ buildGoogleCloudDataplexV1ListEncryptionConfigsResponse() {
   final o = api.GoogleCloudDataplexV1ListEncryptionConfigsResponse();
   buildCounterGoogleCloudDataplexV1ListEncryptionConfigsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListEncryptionConfigsResponse < 3) {
-    o.encryptionConfigs = buildUnnamed66();
+    o.encryptionConfigs = buildUnnamed69();
     o.nextPageToken = 'foo';
-    o.unreachableLocations = buildUnnamed67();
+    o.unreachableLocations = buildUnnamed70();
   }
   buildCounterGoogleCloudDataplexV1ListEncryptionConfigsResponse--;
   return o;
@@ -4584,19 +4784,19 @@ void checkGoogleCloudDataplexV1ListEncryptionConfigsResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListEncryptionConfigsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListEncryptionConfigsResponse < 3) {
-    checkUnnamed66(o.encryptionConfigs!);
+    checkUnnamed69(o.encryptionConfigs!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed67(o.unreachableLocations!);
+    checkUnnamed70(o.unreachableLocations!);
   }
   buildCounterGoogleCloudDataplexV1ListEncryptionConfigsResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1Entity> buildUnnamed68() => [
+core.List<api.GoogleCloudDataplexV1Entity> buildUnnamed71() => [
   buildGoogleCloudDataplexV1Entity(),
   buildGoogleCloudDataplexV1Entity(),
 ];
 
-void checkUnnamed68(core.List<api.GoogleCloudDataplexV1Entity> o) {
+void checkUnnamed71(core.List<api.GoogleCloudDataplexV1Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1Entity(o[0]);
   checkGoogleCloudDataplexV1Entity(o[1]);
@@ -4608,7 +4808,7 @@ buildGoogleCloudDataplexV1ListEntitiesResponse() {
   final o = api.GoogleCloudDataplexV1ListEntitiesResponse();
   buildCounterGoogleCloudDataplexV1ListEntitiesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListEntitiesResponse < 3) {
-    o.entities = buildUnnamed68();
+    o.entities = buildUnnamed71();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDataplexV1ListEntitiesResponse--;
@@ -4620,18 +4820,18 @@ void checkGoogleCloudDataplexV1ListEntitiesResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListEntitiesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListEntitiesResponse < 3) {
-    checkUnnamed68(o.entities!);
+    checkUnnamed71(o.entities!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDataplexV1ListEntitiesResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1Entry> buildUnnamed69() => [
+core.List<api.GoogleCloudDataplexV1Entry> buildUnnamed72() => [
   buildGoogleCloudDataplexV1Entry(),
   buildGoogleCloudDataplexV1Entry(),
 ];
 
-void checkUnnamed69(core.List<api.GoogleCloudDataplexV1Entry> o) {
+void checkUnnamed72(core.List<api.GoogleCloudDataplexV1Entry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1Entry(o[0]);
   checkGoogleCloudDataplexV1Entry(o[1]);
@@ -4643,7 +4843,7 @@ buildGoogleCloudDataplexV1ListEntriesResponse() {
   final o = api.GoogleCloudDataplexV1ListEntriesResponse();
   buildCounterGoogleCloudDataplexV1ListEntriesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListEntriesResponse < 3) {
-    o.entries = buildUnnamed69();
+    o.entries = buildUnnamed72();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDataplexV1ListEntriesResponse--;
@@ -4655,26 +4855,26 @@ void checkGoogleCloudDataplexV1ListEntriesResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListEntriesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListEntriesResponse < 3) {
-    checkUnnamed69(o.entries!);
+    checkUnnamed72(o.entries!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDataplexV1ListEntriesResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1EntryGroup> buildUnnamed70() => [
+core.List<api.GoogleCloudDataplexV1EntryGroup> buildUnnamed73() => [
   buildGoogleCloudDataplexV1EntryGroup(),
   buildGoogleCloudDataplexV1EntryGroup(),
 ];
 
-void checkUnnamed70(core.List<api.GoogleCloudDataplexV1EntryGroup> o) {
+void checkUnnamed73(core.List<api.GoogleCloudDataplexV1EntryGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1EntryGroup(o[0]);
   checkGoogleCloudDataplexV1EntryGroup(o[1]);
 }
 
-core.List<core.String> buildUnnamed71() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed74() => ['foo', 'foo'];
 
-void checkUnnamed71(core.List<core.String> o) {
+void checkUnnamed74(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4686,9 +4886,9 @@ buildGoogleCloudDataplexV1ListEntryGroupsResponse() {
   final o = api.GoogleCloudDataplexV1ListEntryGroupsResponse();
   buildCounterGoogleCloudDataplexV1ListEntryGroupsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListEntryGroupsResponse < 3) {
-    o.entryGroups = buildUnnamed70();
+    o.entryGroups = buildUnnamed73();
     o.nextPageToken = 'foo';
-    o.unreachableLocations = buildUnnamed71();
+    o.unreachableLocations = buildUnnamed74();
   }
   buildCounterGoogleCloudDataplexV1ListEntryGroupsResponse--;
   return o;
@@ -4699,27 +4899,27 @@ void checkGoogleCloudDataplexV1ListEntryGroupsResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListEntryGroupsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListEntryGroupsResponse < 3) {
-    checkUnnamed70(o.entryGroups!);
+    checkUnnamed73(o.entryGroups!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed71(o.unreachableLocations!);
+    checkUnnamed74(o.unreachableLocations!);
   }
   buildCounterGoogleCloudDataplexV1ListEntryGroupsResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1EntryType> buildUnnamed72() => [
+core.List<api.GoogleCloudDataplexV1EntryType> buildUnnamed75() => [
   buildGoogleCloudDataplexV1EntryType(),
   buildGoogleCloudDataplexV1EntryType(),
 ];
 
-void checkUnnamed72(core.List<api.GoogleCloudDataplexV1EntryType> o) {
+void checkUnnamed75(core.List<api.GoogleCloudDataplexV1EntryType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1EntryType(o[0]);
   checkGoogleCloudDataplexV1EntryType(o[1]);
 }
 
-core.List<core.String> buildUnnamed73() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed76() => ['foo', 'foo'];
 
-void checkUnnamed73(core.List<core.String> o) {
+void checkUnnamed76(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4731,9 +4931,9 @@ buildGoogleCloudDataplexV1ListEntryTypesResponse() {
   final o = api.GoogleCloudDataplexV1ListEntryTypesResponse();
   buildCounterGoogleCloudDataplexV1ListEntryTypesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListEntryTypesResponse < 3) {
-    o.entryTypes = buildUnnamed72();
+    o.entryTypes = buildUnnamed75();
     o.nextPageToken = 'foo';
-    o.unreachableLocations = buildUnnamed73();
+    o.unreachableLocations = buildUnnamed76();
   }
   buildCounterGoogleCloudDataplexV1ListEntryTypesResponse--;
   return o;
@@ -4744,19 +4944,19 @@ void checkGoogleCloudDataplexV1ListEntryTypesResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListEntryTypesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListEntryTypesResponse < 3) {
-    checkUnnamed72(o.entryTypes!);
+    checkUnnamed75(o.entryTypes!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed73(o.unreachableLocations!);
+    checkUnnamed76(o.unreachableLocations!);
   }
   buildCounterGoogleCloudDataplexV1ListEntryTypesResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1Environment> buildUnnamed74() => [
+core.List<api.GoogleCloudDataplexV1Environment> buildUnnamed77() => [
   buildGoogleCloudDataplexV1Environment(),
   buildGoogleCloudDataplexV1Environment(),
 ];
 
-void checkUnnamed74(core.List<api.GoogleCloudDataplexV1Environment> o) {
+void checkUnnamed77(core.List<api.GoogleCloudDataplexV1Environment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1Environment(o[0]);
   checkGoogleCloudDataplexV1Environment(o[1]);
@@ -4768,7 +4968,7 @@ buildGoogleCloudDataplexV1ListEnvironmentsResponse() {
   final o = api.GoogleCloudDataplexV1ListEnvironmentsResponse();
   buildCounterGoogleCloudDataplexV1ListEnvironmentsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListEnvironmentsResponse < 3) {
-    o.environments = buildUnnamed74();
+    o.environments = buildUnnamed77();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDataplexV1ListEnvironmentsResponse--;
@@ -4780,26 +4980,26 @@ void checkGoogleCloudDataplexV1ListEnvironmentsResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListEnvironmentsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListEnvironmentsResponse < 3) {
-    checkUnnamed74(o.environments!);
+    checkUnnamed77(o.environments!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDataplexV1ListEnvironmentsResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1Glossary> buildUnnamed75() => [
+core.List<api.GoogleCloudDataplexV1Glossary> buildUnnamed78() => [
   buildGoogleCloudDataplexV1Glossary(),
   buildGoogleCloudDataplexV1Glossary(),
 ];
 
-void checkUnnamed75(core.List<api.GoogleCloudDataplexV1Glossary> o) {
+void checkUnnamed78(core.List<api.GoogleCloudDataplexV1Glossary> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1Glossary(o[0]);
   checkGoogleCloudDataplexV1Glossary(o[1]);
 }
 
-core.List<core.String> buildUnnamed76() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed79() => ['foo', 'foo'];
 
-void checkUnnamed76(core.List<core.String> o) {
+void checkUnnamed79(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4811,9 +5011,9 @@ buildGoogleCloudDataplexV1ListGlossariesResponse() {
   final o = api.GoogleCloudDataplexV1ListGlossariesResponse();
   buildCounterGoogleCloudDataplexV1ListGlossariesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListGlossariesResponse < 3) {
-    o.glossaries = buildUnnamed75();
+    o.glossaries = buildUnnamed78();
     o.nextPageToken = 'foo';
-    o.unreachableLocations = buildUnnamed76();
+    o.unreachableLocations = buildUnnamed79();
   }
   buildCounterGoogleCloudDataplexV1ListGlossariesResponse--;
   return o;
@@ -4824,27 +5024,27 @@ void checkGoogleCloudDataplexV1ListGlossariesResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListGlossariesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListGlossariesResponse < 3) {
-    checkUnnamed75(o.glossaries!);
+    checkUnnamed78(o.glossaries!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed76(o.unreachableLocations!);
+    checkUnnamed79(o.unreachableLocations!);
   }
   buildCounterGoogleCloudDataplexV1ListGlossariesResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1GlossaryCategory> buildUnnamed77() => [
+core.List<api.GoogleCloudDataplexV1GlossaryCategory> buildUnnamed80() => [
   buildGoogleCloudDataplexV1GlossaryCategory(),
   buildGoogleCloudDataplexV1GlossaryCategory(),
 ];
 
-void checkUnnamed77(core.List<api.GoogleCloudDataplexV1GlossaryCategory> o) {
+void checkUnnamed80(core.List<api.GoogleCloudDataplexV1GlossaryCategory> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1GlossaryCategory(o[0]);
   checkGoogleCloudDataplexV1GlossaryCategory(o[1]);
 }
 
-core.List<core.String> buildUnnamed78() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed81() => ['foo', 'foo'];
 
-void checkUnnamed78(core.List<core.String> o) {
+void checkUnnamed81(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4856,9 +5056,9 @@ buildGoogleCloudDataplexV1ListGlossaryCategoriesResponse() {
   final o = api.GoogleCloudDataplexV1ListGlossaryCategoriesResponse();
   buildCounterGoogleCloudDataplexV1ListGlossaryCategoriesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListGlossaryCategoriesResponse < 3) {
-    o.categories = buildUnnamed77();
+    o.categories = buildUnnamed80();
     o.nextPageToken = 'foo';
-    o.unreachableLocations = buildUnnamed78();
+    o.unreachableLocations = buildUnnamed81();
   }
   buildCounterGoogleCloudDataplexV1ListGlossaryCategoriesResponse--;
   return o;
@@ -4869,27 +5069,27 @@ void checkGoogleCloudDataplexV1ListGlossaryCategoriesResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListGlossaryCategoriesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListGlossaryCategoriesResponse < 3) {
-    checkUnnamed77(o.categories!);
+    checkUnnamed80(o.categories!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed78(o.unreachableLocations!);
+    checkUnnamed81(o.unreachableLocations!);
   }
   buildCounterGoogleCloudDataplexV1ListGlossaryCategoriesResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1GlossaryTerm> buildUnnamed79() => [
+core.List<api.GoogleCloudDataplexV1GlossaryTerm> buildUnnamed82() => [
   buildGoogleCloudDataplexV1GlossaryTerm(),
   buildGoogleCloudDataplexV1GlossaryTerm(),
 ];
 
-void checkUnnamed79(core.List<api.GoogleCloudDataplexV1GlossaryTerm> o) {
+void checkUnnamed82(core.List<api.GoogleCloudDataplexV1GlossaryTerm> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1GlossaryTerm(o[0]);
   checkGoogleCloudDataplexV1GlossaryTerm(o[1]);
 }
 
-core.List<core.String> buildUnnamed80() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed83() => ['foo', 'foo'];
 
-void checkUnnamed80(core.List<core.String> o) {
+void checkUnnamed83(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4902,8 +5102,8 @@ buildGoogleCloudDataplexV1ListGlossaryTermsResponse() {
   buildCounterGoogleCloudDataplexV1ListGlossaryTermsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListGlossaryTermsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.terms = buildUnnamed79();
-    o.unreachableLocations = buildUnnamed80();
+    o.terms = buildUnnamed82();
+    o.unreachableLocations = buildUnnamed83();
   }
   buildCounterGoogleCloudDataplexV1ListGlossaryTermsResponse--;
   return o;
@@ -4915,18 +5115,18 @@ void checkGoogleCloudDataplexV1ListGlossaryTermsResponse(
   buildCounterGoogleCloudDataplexV1ListGlossaryTermsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListGlossaryTermsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed79(o.terms!);
-    checkUnnamed80(o.unreachableLocations!);
+    checkUnnamed82(o.terms!);
+    checkUnnamed83(o.unreachableLocations!);
   }
   buildCounterGoogleCloudDataplexV1ListGlossaryTermsResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1Job> buildUnnamed81() => [
+core.List<api.GoogleCloudDataplexV1Job> buildUnnamed84() => [
   buildGoogleCloudDataplexV1Job(),
   buildGoogleCloudDataplexV1Job(),
 ];
 
-void checkUnnamed81(core.List<api.GoogleCloudDataplexV1Job> o) {
+void checkUnnamed84(core.List<api.GoogleCloudDataplexV1Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1Job(o[0]);
   checkGoogleCloudDataplexV1Job(o[1]);
@@ -4938,7 +5138,7 @@ buildGoogleCloudDataplexV1ListJobsResponse() {
   final o = api.GoogleCloudDataplexV1ListJobsResponse();
   buildCounterGoogleCloudDataplexV1ListJobsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListJobsResponse < 3) {
-    o.jobs = buildUnnamed81();
+    o.jobs = buildUnnamed84();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudDataplexV1ListJobsResponse--;
@@ -4950,26 +5150,26 @@ void checkGoogleCloudDataplexV1ListJobsResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListJobsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListJobsResponse < 3) {
-    checkUnnamed81(o.jobs!);
+    checkUnnamed84(o.jobs!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDataplexV1ListJobsResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1Lake> buildUnnamed82() => [
+core.List<api.GoogleCloudDataplexV1Lake> buildUnnamed85() => [
   buildGoogleCloudDataplexV1Lake(),
   buildGoogleCloudDataplexV1Lake(),
 ];
 
-void checkUnnamed82(core.List<api.GoogleCloudDataplexV1Lake> o) {
+void checkUnnamed85(core.List<api.GoogleCloudDataplexV1Lake> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1Lake(o[0]);
   checkGoogleCloudDataplexV1Lake(o[1]);
 }
 
-core.List<core.String> buildUnnamed83() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed86() => ['foo', 'foo'];
 
-void checkUnnamed83(core.List<core.String> o) {
+void checkUnnamed86(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4981,9 +5181,9 @@ buildGoogleCloudDataplexV1ListLakesResponse() {
   final o = api.GoogleCloudDataplexV1ListLakesResponse();
   buildCounterGoogleCloudDataplexV1ListLakesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListLakesResponse < 3) {
-    o.lakes = buildUnnamed82();
+    o.lakes = buildUnnamed85();
     o.nextPageToken = 'foo';
-    o.unreachableLocations = buildUnnamed83();
+    o.unreachableLocations = buildUnnamed86();
   }
   buildCounterGoogleCloudDataplexV1ListLakesResponse--;
   return o;
@@ -4994,27 +5194,27 @@ void checkGoogleCloudDataplexV1ListLakesResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListLakesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListLakesResponse < 3) {
-    checkUnnamed82(o.lakes!);
+    checkUnnamed85(o.lakes!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed83(o.unreachableLocations!);
+    checkUnnamed86(o.unreachableLocations!);
   }
   buildCounterGoogleCloudDataplexV1ListLakesResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1MetadataJob> buildUnnamed84() => [
+core.List<api.GoogleCloudDataplexV1MetadataJob> buildUnnamed87() => [
   buildGoogleCloudDataplexV1MetadataJob(),
   buildGoogleCloudDataplexV1MetadataJob(),
 ];
 
-void checkUnnamed84(core.List<api.GoogleCloudDataplexV1MetadataJob> o) {
+void checkUnnamed87(core.List<api.GoogleCloudDataplexV1MetadataJob> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1MetadataJob(o[0]);
   checkGoogleCloudDataplexV1MetadataJob(o[1]);
 }
 
-core.List<core.String> buildUnnamed85() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed88() => ['foo', 'foo'];
 
-void checkUnnamed85(core.List<core.String> o) {
+void checkUnnamed88(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -5026,9 +5226,9 @@ buildGoogleCloudDataplexV1ListMetadataJobsResponse() {
   final o = api.GoogleCloudDataplexV1ListMetadataJobsResponse();
   buildCounterGoogleCloudDataplexV1ListMetadataJobsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListMetadataJobsResponse < 3) {
-    o.metadataJobs = buildUnnamed84();
+    o.metadataJobs = buildUnnamed87();
     o.nextPageToken = 'foo';
-    o.unreachableLocations = buildUnnamed85();
+    o.unreachableLocations = buildUnnamed88();
   }
   buildCounterGoogleCloudDataplexV1ListMetadataJobsResponse--;
   return o;
@@ -5039,19 +5239,19 @@ void checkGoogleCloudDataplexV1ListMetadataJobsResponse(
 ) {
   buildCounterGoogleCloudDataplexV1ListMetadataJobsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListMetadataJobsResponse < 3) {
-    checkUnnamed84(o.metadataJobs!);
+    checkUnnamed87(o.metadataJobs!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed85(o.unreachableLocations!);
+    checkUnnamed88(o.unreachableLocations!);
   }
   buildCounterGoogleCloudDataplexV1ListMetadataJobsResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1Partition> buildUnnamed86() => [
+core.List<api.GoogleCloudDataplexV1Partition> buildUnnamed89() => [
   buildGoogleCloudDataplexV1Partition(),
   buildGoogleCloudDataplexV1Partition(),
 ];
 
-void checkUnnamed86(core.List<api.GoogleCloudDataplexV1Partition> o) {
+void checkUnnamed89(core.List<api.GoogleCloudDataplexV1Partition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1Partition(o[0]);
   checkGoogleCloudDataplexV1Partition(o[1]);
@@ -5064,7 +5264,7 @@ buildGoogleCloudDataplexV1ListPartitionsResponse() {
   buildCounterGoogleCloudDataplexV1ListPartitionsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListPartitionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.partitions = buildUnnamed86();
+    o.partitions = buildUnnamed89();
   }
   buildCounterGoogleCloudDataplexV1ListPartitionsResponse--;
   return o;
@@ -5076,17 +5276,17 @@ void checkGoogleCloudDataplexV1ListPartitionsResponse(
   buildCounterGoogleCloudDataplexV1ListPartitionsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListPartitionsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed86(o.partitions!);
+    checkUnnamed89(o.partitions!);
   }
   buildCounterGoogleCloudDataplexV1ListPartitionsResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1Session> buildUnnamed87() => [
+core.List<api.GoogleCloudDataplexV1Session> buildUnnamed90() => [
   buildGoogleCloudDataplexV1Session(),
   buildGoogleCloudDataplexV1Session(),
 ];
 
-void checkUnnamed87(core.List<api.GoogleCloudDataplexV1Session> o) {
+void checkUnnamed90(core.List<api.GoogleCloudDataplexV1Session> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1Session(o[0]);
   checkGoogleCloudDataplexV1Session(o[1]);
@@ -5099,7 +5299,7 @@ buildGoogleCloudDataplexV1ListSessionsResponse() {
   buildCounterGoogleCloudDataplexV1ListSessionsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListSessionsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.sessions = buildUnnamed87();
+    o.sessions = buildUnnamed90();
   }
   buildCounterGoogleCloudDataplexV1ListSessionsResponse--;
   return o;
@@ -5111,25 +5311,25 @@ void checkGoogleCloudDataplexV1ListSessionsResponse(
   buildCounterGoogleCloudDataplexV1ListSessionsResponse++;
   if (buildCounterGoogleCloudDataplexV1ListSessionsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed87(o.sessions!);
+    checkUnnamed90(o.sessions!);
   }
   buildCounterGoogleCloudDataplexV1ListSessionsResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1Task> buildUnnamed88() => [
+core.List<api.GoogleCloudDataplexV1Task> buildUnnamed91() => [
   buildGoogleCloudDataplexV1Task(),
   buildGoogleCloudDataplexV1Task(),
 ];
 
-void checkUnnamed88(core.List<api.GoogleCloudDataplexV1Task> o) {
+void checkUnnamed91(core.List<api.GoogleCloudDataplexV1Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1Task(o[0]);
   checkGoogleCloudDataplexV1Task(o[1]);
 }
 
-core.List<core.String> buildUnnamed89() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed92() => ['foo', 'foo'];
 
-void checkUnnamed89(core.List<core.String> o) {
+void checkUnnamed92(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -5142,8 +5342,8 @@ buildGoogleCloudDataplexV1ListTasksResponse() {
   buildCounterGoogleCloudDataplexV1ListTasksResponse++;
   if (buildCounterGoogleCloudDataplexV1ListTasksResponse < 3) {
     o.nextPageToken = 'foo';
-    o.tasks = buildUnnamed88();
-    o.unreachableLocations = buildUnnamed89();
+    o.tasks = buildUnnamed91();
+    o.unreachableLocations = buildUnnamed92();
   }
   buildCounterGoogleCloudDataplexV1ListTasksResponse--;
   return o;
@@ -5155,18 +5355,18 @@ void checkGoogleCloudDataplexV1ListTasksResponse(
   buildCounterGoogleCloudDataplexV1ListTasksResponse++;
   if (buildCounterGoogleCloudDataplexV1ListTasksResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed88(o.tasks!);
-    checkUnnamed89(o.unreachableLocations!);
+    checkUnnamed91(o.tasks!);
+    checkUnnamed92(o.unreachableLocations!);
   }
   buildCounterGoogleCloudDataplexV1ListTasksResponse--;
 }
 
-core.List<api.GoogleCloudDataplexV1Zone> buildUnnamed90() => [
+core.List<api.GoogleCloudDataplexV1Zone> buildUnnamed93() => [
   buildGoogleCloudDataplexV1Zone(),
   buildGoogleCloudDataplexV1Zone(),
 ];
 
-void checkUnnamed90(core.List<api.GoogleCloudDataplexV1Zone> o) {
+void checkUnnamed93(core.List<api.GoogleCloudDataplexV1Zone> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1Zone(o[0]);
   checkGoogleCloudDataplexV1Zone(o[1]);
@@ -5179,7 +5379,7 @@ buildGoogleCloudDataplexV1ListZonesResponse() {
   buildCounterGoogleCloudDataplexV1ListZonesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListZonesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.zones = buildUnnamed90();
+    o.zones = buildUnnamed93();
   }
   buildCounterGoogleCloudDataplexV1ListZonesResponse--;
   return o;
@@ -5191,14 +5391,14 @@ void checkGoogleCloudDataplexV1ListZonesResponse(
   buildCounterGoogleCloudDataplexV1ListZonesResponse++;
   if (buildCounterGoogleCloudDataplexV1ListZonesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed90(o.zones!);
+    checkUnnamed93(o.zones!);
   }
   buildCounterGoogleCloudDataplexV1ListZonesResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed91() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed94() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed91(core.Map<core.String, core.String> o) {
+void checkUnnamed94(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -5214,7 +5414,7 @@ api.GoogleCloudDataplexV1MetadataJob buildGoogleCloudDataplexV1MetadataJob() {
     o.exportSpec = buildGoogleCloudDataplexV1MetadataJobExportJobSpec();
     o.importResult = buildGoogleCloudDataplexV1MetadataJobImportJobResult();
     o.importSpec = buildGoogleCloudDataplexV1MetadataJobImportJobSpec();
-    o.labels = buildUnnamed91();
+    o.labels = buildUnnamed94();
     o.name = 'foo';
     o.status = buildGoogleCloudDataplexV1MetadataJobStatus();
     o.type = 'foo';
@@ -5235,7 +5435,7 @@ void checkGoogleCloudDataplexV1MetadataJob(
     checkGoogleCloudDataplexV1MetadataJobExportJobSpec(o.exportSpec!);
     checkGoogleCloudDataplexV1MetadataJobImportJobResult(o.importResult!);
     checkGoogleCloudDataplexV1MetadataJobImportJobSpec(o.importSpec!);
-    checkUnnamed91(o.labels!);
+    checkUnnamed94(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleCloudDataplexV1MetadataJobStatus(o.status!);
     unittest.expect(o.type!, unittest.equals('foo'));
@@ -5294,33 +5494,33 @@ void checkGoogleCloudDataplexV1MetadataJobExportJobSpec(
   buildCounterGoogleCloudDataplexV1MetadataJobExportJobSpec--;
 }
 
-core.List<core.String> buildUnnamed92() => ['foo', 'foo'];
-
-void checkUnnamed92(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.List<core.String> buildUnnamed93() => ['foo', 'foo'];
-
-void checkUnnamed93(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.List<core.String> buildUnnamed94() => ['foo', 'foo'];
-
-void checkUnnamed94(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
 core.List<core.String> buildUnnamed95() => ['foo', 'foo'];
 
 void checkUnnamed95(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed96() => ['foo', 'foo'];
+
+void checkUnnamed96(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed97() => ['foo', 'foo'];
+
+void checkUnnamed97(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed98() => ['foo', 'foo'];
+
+void checkUnnamed98(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -5334,11 +5534,11 @@ buildGoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope() {
   buildCounterGoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope++;
   if (buildCounterGoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope <
       3) {
-    o.aspectTypes = buildUnnamed92();
-    o.entryGroups = buildUnnamed93();
-    o.entryTypes = buildUnnamed94();
+    o.aspectTypes = buildUnnamed95();
+    o.entryGroups = buildUnnamed96();
+    o.entryTypes = buildUnnamed97();
     o.organizationLevel = true;
-    o.projects = buildUnnamed95();
+    o.projects = buildUnnamed98();
   }
   buildCounterGoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope--;
   return o;
@@ -5350,11 +5550,11 @@ void checkGoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope(
   buildCounterGoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope++;
   if (buildCounterGoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope <
       3) {
-    checkUnnamed92(o.aspectTypes!);
-    checkUnnamed93(o.entryGroups!);
-    checkUnnamed94(o.entryTypes!);
+    checkUnnamed95(o.aspectTypes!);
+    checkUnnamed96(o.entryGroups!);
+    checkUnnamed97(o.entryTypes!);
     unittest.expect(o.organizationLevel!, unittest.isTrue);
-    checkUnnamed95(o.projects!);
+    checkUnnamed98(o.projects!);
   }
   buildCounterGoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope--;
 }
@@ -5430,30 +5630,6 @@ void checkGoogleCloudDataplexV1MetadataJobImportJobSpec(
   buildCounterGoogleCloudDataplexV1MetadataJobImportJobSpec--;
 }
 
-core.List<core.String> buildUnnamed96() => ['foo', 'foo'];
-
-void checkUnnamed96(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.List<core.String> buildUnnamed97() => ['foo', 'foo'];
-
-void checkUnnamed97(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.List<core.String> buildUnnamed98() => ['foo', 'foo'];
-
-void checkUnnamed98(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
 core.List<core.String> buildUnnamed99() => ['foo', 'foo'];
 
 void checkUnnamed99(core.List<core.String> o) {
@@ -5478,6 +5654,30 @@ void checkUnnamed101(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+core.List<core.String> buildUnnamed102() => ['foo', 'foo'];
+
+void checkUnnamed102(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed103() => ['foo', 'foo'];
+
+void checkUnnamed103(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed104() => ['foo', 'foo'];
+
+void checkUnnamed104(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int
 buildCounterGoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope = 0;
 api.GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope
@@ -5486,12 +5686,12 @@ buildGoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope() {
   buildCounterGoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope++;
   if (buildCounterGoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope <
       3) {
-    o.aspectTypes = buildUnnamed96();
-    o.entryGroups = buildUnnamed97();
-    o.entryLinkTypes = buildUnnamed98();
-    o.entryTypes = buildUnnamed99();
-    o.glossaries = buildUnnamed100();
-    o.referencedEntryScopes = buildUnnamed101();
+    o.aspectTypes = buildUnnamed99();
+    o.entryGroups = buildUnnamed100();
+    o.entryLinkTypes = buildUnnamed101();
+    o.entryTypes = buildUnnamed102();
+    o.glossaries = buildUnnamed103();
+    o.referencedEntryScopes = buildUnnamed104();
   }
   buildCounterGoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope--;
   return o;
@@ -5503,12 +5703,12 @@ void checkGoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope(
   buildCounterGoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope++;
   if (buildCounterGoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope <
       3) {
-    checkUnnamed96(o.aspectTypes!);
-    checkUnnamed97(o.entryGroups!);
-    checkUnnamed98(o.entryLinkTypes!);
-    checkUnnamed99(o.entryTypes!);
-    checkUnnamed100(o.glossaries!);
-    checkUnnamed101(o.referencedEntryScopes!);
+    checkUnnamed99(o.aspectTypes!);
+    checkUnnamed100(o.entryGroups!);
+    checkUnnamed101(o.entryLinkTypes!);
+    checkUnnamed102(o.entryTypes!);
+    checkUnnamed103(o.glossaries!);
+    checkUnnamed104(o.referencedEntryScopes!);
   }
   buildCounterGoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope--;
 }
@@ -5541,9 +5741,9 @@ void checkGoogleCloudDataplexV1MetadataJobStatus(
   buildCounterGoogleCloudDataplexV1MetadataJobStatus--;
 }
 
-core.List<core.String> buildUnnamed102() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed105() => ['foo', 'foo'];
 
-void checkUnnamed102(core.List<core.String> o) {
+void checkUnnamed105(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -5557,7 +5757,7 @@ api.GoogleCloudDataplexV1Partition buildGoogleCloudDataplexV1Partition() {
     o.etag = 'foo';
     o.location = 'foo';
     o.name = 'foo';
-    o.values = buildUnnamed102();
+    o.values = buildUnnamed105();
   }
   buildCounterGoogleCloudDataplexV1Partition--;
   return o;
@@ -5569,30 +5769,30 @@ void checkGoogleCloudDataplexV1Partition(api.GoogleCloudDataplexV1Partition o) {
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.location!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed102(o.values!);
+    checkUnnamed105(o.values!);
   }
   buildCounterGoogleCloudDataplexV1Partition--;
 }
 
-core.List<core.String> buildUnnamed103() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed106() => ['foo', 'foo'];
 
-void checkUnnamed103(core.List<core.String> o) {
+void checkUnnamed106(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed104() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed107() => ['foo', 'foo'];
 
-void checkUnnamed104(core.List<core.String> o) {
+void checkUnnamed107(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed105() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed108() => ['foo', 'foo'];
 
-void checkUnnamed105(core.List<core.String> o) {
+void checkUnnamed108(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -5604,9 +5804,9 @@ buildGoogleCloudDataplexV1ResourceAccessSpec() {
   final o = api.GoogleCloudDataplexV1ResourceAccessSpec();
   buildCounterGoogleCloudDataplexV1ResourceAccessSpec++;
   if (buildCounterGoogleCloudDataplexV1ResourceAccessSpec < 3) {
-    o.owners = buildUnnamed103();
-    o.readers = buildUnnamed104();
-    o.writers = buildUnnamed105();
+    o.owners = buildUnnamed106();
+    o.readers = buildUnnamed107();
+    o.writers = buildUnnamed108();
   }
   buildCounterGoogleCloudDataplexV1ResourceAccessSpec--;
   return o;
@@ -5617,9 +5817,9 @@ void checkGoogleCloudDataplexV1ResourceAccessSpec(
 ) {
   buildCounterGoogleCloudDataplexV1ResourceAccessSpec++;
   if (buildCounterGoogleCloudDataplexV1ResourceAccessSpec < 3) {
-    checkUnnamed103(o.owners!);
-    checkUnnamed104(o.readers!);
-    checkUnnamed105(o.writers!);
+    checkUnnamed106(o.owners!);
+    checkUnnamed107(o.readers!);
+    checkUnnamed108(o.writers!);
   }
   buildCounterGoogleCloudDataplexV1ResourceAccessSpec--;
 }
@@ -5664,23 +5864,23 @@ void checkGoogleCloudDataplexV1RunDataScanResponse(
   buildCounterGoogleCloudDataplexV1RunDataScanResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed106() => {
+core.Map<core.String, core.String> buildUnnamed109() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed106(core.Map<core.String, core.String> o) {
+void checkUnnamed109(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.String> buildUnnamed107() => {
+core.Map<core.String, core.String> buildUnnamed110() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed107(core.Map<core.String, core.String> o) {
+void checkUnnamed110(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -5692,8 +5892,8 @@ buildGoogleCloudDataplexV1RunTaskRequest() {
   final o = api.GoogleCloudDataplexV1RunTaskRequest();
   buildCounterGoogleCloudDataplexV1RunTaskRequest++;
   if (buildCounterGoogleCloudDataplexV1RunTaskRequest < 3) {
-    o.args = buildUnnamed106();
-    o.labels = buildUnnamed107();
+    o.args = buildUnnamed109();
+    o.labels = buildUnnamed110();
   }
   buildCounterGoogleCloudDataplexV1RunTaskRequest--;
   return o;
@@ -5704,8 +5904,8 @@ void checkGoogleCloudDataplexV1RunTaskRequest(
 ) {
   buildCounterGoogleCloudDataplexV1RunTaskRequest++;
   if (buildCounterGoogleCloudDataplexV1RunTaskRequest < 3) {
-    checkUnnamed106(o.args!);
-    checkUnnamed107(o.labels!);
+    checkUnnamed109(o.args!);
+    checkUnnamed110(o.labels!);
   }
   buildCounterGoogleCloudDataplexV1RunTaskRequest--;
 }
@@ -5780,23 +5980,23 @@ void checkGoogleCloudDataplexV1ScannedDataIncrementalField(
   buildCounterGoogleCloudDataplexV1ScannedDataIncrementalField--;
 }
 
-core.List<api.GoogleCloudDataplexV1SchemaSchemaField> buildUnnamed108() => [
+core.List<api.GoogleCloudDataplexV1SchemaSchemaField> buildUnnamed111() => [
   buildGoogleCloudDataplexV1SchemaSchemaField(),
   buildGoogleCloudDataplexV1SchemaSchemaField(),
 ];
 
-void checkUnnamed108(core.List<api.GoogleCloudDataplexV1SchemaSchemaField> o) {
+void checkUnnamed111(core.List<api.GoogleCloudDataplexV1SchemaSchemaField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1SchemaSchemaField(o[0]);
   checkGoogleCloudDataplexV1SchemaSchemaField(o[1]);
 }
 
-core.List<api.GoogleCloudDataplexV1SchemaPartitionField> buildUnnamed109() => [
+core.List<api.GoogleCloudDataplexV1SchemaPartitionField> buildUnnamed112() => [
   buildGoogleCloudDataplexV1SchemaPartitionField(),
   buildGoogleCloudDataplexV1SchemaPartitionField(),
 ];
 
-void checkUnnamed109(
+void checkUnnamed112(
   core.List<api.GoogleCloudDataplexV1SchemaPartitionField> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5809,8 +6009,8 @@ api.GoogleCloudDataplexV1Schema buildGoogleCloudDataplexV1Schema() {
   final o = api.GoogleCloudDataplexV1Schema();
   buildCounterGoogleCloudDataplexV1Schema++;
   if (buildCounterGoogleCloudDataplexV1Schema < 3) {
-    o.fields = buildUnnamed108();
-    o.partitionFields = buildUnnamed109();
+    o.fields = buildUnnamed111();
+    o.partitionFields = buildUnnamed112();
     o.partitionStyle = 'foo';
     o.userManaged = true;
   }
@@ -5821,8 +6021,8 @@ api.GoogleCloudDataplexV1Schema buildGoogleCloudDataplexV1Schema() {
 void checkGoogleCloudDataplexV1Schema(api.GoogleCloudDataplexV1Schema o) {
   buildCounterGoogleCloudDataplexV1Schema++;
   if (buildCounterGoogleCloudDataplexV1Schema < 3) {
-    checkUnnamed108(o.fields!);
-    checkUnnamed109(o.partitionFields!);
+    checkUnnamed111(o.fields!);
+    checkUnnamed112(o.partitionFields!);
     unittest.expect(o.partitionStyle!, unittest.equals('foo'));
     unittest.expect(o.userManaged!, unittest.isTrue);
   }
@@ -5853,12 +6053,12 @@ void checkGoogleCloudDataplexV1SchemaPartitionField(
   buildCounterGoogleCloudDataplexV1SchemaPartitionField--;
 }
 
-core.List<api.GoogleCloudDataplexV1SchemaSchemaField> buildUnnamed110() => [
+core.List<api.GoogleCloudDataplexV1SchemaSchemaField> buildUnnamed113() => [
   buildGoogleCloudDataplexV1SchemaSchemaField(),
   buildGoogleCloudDataplexV1SchemaSchemaField(),
 ];
 
-void checkUnnamed110(core.List<api.GoogleCloudDataplexV1SchemaSchemaField> o) {
+void checkUnnamed113(core.List<api.GoogleCloudDataplexV1SchemaSchemaField> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDataplexV1SchemaSchemaField(o[0]);
   checkGoogleCloudDataplexV1SchemaSchemaField(o[1]);
@@ -5871,7 +6071,7 @@ buildGoogleCloudDataplexV1SchemaSchemaField() {
   buildCounterGoogleCloudDataplexV1SchemaSchemaField++;
   if (buildCounterGoogleCloudDataplexV1SchemaSchemaField < 3) {
     o.description = 'foo';
-    o.fields = buildUnnamed110();
+    o.fields = buildUnnamed113();
     o.mode = 'foo';
     o.name = 'foo';
     o.type = 'foo';
@@ -5886,7 +6086,7 @@ void checkGoogleCloudDataplexV1SchemaSchemaField(
   buildCounterGoogleCloudDataplexV1SchemaSchemaField++;
   if (buildCounterGoogleCloudDataplexV1SchemaSchemaField < 3) {
     unittest.expect(o.description!, unittest.equals('foo'));
-    checkUnnamed110(o.fields!);
+    checkUnnamed113(o.fields!);
     unittest.expect(o.mode!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.type!, unittest.equals('foo'));
@@ -5894,12 +6094,12 @@ void checkGoogleCloudDataplexV1SchemaSchemaField(
   buildCounterGoogleCloudDataplexV1SchemaSchemaField--;
 }
 
-core.List<api.GoogleCloudDataplexV1SearchEntriesResult> buildUnnamed111() => [
+core.List<api.GoogleCloudDataplexV1SearchEntriesResult> buildUnnamed114() => [
   buildGoogleCloudDataplexV1SearchEntriesResult(),
   buildGoogleCloudDataplexV1SearchEntriesResult(),
 ];
 
-void checkUnnamed111(
+void checkUnnamed114(
   core.List<api.GoogleCloudDataplexV1SearchEntriesResult> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -5907,9 +6107,9 @@ void checkUnnamed111(
   checkGoogleCloudDataplexV1SearchEntriesResult(o[1]);
 }
 
-core.List<core.String> buildUnnamed112() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed115() => ['foo', 'foo'];
 
-void checkUnnamed112(core.List<core.String> o) {
+void checkUnnamed115(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -5922,9 +6122,9 @@ buildGoogleCloudDataplexV1SearchEntriesResponse() {
   buildCounterGoogleCloudDataplexV1SearchEntriesResponse++;
   if (buildCounterGoogleCloudDataplexV1SearchEntriesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.results = buildUnnamed111();
+    o.results = buildUnnamed114();
     o.totalSize = 42;
-    o.unreachable = buildUnnamed112();
+    o.unreachable = buildUnnamed115();
   }
   buildCounterGoogleCloudDataplexV1SearchEntriesResponse--;
   return o;
@@ -5936,9 +6136,9 @@ void checkGoogleCloudDataplexV1SearchEntriesResponse(
   buildCounterGoogleCloudDataplexV1SearchEntriesResponse++;
   if (buildCounterGoogleCloudDataplexV1SearchEntriesResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed111(o.results!);
+    checkUnnamed114(o.results!);
     unittest.expect(o.totalSize!, unittest.equals(42));
-    checkUnnamed112(o.unreachable!);
+    checkUnnamed115(o.unreachable!);
   }
   buildCounterGoogleCloudDataplexV1SearchEntriesResponse--;
 }
@@ -6142,12 +6342,12 @@ void checkGoogleCloudDataplexV1StorageFormatJsonOptions(
   buildCounterGoogleCloudDataplexV1StorageFormatJsonOptions--;
 }
 
-core.Map<core.String, core.String> buildUnnamed113() => {
+core.Map<core.String, core.String> buildUnnamed116() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed113(core.Map<core.String, core.String> o) {
+void checkUnnamed116(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -6163,7 +6363,7 @@ api.GoogleCloudDataplexV1Task buildGoogleCloudDataplexV1Task() {
     o.displayName = 'foo';
     o.executionSpec = buildGoogleCloudDataplexV1TaskExecutionSpec();
     o.executionStatus = buildGoogleCloudDataplexV1TaskExecutionStatus();
-    o.labels = buildUnnamed113();
+    o.labels = buildUnnamed116();
     o.name = 'foo';
     o.notebook = buildGoogleCloudDataplexV1TaskNotebookTaskConfig();
     o.spark = buildGoogleCloudDataplexV1TaskSparkTaskConfig();
@@ -6184,7 +6384,7 @@ void checkGoogleCloudDataplexV1Task(api.GoogleCloudDataplexV1Task o) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
     checkGoogleCloudDataplexV1TaskExecutionSpec(o.executionSpec!);
     checkGoogleCloudDataplexV1TaskExecutionStatus(o.executionStatus!);
-    checkUnnamed113(o.labels!);
+    checkUnnamed116(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleCloudDataplexV1TaskNotebookTaskConfig(o.notebook!);
     checkGoogleCloudDataplexV1TaskSparkTaskConfig(o.spark!);
@@ -6196,12 +6396,12 @@ void checkGoogleCloudDataplexV1Task(api.GoogleCloudDataplexV1Task o) {
   buildCounterGoogleCloudDataplexV1Task--;
 }
 
-core.Map<core.String, core.String> buildUnnamed114() => {
+core.Map<core.String, core.String> buildUnnamed117() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed114(core.Map<core.String, core.String> o) {
+void checkUnnamed117(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -6213,7 +6413,7 @@ buildGoogleCloudDataplexV1TaskExecutionSpec() {
   final o = api.GoogleCloudDataplexV1TaskExecutionSpec();
   buildCounterGoogleCloudDataplexV1TaskExecutionSpec++;
   if (buildCounterGoogleCloudDataplexV1TaskExecutionSpec < 3) {
-    o.args = buildUnnamed114();
+    o.args = buildUnnamed117();
     o.kmsKey = 'foo';
     o.maxJobExecutionLifetime = 'foo';
     o.project = 'foo';
@@ -6228,7 +6428,7 @@ void checkGoogleCloudDataplexV1TaskExecutionSpec(
 ) {
   buildCounterGoogleCloudDataplexV1TaskExecutionSpec++;
   if (buildCounterGoogleCloudDataplexV1TaskExecutionSpec < 3) {
-    checkUnnamed114(o.args!);
+    checkUnnamed117(o.args!);
     unittest.expect(o.kmsKey!, unittest.equals('foo'));
     unittest.expect(o.maxJobExecutionLifetime!, unittest.equals('foo'));
     unittest.expect(o.project!, unittest.equals('foo'));
@@ -6322,28 +6522,28 @@ void checkGoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources(
   buildCounterGoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources--;
 }
 
-core.List<core.String> buildUnnamed115() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed118() => ['foo', 'foo'];
 
-void checkUnnamed115(core.List<core.String> o) {
+void checkUnnamed118(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.String> buildUnnamed116() => {
+core.Map<core.String, core.String> buildUnnamed119() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed116(core.Map<core.String, core.String> o) {
+void checkUnnamed119(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed117() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed120() => ['foo', 'foo'];
 
-void checkUnnamed117(core.List<core.String> o) {
+void checkUnnamed120(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -6360,9 +6560,9 @@ buildGoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime() {
   if (buildCounterGoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime <
       3) {
     o.image = 'foo';
-    o.javaJars = buildUnnamed115();
-    o.properties = buildUnnamed116();
-    o.pythonPackages = buildUnnamed117();
+    o.javaJars = buildUnnamed118();
+    o.properties = buildUnnamed119();
+    o.pythonPackages = buildUnnamed120();
   }
   buildCounterGoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime--;
   return o;
@@ -6375,16 +6575,16 @@ void checkGoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime(
   if (buildCounterGoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime <
       3) {
     unittest.expect(o.image!, unittest.equals('foo'));
-    checkUnnamed115(o.javaJars!);
-    checkUnnamed116(o.properties!);
-    checkUnnamed117(o.pythonPackages!);
+    checkUnnamed118(o.javaJars!);
+    checkUnnamed119(o.properties!);
+    checkUnnamed120(o.pythonPackages!);
   }
   buildCounterGoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime--;
 }
 
-core.List<core.String> buildUnnamed118() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed121() => ['foo', 'foo'];
 
-void checkUnnamed118(core.List<core.String> o) {
+void checkUnnamed121(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -6397,7 +6597,7 @@ buildGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork() {
   buildCounterGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork++;
   if (buildCounterGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork < 3) {
     o.network = 'foo';
-    o.networkTags = buildUnnamed118();
+    o.networkTags = buildUnnamed121();
     o.subNetwork = 'foo';
   }
   buildCounterGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork--;
@@ -6410,23 +6610,23 @@ void checkGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork(
   buildCounterGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork++;
   if (buildCounterGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork < 3) {
     unittest.expect(o.network!, unittest.equals('foo'));
-    checkUnnamed118(o.networkTags!);
+    checkUnnamed121(o.networkTags!);
     unittest.expect(o.subNetwork!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork--;
 }
 
-core.List<core.String> buildUnnamed119() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed122() => ['foo', 'foo'];
 
-void checkUnnamed119(core.List<core.String> o) {
+void checkUnnamed122(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed120() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed123() => ['foo', 'foo'];
 
-void checkUnnamed120(core.List<core.String> o) {
+void checkUnnamed123(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -6438,8 +6638,8 @@ buildGoogleCloudDataplexV1TaskNotebookTaskConfig() {
   final o = api.GoogleCloudDataplexV1TaskNotebookTaskConfig();
   buildCounterGoogleCloudDataplexV1TaskNotebookTaskConfig++;
   if (buildCounterGoogleCloudDataplexV1TaskNotebookTaskConfig < 3) {
-    o.archiveUris = buildUnnamed119();
-    o.fileUris = buildUnnamed120();
+    o.archiveUris = buildUnnamed122();
+    o.fileUris = buildUnnamed123();
     o.infrastructureSpec = buildGoogleCloudDataplexV1TaskInfrastructureSpec();
     o.notebook = 'foo';
   }
@@ -6452,25 +6652,25 @@ void checkGoogleCloudDataplexV1TaskNotebookTaskConfig(
 ) {
   buildCounterGoogleCloudDataplexV1TaskNotebookTaskConfig++;
   if (buildCounterGoogleCloudDataplexV1TaskNotebookTaskConfig < 3) {
-    checkUnnamed119(o.archiveUris!);
-    checkUnnamed120(o.fileUris!);
+    checkUnnamed122(o.archiveUris!);
+    checkUnnamed123(o.fileUris!);
     checkGoogleCloudDataplexV1TaskInfrastructureSpec(o.infrastructureSpec!);
     unittest.expect(o.notebook!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDataplexV1TaskNotebookTaskConfig--;
 }
 
-core.List<core.String> buildUnnamed121() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed124() => ['foo', 'foo'];
 
-void checkUnnamed121(core.List<core.String> o) {
+void checkUnnamed124(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed122() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed125() => ['foo', 'foo'];
 
-void checkUnnamed122(core.List<core.String> o) {
+void checkUnnamed125(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -6482,8 +6682,8 @@ buildGoogleCloudDataplexV1TaskSparkTaskConfig() {
   final o = api.GoogleCloudDataplexV1TaskSparkTaskConfig();
   buildCounterGoogleCloudDataplexV1TaskSparkTaskConfig++;
   if (buildCounterGoogleCloudDataplexV1TaskSparkTaskConfig < 3) {
-    o.archiveUris = buildUnnamed121();
-    o.fileUris = buildUnnamed122();
+    o.archiveUris = buildUnnamed124();
+    o.fileUris = buildUnnamed125();
     o.infrastructureSpec = buildGoogleCloudDataplexV1TaskInfrastructureSpec();
     o.mainClass = 'foo';
     o.mainJarFileUri = 'foo';
@@ -6500,8 +6700,8 @@ void checkGoogleCloudDataplexV1TaskSparkTaskConfig(
 ) {
   buildCounterGoogleCloudDataplexV1TaskSparkTaskConfig++;
   if (buildCounterGoogleCloudDataplexV1TaskSparkTaskConfig < 3) {
-    checkUnnamed121(o.archiveUris!);
-    checkUnnamed122(o.fileUris!);
+    checkUnnamed124(o.archiveUris!);
+    checkUnnamed125(o.fileUris!);
     checkGoogleCloudDataplexV1TaskInfrastructureSpec(o.infrastructureSpec!);
     unittest.expect(o.mainClass!, unittest.equals('foo'));
     unittest.expect(o.mainJarFileUri!, unittest.equals('foo'));
@@ -6603,12 +6803,12 @@ void checkGoogleCloudDataplexV1TriggerSchedule(
   buildCounterGoogleCloudDataplexV1TriggerSchedule--;
 }
 
-core.Map<core.String, core.String> buildUnnamed123() => {
+core.Map<core.String, core.String> buildUnnamed126() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed123(core.Map<core.String, core.String> o) {
+void checkUnnamed126(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -6624,7 +6824,7 @@ api.GoogleCloudDataplexV1Zone buildGoogleCloudDataplexV1Zone() {
     o.description = 'foo';
     o.discoverySpec = buildGoogleCloudDataplexV1ZoneDiscoverySpec();
     o.displayName = 'foo';
-    o.labels = buildUnnamed123();
+    o.labels = buildUnnamed126();
     o.name = 'foo';
     o.resourceSpec = buildGoogleCloudDataplexV1ZoneResourceSpec();
     o.state = 'foo';
@@ -6644,7 +6844,7 @@ void checkGoogleCloudDataplexV1Zone(api.GoogleCloudDataplexV1Zone o) {
     unittest.expect(o.description!, unittest.equals('foo'));
     checkGoogleCloudDataplexV1ZoneDiscoverySpec(o.discoverySpec!);
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed123(o.labels!);
+    checkUnnamed126(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleCloudDataplexV1ZoneResourceSpec(o.resourceSpec!);
     unittest.expect(o.state!, unittest.equals('foo'));
@@ -6655,17 +6855,17 @@ void checkGoogleCloudDataplexV1Zone(api.GoogleCloudDataplexV1Zone o) {
   buildCounterGoogleCloudDataplexV1Zone--;
 }
 
-core.List<core.String> buildUnnamed124() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed127() => ['foo', 'foo'];
 
-void checkUnnamed124(core.List<core.String> o) {
+void checkUnnamed127(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed125() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed128() => ['foo', 'foo'];
 
-void checkUnnamed125(core.List<core.String> o) {
+void checkUnnamed128(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -6679,8 +6879,8 @@ buildGoogleCloudDataplexV1ZoneDiscoverySpec() {
   if (buildCounterGoogleCloudDataplexV1ZoneDiscoverySpec < 3) {
     o.csvOptions = buildGoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions();
     o.enabled = true;
-    o.excludePatterns = buildUnnamed124();
-    o.includePatterns = buildUnnamed125();
+    o.excludePatterns = buildUnnamed127();
+    o.includePatterns = buildUnnamed128();
     o.jsonOptions = buildGoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions();
     o.schedule = 'foo';
   }
@@ -6695,8 +6895,8 @@ void checkGoogleCloudDataplexV1ZoneDiscoverySpec(
   if (buildCounterGoogleCloudDataplexV1ZoneDiscoverySpec < 3) {
     checkGoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions(o.csvOptions!);
     unittest.expect(o.enabled!, unittest.isTrue);
-    checkUnnamed124(o.excludePatterns!);
-    checkUnnamed125(o.includePatterns!);
+    checkUnnamed127(o.excludePatterns!);
+    checkUnnamed128(o.includePatterns!);
     checkGoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions(o.jsonOptions!);
     unittest.expect(o.schedule!, unittest.equals('foo'));
   }
@@ -6777,12 +6977,12 @@ void checkGoogleCloudDataplexV1ZoneResourceSpec(
   buildCounterGoogleCloudDataplexV1ZoneResourceSpec--;
 }
 
-core.List<api.GoogleCloudLocationLocation> buildUnnamed126() => [
+core.List<api.GoogleCloudLocationLocation> buildUnnamed129() => [
   buildGoogleCloudLocationLocation(),
   buildGoogleCloudLocationLocation(),
 ];
 
-void checkUnnamed126(core.List<api.GoogleCloudLocationLocation> o) {
+void checkUnnamed129(core.List<api.GoogleCloudLocationLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudLocationLocation(o[0]);
   checkGoogleCloudLocationLocation(o[1]);
@@ -6794,7 +6994,7 @@ buildGoogleCloudLocationListLocationsResponse() {
   final o = api.GoogleCloudLocationListLocationsResponse();
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    o.locations = buildUnnamed126();
+    o.locations = buildUnnamed129();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudLocationListLocationsResponse--;
@@ -6806,24 +7006,24 @@ void checkGoogleCloudLocationListLocationsResponse(
 ) {
   buildCounterGoogleCloudLocationListLocationsResponse++;
   if (buildCounterGoogleCloudLocationListLocationsResponse < 3) {
-    checkUnnamed126(o.locations!);
+    checkUnnamed129(o.locations!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudLocationListLocationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed127() => {
+core.Map<core.String, core.String> buildUnnamed130() => {
   'x': 'foo',
   'y': 'foo',
 };
 
-void checkUnnamed127(core.Map<core.String, core.String> o) {
+void checkUnnamed130(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed128() => {
+core.Map<core.String, core.Object?> buildUnnamed131() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -6836,7 +7036,7 @@ core.Map<core.String, core.Object?> buildUnnamed128() => {
   },
 };
 
-void checkUnnamed128(core.Map<core.String, core.Object?> o) {
+void checkUnnamed131(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -6856,9 +7056,9 @@ api.GoogleCloudLocationLocation buildGoogleCloudLocationLocation() {
   buildCounterGoogleCloudLocationLocation++;
   if (buildCounterGoogleCloudLocationLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed127();
+    o.labels = buildUnnamed130();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed128();
+    o.metadata = buildUnnamed131();
     o.name = 'foo';
   }
   buildCounterGoogleCloudLocationLocation--;
@@ -6869,20 +7069,20 @@ void checkGoogleCloudLocationLocation(api.GoogleCloudLocationLocation o) {
   buildCounterGoogleCloudLocationLocation++;
   if (buildCounterGoogleCloudLocationLocation < 3) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed127(o.labels!);
+    checkUnnamed130(o.labels!);
     unittest.expect(o.locationId!, unittest.equals('foo'));
-    checkUnnamed128(o.metadata!);
+    checkUnnamed131(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudLocationLocation--;
 }
 
-core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed129() => [
+core.List<api.GoogleIamV1AuditLogConfig> buildUnnamed132() => [
   buildGoogleIamV1AuditLogConfig(),
   buildGoogleIamV1AuditLogConfig(),
 ];
 
-void checkUnnamed129(core.List<api.GoogleIamV1AuditLogConfig> o) {
+void checkUnnamed132(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditLogConfig(o[0]);
   checkGoogleIamV1AuditLogConfig(o[1]);
@@ -6893,7 +7093,7 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
   final o = api.GoogleIamV1AuditConfig();
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed129();
+    o.auditLogConfigs = buildUnnamed132();
     o.service = 'foo';
   }
   buildCounterGoogleIamV1AuditConfig--;
@@ -6903,15 +7103,15 @@ api.GoogleIamV1AuditConfig buildGoogleIamV1AuditConfig() {
 void checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    checkUnnamed129(o.auditLogConfigs!);
+    checkUnnamed132(o.auditLogConfigs!);
     unittest.expect(o.service!, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1AuditConfig--;
 }
 
-core.List<core.String> buildUnnamed130() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed133() => ['foo', 'foo'];
 
-void checkUnnamed130(core.List<core.String> o) {
+void checkUnnamed133(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -6922,7 +7122,7 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
   final o = api.GoogleIamV1AuditLogConfig();
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed130();
+    o.exemptedMembers = buildUnnamed133();
     o.logType = 'foo';
   }
   buildCounterGoogleIamV1AuditLogConfig--;
@@ -6932,15 +7132,15 @@ api.GoogleIamV1AuditLogConfig buildGoogleIamV1AuditLogConfig() {
 void checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    checkUnnamed130(o.exemptedMembers!);
+    checkUnnamed133(o.exemptedMembers!);
     unittest.expect(o.logType!, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1AuditLogConfig--;
 }
 
-core.List<core.String> buildUnnamed131() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed134() => ['foo', 'foo'];
 
-void checkUnnamed131(core.List<core.String> o) {
+void checkUnnamed134(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -6952,7 +7152,7 @@ api.GoogleIamV1Binding buildGoogleIamV1Binding() {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
-    o.members = buildUnnamed131();
+    o.members = buildUnnamed134();
     o.role = 'foo';
   }
   buildCounterGoogleIamV1Binding--;
@@ -6963,29 +7163,29 @@ void checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     checkGoogleTypeExpr(o.condition!);
-    checkUnnamed131(o.members!);
+    checkUnnamed134(o.members!);
     unittest.expect(o.role!, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1Binding--;
 }
 
-core.List<api.GoogleIamV1AuditConfig> buildUnnamed132() => [
+core.List<api.GoogleIamV1AuditConfig> buildUnnamed135() => [
   buildGoogleIamV1AuditConfig(),
   buildGoogleIamV1AuditConfig(),
 ];
 
-void checkUnnamed132(core.List<api.GoogleIamV1AuditConfig> o) {
+void checkUnnamed135(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditConfig(o[0]);
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-core.List<api.GoogleIamV1Binding> buildUnnamed133() => [
+core.List<api.GoogleIamV1Binding> buildUnnamed136() => [
   buildGoogleIamV1Binding(),
   buildGoogleIamV1Binding(),
 ];
 
-void checkUnnamed133(core.List<api.GoogleIamV1Binding> o) {
+void checkUnnamed136(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Binding(o[0]);
   checkGoogleIamV1Binding(o[1]);
@@ -6996,8 +7196,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
   final o = api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    o.auditConfigs = buildUnnamed132();
-    o.bindings = buildUnnamed133();
+    o.auditConfigs = buildUnnamed135();
+    o.bindings = buildUnnamed136();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -7008,8 +7208,8 @@ api.GoogleIamV1Policy buildGoogleIamV1Policy() {
 void checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed132(o.auditConfigs!);
-    checkUnnamed133(o.bindings!);
+    checkUnnamed135(o.auditConfigs!);
+    checkUnnamed136(o.bindings!);
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.version!, unittest.equals(42));
   }
@@ -7037,9 +7237,9 @@ void checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest--;
 }
 
-core.List<core.String> buildUnnamed134() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed137() => ['foo', 'foo'];
 
-void checkUnnamed134(core.List<core.String> o) {
+void checkUnnamed137(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -7051,7 +7251,7 @@ buildGoogleIamV1TestIamPermissionsRequest() {
   final o = api.GoogleIamV1TestIamPermissionsRequest();
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed134();
+    o.permissions = buildUnnamed137();
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
   return o;
@@ -7062,14 +7262,14 @@ void checkGoogleIamV1TestIamPermissionsRequest(
 ) {
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    checkUnnamed134(o.permissions!);
+    checkUnnamed137(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed135() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed138() => ['foo', 'foo'];
 
-void checkUnnamed135(core.List<core.String> o) {
+void checkUnnamed138(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -7081,7 +7281,7 @@ buildGoogleIamV1TestIamPermissionsResponse() {
   final o = api.GoogleIamV1TestIamPermissionsResponse();
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed135();
+    o.permissions = buildUnnamed138();
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
   return o;
@@ -7092,7 +7292,7 @@ void checkGoogleIamV1TestIamPermissionsResponse(
 ) {
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    checkUnnamed135(o.permissions!);
+    checkUnnamed138(o.permissions!);
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
 }
@@ -7115,12 +7315,12 @@ void checkGoogleLongrunningCancelOperationRequest(
   buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed136() => [
+core.List<api.GoogleLongrunningOperation> buildUnnamed139() => [
   buildGoogleLongrunningOperation(),
   buildGoogleLongrunningOperation(),
 ];
 
-void checkUnnamed136(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed139(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -7133,7 +7333,7 @@ buildGoogleLongrunningListOperationsResponse() {
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed136();
+    o.operations = buildUnnamed139();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -7145,12 +7345,12 @@ void checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed136(o.operations!);
+    checkUnnamed139(o.operations!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed137() => {
+core.Map<core.String, core.Object?> buildUnnamed140() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -7163,7 +7363,7 @@ core.Map<core.String, core.Object?> buildUnnamed137() => {
   },
 };
 
-void checkUnnamed137(core.Map<core.String, core.Object?> o) {
+void checkUnnamed140(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -7177,7 +7377,7 @@ void checkUnnamed137(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed138() => {
+core.Map<core.String, core.Object?> buildUnnamed141() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -7190,7 +7390,7 @@ core.Map<core.String, core.Object?> buildUnnamed138() => {
   },
 };
 
-void checkUnnamed138(core.Map<core.String, core.Object?> o) {
+void checkUnnamed141(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -7211,9 +7411,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed137();
+    o.metadata = buildUnnamed140();
     o.name = 'foo';
-    o.response = buildUnnamed138();
+    o.response = buildUnnamed141();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -7224,14 +7424,14 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed137(o.metadata!);
+    checkUnnamed140(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed138(o.response!);
+    checkUnnamed141(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed139() => {
+core.Map<core.String, core.Object?> buildUnnamed142() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -7244,7 +7444,7 @@ core.Map<core.String, core.Object?> buildUnnamed139() => {
   },
 };
 
-void checkUnnamed139(core.Map<core.String, core.Object?> o) {
+void checkUnnamed142(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']!) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -7258,15 +7458,15 @@ void checkUnnamed139(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted10['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed140() => [
-  buildUnnamed139(),
-  buildUnnamed139(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed143() => [
+  buildUnnamed142(),
+  buildUnnamed142(),
 ];
 
-void checkUnnamed140(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed143(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed139(o[0]);
-  checkUnnamed139(o[1]);
+  checkUnnamed142(o[0]);
+  checkUnnamed142(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -7275,7 +7475,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed140();
+    o.details = buildUnnamed143();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -7286,7 +7486,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed140(o.details!);
+    checkUnnamed143(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterGoogleRpcStatus--;
@@ -7317,30 +7517,6 @@ void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
   buildCounterGoogleTypeExpr--;
 }
 
-core.List<core.String> buildUnnamed141() => ['foo', 'foo'];
-
-void checkUnnamed141(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.List<core.String> buildUnnamed142() => ['foo', 'foo'];
-
-void checkUnnamed142(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.List<core.String> buildUnnamed143() => ['foo', 'foo'];
-
-void checkUnnamed143(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
 core.List<core.String> buildUnnamed144() => ['foo', 'foo'];
 
 void checkUnnamed144(core.List<core.String> o) {
@@ -7360,6 +7536,30 @@ void checkUnnamed145(core.List<core.String> o) {
 core.List<core.String> buildUnnamed146() => ['foo', 'foo'];
 
 void checkUnnamed146(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed147() => ['foo', 'foo'];
+
+void checkUnnamed147(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed148() => ['foo', 'foo'];
+
+void checkUnnamed148(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed149() => ['foo', 'foo'];
+
+void checkUnnamed149(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -7941,6 +8141,89 @@ void main() {
       });
     },
   );
+
+  unittest.group('obj-schema-GoogleCloudDataplexV1DataDocumentationResult', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDataplexV1DataDocumentationResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDataplexV1DataDocumentationResult.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleCloudDataplexV1DataDocumentationResult(od);
+    });
+  });
+
+  unittest.group(
+    'obj-schema-GoogleCloudDataplexV1DataDocumentationResultField',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudDataplexV1DataDocumentationResultField();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleCloudDataplexV1DataDocumentationResultField.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudDataplexV1DataDocumentationResultField(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudDataplexV1DataDocumentationResultQuery',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudDataplexV1DataDocumentationResultQuery();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleCloudDataplexV1DataDocumentationResultQuery.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudDataplexV1DataDocumentationResultQuery(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudDataplexV1DataDocumentationResultSchema',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleCloudDataplexV1DataDocumentationResultSchema();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleCloudDataplexV1DataDocumentationResultSchema.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudDataplexV1DataDocumentationResultSchema(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudDataplexV1DataDocumentationResultTableResult',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudDataplexV1DataDocumentationResultTableResult();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleCloudDataplexV1DataDocumentationResultTableResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudDataplexV1DataDocumentationResultTableResult(od);
+      });
+    },
+  );
+
+  unittest.group('obj-schema-GoogleCloudDataplexV1DataDocumentationSpec', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudDataplexV1DataDocumentationSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudDataplexV1DataDocumentationSpec.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleCloudDataplexV1DataDocumentationSpec(od);
+    });
+  });
 
   unittest.group('obj-schema-GoogleCloudDataplexV1DataProfileResult', () {
     unittest.test('to-json--from-json', () async {
@@ -10874,7 +11157,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudDataplexApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed141();
+      final arg_extraLocationTypes = buildUnnamed144();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -10958,9 +11241,9 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudDataplexApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_aspectTypes_1 = buildUnnamed142();
+      final arg_aspectTypes_1 = buildUnnamed145();
       final arg_entry = 'foo';
-      final arg_paths = buildUnnamed143();
+      final arg_paths = buildUnnamed146();
       final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -12227,68 +12510,6 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsDataProductsResource', () {
-    unittest.test('method--getIamPolicy', () async {
-      final mock = HttpServerMock();
-      final res = api.CloudDataplexApi(mock).projects.locations.dataProducts;
-      final arg_resource = 'foo';
-      final arg_options_requestedPolicyVersion = 42;
-      final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
-
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
-          }
-          unittest.expect(
-            core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
-            unittest.equals(arg_options_requestedPolicyVersion),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
-
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleIamV1Policy());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.getIamPolicy(
-        arg_resource,
-        options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
-        $fields: arg_$fields,
-      );
-      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
-    });
-
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
       final res = api.CloudDataplexApi(mock).projects.locations.dataProducts;
@@ -12421,69 +12642,6 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsDataProductsDataAssetsResource', () {
-    unittest.test('method--getIamPolicy', () async {
-      final mock = HttpServerMock();
-      final res =
-          api.CloudDataplexApi(mock).projects.locations.dataProducts.dataAssets;
-      final arg_resource = 'foo';
-      final arg_options_requestedPolicyVersion = 42;
-      final arg_$fields = 'foo';
-      mock.register(
-        unittest.expectAsync2((http.BaseRequest req, json) {
-          final path = req.url.path;
-          var pathOffset = 0;
-          core.int index;
-          core.String subPart;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 1),
-            unittest.equals('/'),
-          );
-          pathOffset += 1;
-          unittest.expect(
-            path.substring(pathOffset, pathOffset + 3),
-            unittest.equals('v1/'),
-          );
-          pathOffset += 3;
-          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-          final query = req.url.query;
-          var queryOffset = 0;
-          final queryMap = <core.String, core.List<core.String>>{};
-          void addQueryParam(core.String n, core.String v) =>
-              queryMap.putIfAbsent(n, () => []).add(v);
-
-          if (query.isNotEmpty) {
-            for (var part in query.split('&')) {
-              final keyValue = part.split('=');
-              addQueryParam(
-                core.Uri.decodeQueryComponent(keyValue[0]),
-                core.Uri.decodeQueryComponent(keyValue[1]),
-              );
-            }
-          }
-          unittest.expect(
-            core.int.parse(queryMap['options.requestedPolicyVersion']!.first),
-            unittest.equals(arg_options_requestedPolicyVersion),
-          );
-          unittest.expect(
-            queryMap['fields']!.first,
-            unittest.equals(arg_$fields),
-          );
-
-          final h = {'content-type': 'application/json; charset=utf-8'};
-          final resp = convert.json.encode(buildGoogleIamV1Policy());
-          return async.Future.value(stringResponse(200, h, resp));
-        }),
-        true,
-      );
-      final response = await res.getIamPolicy(
-        arg_resource,
-        options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
-        $fields: arg_$fields,
-      );
-      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
-    });
-
     unittest.test('method--setIamPolicy', () async {
       final mock = HttpServerMock();
       final res =
@@ -15332,8 +15490,8 @@ void main() {
       final res =
           api.CloudDataplexApi(mock).projects.locations.entryGroups.entries;
       final arg_name = 'foo';
-      final arg_aspectTypes = buildUnnamed144();
-      final arg_paths = buildUnnamed145();
+      final arg_aspectTypes = buildUnnamed147();
+      final arg_paths = buildUnnamed148();
       final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(
@@ -15484,7 +15642,7 @@ void main() {
       final arg_request = buildGoogleCloudDataplexV1Entry();
       final arg_name = 'foo';
       final arg_allowMissing = true;
-      final arg_aspectKeys = buildUnnamed146();
+      final arg_aspectKeys = buildUnnamed149();
       final arg_deleteMissingAspects = true;
       final arg_updateMask = 'foo';
       final arg_$fields = 'foo';

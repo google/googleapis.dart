@@ -162,6 +162,7 @@ api.DataSourceParameter buildDataSourceParameter() {
     o.displayName = 'foo';
     o.fields = buildUnnamed3();
     o.immutable = true;
+    o.maxListSize = 'foo';
     o.maxValue = 42.0;
     o.minValue = 42.0;
     o.paramId = 'foo';
@@ -186,6 +187,7 @@ void checkDataSourceParameter(api.DataSourceParameter o) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
     checkUnnamed3(o.fields!);
     unittest.expect(o.immutable!, unittest.isTrue);
+    unittest.expect(o.maxListSize!, unittest.equals('foo'));
     unittest.expect(o.maxValue!, unittest.equals(42.0));
     unittest.expect(o.minValue!, unittest.equals(42.0));
     unittest.expect(o.paramId!, unittest.equals('foo'));

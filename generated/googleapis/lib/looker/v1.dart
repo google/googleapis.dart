@@ -119,9 +119,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1959,6 +1959,14 @@ class ServiceAttachment {
   /// terminal state.
   core.String? connectionStatus;
 
+  /// Reason the service attachment creation failed.
+  ///
+  /// This value will only be populated if the service attachment encounters an
+  /// issue during provisioning.
+  ///
+  /// Output only.
+  core.String? failureReason;
+
   /// Fully qualified domain name that will be used in the private DNS record
   /// created for the service attachment.
   ///
@@ -1981,6 +1989,7 @@ class ServiceAttachment {
 
   ServiceAttachment({
     this.connectionStatus,
+    this.failureReason,
     this.localFqdn,
     this.localFqdns,
     this.targetServiceAttachmentUri,
@@ -1989,6 +1998,7 @@ class ServiceAttachment {
   ServiceAttachment.fromJson(core.Map json_)
     : this(
         connectionStatus: json_['connectionStatus'] as core.String?,
+        failureReason: json_['failureReason'] as core.String?,
         localFqdn: json_['localFqdn'] as core.String?,
         localFqdns:
             (json_['localFqdns'] as core.List?)
@@ -2000,6 +2010,7 @@ class ServiceAttachment {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (connectionStatus != null) 'connectionStatus': connectionStatus!,
+    if (failureReason != null) 'failureReason': failureReason!,
     if (localFqdn != null) 'localFqdn': localFqdn!,
     if (localFqdns != null) 'localFqdns': localFqdns!,
     if (targetServiceAttachmentUri != null)

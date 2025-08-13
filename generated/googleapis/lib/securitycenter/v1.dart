@@ -10031,6 +10031,8 @@ class AiModel {
   /// - "DEPLOYMENT_PLATFORM_UNSPECIFIED" : Unspecified deployment platform.
   /// - "VERTEX_AI" : Vertex AI.
   /// - "GKE" : Google Kubernetes Engine.
+  /// - "GCE" : Google Compute Engine.
+  /// - "FINE_TUNED_MODEL" : Fine tuned model.
   core.String? deploymentPlatform;
 
   /// The user defined display name of model.
@@ -12321,6 +12323,10 @@ class DataRetentionDeletionEvent {
   /// - "EVENT_TYPE_UNSPECIFIED" : Unspecified event type.
   /// - "EVENT_TYPE_MAX_TTL_EXCEEDED" : The maximum retention time has been
   /// exceeded.
+  /// - "EVENT_TYPE_MAX_TTL_FROM_CREATION" : Max TTL from the asset's creation
+  /// time.
+  /// - "EVENT_TYPE_MAX_TTL_FROM_LAST_MODIFICATION" : Max TTL from the asset's
+  /// last modification time.
   core.String? eventType;
 
   /// Maximum duration of retention allowed from the DRD control.

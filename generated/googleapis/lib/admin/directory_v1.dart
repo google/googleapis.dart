@@ -2359,8 +2359,8 @@ class GroupsResource {
   /// [pageToken] - Token to specify next page in the list
   ///
   /// [query] - Query string search. Should be of the form "". Complete
-  /// documentation is at https:
-  /// //developers.google.com/admin-sdk/directory/v1/guides/search-groups
+  /// documentation is at
+  /// https://developers.google.com/workspace/admin/directory/v1/guides/search-groups
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Only of use when orderBy is also used
@@ -6031,8 +6031,8 @@ class UsersResource {
   /// - "full" : Include all fields associated with this user.
   ///
   /// [query] - Query string search. Should be of the form "". Complete
-  /// documentation is at https:
-  /// //developers.google.com/admin-sdk/directory/v1/guides/search-users
+  /// documentation is at
+  /// https://developers.google.com/workspace/admin/directory/v1/guides/search-users
   ///
   /// [showDeleted] - If set to true, retrieves the list of deleted users.
   /// (Default: false)
@@ -8456,6 +8456,16 @@ class ChromeOsDevice {
   /// The Chrome device's operating system version.
   core.String? osVersion;
 
+  /// Device policy compliance status of the OS version.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "complianceUnspecified" : Compliance status unspecified.
+  /// - "compliant" : Compliance status compliant.
+  /// - "pending" : Compliance status pending.
+  /// - "notCompliant" : Compliance status not compliant.
+  core.String? osVersionCompliance;
+
   /// The Chrome device's platform version.
   core.String? platformVersion;
 
@@ -8537,6 +8547,7 @@ class ChromeOsDevice {
     this.orgUnitPath,
     this.osUpdateStatus,
     this.osVersion,
+    this.osVersionCompliance,
     this.platformVersion,
     this.recentUsers,
     this.screenshotFiles,
@@ -8670,6 +8681,7 @@ class ChromeOsDevice {
                 )
                 : null,
         osVersion: json_['osVersion'] as core.String?,
+        osVersionCompliance: json_['osVersionCompliance'] as core.String?,
         platformVersion: json_['platformVersion'] as core.String?,
         recentUsers:
             (json_['recentUsers'] as core.List?)
@@ -8763,6 +8775,8 @@ class ChromeOsDevice {
     if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
     if (osUpdateStatus != null) 'osUpdateStatus': osUpdateStatus!,
     if (osVersion != null) 'osVersion': osVersion!,
+    if (osVersionCompliance != null)
+      'osVersionCompliance': osVersionCompliance!,
     if (platformVersion != null) 'platformVersion': platformVersion!,
     if (recentUsers != null) 'recentUsers': recentUsers!,
     if (screenshotFiles != null) 'screenshotFiles': screenshotFiles!,

@@ -618,7 +618,35 @@ class GoogleMapsPlacesV1AddressDescriptorLandmark {
 /// Information about the author of the UGC data.
 ///
 /// Used in Photo, and Review.
-typedef GoogleMapsPlacesV1AuthorAttribution = $AuthorAttribution;
+class GoogleMapsPlacesV1AuthorAttribution {
+  /// Name of the author of the Photo or Review.
+  core.String? displayName;
+
+  /// Profile photo URI of the author of the Photo or Review.
+  core.String? photoUri;
+
+  /// URI of the author of the Photo or Review.
+  core.String? uri;
+
+  GoogleMapsPlacesV1AuthorAttribution({
+    this.displayName,
+    this.photoUri,
+    this.uri,
+  });
+
+  GoogleMapsPlacesV1AuthorAttribution.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        photoUri: json_['photoUri'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (displayName != null) 'displayName': displayName!,
+    if (photoUri != null) 'photoUri': photoUri!,
+    if (uri != null) 'uri': uri!,
+  };
+}
 
 /// Request proto for AutocompletePlaces.
 class GoogleMapsPlacesV1AutocompletePlacesRequest {
@@ -1897,6 +1925,10 @@ class GoogleMapsPlacesV1Place {
   /// - "CLOSED_PERMANENTLY" : The establishment is permanently closed.
   core.String? businessStatus;
 
+  /// The consumer alert message for the place when we detect suspicious review
+  /// activity on a business or a business violates our policies.
+  GoogleMapsPlacesV1PlaceConsumerAlert? consumerAlert;
+
   /// List of places in which the current place is located.
   core.List<GoogleMapsPlacesV1PlaceContainingPlace>? containingPlaces;
 
@@ -2195,6 +2227,7 @@ class GoogleMapsPlacesV1Place {
     this.allowsDogs,
     this.attributions,
     this.businessStatus,
+    this.consumerAlert,
     this.containingPlaces,
     this.curbsidePickup,
     this.currentOpeningHours,
@@ -2297,6 +2330,12 @@ class GoogleMapsPlacesV1Place {
                 )
                 .toList(),
         businessStatus: json_['businessStatus'] as core.String?,
+        consumerAlert:
+            json_.containsKey('consumerAlert')
+                ? GoogleMapsPlacesV1PlaceConsumerAlert.fromJson(
+                  json_['consumerAlert'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         containingPlaces:
             (json_['containingPlaces'] as core.List?)
                 ?.map(
@@ -2530,6 +2569,7 @@ class GoogleMapsPlacesV1Place {
     if (allowsDogs != null) 'allowsDogs': allowsDogs!,
     if (attributions != null) 'attributions': attributions!,
     if (businessStatus != null) 'businessStatus': businessStatus!,
+    if (consumerAlert != null) 'consumerAlert': consumerAlert!,
     if (containingPlaces != null) 'containingPlaces': containingPlaces!,
     if (curbsidePickup != null) 'curbsidePickup': curbsidePickup!,
     if (currentOpeningHours != null)
@@ -2726,6 +2766,104 @@ class GoogleMapsPlacesV1PlaceAttribution {
   };
 }
 
+/// The consumer alert message for the place when we detect suspicious review
+/// activity on a business or a business violates our policies.
+class GoogleMapsPlacesV1PlaceConsumerAlert {
+  /// The details of the consumer alert message.ƒ
+  GoogleMapsPlacesV1PlaceConsumerAlertDetails? details;
+
+  /// The language code of the consumer alert message.
+  ///
+  /// This is a BCP 47 language code.
+  core.String? languageCode;
+
+  /// The overview of the consumer alert message.
+  core.String? overview;
+
+  GoogleMapsPlacesV1PlaceConsumerAlert({
+    this.details,
+    this.languageCode,
+    this.overview,
+  });
+
+  GoogleMapsPlacesV1PlaceConsumerAlert.fromJson(core.Map json_)
+    : this(
+        details:
+            json_.containsKey('details')
+                ? GoogleMapsPlacesV1PlaceConsumerAlertDetails.fromJson(
+                  json_['details'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        languageCode: json_['languageCode'] as core.String?,
+        overview: json_['overview'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (details != null) 'details': details!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (overview != null) 'overview': overview!,
+  };
+}
+
+/// The details of the consumer alert message.
+class GoogleMapsPlacesV1PlaceConsumerAlertDetails {
+  /// The link to show together with the description to provide more
+  /// information.
+  GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink? aboutLink;
+
+  /// The description of the consumer alert message.
+  core.String? description;
+
+  /// The title to show together with the description.
+  core.String? title;
+
+  GoogleMapsPlacesV1PlaceConsumerAlertDetails({
+    this.aboutLink,
+    this.description,
+    this.title,
+  });
+
+  GoogleMapsPlacesV1PlaceConsumerAlertDetails.fromJson(core.Map json_)
+    : this(
+        aboutLink:
+            json_.containsKey('aboutLink')
+                ? GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink.fromJson(
+                  json_['aboutLink'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (aboutLink != null) 'aboutLink': aboutLink!,
+    if (description != null) 'description': description!,
+    if (title != null) 'title': title!,
+  };
+}
+
+/// The link to show together with the description to provide more information.
+class GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink {
+  /// The title to show for the link.
+  core.String? title;
+
+  /// The uri of the link.
+  core.String? uri;
+
+  GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink({this.title, this.uri});
+
+  GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink.fromJson(core.Map json_)
+    : this(
+        title: json_['title'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (title != null) 'title': title!,
+    if (uri != null) 'uri': uri!,
+  };
+}
+
 /// Info about the place in which this place is located.
 class GoogleMapsPlacesV1PlaceContainingPlace {
   /// The place id of the place in which this place is located.
@@ -2774,7 +2912,7 @@ class GoogleMapsPlacesV1PlaceEvChargeAmenitySummary {
   /// A summary of the nearby restaurants.
   GoogleMapsPlacesV1ContentBlock? restaurant;
 
-  /// A summary of the nearby gas stations.
+  /// A summary of the nearby stores.
   GoogleMapsPlacesV1ContentBlock? store;
 
   GoogleMapsPlacesV1PlaceEvChargeAmenitySummary({
@@ -3507,6 +3645,11 @@ class GoogleMapsPlacesV1Review {
   /// The localized text of the review.
   GoogleTypeLocalizedText? text;
 
+  /// The date when the author visited the place.
+  ///
+  /// This is trucated to the year and month of the visit.
+  GoogleTypeDate? visitDate;
+
   GoogleMapsPlacesV1Review({
     this.authorAttribution,
     this.flagContentUri,
@@ -3517,6 +3660,7 @@ class GoogleMapsPlacesV1Review {
     this.rating,
     this.relativePublishTimeDescription,
     this.text,
+    this.visitDate,
   });
 
   GoogleMapsPlacesV1Review.fromJson(core.Map json_)
@@ -3547,6 +3691,12 @@ class GoogleMapsPlacesV1Review {
                   json_['text'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        visitDate:
+            json_.containsKey('visitDate')
+                ? GoogleTypeDate.fromJson(
+                  json_['visitDate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3560,6 +3710,7 @@ class GoogleMapsPlacesV1Review {
     if (relativePublishTimeDescription != null)
       'relativePublishTimeDescription': relativePublishTimeDescription!,
     if (text != null) 'text': text!,
+    if (visitDate != null) 'visitDate': visitDate!,
   };
 }
 
@@ -4556,7 +4707,7 @@ typedef GoogleTypeMoney = $Money;
 /// with UI elements for input or editing of fields outside countries where that
 /// field is used. For more guidance on how to use this schema, see:
 /// https://support.google.com/business/answer/6397478.
-typedef GoogleTypePostalAddress = $PostalAddress00;
+typedef GoogleTypePostalAddress = $PostalAddress;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

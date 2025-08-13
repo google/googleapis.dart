@@ -7312,7 +7312,10 @@ class NetworkConfig {
 class NpmPackage {
   /// Path to the package.json.
   ///
-  /// e.g. workspace/path/to/package
+  /// e.g. workspace/path/to/package Only one of `archive` or `package_path` can
+  /// be specified.
+  ///
+  /// Optional.
   core.String? packagePath;
 
   /// Artifact Registry repository, in the form
@@ -8823,6 +8826,14 @@ class WorkerConfig {
   /// standard disk size.
   core.String? diskSizeGb;
 
+  /// Enable nested virtualization on the worker, if supported by the machine
+  /// type.
+  ///
+  /// By default, nested virtualization is disabled.
+  ///
+  /// Optional.
+  core.bool? enableNestedVirtualization;
+
   /// Machine type of a worker, such as `e2-medium`.
   ///
   /// See
@@ -8832,16 +8843,24 @@ class WorkerConfig {
   /// Optional.
   core.String? machineType;
 
-  WorkerConfig({this.diskSizeGb, this.machineType});
+  WorkerConfig({
+    this.diskSizeGb,
+    this.enableNestedVirtualization,
+    this.machineType,
+  });
 
   WorkerConfig.fromJson(core.Map json_)
     : this(
         diskSizeGb: json_['diskSizeGb'] as core.String?,
+        enableNestedVirtualization:
+            json_['enableNestedVirtualization'] as core.bool?,
         machineType: json_['machineType'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
+    if (enableNestedVirtualization != null)
+      'enableNestedVirtualization': enableNestedVirtualization!,
     if (machineType != null) 'machineType': machineType!,
   };
 }

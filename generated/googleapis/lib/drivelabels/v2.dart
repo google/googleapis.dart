@@ -92,14 +92,17 @@ class LabelsResource {
 
   LabelsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new Label.
+  /// Creates a label.
+  ///
+  /// For more information, see
+  /// [Create and publish a label](https://developers.google.com/workspace/drive/labels/guides/create-label).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [languageCode] - The BCP-47 language code to use for evaluating localized
-  /// Field labels in response. When not specified, values in the default
+  /// field labels in response. When not specified, values in the default
   /// configured language will be used.
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
@@ -142,10 +145,12 @@ class LabelsResource {
     );
   }
 
-  /// Permanently deletes a Label and related metadata on Drive Items.
+  /// Permanently deletes a label and related metadata on Drive items.
   ///
-  /// Once deleted, the Label and related Drive item metadata will be deleted.
-  /// Only draft Labels, and disabled Labels may be deleted.
+  /// For more information, see
+  /// [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label).
+  /// Once deleted, the label and related Drive item metadata will be deleted.
+  /// Only draft labels and disabled labels may be deleted.
   ///
   /// Request parameters:
   ///
@@ -153,13 +158,13 @@ class LabelsResource {
   /// Value must have pattern `^labels/\[^/\]+$`.
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
-  /// credentials. The server will verify the user is an admin for the Label
+  /// credentials. The server will verify the user is an admin for the label
   /// before allowing access.
   ///
-  /// [writeControl_requiredRevisionId] - The revision_id of the label that the
-  /// write request will be applied to. If this is not the latest revision of
-  /// the label, the request will not be processed and will return a 400 Bad
-  /// Request error.
+  /// [writeControl_requiredRevisionId] - The revision ID of the label that the
+  /// write request will be applied to. If this isn't the latest revision of the
+  /// label, the request will not be processed and will return a 400 Bad Request
+  /// error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -196,18 +201,20 @@ class LabelsResource {
     );
   }
 
-  /// Updates a single Label by applying a set of update requests resulting in a
+  /// Updates a single label by applying a set of update requests resulting in a
   /// new draft revision.
   ///
+  /// For more information, see
+  /// [Update a label](https://developers.google.com/workspace/drive/labels/guides/update-label).
   /// The batch update is all-or-nothing: If any of the update requests are
   /// invalid, no changes are applied. The resulting draft revision must be
-  /// published before the changes may be used with Drive Items.
+  /// published before the changes may be used with Drive items.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the Label to update.
+  /// [name] - Required. The resource name of the label to update.
   /// Value must have pattern `^labels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -243,10 +250,12 @@ class LabelsResource {
     );
   }
 
-  /// Disable a published Label.
+  /// Disable a published label.
   ///
-  /// Disabling a Label will result in a new disabled published revision based
-  /// on the current published revision. If there is a draft revision, a new
+  /// For more information, see
+  /// [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label).
+  /// Disabling a label will result in a new disabled published revision based
+  /// on the current published revision. If there's a draft revision, a new
   /// disabled draft revision will be created based on the latest draft
   /// revision. Older draft revisions will be deleted. Once disabled, a label
   /// may be deleted with `DeleteLabel`.
@@ -291,10 +300,12 @@ class LabelsResource {
     );
   }
 
-  /// Enable a disabled Label and restore it to its published state.
+  /// Enable a disabled label and restore it to its published state.
   ///
+  /// For more information, see
+  /// [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label).
   /// This will result in a new published revision based on the current disabled
-  /// published revision. If there is an existing disabled draft revision, a new
+  /// published revision. If there's an existing disabled draft revision, a new
   /// revision will be created based on that draft and will be enabled.
   ///
   /// [request] - The metadata request object.
@@ -339,6 +350,8 @@ class LabelsResource {
 
   /// Get a label by its resource name.
   ///
+  /// For more information, see
+  /// [Search for labels](https://developers.google.com/workspace/drive/labels/guides/search-label).
   /// Resource name may be any of: * `labels/{id}` - See `labels/{id}@latest` *
   /// `labels/{id}@latest` - Gets the latest revision of the label. *
   /// `labels/{id}@published` - Gets the current published revision of the
@@ -405,10 +418,13 @@ class LabelsResource {
 
   /// List labels.
   ///
+  /// For more information, see
+  /// [Search for labels](https://developers.google.com/workspace/drive/labels/guides/search-label).
+  ///
   /// Request parameters:
   ///
   /// [customer] - The customer to scope this list request to. For example:
-  /// "customers/abcd1234". If unset, will return all labels within the current
+  /// `customers/abcd1234`. If unset, will return all labels within the current
   /// customer.
   ///
   /// [languageCode] - The BCP-47 language code to use for evaluating localized
@@ -416,7 +432,7 @@ class LabelsResource {
   /// language are used.
   ///
   /// [minimumRole] - Specifies the level of access the user must have on the
-  /// returned Labels. The minimum role a user must have on a label. Defaults to
+  /// returned labels. The minimum role a user must have on a label. Defaults to
   /// `READER`.
   /// Possible string values are:
   /// - "LABEL_ROLE_UNSPECIFIED" : Unknown role.
@@ -443,7 +459,7 @@ class LabelsResource {
   /// (`labels/{id}`).
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
-  /// credentials. This will return all Labels within the customer.
+  /// credentials. This will return all labels within the customer.
   ///
   /// [view] - When specified, only certain fields belonging to the indicated
   /// view are returned.
@@ -497,20 +513,23 @@ class LabelsResource {
     );
   }
 
-  /// Publish all draft changes to the Label.
+  /// Publish all draft changes to the label.
   ///
-  /// Once published, the Label may not return to its draft state. See
-  /// `google.apps.drive.labels.v2.Lifecycle` for more information. Publishing a
-  /// Label will result in a new published revision. All previous draft
-  /// revisions will be deleted. Previous published revisions will be kept but
-  /// are subject to automated deletion as needed. Once published, some changes
-  /// are no longer permitted. Generally, any change that would invalidate or
-  /// cause new restrictions on existing metadata related to the Label will be
-  /// rejected. For example, the following changes to a Label will be rejected
-  /// after the Label is published: * The label cannot be directly deleted. It
-  /// must be disabled first, then deleted. * Field.FieldType cannot be changed.
-  /// * Changes to Field validation options cannot reject something that was
-  /// previously accepted. * Reducing the max entries.
+  /// Once published, the label may not return to its draft state. For more
+  /// information, see
+  /// [Create and publish a label](https://developers.google.com/workspace/drive/labels/guides/create-label).
+  /// Publishing a label will result in a new published revision. All previous
+  /// draft revisions will be deleted. Previous published revisions will be kept
+  /// but are subject to automated deletion as needed. For more information, see
+  /// [Label lifecycle](https://developers.google.com/workspace/drive/labels/guides/label-lifecycle).
+  /// Once published, some changes are no longer permitted. Generally, any
+  /// change that would invalidate or cause new restrictions on existing
+  /// metadata related to the label will be rejected. For example, the following
+  /// changes to a label will be rejected after the label is published: * The
+  /// label cannot be directly deleted. It must be disabled first, then deleted.
+  /// * `Field.FieldType` cannot be changed. * Changes to field validation
+  /// options cannot reject something that was previously accepted. * Reducing
+  /// the maximum entries.
   ///
   /// [request] - The metadata request object.
   ///
@@ -552,16 +571,16 @@ class LabelsResource {
     );
   }
 
-  /// Updates a Label's `CopyMode`.
+  /// Updates a label's `CopyMode`.
   ///
-  /// Changes to this policy are not revisioned, do not require publishing, and
+  /// Changes to this policy aren't revisioned, don't require publishing, and
   /// take effect immediately.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the Label to update.
+  /// [name] - Required. The resource name of the label to update.
   /// Value must have pattern `^labels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -597,18 +616,18 @@ class LabelsResource {
     );
   }
 
-  /// Updates a Label's EabledAppSettings.
+  /// Updates a label's `EnabledAppSettings`.
   ///
-  /// Enabling a Label in a Workspace Application allows it to be used in that
-  /// application. This change is not revisioned, does not require publishing,
-  /// and takes effect immediately.
+  /// Enabling a label in a Google Workspace app allows it to be used in that
+  /// app. This change isn't revisioned, doesn't require publishing, and takes
+  /// effect immediately.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the Label to update. The resource
-  /// name of the Label to update.
+  /// [name] - Required. The resource name of the label to update. The resource
+  /// name of the label to update.
   /// Value must have pattern `^labels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -645,22 +664,22 @@ class LabelsResource {
     );
   }
 
-  /// Updates a Label's permissions.
+  /// Updates a label's permissions.
   ///
-  /// If a permission for the indicated principal doesn't exist, a new Label
-  /// Permission is created, otherwise the existing permission is updated.
-  /// Permissions affect the Label resource as a whole, are not revisioned, and
-  /// do not require publishing.
+  /// If a permission for the indicated principal doesn't exist, a label
+  /// permission is created, otherwise the existing permission is updated.
+  /// Permissions affect the label resource as a whole, aren't revisioned, and
+  /// don't require publishing.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent Label resource name.
+  /// [parent] - Required. The parent label resource name.
   /// Value must have pattern `^labels/\[^/\]+$`.
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
-  /// credentials. The server will verify the user is an admin for the Label
+  /// credentials. The server will verify the user is an admin for the label
   /// before allowing access.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -704,15 +723,15 @@ class LabelsLocksResource {
 
   LabelsLocksResource(commons.ApiRequester client) : _requester = client;
 
-  /// Lists the LabelLocks on a Label.
+  /// Lists the label locks on a label.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Label on which Locks are applied. Format:
-  /// labels/{label}
+  /// [parent] - Required. Label on which locks are applied. Format:
+  /// `labels/{label}`.
   /// Value must have pattern `^labels/\[^/\]+$`.
   ///
-  /// [pageSize] - Maximum number of Locks to return per page. Default: 100.
+  /// [pageSize] - Maximum number of locks to return per page. Default: 100.
   /// Max: 200.
   ///
   /// [pageToken] - The token of the page to return.
@@ -757,18 +776,18 @@ class LabelsPermissionsResource {
 
   LabelsPermissionsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes Label permissions.
+  /// Deletes label permissions.
   ///
-  /// Permissions affect the Label resource as a whole, are not revisioned, and
-  /// do not require publishing.
+  /// Permissions affect the label resource as a whole, aren't revisioned, and
+  /// don't require publishing.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent Label resource name shared by all
-  /// permissions being deleted. Format: labels/{label} If this is set, the
-  /// parent field in the UpdateLabelPermissionRequest messages must either be
+  /// [parent] - Required. The parent label resource name shared by all
+  /// permissions being deleted. Format: `labels/{label}`. If this is set, the
+  /// parent field in the `UpdateLabelPermissionRequest` messages must either be
   /// empty or match this field.
   /// Value must have pattern `^labels/\[^/\]+$`.
   ///
@@ -806,20 +825,20 @@ class LabelsPermissionsResource {
     );
   }
 
-  /// Updates Label permissions.
+  /// Updates label permissions.
   ///
-  /// If a permission for the indicated principal doesn't exist, a new Label
-  /// Permission is created, otherwise the existing permission is updated.
-  /// Permissions affect the Label resource as a whole, are not revisioned, and
-  /// do not require publishing.
+  /// If a permission for the indicated principal doesn't exist, a label
+  /// permission is created, otherwise the existing permission is updated.
+  /// Permissions affect the label resource as a whole, aren't revisioned, and
+  /// don't require publishing.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent Label resource name shared by all
-  /// permissions being updated. Format: labels/{label} If this is set, the
-  /// parent field in the UpdateLabelPermissionRequest messages must either be
+  /// [parent] - Required. The parent label resource name shared by all
+  /// permissions being updated. Format: `labels/{label}`. If this is set, the
+  /// parent field in the `UpdateLabelPermissionRequest` messages must either be
   /// empty or match this field.
   /// Value must have pattern `^labels/\[^/\]+$`.
   ///
@@ -859,23 +878,23 @@ class LabelsPermissionsResource {
     );
   }
 
-  /// Updates a Label's permissions.
+  /// Updates a label's permissions.
   ///
-  /// If a permission for the indicated principal doesn't exist, a new Label
-  /// Permission is created, otherwise the existing permission is updated.
-  /// Permissions affect the Label resource as a whole, are not revisioned, and
-  /// do not require publishing.
+  /// If a permission for the indicated principal doesn't exist, a label
+  /// permission is created, otherwise the existing permission is updated.
+  /// Permissions affect the label resource as a whole, aren't revisioned, and
+  /// don't require publishing.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent Label resource name on the Label
-  /// Permission is created. Format: labels/{label}
+  /// [parent] - Required. The parent label resource name on the label
+  /// permission is created. Format: `labels/{label}`.
   /// Value must have pattern `^labels/\[^/\]+$`.
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
-  /// credentials. The server will verify the user is an admin for the Label
+  /// credentials. The server will verify the user is an admin for the label
   /// before allowing access.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -913,18 +932,18 @@ class LabelsPermissionsResource {
     );
   }
 
-  /// Deletes a Label's permission.
+  /// Deletes a label's permission.
   ///
-  /// Permissions affect the Label resource as a whole, are not revisioned, and
-  /// do not require publishing.
+  /// Permissions affect the label resource as a whole, aren't revisioned, and
+  /// don't require publishing.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Label Permission resource name.
+  /// [name] - Required. Label permission resource name.
   /// Value must have pattern `^labels/\[^/\]+/permissions/\[^/\]+$`.
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
-  /// credentials. The server will verify the user is an admin for the Label
+  /// credentials. The server will verify the user is an admin for the label
   /// before allowing access.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -959,12 +978,12 @@ class LabelsPermissionsResource {
     );
   }
 
-  /// Lists a Label's permissions.
+  /// Lists a label's permissions.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent Label resource name on which Label
-  /// Permission are listed. Format: labels/{label}
+  /// [parent] - Required. The parent label resource name on which label
+  /// permissions are listed. Format: `labels/{label}`.
   /// Value must have pattern `^labels/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of permissions to return per page. Default:
@@ -973,7 +992,7 @@ class LabelsPermissionsResource {
   /// [pageToken] - The token of the page to return.
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
-  /// credentials. The server will verify the user is an admin for the Label
+  /// credentials. The server will verify the user is an admin for the label
   /// before allowing access.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1023,22 +1042,22 @@ class LabelsRevisionsResource {
 
   LabelsRevisionsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Updates a Label's permissions.
+  /// Updates a label's permissions.
   ///
-  /// If a permission for the indicated principal doesn't exist, a new Label
-  /// Permission is created, otherwise the existing permission is updated.
-  /// Permissions affect the Label resource as a whole, are not revisioned, and
-  /// do not require publishing.
+  /// If a permission for the indicated principal doesn't exist, a label
+  /// permission is created, otherwise the existing permission is updated.
+  /// Permissions affect the label resource as a whole, aren't revisioned, and
+  /// don't require publishing.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent Label resource name.
+  /// [parent] - Required. The parent label resource name.
   /// Value must have pattern `^labels/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
-  /// credentials. The server will verify the user is an admin for the Label
+  /// credentials. The server will verify the user is an admin for the label
   /// before allowing access.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1083,15 +1102,15 @@ class LabelsRevisionsLocksResource {
   LabelsRevisionsLocksResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Lists the LabelLocks on a Label.
+  /// Lists the label locks on a label.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Label on which Locks are applied. Format:
-  /// labels/{label}
+  /// [parent] - Required. Label on which locks are applied. Format:
+  /// `labels/{label}`.
   /// Value must have pattern `^labels/\[^/\]+/revisions/\[^/\]+$`.
   ///
-  /// [pageSize] - Maximum number of Locks to return per page. Default: 100.
+  /// [pageSize] - Maximum number of locks to return per page. Default: 100.
   /// Max: 200.
   ///
   /// [pageToken] - The token of the page to return.
@@ -1137,18 +1156,18 @@ class LabelsRevisionsPermissionsResource {
   LabelsRevisionsPermissionsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Deletes Label permissions.
+  /// Deletes label permissions.
   ///
-  /// Permissions affect the Label resource as a whole, are not revisioned, and
-  /// do not require publishing.
+  /// Permissions affect the label resource as a whole, aren't revisioned, and
+  /// don't require publishing.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent Label resource name shared by all
-  /// permissions being deleted. Format: labels/{label} If this is set, the
-  /// parent field in the UpdateLabelPermissionRequest messages must either be
+  /// [parent] - Required. The parent label resource name shared by all
+  /// permissions being deleted. Format: `labels/{label}`. If this is set, the
+  /// parent field in the `UpdateLabelPermissionRequest` messages must either be
   /// empty or match this field.
   /// Value must have pattern `^labels/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -1186,20 +1205,20 @@ class LabelsRevisionsPermissionsResource {
     );
   }
 
-  /// Updates Label permissions.
+  /// Updates label permissions.
   ///
-  /// If a permission for the indicated principal doesn't exist, a new Label
-  /// Permission is created, otherwise the existing permission is updated.
-  /// Permissions affect the Label resource as a whole, are not revisioned, and
-  /// do not require publishing.
+  /// If a permission for the indicated principal doesn't exist, a label
+  /// permission is created, otherwise the existing permission is updated.
+  /// Permissions affect the label resource as a whole, aren't revisioned, and
+  /// don't require publishing.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent Label resource name shared by all
-  /// permissions being updated. Format: labels/{label} If this is set, the
-  /// parent field in the UpdateLabelPermissionRequest messages must either be
+  /// [parent] - Required. The parent label resource name shared by all
+  /// permissions being updated. Format: `labels/{label}`. If this is set, the
+  /// parent field in the `UpdateLabelPermissionRequest` messages must either be
   /// empty or match this field.
   /// Value must have pattern `^labels/\[^/\]+/revisions/\[^/\]+$`.
   ///
@@ -1239,23 +1258,23 @@ class LabelsRevisionsPermissionsResource {
     );
   }
 
-  /// Updates a Label's permissions.
+  /// Updates a label's permissions.
   ///
-  /// If a permission for the indicated principal doesn't exist, a new Label
-  /// Permission is created, otherwise the existing permission is updated.
-  /// Permissions affect the Label resource as a whole, are not revisioned, and
-  /// do not require publishing.
+  /// If a permission for the indicated principal doesn't exist, a label
+  /// permission is created, otherwise the existing permission is updated.
+  /// Permissions affect the label resource as a whole, aren't revisioned, and
+  /// don't require publishing.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent Label resource name on the Label
-  /// Permission is created. Format: labels/{label}
+  /// [parent] - Required. The parent label resource name on the label
+  /// permission is created. Format: `labels/{label}`.
   /// Value must have pattern `^labels/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
-  /// credentials. The server will verify the user is an admin for the Label
+  /// credentials. The server will verify the user is an admin for the label
   /// before allowing access.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1293,19 +1312,19 @@ class LabelsRevisionsPermissionsResource {
     );
   }
 
-  /// Deletes a Label's permission.
+  /// Deletes a label's permission.
   ///
-  /// Permissions affect the Label resource as a whole, are not revisioned, and
-  /// do not require publishing.
+  /// Permissions affect the label resource as a whole, aren't revisioned, and
+  /// don't require publishing.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Label Permission resource name.
+  /// [name] - Required. Label permission resource name.
   /// Value must have pattern
   /// `^labels/\[^/\]+/revisions/\[^/\]+/permissions/\[^/\]+$`.
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
-  /// credentials. The server will verify the user is an admin for the Label
+  /// credentials. The server will verify the user is an admin for the label
   /// before allowing access.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1340,12 +1359,12 @@ class LabelsRevisionsPermissionsResource {
     );
   }
 
-  /// Lists a Label's permissions.
+  /// Lists a label's permissions.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent Label resource name on which Label
-  /// Permission are listed. Format: labels/{label}
+  /// [parent] - Required. The parent label resource name on which label
+  /// permissions are listed. Format: `labels/{label}`.
   /// Value must have pattern `^labels/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of permissions to return per page. Default:
@@ -1354,7 +1373,7 @@ class LabelsRevisionsPermissionsResource {
   /// [pageToken] - The token of the page to return.
   ///
   /// [useAdminAccess] - Set to `true` in order to use the user's admin
-  /// credentials. The server will verify the user is an admin for the Label
+  /// credentials. The server will verify the user is an admin for the label
   /// before allowing access.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1399,12 +1418,12 @@ class LimitsResource {
 
   LimitsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Get the constraints on the structure of a Label; such as, the maximum
-  /// number of Fields allowed and maximum length of the label title.
+  /// Get the constraints on the structure of a label; such as, the maximum
+  /// number of fields allowed and maximum length of the label title.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Label revision resource name Must be: "limits/label"
+  /// [name] - Required. Label revision resource name must be: "limits/label".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1452,7 +1471,7 @@ class UsersResource {
   /// Value must have pattern `^users/\[^/\]+/capabilities$`.
   ///
   /// [customer] - The customer to scope this request to. For example:
-  /// "customers/abcd1234". If unset, will return settings within the current
+  /// `customers/abcd1234`. If unset, it will return settings within the current
   /// customer.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1576,7 +1595,7 @@ class GoogleAppsDriveLabelsV2BadgeConfig {
   };
 }
 
-/// Deletes one of more Label Permissions.
+/// Deletes one or more label permissions.
 class GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest {
   /// The request message specifying the resources to update.
   ///
@@ -1585,9 +1604,9 @@ class GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest {
 
   /// Set to `true` in order to use the user's admin credentials.
   ///
-  /// The server will verify the user is an admin for the Label before allowing
-  /// access. If this is set, the use_admin_access field in the
-  /// DeleteLabelPermissionRequest messages must either be empty or match this
+  /// The server will verify the user is an admin for the label before allowing
+  /// access. If this is set, the `use_admin_access` field in the
+  /// `DeleteLabelPermissionRequest` messages must either be empty or match this
   /// field.
   core.bool? useAdminAccess;
 
@@ -1617,7 +1636,7 @@ class GoogleAppsDriveLabelsV2BatchDeleteLabelPermissionsRequest {
   };
 }
 
-/// Updates one or more Label Permissions.
+/// Updates one or more label permissions.
 class GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest {
   /// The request message specifying the resources to update.
   ///
@@ -1626,9 +1645,9 @@ class GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest {
 
   /// Set to `true` in order to use the user's admin credentials.
   ///
-  /// The server will verify the user is an admin for the Label before allowing
-  /// access. If this is set, the use_admin_access field in the
-  /// UpdateLabelPermissionRequest messages must either be empty or match this
+  /// The server will verify the user is an admin for the label before allowing
+  /// access. If this is set, the `use_admin_access` field in the
+  /// `UpdateLabelPermissionRequest` messages must either be empty or match this
   /// field.
   core.bool? useAdminAccess;
 
@@ -1658,7 +1677,7 @@ class GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsRequest {
   };
 }
 
-/// Response for updating one or more Label Permissions.
+/// Response for updating one or more label permissions.
 class GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse {
   /// Permissions updated.
   ///
@@ -1687,12 +1706,12 @@ class GoogleAppsDriveLabelsV2BatchUpdateLabelPermissionsResponse {
   };
 }
 
-/// Limits for date Field type.
+/// Limits for date field type.
 class GoogleAppsDriveLabelsV2DateLimits {
-  /// Maximum value for the date Field type.
+  /// Maximum value for the date field type.
   GoogleTypeDate? maxValue;
 
-  /// Minimum value for the date Field type.
+  /// Minimum value for the date field type.
   GoogleTypeDate? minValue;
 
   GoogleAppsDriveLabelsV2DateLimits({this.maxValue, this.minValue});
@@ -1719,19 +1738,19 @@ class GoogleAppsDriveLabelsV2DateLimits {
   };
 }
 
-/// Deletes a Label Permission.
+/// Deletes a label permission.
 ///
-/// Permissions affect the Label resource as a whole, are not revisioned, and do
-/// not require publishing.
+/// Permissions affect the label resource as a whole, aren't revisioned, and
+/// don't require publishing.
 class GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest {
-  /// Label Permission resource name.
+  /// Label permission resource name.
   ///
   /// Required.
   core.String? name;
 
   /// Set to `true` in order to use the user's admin credentials.
   ///
-  /// The server will verify the user is an admin for the Label before allowing
+  /// The server will verify the user is an admin for the label before allowing
   /// access.
   core.bool? useAdminAccess;
 
@@ -1752,22 +1771,22 @@ class GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest {
   };
 }
 
-/// The set of requests for updating aspects of a Label.
+/// The set of requests for updating aspects of a label.
 ///
-/// If any request is not valid, no requests will be applied.
+/// If any request isn't valid, no requests will be applied.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest {
-  /// The BCP-47 language code to use for evaluating localized Field labels when
+  /// The BCP-47 language code to use for evaluating localized field labels when
   /// `include_label_in_response` is `true`.
   core.String? languageCode;
 
-  /// A list of updates to apply to the Label.
+  /// A list of updates to apply to the label.
   ///
   /// Requests will be applied in the order they are specified.
   core.List<GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest>? requests;
 
   /// Set to `true` in order to use the user's admin credentials.
   ///
-  /// The server will verify the user is an admin for the Label before allowing
+  /// The server will verify the user is an admin for the label before allowing
   /// access.
   core.bool? useAdminAccess;
 
@@ -1821,7 +1840,7 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequest {
   };
 }
 
-/// Request to create a Field within a Label.
+/// Request to create a field within a label.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest {
   /// Field to create.
   ///
@@ -1848,14 +1867,14 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest {
   };
 }
 
-/// Request to create a Selection Choice.
+/// Request to create a selection choice.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest {
-  /// The Choice to create.
+  /// The choice to create.
   ///
   /// Required.
   GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice? choice;
 
-  /// The Selection Field in which a Choice will be created.
+  /// The selection field in which a choice will be created.
   ///
   /// Required.
   core.String? fieldId;
@@ -1883,9 +1902,9 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest
   };
 }
 
-/// Request to delete the Field.
+/// Request to delete the field.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest {
-  /// ID of the Field to delete.
+  /// ID of the field to delete.
   ///
   /// Required.
   core.String? id;
@@ -1899,9 +1918,9 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest {
   core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
 }
 
-/// Request to delete a Choice.
+/// Request to delete a choice.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest {
-  /// The Selection Field from which a Choice will be deleted.
+  /// The selection field from which a choice will be deleted.
   ///
   /// Required.
   core.String? fieldId;
@@ -1929,14 +1948,14 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest
   };
 }
 
-/// Request to disable the Field.
+/// Request to disable the field.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest {
-  /// Field Disabled Policy.
+  /// Field disabled policy.
   ///
   /// Required.
   GoogleAppsDriveLabelsV2LifecycleDisabledPolicy? disabledPolicy;
 
-  /// Key of the Field to disable.
+  /// Key of the field to disable.
   ///
   /// Required.
   core.String? id;
@@ -1944,7 +1963,7 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest {
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root `disabled_policy` is
-  /// implied and should not be specified. A single `*` can be used as
+  /// implied and should not be specified. A single `*` can be used as a
   /// short-hand for updating every field.
   core.String? updateMask;
 
@@ -1975,14 +1994,14 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest {
   };
 }
 
-/// Request to disable a Choice.
+/// Request to disable a choice.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest {
   /// The disabled policy to update.
   ///
   /// Required.
   GoogleAppsDriveLabelsV2LifecycleDisabledPolicy? disabledPolicy;
 
-  /// The Selection Field in which a Choice will be disabled.
+  /// The selection field in which a choice will be disabled.
   ///
   /// Required.
   core.String? fieldId;
@@ -1995,7 +2014,7 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceReques
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root `disabled_policy` is
-  /// implied and should not be specified. A single `*` can be used as
+  /// implied and should not be specified. A single `*` can be used as a
   /// short-hand for updating every field.
   core.String? updateMask;
 
@@ -2029,9 +2048,9 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceReques
   };
 }
 
-/// Request to enable the Field.
+/// Request to enable the field.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest {
-  /// ID of the Field to enable.
+  /// ID of the field to enable.
   ///
   /// Required.
   core.String? id;
@@ -2045,9 +2064,9 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest {
   core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
 }
 
-/// Request to enable a Choice.
+/// Request to enable a choice.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest {
-  /// The Selection Field in which a Choice will be enabled.
+  /// The selection field in which a choice will be enabled.
   ///
   /// Required.
   core.String? fieldId;
@@ -2075,50 +2094,50 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest
   };
 }
 
-/// A single kind of update to apply to a Label.
+/// A single kind of update to apply to a label.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest {
-  /// Creates a new Field.
+  /// Creates a field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateFieldRequest? createField;
 
-  /// Creates Choice within a Selection field.
+  /// Create a choice within a selection field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest?
   createSelectionChoice;
 
-  /// Deletes a Field from the label.
+  /// Deletes a field from the label.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest? deleteField;
 
-  /// Delete a Choice within a Selection Field.
+  /// Delete a choice within a selection field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest?
   deleteSelectionChoice;
 
-  /// Disables the Field.
+  /// Disables the field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest?
   disableField;
 
-  /// Disable a Choice within a Selection Field.
+  /// Disable a choice within a selection field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceRequest?
   disableSelectionChoice;
 
-  /// Enables the Field.
+  /// Enables the field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest? enableField;
 
-  /// Enable a Choice within a Selection Field.
+  /// Enable a choice within a selection field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest?
   enableSelectionChoice;
 
-  /// Updates basic properties of a Field.
+  /// Updates basic properties of a field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest?
   updateField;
 
-  /// Update Field type and/or type options.
+  /// Update field type and/or type options.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest?
   updateFieldType;
 
-  /// Updates the Label properties.
+  /// Updates the label properties.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest?
   updateLabel;
 
-  /// Update a Choice properties within a Selection Field.
+  /// Update a choice property within a selection field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest?
   updateSelectionChoiceProperties;
 
@@ -2240,14 +2259,14 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest {
   };
 }
 
-/// Request to update Field properties.
+/// Request to update field properties.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest {
-  /// The Field to update.
+  /// The field to update.
   ///
   /// Required.
   core.String? id;
 
-  /// Basic Field properties.
+  /// Basic field properties.
   ///
   /// Required.
   GoogleAppsDriveLabelsV2FieldProperties? properties;
@@ -2255,7 +2274,7 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root `properties` is implied and
-  /// should not be specified. A single `*` can be used as short-hand for
+  /// should not be specified. A single `*` can be used as a short-hand for
   /// updating every field.
   core.String? updateMask;
 
@@ -2285,12 +2304,12 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldPropertiesRequest
   };
 }
 
-/// Request to change the type of a Field.
+/// Request to change the type of a field.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest {
   /// Update field to Date.
   GoogleAppsDriveLabelsV2FieldDateOptions? dateOptions;
 
-  /// The Field to update.
+  /// The field to update.
   ///
   /// Required.
   core.String? id;
@@ -2307,7 +2326,7 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest {
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root of `type_options` is
-  /// implied and should not be specified. A single `*` can be used as
+  /// implied and should not be specified. A single `*` can be used as a
   /// short-hand for updating every field.
   core.String? updateMask;
 
@@ -2374,7 +2393,7 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateFieldTypeRequest {
   };
 }
 
-/// Updates basic properties of a Label.
+/// Updates basic properties of a label.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest {
   /// Label properties to update.
   ///
@@ -2384,7 +2403,7 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root `label_properties` is
-  /// implied and should not be specified. A single `*` can be used as
+  /// implied and should not be specified. A single `*` can be used as a
   /// short-hand for updating every field.
   core.String? updateMask;
 
@@ -2411,19 +2430,19 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateLabelPropertiesRequest
   };
 }
 
-/// Request to update a Choice properties.
+/// Request to update a choice property.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropertiesRequest {
-  /// The Selection Field to update.
+  /// The selection field to update.
   ///
   /// Required.
   core.String? fieldId;
 
-  /// The Choice to update.
+  /// The choice to update.
   ///
   /// Required.
   core.String? id;
 
-  /// The Choice properties to update.
+  /// The choice properties to update.
   ///
   /// Required.
   GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties? properties;
@@ -2431,7 +2450,7 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropert
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root `properties` is implied and
-  /// should not be specified. A single `*` can be used as short-hand for
+  /// should not be specified. A single `*` can be used as a short-hand for
   /// updating every field.
   core.String? updateMask;
 
@@ -2464,7 +2483,7 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestUpdateSelectionChoicePropert
   };
 }
 
-/// Response for Label update.
+/// Response for label update.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse {
   /// The reply of the updates.
   ///
@@ -2474,9 +2493,8 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse {
 
   /// The label after updates were applied.
   ///
-  /// This is only set if
-  /// \[BatchUpdateLabelResponse2.include_label_in_response\] is `true` and
-  /// there were no errors.
+  /// This is only set if `include_label_in_response` is `true` and there were
+  /// no errors.
   GoogleAppsDriveLabelsV2Label? updatedLabel;
 
   GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse({
@@ -2509,7 +2527,7 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse {
   };
 }
 
-/// Response following Field create.
+/// Response following field create.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse {
   /// The field of the created field.
   ///
@@ -2541,12 +2559,12 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse {
   };
 }
 
-/// Response following Selection Choice create.
+/// Response following selection choice create.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse {
-  /// The server-generated id of the field.
+  /// The server-generated ID of the field.
   core.String? fieldId;
 
-  /// The server-generated ID of the created choice within the Field
+  /// The server-generated ID of the created choice within the field.
   core.String? id;
 
   GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse({
@@ -2567,77 +2585,77 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceRespon
   };
 }
 
-/// Response following Field delete.
+/// Response following field delete.
 typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse =
     $Empty;
 
-/// Response following Choice delete.
+/// Response following choice delete.
 typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse =
     $Empty;
 
-/// Response following Field disable.
+/// Response following field disable.
 typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse =
     $Empty;
 
-/// Response following Choice disable.
+/// Response following choice disable.
 typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse =
     $Empty;
 
-/// Response following Field enable.
+/// Response following field enable.
 typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse =
     $Empty;
 
-/// Response following Choice enable.
+/// Response following choice enable.
 typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse =
     $Empty;
 
 /// A single response from an update.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse {
-  /// Creates a new Field.
+  /// Creates a field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse?
   createField;
 
-  /// Creates a new selection list option to add to a Selection Field.
+  /// Creates a selection list option to add to a selection field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse?
   createSelectionChoice;
 
-  /// Deletes a Field from the label.
+  /// Deletes a field from the label.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse?
   deleteField;
 
-  /// Deletes a Choice from a Selection Field.
+  /// Deletes a choice from a selection field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteSelectionChoiceResponse?
   deleteSelectionChoice;
 
-  /// Disables Field.
+  /// Disables field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableFieldResponse?
   disableField;
 
-  /// Disables a Choice within a Selection Field.
+  /// Disables a choice within a selection field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDisableSelectionChoiceResponse?
   disableSelectionChoice;
 
-  /// Enables Field.
+  /// Enables field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableFieldResponse?
   enableField;
 
-  /// Enables a Choice within a Selection Field.
+  /// Enables a choice within a selection field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseEnableSelectionChoiceResponse?
   enableSelectionChoice;
 
-  /// Updates basic properties of a Field.
+  /// Updates basic properties of a field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse?
   updateField;
 
-  /// Update Field type and/or type options.
+  /// Updates field type and/or type options.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse?
   updateFieldType;
 
-  /// Updated basic properties of a Label.
+  /// Updates basic properties of a label.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse?
   updateLabel;
 
-  /// Updates a Choice within a Selection Field.
+  /// Updates a choice within a selection field.
   GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse?
   updateSelectionChoiceProperties;
 
@@ -2760,7 +2778,7 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse {
   };
 }
 
-/// Response following update to Field properties.
+/// Response following update to field properties.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse {
   /// The priority of the updated field.
   ///
@@ -2781,15 +2799,15 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesRespon
   };
 }
 
-/// Response following update to Field type.
+/// Response following update to field type.
 typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse =
     $Empty;
 
-/// Response following update to Label properties.
+/// Response following update to label properties.
 typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResponse =
     $Empty;
 
-/// Response following update to Selection Choice properties.
+/// Response following update to selection choice properties.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse {
   /// The priority of the updated choice.
   ///
@@ -2810,7 +2828,7 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoiceProper
   };
 }
 
-/// Request to deprecate a published Label.
+/// Request to deprecate a published label.
 class GoogleAppsDriveLabelsV2DisableLabelRequest {
   /// Disabled policy to use.
   GoogleAppsDriveLabelsV2LifecycleDisabledPolicy? disabledPolicy;
@@ -2824,19 +2842,19 @@ class GoogleAppsDriveLabelsV2DisableLabelRequest {
   /// The fields that should be updated.
   ///
   /// At least one field must be specified. The root `disabled_policy` is
-  /// implied and should not be specified. A single `*` can be used as
+  /// implied and should not be specified. A single `*` can be used as a
   /// short-hand for updating every field.
   core.String? updateMask;
 
   /// Set to `true` in order to use the user's admin credentials.
   ///
-  /// The server will verify the user is an admin for the Label before allowing
+  /// The server will verify the user is an admin for the label before allowing
   /// access.
   core.bool? useAdminAccess;
 
   /// Provides control over how write requests are executed.
   ///
-  /// Defaults to unset, which means last write wins.
+  /// Defaults to unset, which means the last write wins.
   GoogleAppsDriveLabelsV2WriteControl? writeControl;
 
   GoogleAppsDriveLabelsV2DisableLabelRequest({
@@ -2886,13 +2904,13 @@ class GoogleAppsDriveLabelsV2EnableLabelRequest {
 
   /// Set to `true` in order to use the user's admin credentials.
   ///
-  /// The server will verify the user is an admin for the Label before allowing
+  /// The server will verify the user is an admin for the label before allowing
   /// access.
   core.bool? useAdminAccess;
 
   /// Provides control over how write requests are executed.
   ///
-  /// Defaults to unset, which means last write wins.
+  /// Defaults to unset, which means the last write wins.
   GoogleAppsDriveLabelsV2WriteControl? writeControl;
 
   GoogleAppsDriveLabelsV2EnableLabelRequest({
@@ -2965,7 +2983,7 @@ class GoogleAppsDriveLabelsV2Field {
 
   /// The key of a field, unique within a label or library.
   ///
-  /// This value is autogenerated. Matches the regex: `([a-zA-Z0-9])+`
+  /// This value is autogenerated. Matches the regex: `([a-zA-Z0-9])+`.
   ///
   /// Output only.
   core.String? id;
@@ -2978,7 +2996,7 @@ class GoogleAppsDriveLabelsV2Field {
   /// Output only.
   GoogleAppsDriveLabelsV2Lifecycle? lifecycle;
 
-  /// The LockStatus of this field.
+  /// The `LockStatus` of this field.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2LockStatus? lockStatus;
@@ -3333,36 +3351,36 @@ class GoogleAppsDriveLabelsV2FieldIntegerOptions {
   };
 }
 
-/// Field constants governing the structure of a Field; such as, the maximum
+/// Field constants governing the structure of a field; such as, the maximum
 /// title length, minimum and maximum field values or length, etc.
 class GoogleAppsDriveLabelsV2FieldLimits {
-  /// Date Field limits.
+  /// Date field limits.
   GoogleAppsDriveLabelsV2DateLimits? dateLimits;
 
-  /// Integer Field limits.
+  /// Integer field limits.
   GoogleAppsDriveLabelsV2IntegerLimits? integerLimits;
 
-  /// Long text Field limits.
+  /// Long text field limits.
   GoogleAppsDriveLabelsV2LongTextLimits? longTextLimits;
 
-  /// Limits for Field description, also called help text.
+  /// Limits for field description, also called help text.
   core.int? maxDescriptionLength;
 
-  /// Limits for Field title.
+  /// Limits for field title.
   core.int? maxDisplayNameLength;
 
-  /// Max length for the id.
+  /// Maximum length for the id.
   core.int? maxIdLength;
 
-  /// Selection Field limits.
+  /// Selection field limits.
   GoogleAppsDriveLabelsV2SelectionLimits? selectionLimits;
 
   /// The relevant limits for the specified Field.Type.
   ///
-  /// Text Field limits.
+  /// Text field limits.
   GoogleAppsDriveLabelsV2TextLimits? textLimits;
 
-  /// User Field limits.
+  /// User field limits.
   GoogleAppsDriveLabelsV2UserLimits? userLimits;
 
   GoogleAppsDriveLabelsV2FieldLimits({
@@ -3620,7 +3638,7 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice {
   /// Output only.
   GoogleAppsDriveLabelsV2Lifecycle? lifecycle;
 
-  /// The LockStatus of this choice.
+  /// The `LockStatus` of this choice.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2LockStatus? lockStatus;
@@ -4012,12 +4030,12 @@ class GoogleAppsDriveLabelsV2FieldUserOptions {
   };
 }
 
-/// Limits for integer Field type.
+/// Limits for integer field type.
 class GoogleAppsDriveLabelsV2IntegerLimits {
-  /// Maximum value for an integer Field type.
+  /// Maximum value for an integer field type.
   core.String? maxValue;
 
-  /// Minimum value for an integer Field type.
+  /// Minimum value for an integer field type.
   core.String? minValue;
 
   GoogleAppsDriveLabelsV2IntegerLimits({this.maxValue, this.minValue});
@@ -4062,21 +4080,21 @@ class GoogleAppsDriveLabelsV2Label {
 
   /// The customer this label belongs to.
   ///
-  /// For example: "customers/123abc789."
+  /// For example: `customers/123abc789`.
   ///
   /// Output only.
   core.String? customer;
 
   /// The time this label was disabled.
   ///
-  /// This value has no meaning when the label is not disabled.
+  /// This value has no meaning when the label isn't disabled.
   ///
   /// Output only.
   core.String? disableTime;
 
   /// The user who disabled this label.
   ///
-  /// This value has no meaning when the label is not disabled.
+  /// This value has no meaning when the label isn't disabled.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2UserInfo? disabler;
@@ -4086,7 +4104,7 @@ class GoogleAppsDriveLabelsV2Label {
   /// Output only.
   GoogleAppsDriveLabelsV2LabelDisplayHints? displayHints;
 
-  /// The EnabledAppSettings for this Label.
+  /// The `EnabledAppSettings` for this Label.
   ///
   /// Optional.
   GoogleAppsDriveLabelsV2LabelEnabledAppSettings? enabledAppSettings;
@@ -4097,7 +4115,7 @@ class GoogleAppsDriveLabelsV2Label {
   /// Globally unique identifier of this label.
   ///
   /// ID makes up part of the label `name`, but unlike `name`, ID is consistent
-  /// between revisions. Matches the regex: `([a-zA-Z0-9])+`
+  /// between revisions. Matches the regex: `([a-zA-Z0-9])+`.
   ///
   /// Output only.
   core.String? id;
@@ -4125,7 +4143,7 @@ class GoogleAppsDriveLabelsV2Label {
   /// Output only.
   GoogleAppsDriveLabelsV2Lifecycle? lifecycle;
 
-  /// The LockStatus of this label.
+  /// The `LockStatus` of this label.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2LockStatus? lockStatus;
@@ -4146,14 +4164,14 @@ class GoogleAppsDriveLabelsV2Label {
 
   /// The time this label was published.
   ///
-  /// This value has no meaning when the label is not published.
+  /// This value has no meaning when the label isn't published.
   ///
   /// Output only.
   core.String? publishTime;
 
   /// The user who published this label.
   ///
-  /// This value has no meaning when the label is not published.
+  /// This value has no meaning when the label isn't published.\>\>
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2UserInfo? publisher;
@@ -4172,7 +4190,7 @@ class GoogleAppsDriveLabelsV2Label {
   ///
   /// Revision ID might be part of the label `name` depending on the request
   /// issued. A new revision is created whenever revisioned properties of a
-  /// label are changed. Matches the regex: `([a-zA-Z0-9])+`
+  /// label are changed. Matches the regex: `([a-zA-Z0-9])+`.
   ///
   /// Output only.
   core.String? revisionId;
@@ -4372,7 +4390,7 @@ class GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy {
   /// Drive item is copied.
   /// Possible string values are:
   /// - "COPY_MODE_UNSPECIFIED" : Copy mode unspecified.
-  /// - "DO_NOT_COPY" : The applied label and field values are not copied by
+  /// - "DO_NOT_COPY" : The applied label and field values aren't copied by
   /// default when the Drive item it's applied to is copied.
   /// - "ALWAYS_COPY" : The applied label and field values are always copied
   /// when the Drive item it's applied to is copied. Only admins can use this
@@ -4391,7 +4409,7 @@ class GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy {
   };
 }
 
-/// UI display hints for rendering the label.
+/// The UI display hints for rendering the label.
 class GoogleAppsDriveLabelsV2LabelDisplayHints {
   /// Whether the label should be shown in the UI as disabled.
   core.bool? disabled;
@@ -4400,7 +4418,7 @@ class GoogleAppsDriveLabelsV2LabelDisplayHints {
   /// items.
   core.bool? hiddenInSearch;
 
-  /// Order to display label in a list.
+  /// The order to display labels in a list.
   core.String? priority;
 
   /// This label should be shown in the apply menu when applying values to a
@@ -4430,9 +4448,9 @@ class GoogleAppsDriveLabelsV2LabelDisplayHints {
   };
 }
 
-/// Describes the Workspace apps in which the Label can be used.
+/// Describes the Google Workspace apps in which the label can be used.
 class GoogleAppsDriveLabelsV2LabelEnabledAppSettings {
-  /// The list of Apps where the Label can be used.
+  /// The list of apps where the label can be used.
   ///
   /// Optional.
   core.List<GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp>?
@@ -4458,14 +4476,14 @@ class GoogleAppsDriveLabelsV2LabelEnabledAppSettings {
   };
 }
 
-/// An App where the Label can be used.
+/// An app where the label can be used.
 class GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp {
-  /// The name of the App.
+  /// The name of the app.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "APP_UNSPECIFIED" : Unspecified
-  /// - "DRIVE" : Drive.
+  /// - "DRIVE" : Drive
   /// - "GMAIL" : Gmail
   core.String? app;
 
@@ -4480,13 +4498,13 @@ class GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp {
   };
 }
 
-/// Label constraints governing the structure of a Label; such as, the maximum
-/// number of Fields allowed and maximum length of the label title.
+/// Label constraints governing the structure of a label; such as, the maximum
+/// number of fields allowed and maximum length of the label title.
 class GoogleAppsDriveLabelsV2LabelLimits {
-  /// The limits for Fields.
+  /// The limits for fields.
   GoogleAppsDriveLabelsV2FieldLimits? fieldLimits;
 
-  /// The maximum number of published Fields that can be deleted.
+  /// The maximum number of published fields that can be deleted.
   core.int? maxDeletedFields;
 
   /// The maximum number of characters allowed for the description.
@@ -4496,7 +4514,7 @@ class GoogleAppsDriveLabelsV2LabelLimits {
   /// old drafts.
   core.int? maxDraftRevisions;
 
-  /// The maximum number of Fields allowed within the label.
+  /// The maximum number of fields allowed within the label.
   core.int? maxFields;
 
   /// The maximum number of characters allowed for the title.
@@ -4543,56 +4561,55 @@ class GoogleAppsDriveLabelsV2LabelLimits {
   };
 }
 
-/// A Lock that can be applied to a Label, Field, or Choice.
+/// A lock that can be applied to a label, field, or choice.
 class GoogleAppsDriveLabelsV2LabelLock {
-  /// The user's capabilities on this LabelLock.
+  /// The user's capabilities on this label lock.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2LabelLockCapabilities? capabilities;
 
-  /// The ID of the Selection Field Choice that should be locked.
+  /// The ID of the selection field choice that should be locked.
   ///
   /// If present, `field_id` must also be present.
   core.String? choiceId;
 
-  /// The time this LabelLock was created.
+  /// The time this label lock was created.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// The user whose credentials were used to create the LabelLock.
+  /// The user whose credentials were used to create the label lock.
   ///
-  /// This will not be present if no user was responsible for creating the
-  /// LabelLock.
+  /// Not present if no user was responsible for creating the label lock.
   ///
   /// Output only.
   GoogleAppsDriveLabelsV2UserInfo? creator;
 
-  /// A timestamp indicating when this LabelLock was scheduled for deletion.
+  /// A timestamp indicating when this label lock was scheduled for deletion.
   ///
-  /// This will be present only if this LabelLock is in the DELETING state.
+  /// Present only if this label lock is in the `DELETING` state.
   ///
   /// Output only.
   core.String? deleteTime;
 
-  /// The ID of the Field that should be locked.
+  /// The ID of the field that should be locked.
   ///
-  /// Empty if the whole Label should be locked.
+  /// Empty if the whole label should be locked.
   core.String? fieldId;
 
-  /// Resource name of this LabelLock.
+  /// Resource name of this label lock.
   ///
   /// Output only.
   core.String? name;
 
-  /// This LabelLock's state.
+  /// This label lock's state.
   ///
   /// Output only.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unknown state.
-  /// - "ACTIVE" : The LabelLock is active and is being enforced by the server.
-  /// - "DELETING" : The LabelLock is being deleted. The LabelLock will continue
-  /// to be enforced by the server until it has been fully removed.
+  /// - "ACTIVE" : The label lock is active and is being enforced by the server.
+  /// - "DELETING" : The label lock is being deleted. The label lock will
+  /// continue to be enforced by the server until it has been fully removed.
   core.String? state;
 
   GoogleAppsDriveLabelsV2LabelLock({
@@ -4640,7 +4657,7 @@ class GoogleAppsDriveLabelsV2LabelLock {
   };
 }
 
-/// A description of a user's capabilities on a LabelLock.
+/// A description of a user's capabilities on a label lock.
 class GoogleAppsDriveLabelsV2LabelLockCapabilities {
   /// True if the user is authorized to view the policy.
   core.bool? canViewPolicy;
@@ -4662,14 +4679,14 @@ class GoogleAppsDriveLabelsV2LabelPermission {
   ///
   /// The magic value of `audiences/default` may be used to apply the role to
   /// the default audience in the context of the organization that owns the
-  /// Label.
+  /// label.
   core.String? audience;
 
-  /// Specifies the email address for a user or group pricinpal.
+  /// Specifies the email address for a user or group principal.
   ///
-  /// Not populated for audience principals. User and Group permissions may only
-  /// be inserted using email address. On update requests, if email address is
-  /// specified, no principal should be specified.
+  /// Not populated for audience principals. User and group permissions may only
+  /// be inserted using an email address. On update requests, if email address
+  /// is specified, no principal should be specified.
   core.String? email;
 
   /// Group resource name.
@@ -4792,15 +4809,17 @@ class GoogleAppsDriveLabelsV2LabelSchemaCapabilities {
 
 /// The lifecycle state of an object, such as label, field, or choice.
 ///
+/// For more information, see
+/// [Label lifecycle](https://developers.google.com/workspace/drive/labels/guides/label-lifecycle).
 /// The lifecycle enforces the following transitions: * `UNPUBLISHED_DRAFT`
 /// (starting state) * `UNPUBLISHED_DRAFT` -\> `PUBLISHED` * `UNPUBLISHED_DRAFT`
 /// -\> (Deleted) * `PUBLISHED` -\> `DISABLED` * `DISABLED` -\> `PUBLISHED` *
 /// `DISABLED` -\> (Deleted) The published and disabled states have some
-/// distinct characteristics: * Published—Some kinds of changes might be made to
-/// an object in this state, in which case `has_unpublished_changes` will be
-/// true. Also, some kinds of changes are not permitted. Generally, any change
+/// distinct characteristics: * `Published`: Some kinds of changes might be made
+/// to an object in this state, in which case `has_unpublished_changes` will be
+/// true. Also, some kinds of changes aren't permitted. Generally, any change
 /// that would invalidate or cause new restrictions on existing metadata related
-/// to the label are rejected. * Disabled—When disabled, the configured
+/// to the label are rejected. * `Disabled`: When disabled, the configured
 /// `DisabledPolicy` takes effect.
 class GoogleAppsDriveLabelsV2Lifecycle {
   /// The policy that governs how to show a disabled label, field, or selection
@@ -4889,9 +4908,9 @@ class GoogleAppsDriveLabelsV2LifecycleDisabledPolicy {
   };
 }
 
-/// The response to a ListLabelLocksRequest.
+/// The response to a `ListLabelLocksRequest`.
 class GoogleAppsDriveLabelsV2ListLabelLocksResponse {
-  /// LabelLocks.
+  /// Label locks.
   core.List<GoogleAppsDriveLabelsV2LabelLock>? labelLocks;
 
   /// The token of the next page in the response.
@@ -4921,7 +4940,7 @@ class GoogleAppsDriveLabelsV2ListLabelLocksResponse {
   };
 }
 
-/// Response for listing the permissions on a Label.
+/// Response for listing the permissions on a label.
 class GoogleAppsDriveLabelsV2ListLabelPermissionsResponse {
   /// Label permissions.
   core.List<GoogleAppsDriveLabelsV2LabelPermission>? labelPermissions;
@@ -4953,7 +4972,7 @@ class GoogleAppsDriveLabelsV2ListLabelPermissionsResponse {
   };
 }
 
-/// Response for listing Labels.
+/// Response for listing labels.
 class GoogleAppsDriveLabelsV2ListLabelsResponse {
   /// Labels.
   core.List<GoogleAppsDriveLabelsV2Label>? labels;
@@ -4982,9 +5001,9 @@ class GoogleAppsDriveLabelsV2ListLabelsResponse {
   };
 }
 
-/// Limits for list-variant of a Field type.
+/// Limits for list-variant of a field type.
 class GoogleAppsDriveLabelsV2ListLimits {
-  /// Maximum number of values allowed for the Field type.
+  /// Maximum number of values allowed for the field type.
   core.int? maxEntries;
 
   GoogleAppsDriveLabelsV2ListLimits({this.maxEntries});
@@ -5000,11 +5019,11 @@ class GoogleAppsDriveLabelsV2ListLimits {
 /// Contains information about whether a label component should be considered
 /// locked.
 class GoogleAppsDriveLabelsV2LockStatus {
-  /// Indicates whether this label component is the (direct) target of a
-  /// LabelLock.
+  /// Indicates whether this label component is the (direct) target of a label
+  /// lock.
   ///
   /// A label component can be implicitly locked even if it's not the direct
-  /// target of a LabelLock, in which case this field is set to false.
+  /// target of a label lock, in which case this field is set to false.
   ///
   /// Output only.
   core.bool? locked;
@@ -5019,12 +5038,12 @@ class GoogleAppsDriveLabelsV2LockStatus {
   };
 }
 
-/// Limits for long text Field type.
+/// Limits for long text field type.
 class GoogleAppsDriveLabelsV2LongTextLimits {
-  /// Maximum length allowed for a long text Field type.
+  /// Maximum length allowed for a long text field type.
   core.int? maxLength;
 
-  /// Minimum length allowed for a long text Field type.
+  /// Minimum length allowed for a long text field type.
   core.int? minLength;
 
   GoogleAppsDriveLabelsV2LongTextLimits({this.maxLength, this.minLength});
@@ -5051,13 +5070,13 @@ class GoogleAppsDriveLabelsV2PublishLabelRequest {
 
   /// Set to `true` in order to use the user's admin credentials.
   ///
-  /// The server will verify the user is an admin for the Label before allowing
+  /// The server will verify the user is an admin for the label before allowing
   /// access.
   core.bool? useAdminAccess;
 
   /// Provides control over how write requests are executed.
   ///
-  /// Defaults to unset, which means last write wins.
+  /// Defaults to unset, which means the last write wins.
   GoogleAppsDriveLabelsV2WriteControl? writeControl;
 
   GoogleAppsDriveLabelsV2PublishLabelRequest({
@@ -5085,12 +5104,12 @@ class GoogleAppsDriveLabelsV2PublishLabelRequest {
   };
 }
 
-/// Limits for selection Field type.
+/// Limits for selection field type.
 class GoogleAppsDriveLabelsV2SelectionLimits {
-  /// Limits for list-variant of a Field type.
+  /// Limits for list-variant of a field type.
   GoogleAppsDriveLabelsV2ListLimits? listLimits;
 
-  /// The max number of choices.
+  /// Maximum number of choices.
   core.int? maxChoices;
 
   /// Maximum number of deleted choices.
@@ -5099,7 +5118,7 @@ class GoogleAppsDriveLabelsV2SelectionLimits {
   /// Maximum length for display name.
   core.int? maxDisplayNameLength;
 
-  /// Maximum ID length for a selection options.
+  /// Maximum ID length for a selection option.
   core.int? maxIdLength;
 
   GoogleAppsDriveLabelsV2SelectionLimits({
@@ -5134,12 +5153,12 @@ class GoogleAppsDriveLabelsV2SelectionLimits {
   };
 }
 
-/// Limits for text Field type.
+/// Limits for text field type.
 class GoogleAppsDriveLabelsV2TextLimits {
-  /// Maximum length allowed for a text Field type.
+  /// Maximum length allowed for a text field type.
   core.int? maxLength;
 
-  /// Minimum length allowed for a text Field type.
+  /// Minimum length allowed for a text field type.
   core.int? minLength;
 
   GoogleAppsDriveLabelsV2TextLimits({this.maxLength, this.minLength});
@@ -5156,18 +5175,18 @@ class GoogleAppsDriveLabelsV2TextLimits {
   };
 }
 
-/// Request to update the `CopyMode` of the given Label.
+/// Request to update the `CopyMode` of the given label.
 ///
-/// Changes to this policy are not revisioned, do not require publishing, and
-/// take effect immediately. \
+/// Changes to this policy aren't revisioned, don't require publishing, and take
+/// effect immediately. \
 class GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest {
-  /// Indicates how the applied Label, and Field values should be copied when a
+  /// Indicates how the applied label and field values should be copied when a
   /// Drive item is copied.
   ///
   /// Required.
   /// Possible string values are:
   /// - "COPY_MODE_UNSPECIFIED" : Copy mode unspecified.
-  /// - "DO_NOT_COPY" : The applied label and field values are not copied by
+  /// - "DO_NOT_COPY" : The applied label and field values aren't copied by
   /// default when the Drive item it's applied to is copied.
   /// - "ALWAYS_COPY" : The applied label and field values are always copied
   /// when the Drive item it's applied to is copied. Only admins can use this
@@ -5184,7 +5203,7 @@ class GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest {
 
   /// Set to `true` in order to use the user's admin credentials.
   ///
-  /// The server will verify the user is an admin for the Label before allowing
+  /// The server will verify the user is an admin for the label before allowing
   /// access.
   core.bool? useAdminAccess;
 
@@ -5219,12 +5238,12 @@ class GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest {
   };
 }
 
-/// Request to update the `EnabledAppSettings` of the given Label.
+/// Request to update the `EnabledAppSettings` of the given label.
 ///
-/// This change is not revisioned, does not require publishing, and takes effect
+/// This change is not revisioned, doesn't require publishing, and takes effect
 /// immediately. \
 class GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest {
-  /// The new `EnabledAppSettings` value for the Label.
+  /// The new `EnabledAppSettings` value for the label.
   ///
   /// Required.
   GoogleAppsDriveLabelsV2LabelEnabledAppSettings? enabledAppSettings;
@@ -5239,7 +5258,7 @@ class GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest {
 
   /// Set to `true` in order to use the user's admin credentials.
   ///
-  /// The server will verify the user is an admin for the Label before allowing
+  /// The server will verify the user is an admin for the label before allowing
   /// access.
   ///
   /// Optional.
@@ -5285,24 +5304,24 @@ class GoogleAppsDriveLabelsV2UpdateLabelEnabledAppSettingsRequest {
   };
 }
 
-/// Updates a Label Permission.
+/// Updates a label permission.
 ///
-/// Permissions affect the Label resource as a whole, are not revisioned, and do
-/// not require publishing.
+/// Permissions affect the label resource as a whole, aren't revisioned, and
+/// don't require publishing.
 class GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest {
-  /// The permission to create or update on the Label.
+  /// The permission to create or update on the label.
   ///
   /// Required.
   GoogleAppsDriveLabelsV2LabelPermission? labelPermission;
 
-  /// The parent Label resource name.
+  /// The parent label resource name.
   ///
   /// Required.
   core.String? parent;
 
   /// Set to `true` in order to use the user's admin credentials.
   ///
-  /// The server will verify the user is an admin for the Label before allowing
+  /// The server will verify the user is an admin for the label before allowing
   /// access.
   core.bool? useAdminAccess;
 
@@ -5344,12 +5363,12 @@ class GoogleAppsDriveLabelsV2UserCapabilities {
   /// Output only.
   core.bool? canAdministrateLabels;
 
-  /// Whether the user is allowed to create new admin labels.
+  /// Whether the user is allowed to create admin labels.
   ///
   /// Output only.
   core.bool? canCreateAdminLabels;
 
-  /// Whether the user is allowed to create new shared labels.
+  /// Whether the user is allowed to create shared labels.
   ///
   /// Output only.
   core.bool? canCreateSharedLabels;
@@ -5391,10 +5410,11 @@ class GoogleAppsDriveLabelsV2UserCapabilities {
 
 /// Information about a user.
 class GoogleAppsDriveLabelsV2UserInfo {
-  /// The identifier for this user that can be used with the People API to get
-  /// more information.
+  /// The identifier for this user that can be used with the
+  /// [People API](https://developers.google.com/people) to get more
+  /// information.
   ///
-  /// For example, people/12345678.
+  /// For example, `people/12345678`.
   core.String? person;
 
   GoogleAppsDriveLabelsV2UserInfo({this.person});
@@ -5409,7 +5429,7 @@ class GoogleAppsDriveLabelsV2UserInfo {
 
 /// Limits for Field.Type.USER.
 class GoogleAppsDriveLabelsV2UserLimits {
-  /// Limits for list-variant of a Field type.
+  /// Limits for list-variant of a field type.
   GoogleAppsDriveLabelsV2ListLimits? listLimits;
 
   GoogleAppsDriveLabelsV2UserLimits({this.listLimits});
@@ -5433,9 +5453,9 @@ class GoogleAppsDriveLabelsV2UserLimits {
 ///
 /// When not specified, the last write wins.
 class GoogleAppsDriveLabelsV2WriteControl {
-  /// The revision_id of the label that the write request will be applied to.
+  /// The revision ID of the label that the write request will be applied to.
   ///
-  /// If this is not the latest revision of the label, the request will not be
+  /// If this isn't the latest revision of the label, the request will not be
   /// processed and will return a 400 Bad Request error.
   core.String? requiredRevisionId;
 

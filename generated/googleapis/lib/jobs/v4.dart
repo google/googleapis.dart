@@ -3530,7 +3530,7 @@ class Operation {
 /// with UI elements for input or editing of fields outside countries where that
 /// field is used. For more guidance on how to use this schema, see:
 /// https://support.google.com/business/answer/6397478.
-typedef PostalAddress = $PostalAddress00;
+typedef PostalAddress = $PostalAddress;
 
 /// Options for job processing.
 class ProcessingOptions {

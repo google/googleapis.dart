@@ -798,10 +798,10 @@ class UsersSessionsResource {
   /// [activityType] - If non-empty, only sessions with these activity types
   /// should be returned.
   ///
-  /// [endTime] - An RFC3339 timestamp. Only sessions ending between the start
-  /// and end times will be included in the response. If this time is omitted
-  /// but startTime is specified, all sessions from startTime to the end of time
-  /// will be returned.
+  /// [endTime] - An RFC3339 timestamp. Only sessions starting before endTime
+  /// and ending after startTime up to (endTime + 1 day) will be included in the
+  /// response. If this time is omitted but startTime is specified, all sessions
+  /// ending after startTime to the end of time will be returned.
   ///
   /// [includeDeleted] - If true, and if both startTime and endTime are omitted,
   /// session deletions will be returned.
@@ -813,10 +813,11 @@ class UsersSessionsResource {
   /// and the page token is specified, sessions modified in the last 30 days are
   /// returned.
   ///
-  /// [startTime] - An RFC3339 timestamp. Only sessions ending between the start
-  /// and end times will be included in the response. If this time is omitted
-  /// but endTime is specified, all sessions from the start of time up to
-  /// endTime will be returned.
+  /// [startTime] - An RFC3339 timestamp. Only sessions starting before endTime
+  /// and ending after startTime up to (endTime + 1 day) will be included in the
+  /// response. If this time is omitted but endTime is specified, all sessions
+  /// starting before endTime and ending after the start of time up to (endTime
+  /// + 1 day) will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1856,8 +1857,8 @@ class ListSessionsResponse {
   /// the request.
   core.String? nextPageToken;
 
-  /// Sessions with an end time that is between startTime and endTime of the
-  /// request.
+  /// Sessions starting before endTime of the request and ending after startTime
+  /// of the request up to (endTime of the request + 1 day).
   core.List<Session>? session;
 
   ListSessionsResponse({

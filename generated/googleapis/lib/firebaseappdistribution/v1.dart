@@ -89,7 +89,7 @@ class MediaResource {
   ///
   /// Request parameters:
   ///
-  /// [app] - The name of the app resource. Format:
+  /// [app] - Required. The name of the app resource. Format:
   /// `projects/{project_number}/apps/{app_id}`
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
   ///
@@ -350,8 +350,8 @@ class ProjectsAppsReleasesResource {
   /// the release resources. Format: `projects/{project_number}/apps/{app_id}`
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
   ///
-  /// [filter] - The expression to filter releases listed in the response. To
-  /// learn more about filtering, refer to \[Google's AIP-160
+  /// [filter] - Optional. The expression to filter releases listed in the
+  /// response. To learn more about filtering, refer to \[Google's AIP-160
   /// standard\](http://aip.dev/160). Supported fields: - `releaseNotes.text`
   /// supports `=` (can contain a wildcard character (`*`) at the beginning or
   /// end of the string) - `createTime` supports `<`, `<=`, `>` and `>=`, and
@@ -359,20 +359,20 @@ class ProjectsAppsReleasesResource {
   /// "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND createTime
   /// >= "2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"`
   ///
-  /// [orderBy] - The fields used to order releases. Supported fields: -
-  /// `createTime` To specify descending order for a field, append a "desc"
+  /// [orderBy] - Optional. The fields used to order releases. Supported fields:
+  /// - `createTime` To specify descending order for a field, append a "desc"
   /// suffix, for example, `createTime desc`. If this parameter is not set,
   /// releases are ordered by `createTime` in descending order.
   ///
-  /// [pageSize] - The maximum number of releases to return. The service may
-  /// return fewer than this value. The valid range is \[1-100\]; If unspecified
-  /// (0), at most 25 releases are returned. Values above 100 are coerced to
-  /// 100.
+  /// [pageSize] - Optional. The maximum number of releases to return. The
+  /// service may return fewer than this value. The valid range is \[1-100\]; If
+  /// unspecified (0), at most 25 releases are returned. Values above 100 are
+  /// coerced to 100.
   ///
-  /// [pageToken] - A page token, received from a previous `ListReleases` call.
-  /// Provide this to retrieve the subsequent page. When paginating, all other
-  /// parameters provided to `ListReleases` must match the call that provided
-  /// the page token.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListReleases` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListReleases` must match the
+  /// call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -423,7 +423,7 @@ class ProjectsAppsReleasesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/apps/\[^/\]+/releases/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to update.
+  /// [updateMask] - Optional. The list of fields to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -557,15 +557,15 @@ class ProjectsAppsReleasesFeedbackReportsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/apps/\[^/\]+/releases/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of feedback reports to return. The service
-  /// may return fewer than this value. The valid range is \[1-100\]; If
-  /// unspecified (0), at most 25 feedback reports are returned. Values above
-  /// 100 are coerced to 100.
+  /// [pageSize] - Output only. The maximum number of feedback reports to
+  /// return. The service may return fewer than this value. The valid range is
+  /// \[1-100\]; If unspecified (0), at most 25 feedback reports are returned.
+  /// Values above 100 are coerced to 100.
   ///
-  /// [pageToken] - A page token, received from a previous `ListFeedbackReports`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListFeedbackReports` must match the call
-  /// that provided the page token.
+  /// [pageToken] - Output only. A page token, received from a previous
+  /// `ListFeedbackReports` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListFeedbackReports`
+  /// must match the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -759,6 +759,14 @@ class ProjectsAppsReleasesOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// \[ListOperationsResponse.unreachable\] field. This can only be `true` when
+  /// reading across collections e.g. when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not by default supported
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -774,12 +782,15 @@ class ProjectsAppsReleasesOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1135,7 +1146,7 @@ class ProjectsGroupsResource {
   /// `projects/{project_number}/groups/{group_alias}`
   /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to update.
+  /// [updateMask] - Optional. The list of fields to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1345,7 +1356,7 @@ class ProjectsTestersResource {
   /// `projects/{project_number}/testers/{email_address}`
   /// Value must have pattern `^projects/\[^/\]+/testers/\[^/\]+$`.
   ///
-  /// [updateMask] - The list of fields to update.
+  /// [updateMask] - Optional. The list of fields to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2393,12 +2404,16 @@ class GoogleFirebaseAppdistroV1DistributeReleaseRequest {
   ///
   /// A combined maximum of 999 `testerEmails` and `groupAliases` can be
   /// specified in a single request.
+  ///
+  /// Optional.
   core.List<core.String>? groupAliases;
 
   /// A list of tester email addresses to be given access to this release.
   ///
   /// A combined maximum of 999 `testerEmails` and `groupAliases` can be
   /// specified in a single request.
+  ///
+  /// Optional.
   core.List<core.String>? testerEmails;
 
   GoogleFirebaseAppdistroV1DistributeReleaseRequest({
@@ -2714,6 +2729,11 @@ class GoogleFirebaseAppdistroV1Release {
   /// Output only.
   core.String? displayVersion;
 
+  /// The time the release will expire.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
   /// A link to the Firebase console displaying a single release.
   ///
   /// Output only.
@@ -2734,15 +2754,22 @@ class GoogleFirebaseAppdistroV1Release {
   /// Output only.
   core.String? testingUri;
 
+  /// The time the release was last updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
   GoogleFirebaseAppdistroV1Release({
     this.binaryDownloadUri,
     this.buildVersion,
     this.createTime,
     this.displayVersion,
+    this.expireTime,
     this.firebaseConsoleUri,
     this.name,
     this.releaseNotes,
     this.testingUri,
+    this.updateTime,
   });
 
   GoogleFirebaseAppdistroV1Release.fromJson(core.Map json_)
@@ -2751,6 +2778,7 @@ class GoogleFirebaseAppdistroV1Release {
         buildVersion: json_['buildVersion'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         displayVersion: json_['displayVersion'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
         firebaseConsoleUri: json_['firebaseConsoleUri'] as core.String?,
         name: json_['name'] as core.String?,
         releaseNotes:
@@ -2760,6 +2788,7 @@ class GoogleFirebaseAppdistroV1Release {
                 )
                 : null,
         testingUri: json_['testingUri'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -2767,10 +2796,12 @@ class GoogleFirebaseAppdistroV1Release {
     if (buildVersion != null) 'buildVersion': buildVersion!,
     if (createTime != null) 'createTime': createTime!,
     if (displayVersion != null) 'displayVersion': displayVersion!,
+    if (expireTime != null) 'expireTime': expireTime!,
     if (firebaseConsoleUri != null) 'firebaseConsoleUri': firebaseConsoleUri!,
     if (name != null) 'name': name!,
     if (releaseNotes != null) 'releaseNotes': releaseNotes!,
     if (testingUri != null) 'testingUri': testingUri!,
+    if (updateTime != null) 'updateTime': updateTime!,
   };
 }
 
@@ -2902,9 +2933,18 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections e.g. when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   GoogleLongrunningListOperationsResponse({
     this.nextPageToken,
     this.operations,
+    this.unreachable,
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
@@ -2918,11 +2958,16 @@ class GoogleLongrunningListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 

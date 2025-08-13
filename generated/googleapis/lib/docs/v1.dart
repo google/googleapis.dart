@@ -5544,14 +5544,10 @@ class PersonProperties {
   /// The email address linked to this Person.
   ///
   /// This field is always present.
-  ///
-  /// Output only.
   core.String? email;
 
   /// The name of the person if it's displayed in the link text instead of the
   /// person's email address.
-  ///
-  /// Output only.
   core.String? name;
 
   PersonProperties({this.email, this.name});

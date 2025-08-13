@@ -868,10 +868,12 @@ api.GoogleFirebaseAppdistroV1Release buildGoogleFirebaseAppdistroV1Release() {
     o.buildVersion = 'foo';
     o.createTime = 'foo';
     o.displayVersion = 'foo';
+    o.expireTime = 'foo';
     o.firebaseConsoleUri = 'foo';
     o.name = 'foo';
     o.releaseNotes = buildGoogleFirebaseAppdistroV1ReleaseNotes();
     o.testingUri = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleFirebaseAppdistroV1Release--;
   return o;
@@ -886,10 +888,12 @@ void checkGoogleFirebaseAppdistroV1Release(
     unittest.expect(o.buildVersion!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.displayVersion!, unittest.equals('foo'));
+    unittest.expect(o.expireTime!, unittest.equals('foo'));
     unittest.expect(o.firebaseConsoleUri!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleFirebaseAppdistroV1ReleaseNotes(o.releaseNotes!);
     unittest.expect(o.testingUri!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterGoogleFirebaseAppdistroV1Release--;
 }
@@ -1028,6 +1032,14 @@ void checkUnnamed15(core.List<api.GoogleLongrunningOperation> o) {
   checkGoogleLongrunningOperation(o[1]);
 }
 
+core.List<core.String> buildUnnamed16() => ['foo', 'foo'];
+
+void checkUnnamed16(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterGoogleLongrunningListOperationsResponse = 0;
 api.GoogleLongrunningListOperationsResponse
 buildGoogleLongrunningListOperationsResponse() {
@@ -1036,6 +1048,7 @@ buildGoogleLongrunningListOperationsResponse() {
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
     o.operations = buildUnnamed15();
+    o.unreachable = buildUnnamed16();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -1048,35 +1061,9 @@ void checkGoogleLongrunningListOperationsResponse(
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed15(o.operations!);
+    checkUnnamed16(o.unreachable!);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
-}
-
-core.Map<core.String, core.Object?> buildUnnamed16() => {
-  'x': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-  'y': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-};
-
-void checkUnnamed16(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o['x']!) as core.Map;
-  unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1['bool'], unittest.equals(true));
-  unittest.expect(casted1['string'], unittest.equals('foo'));
-  var casted2 = (o['y']!) as core.Map;
-  unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2['bool'], unittest.equals(true));
-  unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
 core.Map<core.String, core.Object?> buildUnnamed17() => {
@@ -1093,6 +1080,33 @@ core.Map<core.String, core.Object?> buildUnnamed17() => {
 };
 
 void checkUnnamed17(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o['x']!) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(casted1['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1['bool'], unittest.equals(true));
+  unittest.expect(casted1['string'], unittest.equals('foo'));
+  var casted2 = (o['y']!) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(casted2['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2['bool'], unittest.equals(true));
+  unittest.expect(casted2['string'], unittest.equals('foo'));
+}
+
+core.Map<core.String, core.Object?> buildUnnamed18() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed18(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1113,9 +1127,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed16();
+    o.metadata = buildUnnamed17();
     o.name = 'foo';
-    o.response = buildUnnamed17();
+    o.response = buildUnnamed18();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -1126,9 +1140,9 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkGoogleRpcStatus(o.error!);
-    checkUnnamed16(o.metadata!);
+    checkUnnamed17(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed17(o.response!);
+    checkUnnamed18(o.response!);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -1170,7 +1184,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed18() => {
+core.Map<core.String, core.Object?> buildUnnamed19() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1183,7 +1197,7 @@ core.Map<core.String, core.Object?> buildUnnamed18() => {
   },
 };
 
-void checkUnnamed18(core.Map<core.String, core.Object?> o) {
+void checkUnnamed19(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1197,15 +1211,15 @@ void checkUnnamed18(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed19() => [
-  buildUnnamed18(),
-  buildUnnamed18(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed20() => [
+  buildUnnamed19(),
+  buildUnnamed19(),
 ];
 
-void checkUnnamed19(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed20(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed18(o[0]);
-  checkUnnamed18(o[1]);
+  checkUnnamed19(o[0]);
+  checkUnnamed19(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -1214,7 +1228,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed19();
+    o.details = buildUnnamed20();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -1225,7 +1239,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed19(o.details!);
+    checkUnnamed20(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterGoogleRpcStatus--;
@@ -2557,6 +2571,7 @@ void main() {
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_returnPartialSuccess = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2604,6 +2619,10 @@ void main() {
             unittest.equals(arg_pageToken),
           );
           unittest.expect(
+            queryMap['returnPartialSuccess']!.first,
+            unittest.equals('$arg_returnPartialSuccess'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -2621,6 +2640,7 @@ void main() {
         filter: arg_filter,
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,
+        returnPartialSuccess: arg_returnPartialSuccess,
         $fields: arg_$fields,
       );
       checkGoogleLongrunningListOperationsResponse(

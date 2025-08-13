@@ -174,13 +174,16 @@ class AccessproposalsResource {
 
   AccessproposalsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieves an AccessProposal by ID.
+  /// Retrieves an access proposal by ID.
+  ///
+  /// For more information, see
+  /// [Manage pending access proposals](https://developers.google.com/workspace/drive/api/guides/pending-access).
   ///
   /// Request parameters:
   ///
-  /// [fileId] - Required. The id of the item the request is on.
+  /// [fileId] - Required. The ID of the item the request is on.
   ///
-  /// [proposalId] - Required. The id of the access proposal to resolve.
+  /// [proposalId] - Required. The ID of the access proposal to resolve.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -217,16 +220,18 @@ class AccessproposalsResource {
     );
   }
 
-  /// List the AccessProposals on a file.
+  /// List the access proposals on a file.
   ///
-  /// Note: Only approvers are able to list AccessProposals on a file. If the
-  /// user is not an approver, returns a 403.
+  /// For more information, see
+  /// [Manage pending access proposals](https://developers.google.com/workspace/drive/api/guides/pending-access).
+  /// Note: Only approvers are able to list access proposals on a file. If the
+  /// user isn't an approver, a 403 error is returned.
   ///
   /// Request parameters:
   ///
-  /// [fileId] - Required. The id of the item the request is on.
+  /// [fileId] - Required. The ID of the item the request is on.
   ///
-  /// [pageSize] - Optional. The number of results per page
+  /// [pageSize] - Optional. The number of results per page.
   ///
   /// [pageToken] - Optional. The continuation token on the list of access
   /// requests.
@@ -266,15 +271,18 @@ class AccessproposalsResource {
     );
   }
 
-  /// Used to approve or deny an Access Proposal.
+  /// Approves or denies an access proposal.
+  ///
+  /// For more information, see
+  /// [Manage pending access proposals](https://developers.google.com/workspace/drive/api/guides/pending-access).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [fileId] - Required. The id of the item the request is on.
+  /// [fileId] - Required. The ID of the item the request is on.
   ///
-  /// [proposalId] - Required. The id of the access proposal to resolve.
+  /// [proposalId] - Required. The ID of the access proposal to resolve.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1018,6 +1026,9 @@ class DrivesResource {
 
   /// Creates a shared drive.
   ///
+  /// For more information, see
+  /// [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1062,7 +1073,9 @@ class DrivesResource {
 
   /// Permanently deletes a shared drive for which the user is an `organizer`.
   ///
-  /// The shared drive cannot contain any untrashed items.
+  /// The shared drive cannot contain any untrashed items. For more information,
+  /// see
+  /// [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
   ///
   /// Request parameters:
   ///
@@ -1110,6 +1123,9 @@ class DrivesResource {
 
   /// Gets a shared drive's metadata by ID.
   ///
+  /// For more information, see
+  /// [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
+  ///
   /// Request parameters:
   ///
   /// [driveId] - The ID of the shared drive.
@@ -1150,6 +1166,9 @@ class DrivesResource {
   }
 
   /// Hides a shared drive from the default view.
+  ///
+  /// For more information, see
+  /// [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
   ///
   /// Request parameters:
   ///
@@ -1237,6 +1256,9 @@ class DrivesResource {
 
   /// Restores a shared drive to the default view.
   ///
+  /// For more information, see
+  /// [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
+  ///
   /// Request parameters:
   ///
   /// [driveId] - The ID of the shared drive.
@@ -1270,6 +1292,9 @@ class DrivesResource {
   }
 
   /// Updates the metadata for a shared drive.
+  ///
+  /// For more information, see
+  /// [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1324,13 +1349,16 @@ class FilesResource {
   /// Creates a copy of a file and applies any requested updates with patch
   /// semantics.
   ///
+  /// For more information, see
+  /// [Create and manage files](https://developers.google.com/workspace/drive/api/guides/create-file).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [fileId] - The ID of the file.
   ///
-  /// [enforceSingleParent] - Deprecated. Copying files into multiple folders is
+  /// [enforceSingleParent] - Deprecated: Copying files into multiple folders is
   /// no longer supported. Use shortcuts instead.
   ///
   /// [ignoreDefaultVisibility] - Whether to ignore the domain's default
@@ -1343,9 +1371,9 @@ class FilesResource {
   /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
-  /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
+  /// [keepRevisionForever] - Whether to set the `keepForever` field in the new
   /// head revision. This is only applicable to files with binary content in
   /// Google Drive. Only 200 revisions for the file can be kept forever. If the
   /// limit is reached, try deleting pinned revisions.
@@ -1411,24 +1439,28 @@ class FilesResource {
     return File.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  ///  Creates a new file.
+  ///  Creates a file.
   ///
-  /// This method supports an * / upload* URI and accepts uploaded media with
-  /// the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted
-  /// Media MIME types:*`* / * ` Note: Specify a valid MIME type, rather than
-  /// the literal `* / * ` value. The literal `* / * ` is only used to indicate
-  /// that any valid MIME type can be uploaded. For more information on
+  /// For more information, see \[Create and manage
+  /// files\](/workspace/drive/api/guides/create-file). This method supports an
+  /// * / upload* URI and accepts uploaded media with the following
+  /// characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
+  /// types:* `* / * ` (Specify a valid MIME type, rather than the literal `* /
+  /// * ` value. The literal `* / * ` is only used to indicate that any valid
+  /// MIME type can be uploaded. For more information, see \[Google Workspace
+  /// and Google Drive supported MIME
+  /// types\](/workspace/drive/api/guides/mime-types).) For more information on
   /// uploading files, see \[Upload file
   /// data\](/workspace/drive/api/guides/manage-uploads). Apps creating
-  /// shortcuts with `files.create` must specify the MIME type
+  /// shortcuts with the `create` method must specify the MIME type
   /// `application/vnd.google-apps.shortcut`. Apps should specify a file
   /// extension in the `name` property when inserting files with the API. For
   /// example, an operation to insert a JPEG file should specify something like
   /// `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests include the
   /// read-only `fileExtension` property populated with the extension originally
-  /// specified in the `title` property. When a Google Drive user requests to
+  /// specified in the `name` property. When a Google Drive user requests to
   /// download a file, or when the file is downloaded through the sync client,
-  /// Drive builds a full filename (with extension) based on the title. In cases
+  /// Drive builds a full filename (with extension) based on the name. In cases
   /// where the extension is missing, Drive attempts to determine the extension
   /// based on the file's MIME type.
   ///
@@ -1436,7 +1468,7 @@ class FilesResource {
   ///
   /// Request parameters:
   ///
-  /// [enforceSingleParent] - Deprecated. Creating files in multiple folders is
+  /// [enforceSingleParent] - Deprecated: Creating files in multiple folders is
   /// no longer supported.
   ///
   /// [ignoreDefaultVisibility] - Whether to ignore the domain's default
@@ -1449,9 +1481,9 @@ class FilesResource {
   /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
-  /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
+  /// [keepRevisionForever] - Whether to set the `keepForever` field in the new
   /// head revision. This is only applicable to files with binary content in
   /// Google Drive. Only 200 revisions for the file can be kept forever. If the
   /// limit is reached, try deleting pinned revisions.
@@ -1542,6 +1574,8 @@ class FilesResource {
   /// Permanently deletes a file owned by the user without moving it to the
   /// trash.
   ///
+  /// For more information, see
+  /// [Trash or delete files and folders](https://developers.google.com/workspace/drive/api/guides/delete).
   /// If the file belongs to a shared drive, the user must be an `organizer` on
   /// the parent folder. If the target is a folder, all descendants owned by the
   /// user are also deleted.
@@ -1550,9 +1584,9 @@ class FilesResource {
   ///
   /// [fileId] - The ID of the file.
   ///
-  /// [enforceSingleParent] - Deprecated: If an item is not in a shared drive
-  /// and its last parent is deleted but the item itself is not, the item will
-  /// be placed under its owner's root.
+  /// [enforceSingleParent] - Deprecated: If an item isn't in a shared drive and
+  /// its last parent is deleted but the item itself isn't, the item will be
+  /// placed under its owner's root.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
@@ -1594,8 +1628,10 @@ class FilesResource {
     );
   }
 
-  /// Downloads content of a file.
+  /// Downloads the content of a file.
   ///
+  /// For more information, see
+  /// [Download and export files](https://developers.google.com/workspace/drive/api/guides/manage-downloads).
   /// Operations are valid for 24 hours from the time of creation.
   ///
   /// Request parameters:
@@ -1604,11 +1640,10 @@ class FilesResource {
   ///
   /// [mimeType] - Optional. The MIME type the file should be downloaded as.
   /// This field can only be set when downloading Google Workspace documents.
-  /// See \[Export MIME types for Google Workspace
-  /// documents\](/drive/api/guides/ref-export-formats) for the list of
-  /// supported MIME types. If not set, a Google Workspace document is
-  /// downloaded with a default MIME type. The default MIME type might change in
-  /// the future.
+  /// For a list of supported MIME types, see \[Export MIME types for Google
+  /// Workspace documents\](/workspace/drive/api/guides/ref-export-formats). If
+  /// not set, a Google Workspace document is downloaded with a default MIME
+  /// type. The default MIME type might change in the future.
   ///
   /// [revisionId] - Optional. The revision ID of the file to download. This
   /// field can only be set when downloading blob files, Google Docs, and Google
@@ -1649,13 +1684,16 @@ class FilesResource {
 
   /// Permanently deletes all of the user's trashed files.
   ///
+  /// For more information, see
+  /// [Trash or delete files and folders](https://developers.google.com/workspace/drive/api/guides/delete).
+  ///
   /// Request parameters:
   ///
   /// [driveId] - If set, empties the trash of the provided shared drive.
   ///
-  /// [enforceSingleParent] - Deprecated: If an item is not in a shared drive
-  /// and its last parent is deleted but the item itself is not, the item will
-  /// be placed under its owner's root.
+  /// [enforceSingleParent] - Deprecated: If an item isn't in a shared drive and
+  /// its last parent is deleted but the item itself isn't, the item will be
+  /// placed under its owner's root.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1690,14 +1728,18 @@ class FilesResource {
   /// Exports a Google Workspace document to the requested MIME type and returns
   /// exported byte content.
   ///
-  /// Note that the exported content is limited to 10MB.
+  /// For more information, see
+  /// [Download and export files](https://developers.google.com/workspace/drive/api/guides/manage-downloads).
+  /// Note that the exported content is limited to 10 MB.
   ///
   /// Request parameters:
   ///
   /// [fileId] - The ID of the file.
   ///
   /// [mimeType] - Required. The MIME type of the format requested for this
-  /// export.
+  /// export. For a list of supported MIME types, see \[Export MIME types for
+  /// Google Workspace
+  /// documents\](/workspace/drive/api/guides/ref-export-formats).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1740,17 +1782,23 @@ class FilesResource {
   /// Generates a set of file IDs which can be provided in create or copy
   /// requests.
   ///
+  /// For more information, see
+  /// [Create and manage files](https://developers.google.com/workspace/drive/api/guides/create-file).
+  ///
   /// Request parameters:
   ///
   /// [count] - The number of IDs to return.
   /// Value must be between "1" and "1000".
   ///
-  /// [space] - The space in which the IDs can be used to create new files.
-  /// Supported values are 'drive' and 'appDataFolder'. (Default: 'drive')
+  /// [space] - The space in which the IDs can be used to create files.
+  /// Supported values are `drive` and `appDataFolder`. (Default: `drive`.) For
+  /// more information, see
+  /// [File organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization).
   ///
   /// [type] - The type of items which the IDs can be used for. Supported values
-  /// are 'files' and 'shortcuts'. Note that 'shortcuts' are only supported in
-  /// the `drive` 'space'. (Default: 'files')
+  /// are `files` and `shortcuts`. Note that `shortcuts` are only supported in
+  /// the `drive` `space`. (Default: `files`.) For more information, see
+  /// [File organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1789,12 +1837,13 @@ class FilesResource {
 
   ///  Gets a file's metadata or content by ID.
   ///
-  /// If you provide the URL parameter `alt=media`, then the response includes
-  /// the file contents in the response body. Downloading content with
-  /// `alt=media` only works if the file is stored in Drive. To download Google
-  /// Docs, Sheets, and Slides use
+  /// For more information, see \[Search for files and
+  /// folders\](/workspace/drive/api/guides/search-files). If you provide the
+  /// URL parameter `alt=media`, then the response includes the file contents in
+  /// the response body. Downloading content with `alt=media` only works if the
+  /// file is stored in Drive. To download Google Docs, Sheets, and Slides use
   /// \[`files.export`\](/workspace/drive/api/reference/rest/v3/files/export)
-  /// instead. For more information, see \[Download & export
+  /// instead. For more information, see \[Download and export
   /// files\](/workspace/drive/api/guides/manage-downloads).
   ///
   /// Request parameters:
@@ -1810,7 +1859,7 @@ class FilesResource {
   /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
@@ -1874,22 +1923,23 @@ class FilesResource {
 
   ///  Lists the user's files.
   ///
-  /// This method accepts the `q` parameter, which is a search query combining
-  /// one or more search terms. For more information, see the \[Search for files
-  /// & folders\](/workspace/drive/api/guides/search-files) guide. *Note:* This
-  /// method returns *all* files by default, including trashed files. If you
-  /// don't want trashed files to appear in the list, use the `trashed=false`
-  /// query parameter to remove trashed files from the results.
+  /// For more information, see \[Search for files and
+  /// folders\](/workspace/drive/api/guides/search-files). This method accepts
+  /// the `q` parameter, which is a search query combining one or more search
+  /// terms. This method returns *all* files by default, including trashed
+  /// files. If you don't want trashed files to appear in the list, use the
+  /// `trashed=false` query parameter to remove trashed files from the results.
   ///
   /// Request parameters:
   ///
-  /// [corpora] - Bodies of items (files/documents) to which the query applies.
-  /// Supported bodies are 'user', 'domain', 'drive', and 'allDrives'. Prefer
-  /// 'user' or 'drive' to 'allDrives' for efficiency. By default, corpora is
-  /// set to 'user'. However, this can change depending on the filter set
-  /// through the 'q' parameter.
+  /// [corpora] - Bodies of items (files or documents) to which the query
+  /// applies. Supported bodies are: * `user` * `domain` * `drive` * `allDrives`
+  /// Prefer `user` or `drive` to `allDrives` for efficiency. By default,
+  /// corpora is set to `user`. However, this can change depending on the filter
+  /// set through the `q` parameter. For more information, see
+  /// [File organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization).
   ///
-  /// [corpus] - Deprecated: The source of files to list. Use 'corpora' instead.
+  /// [corpus] - Deprecated: The source of files to list. Use `corpora` instead.
   /// Possible string values are:
   /// - "domain" : Files shared to the user's domain.
   /// - "user" : Files owned by or shared to the user.
@@ -1903,7 +1953,7 @@ class FilesResource {
   /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
   /// [includeTeamDriveItems] - Deprecated: Use `includeItemsFromAllDrives`
   /// instead.
@@ -1921,7 +1971,7 @@ class FilesResource {
   /// shared with the user, if applicable. * `starred`: Whether the user has
   /// starred the file. * `viewedByMeTime`: The last time the file was viewed by
   /// the user. Each key sorts ascending by default, but can be reversed with
-  /// the 'desc' modifier. Example usage: `?orderBy=folder,modifiedTime
+  /// the `desc` modifier. Example usage: `?orderBy=folder,modifiedTime
   /// desc,name`.
   ///
   /// [pageSize] - The maximum number of files to return per page. Partial or
@@ -1930,14 +1980,17 @@ class FilesResource {
   /// Value must be between "1" and "1000".
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// page. This should be set to the value of `nextPageToken` from the previous
   /// response.
   ///
-  /// [q] - A query for filtering the file results. See the "Search for files &
-  /// folders" guide for supported syntax.
+  /// [q] - A query for filtering the file results. For supported syntax, see
+  /// \[Search for files and
+  /// folders\](/workspace/drive/api/guides/search-files).
   ///
   /// [spaces] - A comma-separated list of spaces to query within the corpora.
-  /// Supported values are 'drive' and 'appDataFolder'.
+  /// Supported values are `drive` and `appDataFolder`. For more information,
+  /// see
+  /// [File organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization).
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
@@ -2010,6 +2063,9 @@ class FilesResource {
 
   /// Lists the labels on a file.
   ///
+  /// For more information, see
+  /// [List labels on a file](https://developers.google.com/workspace/drive/api/guides/list-labels).
+  ///
   /// Request parameters:
   ///
   /// [fileId] - The ID for the file.
@@ -2019,7 +2075,7 @@ class FilesResource {
   /// Value must be between "1" and "100".
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// page. This should be set to the value of `nextPageToken` from the previous
   /// response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2056,6 +2112,8 @@ class FilesResource {
 
   /// Modifies the set of labels applied to a file.
   ///
+  /// For more information, see
+  /// [Set a label field on a file](https://developers.google.com/workspace/drive/api/guides/set-label).
   /// Returns a list of the labels that were added or modified.
   ///
   /// [request] - The metadata request object.
@@ -2097,17 +2155,19 @@ class FilesResource {
     );
   }
 
-  ///  Updates a file's metadata and/or content.
+  ///  Updates a file's metadata, content, or both.
   ///
   /// When calling this method, only populate fields in the request that you
   /// want to modify. When updating fields, some fields might be changed
   /// automatically, such as `modifiedDate`. This method supports patch
   /// semantics. This method supports an * / upload* URI and accepts uploaded
   /// media with the following characteristics: - *Maximum file size:* 5,120 GB
-  /// - *Accepted Media MIME types:*`* / * ` Note: Specify a valid MIME type,
-  /// rather than the literal `* / * ` value. The literal `* / * ` is only used
-  /// to indicate that any valid MIME type can be uploaded. For more information
-  /// on uploading files, see \[Upload file
+  /// - *Accepted Media MIME types:* `* / * ` (Specify a valid MIME type, rather
+  /// than the literal `* / * ` value. The literal `* / * ` is only used to
+  /// indicate that any valid MIME type can be uploaded. For more information,
+  /// see \[Google Workspace and Google Drive supported MIME
+  /// types\](/workspace/drive/api/guides/mime-types).) For more information on
+  /// uploading files, see \[Upload file
   /// data\](/workspace/drive/api/guides/manage-uploads).
   ///
   /// [request] - The metadata request object.
@@ -2125,9 +2185,9 @@ class FilesResource {
   /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
-  /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
+  /// [keepRevisionForever] - Whether to set the `keepForever` field in the new
   /// head revision. This is only applicable to files with binary content in
   /// Google Drive. Only 200 revisions for the file can be kept forever. If the
   /// limit is reached, try deleting pinned revisions.
@@ -2223,6 +2283,9 @@ class FilesResource {
 
   /// Subscribes to changes to a file.
   ///
+  /// For more information, see
+  /// [Notifications for resource changes](https://developers.google.com/workspace/drive/api/guides/push).
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2238,7 +2301,7 @@ class FilesResource {
   /// the `labelInfo` part of the response.
   ///
   /// [includePermissionsForView] - Specifies which additional view's
-  /// permissions to include in the response. Only 'published' is supported.
+  /// permissions to include in the response. Only `published` is supported.
   ///
   /// [supportsAllDrives] - Whether the requesting application supports both My
   /// Drives and shared drives.
@@ -2361,7 +2424,7 @@ class PermissionsResource {
   /// `false`, parents are not changed.
   ///
   /// [sendNotificationEmail] - Whether to send a notification email when
-  /// sharing to users or groups. This defaults to true for users and groups,
+  /// sharing to users or groups. This defaults to `true` for users and groups,
   /// and is not allowed for other requests. It must not be disabled for
   /// ownership transfers.
   ///
@@ -2996,7 +3059,9 @@ class RevisionsResource {
   ///
   /// You can only delete revisions for files with binary content in Google
   /// Drive, like images or videos. Revisions for other files, like Google Docs
-  /// or Sheets, and the last remaining file version can't be deleted.
+  /// or Sheets, and the last remaining file version can't be deleted. For more
+  /// information, see
+  /// [Manage file revisions](https://developers.google.com/drive/api/guides/manage-revisions).
   ///
   /// Request parameters:
   ///
@@ -3036,6 +3101,9 @@ class RevisionsResource {
   }
 
   /// Gets a revision's metadata or content by ID.
+  ///
+  /// For more information, see
+  /// [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
   ///
   /// Request parameters:
   ///
@@ -3101,6 +3169,9 @@ class RevisionsResource {
 
   /// Lists a file's revisions.
   ///
+  /// For more information, see
+  /// [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
+  ///
   /// Request parameters:
   ///
   /// [fileId] - The ID of the file.
@@ -3147,6 +3218,9 @@ class RevisionsResource {
   }
 
   /// Updates a revision with patch semantics.
+  ///
+  /// For more information, see
+  /// [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
   ///
   /// [request] - The metadata request object.
   ///
@@ -3679,27 +3753,30 @@ class About {
   };
 }
 
-/// The Access Proposal resource for outstanding access proposals on a file
+/// Manage outstanding access proposals on a file.
 class AccessProposal {
-  /// The creation time
+  /// The creation time.
   core.String? createTime;
 
-  /// The file id that the proposal for access is on
+  /// The file ID that the proposal for access is on.
   core.String? fileId;
 
-  /// The id of the access proposal
+  /// The ID of the access proposal.
   core.String? proposalId;
 
-  /// The email address of the user that will receive permissions if accepted
+  /// The email address of the user that will receive permissions, if accepted.
   core.String? recipientEmailAddress;
 
-  /// The message that the requester added to the proposal
+  /// The message that the requester added to the proposal.
   core.String? requestMessage;
 
-  /// The email address of the requesting user
+  /// The email address of the requesting user.
   core.String? requesterEmailAddress;
 
   /// A wrapper for the role and view of an access proposal.
+  ///
+  /// For more information, see
+  /// [Roles and permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles).
   core.List<AccessProposalRoleAndView>? rolesAndViews;
 
   AccessProposal({
@@ -3744,16 +3821,19 @@ class AccessProposal {
 }
 
 /// A wrapper for the role and view of an access proposal.
+///
+/// For more information, see
+/// [Roles and permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles).
 class AccessProposalRoleAndView {
-  /// The role that was proposed by the requester New values may be added in the
-  /// future, but the following are currently possible: * `writer` * `commenter`
-  /// * `reader`
+  /// The role that was proposed by the requester.
+  ///
+  /// The supported values are: * `writer` * `commenter` * `reader`
   core.String? role;
 
   /// Indicates the view for this access proposal.
   ///
-  /// Only populated for proposals that belong to a view. `published` is the
-  /// only supported value.
+  /// Only populated for proposals that belong to a view. Only `published` is
+  /// supported.
   core.String? view;
 
   AccessProposalRoleAndView({this.role, this.view});
@@ -4467,7 +4547,7 @@ class ContentRestriction {
 
   /// The user who set the content restriction.
   ///
-  /// Only populated if `readOnly` is true.
+  /// Only populated if `readOnly=true`.
   ///
   /// Output only.
   User? restrictingUser;
@@ -4542,7 +4622,7 @@ class DownloadRestriction {
 
   /// Whether download and copy is restricted for writers.
   ///
-  /// If true, download is also restricted for readers.
+  /// If `true`, download is also restricted for readers.
   core.bool? restrictedForWriters;
 
   DownloadRestriction({this.restrictedForReaders, this.restrictedForWriters});
@@ -4573,7 +4653,7 @@ class DownloadRestrictionsMetadata {
   /// The download restriction of the file applied directly by the owner or
   /// organizer.
   ///
-  /// This does not take into account shared drive settings or DLP rules.
+  /// This doesn't take into account shared drive settings or DLP rules.
   DownloadRestriction? itemDownloadRestriction;
 
   DownloadRestrictionsMetadata({
@@ -5157,6 +5237,8 @@ class DriveList {
 /// Capabilities the current user has on this file.
 ///
 /// Each capability corresponds to a fine-grained action that a user may take.
+/// For more information, see
+/// [Understand file capabilities](https://developers.google.com/workspace/drive/api/guides/manage-sharing#capabilities).
 ///
 /// Output only.
 class FileCapabilities {
@@ -5169,7 +5251,7 @@ class FileCapabilities {
 
   /// Whether the current user can add children to this folder.
   ///
-  /// This is always false when the item is not a folder.
+  /// This is always `false` when the item isn't a folder.
   ///
   /// Output only.
   core.bool? canAddChildren;
@@ -5177,7 +5259,7 @@ class FileCapabilities {
   /// Whether the current user can add a folder from another drive (different
   /// shared drive or My Drive) to this folder.
   ///
-  /// This is false when the item is not a folder. Only populated for items in
+  /// This is `false` when the item isn't a folder. Only populated for items in
   /// shared drives.
   ///
   /// Output only.
@@ -5203,7 +5285,7 @@ class FileCapabilities {
   /// Output only.
   core.bool? canChangeItemDownloadRestriction;
 
-  /// Whether the current user can change the securityUpdateEnabled field on
+  /// Whether the current user can change the `securityUpdateEnabled` field on
   /// link share metadata.
   ///
   /// Output only.
@@ -5223,8 +5305,7 @@ class FileCapabilities {
   /// Whether the current user can copy this file.
   ///
   /// For an item in a shared drive, whether the current user can copy
-  /// non-folder descendants of this item, or this item itself if it is not a
-  /// folder.
+  /// non-folder descendants of this item, or this item if it's not a folder.
   ///
   /// Output only.
   core.bool? canCopy;
@@ -5236,7 +5317,7 @@ class FileCapabilities {
 
   /// Whether the current user can delete children of this folder.
   ///
-  /// This is false when the item is not a folder. Only populated for items in
+  /// This is `false` when the item isn't a folder. Only populated for items in
   /// shared drives.
   ///
   /// Output only.
@@ -5264,7 +5345,7 @@ class FileCapabilities {
 
   /// Whether the current user can list the children of this folder.
   ///
-  /// This is always false when the item is not a folder.
+  /// This is always `false` when the item isn't a folder.
   ///
   /// Output only.
   core.bool? canListChildren;
@@ -5277,7 +5358,7 @@ class FileCapabilities {
   /// Deprecated: Output only.
   ///
   /// Use one of `canModifyEditorContentRestriction`,
-  /// `canModifyOwnerContentRestriction` or `canRemoveContentRestriction`.
+  /// `canModifyOwnerContentRestriction`, or `canRemoveContentRestriction`.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -5303,7 +5384,7 @@ class FileCapabilities {
   /// Whether the current user can move children of this folder outside of the
   /// shared drive.
   ///
-  /// This is false when the item is not a folder. Only populated for items in
+  /// This is `false` when the item isn't a folder. Only populated for items in
   /// shared drives.
   ///
   /// Output only.
@@ -5320,7 +5401,7 @@ class FileCapabilities {
   /// Whether the current user can move children of this folder within this
   /// drive.
   ///
-  /// This is false when the item is not a folder. Note that a request to move
+  /// This is `false` when the item isn't a folder. Note that a request to move
   /// the child may still fail depending on the current user's access to the
   /// child and to the destination folder.
   ///
@@ -5347,7 +5428,7 @@ class FileCapabilities {
   /// changing its parent.
   ///
   /// Note that a request to change the parent of the item may still fail
-  /// depending on the new parent that is being added.
+  /// depending on the new parent that's being added.
   ///
   /// Output only.
   core.bool? canMoveItemOutOfDrive;
@@ -5363,7 +5444,7 @@ class FileCapabilities {
   /// Whether the current user can move this item within this drive.
   ///
   /// Note that a request to change the parent of the item may still fail
-  /// depending on the new parent that is being added and the parent that is
+  /// depending on the new parent that's being added and the parent that is
   /// being removed.
   ///
   /// Output only.
@@ -5401,7 +5482,7 @@ class FileCapabilities {
   /// Whether the current user can read the revisions resource of this file.
   ///
   /// For a shared drive item, whether revisions of non-folder descendants of
-  /// this item, or this item itself if it is not a folder, can be read.
+  /// this item, or this item if it's not a folder, can be read.
   ///
   /// Output only.
   core.bool? canReadRevisions;
@@ -5416,13 +5497,13 @@ class FileCapabilities {
 
   /// Whether the current user can remove children from this folder.
   ///
-  /// This is always false when the item is not a folder. For a folder in a
+  /// This is always `false` when the item isn't a folder. For a folder in a
   /// shared drive, use `canDeleteChildren` or `canTrashChildren` instead.
   ///
   /// Output only.
   core.bool? canRemoveChildren;
 
-  /// Whether there is a content restriction on the file that can be removed by
+  /// Whether there's a content restriction on the file that can be removed by
   /// the current user.
   ///
   /// Output only.
@@ -5453,7 +5534,7 @@ class FileCapabilities {
 
   /// Whether the current user can trash children of this folder.
   ///
-  /// This is false when the item is not a folder. Only populated for items in
+  /// This is `false` when the item isn't a folder. Only populated for items in
   /// shared drives.
   ///
   /// Output only.
@@ -5653,7 +5734,8 @@ class FileCapabilities {
 ///
 /// This will only be used if Google Drive cannot generate a standard thumbnail.
 class FileContentHintsThumbnail {
-  /// The thumbnail data encoded with URL-safe Base64 (RFC 4648 section 5).
+  /// The thumbnail data encoded with URL-safe Base64
+  /// ([RFC 4648 section 5](https://datatracker.ietf.org/doc/html/rfc4648#section-5)).
   core.String? image;
   core.List<core.int> get imageAsBytes => convert.base64.decode(image!);
 
@@ -5687,7 +5769,7 @@ class FileContentHintsThumbnail {
 class FileContentHints {
   /// Text to be indexed for the file to improve fullText queries.
   ///
-  /// This is limited to 128KB in length and may contain HTML elements.
+  /// This is limited to 128 KB in length and may contain HTML elements.
   core.String? indexableText;
 
   /// A thumbnail for the file.
@@ -6026,7 +6108,7 @@ class FileShortcutDetails {
   /// Output only.
   core.String? targetMimeType;
 
-  /// The ResourceKey for the target file.
+  /// The `resourceKey` for the target file.
   ///
   /// Output only.
   core.String? targetResourceKey;
@@ -6105,6 +6187,8 @@ class File {
   /// Capabilities the current user has on this file.
   ///
   /// Each capability corresponds to a fine-grained action that a user may take.
+  /// For more information, see
+  /// [Understand file capabilities](https://developers.google.com/workspace/drive/api/guides/manage-sharing#capabilities).
   ///
   /// Output only.
   FileCapabilities? capabilities;
@@ -6119,7 +6203,7 @@ class File {
   /// Only populated if such a restriction exists.
   core.List<ContentRestriction>? contentRestrictions;
 
-  /// Whether the options to copy, print, or download this file, should be
+  /// Whether the options to copy, print, or download this file should be
   /// disabled for readers and commenters.
   core.bool? copyRequiresWriterPermission;
 
@@ -6160,16 +6244,17 @@ class File {
   /// The color for a folder or a shortcut to a folder as an RGB hex string.
   ///
   /// The supported colors are published in the `folderColorPalette` field of
-  /// the About resource. If an unsupported color is specified, the closest
-  /// color in the palette is used instead.
+  /// the \[`about`\](/workspace/drive/api/reference/rest/v3/about) resource. If
+  /// an unsupported color is specified, the closest color in the palette is
+  /// used instead.
   core.String? folderColorRgb;
 
   /// The full file extension extracted from the `name` field.
   ///
   /// May contain multiple concatenated extensions, such as "tar.gz". This is
   /// only available for files with binary content in Google Drive. This is
-  /// automatically updated when the `name` field changes, however it is not
-  /// cleared if the new name does not contain a valid extension.
+  /// automatically updated when the `name` field changes, however it's not
+  /// cleared if the new name doesn't contain a valid extension.
   ///
   /// Output only.
   core.String? fullFileExtension;
@@ -6183,7 +6268,7 @@ class File {
 
   /// Whether this file has a thumbnail.
   ///
-  /// This does not indicate whether the requesting app has access to the
+  /// This doesn't indicate whether the requesting app has access to the
   /// thumbnail. To check access, look for the presence of the thumbnailLink
   /// field.
   ///
@@ -6258,7 +6343,8 @@ class File {
   /// uploaded content, if no value is provided. The value cannot be changed
   /// unless a new revision is uploaded. If a file is created with a Google Doc
   /// MIME type, the uploaded content is imported, if possible. The supported
-  /// import formats are published in the About resource.
+  /// import formats are published in the
+  /// \[`about`\](/workspace/drive/api/reference/rest/v3/about) resource.
   core.String? mimeType;
 
   /// Whether the file has been modified by this user.
@@ -6277,9 +6363,9 @@ class File {
 
   /// The name of the file.
   ///
-  /// This is not necessarily unique within a folder. Note that for immutable
-  /// items such as the top level folders of shared drives, My Drive root
-  /// folder, and Application Data folder the name is constant.
+  /// This isn't necessarily unique within a folder. Note that for immutable
+  /// items such as the top-level folders of shared drives, the My Drive root
+  /// folder, and the Application Data folder, the name is constant.
   core.String? name;
 
   /// The original filename of the uploaded content if available, or else the
@@ -6346,7 +6432,7 @@ class File {
   /// The SHA1 checksum associated with this file, if available.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it is not populated for Docs Editors or shortcut files.
+  /// Drive; it's not populated for Docs Editors or shortcut files.
   ///
   /// Output only.
   core.String? sha1Checksum;
@@ -6354,7 +6440,7 @@ class File {
   /// The SHA256 checksum associated with this file, if available.
   ///
   /// This field is only populated for files with content stored in Google
-  /// Drive; it is not populated for Docs Editors or shortcut files.
+  /// Drive; it's not populated for Docs Editors or shortcut files.
   ///
   /// Output only.
   core.String? sha256Checksum;
@@ -6382,7 +6468,7 @@ class File {
   /// requests.
   FileShortcutDetails? shortcutDetails;
 
-  /// Size in bytes of blobs and first party editor files.
+  /// Size in bytes of blobs and Google Workspace editor files.
   ///
   /// Won't be populated for files that have no size, like shortcuts and
   /// folders.
@@ -6392,7 +6478,7 @@ class File {
 
   /// The list of spaces which contain the file.
   ///
-  /// The currently supported values are 'drive', 'appDataFolder' and 'photos'.
+  /// The currently supported values are `drive`, `appDataFolder`, and `photos`.
   ///
   /// Output only.
   core.List<core.String>? spaces;
@@ -6412,10 +6498,10 @@ class File {
   ///
   /// Typically lasts on the order of hours. Not intended for direct usage on
   /// web applications due to \[Cross-Origin Resource Sharing
-  /// (CORS)\](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies,
-  /// consider using a proxy server. Only populated when the requesting app can
+  /// (CORS)\](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies.
+  /// Consider using a proxy server. Only populated when the requesting app can
   /// access the file's content. If the file isn't shared publicly, the URL
-  /// returned in `Files.thumbnailLink` must be fetched using a credentialed
+  /// returned in `files.thumbnailLink` must be fetched using a credentialed
   /// request.
   ///
   /// Output only.
@@ -6829,7 +6915,7 @@ class File {
 class FileList {
   /// The list of files.
   ///
-  /// If nextPageToken is populated, then this list may be incomplete and an
+  /// If `nextPageToken` is populated, then this list may be incomplete and an
   /// additional page of results should be fetched.
   core.List<File>? files;
 
@@ -6837,9 +6923,9 @@ class FileList {
   ///
   /// If true, then some search results might be missing, since all documents
   /// were not searched. This can occur when searching multiple drives with the
-  /// 'allDrives' corpora, but all corpora couldn't be searched. When this
+  /// `allDrives` corpora, but all corpora couldn't be searched. When this
   /// happens, it's suggested that clients narrow their query by choosing a
-  /// different corpus such as 'user' or 'drive'.
+  /// different corpus such as `user` or `drive`.
   core.bool? incompleteSearch;
 
   /// Identifies what kind of resource this is.
@@ -7048,7 +7134,7 @@ class LabelFieldModification {
   /// The ID of the field to be modified.
   core.String? fieldId;
 
-  /// This is always drive#labelFieldModification.
+  /// This is always `"drive#labelFieldModification"`.
   core.String? kind;
 
   /// Replaces the value of a dateString Field with these new values.
@@ -7067,7 +7153,7 @@ class LabelFieldModification {
 
   /// Replaces a `user` field with these new values.
   ///
-  /// The values must be valid email addresses.
+  /// The values must be a valid email addresses.
   core.List<core.String>? setUserValues;
 
   /// Unsets the values for this field.
@@ -7132,7 +7218,7 @@ class LabelFieldModification {
 
 /// A list of labels applied to a file.
 class LabelList {
-  /// This is always drive#labelList
+  /// This is always `"drive#labelList"`.
   core.String? kind;
 
   /// The list of labels.
@@ -7172,13 +7258,13 @@ class LabelList {
 
 /// A modification to a label on a file.
 ///
-/// A LabelModification can be used to apply a label to a file, update an
+/// A `LabelModification` can be used to apply a label to a file, update an
 /// existing label on a file, or remove a label from a file.
 class LabelModification {
   /// The list of modifications to this label's fields.
   core.List<LabelFieldModification>? fieldModifications;
 
-  /// This is always drive#labelModification.
+  /// This is always `"drive#labelModification"`.
   core.String? kind;
 
   /// The ID of the label to modify.
@@ -7217,11 +7303,11 @@ class LabelModification {
   };
 }
 
-/// The response to an Access Proposal list request.
+/// The response to an access proposal list request.
 class ListAccessProposalsResponse {
-  /// The list of Access Proposals.
+  /// The list of access proposals.
   ///
-  /// This field is only populated in v3 and v3beta.
+  /// This field is only populated in Drive API v3.
   core.List<AccessProposal>? accessProposals;
 
   /// The continuation token for the next page of results.
@@ -7257,7 +7343,7 @@ class ListAccessProposalsResponse {
 /// This request may contain many modifications that will either all succeed or
 /// all fail atomically.
 class ModifyLabelsRequest {
-  /// This is always drive#modifyLabelsRequest.
+  /// This is always `"drive#modifyLabelsRequest"`.
   core.String? kind;
 
   /// The list of modifications to apply to the labels on the file.
@@ -7284,11 +7370,11 @@ class ModifyLabelsRequest {
   };
 }
 
-/// Response to a ModifyLabels request.
+/// Response to a `ModifyLabels` request.
 ///
 /// This contains only those labels which were added or updated by the request.
 class ModifyLabelsResponse {
-  /// This is always drive#modifyLabelsResponse
+  /// This is always `"drive#modifyLabelsResponse"`.
   core.String? kind;
 
   /// The list of labels which were added or updated by the request.
@@ -7897,24 +7983,26 @@ class ReplyList {
 
 /// Request message for resolving an AccessProposal on a file.
 class ResolveAccessProposalRequest {
-  /// The action to take on the AccessProposal.
+  /// The action to take on the access proposal.
   ///
   /// Required.
   /// Possible string values are:
   /// - "ACTION_UNSPECIFIED" : Unspecified action
-  /// - "ACCEPT" : The user accepts the proposal. Note: If this action is used,
-  /// the `role` field must have at least one value.
-  /// - "DENY" : The user denies the proposal
+  /// - "ACCEPT" : The user accepts the access proposal. Note: If this action is
+  /// used, the `role` field must have at least one value.
+  /// - "DENY" : The user denies the access proposal.
   core.String? action;
 
-  /// The roles the approver has allowed, if any.
+  /// The roles that the approver has allowed, if any.
   ///
+  /// For more information, see
+  /// [Roles and permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles).
   /// Note: This field is required for the `ACCEPT` action.
   ///
   /// Optional.
   core.List<core.String>? role;
 
-  /// Whether to send an email to the requester when the AccessProposal is
+  /// Whether to send an email to the requester when the access proposal is
   /// denied or accepted.
   ///
   /// Optional.
@@ -7922,8 +8010,8 @@ class ResolveAccessProposalRequest {
 
   /// Indicates the view for this access proposal.
   ///
-  /// This should only be set when the proposal belongs to a view. `published`
-  /// is the only supported value.
+  /// This should only be set when the proposal belongs to a view. Only
+  /// `published` is supported.
   ///
   /// Optional.
   core.String? view;

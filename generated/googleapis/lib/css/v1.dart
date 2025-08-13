@@ -2082,92 +2082,16 @@ class MethodDetails {
 }
 
 /// The price represented as a number and currency.
-class Price {
-  /// The price represented as a number in micros (1 million micros is an
-  /// equivalent to one's currency standard unit, for example, 1 USD = 1000000
-  /// micros).
-  core.String? amountMicros;
-
-  /// The currency of the price using three-letter acronyms according to
-  /// [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217).
-  core.String? currencyCode;
-
-  Price({this.amountMicros, this.currencyCode});
-
-  Price.fromJson(core.Map json_)
-    : this(
-        amountMicros: json_['amountMicros'] as core.String?,
-        currencyCode: json_['currencyCode'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (amountMicros != null) 'amountMicros': amountMicros!,
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-  };
-}
+typedef Price = $Price;
 
 /// The product details.
 typedef ProductDetail = $ProductDetail;
 
 /// The dimension of the product.
-class ProductDimension {
-  /// The dimension units.
-  ///
-  /// Acceptable values are: * "`in`" * "`cm`"
-  ///
-  /// Required.
-  core.String? unit;
-
-  /// The dimension value represented as a number.
-  ///
-  /// The value can have a maximum precision of four decimal places.
-  ///
-  /// Required.
-  core.double? value;
-
-  ProductDimension({this.unit, this.value});
-
-  ProductDimension.fromJson(core.Map json_)
-    : this(
-        unit: json_['unit'] as core.String?,
-        value: (json_['value'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (unit != null) 'unit': unit!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef ProductDimension = $ProductDimension;
 
 /// The weight of the product.
-class ProductWeight {
-  /// The weight unit.
-  ///
-  /// Acceptable values are: * "`g`" * "`kg`" * "`oz`" * "`lb`"
-  ///
-  /// Required.
-  core.String? unit;
-
-  /// The weight represented as a number.
-  ///
-  /// The weight can have a maximum precision of four decimal places.
-  ///
-  /// Required.
-  core.double? value;
-
-  ProductWeight({this.unit, this.value});
-
-  ProductWeight.fromJson(core.Map json_)
-    : this(
-        unit: json_['unit'] as core.String?,
-        value: (json_['value'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (unit != null) 'unit': unit!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef ProductWeight = $ProductWeight;
 
 /// The group information for methods in the CSS API.
 ///

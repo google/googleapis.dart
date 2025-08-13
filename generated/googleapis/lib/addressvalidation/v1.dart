@@ -1567,4 +1567,4 @@ typedef GoogleTypeLatLng = $LatLng;
 /// with UI elements for input or editing of fields outside countries where that
 /// field is used. For more guidance on how to use this schema, see:
 /// https://support.google.com/business/answer/6397478.
-typedef GoogleTypePostalAddress = $PostalAddress00;
+typedef GoogleTypePostalAddress = $PostalAddress;

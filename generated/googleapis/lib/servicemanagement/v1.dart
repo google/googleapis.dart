@@ -1201,8 +1201,15 @@ class Advice {
 /// interface as opposed to simply a description of methods and bindings. They
 /// are also sometimes simply referred to as "APIs" in other contexts, such as
 /// the name of this message itself. See
-/// https://cloud.google.com/apis/design/glossary for detailed terminology.
+/// https://cloud.google.com/apis/design/glossary for detailed terminology. New
+/// usages of this message as an alternative to ServiceDescriptorProto are
+/// strongly discouraged. This message does not reliability preserve all
+/// information necessary to model the schema and preserve semantics. Instead
+/// make use of FileDescriptorSet which preserves the necessary information.
 class Api {
+  /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+  core.String? edition;
+
   /// The methods of this interface, in unspecified order.
   core.List<Method>? methods;
 
@@ -1248,6 +1255,7 @@ class Api {
   core.String? version;
 
   Api({
+    this.edition,
     this.methods,
     this.mixins,
     this.name,
@@ -1259,6 +1267,7 @@ class Api {
 
   Api.fromJson(core.Map json_)
     : this(
+        edition: json_['edition'] as core.String?,
         methods:
             (json_['methods'] as core.List?)
                 ?.map(
@@ -1295,6 +1304,7 @@ class Api {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (edition != null) 'edition': edition!,
     if (methods != null) 'methods': methods!,
     if (mixins != null) 'mixins': mixins!,
     if (name != null) 'name': name!,
@@ -1684,7 +1694,7 @@ class BackendRule {
   /// The map between request protocol and the backend address.
   core.Map<core.String, BackendRule>? overridesByRequestProtocol;
 
-  ///
+  /// no-lint
   /// Possible string values are:
   /// - "PATH_TRANSLATION_UNSPECIFIED"
   /// - "CONSTANT_ADDRESS" : Use the backend address as-is, with no modification
@@ -3049,6 +3059,11 @@ class DotnetSettings {
 typedef Endpoint = $Endpoint;
 
 /// Enum type definition.
+///
+/// New usages of this message as an alternative to EnumDescriptorProto are
+/// strongly discouraged. This message does not reliability preserve all
+/// information necessary to model the schema and preserve semantics. Instead
+/// make use of FileDescriptorSet which preserves the necessary information.
 class Enum {
   /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
   core.String? edition;
@@ -3121,6 +3136,11 @@ class Enum {
 }
 
 /// Enum value definition.
+///
+/// New usages of this message as an alternative to EnumValueDescriptorProto are
+/// strongly discouraged. This message does not reliability preserve all
+/// information necessary to model the schema and preserve semantics. Instead
+/// make use of FileDescriptorSet which preserves the necessary information.
 class EnumValue {
   /// Enum value name.
   core.String? name;
@@ -3227,6 +3247,11 @@ class ExperimentalFeatures {
 typedef Expr = $Expr;
 
 /// A single field of a message type.
+///
+/// New usages of this message as an alternative to FieldDescriptorProto are
+/// strongly discouraged. This message does not reliability preserve all
+/// information necessary to model the schema and preserve semantics. Instead
+/// make use of FileDescriptorSet which preserves the necessary information.
 class Field {
   /// The field cardinality.
   /// Possible string values are:
@@ -3517,8 +3542,8 @@ class GoSettings {
   /// Map of service names to renamed services.
   ///
   /// Keys are the package relative service names and values are the name to be
-  /// used for the service client and call options. publishing: go_settings:
-  /// renamed_services: Publisher: TopicAdmin
+  /// used for the service client and call options. Example: publishing:
+  /// go_settings: renamed_services: Publisher: TopicAdmin
   core.Map<core.String, core.String>? renamedServices;
 
   GoSettings({this.common, this.renamedServices});
@@ -4235,7 +4260,21 @@ class ManagedService {
 }
 
 /// Method represents a method of an API interface.
+///
+/// New usages of this message as an alternative to MethodDescriptorProto are
+/// strongly discouraged. This message does not reliability preserve all
+/// information necessary to model the schema and preserve semantics. Instead
+/// make use of FileDescriptorSet which preserves the necessary information.
 class Method {
+  /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+  ///
+  /// This field should be ignored, instead the edition should be inherited from
+  /// Api. This is similar to Field and EnumValue.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? edition;
+
   /// The simple name of this method.
   core.String? name;
 
@@ -4255,13 +4294,20 @@ class Method {
   core.String? responseTypeUrl;
 
   /// The source syntax of this method.
+  ///
+  /// This field should be ignored, instead the syntax should be inherited from
+  /// Api. This is similar to Field and EnumValue.
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax `proto2`.
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
   /// - "SYNTAX_EDITIONS" : Syntax `editions`.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? syntax;
 
   Method({
+    this.edition,
     this.name,
     this.options,
     this.requestStreaming,
@@ -4273,6 +4319,7 @@ class Method {
 
   Method.fromJson(core.Map json_)
     : this(
+        edition: json_['edition'] as core.String?,
         name: json_['name'] as core.String?,
         options:
             (json_['options'] as core.List?)
@@ -4290,6 +4337,7 @@ class Method {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (edition != null) 'edition': edition!,
     if (name != null) 'name': name!,
     if (options != null) 'options': options!,
     if (requestStreaming != null) 'requestStreaming': requestStreaming!,
@@ -5087,6 +5135,10 @@ class Operation {
 
 /// A protocol buffer option, which can be attached to a message, field,
 /// enumeration, etc.
+///
+/// New usages of this message as an alternative to FileOptions, MessageOptions,
+/// FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions, or
+/// MethodOptions are strongly discouraged.
 typedef Option = $Option;
 
 /// Represents a documentation page.
@@ -5145,7 +5197,17 @@ class PhpSettings {
   /// Some settings.
   CommonLanguageSettings? common;
 
-  PhpSettings({this.common});
+  /// The package name to use in Php.
+  ///
+  /// Clobbers the php_namespace option set in the protobuf. This should be used
+  /// **only** by APIs who have already set the
+  /// language_settings.php.package_name" field in gapic.yaml. API teams should
+  /// use the protobuf php_namespace option where possible. Example of a YAML
+  /// configuration:: publishing: library_settings: php_settings:
+  /// library_package: Google\Cloud\PubSub\V1
+  core.String? libraryPackage;
+
+  PhpSettings({this.common, this.libraryPackage});
 
   PhpSettings.fromJson(core.Map json_)
     : this(
@@ -5155,10 +5217,12 @@ class PhpSettings {
                   json_['common'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        libraryPackage: json_['libraryPackage'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (common != null) 'common': common!,
+    if (libraryPackage != null) 'libraryPackage': libraryPackage!,
   };
 }
 
@@ -5572,9 +5636,6 @@ class Rollout {
   /// percentage.
   TrafficPercentStrategy? trafficPercentStrategy;
 
-  /// The TPC universe which the rollout will be rolled out to.
-  core.String? universe;
-
   Rollout({
     this.createTime,
     this.createdBy,
@@ -5583,7 +5644,6 @@ class Rollout {
     this.serviceName,
     this.status,
     this.trafficPercentStrategy,
-    this.universe,
   });
 
   Rollout.fromJson(core.Map json_)
@@ -5607,7 +5667,6 @@ class Rollout {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
-        universe: json_['universe'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5620,7 +5679,6 @@ class Rollout {
     if (status != null) 'status': status!,
     if (trafficPercentStrategy != null)
       'trafficPercentStrategy': trafficPercentStrategy!,
-    if (universe != null) 'universe': universe!,
   };
 }
 
@@ -6330,6 +6388,11 @@ class TrafficPercentStrategy {
 }
 
 /// A protocol buffer message type.
+///
+/// New usages of this message as an alternative to DescriptorProto are strongly
+/// discouraged. This message does not reliability preserve all information
+/// necessary to model the schema and preserve semantics. Instead make use of
+/// FileDescriptorSet which preserves the necessary information.
 class Type {
   /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
   core.String? edition;

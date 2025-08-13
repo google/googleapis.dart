@@ -1159,6 +1159,7 @@ api.GoogleMapsPlacesV1Place buildGoogleMapsPlacesV1Place() {
     o.allowsDogs = true;
     o.attributions = buildUnnamed17();
     o.businessStatus = 'foo';
+    o.consumerAlert = buildGoogleMapsPlacesV1PlaceConsumerAlert();
     o.containingPlaces = buildUnnamed18();
     o.curbsidePickup = true;
     o.currentOpeningHours = buildGoogleMapsPlacesV1PlaceOpeningHours();
@@ -1240,6 +1241,7 @@ void checkGoogleMapsPlacesV1Place(api.GoogleMapsPlacesV1Place o) {
     unittest.expect(o.allowsDogs!, unittest.isTrue);
     checkUnnamed17(o.attributions!);
     unittest.expect(o.businessStatus!, unittest.equals('foo'));
+    checkGoogleMapsPlacesV1PlaceConsumerAlert(o.consumerAlert!);
     checkUnnamed18(o.containingPlaces!);
     unittest.expect(o.curbsidePickup!, unittest.isTrue);
     checkGoogleMapsPlacesV1PlaceOpeningHours(o.currentOpeningHours!);
@@ -1397,6 +1399,82 @@ void checkGoogleMapsPlacesV1PlaceAttribution(
     unittest.expect(o.providerUri!, unittest.equals('foo'));
   }
   buildCounterGoogleMapsPlacesV1PlaceAttribution--;
+}
+
+core.int buildCounterGoogleMapsPlacesV1PlaceConsumerAlert = 0;
+api.GoogleMapsPlacesV1PlaceConsumerAlert
+buildGoogleMapsPlacesV1PlaceConsumerAlert() {
+  final o = api.GoogleMapsPlacesV1PlaceConsumerAlert();
+  buildCounterGoogleMapsPlacesV1PlaceConsumerAlert++;
+  if (buildCounterGoogleMapsPlacesV1PlaceConsumerAlert < 3) {
+    o.details = buildGoogleMapsPlacesV1PlaceConsumerAlertDetails();
+    o.languageCode = 'foo';
+    o.overview = 'foo';
+  }
+  buildCounterGoogleMapsPlacesV1PlaceConsumerAlert--;
+  return o;
+}
+
+void checkGoogleMapsPlacesV1PlaceConsumerAlert(
+  api.GoogleMapsPlacesV1PlaceConsumerAlert o,
+) {
+  buildCounterGoogleMapsPlacesV1PlaceConsumerAlert++;
+  if (buildCounterGoogleMapsPlacesV1PlaceConsumerAlert < 3) {
+    checkGoogleMapsPlacesV1PlaceConsumerAlertDetails(o.details!);
+    unittest.expect(o.languageCode!, unittest.equals('foo'));
+    unittest.expect(o.overview!, unittest.equals('foo'));
+  }
+  buildCounterGoogleMapsPlacesV1PlaceConsumerAlert--;
+}
+
+core.int buildCounterGoogleMapsPlacesV1PlaceConsumerAlertDetails = 0;
+api.GoogleMapsPlacesV1PlaceConsumerAlertDetails
+buildGoogleMapsPlacesV1PlaceConsumerAlertDetails() {
+  final o = api.GoogleMapsPlacesV1PlaceConsumerAlertDetails();
+  buildCounterGoogleMapsPlacesV1PlaceConsumerAlertDetails++;
+  if (buildCounterGoogleMapsPlacesV1PlaceConsumerAlertDetails < 3) {
+    o.aboutLink = buildGoogleMapsPlacesV1PlaceConsumerAlertDetailsLink();
+    o.description = 'foo';
+    o.title = 'foo';
+  }
+  buildCounterGoogleMapsPlacesV1PlaceConsumerAlertDetails--;
+  return o;
+}
+
+void checkGoogleMapsPlacesV1PlaceConsumerAlertDetails(
+  api.GoogleMapsPlacesV1PlaceConsumerAlertDetails o,
+) {
+  buildCounterGoogleMapsPlacesV1PlaceConsumerAlertDetails++;
+  if (buildCounterGoogleMapsPlacesV1PlaceConsumerAlertDetails < 3) {
+    checkGoogleMapsPlacesV1PlaceConsumerAlertDetailsLink(o.aboutLink!);
+    unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.title!, unittest.equals('foo'));
+  }
+  buildCounterGoogleMapsPlacesV1PlaceConsumerAlertDetails--;
+}
+
+core.int buildCounterGoogleMapsPlacesV1PlaceConsumerAlertDetailsLink = 0;
+api.GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink
+buildGoogleMapsPlacesV1PlaceConsumerAlertDetailsLink() {
+  final o = api.GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink();
+  buildCounterGoogleMapsPlacesV1PlaceConsumerAlertDetailsLink++;
+  if (buildCounterGoogleMapsPlacesV1PlaceConsumerAlertDetailsLink < 3) {
+    o.title = 'foo';
+    o.uri = 'foo';
+  }
+  buildCounterGoogleMapsPlacesV1PlaceConsumerAlertDetailsLink--;
+  return o;
+}
+
+void checkGoogleMapsPlacesV1PlaceConsumerAlertDetailsLink(
+  api.GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink o,
+) {
+  buildCounterGoogleMapsPlacesV1PlaceConsumerAlertDetailsLink++;
+  if (buildCounterGoogleMapsPlacesV1PlaceConsumerAlertDetailsLink < 3) {
+    unittest.expect(o.title!, unittest.equals('foo'));
+    unittest.expect(o.uri!, unittest.equals('foo'));
+  }
+  buildCounterGoogleMapsPlacesV1PlaceConsumerAlertDetailsLink--;
 }
 
 core.int buildCounterGoogleMapsPlacesV1PlaceContainingPlace = 0;
@@ -1875,6 +1953,7 @@ api.GoogleMapsPlacesV1Review buildGoogleMapsPlacesV1Review() {
     o.rating = 42.0;
     o.relativePublishTimeDescription = 'foo';
     o.text = buildGoogleTypeLocalizedText();
+    o.visitDate = buildGoogleTypeDate();
   }
   buildCounterGoogleMapsPlacesV1Review--;
   return o;
@@ -1892,6 +1971,7 @@ void checkGoogleMapsPlacesV1Review(api.GoogleMapsPlacesV1Review o) {
     unittest.expect(o.rating!, unittest.equals(42.0));
     unittest.expect(o.relativePublishTimeDescription!, unittest.equals('foo'));
     checkGoogleTypeLocalizedText(o.text!);
+    checkGoogleTypeDate(o.visitDate!);
   }
   buildCounterGoogleMapsPlacesV1Review--;
 }
@@ -3003,6 +3083,42 @@ void main() {
       checkGoogleMapsPlacesV1PlaceAttribution(od);
     });
   });
+
+  unittest.group('obj-schema-GoogleMapsPlacesV1PlaceConsumerAlert', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleMapsPlacesV1PlaceConsumerAlert();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleMapsPlacesV1PlaceConsumerAlert.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleMapsPlacesV1PlaceConsumerAlert(od);
+    });
+  });
+
+  unittest.group('obj-schema-GoogleMapsPlacesV1PlaceConsumerAlertDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleMapsPlacesV1PlaceConsumerAlertDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleMapsPlacesV1PlaceConsumerAlertDetails.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleMapsPlacesV1PlaceConsumerAlertDetails(od);
+    });
+  });
+
+  unittest.group(
+    'obj-schema-GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleMapsPlacesV1PlaceConsumerAlertDetailsLink();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleMapsPlacesV1PlaceConsumerAlertDetailsLink(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-GoogleMapsPlacesV1PlaceContainingPlace', () {
     unittest.test('to-json--from-json', () async {

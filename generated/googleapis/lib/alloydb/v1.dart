@@ -154,9 +154,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2503,6 +2503,7 @@ class Backup {
   /// - "POSTGRES_14" : The database version is Postgres 14.
   /// - "POSTGRES_15" : The database version is Postgres 15.
   /// - "POSTGRES_16" : The database version is Postgres 16.
+  /// - "POSTGRES_17" : The database version is Postgres 17.
   core.String? databaseVersion;
 
   /// Delete time stamp
@@ -2911,6 +2912,7 @@ class Cluster {
   /// - "POSTGRES_14" : The database version is Postgres 14.
   /// - "POSTGRES_15" : The database version is Postgres 15.
   /// - "POSTGRES_16" : The database version is Postgres 16.
+  /// - "POSTGRES_17" : The database version is Postgres 17.
   core.String? databaseVersion;
 
   /// Delete time stamp
@@ -3353,6 +3355,41 @@ class ConnectionInfo {
     if (ipAddress != null) 'ipAddress': ipAddress!,
     if (name != null) 'name': name!,
     if (publicIpAddress != null) 'publicIpAddress': publicIpAddress!,
+  };
+}
+
+/// Configuration for Managed Connection Pool (MCP).
+class ConnectionPoolConfig {
+  /// Whether to enable Managed Connection Pool (MCP).
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  /// Connection Pool flags, as a list of "key": "value" pairs.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? flags;
+
+  /// The number of running poolers per instance.
+  ///
+  /// Output only.
+  core.int? poolerCount;
+
+  ConnectionPoolConfig({this.enabled, this.flags, this.poolerCount});
+
+  ConnectionPoolConfig.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        flags: (json_['flags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        poolerCount: json_['poolerCount'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enabled != null) 'enabled': enabled!,
+    if (flags != null) 'flags': flags!,
+    if (poolerCount != null) 'poolerCount': poolerCount!,
   };
 }
 
@@ -4038,6 +4075,11 @@ class Instance {
   /// Optional.
   ClientConnectionConfig? clientConnectionConfig;
 
+  /// The configuration for Managed Connection Pool (MCP).
+  ///
+  /// Optional.
+  ConnectionPoolConfig? connectionPoolConfig;
+
   /// Create time stamp
   ///
   /// Output only.
@@ -4223,6 +4265,7 @@ class Instance {
     this.annotations,
     this.availabilityType,
     this.clientConnectionConfig,
+    this.connectionPoolConfig,
     this.createTime,
     this.databaseFlags,
     this.deleteTime,
@@ -4261,6 +4304,13 @@ class Instance {
             json_.containsKey('clientConnectionConfig')
                 ? ClientConnectionConfig.fromJson(
                   json_['clientConnectionConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        connectionPoolConfig:
+            json_.containsKey('connectionPoolConfig')
+                ? ConnectionPoolConfig.fromJson(
+                  json_['connectionPoolConfig']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -4350,6 +4400,8 @@ class Instance {
     if (availabilityType != null) 'availabilityType': availabilityType!,
     if (clientConnectionConfig != null)
       'clientConnectionConfig': clientConnectionConfig!,
+    if (connectionPoolConfig != null)
+      'connectionPoolConfig': connectionPoolConfig!,
     if (createTime != null) 'createTime': createTime!,
     if (databaseFlags != null) 'databaseFlags': databaseFlags!,
     if (deleteTime != null) 'deleteTime': deleteTime!,
@@ -6085,6 +6137,7 @@ class UpgradeClusterRequest {
   /// - "POSTGRES_14" : The database version is Postgres 14.
   /// - "POSTGRES_15" : The database version is Postgres 15.
   /// - "POSTGRES_16" : The database version is Postgres 16.
+  /// - "POSTGRES_17" : The database version is Postgres 17.
   core.String? version;
 
   UpgradeClusterRequest({

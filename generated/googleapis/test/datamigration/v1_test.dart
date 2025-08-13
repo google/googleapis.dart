@@ -1637,6 +1637,25 @@ void checkGenerateTcpProxyScriptRequest(api.GenerateTcpProxyScriptRequest o) {
   buildCounterGenerateTcpProxyScriptRequest--;
 }
 
+core.int buildCounterHeterogeneousMetadata = 0;
+api.HeterogeneousMetadata buildHeterogeneousMetadata() {
+  final o = api.HeterogeneousMetadata();
+  buildCounterHeterogeneousMetadata++;
+  if (buildCounterHeterogeneousMetadata < 3) {
+    o.unsupportedEventsCount = 'foo';
+  }
+  buildCounterHeterogeneousMetadata--;
+  return o;
+}
+
+void checkHeterogeneousMetadata(api.HeterogeneousMetadata o) {
+  buildCounterHeterogeneousMetadata++;
+  if (buildCounterHeterogeneousMetadata < 3) {
+    unittest.expect(o.unsupportedEventsCount!, unittest.equals('foo'));
+  }
+  buildCounterHeterogeneousMetadata--;
+}
+
 core.List<api.RulesFile> buildUnnamed27() => [
   buildRulesFile(),
   buildRulesFile(),
@@ -2512,6 +2531,7 @@ api.MigrationJobObject buildMigrationJobObject() {
   if (buildCounterMigrationJobObject < 3) {
     o.createTime = 'foo';
     o.error = buildStatus();
+    o.heterogeneousMetadata = buildHeterogeneousMetadata();
     o.name = 'foo';
     o.phase = 'foo';
     o.sourceObject = buildSourceObjectIdentifier();
@@ -2527,6 +2547,7 @@ void checkMigrationJobObject(api.MigrationJobObject o) {
   if (buildCounterMigrationJobObject < 3) {
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkStatus(o.error!);
+    checkHeterogeneousMetadata(o.heterogeneousMetadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.phase!, unittest.equals('foo'));
     checkSourceObjectIdentifier(o.sourceObject!);
@@ -3975,7 +3996,9 @@ api.SqlServerConnectionProfile buildSqlServerConnectionProfile() {
   if (buildCounterSqlServerConnectionProfile < 3) {
     o.backups = buildSqlServerBackups();
     o.cloudSqlId = 'foo';
+    o.cloudSqlProjectId = 'foo';
     o.database = 'foo';
+    o.dbmPort = 42;
     o.forwardSshConnectivity = buildForwardSshTunnelConnectivity();
     o.host = 'foo';
     o.password = 'foo';
@@ -3997,7 +4020,9 @@ void checkSqlServerConnectionProfile(api.SqlServerConnectionProfile o) {
   if (buildCounterSqlServerConnectionProfile < 3) {
     checkSqlServerBackups(o.backups!);
     unittest.expect(o.cloudSqlId!, unittest.equals('foo'));
+    unittest.expect(o.cloudSqlProjectId!, unittest.equals('foo'));
     unittest.expect(o.database!, unittest.equals('foo'));
+    unittest.expect(o.dbmPort!, unittest.equals(42));
     checkForwardSshTunnelConnectivity(o.forwardSshConnectivity!);
     unittest.expect(o.host!, unittest.equals('foo'));
     unittest.expect(o.password!, unittest.equals('foo'));
@@ -4012,6 +4037,27 @@ void checkSqlServerConnectionProfile(api.SqlServerConnectionProfile o) {
     unittest.expect(o.username!, unittest.equals('foo'));
   }
   buildCounterSqlServerConnectionProfile--;
+}
+
+core.int buildCounterSqlServerDagConfig = 0;
+api.SqlServerDagConfig buildSqlServerDagConfig() {
+  final o = api.SqlServerDagConfig();
+  buildCounterSqlServerDagConfig++;
+  if (buildCounterSqlServerDagConfig < 3) {
+    o.linkedServer = 'foo';
+    o.sourceAg = 'foo';
+  }
+  buildCounterSqlServerDagConfig--;
+  return o;
+}
+
+void checkSqlServerDagConfig(api.SqlServerDagConfig o) {
+  buildCounterSqlServerDagConfig++;
+  if (buildCounterSqlServerDagConfig < 3) {
+    unittest.expect(o.linkedServer!, unittest.equals('foo'));
+    unittest.expect(o.sourceAg!, unittest.equals('foo'));
+  }
+  buildCounterSqlServerDagConfig--;
 }
 
 core.int buildCounterSqlServerDatabaseBackup = 0;
@@ -4076,6 +4122,7 @@ buildSqlServerHomogeneousMigrationJobConfig() {
   buildCounterSqlServerHomogeneousMigrationJobConfig++;
   if (buildCounterSqlServerHomogeneousMigrationJobConfig < 3) {
     o.backupFilePattern = 'foo';
+    o.dagConfig = buildSqlServerDagConfig();
     o.databaseBackups = buildUnnamed69();
     o.promoteWhenReady = true;
     o.useDiffBackup = true;
@@ -4090,6 +4137,7 @@ void checkSqlServerHomogeneousMigrationJobConfig(
   buildCounterSqlServerHomogeneousMigrationJobConfig++;
   if (buildCounterSqlServerHomogeneousMigrationJobConfig < 3) {
     unittest.expect(o.backupFilePattern!, unittest.equals('foo'));
+    checkSqlServerDagConfig(o.dagConfig!);
     checkUnnamed69(o.databaseBackups!);
     unittest.expect(o.promoteWhenReady!, unittest.isTrue);
     unittest.expect(o.useDiffBackup!, unittest.isTrue);
@@ -5519,6 +5567,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-HeterogeneousMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHeterogeneousMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HeterogeneousMetadata.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkHeterogeneousMetadata(od);
+    });
+  });
+
   unittest.group('obj-schema-ImportMappingRulesRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildImportMappingRulesRequest();
@@ -6297,6 +6356,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSqlServerConnectionProfile(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlServerDagConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlServerDagConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlServerDagConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSqlServerDagConfig(od);
     });
   });
 

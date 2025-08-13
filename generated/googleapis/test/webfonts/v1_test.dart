@@ -49,6 +49,27 @@ void checkAxis(api.Axis o) {
   buildCounterAxis--;
 }
 
+core.int buildCounterTag = 0;
+api.Tag buildTag() {
+  final o = api.Tag();
+  buildCounterTag++;
+  if (buildCounterTag < 3) {
+    o.name = 'foo';
+    o.weight = 42.0;
+  }
+  buildCounterTag--;
+  return o;
+}
+
+void checkTag(api.Tag o) {
+  buildCounterTag++;
+  if (buildCounterTag < 3) {
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.weight!, unittest.equals(42.0));
+  }
+  buildCounterTag--;
+}
+
 core.List<api.Axis> buildUnnamed0() => [buildAxis(), buildAxis()];
 
 void checkUnnamed0(core.List<api.Axis> o) {
@@ -81,9 +102,17 @@ void checkUnnamed3(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
+core.List<api.Tag> buildUnnamed4() => [buildTag(), buildTag()];
 
-void checkUnnamed4(core.List<core.String> o) {
+void checkUnnamed4(core.List<api.Tag> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTag(o[0]);
+  checkTag(o[1]);
+}
+
+core.List<core.String> buildUnnamed5() => ['foo', 'foo'];
+
+void checkUnnamed5(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -103,7 +132,8 @@ api.Webfont buildWebfont() {
     o.lastModified = 'foo';
     o.menu = 'foo';
     o.subsets = buildUnnamed3();
-    o.variants = buildUnnamed4();
+    o.tags = buildUnnamed4();
+    o.variants = buildUnnamed5();
     o.version = 'foo';
   }
   buildCounterWebfont--;
@@ -122,15 +152,16 @@ void checkWebfont(api.Webfont o) {
     unittest.expect(o.lastModified!, unittest.equals('foo'));
     unittest.expect(o.menu!, unittest.equals('foo'));
     checkUnnamed3(o.subsets!);
-    checkUnnamed4(o.variants!);
+    checkUnnamed4(o.tags!);
+    checkUnnamed5(o.variants!);
     unittest.expect(o.version!, unittest.equals('foo'));
   }
   buildCounterWebfont--;
 }
 
-core.List<api.Webfont> buildUnnamed5() => [buildWebfont(), buildWebfont()];
+core.List<api.Webfont> buildUnnamed6() => [buildWebfont(), buildWebfont()];
 
-void checkUnnamed5(core.List<api.Webfont> o) {
+void checkUnnamed6(core.List<api.Webfont> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebfont(o[0]);
   checkWebfont(o[1]);
@@ -141,7 +172,7 @@ api.WebfontList buildWebfontList() {
   final o = api.WebfontList();
   buildCounterWebfontList++;
   if (buildCounterWebfontList < 3) {
-    o.items = buildUnnamed5();
+    o.items = buildUnnamed6();
     o.kind = 'foo';
   }
   buildCounterWebfontList--;
@@ -151,23 +182,23 @@ api.WebfontList buildWebfontList() {
 void checkWebfontList(api.WebfontList o) {
   buildCounterWebfontList++;
   if (buildCounterWebfontList < 3) {
-    checkUnnamed5(o.items!);
+    checkUnnamed6(o.items!);
     unittest.expect(o.kind!, unittest.equals('foo'));
   }
   buildCounterWebfontList--;
 }
 
-core.List<core.String> buildUnnamed6() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
 
-void checkUnnamed6(core.List<core.String> o) {
+void checkUnnamed7(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed8() => ['foo', 'foo'];
 
-void checkUnnamed7(core.List<core.String> o) {
+void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -182,6 +213,15 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkAxis(od);
+    });
+  });
+
+  unittest.group('obj-schema-Tag', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTag();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Tag.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkTag(od);
     });
   });
 
@@ -211,9 +251,9 @@ void main() {
     unittest.test('method--list', () async {
       final mock = HttpServerMock();
       final res = api.WebfontsApi(mock).webfonts;
-      final arg_capability = buildUnnamed6();
+      final arg_capability = buildUnnamed7();
       final arg_category = 'foo';
-      final arg_family = buildUnnamed7();
+      final arg_family = buildUnnamed8();
       final arg_sort = 'foo';
       final arg_subset = 'foo';
       final arg_$fields = 'foo';

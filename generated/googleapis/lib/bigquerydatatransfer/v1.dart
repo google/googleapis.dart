@@ -384,9 +384,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2199,6 +2199,9 @@ class DataSourceParameter {
   /// Cannot be changed after initial creation.
   core.bool? immutable;
 
+  /// For list parameters, the max size of the list.
+  core.String? maxListSize;
+
   /// For integer and double values specifies maximum allowed value.
   core.double? maxValue;
 
@@ -2251,6 +2254,7 @@ class DataSourceParameter {
     this.displayName,
     this.fields,
     this.immutable,
+    this.maxListSize,
     this.maxValue,
     this.minValue,
     this.paramId,
@@ -2281,6 +2285,7 @@ class DataSourceParameter {
                 )
                 .toList(),
         immutable: json_['immutable'] as core.bool?,
+        maxListSize: json_['maxListSize'] as core.String?,
         maxValue: (json_['maxValue'] as core.num?)?.toDouble(),
         minValue: (json_['minValue'] as core.num?)?.toDouble(),
         paramId: json_['paramId'] as core.String?,
@@ -2300,6 +2305,7 @@ class DataSourceParameter {
     if (displayName != null) 'displayName': displayName!,
     if (fields != null) 'fields': fields!,
     if (immutable != null) 'immutable': immutable!,
+    if (maxListSize != null) 'maxListSize': maxListSize!,
     if (maxValue != null) 'maxValue': maxValue!,
     if (minValue != null) 'minValue': minValue!,
     if (paramId != null) 'paramId': paramId!,

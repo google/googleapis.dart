@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250622",
+    "revision": "20250911",
     "rootUrl": "https://metastore.googleapis.com/",
     "servicePath": "",
     "title": "Dataproc Metastore API",
@@ -148,7 +148,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"

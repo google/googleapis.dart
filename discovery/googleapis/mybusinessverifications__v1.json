@@ -16,7 +16,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250721",
+    "revision": "20250804",
     "rootUrl": "https://mybusinessverifications.googleapis.com/",
     "servicePath": "",
     "title": "My Business Verifications API",
@@ -543,7 +543,8 @@
                         "PHONE_CALL",
                         "SMS",
                         "AUTO",
-                        "VETTED_PARTNER"
+                        "VETTED_PARTNER",
+                        "TRUSTED_PARTNER"
                     ],
                     "enumDescriptions": [
                         "Default value, will result in errors.",
@@ -552,7 +553,8 @@
                         "Make a phone call with a verification PIN to a specific phone number. The PIN is used to complete verification with Google.",
                         "Send an SMS with a verification PIN to a specific phone number. The PIN is used to complete verification with Google.",
                         "Verify the location without additional user action. This option may not be available for all locations.",
-                        "This option may not be available for all locations."
+                        "This option may not be available for all locations.",
+                        "Verify the location via a trusted partner."
                     ],
                     "type": "string"
                 },
@@ -608,7 +610,8 @@
                         "PHONE_CALL",
                         "SMS",
                         "AUTO",
-                        "VETTED_PARTNER"
+                        "VETTED_PARTNER",
+                        "TRUSTED_PARTNER"
                     ],
                     "enumDescriptions": [
                         "Default value, will result in errors.",
@@ -617,7 +620,8 @@
                         "Make a phone call with a verification PIN to a specific phone number. The PIN is used to complete verification with Google.",
                         "Send an SMS with a verification PIN to a specific phone number. The PIN is used to complete verification with Google.",
                         "Verify the location without additional user action. This option may not be available for all locations.",
-                        "This option may not be available for all locations."
+                        "This option may not be available for all locations.",
+                        "Verify the location via a trusted partner."
                     ],
                     "type": "string"
                 }
@@ -675,7 +679,8 @@
                         "PHONE_CALL",
                         "SMS",
                         "AUTO",
-                        "VETTED_PARTNER"
+                        "VETTED_PARTNER",
+                        "TRUSTED_PARTNER"
                     ],
                     "enumDescriptions": [
                         "Default value, will result in errors.",
@@ -684,7 +689,8 @@
                         "Make a phone call with a verification PIN to a specific phone number. The PIN is used to complete verification with Google.",
                         "Send an SMS with a verification PIN to a specific phone number. The PIN is used to complete verification with Google.",
                         "Verify the location without additional user action. This option may not be available for all locations.",
-                        "This option may not be available for all locations."
+                        "This option may not be available for all locations.",
+                        "Verify the location via a trusted partner."
                     ],
                     "type": "string"
                 },
@@ -695,6 +701,10 @@
                 "token": {
                     "$ref": "VerificationToken",
                     "description": "Optional. The input for VETTED_PARTNER method available to select [partners.](https://support.google.com/business/answer/7674102) The input is not needed for a vetted account. Token that is associated to the location. Token that is associated to the location."
+                },
+                "trustedPartnerToken": {
+                    "description": "The input for TRUSTED_PARTNER method The verification token that is associated to the location.",
+                    "type": "string"
                 }
             },
             "type": "object"

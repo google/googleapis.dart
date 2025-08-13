@@ -186,6 +186,17 @@ class SubscriptionsResource {
   ///
   /// To learn how to use this method, see
   /// [Create a Google Workspace subscription](https://developers.google.com/workspace/events/guides/create-subscription).
+  /// For a subscription on a
+  /// [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat),
+  /// you can create a subscription as: - A Chat app by specifying an
+  /// authorization scope that begins with `chat.app` and getting one-time
+  /// administrator approval
+  /// ([Developer Preview](https://developers.google.com/workspace/preview)). To
+  /// learn more, see
+  /// [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+  /// - A user by specifying an authorization scope that doesn't include `app`
+  /// in its name. To learn more, see
+  /// [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
   ///
   /// [request] - The metadata request object.
   ///
@@ -395,6 +406,17 @@ class SubscriptionsResource {
   ///
   /// To learn how to use this method, see
   /// [Update or renew a Google Workspace subscription](https://developers.google.com/workspace/events/guides/update-subscription).
+  /// For a subscription on a
+  /// [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat),
+  /// you can update a subscription as: - A Chat app by specifying an
+  /// authorization scope that begins with `chat.app` andgetting one-time
+  /// administrator approval
+  /// ([Developer Preview](https://developers.google.com/workspace/preview)). To
+  /// learn more, see
+  /// [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+  /// - A user by specifying an authorization scope that doesn't include `app`
+  /// in its name. To learn more, see
+  /// [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
   ///
   /// [request] - The metadata request object.
   ///
@@ -457,6 +479,17 @@ class SubscriptionsResource {
   /// subscription. This method will ignore or reject any subscription that
   /// isn't currently in a suspended state. To learn how to use this method, see
   /// [Reactivate a Google Workspace subscription](https://developers.google.com/workspace/events/guides/reactivate-subscription).
+  /// For a subscription on a
+  /// [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat),
+  /// you can reactivate a subscription as: - A Chat app by specifying an
+  /// authorization scope that begins with `chat.app` andgetting one-time
+  /// administrator approval
+  /// ([Developer Preview](https://developers.google.com/workspace/preview)). To
+  /// learn more, see
+  /// [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
+  /// - A user by specifying an authorization scope that doesn't include `app`
+  /// in its name. To learn more, see
+  /// [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
   ///
   /// [request] - The metadata request object.
   ///
@@ -691,10 +724,12 @@ typedef Status = $Status00;
 class Subscription {
   /// The user who authorized the creation of the subscription.
   ///
-  /// Format: `users/{user}` For Google Workspace users, the `{user}` value is
-  /// the
+  /// When a user authorizes the subscription, this field and the
+  /// `user_authority` field have the same value and the format is: Format:
+  /// `users/{user}` For Google Workspace users, the `{user}` value is the
   /// \[`user.id`\](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users#User.FIELDS.ids)
-  /// field from the Directory API.
+  /// field from the Directory API. When a Chat app authorizes the subscription,
+  /// only `service_account_authority` field populates and this field is empty.
   ///
   /// Output only.
   core.String? authority;

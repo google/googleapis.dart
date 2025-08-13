@@ -131,9 +131,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2292,6 +2292,11 @@ class Deployment {
   /// `projects/{project}/locations/{location}/deployments/{deployment}`
   core.String? name;
 
+  /// This field specifies the provider configurations.
+  ///
+  /// Optional.
+  ProviderConfig? providerConfig;
+
   /// Input to control quota checks for resources in terraform configuration
   /// files.
   ///
@@ -2394,6 +2399,7 @@ class Deployment {
     this.latestRevision,
     this.lockState,
     this.name,
+    this.providerConfig,
     this.quotaValidation,
     this.serviceAccount,
     this.state,
@@ -2430,6 +2436,13 @@ class Deployment {
         latestRevision: json_['latestRevision'] as core.String?,
         lockState: json_['lockState'] as core.String?,
         name: json_['name'] as core.String?,
+        providerConfig:
+            json_.containsKey('providerConfig')
+                ? ProviderConfig.fromJson(
+                  json_['providerConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         quotaValidation: json_['quotaValidation'] as core.String?,
         serviceAccount: json_['serviceAccount'] as core.String?,
         state: json_['state'] as core.String?,
@@ -2470,6 +2483,7 @@ class Deployment {
     if (latestRevision != null) 'latestRevision': latestRevision!,
     if (lockState != null) 'lockState': lockState!,
     if (name != null) 'name': name!,
+    if (providerConfig != null) 'providerConfig': providerConfig!,
     if (quotaValidation != null) 'quotaValidation': quotaValidation!,
     if (serviceAccount != null) 'serviceAccount': serviceAccount!,
     if (state != null) 'state': state!,
@@ -3341,6 +3355,11 @@ class Preview {
   /// current resources.
   core.String? previewMode;
 
+  /// This field specifies the provider configurations.
+  ///
+  /// Optional.
+  ProviderConfig? providerConfig;
+
   /// User-specified Service Account (SA) credentials to be used when previewing
   /// resources.
   ///
@@ -3415,6 +3434,7 @@ class Preview {
     this.name,
     this.previewArtifacts,
     this.previewMode,
+    this.providerConfig,
     this.serviceAccount,
     this.state,
     this.terraformBlueprint,
@@ -3454,6 +3474,13 @@ class Preview {
                 )
                 : null,
         previewMode: json_['previewMode'] as core.String?,
+        providerConfig:
+            json_.containsKey('providerConfig')
+                ? ProviderConfig.fromJson(
+                  json_['providerConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         serviceAccount: json_['serviceAccount'] as core.String?,
         state: json_['state'] as core.String?,
         terraformBlueprint:
@@ -3490,6 +3517,7 @@ class Preview {
     if (name != null) 'name': name!,
     if (previewArtifacts != null) 'previewArtifacts': previewArtifacts!,
     if (previewMode != null) 'previewMode': previewMode!,
+    if (providerConfig != null) 'providerConfig': providerConfig!,
     if (serviceAccount != null) 'serviceAccount': serviceAccount!,
     if (state != null) 'state': state!,
     if (terraformBlueprint != null) 'terraformBlueprint': terraformBlueprint!,
@@ -3696,6 +3724,27 @@ class PropertyDrift {
     if (beforeSensitivePaths != null)
       'beforeSensitivePaths': beforeSensitivePaths!,
     if (path != null) 'path': path!,
+  };
+}
+
+/// ProviderConfig contains the provider configurations.
+class ProviderConfig {
+  /// ProviderSource specifies the source type of the provider.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PROVIDER_SOURCE_UNSPECIFIED" : Unspecified source type, default to
+  /// public sources.
+  /// - "SERVICE_MAINTAINED" : Service maintained provider source type.
+  core.String? sourceType;
+
+  ProviderConfig({this.sourceType});
+
+  ProviderConfig.fromJson(core.Map json_)
+    : this(sourceType: json_['sourceType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (sourceType != null) 'sourceType': sourceType!,
   };
 }
 
@@ -4121,6 +4170,11 @@ class Revision {
   /// revisions/{revision}`
   core.String? name;
 
+  /// This field specifies the provider configurations.
+  ///
+  /// Output only.
+  ProviderConfig? providerConfig;
+
   /// Input to control quota checks for resources in terraform configuration
   /// files.
   ///
@@ -4224,6 +4278,7 @@ class Revision {
     this.importExistingResources,
     this.logs,
     this.name,
+    this.providerConfig,
     this.quotaValidation,
     this.quotaValidationResults,
     this.serviceAccount,
@@ -4253,6 +4308,13 @@ class Revision {
         importExistingResources: json_['importExistingResources'] as core.bool?,
         logs: json_['logs'] as core.String?,
         name: json_['name'] as core.String?,
+        providerConfig:
+            json_.containsKey('providerConfig')
+                ? ProviderConfig.fromJson(
+                  json_['providerConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         quotaValidation: json_['quotaValidation'] as core.String?,
         quotaValidationResults: json_['quotaValidationResults'] as core.String?,
         serviceAccount: json_['serviceAccount'] as core.String?,
@@ -4290,6 +4352,7 @@ class Revision {
       'importExistingResources': importExistingResources!,
     if (logs != null) 'logs': logs!,
     if (name != null) 'name': name!,
+    if (providerConfig != null) 'providerConfig': providerConfig!,
     if (quotaValidation != null) 'quotaValidation': quotaValidation!,
     if (quotaValidationResults != null)
       'quotaValidationResults': quotaValidationResults!,

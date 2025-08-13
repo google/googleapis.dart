@@ -6453,6 +6453,9 @@ class ClusterUpdate {
   /// The desired network performance config.
   ClusterNetworkPerformanceConfig? desiredNetworkPerformanceConfig;
 
+  /// The desired network tier configuration for the cluster.
+  NetworkTierConfig? desiredNetworkTierConfig;
+
   /// The desired node kubelet config for the cluster.
   NodeKubeletConfig? desiredNodeKubeletConfig;
 
@@ -6648,6 +6651,7 @@ class ClusterUpdate {
     this.desiredMonitoringConfig,
     this.desiredMonitoringService,
     this.desiredNetworkPerformanceConfig,
+    this.desiredNetworkTierConfig,
     this.desiredNodeKubeletConfig,
     this.desiredNodePoolAutoConfigKubeletConfig,
     this.desiredNodePoolAutoConfigLinuxNodeConfig,
@@ -6906,6 +6910,13 @@ class ClusterUpdate {
             json_.containsKey('desiredNetworkPerformanceConfig')
                 ? ClusterNetworkPerformanceConfig.fromJson(
                   json_['desiredNetworkPerformanceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        desiredNetworkTierConfig:
+            json_.containsKey('desiredNetworkTierConfig')
+                ? NetworkTierConfig.fromJson(
+                  json_['desiredNetworkTierConfig']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -7176,6 +7187,8 @@ class ClusterUpdate {
       'desiredMonitoringService': desiredMonitoringService!,
     if (desiredNetworkPerformanceConfig != null)
       'desiredNetworkPerformanceConfig': desiredNetworkPerformanceConfig!,
+    if (desiredNetworkTierConfig != null)
+      'desiredNetworkTierConfig': desiredNetworkTierConfig!,
     if (desiredNodeKubeletConfig != null)
       'desiredNodeKubeletConfig': desiredNodeKubeletConfig!,
     if (desiredNodePoolAutoConfigKubeletConfig != null)
@@ -8932,6 +8945,11 @@ class IPAllocationPolicy {
   /// - "EXTERNAL" : Access type external (all v6 addresses are external IPs)
   core.String? ipv6AccessType;
 
+  /// Cluster-level network tier configuration is used to determine the default
+  /// network tier for external IP addresses on cluster resources, such as node
+  /// pools and load balancers.
+  NetworkTierConfig? networkTierConfig;
+
   /// This field is deprecated, use node_ipv4_cidr_block.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
@@ -9048,6 +9066,7 @@ class IPAllocationPolicy {
     this.createSubnetwork,
     this.defaultPodIpv4RangeUtilization,
     this.ipv6AccessType,
+    this.networkTierConfig,
     this.nodeIpv4Cidr,
     this.nodeIpv4CidrBlock,
     this.podCidrOverprovisionConfig,
@@ -9095,6 +9114,13 @@ class IPAllocationPolicy {
         defaultPodIpv4RangeUtilization:
             (json_['defaultPodIpv4RangeUtilization'] as core.num?)?.toDouble(),
         ipv6AccessType: json_['ipv6AccessType'] as core.String?,
+        networkTierConfig:
+            json_.containsKey('networkTierConfig')
+                ? NetworkTierConfig.fromJson(
+                  json_['networkTierConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         nodeIpv4Cidr: json_['nodeIpv4Cidr'] as core.String?,
         nodeIpv4CidrBlock: json_['nodeIpv4CidrBlock'] as core.String?,
         podCidrOverprovisionConfig:
@@ -9132,6 +9158,7 @@ class IPAllocationPolicy {
     if (defaultPodIpv4RangeUtilization != null)
       'defaultPodIpv4RangeUtilization': defaultPodIpv4RangeUtilization!,
     if (ipv6AccessType != null) 'ipv6AccessType': ipv6AccessType!,
+    if (networkTierConfig != null) 'networkTierConfig': networkTierConfig!,
     if (nodeIpv4Cidr != null) 'nodeIpv4Cidr': nodeIpv4Cidr!,
     if (nodeIpv4CidrBlock != null) 'nodeIpv4CidrBlock': nodeIpv4CidrBlock!,
     if (podCidrOverprovisionConfig != null)
@@ -9746,6 +9773,15 @@ class LoggingVariantConfig {
 class LustreCsiDriverConfig {
   /// If set to true, the Lustre CSI driver will install Lustre kernel modules
   /// using port 6988.
+  ///
+  /// This serves as a workaround for a port conflict with the
+  /// gke-metadata-server. This field is required ONLY under the following
+  /// conditions: 1. The GKE node version is older than 1.33.2-gke.4655000. 2.
+  /// You're connecting to a Lustre instance that has the 'gke-support-enabled'
+  /// flag.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? enableLegacyLustrePort;
 
   /// Whether the Lustre CSI driver is enabled for this cluster.
@@ -10528,6 +10564,33 @@ class NetworkTags {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (tags != null) 'tags': tags!,
+  };
+}
+
+/// NetworkTierConfig contains network tier information.
+class NetworkTierConfig {
+  /// Network tier configuration.
+  /// Possible string values are:
+  /// - "NETWORK_TIER_UNSPECIFIED" : By default, use project-level
+  /// configuration. When unspecified, the behavior defaults to
+  /// NETWORK_TIER_DEFAULT. For cluster updates, this implies no action (no-op).
+  /// - "NETWORK_TIER_DEFAULT" : Default network tier. Use project-level
+  /// configuration. User can specify this value, meaning they want to keep the
+  /// same behaviour as before cluster level network tier configuration is
+  /// introduced. This field ensures backward compatibility for the network tier
+  /// of cluster resources, such as node pools and load balancers, for their
+  /// external IP addresses.
+  /// - "NETWORK_TIER_PREMIUM" : Premium network tier.
+  /// - "NETWORK_TIER_STANDARD" : Standard network tier.
+  core.String? networkTier;
+
+  NetworkTierConfig({this.networkTier});
+
+  NetworkTierConfig.fromJson(core.Map json_)
+    : this(networkTier: json_['networkTier'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (networkTier != null) 'networkTier': networkTier!,
   };
 }
 
@@ -11587,6 +11650,13 @@ class NodeNetworkConfig {
   /// Network bandwidth tier configuration.
   NetworkPerformanceConfig? networkPerformanceConfig;
 
+  /// The network tier configuration for the node pool inherits from the
+  /// cluster-level configuration and remains immutable throughout the node
+  /// pool's lifecycle, including during upgrades.
+  ///
+  /// Output only.
+  NetworkTierConfig? networkTierConfig;
+
   /// \[PRIVATE FIELD\] Pod CIDR size overprovisioning config for the nodepool.
   ///
   /// Pod CIDR size per node depends on max_pods_per_node. By default, the value
@@ -11641,6 +11711,7 @@ class NodeNetworkConfig {
     this.createPodRange,
     this.enablePrivateNodes,
     this.networkPerformanceConfig,
+    this.networkTierConfig,
     this.podCidrOverprovisionConfig,
     this.podIpv4CidrBlock,
     this.podIpv4RangeUtilization,
@@ -11675,6 +11746,13 @@ class NodeNetworkConfig {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        networkTierConfig:
+            json_.containsKey('networkTierConfig')
+                ? NetworkTierConfig.fromJson(
+                  json_['networkTierConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         podCidrOverprovisionConfig:
             json_.containsKey('podCidrOverprovisionConfig')
                 ? PodCIDROverprovisionConfig.fromJson(
@@ -11698,6 +11776,7 @@ class NodeNetworkConfig {
     if (enablePrivateNodes != null) 'enablePrivateNodes': enablePrivateNodes!,
     if (networkPerformanceConfig != null)
       'networkPerformanceConfig': networkPerformanceConfig!,
+    if (networkTierConfig != null) 'networkTierConfig': networkTierConfig!,
     if (podCidrOverprovisionConfig != null)
       'podCidrOverprovisionConfig': podCidrOverprovisionConfig!,
     if (podIpv4CidrBlock != null) 'podIpv4CidrBlock': podIpv4CidrBlock!,
@@ -13600,6 +13679,30 @@ class RollbackNodePoolUpgradeRequest {
   };
 }
 
+/// RotationConfig is config for secret manager auto rotation.
+class RotationConfig {
+  /// Whether the rotation is enabled.
+  core.bool? enabled;
+
+  /// The interval between two consecutive rotations.
+  ///
+  /// Default rotation interval is 2 minutes.
+  core.String? rotationInterval;
+
+  RotationConfig({this.enabled, this.rotationInterval});
+
+  RotationConfig.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        rotationInterval: json_['rotationInterval'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enabled != null) 'enabled': enabled!,
+    if (rotationInterval != null) 'rotationInterval': rotationInterval!,
+  };
+}
+
 /// SandboxConfig contains configurations of the sandbox to use for the node.
 class SandboxConfig {
   /// Type of the sandbox to use for the node.
@@ -13654,13 +13757,26 @@ class SecretManagerConfig {
   /// Enable/Disable Secret Manager Config.
   core.bool? enabled;
 
-  SecretManagerConfig({this.enabled});
+  /// Rotation config for secret manager.
+  RotationConfig? rotationConfig;
+
+  SecretManagerConfig({this.enabled, this.rotationConfig});
 
   SecretManagerConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        rotationConfig:
+            json_.containsKey('rotationConfig')
+                ? RotationConfig.fromJson(
+                  json_['rotationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (enabled != null) 'enabled': enabled!,
+    if (rotationConfig != null) 'rotationConfig': rotationConfig!,
   };
 }
 

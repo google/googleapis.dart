@@ -351,9 +351,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -4057,10 +4057,10 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1Application {
   /// A combination of hostname and ports as endpoint matchers is used to match
   /// the application. Match conditions for OR logic. An array of match
   /// conditions to allow for multiple matching criteria. The rule is considered
-  /// a match if one of the conditions is met. The conditions can be one of the
-  /// following combinations (Hostname), (Hostname & Ports) EXAMPLES: Hostname -
-  /// ("*.example.com"), ("xyz.example.com") Hostname and Ports - ("example.com"
-  /// and "22"), ("example.com" and "22,33") etc
+  /// a match if one of the conditions is met. The conditions should be the
+  /// following combination: (Hostname & Ports) EXAMPLES: Hostname and Ports -
+  /// ("*.example.com", "443"), ("example.com" and "22"), ("example.com" and
+  /// "22,33") etc
   ///
   /// Required.
   core.List<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>?
@@ -4070,6 +4070,17 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1Application {
   ///
   /// Name of the resource.
   core.String? name;
+
+  /// Type of the external application.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SCHEMA_UNSPECIFIED" : Default value. This value is unused.
+  /// - "PROXY_GATEWAY" : Proxy which routes traffic to actual applications,
+  /// like Netscaler Gateway.
+  /// - "API_GATEWAY" : Service Discovery API endpoint when Service Discovery is
+  /// enabled in Gateway.
+  core.String? schema;
 
   /// Timestamp when the resource was last modified.
   ///
@@ -4087,6 +4098,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1Application {
     this.displayName,
     this.endpointMatchers,
     this.name,
+    this.schema,
     this.updateTime,
     this.upstreams,
   });
@@ -4105,6 +4117,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1Application {
                 )
                 .toList(),
         name: json_['name'] as core.String?,
+        schema: json_['schema'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
         upstreams:
             (json_['upstreams'] as core.List?)
@@ -4122,6 +4135,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1Application {
     if (displayName != null) 'displayName': displayName!,
     if (endpointMatchers != null) 'endpointMatchers': endpointMatchers!,
     if (name != null) 'name': name!,
+    if (schema != null) 'schema': schema!,
     if (updateTime != null) 'updateTime': updateTime!,
     if (upstreams != null) 'upstreams': upstreams!,
   };
@@ -4134,12 +4148,22 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream {
   /// Optional.
   GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy? egressPolicy;
 
+  /// List of the external endpoints to forward traffic to.
+  GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal? external_;
+
   /// Network to forward traffic to.
   GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork? network;
 
+  /// Enables proxy protocol configuration for the upstream.
+  ///
+  /// Optional.
+  GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig? proxyProtocol;
+
   GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream({
     this.egressPolicy,
+    this.external_,
     this.network,
+    this.proxyProtocol,
   });
 
   GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream.fromJson(
@@ -4151,17 +4175,61 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream {
                   json_['egressPolicy'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        external_:
+            json_.containsKey('external')
+                ? GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal.fromJson(
+                  json_['external'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         network:
             json_.containsKey('network')
                 ? GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork.fromJson(
                   json_['network'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        proxyProtocol:
+            json_.containsKey('proxyProtocol')
+                ? GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig.fromJson(
+                  json_['proxyProtocol'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (egressPolicy != null) 'egressPolicy': egressPolicy!,
+    if (external_ != null) 'external': external_!,
     if (network != null) 'network': network!,
+    if (proxyProtocol != null) 'proxyProtocol': proxyProtocol!,
+  };
+}
+
+/// Endpoints to forward traffic to.
+class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal {
+  /// List of the endpoints to forward traffic to.
+  ///
+  /// Required.
+  core.List<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint>? endpoints;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal({
+    this.endpoints,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal.fromJson(
+    core.Map json_,
+  ) : this(
+        endpoints:
+            (json_['endpoints'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (endpoints != null) 'endpoints': endpoints!,
   };
 }
 
@@ -4183,6 +4251,150 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (name != null) 'name': name!,
+  };
+}
+
+/// Contextual headers configuration.
+class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
+  /// Device info configuration.
+  ///
+  /// Optional.
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo?
+  deviceInfo;
+
+  /// Group info configuration.
+  ///
+  /// Optional.
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo?
+  groupInfo;
+
+  /// Default output type for all enabled headers.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OUTPUT_TYPE_UNSPECIFIED" : Unspecified output type.
+  /// - "PROTOBUF" : Protobuf output type.
+  /// - "JSON" : JSON output type.
+  /// - "NONE" : Explicitly disable header output.
+  core.String? outputType;
+
+  /// User info configuration.
+  ///
+  /// Optional.
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo?
+  userInfo;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders({
+    this.deviceInfo,
+    this.groupInfo,
+    this.outputType,
+    this.userInfo,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders.fromJson(
+    core.Map json_,
+  ) : this(
+        deviceInfo:
+            json_.containsKey('deviceInfo')
+                ? GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo.fromJson(
+                  json_['deviceInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        groupInfo:
+            json_.containsKey('groupInfo')
+                ? GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo.fromJson(
+                  json_['groupInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        outputType: json_['outputType'] as core.String?,
+        userInfo:
+            json_.containsKey('userInfo')
+                ? GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo.fromJson(
+                  json_['userInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (deviceInfo != null) 'deviceInfo': deviceInfo!,
+    if (groupInfo != null) 'groupInfo': groupInfo!,
+    if (outputType != null) 'outputType': outputType!,
+    if (userInfo != null) 'userInfo': userInfo!,
+  };
+}
+
+/// Delegated device info configuration.
+class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo {
+  /// The output type of the delegated device info.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OUTPUT_TYPE_UNSPECIFIED" : Unspecified output type.
+  /// - "PROTOBUF" : Protobuf output type.
+  /// - "JSON" : JSON output type.
+  /// - "NONE" : Explicitly disable header output.
+  core.String? outputType;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo({
+    this.outputType,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo.fromJson(
+    core.Map json_,
+  ) : this(outputType: json_['outputType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (outputType != null) 'outputType': outputType!,
+  };
+}
+
+/// Delegated group info configuration.
+class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo {
+  /// The output type of the delegated group info.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OUTPUT_TYPE_UNSPECIFIED" : Unspecified output type.
+  /// - "PROTOBUF" : Protobuf output type.
+  /// - "JSON" : JSON output type.
+  /// - "NONE" : Explicitly disable header output.
+  core.String? outputType;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo({
+    this.outputType,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo.fromJson(
+    core.Map json_,
+  ) : this(outputType: json_['outputType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (outputType != null) 'outputType': outputType!,
+  };
+}
+
+/// Delegated user info configuration.
+class GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo {
+  /// The output type of the delegated user info.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "OUTPUT_TYPE_UNSPECIFIED" : Unspecified output type.
+  /// - "PROTOBUF" : Protobuf output type.
+  /// - "JSON" : JSON output type.
+  /// - "NONE" : Explicitly disable header output.
+  core.String? outputType;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo({
+    this.outputType,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo.fromJson(
+    core.Map json_,
+  ) : this(outputType: json_['outputType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (outputType != null) 'outputType': outputType!,
   };
 }
 
@@ -4208,6 +4420,32 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy {
   };
 }
 
+/// Internet Gateway endpoint to forward traffic to.
+class GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint {
+  /// Hostname of the endpoint.
+  ///
+  /// Required.
+  core.String? hostname;
+
+  /// Port of the endpoint.
+  ///
+  /// Required.
+  core.int? port;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint({this.hostname, this.port});
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint.fromJson(core.Map json_)
+    : this(
+        hostname: json_['hostname'] as core.String?,
+        port: json_['port'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (hostname != null) 'hostname': hostname!,
+    if (port != null) 'port': port!,
+  };
+}
+
 /// EndpointMatcher contains the information of the endpoint that will match the
 /// application.
 class GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
@@ -4218,7 +4456,7 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
 
   /// Ports of the application.
   ///
-  /// Optional.
+  /// Required.
   core.List<core.int>? ports;
 
   GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher({
@@ -4380,6 +4618,83 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse {
   };
 }
 
+/// The configuration for the proxy.
+class GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig {
+  /// List of the allowed client header names.
+  ///
+  /// Optional.
+  core.List<core.String>? allowedClientHeaders;
+
+  /// Client IP configuration.
+  ///
+  /// The client IP address is included if true.
+  ///
+  /// Optional.
+  core.bool? clientIp;
+
+  /// Configuration for the contextual headers.
+  ///
+  /// Optional.
+  GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders? contextualHeaders;
+
+  /// Gateway identity configuration.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "GATEWAY_IDENTITY_UNSPECIFIED" : Unspecified gateway identity.
+  /// - "RESOURCE_NAME" : Resource name for gateway identity, in the format:
+  /// projects/{project_id}/locations/{location_id}/securityGateways/{security_gateway_id}
+  core.String? gatewayIdentity;
+
+  /// Custom resource specific headers along with the values.
+  ///
+  /// The names should conform to RFC 9110: \> Field names SHOULD constrain
+  /// themselves to alphanumeric characters, "-", and ".", and SHOULD begin with
+  /// a letter. Field values SHOULD contain only ASCII printable characters and
+  /// tab.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? metadataHeaders;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig({
+    this.allowedClientHeaders,
+    this.clientIp,
+    this.contextualHeaders,
+    this.gatewayIdentity,
+    this.metadataHeaders,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig.fromJson(
+    core.Map json_,
+  ) : this(
+        allowedClientHeaders:
+            (json_['allowedClientHeaders'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        clientIp: json_['clientIp'] as core.bool?,
+        contextualHeaders:
+            json_.containsKey('contextualHeaders')
+                ? GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders.fromJson(
+                  json_['contextualHeaders']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        gatewayIdentity: json_['gatewayIdentity'] as core.String?,
+        metadataHeaders: (json_['metadataHeaders']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (allowedClientHeaders != null)
+      'allowedClientHeaders': allowedClientHeaders!,
+    if (clientIp != null) 'clientIp': clientIp!,
+    if (contextualHeaders != null) 'contextualHeaders': contextualHeaders!,
+    if (gatewayIdentity != null) 'gatewayIdentity': gatewayIdentity!,
+    if (metadataHeaders != null) 'metadataHeaders': metadataHeaders!,
+  };
+}
+
 /// The information about a security gateway resource.
 class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
   /// Timestamp when the resource was created.
@@ -4417,6 +4732,17 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
   /// Name of the resource.
   core.String? name;
 
+  /// Shared proxy configuration for all apps.
+  ///
+  /// Optional.
+  GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig?
+  proxyProtocolConfig;
+
+  /// Settings related to the Service Discovery.
+  ///
+  /// Optional.
+  GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery? serviceDiscovery;
+
   /// The operational state of the SecurityGateway.
   ///
   /// Output only.
@@ -4443,6 +4769,8 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
     this.externalIps,
     this.hubs,
     this.name,
+    this.proxyProtocolConfig,
+    this.serviceDiscovery,
     this.state,
     this.updateTime,
   });
@@ -4467,6 +4795,20 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
           ),
         ),
         name: json_['name'] as core.String?,
+        proxyProtocolConfig:
+            json_.containsKey('proxyProtocolConfig')
+                ? GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig.fromJson(
+                  json_['proxyProtocolConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serviceDiscovery:
+            json_.containsKey('serviceDiscovery')
+                ? GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery.fromJson(
+                  json_['serviceDiscovery']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         state: json_['state'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
@@ -4479,8 +4821,86 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
     if (externalIps != null) 'externalIps': externalIps!,
     if (hubs != null) 'hubs': hubs!,
     if (name != null) 'name': name!,
+    if (proxyProtocolConfig != null)
+      'proxyProtocolConfig': proxyProtocolConfig!,
+    if (serviceDiscovery != null) 'serviceDiscovery': serviceDiscovery!,
     if (state != null) 'state': state!,
     if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// Settings related to the Service Discovery.
+class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery {
+  /// External API configuration.
+  ///
+  /// Required.
+  GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway? apiGateway;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery({this.apiGateway});
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery.fromJson(
+    core.Map json_,
+  ) : this(
+        apiGateway:
+            json_.containsKey('apiGateway')
+                ? GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway.fromJson(
+                  json_['apiGateway'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (apiGateway != null) 'apiGateway': apiGateway!,
+  };
+}
+
+/// If Service Discovery is done through API, defines its settings.
+class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway {
+  /// Enables fetching resource model updates to alter service behavior per
+  /// Chrome profile.
+  ///
+  /// Required.
+  GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor?
+  resourceOverride;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway({
+    this.resourceOverride,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway.fromJson(
+    core.Map json_,
+  ) : this(
+        resourceOverride:
+            json_.containsKey('resourceOverride')
+                ? GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor.fromJson(
+                  json_['resourceOverride']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (resourceOverride != null) 'resourceOverride': resourceOverride!,
+  };
+}
+
+/// API operation descriptor.
+class GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor {
+  /// Contains uri path fragment where HTTP request is sent.
+  ///
+  /// Required.
+  core.String? path;
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor({
+    this.path,
+  });
+
+  GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor.fromJson(
+    core.Map json_,
+  ) : this(path: json_['path'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (path != null) 'path': path!,
   };
 }
 

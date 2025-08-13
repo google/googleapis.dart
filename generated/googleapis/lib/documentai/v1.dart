@@ -227,9 +227,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2474,6 +2474,18 @@ class GoogleCloudDocumentaiV1DocumentEntity {
   /// Optional.
   core.String? mentionText;
 
+  /// Specifies how the entity's value is obtained.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "METHOD_UNSPECIFIED" : When the method is not specified, it should be
+  /// treated as `EXTRACT`.
+  /// - "EXTRACT" : The entity's value is directly extracted as-is from the
+  /// document text.
+  /// - "DERIVE" : The entity's value is derived through inference and is not
+  /// necessarily an exact text extraction from the document.
+  core.String? method;
+
   /// Normalized entity value.
   ///
   /// Absent if the extracted value could not be converted or the type (e.g.
@@ -2523,6 +2535,7 @@ class GoogleCloudDocumentaiV1DocumentEntity {
     this.id,
     this.mentionId,
     this.mentionText,
+    this.method,
     this.normalizedValue,
     this.pageAnchor,
     this.properties,
@@ -2538,6 +2551,7 @@ class GoogleCloudDocumentaiV1DocumentEntity {
         id: json_['id'] as core.String?,
         mentionId: json_['mentionId'] as core.String?,
         mentionText: json_['mentionText'] as core.String?,
+        method: json_['method'] as core.String?,
         normalizedValue:
             json_.containsKey('normalizedValue')
                 ? GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromJson(
@@ -2580,6 +2594,7 @@ class GoogleCloudDocumentaiV1DocumentEntity {
     if (id != null) 'id': id!,
     if (mentionId != null) 'mentionId': mentionId!,
     if (mentionText != null) 'mentionText': mentionText!,
+    if (method != null) 'method': method!,
     if (normalizedValue != null) 'normalizedValue': normalizedValue!,
     if (pageAnchor != null) 'pageAnchor': pageAnchor!,
     if (properties != null) 'properties': properties!,
@@ -5814,6 +5829,14 @@ class GoogleCloudDocumentaiV1ProcessResponse {
 /// Each processor defines how to extract structural information from a
 /// document.
 class GoogleCloudDocumentaiV1Processor {
+  /// SchemaVersion used by the Processor.
+  ///
+  /// It is the same as Processor's DatasetSchema.schema_version Format is
+  /// \`projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}
+  ///
+  /// Optional.
+  core.String? activeSchemaVersion;
+
   /// The time the processor was created.
   ///
   /// Output only.
@@ -5888,6 +5911,7 @@ class GoogleCloudDocumentaiV1Processor {
   core.String? type;
 
   GoogleCloudDocumentaiV1Processor({
+    this.activeSchemaVersion,
     this.createTime,
     this.defaultProcessorVersion,
     this.displayName,
@@ -5903,6 +5927,7 @@ class GoogleCloudDocumentaiV1Processor {
 
   GoogleCloudDocumentaiV1Processor.fromJson(core.Map json_)
     : this(
+        activeSchemaVersion: json_['activeSchemaVersion'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         defaultProcessorVersion:
             json_['defaultProcessorVersion'] as core.String?,
@@ -5926,6 +5951,8 @@ class GoogleCloudDocumentaiV1Processor {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (activeSchemaVersion != null)
+      'activeSchemaVersion': activeSchemaVersion!,
     if (createTime != null) 'createTime': createTime!,
     if (defaultProcessorVersion != null)
       'defaultProcessorVersion': defaultProcessorVersion!,
@@ -6619,6 +6646,8 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
 /// Processor.
 class GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions {
   /// Training method to use for CDE training.
+  ///
+  /// Optional.
   /// Possible string values are:
   /// - "TRAINING_METHOD_UNSPECIFIED"
   /// - "MODEL_BASED"
@@ -7085,7 +7114,7 @@ typedef GoogleTypeMoney = $Money;
 /// with UI elements for input or editing of fields outside countries where that
 /// field is used. For more guidance on how to use this schema, see:
 /// https://support.google.com/business/answer/6397478.
-typedef GoogleTypePostalAddress = $PostalAddress00;
+typedef GoogleTypePostalAddress = $PostalAddress;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

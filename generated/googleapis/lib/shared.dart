@@ -97,6 +97,158 @@ class $AccessPolicy {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : AccountActiveAdSummary
+/// - dfareporting:v5 : AccountActiveAdSummary
+class $AccountActiveAdSummary {
+  /// ID of the account.
+  core.String? accountId;
+
+  /// Ads that have been activated for the account
+  core.String? activeAds;
+
+  /// Maximum number of active ads allowed for the account.
+  /// Possible string values are:
+  /// - "ACTIVE_ADS_TIER_40K"
+  /// - "ACTIVE_ADS_TIER_75K"
+  /// - "ACTIVE_ADS_TIER_100K"
+  /// - "ACTIVE_ADS_TIER_200K"
+  /// - "ACTIVE_ADS_TIER_300K"
+  /// - "ACTIVE_ADS_TIER_500K"
+  /// - "ACTIVE_ADS_TIER_750K"
+  /// - "ACTIVE_ADS_TIER_1M"
+  core.String? activeAdsLimitTier;
+
+  /// Ads that can be activated for the account.
+  core.String? availableAds;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#accountActiveAdSummary".
+  core.String? kind;
+
+  $AccountActiveAdSummary({
+    this.accountId,
+    this.activeAds,
+    this.activeAdsLimitTier,
+    this.availableAds,
+    this.kind,
+  });
+
+  $AccountActiveAdSummary.fromJson(core.Map json_)
+    : this(
+        accountId: json_['accountId'] as core.String?,
+        activeAds: json_['activeAds'] as core.String?,
+        activeAdsLimitTier: json_['activeAdsLimitTier'] as core.String?,
+        availableAds: json_['availableAds'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accountId != null) 'accountId': accountId!,
+    if (activeAds != null) 'activeAds': activeAds!,
+    if (activeAdsLimitTier != null) 'activeAdsLimitTier': activeAdsLimitTier!,
+    if (availableAds != null) 'availableAds': availableAds!,
+    if (kind != null) 'kind': kind!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : AccountPermission
+/// - dfareporting:v5 : AccountPermission
+class $AccountPermission {
+  /// Account profiles associated with this account permission.
+  ///
+  /// Possible values are: - "ACCOUNT_PROFILE_BASIC" -
+  /// "ACCOUNT_PROFILE_STANDARD"
+  core.List<core.String>? accountProfiles;
+
+  /// ID of this account permission.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#accountPermission".
+  core.String? kind;
+
+  /// Administrative level required to enable this account permission.
+  /// Possible string values are:
+  /// - "USER"
+  /// - "ADMINISTRATOR"
+  core.String? level;
+
+  /// Name of this account permission.
+  core.String? name;
+
+  /// Permission group of this account permission.
+  core.String? permissionGroupId;
+
+  $AccountPermission({
+    this.accountProfiles,
+    this.id,
+    this.kind,
+    this.level,
+    this.name,
+    this.permissionGroupId,
+  });
+
+  $AccountPermission.fromJson(core.Map json_)
+    : this(
+        accountProfiles:
+            (json_['accountProfiles'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        level: json_['level'] as core.String?,
+        name: json_['name'] as core.String?,
+        permissionGroupId: json_['permissionGroupId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accountProfiles != null) 'accountProfiles': accountProfiles!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (level != null) 'level': level!,
+    if (name != null) 'name': name!,
+    if (permissionGroupId != null) 'permissionGroupId': permissionGroupId!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : AccountPermissionGroup
+/// - dfareporting:v5 : AccountPermissionGroup
+class $AccountPermissionGroup {
+  /// ID of this account permission group.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#accountPermissionGroup".
+  core.String? kind;
+
+  /// Name of this account permission group.
+  core.String? name;
+
+  $AccountPermissionGroup({this.id, this.kind, this.name});
+
+  $AccountPermissionGroup.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Used by:
+///
 /// - chat:v1 : ActionParameter
 /// - chat:v1 : GoogleAppsCardV1ActionParameter
 class $ActionParameter {
@@ -231,6 +383,29 @@ class $ActiveViewVideoViewabilityMetricConfig {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : AdBlockingConfiguration
+/// - dfareporting:v5 : AdBlockingConfiguration
+class $AdBlockingConfiguration {
+  /// Whether this campaign has enabled ad blocking.
+  ///
+  /// When true, ad blocking is enabled for placements in the campaign, but this
+  /// may be overridden by site and placement settings. When false, ad blocking
+  /// is disabled for all placements under the campaign, regardless of site and
+  /// placement settings.
+  core.bool? enabled;
+
+  $AdBlockingConfiguration({this.enabled});
+
+  $AdBlockingConfiguration.fromJson(core.Map json_)
+    : this(enabled: json_['enabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enabled != null) 'enabled': enabled!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : AdUrl
 /// - displayvideo:v3 : AdUrl
 /// - displayvideo:v4 : AdUrl
@@ -262,6 +437,34 @@ class $AdUrl {
   core.Map<core.String, core.dynamic> toJson() => {
     if (type != null) 'type': type!,
     if (url != null) 'url': url!,
+  };
+}
+
+/// Used by:
+///
+/// - content:v2.1 : BuiltInSimpleActionAdditionalContent
+/// - merchantapi:issueresolution_v1 : AdditionalContent
+class $AdditionalContent {
+  /// Long text organized into paragraphs.
+  core.List<core.String>? paragraphs;
+
+  /// Title of the additional content;
+  core.String? title;
+
+  $AdditionalContent({this.paragraphs, this.title});
+
+  $AdditionalContent.fromJson(core.Map json_)
+    : this(
+        paragraphs:
+            (json_['paragraphs'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (paragraphs != null) 'paragraphs': paragraphs!,
+    if (title != null) 'title': title!,
   };
 }
 
@@ -792,6 +995,50 @@ class $AdvertiserGeneralConfig {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : AdvertiserGroup
+/// - dfareporting:v5 : AdvertiserGroup
+class $AdvertiserGroup {
+  /// Account ID of this advertiser group.
+  ///
+  /// This is a read-only field that can be left blank.
+  core.String? accountId;
+
+  /// ID of this advertiser group.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#advertiserGroup".
+  core.String? kind;
+
+  /// Name of this advertiser group.
+  ///
+  /// This is a required field and must be less than 256 characters long and
+  /// unique among advertiser groups of the same account.
+  core.String? name;
+
+  $AdvertiserGroup({this.accountId, this.id, this.kind, this.name});
+
+  $AdvertiserGroup.fromJson(core.Map json_)
+    : this(
+        accountId: json_['accountId'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accountId != null) 'accountId': accountId!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : AdvertiserTargetingConfig
 /// - displayvideo:v3 : AdvertiserTargetingConfig
 /// - displayvideo:v4 : AdvertiserTargetingConfig
@@ -1048,6 +1295,7 @@ class $AppAssignedTargetingOptionDetails {
   /// not explicitly listed elsewhere.
   /// - "APP_PLATFORM_LG_TV" : The app platform is LG TV.
   /// - "APP_PLATFORM_VIZIO_TV" : The app platform is VIZIO TV.
+  /// - "APP_PLATFORM_VIDAA" : The app platform is Vidaa.
   core.String? appPlatform;
 
   /// The display name of the app.
@@ -1443,6 +1691,44 @@ class $Attribution {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : AudienceSegment
+/// - dfareporting:v5 : AudienceSegment
+class $AudienceSegment {
+  /// Weight allocated to this segment.
+  ///
+  /// The weight assigned will be understood in proportion to the weights
+  /// assigned to other segments in the same segment group. Acceptable values
+  /// are 1 to 1000, inclusive.
+  core.int? allocation;
+
+  /// ID of this audience segment.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Name of this audience segment.
+  ///
+  /// This is a required field and must be less than 65 characters long.
+  core.String? name;
+
+  $AudienceSegment({this.allocation, this.id, this.name});
+
+  $AudienceSegment.fromJson(core.Map json_)
+    : this(
+        allocation: json_['allocation'] as core.int?,
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (allocation != null) 'allocation': allocation!,
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : AudioContentTypeAssignedTargetingOptionDetails
 /// - displayvideo:v3 : AudioContentTypeAssignedTargetingOptionDetails
 /// - displayvideo:v4 : AudioContentTypeAssignedTargetingOptionDetails
@@ -1661,6 +1947,7 @@ class $AuditAdvertiserResponse {
 /// - cloudresourcemanager:v3 : AuditLogConfig
 /// - config:v1 : AuditLogConfig
 /// - connectors:v1 : AuditLogConfig
+/// - contactcenterinsights:v1 : GoogleIamV1AuditLogConfig
 /// - contentwarehouse:v1 : GoogleIamV1AuditLogConfig
 /// - datafusion:v1 : AuditLogConfig
 /// - datamigration:v1 : AuditLogConfig
@@ -1759,36 +2046,6 @@ class $AuthRequirement {
   core.Map<core.String, core.dynamic> toJson() => {
     if (audiences != null) 'audiences': audiences!,
     if (providerId != null) 'providerId': providerId!,
-  };
-}
-
-/// Used by:
-///
-/// - aiplatform:v1 : GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution
-/// - places:v1 : GoogleMapsPlacesV1AuthorAttribution
-class $AuthorAttribution {
-  /// Name of the author of the Photo or Review.
-  core.String? displayName;
-
-  /// Profile photo URI of the author of the Photo or Review.
-  core.String? photoUri;
-
-  /// URI of the author of the Photo or Review.
-  core.String? uri;
-
-  $AuthorAttribution({this.displayName, this.photoUri, this.uri});
-
-  $AuthorAttribution.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        photoUri: json_['photoUri'] as core.String?,
-        uri: json_['uri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (photoUri != null) 'photoUri': photoUri!,
-    if (uri != null) 'uri': uri!,
   };
 }
 
@@ -1967,6 +2224,60 @@ class $BaseImage {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : BillingAssignment
+/// - dfareporting:v5 : BillingAssignment
+class $BillingAssignment {
+  /// ID of the account associated with the billing assignment.This is a
+  /// read-only, auto-generated field.
+  core.String? accountId;
+
+  /// ID of the advertiser associated with the billing assignment.Wildcard (*)
+  /// means this assignment is not limited to a single advertiser
+  core.String? advertiserId;
+
+  /// ID of the campaign associated with the billing assignment.
+  ///
+  /// Wildcard (*) means this assignment is not limited to a single campaign
+  core.String? campaignId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#billingAssignment".
+  core.String? kind;
+
+  /// ID of the subaccount associated with the billing assignment.Wildcard (*)
+  /// means this assignment is not limited to a single subaccountThis is a
+  /// read-only, auto-generated field.
+  core.String? subaccountId;
+
+  $BillingAssignment({
+    this.accountId,
+    this.advertiserId,
+    this.campaignId,
+    this.kind,
+    this.subaccountId,
+  });
+
+  $BillingAssignment.fromJson(core.Map json_)
+    : this(
+        accountId: json_['accountId'] as core.String?,
+        advertiserId: json_['advertiserId'] as core.String?,
+        campaignId: json_['campaignId'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        subaccountId: json_['subaccountId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accountId != null) 'accountId': accountId!,
+    if (advertiserId != null) 'advertiserId': advertiserId!,
+    if (campaignId != null) 'campaignId': campaignId!,
+    if (kind != null) 'kind': kind!,
+    if (subaccountId != null) 'subaccountId': subaccountId!,
+  };
+}
+
+/// Used by:
+///
 /// - connectors:v1 : BillingConfig
 /// - integrations:v1 : GoogleCloudConnectorsV1BillingConfig
 class $BillingConfig {
@@ -1986,6 +2297,165 @@ class $BillingConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (billingCategory != null) 'billingCategory': billingCategory!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : BillingProfile
+/// - dfareporting:v5 : BillingProfile
+class $BillingProfile {
+  /// Consolidated invoice option for this billing profile.
+  ///
+  /// Used to get a single, consolidated invoice across the chosen invoice
+  /// level.
+  core.bool? consolidatedInvoice;
+
+  /// Country code of this billing profile.This is a read-only field.
+  core.String? countryCode;
+
+  /// Billing currency code in ISO 4217 format.This is a read-only field.
+  core.String? currencyCode;
+
+  /// ID of this billing profile.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Invoice level for this billing profile.
+  ///
+  /// Used to group fees into separate invoices by account, advertiser, or
+  /// campaign.
+  /// Possible string values are:
+  /// - "ACCOUNT_LEVEL"
+  /// - "ADVERTISER_LEVEL"
+  /// - "CAMPAIGN_LEVEL"
+  core.String? invoiceLevel;
+
+  /// True if the billing profile is the account default profile.
+  ///
+  /// This is a read-only field.
+  core.bool? isDefault;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#billingProfile".
+  core.String? kind;
+
+  /// Name of this billing profile.
+  ///
+  /// This is a required field and must be less than 256 characters long and
+  /// must be unique among billing profile in the same account.
+  core.String? name;
+
+  /// The ID of the payment account the billing profile belongs to.
+  ///
+  /// This is a read-only field.
+  core.String? paymentsAccountId;
+
+  /// The ID of the payment customer the billing profile belongs to.
+  ///
+  /// This is a read-only field.
+  core.String? paymentsCustomerId;
+
+  /// Purchase order (PO) for this billing profile.
+  ///
+  /// This PO number is used in the invoices for all of the advertisers in this
+  /// billing profile.
+  core.String? purchaseOrder;
+
+  /// The ID of the secondary payment customer the billing profile belongs to.
+  ///
+  /// This is a read-only field.
+  core.String? secondaryPaymentsCustomerId;
+
+  /// Status of this billing profile.This is a read-only field.
+  /// Possible string values are:
+  /// - "UNDER_REVIEW"
+  /// - "ACTIVE"
+  /// - "ARCHIVED"
+  core.String? status;
+
+  $BillingProfile({
+    this.consolidatedInvoice,
+    this.countryCode,
+    this.currencyCode,
+    this.id,
+    this.invoiceLevel,
+    this.isDefault,
+    this.kind,
+    this.name,
+    this.paymentsAccountId,
+    this.paymentsCustomerId,
+    this.purchaseOrder,
+    this.secondaryPaymentsCustomerId,
+    this.status,
+  });
+
+  $BillingProfile.fromJson(core.Map json_)
+    : this(
+        consolidatedInvoice: json_['consolidatedInvoice'] as core.bool?,
+        countryCode: json_['countryCode'] as core.String?,
+        currencyCode: json_['currencyCode'] as core.String?,
+        id: json_['id'] as core.String?,
+        invoiceLevel: json_['invoiceLevel'] as core.String?,
+        isDefault: json_['isDefault'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        paymentsAccountId: json_['paymentsAccountId'] as core.String?,
+        paymentsCustomerId: json_['paymentsCustomerId'] as core.String?,
+        purchaseOrder: json_['purchaseOrder'] as core.String?,
+        secondaryPaymentsCustomerId:
+            json_['secondaryPaymentsCustomerId'] as core.String?,
+        status: json_['status'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (consolidatedInvoice != null)
+      'consolidatedInvoice': consolidatedInvoice!,
+    if (countryCode != null) 'countryCode': countryCode!,
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+    if (id != null) 'id': id!,
+    if (invoiceLevel != null) 'invoiceLevel': invoiceLevel!,
+    if (isDefault != null) 'isDefault': isDefault!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (paymentsAccountId != null) 'paymentsAccountId': paymentsAccountId!,
+    if (paymentsCustomerId != null) 'paymentsCustomerId': paymentsCustomerId!,
+    if (purchaseOrder != null) 'purchaseOrder': purchaseOrder!,
+    if (secondaryPaymentsCustomerId != null)
+      'secondaryPaymentsCustomerId': secondaryPaymentsCustomerId!,
+    if (status != null) 'status': status!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : BillingRateTieredRate
+/// - dfareporting:v5 : BillingRateTieredRate
+class $BillingRateTieredRate {
+  /// The maximum for this tier range.
+  core.String? highValue;
+
+  /// The minimum for this tier range.
+  core.String? lowValue;
+
+  /// Rate in micros for this tier.
+  core.String? rateInMicros;
+
+  $BillingRateTieredRate({this.highValue, this.lowValue, this.rateInMicros});
+
+  $BillingRateTieredRate.fromJson(core.Map json_)
+    : this(
+        highValue: json_['highValue'] as core.String?,
+        lowValue: json_['lowValue'] as core.String?,
+        rateInMicros: json_['rateInMicros'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (highValue != null) 'highValue': highValue!,
+    if (lowValue != null) 'lowValue': lowValue!,
+    if (rateInMicros != null) 'rateInMicros': rateInMicros!,
   };
 }
 
@@ -2144,6 +2614,80 @@ class $BoostSpecConditionBoostSpecBoostControlSpecControlPoint {
   core.Map<core.String, core.dynamic> toJson() => {
     if (attributeValue != null) 'attributeValue': attributeValue!,
     if (boostAmount != null) 'boostAmount': boostAmount!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : Browser
+/// - dfareporting:v5 : Browser
+class $Browser {
+  /// ID referring to this grouping of browser and version numbers.
+  ///
+  /// This is the ID used for targeting.
+  core.String? browserVersionId;
+
+  /// DART ID of this browser.
+  ///
+  /// This is the ID used when generating reports.
+  core.String? dartId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#browser".
+  core.String? kind;
+
+  /// Major version number (leftmost number) of this browser.
+  ///
+  /// For example, for Chrome 5.0.376.86 beta, this field should be set to 5. An
+  /// asterisk (*) may be used to target any version number, and a question mark
+  /// (?) may be used to target cases where the version number cannot be
+  /// identified. For example, Chrome *.* targets any version of Chrome: 1.2,
+  /// 2.5, 3.5, and so on. Chrome 3.* targets Chrome 3.1, 3.5, but not 4.0.
+  /// Firefox ?.? targets cases where the ad server knows the browser is Firefox
+  /// but can't tell which version it is.
+  core.String? majorVersion;
+
+  /// Minor version number (number after first dot on left) of this browser.
+  ///
+  /// For example, for Chrome 5.0.375.86 beta, this field should be set to 0. An
+  /// asterisk (*) may be used to target any version number, and a question mark
+  /// (?) may be used to target cases where the version number cannot be
+  /// identified. For example, Chrome *.* targets any version of Chrome: 1.2,
+  /// 2.5, 3.5, and so on. Chrome 3.* targets Chrome 3.1, 3.5, but not 4.0.
+  /// Firefox ?.? targets cases where the ad server knows the browser is Firefox
+  /// but can't tell which version it is.
+  core.String? minorVersion;
+
+  /// Name of this browser.
+  core.String? name;
+
+  $Browser({
+    this.browserVersionId,
+    this.dartId,
+    this.kind,
+    this.majorVersion,
+    this.minorVersion,
+    this.name,
+  });
+
+  $Browser.fromJson(core.Map json_)
+    : this(
+        browserVersionId: json_['browserVersionId'] as core.String?,
+        dartId: json_['dartId'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        majorVersion: json_['majorVersion'] as core.String?,
+        minorVersion: json_['minorVersion'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (browserVersionId != null) 'browserVersionId': browserVersionId!,
+    if (dartId != null) 'dartId': dartId!,
+    if (kind != null) 'kind': kind!,
+    if (majorVersion != null) 'majorVersion': majorVersion!,
+    if (minorVersion != null) 'minorVersion': minorVersion!,
+    if (name != null) 'name': name!,
   };
 }
 
@@ -2428,6 +2972,29 @@ class $BusinessChainTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : CISAKnownExploitedVulnerabilities
+/// - ondemandscanning:v1 : CISAKnownExploitedVulnerabilities
+class $CISAKnownExploitedVulnerabilities {
+  /// Whether the vulnerability is known to have been leveraged as part of a
+  /// ransomware campaign.
+  core.String? knownRansomwareCampaignUse;
+
+  $CISAKnownExploitedVulnerabilities({this.knownRansomwareCampaignUse});
+
+  $CISAKnownExploitedVulnerabilities.fromJson(core.Map json_)
+    : this(
+        knownRansomwareCampaignUse:
+            json_['knownRansomwareCampaignUse'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (knownRansomwareCampaignUse != null)
+      'knownRansomwareCampaignUse': knownRansomwareCampaignUse!,
+  };
+}
+
+/// Used by:
+///
 /// - containeranalysis:v1 : CVSS
 /// - ondemandscanning:v1 : CVSS
 class $CVSS {
@@ -2566,6 +3133,82 @@ class $CVSS {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : CampaignCreativeAssociation
+/// - dfareporting:v5 : CampaignCreativeAssociation
+class $CampaignCreativeAssociation {
+  /// ID of the creative associated with the campaign.
+  ///
+  /// This is a required field.
+  core.String? creativeId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#campaignCreativeAssociation".
+  core.String? kind;
+
+  $CampaignCreativeAssociation({this.creativeId, this.kind});
+
+  $CampaignCreativeAssociation.fromJson(core.Map json_)
+    : this(
+        creativeId: json_['creativeId'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (creativeId != null) 'creativeId': creativeId!,
+    if (kind != null) 'kind': kind!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : CampaignSummary
+/// - dfareporting:v5 : CampaignSummary
+class $CampaignSummary {
+  /// Campaign billing invoice code.
+  core.String? billingInvoiceCode;
+
+  /// Campaign ID.
+  core.String? campaignId;
+
+  /// The pre-tax amount for this campaign, in micros of the invoice's currency.
+  core.String? preTaxAmountMicros;
+
+  /// The tax amount for this campaign, in micros of the invoice's currency.
+  core.String? taxAmountMicros;
+
+  /// The total amount of charges for this campaign, in micros of the invoice's
+  /// currency.
+  core.String? totalAmountMicros;
+
+  $CampaignSummary({
+    this.billingInvoiceCode,
+    this.campaignId,
+    this.preTaxAmountMicros,
+    this.taxAmountMicros,
+    this.totalAmountMicros,
+  });
+
+  $CampaignSummary.fromJson(core.Map json_)
+    : this(
+        billingInvoiceCode: json_['billingInvoiceCode'] as core.String?,
+        campaignId: json_['campaignId'] as core.String?,
+        preTaxAmountMicros: json_['preTaxAmountMicros'] as core.String?,
+        taxAmountMicros: json_['taxAmountMicros'] as core.String?,
+        totalAmountMicros: json_['totalAmountMicros'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (billingInvoiceCode != null) 'billingInvoiceCode': billingInvoiceCode!,
+    if (campaignId != null) 'campaignId': campaignId!,
+    if (preTaxAmountMicros != null) 'preTaxAmountMicros': preTaxAmountMicros!,
+    if (taxAmountMicros != null) 'taxAmountMicros': taxAmountMicros!,
+    if (totalAmountMicros != null) 'totalAmountMicros': totalAmountMicros!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : CarrierAndIspAssignedTargetingOptionDetails
 /// - displayvideo:v3 : CarrierAndIspAssignedTargetingOptionDetails
 /// - displayvideo:v4 : CarrierAndIspAssignedTargetingOptionDetails
@@ -2641,6 +3284,44 @@ class $CarrierAndIspTargetingOptionDetails {
   core.Map<core.String, core.dynamic> toJson() => {
     if (displayName != null) 'displayName': displayName!,
     if (type != null) 'type': type!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : CartDataItem
+/// - dfareporting:v5 : CartDataItem
+class $CartDataItem {
+  /// The shopping id of the item.
+  ///
+  /// Must be equal to the Merchant Center product identifier. This is a
+  /// required field.
+  core.String? itemId;
+
+  /// Number of items sold.
+  ///
+  /// This is a required field.
+  core.int? quantity;
+
+  /// Unit price excluding tax, shipping, and any transaction level discounts.
+  ///
+  /// Interpreted in CM360 Floodlight config parent advertiser's currency code.
+  /// This is a required field.
+  core.double? unitPrice;
+
+  $CartDataItem({this.itemId, this.quantity, this.unitPrice});
+
+  $CartDataItem.fromJson(core.Map json_)
+    : this(
+        itemId: json_['itemId'] as core.String?,
+        quantity: json_['quantity'] as core.int?,
+        unitPrice: (json_['unitPrice'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (itemId != null) 'itemId': itemId!,
+    if (quantity != null) 'quantity': quantity!,
+    if (unitPrice != null) 'unitPrice': unitPrice!,
   };
 }
 
@@ -2844,6 +3525,186 @@ class $CertificateChains {
     if (googleCardCerts != null) 'googleCardCerts': googleCardCerts!,
     if (googlePartitionCerts != null)
       'googlePartitionCerts': googlePartitionCerts!,
+  };
+}
+
+/// Used by:
+///
+/// - manufacturers:v1 : Certification
+/// - manufacturers:v1 : GoogleShoppingManufacturersV1ProductCertification
+class $Certification {
+  /// Name of the certification body.
+  ///
+  /// Required.
+  core.String? authority;
+
+  /// A unique code to identify the certification.
+  ///
+  /// Optional.
+  core.String? code;
+
+  /// A URL link to the certification.
+  ///
+  /// Optional.
+  core.String? link;
+
+  /// A URL link to the certification logo.
+  ///
+  /// Optional.
+  core.String? logo;
+
+  /// Name of the certification.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The expiration date (UTC).
+  ///
+  /// Optional.
+  core.String? validUntil;
+
+  /// A custom value of the certification.
+  ///
+  /// Optional.
+  core.String? value;
+
+  $Certification({
+    this.authority,
+    this.code,
+    this.link,
+    this.logo,
+    this.name,
+    this.validUntil,
+    this.value,
+  });
+
+  $Certification.fromJson(core.Map json_)
+    : this(
+        authority: json_['authority'] as core.String?,
+        code: json_['code'] as core.String?,
+        link: json_['link'] as core.String?,
+        logo: json_['logo'] as core.String?,
+        name: json_['name'] as core.String?,
+        validUntil: json_['validUntil'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (authority != null) 'authority': authority!,
+    if (code != null) 'code': code!,
+    if (link != null) 'link': link!,
+    if (logo != null) 'logo': logo!,
+    if (name != null) 'name': name!,
+    if (validUntil != null) 'validUntil': validUntil!,
+    if (value != null) 'value': value!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : ChangeLog
+/// - dfareporting:v5 : ChangeLog
+class $ChangeLog {
+  /// Account ID of the modified object.
+  core.String? accountId;
+
+  /// Action which caused the change.
+  core.String? action;
+  core.DateTime? changeTime;
+
+  /// Field name of the object which changed.
+  core.String? fieldName;
+
+  /// ID of this change log.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#changeLog".
+  core.String? kind;
+
+  /// New value of the object field.
+  core.String? newValue;
+
+  /// ID of the object of this change log.
+  ///
+  /// The object could be a campaign, placement, ad, or other type.
+  core.String? objectId;
+
+  /// Object type of the change log.
+  core.String? objectType;
+
+  /// Old value of the object field.
+  core.String? oldValue;
+
+  /// Subaccount ID of the modified object.
+  core.String? subaccountId;
+
+  /// Transaction ID of this change log.
+  ///
+  /// When a single API call results in many changes, each change will have a
+  /// separate ID in the change log but will share the same transactionId.
+  core.String? transactionId;
+
+  /// ID of the user who modified the object.
+  core.String? userProfileId;
+
+  /// User profile name of the user who modified the object.
+  core.String? userProfileName;
+
+  $ChangeLog({
+    this.accountId,
+    this.action,
+    this.changeTime,
+    this.fieldName,
+    this.id,
+    this.kind,
+    this.newValue,
+    this.objectId,
+    this.objectType,
+    this.oldValue,
+    this.subaccountId,
+    this.transactionId,
+    this.userProfileId,
+    this.userProfileName,
+  });
+
+  $ChangeLog.fromJson(core.Map json_)
+    : this(
+        accountId: json_['accountId'] as core.String?,
+        action: json_['action'] as core.String?,
+        changeTime:
+            json_.containsKey('changeTime')
+                ? core.DateTime.parse(json_['changeTime'] as core.String)
+                : null,
+        fieldName: json_['fieldName'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        newValue: json_['newValue'] as core.String?,
+        objectId: json_['objectId'] as core.String?,
+        objectType: json_['objectType'] as core.String?,
+        oldValue: json_['oldValue'] as core.String?,
+        subaccountId: json_['subaccountId'] as core.String?,
+        transactionId: json_['transactionId'] as core.String?,
+        userProfileId: json_['userProfileId'] as core.String?,
+        userProfileName: json_['userProfileName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accountId != null) 'accountId': accountId!,
+    if (action != null) 'action': action!,
+    if (changeTime != null) 'changeTime': changeTime!.toUtc().toIso8601String(),
+    if (fieldName != null) 'fieldName': fieldName!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (newValue != null) 'newValue': newValue!,
+    if (objectId != null) 'objectId': objectId!,
+    if (objectType != null) 'objectType': objectType!,
+    if (oldValue != null) 'oldValue': oldValue!,
+    if (subaccountId != null) 'subaccountId': subaccountId!,
+    if (transactionId != null) 'transactionId': transactionId!,
+    if (userProfileId != null) 'userProfileId': userProfileId!,
+    if (userProfileName != null) 'userProfileName': userProfileName!,
   };
 }
 
@@ -3081,6 +3942,169 @@ class $Checksum {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : City
+/// - dfareporting:v5 : City
+class $City {
+  /// Country code of the country to which this city belongs.
+  core.String? countryCode;
+
+  /// DART ID of the country to which this city belongs.
+  core.String? countryDartId;
+
+  /// DART ID of this city.
+  ///
+  /// This is the ID used for targeting and generating reports.
+  core.String? dartId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#city".
+  core.String? kind;
+
+  /// Metro region code of the metro region (DMA) to which this city belongs.
+  core.String? metroCode;
+
+  /// ID of the metro region (DMA) to which this city belongs.
+  core.String? metroDmaId;
+
+  /// Name of this city.
+  core.String? name;
+
+  /// Region code of the region to which this city belongs.
+  core.String? regionCode;
+
+  /// DART ID of the region to which this city belongs.
+  core.String? regionDartId;
+
+  $City({
+    this.countryCode,
+    this.countryDartId,
+    this.dartId,
+    this.kind,
+    this.metroCode,
+    this.metroDmaId,
+    this.name,
+    this.regionCode,
+    this.regionDartId,
+  });
+
+  $City.fromJson(core.Map json_)
+    : this(
+        countryCode: json_['countryCode'] as core.String?,
+        countryDartId: json_['countryDartId'] as core.String?,
+        dartId: json_['dartId'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        metroCode: json_['metroCode'] as core.String?,
+        metroDmaId: json_['metroDmaId'] as core.String?,
+        name: json_['name'] as core.String?,
+        regionCode: json_['regionCode'] as core.String?,
+        regionDartId: json_['regionDartId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (countryCode != null) 'countryCode': countryCode!,
+    if (countryDartId != null) 'countryDartId': countryDartId!,
+    if (dartId != null) 'dartId': dartId!,
+    if (kind != null) 'kind': kind!,
+    if (metroCode != null) 'metroCode': metroCode!,
+    if (metroDmaId != null) 'metroDmaId': metroDmaId!,
+    if (name != null) 'name': name!,
+    if (regionCode != null) 'regionCode': regionCode!,
+    if (regionDartId != null) 'regionDartId': regionDartId!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : ClickThroughUrl
+/// - dfareporting:v5 : ClickThroughUrl
+class $ClickThroughUrl {
+  /// Read-only convenience field representing the actual URL that will be used
+  /// for this click-through.
+  ///
+  /// The URL is computed as follows: - If defaultLandingPage is enabled then
+  /// the campaign's default landing page URL is assigned to this field. - If
+  /// defaultLandingPage is not enabled and a landingPageId is specified then
+  /// that landing page's URL is assigned to this field. - If neither of the
+  /// above cases apply, then the customClickThroughUrl is assigned to this
+  /// field.
+  core.String? computedClickThroughUrl;
+
+  /// Custom click-through URL.
+  ///
+  /// Applicable if the defaultLandingPage field is set to false and the
+  /// landingPageId field is left unset.
+  core.String? customClickThroughUrl;
+
+  /// Whether the campaign default landing page is used.
+  core.bool? defaultLandingPage;
+
+  /// ID of the landing page for the click-through URL.
+  ///
+  /// Applicable if the defaultLandingPage field is set to false.
+  core.String? landingPageId;
+
+  $ClickThroughUrl({
+    this.computedClickThroughUrl,
+    this.customClickThroughUrl,
+    this.defaultLandingPage,
+    this.landingPageId,
+  });
+
+  $ClickThroughUrl.fromJson(core.Map json_)
+    : this(
+        computedClickThroughUrl:
+            json_['computedClickThroughUrl'] as core.String?,
+        customClickThroughUrl: json_['customClickThroughUrl'] as core.String?,
+        defaultLandingPage: json_['defaultLandingPage'] as core.bool?,
+        landingPageId: json_['landingPageId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (computedClickThroughUrl != null)
+      'computedClickThroughUrl': computedClickThroughUrl!,
+    if (customClickThroughUrl != null)
+      'customClickThroughUrl': customClickThroughUrl!,
+    if (defaultLandingPage != null) 'defaultLandingPage': defaultLandingPage!,
+    if (landingPageId != null) 'landingPageId': landingPageId!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : ClickThroughUrlSuffixProperties
+/// - dfareporting:v5 : ClickThroughUrlSuffixProperties
+class $ClickThroughUrlSuffixProperties {
+  /// Click-through URL suffix to apply to all ads in this entity's scope.
+  ///
+  /// Must be less than 128 characters long.
+  core.String? clickThroughUrlSuffix;
+
+  /// Whether this entity should override the inherited click-through URL suffix
+  /// with its own defined value.
+  core.bool? overrideInheritedSuffix;
+
+  $ClickThroughUrlSuffixProperties({
+    this.clickThroughUrlSuffix,
+    this.overrideInheritedSuffix,
+  });
+
+  $ClickThroughUrlSuffixProperties.fromJson(core.Map json_)
+    : this(
+        clickThroughUrlSuffix: json_['clickThroughUrlSuffix'] as core.String?,
+        overrideInheritedSuffix: json_['overrideInheritedSuffix'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (clickThroughUrlSuffix != null)
+      'clickThroughUrlSuffix': clickThroughUrlSuffix!,
+    if (overrideInheritedSuffix != null)
+      'overrideInheritedSuffix': overrideInheritedSuffix!,
+  };
+}
+
+/// Used by:
+///
 /// - integrations:v1 : EnterpriseCrmEventbusProtoCloudSchedulerConfig
 /// - integrations:v1 : GoogleCloudIntegrationsV1alphaCloudSchedulerConfig
 class $CloudSchedulerConfig {
@@ -3196,9 +4220,6 @@ class $ClusterUpgradeUpgradeStatus {
   /// upgrade doesn't finish within a certain limit, despite it's actual status.
   /// - "COMPLETE" : The upgrade has passed all post conditions (soaking). At
   /// the scope level, this means all eligible clusters are in COMPLETE status.
-  /// - "FORCED_COMPLETE" : The upgrade was forced into soaking and the soaking
-  /// time has passed. This is the equivalent of COMPLETE status for upgrades
-  /// that were forced into soaking.
   core.String? code;
 
   /// Reason for this status.
@@ -4034,6 +5055,38 @@ class $ConnectionStatus {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : ConnectionType
+/// - dfareporting:v5 : ConnectionType
+class $ConnectionType {
+  /// ID of this connection type.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#connectionType".
+  core.String? kind;
+
+  /// Name of this connection type.
+  core.String? name;
+
+  $ConnectionType({this.id, this.kind, this.name});
+
+  $ConnectionType.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v3 : Consent
 /// - displayvideo:v4 : Consent
 class $Consent {
@@ -4185,6 +5238,50 @@ class $ContactInfo {
     if (hashedLastName != null) 'hashedLastName': hashedLastName!,
     if (hashedPhoneNumbers != null) 'hashedPhoneNumbers': hashedPhoneNumbers!,
     if (zipCodes != null) 'zipCodes': zipCodes!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : ContentCategory
+/// - dfareporting:v5 : ContentCategory
+class $ContentCategory {
+  /// Account ID of this content category.
+  ///
+  /// This is a read-only field that can be left blank.
+  core.String? accountId;
+
+  /// ID of this content category.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#contentCategory".
+  core.String? kind;
+
+  /// Name of this content category.
+  ///
+  /// This is a required field and must be less than 256 characters long and
+  /// unique among content categories of the same account.
+  core.String? name;
+
+  $ContentCategory({this.accountId, this.id, this.kind, this.name});
+
+  $ContentCategory.fromJson(core.Map json_)
+    : this(
+        accountId: json_['accountId'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accountId != null) 'accountId': accountId!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
   };
 }
 
@@ -4536,6 +5633,57 @@ class $ContentOutstreamPositionTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : ContentSourceMetaData
+/// - dfareporting:v5 : ContentSourceMetaData
+class $ContentSourceMetaData {
+  /// The charset of the content source.
+  ///
+  /// Output only.
+  core.String? charset;
+
+  /// The list of column names in the content source.
+  ///
+  /// Output only.
+  core.List<core.String>? fieldNames;
+
+  /// The number of rows in the content source.
+  ///
+  /// Output only.
+  core.int? rowNumber;
+
+  /// The separator of the content source.
+  ///
+  /// Output only.
+  core.String? separator;
+
+  $ContentSourceMetaData({
+    this.charset,
+    this.fieldNames,
+    this.rowNumber,
+    this.separator,
+  });
+
+  $ContentSourceMetaData.fromJson(core.Map json_)
+    : this(
+        charset: json_['charset'] as core.String?,
+        fieldNames:
+            (json_['fieldNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        rowNumber: json_['rowNumber'] as core.int?,
+        separator: json_['separator'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (charset != null) 'charset': charset!,
+    if (fieldNames != null) 'fieldNames': fieldNames!,
+    if (rowNumber != null) 'rowNumber': rowNumber!,
+    if (separator != null) 'separator': separator!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : ContentStreamTypeAssignedTargetingOptionDetails
 /// - displayvideo:v3 : ContentStreamTypeAssignedTargetingOptionDetails
 /// - displayvideo:v4 : ContentStreamTypeAssignedTargetingOptionDetails
@@ -4784,6 +5932,43 @@ class $ContextChildrenRequest {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : ConversionError
+/// - dfareporting:v5 : ConversionError
+class $ConversionError {
+  /// The error code.
+  /// Possible string values are:
+  /// - "INVALID_ARGUMENT"
+  /// - "INTERNAL"
+  /// - "PERMISSION_DENIED"
+  /// - "NOT_FOUND"
+  core.String? code;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#conversionError".
+  core.String? kind;
+
+  /// A description of the error.
+  core.String? message;
+
+  $ConversionError({this.code, this.kind, this.message});
+
+  $ConversionError.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (code != null) 'code': code!,
+    if (kind != null) 'kind': kind!,
+    if (message != null) 'message': message!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : CounterEvent
 /// - displayvideo:v3 : CounterEvent
 /// - displayvideo:v4 : CounterEvent
@@ -4814,6 +5999,56 @@ class $CounterEvent {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : Country
+/// - dfareporting:v5 : Country
+class $Country {
+  /// Country code.
+  core.String? countryCode;
+
+  /// DART ID of this country.
+  ///
+  /// This is the ID used for targeting and generating reports.
+  core.String? dartId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#country".
+  core.String? kind;
+
+  /// Name of this country.
+  core.String? name;
+
+  /// Whether ad serving supports secure servers in this country.
+  core.bool? sslEnabled;
+
+  $Country({
+    this.countryCode,
+    this.dartId,
+    this.kind,
+    this.name,
+    this.sslEnabled,
+  });
+
+  $Country.fromJson(core.Map json_)
+    : this(
+        countryCode: json_['countryCode'] as core.String?,
+        dartId: json_['dartId'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        sslEnabled: json_['sslEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (countryCode != null) 'countryCode': countryCode!,
+    if (dartId != null) 'dartId': dartId!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (sslEnabled != null) 'sslEnabled': sslEnabled!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : CreateAssetRequest
 /// - displayvideo:v3 : CreateAssetRequest
 /// - displayvideo:v4 : CreateAssetRequest
@@ -4839,6 +6074,7 @@ class $CreateAssetRequest {
 ///
 /// - dfareporting:v3.5 : CreativeAssetId
 /// - dfareporting:v4 : CreativeAssetId
+/// - dfareporting:v5 : CreativeAssetId
 class $CreativeAssetId {
   /// Name of the creative asset.
   ///
@@ -4879,6 +6115,7 @@ class $CreativeAssetId {
 ///
 /// - dfareporting:v3.5 : CreativeClickThroughUrl
 /// - dfareporting:v4 : CreativeClickThroughUrl
+/// - dfareporting:v5 : CreativeClickThroughUrl
 class $CreativeClickThroughUrl {
   /// Read-only convenience field representing the actual URL that will be used
   /// for this click-through.
@@ -4916,6 +6153,213 @@ class $CreativeClickThroughUrl {
     if (customClickThroughUrl != null)
       'customClickThroughUrl': customClickThroughUrl!,
     if (landingPageId != null) 'landingPageId': landingPageId!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : CreativeFieldAssignment
+/// - dfareporting:v5 : CreativeFieldAssignment
+class $CreativeFieldAssignment {
+  /// ID of the creative field.
+  core.String? creativeFieldId;
+
+  /// ID of the creative field value.
+  core.String? creativeFieldValueId;
+
+  $CreativeFieldAssignment({this.creativeFieldId, this.creativeFieldValueId});
+
+  $CreativeFieldAssignment.fromJson(core.Map json_)
+    : this(
+        creativeFieldId: json_['creativeFieldId'] as core.String?,
+        creativeFieldValueId: json_['creativeFieldValueId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (creativeFieldId != null) 'creativeFieldId': creativeFieldId!,
+    if (creativeFieldValueId != null)
+      'creativeFieldValueId': creativeFieldValueId!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : CreativeFieldValue
+/// - dfareporting:v5 : CreativeFieldValue
+class $CreativeFieldValue {
+  /// ID of this creative field value.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#creativeFieldValue".
+  core.String? kind;
+
+  /// Value of this creative field value.
+  ///
+  /// It needs to be less than 256 characters in length and unique per creative
+  /// field.
+  core.String? value;
+
+  $CreativeFieldValue({this.id, this.kind, this.value});
+
+  $CreativeFieldValue.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (value != null) 'value': value!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : CreativeGroupAssignment
+/// - dfareporting:v5 : CreativeGroupAssignment
+class $CreativeGroupAssignment {
+  /// ID of the creative group to be assigned.
+  core.String? creativeGroupId;
+
+  /// Creative group number of the creative group assignment.
+  /// Possible string values are:
+  /// - "CREATIVE_GROUP_ONE"
+  /// - "CREATIVE_GROUP_TWO"
+  core.String? creativeGroupNumber;
+
+  $CreativeGroupAssignment({this.creativeGroupId, this.creativeGroupNumber});
+
+  $CreativeGroupAssignment.fromJson(core.Map json_)
+    : this(
+        creativeGroupId: json_['creativeGroupId'] as core.String?,
+        creativeGroupNumber: json_['creativeGroupNumber'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (creativeGroupId != null) 'creativeGroupId': creativeGroupId!,
+    if (creativeGroupNumber != null)
+      'creativeGroupNumber': creativeGroupNumber!,
+  };
+}
+
+/// Used by:
+///
+/// - cloudkms:v1 : CryptoKeyVersionTemplate
+/// - kmsinventory:v1 : GoogleCloudKmsV1CryptoKeyVersionTemplate
+class $CryptoKeyVersionTemplate {
+  /// Algorithm to use when creating a CryptoKeyVersion based on this template.
+  ///
+  /// For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if
+  /// both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
+  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
+  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
+  /// - "AES_128_CBC" : AES-CBC (Cipher Block Chaining Mode) using 128-bit keys.
+  /// - "AES_256_CBC" : AES-CBC (Cipher Block Chaining Mode) using 256-bit keys.
+  /// - "AES_128_CTR" : AES-CTR (Counter Mode) using 128-bit keys.
+  /// - "AES_256_CTR" : AES-CTR (Counter Mode) using 256-bit keys.
+  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA512 digest.
+  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 2048 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 3072 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 4096 bit key.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA256" : RSAES-OAEP 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA512" : RSAES-OAEP 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA1" : RSAES-OAEP 2048 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA1" : RSAES-OAEP 3072 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
+  /// digest.
+  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
+  /// curve is only supported for HSM protection level. Other hash functions can
+  /// also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_ED25519" : EdDSA on the Curve25519 in pure mode (taking data as
+  /// input).
+  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
+  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
+  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
+  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
+  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
+  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
+  /// encryption by an external key manager.
+  /// - "ML_KEM_768" : ML-KEM-768 (FIPS 203)
+  /// - "ML_KEM_1024" : ML-KEM-1024 (FIPS 203)
+  /// - "KEM_XWING" : X-Wing hybrid KEM combining ML-KEM-768 with X25519
+  /// following datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem/.
+  /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 3. Randomized version.
+  /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
+  /// digital signature algorithm, at security level 1. Randomized version.
+  /// - "PQ_SIGN_HASH_SLH_DSA_SHA2_128S_SHA256" : The post-quantum stateless
+  /// hash-based digital signature algorithm, at security level 1. Randomized
+  /// pre-hash version supporting SHA256 digests.
+  core.String? algorithm;
+
+  /// ProtectionLevel to use when creating a CryptoKeyVersion based on this
+  /// template.
+  ///
+  /// Immutable. Defaults to SOFTWARE.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
+  core.String? protectionLevel;
+
+  $CryptoKeyVersionTemplate({this.algorithm, this.protectionLevel});
+
+  $CryptoKeyVersionTemplate.fromJson(core.Map json_)
+    : this(
+        algorithm: json_['algorithm'] as core.String?,
+        protectionLevel: json_['protectionLevel'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (algorithm != null) 'algorithm': algorithm!,
+    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
   };
 }
 
@@ -5054,6 +6498,143 @@ class $CustomBiddingScriptRef {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : CustomFloodlightVariable
+/// - dfareporting:v5 : CustomFloodlightVariable
+class $CustomFloodlightVariable {
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#customFloodlightVariable".
+  core.String? kind;
+
+  /// The type of custom floodlight variable to supply a value for.
+  ///
+  /// These map to the "u\[1-100\]=" in the tags.
+  /// Possible string values are:
+  /// - "U1"
+  /// - "U2"
+  /// - "U3"
+  /// - "U4"
+  /// - "U5"
+  /// - "U6"
+  /// - "U7"
+  /// - "U8"
+  /// - "U9"
+  /// - "U10"
+  /// - "U11"
+  /// - "U12"
+  /// - "U13"
+  /// - "U14"
+  /// - "U15"
+  /// - "U16"
+  /// - "U17"
+  /// - "U18"
+  /// - "U19"
+  /// - "U20"
+  /// - "U21"
+  /// - "U22"
+  /// - "U23"
+  /// - "U24"
+  /// - "U25"
+  /// - "U26"
+  /// - "U27"
+  /// - "U28"
+  /// - "U29"
+  /// - "U30"
+  /// - "U31"
+  /// - "U32"
+  /// - "U33"
+  /// - "U34"
+  /// - "U35"
+  /// - "U36"
+  /// - "U37"
+  /// - "U38"
+  /// - "U39"
+  /// - "U40"
+  /// - "U41"
+  /// - "U42"
+  /// - "U43"
+  /// - "U44"
+  /// - "U45"
+  /// - "U46"
+  /// - "U47"
+  /// - "U48"
+  /// - "U49"
+  /// - "U50"
+  /// - "U51"
+  /// - "U52"
+  /// - "U53"
+  /// - "U54"
+  /// - "U55"
+  /// - "U56"
+  /// - "U57"
+  /// - "U58"
+  /// - "U59"
+  /// - "U60"
+  /// - "U61"
+  /// - "U62"
+  /// - "U63"
+  /// - "U64"
+  /// - "U65"
+  /// - "U66"
+  /// - "U67"
+  /// - "U68"
+  /// - "U69"
+  /// - "U70"
+  /// - "U71"
+  /// - "U72"
+  /// - "U73"
+  /// - "U74"
+  /// - "U75"
+  /// - "U76"
+  /// - "U77"
+  /// - "U78"
+  /// - "U79"
+  /// - "U80"
+  /// - "U81"
+  /// - "U82"
+  /// - "U83"
+  /// - "U84"
+  /// - "U85"
+  /// - "U86"
+  /// - "U87"
+  /// - "U88"
+  /// - "U89"
+  /// - "U90"
+  /// - "U91"
+  /// - "U92"
+  /// - "U93"
+  /// - "U94"
+  /// - "U95"
+  /// - "U96"
+  /// - "U97"
+  /// - "U98"
+  /// - "U99"
+  /// - "U100"
+  core.String? type;
+
+  /// The value of the custom floodlight variable.
+  ///
+  /// The length of string must not exceed 100 characters.
+  core.String? value;
+
+  $CustomFloodlightVariable({this.kind, this.type, this.value});
+
+  $CustomFloodlightVariable.fromJson(core.Map json_)
+    : this(
+        kind: json_['kind'] as core.String?,
+        type: json_['type'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (kind != null) 'kind': kind!,
+    if (type != null) 'type': type!,
+    if (value != null) 'value': value!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : CustomLabel
 /// - displayvideo:v3 : CustomLabel
 /// - displayvideo:v4 : CustomLabel
@@ -5151,6 +6732,84 @@ class $CustomListTargetingSetting {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : CustomValueField
+/// - dfareporting:v5 : CustomValueField
+class $CustomValueField {
+  /// Field ID in the element.
+  ///
+  /// Optional.
+  core.int? fieldId;
+
+  /// Custom key used to match for auto filtering.
+  ///
+  /// Optional.
+  core.String? requestKey;
+
+  $CustomValueField({this.fieldId, this.requestKey});
+
+  $CustomValueField.fromJson(core.Map json_)
+    : this(
+        fieldId: json_['fieldId'] as core.int?,
+        requestKey: json_['requestKey'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (fieldId != null) 'fieldId': fieldId!,
+    if (requestKey != null) 'requestKey': requestKey!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : CustomViewabilityMetricConfiguration
+/// - dfareporting:v5 : CustomViewabilityMetricConfiguration
+class $CustomViewabilityMetricConfiguration {
+  /// Whether the video must be audible to count an impression.
+  core.bool? audible;
+
+  /// The time in milliseconds the video must play for the Custom Viewability
+  /// Metric to count an impression.
+  ///
+  /// If both this and timePercent are specified, the earlier of the two will be
+  /// used.
+  core.int? timeMillis;
+
+  /// The percentage of video that must play for the Custom Viewability Metric
+  /// to count an impression.
+  ///
+  /// If both this and timeMillis are specified, the earlier of the two will be
+  /// used.
+  core.int? timePercent;
+
+  /// The percentage of video that must be on screen for the Custom Viewability
+  /// Metric to count an impression.
+  core.int? viewabilityPercent;
+
+  $CustomViewabilityMetricConfiguration({
+    this.audible,
+    this.timeMillis,
+    this.timePercent,
+    this.viewabilityPercent,
+  });
+
+  $CustomViewabilityMetricConfiguration.fromJson(core.Map json_)
+    : this(
+        audible: json_['audible'] as core.bool?,
+        timeMillis: json_['timeMillis'] as core.int?,
+        timePercent: json_['timePercent'] as core.int?,
+        viewabilityPercent: json_['viewabilityPercent'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (audible != null) 'audible': audible!,
+    if (timeMillis != null) 'timeMillis': timeMillis!,
+    if (timePercent != null) 'timePercent': timePercent!,
+    if (viewabilityPercent != null) 'viewabilityPercent': viewabilityPercent!,
+  };
+}
+
+/// Used by:
+///
 /// - admin:reports_v1 : Date
 /// - admob:v1 : Date
 /// - adsense:v2 : Date
@@ -5180,6 +6839,8 @@ class $CustomListTargetingSetting {
 /// - drivelabels:v2 : GoogleTypeDate
 /// - gkebackup:v1 : Date
 /// - looker:v1 : Date
+/// - merchantapi:accounts_v1 : Date
+/// - merchantapi:reports_v1 : Date
 /// - migrationcenter:v1 : Date
 /// - mybusinessbusinessinformation:v1 : Date
 /// - osconfig:v1 : Date
@@ -5223,6 +6884,66 @@ class $Date {
     if (day != null) 'day': day!,
     if (month != null) 'month': month!,
     if (year != null) 'year': year!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : DateRange
+/// - dfareporting:v5 : DateRange
+class $DateRange {
+  core.DateTime? endDate;
+
+  /// The kind of resource this is, in this case dfareporting#dateRange.
+  core.String? kind;
+
+  /// The date range relative to the date of when the report is run.
+  /// Possible string values are:
+  /// - "TODAY"
+  /// - "YESTERDAY"
+  /// - "WEEK_TO_DATE"
+  /// - "MONTH_TO_DATE"
+  /// - "QUARTER_TO_DATE"
+  /// - "YEAR_TO_DATE"
+  /// - "PREVIOUS_WEEK"
+  /// - "PREVIOUS_MONTH"
+  /// - "PREVIOUS_QUARTER"
+  /// - "PREVIOUS_YEAR"
+  /// - "LAST_7_DAYS"
+  /// - "LAST_30_DAYS"
+  /// - "LAST_90_DAYS"
+  /// - "LAST_365_DAYS"
+  /// - "LAST_24_MONTHS"
+  /// - "LAST_14_DAYS"
+  /// - "LAST_60_DAYS"
+  core.String? relativeDateRange;
+  core.DateTime? startDate;
+
+  $DateRange({this.endDate, this.kind, this.relativeDateRange, this.startDate});
+
+  $DateRange.fromJson(core.Map json_)
+    : this(
+        endDate:
+            json_.containsKey('endDate')
+                ? core.DateTime.parse(json_['endDate'] as core.String)
+                : null,
+        kind: json_['kind'] as core.String?,
+        relativeDateRange: json_['relativeDateRange'] as core.String?,
+        startDate:
+            json_.containsKey('startDate')
+                ? core.DateTime.parse(json_['startDate'] as core.String)
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (endDate != null)
+      'endDate':
+          "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
+    if (kind != null) 'kind': kind!,
+    if (relativeDateRange != null) 'relativeDateRange': relativeDateRange!,
+    if (startDate != null)
+      'startDate':
+          "${startDate!.year.toString().padLeft(4, '0')}-${startDate!.month.toString().padLeft(2, '0')}-${startDate!.day.toString().padLeft(2, '0')}",
   };
 }
 
@@ -5298,6 +7019,54 @@ class $DayAndTimeAssignedTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : DayPartTargeting
+/// - dfareporting:v5 : DayPartTargeting
+class $DayPartTargeting {
+  /// Days of the week when the ad will serve.
+  ///
+  /// Acceptable values are: - "SUNDAY" - "MONDAY" - "TUESDAY" - "WEDNESDAY" -
+  /// "THURSDAY" - "FRIDAY" - "SATURDAY"
+  core.List<core.String>? daysOfWeek;
+
+  /// Hours of the day when the ad will serve, where 0 is midnight to 1 AM and
+  /// 23 is 11 PM to midnight.
+  ///
+  /// Can be specified with days of week, in which case the ad would serve
+  /// during these hours on the specified days. For example if Monday,
+  /// Wednesday, Friday are the days of week specified and 9-10am, 3-5pm (hours
+  /// 9, 15, and 16) is specified, the ad would serve Monday, Wednesdays, and
+  /// Fridays at 9-10am and 3-5pm. Acceptable values are 0 to 23, inclusive.
+  core.List<core.int>? hoursOfDay;
+
+  /// Whether or not to use the user's local time.
+  ///
+  /// If false, the America/New York time zone applies.
+  core.bool? userLocalTime;
+
+  $DayPartTargeting({this.daysOfWeek, this.hoursOfDay, this.userLocalTime});
+
+  $DayPartTargeting.fromJson(core.Map json_)
+    : this(
+        daysOfWeek:
+            (json_['daysOfWeek'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        hoursOfDay:
+            (json_['hoursOfDay'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        userLocalTime: json_['userLocalTime'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (daysOfWeek != null) 'daysOfWeek': daysOfWeek!,
+    if (hoursOfDay != null) 'hoursOfDay': hoursOfDay!,
+    if (userLocalTime != null) 'userLocalTime': userLocalTime!,
+  };
+}
+
+/// Used by:
+///
 /// - connectors:v1 : DeadLetterConfig
 /// - integrations:v1 : GoogleCloudConnectorsV1EventingConfigDeadLetterConfig
 class $DeadLetterConfig {
@@ -5340,6 +7109,40 @@ class $DebugInfo {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (formattedDebugInfo != null) 'formattedDebugInfo': formattedDebugInfo!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : DefaultClickThroughEventTagProperties
+/// - dfareporting:v5 : DefaultClickThroughEventTagProperties
+class $DefaultClickThroughEventTagProperties {
+  /// ID of the click-through event tag to apply to all ads in this entity's
+  /// scope.
+  core.String? defaultClickThroughEventTagId;
+
+  /// Whether this entity should override the inherited default click-through
+  /// event tag with its own defined value.
+  core.bool? overrideInheritedEventTag;
+
+  $DefaultClickThroughEventTagProperties({
+    this.defaultClickThroughEventTagId,
+    this.overrideInheritedEventTag,
+  });
+
+  $DefaultClickThroughEventTagProperties.fromJson(core.Map json_)
+    : this(
+        defaultClickThroughEventTagId:
+            json_['defaultClickThroughEventTagId'] as core.String?,
+        overrideInheritedEventTag:
+            json_['overrideInheritedEventTag'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (defaultClickThroughEventTagId != null)
+      'defaultClickThroughEventTagId': defaultClickThroughEventTagId!,
+    if (overrideInheritedEventTag != null)
+      'overrideInheritedEventTag': overrideInheritedEventTag!,
   };
 }
 
@@ -5490,6 +7293,35 @@ class $DeleteAssignedTargetingOptionsRequest {
     if (assignedTargetingOptionIds != null)
       'assignedTargetingOptionIds': assignedTargetingOptionIds!,
     if (targetingType != null) 'targetingType': targetingType!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : DependentFieldValue
+/// - dfareporting:v5 : DependentFieldValue
+class $DependentFieldValue {
+  /// The ID of the element that value's field will match against.
+  ///
+  /// Optional.
+  core.String? elementId;
+
+  /// The field id of the dependent field.
+  ///
+  /// Optional.
+  core.int? fieldId;
+
+  $DependentFieldValue({this.elementId, this.fieldId});
+
+  $DependentFieldValue.fromJson(core.Map json_)
+    : this(
+        elementId: json_['elementId'] as core.String?,
+        fieldId: json_['fieldId'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (elementId != null) 'elementId': elementId!,
+    if (fieldId != null) 'fieldId': fieldId!,
   };
 }
 
@@ -5743,6 +7575,57 @@ class $DeviceTypeTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : DfpSettings
+/// - dfareporting:v5 : DfpSettings
+class $DfpSettings {
+  /// Ad Manager network code for this directory site.
+  core.String? dfpNetworkCode;
+
+  /// Ad Manager network name for this directory site.
+  core.String? dfpNetworkName;
+
+  /// Whether this directory site accepts programmatic placements.
+  core.bool? programmaticPlacementAccepted;
+
+  /// Whether this directory site accepts publisher-paid tags.
+  core.bool? pubPaidPlacementAccepted;
+
+  /// Whether this directory site is available only via Publisher Portal.
+  core.bool? publisherPortalOnly;
+
+  $DfpSettings({
+    this.dfpNetworkCode,
+    this.dfpNetworkName,
+    this.programmaticPlacementAccepted,
+    this.pubPaidPlacementAccepted,
+    this.publisherPortalOnly,
+  });
+
+  $DfpSettings.fromJson(core.Map json_)
+    : this(
+        dfpNetworkCode: json_['dfpNetworkCode'] as core.String?,
+        dfpNetworkName: json_['dfpNetworkName'] as core.String?,
+        programmaticPlacementAccepted:
+            json_['programmaticPlacementAccepted'] as core.bool?,
+        pubPaidPlacementAccepted:
+            json_['pubPaidPlacementAccepted'] as core.bool?,
+        publisherPortalOnly: json_['publisherPortalOnly'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dfpNetworkCode != null) 'dfpNetworkCode': dfpNetworkCode!,
+    if (dfpNetworkName != null) 'dfpNetworkName': dfpNetworkName!,
+    if (programmaticPlacementAccepted != null)
+      'programmaticPlacementAccepted': programmaticPlacementAccepted!,
+    if (pubPaidPlacementAccepted != null)
+      'pubPaidPlacementAccepted': pubPaidPlacementAccepted!,
+    if (publisherPortalOnly != null)
+      'publisherPortalOnly': publisherPortalOnly!,
+  };
+}
+
+/// Used by:
+///
 /// - firebaseappdistribution:v1 : GdataDiffVersionResponse
 /// - walletobjects:v1 : DiffVersionResponse
 class $DiffVersionResponse {
@@ -5846,8 +7729,64 @@ class $DigitalContentLabelTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : Dimension
+/// - dfareporting:v5 : Dimension
+class $Dimension {
+  /// The kind of resource this is, in this case dfareporting#dimension.
+  core.String? kind;
+
+  /// The dimension name, e.g. advertiser
+  core.String? name;
+
+  $Dimension({this.kind, this.name});
+
+  $Dimension.fromJson(core.Map json_)
+    : this(
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : DimensionFilter
+/// - dfareporting:v5 : DimensionFilter
+class $DimensionFilter {
+  /// The name of the dimension to filter.
+  core.String? dimensionName;
+
+  /// The kind of resource this is, in this case dfareporting#dimensionFilter.
+  core.String? kind;
+
+  /// The value of the dimension to filter.
+  core.String? value;
+
+  $DimensionFilter({this.dimensionName, this.kind, this.value});
+
+  $DimensionFilter.fromJson(core.Map json_)
+    : this(
+        dimensionName: json_['dimensionName'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dimensionName != null) 'dimensionName': dimensionName!,
+    if (kind != null) 'kind': kind!,
+    if (value != null) 'value': value!,
+  };
+}
+
+/// Used by:
+///
 /// - dfareporting:v3.5 : DimensionValue
 /// - dfareporting:v4 : DimensionValue
+/// - dfareporting:v5 : DimensionValue
 class $DimensionValue {
   /// The name of the dimension.
   core.String? dimensionName;
@@ -6518,17 +8457,43 @@ class $DrainingMachine {
 /// - displayvideo:v3 : DuplicateLineItemRequest
 /// - displayvideo:v4 : DuplicateLineItemRequest
 class $DuplicateLineItemRequest {
+  /// Whether this line item will serve European Union political ads.
+  ///
+  /// If contains_eu_political_ads has been set to
+  /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then
+  /// this field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if
+  /// not otherwise specified. This field can then be updated using the UI, API,
+  /// or Structured Data Files. *Warning*: Starting **September 8, 2025**, this
+  /// field must be set. If not, either the value
+  /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be assigned to the line
+  /// item if the parent advertiser has declared that it does not serve EU
+  /// political ads, or **the request will fail**.
+  /// Possible string values are:
+  /// - "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN" : Unknown.
+  /// - "CONTAINS_EU_POLITICAL_ADVERTISING" : Contains EU political advertising.
+  /// - "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING" : Does not contain EU
+  /// political advertising.
+  core.String? containsEuPoliticalAds;
+
   /// The display name of the new line item.
   ///
   /// Must be UTF-8 encoded with a maximum size of 240 bytes.
   core.String? targetDisplayName;
 
-  $DuplicateLineItemRequest({this.targetDisplayName});
+  $DuplicateLineItemRequest({
+    this.containsEuPoliticalAds,
+    this.targetDisplayName,
+  });
 
   $DuplicateLineItemRequest.fromJson(core.Map json_)
-    : this(targetDisplayName: json_['targetDisplayName'] as core.String?);
+    : this(
+        containsEuPoliticalAds: json_['containsEuPoliticalAds'] as core.String?,
+        targetDisplayName: json_['targetDisplayName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (containsEuPoliticalAds != null)
+      'containsEuPoliticalAds': containsEuPoliticalAds!,
     if (targetDisplayName != null) 'targetDisplayName': targetDisplayName!,
   };
 }
@@ -6590,6 +8555,55 @@ class $DynamicListenerState {
     if (lastUpdated != null) 'lastUpdated': lastUpdated!,
     if (listener != null) 'listener': listener!,
     if (versionInfo != null) 'versionInfo': versionInfo!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : DynamicTargetingKey
+/// - dfareporting:v5 : DynamicTargetingKey
+class $DynamicTargetingKey {
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#dynamicTargetingKey".
+  core.String? kind;
+
+  /// Name of this dynamic targeting key.
+  ///
+  /// This is a required field. Must be less than 256 characters long and cannot
+  /// contain commas. All characters are converted to lowercase.
+  core.String? name;
+
+  /// ID of the object of this dynamic targeting key.
+  ///
+  /// This is a required field.
+  core.String? objectId;
+
+  /// Type of the object of this dynamic targeting key.
+  ///
+  /// This is a required field.
+  /// Possible string values are:
+  /// - "OBJECT_ADVERTISER"
+  /// - "OBJECT_AD"
+  /// - "OBJECT_CREATIVE"
+  /// - "OBJECT_PLACEMENT"
+  core.String? objectType;
+
+  $DynamicTargetingKey({this.kind, this.name, this.objectId, this.objectType});
+
+  $DynamicTargetingKey.fromJson(core.Map json_)
+    : this(
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        objectId: json_['objectId'] as core.String?,
+        objectType: json_['objectType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (objectId != null) 'objectId': objectId!,
+    if (objectType != null) 'objectType': objectType!,
   };
 }
 
@@ -6776,6 +8790,7 @@ class $EgressSource {
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelBatchPredictionJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelCustomJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelDataLabelingJobRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1CancelEvaluationRunRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelHyperparameterTuningJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelNasJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelPipelineJobRequest
@@ -6823,11 +8838,13 @@ class $EgressSource {
 /// - alloydb:v1 : CancelOperationRequest
 /// - alloydb:v1 : Empty
 /// - alloydb:v1 : SqlImportOptions
+/// - analyticshub:v1 : ApproveQueryTemplateRequest
 /// - analyticshub:v1 : DefaultExchangeConfig
 /// - analyticshub:v1 : Empty
 /// - analyticshub:v1 : PubsubWrapper
 /// - analyticshub:v1 : RefreshSubscriptionRequest
 /// - analyticshub:v1 : RevokeSubscriptionResponse
+/// - analyticshub:v1 : SubmitQueryTemplateRequest
 /// - analyticshub:v1 : TextConfig
 /// - androiddeviceprovisioning:v1 : Empty
 /// - androidmanagement:v1 : Empty
@@ -6835,6 +8852,8 @@ class $EgressSource {
 /// - androidpublisher:v3 : AddTargetingResponse
 /// - androidpublisher:v3 : CancelAppRecoveryRequest
 /// - androidpublisher:v3 : CancelAppRecoveryResponse
+/// - androidpublisher:v3 : CancelSubscriptionPurchaseResponse
+/// - androidpublisher:v3 : DeferredItemRemoval
 /// - androidpublisher:v3 : DeployAppRecoveryRequest
 /// - androidpublisher:v3 : DeployAppRecoveryResponse
 /// - androidpublisher:v3 : DeveloperInitiatedCancellation
@@ -6884,6 +8903,7 @@ class $EgressSource {
 /// - apihub:v1 : GoogleCloudApihubV1DisablePluginRequest
 /// - apihub:v1 : GoogleCloudApihubV1EnablePluginRequest
 /// - apihub:v1 : GoogleCloudApihubV1LintSpecRequest
+/// - apihub:v1 : GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse
 /// - apihub:v1 : GoogleLongrunningCancelOperationRequest
 /// - apikeys:v2 : V2UndeleteKeyRequest
 /// - appengine:v1 : Empty
@@ -6915,6 +8935,7 @@ class $EgressSource {
 /// - authorizedbuyersmarketplace:v1 : UnsubscribeAuctionPackageRequest
 /// - backupdr:v1 : CancelOperationRequest
 /// - backupdr:v1 : Empty
+/// - backupdr:v1 : SubscribeTrialRequest
 /// - baremetalsolution:v2 : DisableHyperthreadingRequest
 /// - baremetalsolution:v2 : DisableInteractiveSerialConsoleRequest
 /// - baremetalsolution:v2 : Empty
@@ -6986,6 +9007,8 @@ class $EgressSource {
 /// - cloudbuild:v2 : FetchReadWriteTokenRequest
 /// - cloudchannel:v1 : GoogleLongrunningCancelOperationRequest
 /// - cloudchannel:v1 : GoogleProtobufEmpty
+/// - cloudcommerceprocurement:v1 : Empty
+/// - cloudcommerceprocurement:v1 : ResetAccountRequest
 /// - cloudcontrolspartner:v1 : Empty
 /// - clouddeploy:v1 : AbandonReleaseRequest
 /// - clouddeploy:v1 : AbandonReleaseResponse
@@ -7045,6 +9068,7 @@ class $EgressSource {
 /// - composer:v1 : DatabaseFailoverRequest
 /// - composer:v1 : Empty
 /// - composer:v1 : RestartWebServerRequest
+/// - compute:v1 : InterconnectApplicationAwareInterconnectStrictPriorityPolicy
 /// - compute:v1 : ResourcePolicyDiskConsistencyGroupPolicy
 /// - config:v1 : CancelOperationRequest
 /// - config:v1 : Empty
@@ -7118,6 +9142,7 @@ class $EgressSource {
 /// - dataplex:v1 : GoogleCloudDataplexV1ActionUnauthorizedResource
 /// - dataplex:v1 : GoogleCloudDataplexV1CancelJobRequest
 /// - dataplex:v1 : GoogleCloudDataplexV1CancelMetadataJobRequest
+/// - dataplex:v1 : GoogleCloudDataplexV1DataDocumentationSpec
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualityRuleNonNullExpectation
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation
 /// - dataplex:v1 : GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger
@@ -7205,6 +9230,7 @@ class $EgressSource {
 /// - dlp:v2 : GooglePrivacyDlpV2Manual
 /// - dlp:v2 : GooglePrivacyDlpV2MultiRegionProcessing
 /// - dlp:v2 : GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
+/// - dlp:v2 : GooglePrivacyDlpV2PublishFindingsToDataplexCatalog
 /// - dlp:v2 : GooglePrivacyDlpV2PublishSummaryToCscc
 /// - dlp:v2 : GooglePrivacyDlpV2PublishToChronicle
 /// - dlp:v2 : GooglePrivacyDlpV2PublishToSecurityCommandCenter
@@ -7375,6 +9401,30 @@ class $EgressSource {
 /// - meet:v2 : EndActiveConferenceRequest
 /// - memcache:v1 : CancelOperationRequest
 /// - memcache:v1 : Empty
+/// - merchantapi:accounts_v1 : AccountAggregation
+/// - merchantapi:accounts_v1 : AccountManagement
+/// - merchantapi:accounts_v1 : ApproveAccountServiceRequest
+/// - merchantapi:accounts_v1 : CampaignsManagement
+/// - merchantapi:accounts_v1 : DisableProgramRequest
+/// - merchantapi:accounts_v1 : Empty
+/// - merchantapi:accounts_v1 : EnableProgramRequest
+/// - merchantapi:accounts_v1 : LocalListingManagement
+/// - merchantapi:accounts_v1 : ProductsManagement
+/// - merchantapi:accounts_v1 : RejectAccountServiceRequest
+/// - merchantapi:accounts_v1 : RequestInventoryVerificationRequest
+/// - merchantapi:accounts_v1 : UnclaimHomepageRequest
+/// - merchantapi:accounts_v1 : UnregisterGcpRequest
+/// - merchantapi:conversions_v1 : Empty
+/// - merchantapi:conversions_v1 : UndeleteConversionSourceRequest
+/// - merchantapi:datasources_v1 : Empty
+/// - merchantapi:datasources_v1 : FetchDataSourceRequest
+/// - merchantapi:datasources_v1 : MerchantReviewDataSource
+/// - merchantapi:datasources_v1 : ProductReviewDataSource
+/// - merchantapi:inventories_v1 : Empty
+/// - merchantapi:issueresolution_v1 : CheckboxInput
+/// - merchantapi:lfp_v1 : Empty
+/// - merchantapi:notifications_v1 : Empty
+/// - merchantapi:products_v1 : Empty
 /// - metastore:v1 : CancelMigrationRequest
 /// - metastore:v1 : CancelOperationRequest
 /// - metastore:v1 : CompleteMigrationRequest
@@ -7421,6 +9471,7 @@ class $EgressSource {
 /// - networksecurity:v1 : AuthzPolicyCustomProviderCloudIap
 /// - networksecurity:v1 : CancelOperationRequest
 /// - networksecurity:v1 : Empty
+/// - networksecurity:v1 : FirewallEndpointEndpointSettings
 /// - networkservices:v1 : CancelOperationRequest
 /// - networkservices:v1 : Empty
 /// - notebooks:v1 : BootImage
@@ -7457,9 +9508,9 @@ class $EgressSource {
 /// - parallelstore:v1 : CancelOperationRequest
 /// - parallelstore:v1 : GoogleProtobufEmpty
 /// - parametermanager:v1 : Empty
-/// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest
-/// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest
-/// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest
+/// - paymentsresellersubscription:v1 : ResumeSubscriptionRequest
+/// - paymentsresellersubscription:v1 : SuspendSubscriptionRequest
+/// - paymentsresellersubscription:v1 : UndoCancelSubscriptionRequest
 /// - people:v1 : Empty
 /// - playintegrity:v1 : WriteDeviceRecallResponse
 /// - privateca:v1 : CancelOperationRequest
@@ -7600,9 +9651,12 @@ class $EgressSource {
 /// - vmmigration:v1 : AdaptingOSStep
 /// - vmmigration:v1 : CancelCloneJobRequest
 /// - vmmigration:v1 : CancelCutoverJobRequest
+/// - vmmigration:v1 : CancelDiskMigrationJobRequest
 /// - vmmigration:v1 : CancelImageImportJobRequest
 /// - vmmigration:v1 : CancelOperationRequest
+/// - vmmigration:v1 : CopyingSourceDiskSnapshotStep
 /// - vmmigration:v1 : CreatingImageStep
+/// - vmmigration:v1 : CreatingSourceDiskSnapshotStep
 /// - vmmigration:v1 : DataDiskImageImport
 /// - vmmigration:v1 : DisksMigrationDisksTargetDefaults
 /// - vmmigration:v1 : DisksMigrationDisksTargetDetails
@@ -7616,7 +9670,9 @@ class $EgressSource {
 /// - vmmigration:v1 : PauseMigrationRequest
 /// - vmmigration:v1 : PostProcessingStep
 /// - vmmigration:v1 : PreparingVMDisksStep
+/// - vmmigration:v1 : ProvisioningTargetDiskStep
 /// - vmmigration:v1 : ResumeMigrationRequest
+/// - vmmigration:v1 : RunDiskMigrationJobRequest
 /// - vmmigration:v1 : ShuttingDownSourceVMStep
 /// - vmmigration:v1 : SkipOsAdaptation
 /// - vmmigration:v1 : StartMigrationRequest
@@ -7634,6 +9690,7 @@ class $EgressSource {
 /// - workflows:v1 : Empty
 /// - workloadmanager:v1 : CancelOperationRequest
 /// - workloadmanager:v1 : Empty
+/// - workloadmanager:v1 : OpenShiftValidation
 /// - workloadmanager:v1 : WriteInsightResponse
 /// - workspaceevents:v1 : ReactivateSubscriptionRequest
 /// - workstations:v1 : CancelOperationRequest
@@ -7671,6 +9728,68 @@ class $EncryptionConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : EncryptionInfo
+/// - dfareporting:v5 : EncryptionInfo
+class $EncryptionInfo {
+  /// The encryption entity ID.
+  ///
+  /// This should match the encryption configuration for ad serving or Data
+  /// Transfer.
+  core.String? encryptionEntityId;
+
+  /// The encryption entity type.
+  ///
+  /// This should match the encryption configuration for ad serving or Data
+  /// Transfer.
+  /// Possible string values are:
+  /// - "ENCRYPTION_ENTITY_TYPE_UNKNOWN"
+  /// - "DCM_ACCOUNT"
+  /// - "DCM_ADVERTISER"
+  /// - "DBM_PARTNER"
+  /// - "DBM_ADVERTISER"
+  /// - "ADWORDS_CUSTOMER"
+  /// - "DFP_NETWORK_CODE"
+  core.String? encryptionEntityType;
+
+  /// Describes whether the encrypted cookie was received from ad serving (the
+  /// %m macro) or from Data Transfer.
+  /// Possible string values are:
+  /// - "ENCRYPTION_SCOPE_UNKNOWN"
+  /// - "AD_SERVING"
+  /// - "DATA_TRANSFER"
+  core.String? encryptionSource;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#encryptionInfo".
+  core.String? kind;
+
+  $EncryptionInfo({
+    this.encryptionEntityId,
+    this.encryptionEntityType,
+    this.encryptionSource,
+    this.kind,
+  });
+
+  $EncryptionInfo.fromJson(core.Map json_)
+    : this(
+        encryptionEntityId: json_['encryptionEntityId'] as core.String?,
+        encryptionEntityType: json_['encryptionEntityType'] as core.String?,
+        encryptionSource: json_['encryptionSource'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (encryptionEntityId != null) 'encryptionEntityId': encryptionEntityId!,
+    if (encryptionEntityType != null)
+      'encryptionEntityType': encryptionEntityType!,
+    if (encryptionSource != null) 'encryptionSource': encryptionSource!,
+    if (kind != null) 'kind': kind!,
   };
 }
 
@@ -8010,6 +10129,33 @@ class $ErrorInfo {
     if (domain != null) 'domain': domain!,
     if (metadatas != null) 'metadatas': metadatas!,
     if (reason != null) 'reason': reason!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : EventTagOverride
+/// - dfareporting:v5 : EventTagOverride
+class $EventTagOverride {
+  /// Whether this override is enabled.
+  core.bool? enabled;
+
+  /// ID of this event tag override.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  $EventTagOverride({this.enabled, this.id});
+
+  $EventTagOverride.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        id: json_['id'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enabled != null) 'enabled': enabled!,
+    if (id != null) 'id': id!,
   };
 }
 
@@ -8891,6 +11037,33 @@ class $Explicit {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : ExploitPredictionScoringSystem
+/// - ondemandscanning:v1 : ExploitPredictionScoringSystem
+class $ExploitPredictionScoringSystem {
+  /// The percentile of the current score, the proportion of all scored
+  /// vulnerabilities with the same or a lower EPSS score
+  core.double? percentile;
+
+  /// The EPSS score representing the probability \[0-1\] of exploitation in the
+  /// wild in the next 30 days
+  core.double? score;
+
+  $ExploitPredictionScoringSystem({this.percentile, this.score});
+
+  $ExploitPredictionScoringSystem.fromJson(core.Map json_)
+    : this(
+        percentile: (json_['percentile'] as core.num?)?.toDouble(),
+        score: (json_['score'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (percentile != null) 'percentile': percentile!,
+    if (score != null) 'score': score!,
+  };
+}
+
+/// Used by:
+///
 /// - logging:v2 : Exponential
 /// - monitoring:v3 : Exponential
 class $Exponential {
@@ -9004,6 +11177,7 @@ class $ExportOptions01 {
 /// - compute:v1 : Expr
 /// - config:v1 : Expr
 /// - connectors:v1 : Expr
+/// - contactcenterinsights:v1 : GoogleTypeExpr
 /// - containeranalysis:v1 : Expr
 /// - contentwarehouse:v1 : GoogleTypeExpr
 /// - datacatalog:v1 : Expr
@@ -9180,6 +11354,204 @@ class $FcmOptions {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : FeedField
+/// - dfareporting:v5 : FeedField
+class $FeedField {
+  /// The default value of the field.
+  ///
+  /// Optional.
+  core.String? defaultValue;
+
+  /// Whether the field is filterable.
+  ///
+  /// Could be set as true when the field type is any of the following and is
+  /// not renderable: - STRING - BOOL - COUNTRY_CODE_ISO - CM360_SITE_ID -
+  /// CM360_KEYWORD - CM360_CREATIVE_ID - CM360_PLACEMENT_ID - CM360_AD_ID -
+  /// CM360_ADVERTISER_ID - CM360_CAMPAIGN_ID - CITY - REGION - POSTAL_CODE -
+  /// METRO - CUSTOM_VALUE - REMARKETING_VALUE - GEO_CANONICAL - STRING_LIST -
+  /// CREATIVE_DIMENSION - USERLIST_ID - CM360_DYNAMIC_TARGETING_KEY -
+  /// DV360_LINE_ITEM_ID
+  ///
+  /// Optional.
+  core.bool? filterable;
+
+  /// The ID of the field.
+  ///
+  /// The ID is based on the column index starting from 0, and it should match
+  /// the column index in the resource link.
+  ///
+  /// Required.
+  core.int? id;
+
+  /// The name of the field.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Whether the field is able to display.
+  ///
+  /// Could be set as true when the field type is not in any of the following
+  /// and the field is not filterable: - COUNTRY_CODE_ISO - CITY - REGION -
+  /// POSTAL_CODE - METRO - GEO_CANONICAL - USERLIST_ID - CONTEXTUAL_KEYWORD -
+  /// CM360_DYNAMIC_TARGETING_KEY - WEIGHT
+  ///
+  /// Optional.
+  core.bool? renderable;
+
+  /// Whether the field is required and should not be empty in the feed.
+  ///
+  /// Could be set as true when the field type is any of the following: -
+  /// GPA_SERVED_IMAGE_URL - GPA_SERVED_ASSET_URL - ASSET_LIBRARY_HANDLE -
+  /// ASSET_LIBRARY_VIDEO_HANDLE - ASSET_LIBRARY_DIRECTORY_HANDLE
+  ///
+  /// Optional.
+  core.bool? required;
+
+  /// The type of the field.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNKNOWN" : The type is unspecified. This is an unused value.
+  /// - "STRING" : The field type is text.
+  /// - "LONG" : The field type is whole number.
+  /// - "GPA_SERVED_IMAGE_URL" : The field type is image url
+  /// - "GPA_SERVED_ASSET_URL" : The field type is asset url.
+  /// - "COUNTRY_CODE_ISO" : The field type is the ISO 3166-2 alpha-2 codes. It
+  /// is two-letter country codes defined in ISO 3166-1 published by the
+  /// International Organization for Standardization.
+  /// - "FLOAT" : The field type is decimal.
+  /// - "CM360_KEYWORD" : The field type is custom CM360 ad tag parameter.
+  /// - "CM360_SITE_ID" : The field type is CM360 site ID.
+  /// - "BOOL" : The field type is boolean.
+  /// - "EXIT_URL" : The field type is exit url.
+  /// - "DATETIME" : The field type is datetime.
+  /// - "CM360_CREATIVE_ID" : The field type is CM360 creative ID.
+  /// - "CM360_PLACEMENT_ID" : The field type is CM360 placement ID.
+  /// - "CM360_AD_ID" : The field type is CM360 ad ID.
+  /// - "CM360_ADVERTISER_ID" : The field type is CM360 advertiser ID.
+  /// - "CM360_CAMPAIGN_ID" : The field type is CM360 campaign ID.
+  /// - "CITY" : The field type is cities.
+  /// - "REGION" : The field type is region.
+  /// - "POSTAL_CODE" : The field type is postal code.
+  /// - "METRO" : The field type is metro code.
+  /// - "CUSTOM_VALUE" : The field type is custom value.
+  /// - "REMARKETING_VALUE" : The field type is remarketing value.
+  /// - "GEO_CANONICAL" : The field type is accurate geographic type.
+  /// - "WEIGHT" : The field type is weight.
+  /// - "STRING_LIST" : The field type is a list of values.
+  /// - "CREATIVE_DIMENSION" : The field type is creative dimension.
+  /// - "USERLIST_ID" : The field type is CM/DV360 Audience ID.
+  /// - "ASSET_LIBRARY_DIRECTORY_HANDLE" : The field type is AssetLibrary
+  /// directory path.
+  /// - "ASSET_LIBRARY_VIDEO_HANDLE" : The field type is AssetLibrary video file
+  /// path.
+  /// - "ASSET_LIBRARY_HANDLE" : The field type is AssetLibrary path.
+  /// - "THIRD_PARTY_SERVED_URL" : The field type is third party served url.
+  /// - "CM360_DYNAMIC_TARGETING_KEY" : The field type is CM dynamic targeting
+  /// key.
+  /// - "DV360_LINE_ITEM_ID" : The field type is DV360 line item ID.
+  core.String? type;
+
+  $FeedField({
+    this.defaultValue,
+    this.filterable,
+    this.id,
+    this.name,
+    this.renderable,
+    this.required,
+    this.type,
+  });
+
+  $FeedField.fromJson(core.Map json_)
+    : this(
+        defaultValue: json_['defaultValue'] as core.String?,
+        filterable: json_['filterable'] as core.bool?,
+        id: json_['id'] as core.int?,
+        name: json_['name'] as core.String?,
+        renderable: json_['renderable'] as core.bool?,
+        required: json_['required'] as core.bool?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (defaultValue != null) 'defaultValue': defaultValue!,
+    if (filterable != null) 'filterable': filterable!,
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (renderable != null) 'renderable': renderable!,
+    if (required != null) 'required': required!,
+    if (type != null) 'type': type!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : FeedSchedule
+/// - dfareporting:v5 : FeedSchedule
+class $FeedSchedule {
+  /// The number of times the feed retransforms within one day.
+  ///
+  /// This is a required field if the schedule is enabled. Acceptable values are
+  /// between 1 to 6, inclusive.
+  ///
+  /// Optional.
+  core.String? repeatValue;
+
+  /// Whether the schedule is enabled.
+  ///
+  /// Optional.
+  core.bool? scheduleEnabled;
+
+  /// The hour of the day to start the feed.
+  ///
+  /// It is applicable if the repeat value is equal to 1. Default value is 0.
+  ///
+  /// Optional.
+  core.String? startHour;
+
+  /// The minute of the hour to start the feed.
+  ///
+  /// It is applicable if the repeat value is equal to 1. Default value is 0.
+  ///
+  /// Optional.
+  core.String? startMinute;
+
+  /// The time zone to schedule the feed.
+  ///
+  /// It is applicable if the repeat value is equal to 1. Default value is
+  /// "America/Los_Angeles".
+  ///
+  /// Optional.
+  core.String? timeZone;
+
+  $FeedSchedule({
+    this.repeatValue,
+    this.scheduleEnabled,
+    this.startHour,
+    this.startMinute,
+    this.timeZone,
+  });
+
+  $FeedSchedule.fromJson(core.Map json_)
+    : this(
+        repeatValue: json_['repeatValue'] as core.String?,
+        scheduleEnabled: json_['scheduleEnabled'] as core.bool?,
+        startHour: json_['startHour'] as core.String?,
+        startMinute: json_['startMinute'] as core.String?,
+        timeZone: json_['timeZone'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (repeatValue != null) 'repeatValue': repeatValue!,
+    if (scheduleEnabled != null) 'scheduleEnabled': scheduleEnabled!,
+    if (startHour != null) 'startHour': startHour!,
+    if (startMinute != null) 'startMinute': startMinute!,
+    if (timeZone != null) 'timeZone': timeZone!,
+  };
+}
+
+/// Used by:
+///
 /// - cloudbuild:v2 : FetchGitRefsResponse
 /// - developerconnect:v1 : FetchGitRefsResponse
 class $FetchGitRefsResponse {
@@ -9203,6 +11575,145 @@ class $FetchGitRefsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (refNames != null) 'refNames': refNames!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : FieldError
+/// - dfareporting:v5 : FieldError
+class $FieldError {
+  /// The ID of the field.
+  ///
+  /// Output only.
+  core.int? fieldId;
+
+  /// The name of the field.
+  ///
+  /// Output only.
+  core.String? fieldName;
+
+  /// The list of values of the field.
+  ///
+  /// Output only.
+  core.List<core.String>? fieldValues;
+
+  /// The ingestion error of the field.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "UNKNOWN_PARSING_ERROR" : The ingestion error is unknown.
+  /// - "MISSING_ID" : The ingestion error when the ID value is missing.
+  /// - "MISSING_REPORTING_LABEL" : The ingestion error when the element value
+  /// name used for reporting is missing.
+  /// - "EMPTY_VALUE" : The ingestion error when a required value is empty
+  /// - "ASSET_DOWNLOAD_ERROR" : The ingestion error when asset retrieval fails
+  /// for a particular image or asset.
+  /// - "ID_TOO_LONG" : The ingestion error when the ID value exceeds the string
+  /// length limit.
+  /// - "DUPLICATE_ID" : The ingestion error when the ID value is duplicate.
+  /// - "PARSING_ERROR" : The ingestion error when parsing the field fails.
+  /// - "COUNTRY_PARSING_ERROR" : The ingestion error when parsing the country
+  /// code fails.
+  /// - "LONG_PARSING_ERROR" : The ingestion error when parsing the long value
+  /// fails.
+  /// - "BOOL_PARSING_ERROR" : The ingestion error when parsing the boolean
+  /// value fails.
+  /// - "EXPANDED_URL_PARSING_ERROR" : The ingestion error when parsing the
+  /// expanded url fails.
+  /// - "FLOAT_PARSING_ERROR" : The ingestion error when parsing the float value
+  /// fails.
+  /// - "DATETIME_PARSING_ERROR" : The ingestion error when parsing the datetime
+  /// value fails.
+  /// - "INVALID_PREFERENCE_VALUE" : The ingestion error when the preference
+  /// value is not a positive float.
+  /// - "GEO_NOT_FOUND_ERROR" : The ingestion error when a geo location is not
+  /// found.
+  /// - "GEO_PARSING_ERROR" : The ingestion error when parsing the geo field
+  /// fails.
+  /// - "GEO_PROXIMITY_TARGETING_MULTIPLE_LOCATION_ERROR" : The ingestion error
+  /// when a feed row has multiple geotargets with proximity targeting enabled.
+  /// - "POSTAL_CODE_PARSING_ERROR" : The ingestion error when parsing the
+  /// postal code value fails.
+  /// - "METRO_CODE_PARSING_ERROR" : The ingestion error when parsing the metro
+  /// code value fails.
+  /// - "DATETIME_WITHOUT_TIMEZONE_PARSING_ERROR" : The ingestion error when
+  /// parsing the datetime value fails.
+  /// - "WEIGHT_PARSING_ERROR" : The ingestion error when parsing the weight
+  /// value fails.
+  /// - "CREATIVE_DIMENSION_PARSING_ERROR" : The ingestion error when parsing
+  /// the creative dimension value fails.
+  /// - "MULTIVALUE_ID" : The ingestion error when a STRING_LIST type ID has
+  /// multiple values.
+  /// - "ENDTIME_BEFORE_STARTTIME" : The ingestion error when the end time is
+  /// before the start time.
+  /// - "INVALID_ASSET_LIBRARY_HANDLE" : The ingestion error when the asset
+  /// library handle is invalid.
+  /// - "INVALID_ASSET_LIBRARY_VIDEO_HANDLE" : The ingestion error when the
+  /// asset library video handle is invalid.
+  /// - "INVALID_ASSET_LIBRARY_DIRECTORY_HANDLE" : The ingestion error when the
+  /// asset library directory handle is invalid.
+  /// - "DYNAMIC_TARGETING_KEY_NOT_DEFINED_FOR_ADVERTISER" : The ingestion error
+  /// when a targeting key used but not defined for the CM360 Advertiser.
+  /// - "USERLIST_ID_NOT_ACCESSIBLE_FOR_ADVERTISER" : The ingestion error when
+  /// the userlist ID is not accessible for the CM360 Advertiser.
+  /// - "ENDTIME_PASSED" : The ingestion error when the end time is passed.
+  /// - "ENDTIME_TOO_SOON" : The ingestion error when the end time is in the
+  /// near future (i.e., \<7 days).
+  /// - "TEXT_ASSET_REFERENCE" : The ingestion error when a text field specifies
+  /// a reference to an asset.
+  /// - "IMAGE_ASSET_SCS_REFERENCE" : The ingestion error when Image field
+  /// specifies a reference to an asset hosted on SCS
+  /// (s0.2mdn.net/s0qa.2mdn.net).
+  /// - "AIRPORT_GEO_TARGET" : The ingestion error when a geo target is an
+  /// airport.
+  /// - "CANONICAL_NAME_QUERY_MISMATCH" : The ingestion error when the geo
+  /// target's canonical name does not match the query string used to obtain it.
+  /// - "NO_DEFAULT_ROW" : The ingestion error or warning when the default row
+  /// is not set.
+  /// - "NO_ACTIVE_DEFAULT_ROW" : The ingestion error or warning when the
+  /// default row is not active.
+  /// - "NO_DEFAULT_ROW_IN_DATE_RANGE" : The ingestion error or warning when the
+  /// default row is not in the date range.
+  /// - "NO_ACTIVE_DEFAULT_ROW_IN_DATE_RANGE" : The ingestion error or warning
+  /// when the default row is not in the date range.
+  /// - "PAYLOAD_LIMIT_EXCEEDED" : The ingestion error when when the payload of
+  /// the record is above a threshold.
+  /// - "SSL_NOT_COMPLIANT" : The ingestion error or warning when the field is
+  /// not SSL compliant.
+  core.String? ingestionError;
+
+  /// Incidcates whether the field has error or warning.
+  ///
+  /// Output only.
+  core.bool? isError;
+
+  $FieldError({
+    this.fieldId,
+    this.fieldName,
+    this.fieldValues,
+    this.ingestionError,
+    this.isError,
+  });
+
+  $FieldError.fromJson(core.Map json_)
+    : this(
+        fieldId: json_['fieldId'] as core.int?,
+        fieldName: json_['fieldName'] as core.String?,
+        fieldValues:
+            (json_['fieldValues'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        ingestionError: json_['ingestionError'] as core.String?,
+        isError: json_['isError'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (fieldId != null) 'fieldId': fieldId!,
+    if (fieldName != null) 'fieldName': fieldName!,
+    if (fieldValues != null) 'fieldValues': fieldValues!,
+    if (ingestionError != null) 'ingestionError': ingestionError!,
+    if (isError != null) 'isError': isError!,
   };
 }
 
@@ -9378,6 +11889,84 @@ class $FixedOrPercent {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : FloodlightActivitiesGenerateTagResponse
+/// - dfareporting:v5 : FloodlightActivitiesGenerateTagResponse
+class $FloodlightActivitiesGenerateTagResponse {
+  /// Generated tag for this Floodlight activity.
+  ///
+  /// For Google tags, this is the event snippet.
+  core.String? floodlightActivityTag;
+
+  /// The global snippet section of a Google tag.
+  ///
+  /// The Google tag sets new cookies on your domain, which will store a unique
+  /// identifier for a user or the ad click that brought the user to your site.
+  /// Learn more.
+  core.String? globalSiteTagGlobalSnippet;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string
+  /// "dfareporting#floodlightActivitiesGenerateTagResponse".
+  core.String? kind;
+
+  $FloodlightActivitiesGenerateTagResponse({
+    this.floodlightActivityTag,
+    this.globalSiteTagGlobalSnippet,
+    this.kind,
+  });
+
+  $FloodlightActivitiesGenerateTagResponse.fromJson(core.Map json_)
+    : this(
+        floodlightActivityTag: json_['floodlightActivityTag'] as core.String?,
+        globalSiteTagGlobalSnippet:
+            json_['globalSiteTagGlobalSnippet'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (floodlightActivityTag != null)
+      'floodlightActivityTag': floodlightActivityTag!,
+    if (globalSiteTagGlobalSnippet != null)
+      'globalSiteTagGlobalSnippet': globalSiteTagGlobalSnippet!,
+    if (kind != null) 'kind': kind!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : FloodlightActivityDynamicTag
+/// - dfareporting:v5 : FloodlightActivityDynamicTag
+class $FloodlightActivityDynamicTag {
+  /// ID of this dynamic tag.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Name of this tag.
+  core.String? name;
+
+  /// Tag code.
+  core.String? tag;
+
+  $FloodlightActivityDynamicTag({this.id, this.name, this.tag});
+
+  $FloodlightActivityDynamicTag.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        name: json_['name'] as core.String?,
+        tag: json_['tag'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (id != null) 'id': id!,
+    if (name != null) 'name': name!,
+    if (tag != null) 'tag': tag!,
+  };
+}
+
+/// Used by:
+///
 /// - eventarc:v1 : GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat
 /// - eventarc:v1 : GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat
 class $Format {
@@ -9490,7 +12079,7 @@ class $FractionSplit {
 /// - displayvideo:v2 : FrequencyCap
 /// - displayvideo:v3 : FrequencyCap
 /// - displayvideo:v4 : FrequencyCap
-class $FrequencyCap {
+class $FrequencyCap00 {
   /// The maximum number of times a user may be shown the same ad during this
   /// period.
   ///
@@ -9542,7 +12131,7 @@ class $FrequencyCap {
   /// not applicable.
   core.bool? unlimited;
 
-  $FrequencyCap({
+  $FrequencyCap00({
     this.maxImpressions,
     this.maxViews,
     this.timeUnit,
@@ -9550,7 +12139,7 @@ class $FrequencyCap {
     this.unlimited,
   });
 
-  $FrequencyCap.fromJson(core.Map json_)
+  $FrequencyCap00.fromJson(core.Map json_)
     : this(
         maxImpressions: json_['maxImpressions'] as core.int?,
         maxViews: json_['maxViews'] as core.int?,
@@ -9565,6 +12154,90 @@ class $FrequencyCap {
     if (timeUnit != null) 'timeUnit': timeUnit!,
     if (timeUnitCount != null) 'timeUnitCount': timeUnitCount!,
     if (unlimited != null) 'unlimited': unlimited!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : FrequencyCap
+/// - dfareporting:v5 : FrequencyCap
+class $FrequencyCap01 {
+  /// Duration of time, in seconds, for this frequency cap.
+  ///
+  /// The maximum duration is 90 days. Acceptable values are 1 to 7776000,
+  /// inclusive.
+  core.String? duration;
+
+  /// Number of times an individual user can be served the ad within the
+  /// specified duration.
+  ///
+  /// Acceptable values are 1 to 15, inclusive.
+  core.String? impressions;
+
+  $FrequencyCap01({this.duration, this.impressions});
+
+  $FrequencyCap01.fromJson(core.Map json_)
+    : this(
+        duration: json_['duration'] as core.String?,
+        impressions: json_['impressions'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (duration != null) 'duration': duration!,
+    if (impressions != null) 'impressions': impressions!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : FsCommand
+/// - dfareporting:v5 : FsCommand
+class $FsCommand {
+  /// Distance from the left of the browser.Applicable when positionOption is
+  /// DISTANCE_FROM_TOP_LEFT_CORNER.
+  core.int? left;
+
+  /// Position in the browser where the window will open.
+  /// Possible string values are:
+  /// - "CENTERED" : Center of the window Corresponds to "center" in UI
+  /// - "DISTANCE_FROM_TOP_LEFT_CORNER" : user-defined distance from top
+  /// left-hand corner of the window Corresponds to "top-left" in UI
+  core.String? positionOption;
+
+  /// Distance from the top of the browser.
+  ///
+  /// Applicable when positionOption is DISTANCE_FROM_TOP_LEFT_CORNER.
+  core.int? top;
+
+  /// Height of the window.
+  core.int? windowHeight;
+
+  /// Width of the window.
+  core.int? windowWidth;
+
+  $FsCommand({
+    this.left,
+    this.positionOption,
+    this.top,
+    this.windowHeight,
+    this.windowWidth,
+  });
+
+  $FsCommand.fromJson(core.Map json_)
+    : this(
+        left: json_['left'] as core.int?,
+        positionOption: json_['positionOption'] as core.String?,
+        top: json_['top'] as core.int?,
+        windowHeight: json_['windowHeight'] as core.int?,
+        windowWidth: json_['windowWidth'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (left != null) 'left': left!,
+    if (positionOption != null) 'positionOption': positionOption!,
+    if (top != null) 'top': top!,
+    if (windowHeight != null) 'windowHeight': windowHeight!,
+    if (windowWidth != null) 'windowWidth': windowWidth!,
   };
 }
 
@@ -12035,6 +14708,62 @@ class $IdentityServiceUserConfig {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : IngestionStatus
+/// - dfareporting:v5 : IngestionStatus
+class $IngestionStatus {
+  /// The number of active rows in the feed.
+  ///
+  /// Output only.
+  core.String? numActiveRows;
+
+  /// The number of rows processed in the feed.
+  ///
+  /// Output only.
+  core.String? numRowsProcessed;
+
+  /// The total number of rows in the feed.
+  ///
+  /// Output only.
+  core.String? numRowsTotal;
+
+  /// The number of rows with errors in the feed.
+  ///
+  /// Output only.
+  core.String? numRowsWithErrors;
+
+  /// The total number of warnings in the feed.
+  ///
+  /// Output only.
+  core.String? numWarningsTotal;
+
+  $IngestionStatus({
+    this.numActiveRows,
+    this.numRowsProcessed,
+    this.numRowsTotal,
+    this.numRowsWithErrors,
+    this.numWarningsTotal,
+  });
+
+  $IngestionStatus.fromJson(core.Map json_)
+    : this(
+        numActiveRows: json_['numActiveRows'] as core.String?,
+        numRowsProcessed: json_['numRowsProcessed'] as core.String?,
+        numRowsTotal: json_['numRowsTotal'] as core.String?,
+        numRowsWithErrors: json_['numRowsWithErrors'] as core.String?,
+        numWarningsTotal: json_['numWarningsTotal'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (numActiveRows != null) 'numActiveRows': numActiveRows!,
+    if (numRowsProcessed != null) 'numRowsProcessed': numRowsProcessed!,
+    if (numRowsTotal != null) 'numRowsTotal': numRowsTotal!,
+    if (numRowsWithErrors != null) 'numRowsWithErrors': numRowsWithErrors!,
+    if (numWarningsTotal != null) 'numWarningsTotal': numWarningsTotal!,
+  };
+}
+
+/// Used by:
+///
 /// - accesscontextmanager:v1 : IngressSource
 /// - cloudasset:v1 : GoogleIdentityAccesscontextmanagerV1IngressSource
 class $IngressSource {
@@ -12853,6 +15582,9 @@ class $IntegrityTokenRequest {
 /// - airquality:v1 : Interval
 /// - apigee:v1 : GoogleTypeInterval
 /// - contentwarehouse:v1 : GoogleTypeInterval
+/// - merchantapi:inventories_v1 : Interval
+/// - merchantapi:products_v1 : Interval
+/// - merchantapi:promotions_v1 : Interval
 /// - sheets:v4 : Interval
 /// - tpu:v2 : Interval
 /// - versionhistory:v1 : Interval
@@ -13431,6 +16163,24 @@ class $KeyAccessJustificationsPolicy {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : KeyValueTargetingExpression
+/// - dfareporting:v5 : KeyValueTargetingExpression
+class $KeyValueTargetingExpression {
+  /// Keyword expression being targeted by the ad.
+  core.String? expression;
+
+  $KeyValueTargetingExpression({this.expression});
+
+  $KeyValueTargetingExpression.fromJson(core.Map json_)
+    : this(expression: json_['expression'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (expression != null) 'expression': expression!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : KeywordAssignedTargetingOptionDetails
 /// - displayvideo:v3 : KeywordAssignedTargetingOptionDetails
 /// - displayvideo:v4 : KeywordAssignedTargetingOptionDetails
@@ -13665,6 +16415,48 @@ class $Labels {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : Language
+/// - dfareporting:v5 : Language
+class $Language {
+  /// Language ID of this language.
+  ///
+  /// This is the ID used for targeting and generating reports.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#language".
+  core.String? kind;
+
+  /// Format of language code is an ISO 639 two-letter language code optionally
+  /// followed by an underscore followed by an ISO 3166 code.
+  ///
+  /// Examples are "en" for English or "zh_CN" for Simplified Chinese.
+  core.String? languageCode;
+
+  /// Name of this language.
+  core.String? name;
+
+  $Language({this.id, this.kind, this.languageCode, this.name});
+
+  $Language.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        languageCode: json_['languageCode'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (languageCode != null) 'languageCode': languageCode!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : LanguageAssignedTargetingOptionDetails
 /// - displayvideo:v3 : LanguageAssignedTargetingOptionDetails
 /// - displayvideo:v4 : LanguageAssignedTargetingOptionDetails
@@ -13724,6 +16516,24 @@ class $LanguageTargetingOptionDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (displayName != null) 'displayName': displayName!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : LastModifiedInfo
+/// - dfareporting:v5 : LastModifiedInfo
+class $LastModifiedInfo {
+  /// Timestamp of the last change in milliseconds since epoch.
+  core.String? time;
+
+  $LastModifiedInfo({this.time});
+
+  $LastModifiedInfo.fromJson(core.Map json_)
+    : this(time: json_['time'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (time != null) 'time': time!,
   };
 }
 
@@ -14150,6 +16960,154 @@ class $ListPolicy {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : ListPopulationTerm
+/// - dfareporting:v5 : ListPopulationTerm
+class $ListPopulationTerm {
+  /// Will be true if the term should check if the user is in the list and false
+  /// if the term should check if the user is not in the list.
+  ///
+  /// This field is only relevant when type is set to LIST_MEMBERSHIP_TERM.
+  /// False by default.
+  core.bool? contains;
+
+  /// Whether to negate the comparison result of this term during rule
+  /// evaluation.
+  ///
+  /// This field is only relevant when type is left unset or set to
+  /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.
+  core.bool? negation;
+
+  /// Comparison operator of this term.
+  ///
+  /// This field is only relevant when type is left unset or set to
+  /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.
+  /// Possible string values are:
+  /// - "NUM_EQUALS"
+  /// - "NUM_LESS_THAN"
+  /// - "NUM_LESS_THAN_EQUAL"
+  /// - "NUM_GREATER_THAN"
+  /// - "NUM_GREATER_THAN_EQUAL"
+  /// - "STRING_EQUALS"
+  /// - "STRING_CONTAINS"
+  core.String? operator;
+
+  /// ID of the list in question.
+  ///
+  /// This field is only relevant when type is set to LIST_MEMBERSHIP_TERM.
+  core.String? remarketingListId;
+
+  /// List population term type determines the applicable fields in this object.
+  ///
+  /// If left unset or set to CUSTOM_VARIABLE_TERM, then variableName,
+  /// variableFriendlyName, operator, value, and negation are applicable. If set
+  /// to LIST_MEMBERSHIP_TERM then remarketingListId and contains are
+  /// applicable. If set to REFERRER_TERM then operator, value, and negation are
+  /// applicable.
+  /// Possible string values are:
+  /// - "CUSTOM_VARIABLE_TERM"
+  /// - "LIST_MEMBERSHIP_TERM"
+  /// - "REFERRER_TERM"
+  core.String? type;
+
+  /// Literal to compare the variable to.
+  ///
+  /// This field is only relevant when type is left unset or set to
+  /// CUSTOM_VARIABLE_TERM or REFERRER_TERM.
+  core.String? value;
+
+  /// Friendly name of this term's variable.
+  ///
+  /// This is a read-only, auto-generated field. This field is only relevant
+  /// when type is left unset or set to CUSTOM_VARIABLE_TERM.
+  core.String? variableFriendlyName;
+
+  /// Name of the variable (U1, U2, etc.) being compared in this term.
+  ///
+  /// This field is only relevant when type is set to null, CUSTOM_VARIABLE_TERM
+  /// or REFERRER_TERM.
+  core.String? variableName;
+
+  $ListPopulationTerm({
+    this.contains,
+    this.negation,
+    this.operator,
+    this.remarketingListId,
+    this.type,
+    this.value,
+    this.variableFriendlyName,
+    this.variableName,
+  });
+
+  $ListPopulationTerm.fromJson(core.Map json_)
+    : this(
+        contains: json_['contains'] as core.bool?,
+        negation: json_['negation'] as core.bool?,
+        operator: json_['operator'] as core.String?,
+        remarketingListId: json_['remarketingListId'] as core.String?,
+        type: json_['type'] as core.String?,
+        value: json_['value'] as core.String?,
+        variableFriendlyName: json_['variableFriendlyName'] as core.String?,
+        variableName: json_['variableName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (contains != null) 'contains': contains!,
+    if (negation != null) 'negation': negation!,
+    if (operator != null) 'operator': operator!,
+    if (remarketingListId != null) 'remarketingListId': remarketingListId!,
+    if (type != null) 'type': type!,
+    if (value != null) 'value': value!,
+    if (variableFriendlyName != null)
+      'variableFriendlyName': variableFriendlyName!,
+    if (variableName != null) 'variableName': variableName!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : ListTargetingExpression
+/// - dfareporting:v5 : ListTargetingExpression
+class $ListTargetingExpression {
+  /// Expression describing which lists are being targeted by the ad.
+  core.String? expression;
+
+  $ListTargetingExpression({this.expression});
+
+  $ListTargetingExpression.fromJson(core.Map json_)
+    : this(expression: json_['expression'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (expression != null) 'expression': expression!,
+  };
+}
+
+/// Used by:
+///
+/// - content:v2.1 : ServiceStoreConfigCutoffConfigLocalCutoffTime
+/// - merchantapi:accounts_v1 : LocalCutoffTime
+class $LocalCutoffTime {
+  /// Hour local delivery orders must be placed by to process the same day.
+  core.String? hour;
+
+  /// Minute local delivery orders must be placed by to process the same day.
+  core.String? minute;
+
+  $LocalCutoffTime({this.hour, this.minute});
+
+  $LocalCutoffTime.fromJson(core.Map json_)
+    : this(
+        hour: json_['hour'] as core.String?,
+        minute: json_['minute'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (hour != null) 'hour': hour!,
+    if (minute != null) 'minute': minute!,
+  };
+}
+
+/// Used by:
+///
 /// - trafficdirector:v2 : Locality
 /// - trafficdirector:v3 : Locality
 class $Locality {
@@ -14236,6 +17194,7 @@ class $LocalizedMessage {
 /// - cloudfunctions:v1 : Location
 /// - cloudfunctions:v2 : Location
 /// - cloudkms:v1 : Location
+/// - cloudlocationfinder:v1 : Location
 /// - cloudscheduler:v1 : Location
 /// - cloudtasks:v2 : Location
 /// - config:v1 : Location
@@ -14618,6 +17577,46 @@ class $LogFileDirectories {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : LookbackConfiguration
+/// - dfareporting:v5 : LookbackConfiguration
+class $LookbackConfiguration {
+  /// Lookback window, in days, from the last time a given user clicked on one
+  /// of your ads.
+  ///
+  /// If you enter 0, clicks will not be considered as triggering events for
+  /// floodlight tracking. If you leave this field blank, the default value for
+  /// your account will be used. Acceptable values are 0 to 90, inclusive.
+  core.int? clickDuration;
+
+  /// Lookback window, in days, from the last time a given user viewed one of
+  /// your ads.
+  ///
+  /// If you enter 0, impressions will not be considered as triggering events
+  /// for floodlight tracking. If you leave this field blank, the default value
+  /// for your account will be used. Acceptable values are 0 to 90, inclusive.
+  core.int? postImpressionActivitiesDuration;
+
+  $LookbackConfiguration({
+    this.clickDuration,
+    this.postImpressionActivitiesDuration,
+  });
+
+  $LookbackConfiguration.fromJson(core.Map json_)
+    : this(
+        clickDuration: json_['clickDuration'] as core.int?,
+        postImpressionActivitiesDuration:
+            json_['postImpressionActivitiesDuration'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (clickDuration != null) 'clickDuration': clickDuration!,
+    if (postImpressionActivitiesDuration != null)
+      'postImpressionActivitiesDuration': postImpressionActivitiesDuration!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : LookbackWindow
 /// - displayvideo:v3 : LookbackWindow
 /// - displayvideo:v4 : LookbackWindow
@@ -14847,6 +17846,175 @@ class $MeasurementConfig {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : MeasurementPartnerAdvertiserLink
+/// - dfareporting:v5 : MeasurementPartnerAdvertiserLink
+class $MeasurementPartnerAdvertiserLink {
+  /// Status of the partner link.
+  /// Possible string values are:
+  /// - "MEASUREMENT_PARTNER_UNLINKED" : Unlinked.
+  /// - "MEASUREMENT_PARTNER_LINKED" : Linked successfully
+  /// - "MEASUREMENT_PARTNER_LINK_PENDING" : Link pending for wrapping.
+  /// - "MEASUREMENT_PARTNER_LINK_FAILURE" : Linking failure.
+  /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT" : Link opt-out by user.
+  /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING" : Link opt-out pending sync.
+  /// - "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING" : Link wrap answer pending.
+  /// - "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING" : Mode change pending.
+  /// - "MEASUREMENT_PARTNER_UNLINK_PENDING" : Partner unlink pending.
+  core.String? linkStatus;
+
+  /// Measurement partner used for tag wrapping.
+  /// Possible string values are:
+  /// - "NONE"
+  /// - "INTEGRAL_AD_SCIENCE"
+  /// - "DOUBLE_VERIFY"
+  core.String? measurementPartner;
+
+  /// partner Advertiser Id.
+  core.String? partnerAdvertiserId;
+
+  $MeasurementPartnerAdvertiserLink({
+    this.linkStatus,
+    this.measurementPartner,
+    this.partnerAdvertiserId,
+  });
+
+  $MeasurementPartnerAdvertiserLink.fromJson(core.Map json_)
+    : this(
+        linkStatus: json_['linkStatus'] as core.String?,
+        measurementPartner: json_['measurementPartner'] as core.String?,
+        partnerAdvertiserId: json_['partnerAdvertiserId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (linkStatus != null) 'linkStatus': linkStatus!,
+    if (measurementPartner != null) 'measurementPartner': measurementPartner!,
+    if (partnerAdvertiserId != null)
+      'partnerAdvertiserId': partnerAdvertiserId!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : MeasurementPartnerCampaignLink
+/// - dfareporting:v5 : MeasurementPartnerCampaignLink
+class $MeasurementPartnerCampaignLink {
+  /// .
+  /// Possible string values are:
+  /// - "MEASUREMENT_PARTNER_UNLINKED" : Unlinked.
+  /// - "MEASUREMENT_PARTNER_LINKED" : Linked successfully
+  /// - "MEASUREMENT_PARTNER_LINK_PENDING" : Link pending for wrapping.
+  /// - "MEASUREMENT_PARTNER_LINK_FAILURE" : Linking failure.
+  /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT" : Link opt-out by user.
+  /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING" : Link opt-out pending sync.
+  /// - "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING" : Link wrap answer pending.
+  /// - "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING" : Mode change pending.
+  /// - "MEASUREMENT_PARTNER_UNLINK_PENDING" : Partner unlink pending.
+  core.String? linkStatus;
+
+  /// Measurement partner used for tag wrapping.
+  /// Possible string values are:
+  /// - "NONE"
+  /// - "INTEGRAL_AD_SCIENCE"
+  /// - "DOUBLE_VERIFY"
+  core.String? measurementPartner;
+
+  /// Partner campaign ID needed for establishing linking with Measurement
+  /// partner.
+  core.String? partnerCampaignId;
+
+  $MeasurementPartnerCampaignLink({
+    this.linkStatus,
+    this.measurementPartner,
+    this.partnerCampaignId,
+  });
+
+  $MeasurementPartnerCampaignLink.fromJson(core.Map json_)
+    : this(
+        linkStatus: json_['linkStatus'] as core.String?,
+        measurementPartner: json_['measurementPartner'] as core.String?,
+        partnerCampaignId: json_['partnerCampaignId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (linkStatus != null) 'linkStatus': linkStatus!,
+    if (measurementPartner != null) 'measurementPartner': measurementPartner!,
+    if (partnerCampaignId != null) 'partnerCampaignId': partnerCampaignId!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : MeasurementPartnerWrappingData
+/// - dfareporting:v5 : MeasurementPartnerWrappingData
+class $MeasurementPartnerWrappingData {
+  /// Placement wrapping status.
+  /// Possible string values are:
+  /// - "MEASUREMENT_PARTNER_UNLINKED" : Unlinked.
+  /// - "MEASUREMENT_PARTNER_LINKED" : Linked successfully
+  /// - "MEASUREMENT_PARTNER_LINK_PENDING" : Link pending for wrapping.
+  /// - "MEASUREMENT_PARTNER_LINK_FAILURE" : Linking failure.
+  /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT" : Link opt-out by user.
+  /// - "MEASUREMENT_PARTNER_LINK_OPT_OUT_PENDING" : Link opt-out pending sync.
+  /// - "MEASUREMENT_PARTNER_LINK_WRAPPING_PENDING" : Link wrap answer pending.
+  /// - "MEASUREMENT_PARTNER_MODE_CHANGE_PENDING" : Mode change pending.
+  /// - "MEASUREMENT_PARTNER_UNLINK_PENDING" : Partner unlink pending.
+  core.String? linkStatus;
+
+  /// Measurement partner used for wrapping the placement.
+  /// Possible string values are:
+  /// - "NONE"
+  /// - "INTEGRAL_AD_SCIENCE"
+  /// - "DOUBLE_VERIFY"
+  core.String? measurementPartner;
+
+  /// Measurement mode for the wrapped placement.
+  /// Possible string values are:
+  /// - "NONE"
+  /// - "BLOCKING"
+  /// - "MONITORING"
+  /// - "MONITORING_READ_ONLY"
+  /// - "VIDEO_PIXEL_MONITORING"
+  /// - "TRACKING"
+  /// - "VPAID_MONITORING"
+  /// - "VPAID_BLOCKING"
+  /// - "NON_VPAID_MONITORING"
+  /// - "VPAID_ONLY_MONITORING"
+  /// - "VPAID_ONLY_BLOCKING"
+  /// - "VPAID_ONLY_FILTERING"
+  /// - "VPAID_FILTERING"
+  /// - "NON_VPAID_FILTERING"
+  /// - "BLOCKING_FILTERING_VPAID"
+  /// - "BLOCKING_FILTERING_VPAID_ONLY"
+  core.String? tagWrappingMode;
+
+  /// Tag provided by the measurement partner during wrapping.
+  core.String? wrappedTag;
+
+  $MeasurementPartnerWrappingData({
+    this.linkStatus,
+    this.measurementPartner,
+    this.tagWrappingMode,
+    this.wrappedTag,
+  });
+
+  $MeasurementPartnerWrappingData.fromJson(core.Map json_)
+    : this(
+        linkStatus: json_['linkStatus'] as core.String?,
+        measurementPartner: json_['measurementPartner'] as core.String?,
+        tagWrappingMode: json_['tagWrappingMode'] as core.String?,
+        wrappedTag: json_['wrappedTag'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (linkStatus != null) 'linkStatus': linkStatus!,
+    if (measurementPartner != null) 'measurementPartner': measurementPartner!,
+    if (tagWrappingMode != null) 'tagWrappingMode': tagWrappingMode!,
+    if (wrappedTag != null) 'wrappedTag': wrappedTag!,
+  };
+}
+
+/// Used by:
+///
 /// - chat:v1 : Media
 /// - cloudsearch:v1 : Media
 /// - displayvideo:v2 : GoogleBytestreamMedia
@@ -14892,6 +18060,31 @@ class $MethodSelector {
   core.Map<core.String, core.dynamic> toJson() => {
     if (method != null) 'method': method!,
     if (permission != null) 'permission': permission!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : Metric
+/// - dfareporting:v5 : Metric
+class $Metric {
+  /// The kind of resource this is, in this case dfareporting#metric.
+  core.String? kind;
+
+  /// The metric name, e.g. impressions
+  core.String? name;
+
+  $Metric({this.kind, this.name});
+
+  $Metric.fromJson(core.Map json_)
+    : this(
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
   };
 }
 
@@ -15019,6 +18212,71 @@ class $MetricRule {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : Metro
+/// - dfareporting:v5 : Metro
+class $Metro {
+  /// Country code of the country to which this metro region belongs.
+  core.String? countryCode;
+
+  /// DART ID of the country to which this metro region belongs.
+  core.String? countryDartId;
+
+  /// DART ID of this metro region.
+  core.String? dartId;
+
+  /// DMA ID of this metro region.
+  ///
+  /// This is the ID used for targeting and generating reports, and is
+  /// equivalent to metro_code.
+  core.String? dmaId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#metro".
+  core.String? kind;
+
+  /// Metro code of this metro region.
+  ///
+  /// This is equivalent to dma_id.
+  core.String? metroCode;
+
+  /// Name of this metro region.
+  core.String? name;
+
+  $Metro({
+    this.countryCode,
+    this.countryDartId,
+    this.dartId,
+    this.dmaId,
+    this.kind,
+    this.metroCode,
+    this.name,
+  });
+
+  $Metro.fromJson(core.Map json_)
+    : this(
+        countryCode: json_['countryCode'] as core.String?,
+        countryDartId: json_['countryDartId'] as core.String?,
+        dartId: json_['dartId'] as core.String?,
+        dmaId: json_['dmaId'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        metroCode: json_['metroCode'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (countryCode != null) 'countryCode': countryCode!,
+    if (countryDartId != null) 'countryDartId': countryDartId!,
+    if (dartId != null) 'dartId': dartId!,
+    if (dmaId != null) 'dmaId': dmaId!,
+    if (kind != null) 'kind': kind!,
+    if (metroCode != null) 'metroCode': metroCode!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Used by:
+///
 /// - servicemanagement:v1 : Mixin
 /// - serviceusage:v1 : Mixin
 class $Mixin {
@@ -15047,7 +18305,7 @@ class $Mixin {
 /// - displayvideo:v2 : MobileApp
 /// - displayvideo:v3 : MobileApp
 /// - displayvideo:v4 : MobileApp
-class $MobileApp {
+class $MobileApp00 {
   /// The ID of the app provided by the platform store.
   ///
   /// Android apps are identified by the bundle ID used by Android's Play store,
@@ -15076,9 +18334,9 @@ class $MobileApp {
   /// Output only.
   core.String? publisher;
 
-  $MobileApp({this.appId, this.displayName, this.platform, this.publisher});
+  $MobileApp00({this.appId, this.displayName, this.platform, this.publisher});
 
-  $MobileApp.fromJson(core.Map json_)
+  $MobileApp00.fromJson(core.Map json_)
     : this(
         appId: json_['appId'] as core.String?,
         displayName: json_['displayName'] as core.String?,
@@ -15091,6 +18349,114 @@ class $MobileApp {
     if (displayName != null) 'displayName': displayName!,
     if (platform != null) 'platform': platform!,
     if (publisher != null) 'publisher': publisher!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : MobileApp
+/// - dfareporting:v5 : MobileApp
+class $MobileApp01 {
+  /// Mobile app directory.
+  /// Possible string values are:
+  /// - "UNKNOWN"
+  /// - "APPLE_APP_STORE"
+  /// - "GOOGLE_PLAY_STORE"
+  /// - "ROKU_APP_STORE"
+  /// - "AMAZON_FIRETV_APP_STORE"
+  /// - "PLAYSTATION_APP_STORE"
+  /// - "APPLE_TV_APP_STORE"
+  /// - "XBOX_APP_STORE"
+  /// - "SAMSUNG_TV_APP_STORE"
+  /// - "ANDROID_TV_APP_STORE"
+  /// - "GENERIC_CTV_APP_STORE"
+  core.String? directory;
+
+  /// ID of this mobile app.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#mobileApp".
+  core.String? kind;
+
+  /// Publisher name.
+  core.String? publisherName;
+
+  /// Title of this mobile app.
+  core.String? title;
+
+  $MobileApp01({
+    this.directory,
+    this.id,
+    this.kind,
+    this.publisherName,
+    this.title,
+  });
+
+  $MobileApp01.fromJson(core.Map json_)
+    : this(
+        directory: json_['directory'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        publisherName: json_['publisherName'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (directory != null) 'directory': directory!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (publisherName != null) 'publisherName': publisherName!,
+    if (title != null) 'title': title!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : MobileCarrier
+/// - dfareporting:v5 : MobileCarrier
+class $MobileCarrier {
+  /// Country code of the country to which this mobile carrier belongs.
+  core.String? countryCode;
+
+  /// DART ID of the country to which this mobile carrier belongs.
+  core.String? countryDartId;
+
+  /// ID of this mobile carrier.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#mobileCarrier".
+  core.String? kind;
+
+  /// Name of this mobile carrier.
+  core.String? name;
+
+  $MobileCarrier({
+    this.countryCode,
+    this.countryDartId,
+    this.id,
+    this.kind,
+    this.name,
+  });
+
+  $MobileCarrier.fromJson(core.Map json_)
+    : this(
+        countryCode: json_['countryCode'] as core.String?,
+        countryDartId: json_['countryDartId'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (countryCode != null) 'countryCode': countryCode!,
+    if (countryDartId != null) 'countryDartId': countryDartId!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
   };
 }
 
@@ -15937,6 +19303,51 @@ class $Oauth2AuthCodeFlowGoogleManaged {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : ObjectFilter
+/// - dfareporting:v5 : ObjectFilter
+class $ObjectFilter {
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#objectFilter".
+  core.String? kind;
+
+  /// Applicable when status is ASSIGNED.
+  ///
+  /// The user has access to objects with these object IDs.
+  core.List<core.String>? objectIds;
+
+  /// Status of the filter.
+  ///
+  /// NONE means the user has access to none of the objects. ALL means the user
+  /// has access to all objects. ASSIGNED means the user has access to the
+  /// objects with IDs in the objectIds list.
+  /// Possible string values are:
+  /// - "NONE" : Profile has access to none of the objects.
+  /// - "ASSIGNED" : Profile has access to only specific objects.
+  /// - "ALL" : Profile has access to all objects.
+  core.String? status;
+
+  $ObjectFilter({this.kind, this.objectIds, this.status});
+
+  $ObjectFilter.fromJson(core.Map json_)
+    : this(
+        kind: json_['kind'] as core.String?,
+        objectIds:
+            (json_['objectIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        status: json_['status'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (kind != null) 'kind': kind!,
+    if (objectIds != null) 'objectIds': objectIds!,
+    if (status != null) 'status': status!,
+  };
+}
+
+/// Used by:
+///
 /// - firebaseappdistribution:v1 : GdataObjectId
 /// - walletobjects:v1 : ObjectId
 class $ObjectId {
@@ -16002,8 +19413,72 @@ class $ObjectIdentifier {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : OfflineUserAddressInfo
+/// - dfareporting:v5 : OfflineUserAddressInfo
+class $OfflineUserAddressInfo {
+  /// City of the address.
+  core.String? city;
+
+  /// 2-letter country code in ISO-3166-1 alpha-2 of the user's address.
+  core.String? countryCode;
+
+  /// First name of the user, which is hashed as SHA-256 after normalized
+  /// (Lowercase all characters; Remove any extra spaces before, after, and in
+  /// between).
+  core.String? hashedFirstName;
+
+  /// Last name of the user, which is hashed as SHA-256 after normalized (lower
+  /// case only and no punctuation).
+  core.String? hashedLastName;
+
+  /// The street address of the user hashed using SHA-256 hash function after
+  /// normalization (lower case only).
+  core.String? hashedStreetAddress;
+
+  /// Postal code of the user's address.
+  core.String? postalCode;
+
+  /// State code of the address.
+  core.String? state;
+
+  $OfflineUserAddressInfo({
+    this.city,
+    this.countryCode,
+    this.hashedFirstName,
+    this.hashedLastName,
+    this.hashedStreetAddress,
+    this.postalCode,
+    this.state,
+  });
+
+  $OfflineUserAddressInfo.fromJson(core.Map json_)
+    : this(
+        city: json_['city'] as core.String?,
+        countryCode: json_['countryCode'] as core.String?,
+        hashedFirstName: json_['hashedFirstName'] as core.String?,
+        hashedLastName: json_['hashedLastName'] as core.String?,
+        hashedStreetAddress: json_['hashedStreetAddress'] as core.String?,
+        postalCode: json_['postalCode'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (city != null) 'city': city!,
+    if (countryCode != null) 'countryCode': countryCode!,
+    if (hashedFirstName != null) 'hashedFirstName': hashedFirstName!,
+    if (hashedLastName != null) 'hashedLastName': hashedLastName!,
+    if (hashedStreetAddress != null)
+      'hashedStreetAddress': hashedStreetAddress!,
+    if (postalCode != null) 'postalCode': postalCode!,
+    if (state != null) 'state': state!,
+  };
+}
+
+/// Used by:
+///
 /// - dfareporting:v3.5 : OffsetPosition
 /// - dfareporting:v4 : OffsetPosition
+/// - dfareporting:v5 : OffsetPosition
 class $OffsetPosition {
   /// Offset distance from left side of an asset or a window.
   core.int? left;
@@ -16117,6 +19592,42 @@ class $OmidTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : OmnitureSettings
+/// - dfareporting:v5 : OmnitureSettings
+class $OmnitureSettings {
+  /// Whether placement cost data will be sent to Omniture.
+  ///
+  /// This property can be enabled only if omnitureIntegrationEnabled is true.
+  core.bool? omnitureCostDataEnabled;
+
+  /// Whether Omniture integration is enabled.
+  ///
+  /// This property can be enabled only when the "Advanced Ad Serving" account
+  /// setting is enabled.
+  core.bool? omnitureIntegrationEnabled;
+
+  $OmnitureSettings({
+    this.omnitureCostDataEnabled,
+    this.omnitureIntegrationEnabled,
+  });
+
+  $OmnitureSettings.fromJson(core.Map json_)
+    : this(
+        omnitureCostDataEnabled: json_['omnitureCostDataEnabled'] as core.bool?,
+        omnitureIntegrationEnabled:
+            json_['omnitureIntegrationEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (omnitureCostDataEnabled != null)
+      'omnitureCostDataEnabled': omnitureCostDataEnabled!,
+    if (omnitureIntegrationEnabled != null)
+      'omnitureIntegrationEnabled': omnitureIntegrationEnabled!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : OnScreenPositionAssignedTargetingOptionDetails
 /// - displayvideo:v3 : OnScreenPositionAssignedTargetingOptionDetails
 /// - displayvideo:v4 : OnScreenPositionAssignedTargetingOptionDetails
@@ -16204,6 +19715,56 @@ class $OnScreenPositionTargetingOptionDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (onScreenPosition != null) 'onScreenPosition': onScreenPosition!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : OperatingSystem
+/// - dfareporting:v5 : OperatingSystem
+class $OperatingSystem {
+  /// DART ID of this operating system.
+  ///
+  /// This is the ID used for targeting.
+  core.String? dartId;
+
+  /// Whether this operating system is for desktop.
+  core.bool? desktop;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#operatingSystem".
+  core.String? kind;
+
+  /// Whether this operating system is for mobile.
+  core.bool? mobile;
+
+  /// Name of this operating system.
+  core.String? name;
+
+  $OperatingSystem({
+    this.dartId,
+    this.desktop,
+    this.kind,
+    this.mobile,
+    this.name,
+  });
+
+  $OperatingSystem.fromJson(core.Map json_)
+    : this(
+        dartId: json_['dartId'] as core.String?,
+        desktop: json_['desktop'] as core.bool?,
+        kind: json_['kind'] as core.String?,
+        mobile: json_['mobile'] as core.bool?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dartId != null) 'dartId': dartId!,
+    if (desktop != null) 'desktop': desktop!,
+    if (kind != null) 'kind': kind!,
+    if (mobile != null) 'mobile': mobile!,
+    if (name != null) 'name': name!,
   };
 }
 
@@ -16594,6 +20155,8 @@ class $Parallelstore {
 
 /// Used by:
 ///
+/// - compute:v1 : BackendBucketParams
+/// - compute:v1 : BackendServiceParams
 /// - compute:v1 : FirewallParams
 /// - compute:v1 : NetworkParams
 /// - compute:v1 : RouteParams
@@ -17309,6 +20872,7 @@ class $Permissions {
 /// - compute:v1 : TestPermissionsResponse
 /// - config:v1 : TestIamPermissionsResponse
 /// - connectors:v1 : TestIamPermissionsResponse
+/// - contactcenterinsights:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - containeranalysis:v1 : TestIamPermissionsResponse
 /// - datacatalog:v1 : TestIamPermissionsResponse
 /// - datafusion:v1 : TestIamPermissionsResponse
@@ -17397,6 +20961,75 @@ class $Pipe {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : PlacementSingleConversionDomain
+/// - dfareporting:v5 : PlacementSingleConversionDomain
+class $PlacementSingleConversionDomain {
+  core.String? conversionDomainId;
+  core.String? conversionDomainValue;
+
+  $PlacementSingleConversionDomain({
+    this.conversionDomainId,
+    this.conversionDomainValue,
+  });
+
+  $PlacementSingleConversionDomain.fromJson(core.Map json_)
+    : this(
+        conversionDomainId: json_['conversionDomainId'] as core.String?,
+        conversionDomainValue: json_['conversionDomainValue'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (conversionDomainId != null) 'conversionDomainId': conversionDomainId!,
+    if (conversionDomainValue != null)
+      'conversionDomainValue': conversionDomainValue!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : PlacementStrategy
+/// - dfareporting:v5 : PlacementStrategy
+class $PlacementStrategy {
+  /// Account ID of this placement strategy.This is a read-only field that can
+  /// be left blank.
+  core.String? accountId;
+
+  /// ID of this placement strategy.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#placementStrategy".
+  core.String? kind;
+
+  /// Name of this placement strategy.
+  ///
+  /// This is a required field. It must be less than 256 characters long and
+  /// unique among placement strategies of the same account.
+  core.String? name;
+
+  $PlacementStrategy({this.accountId, this.id, this.kind, this.name});
+
+  $PlacementStrategy.fromJson(core.Map json_)
+    : this(
+        accountId: json_['accountId'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accountId != null) 'accountId': accountId!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Used by:
+///
 /// - datastore:v1 : PlanSummary
 /// - firestore:v1 : PlanSummary
 class $PlanSummary {
@@ -17422,6 +21055,38 @@ class $PlanSummary {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (indexesUsed != null) 'indexesUsed': indexesUsed!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : PlatformType
+/// - dfareporting:v5 : PlatformType
+class $PlatformType {
+  /// ID of this platform type.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#platformType".
+  core.String? kind;
+
+  /// Name of this platform type.
+  core.String? name;
+
+  $PlatformType({this.id, this.kind, this.name});
+
+  $PlatformType.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
   };
 }
 
@@ -17719,13 +21384,15 @@ class $PortConfig {
 /// - addressvalidation:v1 : GoogleTypePostalAddress
 /// - cloudchannel:v1 : GoogleTypePostalAddress
 /// - documentai:v1 : GoogleTypePostalAddress
+/// - domains:v1 : PostalAddress
 /// - jobs:v3 : PostalAddress
 /// - jobs:v4 : PostalAddress
+/// - merchantapi:accounts_v1 : PostalAddress
 /// - mybusinessaccountmanagement:v1 : PostalAddress
 /// - mybusinessbusinessinformation:v1 : PostalAddress
 /// - mybusinessverifications:v1 : PostalAddress
 /// - places:v1 : GoogleTypePostalAddress
-class $PostalAddress00 {
+class $PostalAddress {
   /// Unstructured address lines describing the lower levels of an address.
   ///
   /// Because values in `address_lines` do not have type information and may
@@ -17838,7 +21505,7 @@ class $PostalAddress00 {
   /// Optional.
   core.String? sublocality;
 
-  $PostalAddress00({
+  $PostalAddress({
     this.addressLines,
     this.administrativeArea,
     this.languageCode,
@@ -17852,7 +21519,7 @@ class $PostalAddress00 {
     this.sublocality,
   });
 
-  $PostalAddress00.fromJson(core.Map json_)
+  $PostalAddress.fromJson(core.Map json_)
     : this(
         addressLines:
             (json_['addressLines'] as core.List?)
@@ -17890,166 +21557,143 @@ class $PostalAddress00 {
 
 /// Used by:
 ///
-/// - contentwarehouse:v1 : GoogleTypePostalAddress
-/// - domains:v1 : PostalAddress
-class $PostalAddress01 {
-  /// Unstructured address lines describing the lower levels of an address.
+/// - dfareporting:v4 : PostalCode
+/// - dfareporting:v5 : PostalCode
+class $PostalCode {
+  /// Postal code.
   ///
-  /// Because values in address_lines do not have type information and may
-  /// sometimes contain multiple values in a single field (For example "Austin,
-  /// TX"), it is important that the line order is clear. The order of address
-  /// lines should be "envelope order" for the country/region of the address. In
-  /// places where this can vary (For example Japan), address_language is used
-  /// to make it explicit (For example "ja" for large-to-small ordering and
-  /// "ja-Latn" or "en" for small-to-large). This way, the most specific line of
-  /// an address can be selected based on the language. The minimum permitted
-  /// structural representation of an address consists of a region_code with all
-  /// remaining information placed in the address_lines. It would be possible to
-  /// format such an address very approximately without geocoding, but no
-  /// semantic reasoning could be made about any of the address components until
-  /// it was at least partially resolved. Creating an address only containing a
-  /// region_code and address_lines, and then geocoding is the recommended way
-  /// to handle completely unstructured addresses (as opposed to guessing which
-  /// parts of the address should be localities or administrative areas).
-  core.List<core.String>? addressLines;
+  /// This is equivalent to the id field.
+  core.String? code;
 
-  /// Highest administrative subdivision which is used for postal addresses of a
-  /// country or region.
-  ///
-  /// For example, this can be a state, a province, an oblast, or a prefecture.
-  /// Specifically, for Spain this is the province and not the autonomous
-  /// community (For example "Barcelona" and not "Catalonia"). Many countries
-  /// don't use an administrative area in postal addresses. For example in
-  /// Switzerland this should be left unpopulated.
-  ///
-  /// Optional.
-  core.String? administrativeArea;
+  /// Country code of the country to which this postal code belongs.
+  core.String? countryCode;
 
-  /// BCP-47 language code of the contents of this address (if known).
-  ///
-  /// This is often the UI language of the input form or is expected to match
-  /// one of the languages used in the address' country/region, or their
-  /// transliterated equivalents. This can affect formatting in certain
-  /// countries, but is not critical to the correctness of the data and will
-  /// never affect any validation or other non-formatting related operations. If
-  /// this value is not known, it should be omitted (rather than specifying a
-  /// possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
-  ///
-  /// Optional.
-  core.String? languageCode;
+  /// DART ID of the country to which this postal code belongs.
+  core.String? countryDartId;
 
-  /// Generally refers to the city/town portion of the address.
-  ///
-  /// Examples: US city, IT comune, UK post town. In regions of the world where
-  /// localities are not well defined or do not fit into this structure well,
-  /// leave locality empty and use address_lines.
-  ///
-  /// Optional.
-  core.String? locality;
+  /// ID of this postal code.
+  core.String? id;
 
-  /// The name of the organization at the address.
+  /// Identifies what kind of resource this is.
   ///
-  /// Optional.
-  core.String? organization;
+  /// Value: the fixed string "dfareporting#postalCode".
+  core.String? kind;
 
-  /// Postal code of the address.
-  ///
-  /// Not all countries use or require postal codes to be present, but where
-  /// they are used, they may trigger additional validation with other parts of
-  /// the address (For example state/zip validation in the U.S.A.).
-  ///
-  /// Optional.
-  core.String? postalCode;
-
-  /// The recipient at the address.
-  ///
-  /// This field may, under certain circumstances, contain multiline
-  /// information. For example, it might contain "care of" information.
-  ///
-  /// Optional.
-  core.List<core.String>? recipients;
-
-  /// CLDR region code of the country/region of the address.
-  ///
-  /// This is never inferred and it is up to the user to ensure the value is
-  /// correct. See https://cldr.unicode.org/ and
-  /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html
-  /// for details. Example: "CH" for Switzerland.
-  ///
-  /// Required.
-  core.String? regionCode;
-
-  /// The schema revision of the `PostalAddress`.
-  ///
-  /// This must be set to 0, which is the latest revision. All new revisions
-  /// **must** be backward compatible with old revisions.
-  core.int? revision;
-
-  /// Additional, country-specific, sorting code.
-  ///
-  /// This is not used in most regions. Where it is used, the value is either a
-  /// string like "CEDEX", optionally followed by a number (For example "CEDEX
-  /// 7"), or just a number alone, representing the "sector code" (Jamaica),
-  /// "delivery area indicator" (Malawi) or "post office indicator" (For example
-  /// Côte d'Ivoire).
-  ///
-  /// Optional.
-  core.String? sortingCode;
-
-  /// Sublocality of the address.
-  ///
-  /// For example, this can be neighborhoods, boroughs, districts.
-  ///
-  /// Optional.
-  core.String? sublocality;
-
-  $PostalAddress01({
-    this.addressLines,
-    this.administrativeArea,
-    this.languageCode,
-    this.locality,
-    this.organization,
-    this.postalCode,
-    this.recipients,
-    this.regionCode,
-    this.revision,
-    this.sortingCode,
-    this.sublocality,
+  $PostalCode({
+    this.code,
+    this.countryCode,
+    this.countryDartId,
+    this.id,
+    this.kind,
   });
 
-  $PostalAddress01.fromJson(core.Map json_)
+  $PostalCode.fromJson(core.Map json_)
     : this(
-        addressLines:
-            (json_['addressLines'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        administrativeArea: json_['administrativeArea'] as core.String?,
-        languageCode: json_['languageCode'] as core.String?,
-        locality: json_['locality'] as core.String?,
-        organization: json_['organization'] as core.String?,
-        postalCode: json_['postalCode'] as core.String?,
-        recipients:
-            (json_['recipients'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        regionCode: json_['regionCode'] as core.String?,
-        revision: json_['revision'] as core.int?,
-        sortingCode: json_['sortingCode'] as core.String?,
-        sublocality: json_['sublocality'] as core.String?,
+        code: json_['code'] as core.String?,
+        countryCode: json_['countryCode'] as core.String?,
+        countryDartId: json_['countryDartId'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
-    if (addressLines != null) 'addressLines': addressLines!,
-    if (administrativeArea != null) 'administrativeArea': administrativeArea!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (locality != null) 'locality': locality!,
-    if (organization != null) 'organization': organization!,
-    if (postalCode != null) 'postalCode': postalCode!,
-    if (recipients != null) 'recipients': recipients!,
-    if (regionCode != null) 'regionCode': regionCode!,
-    if (revision != null) 'revision': revision!,
-    if (sortingCode != null) 'sortingCode': sortingCode!,
-    if (sublocality != null) 'sublocality': sublocality!,
+    if (code != null) 'code': code!,
+    if (countryCode != null) 'countryCode': countryCode!,
+    if (countryDartId != null) 'countryDartId': countryDartId!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+  };
+}
+
+/// Used by:
+///
+/// - css:v1 : Price
+/// - merchantapi:accounts_v1 : Price
+/// - merchantapi:inventories_v1 : Price
+/// - merchantapi:lfp_v1 : Price
+/// - merchantapi:ordertracking_v1 : Price
+/// - merchantapi:products_v1 : Price
+/// - merchantapi:promotions_v1 : Price
+/// - merchantapi:reports_v1 : Price
+class $Price {
+  /// The price represented as a number in micros (1 million micros is an
+  /// equivalent to one's currency standard unit, for example, 1 USD = 1000000
+  /// micros).
+  core.String? amountMicros;
+
+  /// The currency of the price using three-letter acronyms according to
+  /// [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217).
+  core.String? currencyCode;
+
+  $Price({this.amountMicros, this.currencyCode});
+
+  $Price.fromJson(core.Map json_)
+    : this(
+        amountMicros: json_['amountMicros'] as core.String?,
+        currencyCode: json_['currencyCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (amountMicros != null) 'amountMicros': amountMicros!,
+    if (currencyCode != null) 'currencyCode': currencyCode!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : PricingSchedulePricingPeriod
+/// - dfareporting:v5 : PricingSchedulePricingPeriod
+class $PricingSchedulePricingPeriod {
+  core.DateTime? endDate;
+
+  /// Comments for this pricing period.
+  core.String? pricingComment;
+
+  /// Rate or cost of this pricing period in nanos (i.e., multiplied by
+  /// 1000000000).
+  ///
+  /// Acceptable values are 0 to 1000000000000000000, inclusive.
+  core.String? rateOrCostNanos;
+  core.DateTime? startDate;
+
+  /// Units of this pricing period.
+  ///
+  /// Acceptable values are 0 to 10000000000, inclusive.
+  core.String? units;
+
+  $PricingSchedulePricingPeriod({
+    this.endDate,
+    this.pricingComment,
+    this.rateOrCostNanos,
+    this.startDate,
+    this.units,
+  });
+
+  $PricingSchedulePricingPeriod.fromJson(core.Map json_)
+    : this(
+        endDate:
+            json_.containsKey('endDate')
+                ? core.DateTime.parse(json_['endDate'] as core.String)
+                : null,
+        pricingComment: json_['pricingComment'] as core.String?,
+        rateOrCostNanos: json_['rateOrCostNanos'] as core.String?,
+        startDate:
+            json_.containsKey('startDate')
+                ? core.DateTime.parse(json_['startDate'] as core.String)
+                : null,
+        units: json_['units'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (endDate != null)
+      'endDate':
+          "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
+    if (pricingComment != null) 'pricingComment': pricingComment!,
+    if (rateOrCostNanos != null) 'rateOrCostNanos': rateOrCostNanos!,
+    if (startDate != null)
+      'startDate':
+          "${startDate!.year.toString().padLeft(4, '0')}-${startDate!.month.toString().padLeft(2, '0')}-${startDate!.day.toString().padLeft(2, '0')}",
+    if (units != null) 'units': units!,
   };
 }
 
@@ -18092,6 +21736,7 @@ class $PrismaCpeCode {
 ///
 /// - content:v2.1 : ProductProductDetail
 /// - css:v1 : ProductDetail
+/// - merchantapi:products_v1 : ProductDetail
 class $ProductDetail {
   /// The name of the product detail.
   core.String? attributeName;
@@ -18115,6 +21760,72 @@ class $ProductDetail {
     if (attributeName != null) 'attributeName': attributeName!,
     if (attributeValue != null) 'attributeValue': attributeValue!,
     if (sectionName != null) 'sectionName': sectionName!,
+  };
+}
+
+/// Used by:
+///
+/// - css:v1 : ProductDimension
+/// - merchantapi:products_v1 : ProductDimension
+class $ProductDimension {
+  /// The dimension units.
+  ///
+  /// Acceptable values are: * "`in`" * "`cm`"
+  ///
+  /// Required.
+  core.String? unit;
+
+  /// The dimension value represented as a number.
+  ///
+  /// The value can have a maximum precision of four decimal places.
+  ///
+  /// Required.
+  core.double? value;
+
+  $ProductDimension({this.unit, this.value});
+
+  $ProductDimension.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (unit != null) 'unit': unit!,
+    if (value != null) 'value': value!,
+  };
+}
+
+/// Used by:
+///
+/// - css:v1 : ProductWeight
+/// - merchantapi:products_v1 : ProductWeight
+class $ProductWeight {
+  /// The weight unit.
+  ///
+  /// Acceptable values are: * "`g`" * "`kg`" * "`oz`" * "`lb`"
+  ///
+  /// Required.
+  core.String? unit;
+
+  /// The weight represented as a number.
+  ///
+  /// The weight can have a maximum precision of four decimal places.
+  ///
+  /// Required.
+  core.double? value;
+
+  $ProductWeight({this.unit, this.value});
+
+  $ProductWeight.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (unit != null) 'unit': unit!,
+    if (value != null) 'value': value!,
   };
 }
 
@@ -18238,6 +21949,66 @@ class $ProxiesSetProxyHeaderRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (proxyHeader != null) 'proxyHeader': proxyHeader!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : ProximityFilter
+/// - dfareporting:v5 : ProximityFilter
+class $ProximityFilter {
+  /// Field ID in the element.
+  ///
+  /// Optional.
+  core.int? fieldId;
+
+  /// The radius bucket type of the proximity filter
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RADIUS_BUCKET_TYPE_UNKNOWN" : The radius bucket type is unknown.
+  /// - "SMALL" : The radius bucket type is small.
+  /// - "MEDIUM" : The radius bucket type is medium.
+  /// - "LARGE" : The radius bucket type is large.
+  /// - "MULTI_REGIONAL" : The radius bucket type is multi-regional.
+  /// - "NATIONAL" : The radius bucket type is national.
+  core.String? radiusBucketType;
+
+  /// The units of the radius value
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "RADIUS_UNIT_TYPE_UNKNOWN" : The units of the radius value are unknown.
+  /// This value is unused.
+  /// - "KILOMETERS" : The units of the radius value are kilometers.
+  /// - "MILES" : The units of the radius value are miles.
+  core.String? radiusUnitType;
+
+  /// Radius length in units defined by radius_units.
+  ///
+  /// Optional.
+  core.int? radiusValue;
+
+  $ProximityFilter({
+    this.fieldId,
+    this.radiusBucketType,
+    this.radiusUnitType,
+    this.radiusValue,
+  });
+
+  $ProximityFilter.fromJson(core.Map json_)
+    : this(
+        fieldId: json_['fieldId'] as core.int?,
+        radiusBucketType: json_['radiusBucketType'] as core.String?,
+        radiusUnitType: json_['radiusUnitType'] as core.String?,
+        radiusValue: json_['radiusValue'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (fieldId != null) 'fieldId': fieldId!,
+    if (radiusBucketType != null) 'radiusBucketType': radiusBucketType!,
+    if (radiusUnitType != null) 'radiusUnitType': radiusUnitType!,
+    if (radiusValue != null) 'radiusValue': radiusValue!,
   };
 }
 
@@ -18728,6 +22499,122 @@ class $Recipe {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : Recipient
+/// - dfareporting:v5 : Recipient
+class $Recipient {
+  /// The delivery type for the recipient.
+  /// Possible string values are:
+  /// - "LINK"
+  /// - "ATTACHMENT"
+  core.String? deliveryType;
+
+  /// The email address of the recipient.
+  core.String? email;
+
+  /// The kind of resource this is, in this case dfareporting#recipient.
+  core.String? kind;
+
+  $Recipient({this.deliveryType, this.email, this.kind});
+
+  $Recipient.fromJson(core.Map json_)
+    : this(
+        deliveryType: json_['deliveryType'] as core.String?,
+        email: json_['email'] as core.String?,
+        kind: json_['kind'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (deliveryType != null) 'deliveryType': deliveryType!,
+    if (email != null) 'email': email!,
+    if (kind != null) 'kind': kind!,
+  };
+}
+
+/// Used by:
+///
+/// - content:v2.1 : BreakdownRegion
+/// - merchantapi:issueresolution_v1 : Region
+class $Region00 {
+  /// The
+  /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  core.String? code;
+
+  /// The localized name of the region.
+  ///
+  /// For region with code='001' the value is 'All countries' or the equivalent
+  /// in other languages.
+  core.String? name;
+
+  $Region00({this.code, this.name});
+
+  $Region00.fromJson(core.Map json_)
+    : this(
+        code: json_['code'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (code != null) 'code': code!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : Region
+/// - dfareporting:v5 : Region
+class $Region01 {
+  /// Country code of the country to which this region belongs.
+  core.String? countryCode;
+
+  /// DART ID of the country to which this region belongs.
+  core.String? countryDartId;
+
+  /// DART ID of this region.
+  core.String? dartId;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#region".
+  core.String? kind;
+
+  /// Name of this region.
+  core.String? name;
+
+  /// Region code.
+  core.String? regionCode;
+
+  $Region01({
+    this.countryCode,
+    this.countryDartId,
+    this.dartId,
+    this.kind,
+    this.name,
+    this.regionCode,
+  });
+
+  $Region01.fromJson(core.Map json_)
+    : this(
+        countryCode: json_['countryCode'] as core.String?,
+        countryDartId: json_['countryDartId'] as core.String?,
+        dartId: json_['dartId'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        regionCode: json_['regionCode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (countryCode != null) 'countryCode': countryCode!,
+    if (countryDartId != null) 'countryDartId': countryDartId!,
+    if (dartId != null) 'dartId': dartId!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (regionCode != null) 'regionCode': regionCode!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : RegionalLocationListAssignedTargetingOptionDetails
 /// - displayvideo:v3 : RegionalLocationListAssignedTargetingOptionDetails
 /// - displayvideo:v4 : RegionalLocationListAssignedTargetingOptionDetails
@@ -18814,6 +22701,107 @@ class $RemarketingConfig {
   core.Map<core.String, core.dynamic> toJson() => {
     if (advertiserId != null) 'advertiserId': advertiserId!,
     if (remarketingEnabled != null) 'remarketingEnabled': remarketingEnabled!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : RemarketingListShare
+/// - dfareporting:v5 : RemarketingListShare
+class $RemarketingListShare {
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#remarketingListShare".
+  core.String? kind;
+
+  /// Remarketing list ID.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? remarketingListId;
+
+  /// Accounts that the remarketing list is shared with.
+  core.List<core.String>? sharedAccountIds;
+
+  /// Advertisers that the remarketing list is shared with.
+  core.List<core.String>? sharedAdvertiserIds;
+
+  $RemarketingListShare({
+    this.kind,
+    this.remarketingListId,
+    this.sharedAccountIds,
+    this.sharedAdvertiserIds,
+  });
+
+  $RemarketingListShare.fromJson(core.Map json_)
+    : this(
+        kind: json_['kind'] as core.String?,
+        remarketingListId: json_['remarketingListId'] as core.String?,
+        sharedAccountIds:
+            (json_['sharedAccountIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        sharedAdvertiserIds:
+            (json_['sharedAdvertiserIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (kind != null) 'kind': kind!,
+    if (remarketingListId != null) 'remarketingListId': remarketingListId!,
+    if (sharedAccountIds != null) 'sharedAccountIds': sharedAccountIds!,
+    if (sharedAdvertiserIds != null)
+      'sharedAdvertiserIds': sharedAdvertiserIds!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : RemarketingValueAttribute
+/// - dfareporting:v5 : RemarketingValueAttribute
+class $RemarketingValueAttribute {
+  /// Field ID in the element.
+  ///
+  /// Optional.
+  core.int? fieldId;
+
+  /// Remarketing user attribute IDs for auto filtering.
+  ///
+  /// Optional.
+  core.List<core.String>? userAttributeIds;
+
+  $RemarketingValueAttribute({this.fieldId, this.userAttributeIds});
+
+  $RemarketingValueAttribute.fromJson(core.Map json_)
+    : this(
+        fieldId: json_['fieldId'] as core.int?,
+        userAttributeIds:
+            (json_['userAttributeIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (fieldId != null) 'fieldId': fieldId!,
+    if (userAttributeIds != null) 'userAttributeIds': userAttributeIds!,
+  };
+}
+
+/// Used by:
+///
+/// - compute:v1 : NetworksRemovePeeringRequest
+/// - compute:v1 : NetworksRequestRemovePeeringRequest
+class $RemovePeeringRequest {
+  /// Name of the peering, which should conform to RFC1035.
+  core.String? name;
+
+  $RemovePeeringRequest({this.name});
+
+  $RemovePeeringRequest.fromJson(core.Map json_)
+    : this(name: json_['name'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
   };
 }
 
@@ -19245,6 +23233,59 @@ class $Request12 {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (vmId != null) 'vmId': vmId!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : RequestValue
+/// - dfareporting:v5 : RequestValue
+class $RequestValue {
+  /// User attribute IDs in the request that should be excluded.
+  ///
+  /// Used only when the field type is REMARKETING_VALUE or USER_ATTRIBUTE_ID.
+  ///
+  /// Optional.
+  core.List<core.String>? excludeFromUserAttributeIds;
+
+  /// Custom key in the request.
+  ///
+  /// Used only when the field type is CUSTOM_VALUE.
+  ///
+  /// Optional.
+  core.String? key;
+
+  /// User attribute IDs in the request.
+  ///
+  /// Used only when the field type is REMARKETING_VALUE or USER_ATTRIBUTE_ID.
+  ///
+  /// Optional.
+  core.List<core.String>? userAttributeIds;
+
+  $RequestValue({
+    this.excludeFromUserAttributeIds,
+    this.key,
+    this.userAttributeIds,
+  });
+
+  $RequestValue.fromJson(core.Map json_)
+    : this(
+        excludeFromUserAttributeIds:
+            (json_['excludeFromUserAttributeIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        key: json_['key'] as core.String?,
+        userAttributeIds:
+            (json_['userAttributeIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (excludeFromUserAttributeIds != null)
+      'excludeFromUserAttributeIds': excludeFromUserAttributeIds!,
+    if (key != null) 'key': key!,
+    if (userAttributeIds != null) 'userAttributeIds': userAttributeIds!,
   };
 }
 
@@ -19808,6 +23849,9 @@ class $SdfConfig {
   /// guide\](/display-video/api/structured-data-file/v8-migration-guide) before
   /// migrating to this version.
   /// - "SDF_VERSION_8_1" : SDF version 8.1.
+  /// - "SDF_VERSION_9" : SDF version 9. Read the \[v9 migration
+  /// guide\](/display-video/api/structured-data-file/v9-migration-guide) before
+  /// migrating to this version.
   core.String? version;
 
   $SdfConfig({this.adminEmail, this.version});
@@ -20223,8 +24267,28 @@ class $ServiceMeshCondition {
   /// cluster.
   /// - "MODERNIZATION_COMPLETED" : Modernization is completed for a cluster.
   /// - "MODERNIZATION_ABORTED" : Modernization is aborted for a cluster.
+  /// - "MODERNIZATION_PREPARING" : Preparing cluster so that its workloads can
+  /// be migrated.
+  /// - "MODERNIZATION_STALLED" : Modernization is stalled for a cluster.
+  /// - "MODERNIZATION_PREPARED" : Cluster has been prepared for its workloads
+  /// to be migrated.
+  /// - "MODERNIZATION_MIGRATING_WORKLOADS" : Migrating the cluster's workloads
+  /// to the new implementation.
+  /// - "MODERNIZATION_ROLLING_BACK_CLUSTER" : Rollback is in progress for
+  /// modernization of a cluster.
   /// - "MODERNIZATION_WILL_BE_SCHEDULED" : Modernization will be scheduled for
   /// a fleet.
+  /// - "MODERNIZATION_MANUAL" : Fleet is opted out from automated
+  /// modernization.
+  /// - "MODERNIZATION_ELIGIBLE" : Fleet is eligible for modernization.
+  /// - "MODERNIZATION_MODERNIZING" : Modernization of one or more clusters in a
+  /// fleet is in progress.
+  /// - "MODERNIZATION_MODERNIZED_SOAKING" : Modernization of all the fleet's
+  /// clusters is complete. Soaking before finalizing the modernization.
+  /// - "MODERNIZATION_FINALIZED" : Modernization is finalized for all clusters
+  /// in a fleet. Rollback is no longer allowed.
+  /// - "MODERNIZATION_ROLLING_BACK_FLEET" : Rollback is in progress for
+  /// modernization of all clusters in a fleet.
   core.String? code;
 
   /// A short summary about the issue.
@@ -20354,6 +24418,28 @@ class $SetLabelsRequest {
   core.Map<core.String, core.dynamic> toJson() => {
     if (labelFingerprint != null) 'labelFingerprint': labelFingerprint!,
     if (labels != null) 'labels': labels!,
+  };
+}
+
+/// Used by:
+///
+/// - content:v2.1 : AccountImageImprovementsSettings
+/// - merchantapi:accounts_v1 : ImageImprovementsAccountLevelSettings
+class $Settings {
+  /// Enables automatic image improvements.
+  core.bool? allowAutomaticImageImprovements;
+
+  $Settings({this.allowAutomaticImageImprovements});
+
+  $Settings.fromJson(core.Map json_)
+    : this(
+        allowAutomaticImageImprovements:
+            json_['allowAutomaticImageImprovements'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (allowAutomaticImageImprovements != null)
+      'allowAutomaticImageImprovements': allowAutomaticImageImprovements!,
   };
 }
 
@@ -20820,6 +24906,79 @@ class $ShieldedInstanceConfig {
 
 /// Used by:
 ///
+/// - content:v2.1 : ProductShippingDimension
+/// - merchantapi:products_v1 : ShippingDimension
+class $ShippingDimension {
+  /// The unit of value.
+  core.String? unit;
+
+  /// The dimension of the product used to calculate the shipping cost of the
+  /// item.
+  core.double? value;
+
+  $ShippingDimension({this.unit, this.value});
+
+  $ShippingDimension.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (unit != null) 'unit': unit!,
+    if (value != null) 'value': value!,
+  };
+}
+
+/// Used by:
+///
+/// - content:v2.1 : AccountShippingImprovements
+/// - merchantapi:accounts_v1 : AutomaticShippingImprovements
+class $ShippingImprovements {
+  /// Enables automatic shipping improvements.
+  core.bool? allowShippingImprovements;
+
+  $ShippingImprovements({this.allowShippingImprovements});
+
+  $ShippingImprovements.fromJson(core.Map json_)
+    : this(
+        allowShippingImprovements:
+            json_['allowShippingImprovements'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (allowShippingImprovements != null)
+      'allowShippingImprovements': allowShippingImprovements!,
+  };
+}
+
+/// Used by:
+///
+/// - content:v2.1 : ProductShippingWeight
+/// - merchantapi:products_v1 : ShippingWeight
+class $ShippingWeight {
+  /// The unit of value.
+  core.String? unit;
+
+  /// The weight of the product used to calculate the shipping cost of the item.
+  core.double? value;
+
+  $ShippingWeight({this.unit, this.value});
+
+  $ShippingWeight.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (unit != null) 'unit': unit!,
+    if (value != null) 'value': value!,
+  };
+}
+
+/// Used by:
+///
 /// - dataproc:v1 : ShufflePushReadMetrics
 /// - dataproc:v1 : StageShufflePushReadMetrics
 class $ShufflePushReadMetrics {
@@ -21001,8 +25160,113 @@ class $Site {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : SiteContact
+/// - dfareporting:v5 : SiteContact
+class $SiteContact {
+  /// Address of this site contact.
+  core.String? address;
+
+  /// Site contact type.
+  /// Possible string values are:
+  /// - "SALES_PERSON"
+  /// - "TRAFFICKER"
+  core.String? contactType;
+
+  /// Email address of this site contact.
+  ///
+  /// This is a required field.
+  core.String? email;
+
+  /// First name of this site contact.
+  core.String? firstName;
+
+  /// ID of this site contact.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Last name of this site contact.
+  core.String? lastName;
+
+  /// Primary phone number of this site contact.
+  core.String? phone;
+
+  /// Title or designation of this site contact.
+  core.String? title;
+
+  $SiteContact({
+    this.address,
+    this.contactType,
+    this.email,
+    this.firstName,
+    this.id,
+    this.lastName,
+    this.phone,
+    this.title,
+  });
+
+  $SiteContact.fromJson(core.Map json_)
+    : this(
+        address: json_['address'] as core.String?,
+        contactType: json_['contactType'] as core.String?,
+        email: json_['email'] as core.String?,
+        firstName: json_['firstName'] as core.String?,
+        id: json_['id'] as core.String?,
+        lastName: json_['lastName'] as core.String?,
+        phone: json_['phone'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (address != null) 'address': address!,
+    if (contactType != null) 'contactType': contactType!,
+    if (email != null) 'email': email!,
+    if (firstName != null) 'firstName': firstName!,
+    if (id != null) 'id': id!,
+    if (lastName != null) 'lastName': lastName!,
+    if (phone != null) 'phone': phone!,
+    if (title != null) 'title': title!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : SiteTranscodeSetting
+/// - dfareporting:v5 : SiteTranscodeSetting
+class $SiteTranscodeSetting {
+  /// Allowlist of video formats to be served to this site template.
+  ///
+  /// Set this list to null or empty to serve all video formats.
+  core.List<core.int>? enabledVideoFormats;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#siteTranscodeSetting".
+  core.String? kind;
+
+  $SiteTranscodeSetting({this.enabledVideoFormats, this.kind});
+
+  $SiteTranscodeSetting.fromJson(core.Map json_)
+    : this(
+        enabledVideoFormats:
+            (json_['enabledVideoFormats'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enabledVideoFormats != null)
+      'enabledVideoFormats': enabledVideoFormats!,
+    if (kind != null) 'kind': kind!,
+  };
+}
+
+/// Used by:
+///
 /// - dfareporting:v3.5 : Size
 /// - dfareporting:v4 : Size
+/// - dfareporting:v5 : Size
 class $Size {
   /// Height of this size.
   ///
@@ -21128,6 +25392,39 @@ class $SlsaRecipe {
     if (entryPoint != null) 'entryPoint': entryPoint!,
     if (environment != null) 'environment': environment!,
     if (type != null) 'type': type!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : SortedDimension
+/// - dfareporting:v5 : SortedDimension
+class $SortedDimension {
+  /// The kind of resource this is, in this case dfareporting#sortedDimension.
+  core.String? kind;
+
+  /// The name of the dimension.
+  core.String? name;
+
+  /// An optional sort order for the dimension column.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  core.String? sortOrder;
+
+  $SortedDimension({this.kind, this.name, this.sortOrder});
+
+  $SortedDimension.fromJson(core.Map json_)
+    : this(
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        sortOrder: json_['sortOrder'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (sortOrder != null) 'sortOrder': sortOrder!,
   };
 }
 
@@ -21655,6 +25952,65 @@ class $SubExchangeTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : Subaccount
+/// - dfareporting:v5 : Subaccount
+class $Subaccount {
+  /// ID of the account that contains this subaccount.
+  ///
+  /// This is a read-only field that can be left blank.
+  core.String? accountId;
+
+  /// IDs of the available user role permissions for this subaccount.
+  core.List<core.String>? availablePermissionIds;
+
+  /// ID of this subaccount.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#subaccount".
+  core.String? kind;
+
+  /// Name of this subaccount.
+  ///
+  /// This is a required field. Must be less than 128 characters long and be
+  /// unique among subaccounts of the same account.
+  core.String? name;
+
+  $Subaccount({
+    this.accountId,
+    this.availablePermissionIds,
+    this.id,
+    this.kind,
+    this.name,
+  });
+
+  $Subaccount.fromJson(core.Map json_)
+    : this(
+        accountId: json_['accountId'] as core.String?,
+        availablePermissionIds:
+            (json_['availablePermissionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accountId != null) 'accountId': accountId!,
+    if (availablePermissionIds != null)
+      'availablePermissionIds': availablePermissionIds!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Used by:
+///
 /// - containeranalysis:v1 : Subject
 /// - ondemandscanning:v1 : Subject
 class $Subject {
@@ -21726,6 +26082,180 @@ class $Symptom {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : TagData
+/// - dfareporting:v5 : TagData
+class $TagData {
+  /// Ad associated with this placement tag.
+  ///
+  /// Applicable only when format is PLACEMENT_TAG_TRACKING.
+  core.String? adId;
+
+  /// Tag string to record a click.
+  core.String? clickTag;
+
+  /// Creative associated with this placement tag.
+  ///
+  /// Applicable only when format is PLACEMENT_TAG_TRACKING.
+  core.String? creativeId;
+
+  /// TagData tag format of this tag.
+  /// Possible string values are:
+  /// - "PLACEMENT_TAG_STANDARD"
+  /// - "PLACEMENT_TAG_IFRAME_JAVASCRIPT"
+  /// - "PLACEMENT_TAG_IFRAME_ILAYER"
+  /// - "PLACEMENT_TAG_INTERNAL_REDIRECT"
+  /// - "PLACEMENT_TAG_JAVASCRIPT"
+  /// - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT"
+  /// - "PLACEMENT_TAG_INTERSTITIAL_INTERNAL_REDIRECT"
+  /// - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT"
+  /// - "PLACEMENT_TAG_CLICK_COMMANDS"
+  /// - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH"
+  /// - "PLACEMENT_TAG_TRACKING"
+  /// - "PLACEMENT_TAG_TRACKING_IFRAME"
+  /// - "PLACEMENT_TAG_TRACKING_JAVASCRIPT"
+  /// - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_3"
+  /// - "PLACEMENT_TAG_IFRAME_JAVASCRIPT_LEGACY"
+  /// - "PLACEMENT_TAG_JAVASCRIPT_LEGACY"
+  /// - "PLACEMENT_TAG_INTERSTITIAL_IFRAME_JAVASCRIPT_LEGACY"
+  /// - "PLACEMENT_TAG_INTERSTITIAL_JAVASCRIPT_LEGACY"
+  /// - "PLACEMENT_TAG_INSTREAM_VIDEO_PREFETCH_VAST_4"
+  /// - "PLACEMENT_TAG_TRACKING_THIRD_PARTY_MEASUREMENT"
+  core.String? format;
+
+  /// Tag string for serving an ad.
+  core.String? impressionTag;
+
+  $TagData({
+    this.adId,
+    this.clickTag,
+    this.creativeId,
+    this.format,
+    this.impressionTag,
+  });
+
+  $TagData.fromJson(core.Map json_)
+    : this(
+        adId: json_['adId'] as core.String?,
+        clickTag: json_['clickTag'] as core.String?,
+        creativeId: json_['creativeId'] as core.String?,
+        format: json_['format'] as core.String?,
+        impressionTag: json_['impressionTag'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adId != null) 'adId': adId!,
+    if (clickTag != null) 'clickTag': clickTag!,
+    if (creativeId != null) 'creativeId': creativeId!,
+    if (format != null) 'format': format!,
+    if (impressionTag != null) 'impressionTag': impressionTag!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : TagSetting
+/// - dfareporting:v5 : TagSetting
+class $TagSetting {
+  /// Additional key-values to be included in tags.
+  ///
+  /// Each key-value pair must be of the form key=value, and pairs must be
+  /// separated by a semicolon (;). Keys and values must not contain commas. For
+  /// example, id=2;color=red is a valid value for this field.
+  core.String? additionalKeyValues;
+
+  /// Whether static landing page URLs should be included in the tags.
+  ///
+  /// New placements will default to the value set on their site.
+  core.bool? includeClickThroughUrls;
+
+  /// Whether click-tracking string should be included in the tags.
+  core.bool? includeClickTracking;
+
+  /// Indicates that the unescapedlpurl macro should be included in the tag for
+  /// the static landing page.
+  ///
+  /// New placements will default to the value set on their site.
+  ///
+  /// Optional.
+  core.bool? includeUnescapedlpurlMacro;
+
+  /// Option specifying how keywords are embedded in ad tags.
+  ///
+  /// This setting can be used to specify whether keyword placeholders are
+  /// inserted in placement tags for this site. Publishers can then add keywords
+  /// to those placeholders.
+  /// Possible string values are:
+  /// - "PLACEHOLDER_WITH_LIST_OF_KEYWORDS" : Creates DART ad tags with a
+  /// placeholder, such as kw=\[keyword\] and a list of keywords. The site
+  /// trafficker must replace \[keyword\] with the keywords targeted by an ad.
+  /// - "IGNORE" : Creates DART ad tags that do not have a placeholder for
+  /// keywords and creates a list of keywords separately from the DART ad tags.
+  /// Use this option if the site uses a keyword referrer or is a site that uses
+  /// DART for Publishers.
+  /// - "GENERATE_SEPARATE_TAG_FOR_EACH_KEYWORD" : Results in unique tag
+  /// generation for each relevant keyword during tag export. For example, an ad
+  /// with three keywords will generate three tags with each tag having its kw=
+  /// parameter filled in with the relevant keyword values.
+  core.String? keywordOption;
+
+  $TagSetting({
+    this.additionalKeyValues,
+    this.includeClickThroughUrls,
+    this.includeClickTracking,
+    this.includeUnescapedlpurlMacro,
+    this.keywordOption,
+  });
+
+  $TagSetting.fromJson(core.Map json_)
+    : this(
+        additionalKeyValues: json_['additionalKeyValues'] as core.String?,
+        includeClickThroughUrls: json_['includeClickThroughUrls'] as core.bool?,
+        includeClickTracking: json_['includeClickTracking'] as core.bool?,
+        includeUnescapedlpurlMacro:
+            json_['includeUnescapedlpurlMacro'] as core.bool?,
+        keywordOption: json_['keywordOption'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (additionalKeyValues != null)
+      'additionalKeyValues': additionalKeyValues!,
+    if (includeClickThroughUrls != null)
+      'includeClickThroughUrls': includeClickThroughUrls!,
+    if (includeClickTracking != null)
+      'includeClickTracking': includeClickTracking!,
+    if (includeUnescapedlpurlMacro != null)
+      'includeUnescapedlpurlMacro': includeUnescapedlpurlMacro!,
+    if (keywordOption != null) 'keywordOption': keywordOption!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : TagSettings
+/// - dfareporting:v5 : TagSettings
+class $TagSettings {
+  /// Whether dynamic floodlight tags are enabled.
+  core.bool? dynamicTagEnabled;
+
+  /// Whether image tags are enabled.
+  core.bool? imageTagEnabled;
+
+  $TagSettings({this.dynamicTagEnabled, this.imageTagEnabled});
+
+  $TagSettings.fromJson(core.Map json_)
+    : this(
+        dynamicTagEnabled: json_['dynamicTagEnabled'] as core.bool?,
+        imageTagEnabled: json_['imageTagEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dynamicTagEnabled != null) 'dynamicTagEnabled': dynamicTagEnabled!,
+    if (imageTagEnabled != null) 'imageTagEnabled': imageTagEnabled!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : TargetFrequency
 /// - displayvideo:v3 : TargetFrequency
 /// - displayvideo:v4 : TargetFrequency
@@ -21773,6 +26303,39 @@ class $TargetFrequency {
     if (targetCount != null) 'targetCount': targetCount!,
     if (timeUnit != null) 'timeUnit': timeUnit!,
     if (timeUnitCount != null) 'timeUnitCount': timeUnitCount!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : TargetWindow
+/// - dfareporting:v5 : TargetWindow
+class $TargetWindow {
+  /// User-entered value.
+  core.String? customHtml;
+
+  /// Type of browser window for which the backup image of the flash creative
+  /// can be displayed.
+  /// Possible string values are:
+  /// - "NEW_WINDOW" : Open up a new window to display the backup image
+  /// Corresponds to "_blank" in html
+  /// - "CURRENT_WINDOW" : Use the current window to display the backup image
+  /// Corresponds to "_top" in html
+  /// - "CUSTOM" : User-defined HTML used to display the backup image
+  /// Corresponds to "other"
+  core.String? targetWindowOption;
+
+  $TargetWindow({this.customHtml, this.targetWindowOption});
+
+  $TargetWindow.fromJson(core.Map json_)
+    : this(
+        customHtml: json_['customHtml'] as core.String?,
+        targetWindowOption: json_['targetWindowOption'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (customHtml != null) 'customHtml': customHtml!,
+    if (targetWindowOption != null) 'targetWindowOption': targetWindowOption!,
   };
 }
 
@@ -21924,6 +26487,7 @@ class $TenantProjectRequest {
 /// - cloudtasks:v2 : TestIamPermissionsRequest
 /// - config:v1 : TestIamPermissionsRequest
 /// - connectors:v1 : TestIamPermissionsRequest
+/// - contactcenterinsights:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - containeranalysis:v1 : TestIamPermissionsRequest
 /// - datacatalog:v1 : TestIamPermissionsRequest
 /// - datafusion:v1 : TestIamPermissionsRequest
@@ -22087,6 +26651,74 @@ class $TextSpan {
 
 /// Used by:
 ///
+/// - content:v2.1 : TextWithTooltip
+/// - merchantapi:issueresolution_v1 : TextWithTooltip
+class $TextWithTooltip {
+  /// Value of the tooltip as a simple text.
+  core.String? simpleTooltipValue;
+
+  /// Value of the message as a simple text.
+  core.String? simpleValue;
+
+  /// The suggested type of an icon for tooltip, if a tooltip is present.
+  /// Possible string values are:
+  /// - "TOOLTIP_ICON_STYLE_UNSPECIFIED" : Default value. Will never be provided
+  /// by the API.
+  /// - "INFO" : Used when the tooltip adds additional information to the
+  /// context, the 'i' can be used as an icon.
+  /// - "QUESTION" : Used when the tooltip shows helpful information, the '?'
+  /// can be used as an icon.
+  core.String? tooltipIconStyle;
+
+  $TextWithTooltip({
+    this.simpleTooltipValue,
+    this.simpleValue,
+    this.tooltipIconStyle,
+  });
+
+  $TextWithTooltip.fromJson(core.Map json_)
+    : this(
+        simpleTooltipValue: json_['simpleTooltipValue'] as core.String?,
+        simpleValue: json_['simpleValue'] as core.String?,
+        tooltipIconStyle: json_['tooltipIconStyle'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (simpleTooltipValue != null) 'simpleTooltipValue': simpleTooltipValue!,
+    if (simpleValue != null) 'simpleValue': simpleValue!,
+    if (tooltipIconStyle != null) 'tooltipIconStyle': tooltipIconStyle!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : ThirdPartyAuthenticationToken
+/// - dfareporting:v5 : ThirdPartyAuthenticationToken
+class $ThirdPartyAuthenticationToken {
+  /// Name of the third-party authentication token.
+  core.String? name;
+
+  /// Value of the third-party authentication token.
+  ///
+  /// This is a read-only, auto-generated field.
+  core.String? value;
+
+  $ThirdPartyAuthenticationToken({this.name, this.value});
+
+  $ThirdPartyAuthenticationToken.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+    if (value != null) 'value': value!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : ThirdPartyOnlyConfig
 /// - displayvideo:v3 : ThirdPartyOnlyConfig
 /// - displayvideo:v4 : ThirdPartyOnlyConfig
@@ -22107,6 +26739,65 @@ class $ThirdPartyOnlyConfig {
   core.Map<core.String, core.dynamic> toJson() => {
     if (pixelOrderIdReportingEnabled != null)
       'pixelOrderIdReportingEnabled': pixelOrderIdReportingEnabled!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : ThirdPartyTrackingUrl
+/// - dfareporting:v5 : ThirdPartyTrackingUrl
+class $ThirdPartyTrackingUrl {
+  /// Third-party URL type for in-stream video and in-stream audio creatives.
+  /// Possible string values are:
+  /// - "IMPRESSION" : Used to count impressions of the ad after video buffering
+  /// is complete.
+  /// - "CLICK_TRACKING" : Used to track user clicks on the video.
+  /// - "VIDEO_START" : Used to track the number of times a user starts a video.
+  /// - "VIDEO_FIRST_QUARTILE" : Used to track the number of times the video
+  /// plays to 25% of its length.
+  /// - "VIDEO_MIDPOINT" : Used to track the number of times the video plays to
+  /// 50% of its length.
+  /// - "VIDEO_THIRD_QUARTILE" : Used to track the number of times the video
+  /// plays to 75% of its length.
+  /// - "VIDEO_COMPLETE" : Used to track the number of times the video plays to
+  /// the end.
+  /// - "VIDEO_MUTE" : Used to track the number of times a user mutes the video.
+  /// - "VIDEO_PAUSE" : Used to track the number of times a user pauses the
+  /// video.
+  /// - "VIDEO_REWIND" : Used to track the number of times a user replays the
+  /// video.
+  /// - "VIDEO_FULLSCREEN" : Used to track the number of times a user expands
+  /// the video to full-screen size.
+  /// - "VIDEO_STOP" : Used to track the number of times a user stops the video.
+  /// - "VIDEO_CUSTOM" : Used to track the number of times a user performs a
+  /// custom click, such as clicking on a video hot spot.
+  /// - "SURVEY" : Used for DFA6 compatibility, this is deprecating in favor of
+  /// event tags.
+  /// - "RICH_MEDIA_IMPRESSION" : Used by Studio RichMediaCreative, maps to its
+  /// thirdPartyImpressionsUrl
+  /// - "RICH_MEDIA_RM_IMPRESSION" : Used by Studio RichMediaCreative, maps to
+  /// its thirdPartyRichMediaImpressionsUrl
+  /// - "RICH_MEDIA_BACKUP_IMPRESSION" : Used by Studio RichMediaCreative, maps
+  /// to its thirdPartyBackupImageImpressionsUrl
+  /// - "VIDEO_SKIP" : Used to track the number of times the video was skipped.
+  /// - "VIDEO_PROGRESS" : Used to track the number of times the video plays to
+  /// an offset determined by the user.
+  core.String? thirdPartyUrlType;
+
+  /// URL for the specified third-party URL type.
+  core.String? url;
+
+  $ThirdPartyTrackingUrl({this.thirdPartyUrlType, this.url});
+
+  $ThirdPartyTrackingUrl.fromJson(core.Map json_)
+    : this(
+        thirdPartyUrlType: json_['thirdPartyUrlType'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (thirdPartyUrlType != null) 'thirdPartyUrlType': thirdPartyUrlType!,
+    if (url != null) 'url': url!,
   };
 }
 
@@ -22231,6 +26922,7 @@ class $ThirdPartyVendorConfig {
 /// - jobs:v4 : TimeOfDay
 /// - looker:v1 : TimeOfDay
 /// - memcache:v1 : TimeOfDay
+/// - merchantapi:datasources_v1 : TimeOfDay
 /// - monitoring:v3 : TimeOfDay
 /// - mybusinessbusinessinformation:v1 : TimeOfDay
 /// - mybusinesslodging:v1 : TimeOfDay
@@ -22322,6 +27014,8 @@ class $TimeRange {
 /// - contentwarehouse:v1 : GoogleTypeTimeZone
 /// - documentai:v1 : GoogleTypeTimeZone
 /// - localservices:v1 : GoogleTypeTimeZone
+/// - merchantapi:accounts_v1 : TimeZone
+/// - merchantapi:ordertracking_v1 : TimeZone
 /// - oracledatabase:v1 : TimeZone
 /// - osconfig:v1 : TimeZone
 /// - places:v1 : GoogleTypeTimeZone
@@ -22618,6 +27312,39 @@ class $TrafficShapingConfig {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : TranscodeSetting
+/// - dfareporting:v5 : TranscodeSetting
+class $TranscodeSetting {
+  /// Allowlist of video formats to be served to this placement.
+  ///
+  /// Set this list to null or empty to serve all video formats.
+  core.List<core.int>? enabledVideoFormats;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#transcodeSetting".
+  core.String? kind;
+
+  $TranscodeSetting({this.enabledVideoFormats, this.kind});
+
+  $TranscodeSetting.fromJson(core.Map json_)
+    : this(
+        enabledVideoFormats:
+            (json_['enabledVideoFormats'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        kind: json_['kind'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enabledVideoFormats != null)
+      'enabledVideoFormats': enabledVideoFormats!,
+    if (kind != null) 'kind': kind!,
+  };
+}
+
+/// Used by:
+///
 /// - integrations:v1 : EnterpriseCrmFrontendsEventbusProtoTriggerConfigVariables
 /// - integrations:v1 : GoogleCloudIntegrationsV1alphaTriggerConfigVariables
 class $TriggerConfigVariables {
@@ -22676,10 +27403,182 @@ class $TruncatableString {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : TvCampaignSummary
+/// - dfareporting:v5 : TvCampaignSummary
+class $TvCampaignSummary {
+  /// The end date of the TV campaign, inclusive.
+  ///
+  /// A string of the format: "yyyy-MM-dd".
+  core.String? endDate;
+
+  /// GRP of this TV campaign.
+  core.String? grp;
+
+  /// ID of this TV campaign.
+  core.String? id;
+
+  /// Impressions across the entire TV campaign.
+  core.String? impressions;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#tvCampaignSummary".
+  core.String? kind;
+
+  /// Identifier.
+  ///
+  /// Name of this TV campaign.
+  core.String? name;
+
+  /// Spend across the entire TV campaign.
+  core.double? spend;
+
+  /// The start date of the TV campaign, inclusive.
+  ///
+  /// A string of the format: "yyyy-MM-dd".
+  core.String? startDate;
+
+  /// "CampaignComponentType" of this TV campaign.
+  /// Possible string values are:
+  /// - "CAMPAIGN_COMPONENT_TYPE_UNSPECIFIED" : Required to exist; do not use.
+  /// - "COMPANY" : Company.
+  /// - "BRAND" : Brand.
+  /// - "PRODUCT" : Product.
+  /// - "CAMPAIGN" : Campaign.
+  core.String? type;
+
+  $TvCampaignSummary({
+    this.endDate,
+    this.grp,
+    this.id,
+    this.impressions,
+    this.kind,
+    this.name,
+    this.spend,
+    this.startDate,
+    this.type,
+  });
+
+  $TvCampaignSummary.fromJson(core.Map json_)
+    : this(
+        endDate: json_['endDate'] as core.String?,
+        grp: json_['grp'] as core.String?,
+        id: json_['id'] as core.String?,
+        impressions: json_['impressions'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        spend: (json_['spend'] as core.num?)?.toDouble(),
+        startDate: json_['startDate'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (endDate != null) 'endDate': endDate!,
+    if (grp != null) 'grp': grp!,
+    if (id != null) 'id': id!,
+    if (impressions != null) 'impressions': impressions!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (spend != null) 'spend': spend!,
+    if (startDate != null) 'startDate': startDate!,
+    if (type != null) 'type': type!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : TvCampaignTimepoint
+/// - dfareporting:v5 : TvCampaignTimepoint
+class $TvCampaignTimepoint {
+  /// The date window of the timepoint.
+  /// Possible string values are:
+  /// - "WEEKS_UNSPECIFIED" : Default value, should never be set.
+  /// - "WEEKS_ONE" : One week.
+  /// - "WEEKS_FOUR" : Four weeks.
+  /// - "WEEKS_EIGHT" : Eight weeks.
+  /// - "WEEKS_TWELVE" : Twelve weeks.
+  core.String? dateWindow;
+
+  /// The spend within the time range of the timepoint.
+  core.double? spend;
+
+  /// The start date of the timepoint.
+  ///
+  /// A string in the format of "yyyy-MM-dd".
+  core.String? startDate;
+
+  $TvCampaignTimepoint({this.dateWindow, this.spend, this.startDate});
+
+  $TvCampaignTimepoint.fromJson(core.Map json_)
+    : this(
+        dateWindow: json_['dateWindow'] as core.String?,
+        spend: (json_['spend'] as core.num?)?.toDouble(),
+        startDate: json_['startDate'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dateWindow != null) 'dateWindow': dateWindow!,
+    if (spend != null) 'spend': spend!,
+    if (startDate != null) 'startDate': startDate!,
+  };
+}
+
+/// Used by:
+///
+/// - content:v2.1 : ProductUnitPricingBaseMeasure
+/// - merchantapi:products_v1 : UnitPricingBaseMeasure
+class $UnitPricingBaseMeasure {
+  /// The unit of the denominator.
+  core.String? unit;
+
+  /// The denominator of the unit price.
+  core.String? value;
+
+  $UnitPricingBaseMeasure({this.unit, this.value});
+
+  $UnitPricingBaseMeasure.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (unit != null) 'unit': unit!,
+    if (value != null) 'value': value!,
+  };
+}
+
+/// Used by:
+///
+/// - content:v2.1 : ProductUnitPricingMeasure
+/// - merchantapi:products_v1 : UnitPricingMeasure
+class $UnitPricingMeasure {
+  /// The unit of the measure.
+  core.String? unit;
+
+  /// The measure of an item.
+  core.double? value;
+
+  $UnitPricingMeasure({this.unit, this.value});
+
+  $UnitPricingMeasure.fromJson(core.Map json_)
+    : this(
+        unit: json_['unit'] as core.String?,
+        value: (json_['value'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (unit != null) 'unit': unit!,
+    if (value != null) 'value': value!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : UniversalAdId
 /// - displayvideo:v3 : UniversalAdId
 /// - displayvideo:v4 : UniversalAdId
-class $UniversalAdId {
+class $UniversalAdId00 {
   /// The unique creative identifier.
   ///
   /// Optional.
@@ -22703,9 +27602,9 @@ class $UniversalAdId {
   /// Universal Ad ID.
   core.String? registry;
 
-  $UniversalAdId({this.id, this.registry});
+  $UniversalAdId00({this.id, this.registry});
 
-  $UniversalAdId.fromJson(core.Map json_)
+  $UniversalAdId00.fromJson(core.Map json_)
     : this(
         id: json_['id'] as core.String?,
         registry: json_['registry'] as core.String?,
@@ -22714,6 +27613,40 @@ class $UniversalAdId {
   core.Map<core.String, core.dynamic> toJson() => {
     if (id != null) 'id': id!,
     if (registry != null) 'registry': registry!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : UniversalAdId
+/// - dfareporting:v5 : UniversalAdId
+class $UniversalAdId01 {
+  /// Registry used for the Ad ID value.
+  /// Possible string values are:
+  /// - "OTHER"
+  /// - "AD_ID_OFFICIAL"
+  /// - "CLEARCAST"
+  /// - "DCM"
+  /// - "ARPP"
+  core.String? registry;
+
+  /// ID value for this creative.
+  ///
+  /// Only alphanumeric characters and the following symbols are valid: "_/\-".
+  /// Maximum length is 64 characters. Read only when registry is DCM.
+  core.String? value;
+
+  $UniversalAdId01({this.registry, this.value});
+
+  $UniversalAdId01.fromJson(core.Map json_)
+    : this(
+        registry: json_['registry'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (registry != null) 'registry': registry!,
+    if (value != null) 'value': value!,
   };
 }
 
@@ -22847,6 +27780,217 @@ class $UsageRule {
 
 /// Used by:
 ///
+/// - dfareporting:v4 : UserDefinedVariableConfiguration
+/// - dfareporting:v5 : UserDefinedVariableConfiguration
+class $UserDefinedVariableConfiguration {
+  /// Data type for the variable.
+  ///
+  /// This is a required field.
+  /// Possible string values are:
+  /// - "STRING"
+  /// - "NUMBER"
+  core.String? dataType;
+
+  /// User-friendly name for the variable which will appear in reports.
+  ///
+  /// This is a required field, must be less than 64 characters long, and cannot
+  /// contain the following characters: ""\<\>".
+  core.String? reportName;
+
+  /// Variable name in the tag.
+  ///
+  /// This is a required field.
+  /// Possible string values are:
+  /// - "U1"
+  /// - "U2"
+  /// - "U3"
+  /// - "U4"
+  /// - "U5"
+  /// - "U6"
+  /// - "U7"
+  /// - "U8"
+  /// - "U9"
+  /// - "U10"
+  /// - "U11"
+  /// - "U12"
+  /// - "U13"
+  /// - "U14"
+  /// - "U15"
+  /// - "U16"
+  /// - "U17"
+  /// - "U18"
+  /// - "U19"
+  /// - "U20"
+  /// - "U21"
+  /// - "U22"
+  /// - "U23"
+  /// - "U24"
+  /// - "U25"
+  /// - "U26"
+  /// - "U27"
+  /// - "U28"
+  /// - "U29"
+  /// - "U30"
+  /// - "U31"
+  /// - "U32"
+  /// - "U33"
+  /// - "U34"
+  /// - "U35"
+  /// - "U36"
+  /// - "U37"
+  /// - "U38"
+  /// - "U39"
+  /// - "U40"
+  /// - "U41"
+  /// - "U42"
+  /// - "U43"
+  /// - "U44"
+  /// - "U45"
+  /// - "U46"
+  /// - "U47"
+  /// - "U48"
+  /// - "U49"
+  /// - "U50"
+  /// - "U51"
+  /// - "U52"
+  /// - "U53"
+  /// - "U54"
+  /// - "U55"
+  /// - "U56"
+  /// - "U57"
+  /// - "U58"
+  /// - "U59"
+  /// - "U60"
+  /// - "U61"
+  /// - "U62"
+  /// - "U63"
+  /// - "U64"
+  /// - "U65"
+  /// - "U66"
+  /// - "U67"
+  /// - "U68"
+  /// - "U69"
+  /// - "U70"
+  /// - "U71"
+  /// - "U72"
+  /// - "U73"
+  /// - "U74"
+  /// - "U75"
+  /// - "U76"
+  /// - "U77"
+  /// - "U78"
+  /// - "U79"
+  /// - "U80"
+  /// - "U81"
+  /// - "U82"
+  /// - "U83"
+  /// - "U84"
+  /// - "U85"
+  /// - "U86"
+  /// - "U87"
+  /// - "U88"
+  /// - "U89"
+  /// - "U90"
+  /// - "U91"
+  /// - "U92"
+  /// - "U93"
+  /// - "U94"
+  /// - "U95"
+  /// - "U96"
+  /// - "U97"
+  /// - "U98"
+  /// - "U99"
+  /// - "U100"
+  core.String? variableType;
+
+  $UserDefinedVariableConfiguration({
+    this.dataType,
+    this.reportName,
+    this.variableType,
+  });
+
+  $UserDefinedVariableConfiguration.fromJson(core.Map json_)
+    : this(
+        dataType: json_['dataType'] as core.String?,
+        reportName: json_['reportName'] as core.String?,
+        variableType: json_['variableType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dataType != null) 'dataType': dataType!,
+    if (reportName != null) 'reportName': reportName!,
+    if (variableType != null) 'variableType': variableType!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : UserProfile
+/// - dfareporting:v5 : UserProfile
+class $UserProfile {
+  /// The account ID to which this profile belongs.
+  core.String? accountId;
+
+  /// The account name this profile belongs to.
+  core.String? accountName;
+
+  /// Etag of this resource.
+  core.String? etag;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#userProfile".
+  core.String? kind;
+
+  /// The unique ID of the user profile.
+  core.String? profileId;
+
+  /// The sub account ID this profile belongs to if applicable.
+  core.String? subAccountId;
+
+  /// The sub account name this profile belongs to if applicable.
+  core.String? subAccountName;
+
+  /// The user name.
+  core.String? userName;
+
+  $UserProfile({
+    this.accountId,
+    this.accountName,
+    this.etag,
+    this.kind,
+    this.profileId,
+    this.subAccountId,
+    this.subAccountName,
+    this.userName,
+  });
+
+  $UserProfile.fromJson(core.Map json_)
+    : this(
+        accountId: json_['accountId'] as core.String?,
+        accountName: json_['accountName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        profileId: json_['profileId'] as core.String?,
+        subAccountId: json_['subAccountId'] as core.String?,
+        subAccountName: json_['subAccountName'] as core.String?,
+        userName: json_['userName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accountId != null) 'accountId': accountId!,
+    if (accountName != null) 'accountName': accountName!,
+    if (etag != null) 'etag': etag!,
+    if (kind != null) 'kind': kind!,
+    if (profileId != null) 'profileId': profileId!,
+    if (subAccountId != null) 'subAccountId': subAccountId!,
+    if (subAccountName != null) 'subAccountName': subAccountName!,
+    if (userName != null) 'userName': userName!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : UserRewardedContentAssignedTargetingOptionDetails
 /// - displayvideo:v3 : UserRewardedContentAssignedTargetingOptionDetails
 /// - displayvideo:v4 : UserRewardedContentAssignedTargetingOptionDetails
@@ -22913,6 +28057,95 @@ class $UserRewardedContentTargetingOptionDetails {
   core.Map<core.String, core.dynamic> toJson() => {
     if (userRewardedContent != null)
       'userRewardedContent': userRewardedContent!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : UserRolePermission
+/// - dfareporting:v5 : UserRolePermission
+class $UserRolePermission {
+  /// Levels of availability for a user role permission.
+  /// Possible string values are:
+  /// - "NOT_AVAILABLE_BY_DEFAULT" : Not available by default.
+  /// - "ACCOUNT_BY_DEFAULT" : Available by default to accounts only.
+  /// - "SUBACCOUNT_AND_ACCOUNT_BY_DEFAULT" : Available by default to both
+  /// accounts and subaccounts.
+  /// - "ACCOUNT_ALWAYS" : Always available to accounts.
+  /// - "SUBACCOUNT_AND_ACCOUNT_ALWAYS" : Always available to both accounts and
+  /// subaccounts.
+  /// - "USER_PROFILE_ONLY" : Available for user profile permissions only.
+  core.String? availability;
+
+  /// ID of this user role permission.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#userRolePermission".
+  core.String? kind;
+
+  /// Name of this user role permission.
+  core.String? name;
+
+  /// ID of the permission group that this user role permission belongs to.
+  core.String? permissionGroupId;
+
+  $UserRolePermission({
+    this.availability,
+    this.id,
+    this.kind,
+    this.name,
+    this.permissionGroupId,
+  });
+
+  $UserRolePermission.fromJson(core.Map json_)
+    : this(
+        availability: json_['availability'] as core.String?,
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+        permissionGroupId: json_['permissionGroupId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (availability != null) 'availability': availability!,
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
+    if (permissionGroupId != null) 'permissionGroupId': permissionGroupId!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : UserRolePermissionGroup
+/// - dfareporting:v5 : UserRolePermissionGroup
+class $UserRolePermissionGroup {
+  /// ID of this user role permission.
+  core.String? id;
+
+  /// Identifies what kind of resource this is.
+  ///
+  /// Value: the fixed string "dfareporting#userRolePermissionGroup".
+  core.String? kind;
+
+  /// Name of this user role permission group.
+  core.String? name;
+
+  $UserRolePermissionGroup({this.id, this.kind, this.name});
+
+  $UserRolePermissionGroup.fromJson(core.Map json_)
+    : this(
+        id: json_['id'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (id != null) 'id': id!,
+    if (kind != null) 'kind': kind!,
+    if (name != null) 'name': name!,
   };
 }
 
@@ -23279,6 +28512,37 @@ class $VideoAdSequenceStep {
     if (interactionType != null) 'interactionType': interactionType!,
     if (previousStepId != null) 'previousStepId': previousStepId!,
     if (stepId != null) 'stepId': stepId!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : VideoOffset
+/// - dfareporting:v5 : VideoOffset
+class $VideoOffset {
+  /// Duration, as a percentage of video duration.
+  ///
+  /// Do not set when offsetSeconds is set. Acceptable values are 0 to 100,
+  /// inclusive.
+  core.int? offsetPercentage;
+
+  /// Duration, in seconds.
+  ///
+  /// Do not set when offsetPercentage is set. Acceptable values are 0 to 86399,
+  /// inclusive.
+  core.int? offsetSeconds;
+
+  $VideoOffset({this.offsetPercentage, this.offsetSeconds});
+
+  $VideoOffset.fromJson(core.Map json_)
+    : this(
+        offsetPercentage: json_['offsetPercentage'] as core.int?,
+        offsetSeconds: json_['offsetSeconds'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (offsetPercentage != null) 'offsetPercentage': offsetPercentage!,
+    if (offsetSeconds != null) 'offsetSeconds': offsetSeconds!,
   };
 }
 
@@ -23706,9 +28970,10 @@ class $YoutubeAndPartnersBiddingStrategy {
   /// When the bidding strategy is assigned at the line item level, this field
   /// is only applicable for the following strategy types: *
   /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` When the bidding
-  /// strategy is assigned at the ad group level, this field is only applicable
-  /// for the following strategy types: *
+  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` *
+  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_SHARE_OF_VOICE` When
+  /// the bidding strategy is assigned at the ad group level, this field is only
+  /// applicable for the following strategy types: *
   /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` *
   /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` *
   /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
@@ -23814,6 +29079,96 @@ class $YoutubeChannelAssignedTargetingOptionDetails {
   core.Map<core.String, core.dynamic> toJson() => {
     if (channelId != null) 'channelId': channelId!,
     if (negative != null) 'negative': negative!,
+  };
+}
+
+/// Used by:
+///
+/// - dfareporting:v4 : YoutubeSettings
+/// - dfareporting:v5 : YoutubeSettings
+class $YoutubeSettings {
+  /// The IDs of the creatives to use for the business logo.
+  ///
+  /// Currently only one creative is supported.
+  ///
+  /// Optional.
+  core.List<core.String>? businessLogoCreativeIds;
+
+  /// The business name.
+  ///
+  /// Optional.
+  core.String? businessName;
+
+  /// The call to actions.
+  ///
+  /// Currently only one call to action is supported.
+  ///
+  /// Optional.
+  core.List<core.String>? callToActions;
+
+  /// The descriptions.
+  ///
+  /// Currently only one description is supported.
+  ///
+  /// Optional.
+  core.List<core.String>? descriptions;
+
+  /// The headlines associated with the call to actions.
+  ///
+  /// Currently only one headline is supported.
+  ///
+  /// Optional.
+  core.List<core.String>? headlines;
+
+  /// The long headlines.
+  ///
+  /// Currently only one long headline is supported.
+  ///
+  /// Optional.
+  core.List<core.String>? longHeadlines;
+
+  $YoutubeSettings({
+    this.businessLogoCreativeIds,
+    this.businessName,
+    this.callToActions,
+    this.descriptions,
+    this.headlines,
+    this.longHeadlines,
+  });
+
+  $YoutubeSettings.fromJson(core.Map json_)
+    : this(
+        businessLogoCreativeIds:
+            (json_['businessLogoCreativeIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        businessName: json_['businessName'] as core.String?,
+        callToActions:
+            (json_['callToActions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        descriptions:
+            (json_['descriptions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        headlines:
+            (json_['headlines'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        longHeadlines:
+            (json_['longHeadlines'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (businessLogoCreativeIds != null)
+      'businessLogoCreativeIds': businessLogoCreativeIds!,
+    if (businessName != null) 'businessName': businessName!,
+    if (callToActions != null) 'callToActions': callToActions!,
+    if (descriptions != null) 'descriptions': descriptions!,
+    if (headlines != null) 'headlines': headlines!,
+    if (longHeadlines != null) 'longHeadlines': longHeadlines!,
   };
 }
 

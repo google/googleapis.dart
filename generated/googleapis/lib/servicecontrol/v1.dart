@@ -445,7 +445,8 @@ class Attributes {
 class CheckError {
   /// The error code.
   /// Possible string values are:
-  /// - "ERROR_CODE_UNSPECIFIED" : This is never used in `CheckResponse`.
+  /// - "ERROR_CODE_UNSPECIFIED" : This is the default value if error code is
+  /// not explicitly set. It should not be used directly.
   /// - "NOT_FOUND" : The consumer's project id, network container, or resource
   /// container was not found. Same as google.rpc.Code.NOT_FOUND.
   /// - "PERMISSION_DENIED" : The consumer doesn't have access to the specified
@@ -570,13 +571,22 @@ class CheckInfo {
   /// Consumer info of this check.
   ConsumerInfo? consumerInfo;
 
+  /// Whether or not the api key should be ignored in the credential_id during
+  /// reporting.
+  core.bool? ignoreApiKeyUidAsCredentialId;
+
   /// A list of fields and label keys that are ignored by the server.
   ///
   /// The client doesn't need to send them for following requests to improve
   /// performance and allow better aggregation.
   core.List<core.String>? unusedArguments;
 
-  CheckInfo({this.apiKeyUid, this.consumerInfo, this.unusedArguments});
+  CheckInfo({
+    this.apiKeyUid,
+    this.consumerInfo,
+    this.ignoreApiKeyUidAsCredentialId,
+    this.unusedArguments,
+  });
 
   CheckInfo.fromJson(core.Map json_)
     : this(
@@ -587,6 +597,8 @@ class CheckInfo {
                   json_['consumerInfo'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        ignoreApiKeyUidAsCredentialId:
+            json_['ignoreApiKeyUidAsCredentialId'] as core.bool?,
         unusedArguments:
             (json_['unusedArguments'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -596,6 +608,8 @@ class CheckInfo {
   core.Map<core.String, core.dynamic> toJson() => {
     if (apiKeyUid != null) 'apiKeyUid': apiKeyUid!,
     if (consumerInfo != null) 'consumerInfo': consumerInfo!,
+    if (ignoreApiKeyUidAsCredentialId != null)
+      'ignoreApiKeyUidAsCredentialId': ignoreApiKeyUidAsCredentialId!,
     if (unusedArguments != null) 'unusedArguments': unusedArguments!,
   };
 }

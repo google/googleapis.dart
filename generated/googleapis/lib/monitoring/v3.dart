@@ -7876,8 +7876,9 @@ class MetricAbsence {
   ///
   /// The minimum value of this field is 120 seconds. Larger values that are a
   /// multiple of a minute--for example, 240 or 300 seconds--are supported. If
-  /// an invalid value is given, an error will be returned. The Duration.nanos
-  /// field is ignored.
+  /// an invalid value is given, an error will be returned.
+  ///
+  /// Required.
   core.String? duration;
 
   /// A filter (https://cloud.google.com/monitoring/api/v3/filters) that
@@ -8263,6 +8264,8 @@ class MetricThreshold {
   /// long enough so that a single outlier does not generate spurious alerts,
   /// but short enough that unhealthy states are detected and alerted on
   /// quickly.
+  ///
+  /// Required.
   core.String? duration;
 
   /// A condition control that determines how metric-threshold conditions are
@@ -8602,7 +8605,9 @@ class MonitoringQueryLanguageCondition {
   /// by any alignments specified in the aggregations field); a good duration is
   /// long enough so that a single outlier does not generate spurious alerts,
   /// but short enough that unhealthy states are detected and alerted on
-  /// quickly.
+  /// quickly. The default value is zero.
+  ///
+  /// Optional.
   core.String? duration;
 
   /// A condition control that determines how metric-threshold conditions are

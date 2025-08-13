@@ -979,7 +979,7 @@ class PoliciesResource {
 
   PoliciesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new Policy.
+  /// Creates a new policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1025,7 +1025,7 @@ class PoliciesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Deletes a previously created Policy.
+  /// Deletes a previously created policy.
   ///
   /// Fails if the policy is still being referenced by a network.
   ///
@@ -1073,7 +1073,7 @@ class PoliciesResource {
     );
   }
 
-  /// Fetches the representation of an existing Policy.
+  /// Fetches the representation of an existing policy.
   ///
   /// Request parameters:
   ///
@@ -1121,7 +1121,7 @@ class PoliciesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Enumerates all Policies associated with a project.
+  /// Enumerates all policies associated with a project.
   ///
   /// Request parameters:
   ///
@@ -1168,7 +1168,7 @@ class PoliciesResource {
     );
   }
 
-  /// Applies a partial update to an existing Policy.
+  /// Applies a partial update to an existing policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1223,7 +1223,7 @@ class PoliciesResource {
     );
   }
 
-  /// Updates an existing Policy.
+  /// Updates an existing policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1519,13 +1519,14 @@ class ResourceRecordSetsResource {
   /// unspecified, the server decides how many results to return.
   ///
   /// [name] - Restricts the list to return only records with this fully
-  /// qualified domain name.
+  /// qualified domain name. Mutually exclusive with the {@code filter} field.
   ///
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
   ///
   /// [type] - Restricts the list to return only records of this type. If
-  /// present, the "name" parameter must also be present.
+  /// present, the "name" parameter must also be present. Mutually exclusive
+  /// with the {@code filter} field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3965,7 +3966,7 @@ class Policy {
   /// Has no effect on the policy's function.
   core.String? description;
 
-  /// Configurations related to DNS64 for this Policy.
+  /// Configurations related to DNS64 for this policy.
   PolicyDns64Config? dns64Config;
 
   /// Allows networks bound to this policy to receive DNS queries sent by VMs or
@@ -4155,7 +4156,8 @@ class PolicyDns64Config {
 }
 
 class PolicyDns64ConfigScope {
-  /// Controls whether DNS64 is enabled globally at the network level.
+  /// Controls whether DNS64 is enabled globally for all networks bound to the
+  /// policy.
   core.bool? allQueries;
   core.String? kind;
 

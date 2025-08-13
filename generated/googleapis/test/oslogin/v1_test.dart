@@ -146,6 +146,50 @@ void checkPosixAccount(api.PosixAccount o) {
   buildCounterPosixAccount--;
 }
 
+core.int buildCounterSignSshPublicKeyRequest = 0;
+api.SignSshPublicKeyRequest buildSignSshPublicKeyRequest() {
+  final o = api.SignSshPublicKeyRequest();
+  buildCounterSignSshPublicKeyRequest++;
+  if (buildCounterSignSshPublicKeyRequest < 3) {
+    o.appEngineInstance = 'foo';
+    o.computeInstance = 'foo';
+    o.serviceAccount = 'foo';
+    o.sshPublicKey = 'foo';
+  }
+  buildCounterSignSshPublicKeyRequest--;
+  return o;
+}
+
+void checkSignSshPublicKeyRequest(api.SignSshPublicKeyRequest o) {
+  buildCounterSignSshPublicKeyRequest++;
+  if (buildCounterSignSshPublicKeyRequest < 3) {
+    unittest.expect(o.appEngineInstance!, unittest.equals('foo'));
+    unittest.expect(o.computeInstance!, unittest.equals('foo'));
+    unittest.expect(o.serviceAccount!, unittest.equals('foo'));
+    unittest.expect(o.sshPublicKey!, unittest.equals('foo'));
+  }
+  buildCounterSignSshPublicKeyRequest--;
+}
+
+core.int buildCounterSignSshPublicKeyResponse = 0;
+api.SignSshPublicKeyResponse buildSignSshPublicKeyResponse() {
+  final o = api.SignSshPublicKeyResponse();
+  buildCounterSignSshPublicKeyResponse++;
+  if (buildCounterSignSshPublicKeyResponse < 3) {
+    o.signedSshPublicKey = 'foo';
+  }
+  buildCounterSignSshPublicKeyResponse--;
+  return o;
+}
+
+void checkSignSshPublicKeyResponse(api.SignSshPublicKeyResponse o) {
+  buildCounterSignSshPublicKeyResponse++;
+  if (buildCounterSignSshPublicKeyResponse < 3) {
+    unittest.expect(o.signedSshPublicKey!, unittest.equals('foo'));
+  }
+  buildCounterSignSshPublicKeyResponse--;
+}
+
 core.int buildCounterSshPublicKey = 0;
 api.SshPublicKey buildSshPublicKey() {
   final o = api.SshPublicKey();
@@ -224,6 +268,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-SignSshPublicKeyRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSignSshPublicKeyRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SignSshPublicKeyRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSignSshPublicKeyRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-SignSshPublicKeyResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSignSshPublicKeyResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SignSshPublicKeyResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSignSshPublicKeyResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-SshPublicKey', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSshPublicKey();
@@ -232,6 +298,71 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSshPublicKey(od);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsResource', () {
+    unittest.test('method--signSshPublicKey', () async {
+      final mock = HttpServerMock();
+      final res = api.CloudOSLoginApi(mock).projects.locations;
+      final arg_request = buildSignSshPublicKeyRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SignSshPublicKeyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSignSshPublicKeyRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSignSshPublicKeyResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.signSshPublicKey(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkSignSshPublicKeyResponse(response as api.SignSshPublicKeyResponse);
     });
   });
 

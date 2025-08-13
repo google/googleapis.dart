@@ -4882,7 +4882,7 @@ class GoogleCloudMlV1RequestLoggingConfig {
   /// permission to write to it.
   ///
   /// The table must have the following \[schema\](/bigquery/docs/schemas):
-  /// Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED
+  /// Field name Type Mode model STRING REQUIRED model_version STRING REQUIRED
   /// time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING
   /// NULLABLE groundtruth STRING NULLABLE
   ///

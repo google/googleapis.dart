@@ -3446,7 +3446,7 @@ class Feature {
   ///
   /// Supported values: "builtin/stable" (the default if unset) and
   /// "builtin/latest". `DOCUMENT_TEXT_DETECTION` and `TEXT_DETECTION` also
-  /// support "builtin/weekly" for the bleeding edge release updated weekly.
+  /// support "builtin/rc" for the latest release candidate.
   core.String? model;
 
   /// The feature type.

@@ -207,8 +207,8 @@ class CoursesResource {
   /// create courses or for access errors. * `NOT_FOUND` if the primary teacher
   /// is not a valid user. * `FAILED_PRECONDITION` if the course owner's account
   /// is disabled or for the following request errors: * UserCannotOwnCourse *
-  /// UserGroupsMembershipLimitReached * `ALREADY_EXISTS` if an alias was
-  /// specified in the `id` and already exists.
+  /// UserGroupsMembershipLimitReached * CourseTitleCannotContainUrl *
+  /// `ALREADY_EXISTS` if an alias was specified in the `id` and already exists.
   ///
   /// [request] - The metadata request object.
   ///
@@ -438,7 +438,7 @@ class CoursesResource {
   /// `INVALID_ARGUMENT` if invalid fields are specified in the update mask or
   /// if no update mask is supplied. * `FAILED_PRECONDITION` for the following
   /// request errors: * CourseNotModifiable * InactiveCourseOwner *
-  /// IneligibleOwner
+  /// IneligibleOwner * CourseTitleCannotContainUrl
   ///
   /// [request] - The metadata request object.
   ///
@@ -495,7 +495,7 @@ class CoursesResource {
   /// the requesting user is not permitted to modify the requested course or for
   /// access errors. * `NOT_FOUND` if no course exists with the requested ID. *
   /// `FAILED_PRECONDITION` for the following request errors: *
-  /// CourseNotModifiable
+  /// CourseNotModifiable * CourseTitleCannotContainUrl
   ///
   /// [request] - The metadata request object.
   ///
@@ -1080,7 +1080,8 @@ class CoursesAnnouncementsResource {
   /// `PERMISSION_DENIED` if the requesting user is not permitted to access the
   /// requested course or course work or for access errors. * `INVALID_ARGUMENT`
   /// if the request is malformed. * `NOT_FOUND` if the requested course or
-  /// course work does not exist.
+  /// course work does not exist. * `FAILED_PRECONDITION` for the following
+  /// request error: * EmptyAssignees
   ///
   /// [request] - The metadata request object.
   ///
@@ -1860,7 +1861,8 @@ class CoursesCourseWorkResource {
   /// `PERMISSION_DENIED` if the requesting user is not permitted to access the
   /// requested course or course work or for access errors. * `INVALID_ARGUMENT`
   /// if the request is malformed. * `NOT_FOUND` if the requested course or
-  /// course work does not exist.
+  /// course work does not exist. * `FAILED_PRECONDITION` for the following
+  /// request error: * EmptyAssignees
   ///
   /// [request] - The metadata request object.
   ///

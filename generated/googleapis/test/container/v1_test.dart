@@ -1152,6 +1152,7 @@ api.ClusterUpdate buildClusterUpdate() {
     o.desiredMonitoringConfig = buildMonitoringConfig();
     o.desiredMonitoringService = 'foo';
     o.desiredNetworkPerformanceConfig = buildClusterNetworkPerformanceConfig();
+    o.desiredNetworkTierConfig = buildNetworkTierConfig();
     o.desiredNodeKubeletConfig = buildNodeKubeletConfig();
     o.desiredNodePoolAutoConfigKubeletConfig = buildNodeKubeletConfig();
     o.desiredNodePoolAutoConfigLinuxNodeConfig = buildLinuxNodeConfig();
@@ -1243,6 +1244,7 @@ void checkClusterUpdate(api.ClusterUpdate o) {
     checkMonitoringConfig(o.desiredMonitoringConfig!);
     unittest.expect(o.desiredMonitoringService!, unittest.equals('foo'));
     checkClusterNetworkPerformanceConfig(o.desiredNetworkPerformanceConfig!);
+    checkNetworkTierConfig(o.desiredNetworkTierConfig!);
     checkNodeKubeletConfig(o.desiredNodeKubeletConfig!);
     checkNodeKubeletConfig(o.desiredNodePoolAutoConfigKubeletConfig!);
     checkLinuxNodeConfig(o.desiredNodePoolAutoConfigLinuxNodeConfig!);
@@ -2475,6 +2477,7 @@ api.IPAllocationPolicy buildIPAllocationPolicy() {
     o.createSubnetwork = true;
     o.defaultPodIpv4RangeUtilization = 42.0;
     o.ipv6AccessType = 'foo';
+    o.networkTierConfig = buildNetworkTierConfig();
     o.nodeIpv4Cidr = 'foo';
     o.nodeIpv4CidrBlock = 'foo';
     o.podCidrOverprovisionConfig = buildPodCIDROverprovisionConfig();
@@ -2505,6 +2508,7 @@ void checkIPAllocationPolicy(api.IPAllocationPolicy o) {
     unittest.expect(o.createSubnetwork!, unittest.isTrue);
     unittest.expect(o.defaultPodIpv4RangeUtilization!, unittest.equals(42.0));
     unittest.expect(o.ipv6AccessType!, unittest.equals('foo'));
+    checkNetworkTierConfig(o.networkTierConfig!);
     unittest.expect(o.nodeIpv4Cidr!, unittest.equals('foo'));
     unittest.expect(o.nodeIpv4CidrBlock!, unittest.equals('foo'));
     checkPodCIDROverprovisionConfig(o.podCidrOverprovisionConfig!);
@@ -3399,6 +3403,25 @@ void checkNetworkTags(api.NetworkTags o) {
   buildCounterNetworkTags--;
 }
 
+core.int buildCounterNetworkTierConfig = 0;
+api.NetworkTierConfig buildNetworkTierConfig() {
+  final o = api.NetworkTierConfig();
+  buildCounterNetworkTierConfig++;
+  if (buildCounterNetworkTierConfig < 3) {
+    o.networkTier = 'foo';
+  }
+  buildCounterNetworkTierConfig--;
+  return o;
+}
+
+void checkNetworkTierConfig(api.NetworkTierConfig o) {
+  buildCounterNetworkTierConfig++;
+  if (buildCounterNetworkTierConfig < 3) {
+    unittest.expect(o.networkTier!, unittest.equals('foo'));
+  }
+  buildCounterNetworkTierConfig--;
+}
+
 core.List<core.String> buildUnnamed46() => ['foo', 'foo'];
 
 void checkUnnamed46(core.List<core.String> o) {
@@ -3790,6 +3813,7 @@ api.NodeNetworkConfig buildNodeNetworkConfig() {
     o.createPodRange = true;
     o.enablePrivateNodes = true;
     o.networkPerformanceConfig = buildNetworkPerformanceConfig();
+    o.networkTierConfig = buildNetworkTierConfig();
     o.podCidrOverprovisionConfig = buildPodCIDROverprovisionConfig();
     o.podIpv4CidrBlock = 'foo';
     o.podIpv4RangeUtilization = 42.0;
@@ -3808,6 +3832,7 @@ void checkNodeNetworkConfig(api.NodeNetworkConfig o) {
     unittest.expect(o.createPodRange!, unittest.isTrue);
     unittest.expect(o.enablePrivateNodes!, unittest.isTrue);
     checkNetworkPerformanceConfig(o.networkPerformanceConfig!);
+    checkNetworkTierConfig(o.networkTierConfig!);
     checkPodCIDROverprovisionConfig(o.podCidrOverprovisionConfig!);
     unittest.expect(o.podIpv4CidrBlock!, unittest.equals('foo'));
     unittest.expect(o.podIpv4RangeUtilization!, unittest.equals(42.0));
@@ -4872,6 +4897,27 @@ void checkRollbackNodePoolUpgradeRequest(api.RollbackNodePoolUpgradeRequest o) {
   buildCounterRollbackNodePoolUpgradeRequest--;
 }
 
+core.int buildCounterRotationConfig = 0;
+api.RotationConfig buildRotationConfig() {
+  final o = api.RotationConfig();
+  buildCounterRotationConfig++;
+  if (buildCounterRotationConfig < 3) {
+    o.enabled = true;
+    o.rotationInterval = 'foo';
+  }
+  buildCounterRotationConfig--;
+  return o;
+}
+
+void checkRotationConfig(api.RotationConfig o) {
+  buildCounterRotationConfig++;
+  if (buildCounterRotationConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(o.rotationInterval!, unittest.equals('foo'));
+  }
+  buildCounterRotationConfig--;
+}
+
 core.int buildCounterSandboxConfig = 0;
 api.SandboxConfig buildSandboxConfig() {
   final o = api.SandboxConfig();
@@ -4935,6 +4981,7 @@ api.SecretManagerConfig buildSecretManagerConfig() {
   buildCounterSecretManagerConfig++;
   if (buildCounterSecretManagerConfig < 3) {
     o.enabled = true;
+    o.rotationConfig = buildRotationConfig();
   }
   buildCounterSecretManagerConfig--;
   return o;
@@ -4944,6 +4991,7 @@ void checkSecretManagerConfig(api.SecretManagerConfig o) {
   buildCounterSecretManagerConfig++;
   if (buildCounterSecretManagerConfig < 3) {
     unittest.expect(o.enabled!, unittest.isTrue);
+    checkRotationConfig(o.rotationConfig!);
   }
   buildCounterSecretManagerConfig--;
 }
@@ -7424,6 +7472,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-NetworkTierConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNetworkTierConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NetworkTierConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkNetworkTierConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-NodeAffinity', () {
     unittest.test('to-json--from-json', () async {
       final o = buildNodeAffinity();
@@ -7905,6 +7964,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkRollbackNodePoolUpgradeRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-RotationConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRotationConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RotationConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRotationConfig(od);
     });
   });
 
