@@ -1,3 +1,7 @@
+## 15.0.0
+
+- Regenerate apis
+
 ## 14.1.0-wip
 
 - Require `sdk: ^3.7.0`
@@ -5,7 +9,7 @@
 ## 14.0.0
 
 - Require Dart 3.6 or later.
-- Note *many* APIs were removed in this release due to changes in Google API
+- Note _many_ APIs were removed in this release due to changes in Google API
   security practices.
 
 ### APIs
@@ -50,34 +54,34 @@
 
 ## 13.1.0
 
- - `logging` - removed (*BROKEN*) `tail()` function call.
- - `dataportability` - new!
- - `speech` - added `v2`
+- `logging` - removed (_BROKEN_) `tail()` function call.
+- `dataportability` - new!
+- `speech` - added `v2`
 
 ## 13.0.0
 
- - `apphub` - new!
- - `bigqueryconnection` - new!
- - `displayvideo` - Removed v1 (v2, v3 still exist)
- - `walletobjects` - new!
- - `workspaceevents` - new!
+- `apphub` - new!
+- `bigqueryconnection` - new!
+- `displayvideo` - Removed v1 (v2, v3 still exist)
+- `walletobjects` - new!
+- `workspaceevents` - new!
 
 ## 12.0.0
 
- - `alloydb` - new!
- - `backupdr` - new!
- - `biglake` - new!
- - `bigquerydatapolicy` - new!
- - `cloudbuild` - added `v2`
- - `displayvideo` - added `v3`
- - `gameservices` - Removed!
- - `language` - added `v2`
- - `looker` - new!
- - `rapidmigrationassessment` - new!
- - `safebrowsing` - added `v5`
- - `trafficdirector` - added `v3`
- - `vmwareengine` - new!
- - `workstations` - new!
+- `alloydb` - new!
+- `backupdr` - new!
+- `biglake` - new!
+- `bigquerydatapolicy` - new!
+- `cloudbuild` - added `v2`
+- `displayvideo` - added `v3`
+- `gameservices` - Removed!
+- `language` - added `v2`
+- `looker` - new!
+- `rapidmigrationassessment` - new!
+- `safebrowsing` - added `v5`
+- `trafficdirector` - added `v3`
+- `vmwareengine` - new!
+- `workstations` - new!
 
 ## 11.4.0
 
@@ -204,7 +208,7 @@
 
 ## 7.0.0
 
-- Removed *many* types defined in the source library JSON definition, but that
+- Removed _many_ types defined in the source library JSON definition, but that
   were not used by the API.
 - Drop unusable `Firestore` `listen` function and related types.
   [#77](https://github.com/google/googleapis.dart/issues/77)
@@ -250,7 +254,7 @@
 
 ### API changes
 
-- `adexchangebuyer` - **removed**  
+- `adexchangebuyer` - **removed**
 - `contactcenterinsights` - new!
 - `mybusinessbusinessinformation` - new!
 - `mybusinessnotifications` - new!
