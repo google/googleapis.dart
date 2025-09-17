@@ -51,8 +51,6 @@ List<GenerateResult> generateAllLibraries(
               json.decode(entity.readAsStringSync()) as Map,
             );
             if (desc.name == null) {
-              print('error: ${entity.path}');
-              print('Skipping ${desc.id} because it has no name');
               return null;
             }
             return desc;
