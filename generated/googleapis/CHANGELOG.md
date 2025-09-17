@@ -1,3 +1,157 @@
+## 15.0.0
+
+### APIs
+
+- `accessapproval` - updated `v1`
+- `admin.directory` - updated `v1`
+- `admin.reports` - updated `v1`
+- `aiplatform` - updated `v1`
+- `alloydb` - updated `v1`
+- `analyticshub` - updated `v1`
+- `androidmanagement` - updated `v1`
+- `androidpublisher` - updated `v3`
+- `apigateway` - updated `v1`
+- `apigee` - updated `v1`
+- `apihub` - updated `v1`
+- `appengine` - updated `v1`
+- `apphub` - updated `v1`
+- `authorizedbuyersmarketplace` - updated `v1`
+- `backupdr` - updated `v1`
+- `batch` - updated `v1`
+- `beyondcorp` - updated `v1`
+- `bigquery` - updated `v2`
+- `bigquerydatatransfer` - updated `v1`
+- `bigqueryreservation` - updated `v1`
+- `bigtableadmin` - updated `v2`
+- `certificatemanager` - updated `v1`
+- `chat` - updated `v1`
+- `chromemanagement` - updated `v1`
+- `classroom` - updated `v1`
+- `cloudbuild` - updated `v1`
+- `cloudbuild` - updated `v2`
+- `cloudchannel` - updated `v1`
+- `clouddeploy` - updated `v1`
+- `cloudfunctions` - updated `v1`
+- `cloudfunctions` - updated `v2`
+- `cloudidentity` - updated `v1`
+- `cloudkms` - updated `v1`
+- `composer` - updated `v1`
+- `compute` - updated `v1`
+- `config` - updated `v1`
+- `connectors` - updated `v1`
+- `connectors` - updated `v2`
+- `contactcenterinsights` - updated `v1`
+- `container` - updated `v1`
+- `containeranalysis` - updated `v1`
+- `datafusion` - updated `v1`
+- `datamigration` - updated `v1`
+- `dataplex` - updated `v1`
+- `dataproc` - updated `v1`
+- `datastore` - updated `v1`
+- `datastream` - updated `v1`
+- `deploymentmanager` - updated `v2`
+- `developerconnect` - updated `v1`
+- `dfareporting` - updated `v4`
+- `dialogflow` - updated `v2`
+- `dialogflow` - updated `v3`
+- `digitalassetlinks` - updated `v1`
+- `displayvideo` - updated `v2`
+- `displayvideo` - updated `v3`
+- `displayvideo` - updated `v4`
+- `dlp` - updated `v2`
+- `dns` - updated `v1`
+- `documentai` - updated `v1`
+- `drive` - updated `v2`
+- `drive` - updated `v3`
+- `driveactivity` - updated `v2`
+- `drivelabels` - updated `v2`
+- `eventarc` - updated `v1`
+- `file` - updated `v1`
+- `firebaseappcheck` - updated `v1`
+- `firebaseappdistribution` - updated `v1`
+- `firebaseapphosting` - updated `v1`
+- `firebasedataconnect` - updated `v1`
+- `firestore` - updated `v1`
+- `fitness` - updated `v1`
+- `gkebackup` - updated `v1`
+- `gkehub` - updated `v1`
+- `gkehub` - updated `v2`
+- `gkeonprem` - updated `v1`
+- `groupsmigration` - updated `v1`
+- `healthcare` - updated `v1`
+- `iam` - updated `v1`
+- `language` - updated `v1`
+- `language` - updated `v2`
+- `logging` - updated `v2`
+- `looker` - updated `v1`
+- `managedkafka` - updated `v1`
+- `manufacturers` - updated `v1`
+- `memcache` - updated `v1`
+- `metastore` - updated `v1`
+- `migrationcenter` - updated `v1`
+- `ml` - updated `v1`
+- `monitoring` - updated `v3`
+- `mybusinessverifications` - updated `v1`
+- `netapp` - updated `v1`
+- `networkconnectivity` - updated `v1`
+- `networkmanagement` - updated `v1`
+- `networksecurity` - updated `v1`
+- `observability` - updated `v1`
+- `ondemandscanning` - updated `v1`
+- `oracledatabase` - updated `v1`
+- `orgpolicy` - updated `v2`
+- `parallelstore` - updated `v1`
+- `parametermanager` - updated `v1`
+- `paymentsresellersubscription` - updated `v1`
+- `places` - updated `v1`
+- `playintegrity` - updated `v1`
+- `policysimulator` - updated `v1`
+- `privateca` - updated `v1`
+- `pubsub` - updated `v1`
+- `redis` - updated `v1`
+- `retail` - updated `v2`
+- `run` - updated `v1`
+- `run` - updated `v2`
+- `script` - updated `v1`
+- `secretmanager` - updated `v1`
+- `securitycenter` - updated `v1`
+- `securityposture` - updated `v1`
+- `servicecontrol` - updated `v1`
+- `servicecontrol` - updated `v2`
+- `servicedirectory` - updated `v1`
+- `solar` - updated `v1`
+- `storage` - updated `v1`
+- `storagebatchoperations` - updated `v1`
+- `storagetransfer` - updated `v1`
+- `sts` - updated `v1`
+- `tagmanager` - updated `v1`
+- `tagmanager` - updated `v2`
+- `testing` - updated `v1`
+- `texttospeech` - updated `v1`
+- `tpu` - updated `v1`
+- `tpu` - updated `v2`
+- `trafficdirector` - updated `v2`
+- `trafficdirector` - updated `v3`
+- `versionhistory` - updated `v1`
+- `vision` - updated `v1`
+- `vmmigration` - updated `v1`
+- `vmwareengine` - updated `v1`
+- `vpcaccess` - updated `v1`
+- `walletobjects` - updated `v1`
+- `workflows` - updated `v1`
+- `workloadmanager` - updated `v1`
+- `workstations` - updated `v1`
+- `adexchangebuyer2` - updated `v2beta1`
+- `analyticsadmin` - updated `v1alpha`
+- `cloudsupport` - updated `v2beta`
+- `dataflow` - updated `v1b3`
+- `datastream` - updated `v1alpha1`
+- `firebaseappcheck` - updated v1beta`
+- `gkehub` - updated `v2alpha`
+- `lifesciences` - updated `v2beta`
+- `sqladmin` - updated `v1beta4`
+- `lifesciences` - removed `v2beta`.
+
 ## 14.1.0-wip
 
 - Require `sdk: ^3.7.0`
@@ -5,7 +159,7 @@
 ## 14.0.0
 
 - Require Dart 3.6 or later.
-- Note *many* APIs were removed in this release due to changes in Google API
+- Note _many_ APIs were removed in this release due to changes in Google API
   security practices.
 
 ### APIs
@@ -50,34 +204,34 @@
 
 ## 13.1.0
 
- - `logging` - removed (*BROKEN*) `tail()` function call.
- - `dataportability` - new!
- - `speech` - added `v2`
+- `logging` - removed (_BROKEN_) `tail()` function call.
+- `dataportability` - new!
+- `speech` - added `v2`
 
 ## 13.0.0
 
- - `apphub` - new!
- - `bigqueryconnection` - new!
- - `displayvideo` - Removed v1 (v2, v3 still exist)
- - `walletobjects` - new!
- - `workspaceevents` - new!
+- `apphub` - new!
+- `bigqueryconnection` - new!
+- `displayvideo` - Removed v1 (v2, v3 still exist)
+- `walletobjects` - new!
+- `workspaceevents` - new!
 
 ## 12.0.0
 
- - `alloydb` - new!
- - `backupdr` - new!
- - `biglake` - new!
- - `bigquerydatapolicy` - new!
- - `cloudbuild` - added `v2`
- - `displayvideo` - added `v3`
- - `gameservices` - Removed!
- - `language` - added `v2`
- - `looker` - new!
- - `rapidmigrationassessment` - new!
- - `safebrowsing` - added `v5`
- - `trafficdirector` - added `v3`
- - `vmwareengine` - new!
- - `workstations` - new!
+- `alloydb` - new!
+- `backupdr` - new!
+- `biglake` - new!
+- `bigquerydatapolicy` - new!
+- `cloudbuild` - added `v2`
+- `displayvideo` - added `v3`
+- `gameservices` - Removed!
+- `language` - added `v2`
+- `looker` - new!
+- `rapidmigrationassessment` - new!
+- `safebrowsing` - added `v5`
+- `trafficdirector` - added `v3`
+- `vmwareengine` - new!
+- `workstations` - new!
 
 ## 11.4.0
 
@@ -204,7 +358,7 @@
 
 ## 7.0.0
 
-- Removed *many* types defined in the source library JSON definition, but that
+- Removed _many_ types defined in the source library JSON definition, but that
   were not used by the API.
 - Drop unusable `Firestore` `listen` function and related types.
   [#77](https://github.com/google/googleapis.dart/issues/77)
@@ -250,7 +404,7 @@
 
 ### API changes
 
-- `adexchangebuyer` - **removed**  
+- `adexchangebuyer` - **removed**
 - `contactcenterinsights` - new!
 - `mybusinessbusinessinformation` - new!
 - `mybusinessnotifications` - new!
